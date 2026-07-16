@@ -5,6 +5,7 @@ authors: ["Xu Chen"]
 year: 2015
 url: "https://doi.org/10.1109/TPDS.2014.2316834"
 venue: "IEEE Transactions on Parallel and Distributed Systems (IEEE TPDS)"
+modeling_card: required
 tags: [source, task-offloading, game-theory, potential-game, mobile-cloud-computing, decentralized-optimization]
 related:
   - "[[potential-game]]"
@@ -12,7 +13,7 @@ related:
   - "[[binary-vs-partial-offloading]]"
   - "[[nash-equilibrium]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
 ---
 
 # Decentralized Computation Offloading Game for Mobile Cloud Computing
@@ -24,6 +25,36 @@ Chen, X. (2015). *Decentralized Computation Offloading Game for Mobile Cloud Com
 ## TL;DR
 
 Multiple mobile device users share a wireless access link to a cloud (e.g., Amazon EC2). If too many users offload simultaneously they create mutual interference, reducing rates and defeating the benefit of offloading. The paper models this as a **decentralized computation offloading game**, proves it always admits a Nash equilibrium (via beneficial cloud-computing group structure for homogeneous access, and potential-game theory for heterogeneous access), and designs an efficient decentralized mechanism that converges in O(N log N) time. Numerical results show the Nash equilibrium achieves at most ~10% performance loss versus the centralized optimum.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A quasi-static set of mobile device users shares the uplink of one WiFi, femtocell, or macrocell access point and chooses local execution or remote cloud execution for delay-sensitive tasks. Simultaneous offloaders interfere under a Shannon-rate wireless model, coupling every user's processing-time and energy cost.
+
+**Problem & objective**: The strategic decentralized computation offloading game $\Gamma=(\mathcal{N},\{\mathcal{A}_n\},\{V_n\})$ lets each user solve $\min_{a_n\in\{0,1\}}V_n(a_n,a_{-n})$, where $V_n$ is the weighted processing-time and energy cost of local or cloud execution.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Computation offloading decision | $a_n$ | binary, $\{0,1\}$ | User $n$ selects local execution when $a_n=0$ and cloud execution when $a_n=1$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Action set | Each user selects one feasible action, $a_n\in\mathcal{A}_n=\{0,1\}$ |
+| Best response | Cloud execution is selected when the measured interference satisfies $\sum_{m\neq n:a_m=1}P_mH_{m,s}\leq L_n$ |
+| 10 | At equilibrium no user can reduce its cost unilaterally, $V_n(a_n^*,a_{-n}^*)\leq V_n(a_n,a_{-n}^*)$ |
+
+**Algorithm**: For homogeneous access, sort user thresholds and construct the beneficial cloud-computing group; for heterogeneous access, measure interference, compute the best-response set, use random-backoff contention so one user updates at a time, and stop when no request-to-update message is broadcast for the prescribed consecutive slots.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen [x] studied decentralized computation offloading among multiple mobile device users that share a wireless access link to a remote cloud. Each user selects binary local or cloud execution to minimize a weighted processing-time and energy cost, while simultaneous offloading decisions are coupled through uplink interference. The resulting decentralized computation offloading game is shown to admit a Nash equilibrium, using a beneficial cloud computing group for homogeneous wireless access and a potential-game formulation with the finite improvement property for heterogeneous access. The proposed mechanism lets users measure interference, compute best responses, and use random-backoff contention so that one user updates its decision at a time until no further improvement is available. Numerical results report less than 10 percent performance loss relative to centralized optimization in all evaluated cases, reductions of up to 33 and 38 percent over all-local and all-cloud execution, and convergence iterations that increase linearly with the number of users.
 
 ## Problem framing
 

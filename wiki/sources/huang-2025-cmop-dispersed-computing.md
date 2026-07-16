@@ -5,6 +5,7 @@ authors: ["Xumin Huang", "Zexiong Wu", "Chaoda Peng", "Yuan Wu", "Weifeng Zhong"
 year: 2025
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, dispersed-computing, cmop, evolutionary-algorithm, task-redundancy, dual-population, parallel-vs-serial]
 related:
   - "[[dispersed-computing]]"
@@ -16,7 +17,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing
@@ -41,6 +42,41 @@ Solver: a **dual-population CMOEA** with a **repairing constraint-handling techn
 - Main population maintains feasible solutions and pushes toward Pareto convergence.
 - Auxiliary population explores the broader space (including infeasible regions) to keep diversity.
 - The repair operator surgically fixes constraint violations rather than deleting infeasible individuals.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An overloaded edge server can execute tasks in parallel or reverse-offload redundant copies to volunteer IoT devices that process their assigned queues serially. IoT devices have heterogeneous bandwidth, charge rates, and failure probabilities, so redundancy improves completion reliability at additional delay and monetary cost.
+
+**Problem & objective**: The constrained multiobjective problem jointly minimizes $\mathbf{G}(\rho,\mathbf{b},\mathbf{f})=\left(G_1,G_2\right)$, where $G_1$ is total task latency and $G_2$ is total processing and communication charge.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task-processor assignment | $\rho_{i,j}$ | binary | Whether task $i$ is assigned to processor $j$, allowing redundant IoT copies |
+| IoT-device bandwidth | $b_j$ | continuous, nonnegative | Communication bandwidth allocated to volunteer device $j$ |
+| Edge CPU allocation | $f_i$ | continuous, nonnegative | Edge-server CPU frequency allocated to task $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every task is assigned to at least one processor |
+| C2 | A task cannot be executed by the edge server and volunteer IoT devices simultaneously |
+| C3 | Redundant IoT execution meets the task reliability target: $P_i\ge\bar R_i$ |
+| C4 | Total IoT bandwidth and edge CPU allocations remain within their respective capacities |
+| C5 | Bandwidth is allocated only to active IoT processors, and edge CPU is allocated only to edge-executed tasks |
+| C6 | Assignment variables are binary and resource allocations stay in their feasible domains |
+
+**Algorithm**: The proposed constrained multiobjective evolutionary algorithm maintains a feasibility-focused main population under the constraint-domination principle and a diversity-focused auxiliary population under an angle-based selection framework. It shares offspring between populations, repairs heterogeneous assignment and resource violations, and returns a Pareto set spanning delay-oriented, charge-oriented, and balanced solutions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] formulated reliable reverse offloading from an overloaded edge server to volunteer IoT devices as constrained multiobjective optimization. They jointly minimized total task delay and monetary charge over redundant task-processor assignment, IoT-device bandwidth, and edge CPU allocation under coverage, exclusivity, per-task reliability, resource-capacity, and activation-coupling constraints. Their evolutionary solver uses a feasibility-focused main population, a diversity-focused auxiliary population, offspring sharing, and a repair operator for heterogeneous constraint violations. On CMOP2, its delay-oriented solution reduced delay by 88.6% and its charge-oriented solution reduced charge by 91.3% relative to CMOEA/D-CDP, while the full dual-population mechanism reduced mean IGD by 77.8%.
 
 ## Why this matters
 

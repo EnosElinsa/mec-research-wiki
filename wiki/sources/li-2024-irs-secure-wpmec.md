@@ -22,7 +22,8 @@ related:
   - "[[mao-2025-irs-noma-fl-secrecy]]"
   - "[[yonghui-li]]"
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Intelligent Reflecting Surface Assisted Secure Computation of Wireless Powered MEC System
@@ -34,6 +35,43 @@ Li, B., Liao, J., Wu, W., & Li, Y. (2024). *Intelligent Reflecting Surface Assis
 ## TL;DR
 
 Deploys an **intelligent reflecting surface (IRS)** to improve the **secure computation** performance of a **wireless-powered MEC (WPT-MEC)** system in the presence of a **passive eavesdropper**. An access point (AP) integrated with an MEC server first charges multiple single-antenna users via downlink WPT (IRS boosts energy harvesting), then the users perform partial offloading and local computing with the harvested energy (IRS weakens the eavesdropper's channel during offloading). The paper **maximizes the users' total secure computation task bits** by jointly optimizing AP energy transmit beamforming, IRS phase shifts (in both WPT and offloading stages), users' transmit power, offloading time, and local computation frequency. The non-convex problem is solved by an iterative algorithm combining **Taylor expansion, semidefinite relaxation (SDR), Lagrange duality, and KKT conditions**, reporting >45% secure-bits improvement at the AP's maximum transmit power versus benchmarks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An AP with an MEC server wirelessly charges $K$ single-antenna users through an $N$-element IRS; users then partially offload over TDMA while a passive Eve listens. The AP-user, AP-IRS-user, user-IRS-AP, and user-IRS-Eve links use AWGN fading channels with perfect CSI.
+
+**Problem & objective**: Problem (P1), a non-convex continuous optimization, maximizes total secure computation task bits, $\max \sum_k[Bt_k(R_{a,k}-R_{e,k})+Tf_k/c_k]$, subject to energy causality, IRS phase, power, time, and local-computing bounds.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| AP energy covariance | $\mathbf W$ | continuous PSD, $\mathrm{Tr}(\mathbf W)\le P$ | Downlink WPT beamforming covariance |
+| WPT IRS phases | $\mathbf v_0$ | complex unit modulus, $\|v_0(n)\|=1$ | IRS reflection during energy harvesting |
+| Offloading IRS phases | $\mathbf v_k$ | complex unit modulus, $\|v_k(n)\|=1$ | IRS reflection for user $k$'s offloading |
+| User transmit power | $p_k$ | continuous, $0\le p_k\le P_k^{\max}$ | Secure offloading power |
+| Harvest/offload time | $t_0,t_k$ | continuous, $\ge0$, $\sum_k t_k\le T$ | WPT and TDMA durations |
+| Local CPU frequency | $f_k$ | continuous, $0\le f_k\le F_k^{\max}$ | Local computing rate |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Energy causality: harvested energy covers local-computing and offloading energy for each user |
+| C2 | Unit-modulus IRS phases, $\|v_k(n)\|=1$ for WPT and offloading stages |
+| C3 | AP energy covariance is PSD and obeys $\mathrm{Tr}(\mathbf W)\le P$ |
+| C4 | TDMA timing obeys $\sum_k t_k\le T$, with $0\le t_0,t_k\le T$ |
+| C5 | User transmit power and CPU frequency obey their per-user caps |
+
+**Algorithm**: Taylor expansion and SDR for AP beamforming/WPT IRS phases → SDR for offloading IRS phases → Lagrange duality and KKT for power/time → alternate the three blocks until secure computation bits converge.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied secure computation in an IRS-assisted wireless-powered MEC system with a passive eavesdropper. They formulated a non-convex problem that maximizes the total secure computation task bits by jointly optimizing AP energy beamforming, IRS phase shifts in the WPT and offloading stages, user transmit powers, WPT/offloading time, and local CPU frequencies. The harvest-then-offload protocol uses TDMA and defines secure offloading through the difference between the AP and eavesdropper rates. They solved the coupled variables with an iterative procedure that combines Taylor expansion, semidefinite relaxation, Lagrange duality, and Karush-Kuhn-Tucker conditions. Numerical results show that the proposed scheme obtains higher secure computation task bits than the evaluated benchmark schemes and reports an improvement above 45% at the AP maximum transmit power.
 
 ## Problem framing
 

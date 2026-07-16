@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy Efficient Task Offloading and Resource Allocation in Air-Ground Integrated MEC Systems: A Distributed Online Approach"
 authors: ["Ying Chen", "Kaixin Li", "Yuan Wu", "Jiwei Huang", "Lian Zhao"]
 year: 2023
@@ -17,7 +18,7 @@ related:
   - "[[chen-2024-ulse-game]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 ---
 
 # Energy Efficient Task Offloading and Resource Allocation in Air-Ground Integrated MEC Systems: A Distributed Online Approach
@@ -29,6 +30,40 @@ Chen, Y., Li, K., Wu, Y., Huang, J., & Zhao, L. (2023). *Energy Efficient Task O
 ## TL;DR
 
 An aerial MEC system with one HAP and multiple UAVs serving ground devices (GDs) in infrastructure-free regions, minimizing GD energy consumption. Because task arrivals and channel quality are stochastic, the authors use **stochastic optimization** to split the problem into a local-computation-resource sub-problem (solved by convex optimization) and an offloading-resource sub-problem (solved by **game theory** over competing GDs). They propose **DGMS** (distributed game-theoretical multi-server selection), **TPA** (transmission power allocation), and the overall **DOTORA** distributed online algorithm with theoretical analysis.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground devices with stochastic task arrivals and queues obtain local computing or partial offloading service from one HAP and multiple hovering UAV edge servers over interference-coupled air-ground links in slotted time.
+
+**Problem & objective**: Problem $\mathcal P_1$ is a stochastic mixed-integer program, $\min_{\mathcal Q(t)}\lim_{T\to\infty}\frac{1}{T}\sum_{t=0}^{T-1}\mathbb E\{E(t)\}$, minimizing long-term average ground-device energy while maintaining feasible local and offloaded processing.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local CPU frequency | $f_n^l(t)$ | Continuous, $[0,f_n^{\max}]$ | Allocates local computing capacity to ground device $n$. |
+| Server selection | $v_n^s(t)$ | Binary, $\{0,1\}$ | Indicates whether device $n$ offloads to HAP or UAV server $s$. |
+| Transmission power | $p_n(t)$ | Continuous, $[0,p_n^{\max}]$ | Sets the uplink power used by device $n$ for offloading. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Local CPU allocation satisfies $0\le f_n^l(t)\le f_n^{\max}$. |
+| C2 | Server choices are binary and exclusive, $v_n^s(t)\in\{0,1\}$ and $\sum_{s=0}^{S}v_n^s(t)\le1$. |
+| C3 | Uplink power satisfies $0\le p_n(t)\le p_n^{\max}$. |
+| C4 | Processing cannot exceed the queue: $W_n^l(t)\le G_n(t)$ and $W_n^o(t)\le G_n(t)-W_n^l(t)$. |
+| C5 | Queue evolution follows $G_n(t+1)=[G_n(t)-W_n^l(t)-W_n^o(t)]^++A_n(t)$ and is stabilized through drift-plus-penalty control. |
+
+**Algorithm**: DOTORA applies Lyapunov drift-plus-penalty decomposition, solves local CPU frequency in closed form, obtains server choices through the potential-game DGMS procedure, refines uplink powers with TPA, and repeats online without future statistics.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied online task offloading and resource allocation for ground devices served cooperatively by one HAP and multiple UAV edge servers. They formulated a stochastic mixed-integer problem that minimizes long-term device energy subject to CPU-frequency, exclusive server-selection, transmit-power, queue-service, and stability constraints. DOTORA uses Lyapunov optimization to separate local computing from offloading, then combines a closed-form CPU decision with game-based server selection and iterative power allocation. Simulations report energy reductions of 15.73%, 15.95%, and 19.09% and queue-backlog reductions of 15.99%, 17.64%, and 88.84% relative to EUAG-20, GTCO-21, and full local computing, respectively.
 
 ## Problem framing
 

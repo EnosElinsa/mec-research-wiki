@@ -5,6 +5,7 @@ authors: ["Kanghyun Heo", "Gitae Park", "Kisong Lee"]
 year: ""
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, uav-communications, blockage, interference-coordination, trajectory-optimization, convex-optimization]
 related:
   - "[[building-blockage-aided-interference-coordination]]"
@@ -14,7 +15,7 @@ related:
   - "[[block-successive-upper-bound-minimization]]"
   - "[[multi-uav-assisted-mec]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # Building Blockage-Aided Interference Coordination for Multi-UAV-Enabled Wireless Networks
@@ -26,6 +27,42 @@ Heo, K., Park, G., & Lee, K. *Building Blockage-Aided Interference Coordination 
 ## TL;DR
 
 Uses buildings as a resource rather than only a channel impairment. Multi-UAV trajectories, scheduling, LoS/NLoS channel states, and transmit powers are jointly optimized so desired signal links stay LoS while interfering links are intentionally made NLoS through urban blockage.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Cochannel rotary-wing UAVs serve ground nodes in a static 3-D city map with known cuboid buildings. UAV motion can preserve LoS desired links while intentionally placing buildings across interference links, but all continuous flight segments must avoid the buildings.
+
+**Problem & objective**: Maximize worst-user time-averaged spectral efficiency, $\max_{\mathbf S,\mathbf Q,\mathbf P,\eta}\eta$ subject to $\bar R_k\geq\eta$ for every ground node, by jointly controlling schedules, 3-D trajectories, powers, and blockage states.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV-GN scheduling | $s_{m,k}[n]$ | binary | Whether UAV $m$ serves ground node $k$ in slot $n$ |
+| UAV trajectory | $\mathbf q_m[n]$ | continuous 3-D position | Slotwise flight location |
+| UAV transmit power | $p_m[n]$ | continuous, $[0,P_{\mathrm{peak}}]$ | Slotwise downlink power |
+| Channel-state auxiliaries | $\check c,\hat c,\boldsymbol\omega,\boldsymbol\rho$ | binary or relaxed indicators | Signal- and interference-link blockage states |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Periodic trajectories respect 3-D and vertical speed limits and altitude bounds. |
+| C2 | Pairwise UAV separation remains at least $d_{\min}$. |
+| C3 | Every UAV avoids each cuboid building along the discretized continuous path. |
+| C4 | Each UAV serves at most one ground node and each node receives at most one UAV per slot. |
+| C5 | Transmit power satisfies $0\leq p_m[n]\leq P_{\mathrm{peak}}$. |
+| C6 | Big-M blockage indicators provide a lower bound for desired-link gain and an upper bound for interference-link gain. |
+
+**Algorithm**: Reformulate building intersections with separate signal-NLoS and interference-LoS indicator systems and conservative rate bounds. Alternate scheduling, trajectory plus blockage state, and power blocks using quadratic transforms, SCA, penalty convex-concave updates for binary variables, separating hyperplanes for building avoidance, and block coordinate descent until the minimum average rate stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Heo et al. [x] treated urban building blockage as an interference-control resource for cochannel multi-UAV downlinks. They maximized minimum average spectral efficiency over binary scheduling, 3-D trajectories, transmit powers, and blockage indicators under mobility, altitude, collision, building-avoidance, service-assignment, and peak-power constraints. Their block-coordinate solver combines conservative LoS and NLoS bounds with quadratic transforms, SCA, penalty convex-concave updates, and separating hyperplanes. Simulations converged within 30 iterations and showed UAVs offsetting from some served nodes to retain NLoS interference links, with the proposed method leading the baselines in most tested altitude, power, duration, and network-size regimes.
 
 ## Problem
 

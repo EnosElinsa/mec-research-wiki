@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs"
 authors: ["Jifa Zhang", "Min Sheng", "Chengwen Xing", "Junyu Liu", "Nan Zhao", "George K. Karagiannidis"]
 year: 2025
@@ -18,7 +19,7 @@ related:
   - "[[george-k-karagiannidis]]"
   - "[[chengwen-xing]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs
@@ -30,6 +31,39 @@ Zhang, J., Sheng, M., Xing, C., Liu, J., Zhao, N., & Karagiannidis, G. K. (2025)
 ## TL;DR
 
 Beamforming design for a **double-active-RIS-assisted ISAC** network where direct ISAC-BS→user links may be blocked. Two active RISs build virtual LoS links; the design maximizes the sum of the minimum sensing SINRs across multiple targets over a series of time slots, subject to QoS and transmit-power constraints, by jointly optimizing transmit, reflection, and receive beamforming. The non-convex problem is turned into an MDP and solved with **TD3**; a **GAN is integrated into TD3 (GAN-TD3)** to improve generalization and stability — at the cost of higher complexity and slower convergence.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An ISAC BS serves multiple users and senses multiple targets through two active RISs when direct links are blocked. Amplified reflection creates virtual LoS paths, while transmit, reflection, and receive beams interact across slots.
+
+**Problem & objective**: A dynamic non-convex MDP maximizes summed worst-target sensing SINR, $\max\sum_t\min_j\operatorname{SINR}^{\mathrm{sense}}_j(t)$, under communication QoS and power limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS transmit beam | $\mathbf w_k(t)$ | complex continuous vector | User and sensing transmission beam |
+| Active-RIS coefficients | $\boldsymbol\phi_r(t)$ | complex bounded vector | Amplifying reflection at RIS $r$ |
+| Receive beam | $\mathbf u_j(t)$ | complex continuous vector | Combiner for target $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every user meets the required communication QoS |
+| C2 | BS transmit power remains within its budget |
+| C3 | Each active RIS satisfies amplitude and amplification-power limits |
+| C4 | Receive and reflection coefficients remain in their feasible domains |
+
+**Algorithm**: Cast channel and beam state as an MDP → let TD3 generate continuous transmit, RIS, and receive beam actions → use twin critics and delayed actor updates → train a GAN on action/state experience to enrich policy generalization → combine GAN guidance with TD3 updates → repeat over channel states.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied ISAC beamforming with two active RISs under blocked direct links. They formulated summed minimum sensing-SINR maximization over BS transmit beams, active-RIS reflection coefficients, and receive beams under user-QoS, BS-power, and RIS-amplification constraints. The non-convex dynamic problem is represented as an MDP and first solved with TD3. GAN-TD3 integrates a generative adversarial network with the actor-critic updates to improve policy stability and generalization. Simulations report higher sensing performance than the evaluated TD3 and passive-RIS configurations, with additional complexity and slower convergence.
 
 ## Problem framing
 

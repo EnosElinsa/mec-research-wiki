@@ -24,7 +24,8 @@ related:
   - "[[xuemin-shen]]"
   - "[[xianbin-wang]]"
 created: 2026-07-06
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach for UAV-Assisted Vehicular Networks With Delayed CSI Feedback
@@ -36,6 +37,41 @@ Liu, Z., Huang, L., Gao, Z., Wang, X., Niyato, D., & Shen, X. (2026). *A Lyapuno
 ## TL;DR
 
 Optimizes a UAV-assisted vehicular network where V2U links upload sensing data to a UAV aerial base station while V2V links exchange local safety data, and where V2V CSI arrives with feedback delay. The paper maximizes V2U sum rate under V2V reliability, joint channel/power/altitude decisions, and a long-term UAV energy constraint. Its solver combines Lyapunov drift-plus-penalty with a diffusion-model actor inside DDPG, producing a D3PG policy with an action-amender layer for feasible channel, power, and altitude choices.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV aerial base station serves V2U sensing uploads while V2V pairs exchange safety data on reused OFDM channels. V2U links use probabilistic-LoS air-to-ground channels, V2V CSI arrives with feedback delay, and UAV propulsion energy is constrained over the long term.
+
+**Problem & objective**: Delayed-CSI UAV vehicular resource-control MINLP, transformed by Lyapunov optimization, maximizes V2U sum rate, $\max\sum_i R_i^{\mathrm{V2U}}$, subject to V2V reliability, channel/power/altitude feasibility, and a long-term UAV-energy bound.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| V2V channel reuse | $x_{i,j}(t)$ | binary | V2V pair $j$ reuses V2U channel $i$ |
+| V2U/V2V powers | $p_i^{\mathrm{V2U}}(t),p_j^{\mathrm{V2V}}(t)$ | continuous, bounded | Transmit powers on the two link types |
+| UAV altitude | $h(t)$ | continuous, bounded | Aerial base-station altitude decision |
+| Virtual energy queue | $Q(t)$ | nonnegative state | Queue tracking long-term propulsion-energy excess |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each V2V pair reuses at most one orthogonal V2U channel |
+| C2 | V2V reliability/rate constraints are satisfied under delayed CSI |
+| C3 | V2U and V2V powers stay within their per-link limits |
+| C4 | UAV altitude remains in the permitted flight interval |
+| C5 | Virtual energy-queue drift enforces the long-term propulsion-energy threshold |
+
+**Algorithm**: Build the virtual energy queue → apply Lyapunov drift-plus-penalty for per-slot deterministic control → use diffusion-model denoising inside DDPG (D3PG) for channel/power/altitude actions → amend actions to the feasible set → update critic, actor, and target networks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied UAV-assisted vehicular networks with V2U sensing uploads, V2V safety links, and delayed V2V CSI feedback. They formulated a long-term mixed-integer optimization that maximizes V2U sum rate while satisfying V2V reliability, channel reuse, power, altitude, and UAV-energy constraints. Lyapunov drift-plus-penalty decomposes the long-term problem into per-slot deterministic subproblems with a virtual energy queue. The proposed D3PG replaces the DDPG actor with a diffusion denoiser and adds an action-amender layer for feasible channel, power, and altitude decisions. Simulations report higher V2U sum rate and lower moving-average propulsion energy than D3PG-WCSI, DDPG, and H-DDQN baselines under delayed CSI.
 
 ## Problem framing
 

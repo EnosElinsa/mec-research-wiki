@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Trajectory, RIS, and Computation Offloading Optimization via Decentralized Model-Based PPO in Urban Multi-UAV Mobile Edge Computing"
 authors: ["Liangshun Wu", "Jianbo Du", "Junsuo Qu"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[communication-constrained-marl]]"
   - "[[qin-2023-ris-uav-mec-ee]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Joint Trajectory, RIS, and Computation Offloading Optimization via Decentralized Model-Based PPO in Urban Multi-UAV Mobile Edge Computing
@@ -28,6 +29,41 @@ Wu, L., Du, J., & Qu, J. (2026). *Joint Trajectory, RIS, and Computation Offload
 ## TL;DR
 
 Builds a decentralized [[model-based-marl]] controller for urban RIS-assisted multi-UAV MEC. Each UAV jointly controls trajectory, offloading, and RIS phase recommendations using local and k-hop neighbor observations. A lightweight RIS controller aggregates the UAV phase proposals. The key algorithmic move is local dynamics learning plus short-horizon branched rollouts inside [[ppo]], improving sample efficiency and stability without requiring a centralized critic.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAV MEC servers and decode-and-forward relays serve urban users through direct and building-mounted RIS paths, forward tasks to a ground AP when needed, and operate under a ground jammer. Each UAV observes local and $k$-hop neighbor state and proposes RIS phases.
+
+**Problem & objective**: A decentralized partially observed mixed-control problem maximizes system energy efficiency, $\max \eta_{\mathrm{EE}}=\frac{R_{\mathrm{sum}}}{E_{\mathrm{comm}}+E_{\mathrm{comp}}+E_{\mathrm{fly}}}$, through trajectory, offloading, relaying, computation, and RIS control.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV movement | $\Delta\mathbf q_m(t)$ | continuous bounded action | Trajectory update of UAV $m$ |
+| Task offloading or relay | $x_{u,m}(t)$ | discrete | Local, UAV, relay, or AP execution route |
+| Computation allocation | $f_{u,m}(t)$ | continuous, nonnegative | CPU resource assigned to user task $u$ |
+| RIS phase proposal | $\boldsymbol\theta_m(t)$ | continuous phase vector | UAV $m$'s recommendation to the RIS controller |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Task routing and execution conserve each user's workload |
+| C2 | UAV and AP computing allocations stay within capacity |
+| C3 | Aggregated RIS phases satisfy unit-modulus and phase-range conditions |
+| C4 | Link rates and task delays remain feasible under blockage and jamming |
+| C5 | UAV kinematics, separation, region, and propulsion-energy limits hold |
+
+**Algorithm**: Observe local and $k$-hop state → sample trajectory, offloading, compute, and RIS proposals from decentralized PPO → aggregate RIS proposals → collect real transitions and fit a local dynamics model → generate short-horizon branched rollouts → update local policy and value networks from real and model data.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied decentralized model-based control of trajectory, RIS phases, and computation offloading in urban multi-UAV mobile edge computing. Each UAV observes local and k-hop neighbor state, selects movement and offloading actions, and sends phase recommendations to a lightweight RIS aggregator. Local learned dynamics models generate short-horizon branched rollouts for PPO policy and value updates without a centralized critic. The objective maximizes energy efficiency under task, communication, computation, RIS, mobility, and jamming conditions. Simulations report faster convergence and higher energy efficiency than the evaluated decentralized model-free methods while approaching centralized PPO performance.
 
 ## Problem
 

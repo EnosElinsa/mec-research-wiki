@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Efficient Multi-User Computation Offloading for Mobile-Edge Cloud Computing"
 authors: ["Xu Chen", "Lei Jiao", "Wenzhong Li", "Xiaoming Fu"]
 year: 2016
@@ -12,7 +13,7 @@ related:
   - "[[nash-equilibrium]]"
   - "[[chen-2015-decentralized-offloading-game]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
 ---
 
 # Efficient Multi-User Computation Offloading for Mobile-Edge Cloud Computing
@@ -24,6 +25,37 @@ Chen, X., Jiao, L., Li, W., & Fu, X. (2016). *Efficient Multi-User Computation O
 ## TL;DR
 
 Extends the decentralized offloading game from a single-channel setting ([[chen-2015-decentralized-offloading-game]]) to a **multi-channel wireless interference environment**. Shows the multi-user computation offloading problem for mobile-edge cloud computing is NP-hard to solve centrally. Models it as a **multi-user computation offloading game**, proves it is a potential game (hence always has a Nash equilibrium with the finite improvement property), and proposes a distributed algorithm achieving NE with a bounded convergence time. Further extends to a **multi-channel wireless contention environment**. Proves the Nash equilibrium efficiency bound in terms of both beneficial-cloud-user count and system-wide overhead.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $N$ collocated mobile users each execute one task locally or offload it through one of $M$ base-station channels to a nearby telecom cloud; users sharing a channel create interference, and local and cloud costs combine execution time and energy.
+
+**Problem & objective**: The centralized problems maximize beneficial cloud users or minimize system overhead, including $\min_{\mathbf a}\sum_{n\in\mathcal N}Z_n(\mathbf a)$, while the decentralized multi-user computation offloading game lets every user minimize its own $Z_n(a_n,a_{-n})$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading and channel choice | $a_n$ | Discrete, $\{0,1,\ldots,M\}$ | $a_n=0$ selects local computing; $a_n=m>0$ offloads through channel $m$. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every user selects exactly one action from $\mathcal A_n=\{0,1,\ldots,M\}$. |
+| C2 | A cloud choice is beneficial only if $K_n^c(\mathbf a)\le K_n^m$, equivalently if received co-channel interference does not exceed $T_n$. |
+| C3 | Uplink rate follows the co-channel interference model in (1), coupling every offloading user's time and energy cost to the other users on its channel. |
+| C4 | At equilibrium, $Z_n(a_n^*,a_{-n}^*)\le Z_n(a_n,a_{-n}^*)$ for every unilateral alternative $a_n$. |
+
+**Algorithm**: The distributed algorithm measures interference on all channels, lets users compute improving best responses, grants one requesting user an update opportunity per decision slot, and stops at a Nash equilibrium by the finite improvement property.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied multi-user computation offloading in a multi-channel mobile-edge cloud where co-channel users interfere with one another. They formulated centralized objectives for maximizing beneficial cloud users and minimizing system-wide delay-energy overhead, then recast individual local-or-channel choices as a potential game. Their distributed algorithm measures channel interference and applies asynchronous improving best responses until reaching a Nash equilibrium with a bounded convergence time. Numerical results report up to 30% more beneficial cloud users than the all-cloud policy, at most 12% and 14% losses relative to centralized optimization on the two evaluation metrics, and nearly linear empirical growth in convergence slots with user count.
 
 ## Problem framing
 

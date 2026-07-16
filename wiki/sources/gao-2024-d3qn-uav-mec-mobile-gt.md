@@ -5,6 +5,7 @@ authors: ["Yunfei Gao", "Xiaopeng Yuan", "Dingcheng Yang", "Yulin Hu", "Yue Cao"
 year: 2024
 url: "https://doi.org/10.1109/TVT.2024.3367624"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
+modeling_card: required
 tags: [source, uav-trajectory-control, deep-reinforcement-learning, dueling-dqn, ddqn, obstacle-avoidance, probabilistic-los-channel, post-disaster-mec]
 related:
   - "[[uav-trajectory-control]]"
@@ -20,7 +21,7 @@ related:
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
   - "[[dingcheng-yang]]"
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV-Assisted MEC System With Mobile Ground Terminals: DRL-Based Joint Terminal Scheduling and UAV 3D Trajectory Design
@@ -32,6 +33,42 @@ Gao, Y., Yuan, X., Yang, D., Hu, Y., Cao, Y., & Schmeink, A. (2024). *UAV-Assist
 ## TL;DR
 
 Considers a UAV-assisted MEC network in a **3D urban post-disaster** scenario with multiple **mobile** ground terminals (GTs). A single UAV's mission is to collect computation tasks from a set of **source** GTs, process them, and transmit the decision results to a set of **destination** GTs, minimizing the **total operation time** (offloading + computation + decision transmission). It jointly designs the **UAV's 3D trajectory** and the **communication scheduling** to/from different GTs, under practical assumptions: GT mobility, **obstacle avoidance** to 3D buildings, the possibility of the UAV flying *among* buildings (altitude below building height), and a **probabilistic LoS** channel. The non-convex, dynamic problem is transformed into an **MDP** and solved with a **multi-step dueling double DQN (D3QN)** — dueling network + multi-step bootstrapping on top of DDQN.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One UAV collects tasks from mobile source GTs, computes joint decisions, and sends results to mobile destination GTs in a three-dimensional post-disaster urban area. TDMA permits communication with one GT per slot, a probabilistic LoS channel captures building blockage, and the UAV may fly among buildings while avoiding collisions.
+
+**Problem & objective**: Problem P1 is a mixed-shape nonconvex dynamic problem that minimizes whole operation time, $\min N\sigma$, by jointly selecting the UAV trajectory and source or destination GT schedule.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV 3D position | $\mathbf q_n=[x_n,y_n,z_n]$ | continuous within the feasible flight domain | UAV location in slot $n$ |
+| Source-GT schedule | $\alpha_{i,n}$ | binary, $\{0,1\}$ | Whether source GT $i$ offloads in slot $n$ |
+| Destination-GT schedule | $\alpha_{j,n}$ | binary, $\{0,1\}$ | Whether the UAV sends a decision to destination GT $j$ in slot $n$ |
+| UAV movement action | $a_n$ | discrete, six flight actions | Three-dimensional movement selected by D3QN |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 15a-15c | TDMA scheduling permits at most one source or destination communication in a slot |
+| 15d | UAV altitude does not exceed its maximum limit |
+| 15e-15f | Per-slot displacement and flight direction obey the UAV speed model |
+| 15g | The UAV trajectory does not intersect any three-dimensional building |
+| 15h | Mobile GT positions remain in the ground feasible domain |
+| 15i-15j | Every source task is fully offloaded and every destination receives its complete decision information |
+
+**Algorithm**: Transform P1 into an MDP with UAV position as state, six movement actions, and a reward combining throughput, processing time, and boundary or collision penalties; use greedy mobile-GT scheduling; train a dueling DDQN with multi-step bootstrapping, replay memory, an evaluation network, and a target network; decay the exploration rate and update until the mission completes and operation time converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gao et al. [x] studied joint terminal scheduling and three-dimensional UAV trajectory design for a UAV-assisted MEC network with mobile ground terminals in a post-disaster urban area. They minimized the total operation time for source-task offloading, UAV computation, and decision transmission under TDMA scheduling, flight, obstacle-avoidance, feasible-domain, and task-completion constraints. The nonconvex dynamic problem was transformed into an MDP and solved with greedy GT scheduling and a multi-step dueling DDQN that combines a dueling network with multi-step bootstrapping. Simulations show shorter operation time for the three-dimensional design than the two-dimensional design and report robustness across GT mobility models and UAV height and flight-domain limits.
 
 ## Problem framing
 

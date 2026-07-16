@@ -17,8 +17,9 @@ related:
   - "[[qian-zhu]]"
   - "[[rongke-liu]]"
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
+modeling_card: required
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Resource Allocation for UAV Swarm-Assisted Green ISAC Networks via Multi-Agent RL
@@ -30,6 +31,41 @@ Zhu, Q., Liu, R., Liu, Q., & Chen, C. (2025). *Resource Allocation for UAV Swarm
 ## TL;DR
 
 Uses low-CRLB UAV-anchor geometry to initialize selected entries of independent tabular Q-learners, coupling periodic TDOA positioning information with per-slot ground-terminal and transmit-power selection.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple low-altitude UAV base stations follow known trajectories and provide downlink communication plus TDOA positioning to stationary ground terminals; each UAV serves at most one terminal per slot over slotted co-channel LoS air-to-ground links with a discrete transmit-power level.
+
+**Problem & objective**: Problem P1, a multi-agent sequential resource-allocation problem, maximizes $\sum_m[\sum_t r_m(t)+\sum_t S_m(1000t)]$, combining UAV communication energy-efficiency rewards with periodic sensing-prior scores.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Resource-allocation action | $\theta_m(t)\in\Theta_m$ | Discrete | Joint terminal and transmit-power choice of UAV $m$ |
+| Terminal selection | $a_m^l(t)$ | Binary | Whether UAV $m$ serves ground terminal $l$ |
+| Power-level selection | $p_m^k(t)$ | Binary | Whether UAV $m$ uses discrete power level $k$ |
+| Sensing-anchor subset | $\mathbf o_l$ | Discrete UAV-index subset | UAVs used to position terminal $l$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Terminal assignments are binary, $a_m^l(t)\in\{0,1\}$ |
+| C2 | Each UAV serves at most one terminal per slot, $\sum_l a_m^l(t)\le1$ |
+| C3 | Power-level choices are binary and at most one level is selected |
+| C4 | Communication QoS satisfies $\gamma_m(t)\ge\gamma_{\mathrm{thr}}$ and power is bounded by $P_K$ |
+| C5 | At least four anchors serve each positioning task, $M_0\ge4$ |
+
+**Algorithm**: Improved FBSS plus distributed Q-learning, form rotated azimuth groups, select the minimum-CRLB anchor subset, place inverse-CRLB sensing priors in each Q-table, and let every UAV learn terminal-power actions through epsilon-greedy selection and repeated Q updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied sensing-aware resource allocation in a UAV-swarm-assisted green ISAC network. They formulated a multi-agent problem that maximizes aggregate UAV energy-efficiency rewards while periodically incorporating TDOA sensing priors. Their improved FBSS procedure selects low-CRLB UAV anchor subsets and uses the resulting sensing scores to initialize Q-table entries. Distributed Q-learning then lets each UAV choose one ground terminal and one discrete transmit-power level under assignment, QoS, power, and anchor-count constraints. Numerical results report average communication improvement above 40% against random actions and sensing-accuracy improvement above 20% without sacrificing communication performance.
 
 ## Problem and system model
 

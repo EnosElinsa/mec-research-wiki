@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Service-Oriented Segmented Trajectory Design for Low-Altitude UAV-Assisted MEC Networks"
 authors: ["Pengfei Wu", "Fu Xiao", "Chao Sha", "Haiping Huang"]
 year: 2026
@@ -14,7 +15,7 @@ related:
   - "[[multi-agent-q-learning]]"
   - "[[service-caching-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Service-Oriented Segmented Trajectory Design for Low-Altitude UAV-Assisted MEC Networks
@@ -26,6 +27,41 @@ Wu, P., Xiao, F., Sha, C., & Huang, H. (2026). *Service-Oriented Segmented Traje
 ## TL;DR
 
 Designs privacy-aware low-altitude UAV-MEC trajectories for high-rise smart-building IoT. The framework jointly assigns active smart-window tasks to UAVs, plans service trajectories, and manages energy, using a variable-strategy RL Lin-Kernighan-Helsgaun solver plus trajectory-refinement modules that avoid privacy-sensitive window crossings.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One or more UAV MEC servers fly in a facade-parallel plane to serve active smart-window tasks on high-rise buildings. Each route starts and ends at a base station, while latency, battery use, workload segmentation, and crossings of privacy-sensitive windows determine service quality.
+
+**Problem & objective**: A non-convex NP-hard multi-objective routing problem maximizes service utility, $\max U=\omega_L U_{\mathrm{latency}}+\omega_E U_{\mathrm{energy}}+\omega_P U_{\mathrm{privacy}}$, over task assignment, route segmentation, and UAV trajectories.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task-UAV assignment | $x_{k,m}$ | binary | UAV $m$ serving smart-window task $k$ |
+| Visit order | $\pi_m$ | discrete permutation | Service sequence on UAV $m$'s route |
+| Route waypoints | $\mathbf q_{m,j}$ | continuous 2-D positions | Facade-parallel service and refinement points |
+| Service segment | $s_{k,m}$ | discrete | Multi-UAV route segment containing task $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every active task is assigned and served exactly once |
+| C2 | Each route starts and ends at the base station |
+| C3 | UAV battery and workload remain feasible for the assigned segment |
+| C4 | Task transmission and processing meet service-latency requirements |
+| C5 | Refined trajectories avoid crossings of privacy-sensitive windows |
+
+**Algorithm**: Assign tasks and build an initial service tour → let variable-strategy RL choose Q-learning, Sarsa, or Monte Carlo guidance for LKH search → refine the route with TRA to remove privacy-sensitive crossings → segment tasks among multiple UAVs with SOS-TRA → rebalance latency, battery, and privacy until no route improves.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied service-oriented segmented trajectory design for low-altitude UAV-assisted MEC around high-rise smart buildings. They formulated an NP-hard task-assignment and routing problem that balances service latency, energy efficiency, and trajectory privacy under assignment, route, battery, service, and window-crossing constraints. VSRL-LKH selects among Q-learning, Sarsa, and Monte Carlo strategies to guide Lin-Kernighan-Helsgaun route search. TRA refines a route to avoid privacy-sensitive window crossings, and SOS-TRA segments service among multiple UAVs. Simulations report lower delay, lower energy, and higher privacy protection than the evaluated simulated-annealing and genetic-algorithm routing baselines.
 
 ## Problem
 

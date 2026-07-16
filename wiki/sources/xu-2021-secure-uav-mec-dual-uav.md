@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Resource and Trajectory Optimization for Security in UAV-Assisted MEC Systems"
 authors: ["Yu Xu", "Tiankui Zhang", "Dingcheng Yang", "Yuanwei Liu", "Meixia Tao"]
 year: 2021
@@ -17,7 +18,7 @@ related:
   - "[[dingcheng-yang]]"
   - "[[tiankui-zhang]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint Resource and Trajectory Optimization for Security in UAV-Assisted MEC Systems
@@ -29,6 +30,43 @@ Xu, Y., Zhang, T., Yang, D., Liu, Y., & Tao, M. (2021). *Joint Resource and Traj
 ## TL;DR
 
 Studies a **dual-UAV** MEC security framework: one UAV serves as an aerial MEC server (computes offloaded tasks from ground terminals); the other UAV acts as a **cooperative jammer** to suppress eavesdroppers. Formulates **minimum secure computing capacity maximization** (average achievable secure computing bits per period) problems for both TDMA and NOMA, jointly optimizing communication resources, computation resources, and both UAVs' trajectories. Proposes BCD-based and penalized-BCD algorithms for the two schemes. Claims to be the first work using secure computing capacity as the PLS performance metric in UAV-MEC. Finding: NOMA is superior to TDMA for security.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground terminals partially offload tasks to a server UAV under TDMA or NOMA while a second UAV transmits artificial noise toward multiple eavesdroppers. Communication, local and aerial computation, SIC order, and both fixed-altitude trajectories determine secure computing capacity.
+
+**Problem & objective**: The TDMA and NOMA formulations maximize worst-terminal secure computing capacity, $\max \min_k C_k^{\mathrm{sec}}$, over radio resources, computation resources, and server/jammer trajectories.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Server-UAV trajectory | $\mathbf q_S[n]$ | continuous position | MEC server path |
+| Jammer-UAV trajectory | $\mathbf q_J[n]$ | continuous position | Cooperative jammer path |
+| Offloaded bits | $l_k[n]$ | continuous, nonnegative | Task bits uploaded by terminal $k$ |
+| Terminal power/time | $p_k[n],\tau_k[n]$ | continuous, bounded | TDMA or NOMA uplink resources |
+| UAV CPU allocation | $f_k[n]$ | continuous, nonnegative | Server computation assigned to terminal $k$ |
+| SIC order | $a_{k,k'}[n]$ | binary | NOMA decoding-order relation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Local and offloaded computation satisfy every terminal workload |
+| C2 | Secure offloading rate accounts for server and worst eavesdropper links |
+| C3 | Time, transmit power, and UAV CPU allocations respect budgets |
+| C4 | NOMA SIC-order variables are binary and internally consistent |
+| C5 | Server and jammer trajectories obey endpoints, speed, region, separation, and energy limits |
+
+**Algorithm**: Split TDMA variables into radio/computation and dual-trajectory blocks → convexify non-convex rate and distance constraints with SCA and SOC forms → alternate BCD updates → for NOMA add decoding-order variables and exact-penalty terms → run penalized BCD until minimum secure computing capacity converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xu et al. [x] studied joint resource and trajectory optimization for secure UAV-assisted mobile edge computing with a server UAV and a cooperative-jamming UAV. They formulated TDMA and NOMA problems that maximize the minimum secure computing capacity across ground terminals through communication, computation, and dual-trajectory decisions. The TDMA solver applies block coordinate descent with successive convex and second-order-cone approximations. The NOMA solver adds SIC-order variables and uses a penalized block-coordinate procedure. Simulations report higher minimum secure computing capacity than the evaluated static-UAV, no-jammer, equal-resource, and binary-offloading baselines, with NOMA outperforming TDMA in the tested settings.
 
 ## Problem framing
 

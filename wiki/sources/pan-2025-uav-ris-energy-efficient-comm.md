@@ -28,7 +28,8 @@ related:
   - "[[cmop-evolutionary-uav-mec-lineage]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
 created: 2026-06-03
-updated: 2026-06-08
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Cooperative UAV-Mounted RISs-Assisted Energy-Efficient Communications
@@ -38,6 +39,40 @@ Hongyang Pan, Yanheng Liu, Geng Sun, Qingqing Wu, Tierui Gong, Pengfei Wang, Dus
 
 ## TL;DR
 This paper studies a **cooperative UAV-mounted RIS (UAV-RIS)** cellular network where several RISs carried by UAVs jointly serve multiple ground users (GUs) when the direct BS→GU links are unavailable, exploiting **3D mobility and opportunistic deployment**. It formulates an **energy-efficient communication multi-objective optimization framework (EEComm-MOF)** that **simultaneously** (i) maximizes the minimum per-GU available rate (fairness), (ii) maximizes the total available rate (capacity), and (iii) minimizes total system energy (cost), jointly over the BS beamforming vector, the UAV-RIS 3D locations, and the **discrete** RIS phase shifts, under the BS transmit-power constraint. Because the problem is NP-hard, non-convex, and Pareto-conflicting, it proposes **INSGA-II-CDC** — an improved NSGA-II with continuous, discrete, and complex solution-processing mechanisms — to return a Pareto solution set in one run.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A ground BS with $N_{\mathrm{BS}}$ antennas serves $K$ ground users through $M$ cooperative UAV-RISs because direct BS-user links are unavailable. Each UAV-RIS has $N_{\mathrm{RIS}}$ passive elements and is deployed at a 3-D hovering location.
+
+**Problem & objective**: Return a Pareto set for $\min\langle-f_1,-f_2,f_3\rangle$, where $f_1=\min_kR_k$ is the minimum available rate, $f_2=\sum_kR_k$ is total available rate, and $f_3=E_{\mathrm{pro}}+E_{\mathrm{hov}}$ is total deployment plus hovering energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS beamforming | $\mathbf w=[\mathbf w_1;\ldots;\mathbf w_K]$ | complex vectors | Active beam for each GU |
+| UAV-RIS location | $\mathbf q_{\mathrm U m}$ | continuous 3-D | Hovering location of UAV-RIS $m$ |
+| RIS phase shifts | $\theta_{m,n_m}$ | discrete, $\theta_{m,n_m}\in\mathcal C$ | Quantized phase of each reflecting element |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Horizontal deployment bounds: $L_{\min}\le x_{\mathrm U m}\le L_{\max}$ |
+| C2 | Horizontal deployment bounds: $L_{\min}\le y_{\mathrm U m}\le L_{\max}$ |
+| C3 | Altitude bounds: $Z_{\min}\le z_{\mathrm U m}\le Z_{\max}$ |
+| C4 | Discrete phase set: $\theta_{m,n_m}\in\mathcal C$ with $\lvert\mathcal C\rvert=2^c$ |
+| C5 | BS transmit power: $\mathbf w^H\mathbf w\le P_{\max}$ |
+
+**Algorithm**: Run an improved NSGA-II with continuous operators for 3-D locations, discrete random and learning operators for quantized phases, and complex-solution normalization for BS beamforming; rank candidates by Pareto dominance and retain a diverse non-dominated set.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Pan et al. [x] study cooperative UAV-mounted RISs in a cellular network where direct BS-user links are blocked. Their EEComm-MOF jointly optimizes BS beamforming, 3-D UAV-RIS locations, and discrete RIS phases for minimum available rate, total available rate, and total deployment plus hovering energy. The proposed INSGA-II-CDC extends NSGA-II with continuous, discrete, and complex solution processing and uses Pareto dominance rather than scalar weighting. Simulations report higher minimum and total available rates and lower energy than evolutionary baselines for five- and ten-user deployments, together with convergence and Raspberry Pi implementability analyses.
 
 ## Problem framing
 RIS reconfigures the wireless environment with cheap passive elements, but fixed RIS placement (on facades) limits energy efficiency and coverage; mounting RISs on UAVs adds flexible, opportunistic 3D deployment (faster and more controllable than balloons, while tethered balloons sacrifice deployment freedom). With many GUs, a single limited-size RIS can't serve everyone, and UAVs can't carry arbitrarily large surfaces, motivating **cooperative multiple UAV-RISs**. Prior work mostly considered a single UAV-RIS, or only 2D mobility, or folded multiple objectives into a single weighted scalar; the gap is jointly optimizing **multiple UAV-RISs serving multiple GUs** over 3D location + discrete phase shifts + BS beamforming under **true Pareto** multi-objective treatment.

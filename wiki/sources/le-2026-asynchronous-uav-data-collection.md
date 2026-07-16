@@ -5,6 +5,7 @@ authors: ["Cuong Le", "Symeon Chatzinotas", "Thang X. Vu"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3656853"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, uav, data-collection, marl, qmix, semi-markov, energy-efficiency, limited-communication]
 related:
   - "[[asynchronous-qmix]]"
@@ -17,7 +18,7 @@ related:
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[you-2019-rician-uav-data-harvesting]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Cooperative UAVs for Remote Data Collection Under Limited Communications: An Asynchronous Multiagent Learning Framework
@@ -29,6 +30,40 @@ Le, C., Chatzinotas, S., & Vu, T. X. (2026). *Cooperative UAVs for Remote Data C
 ## TL;DR
 
 Models remote multi-UAV collection with unequal action durations as a decentralized partially observable semi-Markov process. Asynchronous-QMIX (AQMIX) lets only the next finishing UAV choose a new action while other agents continue their current actions; a local convex optimizer then allocates bandwidth at each hover point under imperfect CSI.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Heterogeneous-speed rotary-wing UAVs explore a gridded remote area at fixed altitude and collect initially unknown data from sensor nodes under limited inter-UAV communication. Each hovering UAV uses FDMA for active sensors, and different UAVs occupy orthogonal bands. UAV-sensor links combine probabilistic LoS/NLoS propagation with angle-dependent Rician fading and imperfect CSI.
+
+**Problem & objective**: Problem (P) is a stochastic, nonconvex joint trajectory and bandwidth-allocation design that maximizes overall collection energy efficiency, $\max_{\mathbf w,\mathbf b}\Phi(\mathbf w,\mathbf b)/\psi(\mathbf w,\mathbf b)$, and is represented as a decentralized partially observable semi-Markov decision process for asynchronous control.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV cell action | $u_m^n$ | discrete, hover or four cardinal moves | Next asynchronous action of UAV $n$ |
+| UAV trajectory | $\mathbf w^n$ | discrete cell sequence | Visited collection and transit cells |
+| Sensor bandwidth | $b^{in}(t)$ | continuous, nonnegative | Bandwidth allocated by UAV $n$ to active sensor $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every UAV starts and ends at its prescribed locations |
+| C2 | Remaining energy always covers safe return to the final location plus a reserve margin |
+| C3 | Per-UAV FDMA allocations satisfy $\sum_i b^{in}(t)\leq B_{max}/N$ |
+| C4 | A UAV terminates only after mission completion or when the safe-return energy condition triggers |
+| C5 | Actions depend only on local observations and information exchanged within communication range |
+
+**Algorithm**: Formulate trajectory control as a Dec-POSMDP, use AQMIX to advance only the agent whose current action finishes first, train recurrent decentralized utilities with a monotonic mixing network and sum-pooled completion maps, then solve a local convex min-max hovering-time bandwidth problem under imperfect CSI at each visited collection point.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Le et al. [x] studied cooperative UAV data collection with stochastic data availability, unequal action durations, and limited inter-UAV communication. They formulated joint trajectory and bandwidth allocation to maximize collection energy efficiency and represented asynchronous trajectory control as a decentralized partially observable semi-Markov decision process. Their AQMIX method retains monotonic QMIX value factorization while allowing only the earliest-finishing UAV to select a new action and uses pooled completion maps to reduce the global state. After trajectory learning, each hovering UAV solves a convex local bandwidth-allocation problem under imperfect CSI. Simulations report higher energy efficiency and lower completion time than the evaluated synchronous QMIX, independent-learning, and heuristic baselines across the tested grid sizes, UAV counts, communication ranges, energy budgets, and data densities.
 
 ## Problem
 

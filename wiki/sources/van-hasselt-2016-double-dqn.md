@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Deep Reinforcement Learning with Double Q-learning"
 authors: ["Hado van Hasselt", "Arthur Guez", "David Silver"]
 year: 2016
@@ -13,7 +14,7 @@ related:
   - "[[fujimoto-2018-td3-actor-critic]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-06-02
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Deep Reinforcement Learning with Double Q-learning
@@ -25,6 +26,12 @@ van Hasselt, H., Guez, A., & Silver, D. (2016). *Deep Reinforcement Learning wit
 ## TL;DR
 
 The **origin paper for Double DQN**, the value-based DRL algorithm that the wiki's discrete-action MEC offloading sources use to curb Q-learning's over-estimation bias. The paper shows that the over-estimation long known in tabular Q-learning also afflicts the deep DQN agent — substantially, on several Atari 2600 games — and that the **Double Q-learning** idea (decoupling action *selection* from action *evaluation*) generalizes to deep function approximation. The proposed minimal change to DQN, **Double DQN**, reuses the existing target network as the second value estimator: it yields more accurate value estimates and markedly better policies, setting state-of-the-art Atari results. This is a **foundational DRL-method** entry rather than an MEC application — it documents the algorithm the wiki's [[ddqn]] concept page builds on.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Van Hasselt et al. [x] studied overestimation bias in Q-learning with nonlinear function approximation and introduced Double DQN. The method decouples greedy action selection with the online network from action evaluation with a periodically copied target network. It preserves the DQN architecture and training procedure while changing the temporal-difference target. Experiments on 49 Atari 2600 games report more accurate value estimates and more stable policies than DQN, with the normalized median score increasing from 93.5% to 114.7% and the mean score from 241.1% to 330.3%. This is a foundational algorithm paper rather than an application-specific constrained decision model.
 
 ## Problem framing
 

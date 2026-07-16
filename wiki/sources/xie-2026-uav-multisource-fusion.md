@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Enabled Multi-Source Data Fusion in Vehicular Networks: A Joint Optimization Approach for Reliability and Latency"
 authors: ["Qiqi Xie", "Zexiong Wu", "Chaoda Peng", "Xumin Huang", "Yanglin Chen", "Yuan Wu"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[dynamic-constrained-multi-objective-optimization]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-28
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # UAV-Enabled Multi-Source Data Fusion in Vehicular Networks: A Joint Optimization Approach for Reliability and Latency
@@ -34,6 +35,41 @@ The UAV cyclically:
 4. Broadcasts the fused result back.
 
 The optimization problem: maximize **reliability** (perception accuracy / coverage of NCOs) while minimizing **latency**. Cast as a **dynamic constrained multi-objective optimization (DCMOO)** problem (constraints and objectives change as vehicles move). Solved with an **evolutionary algorithm** rather than DRL — because the dynamic constraint shifts faster than online RL can re-train, and the multi-objective Pareto frontier needs explicit population-level exploration.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A mobile UAV acts as an airborne cooperative-perception fusion server for moving vehicular users. In each cycle it approaches requesting vehicles, collects their observations of non-connected objects, fuses the data, and broadcasts a unified result over dynamic air-to-ground links.
+
+**Problem & objective**: A dynamic constrained multi-objective problem maximizes perception reliability and minimizes fusion latency, $\max R_{\mathrm{fusion}}(t),\;\min T_{\mathrm{fusion}}(t)$, as vehicles, requests, and visible objects change.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf q(t)$ | continuous 3-D position | Fusion-server deployment in cycle $t$ |
+| Vehicle participation | $x_i(t)$ | binary | Whether vehicle $i$ uploads observations in the cycle |
+| Observation allocation | $y_{i,o}(t)$ | binary | Vehicle observation of object $o$ selected for fusion |
+| Radio/fusion resource | $r_i(t)$ | continuous, nonnegative | Communication or processing share assigned to vehicle $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The UAV remains within its flight and service region |
+| C2 | Participating vehicles are covered by feasible air-to-ground links |
+| C3 | Selected observations fit uplink and fusion-resource capacity |
+| C4 | Each requested object receives sufficient source coverage for reliable fusion |
+| C5 | Cycle latency includes collection, fusion, and result broadcast |
+
+**Algorithm**: Update the current vehicle, request, and object sets → encode UAV position, participation, observation, and resource decisions → evolve a population under the current dynamic constraints → retain feasible nondominated reliability-latency solutions → transfer or warm-start the population at the next vehicular cycle.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xie et al. [x] studied UAV-enabled multi-source data fusion for cooperative perception in vehicular networks. A UAV collects local observations of non-connected objects from moving vehicles, fuses the observations, and broadcasts a unified perception result. They formulated a dynamic constrained multi-objective problem that maximizes perception reliability and minimizes latency as vehicle positions, requests, and observable objects change. An evolutionary algorithm tracks the changing feasible Pareto set through population-based search. Simulations report better reliability-latency tradeoffs than the evaluated vehicle-to-vehicle and fixed-infrastructure fusion alternatives.
 
 ## Why this is interesting
 

@@ -16,7 +16,8 @@ related:
   - "[[llm-assisted-resource-allocation]]"
   - "[[generative-ai-for-mec]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Safe and Economical UAV Trajectory Planning in Low-Altitude Airspace A Hybrid DRL-LLM Algorithm With Compliance Awareness
@@ -28,6 +29,39 @@ Gong, Y., Fan, J., Zhang, R., Niyato, D., Yao, Y., & Chang, X. (2026). *Safe and
 ## TL;DR
 
 Proposes a hybrid SAC-LLM trajectory planner for low-altitude data-collection UAVs. The POMDP includes obstacle avoidance, no-fly zones, residential-zone speed limits, landing, and energy constraints. During training, the LLM is invoked near obstacles to provide structured velocity guidance; after training, the LLM is removed and the lightweight SAC policy runs online.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude data-collection UAV traverses low-altitude airspace from takeoff to landing while sensing ground equipment around buildings, no-fly zones, residential areas, and other aircraft.
+
+**Problem & objective**: Choose continuous per-slot velocity actions to maximize collected data, $\max \sum_t TD_{\mathrm{GE}_i}(t)$, under safety, compliance, landing, and energy limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Velocity action | $a_t=(v_x(t),v_y(t))$ | continuous bounded vector | Horizontal control applied in slot $t$ |
+| UAV trajectory | $\mathbf{L}(t)$ | state sequence induced by $a_t$ | Position and motion path through the airspace |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Kinematic and speed limits, including the residential-zone speed cap |
+| C2 | Stay inside the operating area and outside no-fly zones and building regions |
+| C3 | Maintain separation from other UAVs and sensed obstacles |
+| C4 | Start at the takeoff area and finish at the landing area |
+| C5 | Keep cumulative flight energy within the UAV budget |
+
+**Algorithm**: Train a soft actor-critic policy for continuous control, invoke an LLM near hazards to return a structured velocity suggestion during training, and remove the LLM from the final online controller.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gong et al. [x] studied compliance-aware trajectory planning for a fixed-altitude data-collection UAV operating among buildings, no-fly zones, residential speed limits, and moving aircraft. They maximized collected data through continuous velocity control under mobility, obstacle, airspace, landing, and energy constraints. Their training pipeline uses soft actor-critic for the base policy and invokes an LLM near hazards to generate structured velocity guidance, then removes the LLM for lightweight online execution. Simulations report a 99.49% data-collection rate, zero collision and regulation-violation rates in the aggregate result, nearly complete landing success, and a 76.95% energy-consumption rate.
 
 ## Problem
 

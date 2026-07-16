@@ -5,6 +5,7 @@ authors: ["Rui Ding", "Fuhui Zhou", "Qihui Wu", "Kai-Kit Wong", "Naofal Al-Dhahi
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3673261"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 8, pp. 13382-13398"
+modeling_card: required
 tags: [source, spectrum-sharing, anti-jamming, optimization-driven-drl, robust-optimization, hybrid-action, uav-trajectory]
 related:
   - "[[optimization-driven-drl]]"
@@ -21,7 +22,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[naofal-al-dhahir]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Optimization-Driven DRL for Resource Allocation Under Licensed and Unlicensed UAV Spectrum Sharing Networks Against Uncertain Jamming
@@ -33,6 +34,42 @@ Ding, R., Zhou, F., Wu, Q., Wong, K.-K., & Al-Dhahir, N. (2026). *Optimization-D
 ## TL;DR
 
 Combines robust SCA/CVX solutions with DQN-DDPG targets to learn licensed/unlicensed subchannel allocation, powers, and UAV trajectory under norm-bounded jammer-CSI uncertainty.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A cognitive UAV serves secondary users over licensed cellular and unlicensed Wi-Fi subchannels while protecting primary and Wi-Fi users from interference. A multi-antenna jammer attacks the secondary links, and jammer-to-user CSI lies in a norm-bounded uncertainty set.
+
+**Problem & objective**: The robust joint design maximizes time-average secondary sum rate, $\max_{\mathcal A,\mathcal B,\mathcal P,\mathcal U,\mathcal Q}\frac{1}{N}\sum_{n=1}^{N}\sum_{k=1}^{K}R_k[n]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Licensed allocation | $\rho_{k,j}^{\mathrm{lic}}[n]$ | binary, $\{0,1\}$ | Whether secondary user $k$ uses licensed subchannel $j$ in slot $n$ |
+| Unlicensed allocation | $\rho_{k,m}^{\mathrm{unlic}}[n]$ | binary, $\{0,1\}$ | Whether secondary user $k$ uses unlicensed subchannel $m$ in slot $n$ |
+| Licensed power | $p_{k,j}^{\mathrm{lic}}[n]$ | continuous, nonnegative | UAV power assigned on licensed subchannel $j$ |
+| Unlicensed power | $p_{k,m}^{\mathrm{unlic}}[n]$ | continuous, nonnegative | UAV power assigned on unlicensed subchannel $m$ |
+| UAV position | $\mathbf q[n]$ | continuous, $\mathbb R^2$ | Horizontal UAV waypoint in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every secondary user meets its robust average-rate target for all jammer channels in the uncertainty set |
+| C2-C3 | Average leakage to each primary and Wi-Fi user stays below the licensed or unlicensed tolerance |
+| C4-C8 | Licensed and unlicensed assignments are binary and satisfy one-user and one-subchannel exclusivity rules |
+| C9-C10 | Total licensed and unlicensed transmit powers stay below their respective peak budgets |
+| C11 | Consecutive UAV positions obey the flight-speed limit, $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\leq V_{\max}\delta_t$ |
+
+**Algorithm**: The model-based module alternates robust resource and trajectory blocks, using the S-procedure and successive convex approximation to generate offline lower-bound actions and returns. During learning, DQN selects discrete subchannels and DDPG selects continuous powers and motion; a gate substitutes the optimization-informed target when it exceeds the ordinary DRL target, while deployment uses only neural inference.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ding et al. [x] considered a cognitive UAV that shares licensed cellular and unlicensed Wi-Fi spectrum with incumbent users while facing norm-bounded jammer-channel uncertainty. They maximized robust secondary sum rate over binary subchannel assignments, transmit powers, and UAV trajectory under rate, interference-leakage, assignment, power, and mobility constraints. Their optimization-driven DRL framework uses S-procedure and SCA solutions as gated offline targets for a DQN discrete policy and DDPG continuous policy. The reported learning curve converges about 200 episodes earlier than conventional DQN-DDPG, and joint licensed and unlicensed access achieves approximately twice the sum rate of the licensed-only baseline.
 
 ## Problem and system model
 

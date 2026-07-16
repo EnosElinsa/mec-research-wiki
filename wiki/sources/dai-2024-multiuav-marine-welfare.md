@@ -5,6 +5,7 @@ authors: ["Minghui Dai", "Chenglong Dou", "Yuan Wu", "Liping Qian", "Rongxing Lu
 year: 2024
 url: "https://doi.org/10.1109/TCOMM.2024.3388501"
 venue: "IEEE Transactions on Communications (IEEE TCOMM)"
+modeling_card: required
 tags: [source, maritime-mec, multi-uav-assisted-mec, computation-offloading, double-auction, two-stage-decomposition, energy-latency-tradeoff]
 related:
   - "[[maritime-mec]]"
@@ -16,7 +17,7 @@ related:
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Multi-UAV Aided Multi-Access Edge Computing in Marine Communication Networks: A Joint System-Welfare and Energy-Efficient Design
@@ -28,6 +29,40 @@ Dai, M., Dou, C., Wu, Y., Qian, L., Lu, R., & Quek, T. Q. S. (2024). *Multi-UAV 
 ## TL;DR
 
 A two-layer marine MEC framework — a cluster of UAVs (aerial layer, with onboard edge servers) and a group of **ocean beacon stations (OBSs)** (sea-surface layer, with edge servers). Each UAV processes part of its workload locally and offloads the rest to one of multiple OBSs (**multi-access**). The paper defines **system welfare** as the total task-completion utility and **system revenue** as welfare minus total energy consumption, and maximizes system revenue by jointly optimizing OBS selection, offloading ratio, and transmission duration. The non-convex problem is solved by a **vertical (layered) decomposition** into three sub-problems, with a **double-auction** game for OBS selection.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A cluster of UAVs collects marine data and has onboard edge computing, while multiple ocean beacon stations provide additional edge capacity. Each UAV processes part of its workload locally and can offload the remaining fraction to one selected station over a multi-access marine link.
+
+**Problem & objective**: The maximum-system-revenue problem jointly chooses station matching and offloading resources to maximize welfare minus weighted energy, $\max_{\boldsymbol\Delta,\boldsymbol\epsilon,\mathbf t} R^{\mathrm{tot}}=U^{\mathrm{tot}}-\varpi E^{\mathrm{tot}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| OBS selection | $\Delta_{i,j}(m_i)$ | binary, $\{0,1\}$ | Whether UAV $i$ offloads task $m_i$ to OBS $j$ |
+| Offloading ratio | $\epsilon_i$ | continuous, $0\leq\epsilon_i\leq1$ | Fraction of UAV $i$'s workload processed at an OBS |
+| Phase-II transmission time | $t_{i,j}^{\mathrm{Ph-II}}$ | continuous, $0\leq t_{i,j}^{\mathrm{Ph-II}}\leq T_{i,j}^{\max}$ | Time allocated to upload UAV $i$'s offloaded data to OBS $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 22 | Station selection is binary and each UAV offloads a task to one OBS at a time, $\Delta_{i,j}(m_i)\in\{0,1\}$ |
+| 23-24 | Each OBS respects its computing-resource limits, $\sum_i\Delta_{i,j}(m_i)\varrho_j\leq\varrho_j^{\max}$ and $\sum_i\Delta_{i,j}(m_i)\eta_j\leq\eta_j^{\max}$ |
+| 25 | Allocated OBS bandwidth does not exceed capacity, $\sum_i\Delta_{i,j}(m_i)W_j\leq W_j^{\max}$ |
+| 26-27 | Overall completion time and Phase-II upload time meet their deadlines, $t_i^{\mathrm{ove}}\leq T_i^{\max}$ and $t_{i,j}^{\mathrm{Ph-II}}\leq T_{i,j}^{\max}$ |
+| 28-29 | Workload size and partial-offloading ratio remain feasible, $S_i^{\mathrm{tot}}\leq S_i^{\max}$ and $0\leq\epsilon_i\leq1$ |
+
+**Algorithm**: A vertical decomposition separates OBS selection, offloading ratio, and transmission time. The selection block uses a double auction with preference filtering, K-payment, and dynamic bid adjustment; the middle block applies bisection to $\epsilon_i$; and the top block bounds and searches $t_{i,j}^{\mathrm{Ph-II}}$ until the revenue solution stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dai et al. [x] investigated multi-UAV multi-access edge computing in a two-layer marine network where UAVs can compute locally or partially offload workloads to ocean beacon stations. They formulated station selection, offloading ratio, and transmission duration as a nonconvex system-revenue maximization problem that subtracts weighted UAV and station energy from total participant utility. Their vertical decomposition uses a double auction for station matching, bisection for partial offloading, and a bounded search for transmission time. Simulations show higher transaction success and system revenue than distance-based and random station selection, while also exposing the additional energy consumed when more UAV-station transactions succeed.
 
 ## Problem framing
 

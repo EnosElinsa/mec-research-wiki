@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "A UAV-Assisted Coordination Framework for Emergency Vehicle Priority and CAV Speed Optimization in Hybrid Human-Machine Driving on Expressways"
 authors: ["Jinrui Zang", "Zhengyang Liu", "Guohua Song", "Xin Hu"]
 year: 2026
@@ -12,7 +13,7 @@ related:
   - "[[uav-data-collection]]"
   - "[[particle-swarm-optimization]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A UAV-Assisted Coordination Framework for Emergency Vehicle Priority and CAV Speed Optimization in Hybrid Human-Machine Driving on Expressways
@@ -24,6 +25,42 @@ Zang, J., Liu, Z., Song, G., & Hu, X. (2026). *A UAV-Assisted Coordination Frame
 ## TL;DR
 
 Uses UAV sensing and relaying to coordinate emergency-vehicle priority on expressways with mixed human-driven vehicles and CAVs. The core contribution is speed-coordinated robust optimization control (SROC): select an objective-lane CAV and schedule CAV speed adjustments so human lane changes clear space ahead of an emergency vehicle under uncertain merge timing.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: UAVs sense and relay mixed traffic state on a two-lane expressway containing an emergency vehicle, human-driven vehicles, connected vehicles, and CAVs. Selected CAVs adjust speed to create safe merge gaps under uncertain human lane-change start and duration.
+
+**Problem & objective**: SROC is a robust integer nonlinear min-max problem that minimizes worst-case emergency-vehicle travel loss or non-priority impact, $\min_{\mathbf x}\max_{\boldsymbol\xi\in\Xi}J(\mathbf x,\boldsymbol\xi)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Objective-lane CAV | $x_j$ | binary | CAV selected to create a merge gap |
+| Speed-adjustment start | $t_j^{\mathrm s}$ | continuous/discrete time | Start time of CAV control |
+| Target speed | $v_j^{\mathrm tar}$ | continuous, bounded | Commanded CAV speed |
+| Adjustment order | $o_j$ | binary/categorical | Whether objective-lane or evacuation-lane CAV acts first |
+| Human uncertainty | $\boldsymbol\xi$ | bounded adversarial parameters | Merge timing and lane-change duration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Exactly one feasible objective-lane CAV is selected for each coordination event |
+| C2 | Vehicle speed and acceleration remain within road and comfort limits |
+| C3 | CAV following distances and human merge gaps remain collision-safe |
+| C4 | Fifth-degree lane-change trajectories satisfy boundary conditions |
+| C5 | Robust feasibility holds for all merge uncertainties in $\Xi$ |
+
+**Algorithm**: Fuse UAV and connected-vehicle state → enumerate or encode candidate objective-lane CAVs and adjustment order → let inner PSO search worst-case merge timing and duration → let outer PSO optimize CAV selection and speed timing → execute the first control step → observe lane changes and recompute in rolling SROC.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zang et al. [x] studied UAV-assisted emergency-vehicle priority and CAV speed optimization on expressways with mixed human and automated traffic. UAV sensing and relaying provide vehicle state to a controller that selects an objective-lane CAV and schedules speed adjustments to create human lane-change gaps. The robust integer nonlinear formulation minimizes worst-case emergency-vehicle travel loss or non-priority impact under uncertain merge timing and lane-change duration. A dual-layer particle swarm optimizer searches the uncertainty and control variables, while rolling SROC recomputes after observed lane changes. Simulations report shorter emergency-vehicle evacuation time and earlier obstructing-vehicle lane changes than one-time SROC and no-CAV-control baselines.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "USV Fleet-Assisted Collaborative Computation Offloading for Smart Maritime Services: An Energy-Efficient Design"
 authors: ["Hui Zeng", "Zhou Su", "Qichao Xu", "Ruidong Li", "Yuntao Wang", "Minghui Dai", "Tom H. Luan", "Xin Sun", "Donglan Liu"]
 year: 2024
@@ -19,7 +20,7 @@ related:
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # USV Fleet-Assisted Collaborative Computation Offloading for Smart Maritime Services: An Energy-Efficient Design
@@ -31,6 +32,41 @@ Zeng, H., Su, Z., Xu, Q., Li, R., Wang, Y., Dai, M., Luan, T. H., Sun, X., & Liu
 ## TL;DR
 
 AI-empowered UAVs doing marine monitoring generate computation-intensive tasks they cannot run locally. This paper offloads those tasks to **unmanned surface vehicle (USV) fleets** — clusters of USVs that pool computation resources. A **first-price sealed reverse auction with a reserve price** incentivizes USV fleets to participate (the reserve price = the UAV's valuation, guaranteeing the UAV's benefit), and the **symmetric equilibrium bidding strategy** is derived. Then, within the winning fleet, the leader splits the task into subtasks and an energy-minimization problem (subject to a delay constraint) is solved by **Block Coordinate Descent (BCD)** + an improved **Alternating Direction Method of Multipliers (ADMM)** with dynamic penalty coefficients.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Marine-monitoring UAVs auction computation tasks to mobile USV fleets whose leaders split accepted tasks across connected members. UAV-to-USV and intra-fleet links plus member compute capacity determine delay and transmission or execution energy.
+
+**Problem & objective**: A two-stage mechanism first selects a fleet by reverse auction, then minimizes winning-fleet energy, $\min E_{\mathrm{tx}}+E_{\mathrm{comp}}$, under task-completion delay.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Fleet bid | $b_i$ | continuous, nonnegative | Price submitted by USV fleet $i$ |
+| Winning fleet | $x_i$ | binary | Fleet selected below the reserve price |
+| Subtask allocation | $d_j$ | continuous, nonnegative | Workload assigned to member USV $j$ |
+| Compute allocation | $f_j$ | continuous, bounded | CPU capacity used by member $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The lowest admissible bid below the reserve price wins |
+| C2 | Subtasks sum to the original UAV workload |
+| C3 | Member CPU allocations stay within available capacity |
+| C4 | Communication plus execution finishes within the delay threshold |
+| C5 | Intra-fleet forwarding follows available multi-hop connectivity |
+
+**Algorithm**: Compute UAV reserve price and fleet valuations → derive or submit symmetric-equilibrium first-price reverse bids → choose the lowest valid fleet → alternate leader subtask allocation and member CPU allocation by BCD → solve each distributed block with dynamic-penalty ADMM → stop when fleet energy converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng et al. [x] studied energy-efficient collaborative computation offloading from marine-monitoring UAVs to unmanned surface vehicle fleets. A first-price sealed reverse auction with a UAV reserve price selects a participating fleet, and the paper derives a symmetric equilibrium bidding strategy. Inside the winning fleet, the leader allocates subtasks and members allocate computing capacity to minimize transmission and execution energy under a delay constraint. Block coordinate descent separates the two allocation blocks, and dynamic-penalty ADMM solves them distributively. Simulations report higher participation and lower fleet energy than the evaluated bidding and single-priority allocation baselines.
 
 ## Problem framing
 

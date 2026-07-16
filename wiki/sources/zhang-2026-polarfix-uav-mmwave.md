@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "PolarFix: Fixing Polarization Mismatch for UAV mmWave Communication Enhancement"
 authors: ["Hongqiang Zhang", "Chengcheng Zhao", "Yuanchao Shu", "Jie Xiong", "Peng Cheng"]
 year: 2026
@@ -11,7 +12,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[blockage-aware-channel-model]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # PolarFix: Fixing Polarization Mismatch for UAV mmWave Communication Enhancement
@@ -23,6 +24,12 @@ Zhang, H., Zhao, C., Shu, Y., Xiong, J., & Cheng, P. (2026). *PolarFix: Fixing P
 ## TL;DR
 
 Places a passive linear-to-circular polarization converter and a programmable 1-bit transmissive metasurface in front of COTS 60 GHz hardware, stabilizing orientation-sensitive UAV links while UWB-guided beam steering restores gain and supports multiple directional beams.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] presented PolarFix for polarization mismatch caused by orientation changes in COTS 60 GHz UAV links. The system places a passive linear-to-circular polarization metasurface and a programmable 1-bit transmissive metasurface in front of the access-point radio without modifying its baseband, MAC, antennas, or synchronization. UWB position updates guide analytical phase control for beam steering, while a 3D clustering procedure shares the aperture among multiple UAV directions. The separation between the two metasurfaces is selected from Fabry-Perot cavity analysis to support constructive transmission. Ground-based measurements report a 63% average static-rate increase over all tested distances and yaw angles relative to the no-metasurface configuration, and the tuned separation gives a 23% higher mean mobile rate than the tested alternative separation on the 1 m/s circular path.
 
 ## Problem and system model
 

@@ -5,6 +5,7 @@ authors: ["Mohammad Mozaffari", "Walid Saad", "Mehdi Bennis", "Mérouane Debbah"
 year: 2017
 url: "https://doi.org/10.1109/TWC.2017.2751045"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, uav, internet-of-things, 3d-placement, uav-data-collection, energy-efficiency, air-to-ground-channel-model, uplink-power-control]
 related:
   - "[[drone-cell-3d-placement]]"
@@ -16,7 +17,7 @@ related:
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
   - "[[weighted-kmeans-uav-deployment]]"
 created: 2026-06-01
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Mobile Unmanned Aerial Vehicles (UAVs) for Energy-Efficient Internet of Things Communications
@@ -28,6 +29,42 @@ Mozaffari, M., Saad, W., Bennis, M., & Debbah, M. (2017). *Mobile Unmanned Aeria
 ## TL;DR
 
 A framework for deploying and **moving multiple UAVs** as aerial base stations that collect uplink data from ground **IoT devices** with **minimum total device transmit power**. It jointly optimizes the UAVs' **3D placement**, **device-UAV association**, and **uplink power control**, then — because IoT devices activate at different times — derives **when the UAVs should update their positions** (the "update times") and the **energy-minimizing 3D trajectory** between those stops. Simulation results report the device total transmit power is reduced by **45%** versus stationary aerial base stations, with up to **28%** higher system reliability, and reveal a tradeoff: more frequent updates lower device transmit power at the cost of more UAV mobility energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $L$ ground IoT devices send uplink data to $K$ rotary-wing UAV base stations over $R$ FDMA channels. Device activation changes over time, a cloud controller knows device and UAV locations, and probabilistic LoS/NLoS channel gains couple UAV placement, device association, uplink power, and co-channel interference.
+
+**Problem & objective**: At each update time $t_n$, jointly choose UAV locations $\mathbf v_j$, device associations $c_i$, and powers $P_i$ to solve $\min\sum_{i=1}^{L_n}P_i$ subject to per-device SINR and power limits. Across consecutive update configurations, assign UAVs to new stop locations to minimize total mobility energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV location | $\mathbf v_j$ | continuous 3D vector | Position of UAV $j$ at an update time |
+| Device association | $c_i$ or $A_{ij}$ | categorical or binary | UAV selected to collect device $i$'s data |
+| Device transmit power | $P_i$ | continuous, $0<P_i\le P_{\max}$ | Uplink power of active IoT device $i$ |
+| Update time | $t_n$ | ordered continuous time | Time when locations, associations, and powers are recomputed |
+| Mobility assignment | $Z_{kl}$ | binary, $\{0,1\}$ | Assignment from an old stop location $k$ to a new location $l$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| 6 | Every active device meets $\mathrm{SINR}_i\ge\gamma$ under co-channel interference |
+| 7 | Device power is bounded: $0<P_i\le P_{\max}$ |
+| 17 | In the interference-free association model, every device is assigned to exactly one UAV: $\sum_j A_{ij}=1$ |
+| 54 | The mobility matrix is a one-to-one assignment between consecutive stop sets |
+| 55 | A move is feasible only when $E_{kl}\le\Gamma_{n,k}$, the UAV's remaining mobility energy |
+
+**Algorithm**: Assign channels by constrained K-means, then alternate two blocks at every update: solve joint association and uplink power control for fixed UAV locations, and update each UAV's 3D location by sequential quadratic programming for fixed associations. Derive update times from periodic or beta-distributed activation, and solve the energy-minimizing mapping between consecutive stop sets as an assignment problem with the Hungarian method.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mozaffari et al. [x] studied mobile UAV base stations that collect uplink data from time-varying sets of battery-limited IoT devices. They jointly optimized three-dimensional UAV placement, device association, and uplink power to minimize total device transmit power under SINR and maximum-power constraints. Their iterative method alternates association and power control with constrained three-dimensional location updates, while separate activation analysis determines when the UAVs should relocate and an assignment formulation minimizes mobility energy between stop sets. Simulations reported a 45% average reduction in device transmit power and up to 28% higher reliability than stationary aerial base stations, while also showing that more frequent updates trade lower device power for greater UAV mobility energy.
 
 ## Problem framing
 

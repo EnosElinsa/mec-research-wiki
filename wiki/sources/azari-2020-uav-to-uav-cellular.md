@@ -5,6 +5,7 @@ authors: ["M. Mahdi Azari", "Giovanni Geraci", "Adrian Garcia-Rodriguez", "Sofie
 year: 2020
 url: "https://doi.org/10.1109/TWC.2020.3000303"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), 19(9), 6130-6144"
+modeling_card: not_applicable
 tags: [source, uav-to-uav, cellular-networks, spectrum-sharing, stochastic-geometry, fractional-power-control]
 related:
   - "[[uav-to-uav-communication]]"
@@ -18,7 +19,7 @@ related:
   - "[[mozaffari-2016-uav-underlaid-d2d]]"
   - "[[zhang-not-in-parse-cellular-uav-to-x]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV-to-UAV Communications in Cellular Networks
@@ -30,6 +31,12 @@ Azari, M. M., Geraci, G., Garcia-Rodriguez, A., & Pollin, S. (2020). *UAV-to-UAV
 ## TL;DR
 
 Develops stochastic-geometry expressions for direct UAV-to-UAV links sharing a cellular ground-user uplink. It compares underlay frequency-hopping access with an overlay that orthogonally partitions bandwidth, and quantifies how altitude, UAV density, link distance, PRB allocation, and fractional power control affect U2U and cellular coverage rates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Azari et al. [x] analyzed direct UAV-to-UAV links sharing a cellular ground-user uplink under underlay and overlay spectrum access. They derived exact and approximated coverage-probability expressions with stochastic geometry, height-dependent LoS or NLoS channels, Nakagami fading, antenna patterns, and fractional power control. The analysis and simulations varied UAV altitude, density, link distance, power-control factor, and PRB allocation rather than solving a reusable decision optimization. Results reported that overlay best protected the worst ground-user uplink rates while allowing most U2U pairs to reach a 100 kbps target in the tested urban settings.
 
 ## Problem
 

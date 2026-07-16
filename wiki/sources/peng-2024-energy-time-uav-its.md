@@ -17,7 +17,8 @@ related:
   - "[[huang-2025-cmop-dispersed-computing]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-06-08
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Energy and Completion Time Difference Minimization for UAV-Enabled Intelligent Transportation Systems
@@ -36,6 +37,42 @@ So the CMOP balances:
 - **G₂:** total **pairwise completion-time difference** among employed UAVs (a synchronization objective, not a makespan).
 
 Solved with the **CMOEA/D-CDP** framework plus an **improved genetic operator** (data-type aware) and a **repairing constraint-handling technique**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A control center dispatches $I$ standby UAVs to $J$ monitoring locations with $I\ge J$. Each selected UAV collects data, then either processes locally or offloads to an edge server whose service programs may be cached.
+
+**Problem & objective**: Minimize $G_1(\mathbf x)=\sum_{i,j}y_{i,j}[(1-x_i)E_{i,j}^{L}+x_iE_{i,j}^{O}]$ and the completion-time imbalance $G_2(\mathbf x)=\sum_{i\in\mathcal S}|\tau_i-\hat\tau|/\vartheta$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading mode | $x_i$ | binary (encoded in $[0,1]$) | Local processing or edge offloading |
+| UAV-task association | $y_{i,j}$ | binary (encoded in $[0,1]$) | UAV $i$ is assigned to monitoring task $j$ |
+| UAV bandwidth | $b_i$ | continuous, nonnegative | Bandwidth allocated to UAV $i$ |
+| Edge CPU allocation | $f_i^O$ | continuous, nonnegative | Edge computing capability for offloaded task |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | At most one task per UAV: $\sum_{j=1}^{J}y_{i,j}\le1$ for every $i$ |
+| C2 | Every monitoring task is assigned: $\sum_{i=1}^{I}y_{i,j}=1$ for every $j$ |
+| C3 | Total selected-UAV bandwidth: $\sum_{i,j}y_{i,j}b_i\le B$ |
+| C4 | Edge CPU budget: $\sum_{i,j}y_{i,j}x_if_i^O\le F$ |
+| C5 | Edge storage budget: $\sum_{i,j}y_{i,j}(\beta_j+x_i\alpha_i)\le S$ |
+| C6 | Domain constraints: $x_i,y_{i,j}\in[0,1]$ and $b_i,f_i^O\ge0$ |
+
+**Algorithm**: Encode each solution as mixed integer and continuous parts, decompose the CMOP with CMOEA/D-CDP weight vectors, apply data-type-aware differential and mutation operators, repair violated assignment, bandwidth, CPU, and storage constraints, and retain non-dominated feasible solutions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Peng et al. [x] formulate a multi-UAV intelligent transportation system problem that balances total energy with completion-time differences important for multi-source fusion. Binary task association and local-versus-edge processing decisions are coupled with UAV bandwidth and edge CPU allocations, while service caching changes the processing delay. The proposed CMOEA/D-CDP uses data-type-aware evolutionary operators and a repairing constraint handler to search the resulting mixed-variable Pareto problem. Experiments on three monitoring-task instances report improved inverted-generational-distance and hypervolume performance over the compared constrained multi-objective algorithms.
 
 ## Why this matters
 

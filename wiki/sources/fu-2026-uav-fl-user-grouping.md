@@ -5,6 +5,7 @@ authors: ["Chien-Wei Fu", "Meng-Lin Ku", "Keshav Singh"]
 year: 2026
 url: "https://doi.org/10.1109/TGCN.2026.3676914"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), vol. 10, pp. 2562-2578"
+modeling_card: required
 tags: [source, federated-learning, uav-assisted-learning, user-grouping, energy-efficiency, dbscan, successive-convex-approximation, trajectory-control]
 related:
   - "[[federated-learning]]"
@@ -15,7 +16,7 @@ related:
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
   - "[[wang-2026-blockchain-lae-fl-mappo]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy-Efficient User Grouping-Based Federated Learning With UAV Assistance
@@ -27,6 +28,43 @@ Fu, C.-W., Ku, M.-L., & Singh, K. (2026). *Energy-Efficient User Grouping-Based 
 ## TL;DR
 
 Groups interfering FL clients with DBSCAN, derives how participation and data volume affect an expected-global-loss bound, and uses a two-phase SCA design to minimize UE and UAV energy over participation, local data, power, hover time, and trajectory.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude UAV acts as the federated-learning server for multiple ground UEs over a finite slotted mission. UEs compute local updates while the UAV flies and transmit simultaneously over an interference-limited shared uplink while it hovers; the channel model is dominated by high-altitude LoS propagation, with an NLoS robustness study.
+
+**Problem & objective**: Problem (P1) is a nonconvex joint design that minimizes total UE and UAV energy, $\min_{\mathbf q,\mathbf a,\mathbf p_{UE},\mathbf D,\mathbf t^{hov}} E^{tot}$, subject to communication feasibility and a target expected-global-loss gap.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q[n]$ | continuous 2D position | UAV horizontal location in slot $n$ |
+| FL participation | $a_k[n]$ | binary, $\{0,1\}$ | Whether UE $k$ participates in slot $n$ |
+| UE transmit power | $p_k[n]$ | continuous, bounded | Uplink model-transmission power |
+| Local data volume | $D_k$ | continuous, bounded below | Data used by UE $k$ for local training |
+| UAV hovering time | $t^{hov}[n]$ | continuous, nonnegative | Aggregation hover duration in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 2-3 | UAV initial and final positions are fixed |
+| 6-8 | Flight, computation, communication, and hovering fit the slot timing limits |
+| 10 | Each UE respects its maximum transmit power |
+| 12 | Every participating UE uploads the model within the communication duration under the SINR-limited rate |
+| 18 | The expected-global-loss gap is no greater than its target bound |
+| 19-20 | Active UEs use at least the required data volume and participation remains feasible |
+
+**Algorithm**: Use DBSCAN and the analytical SINR feasibility condition to form UE groups and initialize slots, hover points, power, and data; in Phase I relax participation through per-slot data and solve successive convex approximations; infer binary participation by thresholding; in Phase II restore one data amount per active UE and re-solve the SCA problem until the energy improvement is below $\epsilon$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Fu et al. [x] studied energy-efficient user grouping for UAV-assisted federated learning under rate-limited simultaneous model uploads. They formulated a nonconvex total-energy minimization over UAV trajectory, UE participation, transmit power, local data volume, and hovering time while enforcing communication feasibility and a target expected-global-loss gap. Their UG-SCA method applies DBSCAN grouping and a feasibility initializer, then uses a two-phase successive convex approximation procedure to relax participation, recover binary participants, and re-optimize the continuous variables. Simulations show lower energy and faster convergence than the evaluated fixed, random, and reinforcement-learning baselines, while additional groups support larger model transmissions at the stated learning-performance tradeoff.
 
 ## Problem
 

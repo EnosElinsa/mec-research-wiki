@@ -13,7 +13,8 @@ Do not create new source or analytical pages. If raw/sources contains a genuinel
 
 ## 2. Authoritative evidence and invariants
 
-- Raw parses are authoritative for paper facts.
+- Markdown parses under raw/sources/<folder>/, either full.md or a title-named .md, are authoritative for paper facts; use the companion PDF to resolve parse ambiguity or corruption.
+- The current source workflow is not .bib-driven. Do not introduce BibTeX citekey naming or source_id, source_type, base_confidence, or lifecycle fields during an audit.
 - Existing committed page schemas and the live wiki vocabulary are authoritative for structure and slugs.
 - tools/wiki/README.md defines current command and exit behavior.
 - Preserve the human-meaningful history in wiki/log.md while improving ordering, formatting, and duplication.
@@ -111,6 +112,10 @@ Check the assigned pages for:
 - Process narration outside wiki/log.md.
 - UTF-8 corruption and malformed Markdown.
 - Claims that reason over an obsolete corpus snapshot.
+- modeling_card applicability against raw evidence rather than the title, tags, or section headings.
+- Conditional Modeling Quick-Use Card presence, completeness, and consistency with the detailed sections.
+- Exact early-section order and one compliant Related Work paragraph.
+- Sentence-level grounding of Related Work prose and symbol/formula grounding of the card.
 
 Apply the smallest verified correction. Preserve valid prose and page structure.
 
@@ -143,6 +148,10 @@ Use the current commands in tools/wiki/README.md. At minimum require:
 - process_refs reports no process narration outside log.
 - index_audit reports complete, unique catalogue coverage.
 - frontmatter_audit reports zero errors.
+- source_schema_audit reports zero errors for the audited scope and, before staging a whole-corpus audit, for the full paper-source corpus.
+- For a whole-corpus source-schema audit, source_schema_manifest merges the reviewed evidence sidecars with --require-grounded and reports zero unresolved, ambiguous, orphaned, conflicting, or ungrounded records.
+- Every Modeling Quick-Use Card claim and Related Work sentence has raw-parse or PDF evidence; the structural audit does not replace grounding review.
+- For a whole-corpus audit, required_count + not_applicable_count equals paper_source_count, and no not_applicable page contains a card.
 - entity_roster_audit reports zero overclaims.
 - Relevant tools/wiki tests pass.
 - git diff --check passes.
@@ -167,6 +176,7 @@ Lead with findings fixed or remaining, ordered by severity. Then report:
 - Evidence used for corrections.
 - Coverage gaps routed without being filled.
 - Count and gate results.
+- modeling_card required/not_applicable counts, source-schema results, and residual classification uncertainties.
 - Commit and remote SHA when Git ownership applied.
 - Residual advisory risks and optional services unavailable.
 '''

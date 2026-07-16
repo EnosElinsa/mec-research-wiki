@@ -5,6 +5,7 @@ authors: ["Zhongming Feng", "Qiling Gao", "Haoran Zha", "Yun Lin", "Yuanwei Liu"
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3670412"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), 25, 13560-13574"
+modeling_card: required
 tags: [source, aerial-ris, physical-layer-security, secrecy-energy-efficiency, imperfect-csi, td3, uav-trajectory-control, phase-error, attention]
 related:
   - "[[phase-aware-relativistic-adaptive-descent]]"
@@ -23,7 +24,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[marco-di-renzo]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Reinforcement Learning With Conformal Symplectic Optimization for Aerial RIS-Aided Secure Communication
@@ -35,6 +36,41 @@ Feng, Z., Gao, Q., Zha, H., Lin, Y., Liu, Y., Niyato, D., & Di Renzo, M. (2026).
 ## TL;DR
 
 Proposes IA-CSORL, a cooperating two-agent [[td3|TD3]] framework for a [[uav-mounted-ris]] under mobile users, imperfect CSI, GPS error, and jitter-induced RIS phase error. One agent uses [[phase-aware-relativistic-adaptive-descent|PRAD]] for BS/RIS beamforming; the other uses [[environment-state-interactive-attention|ESIA]] to fuse UAV position history with communication and mobility features for trajectory control.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna BS communicates with mobile users only through an RIS mounted on a fixed-altitude UAV in the presence of an eavesdropper. The model includes imperfect CSI, GPS error, UAV jitter, RIS phase error, and rotary-wing propulsion energy.
+
+**Problem & objective**: Maximize robust accumulated secrecy energy efficiency, $\max_{\mathbf G,\boldsymbol\psi,\mathbf p}\min_{\{\Delta\mathbf H_i\}}\sum_{n=1}^{T}\mathrm{SEE}[n]$, by jointly controlling BS beamforming, RIS phases, and UAV motion.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS beamforming | $\mathbf G=\{\mathbf g_q[n]\}$ | complex continuous | Information beam for each user and slot |
+| RIS phase shift | $\boldsymbol\psi=\{\theta_m[n]\}$ | continuous, $[0,2\pi)$ | Phase applied by each RIS element |
+| UAV position | $\mathbf p[n]$ | continuous 3-D position | Slotwise aerial-RIS location at fixed altitude |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user's secrecy rate meets its target with outage probability at most $\rho_q$. |
+| C2 | Every RIS phase satisfies $0\leq\theta_m[n]<2\pi$. |
+| C3 | BS beamforming respects $\sum_q\lVert\mathbf g_q\rVert_2^2\leq P_{\max}$. |
+| C4 | The UAV begins at the prescribed initial position. |
+| C5 | Horizontal UAV coordinates remain inside the flight region. |
+| C6 | Per-slot motion satisfies $\lVert\mathbf p[n]-\mathbf p[n-1]\rVert_2\leq D_{\max}$. |
+
+**Algorithm**: Express per-slot SEE as secrecy sum rate divided by propulsion energy and map the dynamic robust problem to two cooperating TD3 agents. The PRAD agent updates BS beamforming and RIS phases with conformal-symplectic integration and phase-aware gradient correction, while the ESIA agent fuses position history, communication state, and mobility features to update UAV displacement; constraint violations enter the reward as penalties.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Feng et al. [x] studied aerial-RIS secure communication under UAV jitter, phase errors, imperfect CSI, mobile users, and an eavesdropper. They maximized worst-case accumulated secrecy energy efficiency over UAV trajectory, BS beamforming, and RIS phases under secrecy-outage, phase-range, transmit-power, initial-position, flight-region, and per-slot movement constraints. IA-CSORL couples a PRAD-optimized TD3 beamforming agent with an attention-enhanced TD3 trajectory agent and constraint penalties. Simulations reported convergence near reward 40, 4.5 bit/s/Hz secrecy sum rate with 48 RIS elements, and about 60 bit/s/Hz/kJ secrecy energy efficiency.
 
 ## Problem and system model
 

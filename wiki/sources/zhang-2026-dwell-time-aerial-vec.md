@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Dwell-Time-Constrained Joint Task Offloading and Resource Allocation for Multi-Layer Aerial Vehicular Edge Computing Networks"
 authors: ["Yue Zhang", "Zhenyu Na", "Laiwei Jiang", "Arumugam Nallanathan", "Xin Liu"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[task-offloading]]"
   - "[[alternating-direction-method-of-multipliers]]"
 created: 2026-07-06
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Dwell-Time-Constrained Joint Task Offloading and Resource Allocation for Multi-Layer Aerial Vehicular Edge Computing Networks
@@ -25,6 +26,42 @@ Zhang, Y., Na, Z., Jiang, L., Nallanathan, A., & Liu, X. (2026). *Dwell-Time-Con
 ## TL;DR
 
 Models a **multi-layer aerial vehicular edge computing** network where high-speed vehicles offload tasks either to UAVs or to a HAP. The key modeling addition is a **dwell-time constraint**: a vehicle can use a UAV only if the task can finish before the vehicle exits the UAV coverage region. The resulting mixed-integer resource-allocation problem minimizes weighted latency-plus-economic cost and is solved by a block-coordinate decomposition with Lagrangian duality, linear relaxation, and ADMM-style resource allocation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Vehicles on a bidirectional highway fully offload computation tasks to either a rotary-wing UAV for proximity service or a HAP for wide-area service. The two aerial tiers have heterogeneous coverage, bandwidth, computation capacity, and leasing prices, while UAV service must finish within each vehicle's mobility-dependent dwell time.
+
+**Problem & objective**: Problem P1 is a mixed-integer nonlinear program that minimizes the aggregate weighted latency and leasing expenditure, $\min_{\alpha,\beta,f,\psi,\varpi}\sum_{k=1}^{K} C_k$ with $C_k=\omega_1T_k^{\mathrm{tot}}+\omega_2P_k^{\mathrm{tot}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV offloading decision | $\psi_{k,\mathrm U}$ | binary | Whether vehicle $k$ offloads to the UAV |
+| HAP offloading decision | $\varpi_{k,\mathrm H}$ | binary | Whether vehicle $k$ offloads to the HAP |
+| Bandwidth fractions | $\alpha_{k,\mathrm U},\beta_{k,\mathrm H}$ | continuous, $[0,1]$ | Fractions of UAV and HAP bandwidth assigned to vehicle $k$ |
+| Computation resources | $f_{k,\mathrm U},f_{k,\mathrm H}$ | continuous, nonnegative | CPU resources allocated by the selected aerial platform |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C2 | Each task selects exactly one tier, $\psi_{k,\mathrm U}+\varpi_{k,\mathrm H}=1$, with binary decisions |
+| C3 | UAV transmission plus execution must fit the contact interval, $\psi_{k,\mathrm U}(t_{k,\mathrm U}^{\mathrm{tr}}+t_{k,\mathrm U}^{\mathrm{exe}})\le T_{k,\mathrm U}^{\mathrm{dwell}}$ |
+| C4-C7 | Allocated UAV and HAP bandwidth fractions are nonnegative and sum to at most one per tier |
+| C8-C10 | Allocated CPU resources are nonnegative and remain within UAV and HAP computation capacities |
+| C11 | The UAV serves no more than $N_{\max}$ concurrent vehicles |
+| C12-C13 | Vehicle transmission energy and UAV execution plus hovering energy remain within their residual budgets |
+
+**Algorithm**: Apply block coordinate descent → solve bandwidth allocation through Lagrangian dual updates → solve computation allocation as a convex program → relax and update offloading decisions with ADMM → repeat the three blocks until the relative cost change meets the tolerance.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied joint task offloading and resource allocation in a multi-layer aerial vehicular edge computing network integrating a HAP and multiple UAVs. They formulated a mixed-integer nonlinear programming problem that minimizes a weighted combination of task latency and leasing expenditure while enforcing a dwell-time feasibility constraint for UAV-assisted offloading. Their block coordinate descent algorithm decomposes bandwidth, computation-resource, and offloading decisions and applies Lagrangian duality, convex optimization, linear relaxation, and ADMM. When the UAV dwell-time constraint cannot be satisfied, the hierarchical service mechanism redirects the task to the HAP. Simulations report total-cost reductions of 8.26% to 58.11% relative to the evaluated benchmark strategies, with the reported gains being especially visible under high vehicle mobility.
 
 ## Problem
 

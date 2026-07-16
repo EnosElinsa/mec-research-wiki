@@ -5,6 +5,7 @@ authors: ["Zhibin Ge", "Yongxin Feng", "Wenbo Zhang", "Yibin Feng"]
 year: 2026
 url: "https://doi.org/10.1109/TGCN.2025.3617981"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), vol. 10, pp. 1171-1183, 2026"
+modeling_card: not_applicable
 tags: [source, fanet, mac-protocol, statistical-priority, channel-occupancy, adaptive-backoff, priority-queues, qos]
 related:
   - "[[statistical-priority-based-multiple-access]]"
@@ -14,7 +15,7 @@ related:
   - "[[deng-2026-eret-fanet-routing]]"
   - "[[song-2026-albpd-directional-fanet]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Reliable, Adaptive Flying Ad Hoc Multiple Access Protocol Based on Statistical Priority
@@ -26,6 +27,12 @@ Ge, Z., Feng, Y., Zhang, W., & Feng, Y. (2026). *Reliable, Adaptive Flying Ad Ho
 ## TL;DR
 
 Proposes RA-SPMA, a load-aware MAC protocol for multi-priority flying ad hoc networks. It combines subnet-scoped, time-weighted Channel Occupancy Statistics (COS), feedback-controlled access thresholds, and channel-state-dependent backoff to protect highest-priority traffic under changing load. MATLAB/OPNET simulations report higher highest-priority delivery and lower delay than the selected baselines, with reduced delivery for lower-priority traffic.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ge et al. [x] studied reliable adaptive multiple access for flying ad hoc networks carrying eight packet-priority classes under changing subnet load. They proposed RA-SPMA, which combines time-weighted channel occupancy statistics, a three-stage feedback controller for access thresholds, and channel-state-dependent adaptive backoff. The protocol gives higher-priority queues shorter waits under stable load and adjusts thresholds and contention windows as measured occupancy and highest-priority delivery change. MATLAB and OPNET simulations report highest-priority packet delivery above 99% in the stated 10 Mbps and 64-node cases and lower, more stable delay than SPMA, while lower-priority delivery is reduced.
 
 ## Problem
 

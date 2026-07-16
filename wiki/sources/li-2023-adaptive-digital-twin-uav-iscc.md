@@ -5,6 +5,7 @@ authors: ["Bin Li", "Wenshuai Liu", "Wancheng Xie", "Ning Zhang", "Yan Zhang"]
 year: 2023
 url: "https://doi.org/10.1109/TGCN.2023.3298039"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN)"
+modeling_card: required
 tags: [source, digital-twin, mobile-edge-computing, integrated-sensing-computation-communication, multi-uav-assisted-mec, task-offloading, mappo, beta-policy-drl, centralized-training-decentralized-execution, uav-trajectory-control]
 related:
   - "[[digital-twin]]"
@@ -24,7 +25,7 @@ related:
   - "[[kang-2023-mappo-hierarchical-aerial]]"
   - "[[ning-zhang]]"
 created: 2026-07-06
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # Adaptive Digital Twin for UAV-Assisted Integrated Sensing, Communication, and Computation Networks
@@ -36,6 +37,44 @@ Li, B., Liu, W., Xie, W., Zhang, N., & Zhang, Y. (2023). *Adaptive Digital Twin 
 ## TL;DR
 
 Studies a digital-twin-empowered UAV-assisted ISCC network where users perform radar sensing and computation offloading over the same spectrum while UAVs provide edge computing. The paper balances MIMO radar beampattern quality against weighted computation/offloading/flying energy. Its ATB-MAPPO solver combines a DT-supported CTDE loop, MAPPO, Beta-distribution actors for bounded actions, and attention critics.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multi-antenna users share one spectrum for MIMO radar sensing and computation offloading, while multiple mobile UAVs provide edge computing. Digital twins estimate user and UAV CPU states with bounded deviation and support distributed policies for waveform configuration, task execution, resource allocation, and UAV motion.
+
+**Problem & objective**: The multiobjective design jointly minimizes $\sum_{n,k}\lVert\mathbf X_k[n]-\mathbf R_{d,k}\rVert_F^2$ and $\omega\sum_{n,m}E_m[n]+\sum_{n,k}E_k[n]$, respectively measuring radar-beampattern mismatch and weighted UAV-plus-user energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Radar precoder | $\mathbf W_r$ | complex matrix | Sensing waveform for each user and slot |
+| Communication precoder | $\mathbf W_c$ | complex matrix | Offloading communication waveform |
+| User-UAV association | $\alpha_{k,m}$ | binary | Whether user $k$ offloads through UAV $m$ |
+| Task partition | $\rho_k[n]$ | continuous, $[0,1]$ | Locally computed versus offloaded task fraction |
+| CPU allocation | $\tilde f_k^l[n],\tilde f_{k,m}[n]$ | continuous, nonnegative | Digital-twin estimates of user and UAV CPU resources |
+| UAV trajectory | $\mathbf q_m[n]$ | continuous position sequence | Motion of UAV $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user associates with at most one UAV |
+| C2 | ISCC waveform covariance uses the available power and meets the INR limit |
+| C3 | Local or offloaded execution satisfies each task deadline |
+| C4 | User and UAV CPU allocations remain within their capacities despite DT deviation |
+| C5 | Task-partition factors remain in $[0,1]$ |
+| C6 | UAV speed, acceleration, and pairwise safety distance constraints hold |
+
+**Algorithm**: ATB-MAPPO decomposes the hybrid action into beampattern, offloading-resource, and UAV policies trained with centralized critics and decentralized actors. Beta-distribution actors natively represent bounded actions, attention critics aggregate relevant information from other agents, and the digital-twin layer supplies estimated computation states while the reward trades sensing error against energy and deadline penalties.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] combined radar sensing, computation offloading, and multi-UAV edge service in a digital-twin-assisted ISCC network. They jointly minimized radar-beampattern mismatch and weighted user-plus-UAV energy over precoders, association, task partition, CPU allocation, and trajectories under power, INR, deadline, compute, motion, and separation constraints. ATB-MAPPO uses Beta-distribution actors for bounded controls and attention critics within a digital-twin-supported centralized-training framework. It reached the highest reported offloading-agent reward of about -0.40 and consistently used less weighted energy than Beta-MAPPO, Gaussian MAPPO, and MADDPG, although energy increased as digital-twin estimation error grew.
 
 ## Problem framing
 

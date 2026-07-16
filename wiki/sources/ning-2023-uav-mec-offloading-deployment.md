@@ -5,6 +5,7 @@ authors: ["Zhaolong Ning", "Yuxuan Yang", "Xiaojie Wang", "Lei Guo", "Xinbo Gao"
 year: 2023
 url: "https://doi.org/10.1109/TMC.2021.3129785"
 venue: "IEEE Transactions on Mobile Computing"
+modeling_card: required
 tags: [source, uav-mec, task-offloading, server-deployment, stochastic-game, nash-equilibrium, dynamic-environment]
 related:
   - "[[task-offloading]]"
@@ -18,7 +19,7 @@ related:
   - "[[xiaojie-wang]]"
   - "[[lei-guo]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing
@@ -30,6 +31,39 @@ Ning, Z., Yang, Y., Wang, X., Guo, L., Gao, X., Guo, S., & Wang, G. (2023). *Dyn
 ## TL;DR
 
 Models a multi-UAV MEC network in which users decide whether to compute locally or offload to a UAV-MEC server, while UAVs choose hovering locations as mobile edge-server deployment decisions. The paper decomposes the system-wide computation-cost minimization into two stochastic games: one for user offloading and one for UAV location selection. Probability-based learning algorithms seek pure-strategy Nash equilibria for the two games, and a chess-like asynchronous update alternates between them.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $N$ user devices generate computation tasks with time-varying probabilities and are served by $M$ UAV-MEC servers. A user either computes locally or offloads to one UAV, while each UAV chooses one of $L$ discrete hovering locations; uplink channels include Rician fading and co-server interference is avoided with orthogonal frequency resources.
+
+**Problem & objective**: Jointly choose user strategies $\mathbf s$ and UAV locations $\mathbf a$ to minimize the system-wide weighted delay and energy cost, $\min_{\mathbf s,\mathbf a}\sum_i Z_i(\mathbf s,\mathbf a)$, under dynamic task arrivals and coupled communication and computation costs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UE processing choice | $s_i$ | discrete, $\{0\}\cup\mathcal M$ | Local computing when $s_i=0$, otherwise offload to UAV $s_i$ |
+| UAV hovering choice | $a_j$ | discrete, $\mathcal L$ | Candidate location selected by UAV $j$ |
+| Strategy probability | $\mathbf X_i,\mathbf Y_j$ | probability vectors | Learned selection probabilities for UE and UAV strategies |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| 9, UE | Each UE chooses at most one local or edge-processing option |
+| 9, UAV | Each UAV selects exactly one candidate hovering location |
+| Capacity | UAV $j$ can process at most $\bar D_j$ data in a period; the UAR mechanism redirects rejected UEs to local computing |
+| Dynamic state | Task-generation indicators and Rician channel gains follow the stochastic environment used by both games |
+
+**Algorithm**: Decompose the joint problem into a UE offloading game and a UAV location-selection game, shown respectively to be weighted and exact potential games with pure-strategy equilibria. Run probability-based strategy-selection learning for each game, and alternate the UE and UAV equilibrium updates in a chess-like asynchronous loop that accepts a new profile only when it improves the corresponding computation costs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ning et al. [x] studied the coupled selection of computation-offloading strategies and UAV-MEC server locations under time-varying task arrivals. They formulated a system-wide weighted delay and energy objective and decomposed it into stochastic games for user processing choices and UAV hovering locations. The user game is equivalent to a weighted potential game and the UAV game to an exact potential game, enabling probability-based learning toward pure-strategy Nash equilibria. A chess-like asynchronous algorithm alternates the two learned strategy profiles and retains updates that reduce cost. In the Melbourne data-driven evaluation, the adaptive UAV-MEC design converged in about 25 outer iterations and reduced system-wide computation cost by 50% relative to fixed edge-server locations.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Toward Adaptive IoT Service Balance in Low-Altitude Economy: Multi-UAV-Aided Bi-Objective Wireless Data Collection and Wireless Energy Transfer"
 authors: ["Zeyu Zhao", "Yueling Che", "Sheng Luo", "Kaishun Wu", "Victor C. M. Leung"]
 year: 2026
@@ -19,7 +20,7 @@ related:
   - "[[soft-actor-critic]]"
   - "[[deep-q-network]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Toward Adaptive IoT Service Balance in Low-Altitude Economy: Multi-UAV-Aided Bi-Objective Wireless Data Collection and Wireless Energy Transfer
@@ -31,6 +32,41 @@ Zhao, Z., Che, Y., Luo, S., Wu, K., & Leung, V. C. M. (2026). *Toward Adaptive I
 ## TL;DR
 
 Balances multi-UAV [[uav-data-collection|wireless data collection]] for information devices against [[wireless-power-transfer|wireless energy transfer]] for energy devices in a low-altitude IoT network. The paper converts a bi-objective AoI/HoE problem into a single objective with a learned adaptive weight, then solves trajectory, WET, and WDC decisions with the MA2HDRL framework.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAVs collect fresh data from information devices and transfer RF energy to energy devices over separate bands. Nonlinear harvesting, slot/subslot scheduling, UAV battery, mobility, and collision constraints couple AoI and hungry level of energy.
+
+**Problem & objective**: A bi-objective control problem minimizes network AoI and HoE, $\min(A_{\mathrm{avg}},H_{\mathrm{avg}})$, then uses a learned preference $\lambda(t)$ for the scalar objective $\lambda A+(1-\lambda)H$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q_m(t)$ | continuous position | Service path of UAV $m$ |
+| WET decision | $e_{m,j}(t)$ | binary/continuous | UAV energy transfer to E-device $j$ |
+| WDC schedule | $x_{m,i}(t,s)$ | binary | I-device $i$ served in subslot $s$ |
+| Reward preference | $\lambda(t)$ | continuous, $[0,1]$ | Adaptive AoI-versus-HoE weight |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UAV collects from at most one I-device per subslot |
+| C2 | Each I-device uploads to at most one UAV per subslot |
+| C3 | Harvested energy follows sensitivity and saturation limits |
+| C4 | UAV speed and pairwise separation remain feasible |
+| C5 | Every UAV retains at least the required final battery energy |
+
+**Algorithm**: Let the central DDPG preference agent choose the current AoI-HoE weight → let first-tier SAC agents choose continuous trajectories and WET actions → let second-tier DQN agents choose discrete WDC schedules → compute AoI, HoE, collision, and battery rewards → update all three policy tiers.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied adaptive service balancing between wireless data collection and wireless energy transfer in multi-UAV low-altitude IoT networks. They formulated a bi-objective AoI and hungry-level-of-energy problem over UAV trajectories, WET decisions, WDC schedules, and an adaptive scalarization weight under scheduling, harvesting, mobility, collision, and final-energy constraints. MA2HDRL uses a central DDPG agent to adjust reward preference. First-tier SAC agents choose trajectory and WET actions, while second-tier DQN agents schedule discrete data collection. Simulations report lower AoI and HoE and more balanced harvested energy than the evaluated fixed-preference and ablation policies.
 
 ## Problem
 

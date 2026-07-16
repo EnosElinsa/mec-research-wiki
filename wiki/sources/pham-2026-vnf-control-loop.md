@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Dynamic VNF Orchestration for UAV-Aided Emergency Networks: A Learning and Optimization Control Loop Framework"
 authors: ["Chuan Pham", "Kim Khoa Nguyen"]
 year: 2026
@@ -18,7 +19,7 @@ related:
   - "[[zhang-2025-vnf-sgin-dql]]"
   - "[[du-2023-maddpg-service-placement-agin]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dynamic VNF Orchestration for UAV-Aided Emergency Networks: A Learning and Optimization Control Loop Framework
@@ -30,6 +31,41 @@ Pham, C., & Nguyen, K. K. (2026). *Dynamic VNF Orchestration for UAV-Aided Emerg
 ## TL;DR
 
 Couples fast distributed multipath routing with slower centralized VNF scaling in UAV-aided emergency networks. MADDPG actors allocate service-function-chain traffic from local observations, while an event-triggered BSUM orchestrator changes VNF replicas and placement when routing constraints remain infeasible.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV-aided emergency network is represented as a graph of UAV and terrestrial base stations, edge/cloud compute nodes, routers, and wired or wireless links. User sessions request latency-bounded service function chains, traffic can split over candidate paths, and virtual network functions may be replicated and placed across compute nodes under changing topology, load, battery, and link conditions.
+
+**Problem & objective**: A two-timescale constrained control loop minimizes fast routing latency and slow VNF running/scaling cost, represented by $\min J_{\mathrm{route}}$ for path traffic and $\min J_{\mathrm{scale}}=C_{\mathrm{run}}+C_{\mathrm{change}}$ for replica placement and rates.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Path traffic split | $x_{s,p}(t)$ | continuous, $[0,1]$ | Fraction of session $s$ routed over candidate path $p$ |
+| BS/user association | $a_{u,b}(t)$ | binary | Base station serving user $u$ in the slot |
+| VNF replica count | $n_{v,j}$ | nonnegative integer | Instances of function $v$ hosted at node $j$ |
+| VNF placement/rate | $z_{v,j},r_{v,j}$ | binary or relaxed placement; continuous rate | Location and processed traffic of each virtual function |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| R1 | Path fractions conserve every admitted session's traffic and meet its minimum rate |
+| R2 | Link capacity, node buffer, battery, and energy limits are respected |
+| R3 | End-to-end SFC delay includes path, handoff, rerouting, and path-splitting terms and remains bounded |
+| S1 | VNF placement, replica count, compute capacity, and survival-throughput constraints remain feasible |
+| S2 | Virtual-link traffic, scaling energy, and SFC latency constraints hold after orchestration |
+
+**Algorithm**: Train distributed routing actors with centralized MADDPG critics → execute local multipath routing each slot → detect persistent routing infeasibility → relax and block the VNF scaling/placement problem → apply proximal BSUM with convexified rate terms → round placement decisions and feed the new infrastructure state back to routing.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Pham and Nguyen [x] studied dynamic virtual network function orchestration for UAV-aided emergency networks through a learning and optimization control loop. They formulated fast multipath service-function-chain routing under link, rate, buffer, battery, energy, and latency constraints and a slower VNF scaling problem under compute, replica, throughput, link, and energy constraints. Distributed routing agents are trained with MADDPG under centralized training and decentralized execution. Persistent routing infeasibility triggers a centralized orchestrator that relaxes placement variables, applies proximal block successive upper-bound minimization, and rounds the resulting placement. Simulations report 65.9 ms average end-to-end delay for MADDPG-BSUM, 212.5 average VNF instances, and 32 scaling events across 717 routing decisions in the stated experiment.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Lingyi Cai", "Ruichen Zhang", "Jiacheng Wang", "Yu Zhang", "Miaoran P
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3665241"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 7, Jul. 2026"
+modeling_card: required
 tags: [source, low-altitude-economy, llm, deep-reinforcement-learning, physical-layer-security, uav-data-collection, age-of-information]
 related:
   - "[[low-altitude-intelligent-network]]"
@@ -20,7 +21,7 @@ related:
   - "[[friendly-jamming-uav]]"
   - "[[uav-data-collection]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Large Language Model-Enhanced Deep Reinforcement Learning for Secure Data Collection in Low-Altitude Economy Networking
@@ -32,6 +33,42 @@ Cai, L., Zhang, R., Wang, J., Zhang, Y., Peng, M., Jiang, T., Niyato, D., Ni, W.
 ## TL;DR
 
 Uses an LLM to improve DRL-based secure data collection in a low-altitude economy network. A data-collection UAV and a jamming UAV coordinate data updates from edge devices under idle-channel sensing and eavesdropping risk. The LLM acts as a state processor, reward designer, and simulator; its generated state/reward pairs are pre-evaluated with Lipschitz feedback before DRL training with DDPG and TD3 backbones.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A primary UAV collects periodic updates from fixed edge devices over sensed idle channels while a second UAV broadcasts artificial noise against passive eavesdroppers. Both UAVs move at a fixed altitude in a bounded low-altitude space; the channel model includes energy-detection spectrum sensing, Rayleigh fading, secrecy rate, mobility energy, and AoI dynamics.
+
+**Problem & objective**: Problem (18) is a finite-horizon nonconvex mixed-integer program that minimizes $\sum_{t=1}^{T}[\alpha E^{(t)}+\beta\Delta^{(t)}]$ over UAV positions, device scheduling, and idle-channel selection.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV positions | $\mathbf p_u^{(t)}$ | continuous, $\mathbf p_u^{(t)}\in\mathcal P$ | Position of the primary or jamming UAV in slot $t$ |
+| Device scheduling | $\Pi_i^{(t)}$ | binary, $\{0,1\}$ | Whether edge device $i$ is selected in slot $t$ |
+| Channel selection | $z_c^{(t)}$ | binary, $\{0,1\}$ | Whether idle channel $c$ is selected in slot $t$ |
+| UAV displacement actions | $\Delta\mathbf p_a^{(t)},\Delta\mathbf p_b^{(t)}$ | continuous, $[-v_{\max},v_{\max}]^2$ | Horizontal movement of the collection and jamming UAVs |
+| Soft device and channel actions | $\mathbf u^{(t)},\mathbf v^{(t)}$ | continuous probability simplexes | Differentiable TD3 actions mapped by argmax to $\Pi_i^{(t)}$ and $z_c^{(t)}$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 18b | Both UAVs remain in the operating region, $\mathbf p_u^{(t)}\in\mathcal P$ |
+| 18c-18d | Scheduling is binary and exactly one edge device is selected, $\Pi_i^{(t)}\in\{0,1\}$ and $\sum_i\Pi_i^{(t)}=1$ |
+| 18e-18f | Channel selection is binary and exactly one channel is selected, $z_c^{(t)}\in\{0,1\}$ and $\sum_cz_c^{(t)}=1$ |
+| 18g | Only an idle channel may be used, $z_c^{(t)}\leq1-s_c^{(t)}$ |
+| 18h | A scheduled transmission meets the secrecy threshold, $R_{s,i,c}^{(t)}\geq R_{\min}\Pi_i^{(t)}z_c^{(t)}$ |
+
+**Algorithm**: The LLM first produces task-aligned states and intrinsic rewards, then acts as a virtual LAENet simulator that filters candidate state-reward pairs using their Lipschitz constants. The selected design is deployed in a DDPG or TD3 loop with replay, twin critics for TD3, delayed actor updates, and soft target-network updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Cai et al. [x] studied secure and fresh data collection in a low-altitude economy network with a primary UAV, a cooperative jamming UAV, edge devices, primary users, and passive eavesdroppers. They formulated a finite-horizon mixed-integer problem that minimizes a weighted sum of UAV mobility energy and cumulative AoI by jointly controlling both UAV trajectories, one-device scheduling, and idle-channel selection under operational-space and minimum-secrecy-rate constraints. Their framework uses an LLM as a state processor, intrinsic-reward designer, and virtual simulator, ranks candidate state-reward designs through Lipschitz feedback, and then trains DDPG or TD3 policies. Numerical results report about 35% faster convergence, AoI reductions of up to 95%, and energy reductions of up to 33% relative to the evaluated DRL baselines.
 
 ## Problem
 

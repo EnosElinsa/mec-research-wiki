@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Air-Ground Cooperative Covert Transmission: A Jamming Dynamic Management and Security Enhancement Approach"
 authors: ["Yunyang Zhang", "Bohang Wang", "Weijie Yuan", "Nanchi Su", "Yuanhao Cui", "Guoru Ding"]
 year: 2026
@@ -22,7 +23,7 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
 created: 2026-07-11
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Air-Ground Cooperative Covert Transmission: A Jamming Dynamic Management and Security Enhancement Approach
@@ -34,6 +35,42 @@ Zhang, Y., Wang, B., Yuan, W., Su, N., Cui, Y., & Ding, G. (2026). *Air-Ground C
 ## TL;DR
 
 Designs a friendly-jamming covert air-ground link where a decode-and-forward UAV carrying an RIS relays Alice's covert data and redirects a terrestrial jammer toward Willie. Static RIS/power optimization is embedded in a [[ddqn|DDQN]] trajectory and user-scheduling controller to maximize effective-throughput energy efficiency under covertness and propulsion-energy constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An aerial hovering platform sends confidential data through a decode-and-forward UAV relay to ground users while a terrestrial friendly jammer and the UAV-mounted RIS direct interference toward a warden over time-varying Rician air-ground channels.
+
+**Problem & objective**: The dynamic non-convex control problem maximizes effective-throughput energy efficiency, $\max\sum_{k=1}^{K}\sum_{t=1}^{T}\tau\eta_k(t)/e_u(t)$, under per-slot covertness and mission constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position and movement | $\mathbf q_u(t),z_u(t)$ | discrete grid movement within continuous bounds | Three-dimensional relay trajectory |
+| User scheduling | $c_k(t)$ | binary, $\{0,1\}$ | Whether ground user $k$ is served in slot $t$ |
+| UAV transmit power | $P_u(t)$ | continuous, bounded | Relay power selected for the scheduled user |
+| RIS reflection coefficient | $\beta_n(t)$ | continuous, $[0,1]$ | Amplitude applied by RIS element $n$ |
+| RIS phase shift | $\theta_n(t)$ | continuous, $[0,2\pi)$ | Phase applied by RIS element $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The KL-divergence-based covertness expression remains no greater than $\varepsilon$ in every slot. |
+| C2 | At most one user is served per slot: $\sum_k c_k(t)\leq1$. |
+| C3 | Each user receives its required data: $\sum_t\tau\eta_k(t)\geq D_k$. |
+| C4 | Horizontal position, altitude, and horizontal and vertical speeds remain within mission limits. |
+| C5 | RIS coefficients and phases satisfy $0\leq\beta_n\leq1$ and $0\leq\theta_n<2\pi$. |
+
+**Algorithm**: For a fixed position, alternate UAV-power, RIS-phase, and RIS-amplitude updates using closed-form boundary power, SDR, Dinkelbach iteration, and Gaussian randomization; for the mission horizon, let DDQN choose grid movements and users and invoke the static optimizer for transmit power and RIS settings.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] investigated friendly jamming-assisted air-ground cooperative covert transmission with a RIS-equipped UAV relaying confidential signals from an aerial hovering platform to ground users. They formulated static effective-throughput maximization and a dynamic energy-efficiency problem that jointly control UAV transmit power, RIS reflection coefficients and phase shifts, three-dimensional trajectory, and user scheduling under strict covertness and mission constraints. Their static solver combines semidefinite relaxation, the Dinkelbach method, and Gaussian randomization, while a DDQN selects dynamic flight and scheduling actions and invokes the parameter optimizer. Numerical results show higher effective throughput than the random, maximum-jamming, and disabled-RIS configurations and more favorable propulsion-energy and energy-efficiency distributions than the evaluated genetic-algorithm trajectory scheme.
 
 ## Problem framing
 

@@ -5,6 +5,7 @@ authors: ["Yun Chao Hu", "Milan Patel", "Dario Sabella", "Nurit Sprecher", "Vale
 year: 2015
 url: ""
 venue: "ETSI White Paper No. 11"
+modeling_card: not_applicable
 tags: [source, mobile-edge-computing, network-function-virtualization, network-slicing, standardization, foundational]
 related:
   - "[[mobile-edge-computing]]"
@@ -17,7 +18,7 @@ related:
   - "[[mach-2017-mec-survey-architecture]]"
   - "[[you-2017-meco-resource-allocation]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Mobile Edge Computing — A key technology towards 5G
@@ -29,6 +30,12 @@ Hu, Y. C., Patel, M., Sabella, D., Sprecher, N., & Young, V. (2015). *Mobile Edg
 ## TL;DR
 
 The foundational **ETSI white paper** that introduces **Mobile Edge Computing (MEC)** as a concept being standardized in the ETSI Industry Specification Group (ISG) of the same name. It frames MEC as providing an IT service environment and cloud-computing capabilities **at the edge of the mobile network, within the Radio Access Network (RAN)** in close proximity to subscribers, to reduce latency, improve network efficiency, and enrich the user experience. The paper lays out MEC's market drivers and business value, sketches a set of service scenarios (augmented reality, intelligent video acceleration, connected cars, IoT gateway), discusses deployment locations, and describes the ETSI ISG MEC standardization effort and its Proof-of-Concept (PoC) framework. It positions MEC as **complementary to NFV** — recognized by the 5G PPP, alongside NFV and SDN, as a key emerging technology for 5G.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hu et al. [x] introduced Mobile Edge Computing as an IT service environment and cloud-computing capability deployed at the edge of the mobile network within the radio access network. The ETSI white paper describes proximity, low latency, high bandwidth, and real-time radio-network and location awareness as defining characteristics and positions MEC as complementary to network function virtualization. It discusses deployment at LTE macro base stations, radio network controllers, multi-RAT aggregation sites, and core-edge aggregation points, together with augmented reality, intelligent video acceleration, connected-car, and IoT-gateway service scenarios. The paper outlines the ETSI ISG standardization and Proof-of-Concept framework rather than proposing a mathematical optimization model or reporting a quantitative algorithm evaluation.
 
 ## Problem framing
 

@@ -5,6 +5,7 @@ authors: ["Xinshuai Hua", "Long Chen", "Xia Zhu", "Xiaoping Li", "Jingjing Li"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3677068"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, uav, content-caching, multi-bs, trajectory-control, ppo, particle-swarm-optimization]
 related:
   - "[[uav-content-caching]]"
@@ -14,7 +15,7 @@ related:
   - "[[wireless-backhaul]]"
   - "[[rotary-wing-propulsion-energy-model]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # DDRL: A Dual-Phase Deep Reinforcement Learning Approach for UAV-Assisted Content Delivery Across Multiple Base Stations
@@ -26,6 +27,41 @@ Hua, X., Chen, L., Zhu, X., Li, X., & Li, J. (2026). *DDRL: A Dual-Phase Deep Re
 ## TL;DR
 
 Coordinates cache-enabled UAV motion, content replacement, and transmission behavior across three base stations. Online CNN-GRU PPO decisions control UAV movement and power, offline PPO updates retrain the policy, and PSO tunes a cache score over popularity, size ratio, and request frequency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Cache-enabled fixed-altitude UAVs deliver content to stationary users across a three-base-station service area, with the base stations also supplying content and charging. A cache miss adds a BS-to-UAV wireless-backhaul transfer before downlink delivery. OFDMA removes inter-user interference, and UAV-ground propagation follows a probabilistic LoS/NLoS channel model.
+
+**Problem & objective**: Equation (15) defines a nonconvex joint design that minimizes total content-acquisition delay, $\min \sum_g D_{i,g}$, over UAV trajectory, cache replacement, and transmission power. Cache-hit rate and energy efficiency are incorporated into the learning reward under cache, motion, and battery limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV movement | $d_u[n],\phi_u[n]$ | continuous, bounded | Travel distance and direction in slot $n$ |
+| Transmit power | $p_u[n]$ | continuous, bounded | UAV content-delivery power |
+| Cache placement | $\beta_{u,q}$ | binary | Whether UAV $u$ stores content $q$ |
+| Cache-score weights | $w_1,w_2,w_3$ | continuous, normalized | PSO-tuned weights for popularity, size ratio, and request frequency |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV movement remains inside the service area and respects per-slot mobility limits |
+| C2 | UAV separation and collision-avoidance conditions hold |
+| C3 | Residual battery energy supports movement and content delivery, including return to a base station |
+| C4 | Cached content sizes satisfy the UAV capacity limit, $\sum_q \beta_{u,q}S_q\leq C$ |
+| C5 | Transmission power remains within the permitted action range |
+
+**Algorithm**: Encode spatial and temporal state with a CNN-GRU actor-critic, use clipped PPO for offline policy and value updates, deploy the trained policy for online movement and power decisions, and run PSO to tune the cache-replacement score used by the environment.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hua et al. [x] studied cache-enabled UAV-assisted content delivery across multiple base stations under limited battery and storage capacity. They formulated the joint optimization of UAV trajectory, cache replacement, and transmission power to minimize total content-acquisition delay. Their DDRL framework combines online decision making with offline clipped-PPO training and uses a CNN-GRU model to capture spatial and temporal information in user requests, UAV energy, and mobility. A particle swarm optimization procedure tunes a cache-replacement score based on content popularity, size ratio, and request frequency. Simulations report up to an 8 percent latency reduction and a 5 percent cache-hit-rate improvement relative to the best evaluated baseline.
 
 ## Problem
 

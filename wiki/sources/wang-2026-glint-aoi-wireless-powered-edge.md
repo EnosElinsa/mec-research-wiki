@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Decentralized Learning-Driven AoI Optimization in UAV-Assisted Wireless Powered Edge Networks"
 authors: ["Xiaojie Wang", "Jiameng Li", "Zhaolong Ning", "Fei Richard Yu", "Song Guo"]
 year: 2026
@@ -19,7 +20,7 @@ related:
   - "[[zhaolong-ning]]"
   - "[[xiaojie-wang]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Decentralized Learning-Driven AoI Optimization in UAV-Assisted Wireless Powered Edge Networks
@@ -31,6 +32,41 @@ Wang, X., Li, J., Ning, Z., Yu, F. R., & Guo, S. (2026). *Decentralized Learning
 ## TL;DR
 
 GLINT minimizes sensor AoI by splitting multi-UAV control into two sequential learned stages: UAV position/association first, then WPT-time and sensor-transmission scheduling. Local critics are combined by a monotonic mixer during centralized training, while each UAV executes two local actors and an association matcher.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple rotary-wing UAVs charge fixed energy-constrained sensors by RF wireless power transfer, collect status updates by TDMA, and process them at the edge. OFDMA separates UAVs, while nonlinear harvesting, finite batteries, probabilistic LoS channels, and UAV flight energy couple mobility and freshness.
+
+**Problem & objective**: A long-term NP-hard MINLP minimizes network-average age of information, $\min \limsup_{T\to\infty}\frac{1}{KT}\sum_{k,t}A_k(t)$, over UAV positions, association, charging time, and update scheduling.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf q_m(t)$ | continuous 3-D position | Movement and service location of UAV $m$ |
+| Sensor association | $x_{k,m}(t)$ | binary | Whether sensor $k$ is assigned to UAV $m$ |
+| WPT duration | $\tau_m^{\mathrm W}(t)$ | discrete/continuous slot share | Charging time used by UAV $m$ |
+| Update schedule | $s_{k,m}(t)$ | binary | Whether sensor $k$ transmits a fresh update to UAV $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each sensor associates with at most one covering UAV |
+| C2 | Movement, WPT, and TDMA collection shares fit within the slot |
+| C3 | A scheduled transmission has sufficient harvested battery energy |
+| C4 | UAV altitude, movement, collision distance, endpoints, and return position remain feasible |
+| C5 | UAV propulsion and RF-charging energy remain within the mission budget |
+
+**Algorithm**: Let the first decentralized actor choose UAV positions → match sensors by path-loss preference → let the second actor choose WPT time and transmission schedules → mix local critic values monotonically during centralized training → use GRU state, Gumbel-Softmax actions, replay, and target updates → execute both actors locally.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied age-of-information minimization in a multi-UAV wireless powered edge network with nonlinear RF energy harvesting. They formulated a long-term mixed-integer problem over UAV positions, sensor association, wireless-power-transfer duration, and update scheduling under coverage, battery, time, mobility, collision, and UAV-energy constraints. GLINT decomposes the control into a position-and-association stage followed by a charging-and-transmission stage. During centralized training, a monotonic mixing network combines local critic values, while each UAV executes two local actors and an association matcher. Simulations report lower AoI and higher transmission efficiency than the evaluated centralized and decentralized learning baselines across the tested maps and network sizes.
 
 ## Problem
 

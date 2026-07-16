@@ -19,7 +19,8 @@ related:
   - "[[chen-2024-ulse-game]]"
   - "[[game-theoretic-offloading-formulations]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Decentralized Learning for Multi-UAV Rail-Line Inspection With Imperfect Information: A Fictitious Self-Play Approach
@@ -31,6 +32,41 @@ Jia, Y., Zhu, L., Yu, F. R., Ai, B., & Tang, T. (2026). *Decentralized Learning 
 ## TL;DR
 
 A decentralized game-theoretic learning framework for multi-UAV rail-line inspection when complete global state is unavailable. The paper models UAV task offloading / resource allocation as a stochastic game with imperfect information, proves the game is an exact potential game, and proposes U-FSP (UAV Fictitious Self-Play): each UAV uses local observations plus a belief over aggregate behavior, alternating Q-learning best responses with policy averaging. Simulations show lower energy, delay, congestion, and Nash gap; a small two-UAV real-world experiment validates the imperfect-information assumption and shows better completion rate / time than DQM.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs inspect a long rail line while choosing local, cooperative-UAV, or wayside-edge task processing from private local observations and delayed aggregate information.
+
+**Problem & objective**: Each UAV selects a decentralized policy to maximize expected discounted utility, $\max_{\pi_i}\mathbb E[\sum_{k=0}^{H}\gamma^kU_i(s_i,a_i,a_{-i})]$, balancing progress and success against time, energy, and shared-queue costs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Processing action | $a_i(t)$ | discrete in local, cooperative, wayside-edge modes | Task execution choice of UAV $i$ |
+| Decentralized policy | $\pi_i$ | probability distribution over actions | Maps private observation to a processing decision |
+| Belief state | $b_i(t)$ | probability distribution | Estimate of aggregate behavior of other UAVs |
+| Task load state | $L_i(t)$ | nonnegative state | Remaining data load after processing |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Energy remains above the operational threshold, $E_i(t)\geq E_{\min}$ |
+| C2 | Task load evolves with the selected processing rate and cannot become negative |
+| C3 | Cooperative and edge actions require communication range and fall back to local processing when links fail |
+| C4 | Tasks must reach zero remaining load by their individual deadlines |
+| C5 | Shared cooperative and edge capacities impose congestion-dependent processing limits |
+
+**Algorithm**: Model the interaction as an exact potential stochastic game, augment each UAV MDP with a belief over peer actions, and alternate Q-learning best responses with fictitious-self-play policy averaging.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jia et al. [x] formulated decentralized multi-UAV rail-line inspection as an imperfect-information stochastic game over local, cooperative, and wayside-edge processing actions. Each UAV maximizes discounted progress and success utility while penalizing time, energy, queue congestion, energy depletion, communication failure, and missed deadlines. U-FSP proves an exact potential-game structure and alternates belief-aware Q-learning best responses with policy averaging to approach a Nash equilibrium. In simulation, U-FSP reaches completion rates of 0.877, 0.853, and 0.915 for three task types, and in the two-UAV flight experiment it achieves 83.7% completion and 17.7 s average time versus 61.3% and 21.7 s for DQM.
 
 ## Problem
 

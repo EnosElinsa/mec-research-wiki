@@ -5,6 +5,7 @@ authors: ["Qingqing Tang", "Zesong Fei", "Bin Li", "Zhu Han"]
 year: 2021
 url: "https://doi.org/10.1109/JIOT.2021.3056569"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
+modeling_card: required
 tags:
   - source
   - leo-satellite-edge-computing
@@ -28,7 +29,7 @@ related:
   - "[[wang-2024-satellite-terrestrial-computing]]"
   - "[[xie-2025-stin-delay-offloading]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-16
 ---
 
 # Computation Offloading in LEO Satellite Networks With Hybrid Cloud and Edge Computing
@@ -38,6 +39,39 @@ Qingqing Tang, Zesong Fei, Bin Li, Zhu Han, "Computation Offloading in LEO Satel
 
 ## TL;DR
 This paper proposes a **hybrid cloud and edge computing LEO satellite (CECLS)** network with a **three-tier** computation architecture — ground users, LEO-satellite MEC servers, and terrestrial cloud servers reachable through the satellites. It minimizes the **sum energy consumption of ground users** subject to each LEO satellite's **coverage-time** and **computation-capability** constraints, where each user's single, non-partitionable task is computed locally, at a LEO satellite, or at the cloud. The resulting discrete nonconvex (binary) problem is relaxed to a **linear program** via binary-variable relaxation and solved with a **distributed ADMM** algorithm that recovers binary decisions, achieving near-optimal energy with low complexity.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground users execute one indivisible computation task locally, at a LEO satellite MEC server, or at a terrestrial cloud reached through that satellite. Satellite contact time and onboard computing capacity limit the feasible offloading assignments.
+
+**Problem & objective**: Problem (13) minimizes total ground-user energy, $\min_{\mathbf a,\mathbf b}\sum_i E_i$, including local CPU energy and uplink transmission energy, by selecting one execution tier for every user.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Satellite-edge offloading | $a_{i,m}$ | binary, $\{0,1\}$ | User $i$ sends its task to LEO satellite $m$ for execution |
+| Cloud offloading | $b_{i,m}$ | binary, $\{0,1\}$ | User $i$ sends its task through satellite $m$ to the cloud |
+| Local execution | $1-\sum_m(a_{i,m}+b_{i,m})$ | implied binary choice | User $i$ executes locally when no offloading option is selected |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 13b | Satellite compute capacity, $\sum_i a_{i,m}X_i\leq Z_m$ |
+| 13c | At most one offloading destination per user, $\sum_m(a_{i,m}+b_{i,m})\leq1$ |
+| 13d | Satellite or cloud processing finishes within satellite coverage time $T_m$ |
+| 13e | Both offloading variables are binary |
+
+**Algorithm**: Binary variables are relaxed to $[0,1]$, producing a convex linear program. Local copies and consensus constraints make the problem separable across satellites, after which distributed ADMM updates local variables, global variables, and dual variables before a recovery algorithm maps the relaxed solution back to binary assignments.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tang et al. [x] proposed a three-tier computation architecture linking ground users, LEO satellite MEC servers, and terrestrial cloud servers. They minimized total user energy by choosing local, satellite-edge, or cloud execution for each indivisible task under satellite computing-capacity and coverage-time constraints. The binary nonconvex formulation was relaxed to a linear program and decomposed into a consensus form solved by distributed ADMM, followed by binary decision recovery. The authors established convergence for the relaxed convex problem and reported per-iteration complexity lower than the centralized interior-point alternative. In the evaluated user-count and elevation-angle sweeps, the ADMM solution closely matched the centralized offloading scheme and used less energy than satellite-or-local and local-only baselines.
 
 ## Problem framing
 LEO satellite networks provide global coverage where terrestrial infrastructure is absent (mountains, oceans, disaster zones), but the long satellite-to-ground propagation delay strains real-time computation. Sinking MEC servers onto LEO satellites lets ground users offload directly to satellites, cutting end-to-end delay. The paper argues prior satellite-MEC work considered only **two-tier** networks (terrestrial/users + LEO satellites) and ignored the abundant **cloud** servers; and that work optimizing user energy ignored the **limited computation capability and coverage time** that characterize LEO satellites. It positions the three-tier cooperation of users, LEO edge nodes, and cloud as previously unstudied.

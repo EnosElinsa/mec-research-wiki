@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment"
 authors: ["Nan Zhao", "Fen Cheng", "F. Richard Yu", "Jie Tang", "Yunfei Chen", "Guan Gui", "Hikmet Sari"]
 year: 2018
@@ -20,7 +21,7 @@ related:
   - "[[chen-2024-dro-video-caching]]"
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
 created: 2026-06-02
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment
@@ -32,6 +33,41 @@ Zhao, N., Cheng, F., Yu, F. R., Tang, J., Chen, Y., Gui, G., & Sari, H. (2018). 
 ## TL;DR
 
 A **caching-UAV-assisted secure transmission** scheme for **hyper-dense small-cell networks** that combines **interference alignment (IA)** with **physical-layer security via friendly jamming**. UAVs act as mobile small-cell base stations (SBSs) carrying caches that store popular (enhancement-layer) video during off-peak periods, offloading SBS traffic over a capacity-limited wireless backhaul. Each UAV has a **single antenna** (no precoding / CSI needed at the UAV), so only the multi-antenna SBSs' precoding matrices are cooperatively designed to **align and eliminate interference**. The SBSs that the UAVs replace become **idle and are repurposed to emit jamming signals** that disrupt a passive eavesdropper, with the jamming **zero-forced** at the legitimate users so legitimate transmission is unaffected. The paper derives the scheme's feasibility conditions, analyzes secrecy performance, and validates by simulation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Cache-equipped single-antenna UAVs replace selected SBSs in a hyper-dense small-cell network and deliver cached video enhancement layers. Multi-antenna active SBSs cooperatively align interference, while idle replaced SBSs transmit friendly jamming toward a passive eavesdropper.
+
+**Problem & objective**: A secure transceiver design minimizes legitimate interference leakage while degrading the eavesdropper, $\min \sum_k\operatorname{tr}(\mathbf U_k^H\mathbf Q_k^{\mathrm{int}}\mathbf U_k)$, subject to IA, zero-forcing, rank, and power feasibility.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| SBS precoder | $\mathbf V_k$ | complex matrix | Data-stream beamformer of active SBS $k$ |
+| User decoder | $\mathbf U_k$ | complex matrix | Receive subspace for legitimate user $k$ |
+| Jammer precoder | $\mathbf W_j$ | complex/unitary matrix | Friendly-jamming beam of idle SBS $j$ |
+| UAV/SBS service role | $x_k$ | binary/fixed selection | Whether cache UAV replaces SBS $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Interfering data streams align outside each desired receive subspace |
+| C2 | Desired effective channels retain the required rank |
+| C3 | Friendly jamming is zero-forced at legitimate receivers |
+| C4 | Active and idle SBS precoders satisfy power and unitary conditions |
+| C5 | IA antenna/stream dimensions meet the derived feasibility inequalities |
+
+**Algorithm**: Select cache-UAV/SBS roles → initialize active-SBS precoders and user decoders → alternately minimize interference leakage in transmit and receive subspaces → project idle-SBS jamming into the aligned interference subspace → repeat distributed updates until IA and legitimate zero-forcing conditions hold.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied secure transmission in hyper-dense networks assisted by cache-equipped UAVs. Single-antenna UAVs deliver cached video enhancement layers, while active multi-antenna small cells cooperatively design interference-alignment precoders and user decoders. Idle small cells transmit friendly jamming that is zero-forced at legitimate users and degrades a passive eavesdropper. The paper derives antenna and stream feasibility conditions and gives an iterative distributed IA and jamming design. Simulations verify interference cancellation and secrecy performance under the stated feasibility and channel assumptions.
 
 ## Problem framing
 

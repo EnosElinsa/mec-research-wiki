@@ -5,6 +5,7 @@ authors: ["Qiyu Hu", "Yunlong Cai", "Guanding Yu", "Zhijin Qin", "Minjian Zhao",
 year: 2019
 url: "https://doi.org/10.1109/JIOT.2018.2878876"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
+modeling_card: required
 tags: [source, uav-mec, computation-offloading, trajectory-design, user-scheduling, penalty-dual-decomposition, binary-vs-partial-offloading]
 related:
   - "[[multi-uav-assisted-mec]]"
@@ -17,7 +18,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[wu-2018-multiuav-minrate-trajectory]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Joint Offloading and Trajectory Design for UAV-Enabled Mobile Edge Computing Systems
@@ -29,6 +30,40 @@ Hu, Q., Cai, Y., Yu, G., Qin, Z., Zhao, M., & Li, G. Y. (2019). *Joint Offloadin
 ## TL;DR
 
 A single-UAV MEC system where a moving UAV-carried cloudlet serves K ground users in an **orthogonal multiple access** manner. Each user **partially offloads** part of its task to the UAV and computes the rest locally. The paper minimizes the **sum over time slots of the maximum delay among users** by jointly optimizing the UAV trajectory, the per-user offloading ratio, and the binary user-scheduling variables, subject to discrete binary, energy-consumption, and trajectory constraints. The non-convex mixed-integer problem is recast with auxiliary/equality constraints and solved by a **penalty dual decomposition (PDD)** algorithm, plus a lower-complexity **simplified l0-norm** variant; an **average-delay** extension is also given.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude moving UAV carries a cloudlet and serves multiple ground users through orthogonal multiple access over a discretized mission. Each user splits a computation task between local execution and UAV offloading, while the UAV can serve at most one user in a slot under LoS-dominant air-to-ground links.
+
+**Problem & objective**: Problem (14) is a mixed-integer nonconvex min-max-delay design that minimizes the sum of per-slot worst-user delay, $\min\sum_i\max_k t_k[i]$, over offloading ratios, binary user scheduling, and UAV trajectory.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task offloading ratio | $\rho_k[i]$ | continuous, $[0,1]$ | Fraction of user $k$'s task offloaded in slot $i$ |
+| User schedule | $\alpha_k[i]$ | binary, $\{0,1\}$ | Whether the UAV serves user $k$ in slot $i$ |
+| UAV horizontal trajectory | $\mathbf q[i]$ | continuous 2D position | UAV location in slot $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Scheduling | At most one user is served per slot and $\alpha_k[i]\in\{0,1\}$ |
+| Offloading | Ratios satisfy $0\leq\rho_k[i]\leq1$ and unscheduled users cannot offload |
+| 14g | The scheduled offloading link satisfies its communication-quality requirement |
+| 14h-14i | User and UAV energy use do not exceed their battery budgets $\epsilon_1$ and $\epsilon_2$ |
+| Trajectory | Initial and final positions are fixed and per-slot motion respects $V_{max}$ |
+
+**Algorithm**: Introduce auxiliary copies and equality constraints for binary and coupled terms; dualize and penalize those equalities in an augmented Lagrangian; alternate two CCCP variable blocks in the PDD inner loop; update multipliers and the penalty factor in the outer loop; optionally replace binary scheduling by the lower-complexity $\ell_0$-norm approximation and round the largest schedule entry.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hu et al. [x] studied joint computation offloading, user scheduling, and UAV trajectory design for a moving single-UAV MEC cloudlet serving ground users through orthogonal multiple access. They formulated a mixed-integer nonconvex problem that minimizes the sum of per-slot maximum user delay under binary scheduling, offloading, communication-quality, user-energy, UAV-energy, and trajectory constraints. Their penalty-dual-decomposition method introduces auxiliary equality constraints, alternates CCCP updates inside an augmented-Lagrangian inner loop, and updates multipliers and the penalty factor in an outer loop, with a simplified $\ell_0$-norm alternative for lower complexity. Simulations show lower delay than fixed and circular UAV trajectories and verify convergence of the proposed PDD design.
 
 ## Problem framing
 

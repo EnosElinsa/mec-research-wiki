@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Outage Minimization for RIS and UAV Collaboration-Enhanced IAB Networks"
 authors: ["Yao Yu", "Bowen Yang", "Xin Hao", "Yingkun Qian", "Lei Guo", "Yonghui Li"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[yonghui-li]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Outage Minimization for RIS and UAV Collaboration-Enhanced IAB Networks
@@ -28,6 +29,40 @@ Yu, Y., Yang, B., Hao, X., Qian, Y., Guo, L., & Li, Y. (2026). *Outage Minimizat
 ## TL;DR
 
 Jointly places UAV IAB nodes vertically and configures a rooftop RIS so urban access links meet user-rate requirements without exceeding backhaul capacity, reducing blockage-, SNR-, and relay-accumulation outages.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna donor BS backhauls clustered single-antenna UAV IAB nodes through direct and rooftop-RIS paths, while each UAV serves one urban user cluster over elevation-dependent Rician access links. Horizontal positions and time/bandwidth shares are fixed.
+
+**Problem & objective**: The URO problem minimizes average cluster outage, $\min_{\mathbf h,\boldsymbol\theta}\frac{1}{M}\sum_m P_{\mathrm{out},m}$, over UAV heights and unit-modulus RIS phases.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV height | $h_m$ | continuous, bounded | Vertical position of IAB UAV $m$ |
+| RIS phase | $\theta_n$ | continuous, $[0,2\pi)$ | Phase of RIS element $n$ |
+| SDR matrix | $\mathbf V$ | positive semidefinite relaxation | Lifted RIS phase representation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV heights satisfy urban deployment and blockage-threshold bounds |
+| C2 | Each RIS coefficient has unit modulus |
+| C3 | Every user in a non-outage cluster meets its required access rate |
+| C4 | Cluster access traffic does not exceed its backhaul rate |
+| C5 | RIS and height variables use the fixed horizontal clustering and resource shares |
+
+**Algorithm**: Fix RIS phases and lower-bound the Marcum-Q non-outage expression → update UAV heights by SCA → fix heights and maximize summed backhaul rates through SDR → recover feasible phases by Gaussian randomization → alternate URO blocks → optionally evaluate random blockage and jitter by sample-average approximation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yu et al. [x] studied outage minimization in integrated access and backhaul networks enhanced jointly by UAVs and a rooftop RIS. They formulated average outage minimization over UAV heights and unit-modulus RIS phases under user-rate, backhaul-capacity, blockage, and deployment constraints. Successive convex approximation updates the UAV heights using a lower bound on the Marcum-Q non-outage expression. Semidefinite relaxation and Gaussian randomization update the RIS phases, and URO alternates the two blocks. Simulations report lower outage than the evaluated phase-alignment baseline and quantify the accuracy of the stated non-outage lower bound.
 
 ## Problem and system model
 

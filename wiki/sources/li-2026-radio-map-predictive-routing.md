@@ -18,7 +18,8 @@ related:
   - "[[dong-2026-radio-map-d2d-relay]]"
   - "[[bujari-2018-stateless-fanet-routing]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Radio Map-Assisted Routing and Predictive Resource Allocation Over Dynamic Low-Altitude Networks
@@ -30,6 +31,42 @@ Li, B., & Chen, J. (2026). *Radio Map-Assisted Routing and Predictive Resource A
 ## TL;DR
 
 Uses predicted UAV trajectories and location-indexed radio-map statistics to jointly plan data routes, hop timing, and transmit power while limiting worst-case interference leakage toward a neighboring terrestrial network. A dynamic space-time graph represents forwarding and caching, and the resulting cross-layer method alternates bottleneck-path selection with fixed-route resource allocation before extending the formulation to multiple commodities through orthogonal time-frequency sharing.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Delay-tolerant packets traverse a dynamic low-altitude UAV-relay network whose node trajectories are predetermined. Radio maps provide large-scale channel and terrestrial-interference statistics, and multi-commodity flows use orthogonal time-frequency shares.
+
+**Problem & objective**: Predictive interference-aware routing problem (P1), a bottleneck path and continuous resource-allocation problem, minimizes worst-case leakage, $\min_{\{p_{m,n}(t)\},\vartheta_{m,n}}\vartheta_{m,n}$, while delivering the full package and enforcing per-link interference bounds.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Route node sequence | $o(k)$ | discrete path | Relay selected in each graph layer |
+| Time boundaries | $t_k$ | continuous, ordered over the horizon | Start and end times of each forwarding interval |
+| Link power policy | $p_{m,n}(t)$ | continuous, nonnegative and power-limited | Transmit power on an aerial link |
+| Leakage epigraph | $\vartheta_{m,n}$ | continuous, $\ge0$ | Worst-case interference for a link |
+| Commodity resource share | $l_z(t)$ | continuous, $\ge0$ | Normalized time-frequency share for commodity $z$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The selected path connects source to destination through valid dynamic-graph edges and virtual caching edges |
+| C2 | Each package is delivered, $\int \mathbb E[B\log_2(1+ph/\delta^2)]\,dt\ge S$ |
+| C3 | Aerial leakage is bounded on every interval, $p_{m,n}(t)h_{m,j}(t)\le\vartheta_{m,n}$ |
+| C4 | Time boundaries are ordered and lie within the delivery deadline |
+| C5 | Multi-commodity time-frequency shares satisfy the shared-resource budget and orthogonality rule |
+
+**Algorithm**: Build the dynamic space-time graph with zero-cost virtual edges → solve each legitimate edge's robust power problem by bisection → select a bottleneck path → optimize time boundaries by monotonicity/bisection with backtracking → alternate route and resource updates, then extend to multi-commodity allocation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li and Chen [x] studied interference-aware predictive communications over a dynamic low-altitude UAV-relay network with predetermined trajectories. They formulated a cross-layer problem that minimizes worst-case air-to-ground interference while routing a complete delay-tolerant data package through time-varying links. Their dynamic space-time graph uses legitimate forwarding edges and zero-cost virtual caching edges, so route selection becomes a bottleneck path problem. They derived deterministic bounds for channel uncertainty, solved link power policies by bisection, and used a monotonicity-based time-boundary search with backtracking; a multi-commodity extension allocates shared time-frequency resources by bisection. Simulations report more than 30 dB gains over classical graph-based methods in the stated delay-sensitive and large-data cases.
 
 ## Problem
 

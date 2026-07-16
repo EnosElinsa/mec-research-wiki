@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Trajectory and Communication Design for Multi-UAV Enabled Wireless Networks"
 authors: ["Qingqing Wu", "Yong Zeng", "Rui Zhang"]
 year: 2018
@@ -18,7 +19,7 @@ related:
   - "[[chang-2022-marl-multiuav-trajectory]]"
   - "[[hu-2019-pdd-uav-mec-offloading]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint Trajectory and Communication Design for Multi-UAV Enabled Wireless Networks
@@ -30,6 +31,43 @@ Wu, Q., Zeng, Y., & Zhang, R. (2018). *Joint Trajectory and Communication Design
 ## TL;DR
 
 A foundational **multi-UAV communications** paper where multiple UAV-mounted aerial base stations serve ground users sharing one frequency band. To achieve **fairness**, it **maximizes the minimum average throughput (max-min rate)** over all ground users in the downlink by jointly optimizing multiuser **communication scheduling + association**, **UAV trajectories**, and **transmit power control**. The mixed-integer non-convex problem is solved by an iterative **block coordinate descent (BCD) + successive convex optimization** algorithm (guaranteed to converge), with a **circular-trajectory + circle-packing** initialization scheme.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAV base stations share one downlink band and serve ground users in periodic TDMA slots, with return-to-start trajectories and collision avoidance.
+
+**Problem & objective**: The max-min fairness formulation maximizes the minimum user average rate, $\max_{\eta,\mathbf A,\mathbf Q,\mathbf P}\eta$, where each user's average throughput is at least $\eta$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Scheduling and association | $\alpha_{k,m}[n]$ | binary | UAV $m$ serves user $k$ in slot $n$ |
+| UAV trajectory | $\mathbf q_m[n]$ | continuous, speed bounded | UAV position over the period |
+| Transmit power | $p_m[n]$ | continuous, $[0,P_{max}]$ | UAV downlink power |
+| Fairness auxiliary | $\eta$ | continuous | Minimum average user rate |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user's average rate is at least $\eta$. |
+| C2 | At most one user is scheduled by a UAV in a slot: $\sum_k\alpha_{k,m}[n]\leq1$. |
+| C3 | At most one UAV serves a user in a slot: $\sum_m\alpha_{k,m}[n]\leq1$. |
+| C4 | Scheduling is binary: $\alpha_{k,m}[n]\in\{0,1\}$. |
+| C5 | Trajectories obey speed and periodic return: $\lVert\mathbf q_m[n+1]-\mathbf q_m[n]\rVert^2\leq S_{max}^2$ and $\mathbf q_m[1]=\mathbf q_m[N]$. |
+| C6 | UAVs maintain separation: $\lVert\mathbf q_m[n]-\mathbf q_j[n]\rVert^2\geq d_{min}^2$. |
+| C7 | Transmit power obeys $0\leq p_m[n]\leq P_{max}$. |
+
+**Algorithm**: Relax binary scheduling, alternately solve scheduling with linear programming, trajectory and power with successive convex optimization, and initialize with circular trajectories and circle packing before reconstructing a binary solution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] formulate multi-UAV downlink control as max-min average-rate optimization for users sharing one frequency band. Binary scheduling and association, UAV trajectories, and transmit powers are coupled by rate, one-user-per-slot, periodic-return, collision-avoidance, and power constraints. Their block-coordinate descent alternates linear scheduling with successive convex trajectory and power updates, initialized by circular trajectories and circle packing. The iterative method is proved to converge and improves throughput and fairness over static or simpler deployment baselines.
 
 ## Problem framing
 

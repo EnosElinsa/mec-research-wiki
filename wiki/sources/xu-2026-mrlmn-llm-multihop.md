@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Scalable UAV Multi-Hop Networking via Multi-Agent Reinforcement Learning With Large Language Models"
 authors: ["Yanggang Xu", "Jirong Zha", "Weijie Hong", "Xiangmin Yi", "Geng Chen", "Jianfeng Zheng", "Chen-Chun Hsia", "Xinlei Chen"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[xinlei-chen]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Scalable UAV Multi-Hop Networking via Multi-Agent Reinforcement Learning With Large Language Models
@@ -29,6 +30,41 @@ Xu, Y., Zha, J., Hong, W., Yi, X., Chen, G., Zheng, J., Hsia, C.-C., & Chen, X. 
 ## TL;DR
 
 MRLMN trains decentralized UAV policies for disaster-area multi-hop relaying by combining task-oriented agent groups, relay-aware rewards, a connectivity-preserving auxiliary loss, and soft action targets distilled from offline GPT-4o deployment plans. The LLM is removed at deployment. Simulation results favor MRLMN as area and swarm size grow, but do not isolate the LLM from a simpler heuristic advisor or account for energy, interference, signaling overhead, or real flight constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A disaster-area UAV swarm forms a dynamic multi-hop relay graph between mobile users and surviving base stations. Connectivity depends on link-SNR thresholds, users select eligible UAVs by data rate, and backhaul follows the fewest-hop qualifying path while UAVs move at fixed speed in a plane.
+
+**Problem & objective**: A decentralized multi-agent control problem maximizes a team utility, $\max \mathbb E[\sum_t\gamma^t(\omega_C C_t+\omega_R R_t+\omega_A A_t)]$, combining user coverage, data rate, and UAV availability.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV movement action | $a_u(t)$ | 9-way categorical | Eight planar directions or hover |
+| UAV position | $\mathbf q_u(t)$ | continuous 2-D state | Relay-node location induced by actions |
+| Agent group | $g_u$ | categorical fixed group | Near-BS relay or distant access emphasis |
+| Distillation target | $\tilde\pi_u(a\mid s)$ | probability vector | Soft action guidance from verified LLM plans |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV positions remain inside the deployment region |
+| C2 | Direct or multi-hop connectivity requires every path link to exceed the SNR threshold |
+| C3 | A critical near-BS UAV losing all BS links triggers the connectivity behavioral loss |
+| C4 | LLM target plans pass reachability, boundary, connectivity, isolation, and coverage checks |
+| C5 | Deployed policies use only decentralized observations and the fixed nine-action domain |
+
+**Algorithm**: Group UAVs by initial distance to a base station → train decentralized PPO with access, relay, and team rewards → add behavioral loss when a critical relay disconnects → query GPT-4o offline for grid deployment targets → verify plans and assign targets by Hungarian matching → distill directional soft targets → deploy without the LLM.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xu et al. [x] studied scalable UAV multi-hop networking for disaster-area user access through decentralized multi-agent reinforcement learning. Their model uses SNR-threshold relay graphs, rate-based user association, fewest-hop backhaul, and fixed-speed planar UAV actions. MRLMN groups agents by relay or access role, decomposes team rewards, and adds a behavioral loss when a critical UAV loses base-station connectivity. Offline GPT-4o plans are filtered by a rule-based verifier, assigned to UAVs with Hungarian matching, and distilled as soft PPO action targets before deployment. Simulations report higher user coverage, data rate, and UAV availability than the evaluated MARL and graph-visualization baselines as area and swarm size increase.
 
 ## Problem and system model
 

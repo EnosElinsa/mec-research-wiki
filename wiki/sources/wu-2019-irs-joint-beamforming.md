@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming"
 authors: ["Qingqing Wu", "Rui Zhang"]
 year: 2019
@@ -15,7 +16,7 @@ related:
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[fixed-point-irs-passive-beamforming]]"
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming
@@ -27,6 +28,39 @@ Wu, Q., & Zhang, R. (2019). *Intelligent Reflecting Surface Enhanced Wireless Ne
 ## TL;DR
 
 Foundational IRS paper. Studies an IRS-aided single-cell system (multi-antenna AP + multiple single-antenna users + one IRS). Formulates new **transmit-power minimization** problems solved by jointly optimizing the AP's **active transmit beamforming** and the IRS's **passive reflect beamforming** (phase shifts), subject to per-user SINR constraints. Simulations show that IRS-aided MIMO can match the rate performance of a massive MIMO system with significantly fewer active antennas/RF chains. Provides asymptotic analysis (infinitely large IRS) and deployment insights.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna access point serves multiple single-antenna users through both a direct path and an IRS-reflected path, with active AP beamforming coupled to passive unit-modulus phase shifts.
+
+**Problem & objective**: The joint design minimizes AP transmit power, $\min_{\mathbf W,\boldsymbol\theta}\sum_k\lVert\mathbf w_k\rVert^2$, while meeting each user's SINR target.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| AP beamformers | $\mathbf W=\{\mathbf w_k\}$ | complex vectors | Active transmit beams for users |
+| IRS phases | $\boldsymbol\theta$ | continuous, $0\leq\theta_n\leq2\pi$ | Passive reflection phase shifts |
+| IRS coefficients | $\boldsymbol\Theta$ | unit-modulus diagonal matrix | Reflect beamforming configuration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user meets its SINR target: $\mathrm{SINR}_k\geq\gamma_k$. |
+| C2 | IRS phases are bounded: $0\leq\theta_n\leq2\pi$. |
+| C3 | IRS coefficients have unit modulus. |
+| C4 | Beamforming and phase variables remain coupled through the direct and reflected channels. |
+
+**Algorithm**: Use SDR for phase optimization and SOCP for fixed-phase AP beamforming, or alternate AP beamforming and IRS phase updates in closed form until transmit power converges; apply Gaussian randomization when SDR is not rank one.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu and Zhang [x] establish the joint active and passive beamforming formulation for an IRS-aided multiuser cell. The design minimizes AP transmit power with coupled AP beamformers and unit-modulus IRS phases under per-user SINR targets. Semidefinite relaxation and second-order cone optimization provide a benchmark, while alternating updates offer a lower-complexity convergent method. The paper also derives the quadratic passive-array gain law and shows that IRS-assisted MIMO can match massive-MIMO rate performance with fewer active antennas.
 
 ## Problem framing
 

@@ -16,7 +16,8 @@ related:
   - "[[ant-colony-optimization]]"
   - "[[fixed-wing-propulsion-energy-model]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Cost Optimization of UAV Swarm Network for Persistent Emergency Communication
@@ -28,6 +29,42 @@ Liu, C., Xin, X., Dai, Y., & Xu, D. (2026). *Cost Optimization of UAV Swarm Netw
 ## TL;DR
 
 Minimizes the number of fixed-wing UAVs needed to keep disaster-area access points continuously connected to a remote base/charging station. USP-NFRP combines periodic replacement loops, dynamically reconfigured tree backhaul, and max-min ant-system path planning so relay roles need not remain fixed throughout a mission.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fleet of homogeneous fixed-wing UAV relays provides persistent multi-hop emergency connectivity from several target areas to one remote base and charging station. Links are distance-threshold bidirectional links without fading/interference, and UAVs periodically rotate through relay roles.
+
+**Problem & objective**: Persistent emergency swarm planning, a continuous-time combinatorial MINLP, minimizes fleet size, $\min M$, while maintaining a connected tree, target coverage, relay-range connectivity, energy-return feasibility, and periodic replacement schedules.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Target association | $a_{m,k}$ | binary | UAV/rotation path serves target area $k$ |
+| Relay links | $e_{i,j}$ | binary | Selected backhaul edge between UAV roles/nodes |
+| UAV trajectories | $\mathbf q_m(t)$ | continuous path | Flight path for fixed or rotating relay roles |
+| Rotation interval | $\Delta_k$ | continuous, positive | Period between successive UAV takeovers on path $k$ |
+| Fleet size | $M$ | integer | Number of UAVs required for persistent service |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The selected relay graph is connected and acyclic, linking every target to the station |
+| C2 | Every link length stays within the relay range $D$ |
+| C3 | UAVs follow fixed-altitude, fixed-speed paths and retain enough energy to return |
+| C4 | Rotation intervals and path schedules permit seamless role replacement |
+| C5 | Each UAV serves at most one target/relay role at a time and recharge restores the modeled energy state |
+
+**Algorithm**: Construct periodic rotation paths and solve each path's feasible interval by linear programming → test dynamic tree backhaul links → use MMAS-PP max-min ant-system path planning with interval-change heuristics → retain feasible connected plans with minimum fleet size.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied persistent emergency communication with a multi-hop UAV swarm and non-fixed relay points. They formulated a combinatorial fleet-planning problem that minimizes the number of fixed-wing UAVs while maintaining connected tree backhaul, target coverage, relay-range, energy-return, and periodic replacement constraints. The USP-NFRP scheme builds periodic rotation paths, uses dynamic tree backhaul links to repair connectivity when relay roles move, and applies an MMAS-PP max-min ant-system planner to select paths and schedules. A linear program determines each path's feasible replacement interval before the global candidate search. Simulations report lower fleet size than direct-replacement, genetic, and other path-planning baselines in the stated synthetic emergency scenarios.
 
 ## Problem
 

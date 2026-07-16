@@ -5,6 +5,7 @@ authors: ["Bomin Mao", "Yangbo Liu", "Zixiang Wei", "Hongzhi Guo", "Yijie Xun", 
 year: 2025
 url: "https://doi.org/10.1109/JSAC.2025.3560003"
 venue: "IEEE Journal on Selected Areas in Communications (JSAC)"
+modeling_card: required
 tags: [source, leo-satellite, mec, frl, federated-learning, blockchain, zero-trust, task-offloading, ddqn]
 related:
   - "[[mobile-edge-computing]]"
@@ -19,7 +20,7 @@ related:
   - "[[fl-poisoning-attacks]]"
   - "[[bcsa-frl-tolerates-up-to-half-malicious-satellites]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # A Blockchain-Enabled Cold Start Aggregation Scheme for Federated Reinforcement Learning-Based Task Offloading in Zero Trust LEO Satellite Networks
@@ -38,6 +39,43 @@ Proposes **BCSA-FRL**: a federated reinforcement-learning task-offloading scheme
 2. [[csra-cold-start-reputation-aggregation|CSRA]] — a Cold Start Reputation Aggregation scheme that sharply penalizes a satellite's FL aggregation weight when an attack is detected, then *gradually* recovers the weight as the replay buffer flushes the poisoned samples.
 
 Tolerates up to ~50% malicious satellites with negligible performance loss; degrades gracefully beyond that majority threshold. See [[bcsa-frl-tolerates-up-to-half-malicious-satellites]].
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: LEO satellites receive Poisson computation tasks and either process each task locally or forward it to a reachable satellite within two hops. The federated DDQN agents exchange models through a permissioned blockchain while malicious voting, replay-buffer poisoning, and model-parameter poisoning are possible.
+
+**Problem & objective**: Problem $\mathrm{P1}$ minimizes aggregate average processing delay $\min\sum_{i=0}^{I}\bar D_{c_i}$ subject to satellite and time indices, binary local-or-forward decisions, and the task deadline constraint $\bar D_{c_i}\leq D_{c_i}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading destination | $a_{s_k}^{t}$ | discrete reachable satellite set | Satellite selected by $s_k$ for the current task, including local processing |
+| Local-or-forward indicator | $\alpha$ | binary | Whether the task is processed locally or forwarded |
+| Model aggregation weight | $\theta_{s_k}^{w}$ | nonnegative normalized weight | Contribution of satellite $s_k$ to the global DDQN model after corrections |
+| Verification vote | $V_{s_k,s_{k^{\prime}}}$ | binary $V_T$ or $V_F$ | Whether satellite $s_k$ accepts satellite $s_{k^{\prime}}$'s model |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The selected processing satellite belongs to the LEO set: $s_k\in S$ |
+| C2 | Decisions are indexed by a valid time interval: $t\in T$ |
+| C3 | Local-or-forward indicator is binary: $\alpha\in\{0,1\}$ |
+| C4 | Each task meets its delay threshold: $\bar D_{c_i}\leq D_{c_i}$ |
+| Consensus | Global aggregation starts only when more than half of satellites have $\operatorname{Rate}_{s_k}>0.5$; otherwise models roll back |
+
+**Algorithm**: Train local online and target DDQN networks and aggregate them through the blockchain FRL pipeline. CCVM down-weights satellites that cast excessive negative votes, CSRA sharply reduces the weight of a newly rejected model and gradually restores it with cumulative reputation, and the corrected weights are used for global synchronization.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mao et al. [x] studied task offloading in zero-trust LEO satellite networks where each satellite chooses local processing or a reachable forwarding destination. They formulated average processing-delay minimization over discrete offloading actions and binary local-or-forward decisions subject to per-task delay deadlines. Their BCSA-FRL pipeline combines DDQN-based federated reinforcement learning with blockchain consensus, CCVM correction voting, and CSRA cold-start reputation weighting. Under 20 percent malicious satellites, the reported reward reached about 26 versus 13 for FedAvg and 17 for the comparison scheme, while the method remained effective up to roughly 50 percent malicious satellites and achieved 6.16 percent drop and 5.95 ms delay at task load 150.
+
+## Problem framing
 
 ## Problem framing
 

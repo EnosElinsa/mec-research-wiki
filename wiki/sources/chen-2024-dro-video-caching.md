@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Adaptive Bitrate Video Caching in UAV-Assisted MEC Networks Based on Distributionally Robust Optimization"
 authors: ["Yali Chen", "Min Liu", "Bo Ai", "Yuwei Wang", "Sheng Sun"]
 year: 2024
@@ -20,7 +21,7 @@ related:
   - "[[zhao-2024-caching-service-placement-uav]]"
   - "[[query-when-does-dro-beat-drl-for-csi-uncertainty]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Adaptive Bitrate Video Caching in UAV-Assisted MEC Networks Based on Distributionally Robust Optimization
@@ -32,6 +33,41 @@ Chen, Y., Liu, M., Ai, B., Wang, Y., & Sun, S. (2024). *Adaptive Bitrate Video C
 ## TL;DR
 
 A **UAV-assisted MEC video-caching** scheme that is **robust to unknown content-popularity distributions**. A static-deployed UAV carries an MEC server that caches and **transcodes** adaptive-bitrate video, serving users directly (cache hit), via local higher-to-lower-bitrate transcoding (transcoding hit), or via backhaul retrieval from the ground BS (miss). Because user requests / popularity are time-varying and hard to predict, the authors formulate **joint cache placement and video-delivery scheduling under the worst-case distribution** as a **distributionally robust optimization (DRO)** problem that minimizes total expected system latency subject to an energy budget. They characterize uncertainty with **ζ-structure probability metrics** (five family members) to build a data-driven confidence set from historical data, then solve the resulting mixed-integer non-convex problem with a convex-optimization-based **distributionally robust latency optimization algorithm**. Evaluation uses a real-world YouTube video dataset.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A static UAV with storage and an MEC transcoder serves adaptive-bitrate video users over millimeter-wave downlinks, retrieves misses over a cellular BS-UAV backhaul, and faces an unknown request-popularity distribution estimated from historical samples.
+
+**Problem & objective**: Problem (18) is a one-stage mixed-integer nonlinear DRO, $\min_{\mathbf X,\mathbf Y}\max_{\mathbb P\in\mathcal D}\sum_i\mathbb E_{\mathbb P}[\Psi(\mathbf X,\mathbf Y,\xi_i)]$, minimizing worst-case expected delivery latency under cache and system-energy budgets.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Cache placement | $x_f$ | Binary, $\{0,1\}$ | Indicates whether bitrate variant $f$ is stored at the UAV. |
+| Cached delivery amount | $y_c(\xi_i)$ | Continuous, $[0,R_f]$ | Bits of request $\xi_i$ served directly from the UAV cache. |
+| Transcoded delivery amount | $y_t(\xi_i)$ | Continuous, $[0,R_f]$ | Bits produced by transcoding a cached higher-bitrate variant. |
+| Backhaul delivery amount | $y_b(\xi_i)$ | Continuous, $[0,R_f]$ | Bits retrieved from the ground BS and forwarded by the UAV. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Cache capacity requires $\sum_f x_fR_f\le C_u$. |
+| C2 | Direct-hit data is $y_c(\xi_i)=\sum_fx_fR_fe_f(\xi_i)$, and transcoding is allowed only when a higher-bitrate version of the same video is cached. |
+| C3 | Uncached demand is conserved by $y_t(\xi_i)+y_b(\xi_i)=\sum_f(1-x_f)R_fe_f(\xi_i)$ with all delivery amounts nonnegative. |
+| C4 | Total hovering, caching, direct-delivery, transcoding, and backhaul energy must not exceed $E_{\max}$. |
+| C5 | The ambiguity distribution belongs to $\mathcal D=\{\mathbb P:d(\mathbb P,\mathbb P_0)\le\theta\}$. |
+
+**Algorithm**: The method builds an empirical reference distribution and a confidence set with a selected zeta-structure probability metric, dualizes the inner worst-case distribution problem, and solves the resulting convex reformulation for robust caching and delivery schedules.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied adaptive-bitrate video caching at a static UAV-MEC server when the content-popularity distribution is unknown. They formulated a min-max distributionally robust program that jointly selects cached bitrate variants and divides delivery among direct cache hits, higher-to-lower bitrate transcoding, and BS backhaul retrieval while enforcing storage and energy budgets. Their algorithm constructs a historical-data confidence set with zeta-structure probability metrics, transforms the inner worst-case distribution problem by convex duality, and solves for a risk-averse cache and delivery schedule. With 120 users, the Uniform-metric scheme reduced latency by 62.6%, 16%, and 15.7% relative to DRC, Uniform-WT, and Uniform-POP, respectively, and the paper reports more than 60% reduction over deterministic caching overall.
 
 ## Problem framing
 

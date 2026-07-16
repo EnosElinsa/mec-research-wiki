@@ -19,7 +19,8 @@ related:
   - "[[xinlei-chen]]"
   - "[[radar-mutual-information-rate]]"
 created: 2026-07-10
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # A Novel Integrated Sensing and Communication Scheme in UAVs-Enabled Vehicular Networks With MARL-Driven Adaptive Control
@@ -31,6 +32,43 @@ Wang, Z., Zhang, X.-P., Ding, W., Dong, Y., & Chen, X. (2026). *A Novel Integrat
 ## TL;DR
 
 Designs RMADDPG-DDA, a MARL controller for UAV-enabled vehicular ISAC. Multiple UAVs jointly adapt channel allocation, motion, yaw, communication power, and ISAC transmit power to increase served vehicles and radar mutual information while respecting upload, QoS, energy, and collision constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAVs jointly sense moving vehicles with ISAC waveforms and upload sensed data to a base station over assigned FDMA channels. Each UAV controls its motion, yaw, communication power, and sensing power while sharing the airspace with the other UAVs.
+
+**Problem & objective**: Problem (16) jointly maximizes cumulative effective sensing mutual information and the number of served vehicles while minimizing total UAV energy, with the three criteria represented as $\max \sum_t \widehat M(t)$, $\max \sum_t N_{\mathrm{served}}(t)$, and $\min \sum_t E_{\mathrm{UAV}}(t)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Upload-channel assignment | $\delta_n(t)$ | integer channel index | FDMA channel assigned to UAV $n$ |
+| UAV speed | $v_n(t)$ | continuous, bounded | Horizontal flight speed |
+| UAV yaw | $\varphi_n(t)$ | continuous, $[-\pi,\pi]$ | Bearing angle used to update the trajectory |
+| Communication power | $P_n^c(t)$ | continuous, bounded | Power used for UAV-to-BS data upload |
+| ISAC transmit power | $P_n^s(t)$ | continuous, bounded | Power used for vehicle communication and sensing |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 16b | Every served vehicle satisfies the communication-SNR threshold, $\Gamma_{n,k}^c(t)\geq\Gamma_c$ |
+| 16c | Communication and ISAC transmit powers remain within their respective limits |
+| 16d | UAVs use distinct FDMA upload channels, with $\delta_n(t)\in\{1,\ldots,N\}$ |
+| 16e | Speed and yaw remain within the flight-control bounds |
+| 16f | Sensed upload volume does not exceed the UAV-to-BS channel capacity |
+| 16g | Pairwise UAV separation remains above the minimum safety distance |
+
+**Algorithm**: The paper converts the three objectives into a weighted MARL reward and uses a communication-power approximation to reduce the action dimension. RMADDPG combines parameter-shared MADDPG with random-network-distillation exploration, while the dynamic-direction approach adjusts the objective weights during training to search different energy, service, and sensing tradeoffs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] developed a multi-UAV controller for joint vehicular communication, sensing, and real-time data upload. Their formulation jointly controls FDMA channel assignment, UAV speed and yaw, communication power, and ISAC power under SNR, upload-capacity, energy, and collision constraints. RMADDPG-DDA combines parameter-shared MADDPG, random-network-distillation exploration, and adaptive multiobjective directions. In the reported four-UAV and forty-vehicle simulations, the method served more users and achieved higher effective sensing mutual information than the MADDPG, DDPG, and MASAC baselines. The reported gains reached 34.01% in served users over MADDPG and 68.26% in effective mutual information, while changing objective weights exposed the expected energy and sensing tradeoff.
 
 ## Problem
 

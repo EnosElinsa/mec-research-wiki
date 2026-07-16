@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Dynamic Trajectory Design for Multi-UAV-Assisted Mobile Edge Computing"
 authors: ["Zhuwei Wang", "Haowei Wang", "Lihan Liu", "Enchang Sun", "Haijun Zhang", "Zhidu Li", "Chao Fang", "Meng Li"]
 year: 2025
@@ -14,7 +15,7 @@ related:
   - "[[blockchain-for-fl-aggregation]]"
   - "[[maddpg]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Dynamic Trajectory Design for Multi-UAV-Assisted Mobile Edge Computing
@@ -26,6 +27,41 @@ Wang, Z., Wang, H., Liu, L., Sun, E., Zhang, H., Li, Z., Fang, C., & Li, M. (202
 ## TL;DR
 
 Addresses **UAV flight dynamics** constraints in multi-UAV MEC trajectory optimization — a constraint explicitly noted as overlooked in prior work. Within a blockchain-secured multi-UAV MEC framework, proposes **MADDPG-LC**: MADDPG handles desired-trajectory design; a Linear Quadratic Regulator (LQR) tracks actual trajectories subject to real flight-dynamics equations; a CVXPY solver handles user association and computing frequency assignment. The algorithm jointly minimizes weighted energy consumption and delay in a dynamic environment with user mobility and time-varying task demands.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ mobile users with Gauss-Markov mobility and time-varying tasks offload to $M$ UAV MEC servers that also maintain a blockchain ledger. Air-to-ground rates, blockchain generation and verification overhead, and continuous UAV flight dynamics jointly determine energy and delay.
+
+**Problem & objective**: P1 is a dynamic mixed discrete-continuous control problem that minimizes a weighted energy-delay cost, $\min \omega_E E_{\mathrm{tot}}+\omega_D D_{\mathrm{tot}}$, over trajectories, association, and computing resources.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Desired UAV trajectory | $\mathbf q_m^{\mathrm d}(t)$ | continuous position | Communication-aware path requested from UAV $m$ |
+| UAV acceleration | $\mathbf a_m(t)$ | continuous bounded control | Flight-dynamics input used to track the desired path |
+| User association | $x_{k,m}(t)$ | binary | Whether user $k$ offloads to UAV $m$ |
+| Computing frequency | $f_{k,m}(t)$ | continuous, nonnegative | CPU frequency assigned to user $k$ at UAV $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV position and velocity follow the discretized flight-dynamics equations |
+| C2 | Acceleration, speed, flight-region, and tracking commands remain feasible |
+| C3 | Each user associates with at most one UAV, $\sum_m x_{k,m}(t)\le 1$ |
+| C4 | Each UAV serves no more than its user limit and CPU allocations stay within capacity |
+| C5 | Communication, computation, propulsion, and blockchain delay and energy terms enter the horizon cost |
+
+**Algorithm**: Use MADDPG to generate desired multi-UAV trajectories → track physically feasible trajectories with LQR → solve association and CPU-frequency allocation in CVXPY for the realized geometry → update the dynamic state and repeat.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied dynamic trajectory design in a blockchain-secured multi-UAV mobile edge computing network with mobile users and time-varying tasks. They formulated a joint energy and delay minimization problem subject to UAV flight dynamics, user association, and computing-resource constraints. Their MADDPG-LC method uses MADDPG to generate desired trajectories, an LQR controller to track physically feasible trajectories, and convex optimization to allocate associations and CPU frequencies. The blockchain model accounts for transaction generation, broadcast, consensus verification, and their associated energy and delay. Simulation results show lower weighted energy-delay cost and smaller desired-to-actual trajectory error than the evaluated trajectory baselines.
 
 ## Problem framing
 

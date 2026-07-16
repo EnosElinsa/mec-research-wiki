@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Generative AI for Integrated Sensing and Communication: Insights From the Physical Layer Perspective"
 authors: ["Jiacheng Wang", "Hongyang Du", "Dusit Niyato", "Jiawen Kang", "Shuguang Cui", "Xuemin (Sherman) Shen", "Ping Zhang"]
 year: ""
@@ -28,7 +29,7 @@ related:
   - "[[jiang-2025-isac-lae-overview]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Generative AI for Integrated Sensing and Communication: Insights From the Physical Layer Perspective
@@ -39,6 +40,12 @@ Wang, J., Du, H., Niyato, D., Kang, J., Cui, S., Shen, X. (Sherman), & Zhang, P.
 
 ## TL;DR
 A **magazine overview** of how generative AI (GAI) supports **integrated sensing and communication (ISAC)**, focused on the **physical layer**. It reviews five GAI model families (GANs, normalizing flows, VAEs, diffusion models, Transformers) and their potential support across ISAC's physical, network, and application layers, then analyzes GAI-enhanced physical-layer technologies (channel estimation, CSI compression, signal detection, beamforming) from both sensing and communication perspectives. A **case study** presents a diffusion-based **signal spectrum generator (SSG)** for near-field direction-of-arrival (DoA) estimation when antenna spacing exceeds half the wavelength, achieving a mean square error of **~1.03°**.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] survey how generative models can support sensing and communication functions in the ISAC physical layer. They compare GANs, normalizing flows, VAEs, diffusion models, and Transformers, then discuss channel estimation, CSI compression, signal detection, and beamforming use cases. A near-field signal spectrum generator case study applies diffusion modeling to direction-of-arrival estimation when antenna spacing exceeds the half-wavelength limit. The article is an overview and case study rather than an application-specific decision or control optimization.
 
 ## Problem framing
 GAI models excel at understanding and modeling complex data distributions, generating new data resembling training data — useful beyond content generation for wireless systems. Integrating GAI into wireless is still limited, especially for emerging near-field communications and **ISAC**. ISAC couples communication and sensing modules with conflicting physical-layer demands — e.g. reliable communication in multipath fading wants **large** antenna spacing for independent signals, while DoA sensing wants spacing **≤ half wavelength** to avoid ambiguities. These tensions, plus resource-allocation complexity across modules, motivate a thorough look at GAI's role in ISAC, especially at the physical layer.

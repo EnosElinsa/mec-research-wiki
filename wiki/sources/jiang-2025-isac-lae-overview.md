@@ -14,7 +14,8 @@ related:
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[stochastic-geometry-network-analysis]]"
 created: 2026-05-29
-updated: 2026-07-13
+modeling_card: not_applicable
+updated: 2026-07-16
 ---
 
 # Integrated Sensing and Communication for Low Altitude Economy: Opportunities and Challenges
@@ -31,6 +32,12 @@ Two technical anchors:
 
 - **MBCM (Multi-Beam localized Channel Modeling)** under the SRCON framework — predicts SIR after BS antenna re-tilting using measured RSRP. Concrete tool, not just survey.
 - **Stochastic geometry analysis** of an IAGN with PPP-distributed BSs, ground CUs, and aerial sensing targets. Performance metrics: ACCP (area communication coverage probability) under SIR + ARDCP (area radar detection coverage probability) under CFAR.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jiang et al. [x] reviewed integrated sensing and communication for the low-altitude economy through the architecture of integrated air-ground networks. They organized the technological prerequisites around cellular access, spectrum sharing, three-dimensional beamforming, interference cancellation, and active and passive sensing. The article described localized statistical channel modeling based on measured RSRP and stochastic-geometry metrics for communication coverage and radar detection. It also surveyed aircraft-assisted sensing, coverage, relaying, traffic offloading, and ISAC functions. The authors identified aircraft collaboration, energy efficiency, and artificial-intelligence-enabled LAE as future research directions.
 
 ## Why this matters
 

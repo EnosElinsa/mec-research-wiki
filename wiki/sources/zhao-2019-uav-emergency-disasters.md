@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "UAV-Assisted Emergency Networks in Disasters"
 authors: ["Nan Zhao", "Weidang Lu", "Min Sheng", "Yunfei Chen", "Jie Tang", "F. Richard Yu", "Kai-Kit Wong"]
 year: 2019
@@ -21,7 +22,7 @@ related:
   - "[[joint-localization-and-communication]]"
   - "[[kai-kit-wong]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # UAV-Assisted Emergency Networks in Disasters
@@ -33,6 +34,12 @@ Zhao, N., Lu, W., Sheng, M., Chen, Y., Tang, J., Yu, F. R., & Wong, K.-K. (2019)
 ## TL;DR
 
 A **magazine-style unified framework** for UAV-assisted emergency networks when terrestrial base stations (BSs) are damaged by a disaster. It assembles three complementary schemes: (1) **joint trajectory + communication scheduling** of UAVs to serve ground devices alongside surviving BSs; (2) **UAV transceiver design + multihop device-to-device (D2D)** establishment to extend wireless coverage in areas with no surviving BS; and (3) **multihop UAV relaying** (optimizing UAV hovering positions) to exchange information between the disaster area and the outside. Simulations illustrate each scheme, and open research issues are discussed.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] presented a unified framework for UAV-assisted emergency networks after terrestrial infrastructure damage. The article discussed joint UAV trajectory and communication scheduling alongside surviving base stations, multi-antenna UAV transceiver design with multihop D2D coverage, and multihop UAV relaying to outside networks. It described SOCP-based transceiver updates, shortest-path D2D routing, and AF or DF relay placement within the three separate schemes. Simulations illustrate coverage and connectivity improvements for the proposed disaster-network configurations. The magazine article does not introduce one unified application-specific decision model with a reusable objective and constraint set.
 
 ## Problem framing
 

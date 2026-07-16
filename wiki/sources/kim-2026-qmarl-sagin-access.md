@@ -5,6 +5,7 @@ authors: ["Gyu Seon Kim", "Yeryeong Cho", "Jaehyun Chung", "Soohyun Park", "Soyi
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3599683"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 1, pp. 1200-1218"
+modeling_card: required
 tags: [source, quantum-marl, sagin, cubesat, hale-uav, scheduling, energy-efficiency]
 related:
   - "[[quantum-marl-sagin-access]]"
@@ -18,7 +19,7 @@ related:
   - "[[soohyun-park]]"
   - "[[joongheon-kim]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Quantum Multi-Agent Reinforcement Learning for Cooperative Mobile Access in Space-Air-Ground Integrated Networks
@@ -30,6 +31,39 @@ Kim, G. S., Cho, Y., Chung, J., Park, S., Jung, S., Han, Z., & Kim, J. (2026). *
 ## TL;DR
 
 Represents each CubeSat/HALE-UAV scheduling bit with one qubit and uses projection-valued measurement inside centralized-critic multi-agent learning, targeting differentiated ground-station capacity and residual-energy preservation in a simulated SAGIN.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple ground stations cooperatively select visible CubeSats and fixed-wing HALE-UAVs for differentiated mobile access in a space-air-ground integrated network. CubeSat links use orbital geometry, channel capacity, QoS, and sun-side or dark-side energy models, while HALE-UAV links use air-to-ground propagation and aerodynamic energy models. Access is controlled by binary device scheduling rather than a separate multiple-access allocation.
+
+**Problem & objective**: The cooperative scheduling problem is formulated as a multi-agent MDP whose policy maximizes expected cumulative reward, $\max_\pi \mathbb E_\pi[\sum_t\gamma^t R_i(t)]$, combining ground-station QoS and capacity with high and balanced residual energy for CubeSats and HALE-UAVs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| CubeSat access schedule | $x_j^i(t)$ | binary, $\{0,1\}$ | Whether ground station $i$ selects CubeSat $j$ in slot $t$ |
+| HALE-UAV access schedule | $x_l^i(t)$ | binary, $\{0,1\}$ | Whether ground station $i$ selects HALE-UAV $l$ in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | A ground station can select only CubeSats and HALE-UAVs within its coverage |
+| C2 | Scheduling indicators are binary for every visible NTN device |
+| C3 | The number of selected NTN devices does not exceed the station's monitoring limit $\bar H_i$ |
+| C4 | Differentiated capacity targets cap unnecessary access service for each ground station |
+| C5 | Reward terms preserve residual energy and penalize uneven device-energy use |
+
+**Algorithm**: Encode the classical SAGIN state into parameterized quantum circuits, represent the binary scheduling distribution with projection-valued measurements using one qubit per device decision, train decentralized quantum actors with a centralized quantum critic, and update actor-critic parameters until the cooperative reward converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Kim et al. [x] studied cooperative mobile-access scheduling among ground stations, CubeSats, and HALE-UAVs in a space-air-ground integrated network. They formulated a multi-agent decision problem that selects visible non-terrestrial devices to improve differentiated QoS and capacity while preserving and balancing residual energy. Their QMARL scheduler encodes state information in parameterized quantum circuits and uses projection-valued measurement to represent binary CubeSat and HALE-UAV scheduling actions. Decentralized quantum actors are trained with a centralized quantum critic using a reward that combines access performance and device-energy terms. Simulations with orbital and aerodynamic data report higher normalized reward, QoS, capacity, and residual energy than the evaluated conventional MARL, independent Q-learning, DQN, and random schedulers at the largest tested action space.
 
 ## Problem and system model
 

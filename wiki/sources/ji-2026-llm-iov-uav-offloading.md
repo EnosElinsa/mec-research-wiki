@@ -20,7 +20,8 @@ related:
   - "[[pingyi-fan]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Optimization of Trajectory Control, Resource Allocation, and Task Offloading for Multi-UAV-Assisted IoV
@@ -32,6 +33,42 @@ Ji, M., Wu, Q., Fan, P., Zhang, C., Cheng, N., Chen, W., & Letaief, K. B. (2026)
 ## TL;DR
 
 Studies multi-UAV and base-station-assisted IoV offloading in dense urban environments. The solution decomposes the nonconvex joint problem into 3D UAV trajectory planning by [[second-order-cone-programming|SOCP]], communication-resource scheduling by DRL plus [[llm-assisted-resource-allocation|LLM macro-scheduling]], and task-splitting ratios by [[linear-programming|LP]]. The LLM is not trained as the main controller; it intervenes as an event-triggered semantic scheduler for long-tail failed or surplus tasks, while reward decoupling keeps DRL training tied to the original DRL action.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Vehicles in a dense urban Internet of Vehicles network offload tasks locally, to multi-UAV edge servers, or to a ground base station while UAVs move in three-dimensional airspace.
+
+**Problem & objective**: Jointly select UAV trajectories, communication resources, and task splits to minimize normalized delay, energy, and deadline-violation penalties, $\min \omega_1T+\omega_2E+\omega_3\sum_m\xi_m$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV coordinates | $\mathcal C_u=(x_u,y_u,z_u)$ | continuous 3-D positions | UAV location at each time slot |
+| Task split ratios | $\gamma_m^o,\gamma_m^u,\gamma_m^I$ | nonnegative fractions summing to one | Local, UAV, and base-station execution shares |
+| UAV association | $\alpha_m^u$ | binary | Vehicle-to-UAV coverage and serving choice |
+| Transmit powers | $P_m^u,P_m^I$ | bounded continuous | Vehicle power toward UAV and base station |
+| Bandwidth allocation | $R$ or $B_m^I,B_m^u$ | nonnegative resource blocks | V2I and G2A communication resources |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Split ratios lie in $[0,1]$ and sum to one for each vehicle |
+| C2 | UAV positions remain in the airspace, obey speed, displacement, altitude, and inter-UAV separation limits |
+| C3 | Vehicle transmit powers stay within their maximum values and associations are binary |
+| C4 | Total bandwidth and UAV or base-station processing capacities are not exceeded |
+| C5 | Per-task delay stays below its deadline plus nonnegative violation slack $\xi_m$ |
+
+**Algorithm**: Solve trajectory control with sequential SOCP, schedule resources with DDPG and an event-triggered ground-side LLM macro-adjuster for failed or surplus tasks, and solve task ratios with LP while using reward decoupling for stable DRL updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ji et al. [x] jointly optimized three-dimensional multi-UAV trajectories, communication resources, and task splitting for dense urban IoV offloading. Their objective combines normalized system delay, total communication, computation, and flight energy, and deadline-violation penalties under airspace, collision, bandwidth, power, association, capacity, and per-task delay constraints. The decomposition uses SOCP for trajectories, DDPG with an event-triggered LLM macro-scheduler for long-tail resource repair, and LP for task ratios. Simulations report that the proposed CVX plus DDPG and LLM plus LP pipeline gives the strongest balance of task success, delay, and energy among the tested module combinations, while the LLM improves success near capacity by reallocating failed and surplus tasks.
 
 ## Problem framing
 

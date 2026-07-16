@@ -16,7 +16,8 @@ related:
   - "[[uav-enabled-its]]"
   - "[[ddpg]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Multi-Agent Reinforcement Learning Based Resource Management in MEC- and UAV-Assisted Vehicular Networks
@@ -28,6 +29,43 @@ Peng, H., & Shen, X. (2020). *Multi-Agent Reinforcement Learning Based Resource 
 ## TL;DR
 
 **Multi-dimensional resource management** for UAV-assisted vehicular networks, where a macro eNodeB and a UAV — both carrying **MEC** servers — cooperatively make **vehicle-association** and **resource-allocation** decisions. With no central controller, allocation is posed as a **distributive optimization** maximizing the number of offloaded tasks subject to heterogeneous QoS, and solved with a **multi-agent DDPG (MADDPG)** method: the MEC servers act as learning agents, trained centrally offline and executing rapidly online. The MADDPG scheme converges within ~200 training episodes (comparable to single-agent DDPG) and achieves higher delay/QoS satisfaction ratios than single-agent DDPG (SADDPG) and random schemes.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A macro eNodeB and $U$ MEC-equipped UAVs serve moving vehicles without a central controller. Each vehicle has a task with data size $c_i^s(t)$, CPU workload $c_i^c(t)$, and delay tolerance $c_i^d(t)$, and associates with either the MeNB or one UAV.
+
+**Problem & objective**: Each MEC server maximizes the number of associated tasks whose completion time and caching requirement are satisfied, using the indicator objective $\sum_i b_{i,m}(t)H[c_i^d(t)-T_i(t)]H[f_{i,m}^{ca}(t)C_m^{ca}-c_i^s(t)]$ for the MeNB and the analogous UAV objective.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Association | $b_{i,m}(t),b_{i,j}(t)$ | binary | Vehicle $i$ chooses MeNB $m$ or UAV $j$ |
+| Spectrum fraction | $f_{i,m}(t),f_{i,j}(t)$ | continuous, $[0,1]$ | Spectrum share at the selected MEC server |
+| Computing fraction | $f_{i,m}^{co}(t),f_{i,j}^{co}(t)$ | continuous, $[0,1]$ | CPU share |
+| Caching fraction | $f_{i,m}^{ca}(t),f_{i,j}^{ca}(t)$ | continuous, $[0,1]$ | Cache share |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Association is binary: $b_{i,m}(t),b_{i,j}(t)\in\{0,1\}$ |
+| C2 | A vehicle in overlapping coverage selects one server: $b_{i,m}(t)+b_{i,j}(t)=1$ |
+| C3 | Resource fractions lie in $[0,1]$ |
+| C4 | MeNB spectrum shares sum to one: $\sum_i b_{i,m}f_{i,m}=1$ |
+| C5 | MeNB computing shares sum to one: $\sum_i b_{i,m}f_{i,m}^{co}=1$ |
+| C6 | MeNB caching shares sum to one: $\sum_i b_{i,m}f_{i,m}^{ca}=1$ |
+| C7 | UAV analogues hold: $\sum_i b_{i,j}f_{i,j}=\sum_i b_{i,j}f_{i,j}^{co}=\sum_i b_{i,j}f_{i,j}^{ca}=1$ |
+
+**Algorithm**: Recast the coupled per-server problems as a partially observable Markov game, use each MEC server as an agent, and train a cooperative MADDPG with centralized critics and decentralized execution; shape rewards from delay and caching satisfaction.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Peng and Shen [x] formulate distributed resource management for a macro eNodeB and MEC-equipped UAVs serving heterogeneous vehicular tasks. The objective maximizes the number of tasks meeting both completion-delay and caching requirements while vehicle association, spectrum, computing, and caching fractions remain coupled across servers. They transform the mixed-integer allocation problems into a partially observable Markov game and solve them with cooperative MADDPG using centralized offline training and decentralized execution. The reported simulations show convergence within about 200 training episodes and higher delay and QoS satisfaction ratios than single-agent DDPG and random allocation.
 
 ## Problem framing
 

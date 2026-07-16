@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-07-16] Migrated the paper-source corpus to conditional modeling cards
+
+Revised the paper-source contract around raw Markdown evidence rather than a BibTeX ingest path. Every one of the 611 English source pages now declares `modeling_card: required` or `modeling_card: not_applicable`, keeps the canonical early order of Citation, TL;DR, the conditional Modeling Quick-Use Card, and Related Work Paragraph, and records an English copy-ready literature-review paragraph grounded in the corresponding Raw parse.
+
+The applicability review produced 529 reusable application decision/control cards and 82 explicit exclusions for surveys, tutorials, foundational algorithms, prediction or estimation studies, and protocols without a complete decision model. The migration also added maintained structural and source-to-Raw evidence gates; the final manifest resolves 611 pages to 612 Markdown parses with all 611 reviews grounded and no unresolved, ambiguous, orphaned, or conflicting record.
+
+Repository validation found no source-schema errors, dangling links, process-reference leaks, index gaps, duplicate primary listings, frontmatter errors, entity-roster overclaims, uncurated Raw folders, or whitespace errors. All 56 wiki-tool tests and 18 subtests passed, and all 611 source pages remain free of CJK text.
+
 ## [2026-07-16] Closed the final Research Log pending tail
 
 Reviewed the final 12 pending rows: six residual mechanism concepts, five author entities, and the component-3 `suzhi-bi` identity row. All 12 exact source-recorded Raw parses were live, and all 32 cited Raw locators were reopened as text-bearing lines.

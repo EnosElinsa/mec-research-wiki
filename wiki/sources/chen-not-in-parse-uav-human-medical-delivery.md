@@ -16,7 +16,8 @@ related:
   - "[[lee-2026-uav-delivery-time-energy]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Cooperative Learning-Based Joint UAV and Human Courier Scheduling for Emergency Medical Delivery Service
@@ -28,6 +29,43 @@ Chen, J., Wan, P., & Xu, G. *Cooperative Learning-Based Joint UAV and Human Cour
 ## TL;DR
 
 Jointly assigns urgent medical pickup-delivery orders to UAVs and human couriers and routes both fleets under different capacities, speeds, costs, and service rules. An attention-based cooperative DRL policy uses a shared encoder, separate UAV/courier decoders, feasibility masks, and a vehicle coordinator to produce near-real-time schedules.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Emergency medical orders pair a pharmacy or hospital pickup with a delivery point and soft deadline. Heterogeneous UAVs and human couriers start and end at assigned depots; couriers may consolidate orders, whereas each UAV completes one pickup-delivery pair before accepting another.
+
+**Problem & objective**: The multi-depot capacitated pickup-and-delivery problem with soft deadlines minimizes transportation cost and lateness penalties, $\min\sum_{k\in\mathcal K}\sum_{(i,j)\in\mathcal A}w^kd_{ij}x_{ij}^k+\sum_{i\in\mathcal D}\xi_i e_i$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Route arc | $x_{ij}^{k}$ | Binary, $\{0,1\}$ | Indicates that vehicle $k$ traverses arc $(i,j)$ |
+| Arrival time | $a_i^k$ | Continuous, nonnegative | Arrival time of vehicle $k$ at point $i$ |
+| Vehicle load | $Q_i^k$ | Continuous, $0\leq Q_i^k\leq C^k$ | Load after vehicle $k$ serves point $i$ |
+| Delivery lateness | $e_i$ | Continuous, $e_i\geq0$ | Amount by which delivery $i$ exceeds its deadline |
+| MDP action | $a_t=(k_t^i,x_t^j)$ | Finite feasible pair | Selects one vehicle and its next point |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every pickup is served once: $\sum_{k\in\mathcal K}\sum_{j\in\mathcal V}x_{ij}^{k}=1$ |
+| C2 | Paired pickup and delivery use the same vehicle, with depot departure, depot return, and route-flow balance enforced by (3)-(9) |
+| C3 | Pickup precedes delivery: $a_i^k\leq a_{i+n}^k$ |
+| C4 | Capacity: $Q_j^k+(1-x_{ij}^k)M_2\geq Q_i^k+q_j$ and $Q_i^k\leq C^k$ |
+| C5 | UAV service rule: constraints (16)-(18) force a UAV to complete its current request before another pickup |
+| C6 | Soft deadline: $e_i\geq a_i^k-l_i$ and $e_i\geq0$ |
+
+**Algorithm**: Reformulate routing as an MDP, encode depots and paired nodes with heterogeneous multi-head attention, apply separate UAV and courier decoders with precedence, capacity, and vehicle-specific masks, combine compatibilities through a vehicle coordinator, train with REINFORCE and an exponential moving-average baseline, and use greedy decoding at inference.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied joint UAV and human-courier scheduling for emergency medical pickup-and-delivery service with heterogeneous capacities, speeds, costs, and service rules. They minimized distance-based transportation cost plus soft-deadline penalties under paired-service, depot, route-flow, precedence, capacity, and UAV one-order-at-a-time constraints. Their cooperative DRL method used a shared attention encoder, vehicle-specific decoders and feasibility masks, a vehicle coordinator, and REINFORCE training with an exponential baseline. In the H4U5-PDP160 generalization test, it reported an objective of 1262.60 in $1.00\times10^{-3}$ s, compared with 3320.10 in 1259.33 s for OR-Tools and 2785.22 in $1.52\times10^{-3}$ s for Mixed-DRL.
 
 ## Problem
 

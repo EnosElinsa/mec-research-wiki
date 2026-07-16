@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Aided Covert ISAC via Full-Duplex Jamming"
 authors: ["Qunshu Wang", "Xiaoqi Qin", "Hu Jin", "Chunguo Li", "Nan Zhao", "Dusit Niyato"]
 year: 2026
@@ -24,7 +25,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[chunguo-li]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV-Aided Covert ISAC via Full-Duplex Jamming
@@ -36,6 +37,41 @@ Wang, Q., Qin, X., Jin, H., Li, C., Zhao, N., & Niyato, D. (2026). *UAV-Aided Co
 ## TL;DR
 
 A terrestrial ISAC base station sends sensing under both warden hypotheses and adds a covert communication beam only under transmission. The intended UAV receiver simultaneously emits randomized jamming, trading radiometric covertness against residual self-interference and sensing interference.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna terrestrial ISAC base station illuminates one target and covertly communicates with a fixed-altitude full-duplex UAV. The UAV emits randomized artificial jamming, while one uncertain-location warden applies radiometric detection under Rayleigh fading.
+
+**Problem & objective**: Problem (36) is a robust non-convex design that maximizes the UAV's covert transmission rate, $\max_{\mathbf W_c,\mathbf W_s,\mathbf Q}\sum_t R_b[t]$, under sensing, covertness, outage, power, and mobility constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beam | $\mathbf w_c[t]$ | complex continuous vector | Covert downlink beam in slot $t$ |
+| Sensing beam | $\mathbf w_s[t]$ | complex continuous vector | Target-illumination and masking beam |
+| UAV trajectory | $\mathbf q_b[t]$ | continuous horizontal position | Full-duplex receiver position at fixed altitude |
+| Convexification variables | $u[t],L[t]$ | continuous slacks | SDR and SCA surrogates for rate and distance terms |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 36a | Target echo SINR remains above $\Gamma_{\mathrm{th}}$ |
+| 36b | The worst-case warden detection error satisfies the covertness threshold |
+| 36c | BS communication and sensing beams respect the transmit-power budget |
+| C4 | UAV outage probability remains below its reliability threshold |
+| C5 | The trajectory satisfies fixed endpoints, flight region, and per-slot displacement limits |
+
+**Algorithm**: Derive the infinite-sample radiometer and robust covertness bound → fix trajectory and optimize transmit beams with SDR and arithmetic-geometric-mean approximations → fix beams and update trajectory with SCA and distance slacks → alternate until the covert-rate objective stops increasing.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied UAV-aided covert integrated sensing and communication with a full-duplex jamming UAV receiver and an uncertain-location warden. They derived the optimal infinite-sample radiometer threshold and the average minimum detection error under the assumed fading and randomized-jamming model. The resulting robust problem maximizes covert transmission rate over communication and sensing beams and the UAV trajectory under echo-SINR, outage, power, mobility, and covertness constraints. Their alternating method applies semidefinite relaxation and arithmetic-geometric-mean approximations to beamforming and successive convex approximation to trajectory control. Simulations report higher covert rate than the evaluated fixed-trajectory and random-beamforming baselines.
 
 ## Model and guarantee scope
 

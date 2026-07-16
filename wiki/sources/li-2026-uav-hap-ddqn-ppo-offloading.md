@@ -17,7 +17,8 @@ related:
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[chen-2026-dart-hap-uav-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Optimization of Latency and Energy Consumption for Computing Task Offloading Based on Cooperative Multi-UAV and HAP Networks
@@ -29,6 +30,42 @@ Li, M., Wan, H., Lv, S., Si, P., Zhang, H., & Yu, F. R. (2026). *Joint Optimizat
 ## TL;DR
 
 Builds a [[hierarchical-aerial-mec]] offloading model with terrestrial UEs, multiple UAVs, and one [[high-altitude-platform-station|HAP]]. Each task can be processed by a single UAV, split across multiple UAVs, or sent through UAVs to the HAP. The objective is a weighted system consumption combining processing latency and energy. The method is a two-stage DRL controller: [[ddqn]] chooses the offloading mode, and [[ppo]] sets task-splitting ratios when cooperative multi-UAV processing is selected.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground UEs generate tasks for a hierarchical aerial MEC network with multiple MEC-enabled UAVs and one HAP. A task is processed by one UAV, split among cooperative UAVs, or forwarded through UAVs to the HAP; the model includes ground-UAV, UAV-UAV, and UAV-HAP links with queue-dependent transmission and computation latency.
+
+**Problem & objective**: Problem $\mathcal P0$, an NP-hard MINLP reformulated as an MDP, minimizes weighted latency and energy, $\min\sum_{i,u,n}(\alpha T_i+\beta E_i)$, while selecting one offloading mode, cooperative split ratios, and CPU allocations.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Single-UAV mode | $\mu_i^{sp}$ | binary | Task $i$ is processed by one UAV |
+| Multi-UAV mode | $\mu_i^{mp}$ | binary | Task $i$ is split among cooperative UAVs |
+| HAP mode | $\mu_i^H$ | binary | Task $i$ is forwarded to the HAP |
+| Cooperative split ratio | $P_u^i$ | continuous, $0\le P_u^i\le1$ | Fraction of a multi-UAV task assigned to UAV $u$ |
+| UAV/HAP CPU frequency | $f_u$ | continuous, $10^9\le f_u\le3\times10^9$ | Computation rate of aerial server $u$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Exactly one mode is selected, $\mu_i^{sp}+\mu_i^{mp}+\mu_i^H=1$ |
+| C2 | Every task meets its maximum allowable processing delay |
+| C3 | Cooperative ratios sum to one when multi-UAV mode is selected, $\sum_uP_u^i=1$ |
+| C4 | CPU frequencies stay in the UAV/HAP operating interval |
+| C5 | Queue, communication, and task-completion equations remain feasible for each slot |
+
+**Algorithm**: Observe the MDP state → DDQN selects single-UAV, multi-UAV, or HAP mode → PPO outputs continuous cooperative split ratios when needed → update rewards from weighted latency and energy → repeat with replay and target-network updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied cooperative computation offloading in a hierarchical aerial MEC network with ground UEs, multiple UAVs, and a HAP. They formulated an NP-hard mixed-integer nonlinear program that minimizes a weighted combination of task-processing latency and energy consumption while choosing single-UAV, multi-UAV, or HAP processing and the cooperative split ratios. The problem was reformulated as a Markov decision process, with DDQN selecting the discrete offloading mode and PPO assigning continuous ratios when multi-UAV processing is selected. The state includes aerial energy, inter-UAV and UAV-HAP rates, queues, CPU frequencies, and task size. Simulations report lower latency and weighted system consumption than the evaluated DDPG, SAC, TD3, greedy, and random alternatives under varying user counts and task complexity.
 
 ## Problem framing
 

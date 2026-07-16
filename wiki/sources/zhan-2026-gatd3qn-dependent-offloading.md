@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint UAV Placement and Dependent Task Offloading in Multi-UAV MEC Networks: A Graph Attention Enhanced DRL Approach"
 authors: ["Cheng Zhan", "Wei Liu", "Kaifeng Song", "Rongfei Fan", "Jun Liu", "Han Hu"]
 year: 2026
@@ -19,7 +20,7 @@ related:
   - "[[penalty-dual-decomposition]]"
   - "[[device-association]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint UAV Placement and Dependent Task Offloading in Multi-UAV MEC Networks: A Graph Attention Enhanced DRL Approach
@@ -31,6 +32,41 @@ Zhan, C., Liu, W., Song, K., Fan, R., Liu, J., & Hu, H. (2026). *Joint UAV Place
 ## TL;DR
 
 Studies multi-UAV MEC where ground users generate application tasks represented as directed acyclic graphs. The paper jointly optimizes UAV placement, UAV-ground-user association, and dependent-task offloading to minimize the final completion time. Its JSPO stage uses successive convex approximation plus penalty dual decomposition for UAV placement and association, while a GAT-enhanced D3QN offloading stage embeds each task DAG before learning binary subtask offloading decisions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAV MEC servers serve ground users whose applications are directed acyclic graphs. Start and end subtasks execute locally, while intermediate subtasks can execute locally or at the associated UAV and may transfer predecessor outputs across the wireless link.
+
+**Problem & objective**: A mixed placement, association, and dependent-offloading problem minimizes the maximum application end time, $\min \max_m T_m^{\mathrm{end}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV placement | $\mathbf q_k$ | continuous 2-D position | Location of UAV MEC server $k$ |
+| User association | $x_{m,k}$ | binary | UAV serving user $m$ |
+| Subtask offloading | $a_{m,i}$ | binary | Whether intermediate DAG subtask $i$ executes at the UAV |
+| Penalty/dual variables | $\boldsymbol\lambda$ | continuous | JSPO feasibility multipliers |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user associates with one covering UAV |
+| C2 | UAV placement and service capacity remain feasible |
+| C3 | Start and end subtasks execute locally |
+| C4 | Every subtask begins only after all predecessors and required transfers finish |
+| C5 | Binary execution decisions determine local, uplink, and UAV compute timing |
+
+**Algorithm**: Fix offloading and update UAV placement and association with SCA plus penalty dual decomposition → encode each task DAG with graph attention → let D3QN select binary intermediate-subtask execution → recompute predecessor transfer and completion times → alternate JSPO and GATD3QN stages until maximum end time stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhan et al. [x] studied joint UAV placement and dependent task offloading in multi-UAV MEC networks with DAG applications. They formulated maximum final-completion-time minimization over UAV locations, user associations, and binary intermediate-subtask execution under coverage, capacity, and task-precedence constraints. JSPO combines successive convex approximation with penalty dual decomposition to update placement and association. A graph-attention encoder represents each DAG before a D3QN selects dependent-task offloading actions, and the two stages iterate. Simulations report lower completion time and faster learning than the evaluated D3QN, DDQN, local-computing, and random-offloading baselines.
 
 ## Problem
 

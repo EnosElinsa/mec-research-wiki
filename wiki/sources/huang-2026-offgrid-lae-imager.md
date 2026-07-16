@@ -5,6 +5,7 @@ authors: ["Yixuan Huang", "Jie Yang", "Shuqiang Xia", "Chao-Kai Wen", "Shi Jin"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3603255"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), 25, 2026"
+modeling_card: not_applicable
 tags: [source, low-altitude-economy, integrated-sensing-and-communication, wireless-perception, compressed-sensing, wireless-imaging, physics-embedded-learning]
 related:
   - "[[shi-jin]]"
@@ -16,7 +17,7 @@ related:
   - "[[jiang-2025-isac-lae-overview]]"
   - "[[yang-2026-generative-radio-map-lae]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Learned Off-Grid Imager for Low-Altitude Economy With Cooperative ISAC Network
@@ -28,6 +29,12 @@ Huang, Y., Yang, J., Xia, S., Wen, C.-K., & Jin, S. (2026). *Learned Off-Grid Im
 ## TL;DR
 
 Formulates low-altitude flight-activity surveillance as cooperative ISAC wireless imaging. Multiple synchronized full-duplex base stations use OFDM sensing signals and raw CSI measurements to reconstruct sparse aerial images, rather than first estimating target parameters and then associating them. The paper analyzes point spread functions for system design and proposes a physics-embedded learning method with OHEM-style loss design to reduce off-grid errors for UAV detection.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied flight-activity surveillance in the low-altitude economy using cooperative ISAC wireless imaging. They modeled the three-dimensional region of interest as a sparse compressed-sensing image reconstructed directly from raw channel-state-information measurements collected by synchronized base stations. They derived a point spread function to analyze antenna, subcarrier, bandwidth, and voxel-resolution settings, then proposed a physics-embedded learning method that refines on-grid results under off-grid UAV locations. Online hard example mining was incorporated into the loss design to emphasize rare positive voxels and difficult negative samples. Simulations report a 97.55 percent detection rate for the selected OHEM configuration and show two-dimensional and three-dimensional off-grid image reconstruction in the evaluated settings.
 
 ## Problem framing
 

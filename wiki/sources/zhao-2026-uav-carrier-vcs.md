@@ -23,8 +23,9 @@ related:
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[chi-harold-liu]]"
+modeling_card: required
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV Carrier Enabled Vehicular Crowdsensing by Multi-Agent Reinforcement Learning with Mutual Policy Divergence and Attentive Memory Update
@@ -36,6 +37,40 @@ Zhao, Q., Liu, C. H., Zhao, J., Li, G., Qi, G., Ji, X., Xu, D., & Crowcroft, J. 
 ## TL;DR
 
 HADRL-VCS coordinates road-constrained UGV carriers with UAV scouts for urban vehicular crowdsensing. Attentive memory-integrated information exchange fuses link-qualified neighbor representations, prior memory, and sequentially announced actions, while mutual policy divergence-driven exploration encourages differentiated vehicle roles and continued per-agent exploration.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Road-constrained UGVs carry, dispatch, recover, and recharge fixed-altitude UAV scouts in an urban vehicular crowdsensing workzone, where UAVs discover PoIs and UGVs collect their data. PoI uplinks use OFDMA; PoI-to-UAV links use probabilistic LoS/NLoS air-to-ground path loss, PoI-to-UGV links use Rayleigh fading with free-space path loss, and inter-vehicle links use log-distance loss with shadowing, packet loss, and transmission latency.
+
+**Problem & objective**: P1, an NP-hard heterogeneous asynchronous Dec-POMDP, maximizes $\xi=\eta f\psi\frac{\sum_u e_0^u+\sum_g e_0^g}{\sum_u(e_0^u-e_T^u)+\sum_g(e_0^g-e_T^g)}$, combining data-collection ratio, geographic fairness, UAV-enabled sensing expansion, and energy efficiency.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV flight action | $\mathbf a_t^u=(\theta_t^u,v_t^u)$ | Continuous, $\mathbb R^2$ within speed and heading limits | Select flight direction and velocity |
+| UAV return action | $a_{\mathrm{charge}}$ | Discrete | Return to a UGV for recovery and charging |
+| UGV destination action | $\mathbf a_t^g$ | Discrete, $\mathcal B$ | Select the next predefined road stop |
+| Per-vehicle policy | $\pi_i(a_t^i\mid z_t^i)$ | Stochastic policy | Coordinate heterogeneous active and inactive vehicles |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every vehicle maintains nonnegative energy: $e_t^i\ge0$ for $0\le t<T$ |
+| C2 | An inactive UGV continues its previous destination action until arrival, as in (17) |
+| C3 | UGV motion stays on the road-stop graph, while UAV flight stays in the workzone and avoids buildings above flight altitude |
+| C4 | PoI or neighbor information is observable only within sensing range and over a reliable communication link; otherwise it is zero-masked |
+
+**Algorithm**: Encode local observations $\rightarrow$ exchange link-qualified hidden representations $\rightarrow$ fuse current messages with attentive persistent memory $\rightarrow$ announce inactive actions and sample active actions sequentially $\rightarrow$ update heterogeneous PPO policies with MPDE intrinsic objectives and GAE-based modified advantages.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied UAV-carrier-enabled vehicular crowdsensing in which road-constrained UGVs collect PoI data and dispatch UAVs to expand the sensing range. They formulated heterogeneous UAV and UGV coordination as an asynchronous multi-agent sequential decision problem that maximizes data collection, geographic fairness, sensing expansion, and energy efficiency. They proposed HADRL-VCS with attentive memory-integrated information exchange to combine current link-qualified messages, historical memory, and sequentially shared actions. They also introduced mutual policy divergence-driven exploration to promote complementary roles and sustained policy diversity among heterogeneous vehicles. Experiments on OpenStreetMap-derived Guangzhou and Madrid scenarios report higher data-collection ratio, geographic fairness, sensing-range expansion, and efficiency than five evaluated baselines, while ablations show efficiency losses when either AMIE or MPDE is removed.
 
 ## Problem
 

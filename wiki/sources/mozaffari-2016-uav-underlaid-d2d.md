@@ -5,6 +5,7 @@ authors: ["Mohammad Mozaffari", "Walid Saad", "Mehdi Bennis", "Mérouane Debbah"
 year: 2016
 url: "https://doi.org/10.1109/TWC.2016.2531652"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, device-to-device-communication, stochastic-geometry-network-analysis, drone-cell-3d-placement, air-to-ground-channel-model, geometric-disk-cover, uav-communications]
 related:
   - "[[device-to-device-communication]]"
@@ -21,7 +22,7 @@ related:
   - "[[mohammad-mozaffari]]"
   - "[[walid-saad]]"
 created: 2026-06-02
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Unmanned Aerial Vehicle With Underlaid Device-to-Device Communications: Performance and Tradeoffs
@@ -33,6 +34,40 @@ Mozaffari, M., Saad, W., Bennis, M., & Debbah, M. (2016). *Unmanned Aerial Vehic
 ## TL;DR
 
 Analyzes the **coexistence** of a UAV acting as a downlink flying base station and an **underlaid device-to-device (D2D)** network sharing the same spectrum. Using **stochastic geometry**, it derives a tractable framework for **coverage probability** and **system sum-rate**, for two cases: a **static UAV** and a **mobile UAV**. For the static case, it finds the optimal UAV **altitude** maximizing the downlink users' (DUs') coverage probability and the system sum-rate, showing the optimal altitude **decreases as D2D density increases**. For the mobile case, it uses the **disk covering problem** to compute the minimum number of **stop points** the UAV must visit to fully cover the area at minimum transmit power, derives the D2D users' overall **outage probability** under multiple retransmissions, and characterizes the **coverage-vs-delay tradeoff** (more stop points → better DU coverage but more delay and higher D2D outage).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One UAV provides downlink service to uniformly distributed users in a circular cell while an underlaid D2D network reuses the same spectrum. D2D transmitters form a homogeneous Poisson point process, terrestrial links use Rayleigh fading, and the UAV link follows a probabilistic LoS/NLoS model; the UAV is either static at the cell center or mobile with hover-and-transmit stop points.
+
+**Problem & objective**: In the static case, choose altitude $h$ to maximize either average DU coverage probability or the combined DU and D2D sum-rate. In the mobile case, choose the number and locations of stop points and UAV power to cover the full cell with $P_{\mathrm{cov},du}\ge\varepsilon$ using the fewest stops and minimum transmit power.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV altitude | $h$ | continuous, positive | Static or per-stop altitude controlling coverage and interference |
+| Number of stop points | $M$ | positive integer | Number of mobile-UAV service locations and a proxy for delay |
+| Stop-point location | $\mathbf s_m$ | continuous 2D vector | Ground projection of mobile-UAV stop $m$ |
+| UAV transmit power | $P_u$ | continuous, positive | Downlink power selected after the disk-cover construction |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| 24 | The feasible footprint is $R_m=\max\{R:P_{\mathrm{cov},du}(\beta,R)\ge\varepsilon\}$ |
+| 25 | Every point in the target disk must be covered and the chosen $M$ is minimal |
+| 26 | The disk-cover radius satisfies $R_{\min,L}\le R_m\le R_{\min,L-1}$ for the minimum $L$ stops |
+| 27 | Power is reduced until the maximum footprint equals the required disk-cover radius $R_{\min,L}$ |
+
+**Algorithm**: Derive DU and D2D coverage probabilities and the system sum-rate with stochastic geometry, then perform a one-dimensional altitude search for the desired static objective at the given D2D density. For mobile service, compute the maximum feasible coverage radius at the optimal altitude, use the dual disk-covering table to obtain the minimum stop count and locations, and reduce $P_u$ until that radius matches the required covering radius; finally evaluate retransmission outage and coverage-delay tradeoffs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mozaffari et al. [x] analyzed a downlink UAV base station sharing spectrum with an underlaid D2D network. Using stochastic geometry, they derived tractable DU and D2D coverage probabilities and a system sum-rate expression, then showed that the preferred static-UAV altitude depends on D2D density and differs between coverage and sum-rate objectives. For a mobile UAV, they mapped full-area service to a disk-covering problem that minimizes the number of hover points and transmit power subject to a DU coverage threshold. Their results expose a three-way tradeoff in which additional stop points improve DU coverage but increase service delay and the accumulated outage probability of D2D retransmissions.
 
 ## Problem framing
 

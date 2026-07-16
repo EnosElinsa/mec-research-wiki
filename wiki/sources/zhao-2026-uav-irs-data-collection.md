@@ -16,8 +16,9 @@ related:
   - "[[shichao-li]]"
   - "[[mahmoud-2021-uav-irs-iot-analysis]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
+modeling_card: required
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Optimization of UAV Trajectory and Number of Reflecting Elements for UAV-Mounted Intelligent Reflecting Surface-Assisted Data Collection in Wireless Sensor Networks Under Transmission Prioritized Scheme
@@ -29,6 +30,42 @@ Zhao, H., Chen, H., Li, S., & Zhan, L. (2026). Joint optimization of UAV traject
 ## TL;DR
 
 A rotary-wing UAV carries an IRS to relay fixed sensor data to a fusion center when direct links are blocked. Under a transmission-prioritized fly-hover-communicate policy, an alternating CJ-BS/SCA/GA pipeline selects active reflecting elements, hover locations, and multi-sensor visit order to reduce total energy for fixed payloads.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude rotary-wing UAV carries an IRS to relay data from fixed ground sensor nodes to a fusion center when the direct paths are blocked. Under the fly-hover-communicate transmission-prioritized scheme, sensors use TDMA and one sensor transmits per hover point through a cascaded UAV-IRS channel with distance-dependent path loss and small-scale fading.
+
+**Problem & objective**: P3 in (31), a non-convex MINLP under fixed transmitted payloads, minimizes $E_{\mathrm{total}}(\{\tilde{\mathbf q}_k(t)\},\tilde N_k,\lambda_k(t))$, equivalently maximizing system energy efficiency subject to spectrum-efficiency and delivery requirements.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV hover positions / trajectory | $\{\tilde{\mathbf q}_k(t)\}$ | Continuous, $\mathbb R^2$ at fixed altitude | Select the hover point associated with each sensor and the flight path between points |
+| Active reflecting elements | $\tilde N_k$ | Integer, $1\le\tilde N_k\le N$ | Number of IRS elements activated for sensor $k$ |
+| Sensor service indicator | $\lambda_k(t)$ | Binary, $\{0,1\}$ | Indicate whether sensor $k$ transmits at time $t$ and encode its visit order |
+| Visit permutation | $\pi(k)$ | Permutation of $\{1,\ldots,K\}$ | Order in which the UAV visits sensor-specific hover points |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Fixed payload and minimum spectrum-efficiency requirements ensure complete sensor-data delivery |
+| C2 | UAV speed obeys $\lVert\dot{\mathbf q}(t)\rVert\le V_{\max}$ |
+| C3 | At most one sensor transmits while hovering: $\sum_k\lambda_k(t)\le1$ |
+| C4 | The trajectory begins at $\mathbf q_I$, ends at $\mathbf q_F$, and remains in the allowed flight region |
+| C5 | UAV propulsion, hovering, and IRS energy does not exceed $E_{UAV,\max}$ |
+| C6 | Sensor power satisfies $\eta p_k+P_{s,k}\le P_{k,\max}$ and $1\le\tilde N_k\le N$ |
+
+**Algorithm**: Initialize hover points, element counts, and visit order $\rightarrow$ use GA for the TSP-like service permutation $\rightarrow$ use conditional judgment and binary search for each integer element count $\rightarrow$ use SCA for continuous hover positions $\rightarrow$ alternate while rejecting energy-increasing updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied UAV-mounted IRS-assisted data collection from wireless sensor nodes whose direct links to a fusion center are blocked. They adopted a fly-hover-communicate protocol and formulated an energy-efficiency and spectrum-efficiency trade-off by jointly optimizing UAV hover locations, the number of reflecting elements, and multi-sensor service order under a transmission-prioritized scheme. For one sensor, they alternated conditional judgment with binary search for the reflecting-element count and successive convex approximation for the hover position. For multiple sensors, they added a genetic algorithm for the TSP-like service order and alternated the three subproblems. Simulations report energy-efficiency factors of 1.07 for the single-sensor case and 1.43 for the multi-sensor case relative to hovering directly above each sensor.
 
 ## Problem and system model
 

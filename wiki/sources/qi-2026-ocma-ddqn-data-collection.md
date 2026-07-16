@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Robust and Energy-Efficient Multi-UAV Trajectory Planning for Data Collection: A Game-Theoretic and Deep Reinforcement Learning Approach"
 authors: ["Nan Qi", "Hua Jiang", "Sa Xiao", "Daolong Wu", "Fuhui Zhou", "Chunguo Li", "Shi Jin"]
 year: 2026
@@ -27,7 +28,7 @@ related:
   - "[[shi-jin]]"
   - "[[chunguo-li]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Robust and Energy-Efficient Multi-UAV Trajectory Planning for Data Collection: A Game-Theoretic and Deep Reinforcement Learning Approach
@@ -39,6 +40,41 @@ Qi, N., Jiang, H., Xiao, S., Wu, D., Zhou, F., Li, C., & Jin, S. (2026). *Robust
 ## TL;DR
 
 Combines an exact-potential-game cooperation model with distributed DDQN for fixed-altitude multi-UAV data collection under directional jamming and intermittent links. UAVs exchange maps and replay experience according to distance-dependent value circles, while an online LSTM predicts neighbor actions during short disconnections. The reported gains are simulation results for up to four UAVs and do not establish robustness to long outages, changing jammers, or real flight dynamics.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAVs collect data from ground base stations in a gridded urban airspace containing buildings, no-fly zones, and directional jammers. TDMA separates data collection from inter-UAV exchange, hybrid LoS/NLoS fading and jammer interference determine rates, and intermittent neighbor links limit map and replay-experience sharing.
+
+**Problem & objective**: A distributed exact-potential game and finite-action MDP maximizes each UAV's expected discounted utility, $\max_{\pi_m}\mathbb E_{\pi_m}[\sum_t\gamma^t r_m(t)]$, where reward combines collected data, propulsion energy, cooperation cost, collision penalties, landing, and remaining energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV motion action | $a_m(t)$ | discrete, north/south/east/west/hover/land | Grid movement or landing selected by UAV $m$ |
+| DDQN policy | $\pi_m(a\mid s)$ | discrete stochastic or greedy policy | Mapping from local/global-map state to a motion action |
+| Experience exchange | $e_{m,j}(t)$ | binary/probabilistic | Whether connected UAVs share replay experience and map information |
+| Predicted neighbor action | $\hat a_j(t)$ | discrete with confidence threshold | LSTM estimate used during a short link interruption |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Actions remain in the six-element discrete strategy set and within map boundaries |
+| C2 | Entering a building/no-fly cell or colliding triggers the paper's position reset and collision penalty |
+| C3 | Data are collected only when the selected base-station link exceeds the rate threshold |
+| C4 | Propulsion and communication/computation energy remain within the UAV battery budget and landing is required |
+| C5 | Neighbor predictions are used only when LSTM Softmax confidence exceeds 0.95 |
+
+**Algorithm**: Define pairwise cooperation costs as an exact potential game → train independent DDQNs with policy and target networks → share maps and replay experience according to distance-based value circles → train an online LSTM from recent neighbor states/actions → substitute high-confidence predictions during short outages → execute the distributed policies locally.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qi et al. [x] studied robust and energy-efficient multi-UAV trajectory planning for data collection under directional jamming and intermittent inter-UAV communication. They modeled bilateral cooperation as an exact potential game and mapped collected data, propulsion energy, cooperation cost, collision, and landing terms into a distributed DDQN reward. Their OCMA-DDQN-LSTM method shares maps and replay experience through distance-dependent value circles and predicts neighbor actions with an online LSTM during short disconnections. A prediction is used only when its Softmax confidence exceeds 0.95. Simulations report approximately 31% higher converged reward than non-cooperative DDQN and about 80% neighbor-action prediction accuracy over the first two disconnected steps in the evaluated setting.
 
 ## Problem and system model
 

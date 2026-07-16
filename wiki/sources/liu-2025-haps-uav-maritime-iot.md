@@ -15,7 +15,8 @@ related:
   - "[[multi-verse-optimizer]]"
   - "[[wang-2026-aerial-marine-msar]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # HAP-UAV-Assisted Maritime IoT Communication Network
@@ -35,6 +36,41 @@ A maritime communication architecture (UMABMCN) where:
 The authors formulate a **three-objective MOP**: (1) maximize sum B2V access rate, (2) maximize HAP-to-UAV backhaul rate, (3) minimize UAV energy consumption — all subject to BS-vessel association, UAV power, and UAV placement constraints.
 
 Two solvers: an enhanced multi-verse optimization with chaos + grey-wolf + discrete update (**EMOMVO-CGD**), and a step-wise classical method (**JCCPAPO**: Gale-Shapley-style association → power allocation → PSO-based UAV placement).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A maritime network uses multiple UAVs for vessel multicast, one HAP for vessel unicast, and the HAP-UAV link as wireless backhaul. Vessels use NOMA-style SIC to decode multicast before unicast; air-to-sea and HAP-to-UAV channels are modeled separately.
+
+**Problem & objective**: UMABMCN multi-objective communication design, a mixed discrete-continuous MOP, maximizes sum B2V access rate and HAP-to-UAV backhaul rate while minimizing UAV energy, $\max [R_{\mathrm{B2V}},R_{\mathrm{HAP-UAV}},-E_{\mathrm{UAV}}]$, subject to association, power, and placement constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Vessel-UAV association | $x_{u,v}$ | binary | UAV $u$ serves vessel $v$ in multicast/unicast mode |
+| Transmit powers | $p_{u,v},p_{H,u}$ | continuous, bounded | UAV-vessel and HAP-UAV powers |
+| UAV placement | $\mathbf q_u$ | continuous 3-D position | UAV location for maritime service |
+| Multicast grouping | $g_v$ | discrete group label | Vessels sharing a multicast transmission |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each vessel has a valid serving association and each multicast group is served by one UAV |
+| C2 | UAV and HAP transmit powers stay within their budgets |
+| C3 | UAV positions remain in the permitted maritime service region |
+| C4 | NOMA/SIC decoding and worst-vessel multicast-rate conditions are satisfied |
+| C5 | HAP-UAV backhaul and vessel access rates use the modeled bandwidth/resource limits |
+
+**Algorithm**: Encode association and placement in EMOMVO-CGD → use chaos and grey-wolf updates for mixed variables → retain Pareto solutions → compare with step-wise JCCPAPO, which applies Gale-Shapley-style association → power allocation → PSO placement.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied a HAP-UAV-assisted maritime IoT communication network that combines UAV multicast, HAP unicast, and HAP-to-UAV wireless backhaul. They formulated a mixed multi-objective problem that maximizes vessel access rate and HAP-to-UAV backhaul rate while minimizing UAV energy under association, power, placement, and NOMA decoding constraints. They proposed EMOMVO-CGD, an enhanced multi-verse optimizer with chaos, grey-wolf, and discrete updates for the mixed decision space. A step-wise JCCPAPO benchmark performs Gale-Shapley-style association, power allocation, and PSO-based UAV placement. The reported simulations compare the two solvers across maritime vessel and UAV scales and show complementary objective-wise performance.
 
 ## Why this matters
 

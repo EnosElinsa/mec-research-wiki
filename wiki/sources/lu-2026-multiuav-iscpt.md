@@ -18,8 +18,9 @@ related:
   - "[[pingyi-fan]]"
   - "[[derrick-wing-kwan-ng]]"
   - "[[khaled-ben-letaief]]"
+modeling_card: required
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Multi-UAV Collaborative ISCPT: Joint 3D Deployment and Power Control of UAVs
@@ -31,6 +32,37 @@ Lu, Y., Xiong, K., Chen, W., Fan, P., Ng, D. W. K., & Letaief, K. B. (2026). *Mu
 ## TL;DR
 
 Uses a cascading residual graph-attention network to generate static 3-D multi-UAV deployment and transmit powers for integrated sensing, communication, and power transfer, optimizing normalized worst-user SINR, sensing echo power, and harvested energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ single-antenna UAVs jointly serve information users, sensing targets, and energy users from a ground control station; users associate with their highest-SINR UAV, sensing echoes are combined centrally, and nonlinear harvested energy aggregates across UAVs.
+
+**Problem & objective**: Multi-objective max-min deployment and power control, $\max_{L^{\mathrm{UAV}},p^{\mathrm{UAV}}}\{\gamma_{\min},S_{\min},E_{\min}\}$, where the three terms are worst information-user SINR, sensing received-signal power, and harvested energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV placement | $L^{\mathrm{UAV}}=\{l_k^{\mathrm{UAV}}\}$ | continuous 3-D coordinates | Static location of each UAV |
+| UAV transmit power | $p^{\mathrm{UAV}}=\{p_k\}$ | continuous, $[0,P_k^{\max}]$ | Broadcast power of UAV $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UAV remains in the 3-D mission region, $\mathcal D_{\min}\leq l_k^{\mathrm{UAV}}\leq\mathcal D_{\max}$. |
+| C2 | Each UAV respects its transmit-power limit, $0\leq p_k\leq P_k^{\max}$. |
+| C3 | User association, TDMA scheduling, channel gains, sensing RSP, and nonlinear EH definitions determine $\gamma_{\min}$, $S_{\min}$, and $E_{\min}$. |
+
+**Algorithm**: Encode typed user coordinates and pairwise distances as a fully connected graph, use a residual graph-attention block to predict 3-D placements, inject the placement embedding into a second block that predicts powers, train end to end with a normalized weighted scalar loss, and deploy the trained model in one forward pass.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lu et al. [x] studied collaborative multi-UAV integrated sensing, communication, and power transfer for information users, sensing targets, and energy users. They formulated a multi-objective max-min problem that jointly chooses every UAV's 3-D placement and transmit power to improve the worst SINR, sensing received-signal power, and harvested energy. Their CRGAT solver first predicts deployment from a typed user graph and then predicts power after injecting the deployment embedding, with a normalized weighted loss trained end to end. The reported simulations show over 39.6% improvement over baseline methods, balanced tradeoffs across objective weights, and a continuous approximate Pareto front.
 
 ## Problem and system model
 

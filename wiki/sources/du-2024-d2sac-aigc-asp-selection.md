@@ -5,6 +5,7 @@ authors: ["Hongyang Du", "Zonghang Li", "Dusit Niyato", "Jiawen Kang", "Zehui Xi
 year: 2024
 url: "https://doi.org/10.1109/TMC.2024.3356178"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, generative-ai, aigc, diffusion-model-as-optimizer, soft-actor-critic, edge-computing, drl]
 related:
   - "[[generative-ai-for-mec]]"
@@ -18,7 +19,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Diffusion-Based Reinforcement Learning for Edge-Enabled AI-Generated Content Services
@@ -30,6 +31,35 @@ Du, H., Li, Z., Niyato, D., Kang, J., Xiong, Z., Huang, H., & Mao, S. (2024). *D
 ## TL;DR
 
 An **AIGC-as-a-Service (AaaS)** architecture deploys [[generative-ai-for-mec|generative-AI]] (AIGC) models on wireless edge servers so Metaverse users can request content from any device. The core problem is **AIGC Service Provider (ASP) selection**: assign each arriving user task to the best edge-hosted AIGC model under environmental uncertainty, framed as a resource-constrained task-assignment MDP. The paper proposes the **AI-Generated Optimal Decision (AGOD)** algorithm — a [[generative-diffusion-model|diffusion model]] adapted to *generate* the optimal discrete selection decision ([[diffusion-model-as-optimizer]]) — and integrates it into [[soft-actor-critic|SAC]] to form **Deep Diffusion Soft Actor-Critic (D2SAC)**. D2SAC outperforms seven leading DRL baselines on the ASP-selection task.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An AIGC-as-a-Service system deploys heterogeneous AIGC models at wireless edge servers operated by AIGC service providers. Sequential user tasks request content with a required number of diffusion denoising steps, and each provider has a finite concurrent resource budget; the wireless channel is abstracted into the observed environment state rather than modeled by a dedicated multiple-access equation.
+
+**Problem & objective**: The resource-constrained ASP-selection problem chooses an assignment vector to maximize aggregate user utility, $\max_{\mathbf A}U=\sum_j u_{a_j}(T_j)$, where $a_j$ selects a provider and $T_j$ is the denoising-step demand of task $j$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| ASP assignment | $a_j$ | integer, $a_j\in\{1,\ldots,I\}$ | Provider selected for arriving task $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Resource limit | For provider $i=a_j$, $T_j+\sum_{j'\in\mathcal I_i^{\mathrm{running}}}T_{j'}\leq T_i$ |
+| Action domain | Every arriving task is assigned to one of the $I$ available ASPs, $a_j\in\{1,\ldots,I\}$ |
+
+**Algorithm**: Encode the arriving task and normalized ASP resource status as the MDP state; let the AI-Generated Optimal Decision actor start from noise and condition each reverse-diffusion step on that state to generate a discrete ASP choice; score the choice with double Q critics and a quality reward minus the resource-crash penalty; and train the diffusion actor inside entropy-regularized SAC using replay, target networks, and soft updates to obtain D2SAC.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Du et al. [x] studied AIGC service-provider selection in an edge-enabled AIGC-as-a-Service architecture. They formulated sequential provider selection as a resource-constrained task-assignment MDP that maximizes user utility while respecting each provider's available denoising-step capacity. They proposed an AI-Generated Optimal Decision diffusion actor and embedded it in an entropy-regularized, double-critic soft actor-critic framework called D2SAC. Experiments reported the highest training and test rewards among seven representative DRL baselines, and D2SAC reached the Crash Avoid test-reward level after about 190 training steps.
 
 ## Problem framing
 

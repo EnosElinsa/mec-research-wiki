@@ -5,6 +5,7 @@ authors: ["Haosheng Chen", "Haixia Cui", "Peng Cao", "Yejun He", "Jun Li", "Ivan
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3706356"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), 25, 2026"
+modeling_card: required
 tags: [source, sagin, leo-satellite-edge-computing, uav-mec, task-offloading, hybrid-action, parameterized-dqn, ddqn, ddpg]
 related:
   - "[[space-air-ground-integrated-network]]"
@@ -19,7 +20,7 @@ related:
   - "[[device-association]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Mobile-Edge Computing in SAGINs: A Hybrid Action Space P-DDQN Algorithm for Joint Offloading and Resource Allocation
@@ -31,6 +32,43 @@ Chen, H., Cui, H., Cao, P., He, Y., Li, J., Ho, I. W.-H., & Leung, V. C. M. (202
 ## TL;DR
 
 Proposes a MEC-enabled SAGIN for remote areas where IoT devices can compute locally, offload to a UAV edge server, or offload to LEO satellite edge servers. The optimization minimizes weighted energy plus latency under satellite coverage-time and partial-offloading constraints. Because device association and satellite selection are discrete while transmit power, task ratios, and trajectory variables are continuous, the paper uses a parameterized DDQN (P-DDQN) that combines DDQN for discrete actions with DDPG for continuous parameters.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground IoT devices offload computation to one mobile UAV MEC server and multiple LEO satellite MEC servers, or execute locally. The UAV trajectory changes coverage while each satellite offers a time-limited service window determined by orbital geometry.
+
+**Problem & objective**: The joint MINLP minimizes weighted delay and energy, $\min_{\mathbb A,\mathbb D,\mathbb U,\mathbb P}\sum_{n=1}^{N}\sum_{m=1}^{M}\alpha_m(n)\,\mathrm{Cost}^{\mathrm{sys}}_m(n)$, with $\mathrm{Cost}^{\mathrm{sys}}_m=\sigma T_m^{\mathrm{total}}+(1-\sigma)E_m^{\mathrm{total}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Association control | $\mathbb A=\{\alpha_m(n),\beta_m(n)\}$ | binary | IoT scheduling and satellite or UAV association |
+| Task assignment | $\mathbb D=\{D_m^l,D_m^u,D_m^s\}$ | continuous, nonnegative | Local, UAV, and LEO task portions |
+| UAV trajectory | $\mathbb U=\{u(n)\}$ | continuous 3-D path | UAV position and movement over slots |
+| Transmit powers | $\mathbb P=\{P_{mu}^t,\hat P_{m,k}^t\}$ | continuous, bounded | IoT power to UAV and satellite $k$ |
+| Hybrid action | $a(n)=\{j(n),a_j(n)\}$ | mixed | Discrete choice plus continuous parameters selected by P-DDQN |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each scheduled IoT device has one association: $\sum_m\alpha_m(n)=1$. |
+| C2 | Each IoT device uses at most one LEO satellite: $\sum_k b_{m,k}(n)\le1$. |
+| C3 | Satellite service delay fits its remaining coverage time: $T_{m,k}^{s}(n)\le T_{m,k}^{re}(n)$. |
+| C4 | Task portions sum to the generated task: $D_m^l(n)+D_m^u(n)+D_m^s(n)=D_m(n)$. |
+| C5 | IoT transmit powers are bounded: $0\le P_{mu}^t(n)\le P_{mu}^{\max}$ and $0\le P_{m,k}^t(n)\le P_{m,k}^{\max}$. |
+| C6 | The required task volume is processed: $\sum_{n,m}\alpha_m(n)D_m(n)\ge D_{\mathrm{total}}$. |
+
+**Algorithm**: Represent each discrete action with a DDPG-style continuous policy parameter, use a DDQN critic to select the discrete action, update actor and critic alternately with double-DQN targets and soft target updates, and train from replayed hybrid-action transitions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] formulated MEC in a space-air-ground integrated network with local, UAV, and LEO execution for each IoT task. Their weighted delay-energy MINLP jointly selects user and satellite associations, partial task portions, transmit powers, and a three-dimensional UAV trajectory under satellite coverage time, power, assignment, and task-completion constraints. P-DDQN combines a DDPG policy that generates continuous parameters with a DDQN critic that selects the discrete branch, avoiding direct discretization of the hybrid action space. The method converged near the reported reward after about 500 episodes and kept per-slot cost around 2.30 versus about 2.65 with fixed altitude, while more LEO satellites reduced cost further.
 
 ## Problem framing
 

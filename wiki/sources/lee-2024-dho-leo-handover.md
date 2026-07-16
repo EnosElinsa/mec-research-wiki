@@ -5,6 +5,7 @@ authors: ["Ju-Hyung Lee", "Chanyoung Park", "Soohyun Park", "Andreas F. Molisch"
 year: 2024
 url: "https://doi.org/10.1109/TWC.2023.3342975"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, leo-satellite-edge-computing, seamless-handover, deep-reinforcement-learning, non-terrestrial-network, protocol-learning]
 related:
   - "[[leo-satellite-edge-computing]]"
@@ -17,7 +18,7 @@ related:
   - "[[walker-star-constellation]]"
   - "[[soohyun-park]]"
 created: 2026-06-01
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Handover Protocol Learning for LEO Satellite Networks: Access Delay and Collision Minimization
@@ -29,6 +30,40 @@ Lee, J.-H., Park, C., Park, S., & Molisch, A. F. (2024). *Handover Protocol Lear
 ## TL;DR
 
 A DRL-based **handover (HO) protocol** for **regenerative-type LEO satellite networks**, called **DHO**, that **skips the Measurement Report (MR)** step of the conventional 3GPP-NR HO procedure. After training on a pre-determined LEO orbital pattern, the serving-satellite agent uses its predictive capability to send the HO Request to a target satellite without waiting for the MR — eliminating the long uplink propagation delay (and power) incurred during the MR phase. DHO minimizes **access delay** and **collision rate** while keeping a high HO success rate, and is trained with the distributed **IMPALA** actor-learner algorithm.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground user equipment must hand over from a serving regenerative LEO satellite to a target satellite before the serving link disappears. At each of $N$ handover opportunities, the serving satellite can wait or send a handover request for each user to a candidate satellite on another orbital plane, with limited target resource blocks and random-access preambles creating collisions.
+
+**Problem & objective**: DHO minimizes $\sum_{n=1}^{N}\left(D[n]+\nu C[n]\right)$, the horizon sum of average access delay and weighted collision rate, by controlling per-user handover requests and target-satellite selection.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Handover action | $a_j[n]$ | multi-discrete, $\{0,1,\ldots,K-1\}$ | Wait or request a target orbital plane for user $j$ in slot $n$ |
+| One-hot action vector | $\mathbf a_j[n]$ | binary vector | Encoded wait or target-satellite decision |
+| Joint handover action | $\mathbf a[n]$ | stacked multi-discrete action | Decisions for all ground users at opportunity $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Exactly one wait-or-target action is selected per user: $\sum_{k=0}^{K-1}a_k=1$ |
+| C2 | A handover cannot select another satellite on the serving satellite's orbital plane |
+| C3 | Satellite positions evolve according to the predetermined discrete orbital model |
+| C4 | A target admits no more requests than its available resource blocks |
+| C5 | Successful random access requires a non-colliding preamble after admission |
+
+**Algorithm**: DHO removes the Measurement Report step and learns the request and target decisions with IMPALA. Parallel actors interact with independent LEO handover environments, upload trajectories to a central learner, and use V-trace targets with truncated importance weights to correct actor-policy lag before updated parameters are redistributed.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lee et al. [x] learned per-user handover timing and target-satellite selection for massive access in regenerative LEO satellite networks. Their objective minimizes access delay plus a weighted collision rate under orbital evolution, single-target selection, resource-block admission, and random-access contention. DHO removes the uplink Measurement Report and trains a multi-discrete policy with distributed IMPALA and V-trace correction. With sufficient resource blocks, DHO achieved 6.8 times lower access delay than conventional handover and 5.02 times lower delay than a random policy, while adapting its request rate when resources became scarce.
 
 ## Problem framing
 

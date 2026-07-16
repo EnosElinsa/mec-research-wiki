@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Adaptive Digital Twin Migration in Vehicular Edge Computing and Networks"
 authors: ["Fangyi Mou", "Jiong Lou", "Zhiqing Tang", "Yuan Wu", "Weijia Jia", "Yan Zhang", "Wei Zhao"]
 year: 2025
@@ -25,7 +26,7 @@ related:
   - "[[zhao-2025-traj-offload-cache-migration]]"
   - "yuan-wu"
 created: 2026-06-03
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Adaptive Digital Twin Migration in Vehicular Edge Computing and Networks
@@ -35,6 +36,41 @@ Fangyi Mou, Jiong Lou, Zhiqing Tang, Yuan Wu, Weijia Jia, Yan Zhang, Wei Zhao, "
 
 ## TL;DR
 In Vehicular Edge Computing and Networks (VECONs), each moving vehicle is served by a [[digital-twin|digital twin (DT)]] hosted on a roadside-unit (RSU) server; as the vehicle moves, the DT must migrate between RSUs to keep latency low. This paper formulates **adaptive DT migration (ADM)** as a combinatorial optimization that minimizes total cost — communication latency + colocation cost + migration latency — under large-scale, complex DT communications, and solves it with an off-policy actor-critic RL agent bootstrapped by **expert demonstrations / warm-start policies**. On real-world Cologne vehicular-mobility traces, the reported reduction in total migration latency is about 39% on average over baseline algorithms.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Moving vehicles are represented by digital twins hosted on heterogeneous roadside-unit edge servers in a slotted vehicular edge network. Wired inter-RSU paths support twin cooperation, application interaction, synchronization, and migration, while the vehicle-to-twin pair includes a wireless uplink; each RSU has finite CPU, storage, memory, and placement capacity.
+
+**Problem & objective**: Problem 1, an NP-hard binary nonlinear program and infinite-horizon MDP, minimizes total communication, colocation, and migration cost, $\min\sum_{t\in T}\mathcal L(t)$, equivalently maximizing $\eta(\pi)=\mathbb E[\sum_{t=0}^{\infty}\gamma^tr_t]$ with $r_t=-\mathcal L(t)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| DT-to-RSU placement | $\delta_{d,e}(t)$ | binary, $\{0,1\}$ | Whether digital twin $d$ runs on RSU $e$ at slot $t$ |
+| Selected RSU | $a_e(t)$ | binary, $\{0,1\}$ | Whether RSU $e$ is selected at slot $t$ |
+| Migration action | $a_t$ | discrete, $a_t\in\mathbf E$ | Destination RSU chosen by the ADM policy |
+| Migration policy | $\pi(a\mid s;\theta)$ | stochastic policy | Maps RSU and digital-twin state features to a destination |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 14 | Pairwise communication latency satisfies $\mathcal L^{\mathrm{pair}}(t)<W_d$ |
+| 15-16 | Exactly one RSU is selected and each digital twin runs on exactly one RSU |
+| 17 | $\sum_d\delta_{d,e}(t)\le N_e$ limits the number of twins at RSU $e$ |
+| 18 | $\sum_d z_d\delta_{d,e}(t)\le z_e$ enforces storage capacity |
+| 19 | $\sum_d m_d\delta_{d,e}(t)\le m_e$ enforces memory capacity |
+
+**Algorithm**: Embed and concatenate RSU and digital-twin features → collect greedy-policy expert demonstrations → pretrain an off-policy actor-critic agent from the demonstration replay buffer → progressively reduce the demonstration proportion while training on online transitions → choose the destination RSU from the learned policy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mou et al. [x] studied adaptive digital-twin migration in vehicular edge computing and networks. They modeled communication latency across twin cooperation, application interaction, and vehicle-to-twin communication together with colocation and migration latency. They formulated an NP-hard binary nonlinear problem that minimizes total cost under latency, unique-placement, RSU-count, storage, and memory constraints, and recast it as an infinite-horizon Markov decision process. Their ADM algorithm uses feature extraction, off-policy actor-critic reinforcement learning, and a warm-start schedule built from greedy-policy expert demonstrations. Experiments on Cologne vehicular-mobility traces report an average total migration-latency reduction of approximately 39% over the evaluated baseline algorithms.
 
 ## Problem framing
 DTs improve service quality in VECONs but introduce heavy, recurring communication for synchronization. The paper identifies two challenges that prior work neglects: (1) **quantifying the complex latency** of DT communications, which involves three distinct flows — DT-to-DT cooperation, DT-to-user-application interaction, and DT-to-vehicle pair-wise communication; and (2) **making adaptive migration decisions** in a fast-changing environment where high vehicle mobility and varying DT connections leave the RL agent with sparse, partially-unseen states. Traditional heuristics use static strategies and cannot capture long-term reward; plain RL struggles to explore the sparse state space.

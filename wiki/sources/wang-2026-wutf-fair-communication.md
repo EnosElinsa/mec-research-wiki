@@ -17,7 +17,8 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # DRL-Based Wireless-Powered UAVs Trajectories Planning for Fair Communication
@@ -29,6 +30,41 @@ Wang, P., Wang, X., Huang, H., & Dai, H. (2026). *DRL-Based Wireless-Powered UAV
 ## TL;DR
 
 WUTF coordinates wireless-powered UAV base stations through centralized training and decentralized execution. Each UAV selects speed and yaw from local observations, while a shared critic and sequential PPO-style actor updates optimize a reward that combines underserved-user communication value, Jain fairness, propulsion/communication energy, and safety penalties.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Wireless-powered UAV base stations fly at fixed altitude to serve stationary ground users and recharge while hovering near wireless charging towers. The controller must balance cumulative throughput, geographical fairness, propulsion and communication energy, and long-duration operation.
+
+**Problem & objective**: Problem P1 maximizes communication efficiency, $\max_{\mathbf v,\boldsymbol\psi,\mathbf b}\frac{P_TF_T}{\sum_{t,i}E_{t,\mathrm{out}}^{f_i}}$, where $P_T$ is total throughput, $F_T$ is Jain fairness, and the denominator is total UAV energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV speed | $v_{f_i}^t$ | continuous, $[0,v_{\max}]$ | Per-slot UAV flight speed |
+| UAV yaw | $\psi_{f_i}^t$ | continuous, $[0,2\pi]$ | Flight direction in slot $t$ |
+| User association | $b_{f_i,u_j}^t$ | binary | Indicates whether UAV $f_i$ serves user $u_j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 23a | UAV battery remains positive and below capacity, $0<B_t^{f_i}\leq B_{\max}$ |
+| 23b | User association is binary |
+| 23c | Each user is served by at most one UAV, $\sum_i b_{f_i,u_j}^t\leq1$ |
+| 23d | UAV speed satisfies $0\leq v_{f_i}^t\leq v_{\max}$ |
+| 23e | UAV yaw satisfies $0\leq\psi_{f_i}^t\leq2\pi$ |
+| 23f-23g | UAV coordinates remain inside the square task area |
+
+**Algorithm**: WUTF casts the problem as a multi-agent POMDP in which each UAV actor selects speed and yaw from local observations. CNN and GRU layers encode spatial and temporal information, a centralized critic supports training, and randomized sequential PPO-style actor updates reduce conflicts between changing agent policies before decentralized execution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied long-duration fair communication by wireless-powered UAV base stations that can recharge near fixed charging towers. They maximized total throughput multiplied by Jain fairness per unit UAV energy over speed, yaw, and user-association decisions subject to battery, association, mobility, and area constraints. WUTF uses CNN-GRU actors, a centralized critic, and sequential PPO-style policy updates within a multi-agent partially observable model. For four UAVs, the reported Jain fairness was 0.748 compared with 0.529 for modified LTCC-UDUA, corresponding to a 41.4% improvement. The authors also reported higher communication efficiency than all listed learning and heuristic baselines across the examined charging ranges. A separate Shanghai-map simulation with 378 users demonstrated the learned two-UAV trajectories over a one-hour mission.
 
 ## Problem
 

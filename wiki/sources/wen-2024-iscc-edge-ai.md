@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Task-Oriented Sensing, Computation, and Communication Integration for Multi-Device Edge AI"
 authors: ["Dingzhu Wen", "Peixi Liu", "Guangxu Zhu", "Yuanming Shi", "Jie Xu", "Yonina C. Eldar", "Shuguang Cui"]
 year: 2024
@@ -21,7 +22,7 @@ related:
   - "[[jie-xu]]"
   - "[[yuanming-shi]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Task-Oriented Sensing, Computation, and Communication Integration for Multi-Device Edge AI
@@ -33,6 +34,40 @@ Wen, D., Liu, P., Zhu, G., Shi, Y., Xu, J., Eldar, Y. C., & Cui, S. (2024). *Tas
 ## TL;DR
 
 Designs a **multi-device edge-AI inference system** that jointly exploits **AI model split inference** and **integrated sensing and communication (ISAC)**. Multiple single-antenna ISAC devices, each with a dual-functional radar-communication (DFRC) transceiver, perform radar sensing to obtain **multi-view** data, extract and quantize features locally, then offload the quantized features over wireless links to a single edge server that runs the remaining inference on the **cascaded feature vector**. The system targets **inference accuracy** (not throughput) under a latency constraint, measured by a tractable surrogate metric — **discriminant gain** (KL-divergence-derived class separability in normalized feature space). The resulting non-convex **integrated sensing, computation, and communication (ISCC)** resource-management problem is shown to be **optimally solvable by the sum-of-ratios method**, jointly allocating per-device sensing/transmit power, communication time, and quantization-bit allocation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple single-antenna ISAC devices sense non-overlapping views, extract and quantize features, and send them over TDMA links to an edge server that performs split inference under a real-time latency budget.
+
+**Problem & objective**: The ISCC resource problem maximizes total discriminant gain, $\max_{P_{c,k},P_{r,k},T_{c,k},Q_k}G$, as an inference-accuracy surrogate.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication power | $P_{c,k}$ | continuous, nonnegative | Device $k$ transmit power |
+| Sensing power | $P_{r,k}$ | continuous, nonnegative | Radar sensing power |
+| Communication time | $T_{c,k}$ | continuous, nonnegative | TDMA transmission duration |
+| Quantization gain or bits | $Q_k$ | continuous, nonnegative | Feature quantization resolution |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Total sensing, computation, and communication time meets the latency budget: $\sum_k(T_{r,k}+T_{m,k}+T_{c,k})\leq T$. |
+| C2 | Quantized feature information fits the channel: $N_k\log_2(1+Q_k/\delta_k^2)\leq T_{c,k}B\log_2(1+P_{c,k}H_{c,k}/\delta_c^2)$. |
+| C3 | Each device energy is bounded: $P_{r,k}T_{r,k}+E_{m,k}+P_{c,k}T_{c,k}\leq E_k$. |
+| C4 | All decision variables are nonnegative. |
+
+**Algorithm**: Transform discriminant gain into a sum of quasi-linear ratios, iteratively solve convex weighted-distortion subproblems for sensing and quantization power and communication time, and update the auxiliary gains until the sum-of-ratios method converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wen et al. [x] formulate task-oriented edge-AI inference as an integrated sensing, computation, and communication resource problem. The objective maximizes discriminant gain through per-device sensing power, transmit power, communication time, and quantization allocation under a shared latency budget, successful-transmission constraints, and energy limits. Their sum-of-ratios method converts the non-convex objective into iterated convex weighted-distortion subproblems and is shown to reach the optimal reformulated solution. Experiments connect the optimized resource allocation to multi-view sensing and split-inference accuracy.
 
 ## Problem framing
 

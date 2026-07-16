@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "HybridRAG-Based LLM Agents for Low-Carbon Optimization in Low-Altitude Economy Networks"
 authors: ["Jinbo Wen", "Cheng Su", "Jiawen Kang", "Jiangtian Nie", "Yang Zhang", "Jianhang Tang", "Dusit Niyato", "Chau Yuen"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[soft-actor-critic]]"
   - "[[generative-ai-for-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # HybridRAG-Based LLM Agents for Low-Carbon Optimization in Low-Altitude Economy Networks
@@ -28,6 +29,41 @@ Wen, J., Su, C., Kang, J., Nie, J., Zhang, Y., Tang, J., Niyato, D., & Yuen, C. 
 ## TL;DR
 
 Uses HybridRAG to help LLM agents formulate a low-carbon multi-UAV MEC optimization problem for LAE networks, then solves the generated problem with R^2DSAC, a double-regularized diffusion-enhanced SAC algorithm. The retrieval stack combines KeywordRAG, VectorRAG, and GraphRAG so model-formulation prompts can retrieve both textual domain knowledge and relational UAV/MEC structure. The DRL solver uses diffusion-policy regularization and dynamic pruning to improve reward while tracking training/inference carbon emissions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple rotary-wing UAVs serve users with indivisible tasks in slotted low-altitude networks, while mobility, collision avoidance, coverage, communication, computation, propulsion energy, and carbon conversion are modeled jointly.
+
+**Problem & objective**: The generated MEC model minimizes total carbon emissions, $\min_{\{A,F,V\}}C^{Total}$, over task assignment, compute allocation, and UAV trajectory actions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task assignment | $\alpha_{k,m}(n)$ | binary | Assign user $k$ to UAV $m$ at slot $n$ |
+| Compute allocation | $f_{k,m}(n)$ | continuous, $[0,F_m^{max}]$ | UAV compute resource for a task |
+| UAV position | $\mathbf w_m(n)$ | continuous, bounded | Three-dimensional trajectory position |
+| UAV movement action | $v_m(n),\theta_m(n)$ | continuous, speed and angle bounded | Speed and direction controls |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task is assigned once: $\alpha_{k,m}(n)\in\{0,1\}$ and $\sum_m\alpha_{k,m}(n)=1$. |
+| C2 | UAV positions stay inside the service region. |
+| C3 | UAV movement is bounded: $\lVert\mathbf w_m(n+1)-\mathbf w_m(n)\rVert\leq\delta_tV_{max}$. |
+| C4 | UAV separation and user coverage are enforced. |
+| C5 | G2A bandwidth and compute capacity are bounded. |
+
+**Algorithm**: Use KeywordRAG, VectorRAG, and GraphRAG to prompt an LLM into a grounded optimization model, then solve its MDP with R2DSAC, diffusion-policy and action-entropy regularization, Q guidance, and dynamic actor pruning.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wen et al. [x] combine HybridRAG-based formulation with a diffusion-enhanced SAC solver for low-carbon multi-UAV MEC. The generated model minimizes carbon emissions through binary task assignments, compute allocations, and UAV movement under assignment, region, speed, separation, coverage, bandwidth, and capacity constraints. Keyword, vector, and graph retrieval provide domain and relational context, while R2DSAC uses diffusion and entropy regularization, Q guidance, and dynamic pruning to learn the control policy. Experiments compare retrieval quality, carbon-aware training behavior, and reward against conventional RAG and DRL baselines.
 
 ## Problem framing
 

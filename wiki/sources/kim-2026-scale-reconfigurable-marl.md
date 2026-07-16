@@ -5,6 +5,7 @@ authors: ["Gyu Seon Kim", "Emily Jimin Roh", "Soyi Jung", "Soohyun Park", "Joong
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3709180"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), accepted author version/early access"
+modeling_card: required
 tags: [source, scale-reconfigurable-marl, non-terrestrial-network, cubesat, fixed-wing-uav, dynamic-topology, energy-balancing]
 related:
   - "[[scale-reconfigurable-marl]]"
@@ -20,7 +21,7 @@ related:
   - "[[soohyun-park]]"
   - "[[joongheon-kim]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Scale-Reconfigurable Multi-Agent Reinforcement Learning for Aerial Networks in Dynamic Environments
@@ -32,6 +33,40 @@ Kim, G. S., Roh, E. J., Jung, S., Park, S., & Kim, J. (2026). *Scale-Reconfigura
 ## TL;DR
 
 SR-MARL lets ground-station agents schedule a changing visible set of CubeSats and large fixed-wing/eVTOL UAVs with masked actor/critic networks whose active input and hidden widths follow the current device count. Layerwise hidden-state sharing supports cooperation, and the reward combines communication quality with balanced residual energy. The reported gains are from a 4-GS, 12-device simulation and lack statistical uncertainty or comparisons with the scalable MARL methods discussed in related work.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple ground stations select a time-varying visible set of CubeSats and fixed-wing or eVTOL-class UAVs for global aerial-network access. Link observations include geometry, path loss, SNR, capacity, and residual energy; CubeSat and UAV energy follow orbital charging and fixed-wing propulsion models. Binary device access scheduling is performed under partial observability and changing observation dimensions.
+
+**Problem & objective**: The system is formulated as a decentralized partially observable MDP whose policy maximizes expected cumulative reward, $\max_\pi \mathbb E_\pi[\sum_t\gamma^t\Re_i(t)]$, combining QoS, capacity, carrier-to-noise ratio, and high, balanced residual energy across CubeSats and UAVs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| CubeSat selection | $\mathfrak S_j^i(t)$ | binary, $\{0,1\}$ | Whether ground station $i$ receives service from CubeSat $j$ |
+| UAV selection | $\mathfrak S_l^i(t)$ | binary, $\{0,1\}$ | Whether ground station $i$ receives service from UAV $l$ |
+| Active network width | $\tilde r_i(t)$ | discrete width ratio | Fraction of actor and critic input and hidden nodes activated for the visible-device count |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each station selects only currently visible CubeSats and UAVs |
+| C2 | Device-selection indicators remain binary |
+| C3 | The number of selected devices is at most the station access limit $\bar M_i$ |
+| C4 | Active input and hidden widths follow the current visible-device count and fixed maximum architecture |
+| C5 | The reward penalizes low or imbalanced residual energy while promoting network-service metrics |
+
+**Algorithm**: Mask inactive input and hidden neurons according to the current device count, normalize only active neurons, exchange and aggregate intermediate hidden states among ground-station actors, train decentralized scale-reconfigurable actors with a centralized critic through temporal-difference actor-critic updates, and deploy the active-width policies under local observations.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Kim et al. [x] studied access scheduling in aerial networks whose visible CubeSat and UAV populations change over time. They formulated the ground-station decision process as a decentralized partially observable MDP that balances QoS, capacity, carrier-to-noise ratio, and residual-energy preservation through binary device-selection actions. Their SR-MARL architecture activates only the input and hidden neurons required by the current visible-device count and masks inactive weights from forward and backward computation. Layerwise hidden-state sharing supports cooperation among ground-station actors, while a centralized critic provides temporal-difference training. Simulations report normalized DPO-MDP reward of 0.775 for SR-MARL compared with 0.329 for padding-based MARL and higher reported network and residual-energy indicators than the evaluated baselines.
 
 ## Problem and system model
 

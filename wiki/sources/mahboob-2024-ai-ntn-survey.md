@@ -5,6 +5,7 @@ authors: ["Shadab Mahboob", "Lingjia Liu"]
 year: 2024
 url: "https://doi.org/10.1109/COMST.2023.3347145"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, non-terrestrial-network, space-air-ground-integrated-network, leo-satellite-edge-computing, federated-learning, survey, 6g]
 related:
   - "[[non-terrestrial-network]]"
@@ -20,7 +21,7 @@ related:
   - "[[mao-2024-fso-leo-hierarchical-routing]]"
   - "[[cheng-2025-dos-satellite-edge-computing]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Revolutionizing Future Connectivity: A Contemporary Survey on AI-Empowered Satellite-Based Non-Terrestrial Networks in 6G
@@ -32,6 +33,12 @@ Mahboob, S., & Liu, L. (2024). *Revolutionizing Future Connectivity: A Contempor
 ## TL;DR
 
 A survey arguing that **artificial intelligence (AI)** is a key enabler for **satellite-based non-terrestrial networks (NTN)** in 6G. It provides background on NTN platforms/architecture/characteristics and on AI/ML/DL techniques, then organizes existing work by **NTN research thrust** — mapping which AI approach fits which NTN challenge — and reviews industry/research efforts to implement AI-enabled NTN via software-defined (O-RAN / RIC, SDR) platforms, closing with practical challenges and recommendations.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mahboob and Liu [x] surveyed artificial-intelligence methods for satellite-based non-terrestrial networks integrated with future 6G systems. They organized existing work around NTN challenges including channel and Doppler estimation, beam management, resource allocation, handover, spectrum sharing, routing, slicing, offloading, and security, and reviewed satellite testbeds and software-defined O-RAN integration efforts. Their synthesis recommends supervised learning for labeled prediction and estimation tasks, reinforcement learning for feedback-driven control, and distributed learning for scalable satellite-terrestrial operation. The survey identified limited onboard capability, time-varying topology, propagation delay, feedback overhead, security, and energy efficiency as coupled implementation challenges requiring low-complexity, secure, and online learning designs.
 
 ## Problem framing
 

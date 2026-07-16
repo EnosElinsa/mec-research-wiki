@@ -5,6 +5,7 @@ authors: ["Xiao Tang", "Kexin Zhao", "Chao Shen", "Chenhao Lin", "Shuai Liu", "B
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3618614"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, anti-jamming, graph-attention-network, beamforming, uav-deployment, zero-sum-game, maddpg]
 related:
   - "[[hierarchical-graph-anti-jamming-control]]"
@@ -16,7 +17,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[zhu-han]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Graph Attention Network-Driven Hierarchical Learning for Anti-Jamming UAV Communications
@@ -28,6 +29,42 @@ Tang, X., Zhao, K., Shen, C., Lin, C., Liu, S., Wang, B., Niyato, D., & Han, Z. 
 ## TL;DR
 
 Separates anti-jamming control into a graph-attention beamforming layer and an adversarial deployment/power layer. A pretrained GAT supplies beamformers inside a two-agent MADDPG loop that moves legitimate UAVs while jammers change transmit power.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple multi-antenna UAV base stations serve associated ground users over shared spectrum while multiple single-antenna jammers transmit adversarial interference. UAVs move horizontally at a fixed altitude, and the achievable sum rate depends jointly on beamforming, deployment, mutual interference, and jammer powers.
+
+**Problem & objective**: Problems (5)-(7) form a zero-sum game in which the legitimate side maximizes sum rate $R$ over UAV beamformers and positions while the jammer side minimizes the same rate over its power vector.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV beamformer | $\mathbf f_k$ | complex vector, bounded norm | Downlink beamforming vector for UAV $k$ |
+| UAV horizontal position | $\mathbf w_k$ | continuous, $\mathbf w_k\in\mathcal Q$ | Deployment of UAV $k$ in the service area |
+| Jammer power | $p_j$ | continuous, $0\leq p_j\leq P_j$ | Transmit power selected by jammer $j$ |
+| Deployment update | $\Delta\mathbf w_k$ | continuous bounded displacement | Outer-layer movement action for UAV $k$ |
+| Power update | $\Delta p_j$ | continuous bounded increment | Outer-layer action used to update jammer power |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 5b | UAV transmit-power limit, $\lVert\mathbf f_k\rVert^2\leq P_k$ |
+| 5c | UAV deployment remains inside $\mathcal Q$ |
+| 6b | Each jammer obeys $0\leq p_j\leq P_j$ |
+| 6c / 9 | Aggregate jamming power satisfies $\sum_j p_j\leq P_{\max}$ |
+| 26-28 | Movement and power increments are bounded and clipped or normalized back into their feasible sets |
+
+**Algorithm**: An unsupervised GAT is pretrained to map current channels and jamming powers to rate-maximizing beamformers. The outer zero-sum game is then represented by two MADDPG agents, one updating all UAV positions and the other updating all jammer powers, with the frozen GAT called inside each transition to compute the rate reward.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tang et al. [x] formulated multi-UAV anti-jamming communication as a zero-sum game over legitimate beamforming and deployment and adversarial jamming power. Their hierarchical solution trains a graph attention network to produce beamformers from channel and jamming conditions, then embeds that network in a two-agent MADDPG controller for UAV displacement and jammer-power updates. The strategy spaces enforce UAV transmit-power and deployment limits together with individual and aggregate jammer-power limits. Simulations report stable learning convergence and higher transmission rates than GCN, MLP, successive-convex-approximation, DDQN, and genetic-algorithm baselines across the tested configurations. The graph representation also permits fine-tuned transfer to different numbers of legitimate links and jammers while keeping inference time comparatively stable.
 
 ## Problem framing
 

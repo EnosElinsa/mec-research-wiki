@@ -5,6 +5,7 @@ authors: ["Jiawei Huang", "Aimin Wang", "Geng Sun", "Jiahui Li", "Jiacheng Wang"
 year: 2025
 url: "https://doi.org/10.1109/JIOT.2024.3521977"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
+modeling_card: required
 tags: [source, collaborative-beamforming, physical-layer-security, maritime-mec, multi-objective, friendly-jamming-uav, swarm-intelligence, energy-efficiency]
 related:
   - "[[collaborative-beamforming]]"
@@ -23,7 +24,7 @@ related:
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[li-2023-secure-marine-iot-jamming]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dual AAV Cluster-Assisted Maritime Physical-Layer Secure Communications via Collaborative Beamforming
@@ -35,6 +36,39 @@ Huang, J., Wang, A., Sun, G., Li, J., Wang, J., Du, H., & Niyato, D. (2025). *Du
 ## TL;DR
 
 Two clusters of **autonomous aerial vehicles (AAVs)** assist remote maritime communications using **collaborative beamforming (CB)**: one cluster forms a **maritime AAV-enabled virtual antenna array (MUVAA) relay** that forwards data to a legitimate vessel (Bob), and the other forms an **MUVAA jammer** that beams jamming toward a remote eavesdropper (Willie). The work formulates a **secure and energy-efficient maritime communication multi-objective optimization problem (SEMCMOP)** — maximize Bob's SINR, minimize Willie's SINR, and minimize total AAV flight energy — solved by an **improved multi-objective mayfly algorithm (IMOMA)** with chaotic solution initialization and hybrid solution-update strategies.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A shore-side base station sends data through a relay cluster of autonomous aerial vehicles to a legitimate vessel, while a separate aerial cluster emits collaborative friendly jamming toward a maritime eavesdropper. Each cluster acts as a virtual antenna array whose geometry and excitation weights jointly determine the legitimate and eavesdropping SINRs as well as fleet propulsion energy.
+
+**Problem & objective**: The secure and energy-efficient maritime communication problem minimizes $\mathbf{F}=\{-f_1,f_2,f_3\}$, equivalently maximizing Bob's SINR $f_1$ while minimizing Willie's SINR $f_2$ and the total flight energy $f_3$ of the relay and jammer clusters.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Relay-cluster positions | $\mathbf{P}_r$ | continuous 3-D coordinates | Positions of relay AAVs forming the virtual array |
+| Relay excitation weights | $\mathbf{I}_r$ | continuous, $[0,1]$ | Collaborative beamforming weights of relay AAVs |
+| Jammer-cluster positions | $\mathbf{P}_j$ | continuous 3-D coordinates | Positions of friendly-jamming AAVs |
+| Jammer excitation weights | $\mathbf{I}_j$ | continuous, $[0,1]$ | Collaborative jamming weights |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Relay and jammer excitation weights remain in $[0,1]$ |
+| C2 | Every AAV remains inside its prescribed 3-D flight region |
+| C3 | Any two AAVs in the same cluster maintain the collision-avoidance distance $D_{\min}$ |
+
+**Algorithm**: IMOMA initializes a diverse Pareto population with a Tent chaotic map, then applies dimension-specific whale-inspired and arithmetic-optimization updates to the mayfly population. Non-dominated sorting and crowding-based archive management retain tradeoff solutions for legitimate SINR, eavesdropper SINR, and propulsion energy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] used separate autonomous-aerial-vehicle clusters as a collaborative relay array and a friendly-jamming array for remote maritime communication. Their three-objective model maximized Bob's SINR, minimized Willie's SINR, and minimized fleet flight energy over both clusters' 3-D positions and excitation weights under flight-region, weight-range, and collision-separation constraints. IMOMA combines Tent-map initialization with dimension-specific whale and arithmetic updates to generate Pareto tradeoffs. In the larger scenario, collaborative beamforming achieved Bob SINR 20.75 and Willie SINR -39.9, versus -2.26 and -4.17 without collaborative beamforming, while IMOMA had the best three reported objectives among the compared optimizers.
 
 ## Problem framing
 

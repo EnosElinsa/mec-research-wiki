@@ -15,7 +15,8 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[urban-air-mobility]]"
 created: 2026-07-11
-updated: 2026-07-11
+modeling_card: required
+updated: 2026-07-16
 ---
 
 # Bi-Level Optimization Framework for Urban Low-Altitude UAV Delivery Ensuring Target Level of Safety
@@ -27,6 +28,40 @@ Jiang, B., Li, Y., Li, C., & Zheng, Y. (2026). *Bi-Level Optimization Framework 
 ## TL;DR
 
 Models urban low-altitude UAV delivery as a coupled task-allocation and trajectory-planning problem. The upper level uses TC-NSGA-III to balance delivery time, ground risk, and workload; the lower level uses RG-FMT* to find collision-free paths whose waypoint risks satisfy a target level of safety (TLS).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A delivery hub dispatches heterogeneous UAVs with different speeds and payload capacities to serve multiple orders in a three-dimensional urban grid with static buildings and spatial ground-risk values.
+
+**Problem & objective**: The upper-level CTA-TOP minimizes the three-objective vector $(F_1,F_2,F_3)$ of delivery-time cost, total path risk, and workload-distance variance; for each assigned leg, the lower-level problem minimizes path length $\sum_{i=0}^{k-1}\lVert X_{i+1}-X_i\rVert_2$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Order assignment | $x_{mn}$ | Binary, $\{0,1\}$ | Assigns order $m$ to UAV $n$ |
+| Visit-order key | $p_m$ | Continuous, $(0,1)$ | Determines each UAV's delivery sequence after sorting |
+| Flight waypoint | $X_k=(x_k,y_k,z_k)$ | Continuous point in the urban grid | Defines a lower-level trajectory |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every UAV receives at least one order: $\sum_m x_{mn}\geq 1$ |
+| C2 | Every order is assigned once: $\sum_n x_{mn}=1$ |
+| C3 | Each UAV respects its payload capacity: $\sum_m x_{mn}\leq W_n$ |
+| C4 | Waypoints remain inside the three-dimensional grid and avoid all obstacles |
+| C5 | Every waypoint meets the target level of safety: $R(X_k)\leq R_{\mathrm{TLS}}$ |
+
+**Algorithm**: TC-NSGA-III evolves dual-layer assignment and visit-order chromosomes to obtain a Pareto set; RG-FMT* then performs risk-guarded sampling and fast-marching-tree search for each leg, and its path lengths and risks feed the upper-level objective evaluation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jiang et al. [x] studied coordinated delivery by heterogeneous UAVs in a three-dimensional urban environment with static obstacles and spatial ground-risk values. They formulated a coupled task-allocation and trajectory-optimization problem that minimizes delivery-time cost, total ground risk, workload imbalance, and lower-level path length under assignment, payload, collision, and target-level-of-safety constraints. Their bi-level framework uses TC-NSGA-III for allocation and delivery sequencing and RG-FMT* for risk-guarded path planning. In simulation, RG-FMT* achieved a 100% TLS compliance rate with the shortest computation time among the compared planners. The overall framework also outperformed the compared methods on total risk and time cost, and large-scale urban simulations were reported to support its generalization and scalability.
 
 ## Problem
 

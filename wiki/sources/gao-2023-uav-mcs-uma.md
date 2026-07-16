@@ -5,10 +5,11 @@ authors: ["Hui Gao", "Jianhao Feng", "Yu Xiao", "Bo Zhang", "Wendong Wang"]
 year: 2023
 url: "https://doi.org/10.1109/TMC.2022.3147871"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, mobile-crowd-sensing, uav-data-collection, multi-task-allocation, incentives, maddpg, calibration]
 related: ["[[uav-data-collection]]", "[[maddpg]]", "[[semi-markov-decision-process]]", "[[edge-intelligence]]"]
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A UAV-Assisted Multi-Task Allocation Method for Mobile Crowd Sensing
@@ -20,6 +21,41 @@ Gao, H., Feng, J., Xiao, Y., Zhang, B., & Wang, W. (2023). *A UAV-Assisted Multi
 ## TL;DR
 
 Proposes UMA, a UAV-assisted mobile-crowd-sensing framework that assigns sensing tasks to human participants while scheduling UAVs to cover missed points of interest and calibrate human sensor data. The method combines online incentives, participant quality prediction, Shapley-style point importance, and MADDPG UAV scheduling.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple concurrent mobile-crowd-sensing tasks define budgets, time slots, points of interest, and data-quality requirements. Human participants collect data for rewards, while multiple UAVs visit rarely sensed points and calibrate participant sensors; UAV motion consumes distance-proportional energy and must avoid obstacles and the area boundary.
+
+**Problem & objective**: Problem (1) is a budgeted maximum-coverage problem that maximizes high-quality sensing data, $\max \sum_t\lvert\cup_i\mathcal L_i^h\rvert+\lvert\cup_j\mathcal L_j\rvert\eta_p^t$, under task-budget and per-UAV energy constraints; the UAV subproblem is a continuous-action MDP maximizing discounted collection, calibration, and energy-aware reward.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Participant sensing assignment | $x_i(k^t,p^t)$ | binary, $\{0,1\}$ | Whether participant $i$ senses point $p^t$ in slot $k^t$ |
+| Maximum offered reward | $c_p^f(k^t)$ | continuous, nonnegative | Highest reward offered for one data item at a point |
+| UAV acceleration | $a_j^k=(\theta_j^a,d_j^a)$ | continuous, $\theta_j^a\in[0,2\pi)$ and $d_j^a\in[0,d_{max}]$ | Direction and acceleration chosen for UAV $j$ |
+| UAV sensing and calibration action | $\pi_j(s^k)$ | continuous policy | Motion policy balancing collection and participant calibration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 1a | Total participant payments do not exceed the sum of task budgets, $\sum c(\mathcal L_i)\leq\sum_t B^t$ |
+| 1b | Each UAV respects its battery budget, $\sum_{t,k^t}e_j(k^t)\leq E_j$ |
+| Motion | UAV speed and acceleration are bounded by $v_{max}$ and $d_{max}$ |
+| Safety | Obstacle collisions and leaving the sensing region incur penalties and are avoided by the learned policy |
+| Coverage | Each point is collected only up to its task-specific sensing requirement |
+
+**Algorithm**: Compute basic and DRL-based floating rewards, rank scarce points with a Shapley-value mechanism, and recommend tasks using predicted participant quality; formulate UAV position, energy, participant, obstacle, and completion information as an MDP; train separate CNN-assisted MADDPG actor and critic policies for each UAV; then calibrate participant data with the system-level estimator.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gao et al. [x] studied UAV-assisted multi-task allocation for mobile crowd sensing in which human participants and UAVs jointly collect data and UAVs also calibrate participant sensors. They formulated a budgeted maximum-coverage objective for high-quality sensing data and a continuous-control UAV scheduling problem whose reward combines data collection, calibration, energy use, and safety penalties. Their UMA method combines an online incentive mechanism, task recommendation and participant-quality prediction, Shapley-based point ranking, and CNN-assisted MADDPG trajectory scheduling. Simulations report a 90.1% covered-collection-ratio gain over participant-only sensing at 200 points of interest and a 13.3% energy-efficiency gain over UAV-only sensing at a 12 m sensing range, together with gains in task fairness and calibration.
 
 ## Problem
 

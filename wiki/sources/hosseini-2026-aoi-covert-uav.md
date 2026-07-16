@@ -5,6 +5,7 @@ authors: ["Shima Salar Hosseini", "Paeiz Azmi", "Ali Nazari"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3681697"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, age-of-information, covert-communication, physical-layer-security, noma, uav-trajectory-control, beamforming, alternating-optimization, air-to-ground-channel-model]
 related:
   - "[[freshness-aware-covert-uav-communication]]"
@@ -18,7 +19,7 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # Age of Information Minimization in UAV-Assisted Covert Communication: Trajectory and Beamforming Design
@@ -30,6 +31,41 @@ Hosseini, S. S., Azmi, P., & Nazari, A. (2026). *Age of Information Minimization
 ## TL;DR
 
 Minimizes AoI for UAV-assisted covert communication in the presence of an aerial eavesdropper. A multi-antenna UAV transmitter serves a covert user and a public user through PD-NOMA, using the public flow as cover traffic; trajectory and beamforming are optimized with alternating LP, SCA, and SDR subproblems.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude multi-antenna UAV uses power-domain NOMA to send public updates to Carol and covert updates to Bob while an aerial Eve performs radiometer detection and adapts its position. Bob uses SIC, and public traffic serves as cover for freshness-sensitive covert packets.
+
+**Problem & objective**: Minimize total age of information, $\min_{\mathbf Q,\mathbf W,\boldsymbol\Delta}\sum_n\sum_{k\in\{b,c\}}\Delta_k[n]$, over UAV trajectory, user beamformers, and slotwise freshness variables.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf Q=\{\mathbf q[n]\}$ | continuous 2-D positions | Alice's horizontal path at fixed altitude |
+| User beamforming | $\mathbf W=\{\mathbf w_k[n]\}$ | complex continuous | Public and covert transmit beams |
+| Age variables | $\boldsymbol\Delta=\{\Delta_k[n]\}$ | continuous, nonnegative | Information age allocated to each user and slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Total beamforming power per slot remains within Alice's budget. |
+| C2 | NOMA power ordering enables Bob's SIC and allocates stronger received power to the public flow. |
+| C3 | Eve's minimum detection error satisfies $\xi^*[n]\geq1-\epsilon$. |
+| C4 | Maximum packet age remains below the channel-variation interval. |
+| C5 | Achievable public and covert rates deliver their required packet sizes. |
+| C6 | Consecutive UAV positions satisfy the maximum-speed distance bound. |
+
+**Algorithm**: First derive Eve's optimal threshold and location for the conservative covertness constraint. Alternate an LP update for AoI, an SCA trajectory update using first-order rate bounds, and an SDR plus SCA beamforming update; use the rank-one recovery result and repeat the three blocks until total AoI converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hosseini et al. [x] studied information freshness in a UAV NOMA downlink where a public flow covers covert packets from an aerial eavesdropper. They minimized aggregate AoI over UAV positions, public and covert beamformers, and freshness variables under power, SIC ordering, covertness, channel-coherence, packet-delivery, and mobility constraints. Their alternating method derives Eve's adverse detector setting, solves AoI by linear programming, updates trajectory by SCA, and updates beamforming by SDR and SCA. Numerical results showed that the optimized path reduced AoI relative to straight and random paths, while tighter covertness and larger covert packets increased the freshness cost.
 
 ## Problem
 

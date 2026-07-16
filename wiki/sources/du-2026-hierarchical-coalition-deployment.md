@@ -5,6 +5,7 @@ authors: ["Haoran Du", "Runfeng Chen", "Tianyao Zhong", "Zhifeng Hou", "Yuli Zha
 year: 2026
 url: "https://doi.org/10.1109/TGCN.2025.3610747"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN)"
+modeling_card: required
 tags: [source, multi-uav, uav-deployment, coalition-formation, potential-game, device-to-device, user-clustering]
 related:
   - "[[data-similarity-aware-coalition-formation]]"
@@ -15,7 +16,7 @@ related:
   - "[[device-to-device-communication]]"
   - "[[haichao-wang]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint Optimization of UAV Deployment and Ground Users Clustering in Air-Ground Networks: A Hierarchical Coalition-Formation Game Approach
@@ -29,6 +30,39 @@ Du, H., Chen, R., Zhong, T., Hou, Z., Zhang, Y., Liu, D., Wang, H., & Xu, Y. (20
 ## TL;DR
 
 Nests ground-user coalition formation inside a discrete UAV-placement potential game. Covered users become coalition heads, cache shared requested data, and flood it over D2D links to uncovered users; partial-space adaptive play moves UAVs while a Pareto rule admits users whose data overlap and forwarding cost improve coalition utility.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple identical UAV base stations hover at a fixed altitude over static ground users in a bounded task area. UAV-ground links use probabilistic LoS/NLoS pathloss, ground users exchange requested content through multi-hop D2D links with NLoS loss and Rayleigh fading, and sufficient orthogonal channels remove co-channel interference.
+
+**Problem & objective**: Problem (17) jointly selects UAV deployment $J$ and ground-user coalition strategy $A$ to maximize aggregate utility, $\max_{\{J_m\}_{m\in\mathcal M},\{A_n\}_{n\in\mathcal N}}\sum_{n\in\mathcal N}\eta_n(J,A)$, where $\eta_n=\lambda_n[1-\alpha(D_n+F_n)]$ rewards successful data acquisition and penalizes download and forwarding overhead.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV deployment | $J_m=(x_m,y_m)$ | discrete position, $J_m\in\mathcal Q$ | Horizontal placement selected by UAV $m$ at the fixed flight altitude |
+| Ground-user coalition strategy | $a_n$ | categorical coalition choice | Coalition or cluster joined by ground user $n$ |
+| Joint coalition profile | $A=(a_1,\ldots,a_N)$ | partition of ground users | Clustering induced by all individual coalition choices |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C2 | Every UAV remains inside the square task area, $0<x_m<L_0$ and $0<y_m<L_0$ |
+| C3 | A covered coalition head benefits from cooperation only when $l_n\nu_d>D_n+F_n$ |
+| Coalition partition | Distinct coalitions are disjoint, $CO_i\cap CO_j=\emptyset$ for $CO_i\neq CO_j$ |
+| Feasible membership | Joining, merging, and exchange operations must preserve communication reachability and the resource-constrained Pareto order |
+
+**Algorithm**: For a fixed deployment, order uncovered users by their feasible coalition choices, perform best-response joins, and apply data-similarity-aware matching, merging, and exchange until the inner coalition partition is stable; evaluate total ground-user utility for that partition; then let UAVs explore sampled deployment positions with partial-space adaptive play and a softmax response in the outer exact-potential game; alternate the inner and outer updates until the deployment strategy stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Du et al. [x] studied joint UAV deployment and ground-user clustering for content delivery in an air-ground network with D2D forwarding. They maximized the sum of user utilities that combine successful data acquisition with download and forwarding overhead, subject to deployment-region and cooperation-benefit constraints. They modeled user clustering as an inner coalition-formation game with joining, matching, merging, and exchange operations, and modeled UAV placement as an outer exact-potential game solved by partial-space adaptive play. Across 100 independent simulations, the proposed coalition method reported gains over traditional coalition formation that increased from 0.1 percent at 12 users to 10.6 percent at 52 users.
 
 ## System model and objective
 

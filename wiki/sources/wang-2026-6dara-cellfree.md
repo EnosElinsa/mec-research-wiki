@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Two-Timescale Optimization for Aerial Rotatable Antenna Array in Cell-Free Networks With Dynamic Users"
 authors: ["Wen Wang", "Yongming Huang", "Wanli Ni", "Cheng Zhang", "Dongming Wang"]
 year: 2026
@@ -27,7 +28,7 @@ related:
   - "[[yongming-huang]]"
   - "[[dongming-wang]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Two-Timescale Optimization for Aerial Rotatable Antenna Array in Cell-Free Networks With Dynamic Users
@@ -39,6 +40,41 @@ Wang, W., Huang, Y., Ni, W., Zhang, C., & Wang, D. (2026). *Two-Timescale Optimi
 ## TL;DR
 
 Combines whole-UAV 3D movement with three-axis rigid-array rotation in user-centric cell-free uplink networks. Frame-level association and 6D geometry use a potential game plus Beta/attention MAPPO, while slot-level distributed combining uses team-MMSE.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Dynamic uplink users are jointly served by distributed aerial access points, each carrying a rigid antenna array whose UAV position and three-axis orientation can change once per frame. User clustering and six-dimensional array geometry operate at the large timescale, while distributed receive combining adapts to imperfect local CSI in each slot.
+
+**Problem & objective**: Problem (19) is an uplink-sum-rate MINLP that maximizes $\max_{\Omega}\frac{1}{N}\sum_{n=1}^{N}R_{\mathrm{Slot}}[\tau,n]$ over clustering, UAV positions, array rotations, and receive combiners.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| User clustering | $\eta_{m,k}[\tau]$ | binary | Whether aerial array $m$ serves user $k$ in frame $\tau$ |
+| UAV position | $\mathbf q_m[\tau]$ | continuous 3-D position | Large-timescale aerial access-point location |
+| Array rotation | $\boldsymbol\phi_m[\tau]$ | continuous, $[0,2\pi)^3$ | Three-axis rigid-array orientation |
+| Receive combiner | $\mathbf w_{m,k}[\tau,n]$ | complex continuous vector | Small-timescale local combiner for user $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 19b | Clustering is binary, $\eta_{m,k}[\tau]\in\{0,1\}$ |
+| 19c | Each array serves at most $\eta_{\max}$ users |
+| 19d | Every user is served by at least one aerial array |
+| 19e | Served users remain in the array's forward radiation hemisphere |
+| 19f, 3-5 | Rotation, position, speed, and collision-avoidance limits are satisfied |
+
+**Algorithm**: Compute slot-level team-MMSE combiners from local instantaneous and statistical CSI → update user clustering with the M-CSAP exact-potential game → control UAV velocity and three rotation angles with attention-based Beta-policy MAPPO → feed frame-averaged rates back to the next large-timescale update.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied aerial rotatable antenna arrays in user-centric cell-free uplink networks with dynamic users. They formulated a two-timescale MINLP that maximizes average uplink sum rate by jointly optimizing user clustering, UAV positions, three-axis array rotations, and receive combiners. The small-timescale block uses team-MMSE combining based on local instantaneous and statistical CSI. At the large timescale, M-CSAP solves an exact-potential clustering game and AB-MAPPO controls three-dimensional UAV velocities and array rotations. Simulations report higher sum rate than the evaluated fixed-geometry, centralized-combining, clustering, and policy variants under the tested user-density and mobility settings.
 
 ## Method and guarantee scope
 

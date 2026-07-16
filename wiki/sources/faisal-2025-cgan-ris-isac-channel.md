@@ -5,6 +5,7 @@ authors: ["Alice Faisal", "Ibrahim Al-Nahhal", "Kyesan Lee", "Octavia A. Dobre",
 year: 2025
 url: "https://doi.org/10.1109/TCOMM.2025.3541047"
 venue: "IEEE Transactions on Communications (IEEE TCOMM)"
+modeling_card: not_applicable
 tags: [source, isac, intelligent-reflecting-surface, channel-estimation, generative-adversarial-network, deep-learning]
 related:
   - "[[integrated-sensing-and-communication]]"
@@ -16,7 +17,7 @@ related:
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Conditional Generative Adversarial Networks for Channel Estimation in RIS-Assisted ISAC Systems
@@ -28,6 +29,12 @@ Faisal, A., Al-Nahhal, I., Lee, K., Dobre, O. A., & Shin, H. (2025). *Conditiona
 ## TL;DR
 
 Applies **conditional GANs (CGANs)** to channel estimation in a **[[intelligent-reflecting-surface|RIS]]-assisted [[integrated-sensing-and-communication|ISAC]]** system. A generator learns the mapping from observed pilots to the true channel while a discriminator's feedback sharpens it adversarially, improving estimation accuracy and stability over conventional deep-learning estimators. Two variants are proposed — CE-CGAN and SE-CGAN — with complexity analyzed against a benchmark.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Faisal et al. [x] studied channel estimation in a multiuser RIS-assisted integrated sensing and communication system with cascaded communication and sensing channels. They designed pilot observations and two conditional generative-adversarial estimators whose generators map received signals to channel coefficients while discriminators provide adversarial training feedback. Simulations evaluated normalized mean-square error across signal-to-noise ratios and system dimensions and compared the proposed estimators with feed-forward, extreme-learning-machine, and prior deep-learning benchmarks. The reported results showed that CE-CGAN retained comparable computational complexity while improving estimation accuracy, whereas SE-CGAN improved both accuracy and computational complexity over the benchmark estimator.
 
 ## Problem framing
 

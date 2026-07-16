@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Relay-Aided Secure Maritime Networks Coexisting With Satellite Networks: Robust Beamforming and Trajectory Optimization"
 authors: ["Yu Yao", "Wenqi Xiao", "Pu Miao", "Gaojie Chen", "Haitao Yang", "Chan-Byoung Chae", "Kai-Kit Wong"]
 year: 2026
@@ -20,7 +21,7 @@ related:
   - "[[chan-byoung-chae]]"
   - "[[kai-kit-wong]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV-Relay-Aided Secure Maritime Networks Coexisting With Satellite Networks: Robust Beamforming and Trajectory Optimization
@@ -34,6 +35,41 @@ The article was published online in August 2025 and assigned to the final 2026 v
 ## TL;DR
 
 Jointly designs TBS, decode-and-forward UAV-relay, and satellite beamformers with the UAV trajectory in a spectrum-sharing maritime satellite-UAV-terrestrial network. The method applies alternating optimization, semidefinite reformulation, the S-procedure, and successive convex approximation to a worst-case secrecy objective under deterministic norm-bounded CSI errors.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A terrestrial base station sends confidential maritime traffic through a multi-antenna decode-and-forward UAV relay while a cochannel LEO satellite serves satellite users and an eavesdropper listens to the maritime link. The TBS, UAV, and satellite share spectrum, and satellite-related and eavesdropping channels have deterministic norm-bounded CSI errors.
+
+**Problem & objective**: Problem (13) maximizes worst-case weighted average secrecy rate, $\max_{\mathbf W[n],\mathbf q[n]}\min_{\Delta\mathbf h[n]}\frac{1}{N}\sum_{n=1}^{N}\sum_{k=1}^{K}\omega_k\big(r_{U,k}[n]-r_{E,k}[n]\big)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| TBS beamforming | $\mathbf w_{T,k}[n]$ | complex continuous | Backhaul beam from the TBS for maritime-user stream $k$ |
+| UAV beamforming | $\mathbf w_{U,k}[n]$ | complex continuous | Relay access beam from the UAV to maritime user $k$ |
+| Satellite beamforming | $\mathbf w_{S,m}[n]$ | complex continuous | Downlink beam for satellite user $m$ |
+| UAV trajectory | $\mathbf q[n]$ | continuous, 3-D trajectory | Slotwise UAV relay position |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 1a-1c | UAV endpoints, speed, and altitude satisfy the prescribed flight envelope |
+| 11 | Robust relay causality requires the TBS-UAV rate to cover the aggregate UAV-MU forwarding rate |
+| 12 | Every satellite user meets its worst-case minimum rate $\Gamma_{S,m}^{\min}$ |
+| 13b-13d | TBS, UAV, and satellite beamforming obey their per-slot power budgets |
+| Uncertainty sets | Satellite and eavesdropping CSI errors remain inside declared Euclidean or Frobenius norm balls |
+
+**Algorithm**: Alternating optimization fixes the trajectory while updating collaborative TBS, UAV, and satellite beamforming, then fixes the beams while updating the UAV path. Auxiliary variables, sign-definiteness and S-procedure LMIs treat semi-infinite CSI constraints, while Cauchy-Schwarz bounds, SCA, and a shrinking trust region yield convex local subproblems.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yao et al. [x] studied robust secure maritime communication in a spectrum-sharing satellite-UAV-terrestrial network with a decode-and-forward UAV relay and imperfect CSI. They maximized worst-case weighted average secrecy rate over TBS, UAV, and satellite beamformers and the UAV trajectory while enforcing power, flight, relay-backhaul, and satellite-user rate constraints. Their alternating method uses auxiliary variables, the S-procedure, sign-definiteness reformulations, successive convex approximation, and trust-region trajectory updates. The plotted outer objective converges after roughly seven iterations for the examined satellite-user rate thresholds. Simulations report about 150 percent higher average secrecy rate than random beamforming in the flight-duration comparison and show that the robust joint design remains stronger than the compared schemes as bounded CSI error increases.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Networked ISAC-Based UAV Tracking and Handover Toward Low-Altitude Economy"
 authors: ["Chuanbin Zhao", "Yuan Feng", "Hongliang Luo", "Feifei Gao", "Fan Liu", "Shi Jin"]
 year: 2025
@@ -18,7 +19,7 @@ related:
   - "[[hongliang-luo]]"
   - "[[feifei-gao]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Networked ISAC-Based UAV Tracking and Handover Toward Low-Altitude Economy
@@ -30,6 +31,12 @@ Zhao, C., Feng, Y., Luo, H., Gao, F., Liu, F., & Jin, S. (2025). *Networked ISAC
 ## TL;DR
 
 Defines a [[networked-isac]] tracking architecture for unauthorized UAVs in LAE. Three neighboring BS sectors form a virtual sensing cell: one primary BS transmits the sensing signal, all three BSs receive echoes, MUSIC estimates per-BS angle/range/velocity, and a centralized EKF fuses estimates for multi-UAV tracking. The paper adds PBS and VSC handover strategies so tracking continues under blockage and cell-boundary movement.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied networked-ISAC-based UAV tracking and handover for low-altitude monitoring. Three neighboring BS sectors form a virtual sensing cell in which one primary BS transmits and all BSs receive echoes. MUSIC estimates angle, range, and velocity at each BS, and a centralized EKF fuses the estimates for multi-UAV tracking. Rule-based primary-BS and virtual-sensing-cell handovers maintain tracking through blockage and cell-boundary movement. Simulations report sub-meter position RMSE in the tested trajectories, but the paper is a sensing, estimation, and handover protocol without an application-level optimization or control model satisfying the card rubric.
 
 ## Problem framing
 

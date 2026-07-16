@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Delay-Aware UAV Computation Offloading and Communication Assistance for Post-Disaster Rescue"
 authors: ["Chengyi Zhou", "Junyu Liu", "Kaige Qu", "Min Sheng", "Jiandong Li", "Weihua Zhuang"]
 year: 2024
@@ -22,7 +23,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-06-01
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Delay-Aware UAV Computation Offloading and Communication Assistance for Post-Disaster Rescue
@@ -34,6 +35,41 @@ Zhou, C., Liu, J., Qu, K., Sheng, M., Li, J., & Zhuang, W. (2024). *Delay-Aware 
 ## TL;DR
 
 A UAV-mounted **aerial base station (ABS)** in a post-disaster rescue scenario simultaneously serves ground users (GUs) with communication and computes sensing-related tasks, partially offloading them to a more powerful **macro base station (MBS)**. The work **minimizes task computation queuing delay** while ensuring GU communication rate, by jointly optimizing **ABS-GU association, task offloading ratio, and ABS trajectory** under ABS flight-energy constraints. The long-term stochastic **mixed-integer nonlinear program (MINLP)** is solved by a **joint DRL + Lyapunov optimization (JDL)** algorithm, with a distinctive twist: the **critic module uses model-based successive convex approximation (SCA)** to evaluate the actor's association action, instead of a model-free critic DNN.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-wing aerial base stations provide post-disaster wireless access to ground users, compute sensing tasks onboard, and partially offload task data to macro base stations. Each ground user is associated with one ABS, and time-varying ABS-GU and ABS-MBS air links couple communication service, offloading, and flight control.
+
+**Problem & objective**: P1 is a long-term stochastic MINLP that minimizes expected local, offloading, and MBS computation queueing delay, $\min \lim_{T\to\infty}\frac{1}{T}\sum_t\mathbb E[\sum_j(T_j^L(t)+T_j^O(t)+T_j^S(t))]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| ABS-GU association | $x_{ij}(t)$ | binary | Whether ground user $i$ is served by ABS $j$ |
+| ABS velocity | $\mathbf v_j(t)$ | continuous | Flight velocity of ABS $j$ |
+| ABS acceleration | $\mathbf a_j(t)$ | continuous | Flight acceleration controlling the trajectory |
+| Task offloading ratio | $\gamma_j(t)$ | continuous, $[0,1]$ | Fraction of ABS task data offloaded to an MBS |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each GU association is binary and respects ABS service availability |
+| C2 | GU communication rates meet the required minimum service rate |
+| C3 | ABS velocity, acceleration, position, and inter-ABS separation remain feasible |
+| C4 | Long-term ABS propulsion energy stays within the flight-energy budget |
+| C5 | Offloading ratios satisfy $0\leq\gamma_j(t)\leq1$ and queue-service limits |
+
+**Algorithm**: Apply Lyapunov drift-plus-penalty to obtain per-slot P2 → let the actor generate candidate binary associations → evaluate each candidate in a model-based critic → alternate offloading-ratio and trajectory subproblems using fractional programming, SCA, and bisection → train the actor from the best evaluated actions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied delay-aware UAV computation offloading and communication assistance for post-disaster rescue. They formulated joint ABS-GU association, task-offloading-ratio, and ABS-trajectory design as a long-term stochastic MINLP that minimizes task computation queueing delay while guaranteeing ground-user communication rates and respecting flight-energy constraints. Their JDL method applies Lyapunov optimization to transform the long-term model into per-slot deterministic problems. An actor generates candidate association actions, and a model-based critic evaluates them by solving the continuous offloading and trajectory subproblems with fractional programming and successive convex approximation. Simulations report lower queueing delay than the evaluated separated-DQN baseline and robust operation as the number of ground users changes.
 
 ## Problem framing
 

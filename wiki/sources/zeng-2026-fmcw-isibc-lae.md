@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "FMCW-Enabled Integrated Sensing, Identification, and Backscatter Communication for Low-Altitude Economy"
 authors: ["Shanxing Zeng", "Ying-Chang Liang"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[jiang-2025-isac-lae-overview]]"
   - "[[tang-2025-cooperative-isac-lae]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # FMCW-Enabled Integrated Sensing, Identification, and Backscatter Communication for Low-Altitude Economy
@@ -28,6 +29,12 @@ Zeng, S., & Liang, Y.-C. (2026). *FMCW-Enabled Integrated Sensing, Identificatio
 ## TL;DR
 
 Proposes an **FMCW-enabled integrated sensing, identification, and backscatter communication (ISIBC)** framework for low-altitude economy networks. A ground base station transmits FMCW chirps to estimate each UAV's range and radial velocity, while a passive backscatter device attached to the UAV modulates identity / data symbols onto the reflected echo. The echo model includes both physical UAV surface reflection and BD antenna backscatter, plus synchronization errors. A zero-padded symbol design turns the received signal into a low-rank matrix, enabling an SVD-based two-stage estimator for range, velocity, and BD symbols, with CRLB analysis for the sensing parameters.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng and Liang [x] studied FMCW-enabled integrated sensing, identification, and backscatter communication for low-altitude UAV networks. A passive UAV-mounted backscatter device modulates identity and data symbols onto the FMCW echo while the ground station estimates range and radial velocity. Zero-padded symbols produce a low-rank received matrix, and a two-stage SVD estimator recovers sensing parameters and backscatter symbols before refining motion estimates. The paper also derives Fisher-information and Cramer-Rao bounds for range and velocity. Simulations report lower sensing error and bit error rate than the evaluated FFT/MRC and OMP-style estimators, but the paper does not formulate an application-level operational decision model.
 
 ## Problem framing
 

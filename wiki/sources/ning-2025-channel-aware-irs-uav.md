@@ -20,7 +20,8 @@ related:
   - "[[xiaojie-wang]]"
   - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Channel-Aware User Association and Trajectory Design for Multi-IRS Assisted Multi-UAV Communications
@@ -32,6 +33,48 @@ Ning, Z., Hu, H., Wang, X., & Zhang, Y. (2025). *Channel-Aware User Association 
 ## TL;DR
 
 Studies a multi-IRS, multi-UAV NOMA downlink where urban obstacles switch direct UAV-user links between LoS and blocked states. The MGBA scheme combines phase-aligned IRS control, geometric LoS judgment, MAPPO for UAV trajectories and dynamic IRS-user association, and SCA for transmit-power allocation to maximize average system sum rate.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A blocked urban downlink has $K$ UAVs, $I$ IRSs, and $N$ users over slots $t$. Each IRS is partitioned to serve multiple users, each UAV serves two NOMA users, and a user can use a direct LoS path or an IRS virtual-LoS path.
+
+**Problem & objective**: Maximize the average system sum rate $\frac{1}{T}\sum_{t=1}^{T}\sum_{k=1}^{K}R_k[t]$ by jointly choosing IRS association, LoS indicators, phase shifts, UAV positions, and NOMA powers.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| IRS-user association | $\beta_{i,n}[t]$ | binary | User $n$ is served by IRS $i$ |
+| LoS indicator | $\mu_{k,n}[t]$ | binary | Direct UAV $k$ to user $n$ LoS state |
+| IRS phase vector | $\phi_{i,n}[t]$ | complex unit-modulus, phase in $[0,2\pi)$ | Phase shifts for the partition assigned to user $n$ |
+| UAV trajectory | $\mathbf q_k[t]$ | continuous 3-D | Position of UAV $k$ at slot $t$ |
+| NOMA powers | $p_{k,n}[t]$ | nonnegative | Power sent by UAV $k$ to its paired users |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Association is binary: $\beta_{i,n}[t]\in\{0,1\}$ |
+| C2 | Every user selects one IRS: $\sum_i\beta_{i,n}[t]=1$ |
+| C3 | IRS load is bounded: $\sum_n\beta_{i,n}[t]\le E$ |
+| C4 | Fixed-speed motion: $\|\mathbf q_k[t]-\mathbf q_k[t-1]\|=\tau v$ |
+| C5 | LoS state is binary: $\mu_{k,n}[t]\in\{0,1\}$ |
+| C6 | Phase range: $0\le\phi_{i,n}[t]<2\pi$ |
+| C7 | User rate requirement: $R_{k,n}[t]\ge R_{\min}$ |
+| C8 | UAV separation: $\|\mathbf q_k[t]-\mathbf q_j[t]\|\ge q_{\min}$ for $k\ne j$ |
+| C9 | Two-user NOMA budget: $p_{k,n}[t]+p_{k,m}[t]=p_{\max}$ |
+| C10 | Power nonnegativity: $p_{k,n}[t]\ge0$ |
+| C11 | SIC ordering: $p_{k,n}[t]\le p_{k,m}[t]$ for the ordered pair |
+
+**Algorithm**: Align IRS phases from the current geometry, derive the composite channel and geometric LoS state, solve trajectory and association as a Dec-POMDP with MAPPO, and update NOMA powers with successive convex approximation (SCA); repeat the coupled updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ning et al. [x] study channel-aware user association and trajectory design for multi-IRS assisted multi-UAV NOMA communications in an obstructed urban setting. Their formulation maximizes average system sum rate while coupling IRS assignment, LoS state, phase shifts, UAV trajectories, and paired-user transmit powers. The proposed MGBA first exploits phase alignment and geometric LoS judgment, then uses MAPPO for the multi-agent trajectory and association decisions and SCA for power allocation. Simulations report stable convergence and higher sum rate than random association, random phase, QMIX, and TDMA based alternatives, while the MADDPG and MATD3 comparisons fail to converge in the reported environment.
 
 ## Problem
 

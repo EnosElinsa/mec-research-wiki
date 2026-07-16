@@ -5,6 +5,7 @@ authors: ["Zhenpeng Du", "Chunbo Luo", "Geyong Min", "Jia Wu", "Cai Luo", "Jian 
 year: 2025
 url: "https://doi.org/10.1109/TITS.2025.3569500"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: not_applicable
 tags: [source, survey, uav-swarm, autonomy, trajectory-planning, task-assignment, localization, perception, communication]
 related:
   - "[[autonomous-uav-swarms]]"
@@ -17,7 +18,7 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[uav-enabled-its]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Survey on Autonomous and Intelligent Swarms of Uncrewed Aerial Vehicles (UAVs)
@@ -29,6 +30,12 @@ Du, Z., Luo, C., Min, G., Wu, J., Luo, C., Pu, J., & Li, S. (2025). *A Survey on
 ## TL;DR
 
 Surveys autonomous and intelligent UAV swarms across trajectory planning, task assignment, control, localization, perception, communication, and civil applications. It is useful as a taxonomy anchor for non-MEC swarm autonomy methods that later appear inside UAV-MEC, ITS, sensing, and edge-intelligence papers.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Du et al. [x] surveyed autonomous and intelligent UAV swarms across trajectory planning, task assignment, control, localization, perception, communication, and civil applications. They organized planning methods by synchronous or asynchronous scheduling and centralized or distributed coordination, and reviewed global assignment, local trajectory generation, and task-oriented cooperation. The survey compared algorithmic demands, flexibility, robustness, and efficiency while connecting the enabling hardware and software stack to formation, exploration, tracking, monitoring, logistics, disaster response, and smart-city applications. It identified open problems in scalable hybrid coordination, semantic and learning-based planning, adaptive formations, robust perception, onboard computation, localization, energy, and low-latency communication rather than reporting a new benchmark experiment.
 
 ## Scope
 

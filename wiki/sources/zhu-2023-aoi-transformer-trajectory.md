@@ -22,8 +22,9 @@ related:
   - "[[zeng-2019-rotary-wing-energy-min]]"
   - "[[guo-2026-aot-uav-inspection-offloading]]"
   - "[[pytorch]]"
+modeling_card: required
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV Trajectory Planning for AoI-Minimal Data Collection in UAV-Aided IoT Networks by Transformer
@@ -35,6 +36,38 @@ Zhu, B., Bedeer, E., Nguyen, H. H., Barton, R., & Gao, Z. (2023). *UAV Trajector
 ## TL;DR
 
 Formulates fresh-data collection by one rotary-wing UAV as joint cluster-order and hovering-point selection. SNR-feasible hovering disks turn the continuous traveling-salesman problem with neighborhoods into a discretized [[generalized-traveling-salesman-problem|GTSP]]. A Transformer selects the cluster order, weighted A-star chooses one candidate hovering point per ordered cluster, and REINFORCE trains the ordering policy against a greedy rollout baseline. Sampling decoding gives the lowest total [[age-of-information|AoI]] among the evaluated methods, but the paper does not prove global optimality or an approximation ratio for the learned pipeline.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One rotary-wing UAV starts and ends above a BS, visits clustered IoT devices, and collects each cluster head's data at one hovering point; ordinary nodes use TDM and one cluster head transmits at a time over a probabilistic LoS/NLoS air-to-ground channel.
+
+**Problem & objective**: Problems $\mathcal P_1$ and $\mathcal P_2$, an NP-hard TSPN converted to a GTSP, minimize $\bar A(\mathbf c,\boldsymbol\pi)$, the total AoI of all collected updates at mission completion.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Hovering points | $\mathbf c=\{\mathbf c_m\}$ | Continuous in $O_m$, then discrete in $G_m$ | One SNR-feasible collection point for each cluster |
+| Visiting order | $\boldsymbol\pi$ | Permutation of $\{1,\ldots,M\}$ | Order in which the UAV visits the clusters |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each hovering point satisfies the receive-SNR disk constraint $\mathbf c_m\in O_m$ |
+| C2 | The discretized GTSP selects exactly one candidate, $\mathbf c_m\in G_m\subset O_m$ |
+| C3 | The route visits each selected hovering point exactly once and returns to the BS |
+| C4 | Collection, flight-time, and AoI relations follow (7), (9), (15), and (16) |
+
+**Algorithm**: TWA-star, discretize each hovering disk, encode the UAV-IoT instance with a Transformer, decode a cluster permutation, select hovering points with weighted A-star, and train the ordering policy with REINFORCE and a greedy rollout baseline.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied AoI-oriented data collection by a rotary-wing UAV in a cluster-based IoT network. They formulated a total-AoI minimization problem that jointly selects one SNR-feasible hovering point per cluster and the order in which those points are visited. Their TWA-star method discretizes each hovering disk, uses a Transformer to generate the cluster order, and applies weighted A-star to choose the hovering points. The Transformer is trained with REINFORCE using a deterministic greedy rollout as its baseline. Simulations show that sampling-decoded TWA-star attains the lowest total AoI among the evaluated decoders and comparison algorithms and generalizes from ten-cluster training instances to larger networks.
 
 ## Problem
 

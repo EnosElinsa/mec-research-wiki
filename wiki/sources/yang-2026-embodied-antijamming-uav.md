@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Embodied Intelligence-Enhanced Anti-Jamming Resource Allocation for Low-Altitude Communication Networks"
 authors: ["Helin Yang", "Honglin Du", "Qing Geng", "Changyuan Xu", "Zehui Xiong"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[shao-2024-drl-antijamming-mec]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Embodied Intelligence-Enhanced Anti-Jamming Resource Allocation for Low-Altitude Communication Networks
@@ -29,6 +30,40 @@ Yang, H., Du, H., Geng, Q., Xu, C., & Xiong, Z. (2026). *Embodied Intelligence-E
 ## TL;DR
 
 Treats each UAV-to-UAV link as an embodied resource-allocation agent that observes channel, load, deadline, and jammer state, then selects a reused uplink sub-band and discrete transmit power. A multi-agent DDQN combines prioritized replay with transferred source-task experiences to reduce U2U/U2I delay and energy penalties under swept jamming.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A constant-altitude multi-UAV network contains $N$ U2U signaling links and $L$ U2I uplinks over OFDM sub-bands. U2I links have preassigned orthogonal bands and fixed powers, while U2U links cognitively reuse those bands under co-channel interference and swept malicious jamming.
+
+**Problem & objective**: The anti-jamming resource problem minimizes the weighted U2U delay, U2I delay, and UAV energy represented by the negative base reward, $\min\ \eta T_n^{U2U}[l,t]+(1-\eta)T_l^{U2I}[l,t]+\chi\sum_{n\in\mathcal N}(P_{\mathrm{fly}}+P_n[l])\Delta t$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Spectrum-reuse indicator | $\rho_n[l]$ | binary, $\{0,1\}$ | Selects the U2I sub-band reused by U2U link $n$ |
+| U2U transmit power | $P_n[l]$ | discrete, $P_n[l]\in\{P_1,P_2,P_3,P_4\}$ | Chooses the transmit-power level on the selected band |
+| Agent action | $a_t=[P_t,V_t]$ | discrete joint action | Combines power selection and sub-band selection at slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| a-b | Binary spectrum indicators enforce non-overlapping admissible reuse allocations |
+| c | U2U power is selected from the four-level set $\{P_1,P_2,P_3,P_4\}$ |
+| d | Each UAV transmit power is capped by $P_{\max}$ |
+| e-g | Mission duration, energy, and designated flight-area limits are enforced |
+| h | A link succeeds only when $0\le O_t^n\le O_{\max}^n$ |
+
+**Algorithm**: The MAMDP state includes U2U and U2I channel conditions, jammer behavior, current band, payload, and remaining time. E-MA-DDQN-PER-TL learns cooperative actions with DDQN target evaluation, prioritizes high temporal-difference-error experiences, and transfers source-MDP experiences into the target replay buffer before decentralized execution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] studied spectrum reuse and power control for multi-UAV U2U and U2I links exposed to swept jamming and co-channel interference. Their mixed discrete resource problem minimizes weighted transmission delay and energy while enforcing admissible band reuse, finite power levels, power budgets, flight limits, and transmission deadlines. Each U2U link is modeled as an embodied agent whose action selects a reused sub-band and a discrete transmit-power level from observed channel, jammer, load, and deadline states. The E-MA-DDQN-PER-TL solver combines double Q-learning, prioritized experience replay, and transferred source-task experiences to learn a cooperative anti-jamming policy. Simulations and the reported hardware-assisted channel experiment show lower transmission delay and higher successful-transmission probability than the compared DQN and DDQN variants.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain"
 authors: ["Zhao Tong", "Shiyan Zhang", "Jing Mei", "Jiayi Sun", "Keqin Li"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[gao-2024-d3qn-uav-mec-mobile-gt]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain
@@ -28,6 +29,41 @@ Tong, Z., Zhang, S., Mei, J., Sun, J., & Li, K. (2026). *Energy-Efficient Joint 
 ## TL;DR
 
 Studies UAV-assisted MEC over real uneven terrain, with dynamic service coverage, partial task allocation between UAV and BS computing, and UAV propulsion energy. The paper formulates a multi-objective non-convex problem that maximizes service coverage ratio and UAV propulsion energy efficiency under safe-flight constraints. PH-DRL combines a hierarchical network architecture with phased training: a TD3 first level controls 3D UAV flight, while an actor-critic second level decides covered UEs' task-allocation ratios.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV-MEC server serves user equipment distributed over real uneven terrain, with one terrestrial BS providing complementary computation. The UAV flies in three dimensions above terrain-dependent safe altitude, covers a dynamic set of UEs, and partially allocates each covered task between UAV and BS computing over probabilistic-LoS links.
+
+**Problem & objective**: A non-convex multi-objective control problem maximizes service coverage ratio and propulsion energy efficiency, $\max(C_{\mathrm{coverage}},\eta_{\mathrm{propulsion}})$, under terrain-safe flight, task, and resource constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV 3-D trajectory | $\mathbf q(t)$ | continuous 3-D position | Terrain-aware movement and hovering path |
+| Task allocation ratio | $\rho_u(t)$ | continuous, $[0,1]$ | Fraction of UE $u$'s task processed at the UAV versus BS |
+| Service indicator | $s_u(t)$ | binary | Whether UE $u$ is covered and served in the slot |
+| UAV control policy | $\pi(a\mid s)$ | continuous actor policy | TD3/actor-critic mapping from terrain and UE state to actions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV altitude stays above terrain plus the prescribed safety margin |
+| C2 | UAV speed, acceleration, region, and trajectory limits remain feasible |
+| C3 | A UE is served only when it is covered, unserved, and below the UAV's position |
+| C4 | UAV/BS compute resources and partial task allocations satisfy capacity and latency limits |
+| C5 | Propulsion energy and safe-flight constraints are respected throughout the mission |
+
+**Algorithm**: Train a first-level TD3 policy for terrain-aware 3-D movement → invoke a second actor-critic policy when covered UEs are available → choose task-allocation ratios for the variable service set → use phased training and dynamic invocation → update the joint coverage-energy reward.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tong et al. [x] studied joint task offloading and three-dimensional trajectory optimization for UAV-assisted MEC over uneven terrain. They formulated a non-convex multi-objective problem that maximizes service coverage and propulsion energy efficiency by jointly controlling a terrain-safe UAV trajectory and task-allocation ratios between UAV and BS computing. PH-DRL uses a hierarchical architecture in which a first-level TD3 controls 3-D flight and a second actor-critic network is invoked for the currently covered UEs. Phased training and dynamic invocation handle changing service-set size. Simulations report full UE coverage with approximately 2 kJ average energy per served UE in the stated case and higher system utility than the compared algorithms at larger UE counts.
 
 ## Problem framing
 

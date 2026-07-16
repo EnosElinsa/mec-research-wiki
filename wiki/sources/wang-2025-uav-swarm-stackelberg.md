@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Optimizing Spectrum Sharing in UAV Swarms: A Stackelberg Game-Based Incentive Mechanism"
 authors: ["Qin Wang", "Yi Shen", "Longting Xu", "Hui Zhang", "Haitao Zhao", "Hongbo Zhu"]
 year: 2025
@@ -13,7 +14,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[multi-uav-assisted-mec]]"
 created: 2026-05-28
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Optimizing Spectrum Sharing in UAV Swarms: A Stackelberg Game-Based Incentive Mechanism
@@ -29,6 +30,41 @@ Game-theoretic incentive mechanism for UAV-to-UAV (U2U) spectrum sharing within 
 1. **Hybrid [[overlay-underlay-spectrum-access|overlay-underlay]]** access mode — U2U uses the U2B's idle slots overlay-style and falls back to underlay (low-power coexistence) when U2B is active. Reduces inter-user interference vs pure overlay or pure underlay.
 2. **[[stackelberg-game|Stackelberg game]]** with U2B as leader (sets a price for spectrum access) and U2U links as followers (decide power and access duration to maximize utility minus payment). Equilibrium found via backward induction.
 3. **[[matching-theory-for-resource-allocation|Matching algorithm]]** assigns specific U2U links to specific U2B sub-bands when there are multiple U2U-U2B candidate pairings.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV swarm contains primary UAV-to-BS links and secondary UAV-to-UAV links. A secondary link can use idle primary slots in overlay mode or transmit at controlled power during active primary slots in underlay mode, with multiple candidate primary sub-bands assigned by matching.
+
+**Problem & objective**: A hierarchical Stackelberg spectrum-trading game lets each primary leader maximize its access revenue and link utility while each secondary follower maximizes net transmission utility, $\max_{\pi}U_{\mathrm{U2B}}(\pi)$ and $\max_{p_i,\tau_i}\bigl(U_i-\mathrm{payment}_i\bigr)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Spectrum price | $\pi_j$ | continuous, nonnegative | Price announced by primary U2B link $j$ |
+| U2U transmit power | $p_i$ | continuous, bounded | Underlay power selected by secondary U2U link $i$ |
+| Access duration | $\tau_i$ | continuous, slot-bounded | Overlay or underlay access time purchased by U2U link $i$ |
+| Spectrum matching | $x_{i,j}$ | binary | Whether U2U link $i$ uses U2B sub-band $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | U2U powers and access durations satisfy their box and slot limits |
+| C2 | Underlay interference preserves the primary U2B quality-of-service requirement |
+| C3 | Overlay access uses only primary idle time and underlay access uses active time |
+| C4 | Each U2U-U2B assignment satisfies the matching quotas and preference rules |
+| C5 | Leader and follower choices satisfy their Stackelberg best-response conditions |
+
+**Algorithm**: Separate overlay and underlay access opportunities → derive follower power and duration best responses → optimize the primary leader's price by backward induction → compute the Stackelberg equilibrium → assign multiple U2U links to U2B sub-bands with deferred-acceptance matching.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied spectrum sharing between primary UAV-to-base-station links and secondary UAV-to-UAV links in a UAV swarm. They proposed a hybrid overlay and underlay access mode that uses primary idle periods and controlled concurrent transmission. A Stackelberg game lets each primary link set a spectrum price while secondary links select transmit power and access duration to maximize their net utilities. Backward induction derives the leader and follower equilibrium, and a deferred-acceptance matching procedure assigns secondary links to candidate primary sub-bands. Simulations show higher spectrum utilization and utility than the evaluated pure-overlay, pure-underlay, and allocation baselines.
 
 ## Why this matters for MEC
 

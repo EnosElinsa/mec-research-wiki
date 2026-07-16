@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "TJCCT: A Two-Timescale Approach for UAV-Assisted Mobile Edge Computing"
 authors: ["Zemin Sun", "Geng Sun", "Qingqing Wu", "Long He", "Shuang Liang", "Hongyang Pan", "Dusit Niyato", "Chau Yuen", "Victor C. M. Leung"]
 year: 2025
@@ -17,7 +18,7 @@ related:
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # TJCCT: A Two-Timescale Approach for UAV-Assisted Mobile Edge Computing
@@ -29,6 +30,41 @@ Sun, Z., Sun, G., Wu, Q., He, L., Liang, S., Pan, H., Niyato, D., Yuen, C., & Le
 ## TL;DR
 
 A **two-timescale** joint computing-resource-allocation, computation-offloading, and trajectory-control approach (**TJCCT**) for UAV-assisted MEC. The paper presents a **hierarchical architecture** coordinating mobile devices (MDs), terrestrial edge, aerial (UAV) edge, and a controller, then formulates a **system-utility maximization** problem that is a non-convex, NP-hard **MINLP**. In the **short timescale** it runs a **price-incentive model** for on-demand computing-resource allocation plus a **matching-mechanism** method for computation offloading; in the **long timescale** it runs a **convex-optimization** method for UAV trajectory control. Stability and polynomial complexity of TJCCT are theoretically proved.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Mobile devices, terrestrial edge servers, UAV edge servers, and a controller cooperate in a hierarchical UAV-MEC network. Short-timescale slots allocate computing resources and offloading, while long-timescale frames control UAV trajectories; wireless channels, queues, and energy budgets evolve online.
+
+**Problem & objective**: A non-convex NP-hard MINLP maximizes system utility, $\max U_{\mathrm{system}}$, over two-timescale resource, offloading, and trajectory decisions under stability and energy constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Resource allocation | $r_i(\tau)$ | continuous, capacity-bounded | Computing resource assigned to mobile device $i$ |
+| Offloading decision | $o_i(\tau)$ | binary/matching choice | Execution server selected by device $i$ |
+| UAV trajectory | $\mathbf q_k(t)$ | continuous long-timescale position | UAV edge-server path |
+| Price/incentive | $p_s(\tau)$ | continuous, nonnegative | Resource price used in the short-timescale game |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Mobile-device and edge queues remain stable |
+| C2 | Long-term device/UAV energy constraints are respected |
+| C3 | Resource allocations do not exceed terrestrial or UAV edge capacity |
+| C4 | Offloading matches satisfy server association and task latency limits |
+| C5 | UAV trajectories obey region, speed, and energy-feasibility constraints |
+
+**Algorithm**: Solve short-timescale resource allocation with a price-incentive model → match devices to offloading servers → optimize long-timescale UAV trajectory by convex programming → alternate the timescales and apply the proven stable TJCCT updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied two-timescale joint resource allocation, task offloading, and trajectory control for hierarchical UAV-assisted mobile edge computing. They formulated an NP-hard MINLP that maximizes system utility under queue stability and energy constraints. The short-timescale procedure uses a price-incentive model and a matching mechanism for resource allocation and offloading, while the long-timescale procedure optimizes UAV trajectories with convex optimization. The paper proves stability, optimality properties, and polynomial complexity for TJCCT. Simulations report higher system utility, processing rate, completion ratio, and average cost than the evaluated comparators, with the stated delay-energy tradeoff under heavy load.
 
 ## Problem framing
 

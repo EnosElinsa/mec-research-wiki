@@ -5,6 +5,7 @@ authors: ["Wei Feng", "Wenyang Gao", "Jianping Yao", "Longyu Zhou", "Chenggang Y
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3700894"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, vehicular-mec, service-migration, trajectory-prediction, lyapunov-optimization, maddpg, uav-trajectory-control]
 related:
   - "[[service-migration]]"
@@ -14,7 +15,7 @@ related:
   - "[[maddpg]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Prediction-Assisted Multi-UAV Online Service Migration and Trajectory Control for MEC-Empowered Vehicular Networks
@@ -26,6 +27,39 @@ Feng, W., Gao, W., Yao, J., Zhou, L., Yan, C., & Quek, T. Q. S. (2026). *Predict
 ## TL;DR
 
 Combines short-term vehicle-trajectory prediction, [[lyapunov-optimization]], and [[maddpg]] for online service migration in UAV-assisted vehicular MEC. A stacked LSTM predicts where vehicles will move, Lyapunov queues enforce a long-term migration-cost budget, and cooperative UAV agents jointly control service migration and UAV trajectories to reduce latency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAV MEC servers follow vehicular hotspots. Each user accesses a local UAV while its service instance may reside on another UAV, so delay includes migration, wireless communication, multi-hop UAV backhaul, and computation under uncertain future mobility.
+
+**Problem & objective**: Minimize long-term aggregate user delay, $\min_{\boldsymbol\pi,\mathbf x,\mathbf y}\lim_{N\to\infty}N^{-1}\sum_{n=1}^{N}\sum_u\ell_u[n]$, by jointly selecting service migrations and continuous UAV positions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Service destination | $\pi_u[n]$ | discrete UAV choice | UAV that hosts user $u$'s service after the slot decision |
+| UAV horizontal position | $(x_v[n],y_v[n])$ | continuous | Location of UAV server $v$ in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Serving, local-access, and migration-destination UAV indices belong to the available set $\mathcal V$. |
+| C2 | Long-term average migration cost satisfies $\lim_{N\to\infty}N^{-1}\sum_n E[n]\leq E_{\mathrm{avg}}$. |
+| C3 | Any two UAVs remain at least safety distance $l_1$ apart. |
+| C4 | Each UAV's per-slot displacement satisfies $0\leq l_v[n]\leq l_2$. |
+| C5 | Slot delay includes migration, access, backhaul, and computation induced by the chosen host and UAV geometry. |
+
+**Algorithm**: Predict short-term vehicle positions with a stacked LSTM, maintain a virtual queue for migration cost, and use Lyapunov drift-plus-penalty to convert the time-average budget into a per-slot weighted cost. Cast the resulting mixed discrete-continuous control problem as a cooperative Markov game and train MADDPG with centralized critics and decentralized UAV actors for migration and movement actions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Feng et al. [x] addressed online service migration and trajectory control for multiple UAV MEC servers serving mobile vehicular users. They minimized long-term average migration, communication, and computation delay over discrete service assignments and continuous UAV positions under average migration-cost, UAV-separation, and per-slot movement constraints. A stacked LSTM predicts short-term vehicle trajectories, Lyapunov optimization converts the migration budget into a per-slot penalty, and MADDPG learns cooperative migration and movement policies. Simulations reported roughly 2 m prediction error and stabilization near 220 iterations, with lower latency than DQN, Greedy, MAPPO, and the no-LSTM variant.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Le Thi Thanh Huyen", "Tran Manh Hoang", "Le The Dung", "Ba Cao Nguyen
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3628880"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 4, pp. 5364-5376"
+modeling_card: required
 tags: [source, active-ris, uav-mounted-ris, noma, finite-blocklength, imperfect-sic, block-error-rate, achievable-rate]
 related:
   - "[[active-ris]]"
@@ -17,7 +18,7 @@ related:
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[zhu-2026-fas-uav-fbl]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Short-Packet NOMA Communication With Assistance of Active RIS and UAV: Analysis and Optimization
@@ -29,6 +30,38 @@ Huyen, L. T. T., Hoang, T. M., Dung, L. T., Nguyen, B. C., & Tran, X. N. (2026).
 ## TL;DR
 
 Analyzes a two-user downlink [[noma|NOMA]] link carried only through a UAV-mounted [[active-ris|active RIS]] under finite blocklength and imperfect SIC. Gamma-approximated cascaded channels yield BLER, asymptotic-diversity, and achievable-rate expressions; a one-dimensional golden-section search chooses the NOMA power split subject to the weak user's BLER constraint.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One base station serves two single-antenna ground users through an active RIS mounted on a UAV because the direct BS-user links are blocked. Downlink NOMA assigns more power to the weaker user, and the stronger user applies imperfect SIC. The finite-blocklength cascaded BS-RIS-user links comprise independent Rayleigh blocks and are approximated by a Gamma distribution; active elements add amplified thermal noise.
+
+**Problem & objective**: Problem (P1) is a one-dimensional quasi-convex reliability optimization that minimizes the strong user's end-to-end block error rate, $\min_{a_1}\bar\epsilon_{D_1}$, subject to a block-error-rate requirement for the weak user.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Strong-user power coefficient | $a_1$ | continuous, $0\leq a_1\leq0.5$ | Fraction of BS power assigned to the stronger user |
+| Weak-user power coefficient | $a_2=1-a_1$ | continuous, $0.5\leq a_2\leq1$ | Fraction of BS power assigned to the weaker user |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The weak user receives more power, $a_2>a_1$ |
+| C2 | Power coefficients exhaust the budget, $a_1+a_2=1$ |
+| C3 | The weak-user end-to-end BLER satisfies $\bar\epsilon_{D_2}\leq\bar\epsilon_{D_2}^{th}$ |
+| C4 | The search domain for the independent variable is $0\leq a_1\leq0.5$ |
+
+**Algorithm**: Approximate the coherent cascaded channel by a Gamma distribution, derive finite-blocklength BLER expressions with the piecewise-linear Q-function approximation, establish the power-allocation behavior, and apply golden-section search over $a_1$ until the interval width is below $10^{-3}$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huyen et al. [x] studied short-packet downlink NOMA assisted by a UAV-mounted active RIS under imperfect successive interference cancellation. They derived exact and asymptotic block-error-rate expressions and average achievable-rate expressions using Gamma-approximated cascaded Rayleigh channels and a finite-blocklength normal approximation. The formal power-allocation problem minimizes the strong user's end-to-end block error rate subject to a weak-user reliability threshold and the NOMA power-sharing domain. A one-dimensional golden-section search obtains the power coefficient after the analytical expressions are evaluated. Monte Carlo simulations verify the analytical curves and report the effects of reflection-element count, blocklength, active gain, power allocation, UAV altitude, and imperfect SIC on reliability and achievable rate.
 
 ## Problem
 

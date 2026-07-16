@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Assisted Edge Inference With Integrated Sensing, Communication, and Computation"
 authors: ["Dingzhu Wen", "Shuo Zhang", "Guangxu Zhu", "Yuan Liu", "Yuanming Shi", "Honglin Hu"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[yuanming-shi]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # UAV-Assisted Edge Inference With Integrated Sensing, Communication, and Computation
@@ -28,6 +29,44 @@ Wen, D., Zhang, S., Zhu, G., Liu, Y., Shi, Y., & Hu, H. (2026). *UAV-Assisted Ed
 ## TL;DR
 
 Studies infrastructure-free [[uav-assisted-edge-inference]] where a UAV relay visits distributed ground devices, collects local feature vectors, and forwards them to an edge server. The paper minimizes end-to-end inference delay under energy and accuracy constraints by jointly optimizing device access order, UAV hovering locations, sensing power, computation frequency, and transmission parameters.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude UAV visits distributed ISCC ground devices in a planned order, collects local sensing features, computes and compresses them, and forwards the feature vectors to an edge server for final inference.
+
+**Problem & objective**: The MINLP minimizes total inference delay, $\min_{\gamma,v,p,f,P,T}\sum_iT_i$, while meeting inference accuracy, device energy, UAV energy, and communication constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Device access order | $\gamma_{i,k}$ | binary permutation | Device $k$ is visited at position $i$ |
+| UAV hovering locations | $\mathbf p[i]$ | continuous, route bounded | UAV position at visit $i$ |
+| UAV speed | $v_i$ | continuous, $v_i\leq V_{max}$ | Movement speed between visits |
+| Compute and transmit powers | $P_{0,k},P_{2,i,k},\tilde P_3$ | continuous, bounded | Sensing, device, and UAV-server powers |
+| Device CPU frequency | $f_k$ | continuous, $f_k\leq f_U$ | Local feature computation speed |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Access order is a permutation: $\gamma_{i,k}\in\{0,1\}$ with one device per visit and one visit per device. |
+| C2 | UAV speed is bounded: $v_i\leq V_{max}$. |
+| C3 | UAV trajectory and hovering energy obey $E_{traj}+E_h\leq\tilde{\mathcal E}$. |
+| C4 | Each device energy stays below $\mathcal E_k$. |
+| C5 | Pairwise discriminant gain meets $G(\tilde{\mathbf z}_k;\ell,\ell')\geq G_L$. |
+| C6 | Feature transmission fits device and UAV-server channel capacities. |
+| C7 | Device compute and both transmit powers remain below their upper bounds. |
+
+**Algorithm**: Find a minimum Hamiltonian access cycle with backtracking, then alternate simulated-annealing hovering-point optimization with resource allocation until the total delay converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wen et al. [x] formulate infrastructure-free UAV edge inference as an access-order, trajectory, sensing, computation, and transmission design problem. The MINLP minimizes total inference delay with a binary device permutation, speed and route limits, UAV and device energy budgets, discriminant-gain accuracy, channel capacity, CPU, and power constraints. A minimum Hamiltonian cycle supplies the access order, after which alternating optimization and simulated annealing refine hovering locations and resources. The paper reports that the resulting ISCC design meets accuracy and energy targets while reducing inference delay in the evaluated scenarios.
 
 ## Problem
 

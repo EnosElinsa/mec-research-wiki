@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Mobile Edge Deployment and Resource Management for Maritime Wireless Networks"
 authors: ["Chaoyue Zhang", "Bin Lin", "Ziru Chen", "Lin X. Cai", "Jianli Duan"]
 year: 2024
@@ -15,7 +16,7 @@ related:
   - "[[zhang-2025-three-tier-maritime-offloading]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 ---
 
 # Mobile Edge Deployment and Resource Management for Maritime Wireless Networks
@@ -27,6 +28,40 @@ Zhang, C., Lin, B., Chen, Z., Cai, L. X., & Duan, J. (2024). *Mobile Edge Deploy
 ## TL;DR
 
 Mobile edge deployment + resource management for **MEC-assisted maritime wireless networks**, where **unmanned surface vehicles (USVs)** with diverse compute resources provide edge services complementing the cloud. The authors minimize expected response time by jointly optimizing USV deployment and computation-offloading decisions. The MINLP is solved with a **dual-layer reinforcement learning (DLRL)** framework: **DDPG** in the outer layer (USV deployment) and **Q-learning** in the inner layer (offloading decisions), handling continuous + discrete variables.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Heterogeneous unmanned surface vehicles act as mobile edge nodes for maritime users, with a remote cloud providing complementary computation. USV placement changes communication delay, while per-task offloading determines edge and cloud load.
+
+**Problem & objective**: A mixed-integer nonlinear deployment and offloading problem minimizes expected response time, $\min\mathbb E[\sum_k T_k]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| USV deployment | $\mathbf q_m$ | continuous surface position | Location of mobile edge node $m$ |
+| Offloading decision | $x_{k,m}$ | discrete/binary | Edge USV or cloud selected for task $k$ |
+| Computing allocation | $f_{k,m}$ | continuous, nonnegative | Processing resource assigned to task $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every task selects one feasible execution destination |
+| C2 | USV compute allocations stay within heterogeneous capacities |
+| C3 | User-USV links satisfy coverage and communication feasibility |
+| C4 | USV deployment positions remain inside the maritime service region |
+| C5 | Response time includes communication, queueing, and computation |
+
+**Algorithm**: Let outer-layer DDPG propose continuous USV deployments → for each deployment let inner Q-learning choose task offloading → evaluate expected response time and resource feasibility → return the inner value to the outer critic → update both layers until deployment and offloading policies converge.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied mobile edge deployment and resource management for maritime wireless networks using heterogeneous unmanned surface vehicles. They formulated expected response-time minimization over continuous USV deployment and discrete computation-offloading decisions under coverage, execution, and computing-capacity constraints. Their dual-layer reinforcement-learning framework uses DDPG in the outer layer to place USVs and Q-learning in the inner layer to select offloading actions. The inner response-time value guides the outer deployment policy. Simulations report lower expected response time than the evaluated DDPG, DQN, PSO-DDQN, and deployment or offloading baselines.
 
 ## Problem framing
 

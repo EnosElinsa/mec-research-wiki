@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Optimal Task Offloading and Trajectory Planning Algorithms for Collaborative Video Analytics With UAV-Assisted Edge in Disaster Rescue"
 authors: ["Hui Sun", "Xiuye Zhang", "Bo Zhang", "Kewei Sha", "Weisong Shi"]
 year: 2024
@@ -16,7 +17,7 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[zhou-2024-jdl-abs-postdisaster-rescue]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Optimal Task Offloading and Trajectory Planning Algorithms for Collaborative Video Analytics With UAV-Assisted Edge in Disaster Rescue
@@ -28,6 +29,41 @@ Sun, H., Zhang, X., Zhang, B., Sha, K., & Shi, W. (2024). *Optimal Task Offloadi
 ## TL;DR
 
 A **UAV-assisted-edge video-analytics** system for **disaster rescue** that explicitly targets the **battery constraints of smart cameras (ECs)**, which prior work neglects. A **UAV-mounted edge server (UES)** operates in discrete, variable-length time slots, alternating between flying to a new offloading point and hovering to serve nearby ECs. Two nested optimizations: a **differential-evolution-based task-offloading** algorithm minimizes per-slot EC computing overhead (local optimization), and a **double deep Q-learning (DDQN)** trajectory-planning algorithm minimizes long-term energy/overhead and **extends the EC-system lifetime** (global optimization). Reported results: the offloading algorithm is more accurate and converges faster than four state-of-the-art strategies, and the trajectory algorithm **doubles the system's lifetime** while cutting energy and total overhead.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV-mounted edge server visits disaster-region offloading points and serves heterogeneous battery-powered smart cameras performing video analytics. Each variable-length slot contains a flight phase and a hover phase; binary camera offloading, channel assignment, and UES resource allocation determine local overhead and the camera-network lifetime.
+
+**Problem & objective**: The nested design minimizes per-slot camera computing overhead and maximizes the long-term camera-system lifetime, represented by $\min O_{\mathrm{slot}}$ locally and $\max T_{\mathrm{lifetime}}$ globally under latency and battery constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Camera offloading | $x_i(t)$ | binary | Local execution or offload of camera $i$'s analytics task |
+| Channel assignment | $c_i(t)$ | discrete | UES channel assigned to camera $i$ |
+| UES compute allocation | $f_i(t)$ | continuous, capacity-bounded | Virtual-machine resource assigned to camera $i$ |
+| UES trajectory | $\mathbf q(t)$ | discrete region/point action | Offloading point selected by the UES |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | At most one camera uses a UES virtual machine in each slot |
+| C2 | Offloaded and locally processed data satisfy the per-slot latency cap |
+| C3 | Camera battery energy and UES flight/hover energy remain feasible |
+| C4 | Channel interference and UES computing capacity limit simultaneous offloading |
+| C5 | UES trajectory stays within the disaster region and serves reachable cameras |
+
+**Algorithm**: Solve the per-slot binary offloading/channel/resource block with improved differential evolution → use a DDQN MDP for long-term UES movement and lifetime reward → nest the local optimizer inside each trajectory step → update the UES policy from energy, overhead, and camera-battery feedback.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied collaborative video analytics with a UAV-assisted edge server in disaster rescue. They jointly considered binary camera offloading, channel and UES-resource allocation, and UES trajectory planning, minimizing local computing overhead and extending the camera-system lifetime under latency and battery constraints. An improved differential-evolution method solves the per-slot offloading and resource block, while a DDQN controller plans long-term UES movement from the resulting energy and overhead feedback. The two optimizers are nested hierarchically across local and global timescales. Simulations report faster and more accurate offloading convergence than four comparison strategies and a stated doubling of system lifetime with lower energy and total overhead.
 
 ## Problem framing
 

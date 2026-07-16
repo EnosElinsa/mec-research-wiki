@@ -18,7 +18,8 @@ related:
   - "[[li-2024-irs-secure-wpmec]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Energy-Efficient UAV-Assisted Mobile Edge Computing With Secure and Reliable Data Transmission
@@ -30,6 +31,40 @@ Wang, M., Zhou, J., Tian, D., Duan, X., & Qu, K. (2026). *Energy-Efficient UAV-A
 ## TL;DR
 
 Studies a single-UAV MEC cloudlet serving multiple ground users under both **passive eavesdropping** and **reliability** constraints. Each ground user has multiple transmit antennas and injects **artificial noise** in the null space of the legitimate UAV channel, while the UAV optimizes its trajectory and the users optimize local-computing, offloading, and power-allocation variables. The objective is **global secure energy efficiency**: secure offloaded bits divided by total local-computing, transmit, and UAV-flight energy. The paper derives a closed-form optimal information-vs-artificial-noise power split, converts the secrecy-outage chance constraint into a worst-case secure-rate expression, lower-bounds computation energy, and solves the coupled resource / trajectory problem with an augmented-Lagrangian iterative algorithm.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-wing UAV provides MEC service to ground users whose uplinks are observed by passive eavesdroppers. Each user divides transmit power between information and artificial noise, and successfully secured data is offloaded while the remainder is computed locally.
+
+**Problem & objective**: Problem P1 maximizes global secure energy efficiency, $\max_{\mathbf q,\boldsymbol\alpha,\boldsymbol\beta}J_{EE}=\theta(\mathbf q,\boldsymbol\alpha,\boldsymbol\beta)/E_{\mathrm{total}}$, where $\theta$ is successfully secured offloaded data and the denominator includes user and UAV computing, communication, and flight energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q_U[k]$ | continuous, $\mathbf q_U[k]\in\mathcal Q$ | Fixed-altitude UAV position in slot $k$ |
+| Information-power fraction | $\alpha_i[k]$ | continuous, $[0,1]$ | Fraction of user power assigned to confidential data |
+| Transmit-power fraction | $\beta_i[k]$ | continuous, $[0,1]$ | Fraction of user maximum power used for transmission |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Secrecy outage is bounded, $\Pr\{s_i[k]\geq R_{U,i}[k]-R_{E,i}[k]\}\leq\varepsilon$ |
+| C2 | UAV position, velocity, and acceleration remain in $\mathcal Q$, $\mathcal V$, and $\mathcal A$ |
+| C3 | Both power-allocation fractions lie in $[0,1]$ |
+| C5 | Position follows the velocity update, $\mathbf q_U[k]-\mathbf q_U[k-1]=\mathbf v_U[k]\Delta t$ |
+| C6 | Velocity follows the acceleration update, $\mathbf v_U[k]-\mathbf v_U[k-1]=\mathbf a_U[k]\Delta t$ |
+
+**Algorithm**: The ratio objective is converted to a subtractive parametric form, and the secrecy chance constraint is replaced by an equivalent secure-rate expression. The paper derives a closed-form information and artificial-noise split, lower-bounds computation energy, and uses an augmented-Lagrangian iterative procedure to update power allocation and trajectory variables.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] formulated secure UAV-assisted MEC as a joint trajectory and power-allocation problem under passive eavesdropping and transmission uncertainty. They maximized successfully secured offloaded data per unit of computing, communication, and flight energy while bounding secrecy-outage probability and enforcing UAV kinematics. Their solution derives the information and artificial-noise power split, transforms the fractional objective and chance constraint, and applies an augmented-Lagrangian iterative update. The reported algorithm converged in roughly thirty iterations and consistently improved global secure energy efficiency over variants that omitted trajectory optimization or optimized only selected energy components. The results further showed that jointly adapting the flight path and user power fractions changes which data can be securely offloaded instead of processed locally.
 
 ## Problem framing
 

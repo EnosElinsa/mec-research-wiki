@@ -19,7 +19,8 @@ related:
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Distributed and Energy-Efficient Mobile Crowdsensing with Charging Stations by Deep Reinforcement Learning
@@ -31,6 +32,40 @@ Liu, C. H., Dai, Z., Zhao, Y., Crowcroft, J., Wu, D., & Leung, K. K. (2021). *Di
 ## TL;DR
 
 Introduces e-Divert, a CTDE actor-critic system for unmanned-vehicle crowdsensing with obstacles and charging stations. CNN spatial features, LSTM history, N-step returns, distributed prioritized replay, and an Ape-X actor-learner architecture jointly target collected data, geographic fairness, and total vehicle-plus-charging energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Unmanned vehicles navigate a bounded two-dimensional area containing obstacles, finite-data PoIs, and powered charging stations for $T$ sensing slots, starting from a common origin with full batteries.
+
+**Problem & objective**: Learn a distributed navigation policy that maximizes collected data and geographical fairness while minimizing vehicle and charging energy, $\max D_T(\pi),\ \max\omega_T(\pi),\ \min e_T(\pi)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Vehicle heading | $\theta_t^v$ | continuous in $[0,2\pi)$ for UAVs | Movement direction of vehicle $v$ in slot $t$ |
+| Movement distance | $l_t^v$ | continuous in $[0,l_{\max}]$ | Distance traveled by vehicle $v$ |
+| Charging action | $f_t^v(c)$ | nonnegative station supply | Energy obtained by vehicle $v$ from station $c$ in slot $t$ |
+| Control policy | $\pi_v$ | local-observation policy | Maps each vehicle observation to a movement or charging decision |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Vehicle positions remain within the fixed target-area border. |
+| C2 | Vehicles avoid obstacles and incur penalties for collision or for taking a slot with neither valid collection nor charging. |
+| C3 | Movement actions satisfy $\theta_t^v\in[0,2\pi)$ and $0\leq l_t^v\leq l_{\max}$. |
+| C4 | Collected data, fairness, and vehicle plus station energy evolve over the finite horizon, with charging limited by station supply and vehicle battery state. |
+
+**Algorithm**: Use distributed multi-agent actor-critic learning with CNN spatial encoding, LSTM N-step temporal modeling, prioritized replay, and Ape-X multiple actors feeding one learner under centralized training and local execution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] introduced e-Divert, a distributed multi-agent controller for unmanned-vehicle mobile crowdsensing with obstacles and charging stations. The policy chooses continuous movement actions while balancing data collection, Jain fairness, and energy consumed by vehicles and charging stations. CNN spatial features, LSTM history, N-step returns, prioritized replay, and Ape-X asynchronous actors are combined to capture delayed spatial and temporal effects. In simulations, e-Divert improves energy efficiency over MADDPG by 3.62 times when varying vehicle count and 2.36 times when varying charging-station count. The study provides a practical CTDE reference for joint navigation, sensing, and replenishment decisions.
 
 ## Problem
 

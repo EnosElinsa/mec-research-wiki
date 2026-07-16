@@ -5,6 +5,7 @@ authors: ["Jinyu Fu", "Guanghui Sun", "Weiran Yao", "Chengwei Wu", "Ligang Wu"]
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3645094"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: required
 tags: [source, uav-data-collection, dubins-path, heterogeneous-uav, obstacle-avoidance, ant-colony-optimization, rendezvous]
 related:
   - "[[releasing-collecting-recycling-uav-framework]]"
@@ -14,7 +15,7 @@ related:
   - "[[ant-colony-optimization]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Dubins Path Planning of Heterogeneous UAV Collaborative Data Collection for IoT Network
@@ -26,6 +27,43 @@ Fu, J., Sun, G., Yao, W., Wu, C., & Wu, L. (2026). *Dubins Path Planning of Hete
 ## TL;DR
 
 Builds an offline release-collect-recover mission for one fast transport UAV carrying several slower communication UAVs. Hierarchical altitude clustering, obstacle-aware bundled ant-colony tours, and time-synchronized Dubins recovery jointly choose the subordinate fleet size and mission trajectories.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fast transport UAV carries several slower communication UAVs from a base, releases them to collect data from known ground terminals in mountainous terrain, recovers them at synchronized rendezvous points, and returns to base. Both vehicle types follow curvature-constrained Dubins motion.
+
+**Problem & objective**: Jointly choose fleet size and release, collection, and recovery paths to reduce mission time. The carrier subproblem minimizes its Dubins tour, $[\mathcal T^*,K^*]=\arg\min_{\mathcal C_T\in\mathcal C}\sum_{k=1}^{2K+1}\varpi(\mathcal C_T(k),\mathcal C_T(k+1))$, while each communication-UAV chain minimizes collection-path travel time subject to data delivery.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication-UAV count | $K$ | positive integer | Number of terminal clusters and carried communication UAVs |
+| Cluster and altitude assignment | $\mathcal C_k,z_k$ | discrete sets and continuous altitude | Terminals and flight plane assigned to each communication UAV |
+| Release and recovery points | $C_k^D,C_k^U$ | continuous waypoints | Carrier handoff and rendezvous positions |
+| Collection route | $\mathcal P_k$ | ordered path | Open obstacle-aware terminal chain for communication UAV $k$ |
+| Recovery order and elongation | $\mathcal I,\mathcal H_e$ | permutation and path | Synchronized recovery sequence and added carrier path |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | T-UAV and C-UAV paths respect their minimum turning radii and coupled Dubins headings. |
+| C2 | Collection paths avoid mapped terrain obstacles and cover every assigned terminal. |
+| C3 | A terminal transmits only within effective range and until $\int_0^t\mathcal R_i(t)\,dt>\iota$. |
+| C4 | A communication UAV cannot hover, serves terminals sequentially, and receives at most one retry after failure. |
+| C5 | Recovery requires horizontal alignment and altitude difference below 1 m. |
+| C6 | Carrier and communication-UAV arrival times and relative headings satisfy the rendezvous synchronization rule. |
+
+**Algorithm**: Use multi-height hierarchical target clustering to assign terminals, altitudes, and candidate fleet size, then solve a Dubins release tour. Build each open collection chain with bundled ant-colony search and dynamic-window probabilistic roadmaps, convert it to coupled Dubins curves, order recovery requests, and elongate the carrier path by homotopy or multi-circle segments until rendezvous times align; compare candidate values of $K$ offline.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Fu et al. [x] planned heterogeneous UAV data collection with one transport UAV that releases and recovers multiple communication UAVs. The offline design chooses fleet size, terminal clusters and altitudes, release and collection routes, recovery order, and synchronized rendezvous paths under Dubins turning-radius, terrain-obstacle, communication-throughput, and recovery-alignment conditions. RCR combines multi-height clustering, a Dubins release tour, bundled ant-colony obstacle-aware collection paths, and time-synchronized trajectory elongation for recovery. Across 30 Monte Carlo experiments, the method selected five communication UAVs, yielding 6939.5 s waiting time, 9213.3 s less than four UAVs and 2063.0 s less than six.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Scott Fujimoto", "Herke van Hoof", "David Meger"]
 year: 2018
 url: ""
 venue: "Proceedings of the 35th International Conference on Machine Learning (ICML), PMLR 80"
+modeling_card: not_applicable
 tags: [source, drl, actor-critic, td3, continuous-control, overestimation-bias, foundational-method]
 related:
   - "[[td3]]"
@@ -15,7 +16,7 @@ related:
   - "[[shao-2024-drl-antijamming-mec]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Addressing Function Approximation Error in Actor-Critic Methods
@@ -27,6 +28,12 @@ Fujimoto, S., van Hoof, H., & Meger, D. (2018). *Addressing Function Approximati
 ## TL;DR
 
 The **origin paper for TD3** (Twin Delayed Deep Deterministic policy gradient). It shows that the overestimation bias well known in discrete-action [[deep-q-network|Q-learning]] also afflicts actor-critic continuous-control methods, and proposes three mechanisms to fix it. Built on top of [[ddpg]], the result outperforms the prior state of the art across the OpenAI Gym continuous-control suite. This is a **foundational DRL-method** entry rather than an MEC application — it documents the algorithm that many UAV-MEC sources in this wiki build on.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Fujimoto et al. [x] studied function approximation error in actor-critic methods for continuous control and showed that overestimation bias and accumulated temporal-difference error also arise in this setting. They introduced TD3, which builds on DDPG by taking the minimum target value from two critics, delaying policy updates, and applying target policy smoothing. The algorithm was evaluated on seven OpenAI Gym continuous-control domains with experiments across multiple random seeds and ablation studies for each component. The reported results show that TD3 matches or outperforms the evaluated algorithms in final performance and learning speed across the tested tasks.
 
 ## Problem framing
 

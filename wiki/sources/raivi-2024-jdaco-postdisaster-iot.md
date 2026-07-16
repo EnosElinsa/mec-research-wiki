@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "JDACO: Joint Data Aggregation and Computation Offloading in UAV-Enabled Internet of Things for Post-Disaster Scenarios"
 authors: ["Asif Mahmud Raivi", "Sangman Moh"]
 year: 2024
@@ -18,7 +19,7 @@ related:
   - "[[zhou-2024-jdl-abs-postdisaster-rescue]]"
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # JDACO: Joint Data Aggregation and Computation Offloading in UAV-Enabled Internet of Things for Post-Disaster Scenarios
@@ -30,6 +31,41 @@ Raivi, A. M., & Moh, S. (2024). *JDACO: Joint Data Aggregation and Computation O
 ## TL;DR
 
 A **joint data-aggregation + computation-offloading (JDACO)** scheme for a multi-UAV post-disaster IoT network where ground BSs are gone. **Low-tier UAVs (LT-UAVs)** hover over the area to aggregate sensor data from ground IoT nodes and process it locally; based on task size they offload to a higher-flying **high-tier UAV (HT-UAV)** with more compute. The objective minimizes total energy + latency of *both* the aggregation and offloading processes while maximizing IoT-device coverage. It is cast as a Markov game and solved by a multi-agent DRL algorithm, **VD3QN** = dueling double DQN (D3QN) + value-decomposition network (VDN) for cooperative learning.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple low-tier UAVs aggregate data from ground IoT nodes and either process it locally or offload it to one higher-tier UAV with more computation. IoT-to-low-tier links use TDMA with probabilistic LoS/NLoS channels, low-tier-to-high-tier forwarding uses FDMA, and each low-tier UAV moves inside a bounded post-disaster region under rotary-wing energy and flight-time limits.
+
+**Problem & objective**: A cooperative Markov-game control problem minimizes joint aggregation and offloading energy-delay cost while maximizing covered IoT devices, represented by $\min(E_{\mathrm{agg}}+E_{\mathrm{off}}+\lambda L)-\mu C_{\mathrm{covered}}$ over motion, aggregation, and execution decisions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local/offloaded execution | $\Phi_{j,k}$ | binary | Whether low-tier UAV $k$ processes IoT task $j$ locally or sends it to the high-tier UAV |
+| Low-tier UAV motion | $\mathbf a_k(t)$ | discrete direction and distance | Movement selected by UAV $k$ per slot |
+| Data aggregation choice | $g_{j,k}(t)$ | binary/assignment | IoT node or task aggregated by low-tier UAV $k$ |
+| Offloaded workload | $b_{j,k}(t)$ | continuous, nonnegative | Data sent from low-tier UAV $k$ to the high-tier UAV |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each IoT node is assigned to an in-range low-tier UAV and covered devices remain within the service region |
+| C2 | Low-tier UAV motion stays inside the bounded region and avoids prohibited states |
+| C3 | Local and high-tier CPU resources, FDMA bandwidth, and TDMA aggregation slots remain feasible |
+| C4 | Low-tier UAV flight time and rotary-wing energy remain below their limits |
+| C5 | Each task selects one local or high-tier execution mode through $\Phi_{j,k}$ |
+
+**Algorithm**: Encode aggregation and offloading as a cooperative Markov game → learn discrete motion and execution policies with per-agent dueling double DQN → decompose team values with VDN → execute the VD3QN policies for joint data collection, local processing, and high-tier offloading.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Raivi and Moh [x] studied joint data aggregation and computation offloading in a two-tier UAV-enabled post-disaster IoT network. Low-tier UAVs aggregate and locally process ground data or offload larger tasks to a higher-tier UAV, and the objective combines aggregation and offloading energy and latency with IoT-device coverage. They modeled the joint decisions as a cooperative Markov game and proposed VD3QN, which combines dueling double DQN agents with a value-decomposition network. The learned policies coordinate UAV motion, data aggregation, and local-versus-high-tier execution in the discrete action space. Simulations report 20% lower training time, 11.4% more processed data, 5.6% higher energy efficiency, 11.2% shorter mission duration, and service for up to 98% of IoT devices compared with the conventional schemes.
 
 ## Problem framing
 

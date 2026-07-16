@@ -15,7 +15,8 @@ related:
   - "[[energy-harvesting-mec]]"
   - "[[an-2024-multilayer-ris-hap-swipt]]"
 created: 2026-07-14
-updated: 2026-07-14
+modeling_card: not_applicable
+updated: 2026-07-16
 ---
 
 # SLIPT Enabled Ground-to-UAV FSO Communication for SAGNET in 6G-IoT Systems
@@ -27,6 +28,12 @@ Kamatchi, K., Pillappan, K., Angayarkanni, V., & Krishnan, P. (2025). *SLIPT Ena
 ## TL;DR
 
 Analyzes a hovering UAV that receives information and harvests energy from the same ground-to-UAV free-space optical signal. Closed-form harvested-energy, outage, and M-PSK symbol-error expressions compare AC-DC separation, time switching, power splitting, and hybrid time-switching/power-splitting receivers under atmospheric attenuation, Malaga turbulence, pointing error, and field-of-view interruption. In the tested settings, the hybrid TSPS receiver harvests the most energy, while beamwidth and receiver FOV expose a reliability-energy tradeoff.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Kamatchi et al. [x] analyzed simultaneous lightwave information and power transfer on a hovering ground-to-UAV free-space optical link. They derived closed-form harvested-energy, outage-probability, and M-PSK symbol-error expressions for AC-DC separation, time switching, power splitting, and hybrid time-switching and power-splitting receivers under atmospheric attenuation, Malaga turbulence, pointing error, and field-of-view interruption. Parameter sweeps examined distance, weather, turbulence, beamwidth, field of view, and angle-of-arrival fluctuations. The hybrid TSPS receiver produced the largest harvested energy among the tested methods and reached 0.04 mJ under strong turbulence. The reported design also achieved a symbol error rate of $10^{-4}$ at 30 dB and identified field-of-view values that balance interruption against background noise.
 
 ## Problem framing
 

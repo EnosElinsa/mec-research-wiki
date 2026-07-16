@@ -5,6 +5,7 @@ authors: ["Zhongkang Cao", "Jianfeng Li", "Pan Li", "Jianghao Xiao", "Qihui Wu"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3686429"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: not_applicable
 tags: [source, uav-localization, uav-self-tracking, array-signal-processing, minor-subspace, majorization-minimization, kalman-filter, cramer-rao-bound]
 related:
   - "[[minor-subspace-tracking]]"
@@ -15,7 +16,7 @@ related:
   - "[[zhao-2025-networked-isac-uav-handover]]"
   - "[[zhu-2024-zdrl-uav-tracking]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # 3-D Self-Tracking of UAV Based on Minor Subspace Majorization-Minimization Iteration
@@ -27,6 +28,12 @@ Cao, Z., Li, J., Li, P., Xiao, J., & Wu, Q. (2026). *3-D Self-Tracking of UAV Ba
 ## TL;DR
 
 Builds a GNSS-independent 3-D UAV self-tracking pipeline from non-cooperative anchors. The method updates a noise-suppressed minor subspace with an enhanced approximate inverse-power (EAIP) algorithm, extracts position through continuous majorization-minimization (MM) iteration instead of grid search, then smooths tracking intervals with a Kalman filter and moving average. The paper also derives per-dimension CRLBs as tracking-accuracy benchmarks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Cao et al. [x] studied GNSS-independent three-dimensional UAV self-tracking from same-frequency signals emitted by non-cooperative anchors. They proposed an enhanced approximate inverse-power update for noise-suppressed minor-subspace tracking, followed by continuous majorization-minimization position iteration, Kalman filtering, and moving-average acceleration control. They also derived per-axis Cramer-Rao lower bounds as accuracy benchmarks. Simulations report an average minor-subspace error of -15.9637 dB and an average tracking error of 4.089 m, with lower errors than the evaluated AIP-based MUSIC and SSF pipelines.
 
 ## Problem
 

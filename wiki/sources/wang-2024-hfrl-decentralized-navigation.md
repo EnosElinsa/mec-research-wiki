@@ -5,6 +5,7 @@ authors: ["Pengfei Wang", "Hao Yang", "Guangjie Han", "Ruiyun Yu", "Leyou Yang",
 year: 2024
 url: "https://doi.org/10.1109/TMC.2024.3439696"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-mec, federated-reinforcement-learning, hierarchical-rl, soft-actor-critic, heterogeneous-uav, energy-efficiency, navigation]
 related:
   - "[[mobile-edge-computing]]"
@@ -17,7 +18,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Decentralized Navigation With Heterogeneous Federated Reinforcement Learning for UAV-Enabled Mobile Edge Computing
@@ -29,6 +30,42 @@ Wang, P., Yang, H., Han, G., Yu, R., Yang, L., Sun, G., Qi, H., Wei, X., & Zhang
 ## TL;DR
 
 A **decentralized navigation policy** for UAV-enabled MEC with **heterogeneous** UAVs (differing performance parameters), built from two pieces: a **soft hierarchical deep reinforcement learning network (SHDRLN)** and a **dual-end federated reinforcement learning (DFRL)** algorithm. SHDRLN, a maximum-entropy hierarchical DRL net, abstracts atomic actions into generic **skills** to reduce policy differences across UAVs while maximizing average task-offloading energy efficiency (good UE coverage + minimal offloading wait time). DFRL aggregates policy knowledge at a cloud server and **filters** it at the UAV end so each UAV adopts only the knowledge suited to its own performance parameters.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A swarm of heterogeneous fixed-altitude UAVs navigates disjoint task areas, serves moving UEs, and offloads queued tasks. Each UAV has distinct flight energy, coverage, CPU, and speed parameters and shares policy knowledge through a cloud server.
+
+**Problem & objective**: The navigation objective maximizes energy efficiency $\eta=\sum_j\Lambda_j^*(T)/\sum_je_j(T)$ while meeting waiting-time and coverage requirements.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbb{J}$ | continuous sequence | Coordinates $[X_j(t),Y_j(t),H]$ over time |
+| UAV velocity | $\mathbf V_j(t)$ | continuous, $\|\mathbf V_j\|_2\le V_j^{\max}$ | Motion state of UAV $j$ |
+| Atomic acceleration action | $a_t^j$ | discrete, 17 choices | Direction and magnitude used each slot |
+| CPU allocation | $f_t$ | continuous, $f_j^{\min}\le f_t\le f_j^{\max}$ | Processing rate for queued tasks |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Area boundary: $0\le X_j(t),Y_j(t)\le L$ |
+| C2 | Obstacle avoidance: $[X_j(t),Y_j(t)]\notin\mathbb O_j$ |
+| C3 | Speed: $0\le\|\mathbf V_j(t+1)\|_2\le V_j^{\max}$ |
+| C4 | Motion directions: $0\le\mathcal U_\alpha,\mathcal U\le2\pi$ |
+| C5 | UE queue bounds: $0\le\Lambda_{i_j}(t)\le\Lambda^{\max}$ |
+| C6-C7 | CPU range $f_j^{\min}\le f_t\le f_j^{\max}$, waiting time $W_T\le W_T^{\max}$, and coverage $c_T\ge c_T^{\min}$ |
+
+**Algorithm**: SHDRLN uses a maximum-entropy skill policy network with pretrained deep skill networks and actor-critic updates. DFRL aggregates skill-policy parameters at the cloud, computes policy similarity with KL divergence, and filters transferred knowledge separately at each heterogeneous UAV.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] formulated decentralized navigation for heterogeneous UAVs that must cover UEs and process queued MEC tasks despite different flight and compute capabilities. The objective maximizes completed task data per joule while constraining map boundaries, obstacles, speed, task buffers, CPU range, waiting time, and coverage. SHDRLN combines pretrained skills with a maximum-entropy hierarchical policy, and DFRL uses cloud-side KL similarity and UAV-side filtering instead of forcing one shared policy. Experiments showed faster early learning and competitive energy efficiency, waiting time, and coverage against SAC, D3QN, random, manual, and FedAvg baselines.
 
 ## Problem framing
 

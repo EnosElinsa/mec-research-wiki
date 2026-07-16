@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Computation Rate Maximization in UAV-Enabled Wireless-Powered Mobile-Edge Computing Systems"
 authors: ["Fuhui Zhou", "Yongpeng Wu", "Rose Qingyang Hu", "Yi Qian"]
 year: 2018
@@ -18,7 +19,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[fuhui-zhou]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Computation Rate Maximization in UAV-Enabled Wireless-Powered Mobile-Edge Computing Systems
@@ -30,6 +31,43 @@ Zhou, F., Wu, Y., Hu, R. Q., & Qian, Y. (2018). *Computation Rate Maximization i
 ## TL;DR
 
 An early, foundational study of a **UAV-enabled wireless-powered MEC system**: a UAV both transmits energy (via [[wireless-power-transfer|WPT]]) to ground users and serves as the MEC server they offload to. The paper maximizes the **weighted sum computation bits** of all users under two modes — **partial** and **binary** computation offloading — subject to an energy-harvesting causal constraint and a UAV speed constraint, jointly optimizing CPU frequencies, user offloading times, user transmit powers, and the UAV trajectory. The authors state this is, to their knowledge, the **first** work on UAV-enabled wireless-powered MEC computation-rate maximization.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV broadcasts RF energy to multiple stationary ground users and also serves as their MEC server over a finite slotted horizon. Users offload through TDMA over a block-fading air-to-ground channel or compute locally using harvested energy, under partial and binary offloading modes.
+
+**Problem & objective**: Problems P1 and P5 are non-convex computation-rate maximization models, with P5 also mixed integer, that maximize weighted computed bits, $\max \sum_m w_m\bigl(L_m^{\mathrm{loc}}+L_m^{\mathrm{off}}\bigr)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| CPU frequency | $f_m[n]$ | continuous, nonnegative | Local-computing frequency of user $m$ |
+| Offloading time | $t_m[n]$ | continuous, $[0,1]$ | Fraction of slot $n$ assigned to user $m$ |
+| User transmit power | $P_m[n]$ | continuous, nonnegative | Power used to offload computation bits |
+| UAV trajectory | $\mathbf q_u[n]$ | continuous, $\mathbb R^2$ | Horizontal UAV position in slot $n$ |
+| Computing mode | $\rho_m$ | binary | Local computation when zero and full offloading when one |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | CPU frequency and offloading power remain in their feasible nonnegative ranges |
+| C2 | Cumulative local-computing and offloading energy cannot exceed cumulatively harvested RF energy |
+| C3 | TDMA time satisfies $\sum_m t_m[n]\leq 1$ in every slot |
+| C4 | UAV displacement obeys the maximum-speed constraint |
+| C5 | The UAV starts at $\mathbf q_0$ and ends at $\mathbf q_F$ |
+| C6 | Binary mode sets partition users into local and offloading groups |
+
+**Algorithm**: Fix the trajectory and derive closed-form resource allocations by dual optimization → update the trajectory through SCA → alternate the two stages for partial offloading → add relaxed binary mode selection and threshold recovery as a third stage for binary offloading.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied computation-rate maximization in a UAV-enabled wireless-powered mobile-edge computing system under partial and binary computation offloading modes. They jointly optimized user CPU frequencies, offloading times, transmit powers, the UAV trajectory, and, in the binary mode, each user's local-or-offload selection to maximize weighted computation bits. The formulations enforce energy-harvesting causality, per-slot offloading-time limits, and UAV speed and endpoint constraints. A two-stage alternating algorithm derives closed-form continuous resource allocations and updates the trajectory, while a three-stage variant additionally determines binary computing modes. Simulation results show that the proposed resource-allocation schemes outperform the evaluated benchmarks and converge with low computational complexity.
 
 ## Problem framing
 

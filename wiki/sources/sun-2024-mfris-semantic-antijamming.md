@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-Functional RIS-Assisted Semantic Anti-Jamming Communication and Computing in Integrated Aerial-Ground Networks"
 authors: ["Yifu Sun", "Zhi Lin", "Kang An", "Dong Li", "Cheng Li", "Yonggang Zhu", "Derrick Wing Kwan Ng", "Naofal Al-Dhahir", "Jiangzhou Wang"]
 year: 2024
@@ -18,7 +19,7 @@ related:
   - "[[shao-2024-drl-antijamming-mec]]"
   - "[[naofal-al-dhahir]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Multi-Functional RIS-Assisted Semantic Anti-Jamming Communication and Computing in Integrated Aerial-Ground Networks
@@ -30,6 +31,41 @@ Sun, Y., Lin, Z., An, K., Li, D., Li, C., Zhu, Y., Ng, D. W. K., Al-Dhahir, N., 
 ## TL;DR
 
 A framework of **multi-functional reconfigurable intelligent surface (MF-RIS)**-aided **semantic anti-jamming** communication and computing for an MEC-assisted **integrated aerial-ground network (MEC-IAGN)**. A semantic transceiver provides robustness + data compression, and the MF-RIS customizes the full-space environment via **signal reflection, refraction, amplification, and energy harvesting** (overcoming the half-space coverage, multiplicative fading, and battery reliance of conventional RIS). The paper maximizes a **semantic computation rate** under jamming attacks and **imperfect jammer CSI**, subject to an energy-partition (offloading) constraint, semantic-similarity requirement, semantic-rate target, and MF-RIS self-sustainability. Imperfect CSI is converted to a **worst-case** form via discretization; the problem is solved by a fast-converging **monotonic optimization + decoupling second-order cone programming (MO-DSOCP)** algorithm (global optimum), plus a low-complexity suboptimal **generalized power iteration (GPI)** scheme.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An integrated aerial-ground network uses a multi-functional RIS that can reflect, refract, amplify, and harvest energy to support semantic communication and computing under a malicious jammer with imperfect CSI. A semantic transceiver jointly processes local and offloaded information, and the RIS must remain self-sustainable.
+
+**Problem & objective**: A robust mixed-integer non-convex program maximizes semantic computation rate, $\max R_{\mathrm{semantic}}$, subject to semantic-similarity, semantic-rate, MF-RIS self-sustainability, and energy-partition constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmit precoder | $\mathbf W$ | complex continuous, power-bounded | Semantic communication beamformer |
+| MF-RIS mode/gain/phase | $\boldsymbol\beta,\boldsymbol\phi$ | mixed discrete-continuous | Reflection, refraction, amplification, and phase controls |
+| Offloading ratio | $\rho$ | continuous, $[0,1]$ | Fraction of semantic computation sent to the edge |
+| Energy partition | $\eta$ | continuous, bounded | Split of harvested/available MF-RIS energy among functions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Semantic similarity remains above its required threshold |
+| C2 | Semantic communication and computation rate meets the target |
+| C3 | MF-RIS harvested energy supports its active operation and amplification |
+| C4 | Transmit power, offloading, and energy-partition variables remain feasible |
+| C5 | Worst-case jammer CSI realizations satisfy the robust constraints |
+
+**Algorithm**: Discretize imperfect jammer CSI into a worst-case instance → solve the robust semantic-rate problem with monotonic optimization and decoupling SOCP → use sequential partitioning for the globally optimal method → optionally apply generalized power iteration for a low-complexity precoder and heuristic remaining variables.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied semantic anti-jamming communication and computing with a multi-functional RIS in an integrated aerial-ground network. They formulated a robust semantic computation-rate maximization problem with reflection, refraction, amplification, energy harvesting, semantic similarity, and offloading variables under imperfect jammer CSI. A worst-case discretization converts the CSI uncertainty into a deterministic instance. The globally optimal solution uses monotonic optimization with decoupling second-order cone programming and sequential partitioning, while generalized power iteration provides a lower-complexity alternative. Numerical simulations report superior semantic-system performance for the proposed MF-RIS framework and algorithms over the evaluated benchmarks.
 
 ## Problem framing
 

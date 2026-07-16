@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Interference Management in ISAC-SAGINs Based on Transformer-Enabled Mean-Field Reinforcement Learning Method"
 authors: ["Yu Yao", "Zekun Lu", "Gaojie Chen", "Chong Huang", "Chenyuan Feng", "Tony Q. S. Quek"]
 year: 2026
@@ -19,7 +20,7 @@ related:
   - "[[cooperative-isac-transceiver-beamforming]]"
   - "[[tony-q-s-quek]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Interference Management in ISAC-SAGINs Based on Transformer-Enabled Mean-Field Reinforcement Learning Method
@@ -31,6 +32,44 @@ Yao, Y., Lu, Z., Chen, G., Huang, C., Feng, C., & Quek, T. Q. S. (2026). *Interf
 ## TL;DR
 
 Models spectrum-sharing interference in an integrated sensing-and-communication space-air-ground network as a satellite-leader, UAV-follower Stackelberg game. A shared actor-critic architecture uses a Transformer to encode the unordered follower state-action population and a post-decision state to connect leader and follower updates. The reported gains are simulation results for the learned policy; the paper does not establish existence, uniqueness, or convergence to a Stackelberg equilibrium.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna LEO satellite serves $M$ satellite users while $N$ multi-antenna UAVs serve $K$ UAV users and sense one target over shared spectrum. One UAV receives sensing echoes and the others transmit communication and sensing signals; satellite CSI may be outdated or imperfect.
+
+**Problem & objective**: The non-cooperative Stackelberg formulation has a satellite leader maximizing worst-case average satellite-user rate, $\max_{\chi_1}\min_{\Delta\mathbf h}\frac{1}{T}\sum_{\ell=1}^{T}\sum_{m=1}^{M}R_{S,m}[\ell]$, and UAV followers maximizing worst-case average UAV-user rate, $\max_{\chi_2}\min_{\Delta\mathbf h}\frac{1}{T}\sum_{\ell=1}^{T}\sum_{k=1}^{K}R_{U,k}[\ell]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Satellite communication beam | $\mathbf p_m^p[\ell]$ | complex continuous | Beam from the satellite to SU $m$ |
+| UAV communication beam | $\mathbf p_{n,k}[\ell]$ | complex continuous | Beam from UAV $n$ to UU $k$ |
+| UAV sensing beam | $\mathbf p_n^s[\ell]$ | complex continuous | ISAC sensing beam from UAV $n$ |
+| UAV position | $\mathbf q_n[\ell]$ | continuous, 3-D trajectory | UAV position at slot $\ell$ |
+| UU association | $a_{n,k}[\ell]$ | binary | Assigns UU $k$ to UAV $n$ |
+| Sensing receiver role | $b_n[\ell]$ | binary | Selects the single sensing receiver UAV |
+| Receive filter | $\mathbf w_n[\ell]$ | complex continuous | Combines sensing echoes at UAV $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 13a-13c | Satellite power and worst-case SU rate constraints are enforced |
+| 14a-14c | UAV endpoints, displacement limits, and inter-UAV collision distance are enforced |
+| 15b | Each UAV splits communication and sensing beams within $P_n^{\max}$ |
+| 15c-15d | Sensing SINR and worst-case UU minimum-rate requirements are met |
+| 15e-15g | Each UU has one serving UAV and exactly one UAV receives sensing echoes |
+
+**Algorithm**: The transformer-enabled mean-field reinforcement learner alternates a satellite leader policy with shared UAV follower actor-critic policies. Mean-field embeddings compress the unordered follower population, a Transformer encoder preserves heterogeneous state interactions, and a post-decision-state update accelerates learning under outdated CSI.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yao et al. [x] modeled interference management in a spectrum-sharing ISAC-SAGIN as a non-cooperative Stackelberg game between a satellite leader and a multi-UAV follower population. The leader maximizes worst-case satellite-user rate, while followers jointly maximize worst-case UAV-user rate through beamforming, trajectories, association, sensing-role selection, and receive filtering under power, sensing, rate, mobility, and collision constraints. Their T-MFRL solver combines mean-field reinforcement learning, a permutation-aware Transformer encoder, and post-decision-state actor-critic updates. Simulations report higher achievable rates than DQN-MARL, MAPPO, and ordinary MFRL baselines, with the paper's headline improvement reaching 54.2 percent over DQN-MARL. The learned policies preserve acceptable sensing performance and show the expected rate loss as sensing SINR requirements or CSI aging become more severe.
 
 ## Problem
 

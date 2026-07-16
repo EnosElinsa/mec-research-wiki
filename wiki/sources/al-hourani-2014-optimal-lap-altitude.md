@@ -5,6 +5,7 @@ authors: ["Akram Al-Hourani", "Sithamparanathan Kandeepan", "Simon Lardner"]
 year: 2014
 url: "https://doi.org/10.1109/LWC.2014.2342736"
 venue: "IEEE Wireless Communications Letters (IEEE WCL)"
+modeling_card: required
 tags: [source, low-altitude-platform, air-to-ground-channel-model, line-of-sight-probability, coverage-optimization, post-disaster-mec]
 related:
   - "[[air-to-ground-channel-model]]"
@@ -13,7 +14,7 @@ related:
   - "[[post-disaster-mec]]"
   - "[[high-altitude-platform-station]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Optimal LAP Altitude for Maximum Coverage
@@ -25,6 +26,35 @@ Al-Hourani, A., Kandeepan, S., & Lardner, S. (2014). *Optimal LAP Altitude for M
 ## TL;DR
 
 A foundational analytical letter that derives the **optimal altitude of a low-altitude aerial platform (LAP)** to maximize ground radio coverage. It models air-to-ground (ATG) propagation as a probabilistic mix of LoS and NLoS groups, gives a **closed-form sigmoid (S-curve) approximation of the LoS probability** as a function of elevation angle and ITU urban statistical parameters (α, β, γ), and shows the optimal altitude depends on the maximum allowed pathloss and the environment, with a derived **optimal elevation angle** that is independent of the pathloss threshold.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One quasi-stationary low-altitude platform acts as an airborne base station for ground receivers in an urban environment. The multiple-access scheme is not specified; the air-to-ground channel uses a mean pathloss model that combines free-space loss with probabilistic LoS and NLoS excessive loss, where LoS probability is a sigmoid function of elevation angle and urban parameters.
+
+**Problem & objective**: A one-dimensional analytical coverage optimization chooses the LAP altitude to solve $\max_h R(h)$, where the coverage boundary satisfies $\Lambda(h,R)=\mathrm{PL}_{\max}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| LAP altitude | $h$ | continuous, $h>0$ | Platform altitude that determines elevation angle, mean pathloss, and coverage radius |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 7 | A covered receiver satisfies $\Lambda(h,r)\leq\mathrm{PL}_{\max}$, with $R=r\mid_{\Lambda=\mathrm{PL}_{\max}}$ on the coverage boundary |
+| Practical bound | If the unconstrained optimum is infeasible, impose the platform limit $h\leq h_{\max}$ |
+
+**Algorithm**: Substitute the sigmoid LoS probability and LoS/NLoS pathloss terms into the boundary equation to obtain the implicit radius-altitude relation in Eq. (10), solve $\partial R/\partial h=0$ numerically for $h_{\mathrm{OPT}}$, and solve Eq. (13) for the environment-specific optimum elevation angle.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Al-Hourani et al. [x] studied altitude optimization for low-altitude aerial platforms deployed as airborne base stations in rapid relief networks. They modeled the air-to-ground mean pathloss as a probabilistic combination of LoS and NLoS propagation and approximated the geometrical LoS probability with a modified sigmoid function parameterized by the urban environment. They defined the coverage zone through a maximum allowable pathloss and obtained the LAP altitude that maximizes the ground coverage radius by solving the critical-point condition numerically, then derived an optimum elevation-angle equation whose solution is independent of the pathloss threshold. The analysis shows that the optimum altitude depends on the maximum allowed pathloss and the urban statistical parameters, while the optimum elevation angle is unique for a given environment parameter set.
 
 ## Problem framing
 

@@ -5,6 +5,7 @@ authors: ["Hamideh Fatemidokht", "Marjan Kuchaki Rafsanjani", "Brij B. Gupta", "
 year: 2021
 url: "https://doi.org/10.1109/TITS.2020.3041746"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS), vol. 22, no. 7, pp. 4757-4769"
+modeling_card: required
 tags: [source, uav-assisted-vanet-routing, vanet, fanet, uav-enabled-its, ant-colony-optimization, trust-management, routing]
 related:
   - "[[uav-assisted-vanet-routing]]"
@@ -17,7 +18,7 @@ related:
   - "[[deng-2026-eret-fanet-routing]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Efficient and Secure Routing Protocol Based on Artificial Intelligence Algorithms With UAV-Assisted for Vehicular Ad Hoc Networks in Intelligent Transportation Systems
@@ -29,6 +30,42 @@ Fatemidokht, H., Kuchaki Rafsanjani, M., Gupta, B. B., & Hsu, C.-H. (2021). *Eff
 ## TL;DR
 
 VRU combines vehicle/UAV road-segment routing with on-demand FANET routing. Its ground component uses UAV-collected density, connectivity, and behavioral-trust information to select urban road segments; its aerial fallback uses ant-colony route discovery when the vehicle network is disconnected.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Vehicles, UAVs, roadside units, and a trusted authority form an urban vehicular network with ground and aerial links. UAVs observe road-segment density and connectivity, aggregate direct and recommended trust, and provide a FANET fallback when vehicle-only forwarding becomes disconnected.
+
+**Problem & objective**: Select a secure and stable route that increases packet delivery and malicious-node detection while reducing end-to-end delay and control overhead. The ground rule chooses the next feasible road segment by $\arg\max_j \mathrm{Trust}_j\gamma_jR_v/((1+\sigma_j)D_j)$, and the aerial fallback chooses the discovered route with maximal accumulated pheromone.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Cluster head | $v_i^{\mathrm{CH}}$ | discrete vehicle choice | Trusted vehicle representing a road-segment cluster |
+| Next road segment | $j^*$ | discrete segment choice | Connected segment selected toward the destination |
+| Routing mode | $m$ | binary choice | Ground VRU_vu forwarding or UAV VRU_u fallback |
+| UAV next hop and route | $u_{h+1},\mathcal P$ | discrete path choices | ACO forwarding choices in the aerial network |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Candidate cluster heads and forwarding vehicles must pass the configurable trust threshold. |
+| C2 | A ground segment is eligible only when its connectivity measure is positive: $\gamma_j>0$. |
+| C3 | Direct ground forwarding requires the candidate distance to be within vehicle range $R_v$. |
+| C4 | Segment scoring combines trust, connectivity, density dispersion, and distance to destination. |
+| C5 | ACO next-hop selection uses unvisited feasible UAV neighbors and route-request lifetime limits. |
+| C6 | Route selection favors the highest pheromone score, while stored alternatives support repair after a link break. |
+
+**Algorithm**: Use Hello messages to estimate vehicle density, select cluster heads from trust, position, and speed, and update direct and indirect trust evidence and blacklists. Test road-segment connectivity and forward through the maximum-score segment; when no ground segment is connected, launch Request-Ant and Reply-Ant discovery, update UAV-link pheromones, choose the highest-scoring route, and reuse an alternate route during repair.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Fatemidokht et al. [x] proposed VRU, a UAV-assisted secure routing protocol for urban vehicular ad hoc networks. VRU chooses trusted cluster heads, scores connected road segments from trust, connectivity, density dispersion, and destination distance, and switches to ACO-based UAV routing when ground segments disconnect. The UAV route component selects paths by pheromone-weighted next-hop rules and reuses stored alternatives after link failure, while direct and indirect trust identify malicious vehicles. NS-2 simulations reported 16% higher packet delivery, 13% lower end-to-end delay, 40% lower overhead than AODV, and about 7% higher detection when UAV assistance was used.
 
 ## Problem
 

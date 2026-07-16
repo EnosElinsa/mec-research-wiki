@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Asynchronous UAV Trajectory Monitoring With Multi-BS Feature Fusion in Cellular ISAC"
 authors: ["Shaoqiang Yan", "Mei Chen", "Hongliang Luo", "Ping Yang", "Feifei Gao"]
 year: ""
@@ -21,7 +22,7 @@ related:
   - "[[ping-yang]]"
   - "[[feifei-gao]]"
 created: 2026-07-11
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Asynchronous UAV Trajectory Monitoring With Multi-BS Feature Fusion in Cellular ISAC
@@ -33,6 +34,12 @@ Yan, S., Chen, M., Luo, H., Yang, P., & Gao, F. *Asynchronous UAV Trajectory Mon
 ## TL;DR
 
 Proposes a cellular ISAC trajectory-monitoring pipeline where multiple base stations fuse feature-level delay and Doppler information to track unauthorized UAVs despite asynchronous observations. The key idea is to avoid strict coherent radar-style synchronization by preprocessing each BS observation and then fusing compact features.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yan et al. [x] studied asynchronous UAV trajectory monitoring through feature fusion across multiple cellular ISAC base stations. Each station estimates angles, compensates timing and carrier-frequency offsets, and extracts delay and Doppler features from local echoes. The fusion stage obtains rough position and velocity estimates, refines them through compressed-sensing feature fusion, and applies a sequential unscented Kalman filter to asynchronous trajectory points. Simulations report lower position and velocity error than the evaluated direct-observation, rough-fusion, data-fusion, and standard-UKF baselines. The paper is a measurement and state-estimation pipeline and does not define an application-level operational decision model with reusable decisions, objective, and constraints.
 
 ## Problem
 

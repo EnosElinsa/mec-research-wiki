@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Adaptive Selecting in Clustered LEO Systems: Direct or Cooperative Communication?"
 authors: ["Shizhao Yang", "Yongxu Zhu", "Yao Shi", "Wei Feng", "Qinyu Zhang"]
 year: 2026
@@ -14,7 +15,7 @@ related:
   - "[[space-air-ground-integrated-network]]"
   - "[[qinyu-zhang]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Adaptive Selecting in Clustered LEO Systems: Direct or Cooperative Communication?
@@ -26,6 +27,12 @@ Yang, S., Zhu, Y., Shi, Y., Feng, W., & Zhang, Q. (2026). *Adaptive Selecting in
 ## TL;DR
 
 Analyzes a clustered LEO downlink where a UAV can assist one satellite cluster serving a random terrestrial user. The paper models intra-cluster satellites, inter-cluster interference, and users with spherical Poisson point processes, then lets the receiver adaptively select the stronger signal between direct satellite-user and UAV-assisted cooperative transmission.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] analyzed a clustered LEO downlink in which a UAV assists a satellite cluster serving a random terrestrial user. Intra-cluster satellites, interfering satellites, and users are modeled on three visible spherical spaces with independent spherical Poisson point processes, while satellite links follow shadowed-Rician fading. Their adaptive mechanism selects the stronger received signal between direct satellite-user transmission and decode-and-forward UAV cooperation. The analysis transforms the spherical regions to planes, approximates aggregate interference and noise by Gamma variables, and derives user-association expressions and bounds on conditional coverage probability. Simulations report that a UAV altitude near 200 m and moderate cluster sizes improve coverage, while adaptive selection generally matches or exceeds the two fixed transmission modes.
 
 ## Problem
 

@@ -17,7 +17,8 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[xu-2018-uav-wpt-trajectory]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Cost-Aware UAV-Enabled Computation Offloading for Green Internet of Things
@@ -29,6 +30,43 @@ Panahi, F. H., & Panahi, F. H. (2026). *Cost-Aware UAV-Enabled Computation Offlo
 ## TL;DR
 
 A single UAV provides computation offloading (COF) service to IoT devices while managing its own energy procurement cost (EPC). The UAV can draw paid laser energy from local laser beam directors (LBDs), harvest local renewable energy (wind in the simulations), and earn compensation by charging IoT devices for COF and wireless charging service. A lightweight Q-learning trajectory policy selects which regions to visit within a mission-time limit; a deterministic EPC minimization then decides how much energy to draw from laser, battery, renewable generation, computation service, and WPT.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One UAV edge server visits $K$ ground regions containing $N$ IoT devices. It hovers to receive and compute offloaded tasks, may wirelessly charge devices, procures energy from local laser beam directors, and stores renewable energy in an onboard battery.
+
+**Problem & objective**: First maximize the number of offloaded devices by selecting a region order $V$ under mission time $T^m$; then minimize each region's procurement cost $C_k=\rho_k^l\eta_l e_k^l-(\rho_k^w\eta_w e_k^w+\rho_k^c e_k^c)$ and the aggregate cost over the selected route.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Region visit order | $V$ | discrete sequence | Order in which the UAV visits regions |
+| Offloading indicator | $\delta_{ik}$ | binary | Device $i$ offloads while the UAV is over region $k$ |
+| Wireless-charging energy | $e_k^w$ | continuous, nonnegative | Energy sent to IoT devices in region $k$ |
+| Battery energy | $e_k^b$ | continuous, nonnegative | Energy drawn from the onboard battery |
+| Laser energy | $e_k^l$ | continuous, nonnegative | Energy procured from the nearest LBD |
+| Computation energy | $e_k^c$ | continuous, $0\le e_k^c\le e_k^{c,\mathrm{req}}$ | Energy assigned to offloaded computation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Residual mission time is nonnegative for every visited region: $T_k^r=T^m-T_k^e\ge0$ |
+| C2 | UAV energy balance: $e_k^b+e_k^l=e_k^u$ |
+| C3 | Battery bounds after cumulative renewable generation: $B_l\le\sum_{i=1}^ke_i^r-\sum_{i=1}^k(e_i^b+e_i^w+e_i^c)\le B_u$ |
+| C4 | Computation allocation cannot exceed required energy: $0\le e_k^c\le e_k^{c,\mathrm{req}}$ |
+| C5 | Energy allocations are nonnegative: $e_k^b,e_k^w,e_k^l\ge0$ |
+
+**Algorithm**: Use action-candidate Q-learning with a reduced feasible next-region set satisfying coverage and residual-time checks to choose $V$; for each selected route solve the region-level linear EPC program over $e_k^w,e_k^b,e_k^l,e_k^c$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Panahi and Panahi [x] develop a cost-aware UAV computation-offloading model that combines paid laser energy, renewable generation, onboard storage, computation service, and wireless charging revenue. A lightweight Q-learning policy selects a feasible sequence of regions to maximize the number of served IoT devices within the mission-time budget. Given that route, a linear procurement-cost problem allocates laser, battery, charging, and computation energy under energy-balance, battery, and computation limits. Simulations show route coverage and procurement cost respond to service prices, conversion losses, flight speed, and processing capacity, while cost compensation remains more profitable than a baseline without service pricing.
 
 ## Problem
 

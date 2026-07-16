@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Density-Aware 4-D Trajectory Planning for Urban Air Traffic With Different QoS Levels"
 authors: ["Christian Vitale", "Charalambos Menelaou", "Panayiotis Kolios", "Stelios Timotheou", "Christos G. Panayiotou", "Georgios Ellinas"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[stelios-timotheou]]"
   - "[[theocharides-2026-uav-traffic-estimation]]"
 created: 2026-07-12
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Density-Aware 4-D Trajectory Planning for Urban Air Traffic With Different QoS Levels
@@ -29,6 +30,41 @@ Vitale, C., Menelaou, C., Kolios, P., Timotheou, S., Panayiotou, C. G., & Ellina
 ## TL;DR
 
 Coordinates urban UAV traffic through centralized cube-and-time reservations and distributed uncertainty-aware local control. A reverse-time graph planner selects the latest feasible departure and 4-D route for each QoS request, while robust MPC converts probabilistic separation constraints into a conservative MIQCP inside each airspace cube.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A centralized urban air-traffic manager reserves 4-D cube-and-time slots for UAV requests with different arrival-time QoS classes. Each UAV then executes its reserved route with local uncertainty-aware MPC under linear-Gaussian motion, predicted-neighbor states, and finite cube capacity.
+
+**Problem & objective**: The reservation problem minimizes arrival-time deviation and latest-feasible departure subject to space-time capacity, while the local robust MPC solves a mixed-integer quadratically constrained problem, $\min\;T_{\mathrm{cube}}+\lambda s_{\mathrm{safety}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Cube-time reservation | $r_{u,c,t}$ | binary | Whether UAV $u$ occupies cube $c$ at time $t$ |
+| Inter-cube route | $\mathcal P_u$ | discrete path | Ordered cube sequence from origin to destination |
+| Local force/control | $\mathbf u_u(t)$ | continuous bounded input | MPC force used inside a cube |
+| Safety slack | $s_{ij}(t)$ | continuous, nonnegative | Slack in pairwise separation constraints when infeasible |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each cube admits no more than its configured simultaneous reservations |
+| C2 | Reserved paths connect requested origins and destinations and satisfy QoS arrival windows |
+| C3 | UAV linear dynamics, force, speed, control-rate, and no-return limits hold inside each cube |
+| C4 | Gaussian confidence ellipsoids and pairwise barycenter separation satisfy the chance-constraint risk bound |
+| C5 | Local safety slack is penalized and used only when strict separation is infeasible |
+
+**Algorithm**: Order requests by QoS and desired arrival time → build a reverse-time cube-time DAG → filter occupied nodes and choose the latest feasible departure/path → execute robust MPC in each cube using conservative spherical confidence bounds → update reservations and continue through the request set.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Vitale et al. [x] studied density-aware four-dimensional trajectory planning for urban UAV traffic with different arrival-time QoS levels. A central reverse-time graph planner reserves cube-time resources and selects the latest feasible route, while each UAV uses robust model-predictive control to follow the reservation under stochastic separation constraints. The local controller solves a mixed-integer quadratically constrained problem with force, speed, control-rate, and safety-slack variables. Gaussian confidence ellipsoids are conservatively enclosed by spheres to obtain a sufficient chance-constraint condition. In simulations with 6,500 requests, the proposed method reduces mean arrival-time deviation from 336.35 s to 202.79 s at capacity one and from 56.90 s to 39.18 s at capacity ten relative to the modified time-dependent A* baseline.
 
 ## Problem
 

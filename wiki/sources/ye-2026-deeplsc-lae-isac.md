@@ -15,7 +15,8 @@ related:
   - "[[jie-xu]]"
   - "[[ye-2026-meta-deepesc-lae-isac]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Integrated Sensing and Communications for Low-Altitude Economy: A Deep Reinforcement Learning Approach
@@ -27,6 +28,41 @@ Ye, X., Mao, Y., Yu, X., Sun, S., Fu, L., & Xu, J. (2026). *Integrated Sensing a
 ## TL;DR
 
 Models a terrestrial LAE ISAC system where a GBS communicates with authorized UAVs and senses an unauthorized mobile target. The goal is to maximize expected communication sum-rate over a flight period by jointly optimizing GBS beamforming and UAV trajectories under average sensing-SNR, flight-mission, collision-avoidance, and transmit-power constraints. The proposed **DeepLSC** controller is a DDPG-based DRL method with constrained noise exploration, hierarchical experience replay, and symmetric experience augmentation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna ground base station serves authorized UAVs while sensing an unauthorized moving target. Each authorized UAV must fly from a fixed origin to a fixed destination during a finite slotted mission.
+
+**Problem & objective**: Problem (14) maximizes expected cumulative communication sum-rate, $\max_{\mathbf W_c,\mathbf W_s,\mathbf u}\mathbb E[\sum_{t=1}^{T}R_{\mathrm{total}}(t)]$, through joint communication beamforming, sensing beamforming, and UAV trajectory control.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beamforming | $\mathbf W_c(t)$ | complex continuous | GBS downlink beams for authorized UAVs |
+| Sensing beamforming | $\mathbf W_s(t)$ | complex continuous | GBS probing beams for the target |
+| UAV movement direction | $\mathbf a_u(t)$ | continuous angles | Per-slot headings that generate authorized-UAV trajectories |
+| UAV trajectory | $\mathbf u_m(t)$ | continuous positions | Horizontal position of UAV $m$ in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 1 | Constant-speed motion, $\|\mathbf u_m(t+1)-\mathbf u_m(t)\|_2=v_m\Delta_t$ |
+| 2 | Every UAV starts at $\mathbf u_m^I$ and reaches $\mathbf u_m^F$ at slot $T$ |
+| 3-4 | UAV-to-UAV and UAV-to-target distances remain at least $D_{\min}$ |
+| 14c | Expected average target sensing SNR satisfies $\mathbb E[\frac1T\sum_t\mathrm{SNR}_{\mathrm{Tar}}(t)]\geq\Gamma_{\min}$ |
+| 14d | Communication and sensing beam powers jointly remain below $P_{\max}$ |
+
+**Algorithm**: DeepLSC converts the constrained flight-period problem into an episode MDP and uses DDPG for continuous beamforming and movement directions. Constrained noise exploration filters sampled actions toward power and mission feasibility, hierarchical replay trains on complete episodes, symmetric index permutations augment experience, and soft target updates stabilize the actor and critic.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ye et al. [x] considered terrestrial LAE ISAC in which a ground base station communicates with authorized UAVs and senses a mobile unauthorized target. They maximized expected flight-period communication sum-rate over communication beams, sensing beams, and UAV trajectories under sensing-SNR, mission, collision, and transmit-power constraints. DeepLSC combines a DDPG backbone with constrained exploration, episode-level replay, symmetric experience augmentation, and soft target updates. Across the reported two-to-five-UAV sweep, DeepLSC satisfied both the average sensing-SNR and flight-mission constraints while several ablations or actor-critic baselines violated at least one constraint. It exceeded constrained-experience-replay and weighted variants by more than 11.68% in sum-rate across the tested flight-period lengths. The method also retained an advantage in the reported twenty-UAV and twenty-antenna scenario.
 
 ## Problem framing
 

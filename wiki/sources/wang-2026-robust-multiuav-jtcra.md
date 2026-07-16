@@ -27,7 +27,8 @@ related:
   - "[[parameter-sharing-marl]]"
   - "[[xianbin-wang]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Enhancing A2G Robustness in Energy-Constrained Multi-UAV Networks: MADRL for Trajectory Control and Resource Allocation
@@ -39,6 +40,44 @@ Wang, J., Fang, X., Wang, X., Yan, L., Wu, J., & Yin, B. (2026). *Enhancing A2G 
 ## TL;DR
 
 Studies downlink service continuity when energy-limited UAV base stations stop operating at different times. A joint trajectory-control and resource-allocation framework gives each UAV separate trajectory and communication decision roles, shares parameters within each role, and implements the controller with either MAPPO or QMIX. The trained policies redirect surviving UAVs toward users left in coverage gaps while enforcing a terminal Jain-fairness requirement.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Energy-constrained UAV base stations serve moving ground users until individual UAV energy falls below an operating threshold. Surviving UAVs must alter their trajectories and radio allocations to recover coverage and preserve terminal service fairness.
+
+**Problem & objective**: Problem (21) maximizes cumulative downlink throughput, $\max\sum_{t,n,k}R_{n,k}(t)$, by jointly controlling UAV motion and communication resources while enforcing a final Jain-fairness target and per-UAV energy budgets.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV speed | $v_n(t)$ | continuous, bounded | Per-slot flight speed |
+| UAV heading | $\theta_n(t)$ | continuous, bounded | Per-slot movement direction |
+| User association | $a_{n,k}(t)$ | binary | Indicates whether UAV $n$ serves user $k$ |
+| Bandwidth allocation | $b_{n,k}(t)$ | continuous, nonnegative | Bandwidth assigned to a served user |
+| Power allocation | $p_{n,k}(t)$ | continuous, nonnegative | Downlink transmit power assigned to a served user |
+| Operating period | $T_n$ | integer stopping time | Last slot before UAV $n$ reaches its energy threshold |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 11-12 | Association is binary and every user is associated with at most one UAV per slot |
+| 13-16 | Per-UAV bandwidth and transmit-power allocations remain within available budgets |
+| 21b | Terminal Jain fairness satisfies $J(T)\geq\eta_{\mathrm{th}}$ |
+| 21c | Each UAV's cumulative propulsion and communication energy stays within its budget |
+| 21d | Speed and heading satisfy the flight-control bounds |
+| 21e | UAV positions remain inside the prescribed operating region |
+
+**Algorithm**: JTCRA is a decentralized partially observable MARL controller with separate trajectory and communication agents and parameter sharing within each role. The trajectory agent selects speed and heading, while the communication agent selects power and bandwidth; normalized allocation and strongest-signal association produce feasible radio decisions. The paper implements this controller with both MAPPO and QMIX.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] addressed service recovery when energy-constrained UAV base stations stop operating at different times. They maximized cumulative downlink throughput over trajectory, association, bandwidth, power, and operating-period decisions subject to terminal Jain fairness, energy, mobility, and area constraints. Their JTCRA framework separates trajectory and communication roles, shares parameters within each role, and supports MAPPO or QMIX training. In simulation, the MAPPO implementation provided the strongest and most stable performance and was the only compared method reported to satisfy the 0.9 fairness target while attaining the highest throughput. The learned surviving UAVs reconfigured their coverage after fleet members depleted their energy, yielding a reported mean per-user throughput of 168.4 Mbit in the highlighted setting.
 
 ## Problem framing
 

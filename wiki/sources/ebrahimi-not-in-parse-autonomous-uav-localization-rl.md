@@ -5,6 +5,7 @@ authors: ["Dariush Ebrahimi", "Sanaa Sharafeddine", "Pin-Han Ho", "Chadi Assi"]
 year: ""
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, uav-localization, rssi, reinforcement-learning, q-learning, uav-trajectory-control, air-to-ground-channel-model]
 related:
   - "[[rss-based-uav-localization]]"
@@ -19,7 +20,7 @@ related:
   - "[[sanaa-sharafeddine]]"
   - "[[chadi-assi]]"
 created: 2026-07-11
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Autonomous UAV Trajectory for Localizing Ground Objects: A Reinforcement Learning Approach
@@ -31,6 +32,38 @@ Ebrahimi, D., Sharafeddine, S., Ho, P.-H., & Assi, C. *Autonomous UAV Trajectory
 ## TL;DR
 
 Uses Q-learning to let one UAV act as an autonomous aerial anchor for RSSI-based localization of multiple ground objects. The UAV first performs an initial scan to discover object count and rough positions, then chooses waypoints that reduce average localization error under energy, time, waypoint-count, or path-length budgets.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV acts as a mobile aerial anchor over an urban search region containing ground objects at unknown positions. It collects RSSI while hovering at grid waypoints, uses an empirical LoS/NLoS air-to-ground pathloss model with log-normal shadowing, estimates positions by multilateration, and accounts for flight and hovering energy; the multiple-access scheme is not specified.
+
+**Problem & objective**: The trajectory-control MDP chooses a waypoint policy to maximize discounted reductions in average localization error, $\pi^*=\arg\max_{\pi\in\Lambda}R_{\pi}$ with $R_{\pi}=\sum_{t=1}^{T}\gamma^{t-1}r(s_t,\pi(a_t))$, which is equivalent to seeking minimum average localization error under a fixed energy, path-length, waypoint-count, or flight-time budget.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Next-waypoint action | $a_t$ | discrete, $a_t\in A(s_t)$ | Neighboring grid cell selected from current waypoint $s_t$ |
+| UAV policy | $\pi=(a_1,\ldots,a_T)$ | finite sequence of feasible actions | Complete waypoint trajectory followed during localization |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Action limit | $A(s_t)$ contains only waypoints neighboring the current grid cell |
+| Energy budget | Cumulative flight and hovering energy cannot exceed the fixed available UAV energy |
+| Mission budget | The trajectory terminates at the specified path-length, waypoint-count, or flight-time limit |
+| Search domain | Every selected waypoint remains inside the discretized search region at the fixed altitude |
+
+**Algorithm**: Execute a controlled scan over a minimum waypoint set to discover objects, obtain rough positions, and bootstrap the Q table; then at each visited waypoint collect RSSI, update multilateration regions and the average localization error, use the reduction from the previous state as reward, update $Q(s_t,a_t)$ with the standard Q-learning recursion, estimate the values of neighboring cells, and move to the highest-valued feasible waypoint until the mission budget is exhausted.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ebrahimi et al. [x] studied autonomous UAV trajectory control for RSSI-based localization of multiple ground objects in an urban search region. They modeled waypoints as MDP states, neighboring cells as actions, and the reduction in average multilateration error as reward under fixed energy, path-length, waypoint-count, or flight-time budgets. Their two-phase method first performs a controlled scan to discover objects and initialize Q values, then uses tabular Q-learning to choose subsequent RSSI measurement locations. Simulations reported that the learned trajectory outperformed Random, SCAN, LMAT, and MAZE under constrained budgets, with best-case path-length improvements of 47.8, 62.7, 63, and 62.9 percent for the 20-object case.
 
 ## Problem
 

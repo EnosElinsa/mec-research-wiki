@@ -5,6 +5,7 @@ authors: ["Xulong Li", "Jiahao Huo", "Wei Huangfu", "Keping Long", "Haijun Zhang
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3602188"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 3186-3197"
+modeling_card: required
 tags: [source, uav-mounted-ris, physical-layer-security, multi-agent-reinforcement-learning, shapley-value, primal-dual-optimization, trajectory-optimization, phase-shift-design]
 related:
   - "[[shapley-value-marl-credit-assignment]]"
@@ -21,7 +22,7 @@ related:
   - "[[qin-2023-symmetry-augmented-uav-isac]]"
   - "[[xie-2026-uav-irs-eppo]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Secrecy Sum Rate Maximization in UAV-IRS Assisted Networks With Credit-Aware Cooperative Multi-Agent Reinforcement Learning
@@ -33,6 +34,40 @@ Li, X., Huo, J., Huangfu, W., Long, K., & Zhang, H. (2026). *Secrecy Sum Rate Ma
 ## TL;DR
 
 Controls multiple UAV-mounted IRSs under decentralized execution to maximize downlink secrecy sum rate. Exact Shapley values turn coalition contributions into agent-specific rewards, while a primal-dual constraint discourages the competition introduced by individual credit; the resulting PD-CMASAC jointly learns 3-D UAV motion and continuous IRS phases but retains factorial credit-computation cost during training.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna BS serves $M$ ground users through $N$ UAV-mounted IRSs in the presence of mobile eavesdroppers. The direct BS-to-user link is blocked, each UAV-IRS is an agent, legitimate aerial reflection links use Rician fading, and decentralized policies act from local position and channel observations.
+
+**Problem & objective**: Problem $P_1$ is a non-convex multi-slot secure-communication problem that solves $\max_{\boldsymbol Q_U,\boldsymbol\Theta}\sum_{t=1}^{T}R_I(t)$, where $R_I(t)$ is the system secrecy sum rate.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\boldsymbol Q_U^n(t)$ | continuous 3-D vector | Position of UAV-IRS $n$ in slot $t$ |
+| UAV displacement | $\Delta\boldsymbol Q_U^n(t)$ | continuous 3-D vector | Per-slot motion action of UAV-IRS $n$ |
+| IRS phase matrix | $\boldsymbol\Theta_n(t)$ | continuous phase matrix | Reflection phases selected by UAV-IRS $n$ |
+| Agent action | $a_n(t)=\{\Delta\boldsymbol Q_U^n(t),\boldsymbol\Theta_n(t)\}$ | continuous action | Joint motion and reflection decision of agent $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 17a-17c | Horizontal coordinates remain in $[0,L_{\max}]$ and altitude satisfies $z_{\min}\leq z_U^n(t)\leq z_{\max}$ |
+| 17d | Per-slot motion is bounded: $\lVert\boldsymbol Q_U^n(t)-\boldsymbol Q_U^n(t-1)\rVert\leq V_U^{\max}$ |
+| 17e | Every IRS phase lies in its feasible range: $0\leq\theta_{n,l}(t)\leq2\pi$ |
+| 17f | Each user meets the minimum secure rate: $R_I^m(t)\geq R_{\mathrm{th}}$ |
+
+**Algorithm**: Reconstruct $P_1$ as a multi-agent Markov game, use secrecy sum rate minus violation penalties as the team reward, enumerate coalitions to compute exact Shapley credit for each UAV-IRS, and train PD-CMASAC with centralized critics, decentralized actors, constraint critics, and primal-dual multiplier updates that regulate non-cooperative behavior.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied secure downlink communication through multiple UAV-mounted IRSs that assist ground users in the presence of mobile eavesdroppers. They formulated cumulative secrecy sum-rate maximization over 3-D UAV trajectories and continuous IRS phase shifts subject to flight-region, displacement, phase, and minimum secure-rate constraints. Their PD-CMASAC method models each UAV-IRS as an agent, assigns exact Shapley-value credit, and uses primal-dual constrained multi-agent reinforcement learning to preserve cooperation under decentralized execution. Simulations reported that PD-CMASAC achieved the highest secure sum rate among the evaluated MASAC variants across the tested UAV, IRS-element, user, fairness, and imperfect-CSI settings.
 
 ## Problem
 

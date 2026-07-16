@@ -5,6 +5,7 @@ authors: ["Lin Xiao", "Yu Xu", "Dingcheng Yang", "Yong Zeng"]
 year: 2020
 url: "https://doi.org/10.1109/TGCN.2019.2949802"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), 4(1), 180-193"
+modeling_card: required
 tags: [source, secrecy-energy-efficiency, physical-layer-security, uav-mobile-relaying, fixed-wing-uav, trajectory-optimization, resource-allocation]
 related:
   - "[[secrecy-energy-efficiency]]"
@@ -24,7 +25,7 @@ related:
   - "[[dingcheng-yang]]"
   - "[[yong-zeng]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Secrecy Energy Efficiency Maximization for UAV-Enabled Mobile Relaying
@@ -36,6 +37,41 @@ Xiao, L., Xu, Y., Yang, D., & Zeng, Y. (2020). *Secrecy Energy Efficiency Maximi
 ## TL;DR
 
 Maximizes a fixed-wing relay UAV's confidential destination throughput per unit of propulsion energy by jointly optimizing receive/forward scheduling, source and relay powers, and the UAV trajectory. A block-alternating SCA/Dinkelbach method yields a monotonic, locally convergent suboptimal design; simulations show substantially higher secrecy energy efficiency than fixed flight-pattern and secrecy-throughput-maximizing baselines, including under disk-bounded eavesdropper-location uncertainty.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-wing UAV provides half-duplex delay-tolerant decode-and-forward relaying from a ground source to a destination in the presence of a passive eavesdropper, with the direct source-destination link blocked.
+
+**Problem & objective**: Problem P1 maximizes secrecy bits per propulsion joule, $\max_{\lambda,\mathbf p_s,\mathbf p_r,\mathbf q,\mathbf v,\mathbf a}\frac{B\sum_n(r_{RD}[n]-r_{RE}[n])}{\sum_n[c_1\lVert\mathbf v[n]\rVert^3+\frac{c_2}{\lVert\mathbf v[n]\rVert}(1+\lVert\mathbf a[n]\rVert^2/g^2)]}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Receive-forward schedule | $\lambda[n]$ | Continuous, $[0,1]$ | Divide a slot between reception and forwarding |
+| Source power | $p_s[n]$ | Continuous, nonnegative | Source transmission power |
+| Relay power | $p_r[n]$ | Continuous, nonnegative | UAV forwarding power |
+| Flight state | $\mathbf q[n],\mathbf v[n],\mathbf a[n]$ | Continuous vectors | UAV position, velocity, and acceleration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Cumulative forwarded secrecy bits do not exceed previously received secrecy bits |
+| C2 | Endpoints and discrete kinematics hold, including $\mathbf q[0]=\mathbf q_0$ and $\mathbf q[N]=\mathbf q_F$ |
+| C3 | Flight limits hold, $\lVert\mathbf v[n]\rVert\leq V_{\max}$ and $\lVert\mathbf a[n]\rVert\leq a_{\max}$ |
+| C4 | Average source and relay powers do not exceed $\bar P_s$ and $\bar P_r$ |
+| C5 | Per-slot powers do not exceed $P_s^{\max}$ and $P_r^{\max}$ |
+
+**Algorithm**: The solver alternates a convex scheduling block, an SCA power-allocation block, and an SCA trajectory block whose concave-over-convex surrogate is handled by Dinkelbach iterations; the outer objective is non-decreasing and converges to a suboptimal point.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xiao et al. [x] studied secrecy-energy-efficiency maximization for a fixed-wing UAV that buffers confidential data and relays it between a ground source and destination in the presence of an eavesdropper. They jointly optimized receive-forward scheduling, source and relay powers, and trajectory under secrecy information causality, flight dynamics, speed, acceleration, and power constraints. The proposed alternating method combines convex scheduling, successive convex approximation, and Dinkelbach fractional programming to obtain a monotonic suboptimal design. At a 200-second horizon, the reported design achieves 17.05 kbits/J, compared with 7.86 kbits/J for secrecy-capacity maximization and lower values for the fixed double-circular and running-track baselines.
 
 ## Problem
 

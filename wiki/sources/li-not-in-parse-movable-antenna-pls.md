@@ -5,6 +5,7 @@ authors: ["Kaixuan Li", "Kan Yu", "Dingyou Ma", "Yujia Zhao", "Xiaowu Liu", "Qix
 year: ""
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, movable-antenna, physical-layer-security, beamforming, uav-trajectory-control, air-to-ground-communications]
 related:
   - "[[micro-macro-mobility-security]]"
@@ -16,7 +17,7 @@ related:
   - "[[zhiyong-feng]]"
   - "[[qixun-zhang]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Can Movable Antenna-Enabled Micro-Mobility Replace UAV-Enabled Macro-Mobility? A Physical Layer Security Perspective
@@ -28,6 +29,40 @@ Li, K., Yu, K., Ma, D., Zhao, Y., Liu, X., Zhang, Q., & Feng, Z. *Can Movable An
 ## TL;DR
 
 Compares two physical-layer-security control scales for an air-to-ground link: wavelength-scale movement of UAV-mounted antenna elements while the aircraft hovers, and flight-scale movement of the whole UAV with fixed antenna positions. Joint beamforming and position optimization shows complementary regimes rather than a universal winner: movable-antenna micro-mobility is strongest at low transmit power, while UAV macro-mobility benefits more from higher power and larger arrays.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An $M$-antenna UAV sends confidential data to a fixed legitimate receiver while a fixed eavesdropper listens over deterministic line-of-sight channels. The paper compares a hovering UAV whose antenna elements move within local rails against a fixed-array UAV whose entire platform follows a horizontal trajectory.
+
+**Problem & objective**: Both mobility regimes maximize $\frac{1}{N}\sum_{n=1}^{N}\tau[n]$, the average secrecy rate over the mission, by jointly controlling either movable-antenna positions or the UAV trajectory together with transmit beamforming.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Movable-antenna positions | $\mathbf x_m$ | continuous local coordinates | Per-slot locations of the UAV-mounted antenna elements |
+| UAV trajectory | $\mathbf q_u$ | continuous horizontal sequence | Macro-mobility path of the fixed-array UAV |
+| Beamforming vector | $\mathbf w[n]$ | complex continuous vector | Confidential-signal beamforming in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each antenna's inter-slot movement is bounded by $L_{\max}^{\mathrm{MA}}$ |
+| C2 | Every movable element remains inside its designated local positioning interval |
+| C3 | Antenna spacing respects the minimum separation used to limit mutual coupling |
+| C4 | Beamforming obeys $\operatorname{tr}(\mathbf w\mathbf w^H)\leq P_{\max}$ |
+| C5 | The macro-mobility UAV flies at fixed altitude with speed and acceleration below $v_{\max}$ and $a_{\max}$ |
+
+**Algorithm**: A block-coordinate alternating framework updates spatial variables and beamforming. For micro-mobility, projected gradient ascent with AdaGrad steps, feasibility projection, and simulated annealing updates antenna positions and beamforming; for macro-mobility, successive convex approximation and first-order bounds turn the trajectory block into CVX subproblems before beamforming is refreshed.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] compared movable-antenna micro-mobility with UAV trajectory macro-mobility for secure air-to-ground transmission. They maximized average secrecy rate by jointly optimizing beamforming with either wavelength-scale antenna positions under local movement limits or a platform trajectory under speed and acceleration limits. Their alternating solvers combine projected gradient ascent and simulated annealing for antenna motion with successive convex approximation for UAV flight. In the reported simulations, micro-mobility performed better at 0.1 W, whereas macro-mobility generally dominated from 1 W upward and continued to benefit from larger antenna arrays.
 
 ## Problem
 

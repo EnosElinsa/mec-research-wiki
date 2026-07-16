@@ -22,8 +22,9 @@ related:
   - "[[geng-sun]]"
   - "[[jiahui-li]]"
   - "[[shuang-liang]]"
+modeling_card: required
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Reliable and Energy-Efficient Communications via Collaborative Beamforming for UAV Networks
@@ -35,6 +36,41 @@ Zheng, X., Sun, G., Li, J., Liang, S., Wu, Q., Yin, M., Niyato, D., & Leung, V. 
 ## TL;DR
 
 For an **emergency communication** scenario, a UAV-based relay system harvests data from ground users and then forms **UAV-enabled virtual antenna arrays (UVAAs)** to transmit the collected data to several remote base stations (BSs) via **collaborative beamforming (CB)**. Because the UVAA sidelobes interfere with neighbouring **aerial users (AUs)** carrying out other missions, the paper formulates a **reliable and energy-efficient communication multi-objective optimization problem (RECMOP)** that jointly (1) maximizes the **minimum receiving SNR of the BSs**, (2) minimizes the **maximum average receiving SNR of the AUs**, and (3) minimizes the **propulsion power consumption** of all UAVs, over UAV locations and excitation current weights (ECWs). The problem is proven **NP-hard and non-convex** with mixed (continuous + discrete) variables; an **improved multi-objective gravitational search algorithm (IMOGSA)** with three tailored designs solves it.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV relay fleet gathers emergency data from ground users, forms a UVAA, and serves remote BSs sequentially through collaborative beamforming while limiting sidelobe interference to neighboring aerial users. The UVAA-to-BS air-to-ground links use probabilistic LoS/NLoS path loss, and UVAA-to-AU air-to-air links use LoS propagation; the service order replaces simultaneous multiple access.
+
+**Problem & objective**: RECMOP in (17), an NP-hard non-convex mixed-variable Pareto problem, minimizes $F=\{-f_1,f_2,f_3\}$, where $f_1=\min_j\mathrm{SNR}_{u,j}$, $f_2=\max_j\frac{1}{N_{AU}}\sum_k\mathrm{SNR}_{u,k}^{j}$, and $f_3=\sum_i\sum_j E_{i,j}(T_{i,j})$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV coordinates | $\mathbb C^{\mathcal U}$ | Continuous 3D coordinates | Configure the UVAA geometry for each BS transmission |
+| Excitation current weights | $\mathbb I^{\mathcal U}=\{I_i\}$ | Continuous, $I_i\in[0,1]$ | Set each UAV element's beamforming weight |
+| BS service order | $\mathbb O$ | Discrete permutation in $\mathcal{SO}$ | Order in which the UVAA transmits to the BSs |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Excitation weights satisfy $0\le I_i\le1$ |
+| C2-C3 | Horizontal coordinates satisfy $L_{\min}\le x_i^U,y_i^U\le L_{\max}$ |
+| C4 | Altitude satisfies $H_{\min}\le z_i^U\le H_{\max}$ |
+| C5 | UAV speed satisfies $V_{\min}\le v_i\le V_{\max}$ |
+| C6 | The service sequence is a valid BS permutation: $\mathbb O\in\mathcal{SO}$ |
+| C7 | Collision avoidance requires $D_{i_1,i_2}\ge D_{\min}$ for every UAV pair |
+
+**Algorithm**: Generate the initial population with quasi-opposition-based learning $\rightarrow$ evaluate Pareto objectives $\rightarrow$ update continuous and discrete solution dimensions with IMOGSA $\rightarrow$ maintain a nondominated archive $\rightarrow$ apply archive crossover and mutation until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zheng et al. [x] studied reliable and energy-efficient collaborative beamforming for UAV relay networks in an emergency communication scenario. They formulated RECMOP to maximize the minimum receiving SNR of remote BSs, minimize the maximum average receiving SNR of neighboring aerial users, and minimize UAV propulsion power. The decision vector contains UAV three-dimensional locations, excitation current weights, and the order in which the UVAA serves the BSs. They proposed IMOGSA with quasi-opposition-based learning, a discrete solution update strategy, and archive optimization to obtain Pareto solutions. Simulations report that IMOGSA produces solution sets closer to the Pareto-front direction than the evaluated metaheuristics in both eight-UAV and sixteen-UAV networks, and additional tests examine damaged UAVs, position jitter, and phase synchronization error.
 
 ## Problem framing
 
@@ -72,5 +108,5 @@ A **collaborative-beamforming / virtual-antenna-array** entry from the Jilin-Uni
 
 ## Raw artifacts
 
-- `raw/sources/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks/full.md`
+- `raw/sources/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

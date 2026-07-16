@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Latency Minimization for UAV-Enabled URLLC-Based Mobile Edge Computing Systems"
 authors: ["Qingjie Wu", "Miao Cui", "Guangchi Zhang", "Feng Wang", "Qingqing Wu", "Xiaoli Chu"]
 year: 2024
@@ -17,7 +18,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Latency Minimization for UAV-Enabled URLLC-Based Mobile Edge Computing Systems
@@ -29,6 +30,42 @@ Wu, Q., Cui, M., Zhang, G., Wang, F., Wu, Q., & Chu, X. (2024). *Latency Minimiz
 ## TL;DR
 
 A UAV-enabled MEC system where K ground devices offload **mission-critical, latency-sensitive** tasks to a UAV-carried MEC server over **URLLC (finite-blocklength)** links and compute the rest locally. It minimizes the **maximum computation latency** among all devices by jointly optimizing devices'/UAV's computing times and CPU frequencies, devices' offloading bandwidths, and the **3D UAV location**. The non-convex problem is decomposed (via **BCD**) into three subproblems — UAV horizontal location, UAV altitude, and bandwidth+CPU-frequency — solved alternately with **SCA**; the bandwidth/frequency subproblem gets a **semi-closed-form** solution.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ ground devices partially offload mission-critical tasks to one UAV MEC server over finite-blocklength URLLC links and compute the remaining bits locally. An angle-dependent Rician channel couples three-dimensional UAV placement, bandwidth, decoding reliability, and computation time.
+
+**Problem & objective**: A non-convex min-max latency problem minimizes the slowest device, $\min \max_k T_k$, over UAV location, offloading bandwidth, device and UAV CPU frequencies, and computation times.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV horizontal location | $\mathbf q$ | continuous 2-D position | Ground projection of the UAV MEC server |
+| UAV altitude | $H$ | continuous, bounded | Server altitude and elevation angle |
+| Offloading bandwidth | $b_k$ | continuous, nonnegative | URLLC bandwidth allocated to device $k$ |
+| CPU frequencies | $f_k,f_k^{\mathrm U}$ | continuous, bounded | Local and UAV computing rates for device $k$ |
+| Computing time | $t_k$ | continuous, nonnegative | End-to-end computation latency variable |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Local and offloaded computation together complete each task |
+| C2 | Finite-blocklength offloading meets the target decoding-error probability |
+| C3 | Bandwidth allocations satisfy $\sum_k b_k\le B$ |
+| C4 | Device and UAV CPU frequencies stay within their limits |
+| C5 | UAV horizontal position and altitude remain in the feasible deployment region |
+
+**Algorithm**: Approximate the finite-blocklength rate by a tractable logarithmic form → update horizontal UAV location with SCA → update altitude with SCA → transform bandwidth and CPU allocation into a max-min completed-task-ratio problem → solve it with the two-layer semi-closed-form routine → alternate the BCD blocks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied latency minimization for UAV-enabled URLLC mobile edge computing with partial offloading and finite-blocklength links. They formulated a non-convex min-max problem over three-dimensional UAV placement, device bandwidth, computing times, and device and UAV CPU frequencies. The channel model uses angle-dependent Rician fading, and the finite-blocklength rate is approximated by a tractable logarithmic expression. Their block-coordinate method alternates SCA updates of horizontal position and altitude with a two-layer semi-closed-form bandwidth and frequency solver. Simulations report lower maximum computation latency than the evaluated location, resource-allocation, and Shannon-rate baselines.
 
 ## Problem framing
 

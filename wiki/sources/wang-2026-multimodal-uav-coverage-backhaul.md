@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Dynamic Multi-Modal UAV Control for Optimized Coverage and Backhaul Connectivity in Spatially Unstructured and Dispersed User Environments"
 authors: ["Yuhui Wang", "Junaid Farooq", "Juntao Chen"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[autonomous-uav-swarms]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dynamic Multi-Modal UAV Control for Optimized Coverage and Backhaul Connectivity in Spatially Unstructured and Dispersed User Environments
@@ -25,6 +26,41 @@ Wang, Y., Farooq, J., & Chen, J. (2026). *Dynamic Multi-Modal UAV Control for Op
 ## TL;DR
 
 Uses local flocking, potential fields, and distributed tree formation to switch UAV mobile access points among exploration, user service, and bridge roles. The controller covers irregular user clusters, maintains inter-cluster backhaul, and reallocates surviving UAVs after random failures.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: UAV mobile access points serve users in irregular, dispersed clusters while maintaining a connected air-to-air backhaul. Each UAV observes nearby users and communication neighbors, exchanges local state, and switches among exploration, service, and inter-cluster bridge roles under failures.
+
+**Problem & objective**: A distributed non-convex formation-control problem maximizes a smooth joint coverage-connectivity utility, $\max_{\mathbf q}\operatorname{softmin}\{C(\mathbf q),\lambda_2(L(\mathbf q))\}$, subject to service, separation, and communication-range conditions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf q_i(t)$ | continuous 2-D position | Mobile access-point location |
+| UAV velocity | $\mathbf v_i(t)$ | continuous control | Potential-field movement command |
+| Operating role | $z_i(t)$ | categorical | Exploration, user service, or backhaul bridge |
+| Bridge-tree edge | $e_{ij}(t)$ | binary/graph relation | Air-to-air link retained in the distributed tree |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Pairwise UAV distance stays above the collision-separation threshold |
+| C2 | Backhaul neighbors remain within the air-to-air communication range |
+| C3 | Each service UAV handles no more than its user capacity |
+| C4 | Covered users meet the required access SINR threshold |
+| C5 | Role switching follows coverage, served-user, and connectivity thresholds |
+
+**Algorithm**: Detect uncovered user clusters from local observations → send exploration UAVs toward cluster centers → estimate served-user centroids and switch qualified UAVs to service mode → build minimum-spanning-tree bridge goals between clusters → combine attraction, repulsion, consensus, load, and role potentials → repeat after movement or failures.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied distributed multi-modal UAV control for user coverage and wireless backhaul connectivity in spatially dispersed environments. Each UAV switches among exploration, static service, and inter-cluster bridge roles according to local coverage and connectivity state. The controller combines flocking, user and goal attraction, collision repulsion, velocity consensus, load balancing, and distributed tree formation in a smooth potential-field framework. Its continuous-time aggregate potential is non-increasing and converges to an initialization-dependent local equilibrium. Simulations report high coverage, positive backhaul connectivity, and network reconfiguration after the evaluated random UAV failures.
 
 ## Problem
 

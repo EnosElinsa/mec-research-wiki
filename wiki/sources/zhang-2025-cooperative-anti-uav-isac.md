@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cooperative Beamforming Design for Anti-UAV ISAC Systems"
 authors: ["Yue Zhang", "Hangguan Shan", "Yong Zhou", "Zhiguo Shi", "Li Sheng", "Yuanwei Liu"]
 year: 2025
@@ -20,7 +21,7 @@ related:
   - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[yuanwei-liu]]"
 created: 2026-07-12
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Cooperative Beamforming Design for Anti-UAV ISAC Systems
@@ -32,6 +33,40 @@ Zhang, Y., Shan, H., Zhou, Y., Shi, Z., Sheng, L., & Liu, Y. (2025). *Cooperativ
 ## TL;DR
 
 Jointly designs transmit and receive beamformers for a multi-cell anti-UAV ISAC network. It maximizes UAV-sensing signal-to-clutter-plus-noise ratio (SCNR) under downlink SINR and per-BS power constraints, with a centralized AO/SCA/Dinkelbach solver and a primal-decomposition distributed solver that exchanges multipliers instead of global CSI.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple interconnected BSs serve downlink users and cooperatively sense one point-like UAV. Dual-functional BSs contribute monostatic and bistatic echoes to a receiving BS under clutter, residual self-interference, inter-cell interference, and AWGN.
+
+**Problem & objective**: A fractional transceiver problem maximizes sensing SCNR, $\max_{\{\mathbf w\},\{\mathbf u\}}\operatorname{SCNR}$, under per-user SINR and per-BS power constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmit beamformer | $\mathbf w_{g,k}$ | complex continuous vector | Communication/sensing beam at BS $g$ |
+| Receive beamformer | $\mathbf u_q$ | complex continuous vector | Echo combiner for sensing BS $q$ |
+| Interference auxiliary | $z_{g,k}$ | continuous, nonnegative | Distributed primal-decomposition coupling variable |
+| Shared multiplier | $\lambda_{g,k}$ | continuous | Price exchanged between BS subproblems |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every downlink user meets its minimum SINR |
+| C2 | Each BS transmit power stays within its budget |
+| C3 | Receive filters remain normalized for the SCNR quotient |
+| C4 | Distributed interference auxiliaries agree across neighboring BSs |
+
+**Algorithm**: Fix transmit beams and update receive filters in closed form → convert user QoS constraints to SOCP form → lower-bound the sensing numerator by SCA → handle the fractional SCNR with Dinkelbach iterations → alternate centrally, or decompose per BS and update shared variables by projected subgradients and exchanged multipliers.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied cooperative transmit and receive beamforming for multi-cell anti-UAV ISAC systems. They formulated sensing-SCNR maximization under per-user downlink SINR and per-BS power constraints with clutter, residual self-interference, and inter-cell interference. A centralized alternating method combines closed-form receive updates, second-order-cone communication constraints, successive convex approximation, and Dinkelbach iterations. A primal-decomposition alternative solves local BS subproblems and exchanges multipliers rather than global CSI. Simulations report increasing SCNR with additional sensing BSs and matching centralized and distributed KKT objective values in the tested configurations.
 
 ## Problem
 

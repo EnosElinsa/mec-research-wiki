@@ -23,7 +23,8 @@ related:
   - "[[cheng-2025-dos-satellite-edge-computing]]"
   - "[[qi-qi]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Online Computation Offloading for Collaborative Space/Aerial-Aided Edge Computing Toward 6G System
@@ -35,6 +36,40 @@ Liu, Y., Jiang, L., Qi, Q., Xie, K., & Xie, S. (2023). *Online Computation Offlo
 ## TL;DR
 
 Proposes a **collaborative space/aerial-aided edge computing network (SAGECN)** for 6G in which **LEO satellites act as both "servers" and "users"**: besides serving ground users/IoT devices in remote areas, a resource-limited LEO satellite can offload its own tasks to a **nearby aircraft over a one-hop link** or to the **cloud server along a multi-hop inter-satellite path**, and decide the ratio of local vs offloaded computation. To minimize the **long-term task completion delay** of the LEO satellites under a time-varying space/aerial environment, the problem is cast as a **stochastic optimization** and solved with **Lyapunov optimization** (drift-plus-penalty), which decouples it into per-slot deterministic subproblems; a **delayed online learning** technique predicts the dynamic **task arrival and queue length** of satellites and aircraft, feeding the prediction into the per-slot offloading/scheduling decision (a bounded integer program).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Time-slotted LEO satellites and aircrafts provide collaborative MEC; each satellite can compute locally, send a task one hop to an aircraft, or forward it over multi-hop satellite links to the cloud.
+
+**Problem & objective**: Minimize long-term completion delay over offloading modes and dispatched task counts, $\min_{\alpha,\beta,\theta,k}\lim_{T\to\infty}\frac{1}{T}\sum_tD(t)$, while keeping queues stable.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Local or offload mode | $\alpha_n(t)$ | binary in $\{0,1\}$ | Selects local processing or an offloading operation |
+| Satellite relay choice | $\beta_{n,m}(t)$ | binary in $\{0,1\}$ | Selects a neighbor satellite on a multi-hop path |
+| Aircraft choice | $\theta_{n,u}(t)$ | binary in $\{0,1\}$ | Sends satellite $n$'s task to aircraft $u$ |
+| Dispatched task counts | $k_{n,m}(t),k_{n,u}(t)$ | bounded integers | Number of tasks sent to neighbor satellites or aircrafts |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | At most one local or cooperative route is selected, $\alpha_n(t)+\sum_m\beta_{n,m}(t)+\sum_u\theta_{n,u}(t)\leq1$. |
+| C2 | Satellite dispatch is capacity-bounded, $\sum_m k_{m,n}(t)\leq J_{\max}^{S}$. |
+| C3 | Aircraft dispatch is capacity-bounded, $\sum_u k_{n,u}(t)\leq J_{\max}^{U}$. |
+| C4 | Queue dynamics remain stable, with bounded time-averaged backlog $\bar Q_{\mathrm{sys}}<\infty$. |
+
+**Algorithm**: Use Lyapunov drift-plus-penalty to obtain per-slot deterministic objectives, delayed online gradient learning to predict arrivals and queues, and a bounded integer branch-and-bound scheduler for each satellite.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] treated LEO satellites as both service providers and computation users in a collaborative space and aerial MEC network. Each satellite chooses local execution, one-hop aircraft offloading, or multi-hop forwarding toward the cloud, with binary route variables and bounded task dispatches. The long-term completion-delay problem includes queue stability and is decomposed by Lyapunov drift-plus-penalty into per-slot decisions. Delayed online learning predicts task arrivals and workload queues, after which a bounded integer branch-and-bound scheduler produces the operational policy. Numerical results validate lower task-completion delay while preserving computation efficiency in a variable space and aerial environment.
 
 ## Problem framing
 

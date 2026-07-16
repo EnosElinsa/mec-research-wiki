@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "ISAC-Empowered Air–Sea Collaborative System: A UAV–USV Joint Inspection Framework"
 authors: ["Rui Zhang", "Fuwang Dong", "Wei Wang"]
 year: 2026
@@ -14,7 +15,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[alternating-optimization-sdr-sca]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # ISAC-Empowered Air–Sea Collaborative System: A UAV–USV Joint Inspection Framework
@@ -28,6 +29,42 @@ Zhang, R., Dong, F., & Wang, W. (2026). *ISAC-Empowered Air–Sea Collaborative 
 ## TL;DR
 
 Jointly plans one quadrotor UAV and one slower USV for maritime target inspection while maintaining UAV-USV communication. A hierarchical solver selects hover neighborhoods, orders them with a heterogeneous energy cost, refines dwell times and positions, then alternates trajectory and beamforming updates.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna quadrotor UAV and a single-antenna USV jointly inspect maritime targets in hover-and-fly stages. The UAV senses only at hover points while maintaining a communication link with the USV, and both platforms move from prescribed starts to destinations amid water currents and surface obstacles.
+
+**Problem & objective**: Problem P1 minimizes weighted normalized platform energy, $\min_{\Theta}\beta E_{\mathrm{uav}}/E_{\mathrm{uav}}^{\max}+(1-\beta)E_{\mathrm{usv}}/E_{\mathrm{usv}}^{\max}$, subject to sensing, communication, motion, and system constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Mission duration and hover set | $N,\mathcal H$ | integer and discrete set | Number of slots and slots assigned to hovering |
+| UAV and USV trajectories | $\mathbf q[n],\mathbf b[n]$ | continuous positions | Coordinated platform locations over the mission |
+| Flight and hover beamformers | $\mathbf w_f[n],\mathbf w_h[n]$ | complex continuous vectors | UAV communication beamformers in the two modes |
+| Sensing beamformer | $\mathbf v_k[n]$ | complex continuous vector | Beam used to sense target $k$ |
+| Target schedule | $r_k[n]$ | binary, $\{0,1\}$ | Whether target $k$ is inspected in hover slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Flying and hovering communication rates satisfy $R_f[n],R_h[n]\geq\Gamma_c$. |
+| C2 | Every target meets cumulative sensing quality: $\sum_n\gamma_k[n]\geq\Gamma_s^{\mathrm{total}}$. |
+| C3 | USV-obstacle separation and platform speeds satisfy $\lVert\mathbf b[n]-\tilde{\mathbf p}_{k'}\rVert\geq d_{\min}$ and their velocity limits. |
+| C4 | UAV and USV trajectories satisfy prescribed start and end points and their energy budgets. |
+| C5 | Communication and sensing beamforming powers remain no greater than $p_{\max}$. |
+
+**Algorithm**: Cluster targets and select rough hover points with VBSC, solve their visiting order as a Bi-TSPN with a hybrid UAV-USV energy cost, refine hover positions and mode durations by SCA, then alternate stagewise USV trajectory and sensing and communication beamforming updates using SDR and SCA.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied an ISAC-empowered air-sea collaborative system in which a UAV and a USV jointly inspect maritime targets while maintaining inter-platform communication. They formulated a weighted total-energy minimization problem over hover points, target scheduling, mode durations, UAV and USV trajectories, and sensing and communication beamformers under rate, accumulated-sensing-SNR, motion, obstacle, energy, and power constraints. Their hierarchical solution combines virtual-base-station coverage and clustering, a Bi-TSPN visiting-order stage, SCA-based hover-point and time refinement, and alternating SDR and SCA updates for trajectories and beamforming. Simulations report total energy of 61.658 kJ for the proposed scheme, compared with 70.165 kJ for sequential access, 69.665 kJ for leader-follower control, and 63.007 kJ for fly-and-sense operation.
 
 ## Problem framing
 

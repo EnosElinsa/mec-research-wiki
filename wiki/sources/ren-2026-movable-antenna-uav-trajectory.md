@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Movable Antenna Enhanced Cellular-Connected UAV Communication With Trajectory Planning"
 authors: ["Tianshi Ren", "Xianchao Zhang", "Wenyan Ma", "Lipeng Zhu", "Xiaozheng Gao", "Rui Zhang"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[selective-uniform-cost-search]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Movable Antenna Enhanced Cellular-Connected UAV Communication With Trajectory Planning
@@ -25,6 +26,41 @@ Ren, T., Zhang, X., Ma, W., Zhu, L., Gao, X., & Zhang, R. (2026). *Movable Anten
 ## TL;DR
 
 Minimizes a cellular-connected UAV's mission time by jointly planning its path, serving-BS association, MMSE receive beamforming, and onboard movable-antenna positions under a lower-bound expected-SINR condition and mechanical movement constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude cellular-connected UAV flies between prescribed endpoints while ground base stations share spectrum and one serving BS is selected per location. The UAV carries a two-dimensional movable receive array with MMSE combining; a Jensen lower bound on expected SINR provides the communication-feasibility condition, and the flight region is discretized into a square grid.
+
+**Problem & objective**: A mixed discrete-continuous path-planning problem minimizes mission time, $\min T_{\mathrm{mission}}$, while requiring the lower-bound expected SINR to exceed its threshold.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Grid path | $\mathcal G$ | discrete node sequence | UAV route between prescribed endpoints |
+| Serving-BS association | $a_b(n)$ | binary | BS selected at grid node $n$ |
+| Receive beamformer | $\mathbf w(n)$ | complex continuous vector | MMSE combiner at grid node $n$ |
+| Movable antenna positions | $\mathbf r(n)$ | continuous 2-D positions | Element locations of the UAV receive array |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The Jensen lower bound on expected SINR satisfies $\underline{\gamma}(n)\ge\gamma_{\min}$ |
+| C2 | Each grid edge has its prescribed flight time and the route connects the endpoints |
+| C3 | Every antenna element stays inside the movable-array region |
+| C4 | Element displacement and pairwise spacing satisfy mechanical speed and separation limits |
+| C5 | One feasible serving BS is selected at each visited node |
+
+**Algorithm**: Discretize the flight region into a grid → propagate antenna positions and compute MMSE combining at each node → improve movable-antenna positions by successive linearization and feasible-direction line search → expand the lowest-bound-time node with selective uniform-cost search → prune histories using the remaining-time lower bound.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ren et al. [x] studied mission-time minimization for a cellular-connected UAV equipped with a movable receive antenna array. They jointly planned the UAV path, serving-base-station association, MMSE receive beamforming, and antenna-element positions under an expected-SINR lower bound and mechanical movement constraints. The antenna solver uses successive linearization and feasible-direction line search, while selective uniform-cost search expands grid nodes with a remaining-time lower bound and prunes candidate histories. The antenna-position iterations converge to a first-order stationary point under the stated procedure. At a 13 dB SINR threshold, simulations report mission-time reductions of 6.46%, 18.55%, and 28.35% relative to the evaluated movable-antenna MRC, single-antenna MMSE, and fixed-array MMSE schemes.
 
 ## Problem and system model
 

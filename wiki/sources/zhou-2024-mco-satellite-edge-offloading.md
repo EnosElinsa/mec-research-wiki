@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Mobility-Aware Computation Offloading in Satellite Edge Computing Networks"
 authors: ["Jian Zhou", "Qi Yang", "Lu Zhao", "Haipeng Dai", "Fu Xiao"]
 year: 2024
@@ -21,7 +22,7 @@ related:
   - "[[zhang-2024-coma-satellite-offloading]]"
   - "[[you-2017-meco-resource-allocation]]"
 created: 2026-06-02
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Mobility-Aware Computation Offloading in Satellite Edge Computing Networks
@@ -33,6 +34,39 @@ Zhou, J., Yang, Q., Zhao, L., Dai, H., & Xiao, F. (2024). *Mobility-Aware Comput
 ## TL;DR
 
 Studies **mobility-aware computation offloading (MCO)** in a **satellite edge computing network (SECN)**, taking the **high-speed movement of LEO satellites** explicitly into account — which the authors present as the first such attempt. The three-layer SECN has GEO satellites as the cloud, LEO satellites (each with an MEC server) as edge nodes, and ground users as end-users; a task can be computed locally, on the accessible LEO satellite, on another LEO satellite via inter-satellite (L-L) relays, or on the GEO satellite. The objective minimizes a **weighted sum of network latency and energy consumption**. The problem is **discrete and non-convex** (binary offloading decisions), so it is **relaxed to a continuous convex problem** (proved feasible) and solved by **MCO-A**, an **ADMM-based distributed** algorithm designed to scale to many co-existing users, with a **convergence proof**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A three-layer satellite edge computing network uses GEO satellites as cloud centers, moving LEO satellites as edge servers connected by ring inter-satellite links, and ground users as end terminals. Each user reaches an accessible LEO over a large-scale plus Rician-fading uplink and can compute locally or route its task to an accessible LEO, another LEO, or a GEO server.
+
+**Problem & objective**: MCO is a discrete non-convex offloading problem that minimizes normalized latency-energy cost, $\min_{\mathbf A}\lambda t'_{\mathrm{total}}+(1-\lambda)e'_{\mathrm{total}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading selection | $a_{i,m}$ | binary | Whether user $i$ selects execution option $m$ |
+| Relaxed selection | $a'_{i,m}$ | continuous, $[0,1]$ | Convex relaxation used by the distributed solver |
+| Local consensus copy | $\hat a_{i,m}^{k}$ | continuous, $[0,1]$ | Satellite-local copy of the offloading decision |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task selects at most one remote execution node; no remote selection means local execution |
+| C2 | Original offloading entries satisfy $a_{i,m}\in\{0,1\}$ |
+| C3 | Every LEO respects its computing-resource cap, $\sum_i a_{i,m}x_i\leq Z_m$ |
+| C4 | Relaxed variables satisfy $0\leq a'_{i,m}\leq1$ and local ADMM copies agree with the global decision |
+
+**Algorithm**: Model LEO coverage time and four mobility-dependent execution routes → relax binary decisions to a feasible convex program → split global and local variables through ADMM → update satellite-local and consensus variables with primal and dual residual checks → restore one-hot binary offloading by maximum relaxed value.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied mobility-aware computation offloading in a satellite edge computing network with GEO cloud centers, moving LEO edge servers, and ground users. They formulated the MCO problem to minimize a weighted sum of normalized network latency and energy consumption using mobility-aware route costs and heterogeneous LEO computing-resource constraints. Binary choices allow local execution, processing at the accessible LEO, forwarding to another LEO, or offloading to a GEO satellite. The authors relaxed the discrete non-convex formulation into a continuous convex problem and developed MCO-A, a distributed ADMM-based solver with a convergence analysis and binary recovery. Experiments in small-scale and large-scale scenarios report lower latency and energy consumption than the evaluated baseline and state-of-the-art approaches.
 
 ## Problem framing
 

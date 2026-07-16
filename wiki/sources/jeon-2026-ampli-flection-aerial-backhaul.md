@@ -17,7 +17,8 @@ related:
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[chan-byoung-chae]]"
 created: 2026-07-11
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Ampli-Flection for 6G: Active-RIS-Aided Aerial Backhaul With Full 3-D Coverage
@@ -29,6 +30,42 @@ Jeon, H.-B., & Chae, C.-B. (2026). *Ampli-Flection for 6G: Active-RIS-Aided Aeri
 ## TL;DR
 
 Proposes [[aerial-active-ris-backhaul]], a high-altitude active-RIS platform that reflects and amplifies blocked backhaul signals to support UAV base stations and ground users with full 3-D coverage. The paper optimizes platform placement, RIS array partitioning, phase control, and equal amplification gain to maximize UAV-BS energy efficiency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A high-altitude active-RIS relays a blocked source backhaul to multiple stationary UAV base stations that serve disjoint ground-user groups.
+
+**Problem & objective**: Choose the aerial-RIS placement, array configuration, phase alignment, amplification, and source powers to maximize backhaul energy efficiency, equivalently minimizing total source and active-RIS power, $\min \sum_m P_m+P_{\mathrm{tot,a}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Aerial-RIS placement | $\mathbf q$ | continuous 2-D point at height $H$ | Horizontal location of the active-RIS platform |
+| Phase alignment | $\bar{\boldsymbol\rho},\Theta$ | continuous point and element phases | Main-lobe target and RIS phase shifts |
+| Active-array partition | $\bar N$ or $L$ | integer | Number of active elements or sub-arrays used for UAV-BS groups |
+| Equal amplification gain | $\alpha$ | continuous with $1<\alpha\leq\alpha_{\max}$ | Common active-RIS signal gain |
+| Source powers | $P_m$ | nonnegative continuous | Backhaul transmit power allocated to UAV-BS $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Backhaul rate for each UAV-BS is balanced with its fronthaul throughput, $R_m=C_m$ |
+| C2 | Source transmit power satisfies $G_s\sum_mP_m\leq P_{\max}$ |
+| C3 | Active-RIS reflection and hardware power stays below $P_{\max,a}$ |
+| C4 | The platform remains in the permitted 3-D placement region and near the source for full-array operation |
+| C5 | Phase, gain, and array-partition choices remain physically feasible |
+
+**Algorithm**: Use MRT at the source, derive each UAV-BS-specific placement in closed form, aggregate placements with a Fermat-Weiszfeld global criterion, optimize phase alignment and active-array partitioning, then obtain a closed-form gain and the rate-supporting source powers.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jeon and Chae [x] studied active-RIS-assisted aerial backhaul for stationary UAV base stations serving disjoint ground-user groups in blocked urban links. They minimized source and active-RIS operating power, equivalent to maximizing backhaul energy efficiency, over three-dimensional platform placement, array partitioning, phase alignment, common amplification gain, and per-UAV source powers under rate-balance and power-budget constraints. Their method combines MRT, closed-form per-UAV placement, a Fermat-Weiszfeld aggregation, main-lobe phase design, and closed-form gain and power updates. Simulations report total-power gains of 25.48 dB and 27.19 dB over an aerial amplify-and-forward relay at 1000 m and 1200 m, and about 32.20 dB and 30.17 dB over passive RIS at 800 m and 1200 m.
 
 ## Problem framing
 

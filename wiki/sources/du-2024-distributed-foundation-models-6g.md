@@ -5,6 +5,7 @@ authors: ["Jun Du", "Tianyi Lin", "Chunxiao Jiang", "Qianqian Yang", "C. Faouzi 
 year: 2024
 url: ""
 venue: "IEEE Wireless Communications"
+modeling_card: not_applicable
 tags: [source, foundation-models, 6g, multi-modal-learning, distributed-training, federated-learning, edge-computing]
 related:
   - "[[jun-du]]"
@@ -17,7 +18,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Distributed Foundation Models for Multi-Modal Learning in 6G Wireless Networks
@@ -29,6 +30,12 @@ Du, J., Lin, T., Jiang, C., Yang, Q., Bader, C. F., & Han, Z. (2024). *Distribut
 ## TL;DR
 
 A forward-looking **magazine/overview article** arguing that 6G wireless networks can aggregate distributed computation and multi-modal data from many devices to sustainably train and serve **multi-modal foundation models (FMs)**. It organizes the distributed-training design space along three axes — **pipeline parallelism**, **data parallelism**, and **multi-modal learning** — and proposes wireless-aware techniques for each.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Du et al. [x] examined distributed multi-modal foundation models supported by 6G wireless networks. They organized the distributed training architecture along pipeline parallelism, data parallelism, and multi-modal learning, with emphasis on heterogeneous devices and unstable wireless links. The article discussed activation and gradient compression with communication-resource allocation, federated learning with over-the-air computation, and multi-modal embedding, inference, and generation. It synthesized state-of-the-art techniques and identified communication, computation, data-heterogeneity, and straggler challenges rather than reporting an original benchmark experiment.
 
 ## Problem framing
 

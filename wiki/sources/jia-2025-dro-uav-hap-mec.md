@@ -21,7 +21,8 @@ related:
   - "[[jia-2026-hierarchical-uav-swarms]]"
   - "[[hierarchical-uav-swarm]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs and HAPs
@@ -40,6 +41,42 @@ A two-layer aerial MEC: N UAVs (flexible, low capacity) + 1 HAP (stable, large c
 4. **Primal-decompose** the MISOCP into (a) a continuous resource-allocation subproblem solved by CVX and (b) a binary task-offloading subproblem solved by a custom **Binary Whale Optimization Algorithm (BWOA)**.
 
 Goal: minimize total energy across UAVs + HAP, subject to the robust latency chance constraint.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground users with indivisible tasks are assigned to quasi-stationary UAV MEC servers, with an HAP relaying tasks that exceed UAV capacity or latency feasibility under uncertain G2U CSI.
+
+**Problem & objective**: Jointly choose UAV deployment, user association, HAP forwarding, and CPU allocations to minimize aerial-platform energy, $\min_{\mathbf v,\boldsymbol\delta,\boldsymbol\lambda,\mathbf f}\sum_nE_n^{\mathrm{total}}+E_h^{\mathrm{total}}$, subject to robust latency chance constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV deployment | $\mathbf v_n$ | continuous 2-D positions | Horizontal location of UAV $n$ |
+| GU-UAV association | $\delta_m^n$ | binary | Connect ground user $m$ to UAV $n$ |
+| HAP forwarding | $\lambda_m^n$ | binary | Relay task $m$ from UAV $n$ to the HAP |
+| CPU allocation | $f_m$ | nonnegative continuous | Processing frequency assigned to task $m$ |
+| Task-size distribution | $\mathbb P_m$ | probability distribution in ambiguity set | Uncertain G2U task or CSI state used by the robust constraint |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | The probability of each task meeting its latency target is at least $\alpha_m$ under the distributional ambiguity set |
+| C2 | Forwarding requires association, $\lambda_m^n\leq\delta_m^n$, and each user connects to one UAV |
+| C3 | UAV and HAP energy totals stay below their capacity budgets |
+| C4 | UAV deployment remains inside the horizontal operating area |
+| C5 | Association, forwarding, and CPU variables obey their binary or nonnegative domains and server capacities |
+
+**Algorithm**: Deploy UAVs with weighted K-means, reformulate the chance constraint with a moment-based DRO and CVaR mechanism, solve continuous allocation by primal decomposition and CVX, and optimize binary forwarding with BWOA.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jia et al. [x] developed a two-layer UAV and HAP MEC model that minimizes platform energy when G2U channel errors have known moments but unknown distributions. The optimization jointly selects weighted UAV deployment, binary GU association and HAP forwarding, and CPU allocation under distributionally robust latency, energy, coverage, and capacity constraints. Their pipeline uses weighted K-means, a CVaR reformulation of the chance constraint, primal decomposition with CVX for continuous resources, and Binary Whale Optimization for forwarding decisions. In simulations, BWOA remains close to exhaustive-search optimum with lower time complexity, while the weighted deployment serves more users and consumes less energy than random deployment and the CVaR design remains near the ideal-CSI results.
 
 ## Why this matters
 

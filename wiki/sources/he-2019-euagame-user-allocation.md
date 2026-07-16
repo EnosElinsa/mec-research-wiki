@@ -5,6 +5,7 @@ authors: ["Qiang He", "Guangming Cui", "Xuyun Zhang", "Feifei Chen", "Shuiguang 
 year: 2019
 url: "https://doi.org/10.1109/TPDS.2019.2938944"
 venue: "IEEE Transactions on Parallel and Distributed Systems (IEEE TPDS)"
+modeling_card: required
 tags: [source, edge-user-allocation, game-theory, potential-game, nash-equilibrium, edge-computing]
 related:
   - "[[edge-user-allocation]]"
@@ -14,7 +15,7 @@ related:
   - "[[chen-2024-ulse-game]]"
   - "[[sun-2023-bargain-match-vec]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 ---
 
 # A Game-Theoretical Approach for User Allocation in Edge Computing Environment
@@ -28,6 +29,37 @@ He, Q., Cui, G., Zhang, X., Chen, F., Deng, S., Jin, H., Li, Y., & Yang, Y. (201
 Frames the **edge user allocation (EUA)** problem from an app vendor's perspective: allocate the maximum number of app users to hired edge servers while minimizing overall system cost, subject to proximity (coverage) and multi-dimensional capacity constraints. The authors prove EUA is a variable-size vector bin-packing problem (NP-hard), then model it as **EUAGame**, a [[potential-game]] that provably admits a [[nash-equilibrium]], and propose a decentralized algorithm that converges to an NE.
 
 This is one of the foundational, frequently-cited game-theoretic treatments of edge resource allocation and a useful anchor for the wiki's game-theory thread.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An application vendor allocates quasi-static mobile or IoT app users to hired edge servers in a geographic area. Each user has a multi-dimensional CPU, memory, storage, and bandwidth demand, each server has a coverage set and residual capacity vector, and the communication channel and multiple-access scheme are abstracted by coverage and bandwidth capacity.
+
+**Problem & objective**: The Edge User Allocation problem jointly maximizes served users and minimizes vendor cost, $\max_{\mathbf a}\sum_i\mathbf1_{\{a_i>0\}}$ and $\min_{\mathbf a}\sum_i Z_{\mathbf a}(a_i)$, where cost includes hired capacity after multi-tenancy benefit and a penalty for unallocated users.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| User allocation | $a_i$ | integer, $a_i\in\{0,1,\ldots,m\}$ | Edge server selected for user $i$, with $a_i=0$ denoting no edge allocation |
+| Allocation profile | $\mathbf a=(a_1,\ldots,a_n)$ | discrete joint strategy | Complete user-to-server allocation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Coverage | $a_i\in\{0\}\cup\{j\mid u_i\in\operatorname{cov}(s_j)\}$ |
+| Capacity | For every resource $k$, $\sum_{i:a_i=j}(1-f^k(s_j))\omega_i^k\leq c_j^k$ |
+| Single allocation | Every user chooses at most one covered edge server or remains unallocated |
+
+**Algorithm**: Initialize every user as unallocated; let each user evaluate the total system cost resulting from switching to each covered server with sufficient capacity; allow one improving user to update per iteration while all evaluations run in parallel; repeat best-response updates until no user requests a change; return the resulting pure Nash equilibrium, whose finite termination follows from the potential game's finite improvement property.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+He et al. [x] studied application-user allocation to capacity-limited edge servers from an application vendor's perspective. They formulated a multi-objective problem that maximizes the number of allocated users and minimizes multi-dimensional capacity cost under server coverage and capacity constraints. They recast the NP-hard allocation as a potential game and proposed a decentralized best-response mechanism that reaches a pure Nash equilibrium in finitely many updates. Experiments using real Melbourne base-station and simulated user locations reported 3.38 percent fewer allocated users and 4.76 percent higher cost on average than the centralized optimum, while outperforming greedy and random allocation.
 
 ## Problem framing
 

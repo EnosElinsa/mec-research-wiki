@@ -19,7 +19,8 @@ related:
   - "[[xiang-cheng]]"
   - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Integrated Sensing and Communications in Multi-UAV Networks: A Dual-Objective Optimization Perspective
@@ -33,6 +34,41 @@ Guo, X., Shi, J., Wu, J., Zhang, R., & Cheng, X. (2026). *Integrated Sensing and
 ## TL;DR
 
 Jointly optimizes multiple UAVs' 3-D trajectories, transmit powers, communication-user associations, and sensing-target associations without collapsing communication and sensing into one fixed-weight score. The proposed SC-DO-MUOA uses archive-guided MOEA/D plus an adaptive PSO/GA operator to approximate the Pareto front between average communication sum rate and aggregate target-location [[cramer-rao-bound|CRB]].
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A centrally coordinated multi-UAV ISAC network serves downlink users and senses targets over shared spectrum while retaining separate communication and sensing objectives.
+
+**Problem & objective**: Search for non-dominated designs that maximize average communication sum rate and minimize aggregate target-location error, $\max \bar R$ and $\min \sum_j CRB_{\mathbf v_j}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Transmit power | $\mathbf P=\{p_m[n]\}$ | continuous nonnegative | Power used by UAV $m$ in slot $n$ |
+| User association | $\mathbf A=\{\alpha_{m,k}[n]\}$ | binary | User-to-UAV assignment |
+| Target association | $\mathbf C=\{c_{m,j}[n]\}$ | binary | Target-to-UAV sensing assignment |
+| UAV trajectory | $\mathbf Q=\{\mathbf q_m[n]\}$ | continuous 3-D positions | Flight path of every UAV over the frame |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | User and target associations are binary |
+| C2 | Each UAV and user obeys the per-slot association limits |
+| C3 | Each target is assigned at most once per slot and exactly once per sensing frame |
+| C4 | Transmit powers satisfy per-UAV power budgets and users meet minimum frame-rate requirements |
+| C5 | Trajectories obey speed, altitude, collision, and endpoint or operating-area limits |
+
+**Algorithm**: Decompose the constrained bi-objective problem with MOEA/D, preserve feasible non-dominated solutions in an archive, adapt between PSO and GA operators, and repair mixed continuous and binary candidates until hypervolume improvement is small.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Guo et al. [x] formulated multi-UAV ISAC as a dual-objective optimization over three-dimensional trajectories, transmit powers, user associations, and target associations. They maximize average communication sum rate while minimizing the aggregate target-position CRB under mixed-variable assignment, power, rate, mobility, altitude, and collision constraints. SC-DO-MUOA combines an archive-guided MOEA/D decomposition with adaptive PSO and GA operators plus feasibility repair to approximate the Pareto front. In the 100-UAV, 100-user, 20-target case, it reports 5.71 s runtime, 10.97 MB memory, convergence at 550 iterations, and hypervolume 0.88, outperforming the reported EAG-MOEA/D and NSGA-II baselines on those measures.
 
 ## Problem framing
 

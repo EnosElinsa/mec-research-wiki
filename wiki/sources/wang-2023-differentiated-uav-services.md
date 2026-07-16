@@ -5,6 +5,7 @@ authors: ["Xiaojie Wang", "Zhaolong Ning", "Song Guo", "Miaowen Wen", "Lei Guo",
 year: 2023
 url: "https://doi.org/10.1109/TMC.2021.3116236"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 22, no. 4, pp. 2131-2146"
+modeling_card: required
 tags: [source, multi-uav, uav-deployment, differentiated-services, imitation-learning, opponent-modeling, nash-equilibrium]
 related:
   - "[[multi-agent-imitation-learning]]"
@@ -21,7 +22,7 @@ related:
   - "[[ning-2023-madrl-uav-trajectory-differentiated-services]]"
   - "[[wang-2025-ctmig-task-migration-uav]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dynamic UAV Deployment for Differentiated Services: A Multi-Agent Imitation Learning Based Approach
@@ -33,6 +34,41 @@ Wang, X., Ning, Z., Guo, S., Wen, M., Guo, L., & Poor, H. V. (2023). *Dynamic UA
 ## TL;DR
 
 Models competing UAV owners as a [[differentiated-uav-service-market]] and trains a multi-agent imitation-learning policy from full-information expert demonstrations. Each owner predicts opponents from local observations, changes its service quantity and UAV count, and seeks long-run profit without exchanging actual opponent policies.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $H$ hotspots receive users with differentiated service preferences from $K$ competing UAV owners. Owner $k$ offers quantity $q_{hk}(t)$ at price $p_k(t)$, with each UAV supplying capability $b_k$ and incurring deployment, hovering, and service costs.
+
+**Problem & objective**: User utility is $P_1:\max_{q_{hk}}u(t)=\sum_{h,k}f_{hk}(t)q_{hk}(t)^{\alpha}$, while each owner solves $P_2:\max_{q_{hk},p_k}\Gamma_k=\sum_{t,h}(p_kq_{hk}-c_{hk})$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Service quantity | $q_{hk}(t)$ | nonnegative continuous | Capacity owner $k$ offers in hotspot $h$ |
+| Service price | $p_k(t)$ | nonnegative continuous | Price charged for owner $k$ service |
+| Deployment count | $\lceil q_{hk}(t)/b_k\rceil$ | integer derived | Number of UAVs needed for the offered quantity |
+| Online action | $\Delta q_{hk}(t)$ | bounded continuous | Increment or reduction in offered quantity |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Hotspot budget: $\sum_kp_k(t)q_{hk}(t)\le e_h$ |
+| C2 | Differentiation parameter: $0<\alpha<1$ |
+| C3 | Quantity nonnegativity: $q_{hk}(t)\ge0$ |
+| C4 | Action bound: $-\alpha e_h/(4A_k)\le\Delta q_{hk}(t)\le\alpha e_h/(4A_k)$ |
+| C5 | Owner cost: $c_{hk}(t)=(g_0+g_s)\lceil q_{hk}(t)/b_k\rceil+g_cq_{hk}(t)$ |
+
+**Algorithm**: Derive full-information Nash-equilibrium quantities as expert demonstrations, then train decentralized MILU policies with CNN and GAN imitation, an opponent-action predictor, and a policy-gradient/value-network update under partial observations.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] modeled differentiated UAV services as a competition among owners that choose service quantities and prices across user hotspots. The formulation maximizes CES-based user utility under hotspot budgets while each owner maximizes long-term revenue minus deployment, hovering, and service costs. Full-information analysis supplies Nash-equilibrium expert actions, and the MILU learner imitates those actions with decentralized CNN, GAN, opponent-model, and policy-gradient networks. Experiments reported higher user utility and owner profit with faster convergence than multi-agent DRL and optimization baselines, while the framework retains partial-observation operation.
 
 ## Problem
 

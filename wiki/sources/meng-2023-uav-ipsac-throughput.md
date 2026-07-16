@@ -5,6 +5,7 @@ authors: ["Kaitao Meng", "Qingqing Wu", "Shaodan Ma", "Wen Chen", "Kunlun Wang",
 year: 2023
 url: "https://doi.org/10.1109/TWC.2022.3197623"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 22, no. 1, pp. 671-687"
+modeling_card: required
 tags: [source, uav, integrated-sensing-and-communication, periodic-sensing, beamforming, user-association, trajectory-optimization]
 related:
   - "[[integrated-periodic-sensing-and-communication]]"
@@ -17,7 +18,7 @@ related:
   - "[[kaitao-meng]]"
   - "[[qingqing-wu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Throughput Maximization for UAV-Enabled Integrated Periodic Sensing and Communication
@@ -29,6 +30,43 @@ Meng, K., Wu, Q., Ma, S., Chen, W., Wang, K., & Li, J. (2023). *Throughput Maxim
 ## TL;DR
 
 Introduces [[integrated-periodic-sensing-and-communication|IPSAC]], where a UAV communicates in every slot but schedules each target exactly once per sensing frame. A two-layer penalty/AO/SCA method jointly controls user association, target-sensing slots, beamforming, and trajectory to raise sum rate subject to sensing-frequency and beampattern constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A constant-altitude UAV with a uniform planar array serves single-antenna users and senses known ground targets in TDMA slots. Every target is sensed exactly once per IPSAC frame, at most one target and one user are selected in a slot, and the UAV follows a bounded trajectory between fixed endpoints.
+
+**Problem & objective**: Problem $\mathrm{P1}$ maximizes average sum rate $\max_{\mathbf w_c,A,Q,C}\frac{1}{N}\sum_{n=1}^{N}\sum_{k=1}^{K}\alpha_k[n]R_k[n]$ subject to sensing, QoS, power, mobility, and endpoint constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beamformer | $\mathbf w_c[n]$ | complex vector | Information-bearing transmit beam in slot $n$ |
+| User association | $\alpha_k[n]$ | binary | Whether user $k$ is served in slot $n$ |
+| Target selection | $c_j[n]$ | binary | Whether target $j$ is sensed in slot $n$ |
+| UAV trajectory | $\mathbf q[n]$ | continuous horizontal position | UAV location at slot $n$ at fixed altitude |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| (1) | Each target is sensed once per frame: $\sum_{n=(l-1)N_L+1}^{lN_L}c_j[n]=1$ |
+| (2), (7) | At most one target and one user are scheduled per slot: $\sum_jc_j[n]\leq1$ and $\sum_k\alpha_k[n]\leq1$ |
+| (12a) | Selected targets meet the beampattern-gain threshold: $c_j[n]\Gamma(\mathbf q[n],\mathbf v_j)/d(\mathbf q[n],\mathbf v_j)^2\geq c_j[n]\Gamma_j^{th}$ |
+| (12c) | Each user meets its per-frame rate requirement: $\frac{1}{N_L}\sum_n\alpha_k[n]R_k[n]\geq R_k^{th}$ |
+| (12d)-(12f) | Transmit power, movement, and endpoints obey $\|\mathbf w_c[n]\|^2\leq P_{max}$, $\|\mathbf q[n]-\mathbf q[n-1]\|\leq V_{max}\delta_t$, and fixed initial/final locations |
+
+**Algorithm**: Derive a closed-form beamformer and a tight rate lower bound, introduce auxiliary variables and quadratic penalties for binary coupling, and alternate schedule/slack updates with SCA trajectory updates in an outer penalty loop. A symmetry result without endpoint constraints yields a lower-complexity trajectory construction for long missions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Meng et al. [x] studied throughput maximization for UAV-enabled integrated periodic sensing and communication with TDMA scheduling. They optimized beamforming, binary user association, binary target-slot selection, and UAV trajectory to maximize average sum rate subject to per-frame sensing, beampattern, QoS, power, mobility, and endpoint constraints. Their solution combines a closed-form beamformer, a rate lower bound, a two-layer penalty and alternating-optimization procedure, and SCA trajectory updates, with a symmetry-based low-complexity construction when endpoints are relaxed. Reported trends show that higher sensing thresholds or frequencies reduce communication rate, optimized slots tend to pair targets with nearby users, and the low-complexity method closely tracks the full penalty design in the evaluated scenarios.
+
+## Problem and system model
 
 ## Problem and system model
 

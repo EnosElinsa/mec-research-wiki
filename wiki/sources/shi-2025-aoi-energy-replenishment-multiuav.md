@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "AoI-Aware Data Collection and Energy Replenishment for Multi-UAV-Enabled IoT Systems"
 authors: ["Kaijin Shi", "Juan Liu", "Lingfu Xie", "Zheng Zhou", "Hua Chen", "Guinian Feng"]
 year: 2025
@@ -19,7 +20,7 @@ related:
   - "[[song-2024-mol-aoi-energy]]"
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # AoI-Aware Data Collection and Energy Replenishment for Multi-UAV-Enabled IoT Systems
@@ -31,6 +32,41 @@ Shi, K., Liu, J., Xie, L., Zhou, Z., Chen, H., & Feng, G. (2025). *AoI-Aware Dat
 ## TL;DR
 
 Studies persistent fresh data collection in a multi-UAV IoT system where UAVs wirelessly charge sensor nodes, collect updates, offload data to a BS, and recharge themselves at fixed charging stations. The goal is to minimize average sensor-node AoI under UAV energy and service constraints. The problem is modeled as a Dec-POMDP and solved with [[value-decomposition-network|VDN]] and [[qmix|QMIX]] under multi-agent RL.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs persistently collect fresh data from battery-limited sensor nodes, wirelessly transfer energy before collection, offload data to a base station, and periodically leave service to recharge at fixed stations. Each UAV observes only local sensor, UAV, and charging states, forming a cooperative Dec-POMDP.
+
+**Problem & objective**: A multi-agent freshness-control problem minimizes average sensor-node age of information, $\min\limsup_T T^{-1}\sum_t\sum_n A_n(t)$, under UAV battery, charging, service, and movement limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV motion | $a_u(t)$ | discrete flight action | Movement selected by UAV $u$ |
+| Sensor association | $c_u(t)$ | discrete association | Sensor node served by UAV $u$ |
+| Wireless energy transfer | $p_u^{\mathrm{WPT}}(t)$ | continuous, power-bounded | Energy sent to the selected sensor |
+| Recharging mode | $r_u(t)$ | binary | Whether UAV $u$ visits a charging station |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Sensor data is collected only after sufficient wireless energy transfer |
+| C2 | UAV battery energy remains nonnegative and service time is feasible |
+| C3 | Each working UAV selects a valid sensor or charging station and stays in the grid |
+| C4 | Recharging actions obey station capacity and charging-rate limits |
+| C5 | Data offloading and UAV movement update the AoI state each slot |
+
+**Algorithm**: Form a Dec-POMDP with local observations → train VDN and QMIX cooperative value functions with centralized training → execute decentralized UAV motion, association, WPT, collection, offloading, and recharge actions → compare learned policies with traditional baselines.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Shi et al. [x] studied age-of-information-aware data collection and energy replenishment for a multi-UAV IoT system. UAVs wirelessly charge sensor nodes, collect and offload updates to a base station, and periodically recharge at fixed stations. They formulated average sensor-node AoI minimization under UAV energy, charging, service, and movement constraints as a decentralized partially observable Markov decision process. VDN and QMIX learn cooperative value functions from local observations while centralized training aggregates the agents' information. Simulations report lower AoI for the learned policies than the evaluated traditional baselines, with QMIX favored in complex settings and VDN often using less energy.
 
 ## Problem
 

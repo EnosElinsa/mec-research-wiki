@@ -21,7 +21,8 @@ related:
   - "[[dai-2024-uav-vehicular-offloading-lyapunov]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Computation Offloading and Multidimensional Resource Allocation in Air–Ground Integrated Vehicular Edge Computing Network
@@ -33,6 +34,42 @@ Li, S., Ale, L., Chen, H., Tan, F., Quek, T. Q. S., Zhang, N., Dong, M., & Ota, 
 ## TL;DR
 
 Minimizes **total task offloading delay** in an **air–ground integrated vehicular edge computing (VEC)** network where vehicles can offload to a **roadside unit (RSU)**, multiple **UAVs**, or a **high-altitude platform (HAP)** — each carrying an MEC server, with UAVs/RSU also acting as relays to the distant HAP. The non-convex **joint multicomputation-equipment-selection and multidimensional-resource-allocation (JCESRA)** problem is tackled with the **block coordinate descent (BCD)** idea: first exclude the HAP and split into three subproblems — low-altitude equipment selection (**many-to-one matching**, with a **coalition game** handling matching externalities), joint bandwidth + computation allocation (**CVX**), and UAV trajectory (**SCA**); then add the HAP as a **knapsack** problem solved by **dynamic programming**, after which freed UAV/RSU compute resources are reallocated. Simulations report lower offloading delay than baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A one-way vehicular road is served by one RSU, multiple MEC-enabled UAVs, and one MEC-enabled HAP; vehicles offload tasks to a selected low-altitude server or to the HAP through an RSU/UAV relay. Multiple access uses slot-based orthogonal bandwidth allocation, with probabilistic-LoS vehicle-to-low-altitude channels and a free-space HAP link.
+
+**Problem & objective**: Joint multicomputation equipment selection and multidimensional resource allocation (JCESRA), a non-convex mixed-integer program, minimizes total task offloading delay, $\min \sum_{n,i,k}[\alpha_{ik}(n)T_{ik}(n)+\alpha^{\mathrm{hap}}_{ik}(n)T^{\mathrm{hap}}_{ik}(n)]$, subject to assignment, resource, delay, energy, and trajectory constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Low-altitude assignment | $\alpha_{ik}(n)$ | binary, $\{0,1\}$ | Vehicle $i$ offloads to equipment $k$ in slot $n$ |
+| HAP-relay assignment | $\alpha^{\mathrm{hap}}_{ik}(n)$ | binary, $\{0,1\}$ | Vehicle $i$ uses low-altitude relay $k$ to reach the HAP |
+| Bandwidth allocation | $b_{ik}(n)$ | continuous, $\ge 0$ | Bandwidth assigned to a vehicle-equipment link |
+| CPU allocation | $f_{ik}(n), f^{\mathrm{hap}}_{ik}(n)$ | continuous, bounded by server capacity | Computation rates at low-altitude equipment and HAP |
+| UAV trajectory | $\mathbf q_k(n)$ | continuous, 3-D position | UAV location in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task selects at most one low-altitude equipment or HAP-relay path, using the binary assignments |
+| C2 | Bandwidth and CPU allocations stay within each RSU/UAV/HAP capacity |
+| C3 | Each selected path satisfies its delay bound, $T_{ik}(n)\le t_{i,\max}(n)$ |
+| C4 | UAV, RSU, and HAP computation/transmission energy stays within the slot budgets |
+| C5 | UAV displacement and inter-UAV safety-distance constraints hold in every slot |
+
+**Algorithm**: BCD decomposition — many-to-one matching plus coalition game for equipment selection → CVX for bandwidth/CPU allocation → SCA for UAV trajectory → dynamic programming for the HAP knapsack → reallocate released RSU/UAV CPU resources.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied joint multicomputation equipment selection and multidimensional resource allocation in an air–ground integrated vehicular edge computing network with RSUs, UAVs, and a HAP. They formulated a non-convex optimization problem that minimizes total task offloading delay while selecting computation equipment, allocating bandwidth and computation resources, and designing UAV trajectories. Their JCESRA solution first excludes the HAP and applies many-to-one matching, a coalition game for matching externality, CVX, and successive convex approximation to the resulting subproblems. They then model HAP offloading and computation allocation as a knapsack problem solved by dynamic programming and reallocate the released RSU and UAV resources. Simulations report that the complete JCESRA algorithm reduces total task offloading delay compared with the evaluated algorithms.
 
 ## Problem framing
 

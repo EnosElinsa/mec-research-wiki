@@ -12,7 +12,8 @@ related:
   - "[[ullah-2026-mec-drl-ntn-survey]]"
   - "[[liu-2023-sagecn-online-offloading]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Space-Air-Ground Integrated Networks: Spherical Stochastic Geometry-Based Uplink Connectivity Analysis
@@ -24,6 +25,12 @@ Liu, Y., Dai, H.-N., Wang, Q., Pandey, O. J., Fu, Y., Zhang, N., Niyato, D., & L
 ## TL;DR
 
 Develops an analytical model for the **uplink path connectivity** of SAGINs — the probability of establishing an end-to-end path from ground users (GUs) to a high-altitude satellite, with or without aerial vehicle (AV) relay assistance. Unlike prior work that distributes nodes on a flat plane, this paper models GUs and AVs on **spherical surfaces** (as they appear to a high-altitude satellite), introducing a new **spherical stochastic geometry** approach. Derives closed-form analytical expressions for three connectivity metrics and validates them against simulations. Claims to be the first study of SAGIN uplink path connectivity.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] developed a spherical stochastic-geometry model for uplink path connectivity in a space-air-ground integrated network. Ground users follow a Poisson cluster process on the Earth surface and aerial vehicles follow a spherical Poisson process, enabling direct and relay-assisted connectivity analysis under global node distributions. The paper derives analytical probabilities for GU to AV, AV to satellite, GU to AV to satellite, direct GU to satellite, and overall paths. Monte Carlo experiments match the analytical expressions and show that an optimal path-selection ratio can maximize overall connectivity. This contribution is an analytical connectivity foundation rather than a resource-allocation or offloading control formulation.
 
 ## Problem framing
 

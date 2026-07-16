@@ -15,7 +15,8 @@ related:
   - "[[yuanwei-liu]]"
   - "[[arumugam-nallanathan]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Multi-Agent Reinforcement Learning-Based Resource Allocation for UAV Networks
@@ -27,6 +28,41 @@ Cui, J., Liu, Y., & Nallanathan, A. (2020). *Multi-Agent Reinforcement Learning-
 ## TL;DR
 
 Models selfish UAV base stations as independent tabular Q-learning agents. Each chooses one user, subchannel, and discrete power level from a binary local QoS state, without exchanging actions or rewards with other UAVs.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $M$ single-antenna UAV base stations with predefined trajectories serve $L$ single-antenna ground users over $K$ reusable orthogonal subchannels. Each UAV has only local CSI, measures whether its selected link meets a QoS threshold, and acts without exchanging actions or rewards with the other UAVs.
+
+**Problem & objective**: The dynamic allocation is a noncooperative stochastic game in which UAV $m$ maximizes its discounted reward $v_m(t)=\sum_{\tau=0}^{\infty}\delta^{\tau}R_m(t+\tau+1)$. Its instantaneous reward is throughput minus a power cost when $\gamma_m(t)\geq\bar\gamma_m$ and zero otherwise.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Served user | $a_m^l(t)$ | Binary selection | Chooses at most one ground user |
+| Subchannel | $c_m^k(t)$ | Binary selection | Chooses at most one of $K$ subchannels |
+| Power level | $p_m^j(t)$ | Binary selection among $J$ levels | Chooses one discrete transmit-power level |
+| Joint local action | $\theta_m(t)=(a_m(t),c_m(t),p_m(t))$ | Finite action in $\Theta_m$ | Combines user, channel, and power decisions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | One subchannel: $\sum_{k\in\mathcal K}c_m^k(t)\leq1$ |
+| C2 | One power level: $\sum_{j\in\mathcal I}p_m^j(t)\leq1$ |
+| C3 | One served user: $\sum_{l\in\mathcal L}a_m^l(t)\leq1$ |
+| C4 | QoS-qualified reward: $R_m(t)=\frac{W}{K}\log_2(1+\gamma_m(t))-\omega_mP_m(t)$ if $\gamma_m(t)\geq\bar\gamma_m$, and $R_m(t)=0$ otherwise |
+| C5 | Local state: $s_m(t)=1$ if $\gamma_m(t)\geq\bar\gamma$ and $s_m(t)=0$ otherwise |
+
+**Algorithm**: Let every UAV independently maintain a zero-initialized Q-table, choose $\theta_m$ with epsilon-greedy exploration, observe the binary QoS state and local reward, update $Q_m(s_m,\theta_m)$ with the one-step temporal-difference rule, and decrease the learning rate as $\alpha_t=1/((t+c_\alpha)\varphi_\alpha)$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Cui et al. [x] studied dynamic user, subchannel, and discrete-power selection in multi-UAV downlink networks with predefined trajectories and no inter-UAV information exchange. They formulated a noncooperative stochastic game in which each UAV maximizes discounted throughput-minus-power reward subject to one-user, one-subchannel, one-power-level, and local QoS limits. Their independent-learning MARL algorithm used a binary SINR-threshold state, a zero-initialized Q-table, epsilon-greedy action selection, and a diminishing learning rate. Simulations reported that epsilon 0.5 gave the highest reward in the tested settings, while independent learning outperformed random selection but remained below complete-information Gale-Shapley matching in the reduced user-selection comparison.
 
 ## Problem and system model
 

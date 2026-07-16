@@ -18,17 +18,56 @@ related:
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 authors: [Dong-Jun Han, Wenzhi Fang, Seyyedali Hosseinalipour, Mung Chiang, Christopher G. Brinton]
 year: 2024
 url: https://doi.org/10.1109/JSAC.2024.3459090
 venue: "IEEE Journal on Selected Areas in Communications (JSAC)"
+modeling_card: required
 ---
 
 # Orchestrating Federated Learning in Space-Air-Ground Integrated Networks: Adaptive Data Offloading and Seamless Handover
 
+## Citation
+
+Han, D.-J., Fang, W., Hosseinalipour, S., Chiang, M., & Brinton, C. G. (2024). *Orchestrating Federated Learning in Space-Air-Ground Integrated Networks: Adaptive Data Offloading and Seamless Handover*. **IEEE Journal on Selected Areas in Communications**. DOI: 10.1109/JSAC.2024.3459090.
+
 ## TL;DR
 A [[federated-learning]] framework for remote regions that lack terrestrial base stations, using LEO satellites and UAVs in a [[space-air-ground-integrated-network]] as both edge-computing units and model aggregators. Each global round, ground devices adaptively offload portions of their non-sensitive data across the three layers according to satellites' time-varying compute power and limited coverage times ([[adaptive-inter-layer-data-offloading]]), and a data/model [[seamless-handover]] passes the dataset and partially trained model to the next incoming satellite so training continues uninterrupted. The authors analyze per-round latency, optimize offloading via nested bisection search, prove convergence to a stationary point for non-convex losses, and show faster time-to-accuracy than baselines on MNIST/FMNIST/CIFAR-10.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground devices in a base-station-free region associate with disjoint UAV coverage groups, and UAVs connect them to a sequence of moving LEO satellites. Ground-to-air rates use distance loss with Rayleigh fading or a free-space LoS alternative, air-to-satellite and inter-satellite links carry models and data, and the paper does not name a multiple-access protocol.
+
+**Problem & objective**: At each global round $r$, adaptive inter-layer data offloading minimizes the makespan $\min_{\mathcal D^{(r)}}\bar\tau^{(r)}$, where $\bar\tau^{(r)}=\max\{\bar\tau_S^{(r)},\max_{n\in\mathcal A}[\bar\tau_{A,n}^{(r)}+\tau_{n,S}^{A2S,(r)}]\}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Space-to-air data | $\lvert D_{S,n}^{S2A,(r)}\rvert$ | nonnegative integer sample count | Samples moved from the current satellite to air node $n$ |
+| Air-to-ground data | $\lvert D_{n,k}^{A2G,(r)}\rvert$ | nonnegative integer sample count | Samples moved from air node $n$ to ground device $k$ |
+| Ground-to-air data | $\lvert D_{k,n}^{G2A,(r)}\rvert$ | nonnegative integer sample count | Non-sensitive ground samples moved to air node $n$ |
+| Air-to-space data | $\lvert D_{n,S}^{A2S,(r)}\rvert$ | nonnegative integer sample count | Air-layer samples moved to the current satellite |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Dataset conservation | Updated ground, air, and space dataset sizes equal the previous sizes plus incoming samples minus outgoing samples |
+| Privacy | Ground offloading cannot exceed the currently available non-sensitive samples, $\lvert D_{G,k}^{(r)}\rvert-\lvert D_k^l\rvert$ |
+| Availability | Every directional offloading amount is nonnegative and no larger than the source node's available dataset |
+| Case direction | Space sends downward when its completion time is larger; air and ground send upward when the space layer is faster |
+
+**Algorithm**: Compute the no-offloading completion times to select the downward Case I or upward Case II direction; use an inner bisection to balance each air node against its associated ground devices while enforcing privacy limits; use an outer bisection to balance the space completion time against the slowest air branch; execute the data plan, perform parallel local training, and hand the satellite model and dataset to each incoming satellite until the round completes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Han et al. [x] studied federated learning orchestration in a space-air-ground integrated network serving remote ground devices without terrestrial base stations. They formulated adaptive inter-layer data offloading to minimize per-round training latency under privacy-sensitive data limits, heterogeneous computation, satellite mobility, and unequal coverage times. Their method selects the offloading direction from current layer completion times, balances ground, air, and space workloads with nested bisection, and transfers the model and dataset between consecutive satellites for seamless training. Experiments on MNIST, FMNIST, and CIFAR-10 reported faster accuracy-versus-time performance than no-offloading, single-layer, static, and computation-proportional baselines.
 
 ## Problem
 Remote regions (mountains, forests, deserts, coasts, rural farms, disaster/maritime zones) hold valuable ground-device data from IoT sensors, vehicles, and hospitals, but lack the terrestrial base stations that conventional FL needs for aggregation, and the ground devices have weak compute. The paper orchestrates FL across the space, air, and ground tiers of a SAGIN so that satellites and UAVs act both as model aggregators (handling the missing base station) and as edge computing units (handling weak ground compute). This introduces challenges absent in terrestrial FL: satellite mobility, heterogeneous/time-varying compute, and inconsistent coverage times of incoming LEO satellites — all while minimizing training latency and preserving convergence guarantees.

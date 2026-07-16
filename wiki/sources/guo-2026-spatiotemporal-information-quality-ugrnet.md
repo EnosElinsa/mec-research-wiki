@@ -5,6 +5,7 @@ authors: ["Shun Guo", "Jiawen Kang", "Dusit Niyato", "Qingqing Zhang", "Weidang 
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3646651"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 6, pp. 8002-8015"
+modeling_card: required
 tags: [source, uav-assisted-ground-robot-network, information-quality, delay-violation, martingale, wasserstein-distance, data-collection]
 related:
   - "[[martingale-delay-violation-bound]]"
@@ -23,7 +24,7 @@ related:
   - "[[zhang-2020-response-delay-uav-swarm]]"
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Spatiotemporal Information Quality Optimization for UAV-Assisted Ground Robot Networks
@@ -35,6 +36,39 @@ Guo, S., Kang, J., Niyato, D., Zhang, Q., Lu, W., & Han, Z. (2026). *Spatiotempo
 ## TL;DR
 
 Couples a martingale upper bound on heterogeneous multi-hop queueing-delay violations with Wasserstein distance from a required sensing distribution. Task completion improves spatial coverage but raises traffic load, producing an interior completion ratio in the paper's simulations.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground robots collect multiple information types while UAVs coordinate disjoint robot subsets and relay data to a command center through robot-to-robot, robot-to-UAV, and UAV-to-center links. The links form heterogeneous tandem queues with Markov arrival and service processes and Shannon-style rates; no specific multiple-access protocol is stated.
+
+**Problem & objective**: Problem (28) jointly controls information generation and regional travel to minimize the aggregate spatiotemporal quality cost, $\min_{\Xi,\Pi}\Psi_{\mathcal M}(\Xi)$, where each per-robot term is $\psi_{j,i}=\alpha^i\mathcal P_{j,i}+(1-\alpha^i)\mathcal F_{j,i}$ and combines a martingale delay-violation bound with Wasserstein spatial discrepancy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task-completion ratio | $\gamma_{j,i}$ | continuous, $0\leq\gamma_{j,i}\leq1$ | Fraction of the traveling and sensing task completed by robot $j$ for information type $i$ |
+| Information-generation strategy | $\Xi=(\varepsilon_1,\ldots,\varepsilon_D)$ | matrix of completion ratios | Joint collection strategy of all ground robots |
+| Regional transition | $\pi_{j,i}^{\kappa_x^j,\kappa_y^j}$ | binary, $\{0,1\}$ | Whether robot $j$ moves from subregion $\kappa_x^j$ to $\kappa_y^j$ while collecting information $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Completion domain | $0\leq\gamma_{j,i}\leq1$ with $0\leq\sum_j\gamma_{j,i}\leq D$ and $0\leq\sum_i\gamma_{j,i}\leq M$ |
+| Region assignment | Each destination subregion has exactly one incoming selected transition, as specified by Eq. (24) |
+| Route assignment | Each source subregion has exactly one outgoing selected transition, as specified by Eq. (24) |
+| Queue stability | The martingale delay bound is evaluated only for stable arrival and service processes with a valid positive decay rate |
+
+**Algorithm**: Estimate finite-state Markov arrival and service parameters, derive each hop's martingale delay-violation bound and the heterogeneous joint decay rate, compute the Wasserstein distance induced by each feasible regional path, combine the temporal and spatial terms into $\Psi_{\mathcal M}$, and numerically evaluate feasible completion ratios and assignments to select the minimum-cost strategy; the paper reports this evaluation workflow rather than a standalone optimization algorithm.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Guo et al. [x] studied spatiotemporal information quality in UAV-assisted ground-robot networks for time-sensitive sensing and rescue operations. They modeled heterogeneous multi-hop communication as tandem Markov queues, derived a martingale delay-violation probability bound, and measured spatial completeness with the Wasserstein distance between required and collected information distributions. They formulated a cross-layer optimization over robot task-completion ratios and one-to-one regional travel assignments to balance delay reliability against spatial completeness. Numerical results showed that the martingale bound followed simulated delays more closely than the min-method and homogeneous stochastic-network-calculus baselines, while the tested per-robot quality minima occurred at completion ratios between 0.6 and 0.8.
 
 ## Problem
 

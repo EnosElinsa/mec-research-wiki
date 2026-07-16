@@ -5,6 +5,7 @@ authors: ["Mohammad Mozaffari", "Walid Saad", "Mehdi Bennis", "Young-Han Nam", "
 year: 2019
 url: "https://doi.org/10.1109/COMST.2019.2902862"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, uav, tutorial, survey, aerial-base-station, cellular-connected-uav, channel-modeling, 3d-deployment]
 related:
   - "[[cellular-connected-uav]]"
@@ -18,7 +19,7 @@ related:
   - "[[mohammad-mozaffari]]"
   - "[[walid-saad]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # A Tutorial on UAVs for Wireless Networks: Applications, Challenges, and Open Problems
@@ -30,6 +31,12 @@ Mozaffari, M., Saad, W., Bennis, M., Nam, Y.-H., & Debbah, M. (2019). *A Tutoria
 ## TL;DR
 
 A comprehensive tutorial on using UAVs ("drones") in wireless communications, organized around two roles: UAVs as **aerial base stations** (to enhance coverage, capacity, reliability, and energy efficiency) and UAVs as **flying user equipment** ([[cellular-connected-uav|cellular-connected UAVs]]). It surveys the key UAV challenges — 3D deployment, performance analysis, channel modeling, and energy efficiency — and the analytical toolbox used to tackle them: optimization theory, machine learning, [[stochastic-geometry-network-analysis|stochastic geometry]], transport theory, and game theory.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mozaffari et al. [x] presented a comprehensive tutorial on UAV-enabled wireless networking organized around aerial base stations and cellular-connected UAV users. They surveyed applications and design challenges spanning channel modeling, three-dimensional deployment, trajectory optimization, performance analysis, network planning, resource management, energy efficiency, and aerial-terrestrial coexistence. The tutorial mapped optimization theory, stochastic geometry, optimal transport, machine learning, and game theory to recurring UAV communication problems rather than proposing one central system formulation. It also identified open research directions in reliable path planning, low-latency control, interference and handover management, signaling overhead, and energy-aware deployment.
 
 ## Problem framing
 

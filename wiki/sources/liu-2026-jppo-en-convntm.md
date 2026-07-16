@@ -24,7 +24,8 @@ related:
   - "[[charging-stations-improve-efficiency]]"
   - "[[uav-count-inverted-u-energy]]"
 created: 2026-05-28
-updated: 2026-06-01
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Multi-UAV Path Planning for Mobile Edge Computing with High-Density Mobile Devices
@@ -36,6 +37,41 @@ Liu, L., Miao, H., Qu, C., Wang, Z., Zhang, H., & Li, Z. (2026). *Multi-UAV Path
 ## TL;DR
 
 Proposes [[j-ppo-en-convntm]], a deep reinforcement learning framework for jointly planning multi-UAV trajectories, task-offloading ratios, and charging decisions in dense, mobile IoT environments. Combines [[j-ppo]] (a PPO variant supporting hybrid continuous/discrete actions) with [[en-convntm]] (a Convolutional Neural Turing Machine extended with a [[stn|spatial transformer network]] and 3-D external memory). Reports significant gains over four [[j-ppo-baselines|j-PPO baselines]] and four mainstream DRL algorithms on the [[equilibrium-efficiency-metric]].
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAV MEC servers serve dense, mobile IoT devices under a Gauss-Markov mobility model. OFDMA removes inter-device interference; devices split tasks locally and offload to UAVs, while UAVs can hover at charging stations.
+
+**Problem & objective**: Hybrid-action POMDP control, with equilibrium-efficiency objective $\max\Omega_n=\psi_n f_n/\kappa_n$, balancing data collection, spatial equity, and energy expenditure over trajectory, offloading, and charging decisions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $Q_{u,n}$ | continuous 3-D position | UAV $u$ location at step $n$ |
+| Offloading ratio | $\lambda_{u,d,n}$ | continuous, $[0,1]$ | Fraction of device $d$'s task sent to UAV $u$ |
+| Charging indicator | $\xi_{u,n}$ | binary, $\{0,1\}$ | UAV $u$ charges/returns at step $n$ |
+| Visit history/state | $H_n$ | discrete/continuous state | Device visits and residual-energy information used by the policy |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV displacement per step is bounded by the cruise-speed limit |
+| C2 | Offloading ratios lie in $[0,1]$ and respect local/offloaded workload conservation |
+| C3 | Residual UAV energy remains nonnegative after flight, computation, and charging decisions |
+| C4 | OFDMA and local compute capacities bound simultaneous service |
+| C5 | Charging actions are available only at modeled stations and service steps |
+
+**Algorithm**: Encode observations as device/visit/energy grids → process them with the STN and EN-ConvNTM external memory → use hybrid j-PPO for continuous trajectories and discrete offloading/charging → compute GAE and segmented mini-batch updates until the equilibrium-efficiency reward converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied multi-UAV path planning and task offloading for mobile edge computing with high-density mobile devices. They formulated a hybrid-action partially observable control problem that maximizes an equilibrium-efficiency metric combining data collection, spatial equity, and energy expenditure. The controller jointly chooses continuous UAV positions and offloading ratios together with binary charging actions under displacement, workload, and residual-energy constraints. They proposed j-PPO with an EN-ConvNTM that uses a spatial transformer and three-dimensional external memory to process device, visit, and energy maps. Experiments with mobile IoT devices report higher equilibrium efficiency than the evaluated j-PPO variants and mainstream DRL baselines.
 
 ## Problem framing
 

@@ -17,8 +17,9 @@ related:
   - "[[ctde-multi-agent-drl-protocol]]"
   - "[[tang-2024-iscc-uav-feel]]"
   - "[[zheng-chang]]"
+modeling_card: required
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Optimization of Sensing, Communication, and Computing for Collaborative Multi-UAV Edge Computing System
@@ -30,6 +31,42 @@ Zhao, H., Luan, M., Liyanage, M., & Chang, Z. (2026). *Joint Optimization of Sen
 ## TL;DR
 
 Constructs a HAP-assisted multi-UAV aerial edge computing system where sensing devices generate data, UAVs collect and relay it, and the HAP provides upper-tier edge computing. The paper jointly optimizes sensing times, UAV trajectories, D2U/U2H transmit powers, offloading ratios, and communication resources. Lyapunov optimization turns the objective into task-completion minimization with energy-stability control, and MAPPO-JSCC embeds numerical sensing optimization, SCA, and Dinkelbach power solvers inside a PPO-based MADRL framework.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Sensing devices are clustered under multiple UAVs, which sense and process data locally or offload it to a stationary HAP edge server. Device-to-UAV access uses NOMA over probabilistic LoS/NLoS air-to-ground channels, while UAV-to-HAP access uses OMA subcarriers over a LoS channel.
+
+**Problem & objective**: P1, an NP-hard MINLP obtained from Lyapunov drift-plus-penalty transformation, minimizes $Z_2[t]+\kappa Z_3[t]$, where $Z_3[t]=\sum_{u\in\mathcal U}\tau_{u,k,h}[t]$, to reduce average task-completion time while stabilizing long-term energy consumption.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Number of sensing repetitions | $\omega_k[t]$ | Nonnegative integer | Repeated sensing attempts for device cluster $k$ |
+| UAV position / trajectory | $l_u[t]$ | Discrete feasible flight positions | Position of UAV $u$ in slot $t$ |
+| D2U and U2H powers | $\mathbf p_{sd}[t],\mathbf p_u[t]$ | Continuous, bounded nonnegative | Sensing-device and UAV uplink transmit powers |
+| Offloading ratio | $z_{u,k}[t]$ | Continuous, $[0,1]$ | Fraction of cluster $k$'s task processed by UAV $u$ rather than the HAP |
+| U2H subcarrier assignment | $y_{u,s}[t]$ | Binary, $\{0,1\}$ | Assign OMA subcarrier $s$ to UAV $u$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Consecutive UAV positions obey the maximum flight-distance limit |
+| C2-C3 | Device and UAV powers satisfy $p_{u,k,i}[t]\le p_i^{\max}$ and $p_u[t]\le p_u^{\max}$ |
+| C4 | Offloading is fractional: $0\le z_{u,k}[t]\le1$ |
+| C5-C6 | Device and UAV energy use does not exceed $E_{SD}$ and $E_u^{\max}$ |
+| C7 | Sensing probability/satisfaction hold, each subcarrier serves at most one UAV, and assignment and mobility constraints (5), (6), (27), (28), and (30) hold |
+
+**Algorithm**: Lyapunov transformation $\rightarrow$ numerical optimization of sensing repetitions $\rightarrow$ SCA for D2U NOMA power $\rightarrow$ Dinkelbach optimization for U2H OMA power $\rightarrow$ CTDE MAPPO for trajectories, offloading ratios, and subcarrier assignments.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied joint sensing, communication, and computing optimization in a HAP-assisted multi-UAV aerial edge computing network. They jointly optimized sensing times, UAV trajectories, device-to-UAV and UAV-to-HAP transmit powers, offloading ratios, and communication resources to minimize average task-completion time while maintaining energy-consumption stability. Lyapunov optimization transformed the long-term objective into per-slot drift-plus-penalty problems. The resulting MAPPO-JSCC framework embeds numerical sensing optimization, successive convex approximation for NOMA power, and a Dinkelbach solver for OMA power into PPO-based multi-agent learning. Simulations report faster and more stable convergence than SAPPO, shorter completion time than SAPPO, TD3-FNM, and AAS, and 26% lower energy consumption while retaining 83% of the minimum-completion-time benchmark at $\kappa=10$.
 
 ## Problem framing
 
@@ -68,5 +105,5 @@ This is a HAP-assisted [[integrated-sensing-computation-communication]] source r
 
 ## Raw artifacts
 
-- `raw/sources/Joint Optimization of Sensing- Communication- and Computing for Collaborative Multi-UAV Edge Computing System/Joint Optimization of Sensing- Communication- and Computing for Collaborative Multi-UAV Edge Computing System.md`
+- `raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

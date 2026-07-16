@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Deep Reinforcement Learning-Based Resource Management for UAV-Assisted Mobile Edge Computing Against Jamming"
 tags: [source, uav-mec, anti-jamming, multi-agent-drl, resource-management, td3]
 related:
@@ -24,7 +25,7 @@ related:
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-16
 authors: [Ziling Shao, Helin Yang, Liang Xiao, Wei Su, Yifan Chen, Zehui Xiong]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3432491
@@ -33,8 +34,46 @@ venue: "IEEE Transactions on Mobile Computing (TMC)"
 
 # Deep Reinforcement Learning-Based Resource Management for UAV-Assisted Mobile Edge Computing Against Jamming
 
+## Citation
+
+Shao, Z., Yang, H., Xiao, L., Su, W., Chen, Y., & Xiong, Z. (2024). *Deep Reinforcement Learning-Based Resource Management for UAV-Assisted Mobile Edge Computing Against Jamming*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3432491.
+
 ## TL;DR
 A [[multi-uav-assisted-mec]] system where each UAV serves one ground user faces multiple malicious jammers plus co-channel interference, and the objective is to minimize a weighted sum of latency and energy consumption (the [[energy-latency-tradeoff]] cost Ω = ξ·T + (1−ξ)·E). The authors jointly tune each UAV's CPU frequency, bandwidth allocation, and channel selection using **PER-MATD3** — a multi-agent twin-delayed DDPG ([[multi-agent-td3]]) with [[prioritized-experience-replay]]. Simulation and a Raspberry Pi / USRP testbed show lower system cost and faster convergence than single-agent, non-PER, no-channel-selection, and random baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAV edge servers each serve one ground user over jammed and co-channel wireless links, with spectrum sensing, imperfect CSI, CPU execution, downlink transmission, and cooperative resource control.
+
+**Problem & objective**: The multi-agent formulation minimizes the weighted latency-energy cost, $\min_{\eta,\beta,\varphi}\Omega$ with $\Omega=\xi T+(1-\xi)E$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| CPU frequency factor | $\eta_k$ | continuous, bounded | Scales UAV CPU frequency |
+| Bandwidth share | $\beta_k$ | continuous, $0\leq\beta_k\leq1$ | Fraction assigned to UAV $k$ |
+| Channel selection | $\varphi_k$ | discrete channel index | Selects a sensed subchannel |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | CPU factor remains within its feasible range. |
+| C2 | Bandwidth shares are bounded: $0\leq\beta_k\leq1$. |
+| C3 | Cooperative allocation obeys $\sum_k\beta_k<1$. |
+| C4 | Channel selection uses one available discrete subchannel per UAV. |
+| C5 | Compute and transmission latency and energy use the imperfect-CSI SINR and jammed-channel state. |
+
+**Algorithm**: Train cooperative PER-MATD3 agents under CTDE, using twin delayed critics, target policy smoothing, delayed actor updates, prioritized replay with importance correction, and spectrum-sensing channel switching.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Shao et al. [x] address anti-jamming resource management in a multi-UAV MEC system with one ground user per UAV. Their cost minimizes a weighted latency and energy sum through CPU-frequency factors, bandwidth shares, discrete channel selection, imperfect-CSI SINR, and cooperative bandwidth constraints. PER-MATD3 combines centralized critics, delayed twin updates, prioritized replay, and spectrum sensing to adapt resources when channels are jammed. Simulations and a Raspberry Pi and USRP testbed show lower cost and faster convergence than single-agent, non-prioritized, no-selection, and random baselines.
 
 ## Problem
 UAVs serving as aerial edge servers compute tasks and transmit results to ground users over wireless downlinks that are vulnerable to malicious [[anti-jamming-mec|jamming]] and to co-channel interference when UAVs reuse channels. Most prior UAV-[[mobile-edge-computing]] resource-allocation work ignores jamming, and classical/heuristic optimizers are too slow for the non-convex, time-varying environment. The paper formulates joint computing-and-communication resource management under multiple jammers, minimizing the weighted sum of total latency and energy. Decision variables per UAV are the CPU frequency adjustment factor, bandwidth allocation share, and subchannel selection, all under time-varying compute capacity and imperfect CSI ([[csi-estimation-error]]).

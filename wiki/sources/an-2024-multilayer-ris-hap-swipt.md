@@ -5,6 +5,7 @@ authors: ["Kang An", "Yifu Sun", "Zhi Lin", "Yonggang Zhu", "Wanli Ni", "Naofal 
 year: 2024
 url: "https://doi.org/10.1109/TWC.2024.3394214"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, high-altitude-platform-station, simultaneous-wireless-information-and-power-transfer, intelligent-reflecting-surface, robust-offloading, csi-estimation-error, majorization-minimization]
 related:
   - "[[high-altitude-platform-station]]"
@@ -21,7 +22,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[naofal-al-dhahir]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Exploiting Multi-Layer Refracting RIS-Assisted Receiver for HAP-SWIPT Networks
@@ -33,6 +34,41 @@ An, K., Sun, Y., Lin, Z., Zhu, Y., Ni, W., Al-Dhahir, N., Wong, K.-K., & Niyato,
 ## TL;DR
 
 A new receiver architecture — a **multi-layer refracting RIS-assisted receiver** — to enable **SWIPT** (simultaneous wireless information and power transfer) in **high-altitude-platform (HAP)** networks, where extreme long-distance links cause severe large-scale fading and energy scarcity. The multi-layer refracting RIS at the receiver concurrently delivers information and energy while exploiting the RIS's degrees of freedom and avoiding both the "double-fading" penalty of RIS-reflectors and the dynamic-noise penalty of single-layer active RIS. The paper formulates a **worst-case sum-rate maximization** under **imperfect (angular) CSI**, information-rate requirements, and an energy-harvesting constraint, then solves it with a **scalable, toolbox-free robust optimization** framework yielding **semi-closed-form** solutions: CSI discretization + a **LogSumExp-dual** scheme for the HAP transmit precoder + a **modified cyclic coordinate descent (M-CCD)** for the block-wise RIS coefficients + closed-form power-splitting ratios and receive decoder.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A quasi-stationary HAP communicates with $K$ battery-powered mobile terminals through a receiver-side multi-layer refracting RIS with $A$ layers and coefficient matrices $\Xi_{ka}$. Each terminal uses power splitting for simultaneous information decoding and energy harvesting, and the HAP transmit precoders face angular CSI uncertainty $\Delta$.
+
+**Problem & objective**: The robust problem $\max_{\mathbf w_k,\boldsymbol\Xi_{ka},\mathbf v_k,\gamma_k}\min_{\Delta}\sum_{k=1}^{K}R_{\mathrm{ID},k}$ maximizes worst-case sum achievable rate while satisfying information-rate, harvested-power, transmit-power, and unit-modulus requirements.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| HAP transmit precoder | $\mathbf w_k$ | continuous complex vector | Precoder for terminal $k$ |
+| Power-splitting ratio | $\gamma_k$ | continuous, $0\le\gamma_k\le1$ | Fraction used for information decoding versus harvesting |
+| RIS coefficient matrix | $\boldsymbol\Xi_{ka}$ | complex unit-modulus diagonal matrix | Layer-$a$ refracting coefficients for terminal $k$ |
+| Receive decoder | $\mathbf v_k$ | continuous complex vector, $\lVert\mathbf v_k\rVert=1$ | Digital decoder at terminal $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Worst-case information rate meets QoS: $\min_{\Delta}R_{\mathrm{ID},k}\ge\Gamma_k,\ \forall k$ |
+| C2 | Worst-case harvested power is sufficient: $\min_{\Delta}\zeta_{\mathrm{EH},k}\ge\varsigma_{\max},\ \forall k$ |
+| C3 | HAP transmit power is bounded: $\sum_{k=1}^{K}\lVert\mathbf w_k\rVert^2\le P_{\max}$ |
+| C4 | RIS units are passive unit modulus: $\lvert[\boldsymbol\Xi_{ka}]_{n,n}\rvert=1,\ \forall k,a,n$ |
+| C5 | Decoder normalization holds: $\lVert\mathbf v_k\rVert=1,\ \forall k$ |
+
+**Algorithm**: Discretize the angular CSI uncertainty, use the LogSumExp inequality and dual variables with multi-dimensional bisection for the HAP precoders, update each RIS block by M-CCD with Dinkelbach and bisection parameters, obtain closed-form power-splitting ratios and decoders, and repeat the four block updates until the outer stopping criterion is met.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+An et al. [x] studied a receiver-side multi-layer refracting RIS architecture for SWIPT over long-distance HAP links. They formulated a worst-case sum-rate maximization over HAP precoders, power-splitting ratios, RIS coefficient matrices, and receive decoders under imperfect angular CSI, per-user rate and harvested-power requirements, transmit power, unit-modulus, and decoder-normalization constraints. Their robust solver discretizes CSI, applies a LogSumExp-dual precoder update, uses M-CCD for block-wise RIS coefficients, and obtains closed-form power-splitting ratios and decoders. Simulations reported convergence within about 15 iterations and higher sum rates than single-layer passive or active RIS and digital-receiver baselines, with the gap increasing as per-layer RIS units grow.
 
 ## Problem framing
 

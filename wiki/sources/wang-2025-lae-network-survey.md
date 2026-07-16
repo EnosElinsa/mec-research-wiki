@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Toward Realization of Low-Altitude Economy Networks: Core Architecture, Integrated Technologies, and Future Directions"
 authors: ["Yixian Wang", "Geng Sun", "Zemin Sun", "Jiacheng Wang", "Jiahui Li", "Changyuan Zhao", "Jing Wu", "Shuang Liang", "Minghao Yin", "Pengfei Wang", "Dusit Niyato", "Sumei Sun", "Dong In Kim"]
 year: 2025
@@ -13,7 +14,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-05-28
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Toward Realization of Low-Altitude Economy Networks: Core Architecture, Integrated Technologies, and Future Directions
@@ -27,6 +28,12 @@ Wang, Y., Sun, G., Sun, Z., Wang, J., Li, J., Zhao, C., Wu, J., Liang, S., Yin, 
 A **survey + architecture paper** on the low-altitude economy (LAE) — the rapidly emerging market combining UAVs, eVTOL aircraft, drone delivery, urban air mobility, and low-altitude IoT. Defines a six-layer LAE network architecture and surveys the integrated technologies (communication, sensing, computing, GAI, navigation, surveillance, flight control, airspace management) that support it.
 
 This is the wiki's **panoramic foundation paper** — most other curated sources solve a narrow technical sub-problem within this larger LAE landscape.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] surveyed the realization of low-altitude economy networks and presented a six-layer architecture spanning airborne terminals, intelligent collaboration, service assurance, supervision, flight services, and flight control. They reviewed communication, sensing, computing, navigation, surveillance, and control technologies for UAV, eVTOL, logistics, rescue, and urban-air-mobility applications. The article also discussed generative artificial intelligence, digital twins, cloud-edge-end collaboration, and terrestrial, high-altitude, and satellite integration. It identified dynamic airspace management, cross-tier coordination, and intelligent network operation as future research directions. The paper is a survey and architecture study and does not formulate one application-specific decision model with a reusable objective and constraint set.
 
 ## The 6-layer LAE network architecture
 

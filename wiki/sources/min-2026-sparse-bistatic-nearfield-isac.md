@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Sparse XL-MIMO Bi-Static Near-Field ISAC for Low-Altitude UAV Swarm"
 authors: ["Hongqi Min", "Yong Zeng", "Xinrui Li", "Suzhi Bi", "Jie Xu"]
 year: 2026
@@ -21,7 +22,7 @@ related:
   - "[[huang-2026-star-ris-nearfield-isac]]"
   - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Sparse XL-MIMO Bi-Static Near-Field ISAC for Low-Altitude UAV Swarm
@@ -33,6 +34,12 @@ Min, H., Zeng, Y., Li, X., Bi, S., & Xu, J. (2026). *Sparse XL-MIMO Bi-Static Ne
 ## TL;DR
 
 Uses a sparse extremely large-scale transmit array and fourth-order cumulants to separate angle from near-field range in bistatic OFDM-ISAC. The resulting virtual arrays support joint AoD/AoA estimation and closed-form 3D UAV localization while the enlarged physical aperture also improves downlink spatial separation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Min et al. [x] studied sparse extremely large-scale MIMO for bi-static near-field integrated sensing and communication in low-altitude UAV swarms. They proposed a fourth-order cumulant based virtual-array technique that constructs effective apertures at both the ISAC transmitter and sensing receiver. Their estimator decouples the angle and range terms of the near-field steering vectors and enables three-dimensional UAV localization using one-dimensional linear arrays at both ends. The communication evaluation applies maximum-ratio transmission, zero-forcing, and minimum mean-square-error precoding. Simulations report improved sensing resolution and downlink sum rate for the sparse arrays relative to compact arrays with the same number of physical antennas.
 
 ## Problem
 

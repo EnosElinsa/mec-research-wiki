@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Analysis of 3D Space Spectrum Utilization in UAV-Enabled Cellular Networks"
 authors: ["Kasun Prabhath", "Sudharman K. Jayaweera"]
 year: ""
@@ -15,7 +16,7 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # Analysis of 3D Space Spectrum Utilization in UAV-Enabled Cellular Networks
@@ -27,6 +28,12 @@ Prabhath, K., & Jayaweera, S. K. *Analysis of 3D Space Spectrum Utilization in U
 ## TL;DR
 
 Builds an analytical framework for link spectral efficiency (SE) and [[spectrum-utilization-efficiency|spectrum utilization efficiency (SUE)]] in 3-D UAV-enabled cellular networks. The model uses [[three-dimensional-frequency-reuse|truncated-octahedron 3-D frequency reuse]], partially loaded channels, random waypoint UAV-UE mobility, and free-space, log-normal, and Nakagami-m channel models to quantify how co-channel interference, cell radius, blocking probability, and fading affect volumetric spectrum use.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Prabhath and Jayaweera [x] analyzed link spectral efficiency and volumetric spectrum utilization efficiency in three-dimensional UAV-enabled cellular networks. Their framework combines truncated-octahedron frequency reuse, partially loaded channels, random-waypoint UAV mobility, and free-space, log-normal, and Nakagami-$m$ propagation models. They derived average expressions and upper and lower bounds under best-case and worst-case user and interference geometries. The numerical analysis varies cell radius, normalized reuse distance, blocking probability, shadowing variance, and fading parameters. Simulations report that reducing the cell radius from 800 m to 600 m increases average spectrum utilization efficiency by up to 0.78 bit/s/Hz/km$^3$ in the stated setup.
 
 ## Problem
 

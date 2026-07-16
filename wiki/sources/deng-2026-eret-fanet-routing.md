@@ -5,6 +5,7 @@ authors: ["Liyou Deng", "Zhiyuan Wang", "Shan Zhang", "Xiaohan Qiu", "Mingsheng 
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3694704"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: not_applicable
 tags: [source, fanet, uav-swarm, routing, content-centric-networking, host-centric-routing, adaptive-routing]
 related:
   - "[[evolvable-route-expiration-time]]"
@@ -16,7 +17,7 @@ related:
   - "[[fatemidokht-2021-vru-vanet-routing]]"
   - "[[uav-assisted-vanet-routing]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Adaptive Routing for Flying Ad Hoc Network using Evolvable Route Expiration Time
@@ -28,6 +29,12 @@ Deng, L., Wang, Z., Zhang, S., Qiu, X., Tang, M., Zhang, F., & Luo, H. (2026). *
 ## TL;DR
 
 Proposes eRET, an adaptive FANET routing framework that moves between host-centric and content-centric forwarding by evolving each UAV's route expiration time. The method uses local perception of topology dynamics, traffic load, and request pattern, then updates RET so nodes lean toward route reuse in stable/heavy-load conditions and toward content-centric discovery in highly mobile/light-load/high-sharing conditions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Deng et al. [x] proposed eRET, an adaptive FANET routing framework that evolves between host-centric and content-centric forwarding as topology dynamics, traffic load, and content sharing change. Each UAV passively estimates neighbor variation, request forwarding rate, and per-content request frequency, smooths them in a sliding window, and updates its bounded route expiration time through a distributed multiplicative rule. The protocol reuses valid routes in stable or heavy-load conditions and shifts toward content-centric discovery in high-mobility or high-sharing conditions without extra perception packets. Packet-level search-and-rescue simulations report total packet-loss reductions of up to 52.91%, 65.24%, and 34.41% relative to AODV, NDNF, and IHCR under the reported high-rate 30 m/s setting.
 
 ## Problem
 

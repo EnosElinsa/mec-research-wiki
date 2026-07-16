@@ -5,6 +5,7 @@ authors: ["Xiaoyan Hu", "Xingxia Gao", "Pengle Wen", "Kai-Kit Wong", "Kun Yang"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3667786"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), 25(8), 2026"
+modeling_card: required
 tags: [source, uav-mec, wireless-powered-mec, task-offloading, noma, tdma, latency, uav-trajectory-control, wireless-power-transfer]
 related:
   - "[[task-offloading]]"
@@ -19,7 +20,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[kun-yang]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Latency-Aware Computation Offloading in Hybrid UAV-Assisted MEC Systems: Time Scheduling and 3D Trajectory Design
@@ -31,6 +32,43 @@ Hu, X., Gao, X., Wen, P., Wong, K.-K., & Yang, K. (2026). *Latency-Aware Computa
 ## TL;DR
 
 Studies a wireless-powered hybrid UAV-MEC system where one UAV and one ground base station cooperate to serve energy-limited ground users whose direct GBS links are blocked. Users can compute locally, offload to the UAV MEC server, or have the UAV relay task bits onward to the GBS. The paper minimizes total task-completion latency under both TDMA and NOMA by jointly optimizing time scheduling, CPU-frequency allocation, transmit powers, UAV 3D trajectory, and the required number of time slots.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One battery-powered UAV with an MEC server and RF energy transmitter cooperates with a ground base station to serve $K$ energy-limited users whose direct GBS links are blocked. Tasks are bit-wise partitionable among local computing, UAV execution, and UAV-to-GBS relaying. The access schemes are TDMA and NOMA; UAV-ground links follow a probabilistic LoS/NLoS air-to-ground channel model.
+
+**Problem & objective**: Problems (P0) and (P1) are mixed-integer nonconvex task-completion-latency minimizations, $\min N\delta_t$, over the TDMA and NOMA protocols. With fixed $N$, the inner problem is transformed into maximizing the minimum user computation-completion ratio.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Time scheduling | $t_{k,1}[n],t_{k,2}[n],t_{k,3}[n]$ | continuous, $[0,\delta_t]$ | User offloading, UAV relaying/computing, and GBS computing durations |
+| CPU frequencies | $f_k^{loc}[n],f_k^{UAV}[n],f_k^{GBS}[n]$ | continuous, bounded | Local, UAV, and GBS computing allocations |
+| Transmit powers | $P_k[n],P_{UAV}[n],P_U[n]$ | continuous, bounded | User uplink, UAV relay, and UAV energy-transfer powers |
+| UAV 3D trajectory | $\mathbf q[n],z[n]$ | continuous position | Horizontal position and altitude in slot $n$ |
+| Mission length | $N$ | positive integer | Number of slots and hence completion latency $N\delta_t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | TDMA durations fit each slot, or NOMA users share the scheduled resource under SIC |
+| C2 | User and UAV energy causality covers computing, transmission, propulsion, and harvested energy |
+| C3 | Information causality limits UAV computing and relay bits by previously received task bits |
+| C4 | CPU frequencies and transmit powers remain within node-specific bounds |
+| C5 | UAV initial and final positions, horizontal and vertical speeds, and altitude bounds are satisfied |
+| C6 | Every user completes its required task bits by the selected final slot |
+
+**Algorithm**: Bisect on $N$ with a feasibility test, transform the fixed-$N$ problem into max-min computation-completion-ratio optimization, alternately update trajectory, CPU frequencies, time scheduling, and powers, and solve the updates with SCA, Lagrangian duality, linear programming, and convex optimization until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hu et al. [x] studied latency-aware computation offloading in a wireless-powered hybrid UAV-assisted MEC system where one UAV cooperates with a ground base station under TDMA and NOMA. They formulated mixed-integer nonconvex problems that minimize task-completion latency by jointly optimizing time-slot scheduling, CPU-frequency allocation, transmit powers, the UAV three-dimensional trajectory, and the number of required slots. Their double-loop alternating-optimization algorithm uses bisection to adjust the slot count and transforms the inner problem into max-min computation-completion-ratio optimization. The inner loop decomposes the design into trajectory, CPU-frequency, time-scheduling, and power-allocation subproblems addressed through SCA, Lagrangian duality, linear programming, and convex optimization. Simulations report reduced task-completion latency relative to the evaluated benchmark schemes, particularly when computing resources are limited or user density is high.
 
 ## Problem framing
 

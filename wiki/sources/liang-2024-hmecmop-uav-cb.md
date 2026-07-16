@@ -5,6 +5,7 @@ authors: ["Shuang Liang", "Minghao Yin", "Geng Sun", "Jiahui Li"]
 year: 2024
 url: "https://doi.org/10.1109/JIOT.2023.3315708"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
+modeling_card: required
 tags: [source, collaborative-beamforming, multi-objective-optimization, energy-efficiency, multi-verse-optimizer, virtual-antenna-array, rotary-wing-propulsion-energy-model, uav-data-collection]
 related:
   - "[[collaborative-beamforming]]"
@@ -18,7 +19,7 @@ related:
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[geng-sun]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Multiobjective Optimization Approach for Reducing Hovering and Motion Energy Consumptions in UAV-Assisted Collaborative Beamforming
@@ -30,6 +31,40 @@ Liang, S., Yin, M., Sun, G., & Li, J. (2024). *Multiobjective Optimization Appro
 ## TL;DR
 
 For UAV-assisted **collaborative beamforming (CB)** — where a swarm of UAVs forms a **virtual antenna array (VAA)** to reach several faraway base stations (BSs) — the paper formulates a **hovering and motion energy consumption multiobjective optimization problem (HMECMOP)** that simultaneously **minimizes total hovering energy and total motion energy** of the UAVs by jointly choosing UAV positions, excitation-current weights (ECWs), and the **order** of communicating with the different BSs. The problem is proven **NP-hard** and a **hybrid MOP** (mixed continuous + discrete variables), and is solved by an **improved multiobjective multiverse optimizer (IMOMVO)** that uses a vertical-and-horizontal renewal strategy and a nearest-neighbor procedure (NNP) to handle the mixed solution space.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Rotary-wing UAVs finish sensing or data collection above a monitoring area, then form a virtual antenna array and sequentially backhaul cached data to several remote base stations through collaborative beamforming. Repositioning improves the array pattern but consumes motion energy, while slower transmission increases hovering energy.
+
+**Problem & objective**: HMECMOP solves $\min_{\mathbf X}\left(f_1(\mathbf X),f_2(\mathbf X)\right)$, where $f_1=\sum_{j,i}E_{i,j}^{\mathrm{hov}}$ is total hovering energy and $f_2=\sum_{j,i}E_{i,j}^{\mathrm{perf}}$ is total VAA-formation motion energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV positions | $\mathbb X,\mathbb Y,\mathbb Z$ | continuous 3-D coordinates | VAA geometry used for each base-station transmission |
+| Excitation-current weights | $\mathbb I$ | continuous, $[0,1]$ | Per-UAV collaborative-beamforming weights |
+| Communication order | $\mathbb P$ | discrete permutation | Sequence in which the VAA serves remote base stations |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every excitation-current weight satisfies $0\leq I_{i,j}\leq1$ |
+| C2 | UAV coordinates remain inside the prescribed horizontal region and altitude interval |
+| C3 | $\mathbb P$ is a valid permutation of all base stations |
+| C4 | Main-lobe and first-null angular restrictions preserve the desired beam pattern |
+| C5 | Adjacent UAVs maintain collision distance $D_{(i_1,i_2)}\geq D_{\min}$ |
+
+**Algorithm**: IMOMVO maintains an archive of nondominated solutions and separates continuous VAA variables from the discrete base-station order. Its vertical and horizontal renewal strategy updates positions and excitation weights, while a nearest-neighbor procedure repairs the communication sequence and guides search in the mixed decision space.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liang et al. [x] formulated collaborative backhaul from a UAV virtual antenna array to several remote base stations as a two-objective energy problem. The model jointly minimizes hovering and VAA-formation motion energy over three-dimensional UAV positions, excitation-current weights, and base-station order under flight-region, beam-pattern, permutation, and collision constraints. IMOMVO uses separate renewal rules for continuous and discrete variables and archives a Pareto set rather than collapsing the trade-off to one scalar objective. In the reported comparison, it achieved the lowest hovering energy for both eight- and sixteen-UAV cases, although the selected rectangular-array point had lower total energy in the sixteen-UAV table. This positions IMOMVO as a Pareto-front method rather than a uniformly dominant scalar solution.
 
 ## Problem framing
 

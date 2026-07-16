@@ -12,8 +12,9 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[uav-trajectory-control]]"
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
+modeling_card: required
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Fixed-Wing UAV Aided Full-Duplex Amplify-and-Forward Relaying With Constant Ambient Wind
@@ -25,6 +26,40 @@ Zhu, X., Ji, X., Yin, A., & Gu, J.-F. (2026). *Fixed-Wing UAV Aided Full-Duplex 
 ## TL;DR
 
 Derives a constant-3-D-wind propulsion model for a fixed-wing UAV acting as an in-band full-duplex amplify-and-forward relay. Wind-triangle case analysis and closed-form propositions choose air speed and flight time, then derive crab and pitch angles so the aircraft follows a predetermined ground track while meeting a data requirement with minimum propulsion energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-wing UAV provides in-band full-duplex amplify-and-forward relaying between two single-antenna ground users on a predetermined straight, level flight track; both hops use free-space channels with perfect Doppler compensation under a constant three-dimensional wind vector.
+
+**Problem & objective**: Problem (8), a wind-conditioned continuous optimization, minimizes $T E_n(U)$, the propulsion energy required to deliver a demanded data amount.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Air speed | $U$ | Continuous, $U_{\min}\le U\le U_{\max}$ | Magnitude of the UAV velocity relative to air |
+| Flight time | $T$ | Continuous, positive | Relay service duration |
+| Crab angle | $\phi$ | Continuous angle derived from wind triangle | Horizontal attitude correction for the ground track |
+| Pitch angle | $\alpha$ | Continuous angle derived from wind triangle | Vertical attitude correction against wind |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Air speed remains within $[U_{\min},U_{\max}]$ and satisfies wind-triangle feasibility |
+| C2 | Delivered data meets demand, $Q_{\mathrm{lb}}T\ge Q$ |
+| C3 | Delivery finishes before the UAV reaches the route endpoint, $T\le l_{12}/v_g$ |
+| C4 | Crab and pitch angles produce the predetermined ground-speed direction under the wind vector |
+
+**Algorithm**: Wind-triangle case decomposition, set the active data constraint to $T=Q/Q_{\mathrm{lb}}$, solve the feasible air-speed branches with the paper's propositions and bisection where needed, select the lower-energy branch, and derive ground speed, pitch, and crab angles.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied fixed-wing UAV-aided full-duplex amplify-and-forward relaying under constant ambient wind. They formulated propulsion-energy minimization over UAV air speed and flight time while requiring delivery of a prescribed data amount before the relay reaches the end of its ground track. Wind-triangle case analysis separates the feasible air-speed branches, and the resulting propositions determine the optimal branch before computing the crab and pitch angles. Simulations confirm that the optimized UAV follows the predetermined track and satisfies the data demand. In the reported wind-speed sweep, the method saves about 3% energy relative to the fixed minimum-air-speed scheme and more relative to the median- and maximum-speed schemes.
 
 ## Problem framing
 

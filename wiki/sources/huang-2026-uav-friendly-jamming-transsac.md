@@ -5,6 +5,7 @@ authors: ["Jiawei Huang", "Aimin Wang", "Geng Sun", "Jiahui Li", "Jiacheng Wang"
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3631861"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, friendly-jamming, satellite-maritime, physical-layer-security, soft-actor-critic, transformer, multi-objective]
 related:
   - "[[friendly-jamming-uav]]"
@@ -25,7 +26,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Low-Altitude UAV Friendly-Jamming for Satellite-Maritime Communications via Generative AI-Enabled Deep Reinforcement Learning
@@ -37,6 +38,40 @@ Huang, J., Wang, A., Sun, G., Li, J., Wang, J., Niyato, D., & Leung, V. C. M. (2
 ## TL;DR
 
 A rotary-wing UAV jointly chooses 3-D motion and jamming power to protect a satellite-to-vessel link from an eavesdropping vessel. TransSAC augments SAC with transformer sequence features and a multi-armed bandit that adapts secrecy-versus-energy scalarization weights.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One LEO satellite communicates with a legitimate maritime vessel while one rotary-wing UAV sends friendly jamming toward an eavesdropping vessel. Satellite and vessel trajectories are exogenous, and the UAV shares spectrum with the satellite link. Satellite-to-vessel and UAV-to-vessel links follow Rician maritime channels.
+
+**Problem & objective**: The secure satellite-maritime communication multi-objective optimization problem is a dynamic, long-term, NP-hard design, $\min\{-f_1(\mathbb L,\mathbb P),f_2(\mathbb L)\}$, where $f_1$ is average secrecy rate to be maximized and $f_2$ is average UAV energy consumption to be minimized.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV 3D position | $x_U[t],y_U[t],z_U[t]$ | continuous, bounded | UAV location in time slot $t$ |
+| Jamming power | $P_U[t]$ | continuous, $[P_{min},P_{max}]$ | UAV friendly-jamming transmit power |
+| Objective weights | $\tau_1,\tau_2$ | discrete MAB arms, sum to one | Adaptive secrecy-energy scalarization weights |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C3 | Horizontal coordinates and altitude remain inside the feasible flight region |
+| C4 | Jamming power remains between its minimum and maximum values |
+| C5 | Cumulative UAV energy use does not exceed $E_0$ |
+| C6 | Interference received by the legitimate vessel does not exceed $I_0$ |
+| C7 | The corresponding UAV interference-temperature condition for the eavesdropping link is enforced |
+
+**Algorithm**: Reformulate the multi-objective problem as an MDP over vessel, satellite, UAV, and power states, train a soft actor-critic policy for continuous 3D motion and power, use a transformer encoder to process temporal state-action sequences, let an epsilon-greedy multi-armed bandit explore objective weights, and update replay-based actor and critic networks until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied low-altitude UAV friendly jamming for secure LEO satellite-maritime communications. They formulated a dynamic, long-term, NP-hard multi-objective optimization problem that maximizes average secrecy rate and minimizes average UAV energy consumption over three-dimensional UAV positions and jamming power under flight, power, energy, and interference-temperature constraints. The problem was reformulated as a Markov decision process and addressed with TransSAC, which augments soft actor-critic with transformer-based temporal representations. A multi-armed bandit uses epsilon-greedy exploration to adapt the scalarization weights of the two objectives. Simulations report higher secrecy rate and lower UAV energy consumption than the evaluated DDPG, PPO, SAC, and TD3 methods and identify the tested power and interference thresholds used in the reported setting.
 
 ## Problem and system model
 

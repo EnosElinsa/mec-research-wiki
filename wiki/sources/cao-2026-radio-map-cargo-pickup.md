@@ -5,6 +5,7 @@ authors: ["Jiangling Cao", "Shi Peng", "Dingcheng Yang", "Qinghua Wu", "Tiankui 
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3639674"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: required
 tags: [source, cargo-uav, logistics, radio-map, cellular-connected-uav, trajectory-planning, energy-minimization, particle-swarm-optimization]
 related:
   - "[[radio-map-aided-uav-path-planning]]"
@@ -21,7 +22,7 @@ related:
   - "[[dingcheng-yang]]"
   - "[[tiankui-zhang]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Energy Minimization in UAV-Enabled Cargo Pickup Systems: A Radio Map-Aided Hierarchical Optimization Framework
@@ -33,6 +34,42 @@ Cao, J., Peng, S., Yang, D., Wu, Q., & Zhang, T. (2026). *Energy Minimization in
 ## TL;DR
 
 Minimizes propulsion energy for one cellular-connected cargo UAV that must collect all known parcels over multiple warehouse-return trips. UPSEEO first thresholds a preconstructed expected-SNR map and uses A* to compute communication-feasible all-pairs paths. PSO then chooses trip partitioning and pickup order, while each segment's speed is derived from payload-dependent energy per distance.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One cargo UAV starts and ends every trip at a warehouse, collects one known parcel from each fixed pickup point, and cruises horizontally at a fixed altitude after vertical ascent. A physical-map-derived expected-SNR grid captures cellular coverage, and a payload-dependent rotary-wing propulsion model accounts for horizontal and ascent energy while communication and descent energy are neglected.
+
+**Problem & objective**: Problem P0 is a mixed-integer nonlinear program that minimizes total propulsion energy, $\mathrm{P0}:\min_{\mathcal Q,\Pi,\mathcal V}E_{\mathrm{total}}$, over trajectories, pickup allocation and order, and flight speeds.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectories | $\mathcal Q$ | continuous paths, later discretized to feasible grids | Flight path for every warehouse and pickup-point segment |
+| Trip allocation and pickup order | $\Pi=\{\Pi_1,\ldots,\Pi_K\}$ | discrete sequences | Partition of pickup points into warehouse-return trips and their visit order |
+| Flight speeds | $\mathcal V$ | continuous, $0\leq\|\mathbf v_k(t)\|\leq V_{\max}$ | Payload-dependent speed along each segment |
+| Parcel pickup indicator | $I_{k,m}(t)$ | binary, $\{0,1\}$ | Whether parcel $m$ is collected during trip $k$ at time $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 4 and 28c | Every trip starts and ends at the warehouse, $\pi_{k,0}=\pi_{k,M_k}=0$ and $\mathbf q_k(0)=\mathbf q_k(T_k)=(x_0,y_0,0)$ |
+| 6-7 | Pickup is binary and each parcel is collected exactly once, $I_{k,m}(t)\in\{0,1\}$ and $\sum_k\int_0^{T_k}I_{k,m}(t)dt=1$ |
+| 8 | Payload stays legal, $W_k(t)\leq W_{\max}$ |
+| 16 and 29e | Communication remains feasible, $\bar\gamma(\mathbf q_i^j(t))\geq\gamma_{th}$ along every path |
+| 23 | Each trip respects onboard energy, $E_k(t)\leq E_{\max}$ |
+| 28a-28b | Motion follows $\dot{\mathbf q}_k(t)=\mathbf v_k(t)$ with $0\leq\|\mathbf v_k(t)\|\leq V_{\max}$ |
+
+**Algorithm**: UPSEEO thresholds the expected-SNR map into a binary feasible grid and runs eight-neighbor A* for every ordered warehouse and pickup-point pair to build trajectory and distance matrices. PSO then searches the trip partition and pickup order, while each segment speed is derived from $\arg\min_{0\leq\|\mathbf v\|\leq V_{\max}}P_{\mathrm{hor}}(\|\mathbf v\|,W)/\|\mathbf v\|$ and assignments violating payload or energy limits are rejected.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Cao et al. [x] studied propulsion-energy minimization for a cellular-connected cargo UAV that collects known parcels over one or more warehouse-return trips under coverage, payload, and onboard-energy limits. They formulated a mixed-integer nonlinear problem over flight trajectories, pickup allocation and order, and payload-dependent speed to minimize total vertical and horizontal propulsion energy while every parcel is collected exactly once. The UPSEEO framework thresholds a physical-map-derived expected-SNR map, computes all-pairs communication-feasible paths with eight-neighbor A*, and then uses PSO for trip allocation while deriving each segment's speed from minimum energy per distance. Simulations report about 5.0% to 50.0% lower total energy than the comparison frameworks, including 20.749 kJ for the reported 1431.84 m path carrying 10 N.
 
 ## Problem framing
 

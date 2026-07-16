@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Double-Edge-Assisted Computation Offloading and Resource Allocation for Space-Air-Marine Integrated Networks"
 authors: ["Zhen Wang", "Bin Lin", "Qiang Ye"]
 year: 2025
@@ -17,7 +18,7 @@ related:
   - "[[you-2025-uncertain-maritime-hasac]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 ---
 
 # Double-Edge-Assisted Computation Offloading and Resource Allocation for Space-Air-Marine Integrated Networks
@@ -29,6 +30,42 @@ Wang, Z., Lin, B., & Ye, Q. (2025). *Double-Edge-Assisted Computation Offloading
 ## TL;DR
 
 A computation-offloading scheme for **space-air-marine integrated networks (SAMINs)** where both UAVs and a LEO satellite carry edge servers. Maritime autonomous surface ships (MASSs) can offload partial workloads to UAVs *and* the LEO satellite concurrently via multi-access. The goal is to minimize SAMIN energy consumption under latency constraints by jointly optimizing offloading mode, offloading volume, and the computing-resource allocation of the UAVs and the LEO satellite. Solved by **alternating optimization (AO)** plus a layered decomposition into four sub-problems.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Maritime autonomous surface ships split computation workloads between nearby UAV edge servers and a LEO satellite, using multi-access offloading and separate UAV and satellite compute resources.
+
+**Problem & objective**: The double-edge formulation minimizes total system energy, $\min_{\mathbf a,\mathbf s,\boldsymbol\rho^U,\boldsymbol\rho^L}E^{tot}$, under latency and resource limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading mode | $a_{mn}$ | continuous ratio, $[0,1]$ | Fraction of MASS task sent to UAV or satellite |
+| Offloading volume | $s_{mn}$ | continuous, $[0,S_{mn}]$ | Uploaded workload volume |
+| UAV compute allocation | $\rho_{mn}^U$ | continuous, nonnegative | Resource assigned by UAV $m$ to task $n$ |
+| LEO compute allocation | $\rho_{mn}^L$ | continuous, nonnegative | Resource assigned by the LEO satellite |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Offloading ratio is bounded: $0\leq a_{mn}\leq1$. |
+| C2 | Uploaded workload cannot exceed the task: $0\leq s_{mn}\leq S_{mn}$. |
+| C3 | Total task and satellite latency meet their limits: $T_{mn}^{tot}\leq T_{mn}^{max}$ and $t_{mn}^L+T_{mn}^L\leq T^{max}$. |
+| C4 | MASS-UAV distance is bounded: $\lVert\mathbf q_m-\mathbf q_{mn}\rVert\leq d^{max}$. |
+| C5 | UAV and satellite compute capacities are bounded by $\rho_m^{max}$ and $\rho_{max}^L$. |
+| C6 | UAV and satellite transmit powers and energy budgets remain within their maxima. |
+
+**Algorithm**: Optimize offloading mode and volume with a multi-round iterative search, then solve UAV and LEO compute allocations with convex or KKT subproblems inside a layered alternating-optimization framework.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] study double-edge computation offloading for maritime devices served concurrently by UAVs and a LEO satellite. Their energy-minimization problem jointly chooses offloading ratios, uploaded volumes, and UAV and satellite compute allocations under workload, latency, distance, capacity, power, and energy constraints. A multi-round iterative search handles offloading mode and volume, while convex and KKT allocation blocks form the layered alternating-optimization solution. Numerical experiments show convergent offloading and resource updates and lower energy than paired, equal-offloading, and other benchmark schemes.
 
 ## Problem framing
 

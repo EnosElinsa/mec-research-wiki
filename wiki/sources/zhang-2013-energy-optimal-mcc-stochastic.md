@@ -15,7 +15,8 @@ related:
   - "[[mao-2016-lodco-eh-mec-offloading]]"
   - "[[mao-2017-mec-survey-communication]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Energy-Optimal Mobile Cloud Computing under Stochastic Wireless Channel
@@ -27,6 +28,40 @@ Zhang, W., Wen, Y., Guan, K., Kilper, D., Luo, H., & Wu, D. O. (2013). *Energy-O
 ## TL;DR
 
 An early **mobile cloud computing (MCC)** offloading paper that builds a theoretical framework for **minimizing mobile-device energy** by choosing **mobile execution** (run the app locally) vs **cloud execution** (offload to a cloud clone running on a VM), under a **stochastic wireless channel** modeled by a **Gilbert-Elliott** Markov process, subject to an application completion **deadline**. For local execution it optimally schedules **CPU clock frequency** (via Dynamic Voltage Scaling, DVS); for cloud execution it optimally schedules the **data transmission rate** against the random channel. Both are cast as **convex optimization** problems with **closed-form** optimal scheduling policies, and for small-output-data apps a simple **threshold policy** on the data consumption rate decides where to execute.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A mobile application is executed either locally on a battery-limited device or remotely on its cloud clone. The single mobile-to-cloud link does not model multiuser multiple access; its wireless state follows a two-state Gilbert-Elliott Markov channel, while local CPU workload is probabilistic and controlled through dynamic voltage scaling.
+
+**Problem & objective**: Choose the execution mode with minimum device energy, $\min\{\mathcal E_m^*,\mathcal E_c^*\}$; local execution solves $\min_{\{f(w)\}}\kappa\sum_{w=1}^{W_\rho}F_W^c(w)f^2(w)$, and cloud execution solves $\min_{\{s_t\}}\mathbb E[\sum_{t=1}^{T}\mathcal E_t(s_t,g_t)]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Execution choice | Eq. (5), comparing $\mathcal E_m^*$ and $\mathcal E_c^*$ | binary, mobile or cloud | Selects the lower-energy local-computation or cloud-offloading mode |
+| CPU clock schedule | $f(w)$ | continuous, $f(w)>0$ | Frequency used after completing CPU cycle $w$ |
+| Transmitted bits | $s_t$ | continuous relaxation, $s_t\geq0$ | Input bits sent to the cloud in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 10 | The allocated workload meets the completion probability, $F_W(W_\rho)\geq\rho$ |
+| 14 | Local execution meets the deadline, $\sum_{w=1}^{W_\rho}1/f(w)\leq T$ |
+| 19a | Cloud execution transmits all input bits, $\sum_{t=1}^{T}s_t=L$ |
+| 19b | Every slot allocation is nonnegative, $s_t\geq0$ |
+| 5 | Select mobile execution when $\mathcal E_m^*\leq\mathcal E_c^*$ and cloud execution otherwise |
+
+**Algorithm**: Derive the closed-form optimal DVS frequency schedule and its minimum expected local energy; solve the Gilbert-Elliott transmission schedule by dynamic programming in closed form; compare the two minimum energies; for small-output applications, implement the resulting threshold rule on the effective data consumption rate $R_e=L/T$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied energy-optimal mobile cloud computing under a stochastic wireless channel. They minimized mobile-device energy by choosing between mobile execution and cloud execution subject to an application completion deadline. For mobile execution, they optimized the CPU clock-frequency schedule under a probabilistic workload model, while for cloud execution they optimized the transmitted bits over a Gilbert-Elliott channel. Closed-form scheduling policies were derived for both cases, followed by a threshold execution policy based on the effective data consumption rate for applications with small output data. Numerical results include a case in which cloud execution consumed thirteen times less energy than mobile execution for the evaluated application profile.
 
 ## Problem framing
 

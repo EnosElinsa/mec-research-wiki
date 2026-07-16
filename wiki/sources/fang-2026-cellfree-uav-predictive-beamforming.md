@@ -5,6 +5,7 @@ authors: ["Chao Fang", "Cheng Zhang", "Wen Wang", "Pengguang Du", "Wei Zhang", "
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3695091"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 18039-18056"
+modeling_card: required
 tags: [source, cell-free-massive-mimo, predictive-beamforming, uav-tracking, resource-allocation, ekf, covariance-intersection]
 related:
   - "[[cell-free-uav-predictive-beamforming]]"
@@ -20,7 +21,7 @@ related:
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
   - "[[yongming-huang]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Predictive Beamforming and Resource Allocation for High-Mobility Cell-Free UAV Networks
@@ -32,6 +33,40 @@ Fang, C., Zhang, C., Wang, W., Du, P., Zhang, W., & Huang, Y. (2026). *Predictiv
 ## TL;DR
 
 Uses distributed EKF tracking and covariance-intersection fusion to predict high-mobility UAV channels after one pilot-bearing slot, then jointly chooses pilot length, ground-AP association, and downlink power from a tracking-accuracy bound.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Distributed ground APs serve high-mobility UAVs in a cell-free downlink. Only the first slot of each frame carries orthogonal uplink pilots; local EKFs and covariance-intersection fusion predict later LoS channels, while NLoS components are handled statistically.
+
+**Problem & objective**: Maximize training-adjusted effective sum spectral efficiency, $\max_{\mathbf U,\mathbf P,L}R(\mathbf U,\mathbf P,L)$, over pilot length, sparse AP-UAV association, and downlink power while enforcing a posterior tracking-accuracy bound.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Pilot length | $L$ | integer, $K\leq L\leq N_s$ | Training symbols in the first slot of a frame |
+| AP-UAV association | $u_{m,k}$ | binary | Whether AP $m$ serves UAV $k$ |
+| Downlink power | $p_{m,k}$ | continuous, nonnegative | Power allocated by AP $m$ to UAV $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Position-tracking bound meets the target: $\Omega(L)\leq\zeta$. |
+| C2 | Pilot length is integer and satisfies $K\leq L\leq N_s$. |
+| C3 | AP association is binary and each AP serves at most $U_{\max}$ UAVs. |
+| C4 | Every AP respects its downlink budget: $\sum_k p_{m,k}\leq P_{\max}$. |
+| C5 | Unassociated links receive zero power through the association-power coupling. |
+
+**Algorithm**: Run local EKFs from delay, Doppler, azimuth, and elevation estimates and fuse their states by covariance intersection. Select the shortest feasible pilot length by integer bisection on the PCRB, replace binary association with a reweighted L1 sparse-power surrogate, and alternate fractional or quadratic-transform power updates with dual-variable bisection until effective sum spectral efficiency stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Fang et al. [x] developed predictive beamforming for high-mobility cell-free UAV networks using distributed EKF tracking and covariance-intersection fusion. They maximized effective sum spectral efficiency over integer pilot length, binary AP-UAV association, and downlink power under PCRB accuracy, pilot-length, AP-user capacity, and per-AP power constraints. Their solution chooses the shortest feasible pilot by bisection, approximates sparse association with reweighted L1 power variables, and alternates fractional-programming and dual updates. At frame length 20, the reported design achieved effective sum SE 57.2, 31% above the training-every-slot equal-allocation baseline, while using 95% less fronthaul overhead.
 
 ## Problem and system model
 

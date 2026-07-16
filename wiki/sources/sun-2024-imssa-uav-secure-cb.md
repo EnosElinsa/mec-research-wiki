@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Enabled Secure Communications via Collaborative Beamforming With Imperfect Eavesdropper Information"
 authors: ["Geng Sun", "Xiaoya Zheng", "Zemin Sun", "Qingqing Wu", "Jiahui Li", "Yanheng Liu", "Victor C. M. Leung"]
 year: 2024
@@ -19,7 +20,7 @@ related:
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # UAV-Enabled Secure Communications via Collaborative Beamforming With Imperfect Eavesdropper Information
@@ -31,6 +32,41 @@ Sun, G., Zheng, X., Sun, Z., Wu, Q., Li, J., Liu, Y., & Leung, V. C. M. (2024). 
 ## TL;DR
 
 A group of UAVs forms a **UAV-enabled virtual antenna array (UVAA)** and uses **collaborative beamforming (CB)** to transmit toward a cluster of remote base stations, while resisting **multiple known eavesdroppers with imperfect (inaccurately detected) location information and unknown eavesdroppers**. The authors formulate a **secure communication multi-objective optimization problem (SCMOP)** to maximize the worst-case secrecy rate, minimize the maximum sidelobe level (SLL), and minimize UAV flight energy by jointly optimizing each UAV's 3-D position and excitation-current weight, plus BS selection. The non-convex, NP-hard problem is solved by an **improved multi-objective salp swarm algorithm (IMSSA)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs form a collaborative-beamforming virtual antenna array to serve a legitimate receiver while a passive eavesdropper has uncertain location information. The UAVs coordinate excitation currents and positions over a wireless channel, and robust design accounts for imperfect Eve information.
+
+**Problem & objective**: A robust physical-layer-security multi-objective program maximizes secrecy rate while minimizing UAV propulsion energy, $\max\big(R_s,-E_{\mathrm{UAV}}\big)$, over VAA geometry and excitation weights under worst-case Eve uncertainty.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV positions | $\mathbf q_i$ | continuous 3-D positions | VAA element locations |
+| Excitation weights | $w_i$ | complex continuous | Collaborative-beamforming amplitudes and phases |
+| Artificial-noise/secure signal split | $\alpha$ | continuous bounded | Power or waveform allocation used for secrecy |
+| Robust uncertainty realization | $\hat{\mathbf e}$ | bounded uncertainty variable | Worst-case eavesdropper location/channel instance |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Total UAV transmit and propulsion energy remains within the mission budget |
+| C2 | VAA positions satisfy flight-region, separation, and mobility constraints |
+| C3 | Excitation weights obey per-UAV power and beamforming normalization limits |
+| C4 | The secrecy-rate requirement holds for every allowed eavesdropper-information error |
+| C5 | Legitimate-user quality and collaborative-beamforming synchronization remain feasible |
+
+**Algorithm**: Formulate worst-case Eve uncertainty → optimize VAA positions and excitation weights with the proposed multi-objective evolutionary/iterative solver → evaluate secrecy and propulsion objectives over uncertainty realizations → retain the nondominated robust designs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied secure UAV communications using collaborative beamforming with imperfect eavesdropper information. They formulated a robust multi-objective design that balances secrecy rate and UAV propulsion energy through the joint choice of virtual-antenna-array positions and excitation currents. The uncertainty treatment evaluates the secrecy design over bounded eavesdropper-location errors rather than assuming exact Eve information. Their iterative collaborative-beamforming algorithm generates robust rate-energy operating points. Simulations report improved secrecy performance and energy behavior against the evaluated perfect-information and non-collaborative benchmark designs.
 
 ## Problem framing
 

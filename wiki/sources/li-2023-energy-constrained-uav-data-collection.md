@@ -5,6 +5,7 @@ authors: ["Yuchen Li", "Weifa Liang", "Wenzheng Xu", "Zichuan Xu", "Xiaohua Jia"
 year: 2023
 url: "https://doi.org/10.1109/TMC.2021.3084972"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav, data-collection, iot, orienteering, approximation-algorithm, energy-constraint]
 related:
   - "[[energy-constrained-uav-data-collection-orienteering]]"
@@ -12,7 +13,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-12
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Data Collection Maximization in IoT-Sensor Networks via an Energy-Constrained UAV
@@ -24,6 +25,41 @@ Li, Y., Liang, W., Xu, W., Xu, Z., Jia, X., Xu, Y., & Kan, H. (2023). *Data Coll
 ## TL;DR
 
 Models battery-limited UAV collection as a depot-returning orienteering problem over discretized hover locations. It provides an ILP and approximation-based algorithms when coverage sets do not overlap, then marginal-data-per-added-energy heuristics for overlapping full or partial collection.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Sparse aggregate IoT sensors store heterogeneous data volumes that cannot be relayed reliably over the ground network. A constant-speed, fixed-altitude UAV leaves a depot, visits selected discretized hovering locations, collects from all covered sensors simultaneously through OFDMA, and must return before its flight-plus-hover energy budget is exhausted.
+
+**Problem & objective**: The full and partial variants choose a closed tour $C$ and hovering sojourns to maximize $\sum_{s\in C}V(s)$, the accumulated collected data volume, subject to $T_h\eta_h+T_t\eta_t\le\mathcal E$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Hover-location selection | $s_j$ | discrete candidate center | Locations visited by the UAV |
+| Closed tour | $C$ | ordered cycle through the depot | Travel order connecting selected hover locations |
+| Sojourn duration | $t(s_j)$ | continuous or discretized | Time spent collecting at hover location $s_j$ |
+| Partial collection level | $k$ | integer, $1\le k\le K$ | Fractional sojourn level represented by virtual location $s_{j,k}$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The route starts and ends at the UAV depot |
+| C2 | Travel and hover energy satisfy $T_h\eta_h+T_t\eta_t\le\mathcal E$ |
+| C3 | A sensor contributes data only when it lies within the selected hover coverage radius |
+| C4 | Full collection uses the complete required sojourn; partial collection selects one feasible virtual level |
+| C5 | Tour-flow, visit, and subtour-elimination conditions form one closed route |
+
+**Algorithm**: Small and moderate instances use an ILP. Without overlapping hover coverage, the method maps full collection to a metric orienteering instance and maps partial collection to virtual hover nodes with discretized sojourns; with overlap, marginal-data-per-added-energy heuristics iteratively add and refine hover locations and collection levels.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] formulated full and partial IoT data collection by a battery-limited UAV as depot-returning tour optimization over hover locations and sojourn durations. They maximized collected data under coverage, tour-flow, return, and combined hovering-plus-flight energy constraints while allowing OFDMA uploads from multiple sensors. Their methods use ILP for small cases, metric-orienteering approximations without overlapping coverage, and marginal-data-per-energy heuristics when coverage overlaps. At an energy budget of $3\times10^5$ joules, the full-collection approximation gathered about twice the benchmark volume and at least 80% of the optimum, while the overlapping partial heuristic with $K=2$ gathered 99% more data than the benchmark.
 
 ## Problem
 

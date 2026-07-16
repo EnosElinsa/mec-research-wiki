@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "A Privacy-Preserving Auction for Task Offloading and Resource Allocation in UAV-Assisted MEC"
 authors: ["Jiajie Xu", "Xiaolong Xu", "Guangming Cui", "Muhammad Bilal", "Rong Gu", "Wanchun Dou", "Arumugam Nallanathan"]
 year: 2026
@@ -8,7 +9,7 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-mec, mobile-edge-computing, task-offloading, resource-allocation, reverse-auction-incentive, privacy, noma, uav-trajectory-control]
 related: ["[[mobile-edge-computing]]", "[[task-offloading]]", "[[multi-uav-assisted-mec]]", "[[uav-trajectory-control]]", "[[reverse-auction-incentive]]", "[[noma]]", "[[privacy-sensitive-data-partitioning]]", "[[xu-2021-secure-uav-mec-dual-uav]]", "[[wang-2024-blockchain-uav-mec-dpos]]", "[[zhang-2024-uav-task-offloading-ddpg]]"]
 created: 2026-07-06
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Privacy-Preserving Auction for Task Offloading and Resource Allocation in UAV-Assisted MEC
@@ -20,6 +21,42 @@ Xu, J., Xu, X., Cui, G., Bilal, M., Gu, R., Dou, W., & Nallanathan, A. (2026). *
 ## TL;DR
 
 Introduces **Prizty**, a privacy-preserving reverse-auction framework for UAV-assisted MEC task offloading and resource allocation. Edge computing nodes (edge servers plus UAVs) bid to serve UE tasks, while UE locations are obfuscated before scheduling. The mechanism jointly handles UAV/edge-server service selection, UAV target locations, computation resources, and payments, targeting low social cost while preserving truthfulness and individual rationality.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: UEs submit delay-sensitive tasks to fixed edge servers, mobile UAV edge nodes, or a remote cloud over slotted NOMA access. Edge nodes bid to provide service, UE locations are perturbed for geo-indistinguishability, and UAV movement, computing capacity, and battery constrain feasible winners.
+
+**Problem & objective**: A privacy-preserving reverse-auction allocation problem minimizes total social cost, $\min C_{\mathrm{social}}=C_{\mathrm{latency}}+C_{\mathrm{energy}}+C_{\mathrm{payment}}$, while preserving truthful and individually rational bidding.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Winner assignment | $x_{u,j}$ | binary | Edge node $j$ selected for UE task $u$ |
+| UAV target location | $\mathbf q_j$ | continuous 3-D position | Service position of UAV bidder $j$ |
+| CPU allocation | $f_{u,j}$ | continuous, nonnegative | Computing resource assigned to task $u$ |
+| Winning payment | $p_j$ | continuous, nonnegative | Critical payment to winning edge node $j$ |
+| Perturbed UE location | $\tilde{\mathbf w}_u$ | randomized continuous point | Privacy-preserving scheduling location |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each accepted task is assigned to one feasible edge node or the cloud |
+| C2 | UAV coverage, target distance, movement, and battery remain feasible |
+| C3 | Per-node CPU allocations do not exceed computing capacity |
+| C4 | Task communication and computation meet latency and NOMA/SIC conditions |
+| C5 | Winner selection and critical payments satisfy truthfulness and individual rationality |
+
+**Algorithm**: Add Laplace noise to UE locations and verify geo-indistinguishability → construct feasible service sets and UAV target locations with SSEA → evaluate bidder cost from latency, energy, and residual battery → select winners with WPA → compute critical incremental-cost payments → execute offloading and resource allocation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xu et al. [x] studied a privacy-preserving reverse auction for task offloading and resource allocation in UAV-assisted mobile edge computing. The model jointly selects fixed or UAV edge servers, UAV target locations, computation resources, and payments under coverage, latency, NOMA, CPU, movement, and battery constraints. UE locations are perturbed with Laplace noise and checked against geo-indistinguishability before allocation. SSEA constructs feasible service sets and UAV positions, while WPA selects winners and computes critical-bid payments that target truthfulness and individual rationality. Simulations report lower social cost, latency, and energy than the evaluated Greedy, TOCA, and Ptero methods, while the measured inference-attack success remains low in the tested settings.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Optimization of Resource Allocation, Phase Shift, and UAV Trajectory for Energy-Efficient RIS-Assisted UAV-Enabled MEC Systems"
 authors: ["Xintong Qin", "Zhengyu Song", "Tianwei Hou", "Wenjuan Yu", "Jun Wang", "Xin Sun"]
 year: 2023
@@ -16,7 +17,7 @@ related:
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
   - "[[xiao-2025-star-ris-bidirectional-uav-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Joint Optimization of Resource Allocation, Phase Shift, and UAV Trajectory for Energy-Efficient RIS-Assisted UAV-Enabled MEC Systems
@@ -28,6 +29,42 @@ Qin, X., Song, Z., Hou, T., Yu, W., Wang, J., & Sun, X. (2023). *Joint Optimizat
 ## TL;DR
 
 Studies an RIS-assisted UAV-MEC system where IoT devices partially offload tasks to a UAV-mounted MEC server using [[noma]]. A building-mounted [[intelligent-reflecting-surface|RIS]] creates a controllable reflected path around blockage. The objective is energy efficiency, defined as completed task bits divided by total energy consumption, optimized over local/offloaded bits, transmit power, RIS phase shifts, and UAV trajectory through a Dinkelbach + BCD + DC/SCA pipeline.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed IoT devices partially offload tasks over uplink NOMA to one UAV-mounted MEC server, while a building-mounted RIS creates a reflected path around blockage. The mission is slotted, devices use local CPU or offload bits, and the UAV flies between prescribed endpoints with bounded speed; CSI errors are modeled in the resource design.
+
+**Problem & objective**: A non-convex fractional program maximizes energy efficiency, $\max \frac{\text{completed task bits}}{E_{\mathrm{local}}+E_{\mathrm{offload}}+E_{\mathrm{UAV\ flight}}}$, over task allocation, transmit power, RIS phases, and UAV trajectory.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local/offloaded bits | $d_i^{\mathrm l}[n],d_i^{\mathrm o}[n]$ | continuous, nonnegative | Task bits computed locally or offloaded by device $i$ |
+| Device transmit power | $p_i[n]$ | continuous, power-bounded | NOMA uplink power |
+| RIS phase | $\theta_m[n]$ | continuous, phase-feasible | Phase applied by RIS element $m$ |
+| UAV trajectory | $\mathbf q[n]$ | continuous position sequence | UAV-MEC location in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Local plus offloaded bits meet each device's task requirement |
+| C2 | NOMA rates support offloaded bits under the SIC ordering |
+| C3 | IoT and UAV CPU allocations stay within their computing capacities |
+| C4 | RIS phases satisfy their feasible unit-modulus/phase domain |
+| C5 | UAV trajectory obeys initial/final positions and maximum-speed limits |
+| C6 | Device power and per-slot latency constraints remain feasible |
+
+**Algorithm**: Apply Dinkelbach's transform to the energy-efficiency ratio → alternate bit/power, RIS-phase, and trajectory blocks with BCD → solve allocation by Lagrange-dual/convex updates → use DC/semidefinite relaxation for phases → use SCA for trajectory → repeat until energy efficiency converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qin et al. [x] studied energy-efficient RIS-assisted UAV mobile edge computing with partial NOMA offloading from fixed IoT devices. They formulated a fractional problem that jointly optimizes local and offloaded bits, transmit power, RIS phase shifts, and UAV trajectory under task, CPU, phase, power, speed, and latency constraints. Their solver applies Dinkelbach transformation and block coordinate descent, with Lagrange-dual allocation, difference-of-convex RIS optimization, semidefinite relaxation, and successive convex approximation for the trajectory. Simulations report convergence in about five to six iterations and higher energy efficiency than no-RIS, random-phase, no-trajectory-optimization, and full-offloading schemes. Under ten RIS elements, the reported NOMA gain over OMA is 10% with perfect CSI and 7% with imperfect CSI.
 
 ## Problem framing
 

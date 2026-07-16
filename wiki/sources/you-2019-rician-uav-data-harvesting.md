@@ -16,7 +16,8 @@ related:
   - "[[zhan-2011-uav-relay-heading-optimization]]"
   - "[[xu-2018-uav-wpt-trajectory]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # 3D Trajectory Optimization in Rician Fading for UAV-Enabled Data Harvesting
@@ -28,6 +29,42 @@ You, C., & Zhang, R. (2019). *3D Trajectory Optimization in Rician Fading for UA
 ## TL;DR
 
 Optimizes a UAV's 3-D trajectory and sensor scheduling for wireless-sensor-network data harvesting under angle-dependent Rician fading. Instead of assuming deterministic LoS channels, the paper models a Rician factor tied to the UAV-sensor elevation angle, approximates the outage-aware effective fading power with a logistic regression model, then solves the resulting max-min data-rate problem with block coordinate descent and SCA.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One UAV harvests data from ground sensor nodes over angle-dependent Rician fading. It follows a three-dimensional route from a prescribed start to a prescribed finish and schedules at most one sensor per time slot.
+
+**Problem & objective**: Problem P1 maximizes the worst sensor's average outage-aware rate, $\max_{\mathbf q,z,\mathbf a}\eta$, subject to $\frac1M\sum_ma_n[m]R_n[m]\geq\eta$ for every sensor $n$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Horizontal trajectory | $\mathbf q[m]$ | continuous position | UAV planar position in slot $m$ |
+| Altitude | $z[m]$ | continuous, $z[m]\geq H$ | UAV height in slot $m$ |
+| Sensor scheduling | $a_n[m]$ | binary | Indicates whether sensor $n$ transmits in slot $m$ |
+| Common rate | $\eta$ | continuous, nonnegative | Minimum average rate guaranteed across sensors |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 11a | Every sensor's average outage-aware rate is at least $\eta$ |
+| 11b | Horizontal displacement is at most $S_{xy}$ per slot |
+| 11c | Vertical displacement is at most $S_z$ per slot |
+| 11d-11e | The three-dimensional trajectory has prescribed initial and final points |
+| 11f | UAV altitude satisfies $z[m]\geq H$ |
+| 11g-11h | At most one sensor is scheduled per slot and all scheduling variables are binary |
+
+**Algorithm**: The inverse-Marcum-Q effective fading power is approximated by an elevation-dependent logistic function fitted to numerical channel data. Block coordinate descent then alternates an optimal scheduling linear program with horizontal and vertical trajectory subproblems, each solved by successive convex approximation until the max-min objective converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+You and Zhang [x] optimized three-dimensional UAV trajectory and sensor scheduling for outage-constrained data harvesting under angle-dependent Rician fading. Their max-min formulation chooses horizontal position, altitude, and a binary sensor schedule under mobility, endpoint, altitude, and single-access constraints. A logistic regression model approximates the effective fading power obtained from the inverse Marcum-Q relation and exposes its dependence on elevation angle. Block coordinate descent alternates sensor scheduling with successive-convex-approximation updates for horizontal and vertical trajectories. At a 26-second mission duration, the reported Rician-aware design achieved about twice the max-min rate of the line-of-sight benchmark. Under outage probability 0.01, it improved the achieved max-min rate by about 1.5 times, while the optimized altitude balanced fading improvement against added path loss.
 
 ## Problem
 

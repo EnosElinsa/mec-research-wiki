@@ -5,6 +5,7 @@ authors: ["Chunlin Li", "Wenhao Wu", "Zhihao Zhang", "Tianbing Ma", "Shaohua Wan
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3694912"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, vehicular-mec, isac, uav-assisted-vec, beamforming, uav-deployment, sparrow-search-algorithm]
 related:
   - "[[vehicular-mec]]"
@@ -15,7 +16,7 @@ related:
   - "[[weighted-kmeans-uav-deployment]]"
   - "[[li-2025-energy-latency-uav-vec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Joint Beamforming and UAV Deployment Optimization for ISAC-Enhanced UAV-Assisted VEC
@@ -27,6 +28,40 @@ Li, C., Wu, W., Zhang, Z., Ma, T., & Wan, S. (2026). *Joint Beamforming and UAV 
 ## TL;DR
 
 Uses UAVs as flexible ISAC support for urban vehicular edge computing when fixed RSUs cannot cover temporary congestion or hot spots. The paper jointly optimizes UAV deployment positions and beamforming to maximize communication capacity under energy and sensing constraints. It decomposes the problem into UAV deployment and beamforming blocks, using a refraction-based-learning sparrow search algorithm for deployment and an SCA / first-order-Taylor convexification loop for beamforming.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs augment an urban vehicular edge-computing network with joint communication and sensing service for moving vehicles. Each UAV selects a 3-D deployment and ISAC beamforming over slotted TDD operation, while communication capacity, sensing accuracy, flight energy, coverage, and mobility are modeled jointly.
+
+**Problem & objective**: Problem $P_1$ maximizes aggregate communication capacity through $\max_{x,y,h,G_{\mathrm{ISAC}}}C_{\mathrm{sum}}$ by jointly optimizing UAV deployment coordinates and the ISAC beamforming design.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Horizontal deployment | $(x_u(t),y_u(t))$ | continuous coordinates | Horizontal location of UAV $u$ in slot $t$ |
+| Flight altitude | $h_u(t)$ | continuous, $H_{\min}\leq h_u(t)\leq H_{\max}$ | Altitude of UAV $u$ |
+| ISAC beamformer | $G_{\mathrm{ISAC}}$ or $\boldsymbol w$ | complex continuous design | Joint communication and sensing beamforming variables |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 26b-26e | Downlink, flexible, and uplink time, rate, spectrum, and one-UAV association limits are satisfied |
+| 26f-26g | Communication capacity is at least $C_{\min}$ and distance and angle CRBs meet their sensing thresholds |
+| 26h | Total ISAC and flight energy obeys $\sum_t(E_{\mathrm{ISAC}}^u(t)+E_{\mathrm{Fly}}^u(t))\leq E_{\max}$ |
+| 26i | A served vehicle remains in coverage: $d_{u,n}(t)\leq R_{\mathrm{cov}}$ |
+| 26j-26m | Horizontal and vertical motion, altitude, and vehicle-speed bounds hold in every slot |
+
+**Algorithm**: Use block coordinate descent between deployment and beamforming. For fixed beamforming, solve the NP-hard 3-D deployment block with a sparrow search enhanced by refracted opposition-based initialization and SCA local search; for fixed deployment, linearize the non-convex beamforming expressions by first-order Taylor expansion, solve the convex surrogate, and alternate the two blocks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied joint UAV deployment and beamforming for ISAC-enhanced UAV-assisted vehicular edge computing in spatially uneven urban traffic. They formulated communication-capacity maximization over 3-D UAV positions and ISAC beamforming subject to time, rate, spectrum, association, sensing-accuracy, energy, coverage, and mobility constraints. Their block-coordinate method combines a refracted opposition-based sparrow search and SCA for deployment with first-order convexification for beamforming. Simulations reported an average coverage-rate gain of 10.51% and an average UAV-energy reduction of 19.83% relative to the evaluated baselines, with the joint solver converging within 300 to 400 iterations.
 
 ## Problem framing
 

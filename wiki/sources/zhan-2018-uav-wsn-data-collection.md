@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy-Efficient Data Collection in UAV Enabled Wireless Sensor Network"
 authors: ["Cheng Zhan", "Yong Zeng", "Rui Zhang"]
 year: 2018
@@ -14,7 +15,7 @@ related:
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Data Collection in UAV Enabled Wireless Sensor Network
@@ -26,6 +27,40 @@ Zhan, C., Zeng, Y., & Zhang, R. (2018). *Energy-Efficient Data Collection in UAV
 ## TL;DR
 
 Considers a UAV dispatched to collect sensed data from K sensor nodes (SNs) in a WSN under general fading channels. Jointly optimizes the SNs' **wake-up schedule** and the **UAV's trajectory** to minimize the **maximum energy consumption** across all SNs (max-min fairness), subject to reliable data collection constraints (outage probability ≤ ε per SN). The resulting MINLP is solved iteratively via block coordinate descent + **successive convex approximation (SCA)**. A sub-optimal solution achieves significant energy savings over static collector or straight-trajectory benchmarks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV collects required data from $K$ fixed battery-limited sensor nodes over quasi-static general fading. At most one sensor wakes and transmits in a slot, and outage probability depends on the UAV-sensor distance.
+
+**Problem & objective**: P1 is a MINLP that minimizes maximum sensor energy, $\min \theta=\min\max_k E_k$, over binary wake-up scheduling and UAV trajectory.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Wake-up schedule | $x_k[m]$ | binary/relaxed $[0,1]$ | Whether sensor $k$ transmits in slot $m$ |
+| UAV trajectory | $\mathbf q[m]$ | continuous 2-D position | Data-collector path |
+| Maximum sensor energy | $\theta$ | continuous, nonnegative | Fairness epigraph variable |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | At most one sensor is active per slot, $\sum_kx_k[m]\le1$ |
+| C2 | Every sensor uploads at least its required $S_k$ bits |
+| C3 | Per-link outage probability does not exceed $\epsilon$ |
+| C4 | Each sensor energy satisfies $E_k\le\theta$ |
+| C5 | UAV speed, initial position, and final position remain feasible |
+
+**Algorithm**: Relax binary wake-up indicators to fractional fading-block shares → fix trajectory and solve the schedule by linear programming → fix the schedule and convexify distance-rate terms → update trajectory by SCA → alternate the BCD blocks until maximum sensor energy converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhan et al. [x] studied energy-efficient data collection in a UAV-enabled wireless sensor network under general fading. They formulated a mixed-integer problem that minimizes the maximum sensor energy over wake-up scheduling and UAV trajectory under one-active-sensor, required-data, outage, energy, and mobility constraints. Binary scheduling is relaxed to fractional use over sufficiently many fading blocks. For a fixed path the schedule is solved by linear programming, while successive convex approximation updates the path for a fixed schedule. Simulations report lower sensor energy than the evaluated static-collector and straight-trajectory baselines.
 
 ## Problem framing
 

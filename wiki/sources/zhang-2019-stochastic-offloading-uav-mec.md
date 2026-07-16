@@ -17,7 +17,8 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Stochastic Computation Offloading and Trajectory Scheduling for UAV-Assisted Mobile Edge Computing
@@ -29,6 +30,42 @@ Zhang, J., Zhou, L., Tang, Q., Ngai, E. C.-H., Hu, X., Zhao, H., & Wei, J. (2019
 ## TL;DR
 
 A UAV-assisted MEC system with **stochastic computation tasks** (task streaming over a period, rather than fixed binary/partial tasks). The system minimizes the **average weighted energy consumption of the SMDs and the UAV**, subject to computation-offloading, resource-allocation, and UAV flying-trajectory-scheduling constraints. Because of non-convexity and time-coupling of variables, a **Lyapunov-based** approach analyzes the task queue and decomposes the energy-minimization into **three manageable subproblems**, solved iteratively by a combination of **ADMM + interior-point method + CVX**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV carrying an MEC server flies between prescribed endpoints and serves multiple smart mobile devices with stochastic task arrivals and local and edge queues. Devices offload over separate FDMA channels, and each air-to-ground channel follows free-space LoS path loss.
+
+**Problem & objective**: Stochastic nonconvex problem (P) minimizes average weighted communication, computation, and flight energy, $\min_{\mathbf{X}(t)}T^{-1}\sum_{t=0}^{T-1}E_s(t)$, while maintaining stable local and UAV task queues.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local CPU frequency | $f_{l,i}(t)$ | continuous, $[0,f_{i,\max}]$ | CPU-cycle frequency of device $i$ |
+| UAV CPU allocation | $f_{c,i}(t)$ | continuous, nonnegative | MEC computation rate allocated to device $i$ |
+| Offloaded task bits | $r_i(t)$ | continuous, nonnegative | Bits sent by device $i$ to the UAV in slot $t$ |
+| UAV position | $\mathbf{p}_c(t)$ | continuous, planar position | UAV trajectory point used for channel and flight-energy control |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C2 | Local CPU frequency and offloaded bits obey device hardware and transmit-power bounds |
+| C3 | Local execution plus offloading cannot exceed backlog, $f_{l,i}(t)\tau/\rho+r_i(t)\leq Q_i(t)$ |
+| C4-C5 | Allocated MEC frequency does not exceed $F_c$, and executed edge tasks do not exceed $L_i(t)$ |
+| C6 | UAV speed is bounded by $V_{\max}$ |
+| C7-C8 | The online trajectory preserves previous positions and reaches the prescribed final point |
+| C9 | Local and edge task queues remain stable |
+
+**Algorithm**: Lyapunov drift-plus-penalty analysis removes long-term time coupling and yields one per-slot upper-bound problem; JSORT decomposes it into offloading and local-CPU control, UAV CPU allocation, and trajectory scheduling; ADMM, an interior-point method, and CVX solve the three blocks iteratively before queue states are updated.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied stochastic computation offloading, resource allocation, and trajectory scheduling in a UAV-assisted mobile edge computing system. They formulated a nonconvex stochastic problem that minimizes the average weighted energy consumption of smart mobile devices and the UAV under task-queue, computation, offloading, and mobility constraints. A Lyapunov-based approach transforms the long-term problem into a deterministic per-slot drift-plus-penalty problem and decomposes it into three subproblems. Their JSORT algorithm combines ADMM, an interior-point method, and a CVX-based trajectory update to solve the subproblems iteratively. Simulations report lower average weighted energy consumption than the MAES benchmark and more processed queue backlog than the MAEU benchmark, while illustrating the energy and queue-stability tradeoff controlled by $V$ and the weight factors.
 
 ## Problem framing
 

@@ -21,7 +21,8 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[bao-2025-ddpg-video-offloading]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-16
+modeling_card: required
 authors:
   - Dongdong Ye
   - Shuting Cai
@@ -43,6 +44,45 @@ Ye, D., Cai, S., Du, H., Kang, J., Liu, Y., Yu, R., & Niyato, D. (2025). *Optimi
 
 ## TL;DR
 To deliver text-to-image AIGC from an edge-deployed pretrained foundation model, an [[aigc-service-provider]] (ASP) must jointly tune four resource dimensions — level of [[prompt-engineering|prompt optimization]], number of diffusion denoising steps, CPU cycle frequency, and network transmission rate — while users are self-interested and their per-quality "gain" is private (information asymmetry). The paper formulates a **two-stage** [[contract-theory]] problem (a quality-based contract, then a latency-based contract per chosen quality item) and, because each non-convex contract must be re-solved repeatedly, uses a [[generative-diffusion-model]] as the solver ([[diffusion-model-as-optimizer]]) to generate optimal contract items directly. With Stable Diffusion XL + NIMA, the GDM scheme beats a DRL-based contract generator on test reward, and prompt optimization raises generation quality (+8% / +2% across types) and expected latency reduction (+22% for one type).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An edge AIGC service provider runs a text-to-image foundation model for users with private gain types. The provider first offers quality-based contracts and then offers latency-based contracts within each selected quality group.
+
+**Problem & objective**: Stage 1 maximizes quality-contract utility, $\max_{\Phi^A}U_{\mathrm{sp}}^A=\sum_iMq_i^A(p_i^A-\sigma_{1,i}l_i^A-\sigma_{2,i}s_i^A)$; Stage 2 maximizes $U_{\mathrm{sp}}^T(\theta_i^A)$ after accounting for prompt, denoising, and transmission energy costs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Prompt-optimization level | $l_i^A$ | bounded positive integer | Prompt engineering supplied to quality type $i$ |
+| Diffusion denoising steps | $s_i^A$ | bounded positive integer | Number of denoising iterations for quality type $i$ |
+| Quality-contract payment | $p_i^A$ | continuous, bounded | Fee charged for quality item $i$ |
+| Prompt CPU frequency | $x_j^T(\theta_i^A)$ | continuous, nonnegative | Compute rate for prompt optimization in latency item $j$ |
+| Denoising CPU frequency | $y_j^T(\theta_i^A)$ | continuous, nonnegative | Compute rate for diffusion denoising |
+| Transmission rate | $r_j^T(\theta_i^A)$ | continuous, nonnegative | Network rate assigned to the generated image |
+| Latency-contract payment | $p_j^T(\theta_i^A)$ | continuous, nonnegative | Fee charged for latency item $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 7 | Quality individual rationality, $\theta_i^AA(l_i^A,s_i^A,\boldsymbol\rho)-p_i^A\geq0$ |
+| 8 | Quality incentive compatibility makes type $i$ prefer its own item to every item $i'$ |
+| 9 | Quality variables obey their integer or continuous lower and upper bounds |
+| 25 | Latency individual rationality gives every participating latency type nonnegative utility |
+| 26 | Latency incentive compatibility makes type $j$ prefer its matching item to every item $j'$ |
+| 27 | Latency CPU rates, transmission rates, and payments are nonnegative |
+
+**Algorithm**: Two conditional generative diffusion solvers map environment parameters and Gaussian noise to complete contract menus by reverse denoising. Contract-evaluation critics train the design networks with replay, target updates, and utility rewards penalized for IR or IC violations; separate trained generators produce the quality and latency contracts at inference time.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ye et al. [x] designed a two-stage contract mechanism for edge-hosted text-to-image AIGC under private user gain types. The quality stage chooses prompt-optimization level, denoising steps, and payment, while the latency stage chooses two CPU frequencies, transmission rate, and payment. Both stages maximize provider utility subject to individual-rationality, incentive-compatibility, and variable-domain constraints. Conditional generative diffusion networks generate complete contract menus and are trained with critic feedback and penalties for infeasible items. The reported diffusion generators achieved higher test rewards than matched DRL contract generators and produced menus satisfying the checked IR and IC conditions. Prompt optimization increased image quality by 8% and 2% for the two highlighted quality types and increased expected latency reduction by 22% for one latency type.
 
 ## Problem
 Pretrained foundation models for [[generative-ai-for-mec|generative AI / AIGC]] are resource-hungry and highly sensitive to prompt quality, so resource-limited mobile users with weak prompts get low-quality images, frequent regenerations, and high latency. Hosting the model on an edge server as an ASP plus treating [[prompt-engineering|prompt optimization]] as a tunable resource can help, but three questions remain: how to **quantify** the relationship between prompt-optimization level, denoising steps, and generation quality; how to perform **multi-dimensional resource optimization** (prompt level, denoising steps, CPU frequency, transmission rate) in resource-sparse edge networks to improve [[qoe-modeling-mec|QoE]]; and how to **incentivize** the paid ASP–user relationship when users won't unconditionally obey the ASP and the ASP doesn't know each user's private gain type. The work targets text-to-image services but claims generality to other AIGC.

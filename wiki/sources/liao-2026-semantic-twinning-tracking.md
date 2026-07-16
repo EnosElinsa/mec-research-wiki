@@ -5,6 +5,7 @@ authors: ["Tianle Liao", "Shaohua Wu", "Yifei Qiu", "Xin Jin", "Qinyu Zhang"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3700322"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, semantic-twinning, satellite-uav, collaborative-tracking, digital-twin, semantic-communication, age-of-information, incremental-learning]
 related:
   - "[[goal-oriented-semantic-twinning]]"
@@ -17,7 +18,7 @@ related:
   - "[[shaohua-wu]]"
   - "[[qinyu-zhang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Goal-Oriented Semantic Twinning-Enabled Collaborative Target Tracking in Communication-Constrained Satellite-UAV Networks
@@ -29,6 +30,42 @@ Liao, T., Wu, S., Qiu, Y., Jin, X., & Zhang, Q. (2026). *Goal-Oriented Semantic 
 ## TL;DR
 
 Builds a task-scoped satellite-edge twin for multi-cluster UAV tracking. Stale or missing state is reconstructed with temporal, kinematic, spatial, and causal models; satellite MADDPG policies schedule radio resources and tracking motion, while EWC plus mixed replay adapts to target-motion shifts.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Geographically separated UAV clusters track one target and exchange status and commands only through continuously covering LEO satellites. A satellite-edge goal-oriented semantic twin reconstructs missing network and motion state, schedules intra-cluster communication, fuses target observations, and controls cluster motion.
+
+**Problem & objective**: Communication and tracking policies maximize $J(\boldsymbol\mu)=\mathbb E\left[\sum_t\gamma^tr_t\right]$, using one reward for AoI and power-threshold compliance and another for joint target coverage, target retention, safe tracking distance, and collision avoidance.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV transmit power | $P_{t,i}$ | discrete power level | Communication power assigned to UAV $i$ |
+| Frequency band | $f_{t,i}$ | discrete band index | Intra-cluster channel assigned to UAV $i$ |
+| Cluster acceleration | $a_{c_i}$ | discrete acceleration level | Translational tracking command for cluster $i$ |
+| Cluster angular velocity | $\omega_{c_i}$ | discrete angular-rate level | Turning command for cluster $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Power and frequency actions remain in their predefined discrete sets |
+| C2 | Communication scheduling penalizes total power above $P_{\mathrm{th}}$ |
+| C3 | Tracking seeks to keep the target inside the clusters' combined fields of view |
+| C4 | Cluster-target distance remains above $d_{c,v}^{\mathrm{safe}}$ |
+| C5 | Inter-cluster distance remains above $d_{c,c}^{\mathrm{safe}}$ |
+| C6 | A UAV falls back to its local policy when a satellite command is stale |
+
+**Algorithm**: GOST first rejects stale samples and reconstructs missing state with ARIMA, Kalman or unscented information filtering, graph attention, and causal inference. Global and local MADDPG policies then learn communication and tracking actions, while elastic weight consolidation and a replay mixture that shifts from new toward historical samples adapt the controller after target-motion changes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liao et al. [x] proposed goal-oriented semantic twinning for multi-cluster UAV tracking over communication-constrained satellite links. GOST transmits task-critical state and reconstructs missing temporal, kinematic, spatial, and causal variables before satellite policies schedule radio resources and cluster motion. The decision layer uses MADDPG, while elastic weight consolidation and mixed replay preserve earlier tracking competence during target-motion changes. Simulations reported 68% lower AoI, 75% lower positioning error, 50% lower target loss than conventional digital twinning, and adaptation with about 66% of the samples required by online learning.
 
 ## Problem framing
 

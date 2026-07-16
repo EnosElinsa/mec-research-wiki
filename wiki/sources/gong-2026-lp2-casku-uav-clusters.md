@@ -5,6 +5,7 @@ authors: ["Yanwei Gong", "Ruichen Zhang", "Xiaoqing Wang", "Xiaolin Chang", "Bo 
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3676757"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), pp. 1-16"
+modeling_card: not_applicable
 tags: [source, low-altitude-economy, uav-cluster, authentication, privacy-preservation, session-key-update, service-reliability]
 related:
   - "[[uav-cluster-authentication]]"
@@ -13,7 +14,7 @@ related:
   - "[[trajectory-privacy]]"
   - "[[privacy-sensitive-data-partitioning]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Towards Reliable Service Provisioning for Dynamic UAV Clusters in Low-Altitude Economy Networks
@@ -25,6 +26,12 @@ Gong, Y., Zhang, R., Wang, X., Chang, X., Ai, B., Fan, J., Ju, B., & Niyato, D. 
 ## TL;DR
 
 Introduces LP2-CASKU, a lightweight privacy-preserving authentication and session-key-update scheme for dynamic UAV clusters. It batch-authenticates new UAVs, authenticates existing UAVs across clusters with anonymity/unlinkability, and updates cluster session keys for forward and backward secrecy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gong et al. [x] studied reliable service provisioning for dynamic UAV clusters through lightweight privacy-preserving authentication and session-key updates. They proposed LP2-CASKU with setup, registration, join, cross-cluster, and cluster-session-key-update phases, including message aggregation for batch authentication, lightweight cross-cluster authentication, and forward- and backward-secure key updates. The scheme was analyzed for unforgeability, confidentiality, anonymity, unlinkability, and session-key secrecy under the stated Dolev-Yao threat model. Simulations report about 82.8% to 89.5% lower join latency than the no-aggregation baseline as new-UAV count increases from three to seven, together with lower cluster energy consumption.
 
 ## Problem
 

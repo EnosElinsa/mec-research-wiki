@@ -5,6 +5,7 @@ authors: ["Dong-Jun Han", "Seyyedali Hosseinalipour", "David J. Love", "Mung Chi
 year: 2024
 url: "https://doi.org/10.1109/JSAC.2024.3365901"
 venue: "IEEE Journal on Selected Areas in Communications (IEEE JSAC)"
+modeling_card: required
 tags: [source, federated-learning, leo-satellite, ground-to-satellite, data-offloading, convergence-analysis, latency-minimization]
 related:
   - "[[federated-learning]]"
@@ -16,7 +17,7 @@ related:
   - "[[zhai-2023-fedleo-decentralized-fl]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Cooperative Federated Learning Over Ground-to-Satellite Integrated Networks: Joint Local Computation and Data Offloading
@@ -28,6 +29,40 @@ Han, D.-J., Hosseinalipour, S., Love, D. J., Chiang, M., & Brinton, C. G. (2024)
 ## TL;DR
 
 A **ground-to-satellite cooperative [[federated-learning|FL]]** methodology for remote regions that lack terrestrial infrastructure. LEO satellite constellations play three simultaneous roles during FL: (i) edge-computing units that process **data offloaded** from ground devices, (ii) intra-cluster model aggregators, and (iii) relays that pass models/data to neighboring satellites over inter-satellite links (ISLs). Because each satellite covers a region only briefly, the trained model and acquired data are handed to the next incoming satellite so FL continues. The paper proves convergence and builds a training-latency minimizer over per-satellite data-offloading amounts and computation speeds.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Geographically separated clusters of ground clients have no terrestrial infrastructure and are served by moving solar-powered LEO satellites. Clients retain privacy-sensitive samples, may offload non-sensitive samples, and communicate with satellites using allocated bandwidth, while inter-satellite links hand models and data to incoming satellites when coverage expires; no named multiple-access scheme is specified.
+
+**Problem & objective**: Network problem (35) minimizes the maximum per-cluster FL-round latency, $\min_{\bar\alpha,\bar\gamma,\bar f_S,\bar b}\tau^{\mathrm{round}}$, jointly over data offloading, client processing, satellite CPU, and client bandwidth.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Client offloading portion | $\alpha_k$ | continuous, $0\leq\alpha_k\leq\alpha_k^{\max}$ | Fraction of client $k$'s dataset offloaded to its satellite |
+| Client processing portion | $\gamma_k$ | continuous, $0\leq\gamma_k\leq1-\alpha_k$ | Fraction processed locally during a global round |
+| Satellite CPU frequency | $f_{S,j}$ | continuous, $0\leq f_{S,j}\leq f_S^{\max}$ | Computation rate assigned at the satellite serving cluster $j$ |
+| Client bandwidth | $b_k$ | continuous, $b_k\geq0$ | Ground-to-satellite bandwidth allocated to client $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 35b-35c | Only non-sensitive data may be offloaded and local processing cannot exceed the retained portion |
+| 35d-35e | Satellite CPU is bounded and $\sum_{k\in G_j}b_k\leq B_j$ |
+| 35f-35h | Client energy and sun-facing or non-sun-facing satellite battery limits are satisfied |
+| 35i-35j | The convergence-bound target holds and cluster offloading obeys $\sum_{k\in G_j}\alpha_k\lvert D_k\rvert\leq A_j^{\max}$ |
+
+**Algorithm**: Set $\gamma_k=1-\alpha_k$ to process every retained sample and tighten the convergence bound; initialize the offloading, satellite-CPU, and bandwidth blocks; alternately optimize the blocks by block-coordinate descent; within the offloading block, use nested bisection to balance the slowest client-side completion time against repeated satellite-side computation; repeat until the block updates stabilize.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Han et al. [x] studied cooperative federated learning over ground-to-satellite networks serving remote client clusters without terrestrial infrastructure. They formulated FL-round latency minimization over client data-offloading fractions, local processing fractions, satellite CPU frequencies, and bandwidth allocations under privacy, energy, convergence, and communication-load constraints. Their method uses satellites as edge processors, cluster aggregators, and inter-satellite relays, and solves the nonconvex resource problem with block-coordinate updates and nested bisection. Experiments on MNIST, FMNIST, and CIFAR-10 reported faster time to target accuracy than fixed offloading and terrestrial-only baselines, with optimized mean offloading portions of 56.89, 55.23, and 67.23 percent.
 
 ## Problem framing
 

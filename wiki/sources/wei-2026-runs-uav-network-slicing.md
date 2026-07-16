@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "RUNs: Fast and Robust Network Slicing for UAV-Assisted Wireless Networks Under Imperfect CSI and Node Mobility"
 authors: ["Fengsheng Wei", "Gang Feng", "Haokang Lou", "Shuang Qin", "Wei Jiang"]
 year: 2026
@@ -18,7 +19,7 @@ related:
   - "[[cheng-2025-dos-satellite-edge-computing]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # RUNs: Fast and Robust Network Slicing for UAV-Assisted Wireless Networks Under Imperfect CSI and Node Mobility
@@ -30,6 +31,41 @@ Wei, F., Feng, G., Lou, H., Qin, S., & Jiang, W. (2026). *RUNs: Fast and Robust 
 ## TL;DR
 
 RUNs is a robust optimization framework for joint UAV deployment, integer channel allocation, and continuous power allocation across heterogeneous radio slices. It converts bounded demand and location uncertainty plus Gaussian CSI error into deterministic constraints, decomposes altitude from resource allocation, solves a continuous relaxation with augmented Lagrangian and two-block coordinate descent, and restores integer channel counts through knapsack rounding.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A single-antenna UAV serves users in heterogeneous radio slices, with uncertain traffic demand, user locations, and Gaussian CSI error; altitude and horizontal deployment affect coverage, mobility, propulsion energy, and service rates.
+
+**Problem & objective**: The robust slicing problem maximizes aggregate user data rate, $\max_{\mathbf x,\mathbf p,h}\sum_{i,j}r_{ij}$, under bandwidth, power, chance-based SLA, demand, energy, coverage, and mobility limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Channel count | $x_{ij}$ | integer, nonnegative | Number of slice-$i$ channels assigned to user $j$ |
+| Per-channel power | $p_{ij}$ | continuous, nonnegative | Transmission power on each assigned channel |
+| UAV altitude | $h$ | continuous, bounded | UAV height controlling coverage and flight time |
+| Horizontal deployment | $\phi_u$ | continuous, cell bounded | UAV ground-plane position |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Total allocated bandwidth is bounded: $\sum_{i,j}x_{ij}B_i\leq B_{tot}$. |
+| C2 | Total transmission power is bounded: $\sum_{i,j}x_{ij}p_{ij}\leq P^{t,max}$. |
+| C3 | Per-channel SLA is chance constrained: $\Pr\{r_{ij}\leq R_i^{SLA}\}\leq\vartheta_{ij}$. |
+| C4 | Traffic demand is served: $x_{ij}\geq\tilde x_{ij}$. |
+| C5 | UAV energy, altitude, coverage, and movement limits remain feasible. |
+
+**Algorithm**: Replace demand and location uncertainty by robust bounds, convert Gaussian CSI chance constraints to deterministic rates, decompose altitude from channel and power allocation, solve the continuous relaxation with augmented Lagrangian and two-block coordinate descent, and round channel counts with a two-dimensional knapsack.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wei et al. [x] formulate robust network slicing for a UAV serving heterogeneous radio slices under demand, location, and CSI uncertainty. The mixed-integer problem maximizes aggregate data rate through integer channel counts, per-channel powers, UAV altitude, and horizontal deployment while enforcing bandwidth, power, SLA chance, demand, energy, coverage, and mobility constraints. RUNs derives deterministic robust counterparts, alternates altitude with continuous channel and power blocks, and restores integer allocations with knapsack rounding. The reported implementation is nearly twenty times faster than SQP with about a 0.9% objective gap in the tested settings.
 
 ## Problem and system model
 

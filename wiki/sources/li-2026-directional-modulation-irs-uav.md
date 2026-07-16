@@ -5,6 +5,7 @@ authors: ["Maolin Li", "Wei Gao", "Qi Wu", "Feng Shu", "Cunhua Pan", "Di Wu"]
 year: 2026
 url: "https://doi.org/10.1109/TGCN.2025.3572113"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN)"
+modeling_card: required
 tags: [source, directional-modulation, intelligent-reflecting-surface, physical-layer-security, discrete-phase-shift, uav-positioning, symbol-level-precoding]
 related:
   - "[[directional-modulation]]"
@@ -15,7 +16,7 @@ related:
   - "[[near-field-communications]]"
   - "[[cunhua-pan]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Direction Modulation Design for UAV Assisted by IRS With Discrete Phase Shift
@@ -27,6 +28,42 @@ Li, M., Gao, W., Wu, Q., Shu, F., Pan, C., & Wu, D. (2026). *Direction Modulatio
 ## TL;DR
 
 Uses a passive IRS to preserve intended symbol constellations at ground users while suppressing and phase-scrambling symbols at a multi-antenna eavesdropper. The solver combines robust symbol-level digital weights, a fixed-point UAV-position surrogate, and vector-trajectory rules for discrete IRS phases, including cross-entropy and block-coordinate variants.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude UAV with an $N$-element ULA serves multiple single-antenna users through direct and passive-IRS paths while a multi-antenna eavesdropper attempts to recover the symbols. The IRS has unit-amplitude elements with finite-resolution phases, and the design preserves intended constellation regions at users while producing low-amplitude phase-disturbed symbols at the eavesdropper.
+
+**Problem & objective**: Problem $P_2$ jointly selects the symbol-level digital weights, UAV position, and discrete IRS phases to maximize the aggregate intended symbol amplitude $\max_{\boldsymbol w_b,\boldsymbol\Phi,\boldsymbol u}\sum_{k=0}^{K_u-1}\hat t_{b,k}$, which is used as a monotone surrogate for the legitimate transmission rate.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Digital weight vector | $\boldsymbol w_b$ | complex continuous vector | Symbol-level transmit weights for symbol index $b$ |
+| UAV angular position | $(\theta_{A,R},\varphi_{A,R})$ | continuous within prescribed bounds | Elevation and azimuth that determine the UAV position relative to the IRS |
+| IRS phase | $\phi_m$ | discrete, $\phi_m\in\mathbb F$ | Quantized phase of IRS element $m$ |
+| Intended amplitude | $\hat t_{b,k}$ | continuous, $\hat t_{b,k}\geq r_{\min,k}$ | Robust received symbol amplitude at user $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1' | The effective user channel synthesizes the intended symbol: $\boldsymbol h_k^{\mathrm{LoS}}\boldsymbol w_b=\hat t_{b,k}e^{j\vartheta_{b,k}}$ |
+| C2' | The eavesdropper receives a prescribed low-amplitude, phase-disturbed symbol |
+| C3' | User sensitivity is met: $\hat t_{b,k}\geq r_{\min,k}$ |
+| C4 | Transmit power is bounded: $\lVert\boldsymbol w_b\rVert^2\leq P_{\max}$ |
+| C5' | IRS amplitudes are one and phases are quantized: $\gamma_m=1$, $\phi_m\in\mathbb F$ |
+| C6 | UAV elevation and azimuth remain within their feasible positioning ranges |
+
+**Algorithm**: First obtain a suboptimal UAV position by minimizing the required transmit power with a fixed-point surrogate, then scale the digital weight vector to use the available power. With the position and digital weights fixed, optimize the quantized IRS phases by the vector-trajectory rule and combine it with either cross-entropy search or block-coordinate descent to form CE-VT and BCD-VT.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied directional modulation for an IRS-assisted UAV serving ground users in the presence of a multi-antenna eavesdropper. They jointly designed symbol-level digital weights, the UAV position, and finite-resolution IRS phases to maximize intended symbol amplitudes under receiver-sensitivity, transmit-power, unit-amplitude, phase-quantization, and positioning constraints. Their solution first minimizes the required power to place the UAV, scales the digital weights, and then applies a vector-trajectory phase rule combined with cross-entropy or block-coordinate search. Simulations reported about 6 dBm more user signal power for CE-VT than CE, a rate near three times the no-IRS benchmark, and a low user BER together with a high eavesdropper BER.
 
 ## Problem
 

@@ -26,7 +26,8 @@ related:
   - "[[rongfei-fan]]"
   - "[[han-hu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # UAV-Enabled Aerial Monitoring Aided by STAR-RIS: A Stochastic Optimization Framework
@@ -38,6 +39,42 @@ Zhan, C., Hu, L., Song, K., Fan, R., Hu, H., & Xu, J. (2026). *UAV-Enabled Aeria
 ## TL;DR
 
 Controls a monitoring UAV's trajectory, active beamforming, and a building-mounted STAR-RIS to maximize long-term average sum throughput under a propulsion-energy budget and stochastic target motion. A virtual energy queue converts the long-horizon problem into per-slot control, while WMMSE/PDD and sequential convex approximation handle the coupled communication and trajectory blocks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude multi-antenna UAV monitors moving targets with panoramic cameras and broadcasts processed video to indoor and outdoor single-antenna users through a passive energy-splitting STAR-RIS. Users share the downlink through multiuser beamforming, target motion follows a Gauss-Markov model, and the modeled UAV-to-user channels are cascaded through the STAR-RIS with reliable CSI.
+
+**Problem & objective**: Multi-stage stochastic problem (P1) maximizes long-term average sum throughput, $\max\lim_{L\to\infty}L^{-1}\sum_{l=1}^{L}\sum_{k=1}^{K}R_k[l]$, subject to monitoring, mobility, hardware, transmit-power, and average propulsion-energy constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf{q}_v[l]$ | continuous, planar position | Monitoring UAV position in slot $l$ |
+| Active beamformer | $\mathbf{w}_k[l]$ | complex continuous | UAV transmit beam for user $k$ |
+| STAR-RIS amplitudes | $\beta_{t,n}[l],\beta_{r,n}[l]$ | continuous, $[0,1]$ | Transmission and reflection amplitudes of element $n$ |
+| STAR-RIS phases | $\phi_{t,n}[l],\phi_{r,n}[l]$ | continuous, $[0,2\pi)$ | Transmission and reflection phase shifts of element $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 10 | UAV transmit power is bounded, $\operatorname{Tr}(\mathbf{W}[l]\mathbf{W}^{\mathrm H}[l])\leq p^{\max}$ |
+| 11 | Per-slot displacement obeys $\|\mathbf{q}_v[l+1]-\mathbf{q}_v[l]\|\leq v_{\mathrm{uav}}^{\max}\delta$ |
+| 12 | The UAV remains within the monitoring radius, $\|\mathbf{q}_v[l]-\bar{\mathbf{q}}_u[l]\|\leq d^{\max}$ |
+| 13 | Long-term average propulsion energy satisfies $\bar E^{\mathrm{fl}}\leq\bar E_{\max}^{\mathrm{fl}}$ |
+| 14 | Element amplitudes satisfy $\beta_{t,n}^2[l]+\beta_{r,n}^2[l]=1$ |
+| 15 | Coupled phases satisfy $\cos(\phi_{t,n}[l]-\phi_{r,n}[l])=0$ |
+
+**Algorithm**: Lyapunov optimization creates a virtual propulsion-energy queue and converts (P1) into per-slot problem (P2); WMMSE and penalty dual decomposition update active beamforming and STAR-RIS coefficients; sequential parametric convex approximation updates the UAV trajectory; alternating optimization completes the slot before the virtual queue is advanced.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhan et al. [x] studied STAR-RIS-aided UAV-enabled aerial monitoring in which one UAV tracks moving targets and broadcasts monitored information to indoor and outdoor users. They formulated a multi-stage stochastic optimization problem that maximizes long-term average throughput by jointly optimizing transmit beamforming, UAV trajectory, and STAR-RIS configuration under monitoring and energy constraints. A Lyapunov-based online framework introduces a virtual energy queue and transforms the long-horizon problem into deterministic per-slot subproblems. The resource block is solved with weighted minimum mean-square error and penalty dual decomposition, while sequential parametric convex approximation handles the trajectory block. Simulations report convergence within approximately ten iterations for five STAR-RIS elements and throughput gains of 18.98% and 23.77% over geometric-center tracking at 80 and 120 elements, respectively.
 
 ## Problem framing
 

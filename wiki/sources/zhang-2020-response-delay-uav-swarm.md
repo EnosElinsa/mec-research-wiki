@@ -18,7 +18,8 @@ related:
   - "[[qixun-zhang]]"
   - "[[zhiyong-feng]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Response Delay Optimization in Mobile Edge Computing Enabled UAV Swarm
@@ -30,6 +31,39 @@ Zhang, Q., Chen, J., Ji, L., Feng, Z., Han, Z., & Chen, Z. (2020). *Response Del
 ## TL;DR
 
 A two-layer MEC-enabled UAV swarm — a centralized **MEC-equipped top-UAV (T-UAV)** plus a swarm of distributed **bottom-UAVs (B-UAVs)** — for emergency scenarios (disaster rescue). Using **stochastic geometry** (3-D Poisson point process) the paper derives closed-form **successful transmission probability** for single and grouped links, and using **queueing theory** derives the **optimal response delay** in closed form over four delay indicators. A joint communication-and-computation optimization algorithm configures UAV density and number of VMs to minimize response delay, validated on both a simulator and a real **5G NR mmWave + DJI UAV hardware testbed**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Bottom UAVs distributed as a three-dimensional Poisson point process send disaster data over mmWave links to a fixed-wing top UAV carrying an MEC server, which compresses the data before forwarding it to a control center. The top UAV supports concurrent SDMA beams, with TDMA or FDMA available for coincident beams; air links include distance-dependent loss, Rayleigh fading, AWGN, and inter-group sidelobe interference.
+
+**Problem & objective**: Problem (38) minimizes end-to-end response delay, $\min T_{\mathrm{all-after}}=T_{\mathrm{comm-w}}+T_{\mathrm{comm-t}}+T_{\mathrm{comp-q}}+T_{\mathrm{comp-p}}+T_{\mathrm{comm-t}}^{T-C}$, by matching communication load and parallel MEC capacity.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Bottom-UAV density | $\lambda_u$ | continuous, positive | Spatial density that determines interference and aggregate arrivals |
+| Packet arrival rate | $\lambda$ | continuous, $(0,\rho\mu(m_{\max})]$ | Aggregate task rate entering the top-UAV queue |
+| Number of virtual machines | $m$ | integer, $1\leq m\leq m_{\max}$ | Parallel MEC instances on the top UAV |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 37/38b | Compression must offset queueing and processing delay, $\eta<1-B_2\log(1+\theta_2)(L_q/\lambda+1/\mu)/l$ |
+| 38c | Computation load satisfies $\rho=\lambda/(m\mu)>\xi$ |
+| 38d | The arrival rate and VM count obey $0<\lambda\leq\rho\mu(m_{\max})$ and $1\leq m\leq m_{\max}$ |
+| Queue stability | The M/M/$m$ service load remains below one, $\rho<1$ |
+
+**Algorithm**: Build the three-dimensional PPP, derive single-link and grouped-link successful-transmission probabilities, and map UAV density to packet arrival rate; compute communication and M/M/$m$ queueing delays; traverse feasible VM counts and arrival rates; return the density and VM configuration that minimizes response delay while satisfying the MEC-benefit and load constraints.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied response delay optimization in a mobile-edge-computing-enabled UAV swarm for disaster rescue. They modeled bottom-UAV locations with a three-dimensional Poisson point process, derived successful-transmission probabilities for single and grouped links, and represented the top-UAV computation system as an M/M/$m$ queue with virtual-machine multiplexing degradation. Their joint communication and computation problem minimizes response delay over waiting, transmission, queueing, and processing components by configuring UAV density and the number of virtual machines. The resulting algorithm computes link success probabilities, evaluates the delay components, and searches feasible communication and computation configurations. Simulations report a 10% to 20% response-delay reduction relative to UAVs without MEC capability. A 5G NR mmWave and DJI UAV testbed further reports an 89.9% reduction in video packets forwarded from the top UAV to the control center after MEC processing.
 
 ## Problem framing
 

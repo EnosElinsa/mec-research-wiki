@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Convergence of MEC and DRL in Non-Terrestrial Wireless Networks: Key Innovations, Challenges, and Future Pathways"
 authors: ["Syed Asad Ullah", "Syed Ali Hassan", "Hatem Abou-Zeid", "Hassaan Khaliq Qureshi", "Haejoon Jung", "Aamir Mahmood", "Mikael Gidlund", "Muhammad Ali Imran", "Ekram Hossain"]
 year: 2026
@@ -28,7 +29,7 @@ related:
   - "[[mach-2017-mec-survey-architecture]]"
   - "[[drl-backbones-across-uav-mec-sources]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-16
 ---
 
 # Convergence of MEC and DRL in Non-Terrestrial Wireless Networks: Key Innovations, Challenges, and Future Pathways
@@ -38,6 +39,12 @@ Syed Asad Ullah, Syed Ali Hassan, Hatem Abou-Zeid, Hassaan Khaliq Qureshi, Haejo
 
 ## TL;DR
 A survey of how **deep reinforcement learning (DRL)** is applied to **MEC-empowered non-terrestrial wireless networks (MeNT-WiNs)** — the integration of MEC with NTN platforms: autonomous aerial vehicles (AAVs), satellites (LEO/GEO), and high-altitude platforms (HAPs). It reviews DRL fundamentals, the MeNT-WiN architecture and computation-offloading models, then surveys DRL's role in optimizing satellite operations, AAV-swarm management, resource/spectrum/energy allocation, routing, and security, and closes with challenges (computational complexity, real-time adaptability, scalability) and future research directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ullah et al. [x] surveyed the convergence of mobile edge computing and deep reinforcement learning in non-terrestrial wireless networks. They organized UAV, satellite, and high-altitude-platform MEC architectures, reviewed computation-offloading formulations and DRL algorithms, and discussed state, action, reward, and constraint choices reported in the literature. The survey also covers interdependent tasks, energy and latency objectives, security, and open challenges for space-air-ground systems. It compares representative works across platforms, learning methods, and optimization targets. The article is a survey and does not introduce a standalone application-specific decision model for a Modeling Quick-Use Card.
 
 ## Problem framing
 6G targets ultra-reliable, low-latency, ubiquitous connectivity, but terrestrial infrastructure leaves coverage gaps in remote, rural, and disaster-prone areas. MeNT-WiNs push MEC onto non-terrestrial platforms to bring computation/storage closer to users and cut backhaul congestion. These environments are highly dynamic and large-scale, where **traditional static optimization** (predefined rules, computationally expensive solvers) struggles to adapt to fluctuating demand, interference, and topology. The survey's thesis is that DRL — learning from experience and adapting in real time — is the transformative tool for resource management, decision-making, routing, and security across MeNT-WiNs.

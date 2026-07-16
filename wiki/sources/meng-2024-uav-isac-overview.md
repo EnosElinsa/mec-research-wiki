@@ -17,7 +17,8 @@ related:
   - "[[tang-2024-iscc-uav-feel]]"
   - "[[zhiyong-feng]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # UAV-Enabled Integrated Sensing and Communication: Opportunities and Challenges
@@ -29,6 +30,12 @@ Meng, K., Wu, Q., Xu, J., Chen, W., Feng, Z., Schober, R., & Swindlehurst, A. L.
 ## TL;DR
 
 An **overview article** on UAV-enabled **integrated sensing and communication (ISAC)** for 6G. It argues UAVs are attractive aerial ISAC platforms (3-D mobility, strong air-ground LoS) but introduce challenges from size/weight/power (SWAP) constraints and controllable mobility. It covers UAV motion control, wireless resource allocation, and interference management for single- and multi-UAV ISAC, then presents two synergy scenarios — **sensing-assisted UAV communication** and **communication-assisted UAV sensing** — and highlights future directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Meng et al. [x] provided an overview of UAV-enabled integrated sensing and communication for 6G networks. They organized the design space around UAV motion control, wireless resource allocation, and interference management for single- and multi-UAV systems. The article also described sensing-assisted UAV communication and communication-assisted UAV sensing as two synergy scenarios. It discussed air-ground LoS, SWAP constraints, and future directions for jointly optimizing sensing and communication performance. As an overview article, it did not introduce a single application-level optimization algorithm or new quantitative simulation result.
 
 ## Problem framing
 

@@ -18,7 +18,8 @@ related:
   - "[[panahi-2026-uav-green-iot-offloading]]"
   - "[[wang-2026-lifelong-semantic-content-reuse]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Energy-Efficient Task Allocation for Green Aerial Edge Computing Based on Metaverse Users: A Mean Field Game Approach
@@ -30,6 +31,42 @@ Ma, L., Chen, D., Zhou, Y.-e., Zhao, J., Wang, L., He, Q., Yi, B., Huang, M., & 
 ## TL;DR
 
 Proposes a green aerial edge computing (GAEC) framework for metaverse users, with computing-enhanced UAVs executing tasks and energy-focused UAVs harvesting ambient energy. A mean field game approximates massive UAV interactions through an individual UAV versus aggregate population state, while Lyapunov optimization sets an energy valuation signal for long-term utility and energy balance.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Computing-enhanced UAVs execute metaverse-user tasks while energy-focused UAVs harvest ambient energy and act as energy reservoirs. A dispatcher broadcasts an energy value signal at a large timescale, and each computing UAV makes local task/transmission decisions at a smaller timescale; unprocessed tasks can go to a cloud.
+
+**Problem & objective**: Green aerial edge task allocation, a stochastic mean-field game with Lyapunov control, minimizes long-term task delay and energy cost, $\min\mathbb E[\text{delay}+\text{energy cost}]$, while maintaining battery stability and one-task-per-UAV service constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task assignment | $x_{u,i}(t)$ | binary | Computing UAV $u$ serves task $i$ |
+| Local/cloud offloading | $y_i(t)$ | discrete | Task executes locally, at a CE-UAV, or in the cloud |
+| Compute/transmit allocation | $f_u(t),p_u(t)$ | continuous, bounded | CPU frequency and communication power at CE-UAV $u$ |
+| Energy value signal | $\rho[n]$ | continuous signal | Dispatcher valuation of stored energy |
+| Harvesting control | $h_v(t)$ | continuous/discrete | Energy collected by EF-UAV $v$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task is assigned to at most one CE-UAV and each CE-UAV processes at most one task at a time |
+| C2 | Local, CE-UAV, and cloud execution choices obey the task-latency limits |
+| C3 | CPU and communication allocations remain within UAV capacities |
+| C4 | Battery stochastic dynamics stay within nonnegative energy bounds |
+| C5 | The Lyapunov energy queue and mean-field population state remain stable |
+
+**Algorithm**: Approximate the large UAV population by a mean-field representative agent → derive the energy valuation with Lyapunov optimization → solve the coupled HJB/ODE coefficients → broadcast $\rho[n]$ and execute local task policies → validate the $\epsilon$-Nash approximation and energy balance on the hardware-in-the-loop testbed.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ma et al. [x] studied energy-efficient task allocation for green aerial edge computing with computing-enhanced and energy-focused UAVs serving metaverse users. They formulated a stochastic long-term task-allocation problem that balances delay, computation/communication energy, and energy harvesting while assigning each task to at most one computing UAV or the cloud. A mean-field game replaces dense UAV interactions with a representative agent against the aggregate energy state, and Lyapunov optimization supplies an energy valuation signal for long-term stability. The resulting policy is analyzed with an epsilon-Nash approximation and implemented with a dispatcher and local UAV decisions. A Raspberry Pi and A100 hardware-in-the-loop testbed reports energy balancing and the predicted decrease of approximation error as the UAV population grows.
 
 ## Problem
 

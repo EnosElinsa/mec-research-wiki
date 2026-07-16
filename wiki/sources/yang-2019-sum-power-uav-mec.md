@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks"
 authors: ["Zhaohui Yang", "Cunhua Pan", "Kezhi Wang", "Mohammad Shikh-Bahaei"]
 year: 2019
@@ -18,7 +19,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[cunhua-pan]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks
@@ -30,6 +31,42 @@ Yang, Z., Pan, C., Wang, K., & Shikh-Bahaei, M. (2019). *Energy Efficient Resour
 ## TL;DR
 
 A multiple-UAV MEC network where ground UEs either compute locally or offload (binary, one UAV per UE) to a rotary-wing UAV server. The paper minimizes the **sum power of both UEs and UAVs** — communication, execution, and (critically) UAV **propulsion/mechanical power** — by jointly optimizing **user association**, **power control**, **computation-capacity allocation**, and **UAV location planning** (3-D position, altitude, and antenna half-power beamwidth) under per-task latency and per-UAV coverage/battery constraints. The nonconvex problem is solved by an iterative three-subproblem algorithm, with a **fuzzy c-means clustering** initializer to find a feasible starting point.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $N$ ground UEs with binary local or offloaded tasks are served by $M$ hovering rotary-wing UAV MEC servers. Directional antenna beamwidth, altitude, coverage, LoS uplinks, CPU allocation, and propulsion power jointly determine system power and latency.
+
+**Problem & objective**: A non-convex mixed allocation and placement problem minimizes total UE and UAV power, $\min P_{\mathrm{UE}}+P_{\mathrm{UAV}}$, including communication, computation, and UAV mechanical power.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UE-UAV association | $a_{i,j}$ | binary | UE $i$ computes locally or at UAV $j$ |
+| UE transmit power | $p_i$ | continuous, bounded | Offloading power of UE $i$ |
+| CPU allocation | $f_{i,j}$ | continuous, nonnegative | UAV CPU capacity assigned to UE $i$ |
+| UAV position and altitude | $\mathbf q_j,H_j$ | continuous, bounded | Three-dimensional UAV placement |
+| Antenna half-beamwidth | $\theta_j$ | continuous, bounded | Directional coverage angle of UAV $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UE selects local computation or exactly one UAV |
+| C2 | Local or offloaded execution meets the common latency limit |
+| C3 | UE and UAV communication or computing power stay within budgets |
+| C4 | Per-UAV CPU allocation and associated-UE count remain within capacity |
+| C5 | Associated UEs lie in directional coverage, $R_{ij}\le H_j\tan\theta_j$ |
+
+**Algorithm**: Initialize feasible UAV clusters with fuzzy c-means → approximate association cardinality by iteratively reweighted $\ell_1$ minimization and update associations → solve CPU allocation in closed form → search each UAV's position, altitude, and beamwidth in one dimension → alternate the three blocks until sum power converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] studied energy-efficient resource allocation in multi-UAV mobile edge computing networks with binary task offloading. They formulated joint UE and UAV power minimization over user association, transmit power, computing capacity, three-dimensional UAV placement, and antenna beamwidth under latency, coverage, power, and capacity constraints. Their IACL algorithm approximates association cardinality by iteratively reweighted $\ell_1$ optimization, solves computing allocation in closed form, and updates placement and beamwidth by one-dimensional search. Fuzzy c-means clustering supplies a feasible initialization. Simulations report lower sum power than the evaluated fixed-altitude, fixed-beamwidth, and equal-computation-capacity baselines and performance close to exhaustive search in the tested small cases.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "UAV Trajectory Monitoring for Integrated Sensing and Communications System"
 authors: ["Shaoqiang Yan", "Hongliang Luo", "Ping Yang", "Jianwei Zhao", "Feifei Gao"]
 year: 2026
@@ -24,7 +25,7 @@ related:
   - "[[ping-yang]]"
   - "[[feifei-gao]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV Trajectory Monitoring for Integrated Sensing and Communications System
@@ -36,6 +37,12 @@ Yan, S., Luo, H., Yang, P., Zhao, J., & Gao, F. (2026). *UAV Trajectory Monitori
 ## TL;DR
 
 Presents a single-base-station [[integrated-sensing-and-communication|ISAC]] framework for discovering non-cooperative UAVs, estimating six motion parameters, associating observations across sensing cycles, and predicting subsequent target states for beam tracking. Its distinctive pipeline combines phase-rotated DFT estimation, inter-array spatial registration, position-gated velocity nearest-neighbor association, and interacting multiple-model unscented Kalman filtering. The reported accuracy and complete-trajectory results are simulation evidence rather than deterministic guarantees.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yan et al. [x] studied non-cooperative UAV trajectory monitoring with a single integrated sensing and communication base station. The pipeline applies moving-target indication, FFT and CA-CFAR detection, phase-rotated DFT parameter refinement, and coordinate registration across array sectors. Position-gated velocity nearest-neighbor association links observations to trajectories, and an interacting multiple-model unscented Kalman filter fuses constant-velocity, constant-acceleration, and coordinated-spiral estimates. Simulations report lower position and velocity RMSE and better crossing-trajectory association than the evaluated DFT, observation, and association baselines. The paper is a sensing, association, and state-estimation study and does not expose an application-level operational decision model for a Modeling Quick-Use Card.
 
 ## Problem
 

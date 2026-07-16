@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Time and Energy Minimization Communications Based on Collaborative Beamforming for UAV Networks: A Multi-Objective Optimization Method"
 authors: ["Geng Sun", "Jiahui Li", "Yanheng Liu", "Shuang Liang", "Hui Kang"]
 year: 2021
@@ -22,7 +23,7 @@ related:
   - "[[shuang-liang]]"
   - "[[hui-kang]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Time and Energy Minimization Communications Based on Collaborative Beamforming for UAV Networks: A Multi-Objective Optimization Method
@@ -34,6 +35,41 @@ Sun, G., Li, J., Liu, Y., Liang, S., & Kang, H. (2021). *Time and Energy Minimiz
 ## TL;DR
 
 Studies a UAV network where a set of UAVs form a **virtual antenna array (VAA)** and use **collaborative beamforming (CB)** to communicate, in turn, with several remote base stations (BSs). Because the UAVs start at random/discrete positions, performing a good VAA requires them to fly to optimal positions (at optimal speeds) and adjust optimal **excitation current weights** — which costs time and energy and trades off against transmission performance. The paper formulates a **time and energy minimization communication multi-objective optimization problem (TEMCMOP)** that simultaneously minimizes (i) total transmission time, (ii) total VAA-performing time, and (iii) total motion + hovering energy of the UAVs, by jointly optimizing UAV positions, flight speeds, excitation current weights, and the **order** of communicating with the different BSs. The problem is proven **NP-hard**; the authors derive an **energy-optimal flight-speed strategy** to reformulate it (R-TEMCMOP), then solve it with an **improved multi-objective ant lion optimizer (IMOALO)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Several UAVs form a virtual antenna array and sequentially use collaborative beamforming to communicate with remote base stations. UAVs fly from random initial positions to VAA configurations, choose excitation currents and flight speeds, and pay motion, hovering, VAA-formation, and transmission energy.
+
+**Problem & objective**: TEMCMOP, an NP-hard mixed discrete-continuous multi-objective problem, minimizes $\big(T_{\mathrm{trans}},T_{\mathrm{VAA}},E_{\mathrm{motion+hover}}\big)$ over UAV positions, speeds, excitation weights, and BS service order.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV positions | $\mathbf q_i$ | continuous 3-D positions | VAA formation points for UAV $i$ |
+| Flight speeds | $v_i$ | continuous, speed-bounded | Speed used to reach each formation |
+| Excitation currents | $w_i$ | complex/continuous bounded weights | Per-UAV CB amplitude and phase weights |
+| BS service order | $\pi$ | discrete permutation | Order in which remote BSs are served |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV positions and inter-UAV distances satisfy formation and collision limits |
+| C2 | Flight speeds obey aircraft speed bounds and energy-optimal speed relations |
+| C3 | Excitation currents satisfy amplitude, phase, and collaborative-beamforming limits |
+| C4 | Each remote BS is served once in the selected order |
+| C5 | Transmission, VAA-formation, and motion times/energies are computed consistently |
+
+**Algorithm**: Derive the energy-optimal flight-speed strategy and reformulate TEMCMOP as R-TEMCMOP → initialize a mixed continuous/discrete population with chaos and opposition learning → update solutions with the hybrid IMOALO operator → retain the nondominated Pareto set.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied time and energy minimization for UAV networks that form virtual antenna arrays through collaborative beamforming. They formulated an NP-hard multi-objective problem that minimizes transmission time, VAA-formation time, and UAV motion and hovering energy by jointly optimizing UAV positions, flight speeds, excitation currents, and the order of remote base-station service. An energy-optimal speed strategy removes the speed dimension and yields the reformulated R-TEMCMOP. The improved multi-objective ant lion optimizer uses chaos and opposition-based initialization and a mixed continuous/discrete update operator to obtain a Pareto set. Simulations report the best overall three-objective performance among the evaluated collaborative-beamforming and evolutionary baselines.
 
 ## Problem framing
 

@@ -17,8 +17,9 @@ related:
   - "[[integrated-sensing-and-communication]]"
   - "[[junting-chen]]"
   - "[[li-2026-radio-map-predictive-routing]]"
+modeling_card: required
 created: 2026-07-10
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Active Search for Low-altitude UAV Sensing and Communication for Users at Unknown Locations
@@ -30,6 +31,41 @@ Zheng, Y., & Chen, J. (2026). *Active Search for Low-altitude UAV Sensing and Co
 ## TL;DR
 
 Designs an online UAV search and placement method for low-altitude sensing/communication when ground-user locations, propagation models, and city geometry are unknown. The UAV reconstructs local LoS channel maps from measurements, follows an equipotential surface that balances BS-UAV backhaul and UAV-user service, and overlays LoS discovery with a spiral-style channel-measurement trajectory.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One low-altitude UAV provides sensing or communication service to ground users at unknown locations while maintaining a backhaul link to a BS in an unknown blocked urban environment. The illustrative model uses orthogonal user transmission and deterministic local LoS channel-gain maps reconstructed from noisy measurements; non-orthogonal access can be represented by replacing channel-gain maps with local SINR maps.
+
+**Problem & objective**: Problem $\mathcal P$ in (5), a non-convex online placement and resource-allocation problem, maximizes $\min\{f_0(g_0(\mathbf x)),F_u(\mathbf g_u(\mathbf x),\mathbf p)\}$ to balance BS-to-UAV backhaul performance and UAV-to-user sensing or communication performance.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV service position | $\mathbf x$ | Continuous 3D coordinate | Select the UAV placement that balances backhaul and user links |
+| User resource allocation | $\mathbf p$ | Continuous, nonnegative | Allocate UAV transmit power among sensing targets or communication users |
+| Online search trajectory | $\mathbf x_s(t)$ | Continuous path | Follow the locally reconstructed equipotential surface to discover LoS service positions |
+| Measurement trajectory | $\mathbf x_r(t)$ | Continuous spiral path | Collect geometrically diverse channel samples for local map estimation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Placement lies in the full-LoS feasible region: $\mathbf x\in\tilde{\mathcal D}$ |
+| C2 | Application resources satisfy $H_n(\mathbf g_u(\mathbf x),\mathbf p)\le0$ for $n=1,\ldots,N$ |
+| C3 | In the balancing and sum-rate examples, power satisfies $\mathbf p\ge0$ and $\sum_k p_k\le P_T$ |
+| C4 | Equipotential search maintains $F(\mathbf g(\mathbf x))=0$ while the UAV follows the minimum-altitude and LoS-discovery rules |
+| C5 | The superposed trajectory $\mathbf x(t)=\mathbf x_s(t)+\mathbf x_r(t)$ uses the derived spiral measurement radius and local-model validity range |
+
+**Algorithm**: Find a full-LoS initial point $\rightarrow$ estimate local channel gains and gradients by first-order polynomial regression along a spiral $\rightarrow$ allocate resources and reconstruct the local equipotential surface $\rightarrow$ descend on the surface while LoS holds $\rightarrow$ follow a constant-BS-link curve after an NLoS encounter and repeat.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zheng and Chen [x] studied online UAV placement for sensing and communication users at unknown locations while maintaining a backhaul link to a BS. They formulated a non-convex max-min placement and resource-allocation problem that balances BS-to-UAV and UAV-to-user performance under LoS and application constraints. Their method reconstructs local channel-gain maps from noisy online measurements and searches on an equipotential surface derived through perturbation theory. A superposed spiral trajectory supplies channel measurements while an LoS-discovery trajectory explores feasible service positions. Numerical experiments on two Beijing three-dimensional maps report more than 95% of exhaustive three-dimensional search capacity over 2000 user realizations with an average search trajectory of about 3 kilometers.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Human-level control through deep reinforcement learning"
 authors: ["Volodymyr Mnih", "Koray Kavukcuoglu", "David Silver", "Andrei A. Rusu", "Joel Veness", "Marc G. Bellemare", "Alex Graves", "Martin Riedmiller", "Andreas K. Fidjeland", "Georg Ostrovski", "Stig Petersen", "Charles Beattie", "Amir Sadik", "Ioannis Antonoglou", "Helen King", "Dharshan Kumaran", "Daan Wierstra", "Shane Legg", "Demis Hassabis"]
 year: 2015
@@ -11,7 +12,7 @@ related:
   - "[[lillicrap-2016-ddpg-continuous-control]]"
   - "[[fujimoto-2018-td3-actor-critic]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
 ---
 
 # Human-level control through deep reinforcement learning
@@ -23,6 +24,12 @@ Mnih, V., Kavukcuoglu, K., Silver, D., et al. (2015). *Human-level control throu
 ## TL;DR
 
 Introduces the **Deep Q-Network (DQN)** — a deep convolutional Q-learning agent that learns control policies directly from raw pixel inputs using two stabilizing mechanisms: **experience replay** (randomizes over stored (s, a, r, s') tuples to break observation correlations) and **target networks** (periodically updated Q-network copy used to generate stable training targets). Tested on 49 Atari 2600 games with the same architecture and hyperparameters, DQN surpasses all previous RL algorithms on 43 of 49 games and matches professional human game-tester performance on more than half (29 games). The first artificial agent to learn a wide range of competencies from high-dimensional sensory inputs in an end-to-end fashion.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mnih et al. [x] introduced the deep Q-network for learning control policies directly from high-dimensional visual observations. The method approximates the optimal action-value function with a convolutional neural network and selects discrete actions through Q-learning. It stores transitions in an experience replay memory, samples randomized minibatches, and evaluates Bellman targets with a periodically updated target network. The same architecture and hyperparameters were evaluated across 49 Atari 2600 games. The reported results exceed the evaluated previous reinforcement-learning algorithms on 43 games and reach the paper's human-level threshold on 29 games.
 
 ## Problem framing
 

@@ -18,7 +18,8 @@ related:
   - "[[safety-and-robustness-mechanisms-in-mec]]"
   - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Robust Computation Offloading and Trajectory Optimization for Multi-UAV-Assisted MEC: A Multiagent DRL Approach
@@ -30,6 +31,43 @@ Li, B., Yang, R., Liu, L., Wang, J., Zhang, N., & Dong, M. (2024). *Robust Compu
 ## TL;DR
 
 A multi-UAV-assisted MEC network with **both communication and computation uncertainties** — only partial CSI (imperfect UAV–UE channels) and inaccurate task-complexity estimates are available. The paper proposes a **robust** design that minimizes total weighted energy consumption by jointly optimizing UAV trajectory, task partition, and computation+communication resource allocation. It reformulates the problem as a multiagent MDP and solves it with **MAPPO using a Beta-distribution actor output (b-MAPPO)** to eliminate the boundary effects of Gaussian policies on bounded actions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-UAV MEC network serves heterogeneous UE tasks over multiple slots with partial CSI and bounded task-complexity estimation errors.
+
+**Problem & objective**: Jointly choose trajectories, UE-UAV association, task partition, beamforming, and CPU resources to minimize weighted UE and UAV energy, $\min E_{\mathrm{total}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV position | $\mathbf q_m[n]$ | continuous 2-D position | Horizontal trajectory of UAV $m$ in slot $n$ |
+| Communication beamformer | $\mathbf w_{k,m}[n]$ | complex continuous vector | UE $k$ transmission beamforming toward UAV $m$ |
+| Task partition | $\rho_k[n]$ | continuous in $[0,1]$ | Fraction of UE $k$ task executed at a UAV |
+| UE-UAV association | $\alpha_{k,m}$ | binary | Selects at most one serving UAV for UE $k$ |
+| UE CPU frequency | $f_k[n]$ | continuous in $[0,f_{k,\max}]$ | Local CPU allocation |
+| UAV CPU allocation | $f^u_{k,m}[n]$ | continuous in $[0,f_{u,\max}]$ | UAV computation allocated to UE $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Association is single-UAV, $\sum_m\alpha_{k,m}\leq1$, with $\alpha_{k,m}\in\{0,1\}$. |
+| C2 | UAV kinematics, speed, acceleration, and collision separation are enforced. |
+| C3 | UE transmit power, UE CPU, and aggregate per-UAV CPU allocations stay within their maxima. |
+| C4 | Each task meets its slot delay deadline, $t_k[n]\leq\delta$. |
+| C5 | Robust CSI and task-complexity errors remain bounded, $\lVert\Delta h_{k,m}[n]\rVert\leq\varepsilon_{k,m}$ and $\lvert\Delta\delta_z\rvert\leq\varepsilon_z$. |
+
+**Algorithm**: Reformulate as a CTDE multiagent MDP and train b-MAPPO, replacing the Gaussian actor with a bounded Beta-distribution policy for the joint UE and UAV actions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied robust computation offloading in multi-UAV MEC with simultaneous channel-state and task-complexity uncertainty. They minimized weighted UE and UAV energy over trajectories, UE-UAV association, partial task partitioning, beamforming, and local and UAV CPU allocation under kinematic, collision, deadline, and bounded-error constraints. Their CTDE b-MAPPO uses Beta-distribution actors for bounded actions and separate UE and UAV policies. Simulations report faster convergence and lower weighted energy than Pure-MAPPO, MADDPG, Greedy, and a DRL plus convex-optimization benchmark, while energy increases predictably with larger uncertainty bounds.
 
 ## Problem framing
 

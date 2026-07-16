@@ -18,7 +18,8 @@ related:
   - "[[memory-augmented-multi-uav-navigation]]"
   - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Distributed Energy-Efficient Multi-UAV Navigation for Long-Term Communication Coverage by Deep Reinforcement Learning
@@ -30,6 +31,39 @@ Liu, C. H., Ma, X., Gao, X., & Tang, J. (2020). *Distributed Energy-Efficient Mu
 ## TL;DR
 
 Uses one continuous actor-critic controller per UAV to sustain fair communication coverage over a gridded service region while limiting movement energy and penalizing border or connectivity violations. Critics train from global state and joint actions, but each UAV executes its actor from local observations.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-altitude UAVs act as mobile base stations over a two-dimensional region of $K$ points of interest (PoIs) for $T$ slots, with peer links for network connectivity and an access point for backhaul.
+
+**Problem & objective**: Navigate all UAVs to maximize temporal coverage and geographical fairness while minimizing movement energy, $\max c_T,\ \max f_T,\ \min e_T$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Flight direction | $\vartheta_i^t$ | continuous in $[0,2\pi)$ | Heading selected by UAV $i$ in slot $t$ |
+| Flight distance | $l_i^t$ | continuous in $[0,l_{\max}]$ | Movement length, with zero denoting hover |
+| Distributed policy | $\pi_i$ | local-observation policy | Maps each UAV observation to its direction-distance action |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | UAV positions remain inside the target region at every slot. |
+| C2 | Each UAV keeps a peer connection, with inter-UAV distance no larger than the communication range $R$. |
+| C3 | Actions obey $\vartheta_i^t\in[0,2\pi)$ and $0\leq l_i^t\leq l_{\max}$. |
+| C4 | The fixed-altitude coverage radius satisfies $R'\leq R$ while movement energy is accumulated over $T$ slots. |
+
+**Algorithm**: Formulate a multi-agent partially observable control problem with one actor and critic per UAV; train critics from global state and joint actions, then execute local actors with a shared coverage-fairness-per-energy reward and violation penalties.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] developed a distributed deep-reinforcement-learning controller for multiple UAV base stations that must maintain long-term communication coverage. Each UAV selects a continuous direction and flight distance, while the shared reward combines incremental coverage, Jain fairness, and movement energy with penalties for border and connectivity violations. Centralized critics use the global state and joint actions during training, whereas local actors control UAVs independently at execution. Simulations report energy-efficiency gains of 13.6% to 19.1% over DRL-EC3 across coverage radii, with a 13% coverage improvement at a representative movement-energy setting. The work is an early CTDE-style reference for fair, energy-aware multi-UAV navigation.
 
 ## Problem
 

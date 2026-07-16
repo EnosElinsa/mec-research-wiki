@@ -17,7 +17,8 @@ related:
   - "[[movable-antenna]]"
   - "[[wang-2026-6dara-cellfree]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # UAV-Enabled Passive 6D Movable Antennas: Joint Deployment and Beamforming Optimization
@@ -29,6 +30,41 @@ Liu, C., Mei, W., Wang, P., Meng, Y., Chen, Z., & Ning, B. (2026). *UAV-Enabled 
 ## TL;DR
 
 Treats a UAV-mounted passive IRS as a rigid six-degree-of-freedom surface whose 3-D location, three-axis orientation, and reflection phases are jointly controlled. The paper proves a one-axis orientation reduction only for a restricted single-user geometry, then applies coarse/fine deployment search, structured penalty-SCA phase design, and Gibbs exploration to multi-user max-min-SNR optimization.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna BS sends a common downlink signal to remote users through a UAV-mounted passive IRS. The rigid surface has 3-D translation, 3-D orientation, and unit-modulus reflection phases; direct BS-user links are absent and the LoS channels use angle-dependent effective aperture gains.
+
+**Problem & objective**: Joint passive 6D movable-antenna design, a non-convex max-min-SNR problem, maximizes the weakest user SNR, $\max_{\mathbf q,\boldsymbol\omega,\boldsymbol\theta}\min_l\mathrm{SNR}_l$, subject to half-space, phase, deployment, and orientation constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| IRS translation | $\mathbf q$ | continuous 3-D position | UAV/IRS location |
+| IRS orientation | $\boldsymbol\omega$ | continuous Euler angles | Three-axis surface orientation |
+| Passive phases | $\boldsymbol\theta$ | continuous unit modulus | Reflection phase of each element |
+| BS beamformer | $\mathbf w$ | continuous complex vector | Base-station transmit beamforming |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Users and the BS lie in the IRS reflecting half-space |
+| C2 | Every passive coefficient has unit modulus |
+| C3 | Location and orientation remain in the allowed deployment ranges |
+| C4 | The BS transmit beamformer obeys its power budget |
+| C5 | The max-min objective uses the common multicast signal and all user SNR constraints |
+
+**Algorithm**: Prove the restricted single-user 1-D orientation reduction → search horizontal position → for multiple users alternate coarse/fine location and orientation grids with structured phase SDR/SCA → recover phases by SVD → explore neighboring states with Gibbs sampling and retain the best feasible state.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied a UAV-enabled passive six-dimensional movable antenna in which an IRS jointly translates, rotates, and adjusts its reflection phases for downlink multicast. They formulated a max-min-SNR problem for remote users without direct BS-user links, subject to angle-dependent aperture, deployment, unit-modulus phase, and beamforming-power constraints. For a restricted single-user geometry, they proved an equivalent one-axis orientation and derived the optimal angle for each fixed position. For multiple users, an alternating optimization procedure combines coarse and fine location/orientation search, structured penalty-SCA phase design, SVD recovery, and Gibbs exploration. Numerical results report higher minimum SNR than location-only, orientation-only, conventional AO, and other deployment baselines in the tested settings.
 
 ## Problem framing
 

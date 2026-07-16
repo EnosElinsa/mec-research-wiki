@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cellular UAV-to-X Communications: Design and Optimization for Multi-UAV Networks"
 authors: ["Shuhang Zhang", "Hongliang Zhang", "Boya Di", "Lingyang Song"]
 year: ""
@@ -15,7 +16,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Cellular UAV-to-X Communications: Design and Optimization for Multi-UAV Networks
@@ -27,6 +28,41 @@ Zhang, S., Zhang, H., Di, B., & Song, L. *Cellular UAV-to-X Communications: Desi
 ## TL;DR
 
 Builds a cellular UAV sensing network in which high-SNR UAVs upload directly to a base station through UAV-to-network links, while low-SNR UAVs forward data to nearby UAV relays through underlaid UAV-to-UAV links. A cooperative sense-and-send protocol and the iterative ISASOA solver jointly allocate subchannels and control speed along predetermined trajectories to maximize uplink sum rate.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: In a single cellular cell, sensing UAVs move on predetermined trajectories and upload data either directly to the BS through overlay U2N links or through underlay U2U relays selected for low-SNR UAVs. U2U links reuse U2N and cellular-user subchannels, coupling air-to-air, air-to-ground, and ground interference.
+
+**Problem & objective**: Problem (24) is an NP-hard mixed binary and continuous resource-allocation problem that maximizes U2N-plus-cellular-user uplink sum rate, $\max_{\{v_i(t)\},\Phi(t),\Psi(t)}\sum_{k=1}^{K}\sum_{i\in\lambda(t)}\phi_{i,k}(t)R_{i,\mathrm{BS}}^k(t)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| U2N and CU subchannel allocation | $\Phi(t)=\{\phi_{i,k}(t)\}$ | binary | Assigns orthogonal uplink subchannels to direct UAV and cellular-user links |
+| U2U reuse allocation | $\Psi(t)=\{\psi_{i,k}(t)\}$ | binary | Selects subchannels reused by low-SNR UAV relay links |
+| UAV speed | $v_i(t)$ | continuous, $[0,v_{\max}]$ | Movement speed of UAV $i$ on its fixed trajectory in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every paired U2U link satisfies $\sum_k\psi_{i,k}(t)R_{i,j}^k(t)\ge R_0$ |
+| C2 | UAV speed obeys $0\le v_i(t)\le v_{\max}$ |
+| C3 | Each UAV completes its path by the horizon, $\sum_{t=1}^{T}v_i(t)\ge L_i$ |
+| C4 | Each subchannel is assigned to at most one direct U2N link or cellular user |
+| C5 | Each U2N, U2U, or cellular link receives at most $\chi_{\max}$ subchannels |
+| C6 | Allocation variables satisfy $\phi_{i,k}(t),\psi_{i,k}(t)\in\{0,1\}$ |
+
+**Algorithm**: Run the six-phase cooperative sense-and-send protocol → select U2N or U2U mode from the SNR threshold and pair each U2U UAV with its nearest U2N relay → solve relaxed U2N and CU allocation as a linear program → search U2U allocation by feasible-solution initialization and branch-and-bound → convexify and solve UAV speed allocation → iterate the three blocks until the uplink sum rate converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied cellular UAV-to-X communications in a single-cell sensing network with direct U2N transmission and underlaid U2U relaying. They formulated an NP-hard joint subchannel-allocation and UAV-speed problem that maximizes uplink sum rate under minimum U2U-rate, path-completion, speed, subchannel-exclusivity, and per-link allocation constraints. Their cooperative sense-and-send protocol selects transmission modes from received SNR, pairs low-SNR UAVs with nearby U2N relays, and distributes the resulting resource instructions. ISASOA alternates a relaxed linear program for U2N and cellular-user allocation, branch-and-bound for U2U reuse, and convex speed optimization. Simulations over more than 1,000 algorithm instances report about 10% higher uplink sum rate than the evaluated greedy allocation scheme.
 
 ## Problem
 

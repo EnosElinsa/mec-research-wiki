@@ -19,7 +19,8 @@ related:
   - "[[shao-2024-drl-antijamming-mec]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-06-01
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Optimization of Trajectory and Jamming Power for Multiple UAV-Aided Proactive Eavesdropping
@@ -31,6 +32,40 @@ Guo, D., Tang, L., Zhang, X., & Liang, Y.-C. (2024). *Joint Optimization of Traj
 ## TL;DR
 
 A **wireless information surveillance** scenario where a legitimate party uses **multiple full-duplex UAVs** to eavesdrop on **multiple suspicious links**, each formed by a mobile suspicious UAV transmitter and its fixed ground destination. The legitimate UAVs simultaneously act as silent eavesdroppers and emit **cognitive jamming** to the suspicious destinations (forcing the suspicious source to lower its rate so the monitor can decode), while planning trajectories to improve their eavesdropping channels. The sequential decision problem is an MDP; the key trick is to **decompose** it into (1) a non-learning optimal jamming-power solver per state and (2) an RL-optimized **moving policy**, with **decentralized per-UAV** control for flight safety.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple full-duplex UAV monitors track moving suspicious UAV-to-ground links while receiving intercepted signals and transmitting cooperative jamming.
+
+**Problem & objective**: Jointly choose motion and jamming to maximize long-run eavesdropping reward, $\max \liminf_{T\to\infty}\frac{1}{T}\sum_t r_t$, where $r_t$ combines eavesdropping rate and collision penalties.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV motion | $v_n(t)$ | discrete feasible velocity set | Movement action of monitor $n$ at slot $t$ |
+| Jamming power | $p_n^m(t)$ | continuous nonnegative | Power sent by monitor $n$ toward suspicious link $m$ |
+| Joint control policy | $\pi_n$ | decentralized policy | Maps each UAV's observation to its motion action |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Each motion action belongs to the feasible velocity set $\mathcal{V}$ |
+| C2 | Jamming powers are nonnegative, $p_n^m(t)\geq0$ |
+| C3 | Each monitor obeys its total jamming-power budget |
+| C4 | The eavesdropping rate must meet the suspicious-link rate for successful decoding |
+| C5 | Monitor trajectories preserve collision-avoidance and flight-safety separation |
+
+**Algorithm**: Solve jamming powers with successive convex approximation, then train decentralized parameter-shared MAPPO movement policies in the resulting multi-agent decision process.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Guo et al. [x] considered multiple full-duplex UAVs that cooperatively monitor moving suspicious UAV-to-ground links while transmitting jamming signals. They maximize long-run eavesdropping rate with collision penalties over per-UAV motion and per-link jamming powers, subject to velocity, power-budget, and successful-decoding constraints. The solution computes jamming power with successive convex approximation and trains decentralized movement policies with parameter-shared MAPPO. Simulations show the SCA power allocation approaches simplified exhaustive search, while MAPPO matches centralized PPO for two monitors and four links and reaches 1.4 bit/s/Hz in fewer than 2000 episodes for the larger case where centralized PPO requires about 4000.
 
 ## Problem framing
 

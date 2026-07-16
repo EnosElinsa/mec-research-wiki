@@ -5,6 +5,7 @@ authors: ["Xumin Huang", "Chaoda Peng", "Yuan Wu", "Jiawen Kang", "Weifeng Zhong
 year: 2023
 url: "https://doi.org/10.1109/JIOT.2023.3288379"
 venue: "IEEE Internet of Things Journal"
+modeling_card: required
 tags: [source, mu-aec, interdependent-tasks, dag, makespan, energy-balancing, cmop, evolutionary-algorithm, local-search]
 related:
   - "[[multi-uav-assisted-mec]]"
@@ -17,7 +18,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[huang-2025-cmop-dispersed-computing]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Joint Interdependent Task Scheduling and Energy Balancing for Multi-UAV-Enabled Aerial Edge Computing
@@ -37,6 +38,39 @@ Solved with a constrained decomposition-based MOEA augmented by:
 
 - **Local search** that consults the objective values to guide neighborhood moves.
 - **Improved genetic operator** that respects task-dependency order during crossover/mutation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One ground user partitions an application into a directed acyclic graph of interdependent tasks and offloads every task to one member of a $J$-UAV swarm managed by a trusted leader UAV. Each UAV executes one task at a time and exchanges intermediate data when dependencies cross UAVs. UAV-to-UAV links are orthogonal LoS links; ground-to-air and air-to-ground links use mixed LoS/NLoS channel gains.
+
+**Problem & objective**: Problem (14) is an NP-hard constrained multi-objective optimization problem that jointly minimizes task makespan and the UAV energy-balancing index, $\min \{G_1(\mathbf x),G_2(\mathbf x)\}$, where $G_1=\max_j FT_j$ and $G_2=\sum_j((TE_j-\overline{TE})/\psi)^2$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task assignment and order | $x_{i,j}$ | integer, $0$ or positive order | Assign task $i$ to UAV $j$ and specify its processing order |
+| UAV CPU frequency | $f_j^k$ | continuous, $0\leq f_j^k\leq F_j$ | Computing speed for the $k$th task executed by UAV $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every task is entirely offloaded to exactly one UAV |
+| C2 | Each UAV's total hovering and computing energy remains below its battery limit |
+| C3 | Processing orders respect all DAG predecessor relationships and intermediate-data availability |
+| C4 | Assignment-order variables remain in their feasible integer domain |
+| C5 | Per-task CPU frequencies remain between zero and the executing UAV's maximum speed |
+
+**Algorithm**: Initialize a CMOEA/D-CDP population, decompose the constrained multi-objective problem into scalar subproblems, apply objective-informed local search for makespan and energy balancing, use a dependency-preserving genetic operator for assignment and order updates, and return the feasible nondominated Pareto solutions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied joint interdependent-task scheduling and energy balancing in multi-UAV-enabled aerial edge computing. They represented an application as a directed acyclic task graph and formulated an NP-hard constrained multi-objective optimization problem that minimizes task makespan and the difference in energy consumption among UAVs. The decision model assigns each task to one UAV, determines its processing order, and allocates CPU frequency while enforcing single-assignment, dependency, energy, and resource-domain constraints. Their constrained decomposition-based multi-objective evolutionary algorithm combines objective-informed local search with an improved genetic operator that respects task dependencies. Numerical experiments on general, mesh, and tree task graphs report lower mean inverted generational distance and higher mean hypervolume than the evaluated CMOEA/D-CDP, PPS, and ToP baselines.
 
 ## Why this matters
 

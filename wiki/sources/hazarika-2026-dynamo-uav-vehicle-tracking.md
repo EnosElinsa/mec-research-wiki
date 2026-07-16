@@ -5,6 +5,7 @@ authors: ["Ananya Hazarika", "Mehdi Rahmati"]
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3639545"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: required
 tags: [source, uav-isac, vehicular-networks, target-tracking, gaussian-process-regression, pomdp, maddpg, age-of-information, crlb]
 related:
   - "[[dynamic-target-prioritization-metric]]"
@@ -18,7 +19,7 @@ related:
   - "[[angle-dependent-rician-fading]]"
   - "[[he-2026-lscr-uav-relay-tracking]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Predictive UAV Framework for Tracking Fast-Moving Vehicles in Dynamic Environments
@@ -30,6 +31,39 @@ Hazarika, A., & Rahmati, M. (2026). *A Predictive UAV Framework for Tracking Fas
 ## TL;DR
 
 Proposes a predictive multi-UAV tracking framework for fast-moving vehicles. The framework combines DynaMo trajectory prediction, the Dynamic Target Prioritization Metric (DTPM), CRLB/FIM-based sensing and beamforming optimization, and POMDP-MADDPG control so UAVs prioritize targets whose state is stale, uncertain, off-trajectory, or communication-limited.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A decentralized UAV swarm uses multistatic radar sensing and multi-hop mesh communication to track fast-moving vehicles under occlusion, clutter, and partial observability. UAV-to-UAV links use bandwidth-limited rates with interference, noise, and Rician fading, while each UAV can transmit or receive radar echoes and steer an integrated sensing and communication waveform.
+
+**Problem & objective**: Problem (21) minimizes DTPM-weighted estimation uncertainty, $\min_{\{\mathbf W_k(t),P_k(t)\}}\sum_{m=1}^{M}\operatorname{Tr}(\mathrm{CRLB}^{\mathrm{DTPM}}_m(t))$, and the cooperative POMDP extends this objective with penalties for staleness, CRLB, rate shortfall, and state-estimation error.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Beamforming matrix | $\mathbf W_k(t)$ | complex matrix, power-bounded | Sensing and communication beam of UAV $k$ |
+| Transmit power | $P_k(t)$ | continuous, nonnegative and bounded | UAV transmit power used for tracking and mesh communication |
+| Joint radar-communication waveform | $\mathbf r_{\mathrm{dfrc},k}(t)$ | complex waveform vector | Integrated sensing and communication signal selected by UAV $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Power | $\lVert\mathbf W_k(t)\rVert_F^2\leq P_k^{\max}$ |
+| Data rate | $R_{k,m}(t)\geq R_{\min}$ for every required UAV-target communication link |
+| Reliability | $\mathrm{SINR}_{k,m}(t)\geq\delta_{\mathrm{URLLC}}$ |
+| Beam structure | $\mathbf W_k(t)=\mathbf a_k(\hat\theta_{m,k}(t))\mathbf w_k^H(t)$ aligns a rank-one beam with the predicted target direction |
+
+**Algorithm**: Predict maneuvering target states and uncertainty with the DynaMo stochastic kinematic and Gaussian-process model; compute DTPM priorities from staleness, trajectory deviation, uncertainty, SINR, and distance; construct the DTPM-weighted FIM; update beamformers and powers by successive convex approximation of the inverse-FIM trace; use the optimized controls within Bayesian belief updates; and train a centralized-critic, decentralized-actor MADDPG policy with the POMDP reward.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hazarika and Rahmati [x] studied decentralized multi-UAV tracking of fast-moving vehicles in dynamic environments with integrated sensing and communication. They formulated DTPM-weighted CRLB minimization over beamforming and transmit power under power, rate, SINR, and beam-alignment constraints, and represented cooperative control as a POMDP. Their framework combines DynaMo motion prediction, freshness-aware target prioritization, successive convex approximation, Bayesian belief updates, and POMDP-MADDPG coordination. Simulations reported a DynaMo RMSE of 0.622 m in Table I, a 68.5 percent average-staleness improvement from DTPM, and nearly 15 percent higher average reward than DQN.
 
 ## Problem
 

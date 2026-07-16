@@ -5,6 +5,7 @@ authors: ["Mingjian Chen", "Liang Yang", "Jiangling Cao", "Guangxu Zhu", "Weijie
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3647000"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, low-altitude-intelligent-network, cellular-connected-uav, uav-trajectory-control, dueling-dqn, logistics, collision-avoidance]
 related:
   - "[[guangxu-zhu]]"
@@ -22,7 +23,7 @@ related:
   - "[[radio-map-aided-uav-path-planning]]"
   - "[[weijie-yuan]]"
 created: 2026-07-06
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality, Battery Energy, and Time Window Constraints
@@ -34,6 +35,44 @@ Chen, M., Yang, L., Cao, J., Zhu, G., Yuan, W., Jiang, H., & Niyato, D. (2026). 
 ## TL;DR
 
 Studies cooperative cargo-pickup route planning for cellular-connected UAVs in the low-altitude economy. The proposed CACMO framework combines D3QN trajectory learning, simulated-annealing pickup-sequence planning, and explicit inter-UAV conflict resolution so multiple cargo UAVs can satisfy communication-quality, battery-energy, time-window, and collision-avoidance constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple cargo UAVs depart from and return to a warehouse while visiting pickup points. Each route must maintain cellular coverage, respect battery and payload limits, meet pickup time windows, and keep safe separation from other UAVs.
+
+**Problem & objective**: The mixed-integer trajectory and scheduling problem $P_0$ maximizes weighted customer satisfaction minus completion time, $\max_{\mathbf p_{\mathrm{uav}}(t),O,g_{\mathrm{uav}}(t),V_{\mathrm{uav}}(t)}\;\mu_1S_{\mathrm{us}}-\mu_2T_c$, subject to route, communication, energy, time-window, payload, speed, and collision constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf p_{\mathrm{uav}}(t)$ | continuous 3-D vector | Location of each cargo UAV over time |
+| Pickup order | $O$ | discrete permutation | Sequence in which pickup points are served |
+| GBS association | $g_{\mathrm{uav}}(t)$ | discrete index | Serving ground base station for each UAV and slot |
+| UAV speed | $V_{\mathrm{uav}}(t)$ | continuous, $[0,V_{\max}]$ | Flight speed along the route |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Warehouse departure and return: $\mathbf p_{\mathrm{uav}}(0)=\mathbf p_{\mathrm{uav}}(T_c)=\mathbf d_0$. |
+| C2 | Every pickup point is visited: $\mathbf p_q(t)=\mathbf d_k$ for each assigned pickup point. |
+| C3 | Horizontal flight region is bounded: $0\le x_{\mathrm{uav}}(t),y_{\mathrm{uav}}(t)\le I$. |
+| C4 | Altitude is bounded: $0\le H_{\mathrm{uav}}(t)\le H_{\max}$. |
+| C5 | Payload never exceeds capacity: $\sum_{n=1}^{K}w_k\le w_{\max}$. |
+| C6 | Speed is bounded: $0\le V_{\mathrm{uav}}(t)\le V_{\max}$. |
+| C7 | Cellular outage probability remains below threshold: $\widehat P_{\mathrm{out}}(\mathbf p_n,g_{\mathrm{uav}})\le P_{\mathrm{th}}$. |
+| C8 | Flight-energy and inter-UAV collision constraints from (20) and (25)-(26) are satisfied. |
+
+**Algorithm**: Train an online D3QN for communication-aware point-to-point trajectories, use simulated annealing to search pickup sequences from learned pairwise costs, detect route conflicts, add collision penalties and retrain D3QN, then repeat sequence search until all routes are feasible.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied multi-UAV cargo pickup route planning and task scheduling under cellular communication, battery, time-window, payload, and collision constraints. They formulated a weighted objective that maximizes customer satisfaction while minimizing total completion time over UAV trajectories, pickup order, GBS association, and speed. CACMO combines online D3QN trajectory learning, simulated-annealing pickup-sequence search, and alternating collision detection with penalty-based D3QN retraining. Simulations reported 1719 s task completion time, 0.9969 customer satisfaction, and a 70-75% reduction in total weighted cost against representative baselines.
 
 ## Problem framing
 

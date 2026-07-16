@@ -21,7 +21,8 @@ related:
   - "[[khaled-ben-letaief]]"
   - "[[lu-2026-multiuav-iscpt]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # UAV-Assisted Wireless Powered Cooperative Mobile Edge Computing: Joint Offloading, CPU Control, and Trajectory Optimization
@@ -33,6 +34,40 @@ Liu, Y., Xiong, K., Ni, Q., Fan, P., & Letaief, K. B. (2020). *UAV-Assisted Wire
 ## TL;DR
 
 A **UAV-enabled wireless-powered cooperative MEC** system, where a UAV carrying an **energy transmitter (ET)** and an **MEC server** provides both energy and computing to sensor devices (SDs). **Active** SDs (with tasks) complete computing with help from the UAV and from **neighboring idle SDs** (no task), which act as cooperative helpers using harvested energy. The problem **minimizes the total required energy of the UAV** by jointly optimizing CPU frequencies, offloading amount, transmit power, and the UAV trajectory. The non-convex problem is solved by an **SCA-based** algorithm and, as a lower-complexity alternative, a **decomposition-and-iteration (DAI)-based** algorithm.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One UAV carries a wireless energy transmitter and MEC server, powers active sensor devices, and enables neighboring idle devices to compute active tasks with harvested energy over $N$ slots.
+
+**Problem & objective**: Jointly choose CPU frequencies, offloaded bits, transmit power, and UAV motion to minimize the UAV's communication, computation, and propulsion energy, $\min_{\mathbf F,\mathbf L,\mathbf Q,\mathbf P}\Theta$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| CPU frequencies | $\mathbf F$ | continuous, nonnegative and hardware-bounded | Frequencies of active SDs, idle helpers, and the UAV |
+| Offloaded bits | $\mathbf L$ | continuous, nonnegative | Bits sent from each active SD to the UAV or an idle helper |
+| UAV motion | $\mathbf Q$ | continuous trajectory, velocity, and acceleration | Slot-wise position and flight dynamics |
+| Transmission power | $\mathbf P$ | continuous, nonnegative and power-bounded | Active-device offloading powers used to meet UAV and helper rate constraints |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Energy causality holds at active and idle SDs, so consumed energy does not exceed harvested energy. |
+| C2 | Offloading and execution are causal and complete all active-device bits, including the rate bound $\delta_oB\log_2(1+ph/\sigma^2)\geq L$. |
+| C3 | UAV motion follows $q_u[n+1]=q_u[n]+v[n]T/N+a[n](T/N)^2/2$ with $\lVert v[n]\rVert\leq V_{\max}$ and $\lVert a[n]\rVert\leq a_{\max}$. |
+| C4 | The UAV returns to its initial position, $q_u^{\mathrm{initial}}=q_u^{\mathrm{final}}$, and all CPU, bit, and power variables remain nonnegative. |
+
+**Algorithm**: Apply successive convex approximation to the coupled non-convex program, or decompose CPU/offloading and trajectory blocks and iterate them with Lagrangian-dual and convex subproblem updates in the lower-complexity DAI method.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied wireless-powered cooperative MEC in which a UAV jointly acts as an energy transmitter and MEC server, while idle sensor devices help active devices compute. The energy-minimization formulation couples CPU frequencies, offloaded bits, transmit power, and a propulsion-aware UAV trajectory under energy-causality, computation, rate, and mobility constraints. An SCA method solves convex approximations of the full program, and a DAI method alternates resource and trajectory blocks at lower complexity. Simulations show both methods converge within several iterations with similar energy and trajectories, while idle-device cooperation reduces the UAV's computing energy. The results also identify trajectory and acceleration control as dominant contributors to total UAV energy.
 
 ## Problem framing
 

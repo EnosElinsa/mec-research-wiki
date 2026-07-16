@@ -15,8 +15,9 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[tony-q-s-quek]]"
   - "[[zhu-2024-zdrl-uav-tracking]]"
+modeling_card: required
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # 3D UAV Localization Optimization Under Jamming Attacks: A Mixture Gaussian Distribution Based Collaborative Reinforcement Learning
@@ -28,6 +29,41 @@ Zhu, Y., Chen, M., Wang, S., Liu, Y., Yin, C., & Quek, T. Q. S. (2026). *3D UAV 
 ## TL;DR
 
 Extends collaborative UAV localization to adversarial jamming. A BS, an active UAV, and passive UAVs localize a target UAV while a jamming UAV disrupts distance measurements. The BS can select between GAN-based positioning and TDOA-based positioning, and a mixture-Gaussian collaborative RL method jointly controls active-UAV transmit power, active/passive UAV trajectories, measurement subset selection, and localization-method choice.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A BS and one active UAV localize a moving target UAV with passive-UAV distance measurements while a jammer transmits discontinuous interference; passive UAVs report over probabilistic LoS/NLoS air-to-ground links, and the BS selects GAN-based or TDOA-based positioning.
+
+**Problem & objective**: Problem (13), a finite-horizon non-convex collaborative-control problem, minimizes $\sum_{t=1}^{T}e_t(\mathbf l_{0,t},p_t^{\mathrm T},\mathbf q_t,g_t)$, the cumulative target-UAV positioning error under unknown jamming.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Active-UAV yaw and pitch | $\alpha_t,\beta_t$ | Bounded continuous angles | Active-UAV trajectory control |
+| Active-UAV transmit power | $p_t^{\mathrm T}$ | Discrete bounded power level | Ranging-signal power under jamming |
+| Passive-UAV measurement subset | $\mathbf q_t$ | Binary selection vector | Four distance measurements used by the BS |
+| Positioning method | $g_t$ | Binary | GAN-based or TDOA-based localization |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Active-UAV flight energy satisfies $E_t^{\mathrm F}\le E_{\max}^{\mathrm F}$ |
+| C2 | Selected passive-UAV reporting delay satisfies $q_{u,t}T_{u,t}^{\mathrm G}\le T_{\max}$ |
+| C3 | Inter-UAV separation satisfies $\|\mathbf l_{u,t}-\mathbf l_{0,t}\|\ge L_{\min}$ |
+| C4 | Yaw and pitch remain in $[\alpha_{\min},\alpha_{\max}]$ and $[\beta_{\min},\beta_{\max}]$ |
+| C5 | Exactly four passive measurements are selected, $\sum_{u=0}^{U}q_{u,t}=4$ |
+
+**Algorithm**: Mixture-Gaussian collaborative RL, observe active-UAV and BS states, select actions by epsilon-greedy exploration, predict mixture means, variances, and weights for return distributions, exchange value estimates, compute the joint loss at the BS, and update both agents' DNNs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied three-dimensional UAV localization under discontinuous jamming attacks using one active UAV, passive UAVs, and a BS. They formulated cumulative positioning-error minimization over active-UAV trajectory and transmit power, passive-measurement subset selection, and GAN-based or TDOA-based positioning choice. Their collaborative reinforcement learning method approximates return distributions with a mixture of Gaussians and coordinates the active UAV and BS under unknown jamming patterns. The learned policy dynamically selects the localization method and four distance measurements while respecting energy, delay, movement, and separation constraints. Simulations report positioning-error gains of 37.4%, 24.8%, and 14.0% over three baselines at 5 W jamming power.
 
 ## Problem
 

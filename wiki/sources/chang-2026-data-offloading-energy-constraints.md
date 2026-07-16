@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV Trajectory Planning for IoT Data Collection and Offloading With Energy Constraints"
 authors: ["Teng-Wu Chang", "Jang-Ping Sheu", "Nguyen Van Cuong"]
 year: 2026
@@ -21,7 +22,7 @@ related:
   - "[[li-2023-energy-constrained-uav-data-collection]]"
   - "[[ye-2026-flight-speed-battery-swapping]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV Trajectory Planning for IoT Data Collection and Offloading With Energy Constraints
@@ -33,6 +34,41 @@ Chang, T.-W., Sheu, J.-P., & Cuong, N. V. (2026). *UAV Trajectory Planning for I
 ## TL;DR
 
 A battery-limited UAV must collect data from every IoT device, deliver each payload to its predetermined edge server, visit battery-replacement stations when needed, and return to its depot. The paper formulates an exact [[mixed-integer-linear-programming]] model and proposes a three-stage heuristic that constructs a precedence-feasible visit order, inserts battery stations by dynamic programming for that fixed order, and iteratively coordinates the two decisions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A single fixed-speed, fixed-altitude UAV starts and ends at a depot, collects data from IoT devices, offloads each group to its predetermined edge server, and may revisit battery stations through dummy visit nodes; device-to-UAV and UAV-to-server links are line-of-sight with a fixed rate.
+
+**Problem & objective**: Problem (9) is an NP-hard MILP that minimizes mission completion time, $\min \left(\sum_{i,j\in V,\,i\ne j} t_{i,j}x_{i,j}+\sum_{i\in V,\,j\in V_3'}x_{i,j}C\right)$, comprising flight time and constant battery-replacement delays.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Route selection | $x_{i,j}$ | Binary, $\{0,1\}$ | Indicates whether the UAV flies directly from node $i$ to node $j$. |
+| Visit order | $u_i$ | Integer, $1\le u_i\le N'$ | Orders IoT-device, edge-server, and dummy battery-station visits. |
+| Arrival energy | $z_i^{\mathrm{in}}$ | Continuous, $[0,Q]$ | Remaining battery energy when the UAV arrives at node $i$. |
+| Departure energy | $z_i^{\mathrm{out}}$ | Continuous, $[0,Q]$ | Remaining energy after hovering or battery replacement at node $i$. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Many-to-one precedence requires $u_m-u_n\ge 1$ for every device $n\in I_m$ and its destination server $m$. |
+| C2 | Energy feasibility uses $0\le z_i^{\mathrm{in}},z_i^{\mathrm{out}}\le Q$, $z_j^{\mathrm{in}}=z_i^{\mathrm{out}}-p_{\mathrm f}t_{i,j}x_{i,j}$, and the hovering or battery-reset update in (8). |
+| C3 | Each device and server is visited once, each dummy battery node at most once, and route flow is conserved as in (9d)-(9f). |
+| C4 | MTZ constraints $u_i-u_j+N'(x_{i,j}-1)\le -1$ eliminate subtours. |
+| C5 | Consecutive battery-station visits are forbidden, initial energy is $z_0^{\mathrm{out}}=Q$, and visit-order bounds hold. |
+
+**Algorithm**: TMTP first solves a precedence-aware device tour and greedily inserts edge servers, then uses dynamic programming to insert battery stations under energy constraints, and finally iteratively refines sub-trajectories and reinserts stations.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chang et al. [x] studied trajectory planning for a battery-limited UAV that collects IoT data and physically delivers each data group to a predetermined edge server. They formulated an NP-hard mixed-integer linear program that minimizes flight time and battery-replacement delay subject to many-to-one precedence, route-flow, subtour-elimination, and energy constraints. Their TMTP heuristic constructs a precedence-feasible tour, inserts battery stations by dynamic programming, and iteratively refines the resulting sub-trajectories. Simulations over 200 random deployments report lower completion time than all four baselines across node, replacement-time, station-count, device-to-server-ratio, and battery-capacity sweeps, together with substantially faster execution than the ant-colony baselines.
 
 ## Problem
 

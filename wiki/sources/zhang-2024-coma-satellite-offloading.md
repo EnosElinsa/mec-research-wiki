@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Collaborative Task Offloading Optimization for Satellite Mobile Edge Computing Using Multi-Agent Deep Reinforcement Learning"
 authors: ["Hangyu Zhang", "Hongbo Zhao", "Rongke Liu", "Aryan Kaushik", "Xiangqiang Gao", "Shenzhan Xu"]
 year: 2024
@@ -20,7 +21,7 @@ related:
   - "[[qin-2025-matd3-noma-queue-sagin]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Collaborative Task Offloading Optimization for Satellite Mobile Edge Computing Using Multi-Agent Deep Reinforcement Learning
@@ -32,6 +33,40 @@ Zhang, H., Zhao, H., Liu, R., Kaushik, A., Gao, X., & Xu, S. (2024). *Collaborat
 ## TL;DR
 
 A **multi-agent collaborative task-offloading** scheme for **distributed satellite MEC (SMEC)** on a LEO constellation. Each satellite is an autonomous agent that, facing **time-varying inter-satellite-link (ISL) visibility** and mission demands, decides offloading ratios and computing-resource allocation from local observations to **minimize total energy consumption** under task delay and resource constraints. The problem is cast as a **POMDP** and solved with **counterfactual multi-agent policy gradients (COMA)** in an **actor-critic / centralized-training-decentralized-execution (CTDE)** setup: a centralized critic (trained on the terrestrial cloud) computes a per-agent counterfactual baseline for credit assignment, and the learned actor runs on each satellite. The actor is redesigned with an **attention-based bidirectional LSTM (Atten-BiLSTM)** to exploit the temporal regularity of the (preset, periodic) LEO topology. A Satellite-Tool-Kit (STK)-built constellation is used for evaluation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: MEC-enabled LEO satellites receive divisible tasks and cooperatively process them over time-varying single-hop laser ISLs. Each satellite observes local topology and workload, while periodic orbital visibility changes the eligible helper set.
+
+**Problem & objective**: A cooperative POMDP minimizes long-term system energy, $\min\mathbb E[\sum_t\gamma^t E_{\mathrm{sys}}(t)]$, over offloading ratios and satellite computing resources under delay and capacity limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading ratio | $\alpha_{i,j}(t)$ | continuous, $[0,1]$ | Fraction of satellite $i$'s task sent to helper $j$ |
+| CPU allocation | $f_{i,j}(t)$ | continuous, nonnegative | Computing resource assigned to task fraction |
+| Helper selection | $x_{i,j}(t)$ | binary/visibility-limited | Eligible local or neighboring execution node |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Task fractions across visible satellites sum to one |
+| C2 | Offloading uses only currently visible single-hop ISLs |
+| C3 | Per-satellite CPU allocations stay within capacity |
+| C4 | Transmission, propagation, and computation finish before the deadline |
+| C5 | Satellite communication and computing energy remain feasible |
+
+**Algorithm**: Encode each satellite's local POMDP observation → process topology history with an attention-based BiLSTM actor → sample offloading and compute actions → train a centralized COMA critic with per-agent counterfactual baselines on the ground → share actor parameters → execute the learned actors independently onboard.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied collaborative task offloading in distributed satellite mobile edge computing with time-varying inter-satellite visibility. They formulated a POMDP in which satellites select offloading ratios and computing resources to minimize energy under task-delay, visibility, and resource constraints. COMA uses a centralized critic and per-agent counterfactual baselines during terrestrial training while satellite actors execute from local observations. An attention-based bidirectional LSTM actor captures periodic topology evolution. STK-based simulations report better convergence and energy performance than the evaluated MADDPG, DDPG, independent actor-critic, random-offloading, and local-computing baselines.
 
 ## Problem framing
 

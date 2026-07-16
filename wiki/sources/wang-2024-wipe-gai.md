@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "A Unified Framework for Guiding Generative AI With Wireless Perception in Resource Constrained Mobile Edge Networks"
 authors: ["Jiacheng Wang", "Hongyang Du", "Dusit Niyato", "Jiawen Kang", "Zehui Xiong", "Deepu Rajan", "Shiwen Mao", "Xuemin Shen"]
 year: 2024
@@ -23,7 +24,7 @@ related:
   - "[[xuemin-shen]]"
   - "[[zehui-xiong]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # A Unified Framework for Guiding Generative AI With Wireless Perception in Resource Constrained Mobile Edge Networks
@@ -35,6 +36,40 @@ Wang, J., Du, H., Niyato, D., Kang, J., Xiong, Z., Rajan, D., Mao, S., & Shen, X
 ## TL;DR
 
 **WiPe-GAI** — a framework that uses **wireless perception to guide generative AI (GAI)** for AI-generated-content (AIGC) services in resource-constrained mobile edge networks, with virtual-character generation as the running example. Two coupled pieces: (1) a **sequential multi-scale perception (SMSP)** algorithm that builds a CSI feature matrix from wireless signals and feeds a trained network to predict the user's **skeleton** (posture), which then guides the GAI model to generate a matching virtual character; and (2) a **pricing-based incentive mechanism** whose **optimal pricing strategy is produced by a diffusion model**, maximizing user utility while keeping the virtual service provider (VSP) willing to participate. The paper reports experiments showing accurate skeleton prediction and pricing strategies that beat existing solutions in user utility while ensuring VSP participation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A mobile-edge virtual service provider runs wireless perception and generative-AI character generation for a user, with CSI-derived skeleton quality, image quality, limited compute resources, and a price paid per unit of service quality.
+
+**Problem & objective**: The incentive problem maximizes user utility, $\max_{v_r,I_b,\chi_s,\chi_{ag}}U_{us}(v_r,I_b,\chi_s,\chi_{ag})$, while inducing a utility-maximizing provider response.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| QoS price | $v_r$ | continuous, nonnegative | User payment per quality unit |
+| Basic fee | $I_b$ | continuous, nonnegative | Fixed payment to the provider |
+| Perception compute | $\chi_s$ | continuous, nonnegative | Resources allocated to wireless perception |
+| AIGC compute | $\chi_{ag}$ | continuous, nonnegative | Resources allocated to character generation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Provider resources are chosen as a utility best response: $(\chi_s',\chi_{ag}')\in\arg\max U_{vsp}$. |
+| C2 | Total provider compute is bounded: $\chi_s'+\chi_{ag}'\leq E_t$. |
+| C3 | Provider participation requires $U_{vsp}(\chi_s',\chi_{ag}',v_r,I_b)\geq U_{th}$. |
+| C4 | User utility is $U_{us}=(v_m-v_r)Q_t-I_b$, with $Q_t$ combining perception and AIGC quality. |
+
+**Algorithm**: Extract CSI features and skeletons with sequential multi-scale perception, generate virtual characters from the inferred pose, and train a conditional diffusion model with Q-learning to produce pricing actions; the provider then solves its resource response by convex optimization.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] propose WiPe-GAI, which uses wireless CSI perception to guide virtual-character generation at a mobile edge provider. The paper also formulates a pricing and resource-allocation problem that maximizes user utility through a QoS price, basic fee, and provider compute split under a provider best response, capacity bound, and participation threshold. A sequential multi-scale perception pipeline supplies the skeleton, while a conditional diffusion model with Q-learning generates pricing strategies and convex optimization completes the provider response. Experiments report accurate skeleton and character generation together with user utility gains over existing pricing solutions while preserving provider participation.
 
 ## Problem framing
 

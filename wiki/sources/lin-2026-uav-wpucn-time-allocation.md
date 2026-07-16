@@ -20,7 +20,8 @@ related:
   - "[[zeng-2019-rotary-wing-energy-min]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # UAV-Enabled Wireless-Powered Underground Communication Networks: A Novel Time Allocation Approach
@@ -32,6 +33,42 @@ Lin, K., Mao, Y., López, O. L. A., & Alouini, M.-S. (2026). *UAV-Enabled Wirele
 ## TL;DR
 
 A terrestrial hybrid access point (HAP) and a rotary-wing UAV jointly power underground devices, after which the UAV collects their TDMA uploads and returns the data to the HAP. For fixed flight geometry, speed, altitude, and hover position, the paper reduces UAV-energy minimization to a convex allocation of WET and uplink durations. It also compares ideal full-CSI beamforming with several [[csi-free-multiantenna-wireless-energy-transfer|CSI-free multi-antenna WET]] schemes under RF-chain and servo-power costs.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One terrestrial HAP and one rotary-wing UAV wirelessly power and collect data from $N$ single-antenna underground devices. The four phases are HAP-to-UAV charging, HAP/UAV WET to devices, TDMA device uploads, and UAV-to-HAP forwarding; channels include air attenuation, refraction, and soil loss.
+
+**Problem & objective**: UAV-enabled wireless-powered underground communication time allocation, a convex duration-allocation problem after fixing flight geometry and WET design, minimizes UAV energy, $\min E_{\mathrm{UAV}}(T_{p1},T_{p2},T_{p3},T_{p4},\{\tau_n\})$, while meeting every device's throughput threshold.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| HAP-to-UAV charging time | $T_{p1}$ | continuous, positive | Duration that charges the UAV |
+| Device WET time | $T_{p2}$ | continuous, positive | Duration for HAP/UAV energy transfer |
+| TDMA collection durations | $T_{p3},\tau_n$ | continuous, positive | Device uplink collection phase and per-device slots |
+| UAV forwarding time | $T_{p4}$ | continuous, positive | UAV-to-HAP data offloading duration |
+| WET scheme | $\mathcal A$ | discrete choice | Full-CSI or CSI-free antenna configuration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | All phase durations are positive and fit the modeled operation timeline |
+| C2 | Each underground device meets its throughput threshold during its TDMA slot |
+| C3 | Harvested energy covers device circuitry and information-transmission energy |
+| C4 | WET transmit covariance/antenna configuration obeys its power and RF-chain budget |
+| C5 | UAV forwarding and propulsion energy is included in the HAP charging requirement |
+
+**Algorithm**: Optimize full-CSI WET by semidefinite programming or select a CSI-free antenna scheme → fix flight geometry and rewrite throughput constraints as convex duration inequalities → solve $T_{p2},T_{p3},\tau_n$ with CVX → derive the supporting HAP charging duration $T_{p1}$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lin et al. [x] studied a UAV-enabled wireless-powered underground communication network with a terrestrial HAP, a rotary-wing UAV, and underground devices. They formulated a time-allocation problem that minimizes modeled UAV energy while meeting every device's throughput threshold across HAP charging, device WET, TDMA uploads, and UAV-to-HAP forwarding phases. The paper compares full-CSI and CSI-free multi-antenna WET schemes, including switching, independent, same-signal, and rotary antenna beamforming under RF-chain costs. With WET design and flight geometry fixed, the remaining duration problem is rewritten as convex inequalities and solved with a positive-semidefinite Hessian argument and CVX. Simulations report that the hybrid HAP-UAV WET approach provides the strongest worst-device harvested energy in the tested underground scenarios.
 
 ## Problem
 

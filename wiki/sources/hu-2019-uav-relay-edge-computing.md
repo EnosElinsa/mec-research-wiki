@@ -5,6 +5,7 @@ authors: ["Xiaoyan Hu", "Kai-Kit Wong", "Kun Yang", "Zhongbin Zheng"]
 year: 2019
 url: "https://doi.org/10.1109/TWC.2019.2928539"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, uav-mec, uav-mobile-relaying, computation-offloading, trajectory-design, resource-scheduling, information-causality-constraint, alternating-optimization-sdr-sca]
 related:
   - "[[uav-mobile-relaying]]"
@@ -21,7 +22,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[kun-yang]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # UAV-Assisted Relaying and Edge Computing: Scheduling and Trajectory Optimization
@@ -33,6 +34,42 @@ Hu, X., Wong, K.-K., Yang, K., & Zheng, Z. (2019). *UAV-Assisted Relaying and Ed
 ## TL;DR
 
 A UAV-assisted MEC architecture where one **cellular-connected UAV** simultaneously acts as (1) an **MEC server** computing user-equipment (UE) tasks and (2) a **relay** that further offloads UE tasks to an access point (AP) for computing — exploiting the UAV's energy-efficient LoS links. The paper minimizes the **weighted sum energy consumption (WSEC)** of the UAV and the UEs, subject to UE task constraints, **information-causality constraints**, bandwidth-allocation constraints, and UAV trajectory constraints, by jointly optimizing **computation-resource scheduling**, **bandwidth allocation**, and the **UAV trajectory** via an iterative **alternating optimization** algorithm with guaranteed convergence.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One cellular-connected fixed-wing UAV serves multiple ground UEs as both an onboard MEC server and a relay to an AP with abundant computing resources. FDD bandwidth separates UE-to-UAV offloading, UAV-to-AP forwarding, and UAV-to-UE result downloading over a discretized trajectory, and the UAV can compute or forward only data already received.
+
+**Problem & objective**: Problem P1 is a nonconvex weighted-sum-energy minimization, $\min w_U E_U+\sum_k w_kE_k$, over computation scheduling, three-link bandwidth allocation, and UAV trajectory.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UE CPU and offloaded bits | $f_k[n],l_k[n]$ | continuous, nonnegative | Local UE compute rate and task input sent to the UAV |
+| UAV CPU and relayed bits | $f_{U,k}[n],l_{U,k}^{off}[n]$ | continuous, nonnegative | UAV computing rate and input forwarded to the AP |
+| Downloaded result bits | $l_{U,k}^{down}[n]$ | continuous, nonnegative | Computation output returned to UE $k$ |
+| Link bandwidths | $B_k^{off}[n],B_{U,k}^{off}[n],B_{U,k}^{down}[n]$ | continuous, nonnegative | Bandwidth for UE offloading, AP forwarding, and result download |
+| UAV trajectory | $\mathbf u[n]$ | continuous 2D position | UAV horizontal location in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 17b-17c | Information causality permits computing, forwarding, or downloading only already available input or output bits |
+| 17d-17f | Every UE task is completely processed and its output is returned by the deadline |
+| 17g | The three FDD allocations share total bandwidth $B$ in every slot |
+| 17h-17o | CPU frequencies, bit allocations, and bandwidth variables are nonnegative and capacity bounded |
+| 17p-17q | UAV initial and final positions and maximum per-slot speed are enforced |
+
+**Algorithm**: Alternate three blocks: obtain computation scheduling in closed form through Lagrange duality with subgradient and bisection multiplier updates; obtain bandwidth allocation in closed form with bisection; approximate the trajectory subproblem by first-order SCA and solve it with CVX; repeat the three steps until WSEC converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hu et al. [x] studied UAV-assisted relaying and edge computing in which one UAV serves as both an MEC server and a relay to an access point. They formulated weighted-sum-energy minimization over computation scheduling, bandwidth allocation, and UAV trajectory under task-completion, information-causality, bandwidth, nonnegativity, and flight constraints. Their three-step alternating algorithm derives computation and bandwidth decisions through Lagrange duality, subgradient updates, and bisection, then solves the trajectory block through successive convex approximation and CVX. Numerical results show lower and more stable weighted energy than the evaluated preset-trajectory, offloading-only, equal-bandwidth, and local-computing schemes, with larger gains for computation-intensive latency-critical tasks.
 
 ## Problem framing
 

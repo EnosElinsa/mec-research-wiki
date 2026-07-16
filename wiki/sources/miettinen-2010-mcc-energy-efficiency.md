@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Energy Efficiency of Mobile Clients in Cloud Computing"
 authors: ["Antti P. Miettinen", "Jukka K. Nurminen"]
 year: 2010
@@ -16,7 +17,7 @@ related:
   - "[[you-2017-meco-resource-allocation]]"
   - "[[mao-2017-mec-survey-communication]]"
 created: 2026-06-02
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Energy Efficiency of Mobile Clients in Cloud Computing
@@ -28,6 +29,12 @@ Miettinen, A. P., & Nurminen, J. K. (2010). *Energy Efficiency of Mobile Clients
 ## TL;DR
 
 An early, foundational **analysis and measurement** of when offloading computation from a mobile device to the cloud actually **saves energy**. The central quantity is the **computing-to-communication ratio**: offloading helps only when the energy cost of transferring input/output data is less than the energy of computing locally ($E_{cloud} < E_{local}$). Using measurements of contemporary handheld devices over **WLAN and 3G**, the authors show the trade-off is **highly sensitive** to workload characteristics, the amount *and pattern* of data communication (bursts vs many small packets), and the wireless technology used - and they draw out the engineering implications for energy-efficient mobile cloud computing.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Miettinen and Nurminen [x] studied the energy efficiency of computation offloading from mobile clients to cloud infrastructure. They expressed the offloading condition as $E_{cloud}<E_{local}$ and related the crossover to a workload's computing-to-communication ratio. Their analysis combines processing-energy estimates with measurements of contemporary handheld communication over WLAN and 3G. The measurements show that the offloading threshold depends on the radio technology and that many small transfers consume more energy than sending the same data in a burst. The paper reports that cloud execution saves client energy only when the avoided local computation cost exceeds the communication energy required for the input and output data.
 
 ## Problem framing
 

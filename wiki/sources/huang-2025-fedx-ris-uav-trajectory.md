@@ -5,6 +5,7 @@ authors: ["Jun Huang", "Beining Wu", "Qiang Duan", "Liang Dong", "Shui Yu"]
 year: 2025
 url: "https://doi.org/10.1109/TMC.2025.3544903"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-communications, intelligent-reflecting-surface, uav-trajectory-control, fedx-training-acceleration, federated-reinforcement-learning, soft-actor-critic, ppo, csi-estimation-error, rotary-wing-propulsion-energy-model]
 related:
   - "[[intelligent-reflecting-surface]]"
@@ -19,7 +20,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Fast UAV Trajectory Planning Framework in RIS-Assisted Communication Systems With Accelerated Learning via Multithreading and Federating
@@ -31,6 +32,41 @@ Huang, J., Wu, B., Duan, Q., Dong, L., & Yu, S. (2025). *A Fast UAV Trajectory P
 ## TL;DR
 
 Designs FedX, a parallel training framework for RL-based trajectory planning in RIS-assisted UAV communications. The paper models imperfect channel information and quadrotor propulsion energy, then instantiates FedX with SAC and PPO as FedSAC and FedPPO. The headline result is training acceleration without materially changing the energy/throughput quality of the learned UAV trajectories.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A quadrotor UAV serves ground terminals in an urban RIS-assisted communication system with imperfect channel information. Over discrete slots, it moves horizontally and vertically, selects a terminal, chooses the slot duration, uploads the terminal's data, and eventually navigates toward a charging station while expending propulsion energy.
+
+**Problem & objective**: The trajectory-planning problem minimizes $\sum_{n=1}^{N}E[n]$, the UAV's total three-dimensional propulsion energy across the mission, while completing the terminals' data transmissions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Horizontal movement | $l[n]$ | discrete direction | UAV horizontal move in slot $n$ |
+| Vertical movement | $h[n]$ | discrete, $\{-h_s,0,h_s\}$ | Descend, hover, or ascend |
+| Terminal scheduling | $c_{k,i}[n]$ | binary | Ground terminal selected in slot $n$ |
+| Slot duration | $\delta_t[n]$ | discrete, $[t_{\min},t_{\max}]$ | Flight and communication duration of slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | At most one ground terminal is served in each slot: $\sum_k c_{k,i}[n]\le1$ |
+| C2 | Every terminal's required data volume is delivered within the mission |
+| C3 | Horizontal and vertical speeds do not exceed their maximum values |
+| C4 | The UAV remains within the admissible altitude and operating region |
+| C5 | Terminal scheduling is binary and movement actions belong to their discrete action sets |
+
+**Algorithm**: FedX forks multiple training threads, gives each an independent replay stream, runs a selected RL solver in parallel, and periodically aggregates thread parameters by data-weighted averaging. FedSAC and FedPPO instantiate this framework with SAC and PPO, using UAV position, remaining data, and charging-station distance as state and movement, scheduling, and slot duration as action.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied energy-aware three-dimensional trajectory planning for a quadrotor UAV serving ground terminals through an RIS-assisted link with imperfect channel information. They minimized total propulsion energy over horizontal and vertical movement, terminal scheduling, and slot-duration decisions under service, mission-completion, speed, and altitude constraints. FedX accelerates an arbitrary RL solver by training multiple threads in parallel and aggregating their parameters, with FedSAC and FedPPO as concrete instances. With five and ten agents, FedSAC achieved speedups of about 3.72 and 7.43 and FedPPO achieved 4.53 and 7.44, while their energy and throughput distributions remained close to those of the unaccelerated solvers.
 
 ## Problem
 

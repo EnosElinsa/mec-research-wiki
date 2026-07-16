@@ -5,6 +5,7 @@ authors: ["Yansong Huang", "Xuan Li", "Lu Zhang", "Mugen Peng"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3693868"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, federated-learning, over-the-air-computation, uav-swarm, asynchronous-federated-learning, model-staleness, beamforming, edge-intelligence]
 related:
   - "[[aerial-federated-aggregation-design-space]]"
@@ -19,7 +20,7 @@ related:
   - "[[zhou-2026-cpsfl-uav-foundation-models]]"
   - "[[two-tier-submodel-partition]]"
 created: 2026-07-11
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # AirComp-Assisted Asynchronous Federated Learning for UAV Swarms: A Self-Adaptive Aggregation Scheme to Tackle Model Staleness
@@ -31,6 +32,41 @@ Huang, Y., Li, X., Zhang, L., & Peng, M. (2026). *AirComp-Assisted Asynchronous 
 ## TL;DR
 
 Proposes [[aircomp-assisted-asynchronous-fl]], where UAV sensing nodes train local models, communication UAVs aggregate via [[over-the-air-computation]], and a layer-wise self-adaptive aggregation rule suppresses stale model components. The design targets faster convergence and lower aggregation cost for low-altitude UAV-swarm learning.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Sensing UAVs collect data and train local models, while multi-antenna communication UAVs form a connected backbone and aggregate selected uploads through over-the-air computation. Asynchronous participation avoids waiting for stragglers, but channel distortion constrains which sensing UAVs can upload and delayed local models introduce staleness.
+
+**Problem & objective**: At each global epoch, the communication design maximizes $\left\|\mathbf{L}^{[e]}\mathbf{D}\right\|_1$, the total training-data volume represented by the selected local models, by jointly choosing sensing-to-communication-UAV links and receive beamforming vectors.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Linkage matrix | $\mathbf{L}^{[e]}$ | binary, $\{0,1\}^{C\times S}$ | Assignment of sensing UAV uploads to communication UAVs |
+| Receive beamformer | $\mathbf b_j$ | complex vector in $\mathbb C^A$ | AirComp receive beamforming vector at communication UAV $j$ |
+| Transmit scalar | $\alpha_i$ | complex, power bounded | Channel-inversion scalar derived for sensing UAV $i$ |
+| Layer adaptation | $\widehat w_i^k$ | original or global layer | Local layer retained or replaced according to cosine similarity |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each sensing UAV uploads to at most one communication UAV: $\sum_j l_{i,j}^{[e]}\le1$ |
+| C2 | AirComp aggregation error stays below the MSE threshold $\gamma$ for every communication UAV |
+| C3 | Receiver beamforming power is bounded: $\lVert\mathbf b_j\rVert^2\le P_N$ |
+| C4 | Sensing-UAV transmit scalars satisfy $\lvert\alpha_i\rvert^2\le P_S$ |
+| C5 | Linkage entries are binary and infeasible upload or transmission plans are excluded |
+
+**Algorithm**: A branch-and-bound search proposes linkage matrices in descending represented-data volume, while an alternating optimizer updates the beamforming vector and auxiliary channel phases and rejects infeasible plans. Before AirComp upload, each sensing UAV compares local and current-global layers by cosine similarity, preserves sufficiently aligned layers, replaces stale layers, and then participates in asynchronous weighted aggregation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] designed AirComp-assisted asynchronous federated learning for a swarm containing sensing UAVs and multi-antenna communication UAVs. They maximized the training-data volume represented in each aggregation epoch over binary linkage and receive beamforming decisions under AirComp MSE and power constraints. Their solver combines branch-and-bound linkage search, alternating beamforming optimization, and a cosine-similarity rule that replaces stale local layers with current global layers before upload. On MNIST, adapted AFL reached 90% accuracy in 27.014 time units, compared with 30.991 for non-adapted AFL and about 62 for both synchronous variants.
 
 ## Problem framing
 

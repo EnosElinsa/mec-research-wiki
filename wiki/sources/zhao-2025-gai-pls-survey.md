@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Generative AI for Secure Physical Layer Communications: A Survey"
 authors: ["Changyuan Zhao", "Hongyang Du", "Dusit Niyato", "Jiawen Kang", "Zehui Xiong", "Dong In Kim", "Xuemin Shen", "Khaled B. Letaief"]
 year: 2025
@@ -17,7 +18,7 @@ related:
   - "[[zehui-xiong]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Generative AI for Secure Physical Layer Communications: A Survey
@@ -29,6 +30,12 @@ Zhao, C., Du, H., Niyato, D., Kang, J., Xiong, Z., Kim, D. I., Shen, X., & Letai
 ## TL;DR
 
 A survey focused specifically on **GAI's role in physical layer security (PLS)** — distinct from the broader GAI-for-PHY survey [[huynh-2024-gai-physical-layer-survey]]. Covers GANs, autoencoders (AEs), variational autoencoders (VAEs), and diffusion models (DMs) applied to five PLS dimensions: **communication confidentiality, authentication, availability, resilience**, and **integrity**. Highlights that traditional AI (supervised/DRL) struggles in PLS because evolving threats and channel non-stationarity require adaptive generative modeling. Identifies future directions in multi-scenario deployment, resource-efficient GAI, and secure semantic communication.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] surveyed generative artificial intelligence for secure physical-layer communications. They organized applications across confidentiality, authentication, availability, resilience, and integrity and reviewed GANs, autoencoders, variational autoencoders, and diffusion models. The survey discussed synthetic adversarial data, adaptive channel modeling, anti-jamming training, signal recovery, RF authentication, and anomaly detection. It identified multi-scenario deployment, resource-efficient generative models, and secure semantic communication as future directions. The article is a survey and does not introduce one application-specific decision model with reusable decisions and constraints.
 
 ## Problem framing
 

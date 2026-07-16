@@ -5,6 +5,7 @@ authors: ["Yifei Bao", "Jinghui Zhang", "Yi Cheng", "Dengyin Zhang", "Rongguo Fu
 year: 2025
 url: "https://doi.org/10.1007/s40747-025-02106-1"
 venue: "Complex & Intelligent Systems (Springer)"
+modeling_card: required
 tags: [source, hap, uav, video-offloading, video-transcoding, ddpg, qoe, post-disaster, hierarchical-aerial-mec]
 related:
   - "[[hierarchical-aerial-mec]]"
@@ -16,7 +17,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # HAP-UAV-Assisted Hierarchical Aerial Computing Framework for Video Offloading: A Deep Reinforcement Learning Approach
@@ -36,6 +37,40 @@ A post-disaster scenario where ground camera equipments (CEs) feed video to near
 - HAP computation resource allocation φ_u(i) per UAV.
 
 The objective is a **QoE function** combining task delay (transmission + computation) with the average video bitrate after transcoding (proxy for inference accuracy). Solved as an MDP with **DDPG** for continuous control.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: In each processing round, ground camera equipments send equal-size video chunks to their pre-associated UAVs over orthogonal CE-to-UAV links. Multiple UAVs follow fixed circular trajectories, split collected video between local inference and one stationary HAP, optionally transcode the HAP-bound fraction, and equally share the HAP uplink bandwidth.
+
+**Problem & objective**: Problem (20), a non-convex mixed-integer program, maximizes cumulative quality of experience, $\max \sum_{i\in\mathcal{I}}\mathrm{QoE}(i)$, where $\mathrm{QoE}(i)=Q(i)-\alpha T^{\mathrm{sys}}(i)$, over offloading, transcoding, and HAP computation allocation decisions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading ratio | $\eta_u(i)$ | Continuous, $[0,1]$ | Fraction of UAV $u$'s collected video offloaded to the HAP in round $i$ |
+| Transcoding switch | $\epsilon_u(i)$ | Binary, $\{0,1\}$ | Whether UAV $u$ transcodes its HAP-bound video |
+| Transcoding ratio | $\varepsilon_u(i)$ | Continuous, $[\varepsilon_{\min},1)$ | Bitrate ratio applied to transcoded video |
+| HAP computation allocation | $\varphi_u(i)$ | Continuous, $[0,1]$ | Fraction of HAP computation capacity assigned to UAV $u$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 20b | Offloading domain, $0\leq\eta_u(i)\leq1$ |
+| 20c-20d | Transcoding domains, $\epsilon_u(i)\in\{0,1\}$ and $\varepsilon_{\min}\leq\varepsilon_u(i)<1$ |
+| 20e-20f | HAP allocation feasibility, $0\leq\varphi_u(i)\leq1$ and $\sum_{u\in\mathcal{U}}\varphi_u(i)=1$ |
+| 20g | Per-UAV battery budget, $\sum_{i\in\mathcal{I}}E_u(i)\leq E$ |
+
+**Algorithm**: The system is written as an MDP with state $\mathcal{S}=\{\mathbf{q}_m^{\mathrm{D}}(i),\mathbf{q}_u^{\mathrm{U}}(i),\mathcal{M}_u(i)\}$, action $\mathcal{A}=\{\eta_u(i),\epsilon_u(i),\varepsilon_u(i),\varphi_u(i)\}$, and reward $r_i=Q(i)-\alpha T^{\mathrm{sys}}(i)$. DDPG selects continuous controls with exploration noise, stores transitions in replay memory, updates the critic from bootstrapped target values, updates the actor by deterministic policy gradients, and softly updates both target networks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bao et al. [x] studied video-analytics offloading in a post-disaster hierarchical aerial computing system with ground camera equipments, multiple UAVs, and one HAP. Each UAV collects video chunks, selects the fraction processed locally or offloaded to the HAP, and may transcode the offloaded fraction before the long-distance UAV-to-HAP transmission. They formulated a non-convex mixed-integer problem that maximizes cumulative QoE, defined by video quality minus a weighted system-delay term, subject to decision-domain, HAP computation-allocation, and UAV-energy constraints. The authors transformed the problem into an MDP and trained a DDPG actor-critic with replay memory and target networks. Simulations reported that DDPG achieved the highest accumulated reward among DDPG, actor-critic, and DQN, while the proposed hierarchical system attained the lowest delay among the evaluated computing configurations. In the reported comparison, a 10.6% reduction in average video bitrate produced an 18.2% improvement in total delay relative to using the original bitrate.
 
 ## Why this matters
 

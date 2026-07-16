@@ -18,7 +18,8 @@ related:
   - "[[jains-fairness-index]]"
   - "[[pytorch]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Multi-UAV Navigation for Partially Observable Communication Coverage by Graph Reinforcement Learning
@@ -30,6 +31,39 @@ Ye, Z., Wang, K., Chen, Y., Jiang, X., & Song, G. (2023). *Multi-UAV Navigation 
 ## TL;DR
 
 Combines two-hop FANET graph attention, GRU memory, shared discrete-action Q-values, and maximum-entropy action sampling so locally observing UAVs can trade communication coverage, Jain fairness, and movement energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-altitude UAV base stations navigate a planar region to cover static points of interest. Each UAV observes only a bounded local area and exchanges learned embeddings with neighbors connected through a distance-limited flying ad hoc network.
+
+**Problem & objective**: The policy problem maximizes the terminal coverage-fairness-energy score, $\pi^*=\arg\max_\pi \mathrm{CFE}_T$ with $\mathrm{CFE}_T=c_Tf_T/e_T$, where $c_T$ is cumulative coverage, $f_T$ is Jain fairness, and $e_T$ is average movement energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Decentralized navigation policy | $\pi$ | stochastic policy | Maps each UAV's local observation and recurrent history to action probabilities |
+| UAV drag action | $a_i(t)$ | discrete, 17 actions | Hover or apply half or full drag in one of eight planar directions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Local execution | UAV $i$ acts from its local observation and recurrent state rather than the global map |
+| Local training | Training samples contain only local information, so the global CFE score is unavailable as a training reward |
+| FANET adjacency | UAVs exchange embeddings only when their distance is below $D_{\mathrm{Com}}$ |
+| Stable coverage | A point is covered only when its horizontal distance to a UAV is below $R_{\mathrm{Cov}}$ |
+| Action set | Every movement command belongs to the prescribed 17-action drag set |
+
+**Algorithm**: SDRGN encodes each local observation, aggregates two-hop neighbor information with two graph-attention layers, and carries history through a GRU. A temperature-softmax maximum-entropy policy samples discrete actions and is trained with replay, a target network, and a soft Bellman loss; a local heuristic reward combines exclusive coverage, neighbor coverage, and movement energy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ye et al. [x] formulated partially observable multi-UAV coverage as decentralized policy optimization over cumulative coverage, Jain fairness, and movement energy. Their SDRGN controller combines two-hop graph attention, GRU memory, parameter sharing, and maximum-entropy discrete action sampling. A local heuristic reward enables training without exposing the global coverage-fairness-energy score to individual UAVs. With twenty UAVs, SDRGN achieved the highest reported CFE score of 0.5436 among the listed methods while using less movement energy than the deterministic DRGN variant. Adding recurrent memory to the graph network improved coverage, fairness, and CFE over DGN in the reported ablation. Network-only inference on a Jetson Nano averaged 0.0232 seconds over the measured executions.
 
 ## Problem and system model
 

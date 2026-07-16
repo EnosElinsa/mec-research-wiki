@@ -20,7 +20,8 @@ related:
   - "[[huang-2025-fedx-ris-uav-trajectory]]"
   - "[[dusit-niyato]]"
 created: 2026-07-10
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Aerial RIS-Enhanced Communications: Joint UAV Trajectory, Altitude Control, and Phase Shift Design
@@ -32,6 +33,41 @@ Li, B., Yang, D., Liu, L., & Niyato, D. (2026). *Aerial RIS-Enhanced Communicati
 ## TL;DR
 
 Optimizes aerial RIS communication when the UAV-mounted RIS does not behave like a position-only reflector. The controller accounts for UAV motion, Euler-angle tilt, orientation-dependent RIS gain, and phase shifts; BS beamforming is handled separately by ZF plus water-filling, while SAC with prioritized experience replay learns the continuous RIS/UAV control policy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV-mounted aerial RIS serves single-antenna ground users from a multi-antenna BS when direct BS-user links can be blocked; RIS gain depends on position, incidence angles, and UAV attitude.
+
+**Problem & objective**: Jointly control aerial-RIS motion and attitude, RIS sub-surface phases, and BS beamforming to maximize horizon sum rate, $\max\sum_l\sum_kR_k[l]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV position and motion | $\mathbf q[l],\mathbf v[l],\mathbf a[l]$ | continuous, bounded | Horizontal trajectory, speed, and acceleration of the ARIS carrier |
+| Euler-angle variation | $\widetilde{\boldsymbol\Phi}[l]$ | continuous bounded increments | Roll, pitch, and yaw changes used for attitude control |
+| RIS phase shifts | $\boldsymbol\Theta[l]$ | continuous phases, quantized if required | Shared phase of each RIS sub-surface |
+| BS beamforming | $\mathbf W[l]$ | complex matrix under power budget | Zero-forcing and water-filling beamformer computed for the current ARIS state |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | BS transmit power and per-user beamforming satisfy the power budget. |
+| C2 | RIS phases and Euler angles, including per-slot angle variations, remain physically bounded. |
+| C3 | UAV position stays in the permitted region and speed and acceleration obey their maxima. |
+| C4 | Flight energy remains nonnegative and the safety penalties for leaving the region or violating motion limits are avoided. |
+| C5 | In multi-ARIS extensions, inter-ARIS distance stays above the minimum separation. |
+
+**Algorithm**: Cast sequential control as an MDP, compute BS beamforming with zero forcing plus water-filling or bisection, and train a maximum-entropy SAC policy with prioritized experience replay and automatic temperature tuning.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied aerial-RIS communication with attitude-aware UAV motion, sub-surface phase shifts, and separate BS beamforming. They maximized horizon sum rate under transmit-power, phase, Euler-angle, flight-region, speed, acceleration, energy, and safety constraints, while the source model captures orientation-dependent RIS gain. Their SAC-PER controller learns the continuous motion and phase policy and uses zero-forcing with water-filling for the BS beamformer. Simulations report convergence near 150 thousand steps and up to 14.4% higher sum rate than PPO, with additional gains from larger RISs, BS arrays, energy budgets, and multi-ARIS deployment.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Timothy P. Lillicrap", "Jonathan J. Hunt", "Alexander Pritzel", "Nico
 year: 2016
 url: ""
 venue: "International Conference on Learning Representations (ICLR)"
+modeling_card: not_applicable
 tags: [source, drl, actor-critic, ddpg, continuous-control, off-policy, foundational-method]
 related:
   - "[[ddpg]]"
@@ -15,7 +16,7 @@ related:
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[maddpg]]"
 created: 2026-06-02
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Continuous Control with Deep Reinforcement Learning
@@ -27,6 +28,12 @@ Lillicrap, T. P., Hunt, J. J., Pritzel, A., Heess, N., Erez, T., Tassa, Y., Silv
 ## TL;DR
 
 The **origin paper for DDPG** (Deep Deterministic Policy Gradient), the off-policy actor-critic algorithm that many UAV-MEC and aerial DRL sources in this wiki use as a continuous-control backbone. It adapts the ideas behind Deep Q-Learning to continuous action spaces: a [[deep-q-network|DQN]]-style critic (replay buffer + target network) is combined with a **deterministic policy gradient** actor, so the method avoids the per-step action maximization that makes plain Q-learning intractable in continuous domains. Using one set of hyperparameters and network architecture, DDPG robustly solves more than 20 simulated physics tasks (cartpole swing-up, dexterous manipulation, legged locomotion, car driving), in many cases learning end-to-end directly from raw pixels. This is a **foundational DRL-method** entry rather than an MEC application; it documents the algorithm that [[ddpg]] and its downstream variants build on.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lillicrap et al. [x] introduced Deep Deterministic Policy Gradient as a model-free off-policy actor-critic method for continuous action spaces. DDPG trains a deterministic actor through the critic's action gradient and stabilizes temporal-difference learning with replay, slowly updated actor and critic targets, and batch normalization. Temporally correlated exploration noise separates behavior exploration from the learned deterministic policy. Using one architecture and hyperparameter set, the method learned policies for more than 20 simulated control tasks from low-dimensional states and, in many cases, directly from pixels. The ablation study found target networks crucial, while normalized evaluations showed that some runs exceeded a model-based planner with access to the simulator dynamics.
 
 ## Problem framing
 

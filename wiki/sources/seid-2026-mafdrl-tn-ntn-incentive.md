@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "A Hierarchical MAFDRL-Based Resource Allocation and Incentive Mechanism for TN-NTN in 6G Networks"
 authors: ["Abegaz Mohammed Seid", "Aiman Erbad", "Hayla Nahom Abishu", "Gordon Owusu Boateng", "Latif U. Khan", "Carla Fabiana Chiasserini", "Mohsen Guizani"]
 year: 2026
@@ -8,7 +9,7 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, non-terrestrial-network, space-air-ground-integrated-network, task-offloading, hierarchical-aerial-mec, hierarchical-federated-drl, double-auction, federated-reinforcement-learning, centralized-training-decentralized-execution, maddpg, ddpg]
 related: ["[[non-terrestrial-network]]", "[[space-air-ground-integrated-network]]", "[[hierarchical-aerial-mec]]", "[[task-offloading]]", "[[hierarchical-federated-drl]]", "[[federated-reinforcement-learning]]", "[[centralized-training-decentralized-execution]]", "[[maddpg]]", "[[ddpg]]", "[[high-altitude-platform-station]]", "[[leo-satellite-edge-computing]]", "[[zhao-2026-hcdrl-ga-sagin-sar]]", "[[han-2024-sagin-fl-handover]]"]
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Hierarchical MAFDRL-Based Resource Allocation and Incentive Mechanism for TN-NTN in 6G Networks
@@ -20,6 +21,45 @@ Seid, A. M., Erbad, A., Abishu, H. N., Boateng, G. O., Khan, L. U., Chiasserini,
 ## TL;DR
 
 Proposes a hierarchical federated multi-agent DRL framework for joint task offloading, resource allocation, and incentive pricing across terrestrial and non-terrestrial networks with EDs, UAVs, HAPs, and LEO satellites. A hierarchical double auction trades computation, bandwidth, transmission power, and FL service participation; DDPG handles auctioneer decisions and MADDPG handles lower-layer allocation decisions under CTDE.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: End devices trade computation, bandwidth, transmission power, and federated-learning service with UAV and HAP aerial resource providers in a hierarchical TN-NTN architecture; LEO satellites are present architecturally but omitted from the optimization model.
+
+**Problem & objective**: The CORI auction formulation maximizes total social welfare, $\max U[t]$, across end devices, UAVs, HAPs, and the auctioneer.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Buyer-seller matching | $\lambda_{ij},\lambda_{ijh},\lambda_{jh},\lambda_{ih}$ | binary | Winning trades among EDs, UAVs, and HAPs |
+| ED association | $\alpha_{ijh}[t]$ | binary | Associate an ED with an aerial resource provider |
+| Bandwidth allocation | $b_{ijh}[t]$ | continuous, capacity bounded | Bandwidth sold to a winning buyer |
+| Computation allocation | $f_{ijh}[t]$ | continuous, capacity bounded | Compute resource sold to a buyer |
+| Power allocation | $P_{ijh}[t]$ | continuous, capacity bounded | Transmission power resource |
+| Auction prices and bids | $\rho,\phi,\psi$ | continuous | Clearing, buying, and selling prices |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Matching and association indicators are binary. |
+| C2 | Allocated bandwidth respects provider capacity: $\sum_i\alpha_{ijh}\lambda b_{ijh}\leq B^{max}$. |
+| C3 | Allocated computation respects provider capacity: $\sum_i\alpha_{ijh}\lambda f_{ijh}\leq F^{max}$. |
+| C4 | Allocated power respects provider capacity: $\sum_i\alpha_{ijh}\lambda P_{ijh}\leq P^{max}$. |
+| C5 | A buyer wins at most one bid. |
+| C6 | An ED belongs to at most one aerial provider: $\sum_{j,h}\alpha_{ijh}[t]\leq1$. |
+| C7 | Clearing prices preserve budget balance, truthfulness, economic efficiency, and individual rationality. |
+
+**Algorithm**: Use a hierarchical double auction for clearing prices, winners, and matches; train a DDPG auctioneer and lower-layer MADDPG agents under CTDE, with hierarchical federated aggregation for model updates and privacy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Seid et al. [x] model TN-NTN computation offloading and federated-learning participation as a welfare-maximizing hierarchical auction. The MINLP couples binary buyer-seller matching and ED association with bandwidth, computation, power, price, latency, and capacity decisions. A DDPG auctioneer handles clearing and matching while MADDPG agents allocate resources under centralized training and decentralized execution, with hierarchical federated aggregation. The reported FeDRL policy improves social welfare by 6.38%, 17.43%, and 28.73% over the compared modified MADDPG, FRL, and DDPG baselines.
 
 ## Problem
 

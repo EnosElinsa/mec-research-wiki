@@ -5,6 +5,7 @@ authors: ["Die Wang", "Yunjian Jia", "Mianxiong Dong", "Kaoru Ota", "Liang Liang
 year: 2024
 url: "https://doi.org/10.1109/TVT.2023.3306740"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
+modeling_card: required
 tags: [source, uav-mec, blockchain, delegated-proof-of-stake, stackelberg-game, trajectory-control, resource-allocation, task-offloading]
 related:
   - "[[mobile-edge-computing]]"
@@ -18,7 +19,7 @@ related:
   - "[[wang-2025-acbft-uav-consensus]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Blockchain-Integrated UAV-Assisted Mobile Edge Computing: Trajectory Planning and Resource Allocation
@@ -30,6 +31,42 @@ Wang, D., Jia, Y., Dong, M., Ota, K., & Liang, L. (2024). *Blockchain-Integrated
 ## TL;DR
 
 Integrates a **consortium blockchain** into a UAV-assisted MEC network to secure task offloading. An improved **Delegated Proof of Stake (DPoS)** consensus scheme lets UAVs act as light nodes that collect tasks and verify signatures from ground users to form an initial block, then offload it to ground blockchain nodes (selected from base stations via a reputation-based voting mechanism) for final block generation. A **two-stage [[stackelberg-game|Stackelberg game]]** jointly optimizes the UAV's trajectory and communication-resource allocation against the ground nodes' computing-resource allocation; equilibrium is found by backward induction and the non-convex sub-problems are handled with successive convex approximation (SCA).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV light node collects user transactions, forms an initial block, and transmits it to a primary ground blockchain node plus validation nodes selected from base stations. The UAV moves at fixed altitude while ground nodes execute consensus under an improved reputation-based DPoS protocol.
+
+**Problem & objective**: The leader solves $P_1:\max_{X_n(t),P_t(t)}U_n(t)$, trading validation delay satisfaction against consensus reward and propulsion or transmission cost; follower $s$ solves $P_2:\max_{f_s(t)}U_s(t)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV location | $X_n(t)$ | continuous, 2D trajectory | Horizontal position of UAV $n$ |
+| UAV transmit power | $P_t(t)$ | continuous, $0.1\le P_t(t)\le1$ | Uplink power during transaction offloading |
+| Ground CPU allocation | $f_s(t)$ | continuous, $0\le f_s(t)\le f_{\max}$ | Consensus CPU cycles assigned to node $s$ |
+| Consensus activity | $\omega_s(t)$ | binary | Whether node $s$ is executing consensus |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Block QoS: cumulative transmitted data $\sum_t\Delta R_{n,p}(X_n(t))\ge N_B\bar w$ |
+| C2 | Rate supports node compute: $R_{n,p}(X_n(t))\ge f_s(t)/D_s$ |
+| C3 | UAV speed: $\|v_n(X_n(t))\|_2\le v_{\max}$ |
+| C4 | UAV power: $0.1\le P_t(t)\le1$ |
+| C5 | Follower CPU bound: $0\le f_s(t)\le f_{\max}$ |
+| C6 | Consensus workload: $\sum_t\Delta f_s(t)$ covers verification, execution, and hashing cycles |
+
+**Algorithm**: Solve the two-stage game backward. Obtain follower CPU strategies from KKT conditions and the consensus Nash equilibrium, then solve the non-convex leader trajectory and power problem with SCA; iterate the resulting policies to the Stackelberg equilibrium.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] integrated an improved delegated-proof-of-stake consensus layer with UAV-assisted MEC task offloading. The UAV leader chooses its trajectory and transmit power to balance validation delay satisfaction, rewards paid to ground nodes, and propulsion or radio energy, while each ground follower allocates consensus CPU under workload and capacity constraints. Backward induction combines follower KKT or Nash solutions with an SCA leader update to obtain a dynamic Stackelberg policy. Simulations reported shorter transaction offloading delay than traditional DPoS and showed that reputation and transaction volume directly shape the learned UAV trajectory.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Deployment and Resource Allocation Design for JRC-Enabled Multi-UAV Cooperative Systems"
 authors: ["Lingyun Zhou", "Chunyong Yang", "Yongqiang Cui", "Rongqing Zhang", "Zhongxiang Wei", "Qingjiang Shi"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[zhongxiang-wei]]"
   - "[[qingjiang-shi]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Deployment and Resource Allocation Design for JRC-Enabled Multi-UAV Cooperative Systems
@@ -28,6 +29,41 @@ Zhou, L., Yang, C., Cui, Y., Zhang, R., Wei, Z., & Shi, Q. (2026). *Joint Deploy
 ## TL;DR
 
 Jointly assigns communication users and FDMA subchannels, allocates communication and sensing power, and places a cooperative UAV fleet. The scalar objective trades the minimum user rate against the maximum sensing-target squared position error bound (SPEB), while alternating optimization combines smooth extrema, convex power updates, and spectral-clustering-initialized Gibbs deployment search.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A central station coordinates $K$ fixed-altitude dual-function UAVs that serve multiple communication users and jointly localize multiple sensing targets. Communication uses FDMA subchannels, sensing and communication occupy separate bands, and quasi-static air-to-ground links follow a free-space LoS model.
+
+**Problem & objective**: Problem (31) is an NP-hard non-smooth MINLP that balances worst-user rate and worst-target SPEB, $\max_{\mathbf A,\mathbf P,\mathbf Q}\omega_1\Psi^{c}-\omega_2\Psi^{s}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| User-channel association | $a_{imk}$ | binary | Whether UAV $k$ serves CU $i$ on subchannel $m$ |
+| Communication power | $p_{mk}^{c}$ | continuous, nonnegative | UAV $k$ power on communication subchannel $m$ |
+| Sensing power | $p_{jk}^{s}$ | continuous, nonnegative | UAV $k$ power assigned to sensing target $j$ |
+| UAV deployment | $\mathbf Q=[\mathbf q_1,\ldots,\mathbf q_K]$ | continuous/discrete grid | Fixed-altitude horizontal UAV locations |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every communication user receives exactly one assignment, $\sum_{m,k}a_{imk}=1$ |
+| C2 | Each UAV subchannel serves at most one user, $\sum_i a_{imk}\leq1$ |
+| C3 | Association entries are binary and all powers are nonnegative |
+| C4 | Per-UAV communication plus sensing power satisfies $\sum_jp_{jk}^{s}+\sum_mp_{mk}^{c}\leq p_k^{\max}$ |
+| C5 | Inter-UAV distance lies between $d_{\min}$ and $d_{\max}$ |
+
+**Algorithm**: Smooth the minimum-rate and maximum-SPEB terms with log-sum-exp → initialize deployment by spectral clustering → update binary association through implicit enumeration → update power through convex approximation and descent search → refine deployment by monotone reduced-space Gibbs sampling → alternate blocks to convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied joint deployment and resource allocation in a JRC-enabled cooperative multi-UAV system serving communication users and sensing targets. They formulated an NP-hard MINLP that maximizes a weighted difference between the minimum communication-user rate and the maximum sensing-target squared position error bound. The decisions include binary user and FDMA-subchannel association, communication and sensing power allocation, and fixed-altitude UAV deployment under assignment, power, and inter-UAV-distance constraints. Their alternating method smooths the extrema, updates association and power in separate subproblems, and combines spectral-clustering initialization with monotone Gibbs deployment search. Simulations averaged over 100 trials report gains over the evaluated random-association, equal-power, spectral-clustering-only, and uniform-deployment designs.
 
 ## System model
 

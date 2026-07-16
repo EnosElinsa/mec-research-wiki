@@ -5,6 +5,7 @@ authors: ["Mushu Li", "Nan Cheng", "Jie Gao", "Yinlu Wang", "Lian Zhao", "Xuemin
 year: 2020
 url: "https://doi.org/10.1109/TVT.2020.2968343"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
+modeling_card: required
 tags: [source, uav-mec, energy-efficiency, trajectory-optimization, resource-allocation, admm, dinkelbach, successive-convex-approximation]
 related:
   - "[[uav-trajectory-control]]"
@@ -14,7 +15,7 @@ related:
   - "[[nan-cheng]]"
   - "[[xuemin-shen]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Energy-Efficient UAV-Assisted Mobile Edge Computing: Resource Allocation and Trajectory Optimization
@@ -26,6 +27,41 @@ Li, M., Cheng, N., Gao, J., Wang, Y., Zhao, L., & Shen, X. (2020). *Energy-Effic
 ## TL;DR
 
 Considers a **UAV-mounted cloudlet** serving IoT nodes in remote/unattended areas. Maximizes UAV **energy efficiency** (total offloaded compute data / UAV energy consumption) by jointly optimizing UAV trajectory, user transmit power, and computation load allocation. The non-convex fractional programming problem is solved via **Dinkelbach algorithm + SCA**, decomposed for scalable distributed solving via **ADMM**. A spatial distribution estimation technique (Gaussian kernel density estimation) is applied when exact user locations are unknown.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-wing UAV-mounted cloudlet flies over mobile IoT users during a finite computation cycle. Users partially offload divisible tasks through orthogonal or non-orthogonal uplinks, and the UAV buffers and executes received bits with dynamic CPU frequency while propulsion dominates its energy budget.
+
+**Problem & objective**: The fractional program maximizes $\eta=\frac{\sum_{i,k}R_{i,k}(\boldsymbol\delta_k,\mathbf Q_k)}{\sum_{i,k}E_{i,k}^{C,U}(\mathbf W_k)+\sum_kE_k^F(\mathbf Q)}$, the ratio of total offloaded bits to UAV computing plus propulsion energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| User power fraction | $\delta_{i,k}$ | continuous, $[0,1]$ | Fraction of user $i$'s maximum uplink power in slot $k$ |
+| UAV workload allocation | $W_{i,k}$ | continuous, nonnegative | Bits from user $i$ processed by the UAV in slot $k$ |
+| UAV trajectory | $\mathbf Q$ | continuous position sequence | Fixed-altitude horizontal path across the cycle |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user offloads between its required minimum and total task size |
+| C2 | The UAV processes only received bits and completes all offloaded bits by the cycle end |
+| C3 | Per-slot cloudlet CPU frequency remains below $f_{\max}^U$ |
+| C4 | Each user's communication and local-computing energy budgets are respected |
+| C5 | UAV speed and acceleration remain below $v_{\max}$ and $a_{\max}$ |
+| C6 | The UAV reaches the designated final position and velocity |
+
+**Algorithm**: SCA forms inner convex approximations of channel-rate and propulsion terms, while Dinkelbach iterations solve the resulting fractional program. ADMM then separates user-side power and expected-trajectory updates from UAV-side trajectory and workload allocation, allowing users to solve in parallel; Gaussian kernel density estimation supplies proactive user locations when future mobility is unavailable.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] maximized computation bits per joule for a UAV-mounted cloudlet serving partially offloading IoT users. Their fractional program jointly selects user power fractions, UAV workload allocation, and trajectory under offloading, user-energy, cloudlet-CPU, speed, acceleration, and terminal-state constraints. The solution combines successive convex approximation, Dinkelbach updates, and an ADMM decomposition that lets users and the UAV keep local model information private. The optimized trajectory satisfied every tested minimum-offloading requirement where the circular benchmark could fail, and energy efficiency converged after about 30 SCA iterations in the three-user case.
 
 ## Problem framing
 

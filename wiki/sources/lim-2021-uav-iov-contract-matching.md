@@ -20,7 +20,8 @@ related:
   - "[[jiawen-kang]]"
   - "[[dusit-niyato]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Towards Federated Learning in UAV-Enabled Internet of Vehicles: A Multi-Dimensional Contract-Matching Approach
@@ -32,6 +33,41 @@ Lim, W. Y. B., Huang, J., Xiong, Z., Kang, J., Niyato, D., Hua, X.-S., Leung, C.
 ## TL;DR
 
 Uses a multidimensional contract to screen independently owned sensing UAVs by heterogeneous coverage, travel, computation, and upload costs, then applies preference-based matching to assign one UAV to each IoV subregion for federated model training without sharing raw data.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A model owner divides an IoV sensing region into subregions and hires heterogeneous sensing UAVs to collect data for federated learning. Each UAV flies from its base to a subregion, senses and computes locally, then uploads a model update; access is one UAV per subregion with orthogonal point-to-point uploads over air-to-ground links.
+
+**Problem & objective**: Multi-dimensional contract design and one-to-one matching, a discrete-continuous incentive optimization, maximizes the model owner's profit, $\max\sum_r[V_r(c_r)-\pi_r]$, subject to coverage, individual-rationality, incentive-compatibility, and stable-assignment constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Coverage allocation | $c_r$ | continuous, monotone | Sensing coverage promised to subregion $r$ |
+| Contract reward | $\pi_r$ | continuous, nonnegative | Payment offered for a coverage type |
+| UAV-subregion matching | $x_{u,r}$ | binary | UAV $u$ is assigned to subregion $r$ |
+| Reported UAV type | $\hat\theta_u$ | discrete type | Sensing, travel, computation, and upload cost type reported by UAV $u$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every subregion is assigned at most one UAV, $\sum_u x_{u,r}\le1$ |
+| C2 | Contract offers satisfy individual rationality for participating UAV types |
+| C3 | Adjacent contract types satisfy incentive compatibility and monotone coverage |
+| C4 | A matching is one-to-one and respects UAV availability and subregion preference lists |
+| C5 | UAV utility includes sensing, travel, computation, and model-upload costs |
+
+**Algorithm**: Reduce multidimensional IR/IC to worst-type IR and adjacent IC → recurse minimum rewards for a monotone coverage vector → repair non-monotone allocations by bunching/ironing → build preference lists → run Gale-Shapley matching → perform local federated updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lim et al. [x] studied federated learning data collection in a UAV-enabled Internet of Vehicles through multidimensional contract matching. They formulated a contract-theoretic mechanism that maximizes the model owner's profit while accounting for heterogeneous sensing, travel, computation, and model-upload costs of UAV service providers. Individual-rationality and incentive-compatibility conditions are reduced to a worst-type IR constraint and adjacent IC constraints, with bunching and ironing used when the coverage allocation is non-monotone. A preference-based one-to-one Gale-Shapley procedure then assigns UAVs to sensing subregions under the resulting contracts. Numerical examples report truthful type ordering, cost-dependent rewards, and stable assignments across heterogeneous UAV types and subregions.
 
 ## System model
 

@@ -17,7 +17,8 @@ related:
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # 3D Deployment of UAV-BSs in Semantic Communication Networks: Mean-Field Multi-Agent Reinforcement Learning Approach
@@ -29,6 +30,39 @@ Li, H., Zhu, K., Li, T., Zhu, H., & Zhang, J. (2026). *3D Deployment of UAV-BSs 
 ## TL;DR
 
 Treats 3-D UAV base-station deployment as a semantic-fidelity problem rather than a bit-throughput problem. The method extends mean-field MADDPG with kernel density estimation (MF-MADDPG-KDE), so each UAV models a distribution of neighboring actions in continuous 3-D deployment space. A BLEU-based reward, mapped from SINR through a DeepSC-style fitting pipeline, guides UAV-BSs toward high-semantic-value user regions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAV base stations serve fixed ground-user hotspots in 3-D space. Each UAV serves one cluster, uses OFDMA inside the cluster, and shares spectrum with other clusters under frequency reuse one; links follow probabilistic LoS/NLoS air-to-ground channels.
+
+**Problem & objective**: Semantic-aware 3-D deployment, a continuous multi-agent optimization, maximizes aggregate semantic fidelity, $\max_{\mathbf q,\mathbf p}\sum_{i}\sum_{k_i}\mathrm{BLEU}_{i,k_i}(\mathrm{SINR}_{i,k_i})$, subject to SINR, flight-region, power, and interference-filtering constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf q_i=[x_i,y_i,z_i]$ | continuous 3-D, $z_{\min}\le z_i\le z_{\max}$ | Deployment location of UAV-BS $i$ |
+| Downlink power | $p_{k_i,i}$ | continuous, bounded | Power allocated by UAV $i$ to user $k_i$ |
+| Neighbor action statistic | $\bar a_i$ | continuous distribution | Mean-field representation of neighboring UAV actions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UAV stays in the permitted 3-D deployment region and altitude interval |
+| C2 | Each served user meets the semantic-quality threshold, $\mathrm{SINR}_{k_i,i}\ge\mathrm{SINR}_{th}$ |
+| C3 | Per-user and per-UAV transmit powers obey their bounds |
+| C4 | Only path-loss-qualified cross-cluster links contribute interference in the filtered SINR model |
+
+**Algorithm**: Fit a differentiable SINR-to-BLEU mapping from DeepSC samples → apply mean-field MADDPG for scalable coordination → estimate continuous neighbor-action distributions with KDE → train centralized critics and decentralized actors until the BLEU reward converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied three-dimensional deployment of large-scale UAV base stations for semantic communication. They formulated a continuous multi-agent deployment problem that maximizes a BLEU-based semantic-fidelity objective under SINR, power, altitude, and deployment-region constraints. The system uses OFDMA within each user cluster and frequency reuse one across clusters, so UAV positions jointly affect useful links and inter-cluster interference. They proposed MF-MADDPG-KDE, which combines mean-field coordination with kernel density estimation for continuous neighbor-action distributions and uses an SINR-to-BLEU fitting pipeline for the reward. Simulations report higher semantic transmission quality and more stable training than discrete action mapping and epsilon-net baselines, including a 36-UAV deployment experiment.
 
 ## Problem
 

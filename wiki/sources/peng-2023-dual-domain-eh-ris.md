@@ -20,7 +20,8 @@ related:
   - "[[chen-2025-swipt-mec-sac]]"
   - "[[chhea-2025-irs-uav-swipt-drl]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Energy Harvesting Reconfigurable Intelligent Surface for UAV Based on Robust Deep Reinforcement Learning
@@ -32,6 +33,44 @@ Peng, H., & Wang, L.-C. (2023). *Energy Harvesting Reconfigurable Intelligent Su
 ## TL;DR
 
 Extends harvest-transmit-store SWIPT for a UAV-mounted RIS from time splitting alone to joint time-and-space harvesting. During information transmission, selected RIS elements reflect toward users while the remaining elements continue harvesting RF energy. An SD3 controller jointly chooses the harvesting duration, transmit powers, element scheduling, and RIS phases under per-user throughput constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An AP with $Z$ antennas communicates with $K$ single-antenna users through a UAV-RIS with $M\times N$ reflecting elements because direct links are blocked. Each slot has an EH phase of length $\tau(t)$ and an information phase of length $1-\tau(t)$; in the dual-domain scheme, individual elements can harvest or reflect for a selected user.
+
+**Problem & objective**: Maximize the horizon energy-harvesting efficiency $\bar{\mathcal E}=\max\sum_{t=1}^{T}\mathcal E(t)$ while every user meets $\Gamma_k(t)\ge\Gamma_{\min}$ and the AP and RIS hardware limits hold.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| EH time fraction | $\tau(t)$ | continuous, $[0,1]$ | Time allocated to harvesting in slot $t$ |
+| AP power allocation | $P=[p_1,\ldots,p_K]$ | continuous, nonnegative | AP power assigned to users |
+| Element scheduling | $\omega_{i,j}^{k}$ | binary | Element $(i,j)$ reflects toward user $k$ |
+| RIS phases | $\theta_l^r$ | continuous, $[0,2\pi]$ | Phase of reflecting element $l$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Per-user throughput: $\Gamma_k(t)\ge\Gamma_{\min}$ |
+| C2 | Time split: $0\le\tau(t)\le1$ |
+| C3 | AP total power: $0\le\sum_k\|V_k\|^2\le p_{\max}$ |
+| C4 | Per-user power: $0\le p_k\le p_{\max}'$ |
+| C5 | Element assignment is binary: $\omega_{i,j}^{k}\in\{0,1\}$ |
+| C6 | One reflection target per element: $\sum_k\omega_{i,j}^{k}\le1$ |
+| C7 | Phase range: $\theta_l^r\in[0,2\pi]$ |
+| C8 | Unit-modulus reflection: $\lvert e^{j\theta_l^r}\rvert=1$ |
+
+**Algorithm**: Use the dual-domain action $\{\tau,P,\omega,\Theta\}$ in a robust SD3 controller with twin actors and critics, clipped exploration actions, softmax target evaluation, replay, and soft target updates; UAV horizontal placements are supplied by density-aware K-means or Fermat-point design.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Peng and Wang [x] study a UAV-mounted RIS that harvests RF energy while serving users through blocked AP-user links. Their problem maximizes dual-domain harvesting efficiency by jointly selecting the time split, user powers, element-level reflection schedule, and RIS phases under throughput and hardware constraints. A robust SD3 controller handles the mixed continuous and discrete action space with clipped softmax targets and replay, while density-aware and Fermat-point rules provide UAV placements. In the reported experiments, dual-domain SD3 achieves substantially higher harvesting efficiency than time-domain SD3, TD3, and DDPG in both single-user and multi-user cases.
 
 ## Problem framing
 

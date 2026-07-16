@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-User Task Offloading in UAV-Assisted LEO Satellite Edge Computing: A Game-Theoretic Approach"
 tags: [source, task-offloading, leo-satellite-edge-computing, game-theory, uav-mec, potential-game]
 related:
@@ -19,7 +20,7 @@ related:
   - "[[li-2025-stochastic-game-uav-swarm]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 authors: [Ying Chen, Jie Zhao, Yuan Wu, Jiwei Huang, Xuemin Sherman Shen]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3465591
@@ -28,8 +29,47 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 
 # Multi-User Task Offloading in UAV-Assisted LEO Satellite Edge Computing: A Game-Theoretic Approach
 
+## Citation
+
+Chen, Y., Zhao, J., Wu, Y., Huang, J., & Shen, X. S. (2024). *Multi-User Task Offloading in UAV-Assisted LEO Satellite Edge Computing: A Game-Theoretic Approach*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3465591.
+
 ## TL;DR
 This paper studies multi-user [[task-offloading]] in a UAV-assisted LEO satellite edge computing (ULSE) network, where ground devices compete for scarce UAV/satellite channels and CPU to minimize their own delay-plus-energy cost. The cost-minimization problem is proven NP-hard, recast as a [[potential-game]] (the LUTO-Game) with a guaranteed [[nash-equilibrium]], and solved by a distributed algorithm (JULTO). In simulation, JULTO reaches equilibrium in a handful of iterations at cost near the centralized optimum, but with execution time orders of magnitude lower and consistently below greedy and random baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Mobile user devices with one indivisible task choose local computing or an edge server on a UAV or moving LEO satellite; co-channel users interfere, UAVs provide wireless energy transfer, and satellite offloading is limited by a geometry-derived coverage window.
+
+**Problem & objective**: Problem (26) is an NP-hard discrete offloading problem, $\min_{\mathbf o}\sum_{d_i\in\mathbf D}K_{o_{-i}}(o_i)$, minimizing aggregate weighted delay-energy cost while preserving individual rationality and aerial-server feasibility.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Processing mode | $a_i$ | Discrete, $\{0,1,2\}$ | Selects local computing, UAV offloading, or LEO-satellite offloading. |
+| Edge server | $b_i$ | Integer in the selected UAV or LEO server set | Selects the aerial edge server that processes task $i$. |
+| Wireless channel | $c_i$ | Integer, $\{1,\ldots,c^u\}$ or $\{1,\ldots,c^L\}$ | Selects the uplink channel for the chosen aerial tier. |
+| Joint offloading action | $o_i=(a_i,b_i,c_i)$ | Categorical feasible tuple | Complete local, UAV, or LEO task-processing decision. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | LEO service must finish within remaining coverage time, $T_i^{LEO}\le T_i^L$. |
+| C2 | Offloading is individually rational, $K_{o_{-i}}(o_i)\le K_i^{local}$. |
+| C3 | UAV CPU allocations satisfy $\sum_{d_l:b_l=j_1}f_{l,j_1}^{UAV}\le f_{j_1}^{UAV}$. |
+| C4 | LEO CPU allocations satisfy $\sum_{d_l:b_l=j_2}f_{l,j_2}^{LEO}\le f_{j_2}^{LEO}$. |
+| C5 | Server and channel indices must belong to the tier selected by $a_i$, and every task uses one complete action tuple. |
+
+**Algorithm**: JULTO initializes all devices locally, removes infeasible or individually harmful offloads, computes improving unilateral alternatives in parallel, admits one globally cost-reducing update per round, and stops at a Nash equilibrium by the potential game's finite improvement property.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied multi-user task offloading in a UAV-assisted LEO satellite edge network without terrestrial base stations. They formulated an NP-hard aggregate delay-energy minimization over local, UAV, and LEO server-channel choices subject to satellite coverage time, individual-rationality, and aerial CPU-capacity constraints. They proved the LUTO-Game is a potential game and proposed JULTO, which accepts one globally cost-reducing unilateral update per round until reaching a Nash equilibrium. Simulations show JULTO remains close to centralized optimal cost while running in 1.78 ms versus 512096.68 ms at ten users, and it yields the lowest reported cost, delay, and energy across the greedy and random baselines.
 
 ## Problem
 Compute-intensive, latency-sensitive applications on mobile user devices (MUDs) exceed their CPU/battery budgets, and ground-base-station [[mobile-edge-computing]] cannot cover harsh terrain or survive disasters. The authors place edge servers on both low-altitude UAVs and LEO satellites ([[leo-satellite-edge-computing]]) to deliver global coverage, forming a space-air system in the spirit of the [[space-air-ground-integrated-network]]. The challenge: MUDs are selfish and individually rational, so they compete for limited heterogeneous resources, and each MUD additionally faces a per-device [[leo-satellite-coverage-time]] window because the satellite is moving. The objective is to minimize the total delay-plus-energy cost over all MUDs subject to coverage-time, server-capacity, and individual-rationality constraints, in a solution space that grows exponentially with the number of MUDs, UAVs, and satellites.

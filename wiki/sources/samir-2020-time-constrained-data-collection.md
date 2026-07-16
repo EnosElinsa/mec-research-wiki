@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV Trajectory Planning for Data Collection from Time-Constrained IoT Devices"
 authors: ["Moataz Samir", "Sanaa Sharafeddine", "Chadi M. Assi", "Tri Minh Nguyen", "Ali Ghrayeb"]
 year: 2020
@@ -26,7 +27,7 @@ related:
   - "[[chadi-assi]]"
   - "[[ali-ghrayeb]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV Trajectory Planning for Data Collection from Time-Constrained IoT Devices
@@ -40,6 +41,40 @@ The article was published online on 17 September 2019 and assigned to the Januar
 ## TL;DR
 
 A single UAV jointly plans its trajectory and uplink bandwidth allocation to maximize how many IoT devices complete their uploads between device-specific data-generation times and hard deadlines. A customized [[branch-reduce-and-bound]] method supplies a small-instance global benchmark, while successive convex approximation provides the scalable but locally optimal route and allocation used in larger simulations.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV collects deadline-sensitive uploads from ground IoT devices in slotted flight, with known device locations, generation times, deadlines, required service amounts, and orthogonal uplink bandwidth.
+
+**Problem & objective**: The admission and trajectory program maximizes the number of served devices, $\max_{\mathbf X,\mathbf Y,\mathbf B,\mathbf K}\sum_i\kappa_i$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Horizontal trajectory | $x^n,y^n$ | continuous, speed bounded | UAV position in slot $n$ |
+| Bandwidth allocation | $b_i^n$ | continuous, $0\leq b_i^n\leq1$ | Share assigned to device $i$ |
+| Admission indicator | $\kappa_i$ | binary, $\{0,1\}$ | Whether device $i$ is served |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Served devices meet their requirement: $S_i(b_i^n,x^n,y^n)\geq\kappa_iS_i^{min}$. |
+| C2 | Admission is binary: $\kappa_i\in\{0,1\}$. |
+| C3 | Unserved devices receive no share: $0\leq b_i^n\leq\kappa_i$. |
+| C4 | Slot bandwidth shares obey the orthogonal-access bound $\sum_i b_i^n\leq1$. |
+| C5 | The trajectory satisfies bounded displacement and prescribed start and end positions. |
+
+**Algorithm**: Use branch-reduce-and-bound for a small-instance global benchmark, then solve the relaxed route and allocation with successive convex approximation for scalable locally optimal trajectories.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Samir et al. [x] study UAV data collection when each IoT upload has its own generation window and hard deadline. Their mixed-integer nonlinear program maximizes admitted devices through trajectory coordinates, bandwidth fractions, binary admission, service thresholds, speed, and endpoint constraints. Branch-reduce-and-bound provides a global benchmark for small instances, while successive convex approximation scales the route and allocation to larger cases. The resulting comparison separates globally optimized short missions from scalable routes and reports improved service over greedy and other baseline policies.
 
 ## Problem
 

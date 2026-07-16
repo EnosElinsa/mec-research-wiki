@@ -5,6 +5,7 @@ authors: ["Abdulla Mahmoud", "Sami Muhaidat", "Paschalis C. Sofotasios", "Ibrahi
 year: 2021
 url: "https://doi.org/10.1109/TGCN.2021.3068739"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN)"
+modeling_card: not_applicable
 tags: [source, uav-mounted-ris, iot, performance-analysis, outage-probability, ergodic-capacity, symbol-error-rate, cascaded-channel]
 related:
   - "[[uav-mounted-ris]]"
@@ -13,7 +14,7 @@ related:
   - "[[octavia-a-dobre]]"
   - "[[halim-yanikomeroglu]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Intelligent Reflecting Surfaces Assisted UAV Communications for IoT Networks: Performance Analysis
@@ -27,6 +28,12 @@ Mahmoud, A., Muhaidat, S., Sofotasios, P. C., Abualhaol, I., Dobre, O. A., & Yan
 ## TL;DR
 
 Analyzes a static UAV carrying a planar IRS between one base station and one beyond-horizon IoT user with no direct LoS link. Under ideal phase alignment and an elevation-angle-dependent large-scale channel, it derives SNR bounds and performance expressions for error rate, capacity, and outage, showing the expected quadratic SNR scaling with IRS element count.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mahmoud et al. [x] analyzed a mounted-IRS UAV link that reflects a base-station signal to a beyond-horizon IoT user without a direct LoS path. They derived upper and lower average-SNR bounds, the SNR upper-bound distribution, and tractable expressions for symbol error rate, ergodic capacity, outage probability, and outage capacity under ideal phase alignment. They also developed a central-limit approximation and reported tight agreement with simulated symbol error rate for at least 16 reflecting elements. Numerical results reported quadratic average-SNR scaling with the IRS size, a five-order reduction in symbol error rate, and more than tenfold capacity improvement in one evaluated geometry when the array grew from one to 64 elements.
 
 ## System model
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cooperative Ground-Satellite Scheduling and Power Allocation for Urban Air Mobility Networks"
 authors: ["Hyung-Joo Moon", "Chan-Byoung Chae"]
 year: 2024
@@ -27,7 +28,7 @@ related:
   - "[[wang-2024-satellite-terrestrial-computing]]"
   - "[[chan-byoung-chae]]"
 created: 2026-06-03
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Cooperative Ground-Satellite Scheduling and Power Allocation for Urban Air Mobility Networks
@@ -37,6 +38,41 @@ Hyung-Joo Moon, Chan-Byoung Chae, "Cooperative Ground-Satellite Scheduling and P
 
 ## TL;DR
 This paper designs **multi-user downlink scheduling and power allocation** for **urban air mobility (UAM)** aircraft served by a 6G non-terrestrial network that integrates multiple ground stations (GSs) and a single satellite. It maximizes the **GS-user sum rate** subject to link-association, power, elevation-angle, and minimum-QoS constraints. The approach first **offloads high-interference UAMs to the satellite** (on a separate band) to clean up interference among the remaining GS users, then converts the GS link-association integer problem into a **minimum-cost maximum-flow (MCMF)** graph problem, and finally solves the non-convex GS power allocation with **successive convex approximation (SCA)**. Because the GS-to-UAM channel is line-of-sight and scatterer-poor, scheduling is done by **short-horizon prediction** from UAM positions/velocities, avoiding instantaneous CSI and frequent handovers.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple multi-antenna ground stations and one LEO satellite provide downlink service to moving urban air mobility aircraft. Ground stations reuse a common band with LoS-dominant Rician channels and MRT beam tracking, while satellite users occupy a separate TDMA/OFDMA band; positions and velocities predict link quality over $[0,T]$, and associations remain fixed during that horizon.
+
+**Problem & objective**: Problem P1, a highly non-convex mixed scheduling and power-allocation problem, maximizes the integrated GS-user sum rate, $\max_{\mathbf M_{\mathrm{SAT}},\{p_m^{(k)}(t)\}}\sum_{m\in\mathbf M_{\mathrm{GS}}}\int_0^T C_m(t)\,dt$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Satellite-user set | $\mathbf M_{\mathrm{SAT}}$ | discrete subset of $M_{\mathrm{SAT}}$ users | UAMs moved to the satellite band |
+| GS association support | $\operatorname{supp}(p_m^{(k)})$ | discrete, one GS per GS user | Ground station serving each remaining UAM |
+| GS transmit power | $p_m^{(k)}(t)$ | continuous, nonnegative | Power allocated by GS $k$ to UAM $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 22b-22c | $\mathbf M_{\mathrm{GS}}=\mathbf M\setminus\mathbf M_{\mathrm{SAT}}$ and $\lvert\mathbf M_{\mathrm{SAT}}\rvert=M_{\mathrm{SAT}}$ |
+| 22d-22e | $\sum_m p_m^{(k)}(t)\le P_T$ and $p_m^{(k)}(t)\ge0$ |
+| 22f | Each GS serves at most $N$ UAMs over the horizon |
+| 22g | Each GS-serviced UAM is associated with exactly one GS |
+| 22h | A link is scheduled only when its zenith angle satisfies the LoS threshold |
+| 22i | Every GS user satisfies $\gamma_m(t)\ge\gamma_{\min}$ |
+
+**Algorithm**: Predict interference from UAM positions and velocities → greedily select satellite users → score feasible GS-UAM links analytically or by time-sampled integration → solve GS association as a minimum-cost maximum-flow problem → update scheduled-link powers with SCA and subgradient iterations.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Moon and Chae [x] studied multi-user downlink scheduling and power allocation for urban air mobility in an integrated satellite and ground 6G non-terrestrial network. They formulated a sum-rate maximization problem with satellite-user selection, GS association, transmit-power, elevation-angle, and minimum-QoS constraints. Their method first uses predicted UAM locations and velocities to assign severe-interference users to a separate satellite band. It then converts GS link association into a minimum-cost maximum-flow problem and solves scheduled-link power allocation through successive convex approximation and subgradient updates. Simulations report higher average GS-user rates than the evaluated distance-based scheduling methods and higher rates than equal power allocation under the stated QoS settings.
 
 ## Problem framing
 UAM (passenger/cargo aircraft over cities) needs large **downlink** volumes for navigation, safety, command-and-control (C2), and multimedia — unlike conventional UAV models that focus on uplinking mission data or serving terrestrial users, and unlike a generic [[cellular-connected-uav]]. UAMs hold stable, planned flight paths and velocities, so the network should schedule by prediction rather than react to instantaneous channels. Serving wide airspace needs many GSs sharing one band, which creates inter-beam interference (IBI) and inter-GS interference (IGI) when a GS and two UAMs become geometrically aligned. The paper's idea: deploy a satellite on a separate band to absorb the worst-interfering UAMs, restoring orthogonality for GS users, and frame UAMs as the **edge users of a satellite-ground NTN** — a distinct system model for 6G NTN.

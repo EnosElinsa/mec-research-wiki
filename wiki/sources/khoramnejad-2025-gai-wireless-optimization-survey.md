@@ -5,6 +5,7 @@ authors: ["Fahime Khoramnejad", "Ekram Hossain"]
 year: 2025
 url: "https://doi.org/10.1109/COMST.2025.3535554"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, survey, generative-ai, 6g, network-optimization, resource-allocation, diffusion-model]
 related:
   - "[[generative-ai-for-mec]]"
@@ -15,7 +16,7 @@ related:
   - "[[wang-2025-lae-network-survey]]"
   - "[[du-2024-distributed-foundation-models-6g]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 ---
 
 # Generative AI for the Optimization of Next-Generation Wireless Networks: Basics, State-of-the-Art, and Open Challenges
@@ -29,6 +30,12 @@ Khoramnejad, F., & Hossain, E. (2025). *Generative AI for the Optimization of Ne
 A **survey** of how generative AI (GAI) unlocks optimization opportunities in next-generation (xG, e.g. 6G) wireless networks. It reviews GAI model families (GANs, generative diffusion models, GFlowNets), surveys their use for resource allocation and network performance, discusses the networking requirements to support GAI applications, and closes with a case study using a diffusion-based GAI model (with RL) for load balancing, carrier aggregation, and backhauling in non-terrestrial networks.
 
 This is the wiki's dedicated **GAI-for-wireless** survey anchor.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Khoramnejad and Hossain [x] surveyed generative artificial intelligence for the optimization of next-generation wireless networks. They reviewed generative adversarial networks, generative diffusion models, and generative flow networks together with major communication paradigms and resource-allocation applications in xG networks. The survey examined how generative models support data generation, offline configuration exploration, dynamic resource allocation, and overall network-performance optimization. It also discussed networking requirements for generative-AI applications and presented an illustrative diffusion and reinforcement-learning case study for load balancing, carrier aggregation, and backhauling in non-terrestrial networks. The authors identified model complexity, data requirements, robustness, interpretability, security, privacy, and real-time deployment as open challenges.
 
 ## Problem framing
 

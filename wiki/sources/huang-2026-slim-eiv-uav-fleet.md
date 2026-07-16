@@ -5,6 +5,7 @@ authors: ["Jianping Huang", "Feng Shan", "Junzhou Luo"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3690854"
 venue: "IEEE Transactions on Mobile Computing (early access; accepted author version)"
+modeling_card: required
 tags: [source, edge-intelligent-vehicle, multi-uav, fleet-sizing, facility-location, deadline-scheduling, dynamic-programming, approximation-algorithm, deployment-cost]
 related:
   - "[[edge-intelligent-vehicle]]"
@@ -18,7 +19,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[task-offloading]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # SLIM+: Jointly Optimizing EIV Placement and UAV Fleet Sizing for Deadline-Driven Tasks
@@ -32,6 +33,43 @@ Huang, J., Shan, F., & Luo, J. (2026). *SLIM+: Jointly Optimizing EIV Placement 
 ## TL;DR
 
 Jointly places mobile edge-support vehicles along a linear task route and chooses each route segment's UAV fleet size, common speed, and deadline-feasible schedule. An outer dynamic program evaluates segment boundaries, while exact or approximation scheduling handles the inner fleet-sizing problem. The method is centralized, offline, simulation-tested, and approximate when the scalable inner solver is used.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Edge intelligent vehicles are placed at selected task locations along a linear route and act as UAV launch, recovery, recharge, communication, and edge-processing hubs. Identical UAVs move forward within each EIV-delimited segment, collect indivisible tasks in route order, offload data to the nearer endpoint EIV, and meet hard completion deadlines. UAV-EIV transfer uses a distance-dependent communication rate; the paper does not introduce a multiple-access scheduling variable or a small-scale fading model.
+
+**Problem & objective**: SLIM+ is a strongly NP-hard mixed-integer nonlinear deployment and scheduling problem that minimizes total EIV and UAV deployment cost, $\min \sum_{s_k\in S}w_e(s_k)+w_u\sum_k m_k$, while enforcing deadline, route, capacity, and energy feasibility.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| EIV placement | $S$ | discrete subset of task locations | Selected launch, recovery, and processing hubs |
+| UAV fleet size | $m_k$ | positive integer | Number of UAVs assigned to route segment $k$ |
+| Segment flight speed | $v_k$ | continuous, $[v_{min},v_{max}]$ | Common speed used by UAVs in segment $k$ |
+| Task transition | $x_{i,j,z}$ | binary | Whether UAV $i$ serves task $z$ after task $j$ |
+| Service start time | $t_{i,j}$ | continuous, nonnegative | Time UAV $i$ starts task $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every UAV starts at the segment's initial EIV and finishes at its ending EIV |
+| C2 | Every indivisible task is served exactly once and task transitions follow route order |
+| C3 | Acquisition, offloading, processing, and travel finish before each task deadline |
+| C4 | Flight plus service energy remains within each UAV's energy budget |
+| C5 | The fleet assigned to a segment does not exceed the supporting EIV capacity |
+| C6 | EIV setup time and segment speed bounds remain feasible |
+
+**Algorithm**: For each candidate segment, prune and discretize the feasible speed interval, solve the inner fleet-sizing problem exactly with SLIM-DP and bisection for small instances or approximately with slack ordering, workload splitting, and indivisibility repair in SLIM-AG, then use the outer DP-AG recurrence to select segment boundaries and reconstruct EIV placements and schedules.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied joint edge-intelligent-vehicle placement and UAV fleet sizing for deadline-driven tasks along a linear route. They formulated SLIM+ to minimize total EIV and UAV deployment cost by selecting EIV locations, segment fleet sizes and speeds, task assignments, and service times under route, deadline, energy, and EIV-capacity constraints. Their two-level solution uses an outer dynamic program for EIV placement and an inner SLIM solver for minimum fleet sizing at each candidate segment and speed. SLIM-DP provides an exact dynamic-programming solution for small instances, while SLIM-AG applies deadline-slack ordering and workload splitting with a stated approximation guarantee for larger instances. Simulations report a 21.3 percent average fleet reduction for SLIM-AG relative to the evaluated scheduling baselines and up to a 21.9 percent deployment-cost reduction for DP-AG relative to the evaluated end-to-end baselines.
 
 ## Problem and system model
 

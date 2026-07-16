@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Digital-Twin-Empowered Cluster Formation via Over-the-Air Computation in UAV Swarm Networks"
 authors: ["Lu Zhang", "Xuan Li", "Yuhang Zhang", "Yansong Huang", "Haiyan Li", "Zixuan Zhang", "Mugen Peng"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[autonomous-uav-swarms]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Digital-Twin-Empowered Cluster Formation via Over-the-Air Computation in UAV Swarm Networks
@@ -27,6 +28,41 @@ Zhang, L., Li, X., Zhang, Y., Huang, Y., Li, H., Zhang, Z., & Peng, M. (2026). *
 ## TL;DR
 
 Uses a digital-twin control loop to jointly form UAV-to-IoE-device-group clusters, coordinate AirComp receiver scaling and device power, and plan collision-safe UAV trajectories. A four-block BCD solver maximizes aggregated data per UAV-plus-twin energy under AirComp distortion constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-altitude UAVs form time-varying one-to-one service clusters with groups of IoE devices. Devices in a selected group transmit simultaneously through AirComp, while a digital-twin layer periodically updates formation, receiver scaling, device power, and collision-safe UAV trajectories.
+
+**Problem & objective**: The MINLP fractional program maximizes aggregated-data energy efficiency, $\max_{\mathbf Q,\mathbf A,\mathbf P,\boldsymbol\eta}\frac{\sum_{n,l,m}a_{l,m}[n]R_{l,m}[n]}{\sum_{m,n}P_U^m[n]+\phi_p}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV-group formation | $a_{l,m}[n]$ | binary, $\{0,1\}$ | Whether UAV $m$ aggregates group $l$ in slot $n$ |
+| Device power | $P_{k,l}[n]$ | continuous, $[0,P_{\max}]$ | AirComp transmit power of device $k$ in group $l$ |
+| AirComp scale factor | $\eta_{l,m}[n]$ | continuous, positive | Receive normalization applied by UAV $m$ |
+| UAV trajectory | $\mathbf q_m[n]$ | continuous position | Horizontal location of UAV $m$ in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The associated AirComp distortion satisfies $\sum_m a_{l,m}[n]\mathrm{mse}_{l,m,n}\leq\epsilon_l$. |
+| C2 | Scale and power satisfy $\eta_{l,m}[n]>0$ and $0\leq P_{k,l}[n]\leq P_{\max}$. |
+| C3 | UAV displacement satisfies $\lVert\mathbf q_m[n]-\mathbf q_m[n-1]\rVert\leq V_{\max}\delta_t$. |
+| C4 | UAV separation satisfies $\lVert\mathbf q_m[n]-\mathbf q_i[n]\rVert^2\geq d_{\min}^2$. |
+| C5 | Each group has at most one UAV and each UAV serves at most one group per slot. |
+
+**Algorithm**: Apply BCD across four blocks: relax and greedily recover binary UAV-device formation, update AirComp scale factors with Dinkelbach fractional programming, update device powers with a square-root substitution and Dinkelbach iteration, and optimize trajectories through SCA with an inner Dinkelbach loop until the global objective stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied digital-twin-empowered UAV-device cluster formation with AirComp for energy-efficient IoE data aggregation. They formulated a mixed-integer nonlinear fractional program that jointly selects binary UAV-group associations, device powers, AirComp receiver scale factors, and UAV trajectories to maximize aggregated-data energy efficiency under distortion, power, speed, collision-separation, and one-to-one formation constraints. Their global iterative optimization decomposes the problem into relaxed formation, Dinkelbach-based AirComp-factor coordination, Dinkelbach-based device-power allocation, and SCA-Dinkelbach trajectory blocks. Simulations report up to 42% higher energy efficiency and 34% higher throughput than the corresponding pre-set AirComp baseline.
 
 ## Problem
 

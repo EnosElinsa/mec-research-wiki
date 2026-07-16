@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Deploying UAVs and Surveillance Cameras for Continuous Omnidirectional Monitoring"
 authors: ["Haihan Zhang", "Haipeng Dai", "Yuben Qu", "Chaocan Xiang", "Yongxi Sui", "Shiju Zhao", "Zhenzhe Zheng", "Guihai Chen"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[yuben-qu]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Deploying UAVs and Surveillance Cameras for Continuous Omnidirectional Monitoring
@@ -25,6 +26,42 @@ Zhang, H., Dai, H., Qu, Y., Xiang, C., Sui, Y., Zhao, S., Zheng, Z., & Chen, G. 
 ## TL;DR
 
 Jointly selects camera rentals and UAV position, orientation, path, and departure time to maximize continuous monitoring across every horizontal viewing direction of target objects. The JUMP pipeline reduces the continuous strategy space, plans shortest paths around no-fly zones, and applies approximation-guaranteed submodular selection; a ten-UAV field test supports the geometric deployment results.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Camera-equipped UAVs depart from a common source and fixed candidate surveillance cameras can be rented to monitor multiple objects throughout a finite task interval. Each device has a sector field of view, UAVs avoid object-centered no-fly regions and reserve energy for travel, and utility is the unioned monitoring duration over every target and horizontal viewing direction.
+
+**Problem & objective**: JUMP-P1 is an NP-hard continuous deployment and path-planning problem that maximizes continuous omnidirectional monitoring utility, $\max_{\Lambda^U,\Lambda^S}(2\pi J)^{-1}\sum_{o\in O_t}\int_0^{2\pi}\mathbb U(\Lambda^U,\Lambda^S,p_o,\theta_o)\,d\theta_o$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV strategy | $\lambda^u=\langle p_u,\alpha_u,\tau_u\rangle$ | continuous position, angle, and time | Monitoring location, camera orientation, and departure time of UAV $u$ |
+| Selected UAV strategies | $\Lambda^U$ | set, cardinality-limited | UAV deployments and their obstacle-avoiding paths |
+| Camera strategy | $\lambda^s=\langle p_s,\alpha_s,\tau_s\rangle$ | fixed position with continuous angle | Orientation and activation of candidate camera $s$ |
+| Selected camera strategies | $\Lambda^S$ | set, budget-limited | Surveillance cameras rented for the task |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | No more than $I$ UAV strategies are selected, $\lvert\Lambda^U\rvert\le I$ |
+| C2 | Camera rental cost respects the budget, $\sum_{\lambda^s\in\Lambda^S}c_s\le C$ |
+| C3 | Each fixed camera executes at most one orientation strategy |
+| C4 | UAV positions and paths keep $\lVert p_u-p_o\rVert\ge d_{\min}$ from every object-centered no-fly region |
+| C5 | UAV and camera orientations satisfy $\alpha_u,\alpha_s\in[0,2\pi)$ |
+| C6 | UAV monitoring time is limited by outbound and return travel plus movement and hovering energy |
+
+**Algorithm**: Discretize viewing direction and time with a bounded utility error → extract dominating fixed-camera strategies → partition UAV deployment space and find obstacle-avoiding shortest paths to candidate areas → generate feasible departure times → reformulate selection as monotone submodular maximization under one partition matroid and two knapsack constraints → apply thresholded value-density selection with the stated approximation guarantee.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied joint deployment of UAVs and surveillance cameras with path planning for continuous omnidirectional monitoring. They formulated JUMP-P1 to maximize the monitoring duration of every target object in all horizontal directions under UAV-count, camera-budget, safety-distance, orientation, travel-time, and energy limits. Their approach discretizes the spatio-temporal utility, extracts dominating camera and UAV strategies, computes obstacle-avoiding paths, and reformulates strategy selection as monotone submodular maximization with one partition matroid and two knapsack constraints. The resulting algorithm has a stated approximation ratio of $1/6-\varepsilon_1$, improving to $1/4-\varepsilon_1$ when camera costs are uniform. Simulations report gains of 13% to 1446% across the evaluated baselines and parameter sweeps, while the field experiment reports monitoring utility 0.73 for JUMP, compared with 0.59, 0.20, and 0.51 for the three displayed alternatives.
 
 ## Problem
 

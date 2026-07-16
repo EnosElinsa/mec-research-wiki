@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Through the Wall Detection and Localization of Autonomous Mobile Device in Indoor Scenario"
 authors: ["Jiacheng Wang", "Hongyang Du", "Dusit Niyato", "Mu Zhou", "Jiawen Kang", "Zehui Xiong", "Abbas Jamalipour"]
 year: 2024
@@ -14,7 +15,7 @@ related:
   - "[[zehui-xiong]]"
   - "[[jiawen-kang]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Through the Wall Detection and Localization of Autonomous Mobile Device in Indoor Scenario
@@ -26,6 +27,12 @@ Wang, J., Du, H., Niyato, D., Zhou, M., Kang, J., Xiong, Z., & Jamalipour, A. (2
 ## TL;DR
 
 Proposes **T-DeLo**, a CSI-based system for **through-the-wall (TTW) passive detection and localization** of autonomous mobile devices (AMDs, e.g., warehouse robots) using existing WiFi/5G infrastructure. T-DeLo: (1) establishes a reference channel to cancel strong signal interference (SSI) and phase errors; (2) applies a novel **two-dimensional matrix pencil algorithm** to jointly estimate path-length change rate (PLCR) and time-of-flight (ToF) of AMD-induced reflections; (3) uses statistical analysis (detection) and geometric analysis (localization) to track the AMD. Aggregates multiple measurements for robustness at low SNR. Experimental validation in glass-wall and brick-wall scenarios achieves detection accuracy 0.964 / 0.952 and median localization errors 1.65 m / 2.05 m.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] present T-DeLo for passive through-the-wall detection and localization of autonomous mobile devices from CSI. The system cancels strong signal interference and phase errors, then estimates path-length change rate and time of flight with a packet-aggregation two-dimensional matrix pencil method. Statistical hypothesis testing detects a moving device, while geometric processing maps the estimated reflections to a location. Hardware experiments report detection accuracies of 0.964 and 0.952 and median localization errors of 1.65 m and 2.05 m for glass and brick walls, respectively.
 
 ## Problem framing
 

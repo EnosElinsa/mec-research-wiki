@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy-Efficient Offloading, Caching, and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks: An Integrated Federated Learning and MAPPO Approach"
 authors: ["Zhiran Wang", "Bintao Hu", "Miguel Lopez-Benitez", "Jianbo Du", "Xiaoli Chu", "F. Richard Yu"]
 year: 2026
@@ -20,7 +21,7 @@ related:
   - "[[wang-2024-blockchain-uav-mec-dpos]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Offloading, Caching, and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks: An Integrated Federated Learning and MAPPO Approach
@@ -32,6 +33,42 @@ Wang, Z., Hu, B., Lopez-Benitez, M., Du, J., Chu, X., & Yu, F. R. (2026). *Energ
 ## TL;DR
 
 Builds a four-layer low-altitude edge-intelligence architecture where UEs send delay-sensitive tasks to task UAVs, task UAVs aggregate work toward service UAVs, service UAVs train FL local models, and a BS aggregates the global model. The proposed FL-MAPPO-BOCRAOA algorithm jointly controls offloading, caching, radio/compute resources, and PV-aware throttling, while a blockchain layer supports trusted cooperation among service UAVs.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Delay-sensitive UE tasks traverse a four-layer low-altitude network containing task UAVs, service UAVs, and a BS. Service UAVs cache content, execute tasks, train federated local models, maintain blockchain records, and use photovoltaic energy with battery-state-aware throttling under interference and queueing.
+
+**Problem & objective**: A long-term stochastic mixed discrete-continuous control problem minimizes aggregate delay and energy cost, $\min J=J_{\mathrm{trans}}+J_{\mathrm{comp}}+J_{\mathrm{queue}}+J_{\mathrm{fetch}}+\lambda_E E_{\mathrm{tot}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task offloading | $x_{i,m}(t)$ | binary/discrete | Execution route selected for UE task $i$ |
+| Cache placement | $c_{m,f}(t)$ | binary | Whether service UAV $m$ stores content $f$ |
+| Radio resource | $b_i(t),p_i(t)$ | continuous, bounded | Bandwidth and power allocated to transmissions |
+| Computing resource | $f_{i,m}(t)$ | continuous, nonnegative | CPU frequency allocated to task $i$ |
+| Energy throttle | $\zeta_m(t)$ | continuous, $[0,1]$ | Battery-SOC and PV-aware load multiplier at service UAV $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every task selects a feasible execution and forwarding route |
+| C2 | Cache placements respect each service UAV's storage capacity |
+| C3 | Radio powers, bandwidth shares, and NOMA decoding remain feasible |
+| C4 | CPU allocations and M/M/1 service rates keep queues stable and meet task deadlines |
+| C5 | Communication and computing loads obey PV harvesting, battery SOC, and throttling limits |
+
+**Algorithm**: Observe queues, cache state, channel state, and battery SOC → let CTDE MAPPO agents choose offloading, caching, radio, computing, and throttle actions → train local federated models at service UAVs → verify and record cooperation through blockchain → aggregate the global model at the BS → update policies from the joint cost.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied energy-efficient task offloading, caching, and resource allocation in a blockchain-assisted low-altitude flying network. They modeled a four-layer UE, task-UAV, service-UAV, and base-station architecture with queueing, content caching, federated learning, blockchain overhead, and photovoltaic energy harvesting. The FL-MAPPO-BOCRAOA method jointly controls offloading, cache placement, radio and computing resources, and battery-state-aware throttling through centralized training and decentralized execution. Service UAVs train federated local models and use blockchain records to support trusted cache and processing cooperation. Simulations report lower delay and energy, shorter queues, more stable battery state of charge, and higher cache hit ratio than the evaluated learning baselines.
 
 ## Problem
 

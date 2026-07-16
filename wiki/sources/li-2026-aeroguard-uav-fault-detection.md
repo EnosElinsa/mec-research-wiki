@@ -5,6 +5,7 @@ authors: ["Teng Li", "Zhili Wei", "Yebo Feng", "Runze Yu", "Zhuo Ma", "Yulong Sh
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3653674"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: not_applicable
 tags: [source, uav, fault-detection, anomaly-detection, hybrid-model, lstm, arx, sprt, z-score, edge-intelligence, real-time-detection, uav-security]
 related:
   - "[[hybrid-uav-flight-data-fault-detection]]"
@@ -14,7 +15,7 @@ related:
   - "[[multi-domain-uav-anti-jamming]]"
   - "[[uav-enabled-its]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # AeroGuard: Towards Real-Time UAV Fault Detection With Hybrid Models
@@ -26,6 +27,12 @@ Li, T., Wei, Z., Feng, Y., Yu, R., Ma, Z., Shen, Y., Ma, J., & Liu, Y. (2026). *
 ## TL;DR
 
 Builds a lightweight real-time UAV fault detector by fusing an LSTM predictor with an ARX predictor, weighting their residuals adaptively, and running Z-score plus SPRT tests over the fused residual stream. The system targets static, bias, drift, and point faults in UAV flight data and is evaluated on public datasets, real UAV logs, outdoor flights, and Raspberry Pi-class devices.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] developed AeroGuard for real-time fault detection from UAV flight-data streams on lightweight onboard computers. The framework combines LSTM and online ARX predictions through residual-driven adaptive weights, then applies Z-score and sequential probability ratio tests to the fused residual. It targets static, bias, drift, and point faults without requiring examples of every fault type during detector training. On the ALFA dataset, AeroGuard reported 90.00% accuracy, 87.50% precision, 93.33% recall, and a 90.32% F1 score. Its fusion overhead stayed below 1 ms on Raspberry Pi 4B and total processing latency remained within 6 ms, although individual baselines performed better on some fault-specific metrics.
 
 ## Problem
 

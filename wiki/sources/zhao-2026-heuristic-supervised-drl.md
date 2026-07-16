@@ -13,8 +13,9 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[ppo]]"
   - "[[ctde-multi-agent-drl-protocol]]"
+modeling_card: not_applicable
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Heuristic-Supervised-DRL: A Unified Optimization Framework with Convergence Analysis
@@ -26,6 +27,12 @@ Zhao, W., Wang, K., Liu, X., Liu, Z., & Kato, N. (2026). *Heuristic-Supervised-D
 ## TL;DR
 
 Proposes HSD, a closed-loop hybrid framework where a heuristic upper-tier planner chooses slow strategic variables, a DRL/MARL lower tier executes fast control, and an online supervised predictor estimates the downstream value of candidate plans. The key contribution is not just a PSO-MARL case study: the paper models the predictor/policy updates as a two-timescale stochastic approximation and gives conditional convergence and robustness statements for the coupled loop.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] proposed Heuristic-Supervised-DRL, a unified framework for coupling heuristic planning with DRL through an online supervised predictor. The upper tier searches slow strategic variables using the predictor as a fitness oracle, while the lower tier executes fast control and returns observed values for predictor and policy updates. They analyzed the coupled updates through two-timescale stochastic approximation and established conditional convergence to an asymptotically stable equilibrium, with bounded planner error yielding convergence to a neighborhood. A PSO-MARL UAV-MEC case study was used to evaluate the framework for trajectory planning and communication-computation resource allocation. The reported case-study results show higher task-completion ratio and long-term reward, lower normalized delay, and improved performance over the version without the predictive bridge and the evaluated baselines.
 
 ## Problem framing
 
@@ -57,5 +64,5 @@ This paper gives a theory-facing counterpart to the corpus's many empirical hybr
 
 ## Raw artifacts
 
-- `raw/sources/Heuristic-Supervised-DRL A Unified Optimization Framework With Convergence Analysis/Heuristic-Supervised-DRL A Unified Optimization Framework With Convergence Analysis.md`
+- `raw/sources/Heuristic-Supervised-DRL_A_Unified_Optimization_Framework_With_Convergence_Analysis/Heuristic-Supervised-DRL_A_Unified_Optimization_Framework_With_Convergence_Analysis.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

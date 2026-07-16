@@ -5,6 +5,7 @@ authors: ["Yejun He", "Xinying Wu", "Zhou He", "Mohsen Guizani"]
 year: 2024
 url: "https://doi.org/10.1109/TMC.2023.3243161"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, mobile-edge-computing, wireless-power-transfer, backscatter-communication, computation-offloading, fractional-programming-dinkelbach, convex-optimization]
 related:
   - "[[mobile-edge-computing]]"
@@ -18,7 +19,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[chen-2025-swipt-mec-sac]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Energy Efficiency Maximization of Backscatter-Assisted Wireless-Powered MEC With User Cooperation
@@ -30,6 +31,42 @@ He, Y., Wu, X., He, Z., & Guizani, M. (2024). *Energy Efficiency Maximization of
 ## TL;DR
 
 A **wireless-powered MEC (WPMEC)** scheme that combines **backscatter communication (BackCom)** and **active communication (AC)** with **user cooperation (UC)** to maximize **user energy efficiency (EE)**. The system has a **source node (SN)**, a **helper**, and a **hybrid access point (HAP)** integrated with MEC servers. Because the SN→HAP link is poor, the helper acts as a **relay** for the SN's computing tasks; both nodes can offload via either the passive (BackCom) or active (AC) mode. The paper maximizes the **user-centric** EE (excluding HAP energy) by jointly optimizing the backscatter reflection coefficient, AC transmit power, system time, and task allocation under minimum-computation-bits, channel-capacity, and energy constraints. A **fractional-programming (Dinkelbach-style)** transform plus variable substitution converts the non-convex problem to a convex one with **semi-closed-form** optimal solutions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A hybrid access point powers a distant source node and a nearer helper, both of which can compute locally or offload through backscatter and active transmission. The helper relays source-node tasks to counter the double near-far effect, and TDMA separates the wireless-energy, backscatter, active, local-computing, and relaying stages.
+
+**Problem & objective**: Maximize user energy efficiency, $\max_{\mathbf t,\mathbf l,\mathbf p,\boldsymbol\beta}\eta_{EE}=l_{\mathrm{total}}/E_{\mathrm{total}}$, over time, task, active-power, and reflection allocations while excluding grid-powered HAP energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Phase durations | $\mathbf t$ | continuous, nonnegative | Wireless-energy, backscatter, active, and local-computing times |
+| Task allocation | $\mathbf l$ | continuous, nonnegative | Bits computed locally, relayed by the helper, or offloaded to the HAP |
+| Active transmit power | $\mathbf p=\{p_s,p_h\}$ | continuous, nonnegative | Source and helper power in active mode |
+| Backscatter reflection | $\boldsymbol\beta=\{\beta_s,\beta_h\}$ | continuous, $[0,1]$ | Reflected fraction for source and helper BackCom |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Backscatter and active offloaded bits do not exceed their corresponding link capacities. |
+| C2 | All phase durations are nonnegative and fit within the time block $T$. |
+| C3 | Reflection coefficients satisfy $0\leq\beta_s,\beta_h\leq1$. |
+| C4 | Total computed bits satisfy $l_{\mathrm{total}}\geq L_{\min}$. |
+| C5 | Local-computing bits are consistent with CPU frequency and allocated execution time. |
+| C6 | Each user's local, circuit, reflection, and active-transmission energy does not exceed harvested RF energy. |
+
+**Algorithm**: Apply Dinkelbach's transform to replace the fractional objective by $l_{\mathrm{total}}-qE_{\mathrm{total}}$, substitute products such as $\tau_b=\beta t_b$ and $\tau_a=pt_a$, and solve the resulting convex perspective-form problem. Update $q=l_{\mathrm{total}}/E_{\mathrm{total}}$ until the residual is below tolerance, then recover reflection coefficients and active powers; the KKT analysis gives semi-closed-form operating rules.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+He et al. [x] studied a cooperation-assisted wireless-powered MEC system that combines backscatter and active offloading for a distant source and a helper relay. They maximized user computation bits per joule over phase durations, task allocation, active powers, and reflection coefficients under link-capacity, minimum-computation, timing, local-computing, and harvested-energy constraints. A Dinkelbach transform and product-variable substitutions convert the fractional problem into a convex program with semi-closed-form resource-allocation structure. Simulations showed convergence within five iterations, the highest energy efficiency among five compared schemes, and a shift from active transmission toward backscatter as reflection performance improved.
 
 ## Problem framing
 

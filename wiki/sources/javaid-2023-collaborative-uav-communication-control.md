@@ -5,6 +5,7 @@ authors: ["Shumaila Javaid", "Nasir Saeed", "Zakria Qadir", "Hamza Fahim", "Bin 
 year: 2023
 url: "https://doi.org/10.1109/TITS.2023.3248841"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: not_applicable
 tags: [source, survey, collaborative-uav, uav-swarm, communication, control, autonomy]
 related:
   - "[[collaborative-uav-communication]]"
@@ -17,7 +18,7 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[du-2025-autonomous-intelligent-uav-swarms]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Communication and Control in Collaborative UAVs: Recent Advances and Future Trends
@@ -29,6 +30,12 @@ Javaid, S., Saeed, N., Qadir, Z., Fahim, H., He, B., Song, H., & Bilal, M. (2023
 ## TL;DR
 
 Reviews collaborative multi-UAV systems through the joint requirements of communication, flight control, autonomy, sensing, computation, and resource sharing. It organizes UAV-to-infrastructure and UAV-to-UAV links, control functions, collaborative tasks, urban applications, use cases, and open research directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Javaid et al. [x] reviewed communication and control in collaborative multi-UAV systems. They examined intelligent-UAV characteristics and the communication, control, cooperation, and autonomy requirements needed for swarm coordination. The review organized UAV-to-infrastructure and UAV-to-UAV communication technologies together with collaborative tasks such as trajectory formation, localization, data collection, task offloading, sensing, and joint decision making. It also summarized UAV-swarm applications in dense urban environments and use cases spanning transportation, monitoring, surveillance, edge resource management, disaster response, and agriculture. The authors identified collaborative communication mechanisms, self-organization, resource management, scheduling, trajectory optimization, and energy efficiency as future research directions.
 
 ## Scope
 

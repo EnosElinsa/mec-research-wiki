@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Computation Offloading and Resource Allocation for Uncertain Maritime MEC via Cooperation of AAVs and Vessels"
 authors: ["Jiahao You", "Ziye Jia", "Chao Dong", "Qihui Wu", "Zhu Han"]
 year: 2025
@@ -18,7 +19,7 @@ related:
   - "[[jia-2022-hierarchical-aerial-matching]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Joint Computation Offloading and Resource Allocation for Uncertain Maritime MEC via Cooperation of AAVs and Vessels
@@ -30,6 +31,41 @@ You, J., Jia, Z., Dong, C., Wu, Q., & Han, Z. (2025). *Joint Computation Offload
 ## TL;DR
 
 Maritime MEC via cooperation of autonomous aerial vehicles (AAVs) and vessels, minimizing total task execution time under **uncertain** task arrivals. **Lyapunov optimization** converts the long-term constraints into per-slot short-term ones, yielding small-scale problems; the heterogeneity of AAV/vessel actions and resources is then captured as a **Markov game (MG)**, solved by a **heterogeneous-agent soft actor-critic** that sequentially updates the agents' networks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Maritime IoT devices with uncertain task arrivals offload to cooperative autonomous aerial vehicles and vessels that have heterogeneous mobility, communication, and computing resources. Queues and long-term resource budgets evolve across slots.
+
+**Problem & objective**: A stochastic long-term control problem minimizes total task-execution time, $\min \limsup_{T\to\infty}\frac{1}{T}\sum_{t,k}T_k(t)$, under queue stability and time-average resource constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading destination | $x_{k,j}(t)$ | discrete/binary | AAV or vessel selected for task $k$ |
+| Transmit resource | $p_k(t),b_k(t)$ | continuous, bounded | Uplink power and bandwidth allocated to a task |
+| Computing allocation | $f_{k,j}(t)$ | continuous, nonnegative | Processor resource assigned by server $j$ |
+| AAV movement | $\Delta\mathbf q_j(t)$ | continuous bounded action | Aerial server trajectory update |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Task assignment and processing conserve each arrival workload |
+| C2 | Device and server queues remain mean-rate stable |
+| C3 | Per-slot radio and computing allocations stay within capacity |
+| C4 | Time-average AAV and vessel resource or energy budgets are respected |
+| C5 | Heterogeneous actions remain within each agent's movement and resource domain |
+
+**Algorithm**: Introduce virtual queues for long-term constraints → apply Lyapunov drift-plus-penalty to obtain per-slot problems → formulate each slot as a heterogeneous-agent Markov game → let AAV and vessel SAC actors select their distinct actions → update agent networks sequentially and advance real and virtual queues.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+You et al. [x] studied joint computation offloading and resource allocation for uncertain maritime MEC through cooperation between autonomous aerial vehicles and vessels. They formulated long-term task-execution-time minimization under uncertain arrivals, queue stability, and heterogeneous communication and computing constraints. Lyapunov optimization converts the time-average problem into smaller per-slot decisions with virtual queues. Each per-slot problem is represented as a heterogeneous-agent Markov game and solved by a soft actor-critic method that updates the distinct AAV and vessel agents sequentially. Simulations report lower execution time and improved computation rate, offloaded data, and task-completion ratio relative to the evaluated baselines.
 
 ## Problem framing
 

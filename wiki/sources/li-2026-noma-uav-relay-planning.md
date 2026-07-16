@@ -5,6 +5,7 @@ authors: ["Xiazhao Li", "Laixian Peng", "Haichao Wang", "Xingyue Yu", "Wendong Z
 year: 2026
 url: "https://doi.org/10.1109/TGCN.2026.3673110"
 venue: "IEEE Transactions on Green Communications and Networking"
+modeling_card: required
 tags: [source, noma, uav-relay, amplify-and-forward, beamforming, power-control, trajectory-optimization, max-min-fairness, successive-convex-approximation]
 related:
   - "[[noma-af-uav-relaying]]"
@@ -17,7 +18,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[haichao-wang]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint Beamforming, Power Control, and Trajectory Planning for NOMA-Based UAV Relaying System
@@ -29,6 +30,42 @@ Li, X., Peng, L., Wang, H., Yu, X., Zhao, W., & Wang, H. (2026). *Joint Beamform
 ## TL;DR
 
 Studies a two-hop downlink in which a multi-antenna UAV amplify-and-forward relay connects a base station to clustered NOMA users with no direct base-station-to-user link. It maximizes the minimum accumulated user rate by alternating communication-variable and trajectory subproblems, using SCA and semidefinite relaxation. The method converges monotonically for its surrogate updates but does not guarantee a global optimum or rank-one recovery.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna BS communicates with clustered ground users only through one multi-antenna amplify-and-forward UAV relay. Users share each spatial beam through NOMA with imperfect SIC, air-to-ground channels follow an elevation-dependent Rician model, and the UAV moves over a finite slotted horizon between prescribed endpoints.
+
+**Problem & objective**: Problem $P_1$ jointly optimizes trajectory, beamforming, NOMA power, and relay amplification to maximize the worst accumulated user rate, written as $\max_{\{\boldsymbol Q,\boldsymbol W,\boldsymbol\alpha,\boldsymbol P_r\}}\min_{m,l}\sum_{n=1}^{N}R_{m,l}[n]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\boldsymbol Q=\{\boldsymbol q[n]\}$ | continuous 3-D sequence | Relay position in every slot |
+| BS beamformer | $\boldsymbol W=\{\boldsymbol w_m[n]\}$ | complex continuous vectors | Transmit beams for NOMA clusters |
+| NOMA coefficient | $\alpha_{m,l}[n]$ | continuous power fraction | Power assigned to user $l$ in cluster $m$ |
+| Relay amplification power | $P_r[n]$ | continuous nonnegative power | UAV amplify-and-forward gain or power in slot $n$ |
+| Fairness epigraph | $t$ | continuous | Lower bound on every user's accumulated rate |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The UAV satisfies its initial, final, airspace, and inter-slot mobility constraints |
+| C2 | NOMA power coefficients obey their feasible fractions and decoding order |
+| C3-C4 | Average BS and UAV transmit powers do not exceed $\bar P_T$ and $\bar P_A$ |
+| C5 | Every user meets its minimum SINR or QoS requirement under residual SIC interference |
+| C6 | Accumulated user rates satisfy $\sum_nR_{m,l}[n]\geq t$ |
+
+**Algorithm**: Alternate two SCA-based blocks until the objective tolerance is met. With trajectory fixed, introduce logarithmic slack variables, apply first-order convex surrogates and SDR, solve the beamforming, NOMA power, and relay-amplification subproblem, and recover rank-one beams by eigenvector extraction or Gaussian randomization; with communication variables fixed, update the trajectory through a convex local approximation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied a two-hop NOMA downlink in which a multi-antenna amplify-and-forward UAV relays signals from a multi-antenna BS to clustered users without direct links. They formulated max-min accumulated-rate optimization over BS beamforming, NOMA power coefficients, relay amplification, and the UAV trajectory under power, QoS, decoding-order, airspace, and mobility constraints. Their alternating solver uses SCA and semidefinite relaxation for the communication block and a local convex approximation for trajectory planning. Simulations reported convergence within 40 iterations, consistently higher minimum rate than the tested beamforming, access, power, and trajectory benchmarks, and interference-limited behavior under stringent QoS with imperfect SIC.
 
 ## Problem
 

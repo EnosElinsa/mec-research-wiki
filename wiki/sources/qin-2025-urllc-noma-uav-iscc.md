@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "URLLC-Aware Trajectory Plan and Beamforming Design for NOMA-Aided UAV Integrated Sensing, Communication, and Computation Networks"
 authors: ["Peng Qin", "Yang Fu", "Zhigang Yu", "Jing Zhang", "Xiongwen Zhao"]
 year: 2025
@@ -15,7 +16,7 @@ related:
   - "[[wu-2024-urllc-uav-mec-latency]]"
   - "[[wen-2024-iscc-edge-ai]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
 ---
 
 # URLLC-Aware Trajectory Plan and Beamforming Design for NOMA-Aided UAV Integrated Sensing, Communication, and Computation Networks
@@ -27,6 +28,41 @@ Qin, P., Fu, Y., Yu, Z., Zhang, J., & Zhao, X. (2025). *URLLC-Aware Trajectory P
 ## TL;DR
 
 Proposes a NOMA-aided UAV ISCC (Integrated Sensing, Communication, and Computation) network where a multi-antenna UAV: (i) performs edge computing for ground users' URLLC tasks; (ii) transmits an ISAC beam that simultaneously senses targets and delivers communication; (iii) offloads partial tasks to a fog node. Jointly maximizes computation throughput by optimizing UAV trajectory, beamforming design (TPBD), and compute resource allocation under sensing quality, URLLC, and power constraints. URLLC constraints are handled via **extreme value theory + Lyapunov optimization** to bound queue tail probabilities; the joint trajectory + beamforming problem is solved by a **SAC-TPBD** (Soft Actor-Critic) DRL algorithm that adapts in real time to queue backlogs and URLLC deviations. Claims comparable performance to convex-approximation baselines with higher implementation efficiency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna UAV serves ground URLLC users with an edge server and a fog node. Uplink NOMA carries partial offloading, while a dual-function ISAC beam senses targets and communicates; sensing quality, queue-tail reliability, computation, and mobility are coupled in each slot.
+
+**Problem & objective**: A Lyapunov-constrained non-convex program maximizes computation throughput, $\max\sum_k R_k^{\mathrm{comp}}$, subject to extreme-value-theory URLLC tail bounds, sensing SINR, power, task, and UAV-trajectory constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q(t)$ | continuous 2-D position | UAV movement over slots |
+| ISAC beamforming | $\mathbf W(t)$ | complex continuous matrix | Dual-function sensing and communication beam |
+| Offloading ratio | $\beta_k(t)$ | continuous, $[0,1]$ | Fraction of user $k$'s task sent to the UAV/fog node |
+| Compute allocation | $f_k(t)$ | continuous, nonnegative | UAV edge-compute resource for user $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Queue-tail violation probabilities satisfy the URLLC bound derived from extreme-value theory |
+| C2 | ISAC sensing SINR and beampattern quality exceed their thresholds |
+| C3 | NOMA transmit powers and UAV total power remain within budgets |
+| C4 | Offloaded bits, UAV/fog CPU capacity, and per-slot latency remain feasible |
+| C5 | UAV trajectory obeys region, speed, and endpoint constraints |
+
+**Algorithm**: Introduce Lyapunov virtual queues for URLLC violations → solve joint trajectory and beamforming with SAC-TPBD using queue-backlog observations → solve compute allocation by convex optimization → update virtual queues and repeat per slot.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qin et al. [x] studied URLLC-aware trajectory and beamforming design for a NOMA-aided UAV integrated sensing, communication, and computation network. They formulated a throughput-maximization problem that jointly optimizes UAV trajectory, ISAC beamforming, partial offloading, and compute resources under sensing-quality, power, queue-tail, and URLLC constraints. Extreme value theory and Lyapunov optimization transform the long-term tail constraint into per-slot virtual-queue problems. SAC-TPBD learns the joint trajectory and beamforming block, while a convex subproblem allocates computation resources. The paper reports comparable computation and beampattern performance to convex-approximation baselines with higher implementation efficiency and lower task queue backlogs in the evaluated simulations.
 
 ## Problem framing
 

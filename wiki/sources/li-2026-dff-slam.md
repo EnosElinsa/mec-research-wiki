@@ -5,6 +5,7 @@ authors: ["Jinglei Li", "Yiming Jia", "Meng Qin", "Qinghai Yang", "Tony Q. S. Qu
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3600661"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: not_applicable
 tags: [source, uav, visual-slam, localization, dynamic-objects, edge-intelligence, hardware-test]
 related:
   - "[[dynamic-feature-filtering-vslam]]"
@@ -13,7 +14,7 @@ related:
   - "[[rss-based-uav-localization]]"
   - "[[tony-q-s-quek]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # DFF-SLAM: Dynamic Feature Filtering-Based Simultaneous Localization and Mapping for UAV Positioning in IoT-Enabled Complex Environments
@@ -25,6 +26,12 @@ Li, J., Jia, Y., Qin, M., Yang, Q., Quek, T. Q. S., Gao, W., & Kwak, K. S. (2026
 ## TL;DR
 
 Extends ORB-SLAM2 for GPS-suppressed UAV flight by removing moving visual features in two passes: YOLOv3 filters prior-dynamic person/vehicle regions, then multiscale optical flow and epipolar geometry reject residual dynamic points. TUM RGB-D tests show large gains in high-dynamic scenes, and a Jetson Xavier NX flight-platform test sustains 16 FPS.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied visual SLAM positioning for UAV navigation in GPS-compromised IoT environments containing moving pedestrians and vehicles. They proposed DFF-SLAM, which first removes features inside YOLOv3 semantic detections, then tracks the remaining points through a multiscale optical-flow pyramid and rejects residual motion with epipolar geometry. On the high-dynamic TUM RGB-D `fr3_walking_xyz` sequence, DFF-SLAM reduced absolute-trajectory RMSE by 98.98% and relative-translation RMSE by 77.66% compared with the original SLAM system. An onboard Jetson Xavier NX experiment processed 16 frames per second, which the paper reports as meeting the real-time requirement for UAV positioning.
 
 ## Problem
 

@@ -28,7 +28,7 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-06-02
+updated: 2026-07-16
 authors:
   - Yulan Gao
   - Ziqiang Ye
@@ -36,12 +36,54 @@ authors:
 year: 2024
 url: https://doi.org/10.1109/JSAC.2024.3459073
 venue: "IEEE Journal on Selected Areas in Communications (JSAC), vol. 42, no. 12, Dec. 2024"
+modeling_card: required
 ---
 
 # Cost-Efficient Computation Offloading in SAGIN: A Deep Reinforcement Learning and Perception-Aided Approach
 
+## Citation
+
+Gao, Y., Ye, Z., & Yu, H. (2024). *Cost-Efficient Computation Offloading in SAGIN: A Deep Reinforcement Learning and Perception-Aided Approach*. **IEEE Journal on Selected Areas in Communications**, 42(12). DOI: 10.1109/JSAC.2024.3459073.
+
 ## TL;DR
 In a [[space-air-ground-integrated-network]] (SAGIN), UAVs act as a sensing-and-control layer: they carry mmWave radar and vision (YOLOv7) sensors to perceive ground-device distance, speed, direction, and type, then decide how to host and offload compute-intensive tasks to local UAV processors, ground base stations, or an LEO satellite. The authors minimize long-term time-averaged network cost under queue-stability constraints by combining [[lyapunov-optimization]] (drift-plus-penalty) with [[ddpg]] (offloading + UAV resources), a [[deep-q-network]] (UAV–BS association), and a [[self-adaptive-global-best-harmony-search]] metaheuristic (BS resource allocation). Feeding perception into the DRL state — [[perception-aided-offloading]] — is the central novelty and yields the lowest cost and most stable queues against all baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A SAGIN combines mobile ground devices, ground BSs, solar-powered UAV edge nodes, and LEO cloud servers over slotted time. UAVs use mmWave radar and vision sensing to estimate device motion and type, then host tasks and route partial workloads to local UAV computing, BSs, or LEO satellites over C-band and Ka-band links; UAV trajectories are fixed.
+
+**Problem & objective**: Problem (35) is a multi-slot stochastic optimization that minimizes long-term average operational cost, $\min\lim_{T\to\infty}\frac{1}{T}\sum_{t\in\mathcal T}\sum_{m\in\mathcal M}C_m^u(t)$, while keeping UAV and BS task queues stable.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task hosting | $x_{k,m}(t)$ | binary, $\{0,1\}$ | Whether UAV $m$ hosts ground-device $k$ in slot $t$ |
+| Computation offloading | $Q_m^{u,loc}(t),Q_m^{u,b}(t),Q_m^{u,s}(t)$ | continuous, nonnegative | Workload processed locally, at a BS, or at an LEO satellite |
+| UAV-BS association | $y_{m,n}(t)$ | binary, $\{0,1\}$ | Whether UAV $m$ associates with BS $n$ |
+| UAV CPU allocation | $f_m^u(t)$ | continuous, bounded | Local UAV computing frequency |
+| BS CPU allocation | $f_{m,n}^{bs}(t)$ | continuous, bounded | BS $n$ computing capacity assigned to UAV $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 35b | Total local, BS, and satellite offloading does not exceed UAV backlog $H_m^u(t)$ |
+| 35c | UAV CPU satisfies $f_m^u(t)\leq f_{m,max}^u(t)$ |
+| 35d | Aggregate BS allocation satisfies $\sum_m f_{m,n}^{bs}(t)\leq f_{n,max}^{bs}(t)$ |
+| 35e-35f | Hosting is binary and each device selects at most one UAV |
+| 35g-35h | Association is binary and each UAV selects at most one ground BS |
+| 35i | Time-average UAV and BS queue backlogs remain finite |
+
+**Algorithm**: Apply Lyapunov drift-plus-penalty to convert the multi-slot problem into sequential one-slot problems; use perception features in the state; solve continuous offloading and UAV CPU allocation P1 with DDPG, discrete association P2 with DQN, and BS CPU allocation P3 with self-adaptive global-best harmony search; execute the three stages each slot and update the queues.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gao et al. [x] studied cost-efficient computation offloading in a space-air-ground integrated network where sensor-equipped UAVs perceive mobile-device state and route tasks to UAV processors, ground BSs, or LEO satellites. They formulated a stochastic long-term average network-cost minimization over task hosting, computation offloading, UAV-BS association, and UAV and BS computing allocation under capacity, exclusivity, and queue-stability constraints. Their online approach applies Lyapunov drift-plus-penalty, DDPG for offloading and UAV resources, DQN for association, and self-adaptive global-best harmony search for BS resources. Numerical results show the lowest and most stable time-averaged cost among the evaluated methods and low stabilized UAV and BS queue backlogs, while the perception-free method incurs higher cost and backlog.
 
 ## Problem
 Remote areas typically lack 5G/B5G coverage, yet low-power devices there still need to run computation-intensive applications. SAGIN with [[mobile-edge-computing]] can bridge this gap, but prior work largely (a) optimizes only short-term performance and (b) assumes perfectly known air-to-ground channels and stationary devices. Real SAGIN deployments face random task arrivals, time-varying channels, and uncertain, mobile users — fast-moving devices in particular cause task-execution failures. This paper studies a scenario with many ground devices moving at different speeds between covered and uncovered areas, and seeks dynamic long-term strategies for four coupled decisions: task hosting (device→UAV), computation offloading, UAV–BS association control, and compute-resource allocation. The objective is to minimize time-averaged network cost while keeping all task queues stable, despite uncertainty in device location, speed, and type.

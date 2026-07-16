@@ -5,6 +5,7 @@ authors: ["Wenwen Xie", "Geng Sun", "Bei Liu", "Jiahui Li", "Jiacheng Wang", "Ho
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3600682"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-mounted-ris, mmwave, urban, trajectory-optimization, ppo, energy-efficiency, fairness]
 related:
   - "[[neural-episodic-control-with-state-abstraction]]"
@@ -21,7 +22,7 @@ related:
   - "[[jiacheng-wang]]"
   - "[[dusit-niyato]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Optimization of UAV-Carried IRS for Urban Low Altitude mmWave Communications With Deep Reinforcement Learning
@@ -35,6 +36,41 @@ Xie, W., Sun, G., Liu, B., Li, J., Wang, J., Du, H., Niyato, D., & Kim, D. I. (2
 ## TL;DR
 
 Controls a rotary-wing UAV carrying a passive IRS through enhanced PPO while computing IRS phases analytically from LoS geometry. Neural episodic control with state abstraction and a mogrifier LSTM augment PPO; the objective multiplies Jain fairness by aggregate rate and divides by propulsion energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A source user communicates with mobile terrestrial users through a rotary-wing UAV carrying a planar IRS in an obstructed urban mmWave environment, with blocked direct links and TDMA service.
+
+**Problem & objective**: The joint design maximizes long-term fairness-weighted rate per propulsion energy, $\max_{\boldsymbol\Theta,\mathbf A}\sum_{t=1}^{T}F_t$ with $F_t=\xi\sum_iR_{i,t}/E_t$, by controlling IRS phases and UAV displacement.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV displacement | $\mathbf a_t=[a_t^x,a_t^y,a_t^z]$ | Continuous 3-D vector | Move the UAV-carried IRS in slot $t$ |
+| Trajectory controls | $\mathbf A$ | Continuous sequence | Collect all slot displacements |
+| IRS phase matrix | $\boldsymbol\Theta_t$ | Continuous unit-modulus diagonal matrix | Align reflected LoS components |
+| Element phase | $\omega_{i,t}$ | Continuous, $[-\pi,\pi)$ | Phase of IRS element $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Per-slot travel is bounded, $0\leq d_t^{IRS}\leq D^{\max}$ |
+| C2 | Horizontal position satisfies $X^{\min}\leq x_t^{IRS}\leq X^{\max}$ |
+| C3 | Horizontal position satisfies $Y^{\min}\leq y_t^{IRS}\leq Y^{\max}$ |
+| C4 | Altitude satisfies $Z^{\min}\leq z_t^{IRS}\leq Z^{\max}$ |
+| C5 | Each IRS phase satisfies $-\pi\leq\omega_{i,t}<\pi$ |
+
+**Algorithm**: EPPO augments clipped PPO with neural episodic control over abstracted states and a mogrifier LSTM actor, while a geometry-based phase-alignment rule removes the high-dimensional IRS vector from the learned action so the policy outputs only three-dimensional UAV motion.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xie et al. [x] optimized a UAV-carried IRS for obstructed urban low-altitude mmWave communication by balancing aggregate rate, Jain fairness, and propulsion energy. The formal problem jointly controls UAV displacement and IRS phases under per-slot movement, horizontal-area, altitude, and phase-range constraints. EPPO combines proximal policy optimization with neural episodic state abstraction and a mogrifier LSTM, while a geometry-derived phase rule reduces the learned action to three UAV movement components. Simulation results report higher rewards and data rates with lower energy consumption than the evaluated PPO, TD3, DDPG, and SAC baselines, although the study provides no global-optimality guarantee.
 
 ## System model and objective
 

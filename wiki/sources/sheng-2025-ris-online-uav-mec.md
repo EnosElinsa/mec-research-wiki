@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Online Trajectory Planning and Resource Allocation of UAV-Enabled MEC Networks Empowered by RIS"
 authors: ["Zhichao Sheng", "Hao Hu", "Ali A. Nasir", "Yong Fang", "Daniel B. da Costa"]
 year: 2025
@@ -15,7 +16,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Online Trajectory Planning and Resource Allocation of UAV-Enabled MEC Networks Empowered by RIS
@@ -27,6 +28,45 @@ Sheng, Z., Hu, H., Nasir, A. A., Fang, Y., & da Costa, D. B. (2025). *Online Tra
 ## TL;DR
 
 An online [[intelligent-reflecting-surface]]-assisted UAV-MEC controller for mobile ground users with random task arrivals. The method uses [[lyapunov-optimization]] to convert a long-term queue-stability and energy-efficiency objective into per-slot problems, then applies Dinkelbach, BCD, SCA, and Bernstein-type outage approximations to jointly optimize offloading/computation bits, bandwidth/time allocation, UAV trajectory, and RIS phase shifts.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Mobile ground users generate random tasks for a UAV MEC server that communicates with a powerful AP through a building-mounted RIS, with blocked direct links, finite UAV energy, queue backlogs, and a prescribed final destination.
+
+**Problem & objective**: The online stochastic program minimizes energy per processed bit, $\min \eta_{EE}=\overline E/\overline L$, over offloading, computation, radio, trajectory, and RIS controls.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| GU-to-UAV offloading bits | $l_{u,n}^{off}[t]$ | continuous, queue bounded | Bits sent from user $n$ to the UAV |
+| Computed bits | $l_{u,n}^{comp}[t]$ | continuous, CPU bounded | Bits processed at the UAV |
+| Bandwidth allocation | $B_n[t]$ | continuous, nonnegative | User bandwidth share |
+| Transmission times | $\tau_{n,1}[t],\tau_{n,2}[t]$ | continuous, slot bounded | GU-UAV and UAV-AP durations |
+| UAV trajectory | $\mathbf q[t]$ | continuous, speed bounded | UAV position |
+| RIS phase shifts | $\Theta[t]$ | discrete or continuous phase set | RIS reflection configuration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Offloaded bits obey data causality: $l_{u,n}^{off}[t]\leq Q_n[t]+A_n[t]$. |
+| C2 | Computed and forwarded bits do not exceed queued data and CPU capacity. |
+| C3 | GU-UAV and UAV-AP offloading obey their rate and time limits. |
+| C4 | User and UAV queues are stable in the long term. |
+| C5 | Average UAV energy respects its budget: $\lim_TT^{-1}\sum_t\mathbb E[e_f[t]]\leq E_u$. |
+| C6 | Trajectory speed and final-destination reachability are bounded. |
+| C7 | Outage probability constraints are enforced through the per-slot robust approximation. |
+
+**Algorithm**: Apply Lyapunov drift-plus-penalty for online queue-aware decisions, Dinkelbach for the fractional energy-efficiency objective, and block coordinate descent with successive convex approximation and Bernstein-type outage reformulation for the four control blocks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sheng et al. [x] study online RIS-assisted UAV MEC for mobile users with stochastic task arrivals and blocked direct links. Their fractional objective minimizes energy per processed bit while enforcing data causality, computation and communication capacity, queue stability, energy budget, mobility, destination, and outage constraints. Lyapunov optimization supplies online queue-aware decisions, while Dinkelbach, block coordinate descent, successive convex approximation, and Bernstein approximations solve the coupled resource blocks. The parsed simulations report better energy-efficiency behavior than equal-resource and non-predictive schemes and further gains as the RIS grows.
 
 ## Problem framing
 

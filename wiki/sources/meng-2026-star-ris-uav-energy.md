@@ -20,7 +20,8 @@ related:
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[yuanwei-liu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Resource Allocation Scheme in STAR-RIS-Assisted NOMA Systems Based on UAV Energy Supply
@@ -32,6 +33,41 @@ Meng, S., Wang, X., Sun, X., Zou, Y., & Liu, Y. (2026). *Resource Allocation Sch
 ## TL;DR
 
 Studies uplink NOMA for users whose direct base-station links are blocked. A fixed STAR-RIS supplies transmitted and reflected paths, while a UAV following a predetermined route transfers RF energy to the users and surface. A block-coordinate-descent loop alternates STAR-RIS coefficient design, user-power allocation, and harvest/transmit time allocation to maximize multi-slot sum-rate.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed $K$-element STAR-RIS assists $M$ ground users whose direct BS links are blocked, while a UAV on a predetermined route supplies RF energy. Users transmit simultaneously by uplink power-domain NOMA, and the BS decodes in descending effective-channel-gain order.
+
+**Problem & objective**: UAV-energy-supplied STAR-RIS NOMA resource allocation, a non-convex continuous optimization, maximizes multi-slot sum-rate, $\max\sum_{m,t}R_m(t)$, subject to user/surface energy causality, time, power, minimum-rate, interference, and STAR-RIS feasibility constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| STAR-RIS coefficients | $\boldsymbol\alpha_t,\boldsymbol\beta_t$ | continuous amplitudes/phases | Transmission/reflection configuration in slot $t$ |
+| User powers | $p_m(t)$ | continuous, bounded | NOMA uplink transmit powers |
+| Energy/information durations | $\tau_m(t),T_E(t)$ | continuous, nonnegative | User transmission and UAV WET time allocation |
+| Auxiliary transform | $\eta_t$ | continuous | Fractional/sum-rate transform variable |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | User cumulative energy and STAR-RIS circuit energy remain feasible |
+| C2 | NOMA users meet minimum-rate requirements and SIC/interference expressions |
+| C3 | UAV WET and user information durations fit each slot |
+| C4 | User powers obey per-slot limits and the STAR-RIS energy-splitting model |
+| C5 | RIS reflection/transmission coefficients satisfy unit-modulus and surface constraints |
+
+**Algorithm**: Lift STAR-RIS coefficients and solve a penalty-SCA SDR → apply the auxiliary/Dinkelbach-labelled power transform and convex power updates → solve energy/information durations with the stated game-theoretic utility → alternate all three BCD blocks until sum-rate improvement is below the stopping tolerance.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Meng et al. [x] studied resource allocation in a STAR-RIS-assisted uplink NOMA system supplied by a UAV. They formulated a non-convex sum-rate maximization that jointly designs STAR-RIS transmission/reflection coefficients, user powers, and energy/information time allocation under user and surface energy causality, minimum-rate, and interference constraints. The UAV follows a predetermined route and wirelessly powers users and the surface before simultaneous NOMA transmission. Their block-coordinate-descent solver uses penalty-SCA SDR for the RIS block, an auxiliary fractional transform for powers, and a game-theoretic time-allocation update. Simulations report higher average sum-rate than the selected surface, time-splitting, and optimization baselines in the evaluated settings.
 
 ## Problem
 

@@ -16,7 +16,8 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[zhang-2022-uav-relay-substitution]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Securing UAV Communications via Joint Trajectory and Power Control
@@ -28,6 +29,40 @@ Zhang, G., Wu, Q., Cui, M., & Zhang, R. (2019). *Securing UAV Communications via
 ## TL;DR
 
 Uses UAV mobility as a physical-layer security control: over a finite flight period, the design jointly adjusts the UAV's horizontal trajectory and the legitimate transmitter's slotwise power to improve average secrecy rate against a fixed ground eavesdropper. The UAV transmits in U2G and the ground node transmits in G2U. The two formulations reveal an important asymmetry: trajectory shapes both receiver links in U2G, but only the legitimate air-ground link in G2U under the paper's ground-ground eavesdropper model.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV communicates with one fixed legitimate ground node over a finite slotted flight period while a fixed ground eavesdropper attempts interception. The single-link model has no multiuser multiple-access scheme; UAV-to-ground links use free-space LoS channels with AWGN, while the ground-to-ground eavesdropping link in the G2U case also includes Rayleigh fading.
+
+**Problem & objective**: Nonconvex problems (P1) and (P2) jointly maximize the average secrecy rate for U2G or G2U communication, for example $\max_{\mathbf{x},\mathbf{y},\mathbf{p}}\sum_{n=1}^{N}[R_{\mathrm{UG}}[n]-R_{\mathrm{UE}}[n]]^+$ in the U2G case.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV horizontal trajectory | $\mathbf{x},\mathbf{y}$ | continuous | Slotwise horizontal UAV coordinates |
+| U2G transmit power | $p[n]$ | continuous, $[0,P_{\mathrm{peak}}]$ | UAV power in slot $n$ |
+| G2U transmit power | $q[n]$ | continuous, $[0,Q_{\mathrm{peak}}]$ | Ground-node power in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 1a-c | Initial, consecutive, and final UAV displacements are each bounded by $D=v_{\max}d_t$ |
+| 4a | U2G average power satisfies $N^{-1}\sum_np[n]\leq\bar P$ |
+| 4b | U2G slot power satisfies $0\leq p[n]\leq P_{\mathrm{peak}}$ |
+| 10a | G2U average power satisfies $N^{-1}\sum_nq[n]\leq\bar Q$ |
+| 10b | G2U slot power satisfies $0\leq q[n]\leq Q_{\mathrm{peak}}$ |
+
+**Algorithm**: Remove the positive-part operator without changing the optimum; split trajectory and power into two blocks; optimize slotwise transmit powers for a fixed trajectory; apply successive convex optimization to a lower-bounded trajectory subproblem for fixed powers; alternate the two blocks until the secrecy-rate objective converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied physical-layer security for UAV-to-ground and ground-to-UAV communications in the presence of a ground eavesdropper. They formulated nonconvex problems that maximize average secrecy rate by jointly optimizing the UAV trajectory and the legitimate transmitter's power over a finite flight period. The designs enforce prescribed endpoints, maximum UAV speed, and average and peak transmit-power limits. Their iterative algorithms alternate power control and trajectory optimization using block coordinate descent and successive convex optimization. Simulations report that joint trajectory and power control achieves the highest secrecy rate among the evaluated schemes, with power control more effective at low transmit power and trajectory optimization more important for U2G communication.
 
 ## Problem framing
 

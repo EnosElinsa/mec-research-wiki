@@ -5,6 +5,7 @@ authors: ["Yunfei Gao", "Peng Wu", "Xiaopeng Yuan", "Yulin Hu", "Xiaoxiang Cao",
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3656412"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 7, Jul. 2026"
+modeling_card: required
 tags: [source, multi-uav-assisted-mec, device-association, uav-3d-deployment, dueling-dqn, federated-reinforcement-learning, optimal-transport-theory, no-fly-zone]
 related:
   - "[[device-association]]"
@@ -15,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[gao-2024-d3qn-uav-mec-mobile-gt]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Joint UAV 3D Deployment and Ground Device Association Optimizing for Multi-UAV-Aided MEC Heterogeneous Network
@@ -27,6 +28,41 @@ Gao, Y., Wu, P., Yuan, X., Hu, Y., Cao, X., & Schmeink, A. (2026). *Joint UAV 3D
 ## TL;DR
 
 Optimizes 3D UAV deployment and ground-device association in a dynamic heterogeneous multi-UAV MEC network with no-fly zones. The paper first derives a closed-form GD association rule using Lagrangian duality and [[optimal-transport-theory]], then uses that association inside a federated multi-agent dueling DDQN controller, FMAD3QN-CUA, for UAV 3D deployment. The goal is to minimize average system operation time for communication, computation, and joint decision-making service.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Heterogeneous UAV MEC servers provide communication, computation, and joint decision-making for ground devices with stochastic requests, heterogeneous task sizes and priorities, and FDMA access. Each service stage jointly assigns every device to one UAV and places UAVs in three dimensions while avoiding no-fly zones under probabilistic LoS and NLoS channels.
+
+**Problem & objective**: Problem P1 is an NP-hard MINLP that minimizes weighted average task delay, $\min_{\mathbf D_{k,n},\mathbf Q_{k,n}}T$, over GD association regions and UAV 3D deployment.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| GD association region | $D_{k,n}$ | spatial partition | Ground region served by UAV $k$ in stage $n$ |
+| GD-UAV association | $\varphi_{k,u}$ | binary, $\{0,1\}$ | Whether GD $u$ is assigned to UAV $k$ |
+| UAV 3D deployment | $\mathbf q_{k,n}=[x_k,y_k,z_k]$ | continuous within deployment bounds | Location of UAV $k$ in stage $n$ |
+| UAV movement action | $a_{k,n}$ | discrete 3D action | Deployment adjustment selected by each FMAD3QN agent |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 18a | Different UAV service regions do not overlap, $D_{k,n}\cap D_{k^*,n}=\emptyset$ |
+| 18b | The union of UAV regions covers the entire service domain |
+| 18c-18d | UAVs remain outside no-fly zones and GDs remain inside the service domain |
+| 18e-18f | Association is binary and each GD selects exactly one UAV, $\sum_k\varphi_{k,u}=1$ |
+| 18g-18i | UAV coordinates remain within the allowed horizontal and altitude ranges |
+
+**Algorithm**: For fixed UAV locations, relax association, apply optimal transport and Lagrangian duality, and recover the integral closed-form GD-UAV mapping; substitute that mapping into the deployment subproblem; model each UAV as an agent whose state and action describe 3D placement and whose reward is negative average delay; train federated multi-agent dueling DDQN policies and aggregate local parameters at the selected frequency.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gao et al. [x] studied joint three-dimensional UAV deployment and ground-device association in a dynamic heterogeneous multi-UAV MEC network with no-fly zones. They formulated an NP-hard mixed-integer nonconvex program that minimizes weighted average task delay over UAV locations and binary device associations under nonoverlapping coverage, complete assignment, no-fly-zone, and deployment-bound constraints. Their solution derives a closed-form association through Lagrangian duality and optimal transport theory, then embeds it in FMAD3QN-CUA, a federated multi-agent dueling DDQN controller for UAV deployment. Simulations show that the closed-form association matches exhaustive-search delay with much lower runtime and that FMAD3QN-CUA improves training stability and outperforms the evaluated Voronoi, K-means, and non-dueling variants.
 
 ## Problem
 

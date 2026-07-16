@@ -15,7 +15,8 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-06-08
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Constrained Multi-Objective Optimization for UAV-Enabled MEC: Offloading Optimization and Path Planning
@@ -32,6 +33,41 @@ A single UAV sequentially visits I device locations to offer offloading services
 - **Safe path planning** — a B-spline curve through λ control points, kept above the minimum flight altitude, below the max altitude, with bounded turning angle, and far from terrain obstacles.
 
 These are two genuinely conflicting objectives, framed as a **CMOP**. The authors solve it with a **constrained decomposition-based multi-objective evolutionary algorithm** that explicitly **uses infeasible individuals with good objective values** to inform the search before driving the population back to the feasible region.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One computing UAV visits $I$ device hovering locations, serves each device, and then flies to a destination. A B-spline path is defined by $\lambda$ 3-D control points and sampled into path points around modeled terrain obstacles.
+
+**Problem & objective**: Minimize the safe-path penalty $G_1(\mathbf x)=D_s=\sum_{j,k}(d_s/d_{j,k})^2$ and total UAV energy $G_2(\mathbf x)=\sum_{i=1}^{I}E_i$ subject to the offloading deadline and flight-safety constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| B-spline control points | $\{(x_l,y_l,z_l)\}_{l=1}^{\lambda}$ | continuous 3-D | Control the UAV path |
+| Device transmit power | $p_i^{tx}$ | continuous | Uplink power for device $i$ |
+| UAV CPU allocation | $f_{\mathrm{UAV},i}$ | continuous | Computing resource for device $i$ |
+| Segment speed | $v_i$ | continuous | UAV speed on segment $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Per-device deadline: $T_i-\tau_i^H-\tau_i^F\ge0$ |
+| C2 | Minimum altitude: $h_2=\sum_j[d_j^{\min}]^- =0$ |
+| C3 | Maximum altitude: $h_3=\sum_j[d_j^{\max}]^- =0$ |
+| C4 | Turning-angle limit: $h_4=\sum_j[\Delta\theta_j]^-=0$ with $\theta\le\theta_{\max}$ |
+| C5 | Decision domain: $\mathbf x\in\mathcal D$, with $3\lambda+3I$ components |
+
+**Algorithm**: Decompose the CMOP with weight vectors, evolve mixed continuous individuals, and use dynamic infeasibility allocation to retain useful infeasible candidates early before progressively selecting lower-violation feasible Pareto solutions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Peng et al. [x] formulate a constrained multi-objective UAV-MEC problem that couples energy-efficient offloading with safe 3-D path planning. The decision vector contains B-spline control points, device transmit powers, UAV CPU allocations, and segment speeds, while the objectives are obstacle-clearance penalty and total UAV energy. Feasibility requires task deadlines, minimum and maximum altitude, and bounded turning angles. Their decomposition-based evolutionary method dynamically retains informative infeasible individuals and achieves better feasible Pareto convergence and diversity than ToP and PPS in the reported experiments.
 
 ## Why this matters
 

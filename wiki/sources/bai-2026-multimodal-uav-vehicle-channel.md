@@ -5,6 +5,7 @@ authors: ["Lu Bai", "Mengyuan Lu", "Ziwei Huang", "Xiang Cheng"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3630319"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: not_applicable
 tags: [source, uav-communications, vehicular-networks, channel-model, multi-modal-intelligent-channel-modeling, integrated-sensing-and-communication, low-altitude-intelligent-network, urban-air-mobility]
 related:
   - "[[multi-modal-intelligent-channel-modeling]]"
@@ -17,7 +18,7 @@ related:
   - "[[yang-2026-generative-radio-map-lae]]"
   - "[[zeng-2026-movable-antenna-u2u-channel]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Multi-Modal Intelligent Channel Model for 6G Multi-UAV-to-Multi-Vehicle Communications
@@ -29,6 +30,12 @@ Bai, L., Lu, M., Huang, Z., & Cheng, X. (2026). *A Multi-Modal Intelligent Chann
 ## TL;DR
 
 Builds a LiDAR-aided multi-UAV-to-multi-vehicle channel model for 6G low-altitude transportation communications. The model introduces terrestrial traffic density (TTD) and aerial traffic density (ATD), constructs the MUMV-CSCI simulation dataset, distinguishes static, terrestrial-dynamic, and aerial-dynamic scatterers, and derives time-space-frequency channel statistics validated against ray-tracing data.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bai et al. [x] studied multi-UAV-to-multi-vehicle channel modeling for 6G low-altitude transportation communications in suburban forking-road scenarios. They built the MUMV-CSCI dataset by aligning AirSim LiDAR sensing, Wireless InSite channel simulation, and SUMO trajectories under terrestrial and aerial traffic-density conditions. The model classifies static, terrestrial-dynamic, and aerial-dynamic scatterers and derives time-space-frequency correlation, time stationary interval, and Doppler power spectral density statistics. Simulation results matched ray-tracing results, with the dataset containing 96,000 LiDAR point clouds and 553,500 communication links.
 
 ## Problem
 

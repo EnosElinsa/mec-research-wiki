@@ -12,7 +12,8 @@ related:
   - "[[drone-cell-3d-placement]]"
   - "[[zhan-2011-uav-relay-heading-optimization]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Optimization of UAV Heading for the Ground-to-Air Uplink
@@ -24,6 +25,39 @@ Jiang, F., & Swindlehurst, A. L. (2012). *Optimization of UAV Heading for the Gr
 ## TL;DR
 
 Considers a **multi-antenna fixed-wing UAV** acting as an airborne relay collecting uplink data from N co-channel mobile ground nodes via **SDMA** (space-division multiple access using beamforming). The UAV's **heading direction** controls the spatial arrangement of ground node angles of arrival (AoAs), which determines the inter-user interference in the beamforming channel. Develops an adaptive algorithm that adjusts the UAV heading at each discrete time step to **maximize the approximate ergodic sum rate** of the uplink, using a prediction filter to estimate future ground node positions. Asymptotic analysis for strong LoS channels yields simplified low-SNR and high-SNR algorithms with near-optimal performance.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude fixed-wing UAV with a multi-antenna array receives simultaneous uplinks from mobile ground nodes and changes heading to shape their angles of arrival for SDMA beamforming.
+
+**Problem & objective**: Select the next heading to maximize predicted approximate ergodic uplink sum rate, $\max_{\delta_n}\sum_i\log_2(1+\mathbb E_l\{\mathrm{SINR}_{i,n}\})$, or a proportional-fair weighted variant.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV heading | $\delta_n$ | continuous angle in $[0,2\pi]$ | Orientation of the fixed-wing antenna array at step $n$ |
+| Fairness weights | $w_{i,n}$ | nonnegative derived weights | Optional proportional-fair emphasis for user $i$ |
+| Prediction state | $(\hat x_{i,n},\hat y_{i,n})$ | continuous estimates | One-step ground-node positions used by the heading objective |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Heading slew is bounded, $\|\delta_n-\delta_{n-1}\|\leq\Delta\delta$ |
+| C2 | Fixed-wing motion maintains the prescribed altitude and forward speed |
+| C3 | The selected heading keeps the UAV within the empirical center-of-gravity distance limit when that safeguard is active |
+| C4 | Beamforming and channel assumptions use the available antenna and channel state for the scheduled users |
+
+**Algorithm**: Predict mobile-user positions with a Kalman-like filter, evaluate the sum-rate or proportional-fair heading objective, perform a one-dimensional line search with slew and center-of-gravity safeguards, and use low- and high-SNR asymptotic candidates when appropriate.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jiang and Swindlehurst [x] optimized the heading of a fixed-wing multi-antenna UAV receiving co-channel uplinks from mobile ground nodes. They maximize predicted approximate ergodic sum rate or a proportional-fair variant over the heading angle under a bounded turn-rate and fixed-altitude, forward-flight model. A position-prediction filter feeds a one-dimensional line search, with center-of-gravity safeguards and low- and high-SNR closed-form approximations. In the reported proportional-fair simulation, SDMA reaches 1.6968 bps/Hz versus 0.5139 bps/Hz for TDMA, an approximately 3.3-fold gain, while both asymptotic methods remain essentially identical to the numerical search across tested SNRs.
 
 ## Problem framing
 

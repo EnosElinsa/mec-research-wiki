@@ -5,6 +5,7 @@ authors: ["Tiedan Hua", "Yang Chen", "Xi Chen", "Zhen-Hua Zhu"]
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3605584"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS), vol. 27, no. 1, pp. 448-459"
+modeling_card: required
 tags: [source, uav-data-collection, anti-jamming, trajectory-optimization, unpredictable-trajectory, stochastic-control, model-predictive-control, mobile-jammer]
 related:
   - "[[unpredictable-uav-trajectory-control]]"
@@ -19,7 +20,7 @@ related:
   - "[[you-2019-rician-uav-data-harvesting]]"
   - "[[tang-2026-gat-antijamming]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Unpredictable Trajectory Optimization for UAV-Assisted Anti-Jamming Data Collection
@@ -33,6 +34,41 @@ The article was published online on 13 November 2025, had a current-version date
 ## TL;DR
 
 The unpredictable trajectory framework splits a UAV's heading-rate control into mission-directed navigation and stochastic components. Receding-horizon navigation maintains data-collection and endpoint progress, while a Gaussian stochastic term is shaped from current jammer geometry to increase trajectory-prediction difficulty and reduce a jammer-interference proxy. The paper states finite component bounds but does not explain how unbounded Gaussian samples are clipped or truncated to satisfy them.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-speed, fixed-altitude Dubins UAV collects a required payload from a ground IoT device while stationary or mobile barrage jammers interfere over the full bandwidth. The UAV-to-device link uses a LoS Rician channel, and the controller observes current UAV and jammer coordinates but not future jammer positions.
+
+**Problem & objective**: The paper poses a stochastic, nonconvex trajectory-control design that minimizes a jammer-interference proxy while completing the collection mission. UTF decomposes the heading-rate input into a navigation problem that balances remaining payload and endpoint progress and a stochastic problem that minimizes $J_{sc}[n]=J_1[n]+J_2[n]$ over the Gaussian control mean.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Total heading-rate input | $\omega[n]$ | continuous, bounded | UAV yaw angular velocity in slot $n$ |
+| Navigation input | $\omega_{nc}[n]$ | continuous, bounded candidate set | Mission-directed component selected by receding-horizon search |
+| Stochastic input | $\omega_{sc}[n]$ | Gaussian random variable | Random component that makes the path less predictable |
+| Stochastic mean | $\mu[n]$ | continuous, bounded | Mean optimized from current jammer geometry |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The UAV starts and ends at the prescribed positions within the mission horizon |
+| C2 | Expected collected information reaches the required payload $S$ |
+| C3 | Total and component heading-rate inputs respect their stated lower and upper bounds |
+| C4 | UAV speed, altitude, slot duration, and mission completion time are fixed by the flight model |
+| C5 | The navigation candidate sequence is selected over the receding horizon using current jammer positions |
+
+**Algorithm**: Enumerate finite navigation-control sequences in an MPC horizon, apply the first input from the minimum-cost sequence, optimize the Gaussian stochastic mean with parallel modified gradient descent initialized per jammer, sample the stochastic input, and combine the two controls at every slot.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hua et al. [x] studied unpredictable trajectory optimization for UAV-assisted data collection in the presence of stationary and mobile jammers. They decomposed the UAV heading-rate control into a navigation input that supports payload collection and endpoint arrival and a stochastic input that increases trajectory-prediction difficulty while reducing a jammer-interference proxy. The navigation input is selected through a finite-set MPC search, while a modified parallel gradient-descent algorithm optimizes the mean of a Gaussian stochastic control from current jammer geometry. The two stages are executed sequentially at every time step to produce the combined control input. MATLAB simulations report larger one-step Kalman trajectory-prediction errors than the evaluated deterministic benchmarks and show the tradeoff between stochastic variance, path irregularity, and navigation progress.
 
 ## Problem
 

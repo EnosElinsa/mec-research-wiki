@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Intelligent Energy Efficiency and Service Reliability Optimization for UAV-Aided Terrestrial Networks"
 authors: ["Dara Ron", "Jung-Ryun Lee"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[jung-ryun-lee]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Intelligent Energy Efficiency and Service Reliability Optimization for UAV-Aided Terrestrial Networks
@@ -29,6 +30,43 @@ Ron, D., & Lee, J.-R. (2026). *Intelligent Energy Efficiency and Service Reliabi
 ## TL;DR
 
 Uses a two-level federated multi-agent A3C framework to control ground-user and UAV transmit powers, UAV hover positions, bandwidth fractions, and UAV associations in a 12.2-12.7 GHz UAV-relay network. The intended objective is low ground-user/UAV computation-plus-transmission energy while keeping federated-learning round-trip delay within a reliability threshold.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground users upload data and local federated-learning models through selected UAV relays to a terrestrial base station over licensed FR3 dynamic spectrum, with computation and transmission energy tracked at users and UAVs.
+
+**Problem & objective**: The mixed-integer nonlinear formulation minimizes long-run average energy, written as $\min \overline{E}_{GU+UAV}$, while keeping model round-trip delay reliable.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| GU transmit power | $P_{m,t}$ | continuous, bounded | Ground-user uplink power |
+| UAV transmit power | $\bar P_{n,t}$ | continuous, bounded | UAV forwarding and feedback power |
+| UAV position | $\varphi_{n,t}$ | continuous, bounded 3-D coordinate | UAV hover position |
+| Bandwidth share | $\zeta_{n,t}$ | continuous, $(0,1)$ | Fraction assigned to UAV $n$ |
+| UAV association | $\vartheta_{m,n,t}$ | binary | Selects one serving UAV for user $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Round-trip delay reliability keeps the model exchange within the threshold: $\Pr\{T_{m,t}\leq T_{th}\}$ meets the required service reliability. |
+| C2 | Ground-user power bounds: $P_{min}\leq P_{m,t}\leq P_{max}$. |
+| C3 | UAV power bounds: $\bar P_{min}\leq\bar P_{n,t}\leq\bar P_{max}$. |
+| C4 | UAV position remains in the feasible flight region. |
+| C5 | Bandwidth shares form a simplex: $\sum_n\zeta_{n,t}=1$. |
+| C6 | Each ground user selects one UAV: $\vartheta_{m,n,t}\in\{0,1\}$ and $\sum_n\vartheta_{m,n,t}=1$. |
+
+**Algorithm**: Model the controls as a federated multi-agent UMDP; each A3C agent observes delay and energy, emits quantized power, position, bandwidth, and association actions, and aggregates actor and critic parameters first at UAVs and then at the base station.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ron and Lee [x] formulate UAV-relay federated learning as joint energy and service-reliability control. The mixed-integer nonlinear model selects user and UAV powers, UAV positions, bandwidth shares, and associations while constraining round-trip delay, power, geometry, bandwidth, and association. Their two-level federated A3C scheme uses user agents and hierarchical model aggregation to approximate the coupled control problem. At the reported 30-action setting, the federated design reaches 99.06% reliability versus 88.3% for multi-agent DQN and reduces energy by up to 35.11%.
 
 ## Problem framing
 

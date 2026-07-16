@@ -15,7 +15,8 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[qingqing-wu]]"
 created: 2026-07-12
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Corrections to "Throughput Maximization for UAV-Enabled Integrated Periodic Sensing and Communication"
@@ -27,6 +28,12 @@ Meng, K., Wu, Q., & Chen, W. (2026). *Corrections to "Throughput Maximization fo
 ## TL;DR
 
 Repairs two convexification steps in the 2023 UAV periodic-sensing/communication paper: an extra user-association factor is removed from one rate bound, and an omitted auxiliary-variable/Taylor transformation replaces an incorrect negative-definiteness claim. The corrected subproblems are convex, and the note states that the original simulations already used the corrected transformed formulation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Meng et al. [x] issued a correction to the convexification steps in an earlier UAV integrated periodic sensing and communication paper. The note removes an extra user-association factor from one rate bound and replaces an incorrect negative-definiteness argument with an auxiliary-variable and first-order Taylor transformation. It states that the corrected subproblems are convex and can be solved in CVX, while the original simulations already used the corrected transformed formulation. No new experiment or independent performance comparison is introduced. The contribution is a correction of an existing model and solver rather than a standalone application-level decision model.
 
 ## Correction scope
 

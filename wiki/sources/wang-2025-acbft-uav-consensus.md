@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "ACBFT: Adaptive Chained Byzantine Fault-Tolerant Consensus Protocol for UAV Ad Hoc Networks"
 authors: ["Jingjing Wang", "Jiaxing Wang", "Ziheng Tong", "Zihan Jiao", "Mengyuan Zhang", "Chunxiao Jiang"]
 year: 2025
@@ -14,7 +15,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-05-29
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # ACBFT: Adaptive Chained Byzantine Fault-Tolerant Consensus Protocol for UAV Ad Hoc Networks
@@ -26,6 +27,40 @@ Wang, J., Wang, J., Tong, Z., Jiao, Z., Zhang, M., & Jiang, C. (2025). *ACBFT: A
 ## TL;DR
 
 A blockchain consensus protocol tailored to UAV ad hoc networks. Traditional broadcast-based BFT protocols consume too much communication and worsen signal collisions for resource-constrained, highly mobile UAVs. **ACBFT** extends chain-based BFT and uses **[[particle-swarm-optimization|particle swarm optimization (PSO)]]** to compute the chain order from the real-time UAV network topology, cutting communication overhead and improving robustness. Sub-protocols handle malicious nodes (rechaining), dynamic node join/exit, and UAV loss.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A partially synchronous UAV peer-to-peer ad hoc network separates authenticated UAVs from a consensus-node set and orders the consensus nodes into a chained BFT execution with alternative synchronization nodes.
+
+**Problem & objective**: The chain-ordering subproblem minimizes communication hops, $\min_{\Omega}\mathcal F(\Omega)$, where $\mathcal F$ is the total hop count induced by the ordered chain and alternative nodes.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Consensus chain order | $\Omega$ | permutation of consensus nodes | Ordered active chain nodes |
+| Alternative-node set | $\Lambda$ | subset of consensus nodes | Nodes that synchronize chain state |
+| Consensus participation | $\mathcal P\subseteq\mathcal U$ | selectable node subset | Authenticated UAVs allowed to join consensus |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Consensus safety uses the Byzantine threshold $N\geq3f+1$. |
+| C2 | The active chain contains $2f+1$ nodes and the alternative set contains the remaining synchronized nodes. |
+| C3 | A chain order is a permutation, so each participating consensus node appears once. |
+| C4 | The hop objective is evaluated on the current UAV topology distance matrix $\varepsilon$. |
+| C5 | Rechaining, join, exit, and loss events update the feasible consensus-node set and order. |
+
+**Algorithm**: Run PSO over candidate chain permutations using total communication hops as fitness, then execute chained BFT with timer cancellation and synchronization; invoke rechaining and membership sub-protocols when topology or faults change.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] design ACBFT, a chained Byzantine-fault-tolerant consensus protocol for mobile UAV ad hoc networks. Its reusable optimization component chooses a consensus chain order from the real-time topology to minimize communication hops while respecting Byzantine participation and chain membership rules. PSO searches the order, and chained message propagation is augmented with timer cancellation, rechaining, joining, exiting, and loss handling. The paper reports up to 96.2% higher throughput than existing chaining protocols while reducing communication overhead and maintaining recovery under injected faults.
 
 ## Problem framing
 

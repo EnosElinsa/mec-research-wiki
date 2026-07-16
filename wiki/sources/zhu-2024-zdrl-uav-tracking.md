@@ -17,8 +17,9 @@ related:
   - "[[chang-2022-marl-multiuav-trajectory]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
+modeling_card: required
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Collaborative Reinforcement Learning Based Unmanned Aerial Vehicle (UAV) Trajectory Design for 3D UAV Tracking
@@ -30,6 +31,40 @@ Zhu, Y., Chen, M., Wang, S., Hu, Y., Liu, Y., & Yin, C. (2024). *Collaborative R
 ## TL;DR
 
 A **collaborative-RL trajectory + power design** for **real-time 3D localization of a target UAV** using one **active** UAV and four **passive** UAVs. The active UAV transmits signals that reflect off the (possibly adversarial) target to the passive UAVs; each passive UAV estimates the active-target-passive transmission distance and forwards it to a ground BS, which fixes the target's 3D position via a two-stage weighted least-squares (TSWLS) TDOA method. Because the target moves and localization accuracy depends on SNR, each controlled UAV must optimize its trajectory and the active UAV its transmit power. The authors propose a **Z function decomposition based reinforcement learning (ZD-RL)** method: unlike value-function-decomposition RL (VD-RL), which estimates the expectation of the sum of future rewards, ZD-RL learns the **probability distribution** of that return (a distributional-RL idea) for more accurate value estimation. Reported result: ZD-RL **reduces positioning error by up to 39.4% vs VD-RL and 64.6% vs independent deep RL**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One active UAV illuminates a moving target and four passive UAVs forward reflected-signal distance estimates to a BS for TDOA-based 3-D localization; passive UAVs use OFDMA over probabilistic LoS/NLoS air-to-ground links, while sensing links are LoS.
+
+**Problem & objective**: Problem (13), a non-convex finite-horizon control problem, minimizes $\sum_{t=1}^{V}\|\hat{\mathbf s}_t(\mathbf U_t,p_{0,t})-\mathbf s_t\|$ by coordinating transmit power and three-dimensional trajectories.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Active-UAV transmit power | $p_{0,t}$ | Discrete bounded power level | Illumination power used for target ranging |
+| UAV yaw angles | $\boldsymbol\varphi_t$ | Continuous bounded angles | Horizontal flight directions of active and passive UAVs |
+| UAV pitch angles | $\boldsymbol\phi_t$ | Continuous bounded angles | Vertical flight directions of active and passive UAVs |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Flight energy satisfies $E_{m,t}\le E_{\max}$ |
+| C2 | Passive-UAV reporting delay satisfies $T_{m,t}^{\mathrm B}(\mathbf u_{m,t})\le\xi$ |
+| C3 | Yaw and pitch actions remain within $[\varphi^{\min},\varphi^{\max}]$ and $[\phi^{\min},\phi^{\max}]$ |
+| C4 | Controlled-UAV distance to the target remains within $[L_{\min},L_{\max}]$ |
+| C5 | Pairwise controlled-UAV distance remains within $[L_{\min},L_{\max}]$ |
+
+**Algorithm**: ZD-RL, let each UAV select yaw, pitch, and where applicable power by epsilon-greedy actions, estimate individual return distributions with quantile Z functions, aggregate them at the BS into a global Z function and reward, and update each UAV's DNN.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied real-time three-dimensional tracking of a target UAV by one active UAV, four passive UAVs, and a ground BS. They formulated a non-convex finite-horizon problem that minimizes cumulative positioning error by jointly optimizing the active UAV's transmit power and all controlled UAV trajectories under energy, delay, angle, and separation constraints. Their Z function decomposition based reinforcement learning method learns the probability distribution of future returns and combines individual Z functions at the BS for collaborative decisions. Each controlled UAV then selects its yaw and pitch locally, while the active UAV also selects transmit power. Simulations report positioning-error reductions of up to 39.4% relative to VD-RL and 64.6% relative to independent deep RL.
 
 ## Problem framing
 

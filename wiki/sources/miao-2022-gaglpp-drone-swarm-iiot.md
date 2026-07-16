@@ -16,7 +16,8 @@ related:
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Drone Swarm Path Planning for Mobile Edge Computing in Industrial Internet of Things
@@ -28,6 +29,42 @@ Miao, Y., Hwang, K., Wu, D., Hao, Y., & Chen, M. (2023). *Drone Swarm Path Plann
 ## TL;DR
 
 A drone-swarm-assisted MEC offloading scheme for smart-city / Industrial IoT that combines **ground-station-controlled global path planning** with **onboard-computer-controlled local path planning** — the **ground-air controlled global and local path planning (GAGLPP)** algorithm. Globally, a swarm scheduling/allocation strategy ranks monitoring areas by **priority, UAV residual energy, and distance to target points** to minimize total flight length and energy. Locally, each UAV computes its optimal communication coverage from user mobility and jointly optimizes local path + computation offloading to maximize the number of offloading services and minimize total task latency. The result is an energy-efficiency-optimized UAV-cluster offloading strategy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A drone swarm with onboard MEC computers serves mobile Industrial-IoT users in multiple monitoring areas. A ground station performs global area/cluster scheduling, while each UAV performs local path planning and offloading; channels are air-to-ground and users move within each coverage region.
+
+**Problem & objective**: GAGLPP hierarchical path-planning and offloading, a mixed discrete-continuous energy-efficiency problem, maximizes the number of offloading services and minimizes path length/task latency, summarized as $\max\mathrm{EE}=\text{served tasks}/\text{flight+communication+compute energy}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Area/cluster assignment | $x_{u,r}$ | binary | UAV $u$ is assigned to monitoring area $r$ |
+| Local trajectory | $\mathbf q_u(t)$ | continuous path | UAV route within its assigned area |
+| Offloading ratio | $\lambda_{u,i}(t)$ | continuous, $[0,1]$ | Fraction of task $i$ offloaded to UAV $u$ |
+| Coverage radius | $R_u(t)$ | continuous, bounded | Communication service radius selected from user mobility |
+| Scheduling priority | $\pi_r$ | discrete ordering | Global service order based on priority, energy, and distance |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each monitoring area and user is assigned to a feasible UAV cluster |
+| C2 | UAV paths remain within their coverage and motion limits |
+| C3 | Offloading ratios and local/remote workload satisfy task conservation |
+| C4 | Task completion latency and UAV communication/computation capacity limits hold |
+| C5 | Flight, communication, and computation energy stay within UAV budgets |
+
+**Algorithm**: Ground station ranks areas by priority, residual energy, and distance → assign UAV clusters → onboard double-loop optimization updates local coverage/path/offloading → iterate until served-task count, latency, and energy-efficiency objectives stabilize.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Miao et al. [x] studied drone-swarm path planning and computation offloading for Industrial IoT mobile edge computing. They formulated a hierarchical global and local design that schedules UAV clusters across monitoring areas and jointly optimizes local paths, coverage, and task offloading to increase served tasks and energy efficiency while reducing latency. The GAGLPP method ranks areas using priority, residual UAV energy, and distance at the ground station, then runs an onboard iterative path/offloading update for each UAV. Local decisions account for user mobility, communication coverage, computation cost, and task-completion latency. Experiments report more offloading services, shorter path length, and higher energy efficiency than the evaluated comparison approaches.
 
 ## Problem framing
 

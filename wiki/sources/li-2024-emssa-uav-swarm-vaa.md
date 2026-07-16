@@ -17,7 +17,8 @@ related:
   - "[[li-2024-emodrl-ground-space-cb]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Multi-Objective Optimization for UAV Swarm-Assisted IoT With Virtual Antenna Arrays
@@ -29,6 +30,44 @@ Li, J., Sun, G., Duan, L., & Wu, Q. (2024). *Multi-Objective Optimization for UA
 ## TL;DR
 
 For UAV-swarm-assisted IoT **data harvesting and dissemination**, the paper introduces **collaborative beamforming (CB)** into *both* IoT sensors and UAVs simultaneously — forming sensor-enabled **ground virtual antenna arrays (GVAAs)** and UAV-enabled **aerial virtual antenna arrays (AVAAs)** — so data moves from IoT clusters to remote base stations without frequent/long-range UAV flights. It formulates a **multi-objective optimization problem (MOP)** to jointly minimize **mission completion time**, **signal strength toward an eavesdropper** (physical-layer security), and **total UAV energy cost**. The MOP is proven **NP-hard, mixed-variable, and large-scale**, and solved by an **enhanced multi-objective salp swarm algorithm (EMSSA)** that returns a set of trade-off (Pareto) solutions at low computational complexity.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Sensor clusters form ground virtual antenna arrays (GVAAs) to send data to selected UAV receivers; the UAV swarm broadcasts and forms aerial virtual antenna arrays (AVAAs) to disseminate data sequentially to remote BSs in the presence of an eavesdropper. Multiple access is one GVAA receiver per cluster followed by sequential AVAA-to-BS service; G2A/A2G links use probabilistic-LoS channels and UAV-to-UAV broadcast uses an LoS channel.
+
+**Problem & objective**: An NP-hard, mixed-variable, large-scale MOP, $\min_X[f_1(X),f_2(X),f_3(X)]=[T^{\mathrm{MCT}},\mathrm{SLL}_E,E^{\mathrm{UAV}}]$, minimizing mission completion time, eavesdropper signal strength, and UAV swarm energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Sensor selection | $D_{i,h}$ | binary, $\{0,1\}$ | Sensor $i$ joins GVAA $h$ |
+| Sensor excitation weight | $I^{\mathrm{SN}}_{i,h}$ | continuous, bounded | GVAA beamforming weight |
+| UAV receiver assignment | $A_h$ | integer, one UAV per cluster | UAV receiving GVAA data |
+| UAV position | $P_{j,k}$ | continuous, 3-D region | UAV position while serving BS $k$ |
+| UAV excitation weight | $I^{\mathrm{UAV}}_{j,k}$ | continuous, bounded | AVAA beamforming weight |
+| BS service order | $Q$ | integer permutation | Order in which AVAAs serve BSs |
+| AVAA performing time | $T_{\mathrm{perf}}$ | continuous, nonnegative | Time allocated to array operation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Sensor-selection, excitation-weight, position, and performing-time variables stay within their physical bounds |
+| C2 | Each IoT cluster selects one receiving UAV, $A_h\in\mathcal U$ |
+| C3 | The BS service order is a permutation, $Q\in\mathrm{Perm}(N_{\mathrm{BS}})$ |
+| C4 | UAV positions remain in the reachable 3-D region and adjacent UAVs satisfy the minimum separation $d_{\min}$ |
+| C5 | GVAA/AVAA transmissions use the modeled channel and eavesdropper SLL expressions |
+
+**Algorithm**: Feasible mixed-variable population initialization → Pareto objective evaluation → EMSSA solution update for binary, integer, order, and continuous blocks → constraint repair, including Levy repositioning for collisions → archive non-dominated trade-off solutions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied UAV-swarm-assisted IoT data harvesting and dissemination with collaborative beamforming at both sensors and UAVs. They formulated an NP-hard, mixed-variable, large-scale multi-objective problem that minimizes mission completion time, signal strength toward an eavesdropper, and total UAV energy cost. The decision structure jointly selects GVAA sensors, assigns UAV receivers, sets sensor and UAV excitation weights, places UAVs, allocates array-performing time, and orders BS service. They proposed the enhanced multi-objective salp swarm algorithm, which improves solution initialization, parameter updates, and mixed-variable solution updates, and uses constraint handling to maintain feasible candidates. Simulations report that EMSSA outperforms the evaluated multi-objective swarm algorithms and reduces time and energy costs relative to multi-hop and long-range-flight benchmark strategies.
 
 ## Problem framing
 

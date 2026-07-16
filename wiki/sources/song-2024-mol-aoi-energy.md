@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "AoI and Energy Tradeoff for Aerial-Ground Collaborative MEC: A Multi-Objective Learning Approach"
 tags: [source, age-of-information, aoi-energy-tradeoff, multi-objective-reinforcement-learning, uav-mec, high-altitude-platform, hap-uav, ppo, evolutionary-rl, task-offloading, trajectory-control]
 related:
@@ -24,7 +25,7 @@ related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-16
 authors: [Fuhong Song, Qixun Yang, Mingsen Deng, Huanlai Xing, Yanping Liu, Xi Yu, Kaiju Li, Lexi Xu]
 year: 2024
 url: "https://doi.org/10.1109/TMC.2024.3394568"
@@ -33,8 +34,47 @@ venue: "IEEE Transactions on Mobile Computing (TMC)"
 
 # AoI and Energy Tradeoff for Aerial-Ground Collaborative MEC: A Multi-Objective Learning Approach
 
+## Citation
+
+Song, F., Yang, Q., Deng, M., Xing, H., Liu, Y., Yu, X., Li, K., & Xu, L. (2024). *AoI and Energy Tradeoff for Aerial-Ground Collaborative MEC: A Multi-Objective Learning Approach*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3394568.
+
 ## TL;DR
 This paper studies the [[aoi-energy-tradeoff]] (the "AET problem") in an aerial-ground collaborative [[mobile-edge-computing]] system where a [[high-altitude-platform-station]] and a single rotary-wing UAV cooperate to serve ground devices (GDs): the UAV flies a planned path to collect tasks and either processes them locally or partially offloads them to the HAP. Total GD [[age-of-information]] and total UAV energy are conflicting objectives, so rather than the usual fixed-weight scalarization, the authors model the problem as a [[multi-objective-mdp-vectorial-reward]] and solve it with **MOL-AET**, a [[multi-objective-reinforcement-learning]] algorithm that combines multi-objective [[ppo]] (training) with policy-network genetic operators ([[evolutionary-reinforcement-learning]], the evolutionary phase) to output a set of nondominated policies. MOL-AET improves average AoI, energy, and cost by at least 39.8%, 2.1%, and 15.3% over two MOEAs and three MORL variants.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One rotary-wing UAV collects tasks from static ground devices without cellular coverage and either computes them locally or partially offloads them to a high-altitude platform. TDMA separates collection, the UAV flies at fixed height, and the AoI of each device resets after successful collection while propulsion and computing energy accumulate.
+
+**Problem & objective**: The AET multi-objective MDP minimizes total ground-device AoI and total UAV energy, $\min(A_{\mathrm{total}},E_{\mathrm{total}})$, subject to region, coverage, movement, queue, and per-device AoI limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Flight direction | $b_t$ | continuous/discretized angle | UAV direction in slot $t$ |
+| Flight distance | $d_t$ | continuous/discretized, $[0,d_{\max}]$ | UAV displacement in slot $t$ |
+| Partial offloading ratio | $o_t$ | continuous, $[0,1]$ | Fraction of unfinished tasks sent to the HAP |
+| Preference vector | $\mathbf w$ | continuous simplex | AoI-energy tradeoff used by one policy individual |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV position remains in the rectangular flight region and speed is bounded |
+| C2 | A ground device is collected only within the UAV coverage radius |
+| C3 | The UAV task queue and per-slot local/HAP computing capacities remain feasible |
+| C4 | Each device's AoI remains below $A_{\max}$ |
+| C5 | Partial offloading ratios and HAP transmission resources stay in their domains |
+
+**Algorithm**: Encode the two objectives as vector rewards → initialize individuals over preference vectors → train multi-objective PPO with GAE → maintain a nondominated policy set → evolve policy-network parameters by uniform crossover and Gaussian mutation → output the Pareto AoI-energy policies.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Song et al. [x] studied the age-of-information and energy tradeoff in an aerial-ground collaborative MEC system with one UAV and one high-altitude platform. They formulated a multi-objective problem that minimizes total ground-device AoI and UAV energy by optimizing UAV movement and partial task offloading under coverage, queue, region, and AoI constraints. MOL-AET models the problem as a vector-reward MDP, trains multiple preference-conditioned PPO policies, and applies crossover and Gaussian mutation to their policy networks. It returns a nondominated policy set for changing AoI-energy preferences. Simulations report average improvements of at least 39.8% in AoI, 2.1% in energy, and 15.3% in cost over the evaluated MOEA and MORL baselines.
 
 ## Problem
 IoT ground devices (intelligent transport, forest-fire/environmental monitoring, autonomous driving) are computing-intensive and delay-sensitive but resource-limited, and terrestrial base stations may be unavailable in remote or disaster scenarios. UAVs bring compute and coverage close to GDs, but their energy and onboard compute are limited, so a HAP is introduced as a powerful collaborative tier the UAV can offload to ([[hierarchical-aerial-mec]], [[air-ground-integrated-network]]). Beyond latency, the **freshness** of collected data — measured by [[age-of-information]] — drives QoE in these applications. The paper formulates the AET problem as a multi-objective optimization: simultaneously minimize total GD AoI and total UAV energy by optimizing the UAV's per-slot flight (direction + distance) and [[task-offloading]] ratios. The objectives genuinely conflict (collecting more tasks lowers AoI but raises energy), and the authors argue prior work wrongly collapses this into a single objective with fixed preference weights — ignoring the conflict and failing when user preferences drift.

@@ -5,13 +5,14 @@ authors: ["Mohammad Mozaffari", "Walid Saad", "Mehdi Bennis", "Mérouane Debbah"
 year: 2016
 url: "https://doi.org/10.1109/LCOMM.2016.2578312"
 venue: "IEEE Communications Letters (IEEE LCOMM)"
+modeling_card: required
 tags: [source, uav-deployment, drone-cell, uav-base-station, coverage-optimization, circle-packing, air-to-ground-channel-model]
 related:
   - "[[drone-cell-3d-placement]]"
   - "[[air-to-ground-channel-model]]"
   - "[[mozaffari-2015-drone-small-cells]]"
 created: 2026-06-04
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Efficient Deployment of Multiple Unmanned Aerial Vehicles for Optimal Wireless Coverage
@@ -23,6 +24,40 @@ Mozaffari, M., Saad, W., Bennis, M., & Debbah, M. (2016). *Efficient Deployment 
 ## TL;DR
 
 Extends the single-DSC optimal-altitude framework to M UAVs. Derives the **downlink coverage probability** as a function of UAV altitude and directional antenna gain (accounting for inter-UAV interference). Uses **circle packing theory** to determine the 3D placement of M UAVs that jointly maximizes total coverage area while ensuring coverage regions do not overlap (eliminating inter-UAV interference). Also determines the **minimum number of UAVs** needed to guarantee a target coverage probability over a given geographical area.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $M$ symmetric stationary UAVs act as downlink aerial base stations over a circular region of radius $R_c$. Each UAV uses the same altitude and transmit power with a directional antenna of half-beamwidth $\theta_B$, and coverage probability accounts for probabilistic LoS/NLoS propagation and mean interference from the nearest UAV.
+
+**Problem & objective**: Choose UAV ground positions $\mathbf r_j$, common altitude $h$, coverage radius $r_u$, and, when provisioning the system, the number $M$, to maximize $M r_u^2$ while using non-overlapping coverage disks and meeting a target coverage probability $\varepsilon$ with minimum transmit power.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Number of UAVs | $M$ | positive integer | Fleet size used to meet an area-coverage target |
+| UAV ground position | $\mathbf r_j$ | continuous 2D vector | Center of UAV $j$'s coverage disk |
+| Common altitude | $h$ | continuous, positive | Altitude shared by the symmetric UAVs |
+| Coverage radius | $r_u$ | continuous, nonnegative | Largest radius satisfying the coverage-probability target |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| 9 | $r_u=\max\{r:P_{\mathrm{cov}}(r,P_t,\theta_B)\ge\varepsilon\}$ |
+| 11 | Coverage disks do not overlap: $\lVert\mathbf r_j-\mathbf r_k\rVert\ge2r_u$ for $j\ne k$ |
+| 12 | Every coverage disk stays inside the service region: $\lVert\mathbf r_j\rVert+r_u\le R_c$ |
+| 13 | The directional footprint is feasible: $r_u\le h\tan(\theta_B/2)$ |
+
+**Algorithm**: Evaluate the analytical coverage probability for candidate $M$, power, altitude, and beamwidth values. Map the placement problem to packing $M$ equal circles inside the service circle, obtain the maximum feasible $r_u$ and centers from the packing construction, set $h=r_u/\tan(\theta_B/2)$, and compute the minimum power meeting $\varepsilon$. Repeat over $M$ and select the smallest fleet that satisfies the required covered-area fraction and lifetime target.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mozaffari et al. [x] studied the three-dimensional deployment of multiple directional-antenna UAV base stations over a circular service area. They derived downlink coverage probability as a function of altitude, antenna gain, probabilistic LoS/NLoS propagation, and mean nearest-UAV interference. They then mapped coverage maximization to equal-circle packing, selecting non-overlapping ground footprints, common altitude, and minimum transmit power to improve both covered area and coverage lifetime. The resulting framework also determines the minimum fleet size needed for a prescribed area-coverage threshold, and the numerical analysis shows that the preferred altitude decreases as more UAVs are deployed.
 
 ## Problem framing
 

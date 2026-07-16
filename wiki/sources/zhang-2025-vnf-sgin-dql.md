@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Learning-Assisted Dynamic VNF Selection and Chaining for 6G Satellite-Ground Integrated Networks"
 authors: ["Jianxin Zhang", "Qiang Ye", "Kaige Qu", "Yanglong Sun", "Yuliang Tang", "Dongmei Zhao", "Tong Ye"]
 year: 2025
@@ -19,7 +20,7 @@ related:
   - "[[pham-2026-vnf-control-loop]]"
   - "[[routing-vnf-scaling-control-loop]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Learning-Assisted Dynamic VNF Selection and Chaining for 6G Satellite-Ground Integrated Networks
@@ -31,6 +32,40 @@ Zhang, J., Ye, Q., Qu, K., Sun, Y., Tang, Y., Zhao, D., & Ye, T. (2025). *Learni
 ## TL;DR
 
 A **deep Q-learning (DQL)** framework for **dynamic VNF selection and chaining (DVSC)** in a **6G satellite-ground integrated network (SGIN)**. Built on SDN/NFV, it determines a set of **VNF selection and chaining policies (VSCPs)** to balance **network resource provisioning + VNF migration costs** against **service performance gain**, maximizing **long-term network profit**. Formulated as a **Markov decision process (MDP)** capturing SGIN heterogeneity and time-varying topology; a new **sharing ratio (SR)** measures compute-resource sharing across VSCP sets.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An SDN/NFV-enabled satellite-ground integrated network maps ordered service-function chains across time-varying satellite and ground nodes and routes each virtual link over physical satellite-ground, inter-satellite, or terrestrial links.
+
+**Problem & objective**: The NP-hard dynamic VNF selection and chaining problem maximizes long-term network profit, $\max_{\mathbf x_t,\mathbf y_t}\sum_{t=1}^{T}\chi_t$, where profit balances service-performance gain against resource-provisioning and VNF-migration costs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| VNF placement | $x_t^v(f_{i,l}^j)$ | binary, $\{0,1\}$ | Map VNF $j$ of flow $l$ to physical node $v$ |
+| Virtual-link mapping | $y_t^{(v,u)}(f_{i,l}^j,f_{i',l}^{j+1})$ | binary, $\{0,1\}$ | Route a virtual link over physical link $(v,u)$ |
+| VSCP-set action | $\mathbf w_m$ | discrete, $\mathbf w_m\in\mathcal W$ | Joint placement and routing policy selected for all flows in one interval |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | VNF processing load at node $v$ remains below $c_{f_i}^v$. |
+| C2 | Aggregate flow rate on physical link $(v,u)$ remains below $B_t^{(v,u)}/\sigma$. |
+| C3 | Each flow satisfies the end-to-end delay requirement: $D_{l,t}\leq D$. |
+| C4 | Virtual-link routes obey source, destination, and intermediate-node flow conservation. |
+| C5 | Placement and routing indicators are binary and satisfy service-request compatibility constraints. |
+
+**Algorithm**: Cluster historical network loads, enumerate feasible per-flow chains by breadth-first search, greedily retain a high-profit VSCP set for each load cluster using the sharing ratio, and train a DQN with replay memory, target-network updates, and epsilon-greedy selection over the compressed action space.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] investigated dynamic VNF selection and chaining in an SDN/NFV-enabled satellite-ground integrated network with heterogeneous resources and time-varying topology. They formulated an MDP that selects VNF placements and virtual-link mappings to maximize long-term network profit, balancing service-performance gain against network resource provisioning and VNF migration costs under capacity, delay, service, and flow-conservation constraints. Their DDVSC method clusters historical load records, greedily constructs a compressed action space of VNF selection and chaining policy sets using a sharing ratio, and trains a deep Q-network to select a policy set from evolving network states. Simulations for an immersive online education service report 9.5%, 32.9%, and 8.9% higher accumulated network profit than the three evaluated algorithms and a 3.4% gap to the reported upper bound.
 
 ## Problem framing
 
@@ -61,5 +96,5 @@ A distinctive **NFV/SDN service-function-chaining** entry in the SGIN/satellite 
 
 ## Raw artifacts
 
-- `raw/sources/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks/full.md`
+- `raw/sources/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks.md`
 - Original PDF and extracted figures in the same folder.

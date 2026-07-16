@@ -5,6 +5,7 @@ authors: ["Manzoor Ahmed", "Wali Ullah Khan", "Fahd N. Al-Wesabi", "Shouki A. Eb
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3549224"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS), vol. 27, no. 2, pp. 2706-2715"
+modeling_card: required
 tags: [source, noma, intelligent-reflecting-surface, uav-communications, vehicular-network, passive-beamforming, power-allocation]
 related:
   - "[[fixed-point-irs-passive-beamforming]]"
@@ -17,7 +18,7 @@ related:
   - "[[cui-2026-aris-v2x-icac]]"
   - "[[xingwang-li]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Efficient Resource Management for NOMA-Enabled UAV Communications in 6G IRS-Assisted Vehicular Networks
@@ -29,6 +30,40 @@ Ahmed, M., Khan, W. U., Al-Wesabi, F. N., Ebad, S. A., Alshahrani, H. M., Dutta,
 ## TL;DR
 
 Maximizes downlink sum capacity for a single UAV serving vehicles through power-domain NOMA and a building-mounted passive IRS. Alternating optimization couples projected fixed-point IRS phase updates with convex UAV power allocation under SINR and unit-modulus constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An urban downlink has one UAV serving $V$ ground vehicles with power-domain NOMA. A passive IRS with $K$ elements supplies a reflected path in addition to the direct UAV-to-vehicle path; UAV-to-IRS and IRS-to-vehicle channels are Rician, the direct path is Rayleigh, and vehicles use successive interference cancellation.
+
+**Problem & objective**: The non-convex problem $P_1$ maximizes $C_{\mathrm{sum}}=\sum_{v=1}^{V}\log_2(1+\gamma_v)$ by jointly selecting UAV power $P$, NOMA coefficients $\alpha_v$, and IRS phases $\phi_k$ collected in $\Phi$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV transmit power | $P$ | continuous, $0\le P\le P_t$ | Total UAV transmit power |
+| NOMA power coefficient | $\alpha_v$ | continuous, $0\le\alpha_v\le1$ | Power fraction assigned to vehicle $v$ |
+| IRS phase | $\phi_k$ | complex unit modulus, $\lvert\phi_k\rvert=1$ | Passive phase of IRS element $k$ |
+| IRS phase matrix | $\Phi$ | diagonal complex matrix | Passive beamforming matrix built from $\phi_k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every vehicle meets the SINR threshold: $\gamma_v\ge\gamma_{\min},\ \forall v$ |
+| C2 | NOMA coefficients use at most the full power fraction: $\sum_{v=1}^{V}\alpha_v\le1$ |
+| C3 | UAV power is bounded by the maximum: $0\le P\le P_t$ |
+| C4 | Passive IRS elements preserve unit modulus: $\lvert\phi_k\rvert=1,\ \forall k$ |
+
+**Algorithm**: Linearize capacity and SINR constraints with a first-order Taylor expansion around feasible $\gamma_{v,0}$; with power fixed, initialize a unit-modulus $\Phi$, update it by fixed-point iteration, take the gradient step, and project onto the unit circle until the capacity change is below $\epsilon$; with $\Phi$ fixed, solve the convex power-allocation subproblem with CVX, update $\gamma_{v,0}$, and alternate the two blocks until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ahmed et al. [x] studied sum-capacity enhancement for downlink NOMA UAV communications serving ground vehicles in an urban IRS-assisted network. They formulated a joint optimization of the UAV power-allocation coefficients and passive IRS phase shifts that maximizes $C_{\mathrm{sum}}$ while enforcing minimum vehicle SINR. They first linearized the non-convex problem with a first-order Taylor expansion, then alternated fixed-point IRS beamforming with convex UAV power allocation. Monte Carlo results reported rapid convergence within two or three iterations and about 42 bit/s/Hz versus 34 bit/s/Hz for the direct-link benchmark at 30 dBm, with larger IRS element counts further increasing capacity.
 
 ## Problem
 

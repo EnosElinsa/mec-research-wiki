@@ -5,6 +5,7 @@ authors: ["Kai Li", "Wei Ni", "Xin Wang", "Ren Ping Liu", "Salil S. Kanhere", "S
 year: 2016
 url: "https://doi.org/10.1109/TMC.2015.2467381"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 15, no. 6, pp. 1377-1386"
+modeling_card: required
 tags: [source, cooperative-uav-relaying, energy-balancing, packet-scheduling, rate-adaptation, wireless-sensor-network, integer-programming]
 related:
   - "[[energy-balanced-cooperative-uav-relaying]]"
@@ -15,7 +16,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[zhan-2011-uav-relay-heading-optimization]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Cooperative Relaying for Unmanned Aerial Vehicles
@@ -27,6 +28,40 @@ Li, K., Ni, W., Wang, X., Liu, R. P., Kanhere, S. S., & Jha, S. (2016). *Energy-
 ## TL;DR
 
 Balances packet-forwarding energy across cooperative UAV relays in a two-hop sensor-to-base-station link. An exact integer min-max scheduler is used for small cases; EPLA alternates packet-load balancing with modulation/rate increases to meet a BER-constrained TDMA deadline at much lower runtime.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Remote sensors broadcast packets to a cooperative UAV relay fleet, and the UAVs immediately forward successfully decoded packets to a base station in a TDMA frame. The base station observes second-hop SNR, then assigns disjoint packets, modulation levels, and corresponding transmit powers while the relays follow predetermined trajectories.
+
+**Problem & objective**: The integer scheduler minimizes $\max_i\sum_{s\subseteq\mathbb S_i}\sum_{\rho_i=1}^{M}x_{i,s,\rho_i}\delta_i(t)\frac{2^{\rho_i}-1}{\rho_i}$, the largest forwarding-energy expenditure among the cooperative UAVs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Packet-relay-modulation assignment | $x_{i,s,\rho_i}$ | binary | Whether UAV $i$ forwards packet $s$ using modulation level $\rho_i$ |
+| Modulation level | $\rho_i$ | discrete, $\{1,\ldots,M\}$ | Rate selected for UAV $i$ |
+| UAV transmit power | $\Gamma_i(t)$ | continuous, derived | Power needed by the chosen rate and SNR to meet the BER target |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Required transmit power does not exceed $P_{\max}$ |
+| C2 | A packet assigned to one UAV uses exactly one modulation level |
+| C3 | Every packet decoded by at least one UAV is forwarded exactly once |
+| C4 | All scheduled transmissions fit the TDMA forwarding duration $T$ |
+| C5 | The rate-dependent power is selected to satisfy the target BER $\epsilon$ |
+
+**Algorithm**: The exact method reformulates the min-max integer program as one minimization problem per candidate maximum-energy UAV and selects the best result. EPLA provides the real-time alternative by repeatedly moving packets from the highest-energy relay to lower-energy relays, then increasing the modulation of the UAV that most reduces transmission time until the TDMA deadline is feasible.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] balanced forwarding energy across cooperative UAV relays that carry sensor packets to a base station over a two-hop TDMA link. They minimized the maximum per-relay transmit energy over packet assignment and modulation under BER, transmit-power, unique-forwarding, and slot-duration constraints. EPLA alternates packet-load balancing with rate adaptation and was roughly four orders of magnitude faster than exact scheduling with five UAVs. With 20 UAVs, it extended lifetime by 33% and increased network yield by 15% relative to the low-transmit-power baseline while saving 50% energy.
 
 ## Problem
 

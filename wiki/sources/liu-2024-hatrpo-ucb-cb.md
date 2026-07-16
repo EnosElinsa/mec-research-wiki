@@ -28,7 +28,8 @@ related:
   - "[[qingqing-wu]]"
   - "[[dusit-niyato]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # UAV-Enabled Collaborative Beamforming via Multi-Agent Deep Reinforcement Learning
@@ -40,6 +41,39 @@ Liu, S., Sun, G., Li, J., Liang, S., Wu, Q., Wang, P., & Niyato, D. (2024). *UAV
 ## TL;DR
 
 Multiple UAVs form a **UAV-enabled virtual antenna array (UVAA)** and use [[collaborative-beamforming|collaborative beamforming]] (CB) to reach remote base stations on air-to-ground links. The paper formulates the **UAV-enabled CB multi-objective optimization problem (UCBMOP)** — simultaneously maximize the UVAA transmission rate and minimize total UAV energy consumption by optimizing UAV positions and excitation-current weights. Because the two objectives conflict, the variables are non-concave, and the system is dynamic, it is solved online with **MADRL**: a **HATRPO-UCB** algorithm that extends heterogeneous-agent trust region policy optimization (HATRPO) with three techniques (observation enhancement, agent-specific global state, and a Beta-distribution policy).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A swarm of $N$ UAVs forms a virtual antenna array in a bounded three-dimensional area and communicates with one remote BS at a time through collaborative beamforming.
+
+**Problem & objective**: Optimize UAV positions and excitation currents to maximize transmission rate while minimizing total motion energy, $\max_{\mathbf X,\mathbf Y,\mathbf Z,\mathbf I}\{R_T,-E_{\mathrm{total}}\}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV position | $(x_i,y_i,z_i)$ | continuous 3D coordinates | Location of UAV $i$ during the CB slot |
+| Excitation weight | $I_i$ | continuous in $[0,1]$ | Current weight of UAV $i$ in the virtual array |
+| Agent action | $a_i$ | bounded continuous action | Next position and excitation weight selected by agent $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Horizontal positions stay in the monitor square, $-L/2\leq x_i,y_i\leq L/2$. |
+| C2 | Flight altitude is bounded, $H_{\min}\leq z_i\leq H_{\max}$. |
+| C3 | Excitation currents satisfy $0\leq I_i\leq1$. |
+| C4 | Any pair of UAVs keeps a collision-avoidance separation, $d_{i,j}\geq d_{\min}$. |
+
+**Algorithm**: Cast UCBMOP as a cooperative Markov game and train HATRPO-UCB with sequential trust-region policy updates, observation enhancement, agent-specific global critics, and bounded Beta policies.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] formulated UAV-enabled collaborative beamforming as a multi-objective problem that maximizes UVAA transmission rate while minimizing swarm motion energy. The decision variables are the three-dimensional UAV positions and excitation-current weights, constrained by the monitor area, altitude, current bounds, and inter-UAV separation. The authors recast the non-convex dynamic program as a cooperative Markov game and propose HATRPO-UCB with observation enhancement, agent-specific global state, and a Beta policy. Simulations report the fastest convergence at about 750 epochs and the lowest energy among the compared learning methods while retaining competitive rate. Ablation studies show that all three enhancements improve cooperation or policy fitting.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Online Trajectory and Resource Optimization for Stochastic UAV-Enabled MEC Systems"
 authors: ["Zheyuan Yang", "Suzhi Bi", "Ying-Jun Angela Zhang"]
 year: 2022
@@ -16,7 +17,7 @@ related:
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Online Trajectory and Resource Optimization for Stochastic UAV-Enabled MEC Systems
@@ -28,6 +29,41 @@ Yang, Z., Bi, S., & Zhang, Y.-J. A. (2022). *Online Trajectory and Resource Opti
 ## TL;DR
 
 A UAV-enabled MEC platform serving multiple mobile ground users with **random movements and task arrivals**. The goal is to minimize the average weighted energy of all users subject to average UAV-energy and data-queue-stability constraints. Formulated as a multi-stage stochastic optimization and converted via **Lyapunov optimization** into per-slot deterministic problems; two reduced-complexity methods solve resource allocation and UAV movement either **sequentially (two-stage)** or **jointly (one-step)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One rotary-wing UAV-mounted MEC server serves $K$ mobile ground UEs over TDMA at a fixed altitude. UE locations follow a Gauss-Markov mobility model and task arrivals are stochastic Bernoulli processes; the UAV starts at $\mathbf p_I$, ends at $\mathbf p_F$, and uses a probabilistic LoS channel model.
+
+**Problem & objective**: The multi-stage stochastic problem $\mathcal P_1$ minimizes the long-term weighted UE energy, $\min_{\boldsymbol f[n],\boldsymbol\delta[n],\mathbf p_u[n]}\lim_{N\to\infty}\frac{1}{N}\sum_{n=1}^{N}\sum_{k=1}^{K}w_k\big(E_k^c[n]+E_k^o[n]\big)$, under UAV energy and queue-stability requirements.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UE CPU frequency | $f_k[n]$ | continuous, $0\le f_k[n]\le f_k^m$ | Local computing rate of UE $k$ |
+| Offloading duration | $\delta_k[n]$ | continuous, $\delta_k[n]\ge0$ | TDMA airtime allocated to UE $k$ |
+| UAV position | $\mathbf p_u[n]$ | continuous, 2-D trajectory | Horizontal UAV location in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 12b | Average UAV propulsion energy is bounded by $E^u$ |
+| 12c | Actual task queues are mean-rate stable, with finite long-term average backlog |
+| 12d | UE CPU frequencies satisfy $0\le f_k[n]\le f_k^m$ |
+| 12e | TDMA durations satisfy $t_0+\sum_k\delta_k[n]\le\Delta$ |
+| 12f | Processed local plus offloaded bits do not exceed backlog plus arrivals |
+| 12g-12i | UAV endpoints and per-slot speed and reachability limits are enforced |
+
+**Algorithm**: Lyapunov optimization adds a virtual UAV-energy queue and minimizes a drift-plus-penalty upper bound per slot. A two-stage solver first allocates UE resources and then updates the UAV trajectory, while a joint solver optimizes both blocks together using successive convex approximation and convex subproblems.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] studied online trajectory and resource control for a UAV-enabled MEC server serving mobile users with stochastic arrivals. They minimized long-term weighted UE energy while enforcing average UAV propulsion energy, queue stability, CPU, TDMA, and flight constraints. Lyapunov drift-plus-penalty converts the multi-stage stochastic program into per-slot deterministic decisions, and two proposed solvers optimize resource allocation and UAV movement either sequentially or jointly. The analysis reports queue stability and satisfaction of the UAV energy constraint with an $O(1/V)$ energy and $O(V)$ queue tradeoff. Simulations compare the two proposed solvers with geometric-center, equal-allocation, and DDQN baselines under changing user mobility and task arrivals.
 
 ## Problem framing
 

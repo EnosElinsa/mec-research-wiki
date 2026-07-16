@@ -5,6 +5,7 @@ authors: ["Mu Chen", "Yong Li", "Zaojian Dai", "Tao Zhang", "Yu Zhou", "Hui Wang
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3584216"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: required
 tags: [source, uav-swarm, anti-jamming, its, maddpg, ctde, channel-selection, power-control]
 related:
   - "[[multi-domain-uav-anti-jamming]]"
@@ -18,7 +19,7 @@ related:
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # A Robust Multi-Domain Adaptive Anti-Jamming Communication System for a UAV Swarm in Urban ITS Traffic Monitoring via Multi-Agent Deep Deterministic Policy Gradient
@@ -30,6 +31,40 @@ Chen, M., Li, Y., Dai, Z., Zhang, T., Zhou, Y., & Wang, H. (2026). *A Robust Mul
 ## TL;DR
 
 Models urban ITS monitoring by a UAV swarm under co-channel interference and malicious jamming. The paper formulates joint channel selection and transmit-power control as a Dec-POMDP and trains a MADDPG controller with centralized critics and decentralized actors so each UAV can adapt from local channel/interference observations.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV swarm monitors urban traffic through U2U coordination links and U2G reporting to a ground station in the presence of co-channel interference and fixed, swept, or random jammers. Each UAV observes local channel gain and interference, selects a channel and transmit power, and follows Gaussian-Markov mobility.
+
+**Problem & objective**: The anti-jamming problem minimizes expected long-term weighted transmission energy and frequency-hopping overhead, $\min_{L^t,P^t}\mathbb E\{\sum_{t=0}^{T-1}\sum_{n=1}^{N}[\beta E_n^t+(1-\beta)F_n^t]\}$, while every U2U payload is delivered within a slot.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Channel selection | $L_n^t$ | discrete channel index | Channel chosen by UAV $n$ at slot $t$ |
+| Transmit power | $P_n^t$ | continuous, bounded | U2U or U2G transmit power of UAV $n$ |
+| Joint action | $a_n^t=[L_n^t,P_n^t,\bar d_n^t]$ | mixed | Channel, power, and mobility decision exposed to the Dec-POMDP |
+| Policy | $\mu_n$ | stochastic policy | Local observation to channel-power mapping |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each U2U link delivers its payload: $R_n^{t,l}t\ge K$ for every link and slot. |
+| C2 | Transmit powers remain within the platform limits. |
+| C3 | Frequency-hopping cost is incurred only when channels change: $F_n^t=g(L_n^t,L_n^{t-1})W$. |
+| C4 | Agents act from local observations in decentralized execution, while centralized training may use joint observations and actions. |
+
+**Algorithm**: Model local observations and mixed channel-power actions as a Dec-POMDP, train MADDPG with centralized critics and decentralized actors using replay and target networks, and shape rewards from U2G capacity, U2U success, transmission energy, and hopping penalties under fixed, swept, and random jamming.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied anti-jamming communication for an urban-ITS UAV swarm that must coordinate U2U data sharing while reporting through U2G links. They minimized weighted transmission energy and frequency-hopping overhead over channel-selection and transmit-power decisions subject to per-slot U2U payload delivery. A Dec-POMDP and MADDPG centralized-training decentralized-execution controller let local actors adapt to interference while centralized critics learn coordination. In the reported four-UAV experiments, MADDPG stabilized after about 500 episodes, reached roughly 45 Mbps U2G capacity, and outperformed MADQN, single-agent DDPG, PPO, and random baselines in U2U success, energy, and hopping cost.
 
 ## Problem
 

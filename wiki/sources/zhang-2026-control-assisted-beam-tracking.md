@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Control-Assisted Beam Prediction and Tracking for UAV Millimeter Wave Communications"
 authors: ["Jianjun Zhang", "Yongming Huang", "Jiaheng Wang", "Christos Masouros", "Xiaohu You"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[christos-masouros]]"
   - "[[xiaohu-you]]"
 created: 2026-07-12
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Control-Assisted Beam Prediction and Tracking for UAV Millimeter Wave Communications
@@ -29,6 +30,12 @@ Zhang, J., Huang, Y., Wang, J., Masouros, C., & You, X. (2026). *Control-Assiste
 ## TL;DR
 
 Uses position error, velocity, attitude, and waypoint information already available from the UAV flight-control loop to predict and track a narrow mmWave beam during autonomous mission flight. A Bayesian DNN predicts attitude-induced offsets, while a low-complexity kinematic estimator tracks position-induced offsets and narrows or skips beam sweeping.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied beam prediction and tracking for fully autonomous mission flight in UAV millimeter-wave communications using information from the flight-control system. They analyzed the double-loop PID controller and related beam direction to position error, attitude, velocity, and preassigned waypoints. Their control-assisted solution uses a Bayesian learning model with offline training and online inference, then separates attitude-induced and relative-position-induced beam offsets in a two-step tracking algorithm. Experiments with PX4, Gazebo, ROS/MAVROS, Pixhawk, an F450 UAV, and RK3506 hardware report higher successful-alignment probability and effective achievable rate than the evaluated stochastic-bandit and Gaussian-process baselines with low online complexity.
 
 ## Problem
 

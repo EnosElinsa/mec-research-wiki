@@ -5,6 +5,7 @@ authors: ["Minghui Dai", "Yuan Wu", "Liping Qian", "Zhou Su", "Bin Lin", "Nan Ch
 year: 2023
 url: "https://doi.org/10.1109/TNSE.2022.3205303"
 venue: "IEEE Transactions on Network Science and Engineering (IEEE TNSE)"
+modeling_card: required
 tags: [source, maritime-mec, computation-offloading, noma, fdma, energy-efficiency, physical-layer-security, multi-access]
 related:
   - "[[maritime-mec]]"
@@ -22,7 +23,7 @@ related:
   - "[[liping-qian]]"
   - "[[bin-lin]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # UAV-Assisted Multi-Access Computation Offloading via Hybrid NOMA and FDMA in Marine Networks
@@ -34,6 +35,42 @@ Dai, M., Wu, Y., Qian, L., Su, Z., Lin, B., & Chen, N. (2023). *UAV-Assisted Mul
 ## TL;DR
 
 A two-segment **marine multi-access computation offloading** scheme that minimizes the **total energy consumption of ocean devices**. In the **underwater segment**, multiple **underwater sensor nodes (USNs)** covered by an **unmanned surface vehicle (USV)** upload sensing data via **NOMA** over acoustic channels (improving channel utilization). In the **radio-frequency segment**, multiple **UAVs** hovering as aerial edge servers receive USV-offloaded workloads via **FDMA** (avoiding co-channel interference), while a **malicious node** may overhear the USV's offloading transmission. The non-convex joint optimization of USNs' uploading time, USV's computation offloading, USV's offloading time, and **secrecy provisioning** is solved by a **layered (top-problem / sub-problem) decomposition** with line-search algorithms.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Underwater sensor nodes upload sensing data over acoustic NOMA to a USV, which transcodes the data, computes part locally, and offloads the remainder over RF FDMA to multiple hovering UAV edge servers. A malicious node can overhear USV-to-UAV transmissions, so the model includes secrecy-outage provisioning.
+
+**Problem & objective**: Problem (ECM) is a strictly nonconvex energy-minimization problem, $E_{\mathrm{tot}}^{\min}=\min E^{\mathrm{tot}}$, where total energy includes USN uploading and USV transcoding, local-computing, and offloading energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Underwater uploading time | $t^{\mathrm{Ph-I}}$ | continuous, $[0,t^{\max}]$ | NOMA duration for USN-to-USV uploading |
+| UAV offloaded workload | $d_{u,k}^{\mathrm{off}}$ | continuous, $[0,D_u^{\mathrm{tot}}]$ | Data assigned by the USV to UAV $k$ |
+| RF offloading time | $t_{u,k}^{\mathrm{Ph-IV}}$ | continuous, nonnegative | FDMA duration for USV-to-UAV $k$ offloading |
+| Secrecy provisioning | $\varsigma_k$ | continuous, $[0,1]$ | Secrecy-outage allocation for the link to UAV $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 33 | Uploaded data satisfies $0\leq d_i^{\mathrm{up}}\leq D_i^{\max}$ |
+| 34-35 | USN and USV transmit powers satisfy $p_{i,u}^{\mathrm{Ph-I}}\leq P_{i,u}^{\max}$ and $q_{u,k}\leq Q_{u,k}^{\max}$ |
+| 36-37 | Each $d_{u,k}^{\mathrm{off}}$ and their sum do not exceed $D_u^{\mathrm{tot}}$ |
+| 38 | Underwater NOMA time satisfies $0\leq t^{\mathrm{Ph-I}}\leq t^{\max}$ |
+| 39 | Overall completion latency satisfies $0\leq t^{\mathrm{ove}}\leq T^{\max}$ |
+| 1, 20, 28 | USV displacement, offloaded-data balance, and secrecy-outage requirements remain feasible |
+
+**Algorithm**: Decompose ECM into a top problem for $t^{\mathrm{Ph-I}}$ and a subproblem for workload, RF time, and secrecy provisioning; solve the workload subproblem as a strictly convex program for fixed RF time and secrecy; use two-dimensional line search for $t_{u,k}^{\mathrm{Ph-IV}}$ and $\varsigma_k$; then use one-dimensional line search for $t^{\mathrm{Ph-I}}$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dai et al. [x] studied energy-efficient computation offloading through hybrid NOMA and FDMA in a two-segment marine network. Underwater sensor nodes upload data to a USV through acoustic NOMA, and the USV partially offloads the processed workload through RF FDMA to hovering UAV edge servers while accounting for a malicious eavesdropper. They formulated ECM to minimize the total energy consumption of the sensor nodes and USV over uploading time, offloaded workload, RF offloading time, and secrecy provisioning, and solved it with a layered combination of a convex subroutine and one-dimensional and two-dimensional line searches. Numerical results show that the proposed algorithms obtain energy values close to the LINGO global solution with substantially lower computation time than LINGO in the reported experiments.
 
 ## Problem framing
 

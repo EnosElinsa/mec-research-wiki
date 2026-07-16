@@ -16,7 +16,8 @@ related:
   - "[[gaofeng-pan]]"
   - "[[dusit-niyato]]"
 created: 2026-07-13
-updated: 2026-07-13
+modeling_card: not_applicable
+updated: 2026-07-16
 ---
 
 # Multi-UAV CoMP Transmission Based on UAV Jitter Characteristics: Analysis and Optimization
@@ -28,6 +29,12 @@ Jin, W., Du, C., Wang, J., Wang, S., Pan, G., & Niyato, D. (2026). *Multi-UAV Co
 ## TL;DR
 
 Derives channel correlation and approximate CoMP capacity under pitch/yaw jitter, then predicts next-symbol CSI from attitude and channel sequences with J-LSTM to compensate joint-transmission precoding.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jin et al. [x] analyzed multi-UAV coordinated multipoint transmission when platform pitch and yaw jitter make channel state information time-varying. They derived a jitter-aware channel model, channel autocorrelation, and approximate system capacity for distributed UAV base stations serving ground users. To compensate stale precoding information, they proposed an autoregressive predictor and a jitter-characteristics-based LSTM that uses attitude and channel sequences to predict the next-symbol channel. Numerical results report that J-LSTM improved channel-estimation accuracy by up to 3.8% relative to the AR scheme at a 10-degree jitter angle. The reported capacity benefit grew with jitter severity and exceeded 8 bps/Hz in one high-SNR setting with a 10-degree jitter angle.
 
 ## Problem and system model
 

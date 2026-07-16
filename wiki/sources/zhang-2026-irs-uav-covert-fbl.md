@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Trajectory and Beamforming Optimization for IRS-Assisted Multi-Antenna UAV Covert Communications With a Finite Blocklength"
 authors: ["Wei Zhang", "Xiaopeng Liang", "Qian Deng", "Feng Shu", "Zhi Zhang", "Liusong Nie", "Shihao Yan"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[deng-2025-covert-isac-trajectory]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint Trajectory and Beamforming Optimization for IRS-Assisted Multi-Antenna UAV Covert Communications With a Finite Blocklength
@@ -29,6 +30,39 @@ Zhang, W., Liang, X., Deng, Q., Shu, F., Zhang, Z., Nie, L., & Yan, S. (2026). J
 ## TL;DR
 
 A fixed-altitude multi-antenna UAV covertly serves Bob while a building-mounted IRS redirects its signal and Willie performs finite-blocklength detection. BCD-SDR alternates relaxed active/passive beamforming with SCA trajectory design; BCD-PDDGP replaces the expensive SDR beamforming blocks with projected-gradient penalty-dual updates.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude multi-antenna transmitter UAV, Alice, covertly communicates with a single-antenna ground receiver, Bob, while a ground warden, Willie, tests for transmission activity. A building-mounted IRS controls the reflected path, direct and cascaded links follow Rician fading, and Bob decodes finite-blocklength packets.
+
+**Problem & objective**: Problem (22) is a nonconvex average covert transmission rate maximization, $\max_{\mathbf Q_a,\mathcal W,\Phi} R=N^{-1}\sum_{\iota=1}^{N}R_b[\iota]$, over the UAV trajectory, active beamforming, and IRS phases.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf Q_a=\{\mathbf o_a[\iota]\}$ | continuous coordinates | Horizontal UAV position in each flight slot |
+| UAV transmit beamformer | $\mathcal W=\{\mathbf w[\iota]\}$ | complex continuous vector | Active multi-antenna beamforming toward Bob |
+| IRS phase-shift matrix | $\Phi=\{\Theta[\iota]\}$ | unit-modulus complex diagonal matrix | Passive beamforming through per-element IRS phases |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Consecutive UAV positions satisfy $\|\mathbf o_a[\iota+1]-\mathbf o_a[\iota]\|\le V_{\max}\delta_t$ and the prescribed endpoints |
+| C2 | UAV transmit power is bounded, $\|\mathbf w[\iota]\|^2\le P_{a,\max}$ |
+| C3 | Willie-side covertness satisfies $\xi^*[\iota]\ge1-\epsilon$, enforced through $\varphi[\iota]\le\bar\varphi$ |
+| C4 | Every IRS phase obeys $0\le\theta_m[\iota]<2\pi$ and has unit modulus |
+
+**Algorithm**: Split trajectory, UAV beamforming, and IRS phases into BCD blocks → solve active and passive beamforming by SDR → convexify the trajectory block by SCA → alternate offline LoS trajectory and online instantaneous-CSI beamforming; for lower complexity, replace both SDR blocks with inner projected-gradient augmented-Lagrangian updates and outer penalty-dual updates in BCD-PDDGP.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied IRS-assisted multi-antenna UAV covert communication with a finite blocklength. They formulated average covert transmission rate maximization over the UAV trajectory, UAV transmit beamforming, and IRS phase shifts under mobility, transmit-power, unit-modulus, and covertness constraints. Their BCD-SDR algorithm applies semidefinite relaxation to active and passive beamforming and successive convex approximation to trajectory design. They also developed BCD-PDDGP, which uses projected-gradient penalty-dual updates to reduce the beamforming complexity. Numerical results show that both algorithms converge within three outer iterations in the displayed settings and that BCD-PDDGP attains a covert rate close to BCD-SDR while its reported complexity grows more slowly with the number of IRS elements.
 
 ## Problem and system model
 

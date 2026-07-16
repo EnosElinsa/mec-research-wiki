@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Partial Computation Offloading in Satellite-Based Three-Tier Cloud-Edge Integration Networks"
 authors: ["Yaomin Zhang", "Haijun Zhang", "Kai Sun", "Jiahao Huo", "Ning Wang", "Victor C. M. Leung"]
 year: 2023
@@ -23,7 +24,7 @@ related:
   - "[[wang-2016-partial-offloading-dvs]]"
   - "[[jiahao-huo]]"
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Partial Computation Offloading in Satellite-Based Three-Tier Cloud-Edge Integration Networks
@@ -35,6 +36,41 @@ Zhang, Y., Zhang, H., Sun, K., Huo, J., Wang, N., & Leung, V. C. M. (2023). *Par
 ## TL;DR
 
 Constructs a **three-tier cloud-edge integration network** in which remote ground UEs offload computation, under a **data-partition partial-offloading (PO)** model, to a **LEO-satellite-based edge server** and further to a **ground cloud server** over a backhaul link. The objective is to **minimize total system energy consumption** by jointly optimizing **user association, power allocation, task scheduling (bit splitting), and backhaul bandwidth assignment**. The coupled non-convex problem is decomposed into four subproblems — solved respectively by **relaxation transformation**, the **quadratic-transform** method for the sum-of-ratio power objective, upper/lower-bound task scheduling, and CVX-based bandwidth assignment — and combined in a **joint iterative (block-coordinate-style) algorithm** whose energy is non-increasing per iteration and hence convergent.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Remote ground UEs split tasks among local execution, LEO satellite edge servers, and a ground cloud. NOMA is used on UE-to-LEO fronthaul, while orthogonal LEO-to-cloud backhaul shares the system bandwidth.
+
+**Problem & objective**: A coupled non-convex mixed problem minimizes weighted three-tier energy, $\min\sum_u e_u$, over association, powers, bit splits, and fronthaul/backhaul bandwidth division.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UE-LEO association | $a_{u,s}$ | binary/relaxed $[0,1]$ | Satellite serving UE $u$ |
+| UE and LEO power | $p_{u,s},p_{s,c}$ | continuous, bounded | Fronthaul and backhaul power |
+| Edge/cloud task bits | $l_u^S,l_u^C$ | continuous, nonnegative | Bits processed at LEO and cloud |
+| Backhaul bandwidth factor | $\alpha$ | continuous, $[0,1]$ | Spectrum split between fronthaul and backhaul |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UE associates with one LEO satellite |
+| C2 | Local, edge, and cloud bit allocations sum to the task size |
+| C3 | UE and LEO powers satisfy peak limits |
+| C4 | Fronthaul load does not exceed corresponding backhaul capacity |
+| C5 | Local, LEO, and cloud execution paths meet the task deadline |
+
+**Algorithm**: Relax association and solve the per-UE LP → update fronthaul/backhaul powers by quadratic transform → derive task-bit scheduling from upper and lower bounds → solve the bandwidth factor as a convex problem → cycle the four blocks until system energy stops decreasing.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied partial computation offloading in a satellite-based three-tier cloud-edge integration network. They formulated total energy minimization over UE-satellite association, fronthaul and backhaul power, local/edge/cloud task bits, and bandwidth splitting under association, power, bit-budget, rate-matching, and delay constraints. The association block uses relaxation and linear programming, while a quadratic transform handles the sum-of-ratios power block. Task scheduling uses derived bounds and bandwidth allocation is solved by convex optimization inside a joint iterative algorithm. Simulations report lower energy than the evaluated two-tier, greedy-cloud, maximum-SNR, and maximum-power baselines.
 
 ## Problem framing
 

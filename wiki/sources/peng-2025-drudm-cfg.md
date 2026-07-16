@@ -20,7 +20,8 @@ related:
   - "[[qin-2025-bcuav-masac]]"
   - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-28
-updated: 2026-06-08
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # DRUDM-CFG: A Fairness-Aware Multi-Agent DRL Algorithm for AMEC-Assisted Task Offloading in Post-Disaster Scenarios
@@ -40,6 +41,44 @@ The algorithm — **DRUDM-CFG** — has three pieces:
 3. **MA-DRL training** with [[adaptive-entropy-priority-replay|adaptive entropy-priority experience replay]] (AEP) for faster convergence in the multi-agent post-disaster MA-POMDP.
 
 Outperforms baselines on task completion rate and average delay; CFG specifically improves service for sparse-area IMDs.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A hierarchical AMEC network has IMDs at the ground layer, multiple UAV MEC nodes, and one high-altitude airship (HAS) with larger compute and energy resources. IMDs offload to one UAV, and queued UAV tasks can be partially forwarded to the HAS.
+
+**Problem & objective**: Maximize weighted completed-task service while minimizing total task delay and the Theil coverage-fairness index, using the reward-aligned objective $\sum_{t,u,i}o_i(t)(\xi_1S_{TQ[u,i]}(t)-\xi_2T_i^{\mathrm{total}}(t))-\xi_3TL(t)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV admission set | $\widehat{IMD^u}$ | discrete subset | IMD tasks admitted by UAV $u$ |
+| HAS bandwidth share | $sp_u^h(t)$ | continuous, $[0,1]$ | Fraction of HAS bandwidth assigned to UAV $u$ |
+| Partial offloading rate | $\varphi(t)$ | continuous, $[0,1]$ | Fraction of each UAV queue forwarded to HAS |
+| UAV flight control | $\vartheta_u(t),\theta_u(t)$ | continuous | Speed and direction of UAV $u$ |
+| DRUDM weights | $w_u^{dist},w_u^{res},w_u^{urge}$ | positive, sum to one | Distance, resource, and urgency score weights |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Admission is bounded: $\lvert\widehat{IMD^u}\rvert\le\lvert IMD^u\rvert$ |
+| C2 | HAS bandwidth shares: $\sum_u sp_u^h(t)\le1$ |
+| C3 | UAV speed: $0\le\vartheta_u(t)\le\vartheta_u^{\max}$ |
+| C4 | UAV endurance: $\sum_tE_u^{\mathrm{total}}(t)\le E_u^{\max}$ |
+| C5 | Exclusive service: $\widehat{IMD^u}\cap\widehat{IMD^{u'}}=\varnothing$ for $u\ne u'$ |
+| C6 | Queue forwarding rate: $0\le\varphi(t)\le1$ |
+| C7 | UAV separation: $\|UAV_u^{pos}(t)-UAV_{u'}^{pos}(t)\|\ge d^{safe}$ |
+
+**Algorithm**: Compute a distance-resource-urgency score and admit sorted IMDs with DRUDM, prioritize UAV queues with modified EDF and forward $\lfloor\varphi(t)K_u\rfloor$ tasks to the HAS, then train a CTDE MASAC policy with CFG Theil-fairness rewards and adaptive entropy-priority replay.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Peng et al. [x] propose a hierarchical HAS-UAV AMEC model for post-disaster task offloading with joint admission, resource allocation, trajectory control, and coverage fairness. DRUDM ranks candidate IMDs by distance, available UAV resources, and task urgency, while a priority queue forwards selected UAV tasks to the HAS. The optimization maximizes completed service while reducing delay and the Theil coverage index under bandwidth, energy, assignment, speed, and separation constraints, and is solved as a CTDE multi-agent POMDP with MASAC and adaptive entropy-priority replay. Simulations report the highest task completion rate, lower average delay, faster convergence, and more balanced service of sparse regions than the compared MASAC, MADDPG, random, and UAV-only baselines.
 
 ## Problem framing
 

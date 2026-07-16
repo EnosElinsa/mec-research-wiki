@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Wireless Relay Communications with Unmanned Aerial Vehicles: Performance and Optimization"
 authors: ["Pengcheng Zhan", "Kai Yu", "A. Lee Swindlehurst"]
 year: 2011
@@ -15,7 +16,7 @@ related:
   - "[[zhao-2019-uav-emergency-disasters]]"
   - "[[lu-2023-uav-relay-secure-maritime-mec]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Wireless Relay Communications with Unmanned Aerial Vehicles: Performance and Optimization
@@ -27,6 +28,41 @@ Zhan, P., Yu, K., & Swindlehurst, A. L. (2011). *Wireless Relay Communications w
 ## TL;DR
 
 Studies a **tactical** hierarchical network where multiple **UAVs act as relays** connecting distributed ground access points (APs) to a remote base station (BTS) in a single hop, on the AP→UAV **uplink**. To quantify link performance the paper defines the **ergodic normalized transmission rate (ENTR)** for each AP–UAV link and derives a closed-form expression in terms of the channel correlation-matrix eigenvalues. It shows the ENTR can be approximated as a **sinusoid plus an offset** in the UAV **heading angle**, which yields a **closed-form optimal UAV heading** that maximizes the sum uplink rate subject to a per-AP minimum-rate constraint. Because the network is mobile, it also develops an adaptive **handoff algorithm** to re-assign APs to relays as the topology evolves, plus a procedure to deploy new UAVs when the current ones cannot meet QoS.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple multi-antenna UAV relays connect distributed multi-antenna ground access points to a remote base station in a tactical single-hop uplink. AP transmissions are orthogonal, and spatially correlated MIMO rates vary with UAV heading.
+
+**Problem & objective**: A heading-control problem maximizes network ENTR, $\max_{\psi_u}\sum_{k\in\mathcal A_u}R_{k,u}(\psi_u)$, subject to minimum AP rates and reachable turning angles.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV heading | $\psi_u$ | continuous angle | Next movement direction of relay $u$ |
+| AP-UAV association | $x_{k,u}$ | binary | Relay serving access point $k$ |
+| Handoff decision | $h_{k,u\to v}$ | binary | Reassignment of AP $k$ between relays |
+| New-relay position | $\mathbf q_{mathrm{new}}$ | continuous position | Deployment target when current relays are infeasible |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every served AP has ENTR above its QoS threshold |
+| C2 | Heading remains inside the turning-radius reachable region |
+| C3 | Each AP is assigned to one feasible UAV relay |
+| C4 | Handoffs preserve link availability during topology change |
+| C5 | A new relay is deployed when no current heading/association is feasible |
+
+**Algorithm**: Approximate each link ENTR as a sinusoid plus offset in heading → sum the sinusoids and compute the unconstrained closed-form maximizing angle → intersect link-allowable and reachable heading regions → choose the best feasible heading → trigger RSS-style AP handoffs as links evolve → deploy and steer a new relay if QoS remains infeasible.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhan et al. [x] studied performance optimization for multi-UAV wireless relays serving distributed ground access points. They derived an ergodic normalized transmission-rate metric for spatially correlated MIMO links and approximated each link's rate as a sinusoid in UAV heading. The resulting heading controller maximizes total uplink rate under per-access-point QoS and turning-radius constraints, with a closed-form unconstrained direction and feasible-region correction. An adaptive handoff algorithm reassigns access points as links evolve, and a deployment step adds a relay when the current fleet cannot meet QoS. Simulations report close agreement of the sinusoidal approximation and higher rate or fewer relay deployments than the evaluated unoptimized-heading and no-handoff cases.
 
 ## Problem framing
 

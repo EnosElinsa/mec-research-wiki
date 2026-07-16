@@ -5,13 +5,14 @@ authors: ["Suhanya Jayaprakasam", "Sharul Kamal Abdul Rahim", "Chee Yen Leow"]
 year: 2017
 url: "https://doi.org/10.1109/COMST.2017.2720690"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, beamforming, wireless-sensor-network, survey, collaborative-beamforming, synchronization]
 related:
   - "[[chee-yen-leow]]"
   - "[[collaborative-beamforming]]"
   - "[[air-to-ground-channel-model]]"
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Distributed and Collaborative Beamforming in Wireless Sensor Networks: Classifications, Trends, and Research Directions
@@ -23,6 +24,12 @@ Jayaprakasam, S., Abdul Rahim, S. K., & Leow, C. Y. (2017). *Distributed and Col
 ## TL;DR
 
 A comprehensive survey of distributed and collaborative beamforming (DCBF) in wireless sensor networks, covering ten-plus years of literature organized into four major research directions: beampattern analysis, power and lifetime optimization, synchronization, and prototype design. The survey identifies challenges, lessons learned, and open research directions in each category. DCBF is positioned as an enabling technique for 5G applications including mm-wave and machine-type communications.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jayaprakasam et al. [x] surveyed distributed and collaborative beamforming in wireless sensor networks. They classified more than a decade of research into beampattern analysis, power and lifetime optimization, synchronization, and prototype design. The review compared distributed random arrays with centralized arrays and summarized objectives, methods, performance measures, and implementation issues across the four categories. It also cataloged synchronization prototypes and discussed emerging applications in cognitive radio sensor networks, energy harvesting, radar sensing, millimeter-wave communication, and UAV links. The authors identified three-dimensional node distributions, mutual coupling, imperfect channels, application-specific standards, and larger outdoor testbeds as open research directions.
 
 ## Problem framing
 

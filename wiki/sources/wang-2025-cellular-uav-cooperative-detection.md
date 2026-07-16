@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "ISAC Enabled Cooperative Detection for Cellular-Connected UAV Network"
 authors: ["Yi Wang", "Keke Zu", "Luping Xiang", "Qixun Zhang", "Zhiyong Feng", "Jie Hu", "Kun Yang"]
 year: 2025
@@ -17,7 +18,7 @@ related:
   - "[[zhiyong-feng]]"
   - "[[kun-yang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # ISAC Enabled Cooperative Detection for Cellular-Connected UAV Network
@@ -31,6 +32,39 @@ Wang, Y., Zu, K., Xiang, L., Zhang, Q., Feng, Z., Hu, J., & Yang, K. (2025). *IS
 ## TL;DR
 
 Combines one terrestrial BS and one cellular-connected sensing UAV for aerial-target detection. Target-level measurements are associated and fused through an EKF, then the fused state feeds alternating beamforming and fixed-altitude trajectory optimization for communication under sensing-beampattern constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A terrestrial base station and a cellular-connected UAV cooperatively detect aerial targets, fuse target states with an EKF, and communicate sensing data while the UAV flies between fixed endpoints.
+
+**Problem & objective**: The ISAC design maximizes communication rate, $\max_{\mathbf w,\mathbf q_{u,c}}C_{com}[n]$, subject to sensing-gain and flight constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beamformers | $\mathbf w[n]$ | complex vectors, power bounded | BS and UAV transmit beams |
+| UAV trajectory | $\mathbf q_{u,c}[n]$ | continuous, endpoint and speed bounded | Connected-UAV position per slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Sensing beampattern gain meets the threshold: $P_{s,j}(\mathbf q_{u,c}[n])\geq\Gamma_s$. |
+| C2 | Transmit power is bounded: $\sum_i\lVert w_i[n]\rVert^2\leq P_{total}$. |
+| C3 | The UAV starts and ends at prescribed points: $q_{u,c}[1]=q_I$ and $q_{u,c}[N]=q_F$. |
+| C4 | Consecutive movement is speed bounded: $\lVert q_{u,c}[n+1]-q_{u,c}[n]\rVert\leq V_{max}\Delta t$. |
+| C5 | The fixed-altitude trajectory remains within the modeled flight region. |
+
+**Algorithm**: Alternate an SCA and SDP or SDR beamforming update with an SCA trajectory update until the communication-rate objective converges, using fused sensing states to set the target directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] combine a terrestrial base station and a cellular-connected UAV for cooperative aerial-target detection. After target association and EKF fusion, they maximize communication rate by jointly selecting transmit beams and the connected-UAV trajectory under sensing-gain, power, endpoint, speed, and altitude constraints. Alternating SCA with semidefinite programming or relaxation solves the beamforming and trajectory blocks. The reported simulations show that the fused design preserves sensing requirements while improving communication rate over the comparison configurations.
 
 ## Problem framing
 

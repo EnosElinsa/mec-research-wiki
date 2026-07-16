@@ -16,7 +16,8 @@ related:
   - "[[ye-2026-deeplsc-lae-isac]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Integrated Sensing and Communication for Energy-Efficient Low-Altitude Economy Based on Meta Deep Reinforcement Learning
@@ -28,6 +29,41 @@ Ye, X., Song, X., Wu, Y., & Fu, L. (2026). *Integrated Sensing and Communication
 ## TL;DR
 
 Extends LAE-oriented ISAC control from communication sum-rate to **energy efficiency**. A ground base station (GBS) simultaneously serves authorized UAVs and senses an unauthorized moving target; the controller jointly optimizes GBS beamforming and UAV trajectories over a flight period. The paper proposes **DeepESC**, a TD3-style DRL controller with constrained action selection and episode-level replay, then adds **Meta-DeepESC** so the policy adapts faster to unseen flight-period lengths with fewer samples.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna ground base station communicates with authorized cargo UAVs and senses an unauthorized moving target. Authorized UAVs follow fixed-altitude missions over a finite number of slots while total energy includes GBS signaling and UAV propulsion.
+
+**Problem & objective**: Problem (3) maximizes expected communication-centric energy efficiency, $\max_{\mathbf W_c,\mathbf W_s,\mathbf u}\mathbb E[\sum_{t=1}^{T}R_{\mathrm{total}}(t)/E_{\mathrm{total}}(t)]$, through joint beamforming and trajectory control.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beamforming | $\mathbf W_c(t)$ | complex continuous | GBS downlink beams for authorized UAVs |
+| Sensing beamforming | $\mathbf W_s(t)$ | complex continuous | GBS probing beams for target monitoring |
+| UAV movement direction | $\mathbf a_u(t)$ | continuous angles | Per-slot headings for all authorized UAVs |
+| UAV trajectory | $\mathbf u_m(t)$ | continuous positions | Horizontal trajectory of UAV $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 3b | Expected average target sensing SNR is at least $\Gamma_{\min}$ |
+| 3c | Constant-speed motion satisfies $\|\mathbf u_m(t+1)-\mathbf u_m(t)\|_2=v_m\Delta_t$ |
+| 3d | Each UAV starts and finishes at its prescribed mission locations |
+| 3e-3f | UAV-to-UAV and UAV-to-target separation remains at least $D_{\min}$ |
+| 3g | Communication and sensing beam powers jointly remain below $P_{\max}$ |
+
+**Algorithm**: DeepESC uses a TD3 actor and twin critics, constrained action selection, and prioritized episode-level replay for the long-horizon MDP. Meta-DeepESC meta-trains across flight-period tasks with dynamic task weighting and smoothed meta-parameters, then adapts the learned initialization to an unseen mission length with a small number of new samples.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ye et al. [x] optimized communication-centric energy efficiency in a ground-based LAE ISAC system with authorized UAVs and an unauthorized target. The formulation jointly selects communication beams, sensing beams, and UAV trajectories under sensing-SNR, mission, collision, and transmit-power constraints. DeepESC combines TD3, constrained action selection, and prioritized episode-level replay, while Meta-DeepESC adds meta-training and rapid adaptation across flight-period lengths. In the reported four-UAV and forty-slot setting, Meta-DeepESC achieved energy efficiency of 5.84e-3 bits per hertz per joule and average sensing SNR of 1.66 dB against a 1.50 dB target. It exceeded DDPGE by more than 7.37% in energy efficiency across the examined UAV-count sweep and remained the strongest method across the tested CSI delays. The reported inference time was approximately 0.6 ms, and meta-learning improved convergence and generalization to unseen flight periods.
 
 ## Problem framing
 

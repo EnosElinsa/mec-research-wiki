@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled Mobile Edge Computing"
 authors: ["Xiuling Zhang", "Riheng Jia", "Quanjun Yin", "Zhonglong Zheng", "Minglu Li"]
 year: 2025
@@ -20,7 +21,7 @@ related:
   - "[[riheng-jia]]"
   - "[[minglu-li]]"
 created: 2026-05-28
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Safe and Energy-Efficient Trajectory Planning for Heterogeneous Multi-UAV Enabled MEC
@@ -37,6 +38,41 @@ Solution: **SSAC-MGI** — a multi-agent safe RL algorithm with two cooperating 
 
 1. **SSAC (Shared Soft Actor-Critic)** — UAVs share a backbone for the *common* features (positions, time) but have heterogeneous heads for service-type-specific features. Lets the multi-agent system learn jointly without forcing identical capability assumptions.
 2. **MGI (Markov Game of Intervention)** — a per-UAV two-agent safe-RL design. Each UAV is jointly controlled by a **Standard Agent** (a stochastic, reward-maximizing policy that minimizes job miss rate + UAV/UE energy) and a **Safety Agent** (a deterministic, risk-averse policy plus a binary *gating* policy `g(s)`). When the gate triggers (`g(s)=1`), the Safety Agent's action overrides the Standard Agent's; otherwise the Standard Agent acts. The Safety Agent pays a cost for each intervention, encouraging selective overrides. This gives safety guarantees during *and* after training, unlike reward-shaping baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Heterogeneous fixed-altitude UAVs act as mobile edge servers with different onboard service types and CPU and memory capacities. Static or mobile UEs generate deadline-constrained workflows at unknown locations and upload each accepted job to one compatible UAV over an air-to-ground link.
+
+**Problem & objective**: The multi-objective Dec-POMDP minimizes the job miss rate and normalized UE and UAV energy, $\min_{\mathcal Q}F(\mathcal Q)$, while separately minimizing cumulative safety-violation cost.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV flight action | $a_n^t=\{\varphi_n^t,v_n^t\}$ | continuous, $\varphi_n^t\in[\varphi_{\min},\varphi_{\max}]$, $v_n^t\in[0,V_{\max}]$ | Rotation angle and flight speed of UAV $n$ |
+| Job association | $y_{n,k}^t$ | binary, $\{0,1\}$ | Whether job $k$ is uploaded to UAV $n$ |
+| Execution instances | $x_{v_k^i,vm_n^r}^t$ | integer, $\mathbb Z_0^+$ | Number of parallel instances allocated to subtask $v_k^i$ on service type $r$ |
+| UE transmit power | $p_m^t$ | continuous, $[0,p_{\max}]$ | Uplink power used by UE $m$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each job is associated with at most one UAV: $\sum_n y_{n,k}^t\leq1$. |
+| C2 | Allocated CPU cores remain within $vcpu_n^r$ for every UAV and service type. |
+| C3 | Allocated memory remains within $vmem_n^r$ for every UAV and service type. |
+| C4 | Flight speed and UE power satisfy $v_n^t\leq V_{\max}$ and $0\leq p_m^t\leq p_{\max}$. |
+| C5 | A safety violation is measured when $\lVert l_n^t-o_j^t\rVert_2<2r_d$ and is handled by the learned intervention policy. |
+
+**Algorithm**: Run shared SAC modules for the standard, safety, and binary intervention policies, let the intervention gate select the executed flight action, allocate workflow instances with deadline-aware round robin, store policy-specific transitions, and update the three modules from replay buffers.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied safe and energy-efficient trajectory planning in a heterogeneous multi-UAV enabled MEC network with unknown UE locations, stochastic job arrivals, diverse service requirements, and UAV-specific onboard resources. They formulated a Dec-POMDP that reduces job miss rate and average UAV and UE energy while accounting for service compatibility, association, computing-capacity, mobility, and collision-safety conditions. Their SSAC-MGI framework combines shared Soft Actor-Critic policies with a two-agent Markov Game of Intervention, in which a safety policy can override a standard flight action, and embeds a deadline-aware round-robin instance allocator. Real-trace-driven simulations using Alibaba workflows and UE locations show higher cumulative rewards and lower safety-violation costs than the evaluated adapted baselines, with lower UAV energy than the manual trajectory policy.
 
 ## Problem framing
 

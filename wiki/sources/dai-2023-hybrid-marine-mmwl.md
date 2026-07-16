@@ -5,6 +5,7 @@ authors: ["Minghui Dai", "Ning Huang", "Yuan Wu", "Liping Qian", "Bin Lin", "Zho
 year: 2023
 url: "https://doi.org/10.1109/TCOMM.2023.3306581"
 venue: "IEEE Transactions on Communications (IEEE TCOMM)"
+modeling_card: required
 tags: [source, maritime-mec, computation-offloading, noma, fdma, latency-minimization, resource-allocation, multi-access]
 related:
   - "[[maritime-mec]]"
@@ -16,7 +17,7 @@ related:
   - "[[lyu-2023-noma-marine-emergency-offloading]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Latency Minimization Oriented Hybrid Offshore and Aerial-Based Multi-Access Computation Offloading for Marine Communication Networks
@@ -28,6 +29,44 @@ Dai, M., Huang, N., Wu, Y., Qian, L., Lin, B., Su, Z., & Lu, R. (2023). *Latency
 ## TL;DR
 
 A **hybrid offshore + aerial multi-access MEC** scheme for marine networks where an **unmanned surface vehicle (USV)** simultaneously offloads parts of its workload to an **offshore base station via FDMA** and to **multiple hovering UAVs via NOMA**. It **Minimizes the Maximum Workloads Latency (MMWL)** by jointly optimizing the offloading decision, FDMA/NOMA transmission durations, and computing-rate allocation across USV, UAVs, and base station. The non-convex problem is decomposed via a **layered structure** into three subproblems with efficient near-optimal algorithms.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One USV divides each marine task among local computation, an offshore BS edge server, and a cluster of hovering UAV edge servers. The USV uses FDMA for the offshore link and NOMA for simultaneous aerial offloading; aerial channels are quasi-static LoS links under fixed USV and UAV positions during transmission.
+
+**Problem & objective**: Problem (MMWL) is a strictly nonconvex min-max latency problem, $\min\max_{n\in\mathcal N} t_n^{\mathrm{ove}}$, over workload splitting, FDMA and NOMA durations, and computing-rate allocation.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS offloading ratio | $\alpha_{n,B}$ | continuous, $[0,1]$ | Fraction of task $n$ offloaded to the offshore BS |
+| UAV offloading ratio | $\alpha_{n,k}$ | continuous, $[0,1]$ | Fraction of task $n$ offloaded to UAV $k$ |
+| NOMA transmission time | $t^{\mathrm{tran}}$ | continuous, $[0,T^{\max}]$ | Common duration for aerial NOMA offloading |
+| FDMA transmission time | $t_{u,B}$ | continuous, $[0,T_B^{\max}]$ | Duration of USV offloading to the offshore BS |
+| USV compute rate | $\varrho_u$ | continuous, $[0,\varrho_u^{\max}]$ | CPU rate assigned to local execution |
+| BS compute rate | $\varrho_B$ | continuous, $[0,\varrho_B^{\max}]$ | Offshore BS CPU allocation |
+| UAV compute rate | $\varrho_k$ | continuous, $[0,\varrho^{\max}]$ | CPU allocation at UAV $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 1, 19-21 | Task fractions satisfy $\sum_k\alpha_{n,k}+\alpha_{n,B}+\beta_n=1$ and each fraction lies in $[0,1]$ |
+| 22-23 | FDMA and NOMA durations satisfy $t_{u,B}\leq T_B^{\max}$ and $t^{\mathrm{tran}}\leq T^{\max}$ |
+| 24-25 | USV transmit powers for the BS and UAV links do not exceed $P^{\max}$ and $Q^{\max}$ |
+| 26 | Per-task USV energy satisfies $E_{u,n}^{\mathrm{tot}}\leq E^{\max}$ |
+| 27-29 | BS, USV, and UAV computing rates remain within their respective capacities |
+
+**Algorithm**: Transform MMWL into a layered sequence of three subproblems; test feasible offloading regions for a candidate maximum latency, use bisection to obtain workload fractions, apply two-dimensional linear search to the FDMA and NOMA durations, recover the computing-rate allocations, and propagate each optimum to the next layer.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dai et al. [x] studied hybrid offshore and aerial multi-access computation offloading for a marine network in which a USV uses FDMA to an offshore BS and NOMA to multiple hovering UAV edge servers. They formulated the MMWL problem to minimize the maximum workload latency by jointly optimizing task offloading ratios, FDMA and NOMA transmission durations, and computing-rate allocation under transmission, power, energy, and computing-capacity limits. Their layered approach decomposes the strictly nonconvex formulation into three subproblems and combines feasibility checking, bisection, and linear search to obtain the solutions. Simulations report an average latency difference no greater than 3% relative to the LINGO global solution and average computation-time savings above 90%.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Transmit-Receive Beamforming for ISAC-Enabled Multi-UAVs System"
 authors: ["Jinyu Wang", "Xianchao Zhang", "Yi Wang", "Xue Yao", "Zhiqing Wei", "Fengsong Sun", "Zhiyong Feng"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[zhiyong-feng]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Transmit-Receive Beamforming for ISAC-Enabled Multi-UAVs System
@@ -29,6 +30,41 @@ Wang, J., Zhang, X., Wang, Y., Yao, X., Wei, Z., Sun, F., & Feng, Z. (2026). *Tr
 ## TL;DR
 
 Coordinates sensing/communication transmit beams, clutter-aware receive filters, and multi-UAV positions to maximize summed sensing SCNR subject to downlink SINR, power, mobility, separation, and flight-region constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs jointly transmit integrated sensing and communication waveforms, receive target echoes in clutter, and serve downlink users. UAV locations, transmit beams, and clutter-aware receive filters jointly determine sensing SCNR and communication SINR.
+
+**Problem & objective**: A non-convex sum-of-ratios problem maximizes aggregate sensing quality, $\max \sum_m\operatorname{SCNR}_m$, under downlink QoS, power, mobility, separation, and flight-region constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmit beamformer | $\mathbf w_{m,k}$ | complex continuous vector | Communication or sensing beam sent by UAV $m$ |
+| Receive filter | $\mathbf u_m$ | complex continuous vector | Clutter-aware target-echo combiner |
+| UAV position | $\mathbf q_m$ | continuous horizontal position | Fixed-altitude UAV deployment or trajectory |
+| Fractional/slack variables | $\boldsymbol\xi$ | continuous | Dinkelbach, SDR, and SCA auxiliaries |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every served user meets its downlink SINR requirement |
+| C2 | Each UAV's transmit beams satisfy its power budget |
+| C3 | UAV positions remain in the allowed flight region |
+| C4 | Per-slot motion and prescribed trajectory conditions remain feasible |
+| C5 | Pairwise UAV separation remains above the collision threshold |
+
+**Algorithm**: Fix beams and positions and update each receive filter by the generalized-Rayleigh-quotient eigenvector → optimize transmit beams through a Dinkelbach-style fractional reformulation and SDR → update UAV positions with fractional transformation, SCA, slacks, and a trust region → alternate until summed SCNR converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied transmit-receive beamforming and UAV positioning in an ISAC-enabled multi-UAV network with target clutter. They formulated summed sensing-SCNR maximization over transmit beams, receive filters, and UAV positions under downlink SINR, power, mobility, separation, and flight-region constraints. Each receive filter is updated from a generalized Rayleigh quotient for fixed transmit beams and geometry. The transmit block uses a Dinkelbach-style sum-of-ratios reformulation and semidefinite relaxation, while the trajectory block uses fractional transformation and successive convex approximation. Simulations report higher detection and SCNR than the evaluated single-UAV and fixed-hovering baselines, including a sensing gain from mobility in the stated scenario.
 
 ## Method and guarantee scope
 

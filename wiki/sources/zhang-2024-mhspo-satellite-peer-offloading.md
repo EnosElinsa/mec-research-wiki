@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy-Efficient Computation Peer Offloading in Satellite Edge Computing Networks"
 authors: ["Xinyuan Zhang", "Jiang Liu", "Ran Zhang", "Yudong Huang", "Jincheng Tong", "Ning Xin", "Liang Liu", "Zehui Xiong"]
 year: 2024
@@ -21,7 +22,7 @@ related:
   - "[[mao-2024-fso-leo-hierarchical-routing]]"
   - "[[zehui-xiong]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Computation Peer Offloading in Satellite Edge Computing Networks
@@ -33,6 +34,41 @@ Zhang, X., Liu, J., Zhang, R., Huang, Y., Tong, J., Xin, N., Liu, L., & Xiong, Z
 ## TL;DR
 
 A **multi-hop computation peer-offloading** scheme for **MEC-enabled LEO satellite networks**: rather than each satellite processing all the tasks within its line of sight (which overloads satellites over dense regions and wastes resources over sparse ones), an access satellite offloads tasks **horizontally to peer satellites several ISL hops away**. The **Multi-Hop Satellite Peer Offloading (MHSPO)** problem jointly minimizes weighted **delay + energy consumption** under resource and backlog constraints. Because future task arrivals are unknown and the topology is time-varying, the long-term problem is converted via the **Lyapunov** drift-plus-penalty framework into per-slot optimization, and a **delayed online learning** method predicts per-task processing delay/energy (with a provably upper-bounded prediction loss). A **gap-preserving reduction** decomposes the network-wide per-slot problem into per-satellite subproblems, giving a practical **online distributed** algorithm proven to be close-to-optimal.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: MEC-enabled LEO satellites receive uneven geographic workloads and forward tasks over time-varying multi-hop laser ISLs to less-loaded peers. Each satellite maintains arrival, forwarding, and computation queues under solar and battery limits.
+
+**Problem & objective**: MHSPO minimizes long-term weighted delay and energy, $\min \limsup_T\frac1T\sum_t(\rho_d D(t)+\rho_e E(t))$, subject to queue stability and dispatch/link capacities.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local computation | $\alpha_n^i(t)$ | binary | Task $i$ processed at satellite $n$ |
+| Neighbor offloading | $\beta_{nm}^i(t)$ | binary | Task $i$ forwarded from $n$ to neighbor $m$ |
+| Multi-hop route | $\mathcal P_i(t)$ | discrete path | Peer-satellite forwarding path |
+| Dispatch workload | $d_n(t)$ | integer/continuous bounded | Tasks served or forwarded in the slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every task is computed locally or forwarded to one next hop |
+| C2 | Per-satellite dispatch does not exceed $E_n$ |
+| C3 | ISL forwarding respects link capacity $B_{nm}$ and topology availability |
+| C4 | Arrival, forwarding, and computation queues remain stable |
+| C5 | Satellite computation and transmission energy stay feasible |
+
+**Algorithm**: Introduce queue-based Lyapunov drift-plus-penalty → predict unknown per-task delay and energy by delayed online learning → form the per-slot network-wide cost → apply gap-preserving reduction into per-satellite subproblems → solve decisions distributively → update queues and learning estimates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied energy-efficient multi-hop computation peer offloading in LEO satellite edge networks. They formulated long-term weighted delay and energy minimization over local-computing and neighbor-forwarding decisions under queue-stability, dispatch, ISL-capacity, topology, and energy constraints. Lyapunov drift-plus-penalty converts the long-term problem into per-slot optimization. Delayed online learning estimates unknown task delay and energy, and a gap-preserving reduction decomposes the slot problem into distributed per-satellite subproblems. Simulations report lower delay and energy than the evaluated local, single-hop, and centralized or heuristic peer-offloading baselines.
 
 ## Problem framing
 

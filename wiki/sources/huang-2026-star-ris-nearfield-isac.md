@@ -5,6 +5,7 @@ authors: ["Qiulei Huang", "Zhaohui Song", "Zehui Xiong", "Guanjun Xu", "Nan Zhao
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3602989"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), 25, 3260-3271"
+modeling_card: required
 tags: [source, star-ris, near-field-communications, integrated-sensing-and-communication, uav, beamforming, successive-convex-approximation, semidefinite-relaxation]
 related:
   - "[[star-ris]]"
@@ -19,7 +20,7 @@ related:
   - "[[meng-2026-star-ris-uav-energy]]"
   - "[[chen-2026-pointrl-uav-isac]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # STAR-RIS Enabled Air-Ground Near-Field ISAC
@@ -31,6 +32,42 @@ Huang, Q., Song, Z., Xiong, Z., Xu, G., Zhao, N., & Niyato, D. (2026). *STAR-RIS
 ## TL;DR
 
 Jointly optimizes an aerial base station's beamforming, horizontal hovering location, and a large semi-passive STAR-RIS's transmission/reflection coefficients for near-field communication and target sensing. A weighted objective combines indoor and outdoor user rates with radar mutual information rate; block coordinate descent, semidefinite relaxation, and successive convex approximation produce a convergent local alternating method. Simulations show the expected communication-sensing tradeoffs, near-field focusing gains, and modest scenario-specific gains over a transmission-only RIS benchmark.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna UAV serves as a mobile base station for outdoor users on the reflection side and indoor users plus one sensing target on the transmission side of a semi-passive STAR-RIS. Multiuser beamforming supplies communication and sensing signals. Direct UAV-to-outdoor-user and UAV-to-STAR-RIS links use far-field Rician channels, while STAR-RIS-to-user, target, and sensing-array links use spherical-wave near-field channels.
+
+**Problem & objective**: Problem (25) is a coupled nonconvex weighted-sum-rate maximization, $\max \mu_1\sum_k R_{o,k}+\mu_2\sum_l R_{i,l}+\mu_3R_t$, that balances outdoor communication, indoor communication, and radar mutual information rate.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV beamforming | $\mathbf w_{o,k},\mathbf w_{i,l}$ | complex continuous vectors | Precoding for outdoor and indoor users |
+| STAR-RIS reflection | $\mathbf\Theta_r$ | complex continuous diagonal matrix | Reflection amplitudes and phases |
+| STAR-RIS transmission | $\mathbf\Theta_t$ | complex continuous diagonal matrix | Transmission amplitudes and phases |
+| UAV hovering location | $\mathbf q_b$ | continuous 2D position | Horizontal position of the aerial base station |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The UAV maintains the minimum separation from the STAR-RIS plane |
+| C2 | Radar mutual information rate meets its sensing threshold |
+| C3 | Every indoor and outdoor user satisfies its minimum communication rate |
+| C4 | Total UAV transmit power does not exceed $P_{max}$ |
+| C5 | Each STAR-RIS element obeys continuous transmission-reflection energy splitting and phase constraints |
+| C6 | Location updates stay inside the feasible region and the SCA trust radius |
+
+**Algorithm**: Apply block coordinate descent to separate beamforming, STAR-RIS coefficients, and UAV location, lift beamformers and use SDR plus SCA, convexify the STAR-RIS SINR and MIR bounds with auxiliary variables, update location through trust-region SCA while refreshing small-scale fading, and alternate the three blocks until the weighted sum rate converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied STAR-RIS-enabled air-ground near-field integrated sensing and communication with a UAV base station and a semi-passive surface. They formulated a nonconvex weighted-sum-rate maximization over UAV beamforming, STAR-RIS reflection and transmission coefficients, and the UAV hovering location while enforcing communication, sensing, power, geometry, and surface constraints. Their alternating method decomposes the coupled problem into three blocks through block coordinate descent. Semidefinite relaxation and successive convex approximation are used to obtain tractable beamforming, surface, and location updates. Simulations report communication-sensing tradeoffs, near-field focusing behavior, and higher weighted sum rate than the evaluated transmission-only, separated-surface, and random-beamforming designs.
 
 ## Problem framing
 

@@ -19,7 +19,8 @@ related:
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[dcb-cuts-satellite-handover-frequency]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Collaborative Ground-Space Communications via Evolutionary Multi-Objective Deep Reinforcement Learning
@@ -31,6 +32,39 @@ Li, J., Sun, G., Wu, Q., Niyato, D., Kang, J., Jamalipour, A., & Leung, V. C. M.
 ## TL;DR
 
 Proposes a **Distributed Collaborative Beamforming (DCB)**-based **uplink** paradigm for **ground-space** (terminal-to-LEO-satellite) direct communications. Terminals that cannot establish efficient direct links to LEO satellites act as **distributed antennas**, forming a virtual antenna array that boosts terminal-to-satellite uplink achievable rate and connection duration. The authors formulate a **long-term multi-objective optimization problem** balancing uplink rate, terminal energy consumption, and satellite **switching (handover) frequency**, reformulate it as an action-space-reduced, scale-universal **MOMDP**, and solve it with an **Evolutionary Multi-Objective Deep Reinforcement Learning (EMODRL)** algorithm that masks low-value actions to speed training.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Energy-limited terrestrial terminals form a distributed virtual antenna array for uplink transmission to a visible LEO satellite. Multiple access is single-satellite association per slot, with orbital, elevation-dependent ground-to-satellite channels and time-varying satellite availability.
+
+**Problem & objective**: Long-term multi-objective optimization reformulated as an action-space-reduced MOMDP, with vector objective $\max_\pi\mathbb E_\pi[\sum_t\gamma^t(\hat R(t),-\sum_iP_i(t)\Delta T,-\kappa_t)]$, balancing uplink achievable rate, terminal energy consumption, and satellite switching frequency.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Satellite selection | $s_t$ | integer, one visible satellite | LEO satellite selected by the terminal cluster in slot $t$ |
+| Trade-off action | $k_t$ | discrete index in $\mathcal K$ | Objective-weight pair that determines a transmit-power profile |
+| Terminal transmit powers | $P_i(t)$ | continuous, $P_{\min}<P_i<P_{\max}$ | Uplink powers obtained from the per-slot convex transition problem |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each slot selects one satellite from the available set with adequate angle and spectrum |
+| C2 | Terminal powers satisfy $P_{\min}<P_i(t)<P_{\max}$ |
+| C3 | The action-space transition uses a fixed finite weight set, $a_k=k/\|\mathcal K\|$, $b_k=1-a_k$ |
+| C4 | The reward records a handover indicator $\kappa_t\in\{0,1\}$ and long-term discounted returns |
+
+**Algorithm**: Solve the per-slot convex power/weight transition → encode satellite and weight actions in a universal MOMDP → warm-up multi-task ED3QN → mask unavailable or low-value actions → evolutionary task updates and Pareto-policy archiving.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied a distributed collaborative beamforming uplink paradigm for direct ground-to-LEO-satellite communications. They formulated a long-term multi-objective problem that jointly considers terminal-to-satellite uplink achievable rate, terminal energy consumption, and satellite switching frequency. The problem was reformulated as an action-space-reduced and universal MOMDP, where each action selects a satellite and a discretized objective-weight scheme. They proposed EMODRL-ED3QN, which uses multi-task dueling deep Q learning, low-value action masking, an evolutionary stage, and a Pareto policy archive to obtain multiple trade-off policies. Simulations show that DCB enables terminals below the uplink-rate threshold to transmit directly, while the selected policy saves 30% handover frequency at a similar uplink rate to the rate-greedy method.
 
 ## Problem framing
 

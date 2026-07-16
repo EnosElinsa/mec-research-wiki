@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Sensing-Assisted Eavesdropper Estimation: An ISAC Breakthrough in Physical Layer Security"
 authors: ["Nanchi Su", "Fan Liu", "Christos Masouros"]
 year: 2024
@@ -19,7 +20,7 @@ related:
   - "[[christos-masouros]]"
   - "[[lu-2026-icsn-beamforming]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Sensing-Assisted Eavesdropper Estimation: An ISAC Breakthrough in Physical Layer Security
@@ -31,6 +32,40 @@ Su, N., Liu, F., & Masouros, C. (2024). *Sensing-Assisted Eavesdropper Estimatio
 ## TL;DR
 
 A **sensing-aided physical-layer-security (PLS)** scheme for ISAC systems. A well-known limitation of PLS is needing information about potential eavesdroppers (Eves); the paper uses the **sensing** functionality of ISAC to estimate Eves' directions. The dual-functional base station first emits an **omnidirectional waveform** to detect Eves via the **combined Capon and approximate maximum likelihood (CAML)** technique, then formulates a **weighted optimization** that simultaneously maximizes the **secrecy rate** (aided by **artificial noise, AN**) and minimizes the **Cramér-Rao Bound (CRB)** of targets'/Eves' estimation. Because the secrecy-rate expression is a function of estimation accuracy, sensing and security improve each other across iterations until convergence.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A dual-functional base station serves cooperative users while sensing potential eavesdroppers that are also radar targets. An initial omnidirectional waveform and CAML estimation provide uncertain Eve directions; subsequent artificial-noise-aided secure beamforming balances secrecy rate and sensing accuracy through a widened beampattern.
+
+**Problem & objective**: A weighted non-convex ISAC/PLS program maximizes secrecy rate while minimizing eavesdropper-estimation CRB, $\max\;R_s-\lambda\operatorname{CRB}$, subject to a wide-main-beam beampattern and transmit-power constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beamformer | $\mathbf W_c$ | complex continuous matrix | Confidential-data precoder |
+| Artificial-noise covariance | $\mathbf W_{AN}$ | positive semidefinite matrix | AN used to reduce Eve's secrecy rate |
+| Sensing beamformer | $\mathbf W_s$ | complex continuous matrix | Radar/sensing waveform design |
+| Main-beam width | $\Delta\theta$ | continuous, accuracy-bounded | Angular coverage chosen from the prior CRB |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Total transmit covariance satisfies the BS power budget |
+| C2 | The sensing beampattern covers the CRB-derived Eve angular uncertainty region |
+| C3 | Covariance matrices are positive semidefinite and beamforming ranks are feasible |
+| C4 | Confidential-user quality and artificial-noise/secrecy expressions remain valid |
+
+**Algorithm**: Emit an omnidirectional probe → estimate Eve directions with CAML and compute the CRB → alternate FIM/CRB beamforming and secrecy-rate/AN optimization → solve the weighted fractional block with fractional programming → widen the sensing beam from the updated uncertainty → repeat until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Su et al. [x] studied sensing-assisted physical-layer security in an integrated sensing and communication base-station system. The base station first emits an omnidirectional waveform and uses combined Capon and approximate maximum likelihood estimation to obtain potential eavesdropper directions. It then solves a weighted design that maximizes secrecy rate with artificial noise while minimizing the Cramér-Rao bound of target and Eve estimation under beampattern and transmit-power constraints. An alternating optimization procedure updates Fisher-information and secrecy-rate blocks, with fractional programming used for the weighted problem. Numerical results show that secrecy rate increases as the estimation CRB decreases for both single-Eve and multi-Eve cases.
 
 ## Problem framing
 

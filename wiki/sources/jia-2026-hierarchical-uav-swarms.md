@@ -21,7 +21,8 @@ related:
   - "[[zhu-han]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Dynamic Trajectory Optimization and Power Control for Hierarchical UAV Swarms in 6G Aerial Access Network
@@ -33,6 +34,42 @@ Jia, Z., He, J., He, L., Sheng, M., Liu, J., Wu, Q., & Han, Z. (2026). *Dynamic 
 ## TL;DR
 
 A fixed fleet is divided into [[hierarchical-uav-swarm|hierarchical UAV swarms]] whose head UAVs coordinate tail UAVs for two-hop ground-user data collection. K-means/Voronoi predeployment fixes swarm locations and user associations, then an improved non-dominated-sorting whale optimizer jointly selects tail-UAV routes and ground/relay transmit powers over UAV energy, user energy, and delay objectives.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed fleet forms hierarchical swarms with stationary head UAVs and route-planning tail UAVs that collect ground-user data and relay it to the heads.
+
+**Problem & objective**: Jointly deploy swarms, choose tail-UAV counts, routes, transmit powers, and GU connections to minimize total swarm energy, average GU energy, and average GU delay, $\min [f_1(\mathbb A),f_2(\mathbb A),f_3(\mathbb A)]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Swarm deployment | $q_s$ | continuous 3-D positions | Head-UAV and swarm deployment locations |
+| Tail-UAV count | $M_s$ | bounded integer | Number of tail UAVs assigned to swarm $s$ |
+| Tail routes | $\phi_m^s\in\Psi_m^s$ | discrete visiting sequences | Ordered hover points for tail UAV $m$ |
+| GU connections | $\gamma_{u,m,s}^{n}$ | binary | GU $u$ served by tail UAV $m$ at hover point $n$ |
+| GU and relay powers | $p_u,p_m^s$ | bounded continuous | Ground and tail-UAV transmit powers |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Tail-UAV counts satisfy $M_s\leq M_{\max}$ and $\sum_sM_s=M$ |
+| C2 | Each GU connects to exactly one feasible tail-UAV hover point and each point serves at most $U_{\max}$ GUs |
+| C3 | GU delay does not exceed its maximum tolerated value |
+| C4 | Deployment points lie in the 3-D operating region and routes belong to their visiting-sequence sets |
+| C5 | GU and tail-UAV powers remain within their minimum and maximum bounds |
+
+**Algorithm**: Pre-deploy with K-means, Voronoi intersections, and Fermat points, then use non-dominated sorting, whale optimization, and greedy next-hover selection to produce a Pareto set for the three objectives.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jia et al. [x] optimized hierarchical UAV swarms in which stationary heads coordinate route-planning tail UAVs for two-hop ground-user data collection. Their multi-objective model minimizes total swarm energy, average ground-user energy, and average transmission delay over deployment, tail-UAV counts, visiting sequences, GU connections, and transmit powers under capacity, delay, region, route, and power constraints. A K-means, Voronoi, and Fermat pre-deployment stage is followed by INS-WOA with non-dominated sorting and greedy hover-point selection. With 60 ground users, the method keeps average GU energy near 0.02 J, reports about 30% lower GU energy than MOGWO and NSGA-II, and has lower time complexity that grows nearly linearly with user scale.
 
 ## Problem
 

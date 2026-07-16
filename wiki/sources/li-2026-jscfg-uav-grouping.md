@@ -5,6 +5,7 @@ authors: ["Zhongkun Li", "Weiguo Xia", "Shaoqing Zhang"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3708388"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, heterogeneous-uav, dynamic-grouping, coalition-formation-game, potential-game, topology-optimization, sequential-tasks]
 related:
   - "[[joint-switch-coalition-formation-game]]"
@@ -14,7 +15,7 @@ related:
   - "[[heterogeneous-uav-fleet]]"
   - "[[autonomous-uav-swarms]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dynamic Grouping of Heterogeneous UAVs under Complex Sequential Tasks: A Joint Switch Coalition Formation Game Approach
@@ -26,6 +27,39 @@ Li, Z., Xia, W., & Zhang, S. (2026). *Dynamic Grouping of Heterogeneous UAVs und
 ## TL;DR
 
 Forms communication groups for heterogeneous UAVs executing ordered mission subtasks. A joint-switch coalition game lets several UAVs move across multiple, potentially overlapping coalitions together so that type requirements remain feasible while total cohesion and predicted link-persistence utility improve.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A heterogeneous swarm of $N$ UAVs from $Z$ functional types follows preplanned paths while executing ordered mission subtasks. UAVs form communication groups, with overlapping membership permitted when a UAV type is scarce, and group utility combines cohesion, predicted link persistence, group size, and cross-group penalties.
+
+**Problem & objective**: The combinatorial grouping problem in Eq. (13) selects joint switch commands to solve $\max_{\tau}GP(\boldsymbol\Theta)$, where $GP(\boldsymbol\Theta)=\sum_{k=1}^{N_1}GP(\Phi_k)$ is the total utility of coalition structure $\boldsymbol\Theta$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Coalition structure | $\boldsymbol\Theta=\{\Phi_1,\ldots,\Phi_{N_1}\}$ | discrete set partition or overlapping grouping | Communication groups formed by the swarm |
+| Joint switch command | $\tau$ | discrete feasible switch operation | Coordinated movement of one or more UAV memberships among groups |
+| UAV grouping decision | $\mathcal M$ | discrete decision vector | Group membership decision for each UAV player |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 13a | The grouping accounts for the full swarm: $\sum_{k=1}^{N_1}N_{\Phi_k}=N$ in the non-overlapping case |
+| 13b | Every group meets each subtask-type requirement: $N_{\Phi_{k,z}}\geq n_z$ |
+| Feasibility | Candidate joint switches preserve the basic task requirements of all affected groups |
+| Trigger | Reconfiguration follows the utility-threshold or elapsed-time trigger before a new switch search begins |
+
+**Algorithm**: Run BCSFA to classify each subtask layer as insufficient, balanced, or abundant and greedily construct a feasible basic coalition structure. Then run JSCFA layer by layer, enumerate feasible joint switches, discard operations that violate the joint-switch coalition-improvement order, execute the operation with maximum utility gain, and stop when the feasible switch set is empty, yielding a Nash-stable structure after finitely many switches.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied dynamic communication grouping for heterogeneous UAV swarms executing ordered subtasks with minimum requirements for each UAV type. They formulated a coalition-structure utility maximization problem whose joint switch decisions must allocate the swarm and preserve the per-group type requirements. Their BCSFA first constructs a feasible initial grouping by sequential greedy selection, after which JSCFA repeatedly executes the feasible joint switch with the largest utility gain until a Nash-stable structure is reached. Simulations under insufficient, balanced, and abundant UAV resources reported feasible group formation, finite convergence, and higher coalition utility after the joint-switch process.
 
 ## Problem
 

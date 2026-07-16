@@ -5,6 +5,7 @@ authors: ["Yanlu Li", "Yiming Liu", "Yuzhen Huang", "Zhi Zhang"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3639671"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-networks, hierarchical-federated-learning, personalized-federated-learning, critical-learning-period, data-drift, soft-actor-critic, energy-efficiency]
 related:
   - "[[aerial-federated-aggregation-design-space]]"
@@ -21,7 +22,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Seizing Critical Learning Period in UAV-Assisted Hierarchical Personalized Federated Learning
@@ -33,6 +34,42 @@ Li, Y., Liu, Y., Huang, Y., & Zhang, Z. (2026). *Seizing Critical Learning Perio
 ## TL;DR
 
 Builds a UAV-assisted hierarchical personalized [[federated-learning]] framework that spends more participation and revisit resources during consequential training stages. It detects those [[critical-learning-period|critical learning periods]] from local-global parameter divergence or temporal data drift, then uses [[soft-actor-critic]] to coordinate active UAVs, cluster visits, UAV positions, and local/edge/global aggregation periods under energy and training constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A central server coordinates a rotary-wing UAV swarm that visits geographically distributed device clusters for hierarchical personalized federated learning. Devices train local models, UAVs perform edge aggregation, and the server performs global aggregation while critical-learning-period detectors identify model divergence and temporal data drift.
+
+**Problem & objective**: Over $Z$ training sequences, the controller minimizes $\frac{1}{Z}\sum_{z=1}^{Z}\left[c_1E_f(z)+c_2\sum_cG_c(z)\right]$, balancing UAV flight energy against a gradient-based data-drift proxy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Active UAV set | $\mathcal U(z+1)$ | selected subset | UAVs participating in the next training sequence |
+| UAV locations | $\mathcal X(z+1)$ | continuous 3-D coordinates | Next cluster visits and communication positions |
+| Training-sequence duration | $T_z$ | continuous, positive | Time budget for the next training sequence |
+| Edge aggregation period | $\tau_z^L$ | positive period | Frequency of device-to-UAV aggregation |
+| Global aggregation period | $\tau_z^G$ | positive period | Frequency of UAV-to-server aggregation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UAV retains enough battery to travel between clusters: $E_n(z)\geq E_{\min}^n$ |
+| C2 | Per-sequence UAV energy remains below $E_{\max}^n$ |
+| C3 | Temporal gradient variation remains bounded by $\Lambda_t^c$ |
+| C4 | Processing, transmission, edge aggregation, and global aggregation finish within $T_{\max}(z)$ |
+| C5 | Communication rates follow the available device-to-UAV and UAV-to-server links and allocated bandwidth |
+
+**Algorithm**: Federated KLD Norm detects early divergence between local and global parameter distributions, while Federated Drift Norm detects online data shifts from loss variation. The resulting state feeds a Soft Actor-Critic agent with twin critics, replay, entropy regularization, automatic temperature adjustment, and soft target updates to select UAV participation, locations, and aggregation periods.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] introduced critical-learning-period-aware hierarchical personalized federated learning for UAV-served device clusters. They used Federated KLD Norm and Federated Drift Norm to identify training stages in which local-global divergence or temporal data drift warrants additional participation and revisits. A Soft Actor-Critic policy coordinates active UAVs, cluster locations, and local, edge, and global aggregation periods while balancing flight energy against a gradient-staleness proxy under battery and sequence-duration constraints. The full CLP-aware design reduced the paper's operation-count measure of communication overhead by 54% relative to random selection with uniform visits while maintaining comparable or better model accuracy.
 
 ## Problem framing
 

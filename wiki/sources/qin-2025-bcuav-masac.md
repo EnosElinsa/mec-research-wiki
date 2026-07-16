@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cooperative UAV Trajectory Design and Resource Allocation in Blockchain-Enabled Secure Aerial Edge Computing Network"
 authors: ["Peng Qin", "Min Fu", "Yang Fu", "Jingjing Wang"]
 year: 2025
@@ -18,7 +19,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-05-28
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Cooperative UAV Trajectory Design and Resource Allocation in Blockchain-Enabled Secure Aerial Edge Computing Network
@@ -34,6 +35,42 @@ Authors with North China Electric Power University and Beihang University.
 Joint design of (a) UAV trajectories, (b) terminal sensing-data admission, (c) terminal transmission power, and (d) UAV edge resource allocation across compute *and* blockchain workloads — under long-term queue-delay and block-creation-delay constraints. The hard part is that constraints are long-term but decisions are per-time-slot.
 
 Solution stack: **[[lyapunov-optimization|Lyapunov optimization]]** to decouple the long-term constraints into per-slot drift+penalty problems, then split the per-slot problem into three subproblems solved by **CVX** (sensing admission), **[[masac|MASAC (multi-agent SAC)]]** (transmission power + UAV trajectory), and **DOA (Dingo Optimization Algorithm)** (compute / block-resource split). Reports more than 13.16% data-sensing-rate improvement and more than 29.47% queue-delay reduction vs benchmark methods.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $J$ IoT devices admit sensed data to $K$ fixed-altitude UAVs over NOMA uplinks. Every UAV is both an edge-computing node and a DPoS/PBFT blockchain node, so admitted data competes with block-generation and verification workloads; queues evolve over time and UAVs move in the horizontal plane.
+
+**Problem & objective**: A stochastic long-term constrained optimization maximizes average admitted sensing rate, $\max\lim_{T\to\infty}T^{-1}\sum_{t,j}e_j(t)$, subject to terminal/UAV queue stability and long-term block-creation-delay bounds.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Sensing admission | $e_j(t)$ | continuous, $0\le e_j(t)\le s_j(t)$ | Data admitted by device $j$ at slot $t$ |
+| Device transmit power | $p_{j,k}(t)$ | continuous, bounded | NOMA power from device $j$ to UAV $k$ |
+| UAV heading and speed | $\theta_k(t),v_k(t)$ | continuous, speed-bounded | Horizontal trajectory control |
+| Compute allocation | $f^c_{j,k}(t)$ | continuous, nonnegative | UAV CPU assigned to offloaded computation |
+| Blockchain resources | $f^b_k(t),f^{b,v}_k(t)$ | continuous, nonnegative | CPU for block generation and verification |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Terminal and UAV queues remain stable under admitted and processed data |
+| C2 | Long-term block-creation delay $\delta_k^g(t)$ stays below its cap |
+| C3 | NOMA rates and per-slot transmit powers support admitted data |
+| C4 | CPU allocations respect each UAV's compute capacity after blockchain work |
+| C5 | UAV heading, speed, and movement remain feasible at fixed altitude |
+
+**Algorithm**: Form virtual queues for long-term delay and queue constraints → minimize the per-slot Lyapunov drift-plus-penalty bound → solve sensing admission with CVX → solve power and trajectory with AGIN-MASAC → split UAV CPU between computing and blockchain tasks with DOA → repeat online.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qin et al. [x] studied cooperative UAV trajectory design and resource allocation in a blockchain-enabled secure aerial edge-computing network. They formulated a long-term admitted-sensing-rate maximization problem with terminal and UAV queue stability and block-creation-delay constraints. Lyapunov optimization converts the stochastic problem into per-slot drift-plus-penalty subproblems, which use CVX for sensing admission, AGIN-MASAC for transmission power and UAV trajectory, and the Dingo Optimization Algorithm for compute and blockchain resource splitting. Simulations report more than 13.16% higher data-sensing rate and more than 29.47% lower queue delay than the strongest evaluated benchmark.
 
 ## Problem framing
 

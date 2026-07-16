@@ -21,17 +21,59 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 authors: [Xingxia Gao, Linbo Zhai]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3366944
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 ---
 
 # Service Experience Oriented Cooperative Computing in Cache-Enabled UAVs Assisted MEC Networks
 
+## Citation
+
+Gao, X., & Zhai, L. (2024). *Service Experience Oriented Cooperative Computing in Cache-Enabled UAVs Assisted MEC Networks*. **IEEE Transactions on Mobile Computing**. DOI: 10.1109/TMC.2024.3366944.
+
 ## TL;DR
 A multi-UAV plus macro-base-station (MBS) [[mobile-edge-computing]] system where cache-enabled UAVs cooperatively serve ground UEs, optimized not only for low aggregate latency but for per-UE fairness. The authors define a **service experience ratio** — [[jains-fairness-index|Jain's fairness index]] of per-UE delay divided by average service delay — and jointly optimize [[task-offloading]], [[service-caching-mec|service caching placement]], [[uav-trajectory-control|UAV trajectory]], and resource allocation to maximize it. The mixed-integer non-convex fractional problem is solved with [[fractional-programming-dinkelbach|Dinkelbach's method]] and a four-stage [[alternating-optimization-sdr-sca|alternating optimization]] algorithm, reporting a 19–34% higher service experience ratio than baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude cache-enabled rotary-wing UAVs cooperatively serve ground UEs and connect to an MBS over wireless backhaul. OFDMA supports UE uplinks; a task is executed by its associated UAV, another UAV, or the MBS only where its required service is cached, and UAV propulsion, computing, transmission, storage, and collision avoidance are modeled.
+
+**Problem & objective**: Problem $\mathcal P_1$ is an NP-hard mixed-integer nonconvex fractional program that maximizes the service-experience ratio, $\max_{Q,B,A,X,F} J(\bar{\mathbf F})/\left(\frac{1}{T}\sum_{t,m,s}F_{m,s}^t\right)$, combining delay fairness with low average service delay.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $Q_u^t$ | continuous 2D position | UAV $u$ location in slot $t$ |
+| Bandwidth allocation | $b_{m,u}^t$ | continuous, $[0,1]$ | Uplink bandwidth fraction assigned to UE $m$ |
+| Service caching | $a_{u,s}^t$ | binary, $\{0,1\}$ | Whether UAV $u$ caches service $s$ |
+| Task offloading | $x_{m,s,u,i}^t$ | binary, $\{0,1\}$ | Whether task $(m,s)$ associated with UAV $u$ executes at node $i$ |
+| Computing allocation | $f_{m,s,u}^t$ | continuous, $[0,1]$ | Normalized UAV compute share assigned to the task |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C4 | Offloading requires cached service and respects bandwidth, compute, and storage capacities |
+| C5-C9 | UE coverage, UAV speed and area, collision separation, and inter-UAV collaboration range remain feasible |
+| C10-C11 | Each UAV satisfies $E_u\leq E_{th}$ and every task meets its delay limit |
+| C12 | Each task executes at exactly one UAV or the MBS, $\sum_i x_{m,s,u,i}^t=1$ |
+| C13-C14 | Caching and offloading decisions are binary |
+| C15 | Bandwidth and computing allocations are continuous in $[0,1]$ |
+
+**Algorithm**: Use Dinkelbach's method to transform the fractional objective; alternate satisfaction-based task offloading, priority-based service caching, SCA and CVX trajectory optimization, and convex bandwidth and computing allocation; update the Dinkelbach parameter in the outer loop and repeat the four blocks until the service-experience ratio converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gao and Zhai [x] studied service-experience-oriented cooperative computing in a cache-enabled multi-UAV assisted MEC network. They defined the service experience ratio as Jain's fairness index of per-UE service delay divided by average service delay, and formulated its maximization over task offloading, service caching, UAV trajectory, bandwidth, and computing allocation under communication, computing, storage, mobility, energy, and deadline constraints. Their solution applies Dinkelbach's method and alternates satisfaction-based offloading, priority-based caching, SCA trajectory optimization, and convex bandwidth and computing allocation. Simulations report a 19% to 34% higher service experience ratio than the evaluated comparison schemes and convergence in about four iterations.
 
 ## Problem
 Terrestrial MEC servers can suffer poor NLoS channels or be destroyed/overloaded; UAV-assisted MEC restores coverage but adds tight communication/computing/storage (CCS) and energy limits. Crucially, optimizing only for *overall* low latency can leave some UEs with poor experience. The paper considers a cellular network with one MBS, U rotary-wing UAVs (aerial MEC servers/relays), and M UEs that can reach the MBS only through UAVs (see [[air-ground-integrated-network]]). The objective is to cut service delay **while guaranteeing fairness among UEs**, by jointly choosing where each task runs, which services each UAV caches, how UAVs fly, and how bandwidth/compute are allocated — under per-UAV energy budgets and per-task deadlines.

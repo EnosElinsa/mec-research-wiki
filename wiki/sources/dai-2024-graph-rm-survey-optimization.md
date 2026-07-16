@@ -5,6 +5,7 @@ authors: ["Yanpeng Dai", "Ling Lyu", "Nan Cheng", "Min Sheng", "Junyu Liu", "Xiu
 year: 2024
 url: "https://doi.org/10.1109/TCCN.2024.3508783"
 venue: "IEEE Transactions on Cognitive Communications and Networking (IEEE TCCN)"
+modeling_card: not_applicable
 tags:
   - source
   - survey
@@ -26,7 +27,7 @@ related:
   - "[[shuguang-cui]]"
   - "[[xuemin-shen]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-16
 ---
 
 # A Survey of Graph-Based Resource Management in Wireless Networks—Part I: Optimization Approaches
@@ -36,6 +37,12 @@ Yanpeng Dai, Ling Lyu, Nan Cheng, Min Sheng, Junyu Liu, Xiucheng Wang, [[shuguan
 
 ## TL;DR
 Part I of a two-part survey on using graphs for resource management in wireless networks. It lays out the fundamentals of graph theory and the classic **graph-optimization** problem family (graph coloring, maximum independent set, maximum flow, shortest path, bipartite/stable matching), then reviews how these combinatorial tools are applied to resource management across six scenario classes: cellular networks, device-to-device (D2D) communications, multi-hop networks, multi-antenna systems, edge caching and computing, and non-terrestrial networks (NTNs). The companion [[dai-2024-graph-rm-survey-learning|Part II]] covers the graph-learning (GNN) side and the joint challenges/future directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dai et al. [x] provided the optimization part of a two-part survey on graph-based resource management in wireless networks. They introduced graph theory and graph coloring, maximum independent set, maximum flow, shortest path, and bipartite matching, then reviewed their use in cellular, device-to-device, multi-hop, multi-antenna, edge caching and computing, and non-terrestrial networks. The survey identifies topology adaptability and a mature theoretical foundation as strengths of graph optimization, while graph growth with network scale and combinatorial complexity limit storage, processing, and low-latency scheduling. Its companion learning part covers graph neural network approaches and the shared technical challenges and future research directions.
 
 ## Problem framing
 The dimensionality of wireless-network resources (spatial, time, frequency, code, power domains, plus hybrid communication/computation and terrestrial/aerial resources) keeps expanding, which makes resource management harder. Graph theory has long modeled wireless networks — nodes/infrastructures as vertices, relationships such as connection and interference as edges — turning resource-management tasks into optimization problems over graphs. The survey argues that prior surveys treat either graph optimization *or* graph learning in isolation, and often cover an incomplete set of network types (missing emerging cellular/cell-free networks, edge caching/computing, etc.). Part I addresses the graph-optimization half comprehensively.

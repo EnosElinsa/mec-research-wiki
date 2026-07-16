@@ -5,6 +5,7 @@ authors: ["Aliia Beishenalieva", "Sang-Jo Yoo"]
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3631889"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: required
 tags: [source, uav-enabled-its, physical-layer-security, ppo, particle-swarm-optimization, friendly-jamming, task-offloading]
 related:
   - "[[uav-enabled-its]]"
@@ -15,7 +16,7 @@ related:
   - "[[task-offloading]]"
   - "[[task-priority-in-mec]]"
 created: 2026-07-07
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Secrecy-Aware UAV Path Planning and Offloading Strategy Optimization Using Deep Reinforcement Learning and Particle Swarm Optimization
@@ -27,6 +28,43 @@ Beishenalieva, A., & Yoo, S.-J. (2026). *Secrecy-Aware UAV Path Planning and Off
 ## TL;DR
 
 Builds a secure UAV-assisted ITS offloading framework where legitimate serving UAVs collect data from ground edge units, a legitimate jamming UAV emits artificial noise, and malicious eavesdropping/jamming UAVs threaten secrecy. A policy-gradient DRL controller, instantiated with PPO/A2C comparisons, chooses UAV mobility, mode, and power; [[particle-swarm-optimization]] then allocates time slots inside each coverage frame.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground edge units buffer ITS sensing data for legitimate serving UAVs, while legitimate jamming UAVs emit artificial noise against mobile eavesdropping UAVs and malicious jamming UAVs interfere with collection. Directional serving-UAV links and omnidirectional ground/jamming links use free-space distance-based gains, and serving UAVs coordinate through a FANET while operating asynchronously in bounded frames.
+
+**Problem & objective**: The MDP controller maximizes cumulative $R_{\mathrm{total}}(t+1)=R(t+1)(1-p_s^{\mathrm{ISO}})$, where $R(t+1)=w_1^rR_{\mathrm{data}}(t+1)+w_2^rR_{\mathrm{delay}}(t+1)+w_3^rR_{\mathrm{energy}}(t+1)$ and $w_1^r+w_2^r+w_3^r=1$; the second-stage PSO maximizes the analogous slot-allocation fitness $F(t+1)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Serving-UAV position | $W_s(t)$ | Continuous, $\mathbb{R}^3$ | Next 3D position of legitimate serving UAV $s$ |
+| Serving-UAV power | $P_s(t)$ | Continuous, $[P_s^{\min},P_s^{\max}]$ | Serving-UAV transmit power |
+| Jamming-UAV modes | $MM_{lj}(t),AM_{lj}(t)$ | Discrete | Move or stay, and broadcast artificial noise or remain idle |
+| Jamming-UAV control | $W_{lj}(t),P_{lj}(t)$ | Continuous | Next position and transmit power when the selected modes activate them |
+| Ground-unit power | $P_{gu_g^s}(t)$ | Continuous, $[P_g^{\min},P_g^{\max}]$ | Transmit power of a covered ground edge unit |
+| Slot assignment | $\mathfrak{s}_g(n)$ | Binary, $\{0,1\}$ | Whether slot $n$ is allocated to ground edge unit $g$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 11 | FANET connectivity and separation, $d_{ss}^{\min}\leq d_{ss}\leq d_{ss}^{\max}$ |
+| 13 | Legitimate-UAV residual energy, $E_i(t)\geq E_{\min}$ for $i\in\{s,lj\}$ |
+| 14-16 | Serving-UAV, jamming-UAV, and ground-unit transmit powers remain within their respective minimum and maximum values |
+| 17-18 | Frame duration satisfies $FL(t)\leq FL_{\max}$ and $FL(t)=\sum_{g\in\mathcal{GU}_s}N_g^{ts}$ |
+| 19 | Single-user slot access, $\sum_{g\in\mathcal{GU}_s}\mathfrak{s}_g(n)\leq1$ with $\mathfrak{s}_g(n)\in\{0,1\}$ |
+
+**Algorithm**: Policy-gradient DRL, evaluated with PPO and A2C losses, observes demand, locations, priorities, delay, service frequency, power, and energy, then selects mixed discrete and continuous UAV controls. For each selected serving-UAV position, PSO initializes feasible slot vectors, rejects vectors with $FL>FL_{\max}$, and updates particle velocities and positions against the data, delay, and hovering-energy fitness until returning the global-best allocation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Beishenalieva and Yoo [x] studied secure UAV-assisted collection of ITS sensing data when legitimate serving and jamming UAVs face mobile aerial eavesdroppers and jammers. Their policy-gradient controller jointly selects serving-UAV trajectories and powers, jamming-UAV movement and activity modes, and covered ground-unit transmit powers. The reward combines securely served data, service satisfaction and frequency, secrecy rate, delay, and energy, while enforcing flight, connectivity, power, energy, frame-length, and single-user scheduling limits. After each serving UAV selects a position, particle swarm optimization assigns slots to covered ground units within the maximum frame length. Simulations identified a PPO clipping value of 0.2 as the most stable evaluated setting and reported higher average data reward for PPO than for A2C, hierarchical-reward PPO, optimum hovering, and random-action baselines. A 30-particle PSO configuration reached the best tested allocation within 10 iterations and used 600 evaluations in an example that required 3,200,000 evaluations under full search.
 
 ## Problem
 

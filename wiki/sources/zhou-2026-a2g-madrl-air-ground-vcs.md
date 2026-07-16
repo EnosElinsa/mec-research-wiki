@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "AoI and Latency-Aware Air-Ground Vehicular Crowdsensing by Sequential Multi-Agent Deep Reinforcement Learning"
 authors: ["Fan Zhou", "Chi Harold Liu", "Jianxin Zhao", "Chen Fang", "Hao Wang", "Guozheng Li", "Guangpeng Qi", "Dapeng Wu", "Kin K. Leung", "Jon Crowcroft"]
 year: 2026
@@ -19,7 +20,7 @@ related:
   - "[[gao-2023-uav-mcs-uma]]"
   - "[[chi-harold-liu]]"
 created: 2026-07-11
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # AoI and Latency-Aware Air-Ground Vehicular Crowdsensing by Sequential Multi-Agent Deep Reinforcement Learning
@@ -31,6 +32,41 @@ Zhou, F., Liu, C. H., Zhao, J., Fang, C., Wang, H., Li, G., Qi, G., Wu, D., Leun
 ## TL;DR
 
 Introduces A2G-MADRL for air-ground vehicular crowdsensing with UAV-UGV pairs. The method jointly plans routes and NOMA channel assignments while optimizing sensing capability-aware AoI, latency-weighted data collection ratio, energy consumption ratio, and sensing efficiency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAV-UGV pairs collect non-uniform data streams from points of interest in an urban work zone, with UGVs restricted to road graphs and UAVs also serving as relays. Air-ground cooperative NOMA lets each paired UAV and UGV reuse a channel, while channels across pairs are orthogonal and rates follow SINR-based Shannon models.
+
+**Problem & objective**: The air-ground VCS control problem is a POMDP that maximizes the shared sensing reward, $\max_\pi\mathbb E_\pi[\sum_t\gamma^t r_t]$, where $r_t$ is the ratio of latency-weighted collected data to aggregate sAoI minus an energy-depletion penalty.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV movement | $(\theta_t^u,l_t^u)$ | continuous/discretized, $0\leq l_t^u\leq l_{\max}^u$ | Heading and travel distance of UAV $u$ |
+| UGV movement | $a_{t,\mathrm{move}}^g$ | categorical road node | Next reachable road-network node for UGV $g$ |
+| Channel assignment | $\chi_{t,c}^{n,p}$ | binary | Whether agent $n$ collects from PoI $p$ on channel $c$ |
+| Joint policy | $\pi_\phi(\mathbf a_t\mid\mathbf o_t)$ | stochastic policy | Sequential joint UAV and UGV control policy |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each agent uses at most $C$ channels, $\sum_{c,p}\chi_{t,c}^{n,p}\leq C$ |
+| C2 | Each channel of one agent is assigned to at most one PoI, $\sum_p\chi_{t,c}^{n,p}\leq1$ |
+| C3 | UAV travel is bounded by $l_{\max}^u$, and UGV moves remain on one-slot reachable road nodes |
+| C4 | NOMA rates and relay transmissions follow the paired-channel SINR model |
+| C5 | Energy depletion is penalized and unavailable actions are removed by action masks |
+
+**Algorithm**: Build the dynamic UAV-UGV-PoI graph → project heterogeneous features and compute interaction-aware HVGCN embeddings → choose a dynamic agent order → generate masked actions autoregressively with DOMPG → update the shared policy using sequential weighted importance factors.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied AoI- and latency-aware air-ground vehicular crowdsensing with cooperative UAV-UGV pairs and NOMA channel assignment. They introduced sensing capability-aware age of information and latency-weighted data collection ratio for non-uniform status data. The control task is modeled as a POMDP whose UAV and UGV actions jointly determine movement and PoI channel assignments while accounting for sensing freshness, collected data, and energy. Their A2G-MADRL framework uses a heterogeneous vehicular graph convolution network for interaction features and a dynamically ordered masked policy generator for sequential coordination. Experiments on the KAIST and Roma datasets report better sAoI and latency-weighted data collection ratio than seven evaluated baselines across changes in fleet size, data-generation speed, and channel count.
 
 ## Problem
 

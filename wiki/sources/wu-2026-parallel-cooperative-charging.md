@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cost-Effective Parallel Cooperative Charging Scheduling for UAVs"
 authors: ["Sixu Wu", "Yun Yang", "Haipeng Dai", "Linfeng Liu", "Fu Xiao", "Jia Xu"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[generalized-assignment-problem]]"
   - "[[trajectory-privacy]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Cost-Effective Parallel Cooperative Charging Scheduling for UAVs
@@ -25,6 +26,41 @@ Wu, S., Yang, Y., Dai, H., Liu, L., Xiao, F., & Xu, J. (2026). *Cost-Effective P
 ## TL;DR
 
 Assigns UAVs to RF charging stations and parallel charging facilities while exploiting a shared station-time tariff. CSAU combines a uniform-parallel-machine approximation with greedy set covering, giving a `gamma(ln n + 1)` approximation and substantially lower simulated charging-system cost than the three tested heuristic baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Several providers operate charging stations with unequal-power parallel RF facilities. Each UAV must detour from its initial position to a selected station and then reach its target, and all UAVs assigned to a station share a tariff determined by the slowest facility completion time.
+
+**Problem & objective**: PCCSUP is an NP-hard assignment and parallel-machine scheduling problem that minimizes total station payment, $\min \sum_s C_s(T_s)$, over station, facility, group, and queue decisions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Station assignment | $x_{i,s}$ | binary | Whether UAV $i$ charges at station $s$ |
+| Facility assignment | $y_{i,s,j}$ | binary | Parallel facility $j$ used by UAV $i$ |
+| Queue order | $\pi_{s,j}$ | discrete permutation | Charging order on facility $j$ at station $s$ |
+| Station completion time | $T_s$ | continuous, nonnegative | Maximum completion time across station facilities |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every retained UAV is assigned to exactly one station and facility |
+| C2 | A UAV has enough residual energy to reach its candidate station and target |
+| C3 | Facility power and station capacity can replenish each assigned demand |
+| C4 | Parallel queues induce $T_s$ as the station's maximum completion time |
+| C5 | Station tariff follows its base-fare threshold and marginal time cost |
+
+**Algorithm**: Preprocess feasible UAV-station candidates → for each station grow a candidate charging group by low replenishment energy → schedule the group with a $\gamma$-approximation for uniform parallel machines → compute average marginal group cost → choose extensions through greedy set cover → repeat until all retained UAVs are assigned.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied cost-effective parallel cooperative charging scheduling for UAVs across multiple providers and unequal-power facilities. They formulated an NP-hard problem that jointly assigns UAVs to stations and facilities and orders charging queues to minimize shared station-time payments. CSAU uses AMCAM to construct station groups, invokes a gamma-approximation for uniform parallel-machine scheduling, and selects groups through a greedy set-cover procedure. The method has a $\gamma(\ln n+1)$ approximation bound for the base problem. Simulations report lower total cost than the evaluated IAASA, ICSA, and IAASAU heuristics, and a small-instance comparison reports its gap to exhaustive optimum.
 
 ## Problem
 

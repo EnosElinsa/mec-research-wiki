@@ -5,6 +5,7 @@ authors: ["Jing Bai", "Zhuo Zhang", "Zhu Xiao", "Huaji Zhou", "Yongqiang Hei", "
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3676229"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 14351-14366"
+modeling_card: not_applicable
 tags: [source, passive-uav-detection, channel-estimation, wireless-perception, temporal-network, dtmb, field-experiment]
 related:
   - "[[csi-based-passive-uav-detection]]"
@@ -12,7 +13,7 @@ related:
   - "[[pytorch]]"
   - "[[zhu-xiao]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Passive UAV Detection Based on Channel Estimation and Temporal Variation Network
@@ -24,6 +25,12 @@ Bai, J., Zhang, Z., Xiao, Z., Zhou, H., Hei, Y., Liu, X., Li, T., & Jiao, L. (20
 ## TL;DR
 
 Uses channel impulse responses estimated from ambient digital-TV frame headers to detect UAV presence and distinguish four flight states, with a compact temporal network that combines multi-scale local variation and periodic structure.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bai et al. [x] studied passive UAV state detection using ambient Digital Terrestrial Multimedia Broadcast signals and a single receiving antenna. They estimated channel state information from DTMB frame headers and arranged consecutive channel impulse responses as time series that capture UAV-induced propagation changes. Their CETVNet classifier combines an adaptive noise reduction module with a multi-period feature extraction module to preserve local variations and learn periodic motion patterns. The authors trained and evaluated the network on real signals collected with a software-defined radio for four UAV motion states and a no-UAV state across three DTMB frame-header modes. Experiments reported five-class accuracies of 96.92%, 94.45%, and 98.79% for the three modes, an average false-alarm rate of 0.44%, and cross-scene binary detection accuracy of at least 97.97%.
 
 ## Problem and system model
 

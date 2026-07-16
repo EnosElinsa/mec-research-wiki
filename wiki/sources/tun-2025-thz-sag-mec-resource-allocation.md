@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint UAV Deployment and Resource Allocation in THz-Assisted MEC-Enabled Integrated Space-Air-Ground Networks"
 authors: ["Yan Kyaw Tun", "György Dán", "Yu Min Park", "Choong Seon Hong"]
 year: 2025
@@ -16,7 +17,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Joint UAV Deployment and Resource Allocation in THz-Assisted MEC-Enabled Integrated Space-Air-Ground Networks
@@ -28,6 +29,42 @@ Tun, Y. K., Dán, G., Park, Y. M., & Hong, C. S. (2025). *Joint UAV Deployment a
 ## TL;DR
 
 Formulates energy minimization for THz-assisted MEC-enabled [[space-air-ground-integrated-network|SAG]] networks. Ground devices offload over short-range THz access links to UAVs; UAVs can compute locally, collaborate with neighboring UAVs, or forward tasks over mmWave backhaul to LEO satellites. A BCD framework decomposes the non-convex mixed-integer problem into device offloading, THz sub-band/power control, UAV deployment, and UAV task-offloading subproblems solved with convex optimization, matching/CCP, SCA, and [[block-successive-upper-bound-minimization|BSUM]].
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $J$ devices access $K$ UAVs over short-range THz OFDMA sub-bands in a space-air-ground network, while UAVs compute locally, forward tasks to neighboring UAVs, or use 28 GHz mmWave links to LEO satellites. Distance-based K-means initializes device-UAV association, and satellite energy is omitted.
+
+**Problem & objective**: A non-convex mixed-integer program minimizes total device and UAV energy, $\min E_{\mathrm{devices}}+E_{\mathrm{UAVs}}$, over task fractions, THz sub-band and power allocation, UAV deployment, and UAV-to-UAV/satellite forwarding.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Device offloading fraction | $\rho_j$ | continuous, $[0,1]$ | Fraction of device $j$'s task sent to UAVs |
+| THz sub-band assignment | $a_{j,k,b}$ | binary matching | Sub-band $b$ assigned to device $j$ and UAV $k$ |
+| Device transmit power | $p_j$ | continuous, bounded | THz access power |
+| UAV deployment | $\mathbf q_k$ | continuous position | UAV location serving the device cluster |
+| UAV forwarding choice | $z_{k,k'}$ | binary | Forwarding from UAV $k$ to another UAV or LEO satellite |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Device task fractions and execution bits meet each latency-sensitive task requirement |
+| C2 | Each THz sub-band is assigned consistently and access interference remains feasible |
+| C3 | Device and UAV transmit powers satisfy peak budgets |
+| C4 | Device, UAV, and satellite processing/forwarding delays remain below task deadlines |
+| C5 | UAV positions and binary forwarding decisions obey deployment and association limits |
+
+**Algorithm**: Solve device offloading by convex optimization → match devices to THz sub-bands and update powers with a matching game and CCP → optimize UAV deployment with SCA → relax binary forwarding and solve the UAV task-offloading block with BSUM → alternate all blocks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tun et al. [x] studied joint UAV deployment and resource allocation in a THz-assisted MEC-enabled space-air-ground network. Devices offload over THz OFDMA links to UAVs that can compute locally, collaborate with neighboring UAVs, or forward tasks to LEO satellites. They formulated a mixed-integer energy-minimization problem over offloading fractions, sub-band assignments, powers, UAV positions, and forwarding decisions under delay and resource constraints. A BCD framework solves the blocks with convex optimization, a matching game and CCP, SCA, and BSUM. Simulations report lower device and UAV energy than all-local and no-UAV-collaboration baselines and identify task fraction and THz sub-band assignment as influential variables.
 
 ## Problem
 

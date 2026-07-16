@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Minimizing Maximum Latency of Task Offloading for Multi-UAV-Assisted Maritime Search and Rescue"
 authors: ["Shuang Qi", "Bin Lin", "Yiqin Deng", "Xianhao Chen", "Yuguang Fang"]
 year: 2024
@@ -16,7 +17,7 @@ related:
   - "[[wang-2026-aerial-marine-msar]]"
   - "[[binary-vs-partial-offloading]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Minimizing Maximum Latency of Task Offloading for Multi-UAV-Assisted Maritime Search and Rescue
@@ -28,6 +29,39 @@ Qi, S., Lin, B., Deng, Y., Chen, X., & Fang, Y. (2024). *Minimizing Maximum Late
 ## TL;DR
 
 A **Maritime Search and Rescue (MSAR)** system of multiple **Surveillance UAVs (S-UAVs)** plus one **Relay UAV (R-UAV)**: S-UAVs collect disaster-area video, pre-process it on onboard MEC, and relay it shoreward through the R-UAV. The paper minimizes the **maximum total latency among all S-UAVs** (so that per-UAV video delay is small and balanced) by jointly optimizing **computing-offloading decisions**, **R-UAV deployment**, and the **S-UAV–to–rescue-target association**, while keeping all targets monitored, under S-UAV/R-UAV energy constraints. The non-convex problem is split into three sub-problems solved iteratively.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple surveillance UAVs capture and preprocess maritime search-and-rescue video, while one larger relay UAV provides additional computation and forwards processed video to a shore rescue coordination center. The surveillance and relay links use LoS-dominant air-to-air communication, target associations determine surveillance-UAV positions and field-of-view coverage, and all UAVs have finite energy and computing capacity.
+
+**Problem & objective**: Problem P1, a mixed-integer nonlinear min-max program, minimizes the worst surveillance-video completion latency, $\min_{\boldsymbol\beta,\mathbf q_M,\boldsymbol\alpha}\max_n T_n$, by coordinating offloading, relay deployment, and target association.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading decision | $\beta_n(k)$ | binary | Whether surveillance UAV $n$ offloads chunk $k$ to the relay UAV |
+| Relay-UAV position | $\mathbf q_M(k)$ | continuous 3-D position | Deployment point of the relay UAV |
+| Target association | $\alpha_{i,n}(k)$ | binary | Whether target $i$ is monitored by surveillance UAV $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 22a-22b | Offloading is binary and the relay concurrently computes tasks from at most $N_0$ surveillance UAVs |
+| 22c | The relay-UAV position remains inside the disaster-area bounds |
+| 22d-22f | Associations are binary, every target is monitored, and field-of-view coverage is respected |
+| 22g-22h | Surveillance-UAV and relay-UAV energy consumption stays within residual energy |
+
+**Algorithm**: Linearize and solve the offloading subproblem → update the relay-UAV position with successive convex approximation → solve target association by branch and bound → alternate all three subproblems until the maximum latency converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qi et al. [x] studied task offloading for a multi-UAV maritime search-and-rescue system containing surveillance UAVs and one relay UAV. They formulated a mixed-integer nonlinear problem that minimizes the maximum total latency among surveillance UAVs by jointly optimizing binary computation offloading, relay-UAV deployment, and surveillance-UAV-to-target association under monitoring and energy constraints. Their iterative solution linearizes the offloading block, applies successive convex approximation to relay deployment, and solves target association with branch and bound. The three subproblems are alternated to obtain a suboptimal solution. Numerical results report lower maximum latency and a smaller delay difference than the evaluated local-computing, relay-computing, and static-surveillance-UAV schemes.
 
 ## Problem framing
 

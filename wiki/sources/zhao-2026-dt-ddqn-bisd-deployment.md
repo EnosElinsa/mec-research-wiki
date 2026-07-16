@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Deployment Design for Multi-UAV-Assisted IoT Networks: A Digital Twin-Driven Deep Reinforcement Learning Approach"
 authors: ["Le Zhao", "Zesong Fei", "Jingxuan Huang", "Xinyi Wang", "Bin Li", "Weijie Yuan"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[blockage-aware-channel-model]]"
   - "[[weijie-yuan]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Deployment Design for Multi-UAV-Assisted IoT Networks: A Digital Twin-Driven Deep Reinforcement Learning Approach
@@ -29,6 +30,42 @@ Zhao, L., Fei, Z., Huang, J., Wang, X., Li, B., & Yuan, W. (2026). *Deployment D
 ## TL;DR
 
 Divides a multi-UAV IoT collection mission into balanced service regions, 3-D transfer, and fixed-altitude collection stages. Parallel digital-twin environments train separate DDQN policies, synchronize newly sensed obstacles, halt unsafe actions, and refresh policy parameters when the physical and virtual environments diverge.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs transfer through a partially known three-dimensional area to balanced IoT service regions, then collect all node data at fixed altitude. Known buildings and newly sensed obstacles affect motion and radio blockage, while digital twins refresh policies online.
+
+**Problem & objective**: A discrete multi-stage deployment problem minimizes total transfer and service time, $\min T_{\mathrm{transfer}}+T_{\mathrm{service}}$, under space, obstacle, SINR, access-count, duration, and complete-service constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Region assignment | $c_{k,m}$ | binary | IoT node $k$ assigned to UAV $m$ |
+| Transfer action | $a_m^{3D}(t)$ | 27-way categorical | Three-axis move or hover |
+| Service action | $a_m^{2D}(t)$ | discrete planar action | Fixed-altitude collection movement |
+| Service altitude | $H_m$ | discrete/continuous candidate | Height used for mission maintenance |
+| Policy refresh | $z_m(t)$ | binary | Trigger for digital-twin retraining/update |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Assigned service regions balance ground-node loads |
+| C2 | Movement stays inside the mission space and avoids known or sensed obstacles |
+| C3 | Served IoT nodes meet SINR and per-UAV access-count limits |
+| C4 | Every assigned ground node is served within mission duration |
+| C5 | Unsafe physical actions are halted before execution and synchronized to the twin |
+
+**Algorithm**: Divide nodes by K-means and coarse/fine remapping → pretrain separate transfer and maintenance DDQNs in parallel digital twins → execute 3-D transfer → synchronize newly sensed obstacles and halt unsafe actions → retrain affected twin environments and push updated parameters → execute fixed-altitude collection until all nodes are served.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied multi-UAV deployment for IoT data collection using digital-twin-driven deep reinforcement learning. They formulated total transfer-plus-service-time minimization over service-region assignment, three-dimensional transfer actions, fixed-altitude collection actions, and altitude under spatial, obstacle, SINR, access-count, duration, and complete-service constraints. K-means and cell remapping balance service regions, and separate DDQNs control transfer and mission maintenance. Parallel digital twins synchronize newly discovered obstacles, halt unsafe actions, retrain affected environments, and return updated policy parameters. Simulations report fewer training crashes and shorter service time than the evaluated ACO, scanning, DDQN, and QMIX baselines, while an ideal fully informed PSO remains faster.
 
 ## Problem
 

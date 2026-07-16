@@ -15,7 +15,8 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[edge-intelligence]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Two-Tier Submodel Partition Framework for Enhancing UAV Swarm Robustness in Forest Fire Detection
@@ -27,6 +28,42 @@ Li, X., Zhang, W., Liu, L., & Wang, P. (2026). *Two-Tier Submodel Partition Fram
 ## TL;DR
 
 Proposes [[two-tier-submodel-partition|TSPF]] for robust UAV-swarm [[uav-forest-fire-detection|forest-fire detection]]. UAVs are graph-colored into spatially dispersed groups, back up data within each group, select group servers dynamically, and train partitioned submodels through two-tier federated aggregation so the swarm can keep training when some UAVs are destroyed.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV swarm performs forest-fire detection and trains an online object-detection model. Graph coloring spreads UAVs across groups, group servers and a swarm server aggregate model updates, and intragroup wireless exchanges carry selected layers and backups. Multiple access uses scheduled point-to-server parameter exchanges; the paper does not specify a NOMA/OMA waveform, and the channel is represented through its communication-overhead model.
+
+**Problem & objective**: A mixed discrete robustness and federated-learning design, represented as a multi-criterion objective $\max_X[A_{\mathrm{FFD}}(X),R_{\mathrm{robust}}(X),-C_{\mathrm{comm}}(X)]$, improving fire-detection accuracy and survivability while reducing model-upload overhead after UAV destruction.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Group color | $c_u$ | integer color label | Group assigned to UAV $u$ |
+| Backup assignment | $b_{u,v}$ | binary | Whether surviving UAV $v$ stores UAV $u$'s local data |
+| Group/swarm servers | $s_g,s_0$ | discrete selection | Servers for group $g$ and the whole swarm |
+| Selected model layers | $\mathcal L_g$ | discrete subset | Submodel layers uploaded in lower-tier aggregation |
+| Partition count | $\tau$ | positive integer | Number of disjoint submodels in the two-tier update |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every UAV receives one graph-color group and groups satisfy the balanced/dispersed coloring rule |
+| C2 | Backup assignments remain within intragroup storage and contact limits |
+| C3 | Each group and the swarm select an available server using the DSS score |
+| C4 | Selected submodel layers form disjoint partitions that can be concatenated into the global model |
+| C5 | Model updates and recovery use only surviving UAVs and available communication links |
+
+**Algorithm**: Balanced graph coloring → intragroup data backup → dynamic server selection → lower-tier selected-layer aggregation → upper-tier submodel concatenation and swarm aggregation → distribute the global model and repeat online updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied robust forest-fire detection with a UAV swarm that performs online federated model updates under possible UAV destruction. They designed the Two-tier Submodel Partition Framework, which combines balanced graph coloring, intragroup data backup, Dynamic Server Selection, and lower- and upper-tier aggregation of selected model layers. The framework partitions the global detector into submodels, aggregates selected layers within UAV groups, and concatenates the submodels at a swarm server to reduce parameter uploads. These mechanisms preserve local data and server availability when UAVs fail while maintaining online model updates. Experiments report improved fire-detection accuracy and robustness with lower communication overhead than the evaluated centralized, federated, and distributed baselines.
 
 ## Problem
 

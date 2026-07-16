@@ -5,6 +5,7 @@ authors: ["Hu He", "Jun Peng", "Lin Cai", "Weirong Liu", "Chenglong Wang", "Xin 
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3612221"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), vol. 25, no. 3, pp. 3119-3136"
+modeling_card: required
 tags: [source, multi-uav, uav-data-collection, memory-augmented-madrl, convlstm, prioritized-experience-replay, trajectory-control, fairness, energy-efficiency]
 related:
   - "[[memory-augmented-multi-uav-navigation]]"
@@ -19,7 +20,7 @@ related:
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Multi-UAV Navigation for Cooperative Data Sensing and Transmission
@@ -31,6 +32,41 @@ He, H., Peng, J., Cai, L., Liu, W., Wang, C., Gu, X., & Huang, Z. (2026). *Energ
 ## TL;DR
 
 MEMDRL combines a MATD3 backbone, BeBold-style exploration, ConvLSTM state histories, and fleet-level prioritized replay for decentralized multi-UAV collection. Policies balance uploaded PoI data, geographical visit fairness, and propulsion energy under local observations, obstacles, and no-fly zones.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-altitude UAVs with local observations move through a bounded region containing points of interest, obstacles, and no-fly zones. Each slot allocates time to motion, sensing, and orthogonal upload to a ground base station, and the fleet must explore fairly while conserving propulsion energy.
+
+**Problem & objective**: Maximize fairness-weighted fleet energy efficiency, $\max_{\mathbf p}F_TK^{-1}\sum_k(\sum_tD_t^k)/(\sum_tE_t^k)$, by choosing every UAV's sequence of movement directions and distances.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Flight direction | $\theta_t^k$ | continuous, $[0,2\pi)$ | Heading chosen by UAV $k$ in slot $t$ |
+| Travel distance | $d_t^k$ | continuous, $[0,d_{\max}]$ | Distance moved during the slot |
+| UAV trajectory | $\mathbf p=\{\mathbf p_t^k\}$ | continuous position sequence | Positions induced by all movement actions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Heading and travel distance remain within their action bounds. |
+| C2 | Every UAV stays in the target region and outside obstacles and no-fly zones. |
+| C3 | Pairwise separation satisfies $\lVert\mathbf p_t^i-\mathbf p_t^j\rVert_2\geq d_{\mathrm{safe}}$. |
+| C4 | Same-slot upload capacity covers all newly collected data, so UAVs carry no backlog. |
+| C5 | Cumulative movement and hovering energy stays below $E_{\max}$ for every UAV. |
+| C6 | Jain's index rewards balanced cumulative PoI visits rather than data volume alone. |
+
+**Algorithm**: Cast local movement control as a multi-agent POMDP with direction-distance actions and fairness-weighted bits-per-joule reward. Train MATD3 with twin centralized critics, delayed actor updates, and smoothed targets; add ConvLSTM histories for partial observations, BeBold intrinsic reward for first visits to underexplored cells, and fleet-level prioritized replay based on summed TD errors.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+He et al. [x] formulated cooperative multi-UAV sensing and upload as trajectory control that balances collected data, Jain geographical fairness, and propulsion energy under partial observations. UAVs choose continuous headings and travel distances subject to region, obstacle, separation, no-backlog upload, and energy-budget constraints. MEMDRL augments MATD3 with ConvLSTM observation histories, BeBold exploration, and fleet-level prioritized replay to learn decentralized policies with centralized critics. On Shenzhen and Beijing maps, MEMDRL improved the overall objective by 12.42% to 53.65% over four baselines for one Beijing UAV, with gains rising to 24.13% to 67.39% for ten UAVs.
 
 ## Problem
 

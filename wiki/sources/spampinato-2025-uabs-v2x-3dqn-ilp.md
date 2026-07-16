@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Trajectory Design and Radio Resource Management for UAV-Aided Vehicular Networks"
 authors: ["Leonardo Spampinato", "Danila Ferretti", "Chiara Buratti", "Riccardo Marini"]
 year: 2025
@@ -11,7 +12,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[multi-agent-q-learning]]"
 created: 2026-06-04
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Joint Trajectory Design and Radio Resource Management for UAV-Aided Vehicular Networks
@@ -23,6 +24,41 @@ Spampinato, L., Ferretti, D., Buratti, C., & Marini, R. (2025). *Joint Trajector
 ## TL;DR
 
 Studies an Unmanned Aerial Base Station (UABS) assisting a terrestrial mmWave macro-BS (MBS) network serving mobile connected vehicles (GUEs) with V2X extended-sensing applications. Jointly addresses: (i) **UABS trajectory design**, solved by a **Double Dueling Deep Q-Network (3DQN)** agent that learns to track GUEs in a complex urban road network (Bologna, Italy, simulated with SUMO); and (ii) **radio resource management (RRM)**, solved as an **Integer Linear Program (ILP)** that maximizes served users subject to service-window constraints. The two solvers are intertwined via a properly designed reward function: the DRL agent optimizes trajectory to maximize RRM benefit, and ILP provides the network reward signal. Evaluated in coverage-limited and capacity-limited scenarios.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude unmanned aerial base station assists terrestrial millimeter-wave macro base stations serving mobile connected vehicles in an urban V2X sensing network. Vehicle motion follows SUMO traces, the UABS uses discrete directional actions, and per-slot radio-resource management assigns beam and time-frequency resources to service windows.
+
+**Problem & objective**: The joint control loop maximizes the number of satisfied vehicle service windows, $\max\sum_g y_g$, through an ILP resource-allocation block while the 3DQN trajectory policy maximizes the resulting RRM reward.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UABS movement | $a_t$ | discrete, direction or hover | Trajectory action at slot $t$ |
+| Resource assignment | $x_{g,b,s}$ | binary | Whether vehicle $g$ receives beam/resource slot $s$ from BS/UABS $b$ |
+| Service satisfaction | $y_g$ | binary | Whether vehicle $g$'s service window is met |
+| Beam and time allocation | $r_{g,b,s}$ | continuous/binary ILP variables | Radio resource assigned to vehicle $g$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each resource slot and beam serves only feasible vehicle assignments |
+| C2 | A satisfied vehicle receives its required data rate over its service window |
+| C3 | UABS trajectory actions stay in the urban flight region and preserve backhaul connectivity |
+| C4 | SINR and interference conditions determine feasible MBS/UABS assignments |
+| C5 | Vehicle service windows and per-slot resource capacities are respected |
+
+**Algorithm**: Observe UABS/vehicle positions and link strengths → execute a 3DQN movement action → solve the per-slot ILP for beam/time-frequency assignments and satisfied users → feed the ILP service outcome into the trajectory reward → update the deep Q policy and repeat.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Spampinato et al. [x] studied joint trajectory design and radio resource management for an unmanned aerial base station assisting connected vehicles in urban V2X networks. They formulated an integer linear resource-allocation problem that maximizes the number of satisfied vehicle service windows and coupled it to a trajectory policy. A Double Dueling Deep Q-Network learns UABS movement from vehicle positions and signal observations, while the ILP supplies the per-slot resource-management outcome as the reward. The evaluation uses SUMO mobility for Bologna and compares coverage-limited and capacity-limited scenarios. Simulations report a higher satisfied-vehicle percentage than random-trajectory, fixed-hover, and MBS-only baselines in both scenarios.
 
 ## Problem framing
 

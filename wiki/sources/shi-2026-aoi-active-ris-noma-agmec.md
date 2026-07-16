@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Age of Information (AoI)-Aware Joint Optimization for Active RIS and NOMA-Assisted AGMEC Networks"
 authors: ["Zhaoyuan Shi", "Zhipeng Bi", "Ruichen Zhang", "Huabing Lu", "Chongwen Huang", "Helin Yang", "Jun Cai", "Dusit Niyato"]
 year: 2026
@@ -23,7 +24,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[huabing-lu]]"
 created: 2026-07-06
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Age of Information (AoI)-Aware Joint Optimization for Active RIS and NOMA-Assisted AGMEC Networks
@@ -35,6 +36,41 @@ Shi, Z., Bi, Z., Zhang, R., Lu, H., Huang, C., Yang, H., Cai, J., & Niyato, D. (
 ## TL;DR
 
 Optimizes task-data freshness in active-RIS and NOMA-assisted air-ground MEC networks. The controller jointly decides UAV trajectory, active-RIS beamforming, and UE task offloading to minimize long-term average AoI. The proposed AADDPG method augments DDPG with an action adjuster for hybrid continuous/discrete actions and a UAV battery-protection mechanism.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A base station and one UAV provide MEC service to ground UEs through an active RIS on a building. Poisson task arrivals, NOMA uplink with SIC, active-RIS amplification/phase control, and UAV mobility jointly determine successful task delivery and AoI updates; the BS acts as the centralized controller.
+
+**Problem & objective**: A dynamic mixed-integer nonlinear MDP minimizes long-term average AoI, $\min_\pi\limsup_T T^{-1}\mathbb E_\pi\sum_t\bar A(t)$, with energy and battery-safety penalties.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory action | $\mathbf q(t)$ | continuous speed/direction | UAV location and movement per slot |
+| Active-RIS gain and phase | $\boldsymbol\beta(t),\boldsymbol\phi(t)$ | continuous bounded vectors | Element amplification and phase shifts |
+| UE offloading | $o_k(t)$ | binary | BS or UAV task destination for UE $k$ |
+| Policy | $\pi(a\mid s)$ | stochastic/continuous actor | Maps AoI, task, energy, and location state to actions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Active-RIS gains/phases and NOMA powers stay within hardware budgets |
+| C2 | UE task queues and BS/UAV CPU capacities support delivered tasks |
+| C3 | UAV stays inside the flight region and returns when battery falls below the threshold |
+| C4 | AoI evolves from arrivals and successful deliveries, and boundary/battery violations incur penalties |
+| C5 | NOMA SIC and residual-interference rate expressions remain feasible |
+
+**Algorithm**: Model the system as an MDP → train an action-adjusted DDPG controller for continuous beam/motion variables → map continuous offloading outputs to BS/UAV binary choices → add a battery-protection return-to-base rule → optimize the AoI-energy reward online.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Shi et al. [x] studied age-of-information minimization in active-RIS and NOMA-assisted air-ground MEC networks. They jointly controlled UAV trajectory, active-RIS amplification and phase, and UE offloading decisions in a dynamic mixed-integer nonlinear problem with energy and battery considerations. The proposed AADDPG method augments DDPG with an action adjuster for hybrid continuous and discrete actions and a battery-protection return rule. The reward combines negative average AoI, UAV energy cost, and boundary and battery penalties. Simulations report 23% lower average AoI than conventional DDPG, 67.68% lower AoI for NOMA than OMA, and 33.9% lower AoI for active RIS than passive RIS in the evaluated settings.
 
 ## Problem framing
 

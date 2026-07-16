@@ -14,7 +14,8 @@ related:
   - "[[liu-2023-sagecn-online-offloading]]"
   - "[[three-tier-cloud-edge-end]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Space/Aerial-Assisted Computing Offloading for IoT Applications: A Learning-Based Approach
@@ -26,6 +27,41 @@ Cheng, N., Lyu, F., Quan, W., Zhou, C., He, H., Shi, W., & Shen, X. (2019). *Spa
 ## TL;DR
 
 One of the **first papers to study computing offloading in a SAGIN** (Space-Air-Ground Integrated Network). UAVs serve as flying edge servers (low-latency local offloading); satellites provide always-on cloud computing (higher delay but unlimited compute). Formulates the SAG-IoT offloading problem as a **Markov Decision Process (MDP)** and solves it with an **actor-critic RL** algorithm (policy gradient + value network) to learn the optimal offloading policy on-the-fly. A separate heuristic handles the **VM resource allocation and task scheduling** on UAV edge servers. Demonstrates near-optimal VM allocation and fast-converging RL offloading with lower total cost than baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: In a remote SAG-IoT area without cellular coverage, $M$ IoT users run $N$ applications and may process each task locally, at a UAV edge server with application-specific VMs, or at a remote cloud reached through a LEO satellite. UAV trajectories are fixed, and the controller observes unfinished tasks, remaining local-compute time, and current and historical UAV pathloss.
+
+**Problem & objective**: The online offloading MDP minimizes discounted total cost, $V(s\mid\pi)=\mathbb E[\sum_{t=0}^{\infty}\gamma^t C(s_t,a_t)\mid s_0=s,\pi]$, where $C$ combines task delay, user energy, and edge/cloud usage cost. The auxiliary VM problem (14) minimizes scheduled-task processing delay plus one-slot penalties for unscheduled tasks.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local execution | $x_{ij}^{l}(t)$ | Binary, $\{0,1\}$ | Processes task $W_{ij}$ locally |
+| UAV-edge offloading | $x_{ij}^{e}(t)$ | Binary, $\{0,1\}$ | Sends task $W_{ij}$ to a UAV VM |
+| Satellite-cloud offloading | $x_{ij}^{c}(t)$ | Binary, $\{0,1\}$ | Sends task $W_{ij}$ through the satellite to the cloud |
+| VM computation allocation | $c_m$ | Continuous, $c_m\geq0$ | Allocates UAV CPU rate to application-$m$ VM |
+| UAV task scheduling | $y_{m,n}$ | Binary, $\{0,1\}$ | Selects task $n$ of application $m$ for execution |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | At most one execution mode per unfinished task: $x_{ij}^{l}(t)+x_{ij}^{e}(t)+x_{ij}^{c}(t)\leq m_{ij}(t)$ |
+| C2 | VM task deadline: $\sum_{k=1}^{n}y_{m,k}\frac{Z_m}{c_m}\leq t_{m,n}$ |
+| C3 | UAV compute capacity: $\sum_m c_m\leq\mathcal C$ |
+| C4 | Domains: $c_m\geq0$ and $y_{m,n}\in\{0,1\}$ |
+
+**Algorithm**: First initialize all UAV-VM tasks as scheduled, compute $c_m$, repeatedly remove the task with the tightest normalized requirement until $\sum_m c_m\leq\mathcal C$, and return VM allocation and scheduling. Then train deep actor and critic networks on the offloading MDP, use the critic's temporal-difference signal to update the policy each slot, and map each task action to wait, local execution, UAV edge, or satellite cloud.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Cheng et al. [x] studied online computation offloading for remote IoT applications in a space-air-ground integrated network with local devices, fixed-trajectory UAV edge servers, and satellite-connected cloud computing. They minimized a discounted cost combining task delay, user energy consumption, and edge or cloud usage charges while allowing each unfinished task to wait or use at most one execution tier. Their method paired a low-complexity UAV VM-allocation and task-scheduling heuristic with a deep actor-critic controller that learned offloading decisions from task and pathloss states. Simulations reported convergence at about the tenth episode and lower total cost than random and greedy-on-edge offloading across the evaluated cost settings.
 
 ## Problem framing
 

@@ -5,6 +5,7 @@ authors: ["Yi-Huai Hsu", "Jiun-Ian Lee", "Chao-Hung Lee"]
 year: 2025
 url: "https://doi.org/10.1109/TCCN.2025.3629973"
 venue: "IEEE Transactions on Cognitive Communications and Networking"
+modeling_card: required
 tags: [source, hap, sagin, noma, energy-harvesting, ppo, drl, 6g]
 related:
   - "[[high-altitude-platform-station]]"
@@ -15,7 +16,7 @@ related:
   - "[[wireless-power-transfer]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA SAGINs
@@ -29,6 +30,39 @@ Hsu, Y.-H., Lee, J.-I., & Lee, C.-H. (2025). *A DRL-Based High-Altitude Platform
 A [[high-altitude-platform-station|HAP]] in a [[space-air-ground-integrated-network|SAGIN]] simultaneously relays uplink data to a satellite (sharing a ground station's TDMA slot via [[noma|NOMA]]) and harvests RF energy from that same ground station's signal. Per-slot decisions: time-sharing ratio α between transmission and harvesting, plus the HAP's transmit power ratio β. Goal: maximize **long-term average binary scale satisfaction (BSS)** — fraction of slots in which the HAP's per-slot data-rate requirement is met — subject to battery-energy and power constraints.
 
 The authors prove the problem is NP-hard via reduction from knapsack and solve it with a **DRL-HUES** scheme based on [[ppo|PPO]] over an MDP formulation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A HAP relays uplink traffic to a satellite while sharing ground-station TDMA slots through NOMA and successive interference cancellation. In every slot it divides time between uplink transmission and RF energy harvesting from the ground-station signal under stochastic channel gains, demand, and finite battery capacity.
+
+**Problem & objective**: Problem Q is an NP-hard nonlinear scheduling problem that maximizes long-term average binary scale satisfaction, $\max_{\boldsymbol\alpha,\boldsymbol\beta}\frac{1}{\lvert\mathcal I\rvert}\sum_{i\in\mathcal I}BSS(i)$, where a slot is satisfied when the achieved HAP data rate meets its requirement.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmission time share | $\alpha(i)$ | continuous, $[0,1]$ | Fraction of slot $i$ used for HAP uplink transmission rather than harvesting |
+| HAP power ratio | $\beta(i)$ | continuous, $[0,1]$ | Fraction of maximum HAP transmit power used in slot $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 13 | Battery recursion accounts for harvested and transmitted energy and caps storage at $E_{max}$ |
+| 14 | Transmission energy satisfies $\alpha(i)TP^{HAP}(i)\leq E(i)$ |
+| 15 | Time sharing satisfies $0\leq\alpha(i)\leq1$ |
+| 16 | Power allocation satisfies $0\leq\beta(i)\leq1$ |
+| 17 | HAP power satisfies $0\leq P^{HAP}(i)\leq P_{max}^{HAP}$ |
+
+**Algorithm**: Transform Q into an MDP whose state contains channel gains, remaining battery energy, and current data-rate demand; choose continuous $(\alpha(i),\beta(i))$ actions; shape reward from scale-demand ratio so meeting the rate earns positive reward and excess allocation or failure is penalized; train the clipped-surrogate PPO actor and critic and execute the learned DRL-HUES policy slot by slot.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hsu et al. [x] studied joint HAP uplink transmission and RF energy-harvesting scheduling in a NOMA space-air-ground integrated network. They formulated an NP-hard nonlinear program that maximizes long-term average binary scale satisfaction over the transmission-time share and HAP power ratio under battery recursion, available-energy, time-share, and transmit-power constraints. Their DRL-HUES scheme models stochastic channel, demand, and battery state as an MDP and trains a PPO policy for continuous scheduling actions. Simulations show higher long-term average binary scale satisfaction than the evaluated No-Pain-No-Gain, random, and greedy schedulers.
 
 ## Why this matters for MEC
 

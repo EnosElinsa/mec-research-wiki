@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-Objective Aerial Collaborative Secure Communication Optimization via Generative Diffusion Model-Enabled Deep Reinforcement Learning"
 authors: ["Chuang Zhang", "Geng Sun", "Jiahui Li", "Qingqing Wu", "Jiacheng Wang", "Dusit Niyato", "Yuanwei Liu"]
 year: 2024
@@ -20,7 +21,7 @@ related:
   - "[[gai-generator-vs-optimizer-in-isac]]"
   - "[[yuanwei-liu]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Multi-Objective Aerial Collaborative Secure Communication Optimization via Generative Diffusion Model-Enabled Deep Reinforcement Learning
@@ -32,6 +33,40 @@ Zhang, C., Sun, G., Li, J., Wu, Q., Wang, J., Niyato, D., & Liu, Y. (2024). *Mul
 ## TL;DR
 
 A UAV swarm forms a virtual antenna array and uses **collaborative beamforming (CB)** to send sensitive surveillance data to a remote base station while resisting mobile eavesdroppers. The authors formulate an **aerial secure communication and energy efficiency multi-objective problem (ASCEE-MOP)** — maximize secrecy rate, minimize swarm flight energy — by jointly optimizing UAV excitation-current weights and positions. The non-convex, NP-hard, dynamic problem is solved by **GDMTD3**, a generative-diffusion-model-enhanced TD3.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV swarm forms a distributed virtual antenna array that sends surveillance data to a remote base station while mobile eavesdroppers attempt to decode it. UAV positions and excitation currents determine the collaborative beam, secrecy rate, and flight energy.
+
+**Problem & objective**: ASCEE-MOP is a dynamic non-convex multi-objective problem that maximizes secrecy rate and minimizes swarm flight energy, $\max R_{\mathrm{sec}},\;\min E_{\mathrm{fly}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf q_m(t)$ | continuous position | Swarm geometry at time $t$ |
+| Excitation current | $I_m(t)e^{j\phi_m(t)}$ | complex continuous weight | Amplitude and phase of UAV $m$ in the virtual array |
+| UAV movement | $\Delta\mathbf q_m(t)$ | continuous bounded action | Flight-control update |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Excitation amplitudes and total transmit power satisfy their limits |
+| C2 | UAV positions and movement remain inside the flight region |
+| C3 | Pairwise UAV separation avoids collisions |
+| C4 | The collaborative beam supports the legitimate-link requirement |
+| C5 | Swarm propulsion energy remains within mission budgets |
+
+**Algorithm**: Encode legitimate and eavesdropper channels plus swarm state → let TD3 critics evaluate vectorial secrecy-energy rewards → generate high-dimensional continuous actions through reverse diffusion → update diffusion actor and twin critics from replay → execute position and excitation-current actions → repeat as the eavesdropper moves.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied multi-objective aerial collaborative secure communication with a UAV swarm acting as a virtual antenna array. They formulated ASCEE-MOP to maximize secrecy rate and minimize swarm flight energy over UAV positions and excitation-current weights under power, flight, separation, link, and energy constraints. GDMTD3 integrates a generative diffusion action model with twin-delayed deep deterministic policy gradients. The diffusion process generates continuous high-dimensional swarm and beamforming actions from the current secure-communication state. Simulations report higher secrecy rate and lower flight energy than the evaluated deployment and DRL policies.
 
 ## Problem framing
 

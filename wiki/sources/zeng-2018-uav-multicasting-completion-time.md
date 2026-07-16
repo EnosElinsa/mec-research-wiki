@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Trajectory Design for Completion Time Minimization in UAV-Enabled Multicasting"
 authors: ["Yong Zeng", "Xiaoli Xu", "Rui Zhang"]
 year: 2018
@@ -18,7 +19,7 @@ related:
   - "[[lyu-2017-spiral-mbs-placement]]"
   - "[[yong-zeng]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Trajectory Design for Completion Time Minimization in UAV-Enabled Multicasting
@@ -30,6 +31,42 @@ Zeng, Y., Xu, X., & Zhang, R. (2018). *Trajectory Design for Completion Time Min
 ## TL;DR
 
 Uses random linear network coding to broadcast one file from a mobile UAV, conservatively reduces each receiver's recovery-probability requirement to minimum time inside a distance threshold, and constructs piecewise-linear routes through virtual base-station coverage regions with LP speed allocation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV broadcasts random-linear-network-coded packets at fixed rate to known static ground terminals. A terminal recovers the common file after enough independently faded packets, and proximity determines packet success probability.
+
+**Problem & objective**: A non-convex mission problem minimizes multicast completion time, $\min T$, while every terminal's file-recovery probability exceeds its target under the UAV speed limit.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q(t)$ | continuous 2-D path | Broadcast route |
+| Virtual-BS waypoint | $\mathbf v_j$ | continuous point in a coverage intersection | Representative visit point for a terminal cluster |
+| Waypoint order | $\pi$ | discrete permutation | Open-tour order of virtual BSs |
+| Segment traversal time | $\tau_l$ | continuous, nonnegative | Time allocated to sampled path segment $l$ |
+| Connection radius | $D_c$ | continuous positive threshold | Distance defining conservative connected time |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV speed along every segment does not exceed $V_{\max}$ |
+| C2 | Each terminal accumulates its required minimum connection duration |
+| C3 | The binomial lower bound meets each file-recovery probability target |
+| C4 | Waypoints lie in their assigned coverage-disk intersections |
+| C5 | Segment times and path geometry produce the total completion time $T$ |
+
+**Algorithm**: Choose a connection radius by threshold sweep → cover terminals with virtual-base-station disks using the spiral heuristic → order VBSs by an open TSP → refine entry and exit points in each convex intersection → discretize the route → solve segment traversal times by linear programming under speed and connection-duration constraints.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng et al. [x] studied trajectory design for completion-time minimization in UAV-enabled multicasting with random linear network coding. They lower-bounded each terminal's recovery probability by a minimum connection-duration condition inside a distance threshold. A geometric disk-cover heuristic constructs virtual base stations, an open TSP orders them, and waypoint refinement selects points inside coverage intersections. For a fixed sampled route, linear programming allocates segment traversal times under speed and per-terminal connection-duration constraints. Simulations report shorter completion time than terminal-by-terminal and strip-based waypoint routes across the tested deployments.
 
 ## System model
 

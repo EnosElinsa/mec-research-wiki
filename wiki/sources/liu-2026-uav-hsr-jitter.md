@@ -15,7 +15,8 @@ related:
   - "[[xingwang-li]]"
   - "[[george-k-karagiannidis]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Evaluating the Impact of Jitter on Collaborative High-Speed Aerial and Railway Networks
@@ -27,6 +28,12 @@ Liu, Z., Xiao, Y., Zhou, E., Chen, S., Lei, X., Li, X., Tegos, S. A., Diamantoul
 ## TL;DR
 
 Models UAV orientation jitter as a Gaussian random walk in a UAV-assisted high-speed-rail mmWave link. Closed-form and quadrature-based outage/rate analysis compares co-located and distributed train antennas, then a codebook-aware beamwidth rule balances directional gain, accumulated misalignment, and beam-training time.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] analyzed the effect of UAV orientation jitter on collaborative high-speed-rail mmWave communications. They modeled angular jitter as a Gaussian random walk and derived outage probability and ergodic-rate expressions for co-located and distributed train antenna layouts. They then mapped a continuous beamwidth choice to a discrete antenna codebook and evaluated candidate beamwidths under the accumulated misalignment and beam-training period. Numerical and Monte Carlo results compare the two layouts and report adaptive-beamwidth behavior across jitter intensity, update time, and signal-to-noise ratio. The work is a performance analysis and codebook design study rather than a central application-level resource-allocation model.
 
 ## Problem framing
 

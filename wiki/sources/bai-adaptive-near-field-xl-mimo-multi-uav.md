@@ -5,6 +5,7 @@ authors: ["Lu Bai", "Mengyuan Lu", "Ziwei Huang", "Xuesong Cai", "Xiang Cheng"]
 year: ""
 url: ""
 venue: ""
+modeling_card: not_applicable
 tags: [source, near-field-communications, xl-mimo, channel-modeling, terahertz-communication, multi-uav, physical-layer]
 related:
   - "[[near-field-communications]]"
@@ -14,7 +15,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[autonomous-uav-swarms]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # An Adaptive Near-Field Channel Model for 6G XL-MIMO UPA-to-Multi-UAV Cooperative Communications
@@ -26,6 +27,12 @@ Bai, L., Lu, M., Huang, Z., Cai, X., & Cheng, X. *An Adaptive Near-Field Channel
 ## TL;DR
 
 Proposes an adaptive near-field channel model for 6G XL-MIMO uniform-planar-array (UPA) links from a ground station to multiple UAVs. The model introduces a [[selective-near-field-area]] so only links inside the near-field region use spherical-wave calculation, while other links can use plane-wave approximations. It also models array, inter-UAV space, time, and frequency non-stationarity, then validates channel statistics against Wireless InSite ray tracing in a National Stadium scenario.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bai et al. [x] developed an adaptive near-field channel model for XL-MIMO uniform-planar-array links to multiple cooperating UAVs at millimeter-wave and low-terahertz frequencies. The model represents line-of-sight, ground-reflection, and non-line-of-sight twin-cluster components while accounting for continuous three-dimensional UAV trajectories and self-rotation. A selective near-field area applies spherical-wave calculations only to UAVs, clusters, and reflection points within the near-field region and uses plane-wave calculations elsewhere to balance accuracy and complexity. Their adaptive UPA-UAV-time-frequency algorithm combines seed growth with a birth-death process to represent non-stationarity over the array, inter-UAV space, time, and frequency. A National Stadium channel dataset and Wireless InSite ray-tracing comparisons showed close agreement for the evaluated statistics, while larger arrays and higher frequencies produced stronger spatial-frequency diversity and stronger near-field non-stationarity.
 
 ## Problem
 

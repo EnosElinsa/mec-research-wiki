@@ -5,6 +5,7 @@ authors: ["Bomin Mao", "Xueming Zhou", "Jiajia Liu", "Nei Kato"]
 year: 2024
 url: "https://doi.org/10.1109/JSAC.2024.3365880"
 venue: "IEEE Journal on Selected Areas in Communications (IEEE JSAC)"
+modeling_card: required
 tags: [source, leo-satellite-edge-computing, non-terrestrial-network, free-space-optical-isl, multi-objective-reinforcement-learning, routing, walker-star-constellation, qos]
 related:
   - "[[leo-satellite-edge-computing]]"
@@ -17,7 +18,7 @@ related:
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
   - "[[bomin-mao]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # On an Intelligent Hierarchical Routing Strategy for Ultra-Dense Free Space Optical Low Earth Orbit Satellite Networks
@@ -29,6 +30,40 @@ Mao, B., Zhou, X., Liu, J., & Kato, N. (2024). *On an Intelligent Hierarchical R
 ## TL;DR
 
 A **routing** strategy for ultra-dense **LEO satellite constellations** with **free-space-optical (FSO) inter-satellite links**. It proposes a **dual-layer MEO/LEO architecture** with **regional division** (each MEO satellite acts as a controller computing paths for the LEO satellites covering its ground region, while LEO satellites only forward packets), which cuts the signaling/computation overhead that ultra-dense, highly-dynamic LEO networks otherwise incur. On top of that, a **multi-objective deep-reinforcement-learning routing strategy** with a per-service **utility function** meets the differentiated QoS needs (latency, packet-loss rate, throughput) of diverse terrestrial applications, and a **cooperative mechanism** based on the monotonicity of each service's reward function resolves conflicts between independent per-service routing decisions. The design is made **adaptive to the number of FSO links**, which depends on each satellite's Acquisition-Pointing-Tracking (APT) terminals and geometric visibility.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A dual-layer Walker constellation contains MEO controllers and regionalized LEO forwarding satellites connected by dynamic FSO inter-satellite links. Terrestrial services are grouped as latency-sensitive, high-reliability, or throughput-sensitive, and each route is evaluated with queueing, propagation, forwarding, packet-loss, and delivery-rate metrics.
+
+**Problem & objective**: The routing problem minimizes the aggregate path utility $\min\sum_{i=1}^{n}\sum_{j=1}^{n}U_{\mathrm{path}_{i,j}}$, where $U_{\mathrm{path}}=w_1\hat T_{\mathrm{path}}+w_2\hat P_{\mathrm{path}}+w_3(1-\hat D_{\mathrm{path}})$ weights normalized latency, packet loss, and delivery rate.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Candidate route | $p_{i,j}$ | discrete path selected from k candidates | End-to-end LEO route for a source-destination pair |
+| Service action | $u^a$ | discrete candidate-path index | Path chosen by the MEO agent for service agent $a$ |
+| QoS weights | $(w_1,w_2,w_3)$ | continuous, nonnegative | Service-specific sensitivity to latency, loss, and delivery rate |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | QoS weights form a simplex: $w_1+w_2+w_3=1$, $w_i\geq0$ |
+| C2 | Satellite transmit power is bounded: $0\leq\omega_t\leq\omega_{\max}$ |
+| C3 | Link data rate is bounded: $0\leq R_t\leq R_{\max}$ |
+| C4 | Queue length does not exceed buffer size: $N_q\leq N_b$ |
+| Topology | Actions are limited to connected candidate routes surviving regional screening and LCSS filtering |
+
+**Algorithm**: Divide LEO satellites into regions managed by MEO controllers, compute inter-region paths and k candidate routes with shortest-path screening and LCSS, and model regional route selection as a Dec-POMDP. Train cooperative multi-agent DRL agents on local buffer observations, use service-specific utility rewards, and enforce monotonic coordination so local route choices agree with the global objective.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mao et al. [x] studied adaptive routing in ultra-dense LEO constellations with dynamic FSO inter-satellite links and differentiated terrestrial-service requirements. They formulated aggregate utility minimization over candidate end-to-end routes, weighting normalized latency, packet loss, and delivery rate subject to service-weight, power, rate, and buffer constraints. Their method divides the LEO layer into MEO-controlled regions, screens k routes, and trains cooperative multi-agent DRL policies in a Dec-POMDP with a monotonicity-based conflict-resolution mechanism. Simulations reported that the proposed strategy surpassed DQN and MT-OSPF in reward, packet delay, packet drop, and delivery rate, with the advantage increasing under heavier traffic and varying APT-terminal counts.
 
 ## Problem framing
 

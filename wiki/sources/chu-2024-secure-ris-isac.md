@@ -17,7 +17,8 @@ related:
   - "[[su-2024-sensing-aided-isac-pls]]"
   - "[[yao-2025-secure-isac-dual-eavesdropping]]"
 created: 2026-06-01
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Beamforming and Reflection Design for Secure RIS-ISAC Systems
@@ -29,6 +30,39 @@ Chu, J., Lu, Z., Liu, R., Li, M., & Liu, Q. (2024). *Joint Beamforming and Refle
 ## TL;DR
 
 A correspondence on a **secure RIS-aided ISAC** system: a base station with a uniform linear array performs MU-MISO secure communication to $K$ users **and** detects a malicious point target (a potential eavesdropper), with an $N$-element **RIS** deployed near the users to overcome severe channel degradation. A dedicated **sensing signal** is sent alongside the communication signal to boost detection while limiting information leakage. The design **maximizes the radar output SNR** subject to per-user communication SINR, an eavesdropping-SINR ceiling (secure-transmission constraint), the transmit-power budget, and the RIS unit-modulus reflection constraint. The non-convex problem is split by alternating optimization (BCD) and solved with **SDR + fractional programming + majorization-minimization**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An $M$-antenna base station jointly transmits communication and dedicated radar waveforms to $K$ single-antenna legitimate users while detecting a distant point target that is also a potential eavesdropper. An $N$-element passive RIS near the users assists their severely degraded communication channels, and the base station is assumed to know perfect communication CSI.
+
+**Problem & objective**: Problem (9) is a nonconvex secure RIS-ISAC design that maximizes radar output SNR, $\max_{\mathbf W,\mathbf u,\boldsymbol\phi}\mathrm{SNR}_{\mathrm r}$, by jointly optimizing transmit beamforming, the radar receive filter, and RIS reflection coefficients.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Joint transmit beamformer | $\mathbf W=[\mathbf W_c,\mathbf W_r]$ | Complex matrix, $\lVert\mathbf W\rVert_F^2\leq P$ | Shapes communication and radar signals |
+| Radar receive filter | $\mathbf u$ | Complex $M$-vector | Combines the received target echo |
+| RIS coefficients | $\boldsymbol\phi=[\phi_1,\ldots,\phi_N]^T$ | Complex, $\lvert\phi_n\rvert\leq1$ | Controls passive reflection |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Legitimate-user QoS: $\mathrm{SINR}_k\geq\Gamma_k$ for $k\in\mathcal K$ |
+| C2 | Secure transmission: $\mathrm{SINR}_{\mathrm e,k}\leq\Gamma_{\mathrm e,k}$ for $k\in\mathcal K$ |
+| C3 | Base-station power: $\lVert\mathbf W\rVert_F^2\leq P$ |
+| C4 | RIS coefficient bound: $\lvert\phi_n\rvert\leq1$ for every element $n$ |
+
+**Algorithm**: Alternate three blocks until radar SNR converges: solve the transmit covariance relaxation by SDR and recover communication beamformers by EVD or Gaussian randomization plus the radar beamformer by Cholesky decomposition; update $\mathbf u$ from the dominant eigenvector of the Rayleigh quotient; and update $\boldsymbol\phi$ through Dinkelbach fractional programming and an MM first-order lower bound.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chu et al. [x] studied joint beamforming and reflection design for secure RIS-aided integrated sensing and communication with multiple legitimate users and a malicious radar target. They maximized radar output SNR over the joint transmit beamformer, radar receive filter, and RIS coefficients under legitimate-user SINR, eavesdropping-SINR, transmit-power, and reflection-coefficient constraints. Their alternating method used semidefinite relaxation for transmit beamforming, a dominant-eigenvector receive update, and Dinkelbach fractional programming with majorization-minimization for RIS reflection. Simulations reported approximately 2 dB higher radar output SNR than the scheme without RIS and showed further gains as the number of reflecting elements increased.
 
 ## Problem framing
 

@@ -14,7 +14,8 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[zhou-2026-radar-energy-iscac]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Sensing and Age of Information Optimization for Energy Constrained UAV-Assisted Integrated Sensing, Calculation, and Communication
@@ -26,6 +27,42 @@ Liu, Z., Liu, X., Yang, W., & Zhang, X. (2025). Joint sensing and age of informa
 ## TL;DR
 
 One energy-limited UAV senses suburban targets, fuses detections locally, and sends the results to a collection center. A five-block alternating algorithm trades [[radar-estimation-rate|sensing-data amount]] against same-slot [[age-of-information|freshness]] by controlling target scheduling, repeated sensing, radar/communication power, CPU frequency, and motion.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A single fixed-altitude UAV flies a closed cycle over ground targets and, in each slot, schedules one target, performs repeated radar sensing, fuses the data locally, computes it, and transmits the result to a collection center.
+
+**Problem & objective**: Jointly maximize sensing-data volume and freshness using a negative AoI weight, $\max_{\mathbf A,\mathbf W,\mathbf P,\mathbf F,\mathbf S}\sum_{k,q}\alpha_q(k)\big(C_{\mathrm{sen}}^q(k)+\beta\Delta_k\big)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Target scheduling | $\alpha_q(k)$ | binary with $\sum_q\alpha_q(k)=1$ | Target selected in slot $k$ |
+| Sensing repetitions | $\omega_q(k)$ | integer sensing count | Number of radar detections for target $q$ |
+| Transmit powers | $P_{\mathrm{rad}}^q(k),P_{\mathrm{com}}^c(k)$ | continuous, average-power bounded | Radar and communication power |
+| CPU frequency | $f_c(k)$ | continuous in $[0,f_c^{\max}]$ | UAV calculation frequency |
+| Motion parameters | $s_u(k),v(k)$ | continuous trajectory and velocity | Closed-cycle UAV position and motion |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Radar SNR and successful-sensing probability meet thresholds, $\Gamma_{\mathrm{rad}}^q(k)\geq\Gamma_{\min}$ and $\mathcal P_q(k)\geq\mathcal P_{\min}$. |
+| C2 | Sensing, calculation, and communication fit one slot, $\omega_q(k)\varepsilon_0+\kappa_k+\tau_k\leq\delta_t$. |
+| C3 | Processing and transmission capacities cover sensed data, $C_q(k)\geq\omega_q(k)C_{\mathrm{sen}}^q(k)$ and $C_{\mathrm{com}}^c(k)\geq C_{\mathrm{sen}}^q(k)$. |
+| C4 | Average radar and communication powers, CPU frequency, and total UAV energy stay within their bounds. |
+| C5 | The flight cycle closes with $s_u(1)=s_u(K)$ and $v(1)=v(K)$, while speed and acceleration obey kinematic limits. |
+
+**Algorithm**: Alternate five blocks for scheduling, sensing times, transmit powers, CPU frequency, and motion; solve them with dual, subgradient, contraction, closed-form, and SCA updates until the weighted objective converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] proposed an energy-constrained UAV integrated sensing, calculation, and communication model that measures sensing amount with radar estimation rate and freshness with same-slot AoI. The mixed-integer formulation jointly controls target scheduling, repeated sensing, radar and communication powers, CPU frequency, and a closed-cycle trajectory under SNR, success-probability, timing, capacity, kinematic, and energy constraints. An alternating optimization procedure iterates five subproblems using duality, subgradient and contraction updates, closed-form powers, and SCA motion bounds. Simulations show the weighted-sum scheme retains more sensing data than AoI-only optimization while keeping AoI below sensing-data-only optimization. The results expose the expected altitude, power, and onboard-energy tradeoffs between sensing volume and freshness.
 
 ## Problem and system model
 

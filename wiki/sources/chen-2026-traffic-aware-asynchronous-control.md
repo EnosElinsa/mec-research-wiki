@@ -16,7 +16,8 @@ related:
   - "[[wang-2026-robust-multiuav-jtcra]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Traffic-Aware Asynchronous Trajectory Planning and Scheduling in UAV-Assisted Wireless Networks With Heterogeneous Traffic Demands
@@ -28,6 +29,41 @@ Chen, C., Gu, B., Lyu, B., Gong, S., Liu, Z., & Fang, Y. (2026). *Traffic-Aware 
 ## TL;DR
 
 Clusters source devices from spatial position and directional traffic patterns, then uses a GNN/GRU-enhanced PPO controller to coordinate multiple UAVs' trajectories, NOMA access, inter-UAV relaying, and asynchronous time division among flight, collection, relay, and delivery modes.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: In a post-disaster M2M network without direct device-to-device links, multiple fixed-altitude UAVs collect directional sensing flows from source user devices and deliver them to target devices. Each UAV asynchronously divides a slot into flight, NOMA uplink sensing, UAV-to-UAV relaying, and NOMA downlink transmission while managing interference and data buffers.
+
+**Problem & objective**: Problem (13) is a mixed-integer max-min throughput problem, $\max_{\ell,\tau,\Phi}\min_{k\in\mathcal K}\frac{1}{T}\sum_{t=0}^{T-1}\mathbb E[\Re^k(t)]$, subject to the time-allocation, mobility, access, SINR, and queue relations in (1)-(12).
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\ell_i(t)$ | Continuous 3D position at fixed altitude | Sets UAV $i$'s position and implicit speed |
+| Asynchronous mode times | $\tau_{i,f}(t),\tau_{i,s}(t),\tau_{i,r}(t),\tau_{i,d}(t)$ | Continuous, nonnegative | Allocates flight, sensing, relay, and downlink time |
+| Device access and network formation | $\Phi=\{\phi_{m,i}^{k}(t)\}$ | Binary selections | Schedules source and target devices and relay links |
+| Cluster and peer choices | $c_i(t),\{\phi_{i,j}(t)\}$ | Discrete | Selects a traffic cluster and at most one relay peer |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Slot budget: $\tau_{i,f}+\tau_{i,s}+\tau_{i,r}+\tau_{i,d}\leq\delta$ |
+| C2 | Collision avoidance: $\lVert\ell_i(t)-\ell_j(t)\rVert\geq d_{\min}$ |
+| C3 | Mobility: $\lVert\ell_i(t+1)-\ell_i(t)\rVert\leq v_{\max}\tau_{i,f}$ |
+| C4 | Single association or relay: $\sum_i\phi_{m,i}^{k}(t)\leq1$ and $\sum_{j\neq i}\phi_{i,j}(t)\leq1$ |
+| C5 | Uplink, relay, and downlink decoding satisfy $\gamma_{m,i}^{\tau}\geq\gamma_{\mathrm{th}}$, $\gamma_{i,j}^{\tau}\geq\gamma_{\mathrm{th}}$, and the corresponding downlink SINR threshold |
+
+**Algorithm**: Use STGAN to cluster devices from geographic and directional-flow features, build a dynamic UAV-cluster graph, fuse GCN features and GRU temporal state with the raw observation, and train a PPO actor with hybrid discrete scheduling and continuous trajectory/time heads using a soft-min throughput reward plus trajectory-flow similarity and collision penalties.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied max-min traffic-flow throughput in a post-disaster UAV-assisted M2M network with heterogeneous directional demands and no direct ground links. They jointly controlled UAV trajectories, asynchronous flight and transmission times, NOMA device scheduling, and UAV-to-UAV relay formation under mobility, collision, decoding, and buffer constraints. Their Cluster-AC pipeline first used STGAN for spatial-temporal traffic clustering and then applied a dynamic-graph and GRU enhanced PPO controller. Simulations reported convergence for the clustered controllers while both non-clustered variants failed to converge, and Cluster-AC achieved the highest cumulative throughput among the compared schemes with relay use varying between 25% and 50% of slots over a reported 30-slot horizon.
 
 ## System model
 

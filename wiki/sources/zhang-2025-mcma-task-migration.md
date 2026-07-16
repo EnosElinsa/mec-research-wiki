@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-Agent Deep Reinforcement Learning With Trajectory Prediction for Task Migration-Assisted Computation Offloading"
 authors: ["Xinyi Zhang", "Chunyang Wang", "Yanmin Zhu", "Jian Cao", "Tong Liu"]
 year: 2025
@@ -19,7 +20,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-28
-updated: 2026-06-07
+updated: 2026-07-16
 ---
 
 # Multi-Agent DRL With Trajectory Prediction for Task Migration-Assisted Computation Offloading
@@ -39,6 +40,39 @@ The solution stack — **MCMA** (Mobility-aware Cooperative Multi-Agent DRL):
 3. **MA-DRL** with [[centralized-training-decentralized-execution|CTDE]] — each edge server is an agent with partial observation, sharing global info during training only. The framework is base-model-agnostic: beyond the adopted MAPPO + MADDPG, the paper notes it also admits MADDQN, Qmix, MATD3, and COMA backbones.
 
 Evaluated on synthetic (Grid3×3, Net4) and realistic (Pasubio, Aurelio Costa) traffic traces, with up to 32k vehicles and 18 servers.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple MEC servers collocated with base stations cover non-overlapping road intersections. Mobile vehicles execute tasks locally, offload them to the serving server, or migrate them through multi-hop links between base stations while sharing wireless bandwidth and edge computing capacity.
+
+**Problem & objective**: The NP-hard constrained sequential problem minimizes total task completion latency, $\min_{\mathbf a^o,\mathbf a^{r_b},\mathbf a^{r_c}}\sum_{t=1}^{T}L^t$, and is represented as a multi-agent POMDP.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Execution and migration choice | $a_{i,j,k}^{o,t}$ | binary, $\{0,1\}$ | Select local execution, the serving server, or remote server $k$ for vehicle task $(i,j)$ |
+| Bandwidth share | $a_{i,j}^{r_b,t}$ | continuous, $(0,1]$ | Fraction of serving-BS bandwidth allocated to the task |
+| Computing share | $a_{i,j}^{r_c,t}$ | continuous, $(0,1]$ | Fraction of destination-server computing capacity allocated to the task |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task has exactly one execution choice: $\sum_{k=1}^{N+1}a_{i,j,k}^{o,t}=1$. |
+| C2 | Resource shares are bounded: $a_{i,j}^{r_b,t},a_{i,j}^{r_c,t}\in(0,1]$. |
+| C3 | Allocated radio bandwidth cannot exceed the serving BS budget: $\sum_j B_{i,j}^{t}\leq B_i$. |
+| C4 | Computing allocated to tasks placed at server $k$ cannot exceed $f_k$. |
+
+**Algorithm**: Predict multi-step vehicle trajectories centrally with Informer, feed the forecasts to the servers, use MAPPO for discrete offloading and migration, use MADDPG for continuous bandwidth and computing allocation, and train both stages cooperatively under CTDE.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] investigated task migration-assisted computation offloading in multi-edge vehicular networks where high mobility creates spatio-temporal load imbalances. They formulated joint computation offloading, task migration, and resource allocation as a POMDP that minimizes total task completion latency under one-choice, bandwidth, and computing-capacity constraints. Their MCMA approach uses an Informer-based multi-step vehicular trajectory prediction module, followed by a two-stage cooperative multi-agent decision framework with MAPPO for offloading and migration and MADDPG for bandwidth and computing-resource allocation. Experiments on synthetic and realistic traffic scenarios show that MCMA consistently attains lower latency and task failure rate than the evaluated heuristic and DRL-based methods while balancing edge and vehicle resource utilization.
 
 ## Problem framing
 
@@ -86,4 +120,4 @@ Both stages are policy-gradient/actor-critic (no value-iteration / Q-style stage
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/full.md`
+- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md`

@@ -5,13 +5,14 @@ authors: ["Mohammad Mozaffari", "Walid Saad", "Mehdi Bennis", "Merouane Debbah"]
 year: 2015
 url: ""
 venue: "IEEE Global Communications Conference (IEEE GLOBECOM)"
+modeling_card: required
 tags: [source, uav-deployment, drone-cell, uav-base-station, coverage-optimization, air-to-ground-channel-model]
 related:
   - "[[drone-cell-3d-placement]]"
   - "[[air-to-ground-channel-model]]"
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
 created: 2026-06-04
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # Drone Small Cells in the Clouds: Design, Deployment and Performance Analysis
@@ -23,6 +24,40 @@ Mozaffari, M., Saad, W., Bennis, M., & Debbah, M. (2015). *Drone Small Cells in 
 ## TL;DR
 
 Derives the **optimal altitude** for a single drone small cell (DSC) that maximizes ground coverage or minimizes required transmit power using the standard air-to-ground (LoS/NLoS) channel model. Extends to two DSCs, finding the **optimal inter-DSC distance** that maximizes combined coverage in both interference-free and full-interference scenarios. Proves analytically that the path-loss function has exactly one local minimum as a function of altitude, so the optimum is unique and efficiently findable.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One or two low-altitude drone small cells provide downlink coverage to ground users in a bounded target area. Air-to-ground links follow a probabilistic LoS/NLoS mean-pathloss model; a single-cell link is noise limited, while the two-cell model treats both interference-free and full-interference operation.
+
+**Problem & objective**: For one DSC, choose altitude $h$ to maximize coverage radius $R(h)$ at fixed transmit power, or equivalently minimize $P_t$ for a required radius $R_c$. For two DSCs, choose feasible altitudes and separation $D$ to maximize their combined covered area.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| DSC altitude | $h$ | continuous, $0<h\le h_{\max}$ | Altitude controlling elevation angle, LoS probability, and pathloss |
+| Transmit power | $P_t$ | continuous, positive | Power required to meet the coverage threshold |
+| DSC ground position | $\mathbf r_j$ | continuous 2D vector | Horizontal placement of DSC $j$ in the target area |
+| DSC separation | $D$ | continuous, nonnegative | Distance between the two DSC ground projections |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| 6 | A ground point is covered when $\gamma(R,h)=P_r/N\ge\gamma_{\mathrm{th}}$ |
+| Altitude | The feasible single-DSC solution is $\hat h_{\mathrm{opt}}=\min\{h_{\max},h_{\mathrm{opt}}\}$ |
+| 11 | In the interference-free two-DSC case, both coverage disks remain inside the target rectangle and are placed to minimize overlap |
+| Interference case | Each covered point must satisfy the DSC downlink SINR threshold while $D$ remains compatible with the target area |
+
+**Algorithm**: Solve the scalar stationarity equation for $\mu_{\mathrm{opt}}=h_{\mathrm{opt}}/R$, apply the altitude cap, and compute the minimum required power from the coverage-boundary pathloss. For two cells, place both DSCs at their feasible optimum altitudes and use the geometric coverage formulas in the interference-free case; with full interference, evaluate the SINR-based coverage as a function of $D$ and select the maximizing separation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mozaffari et al. [x] studied altitude and placement optimization for drone small cells providing downlink coverage over a bounded ground region. They derived the single-DSC altitude that maximizes coverage radius at fixed power, or minimizes transmit power for a prescribed radius, under a probabilistic LoS/NLoS air-to-ground model. Their analysis established that the pathloss has only one local minimum with respect to elevation angle, which makes the feasible altitude optimum unique after applying the platform-height limit. For two DSCs, they characterized the coverage-maximizing separation in both interference-free and full-interference settings and showed numerically that the preferred separation scales with the target-area size.
 
 ## Problem framing
 

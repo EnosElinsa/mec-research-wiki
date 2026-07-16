@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Distance-Attention Augmented Reinforcement Learning: A Robust Approach for 3D Cooperative UAV Navigation in Dense Urban Environments"
 authors: ["Lijuan Zhang", "Hang Lin", "Shihong Zhao", "Fei Wang", "Chao Yan", "Pan Gao"]
 year: 2026
@@ -14,7 +15,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Distance-Attention Augmented Reinforcement Learning: A Robust Approach for 3D Cooperative UAV Navigation in Dense Urban Environments
@@ -26,6 +27,40 @@ Zhang, L., Lin, H., Zhao, S., Wang, F., Yan, C., & Gao, P. (2026). *Distance-Att
 ## TL;DR
 
 Extends a MADDPG-style CTDE controller for continuous 3-D cooperative navigation with vertical-layer LiDAR attention, historical observation queues, and a critic that fuses current joint features with global history. Five dense reward terms trade route efficiency against obstacle/UAV collision avoidance and communication connectivity.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs use three-layer, 16-direction LiDAR and nearby-UAV messages to navigate from arbitrary starts to a target area through dense three-dimensional urban obstacles. Each agent acts from partial observations while a centralized critic uses joint and historical information during training.
+
+**Problem & objective**: The cooperative POMDP learns policies that maximize discounted return, $\max_{\pi}\mathbb E_{\pi}[\sum_t\gamma^t\mathcal R_i(t)]$, where the reward combines target progress, obstacle and inter-UAV safety, communication connectivity, and travel time.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Horizontal acceleration | $a^i$ | continuous, normalized to $[-1,1]$ | Change in forward speed of UAV $i$ |
+| Yaw rate | $\phi^i$ | continuous, normalized to $[-1,1]$ | Horizontal turning control |
+| Vertical acceleration | $\kappa^i$ | continuous, normalized to $[-1,1]$ | Climb or descent acceleration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The normalized control vector satisfies $\mathbf u_{\mathrm{norm}}^i\in[-1,1]^3$. |
+| C2 | Obstacle proximity is penalized through $r_2^i=\sigma(d^i/D_r-1)$ using the minimum LiDAR range. |
+| C3 | Inter-UAV separation below $d_{\mathrm{nei}}$ activates the collision penalty $r_3^i$. |
+| C4 | Losing all neighbors beyond communication range $r_{\mathrm{com}}$ activates the connectivity penalty $r_4^i$. |
+| C5 | Target deviation beyond $D_0$ and each additional movement step are penalized. |
+
+**Algorithm**: Maintain historical observation queues, weight vertical LiDAR layers in the distance-attention actor, fuse current joint state-action features with global history in the critic, collect replay transitions under CTDE, and update deterministic actors, critics, and target networks off policy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied cooperative three-dimensional UAV navigation through dense urban environments as a partially observable multi-agent control problem. They defined continuous horizontal-acceleration, yaw-rate, and vertical-acceleration actions and a non-sparse reward that combines target approach, obstacle avoidance, inter-UAV collision avoidance, connectivity maintenance, and a time-step cost. Their DA2RL method couples a distance-attention actor for layered LiDAR observations with a historical-feature-flow critic and trains the policies with historical queues and centralized action-value information. Across 200 random tests in the training environment, the reported results include a 94.6% success rate, 5.17% collision rate, 0.908 velocity consistency, and 985.3 m average path length, with convergence within about 400 episodes.
 
 ## Problem
 

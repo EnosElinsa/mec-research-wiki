@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Optimization of Secure Computation Efficiency in UAV-Enabled RIS-Assisted MEC-IoT Networks With Aerial and Ground Eavesdroppers"
 authors: ["Emmanouel T. Michailidis", "Maria-Garyfallio Volakaki", "Nikolaos I. Miridakis", "Demosthenes Vouyioukas"]
 year: 2024
@@ -16,7 +17,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[task-offloading]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Optimization of Secure Computation Efficiency in UAV-Enabled RIS-Assisted MEC-IoT Networks With Aerial and Ground Eavesdroppers
@@ -28,6 +29,41 @@ Michailidis, E. T., Volakaki, M.-G., Miridakis, N. I., & Vouyioukas, D. (2024). 
 ## TL;DR
 
 A security-aware **partial computation offloading** framework for an MEC-IoT network with both **aerial eavesdroppers (AEs)** and **ground eavesdroppers (GEs)**. Ground nodes (GNs) compute partly locally and offload the rest to a UAV that acts as **both an aerial MEC server and a decode-and-forward relay** to a MEC-enabled access point (AP); a **RIS** near the AP improves the UAV→AP link. The paper derives **secrecy-outage-probability (SOP)** expressions over Nakagami-m fading and maximizes the **minimum secure computation efficiency (SCE)** by jointly optimizing transmit-power allocation, time-slot scheduling, task allocation, and RIS phase shifts, via Dinkelbach + BCD + bisection methods.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ battery-powered ground nodes partially compute tasks locally and use TDMA to offload the remainder to one UAV, which serves as an aerial MEC server and half-duplex decode-and-forward relay to a grid-powered MEC access point through a nearby RIS. Independent non-identical Nakagami-$m$ links include both colluding aerial eavesdroppers and ground eavesdroppers, and the UAV follows a predetermined straight-line path.
+
+**Problem & objective**: Problem P1, a non-convex max-min fractional program, maximizes the minimum secure computation efficiency, $\max_{\mathbf P,\boldsymbol\tau,\mathbf B,\boldsymbol\varphi}\min_k\eta_{\mathrm{SCE},k}$, measured as securely processed bits per weighted energy consumption.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading powers | $\mathbf P$ | continuous, bounded nonnegative | Ground-node and UAV transmit powers |
+| Offloading times | $\boldsymbol\tau$ | continuous, slot-bounded | GN-to-UAV and UAV-to-AP transmission durations |
+| Task allocation | $\mathbf B$ | continuous, nonnegative bits | Bits computed locally, at the UAV, and at the AP |
+| RIS phases | $\boldsymbol\varphi$ | continuous, $[0,2\pi]$ | RIS phase alignment for the AP and ground-eavesdropper links |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 38b-38c | $b_{k,l}[n]+b_{k,U}[n]+b_{k,A}[n]\ge b_{k,\min}[n]$ and every allocated bit count is nonnegative |
+| 38d-38e | GN and UAV offloading powers remain within their respective maxima |
+| 38f-38h | Transmission and computation durations fit the slot and per-user time shares |
+| 38i-38j | Allocated UAV/AP bits do not exceed the GN-to-UAV and UAV-to-AP offloading capacities |
+| 38k | RIS phase variables satisfy $0\le\varphi\le2\pi$ |
+
+**Algorithm**: Derive exact and asymptotic secrecy-outage probabilities → apply Dinkelbach transformation to the max-min fractional objective → use block coordinate descent to separate power, time, task, and phase blocks → solve the scalar coupled updates by bisection → iterate to convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Michailidis et al. [x] studied security-aware computation offloading in a UAV-enabled RIS-assisted MEC-IoT network with aerial and ground eavesdroppers. They derived exact, closed-form, and asymptotic secrecy-outage-probability expressions under independent non-identical Nakagami-$m$ fading. They formulated a non-convex max-min problem that maximizes secure computation efficiency by jointly optimizing transmit-power allocation, time-slot scheduling, task allocation, and RIS phase shifts. Their iterative solution combines Dinkelbach, block coordinate descent, bisection, and the derived outage expressions. Numerical results show that secure computation efficiency increases with the number of RIS elements and approaches saturation in the evaluated settings, while higher computation demand or additional eavesdroppers reduces the achieved efficiency.
 
 ## Problem framing
 

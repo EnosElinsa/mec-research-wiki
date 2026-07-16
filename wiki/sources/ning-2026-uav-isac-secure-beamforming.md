@@ -17,7 +17,8 @@ related:
   - "[[xiaojie-wang]]"
   - "[[lei-guo]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Trajectory and Beamforming Optimization for UAV-ISAC Secure Communications
@@ -29,6 +30,46 @@ Ning, Z., Zhang, Y., Wang, X., Guo, L., Niyato, D., & Zhang, Y. (2026). Joint tr
 ## TL;DR
 
 One multi-antenna UAV divides each slot between sensing passive ground eavesdroppers and securely serving one legitimate user. A triple-layer penalty-SCA/SCA/SDR framework jointly controls scheduling, sensing time, 3-D trajectory, and communication/sensing beamformers under CRB-derived channel uncertainty.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna UAV serves $K$ legitimate ground users while sensing and jamming $M$ passive eavesdroppers. Slot $i$ is split into sensing fraction $\eta[i]$ and communication fraction $1-\eta[i]$; legitimate CSI is known and eavesdropper CSI has a CRB-derived bounded error.
+
+**Problem & objective**: Maximize the average worst-case secrecy rate $R_{\mathrm{sec}}=\frac{1}{N}\sum_i\left[R_k^C[i]-\max_mR_m^E[i]\right]^+$ over scheduling, sensing time, trajectory, and communication and sensing beams.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| User scheduling | $u_k[i]$ | binary | Whether user $k$ is served in slot $i$ |
+| Sensing fraction | $\eta[i]$ | continuous, $0\le\eta[i]\le1$ | Sensing duration ratio |
+| UAV trajectory | $\mathbf q^B[i],z^B[i]$ | continuous 3-D | Horizontal position and altitude |
+| Communication beam | $\mathbf w_k[i]$ | complex vector | Information beam for user $k$ |
+| Sensing/jamming beam | $\mathbf r_m[i]$ | complex vector | Beam aimed at eavesdropper $m$ |
+| Lifted beam matrices | $\mathbf W_k[i],\mathbf R_m[i]$ | positive semidefinite relaxations | SDR forms of beam outer products |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Per-slot transmit power: $\sum_k u_k[i]\|\mathbf w_k[i]\|^2+\sum_m\|\mathbf r_m[i]\|^2\le P^{\max}$ |
+| C2 | Sensing CRB bounds: $\xi_m[i]\le\xi^{\max}$ and $\psi_m[i]\le\psi^{\max}$ |
+| C3 | One scheduled user: $u_k[i]\in\{0,1\}$ and $\sum_k u_k[i]\le1$ |
+| C4 | Legitimate-user QoS: $R_k^C[i]\ge R_C^{\min}$ |
+| C5 | Eavesdropper leakage bound: $R_m^E[i]\le R_E^{\max}$ |
+| C6 | Horizontal and vertical speed limits: $\lVert\mathbf q^B[i+1]-\mathbf q^B[i]\rVert\le V_L^{\max}\tau$ and $\lvert z^B[i+1]-z^B[i]\rvert\le V_Z^{\max}\tau$ |
+| C7 | Altitude band: $z^{\min}\le z^B[i]\le z^{\max}$ |
+| C8 | Per-slot UAV energy: $E^I[i]+E^F[i]\le E^{\max}$ |
+
+**Algorithm**: Alternate three layers: penalty-based SCA for binary scheduling and sensing time, SCA for the 3-D trajectory, and robust beamforming with matrix lifting, the S-procedure for bounded channel uncertainty, SDR, and iterative rank-one recovery.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ning et al. [x] formulate secure UAV-ISAC design with one multi-antenna UAV, legitimate users, and passive eavesdroppers observed through radar sensing. The problem maximizes average worst-case secrecy rate while jointly optimizing user scheduling, sensing time, trajectory, information beams, and sensing or jamming beams under power, CRB, QoS, speed, altitude, and energy constraints. Their solution alternates penalty SCA for scheduling and sensing time, SCA for trajectory, and robust SDR beamforming with bounded channel uncertainty. In a 500 m square simulation, the secrecy rate rises from about 2.3 to 5.0 bit/s/Hz in the first iterations and stabilizes after roughly six iterations, while lower channel-error bounds outperform larger-error settings.
 
 ## Problem and system model
 

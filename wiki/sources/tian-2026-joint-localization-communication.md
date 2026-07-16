@@ -5,6 +5,7 @@ authors: ["Zeyu Tian", "Lianming Xu", "Chen Xu", "Zheng Chang", "Li Wang", "Zhu 
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3656750"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 11998-12015"
+modeling_card: required
 tags: [source, emergency-network, joint-localization-communication, aoa-localization, cooperative-beamforming, ddqn, energy-efficiency, uav-trajectory]
 related:
   - "[[joint-localization-and-communication]]"
@@ -21,7 +22,7 @@ related:
   - "[[zheng-chang]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Joint Localization and Communication via Air-Ground Collaboration in UAV-Assisted Emergency Systems
@@ -33,6 +34,41 @@ Tian, Z., Xu, L., Xu, C., Chang, Z., Wang, L., & Han, Z. (2026). *Energy-Efficie
 ## TL;DR
 
 Pairs one collaborative UAV with one ground rescuer to localize a person from four AOA measurements and then steer two-node CoMP downlink beams toward that estimate. SYNCORE uses DDQN to adjust UAV position, movement time, and UAV/rescuer powers against a normalized communication-localization-energy objective.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One collaborative UAV and one ground rescuer jointly localize a person from four angle-of-arrival estimates and then transmit through two-node CoMP beamforming. Every slot contains sensing, UAV repositioning, localization, and communication, with radio, propulsion, and hovering energy included.
+
+**Problem & objective**: Problem (28) maximizes $T^{-1}\sum_t E_{EER}(t)$, the average energy-efficiency ratio that combines normalized communication volume and localization accuracy per unit total energy, over UAV position, beamforming, transmit powers, and localization-phase duration.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf l_u(t)$ | continuous 3D coordinate | Collaborative UAV location and localization geometry |
+| Beamformers | $\mathbf w_u(t),\mathbf w_r(t)$ | complex unit-norm vectors | CoMP beams used by the UAV and rescuer |
+| Transmit powers | $p_u(t),p_r(t)$ | continuous, $(0,p_{\max}]$ | Communication power of the UAV and rescuer |
+| Localization duration | $q(t)=\delta_{t_l}$ | discrete or bounded time choice | Time reserved for sensing, movement, and localization |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 28a | Localization-phase duration does not exceed slot duration |
+| 28b-28d | UAV altitude and horizontal and vertical speeds remain below their limits |
+| 28f | Total mission energy satisfies $\sum_tE_{total}(t)\leq E_{all}$ |
+| 28g-28h | UAV and rescuer transmit powers lie in $(0,p_{\max}]$ |
+| 28i-28j | Both CoMP beamforming vectors have unit norm |
+
+**Algorithm**: ESPRIT estimates azimuth and elevation from shifted planar-array subspaces, least squares reconstructs the person's position, and geometry-derived steering vectors set the CoMP beams. SYNCORE then uses DDQN with replay and separate online and target networks to select UAV movement, movement time, and both powers from the current geometry and localization state.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tian et al. [x] considered joint localization and communication for an emergency system containing one collaborative UAV, one ground rescuer, and one person to be rescued. Four angle-of-arrival estimates feed an ESPRIT and least-squares localization pipeline, after which geometry-derived CoMP beams support downlink communication. Their objective maximizes a normalized communication and localization utility per unit energy by controlling UAV position, localization duration, transmit powers, and beamforming under flight, energy, power, and unit-norm constraints. The SYNCORE controller uses double deep Q-learning to update movement, time, and power decisions while localization and beamforming modules evaluate each action. Simulations report better communication, localization, and energy efficiency than the evaluated learning, heuristic, and non-synergistic baselines and show that larger localization errors sharply reduce received data through beamforming mismatch.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Active-Passive Cascaded RIS-Aided Receiver Design for Jamming Nulling and Signal Enhancing"
 authors: ["Yifu Sun", "Yonggang Zhu", "Kang An", "Zhi Lin", "Cheng Li", "Derrick Wing Kwan Ng", "Jiangzhou Wang"]
 year: 2024
@@ -15,7 +16,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[sun-2024-mfris-semantic-antijamming]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Active-Passive Cascaded RIS-Aided Receiver Design for Jamming Nulling and Signal Enhancing
@@ -27,6 +28,41 @@ Sun, Y., Zhu, Y., An, K., Lin, Z., Li, C., Ng, D. W. K., & Wang, J. (2024). *Act
 ## TL;DR
 
 Proposes an **active-passive cascaded [[intelligent-reflecting-surface|RIS]]-aided receiver architecture** so that a large-scale antenna array can be deployed cheaply at the user side for anti-jamming communications. A passive RIS layer (N_P units) is cascaded with an [[active-ris|active RIS]] layer (N_A units), stacked in front of the receive antennas. Under imperfect (angular) jammer CSI, the paper formulates a **worst-case achievable-rate maximization** problem and solves the non-convex/NP-hard design with a low-complexity framework yielding semi-closed-form solutions. The authors state this is the first work to exploit an active-passive cascaded RIS at the user side for receiver design.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A base station transmits to a user whose receiver is built from a passive RIS layer cascaded with an active RIS layer and a digital decoder. Multiple jammers have imperfect angular CSI, active elements add dynamic noise and amplification power, and the design targets robust anti-jamming reception.
+
+**Problem & objective**: A worst-case non-convex rate-maximization problem maximizes the minimum achievable rate, $\max\min_{\boldsymbol\theta\in\mathcal U}R(\boldsymbol\theta)$, over BS precoding, active/passive RIS coefficients, and receive combining under angular uncertainty.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS precoder | $\mathbf w$ | complex continuous, power-bounded | Downlink signal beamformer |
+| Passive RIS phases | $\boldsymbol\phi_P$ | unit-modulus complex vector | Phase-only coefficients of the passive layer |
+| Active RIS coefficients | $\boldsymbol\phi_A$ | complex amplitude and phase | Gain and phase of active elements |
+| Receive combiner | $\mathbf u$ | complex continuous vector | Digital decoding beamformer |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | BS transmit power satisfies its budget |
+| C2 | Passive RIS coefficients have unit modulus |
+| C3 | Active RIS gains satisfy amplifier-power and dynamic-noise limits |
+| C4 | The robust rate holds for every jammer angle in the uncertainty set $\mathcal U$ |
+| C5 | Receive-combiner normalization and cascaded channel dimensions remain feasible |
+
+**Algorithm**: Use Lagrange duality and Pareto optimization for the BS precoder → optimize active/passive RIS coefficients and combiner through alternating closed-form or semi-closed-form updates → apply robust angle discretization/uncertainty handling → iterate until worst-case rate converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied anti-jamming receiver design with a passive RIS cascaded with an active RIS at the user side. They formulated a worst-case achievable-rate maximization problem under imperfect angular jammer CSI, jointly designing the BS precoder, passive phases, active gains and phases, and receive combiner. Their low-complexity alternating framework uses Lagrange duality and Pareto optimization for the BS precoder and semi-closed-form updates for the cascaded RIS receiver. The analysis derives receive-power and asymptotic-SINR scaling laws for the two-layer architecture. Numerical results report improved robust rate and jamming suppression for the active-passive receiver over the evaluated single-layer and conventional receiver designs.
 
 ## Problem framing
 

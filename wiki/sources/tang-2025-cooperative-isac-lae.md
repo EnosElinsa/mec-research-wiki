@@ -5,6 +5,7 @@ authors: ["Jun Tang", "Yiming Yu", "Cunhua Pan", "Hong Ren", "Dongming Wang", "J
 year: 2025
 url: "https://doi.org/10.1109/TWC.2025.3542399"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: not_applicable
 tags: [source, integrated-sensing-and-communication, low-altitude-intelligent-network, wireless-perception, cooperative-sensing, tensor-decomposition, data-fusion]
 related:
   - "[[integrated-sensing-and-communication]]"
@@ -19,7 +20,7 @@ related:
   - "[[dongming-wang]]"
   - "[[xiaohu-you]]"
 created: 2026-07-06
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Cooperative ISAC-Empowered Low-Altitude Economy
@@ -31,6 +32,12 @@ Tang, J., Yu, Y., Pan, C., Ren, H., Wang, D., Wang, J., & You, X. (2025). *Coope
 ## TL;DR
 
 Develops a cooperative ISAC sensing scheme for low-altitude UAV parameter estimation. Each base station first performs monostatic parameter estimation with a tensor-decomposition model; then multiple base stations fuse their estimates through false-removing MST association, Pareto-optimal position fusion, and residual-weighted velocity estimation. The scheme is also extended to a dual-polarized tensor model.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tang et al. [x] developed a cooperative ISAC pipeline for sensing multiple low-altitude UAVs with multiple multi-antenna base stations. Their monostatic stage uses spatially smoothed tensor decomposition and Vandermonde factor structure to estimate angle of arrival, range, radial velocity, and channel coefficients. A false-removing minimum-spanning-tree procedure associates estimates across base stations while excluding isolated false detections. Pareto-based fusion estimates UAV positions, and residual-weighted least squares recovers three-dimensional velocities from radial measurements. Simulations show lower estimation error than the evaluated monostatic and cooperative baselines and show further position and velocity improvements as more base stations participate.
 
 ## Problem framing
 

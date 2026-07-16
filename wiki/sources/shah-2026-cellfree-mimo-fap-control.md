@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Optimization of UAV Trajectory, Transmit Power, and User Association in Aerial-Terrestrial Cell-Free Massive MIMO Network"
 authors: ["Syed Ammad Ali Shah", "Xavier N. Fernando", "Rasha Kashef"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[csi-estimation-error]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Optimization of UAV Trajectory, Transmit Power, and User Association in Aerial-Terrestrial Cell-Free Massive MIMO Network
@@ -29,6 +30,41 @@ Shah, S. A. A., Fernando, X. N., & Kashef, R. (2026). *Joint Optimization of UAV
 ## TL;DR
 
 Combines three sequential modules for user-centric aerial cell-free massive MIMO: accelerated proximal-gradient updates for flying-access-point (FAP) trajectories and powers, a genetic algorithm for many-to-many user association and FAP deactivation, and interference-aware DBSCAN clustering for pilot reuse. The pipeline improves lower-tail simulated throughput, but it is a heuristic decomposition rather than a globally optimal joint solution.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A central processor coordinates flying access points in a user-centric aerial cell-free massive MIMO network, where mobile users may connect to multiple FAPs and pilot reuse creates channel-estimation interference.
+
+**Problem & objective**: The joint throughput program maximizes served-user throughput, $\max_{\vartheta,s,\mathcal U}\sum_{m\in\mathcal M}\mathcal R_m(\vartheta)$, while seeking fewer active FAPs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmit power coefficients | $\vartheta$ | continuous, bounded | Pilot and data power control |
+| FAP trajectory | $s_k(t)$ | continuous, flight-region bounded | Three-dimensional FAP position |
+| User association | $\mathcal U_{k,m}$ | binary | FAP $k$ serves user $m$ |
+| Pilot assignment | $\gamma_{m,k}$ | discrete | Pilot reuse and contamination pattern |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user meets its throughput requirement: $\sum_k\mathcal R_m(\vartheta)\mathcal U_{k,m}\geq\mathcal R_m^{req}$. |
+| C2 | Every user has at least one serving FAP: $\sum_ku_{k,m}\geq1$. |
+| C3 | FAP load is bounded: $\sum_ku_{k,m}\leq\gamma_k^{max}$. |
+| C4 | FAP power remains bounded: $\vartheta_{m,k}^{allocated}\leq\vartheta_{max}$. |
+| C5 | FAP trajectories stay inside horizontal and vertical flight boundaries. |
+
+**Algorithm**: Sequentially apply accelerated proximal-gradient updates for power and trajectories, a genetic algorithm for association and FAP deactivation, and interference-aware DBSCAN for pilot assignment and conflict repair.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Shah et al. [x] formulate user-centric aerial cell-free massive MIMO as throughput maximization with power, trajectory, association, and pilot-reuse decisions. The model enforces user-rate, serving-FAP, FAP-load, power, and flight-region constraints while reducing active FAP deployment and pilot contamination. An accelerated proximal-gradient stage handles power and trajectories, followed by genetic association search and interference-aware DBSCAN pilot assignment. The combined pipeline reports higher lower-tail throughput and a 16.4% gain over the strongest displayed comparison in the parsed results.
 
 ## Problem
 

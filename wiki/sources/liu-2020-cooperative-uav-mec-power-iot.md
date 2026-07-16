@@ -16,7 +16,8 @@ related:
   - "[[seid-2021-madrl-multiuav-iot-edge]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Cooperative Offloading and Resource Management for UAV-Enabled Mobile Edge Computing in Power IoT System
@@ -28,6 +29,39 @@ Liu, Y., Xie, S., & Zhang, Y. (2020). *Cooperative Offloading and Resource Manag
 ## TL;DR
 
 A **cooperative UAV-enabled MEC** network for the power Internet of Things, where UAVs act as edge servers that not only serve local devices in their own small-cell but can **help neighboring UAVs** execute computation tasks. A cooperative offloading scheme (with interference mitigation from UAVs to devices) maximizes the network's long-term utility over offloading decisions and resource-management policies. Because device demands and channels are random and time-varying, the problem is cast as a **semi-Markov process** and solved with deep-reinforcement-learning algorithms in both **centralized** and **distributed** frameworks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A time-slotted cooperative UEC network has ground devices in UAV small-cells, hovering UAV edge servers, and a BS or edge server; a task can be processed locally, by a neighboring UAV, or at the BS.
+
+**Problem & objective**: Choose a collaboration mode and communication/computation allocations to maximize long-term network utility, $\max_{\beta,\mathbf f,\Phi}\lim_{T\to\infty}\frac{1}{T}\sum_{t=1}^{T}\sum_{k=1}^{K}U_k(t)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Collaboration mode | $\beta_k(t)$ | binary in $\{0,1\}$ | Whether UAV $k$ provides cooperative service or requests help |
+| Computing rates | $\mathbf f_k(t)$ | continuous, nonnegative and capacity-bounded | CPU rates assigned to local, cooperative-UAV, and BS execution |
+| Offloading durations | $\Phi_k(t)$ | continuous, nonnegative | Transmission durations for device, UAV, and BS paths |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | The communication durations fit one slot, $\sum\tau_{n_k,k}+\sum\tau_{k,j}+\tau_k^{BS}\leq\tau$. |
+| C2 | Every device demand is offloaded within available link rates, as in the communication-capacity inequalities. |
+| C3 | Executed bits fit local and cooperative computing capacities, including $\sum d_{n_k}\leq\sum\tau f$. |
+| C4 | The collaboration decision remains discrete, $\beta_k(t)\in\{0,1\}$. |
+
+**Algorithm**: Model stochastic demand and channel states as a semi-Markov process; solve centrally with two-phase DRL and state-representation learning, or distribute Q-value-transfer DQN policies across UAVs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] proposed a cooperative UAV-enabled MEC architecture for power IoT in which each UAV serves its small-cell and can execute tasks from neighboring cells. The formulation jointly selects a collaboration mode, offloading durations, and computation rates to maximize long-term communication and computation utility under stochastic demands and time-varying channels. A centralized two-phase DRL method learns a compact state representation, while the distributed method transfers neighboring Q values so that UAVs can coordinate without a central information collector. Numerical comparisons show the centralized cooperative policy obtains the highest utility, and both cooperative policies reduce service drops as more UAVs participate. The study established an early semi-Markov DRL reference for cooperative multi-UAV MEC resource management.
 
 ## Problem framing
 

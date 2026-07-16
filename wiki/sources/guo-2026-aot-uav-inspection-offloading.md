@@ -15,7 +15,8 @@ related:
   - "[[ant-colony-optimization]]"
   - "[[jia-2026-ufsp-rail-inspection]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Joint Trajectory Planning and Task Offloading in UAV-Assisted Inspection Networks: A Transformer-Based Approach
@@ -27,6 +28,39 @@ Guo, R., Quan, W., Huang, X., Zhang, Y., Liu, M., Yang, D., Zhang, H., & Shen, X
 ## TL;DR
 
 Introduces an AGI-oriented Transformer (AoT) for UAV-assisted railway inspection. A UAV leaves a hive, visits sensor clusters, gathers inspection task requirements, decides whether each task runs on the sensor, UAV, or hive edge server, and returns to recharge. AoT uses a shared encoder-only [[transformer-encoder]] with specialized MLP output heads for trajectory planning and task offloading, trained with REINFORCE-style optimization. The parse reports shorter trajectories and lower offloading cost than heuristic, recurrent, and value-based baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV departs from a hive, visits railway sensor clusters, gathers inspection tasks, chooses where each task executes, and returns to recharge.
+
+**Problem & objective**: Jointly plan the visit route and task execution locations to minimize weighted inspection delay and energy, $\min_{\pi_p,\pi_o}\omega_DD_{\mathrm{total}}+\omega_EE_{\mathrm{total}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Cluster visit route | $\pi_p$ | permutation with hive endpoints | Order in which sensor clusters are visited |
+| Task offloading mode | $\lambda_{n,i}^{l,u,h}$ | one-hot binary vector | Execute task $i$ at sensor, UAV, or hive for cluster $n$ |
+| Joint policy | $\pi_o$ | stochastic policy | Maps task and system state to an execution mode |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | The route starts and ends at the hive and visits each selected cluster once |
+| C2 | Offloading mode variables are binary and exactly one location is selected per task |
+| C3 | UAV computation energy remains within its budget |
+| C4 | Each task's processing and communication latency satisfies its deadline or service limit |
+
+**Algorithm**: Encode cluster and task tokens with a shared Transformer encoder, train a trajectory head with REINFORCE, train an offloading head on its task MDP, then fuse and fine-tune the heads while freezing the shared representation when appropriate.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Guo et al. [x] jointly planned a UAV inspection route and task execution locations for railway sensor clusters connected to a hive edge server. Their objective minimizes a weighted total of inspection delay and energy over a cluster permutation and one-hot sensor, UAV, or hive offloading choices under tour, computation-energy, and task-latency constraints. The AoT method uses a shared Transformer encoder with separate trajectory and offloading heads, training the route with REINFORCE and the execution policy with a dedicated offloading process. In the 45-cluster experiment, AoT shortened the route to 5869.52 m versus 7093.39 m for Greedy, 7075.64 m for BO_ACO, and 8154.82 m for ABC, and it reached about -85 average offloading reward by episode 300.
 
 ## Problem
 

@@ -11,7 +11,8 @@ related:
   - "[[extremely-large-scale-mimo]]"
   - "[[cramer-rao-bound]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Hybrid Near- and Far-Field THz UM-MIMO Channel Estimation: A Sparsifying Matrix Learning-Aided Bayesian Approach
@@ -23,6 +24,12 @@ Li, Y., & Madhukumar, A. S. (2025). *Hybrid Near- and Far-Field THz UM-MIMO Chan
 ## TL;DR
 
 Addresses the channel estimation (CE) problem for THz ultra-massive MIMO (UM-MIMO) systems where **both near-field and far-field propagation paths coexist** — a scenario that makes existing compressed-sensing CE frameworks ineffective because angular- or polar-domain sparsifying dictionaries alone cannot capture the hybrid-field channel. Proposes a **dictionary learning (DL)-aided Bayesian CSCE** solution: a **batch-delayed online DL (BD-ODL)** algorithm learns an adaptive sparsifying matrix; a **Bayesian learning (BL)-enabled CSCE** framework exploits the resulting sparsity. Also derives the Bayesian Cramér-Rao bound (BCRB) as an MSE lower bound and performs complexity analysis. Achieves significant NMSE improvement over LS, MMSE, and CS baselines with rapid convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li and Madhukumar [x] developed a hybrid near-field and far-field THz UM-MIMO channel-estimation model with molecular absorption, reflection attenuation, and compressed pilots. Their BD-ODL dictionary learner and Bayesian CSCE recovery exploit channel sparsity, while the BCRB provides an MSE lower bound for ill-posed estimation. Numerical comparisons against LS, MMSE, FOCUSS, UAMP-SBL, FISTA, and other sparse estimators show large NMSE gains and convergence within about ten EM iterations. This contribution is a physical-layer estimation method rather than an application-specific control or resource-allocation decision model.
 
 ## Problem framing
 

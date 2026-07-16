@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "GAI-Based Resource Management in RIS-Aided Next-Generation Network and Communication"
 authors: ["Zijun Wu", "Haijun Zhang", "Linpei Li", "Yang Lu", "Jian Yang"]
 year: 2025
@@ -13,7 +14,7 @@ related:
   - "[[distributional-reinforcement-learning]]"
   - "[[graph-based-resource-management]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # GAI-Based Resource Management in RIS-Aided Next-Generation Network and Communication
@@ -25,6 +26,41 @@ Wu, Z., Zhang, H., Li, L., Lu, Y., & Yang, J. (2025). *GAI-Based Resource Manage
 ## TL;DR
 
 Proposes a **generative AI (GAI) + distributional RL (DBRL)** framework for resource management in RIS-aided 6G networks. A **channel distribution learning (CDL)** method handles BS-RIS-device cascade channel estimation across diverse devices/scenarios. GANs are used to model the action-value distribution in DBRL (replacing the standard scalar value function with a distributional form), enabling on-demand resource allocation that jointly maximizes **energy efficiency (EE) and QoS satisfaction rate (QoSSR)**. Paper claims to be the first GAI-based resource management work for RIS-aided next-generation networks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna BS serves multiple service classes through one RIS when direct BS-device paths are blocked. Distributed channel-distribution learners estimate cascaded BS-RIS-device channels, and an online controller allocates radio resources for heterogeneous QoS demands.
+
+**Problem & objective**: A stochastic RIS resource-management problem maximizes a joint utility, $\max \lambda\,\mathrm{EE}+(1-\lambda)\,\mathrm{QoSSR}$, over power, bandwidth, beamforming, and RIS phase shifts.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS transmit power | $p_k$ | continuous, bounded | Power allocated to device $k$ |
+| Bandwidth share | $b_k$ | continuous, nonnegative | Spectrum allocated to a service request |
+| BS beamformer | $\mathbf w_k$ | complex continuous vector | Precoder for device $k$ |
+| RIS phase | $\theta_n$ | continuous, $[0,2\pi)$ | Phase shift of RIS element $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Total bandwidth allocation does not exceed available spectrum |
+| C2 | BS power and beamforming satisfy the transmit-power budget |
+| C3 | Every RIS element has unit amplitude and a feasible phase |
+| C4 | Device rates and service outcomes determine QoS satisfaction |
+| C5 | Resource decisions use the estimated cascaded channel state |
+
+**Algorithm**: Estimate device-specific cascaded channels with distributed CDL networks → represent the action-value return distribution with a GAN-based distributional critic → sample power, bandwidth, beamforming, and phase actions → update the policy from energy-efficiency and QoS-satisfaction reward → repeat as users and service classes change.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied generative-AI-based resource management in RIS-aided next-generation networks. They formulated a joint energy-efficiency and QoS-satisfaction utility over BS power, bandwidth, beamforming, and RIS phase decisions under radio-resource and QoS constraints. A channel distribution learning stage estimates cascaded BS-RIS-device channels for heterogeneous devices and service scenarios. Their distributional reinforcement-learning stage uses generative adversarial networks to model the return distribution rather than only its expectation. Simulations report higher system utility and improved channel-estimation performance relative to the evaluated conventional estimation, scalar-value learning, and fixed-RIS baselines.
 
 ## Problem framing
 

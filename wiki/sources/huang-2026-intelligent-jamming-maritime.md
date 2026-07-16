@@ -5,6 +5,7 @@ authors: ["Jiawei Huang", "Aimin Wang", "Geng Sun", "Jiahui Li", "Jiacheng Wang"
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3688701"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), accepted for publication"
+modeling_card: required
 tags: [source, maritime-communications, physical-layer-security, friendly-jamming, soft-actor-critic, conditional-variational-autoencoder, lstm, multi-objective-optimization]
 related:
   - "[[advantage-conditioned-cvae-policy]]"
@@ -31,7 +32,7 @@ related:
   - "[[yan-2026-uav-trajectory-monitoring]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Secure Low-altitude Maritime Communications via Intelligent Jamming
@@ -43,6 +44,41 @@ Huang, J., Wang, A., Sun, G., Li, J., Wang, J., Yuan, W., & Wang, X. (2026). *Se
 ## TL;DR
 
 Coordinates a relay UAV and a friendly-jamming UAV around a moving vessel and an uncertain aerial eavesdropper. SAC-CVAE conditions action generation on normalized advantage, while an LSTM predicts an unobserved eavesdropper position; simulations report higher secrecy with competitive propulsion energy, but the supplied accepted manuscript omits the appendices cited for ablation and prediction-error evidence.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A legitimate communication UAV, Alice, sends data to a moving maritime user, while a friendly-jamming UAV, Bob, interferes with an aerial eavesdropper, Eve. Alice and Bob adapt their three-dimensional trajectories and transmit powers over time, although Eve's position can become partially unobservable.
+
+**Problem & objective**: The secure and energy-efficient maritime communication problem minimizes $\mathbf F=\{-f_1,f_2\}$, equivalently maximizing total secrecy rate $f_1=\sum_{n=1}^{N}C_s[n]$ while minimizing the two UAVs' total flight energy $f_2=\sum_{n=1}^{N}\left(E_A[n]+E_B[n]\right)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Alice trajectory | $\mathbb L_A$ | continuous 3-D sequence | Communication UAV position over all slots |
+| Alice power | $\mathbb P_A$ | continuous, power bounded | Communication transmit power per slot |
+| Bob trajectory | $\mathbb L_B$ | continuous 3-D sequence | Friendly-jamming UAV position over all slots |
+| Bob power | $\mathbb P_B$ | continuous, power bounded | Jamming transmit power per slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Alice and Bob remain within their respective three-dimensional flight regions |
+| C2 | Per-slot powers satisfy $P_{\min}\le P_A[n],P_B[n]\le P_{\max}$ |
+| C3 | The maritime user's rate remains above $R_{\min}$ |
+| C4 | Each UAV's total transmit power over the horizon does not exceed $P_T$ |
+| C5 | Bob's interference at the maritime user remains below the temperature limit $I_0$ |
+
+**Algorithm**: The problem is recast as a POMDP whose observation includes an LSTM summary of Eve's recent trajectory. SAC-CVAE augments soft actor-critic with an advantage-conditioned conditional variational autoencoder that disentangles policy representations and generates actions for the coupled UAV trajectory and power controls under partial observability.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] coordinated a communication UAV and a friendly-jamming UAV to secure a low-altitude maritime link against a mobile aerial eavesdropper. They maximized cumulative secrecy rate and minimized UAV flight energy over both UAVs' three-dimensional trajectories and transmit powers under flight-region, user-rate, power-budget, and interference-temperature constraints. SAC-CVAE treats hidden eavesdropper motion as partial observability, uses LSTM trajectory prediction, and conditions a CVAE policy representation on action advantage within soft actor-critic. Intelligent jamming kept secrecy high while the non-jamming result stayed near zero, and SAC-CVAE obtained the best reward and secrecy-energy tradeoff across the approaching and receding eavesdropper patterns.
 
 ## Problem
 

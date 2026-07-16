@@ -5,6 +5,7 @@ authors: ["Taiyuan Gong", "Li Zhu", "F. Richard Yu", "Tao Tang"]
 year: 2023
 url: "https://doi.org/10.1109/TITS.2023.3275741"
 venue: "IEEE Transactions on Intelligent Transportation Systems"
+modeling_card: not_applicable
 tags: [source, survey, edge-intelligence, intelligent-transportation-systems, vehicular-mec, uav-enabled-its, edge-ai]
 related:
   - "[[edge-intelligence]]"
@@ -14,7 +15,7 @@ related:
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[wang-2025-lae-network-survey]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Edge Intelligence in Intelligent Transportation Systems: A Survey
@@ -26,6 +27,12 @@ Gong, T., Zhu, L., Yu, F. R., & Tang, T. (2023). *Edge Intelligence in Intellige
 ## TL;DR
 
 A survey of [[edge-intelligence|edge intelligence (EI)]] for intelligent transportation systems (ITS). It frames EI as pushing AI inference and training toward the edge-device-cloud continuum so ITS applications can reduce latency, protect privacy, reduce backbone-network pressure, and exploit edge-generated transportation data. The survey covers EI-based ITS architecture, communications and data processing, AI/IoT/edge-computing enablers, applications in autonomous driving, [[vehicular-mec|vehicular edge computing]], UAV-assisted ITS, and rail transportation, plus platforms, datasets, challenges, and future directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gong et al. [x] surveyed edge intelligence for intelligent transportation systems across the edge-device-cloud continuum. They presented a three-layer architecture of end devices, edge nodes, and cloud centers and reviewed communication, data processing, artificial intelligence, Internet of Things, and edge-computing enablers. The literature taxonomy covers autonomous driving, vehicular edge computing, intelligent vehicular transportation, UAV-assisted ITS, and rail transportation, together with model-training and inference platforms and datasets. The survey identifies real-time response, privacy, bandwidth pressure, and constrained edge computation as central challenges and discusses application-dependent deployment levels and future edge-intelligence directions.
 
 ## Problem framing
 

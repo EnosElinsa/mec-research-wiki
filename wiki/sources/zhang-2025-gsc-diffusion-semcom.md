@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Semantic Successive Refinement: A Generative AI-Aided Semantic Communication Framework"
 authors: ["Kexin Zhang", "Lixin Li", "Wensheng Lin", "Yuna Yan", "Rui Li", "Wenchi Cheng", "Zhu Han"]
 year: 2025
@@ -14,7 +15,7 @@ related:
   - "[[zhu-han]]"
   - "[[zhu-han]]"
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Semantic Successive Refinement: A Generative AI-Aided Semantic Communication Framework
@@ -26,6 +27,12 @@ Zhang, K., Li, L., Lin, W., Yan, Y., Li, R., Cheng, W., & Han, Z. (2025). *Seman
 ## TL;DR
 
 Proposes a **Generative AI Semantic Communication (GSC)** system for image transmission: at the transmitter, a **Swin Transformer**-based joint source-channel coding (JSCC) extracts and compresses semantic features; at the receiver, a **Diffusion Model (DM)** reconstructs high-quality images from degraded signals, improving perceptual quality over CNN-based methods (especially at low SNR). Extends to a **Multi-User GSC (MU-GSC)** system with asynchronous concurrent processing and task-parallel caching. Achieves +17.75% PSNR vs CNN-based DeepJSCC in AWGN channels and +20.84% in Rayleigh channels.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied generative-AI-aided semantic successive refinement for wireless image transmission. A Swin Transformer joint source-channel encoder extracts compressed semantic features, and a conditional diffusion decoder reconstructs images from received features over AWGN or Rayleigh channels. The multi-user extension uses asynchronous concurrent processing, task-parallel execution, and caching to handle simultaneous requests. Experiments report higher PSNR and perceptual quality than the evaluated CNN-based DeepJSCC system, especially at low SNR. The contribution is a learned transmission and reconstruction framework evaluated through training loss and image metrics, without an application-level operational decision model and constraint set.
 
 ## Problem framing
 

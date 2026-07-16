@@ -5,6 +5,7 @@ authors: ["Aamer Mohamed Huroon", "Yu-Chih Huang", "Li-Chun Wang"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3617169"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 5246-5261"
+modeling_card: required
 tags: [source, beyond-diagonal-ris, rate-splitting-multiple-access, multi-uav, energy-efficiency, generalized-benders-decomposition, riemannian-optimization, trajectory-control]
 related:
   - "[[beyond-diagonal-ris]]"
@@ -18,7 +19,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy-Efficient Transmission Strategy for UAV-RIS 2.0 Assisted Communications Using Rate Splitting Multiple Access
@@ -30,6 +31,43 @@ Huroon, A. M., Huang, Y.-C., & Wang, L.-C. (2026). *Energy-Efficient Transmissio
 ## TL;DR
 
 Combines group-connected [[beyond-diagonal-ris|BD-RIS]] hardware with intra-group [[rate-splitting-multiple-access|RSMA]] in a multi-UAV downlink. An augmented GBD framework assigns RIS clusters, while BCD, SCA, and Riemannian updates optimize common rates, precoders, UAV motion, and non-diagonal scattering matrices for rate-per-total-power efficiency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple multi-antenna UAVs each serve one ground-user group through a building-mounted group-connected beyond-diagonal RIS. Orthogonal subcarrier portions separate UAV groups, while users within a group use one-layer rate-splitting multiple access. Direct and RIS-assisted links follow Rician channel models, and each assisted group is assigned one BD-RIS cluster.
+
+**Problem & objective**: Problem (28) is a mixed-integer nonlinear fractional program that maximizes system energy efficiency, $\max \eta=R_{overall}/P_T$, over RIS-cluster assignment, RSMA transmission, BD-RIS scattering, and UAV motion.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| RIS-cluster assignment | $\mathcal T$ | integer or binary assignment | Allocate BD-RIS clusters to UAV groups |
+| UAV precoders | $\mathbf W_g$ | complex continuous matrices | Common and private RSMA beamforming |
+| Common-rate allocation | $\mathbf r_g$ | continuous, nonnegative | Split the decodable common rate among users |
+| UAV trajectories | $\mathbf Q$ | continuous positions | Time-slotted multi-UAV paths |
+| BD-RIS scattering | $\mathbf\Phi_g$ | complex manifold matrix | Non-diagonal cluster phase rotation and coupling |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C3 | BD-RIS clusters are assigned consistently to UAV groups |
+| C4 | Every user can decode the group's common RSMA stream |
+| C5 | Each user's common plus private rate meets its QoS target |
+| C6 | Per-UAV transmit power remains within its limit |
+| C7 | Each BD-RIS scattering block satisfies the group-connected hardware manifold |
+| C8-C9 | UAV paths satisfy initial-return and maximum-displacement constraints |
+
+**Algorithm**: Apply a quadratic transform to the rate-over-power objective, use generalized Benders decomposition to separate discrete cluster assignment in a MILP master from continuous primal variables, decompose the primal problem with block coordinate descent, update precoders, rates, and trajectories by SCA and scattering matrices by Riemannian conjugate gradient, then add Benders cuts and iterate the bounds until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huroon et al. [x] studied energy-efficient transmission in a multi-UAV downlink that combines group-connected beyond-diagonal RIS hardware with rate-splitting multiple access. They formulated a mixed-integer nonlinear fractional program that maximizes aggregate rate per total transmit, UAV, and RIS power by jointly optimizing RIS-cluster allocation, common rates, precoders, UAV trajectories, and non-diagonal scattering matrices. A quadratic transform handles the fractional objective, and generalized Benders decomposition separates discrete cluster assignment from the continuous primal design. Within the primal loop, block coordinate descent and successive convex approximation update RSMA and trajectory variables, while Riemannian conjugate gradient updates the BD-RIS scattering matrices. Simulations report higher energy efficiency for BD-RIS with RSMA than the evaluated conventional-RIS, NOMA, fixed-UAV, and no-BD-RIS configurations.
 
 ## Problem
 

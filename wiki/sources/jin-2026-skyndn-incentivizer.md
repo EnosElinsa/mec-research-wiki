@@ -22,7 +22,8 @@ related:
   - "[[zehui-xiong]]"
   - "[[dusit-niyato]]"
 created: 2026-07-14
-updated: 2026-07-14
+modeling_card: required
+updated: 2026-07-16
 ---
 
 # SkyNDN Incentivizer: Enhancing Content Sharing in UAV Named Data Networking
@@ -34,6 +35,39 @@ Jin, C., Yao, H., Cai, R., Mai, T., Xu, J., Xiong, Z., & Niyato, D. (2026). *Sky
 ## TL;DR
 
 Builds a broker-mediated content market for [[uav-named-data-networking|UAV Named Data Networking]], where consumers buy cached data from mobile producers. An iterative double auction aligns bid/ask updates with a social-welfare allocation under assumed concave utilities and convex costs; a separate twin-critic diffusion actor learns continuous many-to-many allocations when those analytical forms are not used by the solver.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Mobile UAV nodes form a named-data network in which content consumers request cached data from content producers through a virtual broker; three-dimensional Gauss-Markov mobility changes multihop distance, delay, and transmission energy, and producers use orthogonal subchannels.
+
+**Problem & objective**: Problem P1 maximizes market social welfare $\sum_{i=1}^{M}U_i(\boldsymbol\theta_i)-\sum_{j=1}^{N}C_j(\boldsymbol\omega_j)$ by choosing pairwise content demand and supply.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Consumer demand | $\theta_{ij}$ | Continuous, nonnegative | Content amount requested by consumer $i$ from producer $j$ |
+| Producer supply | $\omega_{ji}$ | Continuous, nonnegative | Content amount supplied by producer $j$ to consumer $i$ |
+| Consumer bid | $b_{ij}$ | Continuous, nonnegative | Price signal sent by consumer $i$ to the broker |
+| Producer ask | $a_{ji}$ | Continuous, nonnegative | Price signal sent by producer $j$ to the broker |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each consumer stays within its demand interval: $\theta_i^{\min}\leq\sum_j\theta_{ij}\leq\theta_i^{\max}$ |
+| C2 | Each producer respects its content capacity: $\sum_i\omega_{ji}\leq\omega_j^{\max}$ |
+| C3 | Every pair clears supply and demand: $\theta_{ij}=\omega_{ji}$ |
+
+**Algorithm**: IDAA repeatedly solves the broker's allocation problem, announces allocations and settlement prices, and updates consumer bids and producer asks until changes fall below the stopping tolerance; DiffRL-DA instead denoises a continuous transaction matrix with a diffusion actor and trains it with twin critics, replay, target networks, and constraint-sensitive rewards.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jin et al. [x] studied incentives for content sharing among mobile consumers and producers in UAV Named Data Networking. They formulated a double-auction market that maximizes social welfare, defined as total consumer utility minus producer cost, under demand bounds, producer capacity, and pairwise market-clearing constraints. The proposed IDAA uses a virtual broker to update allocations, bids, asks, and settlement prices until the market converges, while DiffRL-DA learns continuous allocations with a diffusion actor and twin critics. In the reported three-consumer and three-producer case, IDAA converged after about 10 iterations and satisfied the four evaluated economic properties. DiffRL-DA attained the highest plotted utility among PPO, DDPG, DQN, and random-policy baselines in both static and dynamic experiments, although it converged more slowly in the static comparison.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Gezahegn Abdissa Bayessa", "Rong Chai", "Chengchao Liang", "Qinyuan W
 year: ""
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, integrated-sensing-and-communication, secure-content-delivery, hierarchical-drl, action-mask, ddqn, content-caching, crlb, physical-layer-security]
 related:
   - "[[integrated-sensing-and-communication]]"
@@ -20,7 +21,7 @@ related:
   - "[[rong-chai]]"
   - "[[qianbin-chen]]"
 created: 2026-07-11
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Attention-Based Hierarchical-DRL With Mask for Multi-Timescale Caching, Association, and Secure Content Delivery in UAV-Enabled ISAC Networks
@@ -32,6 +33,41 @@ Bayessa, G. A., Chai, R., Liang, C., Wang, Q., Li, J., & Chen, Q. *Attention-Bas
 ## TL;DR
 
 Studies secure content delivery in UAV-enabled ISAC networks where UAVs cache requested content, serve mobile users, and sense mobile UAV eavesdroppers. The proposed attention-based hierarchical DRL separates long-timescale caching from short-timescale association, deployment, and beamforming, using action masks to keep DDQN decisions inside feasibility constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multi-antenna ISAC UAVs cache files and deliver requested content to mobile single-antenna UEs while sensing multiple mobile UAV eavesdroppers. Each long-timescale frame contains short-timescale slots, content delivery uses OFDMA subcarriers, and estimated eavesdropper positions feed the deployment and beamforming decisions.
+
+**Problem & objective**: Problem P2 in (28) is a mixed-integer nonlinear program that maximizes the expected long-term secure content delivery throughput, $\lim_{T\to\infty}\mathbb{E}\left[\frac{1}{T}\sum_t\sum_{j=1}^{J}\sum_{i=1}^{I}\alpha_{i,j}^{t}\hat{R}_{i,j}^{\mathrm{sc},t}\right]$, over caching, association, deployment, and communication/sensing beamforming.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Content caching | $\delta_{j,f}^{\ell}$ | Binary, $\{0,1\}$ | Whether UAV $j$ caches file $f$ in frame $\ell$ |
+| UE association | $\alpha_{i,j}^{t}$ | Binary, $\{0,1\}$ | Whether UE $i$ is associated with UAV $j$ in slot $t$ |
+| UAV deployment | $\mathbf{q}_{j}^{t}=(x_j^t,y_j^t,z_j^t)$ | Continuous 3D coordinate | Position of UAV $j$ in slot $t$ |
+| Joint beamforming | $\mathbf{W}_{j}^{t}$ | Complex matrix, $\mathbb{C}^{N\times(I+K)}$ | Communication and sensing beamformers of UAV $j$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C2 | Each UE associates with at most one UAV, $\sum_j\alpha_{i,j}^{t}\leq1$, and each UAV serves no more than its association limit |
+| C3-C7 | UAV coordinates remain inside the allowed horizontal and altitude bounds, with minimum UAV-to-UAV and UAV-to-eavesdropper separation |
+| C8-C10 | Secure rate, sensing accuracy, and power satisfy $R_{i,j}^{\mathrm{sc},t}\geq R_i^{\mathrm{th}}$, $\operatorname{Tr}(\mathbf{J}_{\hat{\mathbf{q}}_k^{e,t}}^{-1})\leq\kappa$, and $\lVert\mathbf{W}_j^t\rVert^2\leq P_{j,\max}$ |
+| C11 | Content-delivery delay satisfies $\sum_f\gamma_{i,f}^{\ell}\alpha_{i,j}^{t}\delta_{j,f}^{\ell}\eta_f/R_{i,j}^{\mathrm{sc},t}\leq D_i^{\mathrm{th}}$ |
+| C12 | Cache use satisfies $\sum_i\sum_f\eta_f\gamma_{i,f}^{\ell}\delta_{j,f}^{\ell}\leq\rho_j$ |
+
+**Algorithm**: Maximum-likelihood time-of-arrival measurements are processed by EKF, FIM, and CRLB steps to estimate eavesdropper positions. A hierarchical controller then uses a DDQN for long-timescale caching and an attention-based DDQN for short-timescale association, deployment, and beamforming; its action mask assigns $-\infty$ Q-value to actions that violate the applicable constraints before action selection.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bayessa et al. [x] studied long-term secure content delivery in a multi-UAV ISAC network with mobile users and mobile UAV eavesdroppers. They estimated eavesdropper locations from time-of-arrival measurements using maximum likelihood, an extended Kalman filter, a Fisher information matrix, and a Cramer-Rao lower bound. Given those estimates, they formulated a mixed-integer nonlinear program that maximizes long-term secure throughput by jointly selecting content caching, user association, UAV deployment, and communication and sensing beamforming under association, deployment, rate, sensing-accuracy, power, delay, and cache constraints. Their hierarchical solution uses a DDQN for long-timescale caching and an attention-based DDQN with an action mask for short-timescale association, deployment, and beamforming. Simulations reported the highest cumulative reward for the proposed method relative to attention-based DDQN, DDQN, and DQN baselines, and higher secure throughput than the evaluated reference algorithms. The reported secure throughput increased with UAV transmit power and decreased as the number of eavesdroppers or noise power increased.
 
 ## Problem
 

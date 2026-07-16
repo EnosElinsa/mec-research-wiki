@@ -5,6 +5,7 @@ authors: ["Pavel Mach", "Zdenek Becvar"]
 year: 2017
 url: "https://doi.org/10.1109/COMST.2017.2682318"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, survey, mobile-edge-computing, computation-offloading, mec-architecture, mobility-aware-offloading, foundational]
 related:
   - "[[mobile-edge-computing]]"
@@ -16,7 +17,7 @@ related:
   - "[[mao-2017-mec-survey-communication]]"
   - "[[wang-2025-lae-network-survey]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Mobile Edge Computing: A Survey on Architecture and Computation Offloading
@@ -30,6 +31,12 @@ Mach, P., & Becvar, Z. (2017). *Mobile Edge Computing: A Survey on Architecture 
 A widely-cited **MEC survey organized around architecture and computation offloading**. It motivates MEC as the latency-cutting evolution of mobile cloud computing (MCC), contrasts MCC vs. edge computing, and reviews the precursor concepts (cloudlet, ad-hoc cloud, fog computing, C-RAN) and the integrated MEC architectures proposed in the literature (small cell cloud, mobile micro cloud, MobiScud, follow-me cloud, CONCERT) plus the **ETSI** MEC standardization effort. Its core organizes computation-offloading research into three problems: **(1) the offloading decision, (2) allocation of computing resources within the MEC, and (3) mobility management**.
 
 This is the wiki's **architecture/offloading-centric MEC survey anchor**, complementary to the communication-perspective survey [[mao-2017-mec-survey-communication]].
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mach and Becvar [x] surveyed mobile edge computing architectures and computation offloading for resource-constrained user equipment running delay-sensitive applications. They reviewed MEC use cases, mobile-network integration concepts, and ETSI standardization while contrasting distributed edge resources with centralized mobile cloud computing. Their computation-offloading taxonomy organized prior work into offloading decisions, allocation of MEC computing resources, and mobility management. The survey identified channel quality, application partitionability, computing capacity, backhaul quality, and user mobility as central design factors and called for hierarchical resource placement, dynamic resource management, predictive mobility support, and realistic trials.
 
 ## Problem framing
 

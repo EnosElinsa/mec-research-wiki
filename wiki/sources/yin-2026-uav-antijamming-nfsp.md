@@ -19,7 +19,8 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[shi-jin]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Pursuit-Evasion Game for UAV Anti-Jamming Communications: An Opponent Modeling Based Reinforcement Learning Approach
@@ -31,6 +32,41 @@ Yin, Z., Wang, Z., Li, J., Shi, L., Ni, Y., & Jin, S. (2026). *Pursuit-Evasion G
 ## TL;DR
 
 Models a communicating UAV and an adaptive mobile jammer as a partially observable pursuit-evasion game, then combines neural fictitious self-play, LSTM history, and dueling double Q-learning so each side can adapt without observing the other's private state or policy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude rotary-wing UAV collects uplink data from ground devices while a mobile ground jammer pursues it. Both agents move simultaneously on a square grid with incomplete knowledge of the opponent's private state.
+
+**Problem & objective**: The UAV solves $\max\mathbb E[\sum_t(\varphi_1\eta(t)-\varphi_2E_{\mathrm{con}}(t))]$, while the jammer solves $\max\mathbb E[\sum_t-\eta(t)]$; their coupled trajectory policies form a partially observable pursuit-evasion game.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory policy | $\pi^u$ | stochastic policy | Maps UAV observation history to movement probabilities |
+| Jammer trajectory policy | $\pi^j$ | stochastic policy | Maps jammer observation history to movement probabilities |
+| UAV movement | $a^u(t)$ | five discrete actions | Hover or move one grid step in a cardinal direction |
+| Jammer movement | $a^j(t)$ | five discrete actions | Hover or move one grid step in a cardinal direction |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 14b-14c | UAV coordinates remain inside the service area |
+| 14d | UAV battery satisfies $E(t)\geq E_{\min}$ |
+| 15b-15c | Jammer coordinates remain inside the service area |
+| Partial observation | The UAV cannot observe jammer position, and the jammer cannot observe UAV energy |
+| Action sets | Both agents choose only hover or four cardinal movements |
+
+**Algorithm**: NFSP-D3RN mixes a learned best-response policy with a supervised average policy to approximate fictitious self-play. LSTMs encode observation-action histories, double Q-learning reduces value overestimation, a dueling head separates value and advantage, and FIFO reinforcement replay plus reservoir-sampled supervised replay train the two policies.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yin et al. [x] modeled UAV anti-jamming communication as a partially observable pursuit-evasion game between a data-collecting UAV and a mobile jammer. The UAV maximizes weighted communication rate minus propulsion energy under area and battery constraints, while the jammer minimizes UAV rate through its trajectory. NFSP-D3RN combines neural fictitious self-play, recurrent history encoding, double Q-learning, and a dueling value architecture. With hidden jammer location, UAV cumulative reward improved by 10.89%, 36.82%, and 90.97% over NFSP-D3QN, D3RN, and D3QN, respectively. At a 3 dB SINR threshold, successful communications increased by 17.65%, 25%, and 42.86% over the same baselines. The decentralized controller was also reported to perform comparably to a full-observation MADDPG reference.
 
 ## Problem and system model
 

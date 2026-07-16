@@ -5,6 +5,7 @@ authors: ["Bingxin Tian", "Li Wang", "Zheng Chang", "Lianming Xu", "Aiguo Fei"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3587959"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 931-947"
+modeling_card: required
 tags: [source, coded-caching, erasure-coding, cache-repair, parameterized-dqn, multi-agent-drl, resource-allocation]
 related:
   - "[[coded-caching]]"
@@ -19,7 +20,7 @@ related:
   - "[[lianming-xu]]"
   - "[[zheng-chang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Multi-Agent DRL-Based Coded Caching and Resource Allocation in UAV-Assisted Networks
@@ -31,6 +32,42 @@ Tian, B., Wang, L., Chang, Z., Xu, L., & Fei, A. (2026). *Multi-Agent DRL-Based 
 ## TL;DR
 
 Uses erasure and regenerating codes to distribute emergency content across UAV caches, then applies a two-timescale hierarchical multi-agent P-DQN to choose coding/cache decisions, requester and repair pairing, and UAV motion.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Coded content fragments are distributed across mobile UAV caches for emergency delivery. A requester reconstructs content from at least $k_f$ valid fragments, while a replacement UAV repairs a lost fragment by contacting at least $d_f$ surviving caches; a ground station supplies fallback data when aerial repair is infeasible.
+
+**Problem & objective**: Problem P1 in (35) maximizes $T^{-1}\sum_t(\Pr^{Hit}(t)+\Pr^{Rep}(t))$, the time-average sum of content-download and fragment-repair success probabilities, over code, cache, matching, and UAV-motion decisions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Code and cache design | $\mathcal C_f,(n_f,k_f,d_f),x_{if}$ | categorical, integer, and binary | Code family and parameters plus fragment placement on UAVs |
+| Download matching | $z_{i,m,f}^{dl}(t)$ | binary, $\{0,1\}$ | UAV $i$ serves requester $m$ for content $f$ |
+| Repair matching | $y_{i,j,f}^{rep}(t)$ | binary, $\{0,1\}$ | Valid UAV $i$ helps replacement UAV $j$ repair content $f$ |
+| UAV speed | $v_i(t)$ | continuous, $[0,V_{\max}]$ | Travel distance control for UAV $i$ |
+| UAV heading | $\theta_i(t)$ | continuous, $[0,2\pi]$ | Horizontal movement direction |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 35b-35c | Cache placement is binary, fits UAV storage, and places each coded item on exactly $n_f$ UAVs |
+| 35d-35e | Speed and heading remain within their physical ranges |
+| 35f | Each UAV serves at most $q_i^{\max}$ download and repair recipients per slot |
+| 35g-35h | A download uses at least $k_f$ helpers and a repair uses at least $d_f$ helpers |
+| 35i-35j | UAVs maintain safety distance $D_{\min}$ and obey the per-slot movement limit $D_{\max}$ |
+
+**Algorithm**: H-MA-PDQN separates decisions across two timescales. A control-station CP-PDQN updates code family, code parameters, and cache placement by time frame, while decentralized PT-PDQN agents update requester and repair matching together with continuous speed and heading in each short slot.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tian et al. [x] studied coded content delivery and cache repair in a mobile UAV network with requester churn and battery-driven UAV replacement. They maximize average download and repair success probability by jointly selecting code parameters, fragment placement, requester and repair matching, and UAV trajectories under storage, service-count, reconstruction, safety, and mobility constraints. Their H-MA-PDQN framework places code and cache decisions in a slow control-station layer and matching and motion decisions in faster decentralized UAV agents. Parameterized Q-networks represent the resulting mixture of categorical, binary, and continuous actions without uniformly discretizing the motion variables. Simulations report higher success probability and lower transmission cost than DQN and greedy baselines, and dynamic UAV trajectories outperform static deployment under the tested requester distributions.
 
 ## Problem and system model
 

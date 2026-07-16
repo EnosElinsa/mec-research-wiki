@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Traffic-Aware Lightweight Hierarchical Offloading Toward Adaptive Slicing-Enabled SAGIN"
 tags:
   - source
@@ -30,7 +31,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[zhaolong-ning]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-16
 authors:
   - Zheyi Chen
   - Junjie Zhang
@@ -44,8 +45,47 @@ venue: "IEEE Journal on Selected Areas in Communications (JSAC), Vol. 42, No. 12
 
 # Traffic-Aware Lightweight Hierarchical Offloading Toward Adaptive Slicing-Enabled SAGIN
 
+## Citation
+
+Chen, Z., Zhang, J., Min, G., Ning, Z., & Li, J. (2024). *Traffic-Aware Lightweight Hierarchical Offloading Toward Adaptive Slicing-Enabled SAGIN*. **IEEE Journal on Selected Areas in Communications, 42**(12). DOI: 10.1109/JSAC.2024.3459020.
+
 ## TL;DR
 THOAS is a traffic-aware hierarchical offloading framework for slicing-enabled [[space-air-ground-integrated-network|SAGIN]] that splits the network into **Communication Access Platforms (CAPs)** and **Computation Offloading Platforms (COPs)** for fine-grained [[network-slicing|slice]] provisioning. It combines a [[probsparse-self-attention-prediction|probsparse self-attention traffic predictor]] for adaptive slice resource allocation with an improved [[ppo|PPO]]-based DRL offloader that uses [[gae|GAE]] and a [[dynamic-confidence-interval-clipping|dynamic-confidence-interval clipping]] rule, then compresses the converged policy via [[knowledge-distillation-for-drl|policy distillation]] into a lightweight network. On real-world Milan cellular traffic it outperforms prediction and offloading baselines on ESP profit, prediction MSE, resource utilization, and deadline-violation ratio, while shrinking the model to ~6% size at ~73% retained performance.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A satellite, one ground base station, and multiple UAVs form SAGIN access platforms with OFDM subchannels, while the base station and UAVs form computing platforms with virtual machines; an edge service provider rents both resource slices and earns priority-weighted revenue only from tasks completed before a deadline.
+
+**Problem & objective**: Problem P1 is a coupled NP-hard slicing and offloading problem, $\max_{B,F,\pi}\sum_{t=1}^{T}(R^t-C^t)$, maximizing long-term edge-service-provider profit through communication slices, computing slices, and VM offloading choices.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication slices | $B_j$ | Integer, $0\le B_j\le B_j^{\max}$ | Number of OFDM subchannels rented on access platform $a_j$. |
+| Computing slices | $F_j$ | Integer, $0\le F_j\le F_j^{\max}$ | Number of virtual machines rented on computing platform $o_j$. |
+| Offloading policy | $\pi$ | Categorical over feasible virtual machines | Assigns each task to a VM or forwards a UAV-received task to the ground base station. |
+| Per-task DRL action | $a_t$ | Discrete, $\{VM_G,VM_1,\ldots,VM_{\max}\}$ | Selects the execution destination for task $t$. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Communication-slice capacity satisfies $B_j\le B_j^{\max}$ for every platform and slot. |
+| C2 | Computing-slice capacity satisfies $F_j\le F_j^{\max}$ for every platform and slot. |
+| C3 | Revenue is $\varphi_i^t=\Phi$ only when $T_i^{\mathrm{total}}\le T^{\max}$ and is zero otherwise. |
+| C4 | Upload and compute budgets split the deadline as $T_{cap}^{\max}=\omega T^{\max}$ and $T_{cop}^{\max}=(1-\omega)T^{\max}$. |
+| C5 | Slice adjustment occurs only when expected profit gain exceeds interruption cost, $\Delta P-C^{int}>0$. |
+
+**Algorithm**: THOAS predicts traffic with probsparse self-attention, estimates peak communication and computing demand, adjusts slices when profitable, assigns subchannels from a conservative SNR bound, learns VM choices with GAE and dynamically clipped PPO, and distills the policy into a shallow student network.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied traffic-aware computation offloading and adaptive network slicing in a satellite, UAV, and ground-base-station integrated network. They formulated an NP-hard long-term profit maximization over rented communication subchannels, computing virtual machines, and task execution destinations subject to platform capacities and task deadlines. THOAS predicts traffic with probsparse self-attention, adjusts slices only when expected profit exceeds interruption cost, learns offloading with dynamically clipped PPO and GAE, and compresses the converged policy by knowledge distillation. Experiments on Milan cellular traffic report the highest provider profit among the prediction baselines and lower completion time and deadline violations than the DRL baselines. A student network at 6% of teacher size retained 73% of performance, while a 50%-size student retained 97%.
 
 ## Problem
 The emerging [[space-air-ground-integrated-network|SAGIN]] empowers [[mobile-edge-computing|MEC]] with global coverage by integrating LEO satellites, UAVs, and ground base stations, but fluctuating user traffic and a constrained, heterogeneous computing architecture seriously degrade QoS and resource utilization. Existing work assumes static traffic / fixed capacity, depends on prior knowledge, or ignores the cost and service interruption caused by frequent slice adjustments — leading to resource under- or over-supply. Because satellites and UAVs are low-power and compute-weak, heavy DRL models are impractical to run on them. The paper addresses the **coupled, NP-hard** problem of joint slice resource allocation and [[task-offloading|computation offloading]], maximizing the long-term profit of an Edge Service Provider (ESP) that rents communication/compute slices from an Infrastructure Provider (InP) and is paid by users only when tasks finish within a maximum tolerable delay.

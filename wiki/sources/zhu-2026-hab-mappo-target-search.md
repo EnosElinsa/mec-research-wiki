@@ -16,8 +16,9 @@ related:
   - "[[uav-charging-scheduling]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[video-analytics-offloading]]"
+modeling_card: required
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Two-Level-Attention-Based Continuous Trajectory Design and Computation Offloading for Multi-UAV Cooperative Target Search
@@ -29,6 +30,43 @@ Zhu, H., Hui, J., & Guo, Z. (2026). *Two-Level-Attention-Based Continuous Trajec
 ## TL;DR
 
 Studies cooperative UAV target search in 3D continuous space, where UAVs choose flight, charging, image offloading, CPU-frequency allocation, and transmit power to reduce map uncertainty and improve target detection. HAB-MAPPO combines heuristic offloading/resource allocation with MAPPO, two-level attention, Beta-distribution continuous actions, a safe-flight controller, and curriculum learning for larger swarms.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs search a gridded area in continuous three-dimensional space, process camera subimages locally or offload them to a remote BS, and recharge from a laser station; a fly-offload two-subslot protocol uses bandwidth-$B$ UAV-BS links with position-dependent channel gain and does not introduce a multi-user access rule.
+
+**Problem & objective**: JOT-COFP P1, a non-convex Dec-POMDP with binary and continuous controls, maximizes $\sum_{t\in\mathcal T}[w_1J_F(t)+w_2J_E(t)]$, combining target-detection utility and entropy reduction.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Flight control | $v_f^t,\rho_f^t,\alpha_f^t$ | Bounded continuous | UAV speed, pitch direction, and heading direction |
+| Charging decision | $c_f^t$ | Binary | Search or laser-charge in slot $t$ |
+| Image offloading | $u_{ok}^{f,t}$ | Binary | Local UAV or remote-BS execution for subimage $ok$ |
+| CPU frequency | $FR_{ok}^f(t)$ | Bounded continuous | Local computation allocated to a subimage |
+| Transmit power | $PT_{ok}^f(t)$ | Bounded continuous | Power allocated to BS offloading |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Flight speed and angular controls remain in the ranges of (33) |
+| C2 | Charging and offloading choices are binary, $c_f^t,u_{ok}^{f,t}\in\{0,1\}$ |
+| C3 | CPU frequency and transmit power obey the resource limits in (6) and (13) |
+| C4 | Onboard energy remains within $0\le E_f^t\le E_f^{\max}$ |
+| C5 | Pairwise distance satisfies $\|\mathbf L_{f_1}^t-\mathbf L_{f_2}^t\|\ge L_s$ |
+| C6 | UAV positions remain inside the horizontal boundary and safe altitude interval |
+
+**Algorithm**: HAB-MAPPO, use MAPPO with two-level attention and Beta actions for trajectory and charging, apply a safe-flight controller, solve offloading and resource allocation with HODRA, and transfer the learned policy to larger swarms through curriculum learning.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied cooperative target search by a UAV swarm in three-dimensional continuous space with partial observability, charging, and image-task offloading. They formulated JOT-COFP to maximize a weighted combination of target-detection utility and search-area entropy reduction by jointly controlling trajectory, charging, offloading, CPU frequency, and transmit power. HAB-MAPPO uses heuristic energy-efficient offloading and resource allocation to reduce the action dimension, while MAPPO learns flight and charging with two-level attention, Beta-distributed actions, and a safe-flight controller. Curriculum learning transfers the policy from smaller to larger UAV swarms. Simulations report 27% to 64% objective improvement over the evaluated methods, and the proposed offloading policy maintains about an 80% task-offloading success rate.
 
 ## Problem
 

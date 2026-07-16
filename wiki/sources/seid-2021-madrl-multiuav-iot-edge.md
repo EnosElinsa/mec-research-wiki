@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-Agent Deep Reinforcement Learning for Task Offloading and Resource Allocation in Multi-UAV Enabled IoT Edge Network"
 authors: ["Abegaz Mohammed Seid", "Gordon Owusu Boateng", "Bruce Mareri", "Guolin Sun", "Wei Jiang"]
 year: 2021
@@ -16,7 +17,7 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[dynamic-uav-clustering]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Multi-Agent Deep Reinforcement Learning for Task Offloading and Resource Allocation in Multi-UAV Enabled IoT Edge Network
@@ -28,6 +29,42 @@ Seid, A. M., Boateng, G. O., Mareri, B., Sun, G., & Jiang, W. (2021). *Multi-Age
 ## TL;DR
 
 A **clustered multi-UAV** system provides computing **task offloading and resource allocation** to IoT devices in an aerial-to-ground (A2G) IoT edge network, where the ground edge BS may be overloaded or disaster-disabled. The paper proposes a **multi-agent DRL (MADRL)** approach to minimize overall long-term network **computation cost (energy + delay)** under QoS requirements, formulating the problem as a **stochastic game** (an extension of an MDP) with stochastic, time-varying UAV channel strength and dynamic resource requests. It is solved with **MADDPG** under centralized-training/decentralized-execution. Reported gains (verbatim from the abstract): average cost reduced by **38.643%** and **55.621%**, and reward increased by **58.289%** and **85.289%**, versus single-agent DRL and heuristic schemes, respectively.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: IoT devices in clustered multi-UAV aerial edge networks choose local execution or offloading to a base station or UAV computational node over stochastic channels and dynamic task requests.
+
+**Problem & objective**: The resource-control formulation minimizes total computation cost, $\min_{\chi,\mathcal F,\mathcal P}\mathcal Z_{lx}(t)$, combining energy and delay across agents.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading or association | $\chi_{lx}^m(t)$ | binary or ternary, $\{-1,0,1\}$ | Select local execution or computational node $x$ |
+| Computation resource | $f_{lx}(t)$ | discrete or continuous, bounded by $F_x^{max}$ | CPU resource assigned to device $l$ |
+| Transmission power | $p_{lx}(t)$ | discrete or continuous, bounded by $P_x^{max}$ | Radio power for the selected node |
+| Subchannel allocation | $s_x^m(t)$ | binary | Indicates available and allocated resource block |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Offloading, subchannel, and resource-block indicators are binary. |
+| C2 | Each device selects at most one computational node: $\sum_x\alpha_{lx}(t)\leq1$. |
+| C3 | A node's resource block is allocated consistently: $\sum_xs_x^m(t)=1$ in the parsed formulation. |
+| C4 | Computation capacity is bounded: $\sum_xf_{lx}(t)\leq F_x^{max}$. |
+| C5 | Transmission power is bounded: $\sum_xp_{lx}(t)\leq P_x^{max}$. |
+| C6 | QoS must meet the threshold: $\gamma_{lx}(t)\geq\bar\gamma(t)$, with fairness $\Upsilon^u(t)\in[0,1]$. |
+
+**Algorithm**: Cast the dynamic resource problem as a stochastic game and train MADDPG with centralized critics and decentralized actors, joint rewards, replay, and local observations containing task, SINR, power, and UAV status.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Seid et al. [x] formulate cooperative task offloading in a clustered multi-UAV edge network as a stochastic game. The MINLP minimizes energy, delay, and allocation cost through offloading choices, CPU resources, transmit powers, channel indicators, QoS, capacity, power, and fairness constraints. MADDPG uses centralized training with decentralized execution so each IoT agent can act from local task, SINR, power, and UAV-status observations. Against single-agent and heuristic baselines, the reported scheme reduces average cost by 38.643% and 55.621% and raises reward by 58.289% and 85.289%.
 
 ## Problem framing
 

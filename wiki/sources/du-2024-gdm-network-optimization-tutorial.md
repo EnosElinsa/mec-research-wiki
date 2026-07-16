@@ -5,6 +5,7 @@ authors: ["Hongyang Du", "Ruichen Zhang", "Yinqiu Liu", "Jiacheng Wang", "Yijing
 year: 2024
 url: "https://doi.org/10.1109/COMST.2024.3400011"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags:
   - source
   - tutorial
@@ -26,7 +27,7 @@ related:
   - "[[du-2024-distributed-foundation-models-6g]]"
   - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Enhancing Deep Reinforcement Learning: A Tutorial on Generative Diffusion Models in Network Optimization
@@ -37,6 +38,12 @@ Du, H., Zhang, R., Liu, Y., Wang, J., Lin, Y., Li, Z., Niyato, D., Kang, J., Xio
 
 ## TL;DR
 A comprehensive **tutorial** on applying **Generative Diffusion Models (GDMs)** to network-optimization tasks, with a focus on **enhancing Deep Reinforcement Learning (DRL)**. It explains GDM mechanics (forward noising + learned reverse denoising), surveys why GDMs suit optimization (model complex distributions, generate decisions, refine solutions iteratively), and walks through a worked **sum-rate-maximization** example. It then gives a series of **case studies** integrating GDMs with DRL, incentive-mechanism design, ISAC, semantic communication (SemCom), and Internet-of-Vehicles (IoV) networks. The wiki's dedicated **GDM-in-network-optimization tutorial anchor**.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Du et al. [x] presented a tutorial on generative diffusion models for intelligent network optimization. They explained forward and reverse diffusion, the use of conditioning information, and the roles of diffusion models in decision generation and deep reinforcement learning. The tutorial provided a step-by-step sum-rate-maximization example and surveyed case studies in reinforcement learning, incentive-mechanism design, integrated sensing and communication, semantic communication, Internet of Vehicles networks, channel estimation, coding, and denoising. Its synthesis highlighted diffusion models' ability to represent complex distributions and also identified iterative computational cost, noisy data, and future applications in space-air-ground networks, extremely large-scale MIMO, integrated sensing and communication, and movable antennas.
 
 ## Problem framing
 Generative AI (GenAI) can *create* new data (text/image/audio/time-series), unlike discriminative AI that classifies existing data. Among GenAI families (Transformers, GANs, VAEs, flow-based, energy-based, GDMs), **GDMs** stand out for modeling complex distributions and generating high-quality samples, and their adoption has grown sharply (Web-of-Science "Generative Diffusion Model" papers: 12 in 2014 → 257 in 2023). Existing GDM surveys are either broad or domain-specific (CV/NLP), leaving a gap for **network optimization**. This tutorial fills it: how GDMs can be harnessed for complex optimization in dynamic wireless environments, especially as DRL policy representations and decision generators.

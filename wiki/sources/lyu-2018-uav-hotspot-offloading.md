@@ -13,8 +13,9 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[lyu-2017-spiral-mbs-placement]]"
   - "[[yong-zeng]]"
+modeling_card: required
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # UAV-Aided Offloading for Cellular Hotspot
@@ -26,6 +27,40 @@ Lyu, J., Zeng, Y., & Zhang, R. (2018). *UAV-Aided Offloading for Cellular Hotspo
 ## TL;DR
 
 Proposes using a UAV as a **flying aerial base station** that cycles along the cell edge to offload data traffic from cell-edge mobile terminals (MTs), relieving the heavily-loaded ground base station (GBS) in hotspot periods. Jointly optimizes the UAV's **cyclical trajectory**, **bandwidth allocation**, and **user partitioning** (which MTs are served by the UAV vs. the GBS) to **maximize minimum throughput** across all MTs. Considers both **orthogonal spectrum sharing** (UAV and GBS use separate bands) and **spectrum reuse** (shared band with interference control). Shows significant spatial throughput improvement over GBS-only and outperforms conventional small-cell offloading.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One ground base station serves a single cell while one fixed-altitude UAV flies a constant-speed circular trajectory to cyclically serve cell-edge mobile terminals; orthogonal spectrum sharing and interference-controlled spectrum reuse are both considered.
+
+**Problem & objective**: Maximize common throughput, $\max_{\rho,r_I,r_U,\bar\nu}\bar\nu$, subject to GBS outage and UAV-throughput constraints, where $\rho$ is the UAV bandwidth portion, $r_I$ partitions users, and $r_U$ is the UAV trajectory radius.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV bandwidth share | $\rho$ | continuous, $[0,1]$ | Fraction of total bandwidth assigned to UAV in orthogonal sharing |
+| User partition radius | $r_I$ | continuous, $[0,r_G]$ | GBS inner-disk radius and UAV ring threshold |
+| UAV trajectory radius | $r_U$ | continuous, $[r_I,r_G]$ | Radius of the cyclical UAV path |
+| Common throughput | $\bar\nu$ | continuous, nonnegative | Guaranteed throughput for all MTs |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | GBS links satisfy the outage bound, $P_{\mathrm{out}}(\rho,r_I,\bar\nu)\leq\bar P_{\mathrm{out}}$. |
+| C2 | UAV-served users meet the same common throughput, $\bar R_U(\rho,r_I,r_U)\geq\bar\nu$. |
+| C3 | Geometry and bandwidth obey $r_I\leq r_U\leq r_G$, $0\leq r_I\leq r_G$, and $0\leq\rho\leq1$. |
+| C4 | In spectrum reuse, adaptive directional transmissions suppress mutual GBS-UAV interference while the common spectrum is shared. |
+
+**Algorithm**: For a candidate common throughput, optimize the trajectory radius geometrically, reduce the outage subproblem to a monotone search, then use inner bisection over $\rho$ and outer one-dimensional search over $r_I$; solve the reuse variant analogously without $\rho$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lyu et al. [x] studied UAV-aided offloading for a cellular hotspot in which a cyclic aerial base station serves cell-edge terminals alongside a ground base station. They formulated max-min common-throughput problems that jointly select the UAV trajectory radius, user-partition radius, and, for orthogonal sharing, the bandwidth split under a GBS outage constraint. The solution first optimizes the UAV radius by geometry and then uses bisection and one-dimensional searches for the remaining variables, with an analogous reuse formulation using directional interference avoidance. With a 100 kbps target, 20 dBm UAV power, and 40 dBm GBS power, the optimized reuse scheme supported 550 MTs/km² versus 180 MTs/km² for GBS-only operation.
 
 ## Problem framing
 

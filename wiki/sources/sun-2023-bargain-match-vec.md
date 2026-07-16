@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "BARGAIN-MATCH: A Game Theoretical Approach for Resource Allocation and Task Offloading in Vehicular Edge Computing Networks"
 authors: ["Zemin Sun", "Geng Sun", "Yanheng Liu", "Jian Wang", "Dongpu Cao"]
 year: 2023
@@ -16,7 +17,7 @@ related:
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-07-16
 ---
 
 # BARGAIN-MATCH: A Game Theoretical Approach for Resource Allocation and Task Offloading in Vehicular Edge Computing Networks
@@ -28,6 +29,41 @@ Sun, Z., Sun, G., Liu, Y., Wang, J., & Cao, D. (2023). *BARGAIN-MATCH: A Game Th
 ## TL;DR
 
 A hierarchical, game-theoretic scheme for joint resource allocation and task offloading in **vehicular edge computing (VEC)**. It coordinates the heterogeneity of tasks and servers across vehicle, edge, and cloud layers and formulates a joint resource-allocation-and-task-offloading problem (**JRATOP**) to maximize system utility. Since JRATOP is NP-hard, the authors propose **BARGAIN-MATCH**: a bargaining-based incentive approach for intra-server resource allocation plus a matching-based horizontal–vertical collaboration approach for inter-server offloading. The scheme is proven stable, weak Pareto optimal, and of polynomial complexity.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A three-tier vehicular edge network contains vehicles, VEC servers, and a cloud, with both horizontal peer collaboration and vertical cross-layer offloading. Heterogeneous tasks and server capacities require joint resource pricing, intra-server allocation, and inter-server task matching.
+
+**Problem & objective**: JRATOP, an NP-hard game-and-matching optimization, maximizes system utility, $\max\sum_i U_i(\mathbf r_i,\mathbf p_i,\mathbf o_i)$, over resource amounts/prices and task-offloading matches.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Resource allocation | $r_{i,s}$ | continuous, capacity-bounded | Resource amount assigned to vehicle $i$ by server $s$ |
+| Resource price | $p_{i,s}$ | continuous, nonnegative | Incentive price for traded server resource |
+| Offloading match | $o_{i,s}$ | binary matching | Vehicle-task assignment to a peer, edge, or cloud server |
+| Server collaboration | $m_{s,s'}$ | binary/ordered match | Horizontal or vertical server collaboration relation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Resource allocations do not exceed each vehicle or server capacity |
+| C2 | Each task is assigned to one feasible execution server or collaboration path |
+| C3 | Prices and bargaining utilities remain individually rational |
+| C4 | Matching respects server load, task requirements, and cross-layer connectivity |
+| C5 | The resulting allocation is stable and satisfies the weak Pareto condition |
+
+**Algorithm**: Solve intra-server trading with a bargaining game → compute stable resource prices and allocations → construct horizontal/vertical preference lists → run matching for inter-server offloading → iterate until a stable, weakly Pareto allocation is obtained.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied joint resource allocation and task offloading in a three-tier vehicular edge-computing network. They formulated JRATOP to maximize system utility over intra-server resource amounts and prices and inter-server horizontal and vertical offloading matches. BARGAIN-MATCH uses a bargaining game for intra-server trading and a matching-based collaboration procedure for inter-server offloading. The paper proves stability, weak Pareto optimality, and polynomial complexity of the resulting scheme. Simulations report higher system, vehicle, and server utilities and improved task-processing rate and delay than the conventional approaches, especially under heavy workloads.
 
 ## Problem framing
 

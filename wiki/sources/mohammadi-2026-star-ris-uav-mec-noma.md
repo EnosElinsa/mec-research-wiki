@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA"
 authors: ["Hamed Mohammadi", "Mahrokh G. Shayesteh", "Hashem Kalbkhani", "Azadeh Khazali"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
   - "[[shi-2026-aoi-active-ris-noma-agmec]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA
@@ -29,6 +30,42 @@ Mohammadi, H., Shayesteh, M. G., Kalbkhani, H., & Khazali, A. (2026). *Energy Co
 ## TL;DR
 
 Proposes a two-tier UAV-terrestrial MEC framework where a UAV carries both an MEC server and a [[star-ris|STAR-RIS]]. Users partially process tasks locally and offload the rest through the UAV-mounted STAR-RIS: transmitted components go to the UAV-MEC server and reflected components go to a terrestrial BS-MEC server. The weighted energy-minimization problem jointly optimizes task-bit allocation, user transmit power, STAR-RIS phase shifts, and UAV trajectory under [[noma|NOMA]], using SCA/MRT subproblem solutions inside a BCD iterative algorithm.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ground users partially process tasks locally and offload the remainder over uplink NOMA to a two-tier MEC system. A UAV carries both an MEC server and a mode-switching STAR-RIS, whose transmitting elements support the aerial server and reflecting elements support a terrestrial BS-MEC server; direct user-to-BS links are blocked and the UAV follows a slot-based trajectory.
+
+**Problem & objective**: Problem $P_0$, a strongly coupled non-convex program, minimizes weighted user, UAV, and BS energy, $\min_{\Gamma,\Phi,Q}\psi=\omega_{\mathrm{user}}E_{\mathrm{user}}+\omega_{\mathrm{UAV}}E_{\mathrm{UAV}}+\omega_{\mathrm{BS}}E_{\mathrm{BS}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task-bit allocation | $d_i^{\mathrm{local}}[n],d_i^{\mathrm{UAV}}[n],d_i^{\mathrm{BS}}[n]$ | continuous, nonnegative | Bits computed locally or at either MEC server |
+| User transmit power | $p_i[n]$ | continuous, $0\le p_i[n]\le p_i^{\max}$ | Uplink offloading power |
+| STAR-RIS mode and phase | $\beta_r^m[n],\beta_t^m[n],\theta_r^m[n],\theta_t^m[n]$ | binary mode; phase in $[0,2\pi)$ | Transmitting or reflecting state and phase of element $m$ |
+| UAV trajectory | $\mathbf q_{\mathrm{UAV}}[n]$ | continuous position sequence | UAV-MEC and STAR-RIS location per slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user's total offloading power is bounded by $p_i^{\max}$ |
+| C2-C4 | Local, UAV, and BS computation loads remain within their CPU capacities |
+| C5 | $\sum_n(d_i^{\mathrm{local}}[n]+d_i^{\mathrm{UAV}}[n]+d_i^{\mathrm{BS}}[n])\ge D_{\mathrm{Total}}$ |
+| C6-C7 | Cumulative UAV/BS executed bits do not exceed the corresponding received offloaded data |
+| C8-C10 | Each STAR-RIS element selects exactly one binary mode and uses a phase in $[0,2\pi)$ |
+| C11-C12 | UAV displacement satisfies $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\le v_{\max}\tau$ with fixed endpoints |
+
+**Algorithm**: Split $P_0$ into bit/power, STAR-RIS, and trajectory blocks → convexify coupled rate expressions with SCA → obtain phase updates with maximum-ratio transmission structure → alternate the three blocks with BCD → stop at a converged suboptimal solution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mohammadi et al. [x] studied weighted energy minimization in a STAR-RIS-assisted UAV-MEC network with NOMA. Their two-tier architecture lets users partially compute tasks locally and offload remaining bits through a UAV-mounted STAR-RIS to either the UAV MEC server or a terrestrial MEC server. They formulated a non-convex problem that jointly optimizes task-bit allocation, user transmit power, STAR-RIS phase shifts, mode selection, and UAV trajectory under communication, computation, and mobility constraints. The proposed solution decomposes the problem into three subproblems, applies successive convex approximation and maximum-ratio transmission based phase updates, and alternates the blocks with block coordinate descent. Simulations report energy savings over the evaluated orthogonal multiple-access and fixed-resource benchmark schemes.
 
 ## Problem framing
 

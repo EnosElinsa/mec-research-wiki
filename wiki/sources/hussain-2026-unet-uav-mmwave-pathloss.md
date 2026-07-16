@@ -5,6 +5,7 @@ authors: ["Sajjad Hussain"]
 year: 2026
 url: "https://doi.org/10.1109/TWC.2026.3670373"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: not_applicable
 tags: [source, uav-communications, channel-model, pathloss-prediction, multi-scale-unet-pathloss-prediction, air-to-ground-channel-model, radio-map-assisted-channel-estimation, low-altitude-intelligent-network]
 related:
   - "[[multi-scale-unet-pathloss-prediction]]"
@@ -15,7 +16,7 @@ related:
   - "[[yang-2026-generative-radio-map-lae]]"
   - "[[bai-2026-multimodal-uav-vehicle-channel]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # A Multi-Scale Feature Extraction and Fusion U-Net for Pathloss Prediction in UAV-Assisted mmWave Radio Networks
@@ -27,6 +28,12 @@ Hussain, S. (2026). *A Multi-Scale Feature Extraction and Fusion U-Net for Pathl
 ## TL;DR
 
 Introduces a U-Net pathloss predictor for UAV-assisted mmWave networks that uses log-distance, LoS mask, and building mask inputs. The architecture combines multi-scale convolution branches, feature fusion, and an ASPP bottleneck, and the paper adds a vectorized LoS-mask computation pipeline for large-scale dataset generation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hussain [x] studied pathloss prediction for UAV-assisted millimeter-wave radio networks across multiple urban environments and UAV altitudes. The proposed U-Net takes log-distance, line-of-sight mask, and building-occupancy mask inputs and combines multi-scale convolution branches, feature fusion, and an atrous spatial pyramid pooling bottleneck. A vectorized geometric line-of-sight algorithm accelerates mask generation for dense receiver grids. The model was evaluated on an in-house 28 GHz ray-tracing dataset and the RadioMapSeer benchmark, including cross-city, altitude, and noisy-input tests. The reported in-house results include a 3.15 dB RMSE, a 2.37 dB MAE, and a 0.00049 NMSE for the complete model.
 
 ## Problem
 

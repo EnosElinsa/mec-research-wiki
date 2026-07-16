@@ -20,7 +20,8 @@ related:
   - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[li-2026-control-based-uav-isac]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # ISAC Enabled Anti-UAV: Joint Beamforming and Trajectory Design for Multi-UAVs
@@ -34,6 +35,44 @@ Wang, X., Li, L., Ning, Z., Tao, X., Qiu, T., Guo, L., & Zhang, Y. (2026). *ISAC
 ## TL;DR
 
 Uses satellite-coordinated authorized UAVs to track one moving unauthorized UAV while serving communication users. Per-slot transmitter/receiver role scheduling, robust CRB reformulation, beamforming, association, and 3-D trajectory updates are combined in the AIEA alternating solver.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Satellite-coordinated authorized UAVs cooperatively sense a moving unauthorized UAV while serving ground communication users. In each slot, authorized UAVs are scheduled as sensing transmitters or echo receivers and move in three dimensions under bounded target-position uncertainty.
+
+**Problem & objective**: Problem P1 minimizes the worst-case time-average cooperative position-error bound, $\min \max_{\Delta\mathbf p_L[n]\in\Omega_L[n]}\frac{1}{N}\sum_{n\in\mathcal N}\operatorname{Tr}(\mathbf{CRB}(\mathbf p_L[n]))$, under bounded target-position error.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Communication beamforming | $\mathbf w[t]$ | complex continuous | Downlink beams for communication users |
+| Sensing transmit beamforming | $\mathbf r[t]$ | complex continuous | ISAC waveform beams transmitted toward the target |
+| Sensing receive beamforming | $\mathbf u[t]$ | complex continuous | Echo-combining beams at receiver UAVs |
+| User association | $\alpha[t]$ | binary | Assigns each communication user to at most one UAV |
+| UAV sensing role | $\beta[t]$ | binary | Selects transmitter or receiver operation in each slot |
+| UAV trajectory | $\mathbf p[t]$ | continuous, bounded | Three-dimensional authorized-UAV positions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 32a | ISAC transmit power is bounded at each sensing transmitter |
+| 32b | Satellite communication, ISAC transmission, and propulsion stay within each UAV power budget |
+| 32c | Every served user meets its minimum downlink SINR |
+| 32d-32e | User associations are binary and each user is assigned to at most one UAV |
+| 32f-32g | Sensing roles are binary and at least one UAV receives target echoes |
+| 32h-32j | Horizontal speed, vertical speed, and altitude satisfy flight limits |
+
+**Algorithm**: AIEA replaces the robust CRB condition by finite LMIs using Schur complements, a first-order uncertainty model, and the generalized Petersen lemma. It alternates semidefinite-relaxed beamforming with rank recovery, penalty-SCA updates for association and role variables, and convexified trajectory and propulsion updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied cooperative anti-UAV sensing by satellite-coordinated authorized UAVs that simultaneously serve communication users. They minimized the worst-case time-average target-position CRB over transmit and receive beamforming, user association, sensing-role scheduling, and three-dimensional trajectories. Their AIEA solver combines robust LMI reformulation, semidefinite relaxation, penalty successive convex approximation, and alternating optimization. The reported four-UAV experiments converged in fewer than five outer iterations and maintained the lowest CRB among the compared methods across the examined uncertainty and system-parameter sweeps. The results also showed that scheduling spatially separated sensing transmitters and receivers can preserve user SINR while improving sensing geometry under bounded target-location error.
 
 ## Problem framing
 

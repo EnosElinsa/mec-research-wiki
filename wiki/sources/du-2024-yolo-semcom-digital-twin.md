@@ -5,6 +5,7 @@ authors: ["Baoxia Du", "Hongyang Du", "Haifeng Liu", "Dusit Niyato", "Peng Xin",
 year: 2024
 url: "https://doi.org/10.1109/JIOT.2023.3317629"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
+modeling_card: required
 tags: [source, semantic-communication, yolov7-object-detection, generative-diffusion-model, diffusion-model-as-optimizer, digital-twin, uav-data-collection, resource-allocation]
 related:
   - "[[semantic-communication]]"
@@ -21,7 +22,7 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
 created: 2026-06-02
-updated: 2026-06-08
+updated: 2026-07-16
 ---
 
 # YOLO-Based Semantic Communication With Generative AI-Aided Resource Allocation for Digital Twins Construction
@@ -33,6 +34,37 @@ Du, B., Du, H., Liu, H., Niyato, D., Xin, P., Yu, J., Qi, M., & Tang, Y. (2024).
 ## TL;DR
 
 A [[semantic-communication]] framework for building a [[digital-twin|digital twin]] of an apple orchard while cutting the cost of transmitting UAV-captured images. A UAV runs a [[yolov7-object-detection|YOLOv7-X]] object detector to extract only the **semantic information** (cropped apple images + confidence + position) instead of sending whole images, then allocates limited transmission power across those crops by their **importance**. Importance is read from the detector's confidence. Two allocation schemes are proposed — a **confidence-based** rule (Conf-SemCom) and an **AI-generated** scheme that uses a [[generative-diffusion-model|diffusion model]] as the power-allocation optimizer ([[diffusion-model-as-optimizer]]) — both compared against an average-allocation baseline (Avg-SemCom). The detector is also slimmed and sharpened (ELAN-H + SimAM → "YOLOv7-HS") for edge deployment.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV photographs an apple orchard, applies YOLOv7-HS to extract cropped fruit images, confidence scores, and positions, and transmits those semantic objects to construct a digital twin. The wireless link follows Fisher-Snedecor $\mathcal F$ composite fading, and a fixed total transmit-power budget is shared among detected objects; the multiple-access scheme is not specified.
+
+**Problem & objective**: The image-semantic-transmission formulation maximizes MIST, $E(A,\{W_i\},\{p_i\})=A\sum_i W_iQ(p_i)$; after detection fixes extraction accuracy $A$ and importance $W_i=c_i^{\sigma}$, the resource-allocation decision chooses $\{p_i\}$ to maximize this importance-weighted transmission quality.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Object transmit power | $p_i$ | continuous, $p_i\geq 0$ | Power assigned to semantic object $i$ |
+| Generated allocation weight | $w_i$ | continuous, normalized over detected objects | Diffusion-policy output mapped to the object power allocation |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| Power budget | The object powers satisfy $\sum_i p_i\leq P$ |
+| Detection domain | Retained objects have confidence $c_i\in[c_{\min},1]$, which determines $W_i=c_i^{\sigma}$ |
+| Allocation domain | Object powers and generated allocation weights are nonnegative and normalized before mapping to the total budget |
+
+**Algorithm**: Detect fruit with the ELAN-H and SimAM enhanced YOLOv7-HS model; crop each object and derive its importance from detector confidence; either sort and allocate power by confidence or condition a reverse-diffusion actor on the channel, total power, and object count; train the actor with twin quality critics, target networks, soft updates, and exploration noise; then run five reverse-denoising steps to generate the power weights at inference.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Du et al. [x] studied importance-aware semantic transmission for constructing an apple-orchard digital twin from UAV images. They defined the MIST metric and allocated a limited transmit-power budget among YOLO-detected fruit crops according to detector confidence and post-transmission image quality. They enhanced YOLOv7-X with ELAN-H and SimAM and proposed both a confidence-based allocation rule and a conditional diffusion allocator trained with double Q-learning. Experiments reported a 91 percent reduction from 595.2 MB of source images to 55.4 MB of semantic data, and the diffusion allocator achieved the highest MIST score in the reported comparison after overtaking the confidence-based method at roughly 500 training iterations.
 
 ## Problem framing
 

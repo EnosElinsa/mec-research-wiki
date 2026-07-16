@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-UAV-Enabled Load-Balance Mobile-Edge Computing for IoT Networks"
 authors: ["Lei Yang", "Haipeng Yao", "Jingjing Wang", "Chunxiao Jiang", "Abderrahim Benslimane", "Yunjie Liu"]
 year: 2020
@@ -16,7 +17,7 @@ related:
   - "[[wang-2019-todetas-deployment-scheduling]]"
   - "[[seid-2021-madrl-multiuav-iot-edge]]"
 created: 2026-05-31
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Multi-UAV-Enabled Load-Balance Mobile-Edge Computing for IoT Networks
@@ -28,6 +29,41 @@ Yang, L., Yao, H., Wang, J., Jiang, C., Benslimane, A., & Liu, Y. (2020). *Multi
 ## TL;DR
 
 A multi-UAV-aided MEC system where several UAVs act as MEC nodes serving ground IoT nodes with limited local computing. The goal is to **balance the computing load across UAVs** while honoring coverage and QoS. The design has three parts: a **differential-evolution (DE)** UAV-deployment algorithm, a **generalized-assignment-problem (GAP)** model for IoT-node-to-UAV association (solved by an LP-relaxation + bipartite-rounding near-optimal approximation), and a **deep-reinforcement-learning (DQN)** task-scheduling scheme that minimizes the average task slowdown on each UAV.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAV MEC servers cover heterogeneous ground IoT nodes over orthogonal OFDMA access. Nonuniform offloading demand creates server-load imbalance, while per-UAV queues determine task slowdown after node association and deployment.
+
+**Problem & objective**: P1 is a mixed deployment, assignment, and scheduling problem that minimizes $\min \bar S+\lambda_L\sigma(L_1,\ldots,L_N)+\lambda_C C_{\mathrm{tx}}$, combining average slowdown, load imbalance, and transmission cost.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV deployment | $\mathbf q_n$ | continuous 2-D position | Horizontal location of UAV $n$ |
+| IoT-UAV assignment | $x_{k,n}$ | binary | UAV serving IoT node $k$ |
+| Task schedule | $\pi_n(t)$ | discrete queue action | Next task executed by UAV $n$ |
+| Reference load | $L_n$ | continuous/nonnegative | Aggregate offloading level assigned to UAV $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every IoT node is assigned to exactly one covering UAV |
+| C2 | Per-UAV assigned load and node count remain within capacity |
+| C3 | IoT-UAV distance and transmission cost satisfy coverage/QoS conditions |
+| C4 | Each UAV executes at most one scheduled task at a decision step |
+| C5 | UAV deployment coordinates remain inside the service region |
+
+**Algorithm**: Generate reference loads → relax the generalized assignment problem to an LP → construct a bipartite graph and round a min-cost perfect matching → train one DQN scheduler per UAV to reduce task slowdown → evolve all horizontal UAV coordinates with differential evolution under the joint objective → repeat assignment and evaluation for each candidate deployment.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] studied load-balanced multi-UAV mobile edge computing for IoT networks. They formulated a joint objective combining average task slowdown, per-UAV load imbalance, and transmission cost over UAV deployment, IoT-node assignment, and task scheduling. Node assignment is modeled as a generalized assignment problem and approximated through LP relaxation, bipartite-graph construction, and deterministic rounding. Per-UAV DQN schedulers select tasks to reduce slowdown, while differential evolution updates all UAV positions. Simulations report lower average slowdown and better load balance than the evaluated first-come-first-serve, shortest-job-first, round-robin, and deployment baselines.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cooperative Task Allocation and Path Planning for Multi-UAVs in Low-Altitude Urban Intelligent Transportation Systems"
 authors: ["Zhe Zhang", "Ju Jiang", "Keck Voon Ling", "Xinhua Wang", "Wen-An Zhang"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-16
 ---
 
 # Cooperative Task Allocation and Path Planning for Multi-UAVs in Low-Altitude Urban Intelligent Transportation Systems
@@ -29,6 +30,43 @@ Zhang, Z., Jiang, J., Ling, K. V., Wang, X., & Zhang, W.-A. (2026). *Cooperative
 ## TL;DR
 
 A distributed multi-UAV mission-planning framework for low-altitude urban intelligent transportation systems (LU-ITS). The paper couples two decisions that are often separated: which UAVs should execute each emergency-rescue or cargo-delivery task, and how each UAV should fly collision-free paths through a constrained urban low-altitude environment. Task allocation is modeled as an evolutionary [[potential-game]] solved by an Improved Log-linear Learning Algorithm (ILLA); path planning is solved by a Constraint-Based Multilayer Bidirectional Adaptive A-Star (CBMBA A-Star) search. Simulations report higher task reward and shorter execution / runtime than the listed baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple communicating UAVs cooperatively execute emergency-rescue or last-mile delivery tasks in low-altitude urban airspace with buildings, no-fly zones, and changing threats. A high-level potential game assigns multi-UAV tasks, and a low-level graph search enforces kinematic and collision-avoidance feasibility.
+
+**Problem & objective**: The high-level combinatorial potential-game model maximizes global mission utility, $\max J=\sum_{T_j\in\mathcal T}[B(T_j)-F(T_j)-G(T_j)]=\sum_i\sum_jU_i(T_j,\mathcal A_{T_j})x_{ij}$, before collision-free path construction.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task assignment | $x_{ij}$ | binary | Whether UAV $a_i$ executes task $T_j$ |
+| Game strategy | $s_i$ | discrete task and position state | Task choice and relative position selected by UAV $i$ |
+| UAV translational control | $u_i(t)$ | continuous, bounded | Acceleration used by the low-level kinematic model |
+| UAV angular controls | $u_{\psi_i}(t),u_{\theta_i}(t),u_{\vartheta_i}(t)$ | continuous, bounded | Yaw, roll, and pitch angular rates |
+| Search node and step | $k,L_i$ | discrete node and positive step | Successive path node and adaptive graph-search distance |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each UAV is assigned to at most one task, $\sum_jx_{ij}\le1$ |
+| C2 | Assigned UAV payloads collectively satisfy each task's required load vector |
+| C3 | Flight range, speed, altitude, response time, and angular-rate limits follow Eqs. (1) and (7) |
+| C4 | Planned paths avoid buildings, no-fly zones, and bandit threats |
+| C5 | UAV pairs maintain minimum safe separation and feasible turning angles |
+| C6 | Low-level path planning rejects a high-level assignment if no executable kinematic path exists |
+
+**Algorithm**: Define task reward, path cost, load cost, and the potential function → let neighboring UAVs update task strategies with ILLA and a time-varying Boltzmann parameter → converge to the optimal Nash-equilibrium set → run multilayer bidirectional CBMBA A-Star for each assignment → enforce turning, separation, obstacle, and threat constraints → adapt the search step for online replanning.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied cooperative task allocation and path planning for multiple UAVs in low-altitude urban intelligent transportation systems. They modeled task allocation as a network evolutionary potential game that maximizes task rewards minus path and payload costs under assignment, payload, flight-range, speed, altitude, and attitude-rate limits. Their Improved Log-linear Learning Algorithm uses derived Boltzmann parameters and converges to the optimal Nash equilibrium with probability one. A Constraint-Based Multilayer Bidirectional Adaptive A-Star algorithm then generates collision-free paths under urban obstacles, no-fly zones, turning constraints, and dynamic threats. Simulations for emergency rescue and last-mile delivery report an 11.67% task-reward increase, a 37.41% task-execution-time reduction, and a 61.02% runtime reduction relative to the stated baseline method.
 
 ## Problem
 
@@ -65,5 +103,5 @@ This is the corpus's clearest low-altitude ITS source where [[potential-game]] t
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative Task Allocation and Path Planning for Multi-UAVs in Low-Altitude Urban Intelligent Transportation Systems/Cooperative Task Allocation and Path Planning for Multi-UAVs in Low-Altitude Urban Intelligent Transportation Systems.md`
+- `raw/sources/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

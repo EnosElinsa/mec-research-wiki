@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Generalizable Pareto-Optimal Offloading With Reinforcement Learning in Mobile Edge Computing"
 authors: ["Ning Yang", "Junrui Wen", "Meng Zhang", "Ming Tang"]
 year: 2025
@@ -17,7 +18,7 @@ related:
   - "[[non-dominated-sorting-genetic-algorithm]]"
   - "[[song-2024-mol-aoi-energy]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Generalizable Pareto-Optimal Offloading With Reinforcement Learning in Mobile Edge Computing
@@ -29,6 +30,38 @@ Yang, N., Wen, J., Zhang, M., & Tang, M. (2025). *Generalizable Pareto-Optimal O
 ## TL;DR
 
 Frames MEC offloading as a **multi-objective** delay-vs-energy problem with unknown user preferences and heterogeneous edge deployments. Instead of training one policy per weight vector, the proposed GMORL trains a single **Discrete-SAC** policy conditioned on preference weights, server count, and CPU frequencies. A histogram-based state encoding and masked fixed-size server action head let the policy generalize across MEC systems with different numbers of edge servers and compute capacities. The reported hypervolume is close to a multi-policy MORL upper-bound baseline while requiring only one deployable policy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple users generate stochastic tasks for one remote cloud and $E$ edge servers. Tasks arrive as Poisson processes, enter FIFO queues, and are fully assigned to one server in a continuous-time system with discrete decision steps; uplinks use a Rayleigh-fading rate model.
+
+**Problem & objective**: Problem (12) minimizes the expected discounted delay-energy scalarization for any preference vector $\boldsymbol\omega=(\omega_T,\omega_E)$, $\min_{\boldsymbol\pi}\mathbb E_{\boldsymbol x\sim\boldsymbol\pi}\!\left[\sum_{m\in\mathcal M}\gamma^m\big(\omega_TT_m+\omega_EE_m\big)\right]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Task-server assignment | $x_{m,e}$ | binary, $\{0,1\}$ | Assigns task $m$ wholly to server $e$ |
+| Stochastic offloading policy | $\boldsymbol\pi$ | probability distribution over feasible assignments | Maps state and context to a server-selection distribution |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 12b | Every offloading indicator is binary, $x_{m,e}\in\{0,1\}$ |
+| 12c | Each task is assigned to exactly one server, $\sum_{e\in\mathcal E}x_{m,e}=1$ |
+| Context | Preference weights satisfy $\omega_T+\omega_E=1$ |
+| Queueing | Tasks are scheduled from each user's FIFO queue and share server compute capacity |
+
+**Algorithm**: GMORL casts the system as a contextual multi-objective MDP and trains one preference-conditioned Discrete-SAC policy. Histogram-based server-state encoding, context inputs for CPU frequencies and server count, and a masked fixed-size action head allow the same policy to operate across heterogeneous MEC systems.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] formulated binary task offloading in a multi-server MEC system as a contextual multi-objective MDP that trades execution delay against energy consumption. Their problem assigns each stochastic task to exactly one cloud or edge server and seeks Pareto solutions across unknown preference weights and heterogeneous CPU configurations. GMORL trains a single preference-conditioned Discrete-SAC policy using histogram-based server features, a vector reward, and a masked action architecture that supports different server counts. For six edge servers, the reported Pareto hypervolume was 64.1, only about 0.3 percent below the multi-policy MORL upper-bound reference. The same experiments report hypervolume gains of up to 121.0 percent over the compared non-upper-bound schemes and test generalization beyond the CPU-frequency and server-count training ranges.
 
 ## Problem framing
 

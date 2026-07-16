@@ -17,7 +17,8 @@ related:
   - "[[li-2025-twohop-airground-drl-offloading]]"
   - "[[wang-2024-hybrid-oma-noma-sagin]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Two-Hop Packet Scheduling, Resource Allocation, and UAV Trajectory Design for Internet of Remote Things in Air–Ground Integrated Network
@@ -29,6 +30,42 @@ Li, S., Yu, Z., Dong, M., Ota, K., Chen, H., Zhang, N., & Yang, C. (2024). *Two-
 ## TL;DR
 
 A joint **packet scheduling, resource allocation, and UAV trajectory design** problem for the **Internet of Remote Things (IoRT)** in a two-hop **air-ground integrated network** of UAVs and HAPs. The objective is to **minimize the average packet queue delay from HAP to IoRT devices** while avoiding network congestion. The non-convex problem is reformulated as an **MDP**; because it has **continuous + discrete hybrid action spaces**, the primal action space is split into two sub-action spaces solved with **MADDPG** (continuous) and **multi-agent double DQN (MADDQN)** (discrete) respectively, enhanced with **adaptive prioritized experience replay (PER)** → the hybrid **MADDPG-APER** algorithm.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A HAP sends packets through multiple UAV relays to fixed IoRT devices over two hops, with queues on both HAP-to-UAV and UAV-to-IoRT links.
+
+**Problem & objective**: Jointly schedule packets, allocate HAP bandwidth and UAV power, and control UAV trajectories to minimize long-run average queue delay, $\min\bar D$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| HAP packet schedule | $A_{Hk_m}(n)$ | binary | Selects one IoRT packet on the HAP-to-UAV link |
+| UAV packet schedule | $B_{mk_m}(n)$ | binary | Selects one packet in UAV $m$ coverage |
+| HAP-to-UAV bandwidth | $w_{Hm}(n)$ | continuous, nonnegative | Bandwidth allocated to UAV $m$ on link 1 |
+| UAV transmit power | $p_m(n)$ | continuous in $[0,P_{\max}]$ | Power used on link 2 |
+| UAV trajectory | $\mathbf q_m(n)$ | continuous 2-D position | Relay position over time slots |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Average delivery rate meets each IoRT requirement, $\bar R_{k_m}\geq\phi_{k_m}\lambda_{k_m}$. |
+| C2 | HAP bandwidth is shared within capacity, $\sum_mw_{Hm}(n)\leq W_H^{\max}$. |
+| C3 | UAV transmit power satisfies $p_m(n)\leq P_{\max}$. |
+| C4 | Each link uses binary one-packet scheduling actions. |
+| C5 | UAV movement, return-to-start, and minimum separation constraints hold. |
+
+**Algorithm**: Reformulate the hybrid-action problem as a multiagent MDP, use MADDPG for continuous bandwidth, power, and trajectory actions, MADDQN for discrete scheduling, and adaptive PER for the hybrid MADDPG-APER learner.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied two-hop HAP-UAV-IoRT downlink scheduling with joint packet decisions, resource allocation, and UAV trajectory control. They minimized average packet queue delay while enforcing delivery-rate, bandwidth, power, binary scheduling, mobility, return, and collision constraints. The hybrid MADDPG-APER method pairs MADDPG for continuous controls with MADDQN for discrete packet schedules and adapts prioritized replay parameters during training. Simulations report lower queue delay and faster, more stable convergence than round-robin, plain MADDPG, and federated reinforcement-learning baselines as device load and arrival rates vary.
 
 ## Problem framing
 

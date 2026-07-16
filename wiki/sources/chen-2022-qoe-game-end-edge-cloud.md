@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "QoE-Aware Decentralized Task Offloading and Resource Allocation for End-Edge-Cloud Systems: A Game-Theoretical Approach"
 authors: ["Ying Chen", "Jie Zhao", "Yuan Wu", "Jiwei Huang", "Xuemin Shen"]
 year: 2022
@@ -20,7 +21,7 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[game-theoretic-offloading-formulations]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # QoE-Aware Decentralized Task Offloading and Resource Allocation for End-Edge-Cloud Systems: A Game-Theoretical Approach
@@ -32,6 +33,39 @@ Chen, Y., Zhao, J., Wu, Y., Huang, J., & Shen, X. (2022). *QoE-Aware Decentraliz
 ## TL;DR
 
 Studies **multi-user task offloading in an end-edge-cloud system** where all user devices (UDs) compete for limited communication channels and edge compute. The goal is to **maximize the sum Quality of Experience (QoE)** of users under resource constraints. Because each UD is self-interested, the problem is recast as a **Multi-User Task Offloading Game (MUTO-Game)**; the authors prove (via an upper bound on both interference and computing-resource competition) that the game is a **potential game** with at least one **Nash Equilibrium**, and propose the distributed **Game-based Decentralized Task Offloading (GDTO)** algorithm to reach one. They bound GDTO's convergence-time (iteration count) and characterize worst-case quality via the **Price of Anarchy (PoA)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: User devices pre-associated with base stations process one task locally, at the colocated edge server, or at a central cloud; multiple users may share a wireless channel and weighted sharing divides each edge server's CPU capacity.
+
+**Problem & objective**: Problem (17) is an NP-hard discrete offloading and channel-allocation problem, $\max_{\mathbf a}\sum_{u_i\in U}E_{a_{-i}}(a_i)$, that maximizes total QoE under communication-rate and edge-compute constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Processing mode | $\lambda_i$ | Discrete, $\{0,1,2\}$ | Selects local processing, the associated edge server, or the cloud. |
+| Wireless channel | $k_i$ | Integer, $\{1,\ldots,c_{\delta_i}\}$ when offloading | Selects the base-station channel used to upload task $i$. |
+| Joint offloading action | $a_i=(\lambda_i,k_i)$ | Categorical, $(0,0)$ or a feasible mode-channel pair | Complete strategy chosen by user device $i$. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Offloaded traffic must satisfy $r_i^{k_i}\ge r_{\min}$ under co-channel interference. |
+| C2 | Weighted edge allocation must satisfy $f_{i,\delta_i}\ge f_{\min}$ for every edge-offloading user. |
+| C3 | QoE is computed from $\mathrm{Cost}_i=\tau_i^tT_i+\tau_i^eEC_i$ and $E_{a_{-i}}(a_i)=-\alpha\log_2\mathrm{Cost}_i+\beta$ for offloaded tasks. |
+| C4 | A Nash equilibrium requires no user to improve $E_{a_{-i}}(a_i)$ by unilaterally changing its feasible mode-channel pair. |
+
+**Algorithm**: GDTO initializes all tasks locally, has every device search its best feasible action in parallel, grants the largest-QoE-improvement contender the update, and repeats until the potential game's finite improvement process reaches equilibrium.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied decentralized task offloading in an end-edge-cloud system where user devices compete for wireless channels and edge computing capacity. They formulated an NP-hard problem that maximizes the sum of logarithmic delay-energy QoE subject to minimum transmission-rate and minimum edge-allocation constraints. They proved the resulting MUTO-Game is a potential game and designed GDTO, in which devices search in parallel and one improving device updates per iteration until reaching a Nash equilibrium. Experiments show GDTO matches the centralized optimum in several small cases, remains the highest-QoE method among the decentralized baselines at large scale, and requires sublinear iteration growth as the channel-dependent strategy space expands.
 
 ## Problem framing
 

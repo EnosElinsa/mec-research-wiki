@@ -8,7 +8,8 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-assisted-mobile-crowd-sensing, age-of-information, contract-theory, incentive-mechanism, mobile-crowdsensing]
 related: ["[[aoi-aware-contract-incentives]]", "[[age-of-information]]", "[[contract-theory]]", "[[stackelberg-game]]", "[[reverse-auction-incentive]]", "[[gao-2023-uav-mcs-uma]]", "ying-chen", "[[yuan-wu]]"]
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # AoI-Aware Incentive Mechanism for UAV-Assisted Mobile Crowdsensing: A Contract-Theoretic Approach
@@ -20,6 +21,40 @@ Guo, Y., Chen, Y., Li, H., Wu, Y., & Huang, J. (2026). *AoI-Aware Incentive Mech
 ## TL;DR
 
 Designs a hierarchical [[aoi-aware-contract-incentives|AoI-aware contract incentive mechanism]] for UAV-assisted mobile crowdsensing. The platform monitors regional average AoI; when network congestion makes data stale, UAVs can act as temporary base stations while mobile users provide sensing updates. A one-dimensional contract incentivizes UAV service slots, and a multidimensional contract incentivizes users' data-update frequency under sensing and computation costs.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A mobile-crowdsensing platform recruits temporary UAV base stations and sensing users when regional age of information becomes too high.
+
+**Problem & objective**: Choose service-slot and update-frequency contracts to maximize platform utility in the two layers, including $\max_{T_i,R_i}\sum_i q_i^{uav}[\kappa\log(T_i+1)-R_i]$ and $\max_{p_i,R_i}\sum_i q_i^{user}[\eta(cp_i-dp_i^2)-R_i]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV service slots | $T_i$ | nonnegative integer or continuous slot count | Service duration selected for UAV type $i$ |
+| UAV reward | $R_i$ | nonnegative continuous | Payment offered to UAV type $i$ |
+| User update frequency | $p_i$ | nonnegative continuous, ordered by type | Sensing updates supplied by user type $i$ |
+| User reward | $R_i$ | nonnegative continuous | Payment offered for the selected update frequency |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Every UAV and user type satisfies individual rationality |
+| C2 | Incentive compatibility makes truthful type selection optimal |
+| C3 | Contract rewards and service or update choices obey monotonicity across ordered types |
+| C4 | UAV deployment is triggered when regional AoI exceeds its threshold |
+
+**Algorithm**: Reduce pairwise IR and IC constraints, derive closed-form rewards and service or update choices, and apply type clustering and smoothing when unconstrained items violate monotonicity.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Guo et al. [x] designed an AoI-aware hierarchical contract for mobile crowdsensing platforms that recruit temporary UAV base stations and sensing users under information asymmetry. The platform chooses UAV service-slot rewards and user update-frequency rewards to maximize expected utility subject to individual rationality, incentive compatibility, and monotonicity. The method reduces pairwise contract constraints, derives optimal rewards and frequencies, and applies clustering and smoothing when unconstrained items violate monotonicity. Numerical results confirm type self-selection and nonnegative participant utility, and the proposed mechanism yields higher reported platform utility and worker rewards than Stackelberg and reverse-auction baselines under incomplete information.
 
 ## Problem
 

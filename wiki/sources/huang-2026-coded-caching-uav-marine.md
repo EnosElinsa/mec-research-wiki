@@ -5,6 +5,7 @@ authors: ["Zhaoxiang Huang", "Zhiwen Yu", "Liang Wang", "Huan Zhou", "Fei Xiong"
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3708365"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, maritime-mec, coded-caching, device-to-device-communication, uav-trajectory-control, lyapunov-optimization, content-delivery, resource-allocation]
 related:
   - "[[maritime-mec]]"
@@ -18,7 +19,7 @@ related:
   - "[[dai-2023-hybrid-noma-fdma-marine]]"
   - "[[qian-2022-uav-maritime-iot-noma]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-16
 ---
 
 # Coded Caching Enabled D2D Content Delivery in UAV-Assisted Marine Edge Networks
@@ -30,6 +31,42 @@ Huang, Z., Yu, Z., Wang, L., Zhou, H., Xiong, F., & Guo, B. (2026). *Coded Cachi
 ## TL;DR
 
 Introduces OJC3D, an online joint coded-caching and content-delivery algorithm for UAV-assisted marine edge networks. A UAV carries complete files, buoys bridge RF and underwater acoustic links, and AUVs cache MDS-coded chunks so nearby AUVs can serve requests through underwater D2D links. Lyapunov optimization handles the long-term UAV energy budget, while per-slot convex subproblems optimize UAV trajectory, caching placement, and request decisions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A rotary-wing UAV carries complete content files, surface buoys bridge RF and underwater acoustic links, and mobile autonomous underwater vehicles cache MDS-coded blocks. A requesting underwater vehicle can recover content from connected peers or obtain the complete file through a buoy from the UAV.
+
+**Problem & objective**: The long-term online problem minimizes $\frac{1}{T}\sum_{t=1}^{T}\mathcal D^{\mathrm{Total}}(t)$, the time-average content access delay, over caching, request-source, bandwidth, and UAV-trajectory decisions under an average UAV energy budget.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| AUV caching | $\Phi(t)$ | binary matrix | Coded content blocks stored by each underwater vehicle |
+| Request source | $\Psi(t)$ | binary matrix | Peer AUV or buoy/UAV path selected for each request |
+| Bandwidth allocation | $\Omega(t)$ | continuous fractions in $[0,1]$ | Acoustic and RF bandwidth shares |
+| UAV trajectory | $\mathbf L$ | continuous position sequence | UAV position in every slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Time-average UAV energy does not exceed $E_{\max}^{\mathrm{UAV}}$ |
+| C2 | Binary coded-block placement fits every AUV cache: $\sum_c\varphi_u^c(t)s_c\le S_u$ |
+| C3 | A request source must be connected and possess the requested coded block |
+| C4 | The selected sources provide either zero or the $k$ blocks required for MDS decoding |
+| C5 | Acoustic and RF bandwidth fractions do not exceed the available bandwidth |
+| C6 | The UAV returns to its initial position and respects the per-slot movement limit |
+
+**Algorithm**: OJC3D converts the long-term energy constraint into a virtual queue and minimizes a per-slot drift-plus-penalty objective. Each slot alternates SCA-based UAV trajectory planning, greedy submodular coded-cache placement, and relaxed mixed-integer request and bandwidth optimization with rounding until the objective stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] studied coded D2D content delivery among autonomous underwater vehicles supported by a mobile UAV and surface buoys. They minimized time-average request delay over coded-cache placement, request-source selection, bandwidth allocation, and UAV trajectory under cache, connectivity, MDS decoding, mobility, and long-term UAV-energy constraints. OJC3D uses a Lyapunov energy queue and alternates convex trajectory planning, greedy submodular caching, and relaxed request and bandwidth optimization. Removing D2D delivery increased average delay by about 25% and UAV energy by 35%, while OJC3D reduced steady-state delay by up to 9% and UAV energy by up to 29% against the online benchmarks.
 
 ## Problem framing
 

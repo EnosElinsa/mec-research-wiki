@@ -5,6 +5,7 @@ authors: ["Junlong Chen", "Yingkai Kang", "Jiawen Kang", "Minrui Xu", "Yongju To
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3674825"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, vehicular-mec, vehicle-twin-migration, mappo, digital-twin, task-migration]
 related:
   - "[[vehicle-twin-migration]]"
@@ -15,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[mou-2025-adm-dt-migration]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Hierarchical Control Multi-Agent DRL for Vehicle Twin Migration with Workload Prediction in UAV-Assisted Vehicular Metaverses
@@ -27,6 +28,41 @@ Chen, J., Kang, Y., Kang, J., Xu, M., Tong, Y., Wu, F., & Niyato, D. (2026). *Hi
 ## TL;DR
 
 Combines RSU workload prediction with hierarchical MAPPO to decide vehicle-twin migration and UAV routing in a UAV-assisted vehicular metaverse. ACB-LSTM predicts future RSU workload from noisy historical sequences; HC-MAPPO makes upper-layer vehicle/UAV decisions; deterministic lower-layer controllers map them to valid migration and UAV-route actions. The reported latency gains come from anticipating RSU congestion and using UAVs as mobile edge servers when terrestrial infrastructure is overloaded.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Intelligent vehicles request vehicle-twin (VT) services from RSUs and mobile UAV edge servers. RSU workload is predicted by ACB-LSTM, vehicles migrate VT tasks among nearby RSUs or an available UAV, and UAVs route between overloaded areas and charging stations.
+
+**Problem & objective**: Over horizon $T_{\max}$, minimize the joint VT latency and UAV energy cost, $\min_A\sum_{t=1}^{T_{\max}}\left(\sum_{v=1}^{V}T_v(t)+\sum_{u=1}^{U}E_u(t)\right)$, while respecting workload, energy, and one-server assignment constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| VT migration action | $a_v(t)$ | discrete, $\{0,1,\ldots,4\}$ | Select UAV or one of the nearest RSUs for vehicle $v$ |
+| UAV priority action | $a_u(t)$ | continuous, $[0,1]$ | Weight between serving high-load RSUs and flying to charge |
+| VT target server | $k_v(t)$ | discrete index | Executed edge-server assignment after action mapping |
+| UAV position | $(x_u(t),y_u(t))$ | continuous coordinates | UAV location used by routing and availability |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | RSU workload remains bounded: $L_e(t)\le L_e^{\max}$ for every RSU $e$. |
+| C2 | UAV workload remains bounded: $L_u(t)\le L_u^{\max}$ for every UAV $u$. |
+| C3 | UAV energy stays within its budget: $E_u(t)\le E_u^{\max}$. |
+| C4 | Each VT task is assigned to exactly one RSU: $k_v(t)=e$. |
+| C5 | A mapped migration action must use an available UAV or a reachable RSU; out-of-range RSU indices are clipped to the nearest available server. |
+
+**Algorithm**: Train ACB-LSTM with convolution, bidirectional LSTM, and Gaussian-noise augmentation, feed predicted workloads to an upper MAPPO controller, and use lower-layer VT-migration and A*-based UAV-routing controllers to map high-level actions to valid server selections, task partitions, and paths.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] addressed vehicle-twin migration in UAV-assisted vehicular metaverses by jointly minimizing VT service latency and UAV energy under RSU and UAV workload limits. The model assigns each vehicle to a single RSU or UAV and lets UAVs choose continuous priority weights that trade overloaded-area service against charging, with A* enforcing executable routes. ACB-LSTM predicts RSU loads, while hierarchical MAPPO learns migration and routing decisions before deterministic lower-layer controllers enforce feasibility. The prediction-enabled HC-MAPPO variant reduced latency by 45.54% versus Random-uav and by 32.93% versus Greedy-uav, and its validation loss beat the listed LSTM baselines.
 
 ## Problem framing
 

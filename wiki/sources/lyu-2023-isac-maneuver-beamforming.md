@@ -14,8 +14,9 @@ related:
   - "[[successive-hover-and-fly-trajectory]]"
   - "[[guangxu-zhu]]"
   - "[[jie-xu]]"
+modeling_card: required
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Maneuver and Beamforming Design for UAV-Enabled Integrated Sensing and Communication
@@ -29,6 +30,40 @@ Lyu, Z., Zhu, G., & Xu, J. (2023). *Joint Maneuver and Beamforming Design for UA
 ## TL;DR
 
 Jointly controls a fixed-altitude UAV's horizontal maneuver and its communication/sensing transmit covariances. Sensing-only SDPs identify feasible locations, graph reachability checks endpoint connectivity, and alternating SCA/SDR updates trade weighted user rate against minimum illumination at prescribed sensing points.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV with a vertical ULA serves $K$ ground users and illuminates prescribed ground sensing points over a slotted mission, in either a quasi-stationary location or a mobile endpoint-constrained trajectory.
+
+**Problem & objective**: For the mobile case, maximize average weighted sum rate, $\max_{\{\mathbf q[n]\},\{\mathbf w_k[n],\mathbf R_s[n]\}}\frac1N\sum_n\sum_k\alpha_k\log_2(1+\gamma_k[n])$, while meeting sensing beampattern gains.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV path | $\mathbf q[n]$ | continuous 2-D position | Horizontal location at slot $n$ |
+| User beams | $\mathbf w_k[n]$ | complex vectors | Information beam for user $k$ |
+| Sensing covariance | $\mathbf R_s[n]$ | positive semidefinite matrix | Dedicated sensing signal covariance |
+| Lifted covariance | $\mathbf W_k[n]$ | positive semidefinite, rank one before relaxation | Lift of $\mathbf w_k[n]\mathbf w_k[n]^H$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Sensing points receive minimum beampattern gain, $\mathbf a^H(\mathbf q[n],\mathbf m_j)(\sum_k\mathbf W_k[n]+\mathbf R_s[n])\mathbf a(\mathbf q[n],\mathbf m_j)\geq d^2(\mathbf q[n],\mathbf m_j)\Gamma$. |
+| C2 | Total transmit power is bounded, $\sum_k\|\mathbf w_k[n]\|^2+\mathrm{tr}(\mathbf R_s[n])\leq P_{\max}$. |
+| C3 | The mobile path has fixed endpoints and per-slot displacement $\|\mathbf q[n+1]-\mathbf q[n]\|\leq V_{\max}$. |
+| C4 | Information covariances are positive semidefinite and rank one before SDR; the sensing covariance is positive semidefinite. |
+
+**Algorithm**: Use sensing-only SDPs to build feasible locations and graph DFS reachability between endpoints, update beam covariances with SCA and SDR, update the trajectory with trust-region SCA, and alternate the two blocks until the weighted-rate increase is below tolerance.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lyu et al. [x] studied a UAV-enabled ISAC access point with a vertical ULA that serves ground users while illuminating prescribed sensing locations. They formulated weighted sum-rate maximization over the UAV location or trajectory and communication and sensing covariances, subject to beampattern, power, endpoint, and flight-step constraints. Sensing-only semidefinite programs and graph reachability first test feasible deployment paths, after which alternating SCA and SDR updates refine beamforming and a trust-region SCA trajectory block. Numerical results show that the joint maneuver design outperforms straight-flight and other heuristic trajectories while exposing the expected rate loss as the sensing threshold increases.
 
 ## Problem and system model
 

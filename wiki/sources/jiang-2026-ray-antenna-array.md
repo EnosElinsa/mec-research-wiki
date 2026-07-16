@@ -17,7 +17,8 @@ related:
   - "[[lu-2026-uav-swarm-two-level-ma]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
-updated: 2026-07-14
+modeling_card: not_applicable
+updated: 2026-07-16
 ---
 
 # Ray Antenna Array Achieves Uniform Angular Resolution Cost-Effectively for Low-Altitude UAV Swarm ISAC
@@ -29,6 +30,12 @@ Jiang, H., & Zeng, Y. (2026). *Ray Antenna Array Achieves Uniform Angular Resolu
 ## TL;DR
 
 Adapts the [[ray-antenna-array]] to an OFDM low-altitude UAV-swarm ISAC receiver. Radially oriented simple ULAs directly combine their elements without per-element phase shifters, while a limited number of RF chains access selected ray outputs. Under stated coverage and element-pattern assumptions, the architecture has direction-independent angular resolution and supports AoA, delay, and Doppler estimation through MUSIC, zero-forcing separation, and a two-dimensional periodogram.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Jiang and Zeng [x] studied a ray antenna array receiver for OFDM-based ISAC with a low-altitude UAV swarm. They designed radial simple ULAs and an energy-based ray-selection network to obtain direction-independent angular resolution without per-element phase shifters. Their sensing chain applies MUSIC for angle estimation, zero-forcing spatial separation, and a two-dimensional periodogram for delay and Doppler estimation. Analysis establishes uniform angular resolution under the stated array-coverage and element-pattern assumptions. Simulations report more robust target estimation at large angles and higher communication rate than the selected conventional ULA benchmark.
 
 ## Problem
 

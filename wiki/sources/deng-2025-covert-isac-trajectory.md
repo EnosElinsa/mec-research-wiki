@@ -5,6 +5,7 @@ authors: ["Dan Deng", "Wen Zhou", "Xingwang Li", "Daniel Benevides da Costa", "D
 year: 2025
 url: "https://doi.org/10.1109/TWC.2024.3503726"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, uav, isac, covert-communication, beamforming, trajectory-optimization, sdr, sca]
 related:
   - "[[sensing-signal-assisted-covertness]]"
@@ -18,7 +19,7 @@ related:
   - "[[wang-2026-fd-covert-isac]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Joint Beamforming and UAV Trajectory Optimization for Covert Communications in ISAC Networks
@@ -30,6 +31,39 @@ Deng, D., Zhou, W., Li, X., da Costa, D. B., Ng, D. W. K., & Nallanathan, A. (20
 ## TL;DR
 
 Uses an ISAC sensing waveform as cover for a UAV access point's information transmission. Block-coordinate descent alternates semidefinite-relaxed communication/sensing beamforming with SCA trajectory updates to maximize average covert rate while preserving sensing gain and a detection-error constraint at multiple wardens.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-altitude multi-antenna UAV serves one legitimate receiver while illuminating multiple sensing targets and hiding its information signal from multiple wardens. The sensing waveform supplies the masking baseline, and each warden applies received-power detection.
+
+**Problem & objective**: The joint ISAC design maximizes the legitimate user's average achievable covert rate, $\max_{\mathbf w_r,\mathbf w_c,\mathbf q}\mathcal R(\mathbf q)=\frac{1}{N}\sum_{n=1}^{N}\log_2\!\left(1+\frac{\mathbf h_B^H[n]\mathbf W_c[n]\mathbf h_B[n]}{\sigma_b^2}\right)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Sensing beamformer | $\mathbf w_r[n]$ | complex vector | ISAC sensing waveform in slot $n$ |
+| Information beamformer | $\mathbf w_c[n]$ | complex vector | Covert communication beam in slot $n$ |
+| UAV horizontal position | $\mathbf q[n]$ | continuous, $\mathbb R^2$ | Fixed-altitude UAV waypoint in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 22a-22b | The trajectory starts and ends at prescribed points and obeys the speed limit, $\lVert\mathbf q[n]-\mathbf q[n+1]\rVert\leq V_mT_s$ |
+| 22c | Sensing and information beams share the slot power budget, $\lVert\mathbf w_r[n]\rVert^2+\lVert\mathbf w_c[n]\rVert^2\leq P_m$ |
+| 22d | Each sensing target receives at least its required directional gain |
+| 22e | At every warden, the information-to-sensing received-power ratio stays below $\mu_{\max}$, enforcing the detection-error requirement |
+
+**Algorithm**: Block-coordinate descent alternates two local solvers. With the path fixed, semidefinite relaxation optimizes communication and sensing covariance matrices and recovers beamformers by singular-value decomposition or Gaussian randomization; with beams fixed, successive convex approximation updates the trajectory inside a trust region until the average covert rate converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Deng et al. [x] used an ISAC sensing waveform to mask information transmission from a fixed-altitude multi-antenna UAV in the presence of multiple wardens and sensing targets. They maximized average covert rate by jointly selecting communication and sensing beamformers and the horizontal UAV trajectory under endpoint, speed, power, sensing-gain, and detection-error constraints. Their block-coordinate method combines semidefinite relaxation and rank recovery for beamforming with successive convex approximation for trajectory updates. In the reported simulations, relaxing the covertness parameter from 0.01 to 0.10 adds about 0.6 bit/s/Hz, while joint optimization exceeds the trajectory-only and beamforming-only baselines by about 5.2 and 1.1 bit/s/Hz.
 
 ## System and objective
 

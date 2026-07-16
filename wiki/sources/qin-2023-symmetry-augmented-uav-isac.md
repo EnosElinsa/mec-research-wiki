@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Deep Reinforcement Learning Based Resource Allocation and Trajectory Planning in Integrated Sensing and Communications UAV Network"
 authors: ["Yunhui Qin", "Zhongshan Zhang", "Xulong Li", "Wei Huangfu", "Haijun Zhang"]
 year: 2023
@@ -19,7 +20,7 @@ related:
   - "[[xulong-li]]"
   - "[[wei-huangfu]]"
 created: 2026-07-12
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Deep Reinforcement Learning Based Resource Allocation and Trajectory Planning in Integrated Sensing and Communications UAV Network
@@ -31,6 +32,41 @@ Qin, Y., Zhang, Z., Li, X., Huangfu, W., & Zhang, H. (2023). *Deep Reinforcement
 ## TL;DR
 
 Jointly controls multi-UAV user association, horizontal trajectory, and sensing/communication power for max-min weighted spectral efficiency. Centralized SAC is strengthened with reward-preserving UAV-label permutations in replay memory, while MASAC provides a local-observation execution alternative.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-altitude UAVs communicate with and sense static ground targets over slotted distance-dependent LoS links. Each target associates with one UAV, spectrum is reused across UAVs, sensing uses a two-way channel, and the system tracks communication and sensing weighted spectral efficiency while enforcing separation and flight-region safety.
+
+**Problem & objective**: A mixed-integer non-convex sequential-control problem maximizes the minimum horizon weighted spectral efficiency, $\max\min_m\sum_t\big(R_m^{\mathrm c}(t)+R_m^{\mathrm s}(t)\big)$, with a Jain-fairness reward component.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Target association | $a_{m,n}(t)$ | binary | Whether target $n$ is served by UAV $m$ |
+| UAV position | $\mathbf q_m(t)$ | continuous horizontal position | UAV trajectory in each slot |
+| Communication/sensing power | $p_m^{\mathrm c}(t),p_m^{\mathrm s}(t)$ | continuous, bounded | Power assigned to communication and sensing |
+| Policy action | $\pi_m(a\mid s)$ | hybrid action policy | Learned mapping from global or local observations to association, motion, and power |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each target associates with exactly one UAV |
+| C2 | Per-slot and horizon transmit powers satisfy UAV budgets |
+| C3 | UAV movement remains inside the rectangular flight region |
+| C4 | Pairwise UAV separation avoids collisions |
+| C5 | All action variables and association choices remain in their specified domains |
+
+**Algorithm**: Relax the hybrid association action for centralized SAC → train with the minimum weighted-efficiency plus fairness reward → augment replay transitions with consistent UAV-label permutations → decay augmentation as replay grows → optionally execute decentralized MASAC actors with centralized critics.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qin et al. [x] studied joint resource allocation and trajectory planning for a multi-UAV integrated sensing and communications network. They formulated a mixed-integer non-convex control problem that maximizes the minimum horizon weighted spectral efficiency through target association, UAV positions, and communication and sensing power under power, movement, separation, and flight-region constraints. Their centralized SAC controller is augmented with reward-preserving UAV-label permutations in replay memory, while a MASAC variant supports local-observation execution. The permutation augmentation is applied consistently to UAV-indexed states, actions, channels, positions, powers, and next states. Simulations report a text-stated 14.3% weighted spectral-efficiency improvement over vanilla SAC in the main setting.
 
 ## Problem
 

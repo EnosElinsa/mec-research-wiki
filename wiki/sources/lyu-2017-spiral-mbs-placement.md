@@ -17,8 +17,9 @@ related:
   - "[[al-hourani-2014-optimal-lap-altitude]]"
   - "[[zeng-2016-throughput-relaying]]"
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
+modeling_card: required
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Placement Optimization of UAV-Mounted Mobile Base Stations
@@ -30,6 +31,38 @@ Lyu, J., Zeng, Y., Zhang, R., & Lim, T. J. (2017). *Placement Optimization of UA
 ## TL;DR
 
 Minimizes the **number of UAV-mounted mobile base stations (MBSs)** needed to provide wireless coverage to a set of ground terminals (GTs), so each GT lies within the communication radius `r` of at least one MBS. The paper casts this as the NP-hard **Geometric Disk Cover (GDC)** problem and proposes a **polynomial-time `O(K^3)`-worst-case spiral algorithm**: MBSs are placed **sequentially along the boundary (convex-hull perimeter) of the still-uncovered GTs and nudged inward** toward the area center, so their connecting line traces an inward spiral until all GTs are covered. Numerically, it nearly matches the exact (exponential) core-sets optimum on small instances and beats strip-based, K-means, and random heuristics on both MBS count and runtime.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ ground terminals have known 2-D locations, UAV-mounted MBSs fly at fixed altitude $H$, and each MBS has a fixed ground coverage radius $r$ under a LoS free-space model.
+
+**Problem & objective**: Geometric Disk Cover, $\min_{\{\mathbf u_m\}_{m\in\mathcal M}}|\mathcal M|$ subject to $\min_{m\in\mathcal M}\|\mathbf w_k-\mathbf u_m\|\leq r$ for every GT $k$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| MBS count | $M$ | positive integer | Cardinality of the deployed MBS set |
+| MBS locations | $\mathbf u_m$ | continuous 2-D coordinates | Ground projection of MBS $m$ |
+| Newly covered set | $\mathcal K_{\mathrm{new}}$ | subset of uncovered GTs | GTs assigned to the current LocalCover step |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every GT is covered by at least one MBS, $\min_m\|\mathbf w_k-\mathbf u_m\|\leq r$. |
+| C2 | A LocalCover placement keeps every prioritized and newly covered GT within radius $r$, $\|\mathbf u-\mathbf w_k\|\leq r$. |
+| C3 | MBSs use the fixed-altitude, fixed-radius coverage abstraction; channel assignment and power control are deferred after placement. |
+
+**Algorithm**: Repeatedly compute the convex-hull boundary of uncovered GTs, choose the next boundary GT counter-clockwise, refine an MBS center with LocalCover to include prioritized boundary and nearby inner GTs, remove covered GTs, and continue inward until none remain.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lyu et al. [x] studied placement of UAV-mounted mobile base stations for covering known ground terminals without terrestrial infrastructure. They formulated the NP-hard geometric disk cover problem that minimizes the MBS count while keeping every terminal within a fixed communication radius. Their polynomial-time spiral algorithm walks the convex-hull perimeter of uncovered terminals and uses a LocalCover one-center refinement to prioritize boundary coverage before adding inner terminals. On an 80-terminal instance with radius 0.5 km, the algorithm used 11 MBSs, matching the core-sets optimum and improving on the strip method's 13 MBSs, while retaining low runtime as network size grew.
 
 ## Problem framing
 

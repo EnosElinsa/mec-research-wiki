@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Distributed Deep Joint Source-Channel Coding of Videos in Unmanned Aerial Vehicle Networks"
 authors: ["Zhenguo Zhang", "Qianqian Yang", "Yiping Duan", "Zhiguo Shi", "Shibo He", "Xiaoming Tao", "Jiming Chen"]
 year: 2026
@@ -14,7 +15,7 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[air-to-ground-channel-model]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Distributed Deep Joint Source-Channel Coding of Videos in Unmanned Aerial Vehicle Networks
@@ -26,6 +27,40 @@ Zhang, Z., Yang, Q., Duan, Y., Shi, Z., He, S., Tao, X., & Chen, J. (2026). *Dis
 ## TL;DR
 
 Moves most video-reconstruction complexity from resource-constrained UAV encoders to ground decoders through distributed DeepJSCC with key and Wyner-Ziv-inspired frames. Per-UAV DQNs jointly select direct or amplify-forward links and transmit power to balance reconstruction quality against residual transmission energy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Mobile UAVs send video to mobile ground users either directly or through another UAV acting as a two-hop amplify-and-forward relay. A lightweight distributed JSCC encoder sends key and Wyner-Ziv-inspired frame features over time-varying probabilistic LoS/NLoS air-ground channels.
+
+**Problem & objective**: The lifetime-oriented link-control problem maximizes residual-energy-weighted video utility, $\max\sum_{t,u,k}L_{u,k}(t)[\phi E_u(t)+\mu f_{\mathrm{DVC}}(s_u,\gamma_{u,k}(t))]$, under mobility, energy, power, association, and reconstruction-quality limits.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmit power | $P_u(t)$ | continuous, $[0,P_{\max}]$ | Power selected by source or relay UAV $u$ |
+| Link and destination association | $L_{u,k/u'}(t)$ | binary, $\{0,1\}$ | Select direct user $k$ or relay UAV $u'$ |
+| Transmission mode | $m_u(t)$ | categorical, direct or AF relay | Choose a one-hop or two-hop video path |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV and user positions remain inside their horizontal and altitude bounds. |
+| C2 | Residual energy and power satisfy $0\leq E_u(t)\leq E_{\max}$ and $0\leq P_u(t)\leq P_{\max}$. |
+| C3 | Associations are binary and each UAV serves at most one user or relay destination per slot. |
+| C4 | Reconstructed video quality satisfies $f_{\mathrm{DVC}}(s_u,\gamma_{u,k}(t))\geq L_{\min}$. |
+| C5 | Direct and AF modes use their respective physical SNR and total-power expressions. |
+
+**Algorithm**: Train the lightweight distributed JSCC codec, let each UAV observe normalized locations, noise, and residual energy, use a DQN to choose direct or AF association and transmit power with epsilon-greedy exploration, and update policy and target networks from replay memory using the energy-aware transmission reward.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied energy-efficient video transmission in mobile UAV networks with direct and amplify-and-forward relay links. They combined a lightweight distributed joint source-channel coding architecture with a finite-MDP link controller that selects the destination or relay and transmit power under mobility, energy, association, SNR, and minimum reconstruction-quality constraints. Their codec independently encodes key and Wyner-Ziv-inspired frames and shifts side-information fusion to the receiver, while per-UAV deep Q-networks use residual energy in the state and reward to balance effective transmission against power consumption. Simulations report UAV-side encoding complexity equal to 1.81% of DCVC and 16.56% of L-DVC, and the link policy increases completed rounds by 13.62% with four UAVs and 24.36% with twelve UAVs relative to the nearest-user baseline.
 
 ## Problem
 

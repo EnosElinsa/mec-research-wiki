@@ -5,6 +5,7 @@ authors: ["Chengsi Liang", "Hongyang Du", "Yao Sun", "Dusit Niyato", "Jiawen Kan
 year: 2025
 url: "https://doi.org/10.1109/TCCN.2024.3435524"
 venue: "IEEE Transactions on Cognitive Communications and Networking (IEEE TCCN)"
+modeling_card: not_applicable
 tags: [source, semantic-communication, generative-ai, aigc, survey, knowledge-management, resource-allocation]
 related:
   - "[[semantic-communication]]"
@@ -15,7 +16,7 @@ related:
   - "[[xu-2024-mobile-aigc-survey]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
 created: 2026-06-04
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Generative AI-Driven Semantic Communication Networks: Architecture, Technologies, and Applications
@@ -27,6 +28,12 @@ Liang, C., Du, H., Sun, Y., Niyato, D., Kang, J., Zhao, D., & Imran, M. A. (2025
 ## TL;DR
 
 A comprehensive survey on the synthesis of **generative AI (GAI)** and **semantic communication (SemCom)** — the first to jointly cover framework architecture, transceiver design, information-effectiveness metrics, resource allocation, and **knowledge management** for GAI-driven SemCom networks. Proposes a novel three-plane network architecture (data plane, physical infrastructure, network control plane). Covers GAI models (unimodal + multimodal), SemCom transceiver design, knowledge construction/update/sharing, and use cases (autonomous driving, smart cities, Metaverse). Companion paper to [[xu-2024-mobile-aigc-survey]] (AIGC services focus) and [[khoramnejad-2025-gai-wireless-optimization-survey]] (wireless optimization focus).
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liang et al. [x] surveyed the integration of generative artificial intelligence with semantic communication for artificial intelligence generated content delivery. They organized the network around data, physical-infrastructure, and control planes and reviewed unimodal and multimodal generation models, semantic transceivers, and information-effectiveness metrics. The survey treated knowledge construction, sharing, updating, communication resources, and computing resources as coupled network-management concerns. Its illustrative image experiment reported 5 seconds of processing and about 2 million transmitted bits for the generative semantic system, compared with 28 seconds and about 2 million bits for classical semantic communication and 42 seconds and about 20 million bits for traditional transmission. The authors also mapped the architecture to autonomous driving, smart cities, and the Metaverse and identified multimodal transceiver design, goal-aware effectiveness measurement, and knowledge freshness versus update cost as open challenges.
 
 ## Problem framing
 

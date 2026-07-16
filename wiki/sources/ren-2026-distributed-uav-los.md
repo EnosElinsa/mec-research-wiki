@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Performance Analysis of Distributed UAVs in Urban Environments Using a Practical Line-of-Sight Model"
 authors: ["Yue Ren", "Huasen He", "Yunpeng Hou", "Xiaofeng Jiang", "Shuangwu Chen", "Jian Yang"]
 year: 2026
@@ -16,7 +17,7 @@ related:
   - "[[device-association]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Performance Analysis of Distributed UAVs in Urban Environments Using a Practical Line-of-Sight Model
@@ -28,6 +29,12 @@ Ren, Y., He, H., Hou, Y., Jiang, X., Chen, S., & Yang, J. (2026). *Performance A
 ## TL;DR
 
 Derives outage and capacity behavior for aerial users served by spatially separated urban mmWave base stations, using a finite-region hard-core deployment and the distance- and height-dependent 3GPP UAV LoS model rather than a single elevation-angle sigmoid.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ren et al. [x] analyzed outage and capacity for aerial users served by distributed urban millimeter-wave base stations. They modeled finite-region Matérn hard-core base-station deployment, distance- and height-dependent 3GPP UAV line-of-sight probabilities, LoS/NLoS path loss, shadowing, and three-dimensional sectored antennas. The analysis derives serving-distance distributions, outage probabilities, and ergodic capacities for best-base-station, best-LoS/NLoS, nearest-base-station, and nearest-LoS/NLoS selection. Monte Carlo simulations compare the practical 3GPP line-of-sight model with ITU and Manhattan ray-tracing models. The reported results show lower outage for best-base-station selection and analytical-to-simulation capacity differences of at most 2% up to 25 dBm in the stated cases.
 
 ## Problem and system model
 

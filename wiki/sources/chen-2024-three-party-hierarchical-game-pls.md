@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "A Three-Party Hierarchical Game for Physical Layer Security Aware Wireless Communications With Dynamic Trilateral Coalitions"
 authors: ["Ruoyang Chen", "Changyan Yi", "Kun Zhu", "Bing Chen", "Jun Cai", "Mohsen Guizani"]
 year: 2024
@@ -16,7 +17,7 @@ related:
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
   - "[[bi-2025-sg-mapg]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # A Three-Party Hierarchical Game for Physical Layer Security Aware Wireless Communications With Dynamic Trilateral Coalitions
@@ -28,6 +29,42 @@ Chen, R., Yi, C., Zhu, K., Chen, B., Cai, J., & Guizani, M. (2024). *A Three-Par
 ## TL;DR
 
 A **hierarchical game** framework for **physical-layer-security (PLS)**-aware uplink communications with **dynamic trilateral coalitions** among three selfish parties: legitimate users (LUs) sending secret data to base stations, eavesdroppers (EVs), and jammers (JAs) who may ally with **either** LUs (to raise secrecy rate) or EVs (to raise eavesdropping rate) in exchange for rewards. Unlike prior PLS work with fixed ally-adversary relationships, the coalitions here can merge and split over time. The paper proposes a **hedonic coalition selection and formation (HCSF)** algorithm for a stable per-slot coalition partition, proves the hierarchical game converges to an equilibrium, and adds a **DRL-based solution** for long-term performance across time slots.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: In a slotted uplink network, legitimate users transmit confidential data to associated base stations, eavesdroppers activate at different locations, and jammers choose discrete power and may dynamically ally with either legitimate users or eavesdroppers under time-varying channels.
+
+**Problem & objective**: The three parties solve coupled long-term utility problems of the form $\arg\max_{\pi_i}\lim_{T\to\infty}\frac{1}{T}\sum_{t\in[0,T]}U_i(t)$ for $i\in\{\mathcal K,\mathcal N,\mathcal J\}$, balancing security or eavesdropping gains, incentives, power costs, activation costs, and coalition reconfiguration costs.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Eavesdropper activation | $x_k^{sw}(t)$ | Binary, $\{0,1\}$ | Activates eavesdropper $k$ at its current location. |
+| Eavesdropper incentive | $\mu_E(t)$ | Continuous, $[0,\mu_E^{\max}]$ | Unit reward offered to attract jammer cooperation. |
+| User association and power | $x_{nm}^T(t),P_n^T(t)$ | Binary association and finite power levels | Selects one receiving base station and a transmit-power level for user $n$. |
+| User incentive | $\mu_L(t)$ | Continuous, $[0,\mu_L^{\max}]$ | Unit reward offered by legitimate users to jammers. |
+| Jammer coalition and power | $x_{\{EJ\}}(t),x_{\{LJ\}}(t),P_j^J(t)$ | Binary coalition choices and finite power levels | Chooses one ally at most and allocates jamming power. |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every legitimate link satisfies $R_{nm}^T(t)\ge R_{\min}^T$. |
+| C2 | Base-station association is binary and exclusive, $\sum_mx_{nm}^T(t)=1$. |
+| C3 | Incentives lie in their bounded intervals and user and jammer powers come from their prescribed $l$-level sets. |
+| C4 | Jammers can ally with at most one side, $x_{\{EJ\}}(t)+x_{\{LJ\}}(t)\le1$. |
+| C5 | Coalition changes incur $c_{conf}\mathcal F(t)$, coupling consecutive time slots. |
+
+**Algorithm**: HCSF performs hedonic coalition selection, merge, and split operations to reach a stable per-slot partition, after which a PPO-based multi-agent DRL construction learns the parties' mixed strategies over repeated time slots.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chen et al. [x] studied physical-layer-secure uplink communication with strategic legitimate users, eavesdroppers, and jammers that can dynamically change allies. They formulated a repeated three-stage hierarchical game in which the parties maximize long-term utilities over activation, association, incentives, discrete transmission or jamming power, and unilateral jammer coalition choices under secrecy and QoS constraints. Their HCSF procedure finds a stable coalition partition in each slot, and a PPO-based DRL solution learns the mixed-strategy equilibrium across time-varying channels. Simulations show rapid convergence and higher cumulative utilities than fixed legitimate-friendly or eavesdropper-friendly jamming schemes implemented with DRL or particle swarm optimization.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Accessing From the Sky: A Tutorial on UAV Communications for 5G and Beyond"
 authors: ["Yong Zeng", "Qingqing Wu", "Rui Zhang"]
 year: 2019
@@ -17,7 +18,7 @@ related:
   - "[[mao-2017-mec-survey-communication]]"
   - "[[yong-zeng]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Accessing From the Sky: A Tutorial on UAV Communications for 5G and Beyond
@@ -29,6 +30,12 @@ Zeng, Y., Wu, Q., & Zhang, R. (2019). *Accessing From the Sky: A Tutorial on UAV
 ## TL;DR
 
 A widely-cited **tutorial / survey** on UAV communications for 5G and beyond. It frames the field around two complementary research paradigms — **UAV-assisted wireless communications** (UAVs as aerial communication platforms, e.g. aerial base stations/relays) and **cellular-connected UAVs** (UAVs as aerial users served by the cellular network) — and surveys the distinctive challenges that arise from UAVs' high altitude and controllable 3-D mobility. A foundational overview entry that predates and contextualizes much of this wiki's UAV-MEC corpus.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng et al. [x] surveyed UAV communications for 5G and beyond through the complementary paradigms of UAV-assisted communication and cellular-connected UAVs. They reviewed air-ground channel and antenna models, three-dimensional placement, trajectory optimization, energy efficiency, interference, and cellular support for aerial users. The tutorial distinguished safety-critical control-and-non-payload traffic from payload communication requirements and summarized representative UAV applications and wireless technologies. It also identified controllable mobility, LoS-dominant links, size-weight-power limits, and aerial-terrestrial interference as central design issues. The paper is a tutorial and does not introduce one application-specific decision model for a Modeling Quick-Use Card.
 
 ## Problem framing
 

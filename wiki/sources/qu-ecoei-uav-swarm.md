@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Elastic Collaborative Edge Intelligence for UAV Swarm: Architecture, Challenges, and Opportunities"
 authors: ["Yuben Qu", "Hao Sun", "Chao Dong", "Jiawen Kang", "Haipeng Dai", "Qihui Wu", "Song Guo"]
 year: ""
@@ -26,7 +27,7 @@ related:
   - "[[huang-2025-cmop-dispersed-computing]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Elastic Collaborative Edge Intelligence for UAV Swarm: Architecture, Challenges, and Opportunities
@@ -37,6 +38,12 @@ Qu, Y., Sun, H., Dong, C., Kang, J., Dai, H., Wu, Q., & Guo, S. *Elastic Collabo
 
 ## TL;DR
 A **magazine architecture article** proposing **eCoEI** (elastic collaborative edge intelligence), an OODA-loop-based ([[collaborative-dl-inference|collaborative DL inference]]) architecture for UAV swarms that keeps complex DNN inference running **even when UAVs or air-to-air (A2A) links fail**. Unlike cloud-/edge-/device collaborative-inference paradigms — which break under the unstable, adversarial air-to-air links of a battlefield — eCoEI distributes a DNN's compute/memory across the swarm in a [[pipeline-parallel-inference|pipeline]], and adaptively re-partitions ([[elastic-task-scheduling]]) when nodes drop or rejoin. A proof-of-concept on real airborne embedded devices (Jetson Nano / TX2) validates feasibility and elasticity.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Qu et al. [x] proposed elastic collaborative edge intelligence for UAV swarms. The eCoEI architecture uses an OODA loop to observe available UAVs and links, select a feasible set, partition a deep neural network into parallel or pipelined subtasks, and re-partition unfinished work when a node or air-to-air link becomes unavailable. A proof-of-concept implementation uses one Jetson TX2 and three Jetson Nano computers to run Faster R-CNN inference over an airborne video stream. The measured frame rate rises from 0.8 FPS with one Jetson Nano to 2.9 FPS with the four-device configuration. When one UAV communication link is disabled, eCoEI continues at approximately 2 FPS by assigning unfinished work to the remaining UAVs.
 
 ## Problem framing
 DNNs for UAV tasks (object detection/recognition in ISR, battlefield search-and-rescue, smart-city monitoring) are computation-intensive, but onboard UAV resources are limited. The two conventional escapes both fail for UAVs: **cloud intelligence** (ship raw data to a powerful cloud) suffers long, unstable air-to-ground latency and may rely on damaged base stations; **edge intelligence** (lightweight onboard models) loses accuracy. Existing **collaborative edge intelligence (CoEI)** paradigms — cloud-device, edge-device, cloud-edge-device, and device-device — reduce raw-data transfer but, when applied to UAV swarms, "seldom consider the strong confrontation environment of the battlefield, the unreliable air-to-air links among UAVs as well as likely hardware/software breakdowns," so a single point of failure can abort the whole collaborative inference. The article asks how to make in-swarm collaborative inference **invulnerable** to node/link failure while keeping high accuracy and low latency.

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Assisted Security-Aware Vehicular Edge Computing: A TD3-Enhanced Scheme"
 authors: ["Tao Ren", "Jun Cui", "Xueyan Cao", "Yuzheng Ren"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[task-offloading]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # UAV-Assisted Security-Aware Vehicular Edge Computing: A TD3-Enhanced Scheme
@@ -25,6 +26,41 @@ Ren, T., Cui, J., Cao, X., & Ren, Y. (2026). *UAV-Assisted Security-Aware Vehicu
 ## TL;DR
 
 Formulates UAV-assisted [[vehicular-mec]] under a passive eavesdropper and uses [[td3]] to jointly control UAV movement, VUE offloading ratios, and vehicle-UAV association. Security enters through an effective secure offloading rate, so transmissions below the secure-rate threshold suffer degraded task-upload capacity.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple vehicular user equipments offload tasks to UAV edge servers in the presence of a passive eavesdropper. Orthogonal VUE bands separate users, UAVs move in time slots, Eve's location has Gaussian estimation error, and the effective secure offloading rate is the positive legitimate-rate minus eavesdropping-rate difference with a threshold penalty.
+
+**Problem & objective**: A security-aware continuous-control problem minimizes the maximum computation latency, $\min\max_i T_i$, by jointly selecting secure offloading ratios, UAV movement, and VUE-UAV associations.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading ratio | $\rho_i(t)$ | continuous, $[0,1]$ | Fraction of VUE $i$'s task uploaded to a UAV |
+| UAV movement | $\Delta\mathbf q_u(t)$ | continuous bounded action | UAV displacement in the slot |
+| VUE-UAV association | $a_{i,u}(t)$ | binary or relaxed score | Edge server selected by VUE $i$ |
+| TD3 policy | $\pi(a\mid s)$ | continuous actor | Maps positions, tasks, and channel/security state to control actions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each VUE associates with one feasible UAV and the relaxed association is discretized for execution |
+| C2 | Secure offloading rate remains nonnegative and respects the secure-rate threshold |
+| C3 | UAV and VUE transmit powers, CPU capacities, and slot durations remain bounded |
+| C4 | UAV movement stays within the flight region and obeys the fixed-altitude motion model |
+| C5 | Task upload, computation, and result delivery satisfy the per-slot latency model |
+
+**Algorithm**: Cast offloading, movement, and association as a continuous-action DRL environment → train TD3 with centralized state information and distributed execution → use replay, target smoothing, delayed actor updates, and continuous association scores → compute latency from the secure effective rate → execute the learned policy over VUE and UAV slots.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ren et al. [x] studied security-aware vehicular edge computing assisted by multiple UAV servers and a passive eavesdropper. They formulated a maximum-latency minimization problem that jointly controls VUE offloading ratios, UAV movement, and VUE-UAV association while using a secure effective offloading rate. The proposed controller is a TD3 scheme with centralized training and distributed execution, continuous association scores, replay memory, target smoothing, and delayed policy updates. Security affects the task-upload latency through the legitimate-rate and eavesdropping-rate difference and its secure-threshold degradation. Simulations report at least 20% higher cumulative reward and at least 1.7% lower latency than the benchmark schemes, with a 38% latency reduction relative to PPO in the stated three-UAV comparison.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Long He", "Geng Sun", "Zemin Sun", "Jiacheng Wang", "Hongyang Du", "D
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3623636"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, digital-twin, sagimec, low-altitude-economy, uav-assisted-mec, leo-satellite, lyapunov-optimization, stackelberg-game, online-optimization]
 related:
   - "[[digital-twin]]"
@@ -21,7 +22,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-06
-updated: 2026-07-06
+updated: 2026-07-16
 ---
 
 # Digital Twin-Assisted Space-Air-Ground Integrated Multi-Access Edge Computing for Low-Altitude Economy: An Online Decentralized Optimization Approach
@@ -33,6 +34,43 @@ He, L., Sun, G., Sun, Z., Wang, J., Du, H., Niyato, D., Liu, J., & Leung, V. C. 
 ## TL;DR
 
 Proposes a **digital-twin-assisted space-air-ground integrated multi-access edge computing (SAGIMEC)** architecture for the low-altitude economy. Terrestrial intelligent sensing devices (ISDs) can offload to a UAV, the UAV can connect through selected LEO satellites toward a cloud center, and a DT layer at the cloud keeps virtual models of the ISDs, UAV, and satellite network for monitoring and management. The joint satellite-selection / computation-offloading / communication-resource / computation-resource / UAV-trajectory problem is converted into per-slot decisions using Lyapunov optimization, then solved by an online decentralized optimization approach (ODOA) that combines satellite-latency learning with game-theoretic decision making.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Intelligent sensing devices can compute locally, offload to an aerial MEC UAV, or use that UAV and a selected LEO satellite to reach a cloud center. A cloud digital twin stores physical-layer and workload feedback, including uncertain satellite round-trip latency, for online space-air-ground control.
+
+**Problem & objective**: Minimize time-averaged sensing-device cost, $\min_{\mathbf A,\mathbf B,\mathbf F,\mathbf W,\mathbf Q}T^{-1}\sum_t\sum_m C_m(t)$, where cost combines task latency and device energy and the decisions cover offloading, satellite relay, resources, and UAV motion.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Computation mode | $a_m^t$ | discrete, local/UAV/cloud | Execution tier for device $m$'s task |
+| Satellite selection | $b_u^t$ | discrete satellite choice | Accessible LEO relay used by the UAV |
+| UAV compute allocation | $F_{u,m}^t$ | continuous, positive | CPU resource assigned to an offloaded task |
+| Communication share | $w_{u,m}^t$ | continuous, $(0,1]$ | UAV link resource assigned to device $m$ |
+| UAV position | $\mathbf q_u^t$ | continuous 2-D position | Aerial MEC location in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Long-term average UAV energy does not exceed $\bar E_u$. |
+| C2 | Each task chooses local, UAV, or cloud execution and meets its completion deadline. |
+| C3 | The UAV selects one relay from the currently accessible satellite set. |
+| C4 | Per-task and aggregate UAV compute allocations do not exceed $F_u^{\max}$. |
+| C5 | Communication shares are positive and sum to at most one for offloaded tasks. |
+| C6 | The UAV starts at the prescribed point and moves at most $v_u^{\max}\tau$ per slot. |
+
+**Algorithm**: Maintain digital-twin virtual queues for UAV communication, computation, and propulsion energy, and apply Lyapunov drift-plus-penalty to form a current-slot MINLP. Predict each accessible satellite's round-trip latency with an upper-confidence-bound multi-armed bandit, decompose offloading and UAV responses as a multi-leader common-follower Stackelberg game, solve resource and trajectory subproblems, and update the queues after physical execution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+He et al. [x] proposed digital-twin-assisted space-air-ground MEC in which sensing devices choose local, UAV, or cloud execution and the UAV reaches the cloud through an accessible LEO satellite. They minimized time-averaged latency-and-energy cost over offloading, satellite selection, communication and compute resources, and UAV trajectory under deadline, capacity, mobility, and long-term UAV-energy constraints. ODOA uses Lyapunov queues for online feasibility, upper-confidence-bound learning for uncertain satellite round-trip latency, and a Stackelberg game with convex trajectory updates for decentralized decisions. The reported method improved QoS by at least 14.5% over DRL approaches, met its UAV-energy budget, and required 59 ms per slot for 20 sensing devices.
 
 ## Problem
 

@@ -5,6 +5,7 @@ authors: ["Mohammad Mozaffari", "Walid Saad", "Mehdi Bennis", "Mérouane Debbah"
 year: 2019
 url: "https://doi.org/10.1109/TCOMM.2018.2871453"
 venue: "IEEE Transactions on Communications (IEEE TCOMM)"
+modeling_card: required
 tags: [source, uav-communications, collaborative-beamforming, bang-bang-control, uav-trajectory-control, virginia-tech]
 related:
   - "[[collaborative-beamforming]]"
@@ -16,7 +17,7 @@ related:
   - "[[mohammad-mozaffari]]"
   - "[[walid-saad]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Communications and Control for Wireless Drone-Based Antenna Array
@@ -28,6 +29,40 @@ Mozaffari, M., Saad, W., Bennis, M., & Debbah, M. (2019). *Communications and Co
 ## TL;DR
 
 A framework for using **multiple single-antenna quadrotor drones as one aerial antenna array** that beam-steers by **physically repositioning the drones** (rather than electronic phase steering) to serve ground users in minimum **service time**. Service time has two parts: **transmission time** (inversely tied to the beamforming-gain-dependent SNR) and **control time** (moving/stabilizing the drones between serving locations). The paper minimizes transmission time by (i) optimizing inter-drone spacing to maximize array directivity — solved via **perturbation theory** as a sequence of perturbed convex problems — and (ii) placing the drones optimally per user; it minimizes control time using **bang-bang control theory**, deriving a closed-form minimum control time as a function of external forces (wind, gravity), drone weight, and destinations. This is a **UAV-communications / aerial-beamforming** entry, not an MEC offloading paper.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $M$ single-antenna quadrotors form a symmetric linear aerial array that serves $L$ ground users in the downlink. The array follows fly-then-hover-and-transmit operation and mechanically steers its beam by repositioning drones; transmission uses a LoS channel and control dynamics include rotor limits, gravity, and wind.
+
+**Problem & objective**: Jointly select per-user drone positions and rotor-speed controls to minimize total service time, $\sum_i q_i/R_i(\mathbf x_i,\mathbf y_i,\mathbf z_i)+T_i^{\mathrm{crl}}$, where the first term is transmission time and the second is movement and stabilization time.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Drone position | $(x_{m,i},y_{m,i},z_{m,i})$ | continuous 3D vector | Position of drone $m$ while serving user $i$ |
+| Array spacing | $d_n$ | continuous, nonnegative | Distance of a symmetric array element from the array center |
+| Rotor speed | $v_{mw}(t)$ | continuous, $[0,v_{\max}]$ | Control input for rotor $w$ on drone $m$ |
+| User order | $a_{ij}$ | binary, $\{0,1\}$ | Whether user $j$ is served immediately after user $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| 6 | Adjacent array elements maintain collision clearance: $d_{m+1,i}-d_{m,i}\ge D_{\min}$ |
+| 7 | Every rotor obeys $0\le v_{mw}(t)\le v_{\max}$ |
+| Fly-hover | Transmission occurs only after the array reaches and stabilizes at a serving configuration |
+| 52-53 | The scheduling matrix serves every user once and keeps $a_{ij}$ binary |
+
+**Algorithm**: Optimize array directivity by successive small perturbations of the drone-spacing vector, then rotate the resulting symmetric configuration toward each user to obtain per-user positions. Given those destinations, use bang-bang control to compute minimum-time rotor-speed profiles under external forces, add collision-safe paths when needed, and solve the user-order assignment problem to reduce aggregate repositioning time.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mozaffari et al. [x] studied a wireless antenna array whose elements are independently moving single-antenna quadrotor drones. They minimized service time by coupling beamforming-aware transmission time with the control time required to move and stabilize the drones between users. Their method first applies successive perturbation-based spacing updates to increase array directivity, maps the optimized array to each user's direction, and then derives minimum-time rotor controls with bang-bang theory under gravity and wind. Simulations reported that the movable array required 32% less bandwidth than a fixed array for the same service-time target and showed that adding drones reduces transmission time while increasing control time.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Vertical Heterogeneous Networks Beyond 5G: CoMP Coverage Enhancement and Optimization"
 authors: ["Tian Shi", "Wenkun Wen", "Peiran Wu", "Minghua Xia"]
 year: 2026
@@ -23,7 +24,7 @@ related:
   - "[[bor-yaliniz-2016-3d-abs-placement]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Vertical Heterogeneous Networks Beyond 5G: CoMP Coverage Enhancement and Optimization
@@ -37,6 +38,40 @@ Shi, T., Wen, W., Wu, P., & Xia, M. (2026). *Vertical Heterogeneous Networks Bey
 ## TL;DR
 
 Analyzes aerial-user downlink coverage in a vertical heterogeneous network of UAV-mounted aerial base stations (ABSs) and terrestrial base stations (TBSs). The paper combines same-tier three-site CoMP, BPP/PPP stochastic geometry, altitude-dependent tier association, and a coverage-deficit-weighted K-means procedure for horizontal ABS placement.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A vertical heterogeneous network contains fixed-altitude UAV-mounted aerial base stations and terrestrial base stations serving aerial users. Same-tier three-site CoMP forms serving triads, ABS/TBS association depends on aggregate received power, and Nakagami fading, LoS/NLoS propagation, and BPP/PPP site geometry determine coverage.
+
+**Problem & objective**: The deployment subproblem minimizes a coverage-deficit surrogate, $\min_{\{\mathbf c_n\}}\sum_s w_s\lVert\mathbf x_s-\mathbf c_{\ell(s)}\rVert^2$, where weights $w_s$ reflect terrestrial SIR deficits, while the analytical model evaluates tier association and CoMP coverage probability.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| ABS horizontal center | $\mathbf c_n$ | continuous 2-D position | Placement of aerial base station $n$ |
+| Sample cluster label | $\ell(s)$ | discrete | ABS center assigned to coverage-deficit sample $s$ |
+| Serving tier/triad | $\tau_s$ | discrete | ABS or TBS three-site CoMP serving tier for aerial user $s$ |
+| Association probability | $P_{\mathrm{ABS}}(h)$ | analytical function | Tier-selection probability induced by altitude and geometry |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | ABS centers remain in the deployment region and at the fixed altitude |
+| C2 | Each sample is assigned to one centroid and each CoMP cluster contains three same-tier sites |
+| C3 | Coverage is evaluated under the SIR threshold and the BPP/PPP site-separation models |
+| C4 | Nakagami, LoS/NLoS, equal-power, and interference assumptions define the feasible analytical domain |
+
+**Algorithm**: Derive same-tier CoMP distance and coverage distributions with BPP/PPP stochastic geometry → moment-match aggregate fading and compute association-weighted coverage → identify altitude regimes → weight terrestrial coverage-deficit samples → alternate kernel assignment and weighted-centroid updates → validate against Monte Carlo simulation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Shi et al. [x] studied aerial-user coverage in a vertical heterogeneous network with UAV-mounted aerial base stations, terrestrial base stations, and same-tier three-site CoMP. They derived association and coverage expressions using finite binomial and Poisson point processes, altitude-dependent LoS/NLoS propagation, Nakagami fading, and moment-matched aggregate interference. For deployment, they weighted sample locations by terrestrial SIR deficits and alternated kernel-based assignment with weighted-centroid updates to place fixed-altitude aerial base stations. Monte Carlo results validate the analytical trends and report approximately 0.9 CoMP coverage versus 0.1 single-site coverage at the stated threshold, with 81.42% coverage for the proposed placement in the reported configuration. The paper also reports a two-regime altitude association behavior and parameter-dependent non-monotonic coverage as the ABS count changes.
 
 ## Problem framing
 

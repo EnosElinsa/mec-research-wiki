@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Digital Twins for Low-Altitude UAV Networks–Cooperation and Learning"
 authors: ["Longyu Zhou", "Supeng Leng", "Yuchen Liu", "Zehui Xiong", "Tony Q. S. Quek"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[tony-q-s-quek]]"
   - "[[zehui-xiong]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Digital Twins for Low-Altitude UAV Networks–Cooperation and Learning
@@ -29,6 +30,42 @@ Zhou, L., Leng, S., Liu, Y., Xiong, Z., & Quek, T. Q. S. (2026). *Digital Twins 
 ## TL;DR
 
 Splits large UAV-delivery digital twins across edge and terminal scales. Edge UAVs use graph matching to assign parcel clusters to UAV groups, while terminal UAVs use competitive and cooperative Q-learning for energy-aware association, path planning, heavy-parcel cooperation, and collision avoidance.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Warehouses and a data center coordinate edge UAVs managing groups of terminal delivery UAVs. Macro-scale digital twins match UAV-group graphs to parcel-cluster graphs, while micro-scale twins choose parcel associations and collision-aware paths over Wi-Fi 6 UAV links with sensing, communication, computing, hover, cruise, and payload energy models.
+
+**Problem & objective**: P1 is an NP-hard long-run Lyapunov optimization that minimizes weighted digital-twin prediction mismatch and delivery-energy change, $\min\lim_{T\to\infty}\frac1T\sum_t[\sum_n\varsigma_1\Delta\Lambda_n+\sum_i\varsigma_2\Delta E_i]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Group-cluster association | $\mathbf M$ | binary matching matrix | Assignment between UAV groups and parcel clusters |
+| UAV-parcel association | $\zeta_{i,k}$ | binary | Whether UAV $i$ serves parcel $k$ |
+| UAV velocity | $\mathbf v_i$ | continuous | Delivery speed and direction |
+| UAV position | $\mathbf p_i$ | continuous | Current path-planning location |
+| Joint micro action | $A_t=\{A_{i,t}\}$ | mixed joint action | Cooperative multi-UAV delivery decision |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Environment collection, twin construction, and delivery satisfy real-time latency bounds |
+| C2 | Terminal and edge computing energy stays below $E_{\max}$ |
+| C3 | UAV communication rate satisfies $r_i\geq r_{\min}$ |
+| C4 | Parcel delivery energy obeys $E_k\leq E_{k,\max}$ |
+| C5 | Cooperative paths avoid overlap and physical collision while serving assigned parcels |
+
+**Algorithm**: Construct macro and micro twins from multimodal observations → embed UAV-group and parcel-cluster graphs → perform cross-graph matching for macro associations → build per-UAV virtual environments → learn energy-saving competitive Q-policies → learn joint cooperative paths for latency and collision avoidance → execute with centralized training and distributed control.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied terminal-edge cooperative multi-scale digital twins for low-altitude UAV parcel delivery. They formulated an NP-hard Lyapunov objective that balances digital-twin prediction mismatch and delivery-energy change under latency, computing-energy, communication-rate, and parcel-energy constraints. A graph-matching network at edge UAVs assigns parcel clusters to UAV groups using UAV-topology and parcel-destination features. Terminal micro-scale twins use competitive and cooperative reinforcement learning to choose UAV-parcel associations, velocities, and paths for energy saving, low latency, heavy-parcel cooperation, and collision avoidance. Simulations report up to a 94% successful-delivery ratio, stable learning after about 800 episodes, and lower latency and energy than the evaluated delivery baselines.
 
 ## Problem
 

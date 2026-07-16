@@ -5,6 +5,7 @@ authors: ["Xiangling Li", "Wei Feng", "Yunfei Chen", "Cheng-Xiang Wang", "Ning G
 year: 2020
 url: "https://doi.org/10.1109/TCOMM.2020.2966715"
 venue: "IEEE Transactions on Communications (IEEE TCOM)"
+modeling_card: required
 tags: [source, maritime-mec, uav-trajectory-control, air-to-ground-channel-model, overlay-underlay-spectrum-access, wireless-backhaul, alternating-optimization-sdr-sca, csi-estimation-error]
 related:
   - "[[maritime-mec]]"
@@ -21,7 +22,7 @@ related:
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Maritime Coverage Enhancement Using UAVs Coordinated With Hybrid Satellite-Terrestrial Networks
@@ -33,6 +34,42 @@ Li, X., Feng, W., Chen, Y., Wang, C.-X., & Ge, N. (2020). *Maritime Coverage Enh
 ## TL;DR
 
 Deploys **fixed-wing UAVs** as on-demand aerial base stations to enhance broadband coverage in a **hybrid satellite-UAV-terrestrial maritime communication network**, where UAVs share spectrum with satellites and use terrestrial base stations (TBSs) or satellites for wireless backhaul. The UAV's **whole trajectory and in-flight transmit power** are jointly optimized to **maximize the minimum ergodic achievable rate** of a mobile ship-user over the service interval, subject to UAV kinematics, tolerable interference to satellite-served users, backhaul, and total communication-energy constraints. The defining twist: only **location-dependent large-scale CSI** is assumed available (small-scale CSI cannot be obtained before takeoff), with ship positions obtained from the maritime Automatic Identification System (AIS); the UAV cannot land at sea, so its trajectory must be **pre-planned** before takeoff. The resulting non-convex problem is solved by **problem decomposition + successive convex optimization + bisection search**. This is a communication-layer (coverage/rate) paper, not an MEC computation-offloading paper.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-wing UAV accompanies a moving ship user and supplies on-demand maritime coverage while sharing spectrum with satellite links. A coastal terrestrial base station or satellite provides the UAV backhaul, and the preflight design uses ship positions plus location-dependent large-scale CSI rather than unavailable future small-scale fading.
+
+**Problem & objective**: The coverage problem maximizes $\min_t R_{u,u,t}^{\mathrm U,\Psi}$, the ship user's minimum ergodic access rate over the service horizon, through joint UAV trajectory and transmit-power control.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV transmit power | $P_{u,t}^{\mathrm U}$ | continuous, $[0,P_{\max}^{\mathrm U}]$ | In-flight access-link power in slot $t$ |
+| UAV position | $\mathbf c_{u,t}^{\mathrm U}$ | continuous 3-D coordinate | Preplanned UAV trajectory |
+| UAV velocity | $\mathbf v_{u,t}^{\mathrm U}$ | continuous vector | Slot velocity induced by the trajectory |
+| UAV acceleration | $\mathbf a_{u,t}^{\mathrm U}$ | continuous vector | Slot acceleration induced by the trajectory |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Expected interference to each satellite-served user stays below $I_0$ |
+| C2 | The UAV access rate cannot exceed its terrestrial or satellite backhaul rate |
+| C3 | Fixed-wing speed remains between stall and maximum speed and acceleration is bounded |
+| C4 | UAV altitude remains in the permitted interval |
+| C5 | Total communication energy satisfies $\sum_tP_{u,t}^{\mathrm U}\Delta t\le E_0$ |
+| C6 | Per-slot transmit power is bounded by $P_{\max}^{\mathrm U}$ |
+
+**Algorithm**: The method replaces fading expectations with functions of average SNR under the composite channel model, decomposes the max-min design, and uses bisection on a candidate minimum rate. At each bisection step, successive convex approximations update the coupled trajectory and power variables until feasibility and convergence are reached.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] coordinated a fixed-wing UAV with terrestrial and satellite infrastructure to accompany a mobile maritime user. They maximized the minimum ergodic access rate over UAV power and three-dimensional trajectory under interference-temperature, backhaul, kinematic, altitude, energy, and peak-power constraints. Their decomposition combines large-scale-CSI rate approximation, successive convex optimization, and bisection, so the whole path can be planned before takeoff without future small-scale CSI. Across the simulated power, fading, and interference regimes, the joint design outperformed the compared full-CSI-derived baselines after enforcing the same constraints and converged within 25 iterations.
 
 ## Problem framing
 

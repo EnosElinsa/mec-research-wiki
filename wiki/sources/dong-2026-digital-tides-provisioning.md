@@ -5,6 +5,7 @@ authors: ["Wen-Yu Dong", "Song Zhao", "Rui-Si Han", "Qi Bi", "Sheng Chen"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3688690"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-logistics, mobile-edge-computing, fluid-dynamics, information-flux, infrastructure-provisioning, energy-efficiency]
 related:
   - "[[information-flux-triggered-infrastructure-activation]]"
@@ -13,7 +14,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[effective-energy-efficiency]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Digital Tides: A Fluid-Dynamic Framework for Flux-Aware Infrastructure Provisioning in UAV Logistics Networks
@@ -25,6 +26,40 @@ Dong, W.-Y., Zhao, S., Han, R.-S., Bi, Q., & Chen, S. (2026). *Digital Tides: A 
 ## TL;DR
 
 Models periodic logistics-UAV demand as a compressible fluid and activates ground MEC infrastructure from information flux rather than local density alone. The outward flux signal reaches its threshold ahead of the demand wavefront, creating a guard ring that can absorb radio and container startup latency while an asymmetric holding rule avoids premature shutdown during contraction.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Logistics-UAV demand expands from and contracts toward a hub as a radial fluid-like workload field. Ground base stations have low-altitude radio sectors and colocated MEC servers that can sleep, but activation incurs a common radio and container startup delay.
+
+**Problem & objective**: The network chooses binary infrastructure states to maximize served-workload energy efficiency while bounding expansion-phase wavefront outage, $\max_{\boldsymbol\alpha}\eta_{\mathrm{EE}}(\boldsymbol\alpha)=\mathcal T_{\mathrm{total}}(\boldsymbol\alpha)/E_{\mathrm{total}}(\boldsymbol\alpha)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Base-station activation | $\alpha(\mathbf x,t)$ | binary, $\{0,1\}$ | Whether the low-altitude radio and MEC service at location $\mathbf x$ is active at time $t$ |
+| Flux threshold | $\delta_{\mathrm{th}}$ | continuous, positive | Sensitivity of proactive activation to outward information flux |
+| Density activation threshold | $\lambda_{\mathrm{act}}$ | continuous, nonnegative | Reactive load threshold during expansion |
+| Density holding threshold | $\lambda_{\mathrm{hold}}$ | continuous, $0\leq\lambda_{\mathrm{hold}}<\lambda_{\mathrm{act}}$ | Hysteresis threshold used to retain service during contraction |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 16b | Expansion-phase service unavailability stays below the QoS limit, $\mathcal O(t;\boldsymbol\alpha)\leq\epsilon_{\mathrm{th}}$ for every $t\in\mathbb T_{\mathrm{exp}}$ |
+| 16c | Every infrastructure state is binary, $\alpha(\mathbf x,t)\in\{0,1\}$ |
+| 19 | The hysteresis thresholds satisfy $\lambda_{\mathrm{hold}}<\lambda_{\mathrm{act}}$ |
+| Startup lead | The flux-triggered guard ring must cover wavefront travel during setup, approximately $\Delta R\geq v_{\mathrm{wf}}\tau_{\mathrm{boot}}$ |
+
+**Algorithm**: During expansion, a station activates when local density exceeds $\lambda_{\mathrm{act}}$ or outward flux exceeds $\delta_{\mathrm{th}}$. During contraction, flux triggering is disabled and an active station remains on only while density exceeds $\lambda_{\mathrm{hold}}$; this local $O(M)$ rule is calibrated with a QoS-penalized effective-energy-efficiency surrogate.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dong et al. [x] modeled periodic logistics-UAV demand as a radial fluid and used information flux to provision sleeping low-altitude radio and MEC infrastructure ahead of the moving workload. Their binary control maximizes served-workload energy efficiency under an expansion-phase outage bound, with a proactive flux threshold during expansion and a lower density holding threshold during contraction. The resulting local rule has linear complexity in the number of base stations and creates a guard ring that absorbs radio and container startup latency. In the reported scenario, the guard ring is about 8.25 km and triggers roughly five minutes early at 14.5 km, enabling 99.1% served traffic and the highest effective energy efficiency among the evaluated strategies.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Modeling and Analysis of Movable Antenna Aided MIMO Wideband UAV-to-UAV Channels for Low-Altitude Economy Networks"
 authors: ["Linzhou Zeng", "Xuewen Liao", "Zhangfeng Ma", "Ruichen Zhang", "Dusit Niyato", "Hao Jiang", "Cheng-Xiang Wang"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[mozaffari-2019-drone-antenna-array]]"
   - "[[dusit-niyato]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Modeling and Analysis of Movable Antenna Aided MIMO Wideband UAV-to-UAV Channels for Low-Altitude Economy Networks
@@ -27,6 +28,39 @@ Zeng, L., Liao, X., Ma, Z., Zhang, R., Niyato, D., Jiang, H., & Wang, C.-X. (202
 ## TL;DR
 
 Builds a wideband UAV-to-UAV MIMO channel model for low-altitude economy networks with movable antennas at both transmitter and receiver. The paper proposes a 3D arbitrary-elevation two-concentric-cylinders reference model, derives closed-form space-time-frequency correlation, space-Doppler PSD, and power space-delay spectrum, then uses the closed-form correlation gradient to optimize movable-antenna positions for ergodic-capacity improvement.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A wideband MIMO UAV-to-UAV link has movable elements at both transmitter and receiver within bounded three-dimensional regions. A two-concentric-cylinder geometry models LoS, single-bounce, and double-bounce components while both UAVs move.
+
+**Problem & objective**: A non-convex antenna-positioning problem maximizes ergodic-capacity surrogates, $\max_{\mathbf r_T,\mathbf r_R}\log\det\mathbf R_T+\log\det\mathbf R_R$, using closed-form spatial correlation.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Transmit-element positions | $\mathbf r_{T,m}$ | continuous 3-D positions | Movable antennas on the transmitting UAV |
+| Receive-element positions | $\mathbf r_{R,n}$ | continuous 3-D positions | Movable antennas on the receiving UAV |
+| Momentum states | $\mathbf v_T,\mathbf v_R$ | continuous vectors | Gradient-ascent momentum for position updates |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every element stays inside its bounded movement region |
+| C2 | Pairwise antenna spacing remains above the mechanical minimum |
+| C3 | Spatial correlation matrices follow the derived wideband U2U channel model |
+| C4 | Position updates are projected back to the feasible region |
+
+**Algorithm**: Derive space-time-frequency correlation from the two-cylinder model → form transmit and receive spatial correlation matrices → differentiate the log-determinant capacity surrogate with respect to element positions → update positions by momentum gradient ascent → project region and spacing violations → alternate transmitter and receiver updates until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng et al. [x] studied movable-antenna-assisted wideband MIMO UAV-to-UAV channels for low-altitude economy networks. They developed a three-dimensional arbitrary-elevation two-concentric-cylinder model with LoS, single-bounce, and double-bounce components. Closed-form space-time-frequency correlation, space-Doppler power spectrum, and power space-delay spectrum characterize the moving link. A momentum gradient-ascent method then optimizes transmit and receive element positions to improve a log-determinant ergodic-capacity surrogate under movement-region and minimum-spacing constraints. Numerical results report capacity gains over fixed UPA, UCA, and ULA layouts and agreement between the analytical model, simulations, and the cited measurement data.
 
 ## Problem framing
 

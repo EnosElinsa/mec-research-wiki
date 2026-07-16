@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "GL-AHG: A Novel Game-Learning Alternating Hierarchical Genetic Algorithm for UAV-Enabled Coverage Path Planning"
 authors: ["Liangke Zhou", "Jie Chen", "Riheng Jia", "Changbing Tang", "Yang Liu", "Minglu Li"]
 year: 2026
@@ -13,7 +14,7 @@ related:
   - "[[riheng-jia]]"
   - "[[minglu-li]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # GL-AHG: A Novel Game-Learning Alternating Hierarchical Genetic Algorithm for UAV-Enabled Coverage Path Planning
@@ -25,6 +26,41 @@ Zhou, L., Chen, J., Jia, R., Tang, C., Liu, Y., & Li, M. (2026). *GL-AHG: A Nove
 ## TL;DR
 
 Couples terrain waypoint generation with route energy instead of solving them independently. Energy-derived waypoint weights form a weighted vertex-cover problem addressed by an asymmetric snowdrift/TD learning scheme; an alternating hierarchical genetic algorithm then searches distance-energy routes with a persistent Pareto archive.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed-speed UAV with a gimbal-fixed camera, searchlight, or LiDAR must completely cover a smooth three-dimensional terrain surface. Candidate waypoints are generated from overlapping sensing footprints, wind is neglected, and the energy proxy combines flight distance with turning and slope angles; the formulation is geometric rather than radio-access based.
+
+**Problem & objective**: GL-AHG couples minimum weighted vertex cover with multi-objective path planning, first minimizing $\sum_i w_i x_i$ for coverage and then minimizing $\bigl(\mathcal L(s),\mathcal E(s)\bigr)$ over waypoint sequences.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Waypoint cover state | $x_i$ | binary | Whether candidate vertex $V_i$ is retained as a sensing waypoint |
+| Vertex strategy | $a_i$ | categorical, $\{C,D\}$ | Covered or uncovered action in the asymmetric snowdrift game |
+| Route sequence | $s$ | permutation | Visiting order of generated waypoints |
+| Final trade-off weight | $\lambda$ | continuous, $[0,1]$ | Relative energy weight in Pareto-solution selection |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every graph edge has at least one covered endpoint, $x_i+x_j\geq1$ |
+| C2 | Sensing footprints satisfy the adopted overlap and complete-area coverage conditions |
+| C3 | The route visits every retained representative waypoint |
+| C4 | The flight path remains on the terrain-offset surface and avoids cutting through terrain |
+| C5 | Dense valley clusters retain a central representative while preserving modeled coverage |
+
+**Algorithm**: Generate terrain-offset candidate waypoints → map incoming path-energy costs to vertex weights → solve weighted vertex cover with asymmetric snowdrift game and TD learning → simplify dense valley clusters → alternate distance-heavy and energy-heavy genetic search → maintain a Pareto archive and select a normalized trade-off route.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied three-dimensional UAV coverage path planning by coupling waypoint generation with route energy. They transformed energy-aware waypoint selection into a weighted vertex-cover problem and used an asymmetric snowdrift game with temporal-difference learning to obtain a covered waypoint set. The subsequent path-planning stage minimizes flight length and energy consumption over waypoint permutations. Their alternating hierarchical genetic algorithm switches between distance-oriented and energy-oriented fitness functions while maintaining and reinjecting a Pareto archive. Simulations on four-peak, eight-peak, and Wucheng terrain models report shorter paths and lower energy consumption than the evaluated representative coverage algorithms.
 
 ## Problem framing
 

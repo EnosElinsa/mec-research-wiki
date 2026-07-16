@@ -5,6 +5,7 @@ authors: ["Nguyen Van Huynh", "Jiacheng Wang", "Hongyang Du", "Dinh Thai Hoang",
 year: 2024
 url: "https://doi.org/10.1109/TCCN.2024.3384500"
 venue: "IEEE Transactions on Cognitive Communications and Networking (IEEE TCCN)"
+modeling_card: not_applicable
 tags: [source, survey, generative-ai-for-mec, physical-layer-security, intelligent-reflecting-surface, semantic-communication, variational-autoencoder, generative-adversarial-network]
 related:
   - "[[generative-ai-for-mec]]"
@@ -21,7 +22,7 @@ related:
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Generative AI for Physical Layer Communications: A Survey
@@ -33,6 +34,12 @@ Van Huynh, N., Wang, J., Du, H., Hoang, D. T., Niyato, D., Nguyen, D. N., Kim, D
 ## TL;DR
 
 A comprehensive survey of how **generative AI (GAI)** can support **physical-layer communications**, organized around five GAI model families — **GANs, variational autoencoders (VAEs), normalizing flows, diffusion models, and transformers** — and the physical-layer problems they address: modulation/signal classification, channel equalization/modeling/estimation, physical-layer security (PLS), intelligent reflecting surfaces (IRS), beamforming, joint source-channel coding (JSCC), CSI feedback, and radio-map / channel-delay estimation. The survey contrasts GAI with traditional (discriminative) AI, arguing GAI's distinctive value is in **capturing complex data distributions**, **cross-dimensional data transformation**, and **repairing/enhancing data**, and closes with open issues (security/privacy, model-driven GAI, resource-efficient learning, real-time adaptation).
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huynh et al. [x] surveyed generative artificial intelligence for physical-layer communications. They reviewed generative adversarial networks, variational autoencoders, normalizing flows, diffusion models, and transformers and compared their operating principles, strengths, and limitations. The survey organized applications across channel modeling, estimation and signal detection, physical-layer security, intelligent reflecting surfaces, beamforming, joint source-channel coding, CSI feedback, radio-map estimation, and channel-delay estimation. It synthesized how the reviewed methods use distribution learning, cross-dimensional transformation, and data repair or enhancement in physical-layer tasks. The authors identified security and privacy, model-driven generative AI, resource-efficient learning, and real-time adaptation as future research directions.
 
 ## Problem framing
 

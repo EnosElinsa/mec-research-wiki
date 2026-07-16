@@ -5,6 +5,7 @@ authors: ["Yingqi He", "Jinpeng Xu", "Lin Zhou", "Jingjing Wang", "Chunxiao Jian
 year: ""
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, covert-communication, physical-layer-security, noma, channel-inversion-power-control, uav-trajectory-control]
 related:
   - "[[channel-inversion-power-control]]"
@@ -19,7 +20,7 @@ related:
   - "[[jingjing-wang]]"
   - "[[chunxiao-jiang]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Channel Inversion Power Control-Aided Multi-User Secret and Covert UAV Communications
@@ -31,6 +32,43 @@ He, Y., Xu, J., Zhou, L., Wang, J., & Jiang, C. *Channel Inversion Power Control
 ## TL;DR
 
 Combines confidential and covert uplink traffic in one UAV receiver. Bob's strong secret signal provides cover for weaker TDMA-scheduled covert users through power-domain NOMA, while truncated channel-inversion power control targets a stable received power at the UAV; the paper derives reliability, secrecy, covertness, and detection metrics and optimizes both rotary-wing and fixed-wing operation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A secret ground user and multiple covert users transmit uplink to a UAV receiver while an adversary both eavesdrops and detects covert activity. The secret user's truncated channel-inversion signal acts as cover for a TDMA-selected covert user under power-domain NOMA and SIC.
+
+**Problem & objective**: For rotary-wing operation, maximize average effective sum covert rate, $\max_{Q_c,I,H}\mathbb E\{\sum_kP_{cc}^kR_c^k\}$; for fixed-wing operation, maximize the minimum user-average effective covert rate over scheduling, powers, channel-inversion target, and flight variables.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Covert-user power | $Q_c$ or $Q_c^k[n]$ | continuous, bounded | Common rotary-wing power or slotwise fixed-wing power |
+| CIPC target | $I$ | continuous, positive | Target received secret-signal power at the UAV |
+| Hover altitude | $H$ | continuous, $[H_{\min},H_{\max}]$ | Rotary-wing deployment height |
+| User scheduling | $\alpha_k[n]$ | binary | Covert user served in fixed-wing slot $n$ |
+| Flight state | $\mathbf L_a[n],\mathbf v[n],\mathbf a[n]$ | continuous | Fixed-wing position, velocity, and acceleration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Willie's minimum detection error probability satisfies the covertness target. |
+| C2 | Bob's secret connection probability and secrecy outage probability meet reliability and secrecy targets. |
+| C3 | Covert-user powers remain within their peak limits. |
+| C4 | Rotary-wing altitude remains inside its prescribed interval. |
+| C5 | Fixed-wing TDMA serves one user per slot and enforces a minimum average effective rate for every user. |
+| C6 | Fixed-wing initial and final positions, speed range, acceleration limit, and motion recursion are satisfied. |
+
+**Algorithm**: Derive closed-form connection, secrecy-outage, and detection-error expressions under CIPC. For hovering operation, combine theorem-based one-dimensional search with a lower-complexity coordinate-descent update for $Q_c$, $I$, and $H$; for fixed-wing operation, alternate relaxed scheduling, user power, trajectory-velocity-acceleration, and CIPC updates using SCA and convex interior-point subproblems.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+He et al. [x] combined multi-user covert uplink traffic with a secret user's channel-inversion-controlled signal as natural cover at a UAV receiver. They optimized rotary-wing covert power, CIPC target, and altitude for average effective sum covert rate, then extended the model to max-min fixed-wing scheduling, user powers, trajectory, velocity, and acceleration under covertness, connection, secrecy, power, fairness, and flight constraints. Closed-form performance measures support theorem-based and coordinate-descent hovering solutions, while alternating optimization and SCA handle the fixed-wing mixed decisions. Numerical results showed the coordinate-descent solution close to exhaustive optimization and the fixed-wing method above fixed-power and fixed-schedule baselines while preserving fair service.
 
 ## Problem
 

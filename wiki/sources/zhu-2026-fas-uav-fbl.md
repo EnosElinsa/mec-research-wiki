@@ -14,8 +14,9 @@ related:
   - "[[movable-antenna]]"
   - "[[kai-kit-wong]]"
   - "[[chan-byoung-chae]]"
+modeling_card: required
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Fluid Antenna System-Enabled UAV Communications in the Finite Blocklength Regime
@@ -27,6 +28,39 @@ Zhu, X., Wong, K.-K., Hong, H., Xiao, H., Xu, H., Wu, T., & Chae, C.-B. (2026). 
 ## TL;DR
 
 Analyzes short-packet decode-and-forward UAV relaying to a user equipped with a fluid antenna system. An eigenvalue-weighted diversity surrogate yields rural/urban BLER expressions and diversity orders; a hierarchical search jointly chooses blocklength, UAV altitude and power, and port count while charging port-probing overhead.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A BS communicates with one UE through a half-duplex decode-and-forward UAV relay, and the UE selects among correlated fluid-antenna ports; short packets traverse Nakagami-m rural or probabilistic LoS/NLoS urban channels under finite-blocklength decoding.
+
+**Problem & objective**: Problem P1, a non-convex mixed-integer program, maximizes $\mathrm{EE}=B(1-\bar\epsilon_O)/E_{\mathrm{total}}$ in successfully delivered bits per joule.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Blocklength | $L$ | Integer, $L_{\min}\le L\le L_{\max}$ | Number of channel uses per packet |
+| UAV altitude | $Z_U$ | Continuous, $Z_{\min}\le Z_U\le Z_{\max}$ | Relay deployment height |
+| UAV transmit power | $P_2$ | Continuous, $0<P_2\le P_{\max}$ | Second-hop transmit power |
+| FAS port count | $N$ | Integer, $N_{\min}\le N\le N_{\max}$ | Candidate ports probed before selection |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | End-to-end reliability satisfies $\bar\epsilon_O(L,Z_U,P_2,N)\le\epsilon_{\mathrm{th}}$ |
+| C2 | Power, altitude, blocklength, and port count remain in their operational ranges |
+| C3 | Port probing leaves positive data time, $N\tau_p<L/W_{\mathrm{band}}$ |
+
+**Algorithm**: Hierarchical search, use bisection to find the minimum reliability-feasible $P_2$ for fixed $(L,Z_U,N)$, exhaust integer ports, grid-search altitude, grid-search blocklength, and keep the tuple with maximum EE.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied fluid-antenna-enabled UAV relaying in the finite-blocklength regime for rural and urban propagation. They derived end-to-end BLER expressions using an eigenvalue-based approximation of correlated ports and formulated an energy-efficiency maximization problem that accounts for port-probing time and switching energy. The mixed-integer design jointly selects blocklength, UAV altitude, UAV transmit power, and the number of fluid-antenna ports under BLER and causality constraints. Their hierarchical algorithm combines bisection for the minimum reliability-feasible power with exhaustive port search and one-dimensional searches over altitude and blocklength. Numerical results report more than 15 dB UAV-power savings over a fixed-position antenna in the urban case and a finite energy-efficiency-optimal port count because probing overhead eventually dominates diversity gain.
 
 ## Problem framing
 

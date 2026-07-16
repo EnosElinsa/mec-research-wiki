@@ -5,6 +5,7 @@ authors: ["Liang Wang", "Kezhi Wang", "Cunhua Pan", "Wei Xu", "Nauman Aslam", "A
 year: 2022
 url: "https://doi.org/10.1109/TMC.2021.3059691"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-mec, trajectory-control, user-association, deep-q-network, prioritized-experience-replay, convex-optimization]
 related:
   - "[[multi-uav-assisted-mec]]"
@@ -19,7 +20,7 @@ related:
   - "[[cunhua-pan]]"
   - "[[nauman-aslam]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Deep Reinforcement Learning Based Dynamic Trajectory Control for UAV-Assisted Mobile Edge Computing
@@ -31,6 +32,42 @@ Wang, L., Wang, K., Pan, C., Xu, W., Aslam, N., & Nallanathan, A. (2022). *Deep 
 ## TL;DR
 
 A flying-MEC (F-MEC) platform where UAVs carry computation resource and serve user-equipment (UE) task offloading. The goal is to **minimize the total energy consumption of all UEs** by jointly optimizing user association, resource allocation, and UAV trajectory. Two algorithms are proposed: **CAT** (Convex-optimizAtion-based Trajectory control), which uses **block coordinate descent (BCD)** to alternate between trajectory and association/resource subproblems; and **RAT** (deep-Reinforcement-leArning-based Trajectory control), which uses two deep Q-networks (actor + critic) with **Prioritized Experience Replay (PER)** plus a low-complexity matching algorithm for association/resource. RAT matches CAT's performance but, once trained, adapts to **any UAV take-off points** and produces solutions far faster than the iterative convex method.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $N$ UEs and $M$ flying MEC UAVs operate over $T$ slots. A UE executes locally ($j=0$) or associates with one UAV, while each UAV controls horizontal heading and displacement.
+
+**Problem & objective**: The energy-minimization formulation $P_1=\min_{U,A,F}\sum_{i=1}^{N}\sum_{j=0}^{M}\sum_{t=1}^{T}a_{ij}(t)E_{ij}(t)$ jointly selects trajectories, associations, and CPU allocations.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV movement | $U=\{\theta_j^h(t),d_j(t)\}$ | continuous, bounded | Horizontal heading and distance per slot |
+| User association | $a_{ij}(t)$ | binary | UE $i$ uses local mode or UAV $j$ |
+| CPU allocation | $f_{ij}^{C}(t),f_{ij}^{L}(t)$ | continuous, nonnegative | UAV and local execution frequencies |
+| UAV coordinates | $G_j(t)=[X_j(t),Y_j(t)]$ | continuous, area bounded | Horizontal trajectory derived from $U$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C2 | $a_{ij}(t)\in\{0,1\}$ and $\sum_{j=0}^{M}a_{ij}(t)=1$ |
+| C3 | UAV load: $\sum_i a_{ij}(t)\le V^{\max}$ |
+| C4-C5 | $0\le\theta_j^h(t)\le2\pi$ and $0\le d_j(t)\le d^{\max}$ |
+| C6-C7 | Area bounds $0\le X_j(t)\le X^{\max}$ and $0\le Y_j(t)\le Y^{\max}$ |
+| C8-C9 | Coverage $a_{ij}(t)R_{ij}(t)\le R^{\max}$ and deadline $T_{ij}(t)\le T^{\max}$ |
+| C10 | UAV CPU capacity: $\sum_i a_{ij}(t)f_{ij}^{C}(t)\le f^{\max}$ |
+
+**Algorithm**: CAT alternates a branch-and-bound association/resource subproblem with an SCA-based convex trajectory QCQP. RAT replaces the trajectory block with actor-critic DRL, prioritized replay, and a matching algorithm for association and resource allocation.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] minimized UE energy in a flying MEC system by jointly choosing multi-UAV trajectories, user associations, and local or UAV CPU allocations. The mixed-integer formulation enforces one execution place per UE together with UAV load, movement, area, coverage, deadline, and computing-capacity constraints. Their CAT solver alternates a branch-and-bound scheduling block with an SCA trajectory block, whereas RAT uses actor-critic reinforcement learning, prioritized replay, and matching for faster dynamic decisions. The reported simulations showed that both methods outperform traditional trajectory controls, while the DRL design adapts to changing take-off locations after training.
 
 ## Problem framing
 

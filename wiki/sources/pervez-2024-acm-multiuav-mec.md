@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy and Latency Efficient Joint Communication and Computation Optimization in a Multi-UAV-Assisted MEC Network"
 authors: ["Farhan Pervez", "Ajmery Sultana", "Cungang Yang", "Lian Zhao"]
 year: 2024
@@ -28,7 +29,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[bai-2024-delay-aware-cooperative-edge-cloud]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Energy and Latency Efficient Joint Communication and Computation Optimization in a Multi-UAV-Assisted MEC Network
@@ -39,6 +40,41 @@ Pervez, F., Sultana, A., Yang, C., & Zhao, L. (2024). *Energy and Latency Effici
 
 ## TL;DR
 A multi-UAV + terrestrial-BS MEC network where multiple UAV-MEC servers and one BS-MEC server serve ground users. The objective is to minimize a **weighted energy-and-latency cost** by jointly optimizing **task offloading + MEC server selection**, **offloading/downloading transmit power**, **UAV trajectory**, and **CPU-frequency allocation**. The non-convex MINLP is solved by a **three-layer Alternative Cost Minimization (ACM)** algorithm: a **[[potential-game]]** for offloading/server selection (proven to have a Nash Equilibrium), **geometric water-filling (GWF)** for power + **[[alternating-optimization-sdr-sca|SCA]]** for trajectory, and **gradient descent** for CPU frequency, iterated via alternating optimization. A segment-by-segment trajectory split cuts computation time. ACM beats local/MEC/random baselines and ~10–12% beats two prior joint-optimization methods.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ ground users either compute locally or fully offload to one of $M-1$ rotary-wing UAV-MEC servers or one terrestrial BS-MEC server over time-varying multiple-access links. UAV access links are LoS-dominant, the user-to-BS link includes Rayleigh fading, UAVs move horizontally at fixed altitude, and UAV backhaul uses assumed reliable FSO links.
+
+**Problem & objective**: A non-convex MINLP jointly minimizes weighted energy and execution latency, $\min\sum_k(\sigma_k^E E_k+\sigma_k^{\psi}T_k)$, over offloading/server selection, uplink and downlink power, UAV trajectories, and server CPU allocation.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Execution/server choice | $d_{k,m}$ | binary | Local execution or the selected UAV/BS MEC server for user $k$ |
+| Uplink/downlink power | $p_{k,m}^{\mathrm{UL}},p_{m,k}^{\mathrm{DL}}$ | continuous, power-bounded | Task-upload and result-download transmit powers |
+| UAV trajectory | $\mathbf a_m[t]$ | continuous horizontal position | Location of UAV-MEC server $m$ in slot $t$ |
+| CPU allocation | $f_{k,m}$ | continuous, nonnegative | Server computing frequency allocated to user $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task is executed locally or fully offloaded to exactly one MEC server |
+| C2 | User and server transmit powers satisfy their respective limits |
+| C3 | Per-server CPU allocations do not exceed available computing capacity |
+| C4 | UAV positions, speeds, and prescribed trajectory endpoints remain feasible |
+| C5 | Upload, execution, and download rates determine feasible latency and energy under co-channel interference |
+
+**Algorithm**: Solve offloading and server selection as a best-response potential game → allocate upload/download power by geometric water filling → update segmented UAV trajectories with SCA → optimize CPU frequencies by gradient descent → alternate the three layers until the weighted cost converges.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Pervez et al. [x] studied joint communication and computation optimization in a multi-UAV-assisted MEC network with one terrestrial BS-MEC server. They formulated a non-convex mixed-integer problem that minimizes a weighted sum of user energy and latency by jointly selecting local or MEC execution, transmit powers, UAV trajectories, and CPU frequencies. Their Alternative Cost Minimization method solves offloading and server selection as a potential game, applies geometric water filling to power allocation, updates segmented trajectories with successive convex approximation, and allocates CPU frequency by gradient descent. The three layers are alternated until the system cost converges. Simulations report convergence in about nine iterations and cost reductions of approximately 12% and 10% against the two evaluated joint-optimization methods under the stated settings.
 
 ## Problem
 UAV-assisted MEC adds mobility and LoS-favorable channels over fixed ground servers, but most prior multi-UAV-MEC work optimizes either communication **or** computation parameters, and the joint minimization of a **weighted linear sum of energy + latency** across a multi-UAV multi-user system "has not been sufficiently discussed." The paper formulates task computation in a multi-access environment (one BS-MEC server + multiple UAV-MEC servers, total `M` servers = `M−1` UAVs + 1 BS, serving `K` ground users over time-varying channels) as a constrained optimization minimizing each user's weighted energy + time-latency cost; users can compute locally or **fully offload** to one MEC server.

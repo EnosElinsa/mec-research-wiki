@@ -16,8 +16,9 @@ related:
   - "[[generative-diffusion-model]]"
   - "[[maddpg]]"
   - "[[ppo]]"
+modeling_card: required
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Temporal Spectrum Cartography in Low-Altitude Economy Networks: A Generative AI Framework With Multi-Agent Learning
@@ -29,6 +30,39 @@ Zhao, C., Zhang, R., Wang, J., Niyato, D., Sun, G., Du, H., Li, Z., Jamalipour, 
 ## TL;DR
 
 Builds temporal RF power maps for low-altitude economy networks using sparse static and mobile sensor measurements. The two-stage framework combines a RecMAE masked-autoencoder reconstructor for temporal spectrum maps with MADP, a multi-agent diffusion policy that plans mobile UAV sensor movement to reduce reconstruction error over time.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Static sensors and fixed-altitude UAV-mounted dynamic sensors sample RSSI on a gridded low-altitude economy network over multiple time slots. The model uses sensing footprints rather than a multiple-access scheduler and generates RF power maps with probabilistic LoS/NLoS path loss and spatially correlated shadow fading.
+
+**Problem & objective**: Equations (13)-(17), a constrained temporal tensor-completion and cooperative POMDP problem, minimize cumulative reconstruction error $E=\sum_{t=1}^{n_T}\lVert\tilde{\mathbf P}^{t}-\hat{\mathbf P}^{t}\rVert_2$ by selecting time-varying UAV sensing locations.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Sensing mask | $\mathbf W^t$ | Binary matrix | Mark grid cells observed by a static or dynamic sensor in slot $t$ |
+| Dynamic-sensor positions | $\mathcal U_t=\{(x_u^t,y_u^t)\}$ | Discrete grid coordinates | Locations of all UAV sensors in slot $t$ |
+| UAV movement action | $a_t^i$ | Continuous actor output, bounded by $a_{\max}=1$ and mapped to feasible grid motion | Select UAV $i$'s next sensing position |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | A mask entry is one only when the grid cell lies within a dynamic or static sensor's sensing radius, as in (15) |
+| C2 | Each UAV move is bounded by $d((x_u^t,y_u^t),(x_u^{t+1},y_u^{t+1}))\le d_m$ |
+| C3 | Sensor counts remain fixed at $M_d$ dynamic UAV sensors and $M_s$ static sensors for every slot |
+| C4 | UAV actions remain within the gridded sensing region and the configured per-slot movement limit |
+
+**Algorithm**: Train RecMAE with pixel-level and patch-level masks $\rightarrow$ use reconstruction error as the shared planning reward $\rightarrow$ encode observation histories with 3D convolution and temporal attention $\rightarrow$ generate decentralized UAV actions with diffusion actors and train centralized critics from replayed experience.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied temporal spectrum cartography in low-altitude economy networks with sparse static sensors and mobile UAV sensors. They formulated dynamic sensor placement as a temporal tensor-completion and cooperative trajectory-planning problem that minimizes cumulative spectrum-map reconstruction error. Their two-stage generative AI framework first trains RecMAE with pixel-level and patch-level masking to reconstruct temporally varying RF power maps. It then uses MADP, a multi-agent diffusion policy with temporal-attention encoding and centralized critic training, to select UAV sensing trajectories. Simulations report a cumulative reconstruction MSE of 50.00 for MADP, compared with 153.91 for CNN-based MADDPG, 95.04 for its attention variant, 192.91 for PPO, and 361.77 for random movement.
 
 ## Problem
 
@@ -63,5 +97,5 @@ This source turns the LAE spectrum problem into [[temporal-spectrum-cartography]
 
 ## Raw artifacts
 
-- `raw/sources/Temporal Spectrum Cartography in Low-Altitude Economy Networks A Generative AI Framework With Multi-Agent Learning/Temporal Spectrum Cartography in Low-Altitude Economy Networks A Generative AI Framework With Multi-Agent Learning.md`
+- `raw/sources/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

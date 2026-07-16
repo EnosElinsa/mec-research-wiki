@@ -5,6 +5,7 @@ authors: ["Yuyi Mao", "Changsheng You", "Jun Zhang", "Kaibin Huang", "Khaled B. 
 year: 2017
 url: "https://doi.org/10.1109/COMST.2017.2745201"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, survey, mobile-edge-computing, computation-offloading, resource-management, foundational]
 related:
   - "[[mobile-edge-computing]]"
@@ -16,7 +17,7 @@ related:
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # A Survey on Mobile Edge Computing: The Communication Perspective
@@ -30,6 +31,12 @@ Mao, Y., You, C., Zhang, J., Huang, K., & Letaief, K. B. (2017). *A Survey on Mo
 The canonical, widely-cited **survey of mobile edge computing from the communication perspective**, focused on the joint management of radio and computational resources. It frames MEC as the fusion of wireless communications and mobile computing, surveys computation-offloading techniques and MEC network architectures, and lays out research directions: MEC system deployment, cache-enabled MEC, mobility management, green MEC, and privacy-aware MEC. It also reviews standardization efforts (ETSI) and typical application scenarios.
 
 This is the wiki's **definitional foundation paper** for MEC itself — most curated sources solve a narrow problem inside the landscape this survey maps.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mao et al. [x] surveyed mobile edge computing from the communication perspective, with emphasis on integrating wireless transmission and mobile computation. They summarized binary and partial task models, wireless and backhaul models, device and server computation models, and the resulting latency and energy relationships. Their literature review organized resource management across single-user, multiuser, and heterogeneous multi-server MEC systems, covering offloading, joint radio and computation allocation, scheduling, server selection, and cooperation. The survey identified deployment, edge caching, mobility, green operation, security, privacy, standardization, and practical use cases as major directions for moving MEC from analytical models toward implementation.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Sensing-Error-Aware UAV Scheduling Based on Generative Diffusion-Driven MADRL for ISAC-Enabled Multi-UAV Systems"
 authors: ["Yihao Wu", "Hanxiao Yu", "Yiqing Zhou", "Ningzhe Shi", "Qing Cai", "Jinglin Shi"]
 year: 2026
@@ -21,7 +22,7 @@ related:
   - "[[guo-2026-dual-objective-multiuav-isac]]"
   - "[[meng-2026-uav-isac-corrections]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Sensing-Error-Aware UAV Scheduling Based on Generative Diffusion-Driven MADRL for ISAC-Enabled Multi-UAV Systems
@@ -33,6 +34,41 @@ Wu, Y., Yu, H., Zhou, Y., Shi, N., Cai, Q., & Shi, J. (2026). *Sensing-Error-Awa
 ## TL;DR
 
 Maps localization error into an expected air-to-ground communication rate and uses that metric to coordinate multi-UAV placement, user association, bandwidth, and sensing frequency. A diffusion model augments MADQN replay with synthetic error-bearing transitions, while simulated annealing selects the integer spacing between sensing frames.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: At least three fixed-altitude UAVs time-share sensing and OFDMA communication for mobile users. Localization error perturbs beam direction and expected rates, while spectrum reuse creates inter-UAV interference and the sensing period trades estimation freshness against communication time.
+
+**Problem & objective**: A mixed-integer scheduling and resource problem maximizes average sensing-error-aware sum rate, $\max \frac{1}{|\mathcal T_c|}\sum_{t\in\mathcal T_c}\sum_k\bar R_k(t)$, over sensing period, UAV positions, associations, and bandwidth.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Sensing period | $\alpha$ | positive integer | Frame spacing between sensing slots |
+| UAV horizontal position | $\mathbf q_m(t)$ | continuous bounded position | Communication deployment of UAV $m$ |
+| User association | $x_{k,m}(t)$ | binary | UAV serving user $k$ |
+| Bandwidth allocation | $b_{k,m}(t)$ | continuous, nonnegative | OFDMA bandwidth assigned to user $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Per-UAV bandwidth allocations stay within the spectrum budget |
+| C2 | Every user satisfies its average-rate QoS requirement |
+| C3 | Localization MSE remains within the sensing-error limit |
+| C4 | UAV positions satisfy region and per-slot motion bounds |
+| C5 | $\alpha$ is a positive integer and defines nonoverlapping sensing and communication slots |
+
+**Algorithm**: Derive the expected communication rate by integrating over angular localization error → fix $\alpha$ and let MADQN agents choose positions, associations, and bandwidth → train a diffusion model on full transition tuples and mix generated with real replay → fix the learned scheduler and update integer $\alpha$ by simulated annealing → alternate the two blocks.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied sensing-error-aware scheduling in time-division ISAC-enabled multi-UAV systems. They derived an expected communication rate by mapping a localization-error region to an angular beam error. The joint problem maximizes average aggregate expected rate over the integer sensing period, UAV positions, user associations, and bandwidth under QoS, sensing-MSE, resource, and motion constraints. Generative-diffusion-driven MADRL augments MADQN replay with synthetic transition tuples, while simulated annealing updates the sensing period. Simulations report higher communication rate and lower degradation under localization error than the evaluated fixed-period and sensing-error-unaware baselines.
 
 ## Problem
 

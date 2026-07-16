@@ -5,6 +5,7 @@ authors: ["Armir Bujari", "Claudio E. Palazzi", "Daniele Ronzani"]
 year: 2018
 url: "https://doi.org/10.1109/TMC.2018.2811490"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: not_applicable
 tags: [source, fanet, routing, uav-communications, geographic-routing, packet-routing]
 related:
   - "[[stateless-geographic-fanet-routing]]"
@@ -14,7 +15,7 @@ related:
   - "[[fatemidokht-2021-vru-vanet-routing]]"
   - "[[uav-assisted-vanet-routing]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # A Comparison of Stateless Position-based Packet Routing Algorithms for FANETs
@@ -26,6 +27,12 @@ Bujari, A., Palazzi, C. E., & Ronzani, D. (2018). *A Comparison of Stateless Pos
 ## TL;DR
 
 Compares stateless position-based packet routing protocols for 3-D flying ad hoc networks under a common simulation scenario. The paper organizes deterministic progress, randomized progress, face/projection, hybrid, and restricted-flooding strategies, then shows the delivery/path-dilation/scalability tradeoffs that arise when 2-D geographic-routing assumptions are moved into 3-D FANETs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bujari et al. [x] compared stateless position-based packet-routing algorithms for three-dimensional FANETs under a common simulation setup. They organized deterministic progress, randomized progress, face-based, hybrid, and restricted-flooding protocols and evaluated delivery rate, path dilation, traffic, and scalability in static 3-D topologies with 50 to 200 nodes. Their NS-2 experiments used IEEE 802.11g, free-space propagation, a 200 m transmission range, CBR traffic, and 512-byte packets. Results show that deterministic progress methods are highly scalable but vulnerable to local minima, PAB3D improves delivery in sparse cases, face methods trade higher delivery for long paths and traffic, and hybrid methods provide a stronger balance across network types.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Completion Time and Energy Optimization in the UAV-Enabled Mobile-Edge Computing System"
 authors: ["Cheng Zhan", "Han Hu", "Xiufeng Sui", "Zhi Liu", "Dusit Niyato"]
 year: 2020
@@ -22,7 +23,7 @@ related:
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
   - "[[dusit-niyato]]"
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Completion Time and Energy Optimization in the UAV-Enabled Mobile-Edge Computing System
@@ -34,6 +35,42 @@ Zhan, C., Hu, H., Sui, X., Liu, Z., & Niyato, D. (2020). *Completion Time and En
 ## TL;DR
 
 A **classical/convex** treatment of a single **fixed-wing** UAV acting as a flying MEC server for ground IoT devices, jointly designing **computation offloading + resource allocation + UAV trajectory + completion time** to minimize, separately, the UAV's **energy consumption** and its **completion time**. The two objectives are shown to be genuinely different (energy minimization wants low-power flying speeds; completion-time minimization wants maximum speed), and the paper characterizes the **Pareto-optimal tradeoff** between them. Both nonconvex problems are made tractable by the **path-discretization** technique and solved with an **alternating-optimization** algorithm whose two blocks are each handled by **successive convex approximation (SCA)**, converging to KKT solutions.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-wing UAV MEC server flies between prescribed endpoints and partially processes tasks from fixed IoT devices over TDMA. Local and UAV DVFS, information causality, LoS rates, and speed/acceleration-dependent propulsion energy couple offloading, trajectory, energy, and mission duration.
+
+**Problem & objective**: Two non-convex designs minimize UAV energy, $\min E_{\mathrm U}$, or mission completion time, $\min T$, followed by a weighted Pareto energy-time formulation.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloaded bits | $l_k(t)$ | continuous, nonnegative | Input data sent by device $k$ |
+| TDMA schedule | $x_k(t)$ | continuous/binary share | Device allowed to offload at time $t$ |
+| CPU frequencies | $f_k(t),f_k^{\mathrm U}(t)$ | continuous, bounded | Local and UAV DVFS rates |
+| UAV trajectory | $\mathbf q(t)$ | continuous 2-D path | Fixed-wing MEC flight path |
+| Completion time | $T$ | continuous, positive | Mission duration |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Local and UAV computation complete every device workload |
+| C2 | UAV computing cannot precede reception of offloaded bits |
+| C3 | TDMA shares sum to at most one and device energy budgets hold |
+| C4 | CPU frequencies stay within device and UAV limits |
+| C5 | UAV dynamics satisfy endpoints, minimum/maximum speed, and acceleration bounds |
+
+**Algorithm**: Discretize the continuous flight path without fixing completion time → split variables into offloading/resource and trajectory/time blocks → convexify each block by SCA → alternate blocks to a KKT solution for energy minimization → solve the analogous time problem → sweep the weighted objective to trace the Pareto frontier.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhan et al. [x] studied completion-time and energy optimization in a fixed-wing UAV-enabled mobile edge computing system. They jointly optimized partial offloading, TDMA and CPU resources, UAV trajectory, and mission duration under task, information-causality, device-energy, CPU, speed, acceleration, and endpoint constraints. Path discretization converts the continuous-time formulations without prescribing completion time. Alternating optimization separates resource and trajectory-time blocks, and successive convex approximation solves each block to a KKT point. Simulations report lower energy and completion time than the evaluated baselines and characterize the Pareto tradeoff between the two objectives.
 
 ## Problem framing
 

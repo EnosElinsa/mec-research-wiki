@@ -5,6 +5,7 @@ authors: ["Yu-Hsin Hsu", "Rung-Hung Gau"]
 year: 2022
 url: "https://doi.org/10.1109/TMC.2020.3003639"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC), 21(1), 306-320"
+modeling_card: required
 tags: [source, uav-trajectory-control, uav-data-collection, collision-avoidance, reinforcement-learning, convex-optimization, traveling-salesman-problem]
 related:
   - "[[convex-tsp-uav-data-collection]]"
@@ -22,7 +23,7 @@ related:
   - "[[safe-reinforcement-learning]]"
   - "[[zhan-2018-uav-wsn-data-collection]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Reinforcement Learning-Based Collision Avoidance and Optimal Trajectory Planning in UAV Communication Networks
@@ -34,6 +35,42 @@ Hsu, Y.-H., & Gau, R.-H. (2022). *Reinforcement Learning-Based Collision Avoidan
 ## TL;DR
 
 Separates multi-UAV mission planning into a planned data-collection route and an online collision-avoidance layer. [[convex-tsp-uav-data-collection|Convex-TSP]] constructs a short piecewise-linear return route through the heterogeneous communication disks of assigned IoT devices, while [[distributed-tabular-q-learning-uav-collision-avoidance|distributed tabular Q-learning]] changes each UAV's heading from local relative observations when nearby UAVs are detected.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-altitude UAVs deliver goods on outbound paths and collect data from assigned heterogeneous IoT devices on return paths. Device transmit powers and SNR targets induce different communication disks, while unknown paths of other UAVs require local sensing and online collision avoidance.
+
+**Problem & objective**: Plan the shortest feasible return curve, $\min_{\tilde\gamma}\int_0^1\lVert\dot{\tilde\gamma}(\tau)\rVert_2\,d\tau$, that intersects every assigned communication disk, then choose online heading changes that preserve separation while tracking the planned route.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Device visiting order | $\boldsymbol\alpha$ | permutation | Order in which a UAV covers assigned IoT devices |
+| Visiting point | $\mathbf v_k$ | continuous 2-D point | Point selected inside device $k$'s communication disk |
+| Planned return path | $\tilde\gamma$ | piecewise-linear curve | Route from delivery point back to distribution center |
+| Collision-avoidance action | $a$ | discrete heading change | Online direction adjustment at fixed speed |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | The return path starts at the delivery point and ends at the distribution center. |
+| C2 | For every assigned device, $d(\tilde\gamma,\mathbf w_k)\leq R_k$. |
+| C3 | UAVs fly at the prescribed fixed altitude and constant speed. |
+| C4 | Pairwise separation satisfies $\lVert\mathbf q_m(t)-\mathbf q_n(t)\rVert_2\geq d_{\min}$. |
+| C5 | Sensing radius satisfies $d_{\mathrm{sen}}\geq2Vt_{\mathrm{sensor}}+d_{\min}$. |
+| C6 | When three or more neighbors make the tabular state unbounded, an identifier-based altitude rule supplies fallback separation. |
+
+**Algorithm**: Solve an auxiliary no-return TSP for device order, then solve a convex two-segment problem for a point inside each communication disk and repeatedly refine neighboring bridge points until path improvement is negligible. Train a distributed tabular Q-learning controller offline from goal-relative and obstacle-relative states, and during flight apply its heading action when nearby UAVs are sensed while otherwise following the planned path.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Hsu and Gau [x] separated multi-UAV goods delivery and IoT collection into planned return trajectories and local collision-avoidance control. They minimized each return-path length over device order and visiting points inside heterogeneous communication disks, while online heading choices enforce fixed-speed, sensing-range, endpoint, data-coverage, and pairwise-separation conditions. Convex-TSP combines a no-return traveling-salesman order with convex visiting-point refinement, and distributed tabular Q-learning deviates from the plan when neighboring UAVs are detected. In 100-device networks with two to ten UAVs, Convex-TSP reduced average return length by at least 25% relative to random disk cover and circumcircle baselines, while learned paths avoided collisions with only modest route-length increase.
 
 ## Problem and system model
 

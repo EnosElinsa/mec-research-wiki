@@ -13,7 +13,8 @@ related:
   - "[[task-offloading]]"
   - "[[chen-2024-thoas-traffic-aware-sagin]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Characterization and Prediction of Cell-level Mobile Network Traffic: A Reinforced Meta-learning-Based Framework
@@ -25,6 +26,12 @@ Ma, B., Ye, J., Feng, S., Zhang, Z., Li, C., Wang, P., & Hossain, E. *Characteri
 ## TL;DR
 
 Proposes Reinforced Meta-learning-based Traffic Prediction (RML-TP), in which a DNN forecasts cell traffic while a value-based reinforcement-learning meta-learner adapts the DNN structure to the cell's FFT-derived traffic features. Tests on real traffic traces report better prediction and transfer results than fixed- and randomly selected structures, followed by a numerical UAV-offloading case study.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ma et al. [x] studied cell-level mobile-network traffic characterization and prediction with a reinforced meta-learning framework. They used FFT-derived traffic features to select a cell-specific recurrent or transformer predictor structure instead of retraining a fixed architecture for every cell. The RML-TP meta-learner treats candidate layer structures as states, applies epsilon-greedy value updates, and trades prediction error against base-learner training time. Experiments on Milan traffic traces report lower prediction error and improved transfer to unseen cell types than fixed-layer and random-layer baselines. A numerical UAV-offloading case study then uses the predicted traffic to illustrate delay reduction, but the paper's central contribution is traffic forecasting rather than a reusable wireless application decision model.
 
 ## Problem
 

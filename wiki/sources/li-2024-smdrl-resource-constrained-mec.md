@@ -27,7 +27,8 @@ related:
   - "[[chen-2022-qoe-game-end-edge-cloud]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Computation Offloading in Resource-Constrained Multi-Access Edge Computing
@@ -37,6 +38,41 @@ Kexin Li, Xingwei Wang, Qiang He, Jielei Wang, Jie Li, Siyu Zhan, Guoming Lu, Sc
 
 ## TL;DR
 For multi-terminal-device (TD) MEC where the wireless medium is **shared and bandwidth-constrained** — e.g. firefighting robots or UAVs that must coordinate offloading — this paper proposes **Scheduled Multi-agent Deep Reinforcement Learning (SMDRL)**. Each TD learns to **encode messages**, **select actions**, and **schedule itself** from received messages, while a **TopK** mechanism lets only the most important TDs broadcast, keeping coordination low-communication. A **virtual energy(-deficit) queue** decouples a long-term per-device energy cap, turning the long-term QoE-maximization (service delay + energy) into a per-slot MDP. The scheme is shown to reach near-optimal QoE while respecting communication and energy constraints.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple terminal devices atomically execute or offload tasks to shared-bandwidth edge nodes, with per-device energy caps and limited inter-device communication.
+
+**Problem & objective**: Minimize the per-slot Lyapunov drift-plus-penalty cost $\sum_n\left(\omega_1Q_n^tE_n^t+\omega_2T_n^t\right)$, which balances queue-weighted energy and task completion delay.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| Local execution | $\chi_n^t$ | binary | Selects local processing for TD $n$ |
+| EN offloading | $\chi_{m,n}^t$ | binary | Selects EN $m$ for TD $n$ when not local |
+| EN bandwidth allocation | $b_{m,n}^t$ | continuous, nonnegative | Bandwidth assigned to TD $n$ at EN $m$ |
+| Message broadcast | $u_n^t$ | binary TopK indicator | Allows TD $n$ to broadcast a coordination message |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Atomic offloading is mutually exclusive: each task is local or assigned to one EN. |
+| C2 | Completion delay satisfies $T_n^t\leq d_n^{t,\max}$. |
+| C3 | Long-term device energy obeys $\limsup_{\mathcal T\to\infty}\frac1{\mathcal T}\sum_t\mathbb E[E_n^t]\leq e_n^c$, tracked by $Q_n^{t+1}=\max\{0,Q_n^t+E_n^t-e_n^c\}$. |
+| C4 | Per-EN allocated bandwidth stays within capacity, $b_{m,n}^t\leq B_m$. |
+| C5 | Communication scheduling limits broadcasts to the selected TopK TDs. |
+
+**Algorithm**: Use SMDRL with learned message encoding, actor-based offloading decisions, centralized training with distributed execution, and TopK scheduling for low-communication coordination.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] addressed computation offloading in multi-access MEC when terminal devices share a bandwidth-limited coordination medium. They minimized a queue-weighted energy and delay cost under atomic local-or-edge execution, per-task deadlines, long-term device energy caps, and edge-node bandwidth limits. SMDRL learns message encodings and offloading actions while a TopK scheduler restricts which devices broadcast, and a virtual energy-deficit queue converts the long-term cap into a per-slot decision term. The reported simulations show near-optimal delay and energy, including lower normalized energy than SAC and MADDPG and a delay reduction under narrow bandwidth.
 
 ## Problem framing
 Real MEC applications need teamwork among TDs, but real-world settings are resource-constrained: network connectivity can weaken or drop, and when many TDs share the medium, coordination is hard. Centralized MIP/DRL offloading (e.g. DROO-style, SAC-based) needs to ship large amounts of data to a central server, causing uplink congestion and stripping TDs of local-feature/interaction awareness. Multi-agent DRL (e.g. MADDPG) handles distributed decisions but typically **ignores the cost of the shared communication medium** and assumes free inter-agent messaging — unrealistic when bandwidth is scarce. The paper targets the under-studied problem of computation offloading in **multi-access** MEC with **bandwidth constraints**, where agents must exchange concise but significant information and arbitrate medium access to avoid collisions.

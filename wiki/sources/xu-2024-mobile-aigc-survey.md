@@ -5,6 +5,7 @@ authors: ["Minrui Xu", "Hongyang Du", "Dusit Niyato", "Jiawen Kang", "Zehui Xion
 year: 2024
 url: "https://doi.org/10.1109/COMST.2024.3353265"
 venue: "IEEE Communications Surveys & Tutorials (IEEE COMST)"
+modeling_card: not_applicable
 tags: [source, survey, generative-ai, aigc, mobile-aigc-network, edge-cloud, generative-ai-for-mec]
 related:
   - "[[mobile-aigc-network]]"
@@ -24,7 +25,7 @@ related:
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
   - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Unleashing the Power of Edge-Cloud Generative AI in Mobile Networks: A Survey of AIGC Services
@@ -36,6 +37,12 @@ Xu, M., Du, H., Niyato, D., Kang, J., Xiong, Z., Mao, S., Han, Z., Jamalipour, A
 ## TL;DR
 
 A **survey** of how to deploy **Artificial-Intelligence-Generated-Content (AIGC)** services — e.g. ChatGPT, DALL-E — at mobile edge networks, which the authors call **mobile AIGC networks**. It covers (i) the background and fundamentals of generative models and the **AIGC service lifecycle** (data collection → pre-training → fine-tuning → inference → product management), (ii) the **collaborative cloud-edge-mobile infrastructure** and enabling technologies, (iii) AIGC-driven creative applications and use cases, and (iv) the implementation, security, and privacy challenges, closing with future research directions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xu et al. [x] surveyed the deployment of Artificial-Intelligence-Generated Content applications at mobile edge networks, which they term mobile AIGC networks. They introduced the background and fundamentals of generative models and organized the AIGC service lifecycle into data collection, pre-training, fine-tuning, inference, and product management. The survey examined the collaborative cloud-edge-mobile infrastructure and enabling technologies for real-time, personalized, and privacy-preserving AIGC services, and presented creative applications and representative use cases. It identified implementation challenges involving edge resource allocation, task and computation offloading, edge caching, mobility management, incentive mechanisms, security, and privacy. The paper also outlined future research directions from networking and computing, machine learning, and practical implementation perspectives.
 
 ## Problem framing
 

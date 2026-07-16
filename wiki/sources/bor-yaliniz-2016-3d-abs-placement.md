@@ -5,6 +5,7 @@ authors: ["R. Irem Bor-Yaliniz", "Amr El-Keyi", "Halim Yanikomeroglu"]
 year: 2016
 url: "https://doi.org/10.1109/ICC.2016.7510820"
 venue: "IEEE International Conference on Communications (IEEE ICC)"
+modeling_card: required
 tags: [source, aerial-base-station, drone-cell, 3d-placement, air-to-ground-channel-model, mixed-integer-nonlinear-programming, cellular-coverage]
 related:
   - "[[drone-cell-3d-placement]]"
@@ -16,7 +17,7 @@ related:
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
   - "[[weighted-kmeans-uav-deployment]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Efficient 3-D Placement of an Aerial Base Station in Next Generation Cellular Networks
@@ -30,6 +31,42 @@ Bor-Yaliniz, R. I., El-Keyi, A., & Yanikomeroglu, H. (2016). *Efficient 3-D Plac
 ## TL;DR
 
 A foundational **drone-cell** (low-altitude UAV-mounted aerial base station, ABS) placement paper. It is stated to be the first to pose **3-D placement** — jointly choosing the drone-cell's **altitude** and the **location + size of its coverage area** — with the objective of **maximizing the number of served users (network revenue)**. Using the urban air-to-ground LoS-probability channel model, the problem becomes a quadratically-constrained **mixed-integer nonlinear program (MINLP)**; introducing a variable that ties altitude to coverage radius lets a **1-D bisection search** plus the MOSEK interior-point solver crack it efficiently.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A congested or failed macrocell has known uncovered-user coordinates $(x_i,y_i)$ and is assisted by one quasi-stationary, fixed-power low-altitude drone-cell. A user is served when the environment-dependent air-to-ground path loss $L(h,r_i)$ is below the QoS threshold $\gamma$.
+
+**Problem & objective**: The original 3D-placement MINLP maximizes network revenue measured by covered users, $\max_{x_D,y_D,h,\{u_i\}}\sum_{i\in\mathbb{U}}u_i$, while jointly selecting the drone-cell's horizontal location, altitude, and coverage set.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Horizontal location | $x_D,y_D$ | Continuous, $[x_l,x_u]\times[y_l,y_u]$ | Drone-cell ground-plane coordinates |
+| Altitude | $h$ | Continuous, $[h_l,h_u]$ | Drone-cell altitude |
+| User coverage | $u_i$ | Binary, $\{0,1\}$ | Whether user $i$ is served |
+| Coverage radius | $R$ | Continuous, $R\geq0$ | Radius in the equivalent reformulation |
+| Altitude-radius ratio | $\alpha=h/R$ | Continuous, $\alpha\geq0$ | Environment-dependent ratio used to recover altitude |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| QoS | $h^2+r_i^2\leq10^{[\gamma-(AP(h,r_i)+B)]/10}+M_1(1-u_i)$ |
+| Placement bounds | $x_l\leq x_D\leq x_u$, $y_l\leq y_D\leq y_u$, and $h_l\leq h\leq h_u$ |
+| Coverage indicator | $u_i\in\{0,1\}$ for every $i\in\mathbb{U}$ |
+| Radius linkage | $R\geq r_i-M_2(1-u_i)$ and $\alpha=h/R$ |
+| Equivalent radius limit | $R^2\leq\Gamma(\alpha)+M_1(1-u_i)$, where $\Gamma(\alpha)=10^{[\gamma-(AP(\alpha)+B)]/10}/(1+\alpha^2)$ |
+
+**Algorithm**: A one-dimensional bisection search finds the unique numerical maximizer $\alpha^*$ of $\Gamma(\alpha)$ by locating the root of $d\Gamma(\alpha)/d\alpha$. With $\alpha^*$ fixed, the remaining quadratically constrained MINLP over $x_D$, $y_D$, $R$, and $u_i$ is solved by the MOSEK interior-point optimizer, and the altitude is recovered as $h=\alpha^*R$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bor-Yaliniz et al. [x] studied three-dimensional placement of a single low-altitude drone-cell that assists a congested or failed macrocell with known user locations. They modeled urban air-to-ground path loss through an elevation-dependent line-of-sight probability and treated a user as covered when its path loss satisfies a fixed QoS threshold. The resulting mixed-integer nonlinear program maximizes the number of covered users by jointly selecting horizontal position, altitude, coverage radius, and binary user-coverage indicators within placement and QoS bounds. The authors introduced the altitude-to-radius ratio $\alpha=h/R$, found its environment-dependent optimum by one-dimensional bisection, and solved the remaining quadratically constrained mixed-integer problem with MOSEK. Numerical experiments with 40 uniformly distributed users showed consistent covered-user counts across 100 Monte Carlo trials and strong dependence of achievable revenue on the suburban, urban, dense-urban, or high-rise environment.
 
 ## Problem framing
 

@@ -16,7 +16,8 @@ related:
   - "[[diffusion-model-as-optimizer]]"
   - "[[bai-2024-delay-aware-cooperative-edge-cloud]]"
 created: 2026-06-04
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # DNN Partitioning, Task Offloading, and Resource Allocation in Dynamic Vehicular Networks: A Lyapunov-Guided Diffusion-Based Reinforcement Learning Approach
@@ -28,6 +29,41 @@ Liu, Z., Du, H., Lin, J., Gao, Z., Huang, L., Hosseinalipour, S., & Niyato, D. (
 ## TL;DR
 
 In vehicular edge computing (VEC), vehicles run DNN inference tasks (e.g., autonomous driving) and must decide how to partition each DNN across layers, where to offload the remaining layers (RSU or nearby service vehicles via V2I/V2V), and how to allocate RSU compute resources — all in a dynamic, mobile environment. The paper formulates this as a long-term MINLP under system-stability constraints, applies **Lyapunov optimization** to decompose it into per-slot subproblems, and introduces **MAD2RL** (Multi-Agent Diffusion-based Deep Reinforcement Learning) — claimed as the first integration of a diffusion model into a multi-agent RL framework — to solve partitioning and offloading decisions. Convex optimization provides a closed-form resource-allocation subroutine. Simulations on OpenStreetMap / SUMO traces with real DNN models demonstrate superior performance over benchmarks.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Client vehicles run DNN inference tasks and offload layer prefixes to one RSU or nearby service vehicles over OFDMA V2I/V2V links. Queues at client vehicles, the RSU, and service vehicles evolve under mobile channels and long-term stability requirements.
+
+**Problem & objective**: Long-term VEC task-partitioning and offloading MINLP, minimized through Lyapunov drift-plus-penalty, with objective $\min\mathbb E[\text{DNN completion time}]$ subject to queue stability and per-slot resource feasibility.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| DNN split layer | $\phi_i(t)$ | integer, $1\ldots L$ | First layer executed at the selected edge node |
+| Offload destination | $\xi_{i,j}(t)$ | binary | Client vehicle $i$ selects RSU or service vehicle $j$ |
+| RSU CPU allocation | $F_k^{\mathrm{rsu}}(t)$ | continuous, nonnegative | RSU frequency assigned to DNN model type $k$ |
+| Task admission/service | $a_i(t)$ | discrete | Number of DNN jobs admitted to the per-slot service process |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each client chooses one valid split and at most one edge destination |
+| C2 | RSU CPU allocation stays within the RSU capacity |
+| C3 | V2I/V2V transmission rates and queues remain feasible in each slot |
+| C4 | Long-term queue drift is bounded, ensuring system stability |
+| C5 | Offloaded and local layer workloads respect per-task processing order and deadlines |
+
+**Algorithm**: Apply Lyapunov drift-plus-penalty → solve per-slot partition/offload actions with MAD2RL's diffusion actor → use closed-form KKT/CVX allocation for RSU resources → update queues and repeat across mobile traces.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Liu et al. [x] studied DNN partitioning, task offloading, and resource allocation in dynamic vehicular edge computing with an RSU and service vehicles. They formulated a long-term mixed-integer nonlinear problem that minimizes DNN task completion time while maintaining queue stability. Lyapunov optimization converts the long-horizon problem into per-slot decisions, and MAD2RL uses a diffusion-based multi-agent policy to choose layer partitions and offloading destinations. Given those discrete decisions, a convex KKT subroutine allocates RSU computing resources in closed form. Simulations with OpenStreetMap and SUMO mobility and real DNN models report lower completion time and faster convergence than the evaluated DRL baselines.
 
 ## Problem framing
 

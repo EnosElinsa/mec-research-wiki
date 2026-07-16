@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Aerial Reliable Collaborative Communications for Terrestrial Mobile Users via Evolutionary Multi-Objective Deep Reinforcement Learning"
 authors: ["Geng Sun", "Jian Xiao", "Jiahui Li", "Jiacheng Wang", "Jiawen Kang", "Dusit Niyato", "Shiwen Mao"]
 year: 2025
@@ -18,7 +19,7 @@ related:
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
   - "[[collaborative-beamforming-in-aerial-mec]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Aerial Reliable Collaborative Communications for Terrestrial Mobile Users via Evolutionary Multi-Objective Deep Reinforcement Learning
@@ -30,6 +31,40 @@ Sun, G., Xiao, J., Li, J., Wang, J., Kang, J., Niyato, D., & Mao, S. (2025). *Ae
 ## TL;DR
 
 Multiple autonomous aerial vehicles (AAVs) form a **virtual antenna array (UVAA)** and use **collaborative beamforming (CB)** to transmit to a **terrestrial mobile user**, under interference from non-associated BSs and time-varying channels. The work formulates a **long-term multi-objective optimization problem (MOP)** — maximize total achievable transmission rate, minimize AAV swarm flight energy — over excitation-current weights and AAV positions, and transforms it into a multi-objective Markov decision process solved by **EMOPPO-VLH**: an evolutionary multi-objective PPO with a **vectorized value function**, **LSTM** networks, and a **hyper-sphere-based task selection** method.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple autonomous aerial vehicles form a virtual antenna array and collaboratively beamform to a mobile terrestrial user under interference from non-associated base stations. AAV positions and excitation currents change over a time-varying Gaussian-Markov channel, and flight energy trades off against achievable rate.
+
+**Problem & objective**: A long-term multi-objective MOP maximizes total transmission rate and minimizes AAV flight energy, $\max(R_{\mathrm{sum}},-E_{\mathrm{flight}})$, over excitation weights and AAV positions.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| AAV positions | $\mathbf q_i(t)$ | continuous 3-D positions | UVAA geometry over time |
+| Excitation currents | $w_i(t)$ | complex continuous | Collaborative-beamforming amplitudes and phases |
+| Policy preference | $\mathbf w$ | continuous objective-weight vector | Pareto preference used by each policy task |
+| Movement action | $a_t$ | discrete/continuous | Position update selected by the learned policy |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | AAV positions remain in the flight region and obey mobility/energy limits |
+| C2 | Excitation currents satisfy power and beamforming normalization limits |
+| C3 | The UVAA maintains a feasible link to the mobile user under interference |
+| C4 | Vector rewards and policy tasks remain within the multi-objective preference domain |
+
+**Algorithm**: Transform the long-term MOP into a vector-reward MOMDP → warm up a primary policy population → train vectorized-value PPO with LSTM state features → select tasks by hyper-sphere diversity → evolve policy tasks and update the external Pareto archive → return nondominated rate-energy policies.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Sun et al. [x] studied reliable collaborative communications from a mobile terrestrial user to a multi-AAV virtual antenna array. They formulated a long-term multi-objective problem that maximizes transmission rate and minimizes AAV flight energy through excitation-current and position control under time-varying channels and interference. EMOPPO-VLH transforms the problem into a vector-reward MDP and combines vectorized-value PPO, LSTM temporal features, warm-up learning, hyper-sphere task selection, and evolutionary policy updates. The external archive retains a diverse nondominated policy set for different rate-energy preferences. Simulations report improved inverted generational distance and hypervolume over the evaluated evolutionary and multi-objective reinforcement-learning baselines across system scales.
 
 ## Problem framing
 

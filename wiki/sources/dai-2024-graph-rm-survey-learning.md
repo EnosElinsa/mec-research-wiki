@@ -5,6 +5,7 @@ authors: ["Yanpeng Dai", "Ling Lyu", "Nan Cheng", "Min Sheng", "Junyu Liu", "Xiu
 year: 2024
 url: "https://doi.org/10.1109/TCCN.2024.3508777"
 venue: "IEEE Transactions on Cognitive Communications and Networking (IEEE TCCN)"
+modeling_card: not_applicable
 tags:
   - source
   - survey
@@ -25,7 +26,7 @@ related:
   - "[[shuguang-cui]]"
   - "[[xuemin-shen]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-07-16
 ---
 
 # A Survey of Graph-Based Resource Management in Wireless Networks—Part II: Learning Approaches
@@ -35,6 +36,12 @@ Yanpeng Dai, Ling Lyu, Nan Cheng, Min Sheng, Junyu Liu, Xiucheng Wang, [[shuguan
 
 ## TL;DR
 Part II of the two-part graph-based-resource-management survey, shifting from graph optimization ([[dai-2024-graph-rm-survey-optimization|Part I]]) to **graph learning**. It introduces modern graph-neural-network (GNN) models and reviews their application to five resource-management issues — power control, spectrum management, beamforming design, task scheduling, and aerial coverage planning — then consolidates the technical challenges and future directions for the whole two-part survey.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dai et al. [x] provided the learning part of a two-part survey on graph-based resource management in wireless networks. They introduced graph learning fundamentals and several modern graph neural network models, then organized the reviewed literature by power control, spectrum management, beamforming design, task scheduling, and aerial coverage planning. The survey discusses scalability, training efficiency, generalization, and compatibility with existing graph models as properties motivating graph learning for wireless resource management. It also consolidates technical challenges involving network scale and density, dynamicity, device heterogeneity, and incomplete network data, and identifies advanced graphs, scalable graph methods, graph generative models, and domain-knowledge-infused graph learning as future directions.
 
 ## Problem framing
 Graph optimization (Part I) is mature but struggles with scale (graph size grows with network size) and combinatorial hardness, which conflicts with low-latency demands. Graph learning, especially GNNs and graph embedding, is presented as the complementary direction whose stated advantages are: (1) scalability with network size (GNN parameter count is independent of network size), (2) training efficiency on wireless-network data, (3) generalization to dynamic network status (permutation invariance/equivariance), and (4) compatibility with existing graph models. Part II reviews how these properties are exploited for resource management.

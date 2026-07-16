@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Joint Trajectory Design and Resource Allocation for Energy-Efficient Multi-UAV Assisted Vehicular Networks: An IKPP Approach"
 authors: ["Jing Wang", "Xiaotian Zhou", "Haixia Zhang", "Daojun Liang", "Dongfeng Yuan"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[xiaotian-zhou]]"
   - "[[haixia-zhang]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Trajectory Design and Resource Allocation for Energy-Efficient Multi-UAV Assisted Vehicular Networks: An IKPP Approach
@@ -27,6 +28,41 @@ Wang, J., Zhou, X., Zhang, H., Liang, D., & Yuan, D. (2026). Joint trajectory de
 ## TL;DR
 
 Multiple fixed-altitude UAV base stations collect OFDMA uplink traffic from moving vehicles while reusing subcarriers across UAVs. IKPP combines PPO-clip trajectory/power/carrier scores with nearest-UAV load balancing and discrete action reconstruction to maximize simulated throughput per UAV propulsion power.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAV base stations collect OFDMA uplink traffic from road-constrained moving vehicles. Subcarriers are orthogonal within a UAV and reused across UAVs, creating co-channel interference, while UAV propulsion power depends on flight speed.
+
+**Problem & objective**: A constrained fractional mixed-action problem maximizes horizon energy efficiency, $\max \sum_t\frac{\sum_k R_k(t)}{\sum_m P_m^{\mathrm{fly}}(t)}$, through UAV motion, association, vehicle power, and carrier assignment.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV speed and heading | $v_m(t),\theta_m(t)$ | continuous, bounded | Trajectory-control action of UAV $m$ |
+| Vehicle association | $x_{k,m}(t)$ | binary | UAV serving vehicle $k$ |
+| Vehicle transmit power | $p_k(t)$ | continuous, bounded | Uplink power of vehicle $k$ |
+| Subcarrier assignment | $a_{k,n}(t)$ | binary | Carrier $n$ allocated to vehicle $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each vehicle associates with one UAV and receives one feasible carrier |
+| C2 | A UAV serves no more vehicles than its available subcarriers |
+| C3 | Vehicle rates satisfy QoS and powers remain within their limits |
+| C4 | UAVs remain inside the service region, meet endpoint conditions, and obey speed limits |
+| C5 | Pairwise UAV separation remains above the collision threshold |
+
+**Algorithm**: Let PPO-clip output motion, power, and carrier scores → associate each vehicle with its nearest proposed UAV → move excess vehicles to other UAVs until carrier capacities hold → reconstruct binary carrier assignments from the scores → apply QoS, boundary, and collision penalties and update the policy.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied joint trajectory design and resource allocation for energy-efficient multi-UAV vehicular networks. They formulated horizon throughput-to-propulsion-power maximization over UAV speed and heading, vehicle association, uplink power, and OFDMA carrier assignment under QoS, capacity, boundary, endpoint, and collision constraints. IKPP uses PPO-clip to generate continuous motion, power, and carrier scores. A nearest-UAV load-balancing procedure enforces service capacity, and discrete action reconstruction converts the carrier scores into assignments. Simulations report higher reward and energy efficiency than the evaluated PPO, DDPG, static, and ablation baselines, with policy inference below the simulated slot duration.
 
 ## Problem and system model
 

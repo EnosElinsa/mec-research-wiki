@@ -5,6 +5,7 @@ authors: ["Kuang-Hui Huang", "Fang-Jing Wu", "Yu-Yu Chen", "Ai-Chun Pang"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3630751"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-communications, uav-relay, relay-deployment, antenna-radiation, angle-of-radiation, graph-search]
 related:
   - "[[angle-of-radiation-uav-relay]]"
@@ -14,7 +15,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[zhan-2011-uav-relay-heading-optimization]]"
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-16
 ---
 
 # AIM: Angle-of-Radiation-Based Deployment of UAV Relays for Connectivity in 3D Environments
@@ -26,6 +27,39 @@ Huang, K.-H., Wu, F.-J., Chen, Y.-Y., & Pang, A.-C. (2026). *AIM: Angle-of-Radia
 ## TL;DR
 
 Formulates UAV relay-chain deployment with non-isotropic antenna radiation as a joint position-and-heading problem. The AIM algorithm builds an angle-of-radiation-aware reachability table over feasible 3-D grid positions and headings, then reconstructs a minimum-relay chain from destination back to source while maintaining per-link RSS thresholds.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A three-dimensional operational area is discretized into obstacle-free grid positions, and every UAV can select one of several headings. Each position-heading pair is an operational state, and a directed link exists only when the transmitter and receiver antenna radiation angles yield received signal strength above a required threshold.
+
+**Problem & objective**: Given fixed source and destination operational states, the deployment problem selects a relay chain $R=\arg\min_{\widetilde R}\lvert\widetilde R\rvert$, minimizing the number of operational states and therefore the number of UAVs in the chain.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Relay-chain sequence | $R$ | ordered subset of graph vertices | Source, selected relay states, and destination |
+| Relay position | $q_i$ | discrete feasible grid point | Three-dimensional location of relay $i$ |
+| Relay heading | $a_i$ | discrete element of $\mathcal H$ | Antenna orientation of relay $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Distinct relays cannot occupy the same grid position: $\widetilde q_i\ne\widetilde q_j$ |
+| C2 | Every consecutive relay link meets the RSS threshold: $e(\widetilde v_i,\widetilde v_{i+1})\ge\gamma$ |
+| C3 | The source-to-first-relay and last-relay-to-destination links also meet $\gamma$ |
+| C4 | Every selected position is obstacle-free and every heading belongs to the allowed set $\mathcal H$ |
+
+**Algorithm**: AIM sorts operational states by position, builds an angle-of-radiation-aware reachability table from the source, and records for every state the minimum relay count, predecessor, and bottleneck RSS. It then backtracks predecessors from the destination to recover the chain, breaking equal-hop ties in favor of stronger minimum RSS.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Huang et al. [x] modeled three-dimensional UAV relay deployment with non-isotropic antenna radiation, so each graph vertex jointly specifies a feasible position and heading. They minimized relay-chain length while requiring distinct relay positions and an RSS threshold on every source, relay, and destination link. AIM creates a source-rooted reachability table that records minimum hop count, predecessor, and bottleneck RSS, then reconstructs the chain by reverse lookup. Across 100 source-destination pairs, AIM used 52.1%, 61.2%, and 14.6% fewer UAVs than the two-stage, greedy, and MADRL baselines, respectively.
 
 ## Problem
 

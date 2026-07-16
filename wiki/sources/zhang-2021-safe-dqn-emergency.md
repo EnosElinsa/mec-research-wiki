@@ -21,7 +21,8 @@ related:
   - "[[yuanwei-liu]]"
   - "[[arumugam-nallanathan]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Trajectory Optimization for UAV Emergency Communication With Limited User Equipment Energy: A Safe-DQN Approach
@@ -33,6 +34,40 @@ Zhang, T., Lei, J., Liu, Y., Feng, C., & Nallanathan, A. (2021). *Trajectory Opt
 ## TL;DR
 
 Trains a Lyapunov-filtered DQN trajectory policy for one emergency UAV base station, maximizing uploaded data while constraining expected user-energy cost and filtering actions whose next grid point lies inside a modeled obstacle.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV acts as an aerial base station and collects uplink data from fixed users in a post-disaster area containing circular obstacle regions. Users access the UAV through OFDMA, and each air-to-ground channel follows the 3GPP probabilistic LoS and NLoS path-loss model with AWGN.
+
+**Problem & objective**: Trajectory problem (P1), equivalently CMDP (P2), maximizes expected cumulative uploaded bits, $\max_{\pi\in\Delta}W_\pi(s_0)$, subject to $E_\pi(s_0)\leq e_0$ and obstacle avoidance.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Trajectory policy | $\pi(\cdot\mid s)$ | stochastic policy | Action probabilities at a UAV position and upload-progress state |
+| UAV motion action | $a_m$ | discrete, 5 actions | Move forward, backward, left, right, or hover in slot $m$ |
+| UAV trajectory | $l_U(m)$ | discrete grid position | Horizontal UAV location induced by the action sequence |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 7a | Each user's cumulative energy satisfies $\sum_me_k(m)\leq e_0$ |
+| 7a double-prime | The CMDP uses the sufficient surrogate $\sum_m\max_ke_k(m)\leq e_0$ |
+| 7b | Slot displacement obeys $\|l_U(m+1)-l_U(m)\|=\delta_tv$ |
+| 7c | Every selected grid point lies outside the obstacle set, $l_U(m)\notin\Omega$ |
+| 13 | The learned policy satisfies expected cumulative cost $E_\pi(s_0)\leq e_0$ |
+
+**Algorithm**: Convert the trajectory problem to a CMDP; construct a Lyapunov function from a feasible benchmark policy and derive a statewise safe-policy set; learn reward and cost Q-functions plus the benchmark-policy network with prioritized replay and target networks; solve the small policy linear program; remove actions whose next point lies in an obstacle before execution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied UAV trajectory optimization for emergency communication with limited user-equipment energy and flight obstacles. They formulated a constrained Markov decision process that maximizes long-term uplink throughput subject to an expected cumulative energy limit and obstacle avoidance. Their safe-DQN method constructs a Lyapunov-based safe policy set, learns reward and cost action values, and filters illegal motion actions before execution. Simulations report convergence to approximately 50 Mbps within 1,000 episodes at the selected learning rate. The proposed method reports higher uplink throughput and energy efficiency than the fixed-flight-trajectory and shortest-flight-distance baselines across the evaluated service durations and user counts.
 
 ## Model and method
 

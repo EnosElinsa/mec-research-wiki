@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Multi-Agent Transformer Learning for Moving Target Positioning and Tracking in Complex Environments Using UAV Swarms"
 authors: ["Haowen Wang", "Junyu Wei", "Ni Zhu", "Zongqing Zhao", "Zhuoyuan Wu", "Shiqi Li", "Yuyang Xiao", "Jiangyi Qin", "Zhiqiang Wang"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[transformer-encoder]]"
   - "[[ppo]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Multi-Agent Transformer Learning for Moving Target Positioning and Tracking in Complex Environments Using UAV Swarms
@@ -29,6 +30,41 @@ Wang, H., Wei, J., Zhu, N., Zhao, Z., Wu, Z., Li, S., Xiao, Y., Qin, J., & Wang,
 ## TL;DR
 
 Combines Taylor-iteration TDOA localization, Hungarian formation assignment, and an encoder-decoder Multi-Agent Transformer to position a UAV swarm around one moving ground target while balancing GDOP, obstacle clearance, and flight distance.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A swarm of passive UAV receivers localizes and tracks one signal-emitting moving ground target from TDOA measurements under LoS and biased NLoS errors. Virtual tracking points define a sensing formation in complex obstacle maps, and each UAV controls planar velocity from local observations.
+
+**Problem & objective**: A partially observed multi-agent trajectory problem minimizes localization geometry and travel cost, $\min \sum_t[\lambda_G\operatorname{GDOP}(t)+\lambda_L\sum_m\lVert\mathbf q_m(t+1)-\mathbf q_m(t)\rVert]$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Target estimate | $\hat{\mathbf p}(t)$ | continuous 2-D position | Taylor-iteration TDOA estimate |
+| Formation assignment | $x_{m,j}(t)$ | binary | Virtual tracking point $j$ assigned to UAV $m$ |
+| UAV velocity action | $\Delta\mathbf v_m(t)$ | discrete planar action | Velocity change selected by the policy |
+| UAV trajectory | $\mathbf q_m(t)$ | continuous position | Resulting receiver path around the target |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Hungarian assignment maps each UAV to one virtual tracking point |
+| C2 | UAV positions and velocities follow the discrete motion model and action limits |
+| C3 | UAVs maintain obstacle clearance and feasible map boundaries |
+| C4 | Formation geometry remains informative for TDOA localization and tracking |
+| C5 | Path length and motion changes are penalized as flight-cost proxies |
+
+**Algorithm**: Estimate the target by iterative TDOA localization → place virtual tracking points around the estimate → assign UAVs with the Hungarian algorithm → encode all local observations with a Multi-Agent Transformer → generate actions sequentially with a masked autoregressive PPO decoder → move the swarm and repeat.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied moving-target positioning and tracking with UAV swarms in complex environments. Their system combines iterative TDOA localization with virtual sensing formations and Hungarian assignment of UAVs to formation points. A Multi-Agent Transformer encodes all UAV observations, and a masked autoregressive decoder generates discrete velocity actions using multi-agent advantage decomposition and a clipped PPO objective. The control objective balances geometric dilution of precision, obstacle avoidance, progress toward assigned points, and flight distance. Simulations report lower mean positioning error than the evaluated learning baselines across the tested environments and retain performance in additional zero-shot simulated maps.
 
 ## Problem and system model
 

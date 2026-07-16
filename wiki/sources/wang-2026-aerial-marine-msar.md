@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS, UAVs, and MASSs"
 authors: ["Zhen Wang", "Bin Lin", "Qiang Ye"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[discrete-continuous-two-stage-decomposition]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS, UAVs, and MASSs
@@ -36,6 +37,41 @@ The MINLP is decomposed into four subproblems and solved by the **JCORA** algori
 | II.a | UAV transmit power allocation | quasi-convex |
 | II.b | Edge computing resource allocation | projected gradient descent |
 | II.c | Local computing resource allocation | convex |
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Surveillance UAVs generate maritime search-and-rescue computation tasks and either process them locally or offload them to one HAPS or nearby maritime autonomous surface ships. UAV-to-MASS links use maritime Rician and shadow fading, while UAV-to-HAPS links use elevation-dependent probabilistic LoS channels.
+
+**Problem & objective**: A mixed-integer nonlinear joint computation-offloading and resource-allocation problem minimizes weighted completion time and energy, $\min \sum_i\bigl(\omega_T T_i+\omega_E E_i\bigr)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Execution destination | $x_{i,s}$ | binary | Whether UAV task $i$ executes locally, at the HAPS, or at MASS $s$ |
+| UAV transmit power | $p_i$ | continuous, bounded | Offloading power used by UAV $i$ |
+| Edge CPU allocation | $f_{i,s}$ | continuous, nonnegative | HAPS or MASS computing resource assigned to task $i$ |
+| Local CPU allocation | $f_i^{\mathrm{loc}}$ | continuous, nonnegative | Local UAV computing frequency for task $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each task selects exactly one local, HAPS, or MASS execution route |
+| C2 | UAV powers satisfy individual transmit-power limits |
+| C3 | HAPS, MASS, and local CPU allocations do not exceed computing capacities |
+| C4 | Task completion times meet their latency requirements |
+| C5 | Many-to-one UAV-to-MASS and UAV-to-HAPS associations satisfy server quotas |
+
+**Algorithm**: Match UAV tasks to the HAPS or MASS servers → solve UAV transmit power by quasi-convex optimization → allocate edge computing resources with projected gradient descent → solve local computing allocation as a convex subproblem → iterate the JCORA stages.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied computation-efficient aerial-marine integrated networks for maritime search and rescue using cooperative HAPS, UAVs, and maritime autonomous surface ships. They formulated a mixed-integer nonlinear problem that minimizes a weighted sum of task-completion time and energy through execution-destination, transmit-power, and computing-resource decisions. Their JCORA algorithm applies many-to-one matching for edge-server selection, quasi-convex optimization for UAV transmit power, projected gradient descent for edge computing resources, and convex optimization for local computing resources. The model distinguishes UAV-to-MASS maritime fading from elevation-dependent UAV-to-HAPS links. Simulations show lower computation overhead than the evaluated matching, power, and resource-allocation baselines.
 
 ## Why this matters
 

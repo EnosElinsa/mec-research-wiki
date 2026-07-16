@@ -5,6 +5,7 @@ authors: ["Yao Tang", "Guangxu Zhu", "Wei Xu", "Man Hon Cheung", "Tat-Ming Lok",
 year: 2025
 url: "https://doi.org/10.1109/TWC.2024.3523381"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, isac, federated-edge-learning, uav, resource-allocation, alternating-optimization, integrated-sensing-computation-communication]
 related:
   - "[[aerial-federated-aggregation-design-space]]"
@@ -18,7 +19,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Integrated Sensing, Computation, and Communication for UAV-Assisted Federated Edge Learning
@@ -30,6 +31,42 @@ Tang, Y., Zhu, G., Xu, W., Cheung, M. H., Lok, T.-M., & Cui, S. (2025). *Integra
 ## TL;DR
 
 Jointly designs **UAV deployment + resource allocation** for **federated edge learning (FEEL)** where UAV-mounted edge devices sense data, compute, and communicate — all competing for limited onboard resources. The paper links UAV deployment to sensing quality (human motion recognition), derives a training-loss upper bound as a function of successful sensing probability, and minimizes total training time by jointly optimizing deployment and integrated sensing-computation-communication (ISCC) resources via **alternating optimization** (the BBPO scheme: bandwidth, batch size, position).
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs sense human-motion spectrograms, train local FEEL models, and upload updates to an edge server. UAV position controls sensing success and communication distance, while batch size and bandwidth control convergence and per-round latency.
+
+**Problem & objective**: Problem P1 minimizes total training time $N T_{\max}$ by jointly choosing the number of rounds, per-UAV batch sizes, UAV positions, and uplink bandwidths subject to an FEEL optimality-gap target.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Training rounds | $N$ | positive integer | Number of FEEL rounds used to reach the loss target |
+| Batch size | $\delta_k$ | positive integer | Samples processed by UAV $k$ in each successful round |
+| UAV position | $\mathbf u_k$ | continuous spatial coordinate | Hovering position relative to sensing target and server |
+| Uplink bandwidth | $B_k$ | continuous, nonnegative | Bandwidth assigned to UAV $k$ |
+| Round latency bound | $T_{\max}$ | continuous, positive | Maximum expected latency among participating UAVs |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 23a-23b | The loss bound satisfies $\Phi\leq\epsilon$ and expected per-round latency does not exceed $T_{\max}$ |
+| 23c-23d | UAVs have equal sensing-success probability and meet the minimum sensing-elevation angle $\theta_0$ |
+| 23e | Pairwise UAV separation is at least $d_{\min}$ |
+| 23f-23g | Batch sizes are positive integers and $\sum_k B_k=B_c$ |
+| 23h | Hovering energy obeys $N T_{\max}P_{hov}\leq E_0$ |
+
+**Algorithm**: BBPO searches over feasible $N$ and alternates three subproblems: convex bandwidth allocation, Newton-based batch-size optimization, and closed-form or low-dimensional position optimization. The cycle stops when relative latency improvement is below tolerance and returns the round count with minimum $N T_{\max}$.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Tang et al. [x] investigated integrated sensing, computation, and communication for UAV-assisted federated edge learning. They derived a training-loss upper bound that links successful sensing probability and batch size to FEEL convergence and used sensing elevation angle to impose a data-quality threshold. Their mixed-integer nonconvex formulation minimizes total training time by jointly selecting training rounds, UAV positions, batch sizes, and bandwidth allocations under accuracy, latency, separation, bandwidth, and energy constraints. The proposed BBPO method alternates bandwidth, batch-size, and position subproblems for each candidate round count. Simulations report faster convergence and higher testing accuracy than fixed-position, equal-bandwidth, and equal-batch-size baselines, with performance close to an ideal always-successful sensing case.
 
 ## Problem framing
 

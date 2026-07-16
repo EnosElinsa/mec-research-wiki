@@ -5,6 +5,7 @@ authors: ["Ursula Challita", "Walid Saad", "Christian Bettstetter"]
 year: 2019
 url: "https://doi.org/10.1109/TWC.2019.2900035"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC)"
+modeling_card: required
 tags: [source, cellular-connected-uav, interference-management, path-planning, deep-reinforcement-learning, echo-state-network, game-theory, power-control]
 related:
   - "[[deep-echo-state-network-reinforcement-learning]]"
@@ -13,7 +14,7 @@ related:
   - "[[nash-equilibrium]]"
   - "[[walid-saad]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Interference Management for Cellular-Connected UAVs: A Deep Reinforcement Learning Approach
@@ -27,6 +28,41 @@ Challita, U., Saad, W., & Bettstetter, C. (2019). *Interference Management for C
 ## TL;DR
 
 Models multiple cellular-connected UAVs as players in a dynamic noncooperative game and trains a distributed deep echo-state-network controller. Each UAV jointly chooses its next grid location, serving cell, and transmit-power level to trade UAV energy efficiency and wireless latency against interference to terrestrial users.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs upload mission data while moving from fixed origins to fixed destinations through a terrestrial cellular network whose resource blocks are reused by ground users. Each UAV flies at a fixed altitude for a learned run, observes nearby base stations and other UAV locations, and jointly controls horizontal grid motion, serving-cell association, and one of finitely many transmit-power levels under Rician UAV links, Rayleigh ground links, and M/D/1 wireless latency.
+
+**Problem & objective**: The finite dynamic noncooperative game $\mathcal G=(\mathcal I,\mathcal T,\mathcal Z_j,\mathcal V_j,\Pi_j,u_j)$ maximizes each UAV's discounted utility, where $u_j$ rewards progress toward $d_j$ and penalizes weighted cross-tier interference and wireless latency while enforcing a minimum SINR.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Next grid move | $a_j(t)$ | discrete, left, right, forward, backward, or no movement | Next horizontal location of UAV $j$ |
+| Transmit power | $\widehat P_{j,s,a}(t)$ | discrete $O$-level choice in $[0,\overline P_j]$ | Power from UAV $j$ to serving BS $s$ at location $a$ |
+| Serving-cell association | $\beta_{j,s,a}(t)$ | binary, $\{0,1\}$ | Whether UAV $j$ uses BS $s$ at location $a$ |
+| Path edge selection | $\alpha_{j,a,b}$ | binary, $\{0,1\}$ | Whether UAV $j$ moves from grid area $a$ to area $b$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 6 | Each grid area is visited at most once, $\sum_{b\neq a}\alpha_{j,b,a}\leq1$ |
+| 7-8 | The path starts at $o_j$, ends at $d_j$, and satisfies flow conservation at intermediate areas |
+| 9-11 | Positive power and exactly one serving BS are coupled to whether the UAV visits location $a$ |
+| 15 | The selected link meets the mission SINR floor, $\sum_c\Gamma_{j,s,c,a}\geq\beta_{j,s,a}\overline\Gamma_j$ |
+| Theorem 1 | Fixed altitude lies between the derived bounds, $h_j^{\min}(\cdot)\leq h_j\leq h_j^{\max}(\cdot)$ |
+
+**Algorithm**: During training, each UAV uses stacked fixed ESN reservoirs to retain action history, selects actions with an epsilon-greedy policy, broadcasts the chosen location, cell, and power tuple, and updates only the output weights by gradient descent with an incremental SINR penalty. During testing it acts greedily; if training converges, Proposition 1 identifies the resulting strategy profile as a subgame-perfect Nash equilibrium.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Challita et al. [x] studied online interference-aware path planning for multiple cellular-connected UAVs that upload mission data through a terrestrial cellular network. They modeled a finite dynamic noncooperative game in which each UAV selects its next grid location, serving base station, and transmit-power level to balance progress to destination, wireless latency, energy efficiency, and interference to ground users under path-flow, association, power, and minimum-SINR constraints. Their distributed deep echo-state-network reinforcement-learning method retains action history in fixed reservoirs, trains output weights with action exchange among UAVs, and uses analytical altitude bounds to reduce the state-action space. Simulations report 37% higher ground-user rate, 62% lower UAV latency, and 14% higher UAV energy efficiency than shortest-path planning with five UAVs, while the equilibrium claim remains conditional on training convergence.
 
 ## Problem framing
 

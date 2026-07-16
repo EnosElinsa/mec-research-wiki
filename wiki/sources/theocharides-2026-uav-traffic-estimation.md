@@ -5,6 +5,7 @@ authors: ["Kyriacos Theocharides", "Yiolanda Englezou", "Charalambos Menelaou", 
 year: 2026
 url: "https://doi.org/10.1109/TITS.2025.3648943"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS), vol. 27, no. 4, pp. 4715-4730, 2026"
+modeling_card: not_applicable
 tags: [source, urban-traffic-state-estimation, uav-sensing, gaussian-process, moving-horizon-estimation, macroscopic-fundamental-diagram, successive-convexification, traffic-density]
 related:
   - "[[gaussian-process-moving-horizon-traffic-estimation]]"
@@ -14,7 +15,7 @@ related:
   - "[[uav-data-collection]]"
   - "[[vitale-2026-density-aware-4d-trajectory]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Real-Time Urban Traffic State Estimation via UAV-Based Sensing: A Gaussian Process and Moving Horizon Estimation Approach
@@ -26,6 +27,12 @@ Theocharides, K., Englezou, Y., Menelaou, C., & Timotheou, S. (2026). *Real-Time
 ## TL;DR
 
 Combines per-region Gaussian Processes with constrained moving-horizon estimation to infer regional road-traffic density and intended-destination density from sparse, noisy UAV observations. GP predictive means fill unobserved space-time points and their variances weight those virtual measurements; successive convexification then turns the nonconvex traffic-estimation problem into a sequence of convex quadratic programs.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Theocharides et al. [x] studied real-time urban traffic-state estimation from sparse measurements collected by UAVs on predetermined monitoring routes. Separate Gaussian processes interpolate missing regional-density observations and provide predictive variances that weight the resulting virtual measurements. A moving-horizon estimator then minimizes covariance-weighted process and measurement residuals subject to macroscopic traffic dynamics, boundary capacities, and physical density and flow bounds. Successive convexification converts the nonconvex estimator into a sequence of convex quadratic programs that preserve inter-region conservation structure. In the reported experiments, the hybrid GP and MHE approach improved sparse-data accuracy and solved an instance in 3 seconds, compared with 445 seconds for the direct IPOPT formulation.
 
 ## Problem
 

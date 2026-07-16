@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Communication-Pipelined Split Federated Learning for Foundation Model Fine-Tuning in UAV Networks"
 authors: ["Zizhen Zhou", "Ying-Chang Liang", "Yanyu Cheng", "Wei Yang Bryan Lim"]
 year: 2026
@@ -20,7 +21,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-07-06
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Communication-Pipelined Split Federated Learning for Foundation Model Fine-Tuning in UAV Networks
@@ -32,6 +33,40 @@ Zhou, Z., Liang, Y.-C., Cheng, Y., & Lim, W. Y. B. (2026). *Communication-Pipeli
 ## TL;DR
 
 Proposes CPSFL, a communication-pipelined split federated learning paradigm for LoRA fine-tuning of foundation models in UAV networks. Instead of parallel downlink gradient transmission, the server dedicates all downlink resources to the current client, schedules gradient transmission by priority, and allows intra-round asynchronous training. An attention-based DRL controller chooses the split point plus uplink bandwidth and server computing-frequency allocations using previous-round information, including UAV trajectories.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A base station server and $K$ mobile UAV clients use communication-pipelined split federated learning to LoRA-fine-tune a foundation model. Uplink bandwidth is partitioned among clients, the server dedicates all downlink resources to one gradient transmission at a time, and slot-level links follow the 3GPP RMa-AV LoS path-loss model.
+
+**Problem & objective**: Problem (14) jointly selects the split point and computing-communication allocation to minimize per-round latency plus worst-client energy, $\min_{\{u,\alpha_k,\beta_k\}}\tau(n)+\lambda\max_k e_k(n)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Split point | $u(n)$ | discrete, $u(n)\in\mathcal U$ | Common foundation-model partition for all UAV clients |
+| Server compute share | $\alpha_k(n)$ | continuous, $[\alpha_{\min},1]$ | Fraction of server CPU frequency allocated to client $k$ |
+| Uplink bandwidth share | $\beta_k(n)$ | continuous, $[\beta_{\min},1]$ | Fraction of uplink bandwidth allocated to client $k$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Compute shares sum to one, $\sum_k\alpha_k(n)=1$ |
+| C2 | Uplink bandwidth shares sum to one, $\sum_k\beta_k(n)=1$ |
+| C3 | Each share satisfies its minimum allocation bound |
+| C4 | The split point belongs to the feasible model-stage set $\mathcal U$ |
+| C5 | CPSFL downlink gradients follow lag-priority scheduling with one active transmission |
+
+**Algorithm**: Use sequential downlink gradient transmission → prioritize the client with the largest lag → start transmission as soon as any server-side computation finishes → encode previous-round variable-length trajectories with attention → let a PPO base-station agent select $u$, $\boldsymbol\alpha$, and $\boldsymbol\beta$ for the next round.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks. They formulated joint split-point selection, uplink bandwidth allocation, and server computing-frequency allocation to minimize a weighted sum of per-round training latency and worst-case client energy consumption. CPSFL dedicates all downlink resources to the current gradient transmission, prioritizes clients with larger lag, and enables intra-round asynchronous training. An attention-based PPO agent uses previous-round information, including variable-length UAV trajectories, to choose the next round's split point and resource allocation. Simulations report lower latency than the parallel-gradient SFL-PP, PipeSFL, and CPSFL ablation variants, and the DRL controller approaches the best evaluated fixed split point.
 
 ## Problem framing
 

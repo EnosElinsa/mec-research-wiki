@@ -5,6 +5,7 @@ authors: ["Xuan-Toan Dang", "Quynh-Suong Nguyen", "Oh-Soon Shin"]
 year: 2026
 url: "https://doi.org/10.1109/TGCN.2025.3599309"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), vol. 10, pp. 829-843"
+modeling_card: required
 tags: [source, federated-learning, uav, energy-efficiency, air-to-ground, alternating-optimization]
 related:
   - "[[aerial-federated-aggregation-design-space]]"
@@ -18,7 +19,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Optimizing Energy Efficiency for Federated Learning in Rotary-Wing UAV Air-to-Ground Communications
@@ -30,6 +31,43 @@ Dang, X.-T., Nguyen, Q.-S., & Shin, O.-S. (2026). *Optimizing Energy Efficiency 
 ## TL;DR
 
 Minimizes user computation-plus-communication energy in UAV-coordinated federated learning by jointly controlling simultaneous uplink powers, local accuracy and CPU resources, and the rotary-wing UAV's 3-D placement and velocity under mixed LoS/NLoS propagation and a flight-energy return constraint.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A rotary-wing UAV acts as the federated-learning server for $K$ ground users. Users upload local models simultaneously on one uplink resource under mutual interference, and the UAV placement follows a mixed LoS/NLoS air-to-ground model while movement, hovering, and downlink communication consume UAV energy.
+
+**Problem & objective**: The design minimizes all users' computation-plus-communication energy across the required global rounds, $\min_{\mathbf w,\mathbf u,\mathbf f,\eta,T_u^{\mathrm{com}},T_{\mathrm{cmp}}}G(\eta)E(\mathbf w,\mathbf u,\mathbf f,\eta)$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Uplink power coefficient | $w_k$ | continuous, $0\leq w_k\leq1$ | Fractional uplink power used by user $k$ |
+| UAV location | $\mathbf u=(x_u,y_u,z_u)$ | continuous, $0\leq x_u,y_u\leq L$, $h_{\min}\leq z_u\leq h_{\max}$ | Three-dimensional server placement |
+| User CPU frequency | $f_k$ | continuous, $f_{\min}\leq f_k\leq f_{\max}$ | Local computing frequency of user $k$ |
+| Local training accuracy | $\eta$ | continuous, $0\leq\eta\leq1$ | Accuracy target controlling local and global iterations |
+| Uplink synchronization time | $T_u^{\mathrm{com}}$ | continuous, nonnegative | Common upper bound on user upload time |
+| Local computation time | $T_{\mathrm{cmp}}$ | continuous, nonnegative | Common upper bound on one local computation round |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 16b-16d | User power and UAV horizontal and vertical placement remain within their prescribed bounds |
+| 16e | The full training process meets its deadline, $G(\eta)T(\eta,T_u^{\mathrm{com}},T_{\mathrm{cmp}})\leq t_{\mathrm{limit}}$ |
+| 16f-16h | Uplink, downlink, and local computation finish within their synchronized time bounds |
+| 16i-16j | CPU frequency and local accuracy remain feasible, $f_{\min}\leq f_k\leq f_{\max}$ and $0\leq\eta\leq1$ |
+| 16k-16l | UAV speed is bounded and movement energy supports a safe return, $0\leq v_{\mathrm{uav}}\leq v_{\max}$ and $E_{\mathrm{uav}}^{\mathrm{mov}}\leq E_{\mathrm{fly}}$ |
+
+**Algorithm**: An inner-approximation alternating method first fixes $\eta$ and convexifies the coupled placement, uplink power, CPU, and timing block. With placement and power fixed, a second convexified block updates local accuracy and the remaining computation and communication resources; the blocks repeat to a local stationary solution.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Dang et al. [x] optimized federated learning coordinated by a rotary-wing UAV when users upload simultaneously under interference and the air-to-ground channel mixes LoS and NLoS propagation. Their formulation minimizes aggregate user computation and communication energy over uplink power, local accuracy, CPU frequency, synchronization times, and three-dimensional UAV placement, subject to training deadlines and a safe-return flight-energy budget. An inner-approximation alternating algorithm convexifies the placement and resource blocks and converges to a local stationary point. Simulations place the UAV at 30.12 m under pure LoS and 50.04 m under mixed propagation, reach 95% of terminal performance within ten iterations, and show lower user energy than the restricted-variable benchmarks.
 
 ## Problem and system model
 

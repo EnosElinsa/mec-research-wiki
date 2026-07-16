@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy-Efficient UAV Communication With Trajectory Optimization"
 authors: ["Yong Zeng", "Rui Zhang"]
 year: 2017
@@ -17,7 +18,7 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[yong-zeng]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Energy-Efficient UAV Communication With Trajectory Optimization
@@ -29,6 +30,41 @@ Zeng, Y., & Zhang, R. (2017). *Energy-Efficient UAV Communication With Trajector
 ## TL;DR
 
 A foundational **energy-efficient UAV communication** paper. For a UAV flying horizontally at fixed altitude communicating with a ground terminal (GT), it introduces a design paradigm that jointly weighs **communication throughput** against **UAV propulsion energy**. It first derives the **first theoretical propulsion-energy model for fixed-wing UAVs** as a function of flying speed, direction, and acceleration, then defines **energy efficiency (bits/Joule)** = total bits communicated ÷ propulsion energy over a finite horizon. It shows unconstrained rate-maximization and energy-minimization both give **vanishing** energy efficiency, then optimizes a practical **circular trajectory** (radius + speed) and finally a **generally constrained** trajectory via linear state-space approximation + **sequential convex optimization (SCA)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-wing UAV flies horizontally at fixed altitude and communicates with one ground terminal over a finite horizon. LoS rate depends on distance, while propulsion energy depends on velocity and acceleration and diverges as speed approaches zero.
+
+**Problem & objective**: A fractional trajectory-control problem maximizes communication energy efficiency, $\max \eta=\frac{\int_0^T R(\mathbf q(t))dt}{E_{\mathrm{prop}}(\mathbf q,\mathbf v,\mathbf a)}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV position | $\mathbf q(t)$ | continuous 2-D trajectory | Horizontal flight path |
+| UAV velocity | $\mathbf v(t)$ | continuous vector | Flight speed and direction |
+| UAV acceleration | $\mathbf a(t)$ | continuous vector | Maneuvering input |
+| Circular radius and speed | $r,V$ | continuous, positive | Practical circular-orbit design |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Position, velocity, and acceleration satisfy the state dynamics |
+| C2 | Speed remains between fixed-wing minimum and maximum bounds |
+| C3 | Acceleration magnitude remains within its limit |
+| C4 | Prescribed initial and final positions and velocities are met |
+| C5 | Propulsion energy follows the derived speed-and-acceleration model |
+
+**Algorithm**: Derive the fixed-wing propulsion model → show unconstrained rate-only and energy-only extrema have vanishing bits per joule → jointly optimize circular radius and speed for the practical orbit → linearize the state dynamics and non-convex rate-energy terms → solve sequential convex approximations for the generally constrained trajectory.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng and Zhang [x] studied energy-efficient UAV communication through trajectory optimization for one fixed-wing UAV and one ground terminal. They derived a propulsion-energy model that depends on flight velocity and acceleration and defined energy efficiency as communicated bits per propulsion joule. The circular design jointly optimizes orbit radius and speed, while the general formulation controls position, velocity, and acceleration under state, speed, acceleration, and endpoint constraints. A linear state-space approximation and sequential convex optimization produce a locally optimized constrained trajectory. Numerical results report higher energy efficiency than the evaluated rate-maximizing and propulsion-energy-minimizing trajectories.
 
 ## Problem framing
 

@@ -22,7 +22,8 @@ related:
   - "[[fuhui-zhou]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Enhancing Secrecy Energy Efficiency in UAV-RIS Assisted Mobile IoV Networks Through DRL
@@ -34,6 +35,41 @@ Li, J., Wang, D., Zhao, H., Jin, Y., He, Y., Zhou, F., Wei, Z., & Leung, V. C. M
 ## TL;DR
 
 Protects mobile vehicular communication against an amplify-and-forward relay that may eavesdrop while forwarding. A UAV-mounted RIS assists both hops, the target vehicle transmits artificial interference during the first hop, and an alternating solver combines Dinkelbach/CCCP power updates, MM-based two-hop RIS phases, and a firefly-warm-started DDPG trajectory policy to maximize secrecy energy efficiency.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A base station sends confidential traffic through an untrusted half-duplex ground relay to a mobile target vehicle, while a UAV-mounted RIS assists both hops and the vehicle transmits jamming on the first hop. Multiple access uses the paper's NOMA-enabled two-hop relay model; channels include Rician/Rayleigh air-to-ground components and mobility-induced Doppler.
+
+**Problem & objective**: Secrecy energy-efficiency maximization (P1), a non-convex fractional program, maximizes $\eta_s=R_s[n]/P_t$ over transmit powers, relay amplification, two-hop RIS phases, and UAV trajectory, subject to rate, motion, phase, and power constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS and vehicle powers | $P_B[n],P_V[n]$ | continuous, $0\le P_i\le P_{\max}$ | Confidential-data and jamming transmit powers |
+| Relay amplification | $\varpi^2[n]$ | continuous, $0<\varpi^2<1$ | Ground-relay amplification factor |
+| RIS phase matrices | $\Theta_1[n],\Theta_2[n]$ | unit-modulus complex phases | Reflection in the first and second hops |
+| UAV trajectory | $\mathbf q[n]$ | continuous 3-D position | RIS-UAV position in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | BS and vehicle transmit powers stay within $[0,P_{\max}]$ |
+| C2 | Relay amplification satisfies $0<\varpi^2[n]<1$ |
+| C3 | Every RIS element has a unit-modulus phase in both hops |
+| C4 | UAV initial position, per-slot displacement, and flight-area constraints hold |
+| C5 | The second-hop rate satisfies $R_2[n]\ge R_{th}$ |
+
+**Algorithm**: Apply Dinkelbach and CCCP to power/amplification → update two-hop RIS phases with MM and SDR/randomization → seed a DDPG trajectory policy with firefly samples → alternate the blocks until secrecy energy efficiency stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied secrecy-energy-efficient mobile Internet-of-Vehicles communication with an untrusted relay assisted by a UAV-mounted RIS. They formulated a non-convex secrecy energy efficiency maximization problem that jointly optimizes base-station and vehicle powers, relay amplification, two-hop RIS phase shifts, and the UAV trajectory under a rate threshold and motion constraints. They used Dinkelbach's method and CCCP for the power and amplification block, an MM procedure for the two RIS phase matrices, and a firefly algorithm to warm-start a DDPG trajectory policy. The framework models vehicle and UAV mobility through Doppler-aware channels and uses the vehicle's first-hop signal as cooperative jamming. Simulations report 33.3% and 64.2% secrecy-energy-efficiency improvements over DDPG-only and firefly-based schemes, respectively.
 
 ## Problem framing
 

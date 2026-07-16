@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Mobile-Edge Computing: Partial Computation Offloading Using Dynamic Voltage Scaling"
 authors: ["Yanting Wang", "Min Sheng", "Xijun Wang", "Liang Wang", "Jiandong Li"]
 year: 2016
@@ -20,7 +21,7 @@ related:
   - "[[mao-2016-lodco-eh-mec-offloading]]"
   - "[[miettinen-2010-mcc-energy-efficiency]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Mobile-Edge Computing: Partial Computation Offloading Using Dynamic Voltage Scaling
@@ -32,6 +33,41 @@ Wang, Y., Sheng, M., Wang, X., Wang, L., & Li, J. (2016). *Mobile-Edge Computing
 ## TL;DR
 
 A foundational MEC paper that brings **dynamic voltage scaling (DVS)** into **partial computation offloading**, jointly optimizing three knobs at a smart mobile device (SMD): its **computational speed** $f_l$, its **transmit power** $P_t$, and the **offloading ratio** $\lambda$ (fraction of bits executed locally). Two design objectives are studied: **energy consumption minimization (ECM)** and **latency minimization (LM)**. For a single cloud (femto-cloud / FAP) server both are non-convex; the ECM problem is **recast as a convex problem via a variable-substitution technique** and solved optimally in closed form (the **EPCO** algorithm), while the non-convex, non-smooth LM problem is solved to a locally optimal point with a **univariate search**. The work then extends both objectives to a **multiple-cloud-servers** scenario, deriving the optimal computation distribution across servers and the optimal user association in closed form. A headline analytical result: **total offloading can never be optimal once DVS is available** at the SMD.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A smart mobile device partially offloads a data-partitioned task to a cloud-enhanced femto access point while dynamically scaling its local CPU voltage/frequency. Uplink and downlink use Rayleigh block-fading links, local and cloud execution run in parallel, and the femto-cloud can contain multiple candidate servers.
+
+**Problem & objective**: P1 minimizes mobile-device energy, $\min E(f_l,P_t,\lambda)$, under latency bound $L\le L_{\max}$; P2 minimizes latency, $\min L(f_l,P_t,\lambda)$, under energy bound $E\le E_{\max}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local CPU speed | $f_l$ | continuous, bounded | DVS-controlled local computation frequency |
+| Transmit power | $P_t$ | continuous, bounded | Uplink offloading power |
+| Offloading ratio | $\lambda$ | continuous, $[0,1]$ | Fraction of input bits executed locally |
+| Server association/distribution | $a_m,\lambda_m$ | binary/continuous | Cloud server selected and task fraction assigned in the multi-server extension |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | $0\le\lambda\le1$ and local/offloaded bits partition the task |
+| C2 | CPU speed and transmit power satisfy box limits |
+| C3 | P1 satisfies $L(f_l,P_t,\lambda)\le L_{\max}$ |
+| C4 | P2 satisfies $E(f_l,P_t,\lambda)\le E_{\max}$ |
+| C5 | Multi-server associations and computation distributions respect server/backhaul capacities |
+
+**Algorithm**: Recast P1 by variable substitution into a convex problem and solve it with the closed-form EPCO algorithm → solve non-smooth P2 with a univariate search → extend to multiple cloud servers with closed-form computation distribution and association rules.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied partial computation offloading with dynamic voltage scaling at a smart mobile device. They formulated energy-minimization and latency-minimization problems over local CPU speed, transmit power, and offloading ratio under latency or energy constraints. The energy problem is transformed into a convex formulation with a closed-form EPCO solution, while the non-smooth latency problem is solved by a univariate search. The multi-cloud extension derives computation distribution and user association rules in closed form. The paper reports lower energy and latency than the evaluated offloading schemes and proves that total offloading is not optimal when dynamic voltage scaling is available.
 
 ## Problem framing
 

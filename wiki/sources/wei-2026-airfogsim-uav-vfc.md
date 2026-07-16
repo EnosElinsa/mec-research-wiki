@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing"
 authors: ["Zhiwei Wei", "Bing Li", "Rongqing Zhang", "Xiang Cheng", "Liuqing Yang"]
 year: 2026
@@ -18,7 +19,7 @@ related:
   - "[[peng-2020-maddpg-uav-vehicular]]"
   - "[[ma-2025-pdqn-vehicular-mec]]"
 created: 2026-07-06
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # AirFogSim: A Light-Weight and Modular Simulator for UAV-Integrated Vehicular Fog Computing
@@ -30,6 +31,12 @@ Wei, Z., Li, B., Zhang, R., Cheng, X., & Yang, L. (2026). *AirFogSim: A Light-We
 ## TL;DR
 
 Introduces [[airfogsim|AirFogSim]], a lightweight modular simulator for UAV-integrated vehicular fog computing. It targets the gap between theoretical UAV/VFC algorithm design and practical validation by providing a structured simulation stack for aerial-ground interactive computing, including communication, computation, mobility, traffic, security, privacy, energy, blockchain, UAV trajectory, task offloading, and resource allocation modules.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wei et al. [x] introduce AirFogSim, a modular simulator for UAV-integrated vehicular fog computing. The framework combines traffic, mobility, communication, computation, energy, security, privacy, blockchain, trajectory, offloading, and resource-allocation modules in a discrete-time environment. It demonstrates how assignment and optimization algorithms can be evaluated in a controlled aerial-ground setting and exposes interfaces for new policies. As a simulator paper, its central contribution is an evaluation environment rather than one reusable application-specific decision model.
 
 ## Problem framing
 

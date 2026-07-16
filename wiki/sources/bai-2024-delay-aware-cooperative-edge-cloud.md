@@ -5,6 +5,7 @@ authors: ["Zhuoyi Bai", "Yifan Lin", "Yang Cao", "Wei Wang"]
 year: 2024
 url: "https://doi.org/10.1109/TMC.2022.3232375"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-mec, task-offloading, lyapunov-optimization, edge-cloud, load-balancing-uav-mec, post-disaster-mec]
 related:
   - "[[multi-uav-assisted-mec]]"
@@ -18,7 +19,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Delay-Aware Cooperative Task Offloading for Multi-UAV Enabled Edge-Cloud Computing
@@ -30,6 +31,40 @@ Bai, Z., Lin, Y., Cao, Y., & Wang, W. (2024). *Delay-Aware Cooperative Task Offl
 ## TL;DR
 
 In weak-infrastructure / post-disaster scenarios, multiple UAVs form an on-site edge cluster and cooperate with a **remote cloud** (via multi-hop UAV relay → ground base station → wired link) to handle real-time tasks. Because tasks are unevenly distributed across UAVs, the most task-heavy UAV bottlenecks the system. The paper formulates a **delay-minimization** problem over **cooperative task offloading** that models network congestion, the air-to-ground channel, and **cooperative parallel computing** (completion delay depends on the slowest edge node). It is non-convex, so **convex approximation** makes it tractable and **Lyapunov optimization** makes the online per-slot offloading decisions. The models are verified on a real UAV-edge platform, and data-driven simulations show near-optimal delay.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple UAVs form an on-site edge cluster and relay overflow through a hotspot and base station to a remote cloud. In each slot $t$, UAV $i$ generates $\lambda_i[t]$ tasks, can compute locally, offload to another UAV, or send tasks to the cloud, and pays communication and computation energy.
+
+**Problem & objective**: Problem $P1$ minimizes long-term average service delay, $\min_{\boldsymbol\pi}\lim_{T\to\infty}\frac1T\sum_{t=0}^{T-1}\sum_{i=1}^{U}D_i(\boldsymbol\pi[t])$, subject to long-term energy budgets and per-slot offloading feasibility.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading amount | $\pi_{ij}[t]$ | continuous, nonnegative | Tasks sent from UAV $i$ to UAV $j$ in slot $t$ |
+| Cloud offloading | $\pi_{i0}[t]$ | continuous, nonnegative | Tasks sent from UAV $i$ through the BS to the cloud |
+| Local workload | $\mu_i[t]$ | continuous, nonnegative | Tasks computed by UAV $i$ in slot $t$ |
+| Virtual energy queue | $q_i[t]$ | nonnegative state | Energy-deficit queue used by Lyapunov control |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Long-term energy budget: $\lim_{T\to\infty}\frac1T\sum_{t=0}^{T-1}E_i(\boldsymbol\pi[t])\le\bar E_i$ |
+| C2 | Offloading amounts are nonnegative: $\pi_{ij}[t]\ge0$ |
+| C3 | All arrivals are assigned: $\sum_{j=0}^{U}\pi_{ij}[t]=\lambda_i[t]$ |
+| C4 | Local computation does not exceed capacity: $\mu_i[t]\le\frac{f_iT}{s l}$ |
+
+**Algorithm**: Initialize $q_i[0]=0$, count each slot’s arrivals, solve the Lyapunov drift-plus-penalty problem $P2$ after replacing the max computation delay with the convex log-sum-exp approximation to obtain $P3$, run the SCS solver through ADMM, update $q_i[t+1]=\max\{q_i[t]+E_i(\boldsymbol\pi[t])-\bar E_i,0\}$, and repeat for all slots.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Bai et al. [x] studied cooperative task offloading in a multi-UAV edge cluster connected through a multi-hop UAV to base-station link to a remote cloud. They formulated long-term average system-delay minimization with per-slot offloading variables and energy, nonnegativity, flow-conservation, and computation-capacity constraints. Their LOC algorithm transforms the unknown-arrival problem with Lyapunov drift-plus-penalty, replaces the max computation delay by a log-sum-exp convex approximation, solves each slot with SCS, and updates virtual energy queues. Platform measurements supported the delay models, while data-driven simulations reported significant delay reduction, full use of available energy, and a 41.7% reduction versus non-cooperative local execution.
 
 ## Problem framing
 

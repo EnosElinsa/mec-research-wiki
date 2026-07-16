@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "A Tutorial on Extremely Large-Scale MIMO for 6G: Fundamentals, Signal Processing, and Applications"
 authors: ["Zhe Wang", "Jiayi Zhang", "Hongyang Du", "Dusit Niyato", "Shuguang Cui", "Bo Ai", "Mérouane Debbah", "Khaled B. Letaief", "H. Vincent Poor"]
 year: 2024
@@ -18,7 +19,7 @@ related:
   - "[[mahboob-2024-ai-ntn-survey]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # A Tutorial on Extremely Large-Scale MIMO for 6G: Fundamentals, Signal Processing, and Applications
@@ -32,6 +33,12 @@ Wang, Z., Zhang, J., Du, H., Niyato, D., Cui, S., Ai, B., Debbah, M., Letaief, K
 A **comprehensive survey / tutorial on extremely large-scale MIMO (XL-MIMO)** as a 6G enabler. XL-MIMO deploys a much larger antenna count and array aperture than conventional massive MIMO (mMIMO) to gain spectral efficiency and spatial degrees of freedom, which pushes operation into the **near-field** regime where spherical-wave (rather than planar-wave) propagation and new electromagnetic effects dominate. The survey introduces four hardware designs — ULA-based, UPA-based with patch antennas, UPA-based with point antennas, and continuous-aperture (CAP)-based XL-MIMO — reviews near-field channel modeling (LoS / NLoS / hybrid), surveys low-complexity and deep-learning-empowered signal processing (channel estimation, beamforming), and outlines applications and future directions.
 
 This is the wiki's **XL-MIMO / near-field physical-layer anchor**. It is a communications-physical-layer reference, not an MEC paper.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] provide a tutorial and survey of extremely large-scale MIMO as a 6G physical-layer technology. The article compares ULA, UPA, and continuous-aperture hardware and reviews spherical-wave near-field channel models, spatial non-stationarity, polarization, and electromagnetic regions. It then surveys low-complexity and learning-assisted channel estimation and beamforming before discussing security, ISAC, UAV, IoT, and edge-computing applications. As a tutorial reference, it organizes models and open directions rather than proposing an application-specific decision or control optimization.
 
 ## Problem framing
 

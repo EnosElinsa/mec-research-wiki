@@ -15,7 +15,8 @@ This role does not perform broad corpus synthesis, full-library auditing, or ref
 
 ## 2. Authoritative evidence and invariants
 
-- The paper parse under raw/sources/<folder>/full.md is the primary source for title, authors, affiliations, venue, DOI, year, system model, method, findings, and limitations.
+- The paper Markdown parse under raw/sources/<folder>/, either full.md or the title-named .md, is the primary source for metadata and paper claims. Use the companion PDF only to resolve parse omissions or corruption.
+- Curation remains raw-parse driven. Do not add .bib lookup, BibTeX citekey naming, source_id, source_type, base_confidence, or lifecycle fields.
 - The live wiki directories are the authoritative vocabulary and schema. Read two or three committed examples of every page type you will write.
 - tools/wiki/README.md is the current command and exit-code contract for maintained tooling.
 - Never invent metadata, numbers, baselines, guarantees, affiliations, citations, or author identities. If a field is absent, use not in parse or leave it empty according to the committed schema.
@@ -92,13 +93,15 @@ For every paper, establish:
 - Final issue year versus online-publication chronology when both matter.
 - DOI and venue only when supported.
 - Problem, system model, assumptions, objective, method, key findings, limitations, and stated future work.
+- The modeling_card decision, grounded in the paper's decision/action variables, objective or reward, and constraints or feasible-domain evidence. Foundational methods and papers with only a training loss remain not_applicable.
+- An evidence location for every proposed Related Work sentence, normally in the Abstract, Introduction, method, or results sections of the parse or PDF.
 - Reusable concepts already present in the wiki and any genuinely new recurring vocabulary.
 - Author identity evidence: affiliation, email, biography, and coauthor continuity.
 - Claim boundaries: approximation versus theorem, local versus global result, simulation versus measurement, and assumptions behind guarantees.
 
 ### Phase 3: integrate pages
 
-Source pages must follow the committed source schema and include citation, concise problem framing, system model, method, findings, limitations, relation to corpus, and raw artifact paths.
+Source pages must follow the committed paper-source contract and its body order. Every paper source includes an English Related Work Paragraph immediately after TL;DR and the optional card. Set modeling_card: required and add a complete Modeling Quick-Use Card only when the raw evidence satisfies the applicability rubric; otherwise set modeling_card: not_applicable and omit the card. Keep the card consistent with the detailed system-model and method sections. Related Work prose must be one paragraph of 4-8 grounded sentences, use [x], preserve paper terminology, and contain no internal wikilinks, CJK text, em dash, or --.
 
 Concept pages must define reusable vocabulary, cite supporting sources, and connect to existing concepts.
 
@@ -115,7 +118,7 @@ Add reciprocal links where they improve navigation. Never create a dangling or s
 
 ### Phase 5: independent review
 
-Before staging, review every new claim against the parse again. Use an independent read-only reviewer for non-trivial batches. Correct metadata, overclaims, schema omissions, identity mistakes, weak links, and process narration before running final gates.
+Before staging, review every new claim against the parse again. Use an independent read-only reviewer for non-trivial batches. Verify every Modeling Quick-Use Card symbol, expression, and numerical statement, verify every Related Work sentence individually, confirm required cards agree with the later detailed sections, and confirm not_applicable pages contain no card. Correct metadata, overclaims, schema omissions, identity mistakes, weak links, and process narration before running final gates.
 
 ## 7. Completion gates
 
@@ -127,6 +130,10 @@ Run the current commands documented in tools/wiki/README.md. At minimum, complet
 - process_refs reports no process narration outside wiki/log.md.
 - index_audit reports complete, non-duplicate catalogue coverage.
 - frontmatter_audit reports zero errors.
+- source_schema_audit reports zero errors for the completed scope and, before staging, for the full paper-source corpus.
+- For a whole-corpus source-schema migration, source_schema_manifest merges the reviewed evidence sidecars with --require-grounded and reports zero unresolved, ambiguous, orphaned, conflicting, or ungrounded records.
+- Every Modeling Quick-Use Card claim and Related Work sentence has raw-parse or PDF evidence; the structural audit does not replace this grounding review.
+- modeling_card required plus not_applicable equals the paper-source count in scope, with no card on a not_applicable page.
 - entity_roster_audit reports zero claimed-but-absent sources; advisory namesakes remain advisory.
 - Relevant tools/wiki unit tests pass.
 - git diff --check passes.
@@ -150,6 +157,7 @@ Report:
 - Concepts, entities, and reciprocal connections added.
 - Deferrals and exact reasons.
 - Final corpus and backlog counts.
+- modeling_card required/not_applicable counts and the source-schema audit result.
 - Gate results.
 - Commit and remote SHA when Git ownership applied.
 - Any optional service unavailable during the run.

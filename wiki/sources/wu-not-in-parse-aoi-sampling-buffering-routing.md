@@ -5,6 +5,7 @@ authors: ["Haoxu Wu", "Shaohua Wu", "Aimin Li", "Siqi Meng", "Qinyu Zhang"]
 year: ""
 url: ""
 venue: ""
+modeling_card: required
 tags: [source, age-of-information, autonomous-uav-swarms, fanet, mappo, curriculum-learning, ma-pomdp, uav-data-collection, routing]
 related:
   - "[[age-of-information]]"
@@ -19,7 +20,7 @@ related:
   - "[[shaohua-wu]]"
   - "[[qinyu-zhang]]"
 created: 2026-07-11
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # AoI-Aware Joint Sampling-Buffering-Routing Optimization for Autonomous UAV Swarms via a MARL Approach
@@ -31,6 +32,40 @@ Wu, H., Wu, S., Li, A., Meng, S., & Zhang, Q. *AoI-Aware Joint Sampling-Bufferin
 ## TL;DR
 
 Builds an all-aerial monitoring architecture where a leader UAV collects updates and follower UAVs act both as sensing platforms and multi-hop relays. The paper minimizes information staleness by jointly learning sampling, buffer scheduling, and routing decisions with an AoI-aware framework called AASBR and a curriculum-based multi-head MAPPO variant called COMH-MAPPO.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A leader UAV collects fresh packets from follower UAV sensors that also relay packets through a dynamic multi-hop FANET, with bounded buffers and partial local observations.
+
+**Problem & objective**: The AASBR problem minimizes long-term network staleness, $P_1=\min_{\Pi}\lim_{t\to\infty}\frac{1}{t}\sup_{\mathbf u}\mathbb E_\Pi[\sum_t\sum_i\Delta_i(t)]$, while jointly choosing sampling, buffer, and routing policies.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Sampling decision | $s_i(t)$ | Binary, $\{0,1\}$ | Generate one fresh packet or wait |
+| Next-hop selection | $j$ | Discrete, $j\in\mathcal N_r(i)$ | Select a feasible neighbor or the leader |
+| Buffered-packet selection | $pkt_k$ | Discrete, $pkt_k\in B_i(t)$ | Select the packet to transmit |
+| Joint policy | $\Pi$ | Stochastic, $\Pi=\{\pi_i\}$ | Map local observations to coupled decisions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Buffer occupancy stays feasible, $0\leq B_i(t)\leq B_i^{\max}$ |
+| C2 | Sampling fraction is bounded, $0\leq\sum_t s_i(t)/T_{\max}\leq1$ |
+| C3 | At most one outgoing packet is selected per slot, $b_i^{out}(t)=1$ when transmitting |
+| C4 | Forwarding uses a current neighbor and an available packet, $j\in\mathcal N_r(i)$ and $pkt_k\in B_i(t)$ |
+
+**Algorithm**: AASBR is solved with COMH-MAPPO, whose separate routing, buffer, and sampling heads use availability masks, centralized training with decentralized execution, and curriculum phases that progressively integrate the coupled decisions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] formulated fully airborne monitoring as a joint sampling, buffer scheduling, and multi-hop routing problem for minimizing long-term Age of Information. The policy chooses a sampling indicator, a feasible neighbor, and a packet from the local buffer while respecting storage and per-slot sampling constraints. Their AASBR framework is solved by COMH-MAPPO, which separates the coupled actions into masked policy heads and trains them through a staged curriculum. The reported simulations show lower average and peak AoI together with improved latency, packet delivery ratio, and throughput than the evaluated MARL and ablation baselines.
 
 ## Problem
 

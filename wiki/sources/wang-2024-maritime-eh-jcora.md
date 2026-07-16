@@ -5,6 +5,7 @@ authors: ["Zhen Wang", "Bin Lin", "Qiang Ye", "Yuguang Fang", "Xiaoling Han"]
 year: 2024
 url: "https://doi.org/10.1109/JIOT.2024.3371049"
 venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
+modeling_card: required
 tags: [source, maritime-mec, energy-harvesting, lyapunov-optimization, computation-offloading, resource-allocation, throughput-maximization]
 related:
   - "[[maritime-mec]]"
@@ -17,7 +18,7 @@ related:
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-07-16
 ---
 
 # Joint Computation Offloading and Resource Allocation for Maritime MEC With Energy Harvesting
@@ -29,6 +30,41 @@ Wang, Z., Lin, B., Ye, Q., Fang, Y., & Han, X. (2024). *Joint Computation Offloa
 ## TL;DR
 
 An **MEC-enabled sea lane monitoring network (MSLMN)** with **energy harvesting (EH)** where green-energy-powered maritime information stations (MISs) serve sailing terminal units (TUs/vessels). It maximizes the **long-term average throughput** under **queue stability** and **energy consumption** constraints by jointly optimizing task offloading, subchannel allocation, computing-resource allocation, and task migration. Formulated as a stochastic program, solved via **Lyapunov optimization** (drift-plus-penalty) decoupled into independent low-complexity subproblems; the resulting algorithm is **JCORA**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A two-tier maritime MEC network has a coastal base station and renewable-energy-powered MIS buoys serving sailing terminal units. Tasks arrive over time and may be transmitted to an MIS, processed locally at the MIS, or migrated to the coastal server.
+
+**Problem & objective**: The stochastic program $P_1:\max_{y,z,f,m}\overline{\mathcal H(t)}$ maximizes long-term aggregate uplink throughput while stabilizing task and energy queues.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| MIS offloading | $y_{i,k}(t)$ | binary | TU $i$ offloads to MIS $k$ |
+| Subchannel allocation | $z_{i,k}^{n}(t)$ | binary | Subchannel $n$ serves TU $i$ at MIS $k$ |
+| CPU share | $f_{i,k}(t)$ | continuous, $0\le f\le1$ | Fraction of MIS compute assigned to TU $i$ |
+| Task migration | $m_i(t)$ | integer, bounded | Tasks moved from an MIS queue to the coastal server |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1-C2 | MIS energy $0\le c_k(t)\le E_k(t)$ and average TU latency $T_i\le T_i^{th}$ |
+| C3-C4 | Per-MIS CPU load $\sum_i f_{i,k}(t)\le1$ and $0\le f_{i,k}(t)\le1$ |
+| C5-C7 | Binary offloading and subchannel indicators, with $\sum_i z_{i,k}^{n}(t)\le1$ |
+| C8-C10 | Radio allocation ratio $0\le\rho_k\le1$, task arrivals $0\le\theta_i(t)\le\theta_i^{\max}$, and processed tasks $0\le\mu_i(t)\le\mu_i^{\max}$ |
+| C11 | Migration cannot exceed residual arrivals: $0\le m_i(t)\le\theta_i(t)-\mu_i(t)$ |
+
+**Algorithm**: Build virtual energy queues and minimize the Lyapunov drift-plus-penalty bound each slot. JCORA decomposes the per-slot problem into offloading and subchannel allocation, task migration, and CPU allocation subproblems, then updates all physical and virtual queues.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] formulated a renewable-energy maritime MEC network in which MIS buoys serve mobile vessels and can migrate work to a coastal server. The long-term throughput objective is coupled to energy, transmission, processing, and latency queues through binary offloading, subchannel allocation, CPU shares, and migration decisions. Lyapunov drift-plus-penalty converts the stochastic program into independent per-slot subproblems, yielding the JCORA algorithm with an explicit throughput and queue-backlog tradeoff. Simulations reported higher throughput and lower latency than FIFO, latency, priority, and TDMA resource-allocation baselines while respecting the MIS energy budget.
 
 ## Problem framing
 

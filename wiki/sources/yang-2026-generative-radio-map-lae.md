@@ -5,6 +5,7 @@ authors: ["Bin Yang", "Wei Wang", "Weizheng Zhang", "Wei Zhang"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3665545"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: not_applicable
 tags: [source, low-altitude-economy, channel-estimation, radio-map, generative-adversarial-network, uav-communications]
 related:
   - "[[radio-map-assisted-channel-estimation]]"
@@ -14,7 +15,7 @@ related:
   - "[[csi-estimation-error]]"
   - "[[low-altitude-intelligent-network]]"
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Generative Radio Map-Assisted Channel Estimation in Low-Altitude Economy
@@ -26,6 +27,12 @@ Yang, B., Wang, W., Zhang, W., & Zhang, W. (2026). *Generative Radio Map-Assiste
 ## TL;DR
 
 Uses LAE's fixed air corridors and planned UAV routes to build a velocity-aware radio map for channel estimation. The paper measures grid-labeled CSI, fills the map with a continuous vector-conditioned GAN (CVCGAN), and fuses generated radio-map CSI with pilot-based estimates through a CNN integrator. The reported NMSE gains are strongest at high UAV speeds, where pilot-only and generic neural baselines struggle with doubly selective fading.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] studied radio map-assisted channel estimation for low-altitude-economy UAV communications under high mobility and doubly selective fading. They proposed a grid-based UAV channel measurement scheme that collects CSI labeled by discrete locations and velocities, then developed a continuous vector-conditioned GAN to transform the discrete radio map into a seamless representation. A neural network-based integrator fuses the prior distribution information supplied by the radio map with partial observations from pilot-based channel estimates. Numerical simulations show that the method outperforms ChannelNet, CGAN, RadioUNet, and DNN+LSTM in the evaluated high-speed settings, reaching nearly an order-of-magnitude lower NMSE than the benchmarks at 30 m/s as SNR increases.
 
 ## Problem framing
 

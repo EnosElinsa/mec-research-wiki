@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Energy Efficiency Maximization for Aerial Intelligent Reflecting Surface-Assisted MISO Systems"
 authors: ["Habtamu Demeke Mihertie", "Zhengqiang Wang", "Mohamed Amine Ouamri", "Elhadj Moustapha Diallo", "Xingwang Li"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[xingwang-li]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Energy Efficiency Maximization for Aerial Intelligent Reflecting Surface-Assisted MISO Systems
@@ -29,6 +30,41 @@ Mihertie, H. D., Wang, Z., Ouamri, M. A., Diallo, E. M., & Li, X. (2026). *Energ
 ## TL;DR
 
 A BCD-SCA design jointly optimizes RSMA precoders/common rates, continuous UAV-mounted IRS phases, and one aerial-IRS placement point for communication-side energy efficiency under aggregate transmitter/receiver hardware distortion.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A multi-antenna BS serves multiple single-antenna ground users only through a passive IRS mounted on a UAV, with blocked direct links. One-layer RSMA sends one common stream and private streams over Rician BS-to-IRS and IRS-to-user channels, while transmitter and receiver hardware impairments produce signal-dependent Gaussian distortion.
+
+**Problem & objective**: Problem (17)-(18), a non-convex communication-centric energy-efficiency maximization, solves $\max_{\mathbf P,\mathbf q,\mathbf r,\boldsymbol\varphi}\sum_k R_k^{\mathrm{tot}}/P_{\mathrm{tot}}$ over precoding, aerial placement, common-rate allocation, and IRS phases.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| RSMA precoders | $\mathbf P$ | complex continuous matrix | Common and private BS beamforming vectors |
+| Aerial-IRS placement | $\mathbf q$ | continuous feasible position | UAV-mounted IRS hovering location |
+| Common-rate allocation | $\mathbf r$ | continuous, $r_k\ge0$ | Common-stream rate assigned to each user |
+| IRS phase vector | $\boldsymbol\varphi$ | complex unit-modulus entries | Passive phase applied by each IRS element |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 18a | Allocated common rates are decodable within the common-stream rate |
+| 18b | $r_k+R_k^p\ge R_k^{\mathrm{th}}$ for every user |
+| 18c | Each IRS coefficient satisfies $\lvert\varphi_m\rvert=1$ |
+| 18d | Common-rate allocations satisfy $r_k\ge0$ |
+| 18e | BS transmit power satisfies $\operatorname{tr}(\mathbf P^H\mathbf P)\le P_{\max}$ |
+
+**Algorithm**: Initialize precoders, phases, and placement from channel structure → alternate precoder/common-rate, IRS-phase, and aerial-placement blocks → use SCA and quadratic transforms for fractional and rate terms → lift the IRS phase matrix and apply sequential rank-one relaxation → repeat the BCD loop to a stationary point.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mihertie et al. [x] studied communication-centric energy-efficiency maximization for a UAV-mounted IRS-assisted multi-user MISO downlink with rate-splitting multiple access and practical hardware impairments. They formulated a non-convex problem that jointly optimizes RSMA precoders, common-rate allocation, IRS phase shifts, and the aerial-IRS placement point under minimum-rate, transmit-power, and unit-modulus constraints. Their alternating-optimization framework uses block coordinate descent, successive convex approximation, quadratic transformation, and sequential rank-one relaxation. The resulting sequence is designed to converge monotonically to a stationary point. Simulations report higher energy efficiency for the proposed RSMA design than the evaluated NOMA and SDMA baselines, including reported values of 2.20 for RSMA and 1.65 for NOMA in the stated two-user setting.
 
 ## Problem
 

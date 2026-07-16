@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "An Ensemble MARL Approach for Heterogeneous UAV Swarm Target Search in 3D Space"
 authors: ["Xuan Zhang", "Changxu Wei", "Ziyuan Wang", "Yixian Zhang", "Wenbo Ding", "Xiao-Ping Zhang"]
 year: 2026
@@ -15,7 +16,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # An Ensemble MARL Approach for Heterogeneous UAV Swarm Target Search in 3D Space
@@ -27,6 +28,41 @@ Zhang, X., Wei, C., Wang, Z., Zhang, Y., Ding, W., & Zhang, X.-P. (2026). *An En
 ## TL;DR
 
 Builds a heterogeneous UAV-swarm target-search controller in 3D space. Fixed-wing UAVs fly high and fast for broad coverage; multirotor UAVs fly lower for more precise detection. The method formulates target search as MARL with action masking for collision/no-fly-zone safety, then proposes [[ensemble-qmix|E-QMIX]], where multiple independently trained QMIX networks vote on each agent's action.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Fixed-wing and multirotor UAVs cooperatively search a discretized three-dimensional region containing unknown targets and no-fly zones. Fixed-wing UAVs provide fast high-altitude coverage, multirotor UAVs provide lower-altitude detection, and each agent acts from local observations under partial observability.
+
+**Problem & objective**: The finite-horizon search problem is a mixed-integer, nonconvex Dec-POMDP that maximizes correctly found targets and penalizes mission duration, $\max_{\mathbf a^{\mathrm F},\mathbf a^{\mathrm M}} J=\lambda_1\kappa_1J_1-\lambda_2\kappa_2J_2$, or equivalently learns policies maximizing expected discounted shared reward.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Fixed-wing action | $a_t^i=(\Delta\phi_{\mathrm H}^i,\Delta z^i)$ | discrete | Heading and altitude changes of fixed-wing UAV $i$ |
+| Multirotor action | $a_t^j=(\Delta x^j,\Delta y^j,\Delta z^j)$ | discrete | Grid movement or hovering action of multirotor UAV $j$ |
+| Decentralized policy | $\pi^k$ | policy over admissible actions | Maps UAV $k$'s observation history to an action |
+| Ensemble action | $\hat a_t^k$ | discrete, majority vote | Action executed after aggregating the E-QMIX members |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Fixed-wing heading, altitude, and horizontal-velocity changes obey the maneuver limits in Eq. (1) |
+| C2 | Multirotor coordinate increments and altitude remain within the discrete motion limits in Eq. (2) |
+| C3 | Every UAV remains at least $\rho_{\mathrm{safe}}^{\mathrm O}$ from each no-fly zone |
+| C4-C5 | Same-type UAVs maintain separations $\rho_{\mathrm{safe}}^{\mathrm F}$ and $\rho_{\mathrm{safe}}^{\mathrm M}$ |
+| C6 | The safety mask $m_t^k(a^k)=m_{1,t}^k m_{2,t}^k m_{3,t}^k$ removes collision, no-fly-zone, and boundary-violating actions |
+
+**Algorithm**: Define the Dec-POMDP and shared search-time reward → mask unsafe actions → train separate CTDE E-QMIX ensembles for fixed-wing and multirotor agents with independent replay partitions → obtain one candidate action from each network → execute the majority-voted action during decentralized search.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhang et al. [x] studied target search in a large-scale three-dimensional environment using a heterogeneous swarm of fixed-wing and multirotor UAVs. They formulated the cooperative search as a mixed-integer, nonconvex MARL problem that maximizes target discovery while minimizing search time under partial observability, no-fly-zone restrictions, and collision constraints. Their safety-aware action mask removes inadmissible moves, and their Ensemble QMIX framework trains multiple independent QMIX networks and aggregates their decentralized actions by majority voting. A mathematical analysis shows that majority voting increases an agent's probability of selecting the optimal action when the individual-network success probability exceeds one half. Simulations report that E-QMIX achieves the highest search efficiency and coverage rate among the evaluated single-network MARL and ensemble baselines.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Cooperative Pursuit-Evasion With Low Altitude Wireless Network: A Hierarchical Reinforcement Learning Approach"
 authors: ["Zhengzhi Yang", "Yuanhao Cui", "Wenbo Du", "Fanbiao Li", "Yumeng Li"]
 year: 2025
@@ -17,7 +18,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Cooperative Pursuit-Evasion With Low Altitude Wireless Network: A Hierarchical Reinforcement Learning Approach
@@ -29,6 +30,41 @@ Yang, Z., Cui, Y., Du, W., Li, F., & Li, Y. (2025). *Cooperative Pursuit-Evasion
 ## TL;DR
 
 Decomposes multi-UAV interception into Approach, Expand, Surround, Enclose, and Capture subtasks. An upper Q-network selects the current pursuit subtask, while CTDE actor-critic policies generate pursuer accelerations from local observations and the selected subtask.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A homogeneous team of pursuing UAVs intercepts a faster evading UAV in a two-dimensional urban obstacle field at a common altitude. Pursuers and the evader follow second-order kinematics, while ideal inter-agent communication provides state information for cooperative encirclement.
+
+**Problem & objective**: The pursuit-evasion game minimizes capture time for the pursuers and maximizes it for the evader, $\min_{\Pi_p}\max_{\Pi_e}\tau$, where capture must occur within horizon $T$ and satisfy distance and angular-formation criteria.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Pursuer acceleration | $\mathbf a_i(t)$ | continuous, $\|\mathbf a_i(t)\|_2\le a_{\max}^p$ | Two-axis maneuver command for pursuer $i$ |
+| Evader acceleration | $\mathbf a_e(t)$ | continuous, $\|\mathbf a_e(t)\|_2\le a_{\max}^e$ | Two-axis maneuver command for the fixed-policy evader |
+| Pursuit subtask | $g_t$ | discrete, $g_t\in\mathcal G$ | Selects Approach, Expand, Surround, Enclose, or Capture |
+| Pursuer strategy | $\Pi_p$ | joint continuous-control policy | Maps observations and the selected subtask to all pursuer actions |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 3-4 | Pursuer speed and acceleration satisfy $\|\mathbf v_i(t)\|_2\le v_{\max}^p$ and $\|\mathbf a_i(t)\|_2\le a_{\max}^p$ |
+| 5-6 | Capture requires $d_{ie}(t)\le d_{\mathrm{capture}}$ and nearly uniform angular spacing |
+| 10 | UAVs maintain prescribed safety distances from buildings and one another |
+| 13-17 | Evader and pursuer velocity and acceleration capabilities stay within their bounds |
+| 18 | Encirclement completes within $0<\tau\le T$ |
+
+**Algorithm**: HCDRL uses an upper Q-network to evaluate the global pursuit situation and select a subtask. Lower actor-critic policies are trained with centralized critics and execute decentralized continuous accelerations from local observations; subtask-specific rewards, collision penalties, and a duration-decayed upper reward coordinate both layers.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] modeled cooperative urban UAV interception as a pursuit-evasion game with bounded acceleration, speed, collision avoidance, formation, and capture-time requirements. They decomposed encirclement into Approach, Expand, Surround, Enclose, and Capture subtasks and minimized pursuer capture time against a faster evader. HCDRL uses an upper Q-network for adaptive subtask selection and lower centralized-training decentralized-execution actor-critic policies for continuous acceleration control. The reported evaluation achieved an 89.08 percent capture rate and a 26.63 s average capture time under the default three-pursuer setting. Relative to the stated state-of-the-art comparison, the abstract reports an 11.18 percent higher success rate and a 9.94 percent reduction in completion time.
 
 ## Problem
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Modeling and Capacity Analysis of UAV-Assisted Three-Tier Heterogeneous Wireless Networks"
 authors: ["Zhan Su", "Xiaorong Zhu", "Xiaohua Qiu"]
 year: 2026
@@ -14,7 +15,7 @@ related:
   - "[[fairness-metrics-in-mec]]"
   - "[[post-disaster-mec]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Modeling and Capacity Analysis of UAV-Assisted Three-Tier Heterogeneous Wireless Networks
@@ -26,6 +27,41 @@ Su, Z., Zhu, X., & Qiu, X. (2026). *Modeling and Capacity Analysis of UAV-Assist
 ## TL;DR
 
 Models a disaster-area uplink as three spectrum-separated tiers: NOMA device access, multihop UAV relaying, and SDMA UAV-to-BS backhaul. It derives tier capacities, compares throughput and satisfaction-based relay allocation, and max-min allocates bandwidth across the end-to-end bottleneck.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A disaster-area uplink has three separated tiers: NOMA device access to hovering UAVs, OFDM/frequency-hopping multihop UAV relaying, and SDMA UAV-to-BS wireless backhaul. Ground devices form a spatial process, UAV routes are predetermined, pointing jitter affects the phased-array backhaul, and the end-to-end rate is the minimum of access, relay, and backhaul capacities.
+
+**Problem & objective**: The resource-allocation layer maximizes a max-min end-to-end capacity, $\max\min\{C_{\mathrm{access}},C_{\mathrm{relay}},C_{\mathrm{backhaul}}\}$, and also evaluates a demand-normalized satisfaction utility for balanced relay service under fixed topology.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Tier bandwidth split | $B_A,B_R,B_B$ | continuous, nonnegative | Bandwidth assigned to access, relay, and backhaul tiers |
+| Relay time-frequency occupancy | $\mathbf x$ | binary/continuous schedule | OFDM and frequency-hopping resources used by routed traffic |
+| Flow satisfaction | $u_f$ | continuous, bounded | Delivered fraction of demand for flow $f$ |
+| Relay allocation | $\mathbf r$ | continuous, capacity-bounded | Traffic rate assigned to each multihop relay route |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Tier bandwidths partition the available spectrum, $B_A+B_R+B_B\le B_{\mathrm{tot}}$ |
+| C2 | NOMA access, relay occupancy, and SDMA backhaul rates are within their tier capacities |
+| C3 | Routed traffic is flow-conserving across decode-and-forward UAV hops |
+| C4 | Relay allocations satisfy link, time-frequency, and demand limits |
+| C5 | The max-min solution and satisfaction utility respect the end-to-end bottleneck definition |
+
+**Algorithm**: Derive stochastic-geometry access capacities and interference transforms → solve relay throughput allocation as a linear program → optimize demand-normalized satisfaction for balanced flows → approximate jittered backhaul capacity with a lower-bound moment model → solve the final max-min bandwidth partition.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Su et al. [x] modeled a disaster-area three-tier UAV wireless network with NOMA device access, multihop UAV relaying, and SDMA UAV-to-base-station backhaul. They derived tier capacities under stochastic-geometry access, predetermined decode-and-forward routes, and pointing-jitter-aware backhaul, and formulated max-min bandwidth allocation over the end-to-end bottleneck. Relay throughput is optimized with a linear program, while a demand-normalized satisfaction utility evaluates balanced flow service. The backhaul analysis uses a moment-matched lower bound and an ellipsoidal pointing-jitter error model. Simulations report an approximately 20% capacity gain over the evaluated two-tier baseline and identify the backhaul as the main bottleneck.
 
 ## System model
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Proximal Policy Optimization Algorithms"
 authors: ["John Schulman", "Filip Wolski", "Prafulla Dhariwal", "Alec Radford", "Oleg Klimov"]
 year: 2017
@@ -16,7 +17,7 @@ related:
   - "[[kang-2023-mappo-hierarchical-aerial]]"
   - "[[lee-2024-dho-leo-handover]]"
 created: 2026-06-01
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Proximal Policy Optimization Algorithms
@@ -28,6 +29,12 @@ Schulman, J., Wolski, F., Dhariwal, P., Radford, A., & Klimov, O. (2017). *Proxi
 ## TL;DR
 
 The **origin paper for PPO** (Proximal Policy Optimization), the on-policy policy-gradient method that many UAV-MEC and aerial DRL sources in this wiki use as a backbone. PPO keeps the stability of trust-region methods (TRPO) but uses only **first-order optimization**: a **clipped surrogate objective** that forms a pessimistic (lower-bound) estimate of policy performance and discourages updates that move the action-probability ratio too far from 1. This lets the method run **multiple epochs of minibatch SGD** on each batch of sampled data, giving a favorable balance of sample complexity, simplicity, and wall-clock time. This is a **foundational DRL-method** entry rather than an MEC application — it documents the algorithm that the wiki's [[ppo]] concept page and its many downstream variants build on.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Schulman et al. [x] introduce Proximal Policy Optimization as a first-order policy-gradient method for standard reinforcement-learning environments. The paper replaces a trust-region constraint with a clipped surrogate ratio objective and permits multiple minibatch updates from each rollout. It evaluates clipped and KL-penalty variants on continuous control and Atari benchmarks rather than an MEC or wireless system model. The clipped method generally matches or exceeds the reported TRPO and actor-critic baselines while retaining a simpler implementation.
 
 ## Problem framing
 

@@ -5,6 +5,7 @@ authors: ["Chengjia Lei", "Shaohua Wu", "Yi Yang", "Jiayin Xue", "Qinyu Zhang"]
 year: 2024
 url: "https://doi.org/10.1109/TVT.2024.3388499"
 venue: "IEEE Transactions on Vehicular Technology (IEEE TVT)"
+modeling_card: required
 tags: [source, maritime-mec, multi-agent-reinforcement-learning, uav-trajectory-control, task-offloading, fault-tolerant-relay-network, search-and-rescue]
 related:
   - "[[maritime-mec]]"
@@ -21,7 +22,7 @@ related:
   - "[[shaohua-wu]]"
   - "[[qinyu-zhang]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Joint Trajectory and Communication Optimization for Heterogeneous Vehicles in Maritime SAR: Multi-Agent Reinforcement Learning
@@ -33,6 +34,42 @@ Lei, C., Wu, S., Yang, Y., Xue, J., & Zhang, Q. (2024). *Joint Trajectory and Co
 ## TL;DR
 
 A **maritime search-and-rescue (SAR)** system of heterogeneous vehicles — observation UAVs, relay/routing UAVs, and autonomous surface vehicles (ASVs) carrying MEC servers — operating far from shore with no base stations. It **jointly optimizes vehicle trajectories, offloading scheduling, and routing topology** to minimize time + energy consumption while **increasing the fault tolerance of the relay network** (redundant multi-hop paths). The multi-objective problem is recast as a **Dec-POMDP** and solved by multi-agent RL; the proposed **HVMAPPO** (heterogeneous-vehicles multi-agent PPO) uses CTDE plus three stabilizing techniques.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A maritime search-and-rescue team contains observation UAVs, routing UAVs, and autonomous surface vehicles carrying MEC servers. Observation UAVs track drifting targets and may offload image recognition, routing UAVs maintain multi-hop connectivity, and surface vehicles approach and rescue targets under ocean-current disturbance.
+
+**Problem & objective**: The joint policy minimizes $\sum_{t=1}^{T}\left(1+\mu_1E_{\mathrm{tot}}^t-\mu_2\mathcal F_{\mathrm{tot}}^t\right)$, combining mission duration, heterogeneous-vehicle energy, and the negative of relay-network fault tolerance.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Observation-UAV motion | $(v_x,v_y)$ | continuous | Horizontal velocity command for each observation UAV |
+| Offloading ratio | $R_{\mathrm{off}}^j$ | continuous, $[0,1]$ | Fraction of observation task offloaded to the ASV MEC server |
+| Routing-UAV motion | $(v_x,v_y)$ | continuous | Velocity command shaping the relay topology |
+| ASV motion | $(v_x,v_y)$ | continuous | Surface-vehicle rescue trajectory command |
+| Joint policy | $\Pi$ | decentralized policy set | Cooperative policies for all heterogeneous vehicles |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Every vehicle obeys its type-specific maximum speed and acceleration |
+| C2 | Mission completion time satisfies $0\le T\le T_{\max}$ |
+| C3 | Routing links remain within the routing-UAV communication range |
+| C4 | Aggregate MEC use remains within the available edge-server capacity |
+| C5 | Offloading ratios and continuous actions remain in their feasible ranges |
+
+**Algorithm**: HVMAPPO casts the coupled control as a Dec-POMDP and uses centralized training with decentralized execution. Mixed heterogeneous rewards combine observation, rescue, relay fault tolerance, and energy terms; parameter sharing, normalized generalized advantage estimation, Pop-Art value scaling, and PPO clipping stabilize the heterogeneous multi-agent updates.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lei et al. [x] jointly controlled observation UAVs, relay UAVs, and MEC-equipped surface vehicles for maritime search and rescue without coastal base-station coverage. They minimized mission time and energy while rewarding relay-network fault tolerance over vehicle motion and observation-task offloading under speed, acceleration, horizon, routing-range, and MEC-capacity constraints. HVMAPPO uses a Dec-POMDP, mixed heterogeneous rewards, centralized critics, parameter sharing, normalized advantage estimates, and Pop-Art scaling. Relative to HVIPPO, it improved observation rate by 4% and rescue count by 12%, and relative to centralized PPO it improved those metrics by 9% and 58% while also increasing fault tolerance by 8%.
 
 ## Problem framing
 

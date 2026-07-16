@@ -19,8 +19,9 @@ related:
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
   - "[[zhang-2025-gan-td3-isac-active-ris]]"
   - "[[benaya-2025-aerial-isac-haps]]"
+modeling_card: required
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Cramér-Rao Bound Optimization for Active RIS-Empowered ISAC Systems
@@ -32,6 +33,38 @@ Zhu, Q., Li, M., Liu, R., & Liu, Q. (2024). *Cramér-Rao Bound Optimization for 
 ## TL;DR
 
 A **classical/convex** beamforming design for an **active-RIS-empowered ISAC** system in which a dual-functional base station (BS) communicates with multiple users while sensing a point target that is **blocked from the BS by an obstacle**. Because the ISAC receiver is low-sensitivity and the only path to the target is via the RIS, the echo is weak; an **active RIS** (which amplifies, unlike a passive RIS) is used to overcome the multiplicative-fading path-loss and improve both sensing and communication. The paper derives — for the first time, by its own statement — the **Cramér-Rao bound (CRB)** for target **direction-of-arrival (DoA)** estimation in this active-RIS ISAC setting, then jointly designs the BS transmit precoding and the active RIS reflection beamforming to **minimize that CRB** subject to per-user SINR requirements, BS and active-RIS power budgets, and the RIS amplitude constraint. The non-convex problem is solved with an algorithm combining **alternating optimization (AO)**, **semidefinite relaxation (SDR)**, and **majorization-minimization (MM)**. This is a **physical-layer ISAC** entry, not an MEC offloading paper.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A dual-functional MU-MISO BS serves multiple single-antenna users and senses one obstructed target through an active RIS; spatial precoding provides multi-user access, with Rician BS-RIS, Rayleigh user, and LoS RIS-target channel models.
+
+**Problem & objective**: Problem (16), a non-convex joint beamforming program, minimizes $\mathrm{CRB}_{\theta}(\mathbf W,\boldsymbol\phi)$ for target DoA estimation while preserving communication QoS.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| BS transmit precoder | $\mathbf W$ | Complex continuous matrix | Joint communication and radar transmit beamforming |
+| Active-RIS reflection vector | $\boldsymbol\phi$ | Complex continuous, amplitude $a_m\le a_{\max}$ | Per-element amplification amplitude and phase |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | BS power budget, $\|\mathbf W\|_F^2\le P_{\mathrm{BS}}$ |
+| C2 | Active-RIS power budget, $\mathcal P(\mathbf W,\boldsymbol\phi)\le P_{\mathrm{RIS}}$ |
+| C3 | Per-user communication QoS, $\mathrm{SINR}_k\ge\gamma_k$ |
+| C4 | Reflection-amplitude limit, $a_m\le a_{\max}$ for every RIS element |
+
+**Algorithm**: Alternating optimization, initialize the RIS phases by channel-gain maximization, solve the lifted precoder subproblem with SDR, update the active-RIS coefficients with MM surrogates and auxiliary variables, and alternate until convergence.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied active RIS-empowered ISAC for multi-user communication and DoA estimation of a target blocked from the BS. They derived the target DoA CRB and jointly designed the BS transmit precoding and active-RIS reflection beamforming to minimize it under user SINR, BS power, RIS power, and reflection-amplitude constraints. Their algorithm alternates the two beamforming blocks and combines semidefinite relaxation with majorization-minimization updates. Simulations show that the active-RIS design remains close to the active-RIS radar-only benchmark while outperforming the passive-RIS design. The paper reports more than 30 dB of CRB reduction over passive RIS for single-target DoA estimation.
 
 ## Problem framing
 

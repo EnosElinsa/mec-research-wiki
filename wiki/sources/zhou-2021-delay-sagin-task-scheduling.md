@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Deep Reinforcement Learning for Delay-Oriented IoT Task Scheduling in SAGIN"
 authors: ["Conghao Zhou", "Wen Wu", "Hongli He", "Peng Yang", "Feng Lyu", "Nan Cheng", "Xuemin Shen"]
 year: 2021
@@ -18,7 +19,7 @@ related:
   - "[[xuemin-shen]]"
   - "[[nan-cheng]]"
 created: 2026-07-06
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Deep Reinforcement Learning for Delay-Oriented IoT Task Scheduling in SAGIN
@@ -30,6 +31,40 @@ Zhou, C., Wu, W., He, H., Yang, P., Lyu, F., Cheng, N., & Shen, X. (2021). *Deep
 ## TL;DR
 
 An early SAGIN task-scheduling paper where a rotary-wing UAV collects delay-oriented IoT tasks and decides whether to process them locally, offload to a nearby BS, or offload to a LEO satellite. The key method is DOTS, a deep risk-sensitive RL scheduler that uses separate Q-functions for delay cost and energy-risk, then adjusts a weight parameter to satisfy a UAV energy-capacity constraint.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A rotary-wing UAV follows a predefined route, collects stochastic IoT tasks, executes them locally, or forwards them to an available terrestrial BS or an always-accessible LEO constellation. Separate BS and satellite interfaces avoid cross-tier interference; UAV-BS links use location-dependent air-to-ground path loss, and the UAV-satellite link includes Weibull rain attenuation and propagation delay.
+
+**Problem & objective**: P1 is an uncertain integer nonlinear scheduling problem recast as an energy-constrained MDP that minimizes long-run processing delay, $\min_{\pi}\lim_{T\to\infty}\frac{1}{T}\mathbb E_\pi[\sum_{t=1}^{T}C_t]$, subject to the UAV energy capacity.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Offloading destination | $\alpha_t$ | categorical | Nearby BS, LEO constellation, or no new forwarding |
+| Number of offloaded tasks | $\beta_t$ | integer, $0\leq\beta_t\leq\beta^{\max}$ | Tasks moved from the computing queue to forwarding |
+| Scheduling policy | $\pi(a\mid s)$ | stochastic policy | State-dependent choice of $a_t=(\alpha_t,\beta_t)$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Destination belongs to the location-dependent available set $\mathcal L_t$ |
+| C2 | Offloaded task count respects the forwarding limit and current queue backlog |
+| C3 | A busy forwarding interface admits no new tasks, giving $\alpha_t=-1$ and $\beta_t=0$ |
+| C4 | Expected time-average UAV energy consumption does not exceed capacity $\varepsilon$ |
+| C5 | Computing and forwarding queues remain within their finite capacities |
+
+**Algorithm**: Form the CMDP state from location, forwarding status, computing backlog, and cumulative energy → learn separate delay-cost and energy-risk Q-functions with target networks and replay → mask unavailable actions → combine cost and risk values → adjust the outer risk weight until the energy constraint is satisfied.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhou et al. [x] studied delay-oriented IoT task scheduling in a space-air-ground integrated network where a UAV processes tasks locally or offloads them to a nearby base station or a LEO satellite constellation. They formulated an uncertain integer nonlinear problem as an energy-constrained Markov decision process that minimizes time-averaged task-processing delay under a UAV energy-capacity constraint. The proposed DOTS scheme represents each action by an offloading destination and number of offloaded tasks. Its deep risk-sensitive reinforcement-learning algorithm learns separate Q-functions for delay cost and energy risk, masks unavailable actions, and adjusts their weighting across episodes. Simulations report up to a 30% processing-delay reduction over probabilistic configuration methods while satisfying the UAV energy constraint.
 
 ## Problem
 

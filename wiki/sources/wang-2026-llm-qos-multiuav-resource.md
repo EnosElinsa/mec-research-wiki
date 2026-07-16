@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Large Language Model-based QoS-aware Resource Allocation for Multi-UAV Cooperative Edge Computing Networks"
 authors: ["Yaqing Wang", "Lun Tang", "Weili Wang", "Xiaoqiang He", "Qianbin Chen"]
 year: 2026
@@ -20,7 +21,7 @@ related:
   - "[[fairness-metrics-in-mec]]"
   - "[[qianbin-chen]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # Large Language Model-based QoS-aware Resource Allocation for Multi-UAV Cooperative Edge Computing Networks
@@ -32,6 +33,42 @@ Wang, Y., Tang, L., Wang, W., He, X., & Chen, Q. (2026). *Large Language Model-b
 ## TL;DR
 
 Introduces an LLM teacher-student framework for QoS-aware resource allocation in multi-UAV cooperative edge computing. The system jointly decides user access control, UAV trajectories, computation allocation, bandwidth allocation, and UAV-to-UAV task-migration ratios. A cloud-side LLM teacher uses a network knowledge graph, relation-aware GAT, LoRA fine-tuning, and Tree-of-Thoughts reasoning to generate expert policies; UAV-side MAPPO students learn distributed policies through policy distillation.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: User devices offload tasks to cooperative UAV edge servers connected by air-to-air migration links. A cloud teacher sees a network knowledge graph, while UAV-side students execute distributed policies over dynamic channels, task loads, computing capacity, and bandwidth.
+
+**Problem & objective**: A long-term mixed discrete-continuous control problem minimizes weighted delay and unfairness, $\min \alpha D_{\mathrm{avg}}+(1-\alpha)(1-J_{\mathrm{fair}})$, over access, trajectory, compute, bandwidth, and task migration.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| User access | $x_{u,m}(t)$ | binary | UAV initially serving device $u$ |
+| UAV trajectory | $\mathbf q_m(t)$ | continuous position | Position of UAV edge server $m$ |
+| Computing allocation | $f_{u,m}(t)$ | continuous, nonnegative | CPU resource assigned to task $u$ |
+| Bandwidth allocation | $b_{u,m}(t)$ | continuous, nonnegative | Uplink or migration bandwidth share |
+| Migration ratio | $\rho_{u,m,m'}(t)$ | continuous, $[0,1]$ | Task fraction moved between UAVs |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each device has one feasible access association and task fractions are conserved |
+| C2 | Per-UAV CPU allocations do not exceed computing capacity |
+| C3 | Bandwidth shares and transmit resources remain within link budgets |
+| C4 | Migration ratios use available air-to-air links and preserve task workload |
+| C5 | UAV trajectories satisfy mobility, region, and separation constraints |
+
+**Algorithm**: Build the network knowledge graph → encode relations with a relation-aware GAT → generate expert allocations with a LoRA-tuned LLM and Tree-of-Thoughts reasoning → distill teacher policies to UAV-side MAPPO students with policy matching → execute decentralized actions and update from delay-fairness rewards.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] studied QoS-aware resource allocation in cooperative multi-UAV edge computing networks using a large-language-model teacher and distributed student policies. They formulated a weighted delay and fairness objective over user access, UAV trajectories, computing resources, bandwidth, and inter-UAV task-migration ratios. A network knowledge graph and relation-aware graph attention network provide structured state information to a LoRA-tuned teacher model. Tree-of-Thoughts reasoning generates expert policies, and policy distillation transfers them to MAPPO students for decentralized UAV execution. Simulations report faster convergence, lower delay, and higher Jain-style fairness than the evaluated learning baselines and ablated teacher components.
 
 ## Problem
 

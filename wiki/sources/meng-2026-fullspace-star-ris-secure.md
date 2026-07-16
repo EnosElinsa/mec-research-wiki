@@ -15,7 +15,8 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Full-Space UAV Trajectory Design for STAR-RIS-Assisted Secure Ground–Air Communications
@@ -27,6 +28,41 @@ Meng, X., & Wu, X. (2026). *Full-Space UAV Trajectory Design for STAR-RIS-Assist
 ## TL;DR
 
 Introduces a binary side variable and unified cascaded-channel expressions so a UAV can cross a STAR-RIS plane while collecting one secure and one regular NOMA uplink. DS-JO alternates robust STAR-RIS coefficient/role optimization with trajectory SCA to maximize worst-case average secrecy rate under colluding-eavesdropper CSI uncertainty.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Two single-antenna ground nodes upload through a fixed $M$-element energy-splitting STAR-RIS to a single-antenna rotary-wing UAV at fixed altitude. Node A is confidential, node B is regular, colluding eavesdroppers target node A, and the UAV can cross the STAR-RIS plane; the access scheme uses NOMA with a fixed SIC order.
+
+**Problem & objective**: Full-space robust secure trajectory design, a mixed-integer non-convex robust program, maximizes worst-case average secrecy rate, $\max\min_{\Delta\mathbf H_e}\bar R_s$, subject to node-B throughput, SIC, STAR-RIS, side, and UAV-mobility constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q[n]$ | continuous 3-D position | UAV location across slots |
+| STAR-RIS coefficients | $\boldsymbol\alpha[n],\boldsymbol\beta[n]$ | continuous amplitudes/phases | Reflection/transmission coefficients under energy splitting |
+| Side indicator | $b[n]$ | binary | UAV side and corresponding STAR-RIS role assignment |
+| User powers | $p_A[n],p_B[n]$ | continuous, bounded | Confidential and regular NOMA uplink powers |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Node B achieves its minimum data rate |
+| C2 | Fixed SIC order and received-power separation constraints hold |
+| C3 | STAR-RIS amplitudes/phases satisfy energy-splitting and unit-modulus feasibility |
+| C4 | UAV trajectory obeys fixed altitude, initial/end position, and per-slot displacement limits |
+| C5 | Worst-case eavesdropper CSI lies in the norm-bounded uncertainty set |
+
+**Algorithm**: Alternate robust STAR-RIS/role optimization and UAV trajectory blocks → relax binary/rank constraints with S-procedure and SDR plus Gaussian randomization → apply first-order convexification/SCA to trajectory terms → iterate DS-JO until the local objective stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Meng and Wu [x] studied full-space UAV mobility for secure ground-air communications assisted by an energy-splitting STAR-RIS. They formulated a robust mixed-integer problem that maximizes the worst-case average secrecy rate of a confidential NOMA user while preserving a regular user's throughput under colluding-eavesdropper CSI uncertainty. A binary side variable unifies reflection and transmission roles as the UAV crosses the STAR-RIS plane. Their DS-JO algorithm alternates robust STAR-RIS coefficient optimization with trajectory SCA, using SDR, the S-procedure, Gaussian randomization, and first-order channel bounds. Simulations report higher secrecy performance than fixed-trajectory, random-phase, and conventional reflecting benchmarks in the tested full-space trajectories.
 
 ## Problem framing
 

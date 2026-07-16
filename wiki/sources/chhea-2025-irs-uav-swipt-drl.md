@@ -12,7 +12,8 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[an-2024-multilayer-ris-hap-swipt]]"
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Energy Efficiency Optimization in Intelligent Reflecting Surface-Aided UAV Wireless Power Transfer Networks Using DRL
@@ -24,6 +25,40 @@ Chhea, K., Muy, S., & Lee, J.-R. (2025). *Energy Efficiency Optimization in Inte
 ## TL;DR
 
 Studies an IRS-assisted UAV network with **SWIPT** (simultaneous wireless information and power transfer) for IoT ground users. The UAV acts as an aerial base station; an IRS boosts signals to GUEs who simultaneously harvest energy and decode information via a power-splitting (PS) receiver. The joint optimization of UAV trajectory, IRS phase shifts, UAV transmit power, and PS ratio to maximize average **energy efficiency** is non-convex. A **DRL** approach is proposed with a reward function derived from an **SINR map** (bivariate normal distribution over the coverage area) for stable and efficient training. Results show better EE, lower energy consumption, and higher data rate than comparison schemes.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A single-antenna UAV base station serves $M$ ground user equipments through direct and single-reflection Rician-fading links aided by one $N_r\times N_c$ passive IRS. Each user applies SWIPT power splitting so that a fraction $\rho_m$ supports information decoding and the remaining fraction supports energy harvesting.
+
+**Problem & objective**: Problem (15) is a nonconvex average energy-efficiency maximization, $\max_{q_u,\rho_m,p_m,\Theta}\frac{1}{M}\sum_{m=1}^{M}EE_m(q_u,\rho_m,p_m,\Theta)[t]$, with $EE_m=R_m/ED_m$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV route | $q_u[t]$ | Continuous position | Sets the UAV location in each slot |
+| Power-splitting ratio | $\rho_m[t]$ | Continuous, $(0,1]$ | Divides received power between decoding and harvesting |
+| Transmit power | $p_m[t]$ | Continuous, $p_m[t]\leq p_{\max}$ | Allocates UAV downlink power to user $m$ |
+| IRS phase steer | $\Theta[t]$ | Continuous phase, $[0,2\pi]$ | Controls the passive reflecting elements |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Transmit-power ceiling: $p_m[t]\leq p_{\max}$ |
+| C2 | IRS phase range: $0\leq\Theta[t]\leq2\pi$ |
+| C3 | SWIPT split: $0<\rho_m[t]\leq1$ |
+| C4 | UAV displacement: $\lVert q_u[t+1]-q_u[t]\rVert\leq D_{\max}$ |
+
+**Algorithm**: Cast the joint control as an MDP with state $s^t=\{q_u[t],\rho[t],p[t],\Theta[t],\mathbf h_m^H[t],t\}$ and discretized action increments $a^t=\{\Delta q_u[t],\Delta\rho[t],\Delta p[t],\Delta\Theta[t]\}$, construct an expected-SINR map over UAV locations, use its bivariate-normal energy-efficiency reward to shape learning, and train a deep Q-learning agent with experience replay.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Chhea et al. [x] studied energy-efficiency optimization in an IRS-aided UAV downlink where ground users simultaneously decode information and harvest energy through SWIPT power splitting. They maximized average user energy efficiency by jointly controlling the UAV route, IRS phase steer, UAV transmit power, and power-splitting ratios under power, phase, splitting, and displacement limits. Their deep Q-learning method used a reward derived from an expected-SINR map to guide the discretized high-dimensional controller. Simulations reported higher energy efficiency than SHF, REINFORCE, gradient search, and DRL without IRS, while also reporting high data rate and lower user energy consumption than the principal comparison schemes.
 
 ## Problem framing
 

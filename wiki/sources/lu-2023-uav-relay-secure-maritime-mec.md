@@ -21,8 +21,9 @@ related:
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
+modeling_card: required
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Resource and Trajectory Optimization for UAV-Relay-Assisted Secure Maritime MEC
@@ -34,6 +35,41 @@ Lu, F., Liu, G., Lu, W., Gao, Y., Cao, J., Zhao, N., & Nallanathan, A. (2023). *
 ## TL;DR
 
 Proposes a **secure communication scheme for UAV-relay-assisted maritime MEC** with a **flying (UAV) eavesdropper**. A relay UAV (`UAV_r`) **amplify-and-forwards** maritime-device (MD) computing tasks to a coastal edge server (CES), while an eavesdropping UAV (`UAV_e`) tries to overhear the offloaded data and a **coastal jammer (CJ)** emits friendly jamming to disrupt it (CES knows the jamming signal, `UAV_e` does not). The scheme **maximizes the minimum (max-min) secure computing capacity** of the MDs by jointly optimizing **transmit power, time-slot allocation, local-computation allocation, and the `UAV_r` trajectory**. The non-convex problem is transformed with auxiliary variables and solved by **block coordinate descent (BCD) + successive convex approximation (SCA)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $K$ maritime devices partially offload to an amplify-and-forward relay UAV, which forwards data to a coastal edge server while a flying eavesdropper listens and a coastal jammer sends friendly interference; the relay flies over $N$ slots on Rician air links.
+
+**Problem & objective**: Max-min secure computing capacity, $\max_{\{\xi_k[n],p_k[n],p_r[n],l_{k,\mathrm{loc}}[n],\mathbf u_r[n]\}}\min_k\overline{\Phi}_{k,\mathrm{sec}}$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Slot allocation | $\xi_k[n]$ | continuous, nonnegative | Fraction of slot $n$ assigned to device $k$ |
+| Device power | $p_k[n]$ | continuous, $[0,P_k^{\max}]$ | Maritime-device transmit power |
+| Relay power | $p_r[n]$ | continuous, $[0,P_r^{\max}]$ | Relay-UAV transmit power |
+| Local bits | $l_{k,\mathrm{loc}}[n]$ | continuous, nonnegative | Bits computed locally by device $k$ |
+| Relay trajectory | $\mathbf u_r[n]$ | continuous 3-D position | Relay-UAV position in slot $n$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Relay trajectory starts and ends at prescribed points with per-slot displacement and anti-collision limits. |
+| C2 | Slot sharing is bounded, $\sum_k\xi_k[n]\leq 1$, and device and relay powers stay within their maxima. |
+| C3 | Local and CES CPU capacities bound computed bits, including $c_kl_{k,\mathrm{loc}}[n]\leq\varphi_tF_k^{\max}$ and the CES CPU limit. |
+| C4 | Secure task and energy requirements hold: $l_{k,\mathrm{loc}}[n]+\frac{1}{2}W\xi_k[n]\varphi_t\Phi_{k,\mathrm{sec}}[n]\geq Q_k$ and average device energy is bounded. |
+
+**Algorithm**: Introduce auxiliary secure-rate bounds, alternate resource variables and relay trajectory in BCD, solve convexified resource blocks and trajectory blocks with SCA, and iterate until the objective stabilizes.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lu et al. [x] studied secure computation offloading in a UAV-relay-assisted maritime MEC network with a flying eavesdropper and a friendly coastal jammer. They formulated a max-min secure computing-capacity problem that jointly allocates slot fractions, device and relay powers, local computation, and relay trajectory under flight, anti-collision, CPU, task, and average-energy limits. They introduced auxiliary rate bounds and alternated resource updates with trajectory successive convex approximation in a block coordinate descent procedure. Simulations report higher secure computing capacity than four fixed-variable benchmark algorithms across device and relay power settings.
 
 ## Problem framing
 

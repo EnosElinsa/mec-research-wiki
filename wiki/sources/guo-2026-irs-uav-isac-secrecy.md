@@ -23,7 +23,8 @@ related:
   - "[[li-2021-robust-ris-uav-secrecy]]"
   - "[[jing-2024-isac-trajectory-localization]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Secrecy Rate Maximization for IRS-Enabled UAV-ISAC Systems via Phase Shifting Adjustment and Resource Allocation
@@ -35,6 +36,41 @@ Guo, Y., Jia, X., Xie, M., & Li, Y. (2026). *Secrecy Rate Maximization for IRS-E
 ## TL;DR
 
 Jointly optimizes a UAV-mounted IRS's continuous phases and trajectory with base-station beamforming and artificial noise to maximize multiuser secrecy rate while meeting a radar-SNR requirement. Alternating closed-form phase alignment, transformed beamforming, SCA trajectory updates, and worst-case robust extensions produce locally convergent designs under perfect and bounded-error CSI; the evidence is simulation-only and several notation and formulation inconsistencies limit finer claims.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV-mounted IRS assists a multiuser downlink and target-sensing base station in the presence of an eavesdropper, with both perfect-CSI and bounded-error robust designs.
+
+**Problem & objective**: Maximize the average multiuser secrecy rate over IRS phases, active beamforming, artificial noise, and UAV motion, $\max_{\Phi,w,Q}\frac12\sum_{n,k}(R_{u_k}[n]-R_{e_k}[n])$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| IRS phases | $\phi_m[n]$ | continuous in $[0,2\pi]$ | Phase applied by IRS element $m$ in slot $n$ |
+| User beamformers | $w_k[n]$ | complex vectors | Active BS beam for legitimate user $k$ |
+| Artificial-noise power | $\sigma_a^2$ | nonnegative continuous | AN power used to suppress eavesdropping |
+| UAV trajectory | $q[n]$ | continuous horizontal positions | IRS carrier path over the flight slots |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1 | Accumulated sensing radar SNR meets the minimum threshold, $\sum_n SNR_r[n]\geq\mu$ |
+| C2 | IRS phases remain in the continuous unit-amplitude phase range |
+| C3 | Active beams and AN obey the total transmit-power budget |
+| C4 | The UAV satisfies start and end positions and per-slot mobility limits |
+| C5 | Robust designs satisfy worst-case bounded CSI and target-angle uncertainty constraints |
+
+**Algorithm**: Update IRS phases with a closed-form LoS alignment rule, solve transformed beamforming and AN subproblems by quadratic transform, SCA, and CVX, update the trajectory with SCA, and add S-procedure LMIs for the robust variant.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Guo et al. [x] studied secure downlink transmission and target sensing in an ISAC system assisted by a UAV-mounted IRS. They maximize multiuser secrecy rate over continuous IRS phases, active beamforming, artificial-noise power, and UAV trajectory under sensing-SNR, transmit-power, endpoint, and mobility constraints, with a worst-case extension for bounded CSI and target-angle errors. Their alternating method uses closed-form LoS phase alignment, quadratic-transform and SCA beamforming, CVX subproblems, and SCA trajectory updates, while the robust variant adds S-procedure-based LMIs. The perfect-CSI iterations stabilize after about two rounds in the reported simulations, secrecy rate improves with transmit power, antenna count, and IRS size, and the robust design continues to converge under the tested error levels.
 
 ## Problem
 

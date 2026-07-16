@@ -16,8 +16,9 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[qin-2025-bcuav-masac]]"
   - "[[lyapunov-guided-drl]]"
+modeling_card: required
 created: 2026-05-28
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Enhancing Energy Efficiency in Wireless-Powered MEC Systems Through Lyapunov-Guided Deep Reinforcement Learning
@@ -36,6 +37,41 @@ The original **LSEM** problem is a long-term MINLP with a non-convex fractional 
 2. **Decompose.** Per-slot MINLP is split into a **top-problem** (binary offloading $\mathbf x_t$, $2^N$ combinations) and a **sub-problem** (continuous WPT duration, CPU frequencies, transmit powers, time allocation).
 
 The sub-problem is solved with **golden search + KKT + Lagrange dual** (closed-form-ish, low complexity). The top-problem is solved with a **CNN-based actor-critic DRL agent** (LyCNN-DRL), where the CNN is the actor and the sub-problem solution acts as the critic, sidestepping the exponential search.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple wireless devices harvest energy from a power station and either compute locally or offload an indivisible task to a BS-side edge server in each slot; offloading devices share the uplink through TDMA under time-varying channels and stochastic task arrivals.
+
+**Problem & objective**: LSEM, a long-term fractional MINLP, minimizes the reciprocal energy efficiency $\lim_{K\to\infty}\eta(K)=\lim_{K\to\infty}\frac{\sum_t E_{\mathrm{tot}}(t)}{\sum_t D_{\mathrm{tot}}(t)}$ while stabilizing task and virtual-energy queues.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Binary offloading | $x_i(t)$ | Binary | Local execution or complete offloading for device $i$ |
+| WPT duration fraction | $a(t)$ | Continuous, nonnegative | Portion of the slot devoted to wireless power transfer |
+| Local CPU frequency | $f_i(t)$ | Continuous, $0\le f_i(t)\le f_i^{\max}$ | Local computing rate |
+| Offloading energy | $e_i(t)$ | Continuous, nonnegative | Device energy used for uplink offloading |
+| Offloading time fraction | $\tau_i(t)$ | Continuous, nonnegative | Uplink time allocated to device $i$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Slot time satisfies $a(t)+\sum_i\tau_i(t)\le1$ |
+| C2 | Device energy consumption does not exceed available harvested and battery energy |
+| C3 | CPU frequency and offloading variables obey their domains, including $x_i(t)\in\{0,1\}$ |
+| C4 | Computation-task queues $Q_i(t)$ and virtual-energy queues $W_i(t)$ remain stable |
+
+**Algorithm**: LyCNN-DRL, apply fractional programming and Lyapunov drift to obtain a per-slot MINLP, let a CNN actor propose binary offloading, solve continuous resources by golden-section search, closed-form CPU allocation, and Lagrange-dual KKT updates, and use that subproblem value as the critic.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhu et al. [x] studied long-term energy efficiency in a wireless-powered MEC system with time-varying channels, stochastic task arrivals, and binary offloading. They formulated LSEM as a long-term fractional MINLP that jointly optimizes offloading, WPT duration, CPU frequencies, transmit energy, and offloading time under energy and queue-stability constraints. Fractional programming and Lyapunov optimization convert the problem into a per-slot bi-layer structure. LyCNN-DRL uses a CNN actor for near-optimal binary decisions, while golden search, closed-form CPU allocation, and Lagrange-dual KKT updates solve the continuous resource subproblem. Simulations report more than 97% of the reference utility and execution latency of 0.137 seconds for forty devices, compared with 35.184 seconds for LyCD.
 
 ## Why CNN, not FC
 

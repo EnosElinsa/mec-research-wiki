@@ -5,6 +5,7 @@ authors: ["Zhaolong Ning", "Yuxuan Yang", "Xiaojie Wang", "Qingyang Song", "Lei 
 year: 2023
 url: "https://doi.org/10.1109/TMC.2023.3312276"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, multi-uav-assisted-mec, uav-trajectory-control, task-offloading, nash-equilibrium, stochastic-game, maddpg, centralized-training-decentralized-execution]
 related:
   - "[[multi-uav-assisted-mec]]"
@@ -25,7 +26,7 @@ related:
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[differentiated-uav-service-market]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Multi-Agent Deep Reinforcement Learning Based UAV Trajectory Optimization for Differentiated Services
@@ -37,6 +38,39 @@ Ning, Z., Yang, Y., Wang, X., Song, Q., Guo, L., & Jamalipour, A. (2023). *Multi
 ## TL;DR
 
 Achieves **distributed trajectory control of multiple UAVs** in a UAV-assisted MEC network with **multiple service providers (SPs)** offering **differentiated services**, where ground users have **non-binary, time-varying service preferences** (each user prefers each service type with a probability summing to 1). The objective minimizes the **short-term computational cost of ground users** and the **long-term computational cost of UAVs** simultaneously, under incomplete information. The authors first analyze the interaction among SPs as a game on **complete** information, proving the **existence and uniqueness of the Nash Equilibrium (NE)**, then formulate a **Markov game** and propose a **multi-agent DRL** trajectory-optimization algorithm in which each SP executes its UAV's flying action from **local observations only** (no knowledge of other SPs' policies or users' preferences). The paper claims convergence, efficiency, scalability, and robustness over representative baselines.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: $M$ service providers each deploy one MEC-enabled UAV over a rectangular area to offer a differentiated service to $N$ users. Every user generates one task per slot with a non-binary, time-varying preference $l_{ij}(t)$ for service $j$, and each UAV executes horizontal flight using only its own location as a local observation.
+
+**Problem & objective**: Choose UAV trajectories to minimize the instantaneous aggregate user cost $\sum_i C_i(t)$ and each provider's long-term UAV cost $\sum_t U_j(t)$ simultaneously. Costs combine local or offloaded computation with preference-weighted transmission and computing energy.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+| --- | --- | --- | --- |
+| UAV position | $\mathbf q_j(t)$ | continuous 2D vector | Horizontal location of UAV $j$ in slot $t$ |
+| Flight azimuth | $\theta_j(t)$ | continuous, $[0,2\pi]$ | Direction of UAV $j$'s horizontal movement |
+| Flight distance | $d_j(t)$ | continuous, $[0,d_{\max}]$ | Distance moved by UAV $j$ in one slot |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+| --- | --- |
+| C1-C2 | UAV coordinates remain in the rectangular target area |
+| C3 | Preference-weighted task data assigned to UAV $j$ does not exceed its data threshold $\bar D_j$ |
+| C4 | Every task finishes within $T_{\max}$ |
+| C5 | Per-slot mobility is bounded: $\lVert\mathbf q_j(t+1)-\mathbf q_j(t)\rVert\le d_{\max}$ |
+
+**Algorithm**: Analyze the complete-information service-provider interaction and obtain the Nash-equilibrium conditions that solve the user and UAV objectives together. For incomplete information, formulate a Markov game whose action is $(\theta_j,d_j)$ and whose reward is negative UAV cost plus constraint penalties, then train the MUTO multi-agent actor-critic with centralized critics, decentralized local-observation actors, target networks, and prioritized experience replay.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Ning et al. [x] studied distributed multi-UAV trajectory control for competing service providers offering differentiated MEC services to users with probabilistic, time-varying preferences. They posed coupled short-term user-cost and long-term UAV-cost minimization problems under area, workload, delay, and per-slot movement constraints. Complete-information analysis established Nash-equilibrium conditions, while the incomplete-information setting was formulated as a Markov game and solved by the MUTO multi-agent actor-critic with prioritized replay and local-observation execution. In the reported experiments, MUTO converged more stably than the MADDPG comparison and reduced aggregate user computation cost by more than 50% relative to local computing while guiding UAVs toward stable service locations.
 
 ## Problem framing
 

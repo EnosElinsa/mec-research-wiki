@@ -20,6 +20,11 @@ session.
 - **Path-agnostic.** Everything imports `wikilib`, which discovers the repo root
   itself. Run the scripts from the repo root: `python tools/wiki/<script>.py`.
 
+Paper-source curation remains grounded in the Markdown parse under
+`raw/sources/<folder>/`, including both `full.md` and title-named parses. The
+current toolkit does not define a `.bib` companion ingest path, BibTeX-derived
+page naming, or BibTeX-derived metadata fields.
+
 ## Scripts
 
 | Script | Purpose | Common flags |
@@ -33,6 +38,8 @@ session.
 | `process_refs.py` | Find curation process-narration (batch/pass labels, "this pass", "this/same batch", dated-run references, "paper #N" ingest-order, forward-looking "future/subsequent/later sources should land here / be tagged" placement) leaked into any page except `log.md`. A paper's own "future work" section is evergreen domain content and is NOT flagged. Exit 1 if any found. | `--json` |
 | `index_audit.py` | Reconcile the wiki page inventory against `index.md`: report pages that exist on disk but are not catalogued, and pages catalogued under more than one *primary bullet* (true duplicate listings). A primary listing is the leading wikilink of a list item; a slug merely re-mentioned inside another bullet's prose (entity roster, finding/methodology citing its source, deliberate `>` cross-ref) is reported informationally, not as a duplicate. Exit 1 if any coverage gap or duplicate primary listing. | `--ignore`, `--json` |
 | `frontmatter_audit.py` | Lint YAML frontmatter validity + tag/type consistency on every typed wiki page: required keys (`type`/`title`/`tags`/`created`/`updated`), `type` matches directory, `# H1` present, type-specific tags/keys (source→`source` tag + `authors`/`year`/`url`/`venue`; entity→`author` or `tool`; finding→`source`+`confidence`; synthesis→`synthesis` tag), and no self-reference in `related:`. A structural lint, not a fact-checker. Exit 1 if any page has a structural error. | `--type`, `--show-soft`, `--ignore`, `--json` |
+| `source_schema_audit.py` | Structural lint for paper source pages: validates the `modeling_card` enum, conditional Modeling Quick-Use Card presence and placement, required labels and populated tables, early-section order, and Related Work presence, one-paragraph/4-8-sentence length, `[x]`, English-only prose, dash and wikilink restrictions. It does not decide modeling applicability or fact-check prose; those remain raw-evidence review gates. Exit 1 on structural errors. | `--path` (repeatable), `--json` |
+| `source_schema_manifest.py` | Build the scratch source-to-raw migration manifest without silent skips. Retains every Raw-artifacts reference, resolves stale `full.md` and folder paths conservatively, and fails if any source page, raw Markdown parse, or raw folder is unresolved, ambiguous, or orphaned. It records current `modeling_card` status, merges reviewer evidence sidecars, verifies that evidence paths are the page's resolved parses and that cited line ranges are in bounds, and can require every page to be grounded. It does not decide applicability or generate prose. | `--evidence` (repeatable), `--require-grounded`, `--json` |
 | `entity_roster_audit.py` | Cross-check author-entity rosters against source-page `authors:` lists, both directions: **claimed-but-absent** (entity links a source whose author list lacks a matching name — roster over-claim) and **present-but-unlisted** (a source lists a matching author the entity does not link — possible omission *or* namesake). Roster claims are read from the **roster region only** (frontmatter `related:` + intro + bulleted source list, i.e. everything before the first `## Contributions` heading), so editorial contrast-mentions in the Contributions commentary are not mis-counted as claims. Name matching is reported as `strict` (full-name), `respaced` (identical once interior spaces are removed, e.g. "Li Ping Qian" == "Liping Qian" — a Chinese given-name spacing variant), or `loose` (first+last token only); both YAML author styles (inline flow + block list) are handled. Advisory only (always exit 0) — it never decides identity; confirm namesakes against the parses before editing. | `--input`, `--json` |
 | `mine_refs.py` | Mine the `# REFERENCES` of every `raw/sources/*/full.md` into deduplicated reference records; idempotently MERGE into `wiki/references/reference-database.json` (preserves enrichment + curated tags, refreshes `cited_by`/`cited_count`, re-derives venue tiers). Used by `mec-reference-scout`. | `--json`, `--merge DB.json` |
 | `verify_refdb.py` | Integrity gate for the mined `reference-database.json`: scans every record's string fields for residual MinerU contamination markers (the `strip_ref_contamination` regression guard), checks all parsed years are in `[--min-year, --max-year]`, and lists future-year records (>= `--flag-year`) split into curated (expected in-press) vs uncurated (review for mis-parse). Exit 1 on any contamination marker or out-of-range year; year warnings alone do not fail. | `--db`, `--min-year`, `--max-year`, `--flag-year`, `--json` |
@@ -98,6 +105,18 @@ python tools/wiki/make_batches.py --size 7 --batch 1 --json batches.json
 # After any edit: gate the commit on a clean graph + evergreen wording.
 python tools/wiki/linkcheck.py
 python tools/wiki/process_refs.py
+
+# After any paper-source edit: enforce conditional cards and copy-ready prose.
+python tools/wiki/source_schema_audit.py
+
+# Restrict the source-schema audit to one pilot page when iterating.
+python tools/wiki/source_schema_audit.py --path wiki/sources/<slug>.md
+
+# Before a whole-corpus source-schema migration: prove source-to-raw coverage.
+python tools/wiki/source_schema_manifest.py --json source-modeling-cards-manifest.json
+
+# Before declaring the migration complete: merge all evidence and reject silent skips.
+python tools/wiki/source_schema_manifest.py --evidence ".curation-out/source-schema-evidence-*.json" --require-grounded --json source-modeling-cards-manifest.json
 
 # Audit-time consistency gates: index coverage + frontmatter/tag validity.
 python tools/wiki/index_audit.py

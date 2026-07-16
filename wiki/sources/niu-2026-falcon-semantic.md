@@ -14,7 +14,8 @@ related:
   - "[[pytorch]]"
   - "[[weijie-yuan]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # FALCON: A Diffusion Model-Empowered Semantic Communication Framework for Low-Altitude Wireless Networks
@@ -26,6 +27,12 @@ Niu, X., Yuan, W., Cheng, Q., & Tan, L. (2026). *FALCON: A Diffusion Model-Empow
 ## TL;DR
 
 FALCON aligns visual, textual, and acoustic semantics with a KANet-based shared-prompt module, ranks tokens by self-attention, cross-modal relevance, and channel state, and reconstructs distorted JSCC signals with a range-null diffusion model. It targets task accuracy, payload/computation reduction, and low-SNR robustness in low-altitude UAV links.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Niu et al. [x] introduce FALCON, a multimodal semantic communication framework for low-altitude UAV air-ground links. The architecture combines a knowledge enhancement module with shared semantic prompts, semantic-importance token selection, joint source-channel coding, and a range-null diffusion model for channel-distorted signal recovery. Its evaluation focuses on task accuracy, transmission efficiency, and robustness across AWGN and Rayleigh fading using CLEVR, CMU-MOSEI, and FLAME data. The reported studies show lower high-SNR computational complexity, improved low-SNR reconstruction, and measurable gains from the KEM, RNDM, and selective feature-removal components.
 
 ## Problem framing
 

@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Throughput Maximization for UAV-Enabled Mobile Relaying Systems"
 authors: ["Yong Zeng", "Rui Zhang", "Teng Joon Lim"]
 year: 2016
@@ -21,7 +22,7 @@ related:
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[energy-balanced-cooperative-uav-relaying]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Throughput Maximization for UAV-Enabled Mobile Relaying Systems
@@ -33,6 +34,41 @@ Zeng, Y., Zhang, R., & Lim, T. J. (2016). *Throughput Maximization for UAV-Enabl
 ## TL;DR
 
 A foundational **UAV mobile-relaying** paper. A relay node mounted on a high-mobility UAV assists communication from a fixed source (S) to a fixed destination (D). Unlike conventional **static relaying**, mobile relaying adds a new degree of freedom — **relay trajectory design** — to proactively construct favorable channels. The paper **maximizes end-to-end throughput** over a finite horizon by jointly optimizing the **source/relay transmit power allocation** and the **UAV relay trajectory**, subject to UAV speed and initial/final-location mobility constraints and the relay's **information-causality constraint** (the relay can only forward data it has already received). It shows the optimal power allocation follows a **"staircase" water-filling** structure, optimizes the trajectory via **successive convex optimization (SCA)**, and derives a closed-form jointly-optimal solution for the free-endpoint special case.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A fixed source sends data through a decode-and-forward fixed-altitude UAV relay to a fixed destination over a finite horizon. The source-to-relay and relay-to-destination LoS rates vary with the mobile relay's horizontal position.
+
+**Problem & objective**: A non-convex joint power and trajectory problem maximizes delivered end-to-end throughput, $\max \sum_n R_{R\to D}[n]$, subject to mobility, power, and information causality.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Source power | $p_S[n]$ | continuous, nonnegative | Source transmission power in slot $n$ |
+| Relay power | $p_R[n]$ | continuous, nonnegative | UAV forwarding power in slot $n$ |
+| UAV trajectory | $\mathbf q[n]$ | continuous 2-D position | Relay horizontal location |
+| Delivered data | $l[n]$ | continuous, nonnegative | Bits forwarded to the destination |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Cumulative forwarded data cannot exceed previously received data |
+| C2 | Source and relay powers satisfy average and peak budgets |
+| C3 | UAV displacement satisfies $\lVert\mathbf q[n+1]-\mathbf q[n]\rVert\le V_{\max}\Delta t$ |
+| C4 | Prescribed initial and final relay locations are met |
+| C5 | Per-slot source and relay rates follow their position-dependent channels |
+
+**Algorithm**: Fix the trajectory and solve source and relay powers by duality to obtain staircase water filling → fix powers and lower-bound non-convex rate terms → update the trajectory by SCA → alternate power and trajectory blocks → use the closed-form free-endpoint solution when endpoint constraints are absent.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng et al. [x] studied throughput maximization for a decode-and-forward UAV mobile relay between a fixed source and destination. They jointly optimized source and relay transmit powers and the UAV trajectory under power budgets, speed, endpoint, and information-causality constraints. For a fixed trajectory, the optimal power allocation has a staircase water-filling structure derived through dual optimization. For fixed powers, successive convex approximation updates the trajectory, and the two blocks are alternated. Numerical results report higher end-to-end throughput than the evaluated static-relay and fixed-trajectory baselines, and the paper also derives a closed-form free-endpoint special case.
 
 ## Problem framing
 

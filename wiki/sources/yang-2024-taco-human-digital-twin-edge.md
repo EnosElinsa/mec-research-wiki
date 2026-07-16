@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Dynamic Human Digital Twin Deployment at the Edge for Task Execution: A Two-Timescale Accuracy-Aware Online Optimization"
 authors: ["Yuye Yang", "You Shi", "Changyan Yi", "Jun Cai", "Jiawen Kang", "Dusit Niyato", "Xuemin Shen"]
 year: 2024
@@ -19,7 +20,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[edge-user-allocation]]"
 created: 2026-06-01
-updated: 2026-06-01
+updated: 2026-07-16
 ---
 
 # Dynamic Human Digital Twin Deployment at the Edge for Task Execution: A Two-Timescale Accuracy-Aware Online Optimization
@@ -31,6 +32,43 @@ Yang, Y., Shi, Y., Yi, C., Cai, J., Kang, J., Niyato, D., & Shen, X. (2024). *Dy
 ## TL;DR
 
 The first study of **human digital twin (HDT)** deployment at the network edge for assisting task execution, under an **end-edge-cloud** collaborative framework. Each physical twin's (PT) virtual twin (VT) on an edge server (ES) is a **generic model** placed by downloading experiential knowledge from the cloud **plus** a **customized model** updated from personalized sensor data. The goal is to **maximize average task-execution accuracy** under stringent energy and delay constraints amid PT **mobility** and **status-variation** uncertainty, by jointly optimizing VT construction (generic placement + customized update), PT task offloading, ES access selection, and communication/computation resource allocation. The solver, **TACO (Two-timescale Accuracy-aware online Optimization)**, uses an improved Lyapunov method plus **piecewise McCormick envelopes (PME)** and **block coordinate descent (BCD)**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: An end-edge-cloud HDT system contains mobile physical twins (PTs), virtual twins (VTs) hosted by geographically distributed edge servers, and a cloud knowledge repository. Each VT has a generic model placed from experiential knowledge and a customized model updated from personalized sensor data; PTs can execute tasks locally or offload them to the associated ES.
+
+**Problem & objective**: Problem $\mathcal P_1$ maximizes the long-term average HDT-assisted task accuracy, $\max_{\mathcal J_i^A(t),\mathcal J_i^B(\tau)}\lim_{t\to\infty}\mathcal A$, while keeping average task response delay and total system energy below prescribed thresholds.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| ES access selection | $a_{i,m}(t)$ | binary | Selects the ES accessed by PT $i$ in frame $t$ |
+| Generic-model granularity | $x_i(t)$ | continuous, bounded | Controls experiential knowledge used for generic VT placement |
+| Customized-data size | $y_i(\tau)$ | continuous, bounded | Personalized data uploaded for customized VT update |
+| Bandwidth allocation | $b_i(\tau)$ | continuous, nonnegative | Communication resource assigned to PT $i$ |
+| Computation allocation | $f_i(\tau)$ | continuous, nonnegative | Edge or local compute resource assigned to PT $i$ |
+| Task offloading | $z_i(\tau)$ | binary | Selects local execution or edge execution |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 17a | Each PT connects to at most one ES, $\sum_m a_{i,m}(t)\le1$ |
+| 17b | ES bandwidth allocation is capacity limited, $\sum_i a_{i,m}(t)b_i(\tau)\le1$ |
+| 17c | ES computation allocation is capacity limited, $\sum_i a_{i,m}(t)f_i(\tau)\le1$ |
+| 17d | Long-term average task response delay is bounded by $T_i^{\max}$ |
+| 17e | Long-term average system energy is bounded by $E^{\max}$ |
+
+**Algorithm**: An improved two-timescale Lyapunov decomposition converts the long-term mixed-integer problem into instant subproblems. TACO alternates a piecewise McCormick-envelope solver for large-timescale access and placement decisions with a block-coordinate-descent solver for small-timescale update, offloading, and resource decisions.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Yang et al. [x] studied dynamic human digital twin deployment at the edge in an end-edge-cloud system with mobile physical twins and uncertain status changes. They maximized average HDT-assisted task execution accuracy while constraining long-term response delay and total energy, jointly selecting edge access, generic placement granularity, customized updates, task offloading, and communication and computation resources. An improved two-timescale Lyapunov method decomposes the online problem, and alternating PME and BCD procedures solve the coupled large- and small-timescale subproblems. The paper's analysis gives an asymptotically optimal solution with polynomial-time complexity. Simulations report higher task accuracy together with lower response delay and system energy than the compared schemes.
 
 ## Problem framing
 

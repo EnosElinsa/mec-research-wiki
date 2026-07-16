@@ -5,6 +5,7 @@ authors: ["Lifeng Xie", "Xiaowen Cao", "Jie Xu", "Rui Zhang"]
 year: 2021
 url: "https://doi.org/10.1109/TGCN.2021.3093718"
 venue: "IEEE Transactions on Green Communications and Networking (IEEE TGCN), vol. 5, no. 4, pp. 2042-2064"
+modeling_card: not_applicable
 tags: [source, wireless-power-transfer, uav-trajectory-control, resource-allocation, wireless-powered-communication-network, wireless-powered-mec, tutorial]
 related:
   - "[[wireless-power-transfer]]"
@@ -26,7 +27,7 @@ related:
   - "[[wu-2018-multiuav-minrate-trajectory]]"
   - "[[jie-xu]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV-Enabled Wireless Power Transfer: A Tutorial Overview
@@ -38,6 +39,12 @@ Xie, L., Cao, X., Xu, J., & Zhang, R. (2021). *UAV-Enabled Wireless Power Transf
 ## TL;DR
 
 An invited tutorial that organizes UAV-enabled [[wireless-power-transfer|wireless power transfer]] around single-UAV and multi-UAV energy delivery, [[wireless-powered-communication-network|wireless-powered communication networks]], and wireless-powered MEC. Its recurring design toolkit is speed-relaxed [[multi-location-hovering]], flight-feasible [[successive-hover-and-fly-trajectory|successive hover-and-fly]], and time-quantized SCA. The tutorial is careful about scope: relaxed solutions are upper bounds, generic multi-UAV WPT remains open, and the full wireless-powered MEC formulation with computation causality is posed but not solved.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xie et al. [x] provided a tutorial framework for trajectory and resource optimization in UAV-enabled wireless power transfer. For a single aerial energy transmitter, they formulated fair charging as maximizing the minimum weighted harvested energy under speed, acceleration, endpoint, and obstacle constraints. Their reusable solution sequence combines speed-relaxed multi-location hovering, a traveling-salesman-based successive-hover-and-fly construction, and time-quantized successive convex approximation. The tutorial extends this framework to multi-UAV charging and wireless powered communication networks, while identifying the full computation-causality-constrained wireless powered MEC problem as unresolved.
 
 ## Problem
 

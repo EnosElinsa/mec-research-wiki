@@ -15,8 +15,9 @@ related:
   - "[[post-disaster-mec]]"
   - "[[gao-2024-sagin-perception-offloading]]"
   - "[[zhao-2025-probabilistic-semantic-sagin]]"
+modeling_card: required
 created: 2026-07-07
-updated: 2026-07-07
+updated: 2026-07-16
 ---
 
 # Joint Offloading, Trajectory and Deployment Optimization for Multi-UAV Cooperative Regional Search in SAGINs: A Hybrid DRL-GA Framework
@@ -28,6 +29,41 @@ Zhao, P., Cheng, H., Zhang, H., & Wan, Z. (2026). *Joint Offloading, Trajectory 
 ## TL;DR
 
 Targets multi-UAV search and rescue in [[space-air-ground-integrated-network|SAGIN]] settings where wind, terrain, coverage, and heterogeneous offloading tiers interact. The paper decomposes the problem into online HCDRL control and low-frequency GA deployment search: an HCSAC policy uses CNN local perception plus GCN topology/offloading embeddings for trajectory and offloading, while a [[genetic-algorithm]] evaluates takeoff/recovery deployments through learned-policy rollouts. NOAA-derived GFS wind fields and uncertainty-aware terrain abstraction make the simulation less idealized than a static-grid UAV-MEC benchmark.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple fixed-altitude UAVs search a gridded mountainous region and generate sensing tasks that can be processed locally or through BS, HAPS, LEO, edge, and cloud tiers in a SAGIN. Links use orthogonal subcarriers; channel coefficients combine antenna gain, free-space attenuation, atmospheric and rain loss, small-scale fading, and AWGN, while UAV motion is driven by terrain uncertainty and NOAA-derived wind fields.
+
+**Problem & objective**: Coupled long-horizon MINLP with online offloading and trajectory control plus mission-level deployment search; the offloading model minimizes $\sum_{t=1}^{I} L(t)$, while the GA maximizes $w_c\bar C(\mathcal F)-w_e\bar E_{\mathrm{total}}(\mathcal F)-w_d\bar D_{\mathrm{lat}}(\mathcal F)$ to favor search coverage and penalize energy and latency.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Local processing indicator | $\alpha_u(t)$ | Binary, $\{0,1\}$ | Process UAV $u$'s task locally at time $t$ |
+| Primary and secondary offloading indicators | $\beta_{u,i}(t),\gamma_{u,i,k}(t)$ | Binary, $\{0,1\}$ | Select a primary SAGIN server or a two-stage processing path |
+| Trajectory action | $A_u^1(t)$ | Discrete direction in $\{0,\ldots,8\}$ | Move to an adjacent cell or issue the return action |
+| Deployment chromosome | $\mathcal F$ | Discrete grid cells | Select every UAV's takeoff and recovery cells |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Exactly one execution mode is selected: $\alpha_u(t)+\sum_i\beta_{u,i}(t)+\sum_{i,k}e_{u,i}e_{i,k}\gamma_{u,i,k}(t)=1$ |
+| C2 | Computation and channel allocations do not exceed the selected SAGIN nodes' available resources, as in (19a)-(19c) |
+| C3 | Task latency satisfies $L_o^u(t)\le d_{c,u}(t)$ |
+| C4 | Residual energy is protected by $E_u^{\mathrm{total}}(t)\le \mathrm{Battery}_u(t)-\xi\mathrm{Battery}_u$ |
+| C5 | Trajectory actions remain inside the grid and respect terrain hazards and wind-adjusted motion feasibility |
+
+**Algorithm**: Two-stage HCDRL plus GA, CNN local-map encoding and GCN SAGIN-topology encoding $\rightarrow$ parallel HCSAC policies for movement and offloading $\rightarrow$ policy rollouts for each deployment chromosome $\rightarrow$ GA selection, crossover, mutation, and elitism.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zhao et al. [x] studied joint task offloading, flight trajectory planning, and UAV deployment for multi-UAV search and rescue in SAGINs under terrain uncertainty and NOAA-derived wind fields. They formulated the mission as a multi-objective optimization that maximizes search coverage and minimizes task energy cost under resource, connectivity, latency, and battery constraints. They proposed a two-stage HCDRL and GA framework in which CNN and GCN encoders support HCSAC-based online trajectory and offloading decisions. The learned policy is then used as a rollout-based fitness evaluator for GA optimization of UAV takeoff and recovery positions. Simulations report mission-lifetime gains of up to 38%, search-coverage gains of 33% under strong wind, and a nearly 18% coverage lift from GA-optimized deployment.
 
 ## Problem framing
 
@@ -65,5 +101,5 @@ This source strengthens the [[space-air-ground-integrated-network]] line from a 
 
 ## Raw artifacts
 
-- `raw/sources/Joint Offloading- Trajectory and Deployment Optimization for Multi-UAV Cooperative Regional Search in SAGINs A Hybrid DRL-GA Framework/Joint Offloading- Trajectory and Deployment Optimization for Multi-UAV Cooperative Regional Search in SAGINs A Hybrid DRL-GA Framework.md`
+- `raw/sources/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

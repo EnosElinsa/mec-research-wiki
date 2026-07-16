@@ -19,7 +19,8 @@ related:
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[zhao-2025-probabilistic-semantic-sagin]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-07-16
+modeling_card: required
 ---
 
 # Semantic Communications for UAV Data Aggregation: A Layered Design Against Alterable Hovering Position
@@ -31,6 +32,41 @@ Lin, L., Xu, W., Zhang, Y., Yuan, X., Zhang, J., Han, Z., & Zhang, P. (2026). *S
 ## TL;DR
 
 Separates image-semantic feature extraction from adaptation to changing UAV-user geometry. A frozen fixed-geometry codec is paired either with fast learned channel-aware signal processors (CLAP) or with iterative power-and-hover-position optimization (AOPP); both improve PSNR over a dynamically trained end-to-end codec baseline in the reported OFDM-NOMA simulations.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Multiple ground users transmit image semantic features to one hovering UAV base station using OFDM-NOMA, with at most two non-orthogonal users per subcarrier group. User-to-UAV channels use distance-dependent path loss and Rician fading, and the UAV has perfect real-time CSI.
+
+**Problem & objective**: Layered semantic communication position-and-power design, a non-convex distortion optimization, minimizes semantic reconstruction error, $\min_{\Gamma,\mathbf s^{v},f_t,f_r}\mathbb E[d(\mathbf M,\hat{\mathbf M})]$, subject to per-user transmit-power and signal-processing constraints.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV hovering position | $\mathbf s^v$ | continuous horizontal position | Static UAV-BS location during aggregation |
+| Semantic transmit processor | $f_t$ | continuous neural parameters/scaling | Adapts semantic signals to channel geometry |
+| Semantic receive processor | $f_r$ | continuous neural parameters/scaling | Corrects superposed received features |
+| User transmit signals | $\mathbf T_n$ | continuous, average power $\le P_n$ | OFDM-NOMA semantic features sent by user $n$ |
+| Codec parameters | $\Gamma$ | learned continuous parameters | SFE encoders and decoder, frozen in the PPC layer |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | Each user's optimized semantic transmit signal obeys its maximum average power $P_n$ |
+| C2 | OFDM-NOMA subcarrier groups contain no more than the permitted non-orthogonal users |
+| C3 | The UAV position remains in the allowed hovering region and at the prescribed altitude |
+| C4 | Receiver and transmitter processing operate on the observed Rician channel and real-time CSI |
+
+**Algorithm**: Train fixed-geometry SFE codecs under AWGN → freeze $\Gamma^*$ → CLAP computes a power-weighted UAV centroid and trains channel-aware signal processors → alternatively, AOPP updates semantic power and UAV position with QCQP/closed-form updates, SCA, and BCD.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Lin et al. [x] studied semantic image aggregation from multiple users to a hovering UAV base station over OFDM-NOMA channels with changing UAV-user geometry. They formulated a layered optimization that minimizes semantic reconstruction distortion by coordinating the frozen semantic codecs, semantic signal processing, user power, and UAV hovering position. Their CLAP algorithm uses a weighted user centroid and learned channel-aware semantic signal processors, while AOPP alternates semantic power allocation and UAV-position updates with QCQP, successive convex approximation, and block coordinate descent. The SFE layer is trained once under fixed-position AWGN and the PPC layer adapts the signals and position with real-time CSI. Simulations report PSNR gains of 3.0 dB for CLAP and 3.1 dB for AOPP over the end-to-end training baseline under Rician fading.
 
 ## Problem
 

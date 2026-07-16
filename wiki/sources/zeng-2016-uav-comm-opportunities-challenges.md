@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: not_applicable
 title: "Wireless Communications with Unmanned Aerial Vehicles: Opportunities and Challenges"
 authors: ["Yong Zeng", "Rui Zhang", "Teng Joon Lim"]
 year: 2016
@@ -19,7 +20,7 @@ related:
   - "[[zhan-2011-uav-relay-heading-optimization]]"
   - "[[yong-zeng]]"
 created: 2026-06-02
-updated: 2026-06-02
+updated: 2026-07-16
 ---
 
 # Wireless Communications with Unmanned Aerial Vehicles: Opportunities and Challenges
@@ -31,6 +32,12 @@ Zeng, Y., Zhang, R., & Lim, T. J. (2016). *Wireless Communications with Unmanned
 ## TL;DR
 
 A magazine **overview** of UAV-aided wireless communications. It introduces the basic **networking architecture**, the main **air-to-ground channel characteristics** of low-altitude UAVs, the key **design considerations**, and the new **opportunities** that arise from exploiting UAV **mobility**. It frames three canonical use cases — **ubiquitous coverage**, **relaying**, and **information dissemination / data collection** — and lays out the principal design challenges (control-and-non-payload-communication links, dynamic/intermittent topology, size-weight-and-power constraints, and interference coordination).
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Zeng et al. [x] presented an overview of wireless communications with unmanned aerial vehicles. They organized UAV-aided communication around ubiquitous coverage, mobile relaying, and information dissemination or data collection. The article discussed low-altitude air-to-ground channel characteristics, fixed-wing and rotary-wing platforms, control-and-non-payload links, dynamic topology, size-weight-power limits, and interference coordination. It also highlighted controllable UAV mobility as a new degree of freedom for communication design. The article is a conceptual magazine overview and does not formulate one reusable application-specific decision problem.
 
 ## Problem framing
 

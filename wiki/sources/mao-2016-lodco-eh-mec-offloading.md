@@ -5,6 +5,7 @@ authors: ["Yuyi Mao", "Jun Zhang", "Khaled B. Letaief"]
 year: 2016
 url: "https://doi.org/10.1109/JSAC.2016.2611964"
 venue: "IEEE Journal on Selected Areas in Communications (IEEE JSAC)"
+modeling_card: required
 tags: [source, mobile-edge-computing, energy-harvesting-mec, computation-offloading, lyapunov-optimization, dynamic-voltage-frequency-scaling, power-control]
 related:
   - "[[mobile-edge-computing]]"
@@ -20,7 +21,7 @@ related:
   - "[[mao-2017-mec-survey-communication]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-06-01
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # Dynamic Computation Offloading for Mobile-Edge Computing With Energy Harvesting Devices
@@ -32,6 +33,41 @@ Mao, Y., Zhang, J., & Letaief, K. B. (2016). *Dynamic Computation Offloading for
 ## TL;DR
 
 A foundational **green MEC** paper: a single **energy-harvesting (EH)** mobile device, served by an MEC server, decides each time slot whether to execute a task locally or offload it, while controlling local **CPU-cycle frequency (via DVFS)** and **transmit power**. The performance metric is an **execution cost** combining execution delay and **task failure** (dropping). The proposed **Lyapunov-optimization-based Dynamic Computation Offloading (LODCO)** algorithm decides offloading, CPU frequency, and transmit power per slot from only the **current** system state — requiring no distribution knowledge of task arrivals, channel, or the EH process — by solving a deterministic per-slot problem in closed form or by bisection. LODCO is proven **asymptotically optimal**.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One energy-harvesting mobile device is associated with an MEC server through an i.i.d. block-fading wireless channel. Tasks arrive as a Bernoulli process, have an execution deadline no longer than one slot, and are either executed locally, offloaded to the server, or dropped when neither mode is feasible.
+
+**Problem & objective**: Problem $\mathcal P_1$ minimizes long-term average execution cost, $\lim_{T\to\infty}\frac{1}{T}\mathbb E[\sum_{t=0}^{T-1}\mathrm{cost}^t]$, where $\mathrm{cost}^t$ combines local or server execution delay with a weighted task-drop penalty $\phi$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Computation mode | $I_m^t,I_s^t,I_d^t$ | binary | Local execution, server offloading, or task dropping in slot $t$ |
+| Local CPU frequency | $f_w^t$ | continuous, $0\leq f_w^t\leq f_{\mathrm{CPU}}^{\max}$ | DVFS frequency for CPU cycle $w$ |
+| Offloading power | $p^t$ | continuous, $0\leq p^t\leq p_{\mathrm{tx}}^{\max}$ | Transmit power used for server offloading |
+| Harvested-energy use | $e^t$ | continuous within harvested-energy availability | Energy drawn from the EH process in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 1 | Exactly one mode is selected: $I_m^t+I_s^t+I_d^t=1$ |
+| 12 | Any executed task meets its deadline: $\mathcal D(\boldsymbol I^t,\boldsymbol f^t,p^t)\leq\tau_d$ |
+| 14 | Battery output energy is bounded: $\mathcal E(\boldsymbol I^t,\boldsymbol f^t,p^t)\leq E_{\max}$ |
+| 15-16 | Offloading power and local CPU frequencies are zero when their corresponding mode is inactive and obey their maxima |
+| 17 | Mode indicators are binary: $I_m^t,I_s^t,I_d^t\in\{0,1\}$ |
+
+**Algorithm**: Apply Lyapunov drift-plus-penalty to replace the high-dimensional MDP with a deterministic per-slot problem. Use the current task, channel, battery, and harvested-energy state to choose the mode, CPU frequencies, and transmit power, solving the scalar frequency and power subproblems in closed form or by bisection; tune the control parameters to approach the optimal average cost.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Mao et al. [x] studied computation offloading for an energy-harvesting mobile device served by an MEC server under causal task, channel, and harvested-energy information. They formulated long-term execution-cost minimization, combining execution delay with a penalty for dropped tasks, over local execution, server offloading, CPU-cycle frequency, and transmit-power decisions. Their LODCO algorithm uses Lyapunov optimization to solve a deterministic per-slot problem from the current system state, with closed-form or bisection updates and no distributional prior knowledge. Simulations reported lower execution cost and near-zero task-drop ratios than greedy baselines, asymptotic convergence to the optimal cost, and more than 40% gain over greedy offloading at a large device-server distance.
 
 ## Problem framing
 

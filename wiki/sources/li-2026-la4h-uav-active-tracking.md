@@ -5,6 +5,7 @@ authors: ["Jiahao Li", "Fuhui Zhou", "Qihui Wu"]
 year: 2026
 url: "https://doi.org/10.1109/TMC.2026.3666656"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav, active-target-tracking, embodied-ai, anomaly-detection, expert-assistance, knowledge-distillation, pomdp]
 related:
   - "[[expert-assisted-anomaly-aware-tracking]]"
@@ -17,7 +18,7 @@ related:
   - "[[zhu-2024-zdrl-uav-tracking]]"
   - "[[fuhui-zhou]]"
 created: 2026-07-10
-updated: 2026-07-13
+updated: 2026-07-16
 ---
 
 # A Novel Expert-Assisted Anomaly-Aware Embodied Learning Framework for UAV Active Target Tracking
@@ -29,6 +30,41 @@ Li, J., Zhou, F., & Wu, Q. (2026). *A Novel Expert-Assisted Anomaly-Aware Embodi
 ## TL;DR
 
 Introduces LA4H, a "learning to ask for help" framework for UAV active target tracking under prolonged occlusion and intense distractor interference. The UAV policy uses cross-modal anomaly cognition to detect abnormal tracking states, decides whether to request expert assistance, and distills a heavier teacher tracker into a deployable student policy.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One UAV actively tracks a moving visual target under partial observability, prolonged occlusion, and intense distractor interference. Onboard visual and localization observations form a short-history state, while a learned policy can either issue a flight action or request temporary corrective control from a human or algorithmic expert.
+
+**Problem & objective**: The task is a POMDP in which the policy maximizes $J(\pi)=\mathbb E_{\pi}[\sum_{t=0}^{\infty}\gamma^t r_t]$ and a categorical objective switches between normal tracking reward $J_n$ and anomaly-recovery utility $J_a=-\eta_a C+\gamma_a R$.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV flight action | $a_t\in\mathcal A$ | discrete, 12 actions | 3-D translation or yaw command at time $t$ |
+| Assistance request | $h_t$ | binary, $h_t\in\{0,1\}$ | Continue autonomously or transfer the action decision to an expert |
+| Tracking policy | $\pi_{\lambda}(a_t\mid s_t)$ | stochastic policy | Autonomous UAV action distribution |
+| Assistance policy | $\pi_{\mu}(h_t\mid s_t)$ | stochastic binary policy | Learned timing of expert intervention |
+| Recovery sequence | $A_r$ | finite expert action sequence | Corrective actions used in an anomalous state |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| State | $s_t=[s_t^o,s_t^h,p_t,p^h,m_t,m^h]$ uses current and ten-step historical visual, pose, and semantic-map information |
+| Action | $a_t$ is restricted to the 12-dimensional discrete movement and rotation set $\mathcal A$ |
+| Assistance | $h_t\in\{0,1\}$ and the expert action replaces the autonomous action only when assistance is requested |
+| Recovery objective | Anomaly recovery balances resource, delay, and estimation costs against rapid and stable reacquisition rewards |
+
+**Algorithm**: Encode visual history, align temporal visual features with anomaly text prompts, and classify the current anomaly; combine this cognition output with the sequence state to train the assistance policy from balanced autonomous and expert replay. In parallel, distill a temporal-semantic teacher tracker into a lightweight student policy, and execute expert recovery actions only when the learned request policy selects assistance.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied active UAV target tracking under prolonged occlusion and intense distractor interference as a POMDP with autonomous flight and expert-assistance decisions. They defined a categorical objective that maximizes cumulative tracking reward in normal states and balances recovery effectiveness against intervention cost in anomalous states. Their LA4H framework combines cross-modal anomaly cognition, a learned assistance-request policy, and teacher-student tracking-policy distillation. Simulated and real-world experiments reported a 361.4% increase in success rate, a 54.4% improvement in task-completion efficiency, and a 40.3% reduction in expert intervention, while the onboard implementation ran at 32.7 frames per second.
 
 ## Problem
 

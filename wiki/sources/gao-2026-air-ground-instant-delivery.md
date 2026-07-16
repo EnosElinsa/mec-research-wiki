@@ -5,6 +5,7 @@ authors: ["Junhui Gao", "Qianru Wang", "Xin Zhang", "Juan Shi", "Xiang Zhao", "Y
 year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3634430"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
+modeling_card: required
 tags: [source, uav-delivery, crowdsourced-taxi, transfer-learning, station-deployment, scheduling, trace-driven]
 related:
   - "[[cooperative-uav-taxi-delivery]]"
@@ -15,7 +16,7 @@ related:
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
   - "[[chen-2026-cargo-uav-pickup-lae]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-07-16
 ---
 
 # Cooperative Air-Ground Instant Delivery by UAVs and Crowdsourced Taxis: Joint UAV Station Deployment and Delivery Scheduling
@@ -27,6 +28,40 @@ Gao, J., Wang, Q., Zhang, X., Shi, J., Zhao, X., Liang, Y., Guo, B., Han, Q., & 
 ## TL;DR
 
 Builds a city-scale instant-delivery system that pairs UAVs with crowdsourced taxis. It places UAV stations from gaps between demand and taxi capacity, predicts demand to reposition UAVs, transfers human-courier assignment preferences to UAV/taxi models, and combines preference-first assignment with cost-aware generalized assignment.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A city-scale instant-delivery platform assigns parcels to station-based UAVs or crowdsourced taxis. Taxis accept parcels compatible with passenger routes, detour and pickup-time limits, while UAVs handle complementary demand under flight range, payload, battery reserve, weather, deadline, and no-fly-zone restrictions.
+
+**Problem & objective**: Equations (21)-(33) define two binary assignment models: first $\max\sum_{u,p}\epsilon(u,p)\eta(u,p)+\sum_{b,p}\epsilon(b,p)\eta(b,p)$ for learned delivery preference, then a GAPAR bi-objective that maximizes delivered parcels and minimizes $\sum\eta(\cdot,p)\kappa(\cdot,p)$ for the remaining demand.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV parcel assignment | $\eta(u,p)$ | binary, $\{0,1\}$ | Whether UAV $u$ delivers parcel $p$ |
+| Taxi parcel assignment | $\eta(b,p)$ | binary, $\{0,1\}$ | Whether crowdsourced taxi $b$ delivers parcel $p$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 22, 30 | UAV and taxi assignment variables are binary |
+| 23, 31 | Each parcel is assigned at most once, $\sum_u\eta(u,p)+\sum_b\eta(b,p)\leq1$ |
+| 24-25 | Preference-first assignment requires $\epsilon(u,p)\geq\varepsilon_U\eta(u,p)$ and $\epsilon(b,p)\geq\varepsilon_B\eta(b,p)$ |
+| 26-27, 32-33 | An assignment is permitted only when the UAV or taxi delivery path is feasible |
+| UAV model | Flight distance, payload, wind, reserve energy, deadline, and no-fly-zone requirements must hold |
+| Taxi model | Passenger priority, route compatibility, detour distance, pickup time, and participation limits must hold |
+
+**Algorithm**: Cluster historical taxi-delivery gaps with weighted K-Means++ to deploy UAV stations; predict grid demand and reposition UAVs toward expected unmet demand; transfer and fine-tune courier-preference models for UAVs and taxis; greedily solve the preference assignment; then solve residual GAPAR with profit-density sorting that balances parcel count and delivery cost.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Gao et al. [x] studied cooperative air-ground instant delivery using UAVs and crowdsourced taxis under dynamic demand and taxi capacity. They formulated parcel assignment first as learned-preference maximization and then as a generalized assignment problem that maximizes delivered parcels while minimizing cost under unique-assignment and route-feasibility constraints. Their pipeline deploys UAV stations from historical delivery gaps, predicts demand for UAV repositioning, transfers human-courier preferences to UAV and taxi models, and solves the two assignment stages with greedy heuristics. Trace-driven evaluation reports 27.4% more delivered parcels, 19.2% lower delivery cost, and 36.3% less negative passenger impact than the evaluated air-ground cooperative baseline.
 
 ## Problem
 

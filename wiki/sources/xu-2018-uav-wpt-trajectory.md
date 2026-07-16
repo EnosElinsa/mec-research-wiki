@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "UAV-Enabled Wireless Power Transfer: Trajectory Design and Energy Optimization"
 authors: ["Jie Xu", "Yong Zeng", "Rui Zhang"]
 year: 2018
@@ -21,7 +22,7 @@ related:
   - "[[yong-zeng]]"
   - "[[jie-xu]]"
 created: 2026-06-01
-updated: 2026-07-14
+updated: 2026-07-16
 ---
 
 # UAV-Enabled Wireless Power Transfer: Trajectory Design and Energy Optimization
@@ -33,6 +34,40 @@ Xu, J., Zeng, Y., & Zhang, R. (2018). *UAV-Enabled Wireless Power Transfer: Traj
 ## TL;DR
 
 A foundational study of **UAV-enabled wireless power transfer (WPT)**: a UAV-mounted mobile energy transmitter is dispatched to charge a set of ground energy receivers (ERs) at known locations, and its **trajectory** is optimized to maximize energy delivered over a finite charging period $T$ under a maximum-speed constraint. Two problems are solved. **Sum-energy maximization** has an optimal solution in which the UAV **hovers at one fixed location** for the whole period — but this creates a severe **"near-far" fairness** problem. **Min-energy maximization** (maximize the minimum received energy across ERs) fixes the fairness issue: ignoring the speed limit, the optimum is **multi-location hovering** with optimal time allocation, and with the speed limit a **successive hover-and-fly** trajectory plus an SCP-based refinement are proposed.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: One fixed-altitude UAV energy transmitter broadcasts constant-power RF energy to $K$ fixed ground energy receivers over LoS free-space channels during a finite charging period. The UAV's initial and final locations are free, and only maximum speed limits its motion.
+
+**Problem & objective**: P1 maximizes sum harvested RF energy, $\max_{\mathbf q(t)}\sum_k E_k$; P2 maximizes fairness, $\max_{\mathbf q(t)}\min_k E_k$, subject to UAV speed.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| UAV trajectory | $\mathbf q(t)$ | continuous 2-D function | Horizontal transmitter path |
+| Hovering locations | $\mathbf q_\gamma$ | continuous 2-D points | Energy-optimal stationary charging locations |
+| Hovering duration | $\tau_\gamma$ | continuous, nonnegative | Time allocated to location $\gamma$ |
+| Fair received energy | $E_{\min}$ | continuous, nonnegative | Minimum energy among receivers |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV speed satisfies $\lVert\dot{\mathbf q}(t)\rVert\le V_{\max}$ |
+| C2 | Hovering and flight times sum to the charging period $T$ |
+| C3 | Every receiver energy is the integral of distance-dependent received power |
+| C4 | For P2, $E_k\ge E_{\min}$ for every receiver $k$ |
+
+**Algorithm**: For P1 search the globally optimal single hovering point → for speed-unconstrained P3 solve the Lagrange dual and recover optimal multi-location hover times → connect those points at maximum speed with a shortest successive-hover-and-fly tour → initialize SCP with that tour and iteratively refine the speed-constrained max-min trajectory.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Xu et al. [x] studied UAV-enabled wireless power transfer through joint trajectory and energy optimization. They formulated sum-energy and max-min received-energy problems for one mobile energy transmitter under a maximum-speed constraint. Sum-energy maximization is solved by single-location hovering, while the speed-unconstrained max-min problem yields multiple hovering locations and time allocations through Lagrange duality. For the speed-constrained fair design, they proposed a successive hover-and-fly trajectory and an SCP refinement. Simulations show that UAV mobility improves minimum received energy over fixed hovering as receiver separation, charging duration, or maximum speed increases.
 
 ## Problem framing
 

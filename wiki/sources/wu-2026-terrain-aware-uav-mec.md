@@ -1,5 +1,6 @@
 ---
 type: source
+modeling_card: required
 title: "Terrain-Aware UAV-Enabled Mobile Edge Computing in Urban Environments: A Constrained Multi-Objective Approach With Task-Adaptive Mechanism"
 authors: ["Zexiong Wu", "Qiqi Xie", "Zhuoran Wang", "Xumin Huang", "Chaoda Peng", "Yuan Wu"]
 year: 2026
@@ -17,7 +18,7 @@ related:
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-06-09
+updated: 2026-07-16
 ---
 
 # Terrain-Aware UAV-Enabled MEC in Urban Environments: A Constrained Multi-Objective Approach With Task-Adaptive Mechanism
@@ -34,6 +35,41 @@ UAV-MEC in dense urban environments where buildings *and* terrain elevation bloc
 2. **Joint optimization of UAV trajectory + destination + resource allocation** as a CMOP, with a **multi-tasking CMOEA** featuring a **task-adaptive mechanism** that retains historically-effective genetic operators per individual.
 
 Objectives: G₁ = safe-flight metric (sum of inverse distances to nearby terrain meshes within a safety distance); G₂ = task completion time. Constraints encode altitude bounds, turning angle limits, and "above terrain" inequalities derived from triangulated mesh normals.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: A UAV MEC server follows a B-spline path over an urban digital-elevation mesh, offloads tasks from ground devices through geometry-classified LoS/NLoS links, and may optimize its terminal destination. Real terrain determines blockage and safe-flight clearance.
+
+**Problem & objective**: A constrained multi-objective problem minimizes terrain risk and task completion time, $\min\bigl(G_1(\mathbf Q),G_2(\mathbf Q,\mathbf r)\bigr)$, over trajectory control points, destination, and computing or communication resources.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| B-spline control points | $\mathbf Q=\{\mathbf q_j\}$ | continuous 3-D positions | Smooth UAV trajectory representation |
+| Destination | $\mathbf q_F$ | continuous feasible position | Optimized terminal UAV location |
+| Task/resource allocation | $\mathbf r$ | continuous/discrete | Offloading and computing resources along the path |
+| Genetic operator | $o_i$ | categorical adaptive choice | Variation operator assigned to an individual |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| C1 | UAV altitude remains within prescribed limits |
+| C2 | Every path point stays above its triangulated terrain face |
+| C3 | Consecutive B-spline segments satisfy the turning-angle limit |
+| C4 | Resource and offloading decisions complete each task feasibly |
+| C5 | Destination and all control points lie in the allowed urban region |
+
+**Algorithm**: Convert DEM data into a triangular mesh and per-device blocked regions → encode paths with B-spline control points and a variable destination → evolve multiple related terrain subtasks in parallel → track historical operator success and adapt operator assignment per individual → exchange useful solutions across tasks → return the feasible Pareto set.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wu et al. [x] studied terrain-aware UAV-enabled mobile edge computing in urban environments using real digital elevation data. They constructed geometric blocked regions for LoS and NLoS classification and represented UAV paths with B-spline control points. The constrained multi-objective formulation jointly minimizes a terrain-clearance risk metric and task-completion time over trajectory, destination, and resource decisions under altitude, turning, terrain, and task constraints. A multitasking constrained evolutionary algorithm shares solutions across related terrain subtasks and adapts genetic operators from their historical performance. Simulations report more accurate terrain-sensitive path-loss modeling and better objective values than the evaluated statistical-channel, fixed-destination, and single-task evolutionary baselines.
 
 ## Why this matters
 

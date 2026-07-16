@@ -13,7 +13,8 @@ related:
   - "[[uav-assisted-edge-inference]]"
   - "[[pytorch]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Hybrid CNN-Mamba Network and Air-Ground Platform for Pavement Crack Evaluation
@@ -27,6 +28,12 @@ Cheng, L., Wu, D., Li, Y., Wang, P., Li, R., Gong, X., Cao, H., & Tan, X. (2026)
 ## TL;DR
 
 Combines a lightweight dual-convolution encoder, contextual skeleton/detail propagation, and a wavelet-guided Mamba decoder for crack segmentation. An ONNX/Triton scan implementation runs at 35.63 FPS on Jetson AGX Orin, after which heuristic morphology and grid metrics estimate pavement risk.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Cheng et al. [x] studied slender pavement-crack segmentation and risk evaluation for images associated with UAV and inspection-vehicle acquisition. They proposed WTCMamba, which combines a dual-convolution encoder, contextual spatial feature propagation, and a wavelet-guided Mamba decoder, followed by morphology-based and grid-based risk analysis. The network was trained with Dice, binary cross-entropy, position-aware, and multi-scale supervision losses, and an LMC-Belloch scan operator enabled ONNX deployment on Jetson AGX Orin. Experiments reported 2.31 million parameters, 35.63 FPS on the edge device, and mIoU values of 79.85%, 81.48%, 74.65%, and 89.22% on CFD, Crack500, CrackTree200, and DeepCrack, respectively.
 
 ## Problem framing
 

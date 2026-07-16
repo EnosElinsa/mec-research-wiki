@@ -5,10 +5,11 @@ authors: ["Xianglong Li", "Kaiwei Mo", "Guang Fang", "Zongpeng Li"]
 year: 2026
 url: "https://doi.org/10.1109/TITS.2026.3657174"
 venue: "IEEE Transactions on Intelligent Transportation Systems (IEEE T-ITS)"
+modeling_card: required
 tags: [source, maritime-network, double-auction, online-algorithm, resource-allocation, uav-communications, social-welfare]
 related: ["[[maritime-mec]]", "[[online-maritime-double-auction]]", "[[li-2020-maritime-uav-satellite-coverage]]", "[[dai-2024-multiuav-marine-welfare]]", "[[zeng-2024-usv-fleet-collaborative-offloading]]"]
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-16
 ---
 
 # An Online Double Auction Mechanism for Dynamic Resource Allocation in Maritime Networks
@@ -20,6 +21,41 @@ Li, X., Mo, K., Fang, G., & Li, Z. (2026). *An Online Double Auction Mechanism f
 ## TL;DR
 
 Designs an [[online-maritime-double-auction|online maritime double auction mechanism]] for dynamic Internet-access allocation in maritime networks. Ships bid for bandwidth, ISPs sell capacity through terrestrial antennas or UAVs, and the online mechanism chooses feasible allocations under bid deadlines, coverage, capacity, UAV mobility, and weather-linked link constraints. The paper maximizes social welfare with a compact ILP/dual formulation and an online primal-dual marginal-pricing algorithm.
+
+## Modeling Quick-Use Card
+
+> Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
+
+**Scenario**: Ships submit online bids for slotted Internet access, while multiple ISPs sell heterogeneous capacity through fixed terrestrial antennas and mobile UAVs. Feasibility depends on bid timing, bandwidth, device coverage and capacity, ship and UAV positions, UAV travel time and endurance, and weather-dependent device availability.
+
+**Problem & objective**: The primal 0-1 ILP maximizes maritime social welfare $\sum_{n,i}b_{ni}x_{ni}-\sum_{n,i,m,j,t}s_{nim}(t)z_{nimj}(t)$ by accepting ship bids and scheduling ISP devices over time.
+
+**Decision variables**:
+
+| Variable | Symbol | Type / range | Meaning |
+|---|---|---|---|
+| Bid acceptance | $x_{ni}$ | binary, $x_{ni}\in\{0,1\}$ | Whether ship $n$'s bid $i$ is accepted |
+| Device allocation | $z_{nimj}(t)$ | binary, $z_{nimj}(t)\in\{0,1\}$ | Whether ISP $m$'s device $j$ serves the bid in slot $t$ |
+| Feasible schedule | $\zeta_{ni}$ | discrete slot-device set | Selected continuous time slots and ISP devices for a bid |
+| Marginal price | $p_m(t)$ | continuous nonnegative value | Dynamic bandwidth price for ISP $m$ in slot $t$ |
+
+**Constraints**:
+
+| ID | Meaning and key expression |
+|---|---|
+| 2a-2b | Allocated slots respect bid and device deadlines, and a UAV has enough travel time to reach the ship |
+| 2c | Service occurs only within the device communication range: $g_{nmj}(t)z_{nimj}(t)\leq G_{mj}$ |
+| 2d | Allocated bandwidth does not exceed device capacity $c_{mj}(t)$ |
+| 2e-2f | Accepted bids receive the required number of slots and allocation indicators remain consistent with acceptance |
+| 2g-2h | Each ship has at most one accepted bid and all acceptance and allocation variables are binary |
+
+**Algorithm**: Reformulate the NP-hard primal ILP as a compact packing ILP, derive its dual LP, and interpret dual variables as marginal resource prices. For every arriving ship, $A_{\mathrm{online}}$ calls $A_{\mathrm{core}}$ to find a minimum-cost feasible schedule, select the bid with maximum nonnegative net utility, accept and allocate it when profitable, charge the buyer and reward the ISP, and update utilization and exponential marginal prices online.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Li et al. [x] studied online Internet-access allocation in maritime networks where ships buy bandwidth from ISPs operating terrestrial antennas and UAVs. They formulated social-welfare maximization as a 0-1 ILP over bid acceptance and device scheduling under deadline, travel-time, coverage, capacity, duration, and binary-allocation constraints. Their OMDAM mechanism derives a compact packing formulation and dual prices, then uses the online algorithm $A_{\mathrm{online}}$ and its allocation routine $A_{\mathrm{core}}$ to accept bids, assign feasible schedules, and update marginal prices. Simulations reported up to 17% higher social welfare than prior methods and consistently stronger welfare and bandwidth utilization under the tested user, bid, ISP, and asking-price settings.
 
 ## Problem
 

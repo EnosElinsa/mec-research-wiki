@@ -14,7 +14,8 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[zhiyong-feng]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-07-16
+modeling_card: not_applicable
 ---
 
 # Space-Time Block Codec Based Cooperative Integrated Sensing and Communication System
@@ -26,6 +27,12 @@ Wang, L., Feng, Z., Wei, Z., Wang, X., Ma, D., & Fei, Z. (2026). *Space-Time Blo
 ## TL;DR
 
 Proposes a multi-BS cooperative [[integrated-sensing-and-communication]] system for low-altitude UAVs at cell edges. Neighboring base stations share the same time-frequency resources, suppress line-of-sight inter-BS interference through robust angular nulling, separate reflected echoes through a [[space-time-block-codec]] OFDM design, and fuse range-profile estimates by SINR.
+
+## Related Work Paragraph
+
+> Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
+
+Wang et al. [x] proposed a cooperative multi-base-station ISAC architecture for sensing low-altitude UAVs near cell boundaries while reusing time-frequency resources. Robust angular-region nulling suppresses direct line-of-sight interference between neighboring base stations. An Alamouti-style space-time block codec separates their OFDM sensing echoes, after which range-profile estimates are fused according to SINR. The reported nulling pattern reached approximately -80 dB depth and remained more tolerant of direction error than exact-angle nulling. The shared-resource design improved detection and positioning relative to single-base-station sensing while using 66.67% fewer time-frequency resources than the fully orthogonal multi-base-station scheme. SINR-weighted data fusion also produced substantially lower positioning error than the compared single-base-station and soft-fusion methods under the examined synchronization errors.
 
 ## Problem
 
