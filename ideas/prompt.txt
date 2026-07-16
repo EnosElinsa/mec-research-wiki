@@ -31,6 +31,27 @@ The final document must be written in natural, technically precise Chinese. Engl
 
 Use bounded, non-overlapping subagents when they materially improve coverage. Suitable roles include evidence mapping, novelty adversarial review, and model/algorithm auditing. The lead agent remains responsible for the final judgment, primary-source checks, and final file.
 
+## Paper-writing and citation rules
+
+Write the main body as a formal Chinese journal manuscript rather than as a research note. Match the paragraph logic, terminology density, and symbol-first pacing of the designated reference papers when the user provides them.
+
+The introduction must establish two connected causal chains:
+
+1. application motivation -> limitations of the closest operating paradigm -> concrete proposed scenario and operational process -> formal research problem;
+2. scenario-specific decision structure -> why a generic solver is inadequate -> algorithm modules designed for those exact structural difficulties.
+
+Do not begin the algorithm paragraph by merely stating that DRL or another solver is popular. Explain why online learning or optimization is needed, which scenario state makes the problem sequential, which variables are discrete or continuous, how current decisions change future feasibility, and how each proposed algorithm component addresses one identified difficulty. Treat the optimizer backbone as an implementation vehicle, not as the innovation itself.
+
+The related-work section must follow the gap structure established in the introduction without repeating the introduction. The introduction states category-level motivation and limitations; related work provides paper-level evidence. Organize related work by mechanisms that correspond to the introduction, and make every subsection follow the sequence `representative work -> what it solves -> the precise assumption or boundary that remains`. End each subsection with a bounded synthesis that leads back to the paper's problem.
+
+Build the network model by specializing and extending the closest established architecture whenever possible. Cite the architectural source, state which entities, time model, channels, and controller are inherited, and state which deployment, association, trajectory, or routing decisions are supplied by an upper layer or held fixed. Add only the operational states, modules, variables, and constraints required by the proposed scenario. Do not redesign unrelated layers or present inherited components as contributions.
+
+Use citations at the point of the supported claim. Prefer recent and directly relevant papers, while retaining older foundational work only when it defines a method or concept that newer papers still rely on. Avoid using the same small group of citations for unrelated claims. Do not write citations as `Author et al. in *Full Paper Title* [x]`; use normal paper prose such as `Author et al. studied ... [x]`. Do not place local repository paths in the main paper. Put retrieval paths, novelty boundaries, and implementation audit details in an appendix when they remain useful.
+
+Format references in IEEE Transactions style. For an article with final volume, issue, pages, and publication month, include those fields and omit the DOI. Include a DOI only for early-access, accepted, preprint, or otherwise not-yet-assigned final publication metadata. Verify author order, title, venue, year, volume, issue, pages, and early-access status from the primary source or reliable metadata before finalizing the list.
+
+Use natural Chinese technical prose. Define every term and symbol before first use, explain each equation immediately after it appears, and keep the order `objects -> state/process -> rates or transitions -> constraints -> objective -> method`. Avoid unexplained abbreviations, literal translations, internal workflow language, repeated `不是……而是……` constructions, and slogans such as “全球新颖性” or “最小创新主张”.
+
 ## Idea quality requirements
 
 The main contribution must come from a meaningful operational tension, such as:
@@ -84,90 +105,73 @@ Explain:
 
 ## Required output structure
 
-Use the following structure, matching the existing idea document in this folder. Adapt subsection names only when the idea genuinely requires a different decomposition, while preserving the same level of detail.
+Use the following formal paper structure, matching the existing idea document in this folder. Adapt subsection names when the scenario requires a different decomposition, while preserving the same level of detail and logical order. Do not add a conclusion section before experimental results exist.
 
 # <论文 idea 的具体标题>
 
-## 1. 场景总述与核心创新
+## I. 引言
 
-Explain the real application, the operational change or conflict, what nearby work already solves, why it is insufficient, the central research problem, the smallest defensible innovation claim, the assumptions and their realistic interpretation, and why the problem could matter to a top journal.
+Follow the two causal chains defined above. Introduce the application, closest operating paradigm, its bounded limitation, the complete proposed operating process, the resulting decision problem, the algorithm motivation, three or four contributions, and the paper organization. Keep detailed paper-by-paper comparison in Section II.
 
-## 2. 与最近邻工作的关系
+## II. 相关工作
 
-Organize the nearest work into mechanism-specific subsections such as battery/trajectory/task scheduling, task or service migration, persistent replacement, or another structure supported by the evidence. Include at least five close papers. For each paper, state the local source path, what it already models, what overlaps with the idea, and what residual remains. Clearly separate source-grounded fact, cross-paper synthesis, and claims requiring external verification.
+Organize the nearest work into two or three mechanism-specific subsections that mirror the introduction's gap structure. Include enough recent and close papers to support each part of the argument. Explain what each work models and solves, then state the exact residual assumption or missing coupling. Do not repeat the proposed scenario in full after every subsection.
 
-## 3. 系统模型
+## III. 系统模型与问题建模
 
-### 3.1 网络对象、集合与时间模型
-### 3.2 任务产生、状态与处理流程
-### 3.3 通信模型
-### 3.4 计算状态与交接过程
-### 3.5 能耗模型
-### 3.6 队列、中断与可行余量
-### 3.7 合理假设及现实偏差
+Begin with one dense system-overview paragraph. Identify the inherited architectural backbone and the scenario-specific modules. Then introduce objects, sets, time, state, process, communication, computation, queue, energy, reliability, or other required models in the order in which the reader needs them.
 
 Define all symbols before use. Make every formula computable and dimensionally consistent. Add or rename a subsection only when the scenario requires it, and preserve the distinction between operational state, decision variables, and externally supplied inputs.
 
-## 4. 优化问题
+In the final subsection, formulate the optimization problem:
 
-### 4.1 目标函数
+- give one focused objective unless multiple objectives are essential to the scientific question;
+- explain the operational meaning and units of every term;
+- list only the true decision variables and give their type, range, time scale, and practical meaning;
+- number constraints as C1, C2, and so on, with a formula and physical explanation for each group;
+- state whether the problem is stochastic, online, robust, non-convex, mixed-integer, partially observable, or multi-timescale, and explain which couplings create that structure.
 
-Give an explicit objective and explain the operational meaning and units of every term.
+## IV. 求解方法
 
-### 4.2 决策变量
+Derive the method from the problem structure. A typical order is:
 
-Use a table with variable, type/range, time scale, and practical meaning.
+### A. 状态、动作与原问题处理
+### B. 场景针对性的算法模块
+### C. 训练或在线求解流程
+### D. 可行性、收敛性与复杂度
 
-### 4.3 约束条件
+For every module, identify its input, output, and the specific model coupling or constraint it handles. Distinguish analytical subproblems, learned decisions, feasibility projection or repair, and long-term constraint handling. State realistic guarantees and limitations; do not claim global optimality or guaranteed future feasibility without proof.
 
-Number constraints as C1, C2, and so on. Include all scenario-relevant task-flow, communication, computation, movement/safety, energy, delay/reliability, and variable-domain constraints.
+## V. 实验设计
 
-### 4.4 问题性质与主要难点
+Write planned experiments only; do not invent results. Include:
 
-State whether the problem is stochastic, online, robust, non-convex, mixed-integer, partially observable, or multi-timescale, and explain why.
+- reproducible scenarios, parameter sources, instance generation, seeds, and statistical reporting;
+- strong optimization, heuristic, and learning baselines that isolate the real contribution;
+- ablations corresponding one-to-one with the claimed algorithm modules;
+- objective metrics, constraint-violation metrics, runtime, scalability, and tail-risk metrics;
+- dynamic, uncertain, extreme, and out-of-distribution settings;
+- a simulation-to-reality or semi-physical validation path;
+- explicit falsification conditions that would weaken or reject the main claim.
 
-## 5. 方法总结
+## 附录 A：新颖性边界与模型风险
 
-### 5.1 原问题处理
-### 5.2 算法框架
-### 5.3 在线求解流程
-### 5.4 可行性、收敛性与复杂度
+Move non-paper research-management material here. Concisely record the closest overlapping directions, unresolved external-search risks, fragile assumptions, and reduced publishable version. If evidence paths, retrieval mode, or model and citation audits must be preserved for later authors, keep them in a separate appendix note rather than in the manuscript body. Do not put tool-call counts, local implementation chatter, or retrieval failures in the paper-facing text.
 
-Describe transformations, decomposition, relaxation, robustification, timescale separation, module inputs/outputs, feasibility mechanisms, and a numbered procedure from initialization to online execution.
+## 参考文献
 
-## 6. 实验与验证设计
-
-### 6.1 对比方法
-### 6.2 关键消融
-### 6.3 指标与压力场景
-### 6.4 仿真到实体验证
-
-Design falsifiable experiments. Include strong baselines, ablations that isolate each claimed mechanism, dynamic/uncertain/extreme scenarios, sensitivity analysis, and a realistic simulation-to-reality path. Do not fabricate results or percentage improvements.
-
-## 7. 新颖性边界、风险与备选收缩方案
-
-List the directions most likely to overlap, unresolved external-search risks, fragile assumptions, algorithmic failure modes, and a reduced but still publishable version if the full problem is too broad.
-
-## 8. 证据来源
-
-List only the wiki and raw-source paths actually read and used. Include enough path detail for another researcher to reproduce the evidence check.
-
-## 附录 A：检索与自我迭代记录
-
-### A.1 证据范围
-### A.2 方案收缩
-### A.3 完整性检查
-
-Record the evidence scope, candidate generation and rejection/revision logic, primary-source verification, subagent roles if used, and the checks passed or still unresolved. Keep this concise and useful for future refinement.
+Use the IEEE Transactions format and the DOI rule stated above. Every reference must be cited in the main text or appendix, and every numbered citation must resolve to exactly one reference entry.
 
 ## Final verification
 
 Before reporting completion:
 
-1. Confirm every required section exists and follows the template above.
+1. Confirm every required paper section exists and follows the template above.
 2. Remove `TODO`, `TBD`, empty tables, undefined symbols, and unsupported numerical claims.
 3. Check consistency among objective, variables, constraints, state recursions, and method steps.
-4. Verify that every literature claim has a real source path or an explicit external-verification label.
+4. Verify that every literature claim has a real source. Keep local evidence paths in the appendix rather than the main paper.
 5. Confirm that no experimental result, theorem, guarantee, or novelty claim has been fabricated.
 6. Run `git diff --check -- <output-file>` and any relevant repository validation tools.
-7. In the final response, report the output path, evidence scope, primary sources checked, subagent roles if used, and the main risk that still requires external verification.
+7. Check that the introduction contains both causal chains, related work supports the same gap without repeating it, and each algorithm module maps to one scenario-specific difficulty.
+8. Check that published references omit DOIs, while early-access or not-yet-final references retain them.
+9. In the final response, report the output path, evidence scope, primary sources checked, subagent roles if used, and the main risk that still requires external verification.
