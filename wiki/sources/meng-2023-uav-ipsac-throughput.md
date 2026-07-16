@@ -68,8 +68,6 @@ Meng et al. [x] studied throughput maximization for UAV-enabled integrated perio
 
 ## Problem and system model
 
-## Problem and system model
-
 - One constant-altitude UAV with a uniform planar array serves single-antenna ground users through TDMA and senses known ground targets over a slotted mission.
 - Each equal-length ISAC frame must sense every target exactly once, and at most one target and one user are selected per slot. The same information-bearing signal supports communication and sensing.
 - The model assumes known user/target positions, LoS free-space channels, compensated Doppler, fixed endpoints, a maximum UAV displacement, per-slot transmit power, per-user frame-rate requirements, and target beampattern-gain thresholds.

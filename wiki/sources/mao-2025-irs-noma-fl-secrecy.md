@@ -66,8 +66,6 @@ Mao et al. [x] studied physical-layer protection for NOMA federated-learning mod
 
 ## Problem framing
 
-## Problem framing
-
 6G envisions massive IoT connectivity with ubiquitous, privacy-preserving intelligence, for which FL keeps data local. NOMA lets many devices share radio blocks to involve enough participants for a reliable model, but the stochastic NOMA channels and frequent BS↔device communication degrade transmission rate and FL performance, and the complex propagation enables eavesdropping. Traditional jamming-based security adds energy cost for resource-constrained IoT and degrades FL, and over-the-air covertness schemes are inflexible. An IRS can instead reconfigure the propagation environment passively (low cost), strengthening the device→BS channel while suppressing the device→Eve channel — improving both rate and security.
 
 ## System model

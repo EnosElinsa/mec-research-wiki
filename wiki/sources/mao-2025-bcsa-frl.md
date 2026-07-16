@@ -77,8 +77,6 @@ Mao et al. [x] studied task offloading in zero-trust LEO satellite networks wher
 
 ## Problem framing
 
-## Problem framing
-
 Service providers running 6G workloads on LEO constellations may rent satellites from multiple operators, breaking the implicit trust assumption used by classical [[federated-reinforcement-learning|FRL]] aggregation. Three concrete attack vectors:
 
 - **Malicious voting** — bad satellites vote $V_F$ on every other satellite's model update, blocking convergence at the blockchain consensus layer.

@@ -370,6 +370,15 @@ def audit_text(text: str, slug: str = "<text>") -> list[str]:
         )
 
     sections = _sections(text)
+    section_counts: dict[str, int] = {}
+    for section_name, *_ in sections:
+        section_counts[section_name] = section_counts.get(section_name, 0) + 1
+    for section_name, count in sorted(section_counts.items()):
+        if count > 1:
+            errors.append(
+                f"{slug}: duplicate H2 section '{section_name}' (found {count})"
+            )
+
     citation = _one_section(sections, "Citation")
     tldr = _one_section(sections, "TL;DR")
     related = _one_section(sections, "Related Work Paragraph")

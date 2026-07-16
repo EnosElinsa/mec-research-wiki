@@ -265,6 +265,11 @@ class SourceSchemaAuditTests(unittest.TestCase):
         errors = source_schema_audit.audit_text(malformed)
         self.assertTrue(any("TL;DR" in error for error in errors))
 
+    def test_rejects_duplicate_exact_h2_headings(self):
+        duplicated = page() + "\n## Problem framing\n\nDuplicate section.\n"
+        errors = source_schema_audit.audit_text(duplicated)
+        self.assertTrue(any("duplicate H2" in error for error in errors))
+
     def test_source_paths_accepts_repeated_files_and_directories(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = pathlib.Path(tmp)
