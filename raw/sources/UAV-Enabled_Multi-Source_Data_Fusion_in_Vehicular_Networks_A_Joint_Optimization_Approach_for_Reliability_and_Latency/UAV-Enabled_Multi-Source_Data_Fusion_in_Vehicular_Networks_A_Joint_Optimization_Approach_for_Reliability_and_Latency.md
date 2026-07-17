@@ -34,8 +34,8 @@ Dynamic constrained multi-objective evolutionary algorithms (DCMOEAs) are popula
 
 Motivated by this consideration, this paper proposes a DCMOEA with a cascaded dependency generation strategy as the dynamic response mechanism. When the environment changes (i.e., when a new cycle begins), the proposed algorithm applies this strategy to reconstruct decision variables according to their dependency order. The main contributions of this paper are summarized as follows:
 
-• This paper proposes a UAV-enabled cooperative perception system where a UAV serves as an aerial fusion platform. Compared with existing V2V, V2I, and hybrid cooperative systems, the proposed system provides more flexible cooperative perception with superior communication conditions.   
-This paper formulates a DCMOP that jointly optimizes decisions regarding trajectory planning, request response, data collection, compression degree of the fusion results, and resource allocation to simultaneously maximize the average reliability of the fusion results and minimize the average waiting time of the VUs under UAV kinematics, task assignment, resource allocation, and latency constraints. This joint optimization enables reliable and efficient cooperative perception for VUs in vehicular networks.   
+• This paper proposes a UAV-enabled cooperative perception system where a UAV serves as an aerial fusion platform. Compared with existing V2V, V2I, and hybrid cooperative systems, the proposed system provides more flexible cooperative perception with superior communication conditions.
+This paper formulates a DCMOP that jointly optimizes decisions regarding trajectory planning, request response, data collection, compression degree of the fusion results, and resource allocation to simultaneously maximize the average reliability of the fusion results and minimize the average waiting time of the VUs under UAV kinematics, task assignment, resource allocation, and latency constraints. This joint optimization enables reliable and efficient cooperative perception for VUs in vehicular networks.
 • To solve the formulated DCMOP, this paper designs a DCMOEA with a cascaded dependency generation strategy. Experimental results show that the proposed algorithm significantly outperforms four baseline methods in obtaining superior trade-off solutions across dynamic scenarios, validating the effectiveness of the proposed algorithm for the UAV-enabled cooperative perception in vehicular networks.
 
 The remainder of this paper is organized as follows. Section II provides a comprehensive overview of existing research. Section III presents the system model for the UAV-enabled multi-source fusion-based vehicular network and formulates the corresponding DCMOP. Section IV introduces the proposed algorithm to solve the DCMOP. Section V presents the simulations and performance evaluations. Section VI concludes this paper.
@@ -83,6 +83,7 @@ graph TD
     style G fill:#ffc,stroke:#333
     style H fill:#ffc,stroke:#333
 ```
+
 </details>
 
 Fig. 1. Illustration of the considered UAV-enabled multi-source fusion-based vehicular network.
@@ -289,10 +290,10 @@ ${ \mathrm { s u b j e c t ~ t o : ~ } } C _ { 1 } \sim C _ { 9 } ,$ (28)
 
 where the constraints are categorized as follows:
 
-• UAV kinematic constraints $( C _ { 1 } \ \sim \ C _ { 4 } ) \colon C _ { 1 }$ restricts the maximum flight velocity; $C _ { 2 }$ and $C _ { 3 }$ limit the upper bound $h ^ { \mathrm { m a x } }$ and lower bound $h ^ { \mathrm { m i n } }$ of the flight altitude, respectively; $C _ { 4 }$ restricts the maximum turning angle.   
+• UAV kinematic constraints $( C _ { 1 } \ \sim \ C _ { 4 } ) \colon C _ { 1 }$ restricts the maximum flight velocity; $C _ { 2 }$ and $C _ { 3 }$ limit the upper bound $h ^ { \mathrm { m a x } }$ and lower bound $h ^ { \mathrm { m i n } }$ of the flight altitude, respectively; $C _ { 4 }$ restricts the maximum turning angle.
 • Task assignment constraints $( C _ { 5 } \sim C _ { 6 } ) \colon C _ { 5 }$ ensures that the UAV responds only to the VUs that have issued requests; $C _ { 6 }$ ensures that the UAV collects data from all VUs whose requests it responds to.
 
-• Resource allocation constraints $( C _ { 7 } \sim C _ { 8 } ) \colon C _ { 7 }$ ensures that the bandwidth is allocated to a VU only when the VU uploads the local observation data to the UAV; $C _ { 8 }$ restricts the total available bandwidth.   
+• Resource allocation constraints $( C _ { 7 } \sim C _ { 8 } ) \colon C _ { 7 }$ ensures that the bandwidth is allocated to a VU only when the VU uploads the local observation data to the UAV; $C _ { 8 }$ restricts the total available bandwidth.
 • Latency constraint $( C _ { 9 } ) \colon C _ { 9 }$ ensures each accepted request is completed within a single time slot.
 
 # IV. PROPOSED ALGORITHM
@@ -313,7 +314,7 @@ We propose a DCMOEA that integrates the cascaded dependency generation strategy 
 
 The proposed algorithm integrates a dynamic response mechanism and a static evolutionary process. An unresponded task is defined as one for which a VU has issued a request but has not yet received a response from the UAV. The task status vector $\pmb { \tau } ( n ) = ( \tau _ { 1 } ( n ) , \tau _ { 2 } ( n ) , . . . , \tau _ { M } ( n ) )$ is defined to track unresponded tasks, where each binary component $\tau _ { m } ( n ) \ \in$ $\{ 0 , 1 \}$ indicates the status of the m-th VU: $\tau _ { m } ( n ) = 1$ denotes that the m-th VU has an unresponded task, while $\tau _ { m } ( n ) = 0$ indicates otherwise. At mission initialization (Lines 1 to 6), an initial population of $\mathcal { N }$ individuals is randomly generated, while the task status vector is initialized as $\boldsymbol { \tau } ( 0 ) \ = \ \mathbf { 0 } _ { M }$ , indicating no unresponded tasks. At each time slot $n ,$ , the task request vector $\lambda ( n ) = ( \lambda _ { 1 } ( n ) , \lambda _ { 2 } ( n ) , . . . , \lambda _ { M } ( n ) )$ ) is generated according to $\tau ( n - 1 )$ :
 
-Algorithm 1 Framework of the Proposed DCMOEA   
+Algorithm 1 Framework of the Proposed DCMOEA
 Input: Population size N,
     maximum generations per time slot $g_{max}$ ,
     number of time slots N,
@@ -361,7 +362,7 @@ where Bernoulli $\left( p _ { \lambda } \right)$ denotes a Bernoulli random vari
 
 The UAV performs static evolutionary optimization for gmax generations (Lines 13 to 18). In each generation, the binary tournament selection [34] is performed based on the fitness of individuals in $\mathbb { P } _ { n }$ to construct the mating pool M.
 
-Algorithm 2 Proposed Dynamic Response Mechanism   
+Algorithm 2 Proposed Dynamic Response Mechanism
 Input: Population $P_{n-1}$ Output: Initial population $P_{n}$ at time slot n
 
 1 $P_{n} \leftarrow P_{n-1}$ ;
@@ -450,9 +451,9 @@ We conduct simulation experiments on the proposed UAV-enabled multi-source fusio
 
 The performance of the proposed algorithm is compared with four DCMOEAs, including two classical baselines (DC-MOEA [35], DC-NSGA-II [36]) and two recent methods (mEDCMOA [37], TDCEA [38]). Brief descriptions of these baseline algorithms are as follows:
 
-• DC-MOEA employs a self-adaptive penalty function and a feasibility-driven repair strategy to handle time-varying constraints and track moving Pareto fronts.   
-• DC-NSGA-II detects environmental changes through periodic re-evaluation and introduces random solutions to maintain diversity for tracking Pareto fronts.   
-mEDCMOA classifies solutions into several tribes based on feasibility and estimates variable movements to rapidly track Pareto fronts across changing environments.   
+• DC-MOEA employs a self-adaptive penalty function and a feasibility-driven repair strategy to handle time-varying constraints and track moving Pareto fronts.
+• DC-NSGA-II detects environmental changes through periodic re-evaluation and introduces random solutions to maintain diversity for tracking Pareto fronts.
+mEDCMOA classifies solutions into several tribes based on feasibility and estimates variable movements to rapidly track Pareto fronts across changing environments.
 • TDCEA utilizes a two-stage diversity compensation strategy through random injection and adaptive perturbation to track Pareto fronts in dynamic environments.
 
 For fair comparison, all algorithms are configured with a population size of $\mathcal { N } = 1 0 0$ and execute for $g _ { \mathrm { m a x } } ~ = ~ 3 0$ generations per time slot. The baseline algorithms adopt their original parameter settings as presented in the literature. The algorithm performance is evaluated using two metrics: success rate (SR) and hypervolume (HV). For each metric, mean and standard deviation are computed over 30 independent runs. The SR metric quantifies the proportion of time slots in which an algorithm successfully obtains feasible solutions, calculated as follows:
@@ -474,11 +475,12 @@ The first row of Fig. 2 presents the data collection schemes obtained by the pro
 <details>
 <summary>bar</summary>
 
-| Strategy | Average number of the collected data sources | Average quality of the collected data | Average reliability of the fusion result |
-| -------- | -------------------------------------------- | ------------------------------------- | ---------------------------------------- |
-| Reliability-oriented strategy | 3,484 | 0.564 | 0.826 |
-| Random-selection strategy | 3,357 | 0.448 | 0.576 |
-| Delay-oriented strategy | 3,275 | 0.369 | 0.417 |
+| Strategy                      | Average number of the collected data sources | Average quality of the collected data | Average reliability of the fusion result |
+| ----------------------------- | -------------------------------------------- | ------------------------------------- | ---------------------------------------- |
+| Reliability-oriented strategy | 3,484                                        | 0.564                                 | 0.826                                    |
+| Random-selection strategy     | 3,357                                        | 0.448                                 | 0.576                                    |
+| Delay-oriented strategy       | 3,275                                        | 0.369                                 | 0.417                                    |
+
 </details>
 
 ![](images/c74fd476d696e67ea73435df39c1a69b3bebd76038b2d52a76974cb27f468da0.jpg)
@@ -486,11 +488,12 @@ The first row of Fig. 2 presents the data collection schemes obtained by the pro
 <details>
 <summary>bar</summary>
 
-| Strategy | Average number of the collected data sources | Average quality of the collected data | Average reliability of the fusion result |
-| --- | --- | --- | --- |
-| Reliability-oriented strategy | 4,860 | 0,525 | 0,620 |
-| Random-selection strategy | 4,696 | 0,443 | 0,450 |
-| Delay-oriented strategy | 4,594 | 0,398 | 0,361 |
+| Strategy                      | Average number of the collected data sources | Average quality of the collected data | Average reliability of the fusion result |
+| ----------------------------- | -------------------------------------------- | ------------------------------------- | ---------------------------------------- |
+| Reliability-oriented strategy | 4,860                                        | 0,525                                 | 0,620                                    |
+| Random-selection strategy     | 4,696                                        | 0,443                                 | 0,450                                    |
+| Delay-oriented strategy       | 4,594                                        | 0,398                                 | 0,361                                    |
+
 </details>
 
 ![](images/be839802da920de0c84ab9a45df580284a6852a096ac414e5f8669e6e2534015.jpg)
@@ -498,11 +501,12 @@ The first row of Fig. 2 presents the data collection schemes obtained by the pro
 <details>
 <summary>bar</summary>
 
-| Strategy | Average number of the collected data sources | Average quality of the collected data | Average reliability of the fusion result |
-| --- | --- | --- | --- |
-| Reliability-oriented strategy | 5,562 | 0,467 | 0,533 |
-| Random-selection strategy | 5,510 | 0,407 | 0,413 |
-| Delay-oriented strategy | 5,314 | 0,368 | 0,382 |
+| Strategy                      | Average number of the collected data sources | Average quality of the collected data | Average reliability of the fusion result |
+| ----------------------------- | -------------------------------------------- | ------------------------------------- | ---------------------------------------- |
+| Reliability-oriented strategy | 5,562                                        | 0,467                                 | 0,533                                    |
+| Random-selection strategy     | 5,510                                        | 0,407                                 | 0,413                                    |
+| Delay-oriented strategy       | 5,314                                        | 0,368                                 | 0,382                                    |
+
 </details>
 
 ![](images/a4ccd2680e1f0a7171bd535aafe8bcc1d1108d5a198a8a11d2952d7d24edd094.jpg)
@@ -510,11 +514,12 @@ The first row of Fig. 2 presents the data collection schemes obtained by the pro
 <details>
 <summary>bar</summary>
 
-| Strategy               | Average allocated bandwidth resource (MHz) | Average waiting time of the VUs (s) |
-| ---------------------- | ------------------------------------------ | ----------------------------------- |
+| Strategy                      | Average allocated bandwidth resource (MHz) | Average waiting time of the VUs (s) |
+| ----------------------------- | ------------------------------------------ | ----------------------------------- |
 | Reliability-oriented strategy | 12.15                                      | 1.370                               |
-| Random-selection strategy | 12.83                                      | 1.301                               |
-| Delay-oriented strategy   | 13.19                                      | 1.284                               |
+| Random-selection strategy     | 12.83                                      | 1.301                               |
+| Delay-oriented strategy       | 13.19                                      | 1.284                               |
+
 </details>
 
 ![](images/3af19d9f25817e07288e90adf90b6238771f2ce2501ff7d8ea7821ef1e038852.jpg)
@@ -522,11 +527,12 @@ The first row of Fig. 2 presents the data collection schemes obtained by the pro
 <details>
 <summary>bar</summary>
 
-| Strategy                  | Average allocated bandwidth resource (MHz) | Average waiting time of the VUs (s) |
-| ------------------------- | ------------------------------------------ | ----------------------------------- |
+| Strategy                      | Average allocated bandwidth resource (MHz) | Average waiting time of the VUs (s) |
+| ----------------------------- | ------------------------------------------ | ----------------------------------- |
 | Reliability-oriented strategy | 12.60                                      | 1.563                               |
-| Random-selection strategy   | 13.10                                      | 1.502                               |
-| Delay-oriented strategy     | 13.54                                      | 1.466                               |
+| Random-selection strategy     | 13.10                                      | 1.502                               |
+| Delay-oriented strategy       | 13.54                                      | 1.466                               |
+
 </details>
 
 ![](images/c104ea013e8c4e064396d942c0cf3386adf91fbba95fe1ed36c48702882ed445.jpg)
@@ -535,22 +541,25 @@ The first row of Fig. 2 presents the data collection schemes obtained by the pro
 <summary>bar</summary>
 
 DCMOP3
-| Strategy | Average allocated bandwidth resource (MHz) | Average waiting time of the VUs (s) |
-|---|---|---|
-| Reliability-oriented strategy | 13.07 | 1.815 |
-| Random-selection strategy | 13.36 | 1.765 |
-| Delay-oriented strategy | 13.59 | 1.725 |
+
+| Strategy                      | Average allocated bandwidth resource (MHz) | Average waiting time of the VUs (s) |
+| ----------------------------- | ------------------------------------------ | ----------------------------------- |
+| Reliability-oriented strategy | 13.07                                      | 1.815                               |
+| Random-selection strategy     | 13.36                                      | 1.765                               |
+| Delay-oriented strategy       | 13.59                                      | 1.725                               |
+
 </details>
 
 Fig. 2. Data collection and resource allocation schemes performed by the UAV under the three strategies in the three DCMOPs. The first row shows the data collection schemes for DCMOP1, DCMOP2, and DCMOP3, while the second row shows the corresponding resource allocation schemes.
 
-TABLE III EXECUTION TIME COMPARISON OF THE FIVE ALGORITHMS IN DCMOP2 
+TABLE III EXECUTION TIME COMPARISON OF THE FIVE ALGORITHMS IN DCMOP2
 
 <table><tr><td>Algorithm</td><td>Average execution time per generation (s)</td></tr><tr><td>DC-MOEA</td><td>0.0091 (0.0050)</td></tr><tr><td>DC-NSGA-II</td><td>0.0090 (0.0050)</td></tr><tr><td>mEDCMOA</td><td>0.0456 (0.0215)</td></tr><tr><td>TDCEA</td><td>0.0283 (0.0075)</td></tr><tr><td>Our Algorithm</td><td>0.0101 (0.0083)</td></tr></table>
 
 # C. Execution Time Analysis of the Baseline Algorithms
 
-To ensure practical applicability in real-time scenarios, we impose a computational limit requiring algorithms to complete 30 generations of evolution within the decision-making time window of $T ^ { \mathrm { d e c } } = 1$ second per time slot. The experiments were conducted on a Windows 11 system equipped with a 13th Gen IntelR CoreTM i7-13700K processor at 3.40 GHz and 64.0 GB RAM. Table III presents the mean execution time per generation and the standard deviations (shown in parentheses) for the five competing algorithms evaluated on DCMOP2.
+To ensure practical applicability in real-time scenarios, we impose a computational limit requiring algorithms to complete 30 generations of evolution within the decision-making time window of $T ^ { \mathrm { d e c } } = 1$ second per time slot. The experiments were conducted on a Windows 11 system equipped with a 13th Gen Intel
+R CoreTM i7-13700K processor at 3.40 GHz and 64.0 GB RAM. Table III presents the mean execution time per generation and the standard deviations (shown in parentheses) for the five competing algorithms evaluated on DCMOP2.
 
 As shown in Table III, the proposed algorithm, TDCEA, DC-MOEA, and DC-NSGA-II all satisfy the real-time constraint with execution times under 1/30 second per generation (i.e., approximately 0.033 seconds). However, mEDCMOA fails to meet this real-time requirement. These results validate the computational efficiency and the practical viability of the proposed algorithm for real-time cooperative perception.
 
@@ -560,15 +569,17 @@ As shown in Table III, the proposed algorithm, TDCEA, DC-MOEA, and DC-NSGA-II al
 <summary>line</summary>
 
 DCMOP1
+
 | Time slot | DCMOEA | DNSGA-III | MCM/3EA | TDCER | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0.00 | 0.00 | 0.00 | 0.00 | 0.00 |
-| 5 | 0.25 | 0.35 | 0.40 | 0.45 | 0.65 |
-| 10 | 0.28 | 0.38 | 0.42 | 0.47 | 0.62 |
-| 15 | 0.29 | 0.39 | 0.43 | 0.48 | 0.60 |
-| 20 | 0.30 | 0.40 | 0.44 | 0.49 | 0.58 |
-| 25 | 0.31 | 0.41 | 0.45 | 0.50 | 0.57 |
-| 30 | 0.32 | 0.42 | 0.46 | 0.51 | 0.56 |
+| --------- | ------ | --------- | ------- | ----- | ------------- |
+| 0         | 0.00   | 0.00      | 0.00    | 0.00  | 0.00          |
+| 5         | 0.25   | 0.35      | 0.40    | 0.45  | 0.65          |
+| 10        | 0.28   | 0.38      | 0.42    | 0.47  | 0.62          |
+| 15        | 0.29   | 0.39      | 0.43    | 0.48  | 0.60          |
+| 20        | 0.30   | 0.40      | 0.44    | 0.49  | 0.58          |
+| 25        | 0.31   | 0.41      | 0.45    | 0.50  | 0.57          |
+| 30        | 0.32   | 0.42      | 0.46    | 0.51  | 0.56          |
+
 </details>
 
 ![](images/509769405ca87f6afc0047eb373ce1f9b09670776fb13a0085e99e4af35aa26d.jpg)
@@ -577,15 +588,17 @@ DCMOP1
 <summary>line</summary>
 
 DCMOP2
+
 | Time slot | DDCMCEA | DNSGA-I | MDCMCEA | TDCEA | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
-| 5 | 0.5 | 0.45 | 0.5 | 0.35 | 0.5 |
-| 10 | 0.45 | 0.35 | 0.45 | 0.35 | 0.45 |
-| 15 | 0.45 | 0.35 | 0.45 | 0.35 | 0.45 |
-| 20 | 0.45 | 0.35 | 0.45 | 0.35 | 0.45 |
-| 25 | 0.45 | 0.35 | 0.45 | 0.35 | 0.45 |
-| 30 | 0.45 | 0.35 | 0.45 | 0.35 | 0.45 |
+| --------- | ------- | ------- | ------- | ----- | ------------- |
+| 0         | 0.0     | 0.0     | 0.0     | 0.0   | 0.0           |
+| 5         | 0.5     | 0.45    | 0.5     | 0.35  | 0.5           |
+| 10        | 0.45    | 0.35    | 0.45    | 0.35  | 0.45          |
+| 15        | 0.45    | 0.35    | 0.45    | 0.35  | 0.45          |
+| 20        | 0.45    | 0.35    | 0.45    | 0.35  | 0.45          |
+| 25        | 0.45    | 0.35    | 0.45    | 0.35  | 0.45          |
+| 30        | 0.45    | 0.35    | 0.45    | 0.35  | 0.45          |
+
 </details>
 
 ![](images/20b2d420404f92123b4b74229fd98d7dff8a7e133e40bc6db6fccc13751c3834.jpg)
@@ -594,15 +607,17 @@ DCMOP2
 <summary>line</summary>
 
 DCMOP3
+
 | Time slot | DCCMOEA | DNSGA-III | MDCMOEA | TDCEA | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
-| 5 | 0.25 | 0.35 | 0.25 | 0.25 | 0.45 |
-| 10 | 0.25 | 0.35 | 0.25 | 0.25 | 0.45 |
-| 15 | 0.25 | 0.35 | 0.25 | 0.25 | 0.45 |
-| 20 | 0.25 | 0.35 | 0.25 | 0.25 | 0.45 |
-| 25 | 0.25 | 0.35 | 0.25 | 0.25 | 0.45 |
-| 30 | 0.25 | 0.35 | 0.25 | 0.25 | 0.45 |
+| --------- | ------- | --------- | ------- | ----- | ------------- |
+| 0         | 0.0     | 0.0       | 0.0     | 0.0   | 0.0           |
+| 5         | 0.25    | 0.35      | 0.25    | 0.25  | 0.45          |
+| 10        | 0.25    | 0.35      | 0.25    | 0.25  | 0.45          |
+| 15        | 0.25    | 0.35      | 0.25    | 0.25  | 0.45          |
+| 20        | 0.25    | 0.35      | 0.25    | 0.25  | 0.45          |
+| 25        | 0.25    | 0.35      | 0.25    | 0.25  | 0.45          |
+| 30        | 0.25    | 0.35      | 0.25    | 0.25  | 0.45          |
+
 </details>
 
 ![](images/acec8c1c8f2b3510751a49b79f3f4ccfb36b77a55a1db0a35e199523b5c2fdac.jpg)
@@ -619,6 +634,7 @@ DCMOP3
 | 20        | 1.7    |
 | 25        | 1.7    |
 | 30        | 1.7    |
+
 </details>
 
 ![](images/bf49abcad3b830acc1966591b53a17edcf1c389215ab403bbffcbf54c70f909c.jpg)
@@ -627,12 +643,13 @@ DCMOP3
 <summary>line</summary>
 
 | Time slot | DCMOEA | DNSGA-II | MOCNCEA | TIDCA | Our Algorithm |
-| --------- | ------ | -------- | ------- | ----- | ------------ |
-| 0         | 0.0    | 0.0      | 0.0     | 0.0   | 0.0          |
-| 5         | 1.8    | 1.8      | 1.9     | 1.8   | 1.7          |
-| 15        | 1.8    | 1.8      | 1.9     | 1.8   | 1.6          |
-| 25        | 1.8    | 1.8      | 1.9     | 1.8   | 1.5          |
-| 30        | 1.8    | 1.8      | 1.9     | 1.8   | 1.4          |
+| --------- | ------ | -------- | ------- | ----- | ------------- |
+| 0         | 0.0    | 0.0      | 0.0     | 0.0   | 0.0           |
+| 5         | 1.8    | 1.8      | 1.9     | 1.8   | 1.7           |
+| 15        | 1.8    | 1.8      | 1.9     | 1.8   | 1.6           |
+| 25        | 1.8    | 1.8      | 1.9     | 1.8   | 1.5           |
+| 30        | 1.8    | 1.8      | 1.9     | 1.8   | 1.4           |
+
 </details>
 
 ![](images/3a26e61dda77cf59ae7c037ef558b11e524814c81bdd151fa02ef15826f10f9f.jpg)
@@ -641,15 +658,17 @@ DCMOP3
 <summary>line</summary>
 
 DCMOP3
+
 | Time slot | DDCMOEA | DNSGA-I | MDCMCEA | TDCEA | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0.0 | 0.0 | 0.0 | 0.0 | 0.0 |
-| 5 | 1.8 | 1.85 | 1.85 | 1.85 | 1.75 |
-| 10 | 1.85 | 1.85 | 1.85 | 1.85 | 1.8 |
-| 15 | 1.85 | 1.85 | 1.85 | 1.85 | 1.8 |
-| 20 | 1.85 | 1.85 | 1.85 | 1.85 | 1.8 |
-| 25 | 1.85 | 1.85 | 1.85 | 1.85 | 1.8 |
-| 30 | 1.85 | 1.85 | 1.85 | 1.85 | 1.8 |
+| --------- | ------- | ------- | ------- | ----- | ------------- |
+| 0         | 0.0     | 0.0     | 0.0     | 0.0   | 0.0           |
+| 5         | 1.8     | 1.85    | 1.85    | 1.85  | 1.75          |
+| 10        | 1.85    | 1.85    | 1.85    | 1.85  | 1.8           |
+| 15        | 1.85    | 1.85    | 1.85    | 1.85  | 1.8           |
+| 20        | 1.85    | 1.85    | 1.85    | 1.85  | 1.8           |
+| 25        | 1.85    | 1.85    | 1.85    | 1.85  | 1.8           |
+| 30        | 1.85    | 1.85    | 1.85    | 1.85  | 1.8           |
+
 </details>
 
 Fig. 3. Convergence graphs of the five competing algorithms on the three DCMOPs at the median run. The first row shows the average reliability of the fusion results, while the second row shows the corresponding average waiting time.
@@ -664,15 +683,17 @@ To investigate the capability of the five competing algorithms in balancing the 
 <summary>line</summary>
 
 DCMOP1
+
 | Time slot | DDCMOE | DNSG-II | MDCMOE | TOCEA | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0 | 0 | 0 | 0 | 0 |
-| 5 | 8 | 6 | 12 | 7 | 14 |
-| 10 | 16 | 14 | 24 | 18 | 28 |
-| 15 | 24 | 22 | 36 | 24 | 38 |
-| 20 | 32 | 30 | 48 | 32 | 50 |
-| 25 | 40 | 38 | 60 | 40 | 62 |
-| 30 | 48 | 46 | 72 | 48 | 76 |
+| --------- | ------ | ------- | ------ | ----- | ------------- |
+| 0         | 0      | 0       | 0      | 0     | 0             |
+| 5         | 8      | 6       | 12     | 7     | 14            |
+| 10        | 16     | 14      | 24     | 18    | 28            |
+| 15        | 24     | 22      | 36     | 24    | 38            |
+| 20        | 32     | 30      | 48     | 32    | 50            |
+| 25        | 40     | 38      | 60     | 40    | 62            |
+| 30        | 48     | 46      | 72     | 48    | 76            |
+
 </details>
 
 ![](images/ffc645132862909651b73bd069c682c8445e3983fa312c2512ea042c69670efc.jpg)
@@ -681,15 +702,17 @@ DCMOP1
 <summary>line</summary>
 
 DCMOP2
+
 | Time slot | DDCMCEAI | DMSGAI | MDCMCEAI | TDCCE | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0 | 0 | 0 | 0 | 0 |
-| 5 | 10 | 15 | 15 | -5 | 15 |
-| 10 | 20 | 25 | 25 | 10 | 30 |
-| 15 | 25 | 30 | 35 | 15 | 45 |
-| 20 | 30 | 35 | 45 | 20 | 60 |
-| 25 | 35 | 40 | 50 | 25 | 75 |
-| 30 | 40 | 45 | 55 | 30 | 90 |
+| --------- | -------- | ------ | -------- | ----- | ------------- |
+| 0         | 0        | 0      | 0        | 0     | 0             |
+| 5         | 10       | 15     | 15       | -5    | 15            |
+| 10        | 20       | 25     | 25       | 10    | 30            |
+| 15        | 25       | 30     | 35       | 15    | 45            |
+| 20        | 30       | 35     | 45       | 20    | 60            |
+| 25        | 35       | 40     | 50       | 25    | 75            |
+| 30        | 40       | 45     | 55       | 30    | 90            |
+
 </details>
 
 ![](images/59b6a2b4cf6a3fd23df937333bcf694a75238fa1bba67d8901fffa1c717bc682.jpg)
@@ -698,15 +721,17 @@ DCMOP2
 <summary>line</summary>
 
 DCMOP3
+
 | Time slot | DCCMOEA | DNSGA-1 | MDCMO5A | TOX2CA | Our Algorithm |
-|---|---|---|---|---|---|
-| 0 | 0 | 0 | 0 | 0 | 0 |
-| 5 | 10 | 5 | 0 | 5 | 15 |
-| 10 | 20 | 10 | 0 | 10 | 30 |
-| 15 | 30 | 15 | 0 | 15 | 45 |
-| 20 | 40 | 20 | 0 | 20 | 60 |
-| 25 | 50 | 25 | 5 | 25 | 75 |
-| 30 | 55 | 30 | 10 | 30 | 90 |
+| --------- | ------- | ------- | ------- | ------ | ------------- |
+| 0         | 0       | 0       | 0       | 0      | 0             |
+| 5         | 10      | 5       | 0       | 5      | 15            |
+| 10        | 20      | 10      | 0       | 10     | 30            |
+| 15        | 30      | 15      | 0       | 15     | 45            |
+| 20        | 40      | 20      | 0       | 20     | 60            |
+| 25        | 50      | 25      | 5       | 25     | 75            |
+| 30        | 55      | 30      | 10      | 30     | 90            |
+
 </details>
 
 Fig. 4. Convergence graphs of the five competing algorithms on the three DCMOPs at the median run in terms of the number of completed tasks.
@@ -719,7 +744,7 @@ This subsection evaluates the task completion performance of the five competing 
 
 In DCMOP1, the proposed algorithm consistently outperforms the baseline algorithms. While task completion performance is initially similar across all algorithms, the advantage of the proposed algorithm becomes increasingly pronounced over time. This superiority is further amplified in DCMOP2 and DCMOP3, where the increased number of the NCOs and VUs introduces more stringent challenges in request response, leading to a more rapid and substantial performance divergence. This performance enhancement stems from the proposed cascaded dependency generation strategy,
 
-TABLE IV COMPARISON OF THE MOBILE UAV AND STATIC RSU SCENARIOS 
+TABLE IV COMPARISON OF THE MOBILE UAV AND STATIC RSU SCENARIOS
 
 <table><tr><td></td><td>LoS probability</td><td>Transmission rate</td><td>Collected data size</td></tr><tr><td>Mobile UAV</td><td>0.44 (0.11)</td><td>2.63 (0.73)</td><td>0.72 (0.24)</td></tr><tr><td>Static RSU</td><td>0.30 (0.05)</td><td>2.36 (0.58)</td><td>0.67 (0.23)</td></tr></table>
 
@@ -749,44 +774,44 @@ In this paper, we have proposed the UAV-enabled cooperative perception system fo
 
 # REFERENCES
 
-[1] K. Qu, W. Zhuang, Q. Ye, W. Wu, and X. Shen, “Model-assisted learning for adaptive cooperative perception of connected autonomous vehicles,” IEEE Trans. Wireless Commun., vol. 23, no. 8, pp. 8820–8835, Aug. 2024.   
-[2] P. Ghorai, A. Eskandarian, Y.-K. Kim, and G. Mehr, “State estimation and motion prediction of vehicles and vulnerable road users for cooperative autonomous driving: A survey,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 10, pp. 16983–17002, Oct. 2022.   
-[3] Y. Fu, C. Li, F. R. Yu, T. H. Luan, and Y. Zhang, “A survey of driving safety with sensing, vehicular communications, and artificial intelligence-based collision avoidance,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 7, pp. 6142–6163, Jul. 2022.   
-[4] X. Tang et al., “High-definition maps construction based on visual sensor: A comprehensive survey,” IEEE Trans. Intell. Vehicles, vol. 9, no. 10, pp. 5973–5994, Oct. 2024.   
-[5] B. Gao, J. Liu, H. Zou, J. Chen, L. He, and K. Li, “Vehicle-road-cloud collaborative perception framework and key technologies: A review,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 12, pp. 19295–19318, Dec. 2024.   
-[6] K. Cai, T. Qu, F. Liu, H. Chen, and L. Xie, “Cooperative perception with localization uncertainty: A cubature split covariance intersection framework,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 11, pp. 18006–18024, Nov. 2024.   
-[7] H. Ngo, H. Fang, and H. Wang, “Cooperative perception with V2V communication for autonomous vehicles,” IEEE Trans. Veh. Technol., vol. 72, no. 9, pp. 11122–11131, Sep. 2023.   
-[8] H. Yin et al., “V2VFormer++: Multi-modal vehicle-to-vehicle cooperative perception via global-local transformer,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 2, pp. 2153–2166, Feb. 2024.   
-[9] Y. Yu, X. Tang, J. Wu, B. Kim, T. Song, and Z. Han, “Multileader–follower game for MEC-assisted fusion-based vehicle on-road analysis,” IEEE Trans. Veh. Technol., vol. 68, no. 11, pp. 11200–11212, Nov. 2019.   
-[10] Q. Zhang, Z. Chen, B. Xia, X. Jiang, and C. Xiong, “Design and optimization of edge computing for data fusion in V2I cooperative systems,” in Proc. IEEE/CIC Int. Conf. Commun. China (ICCC), China, Aug. 2020, pp. 466–471.   
-[11] K. Cai, T. Qu, B. Gao, and H. Chen, “Consensus-based distributed cooperative perception for connected and automated vehicles,” IEEE Trans. Intell. Transp. Syst., vol. 24, no. 8, pp. 8188–8208, Aug. 2023.   
-[12] G. Luo et al., “EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness,” IEEE J. Sel. Areas Commun., vol. 42, no. 1, pp. 207–222, Jan. 2024.   
-[13] Q. Wu et al., “A comprehensive overview on 5G-and-beyond networks with UAVs: From communications to sensing and intelligence,” IEEE J. Sel. Areas Commun., vol. 39, no. 10, pp. 2912–2945, Oct. 2021.   
-[14] J. Yao, Z. Yang, Z. Yang, J. Xu, and T. Q. S. Quek, “UAV-enabled secure ISAC against dual eavesdropping threats: Joint beamforming and trajectory design,” IEEE Wireless Commun. Lett., vol. 14, no. 10, pp. 3199–3203, Oct. 2025.   
-[15] N. Zhao, Z. Ye, Y. Pei, Y.-C. Liang, and D. Niyato, “Multi-agent deep reinforcement learning for task offloading in UAV-assisted mobile edge computing,” IEEE Trans. Wireless Commun., vol. 21, no. 9, pp. 6949–6960, Sep. 2022.   
-[16] C. Peng et al., “Joint energy and completion time difference minimization for UAV-enabled intelligent transportation systems: A constrained multi-objective optimization approach,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 10, pp. 14040–14053, Oct. 2024.   
-[17] Q. Wu, M. Cui, G. Zhang, F. Wang, Q. Wu, and X. Chu, “Latency minimization for UAV-enabled URLLC-based mobile edge computing systems,” IEEE Trans. Wireless Commun., vol. 23, no. 4, pp. 3298–3311, Apr. 2024.   
-[18] A. Hamissi and A. Dhraief, “A survey on the unmanned aircraft system traffic management,” ACM Comput. Surveys, vol. 56, no. 3, pp. 1–37, Mar. 2024.   
-[19] Z. Wu, Q. Xie, Z. Wang, X. Huang, C. Peng, and Y. Wu, “Terrainaware UAV-enabled mobile edge computing in urban environments: A constrained multi-objective approach with task-adaptive mechanism,” IEEE Trans. Veh. Technol., vol. 75, no. 2, pp. 3160–3173, Feb. 2026.   
+[1] K. Qu, W. Zhuang, Q. Ye, W. Wu, and X. Shen, “Model-assisted learning for adaptive cooperative perception of connected autonomous vehicles,” IEEE Trans. Wireless Commun., vol. 23, no. 8, pp. 8820–8835, Aug. 2024.
+[2] P. Ghorai, A. Eskandarian, Y.-K. Kim, and G. Mehr, “State estimation and motion prediction of vehicles and vulnerable road users for cooperative autonomous driving: A survey,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 10, pp. 16983–17002, Oct. 2022.
+[3] Y. Fu, C. Li, F. R. Yu, T. H. Luan, and Y. Zhang, “A survey of driving safety with sensing, vehicular communications, and artificial intelligence-based collision avoidance,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 7, pp. 6142–6163, Jul. 2022.
+[4] X. Tang et al., “High-definition maps construction based on visual sensor: A comprehensive survey,” IEEE Trans. Intell. Vehicles, vol. 9, no. 10, pp. 5973–5994, Oct. 2024.
+[5] B. Gao, J. Liu, H. Zou, J. Chen, L. He, and K. Li, “Vehicle-road-cloud collaborative perception framework and key technologies: A review,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 12, pp. 19295–19318, Dec. 2024.
+[6] K. Cai, T. Qu, F. Liu, H. Chen, and L. Xie, “Cooperative perception with localization uncertainty: A cubature split covariance intersection framework,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 11, pp. 18006–18024, Nov. 2024.
+[7] H. Ngo, H. Fang, and H. Wang, “Cooperative perception with V2V communication for autonomous vehicles,” IEEE Trans. Veh. Technol., vol. 72, no. 9, pp. 11122–11131, Sep. 2023.
+[8] H. Yin et al., “V2VFormer++: Multi-modal vehicle-to-vehicle cooperative perception via global-local transformer,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 2, pp. 2153–2166, Feb. 2024.
+[9] Y. Yu, X. Tang, J. Wu, B. Kim, T. Song, and Z. Han, “Multileader–follower game for MEC-assisted fusion-based vehicle on-road analysis,” IEEE Trans. Veh. Technol., vol. 68, no. 11, pp. 11200–11212, Nov. 2019.
+[10] Q. Zhang, Z. Chen, B. Xia, X. Jiang, and C. Xiong, “Design and optimization of edge computing for data fusion in V2I cooperative systems,” in Proc. IEEE/CIC Int. Conf. Commun. China (ICCC), China, Aug. 2020, pp. 466–471.
+[11] K. Cai, T. Qu, B. Gao, and H. Chen, “Consensus-based distributed cooperative perception for connected and automated vehicles,” IEEE Trans. Intell. Transp. Syst., vol. 24, no. 8, pp. 8188–8208, Aug. 2023.
+[12] G. Luo et al., “EdgeCooper: Network-aware cooperative LiDAR perception for enhanced vehicular awareness,” IEEE J. Sel. Areas Commun., vol. 42, no. 1, pp. 207–222, Jan. 2024.
+[13] Q. Wu et al., “A comprehensive overview on 5G-and-beyond networks with UAVs: From communications to sensing and intelligence,” IEEE J. Sel. Areas Commun., vol. 39, no. 10, pp. 2912–2945, Oct. 2021.
+[14] J. Yao, Z. Yang, Z. Yang, J. Xu, and T. Q. S. Quek, “UAV-enabled secure ISAC against dual eavesdropping threats: Joint beamforming and trajectory design,” IEEE Wireless Commun. Lett., vol. 14, no. 10, pp. 3199–3203, Oct. 2025.
+[15] N. Zhao, Z. Ye, Y. Pei, Y.-C. Liang, and D. Niyato, “Multi-agent deep reinforcement learning for task offloading in UAV-assisted mobile edge computing,” IEEE Trans. Wireless Commun., vol. 21, no. 9, pp. 6949–6960, Sep. 2022.
+[16] C. Peng et al., “Joint energy and completion time difference minimization for UAV-enabled intelligent transportation systems: A constrained multi-objective optimization approach,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 10, pp. 14040–14053, Oct. 2024.
+[17] Q. Wu, M. Cui, G. Zhang, F. Wang, Q. Wu, and X. Chu, “Latency minimization for UAV-enabled URLLC-based mobile edge computing systems,” IEEE Trans. Wireless Commun., vol. 23, no. 4, pp. 3298–3311, Apr. 2024.
+[18] A. Hamissi and A. Dhraief, “A survey on the unmanned aircraft system traffic management,” ACM Comput. Surveys, vol. 56, no. 3, pp. 1–37, Mar. 2024.
+[19] Z. Wu, Q. Xie, Z. Wang, X. Huang, C. Peng, and Y. Wu, “Terrainaware UAV-enabled mobile edge computing in urban environments: A constrained multi-objective approach with task-adaptive mechanism,” IEEE Trans. Veh. Technol., vol. 75, no. 2, pp. 3160–3173, Feb. 2026.
 [20] J. Li et al., “Collaborative ground-space communications via evolutionary multi-objective deep reinforcement learning,” IEEE J. Sel. Areas Commun., vol. 42, no. 12, pp. 3395–3411, Dec. 2024.
 
-[21] D. Gong, M. Rong, N. Hu, Y. Wang, W. Pedrycz, and S. Yang, “A prediction and weak coevolution-based dynamic constrained multiobjective optimization,” IEEE Trans. Evol. Comput., vol. 29, no. 4, pp. 1328–1342, Aug. 2025.   
-[22] D. Zhang et al., “History-assisted two-state auxiliary task collaboration approach for dynamic constrained multiobjective optimization,” IEEE Trans. Evol. Comput., vol. 29, no. 6, pp. 2386–2400, Dec. 2025.   
-[23] D. D. Yoon, B. Ayalew, and G. G. M. N. Ali, “Performance of decentralized cooperative perception in V2V connected traffic,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 7, pp. 6850–6863, Jul. 2022.   
-[24] J. Su et al., “Semantic communication-based dynamic resource allocation in D2D vehicular networks,” IEEE Trans. Veh. Technol., vol. 72, no. 8, pp. 10784–10796, Aug. 2023.   
-[25] B. Liang, X. Xu, W. Lu, F. Wang, and B. Ran, “Optimizing the deployment of static and mobile roadside units using a branch-andprice algorithm,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 11, pp. 17078–17091, Nov. 2024.   
-[26] Q. Bao, M. Wang, S. Yang, G. Dai, and X. Chen, “A coevolutionary response framework for dynamic constrained multi-objective optimization problems,” IEEE Trans. Evol. Comput., early access, Aug. 4, 2025, doi: 10.1109/TEVC.2025.3595410.   
-[27] Q. Gong, Y. Xia, J. Zou, Z. Hou, and Y. Liu, “Enhancing dynamic constrained multiobjective optimization with multicenters-based prediction,” IEEE Trans. Evol. Comput., vol. 29, no. 5, pp. 1604–1618, Oct. 2025.   
-[28] Z. Chang, H. Deng, L. You, G. Min, S. Garg, and G. Kaddoum, “Trajectory design and resource allocation for multi-UAV networks: Deep reinforcement learning approaches,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 5, pp. 2940–2951, Sep. 2023.   
-[29] Z. Zhang and M. Krunz, “Preamble forgery and injection in Wi-Fi networks: Attacks and defenses,” IEEE Trans. Mobile Comput., vol. 23, no. 12, pp. 10752–10769, Dec. 2024.   
-[30] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018.   
-[31] Z. Yang, S. Bi, and Y.-J.-A. Zhang, “Online trajectory and resource optimization for stochastic UAV-enabled MEC systems,” IEEE Trans. Wireless Commun., vol. 21, no. 7, pp. 5629–5643, Jul. 2022.   
-[32] Y. Wu, T. Cheng, and J. Huang, “Research on the models of the distribution of files on the networks,” in Proc. Int. Conf. Commun., Circuits Syst., vol. 1, May 2004, pp. 108–112.   
-[33] K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, “A fast and elitist multiobjective genetic algorithm: NSGA-II,” IEEE Trans. Evol. Comput., vol. 6, no. 2, pp. 182–197, Apr. 2002.   
-[34] E. Zitzler, M. Laumanns, and L. Thiele, “SPEA2: Improving the strength Pareto evolutionary algorithm for multi-objective optimization,” in Proc. 5th Conf. Evol. Methods Design, Optim. Control Appl. Ind. Problems, 2001, pp. 95–100.   
-[35] R. Azzouz, S. Bechikh, L. B. Said, and W. Trabelsi, “Handling time-varying constraints and objectives in dynamic evolutionary multiobjective optimization,” Swarm Evol. Comput., vol. 39, pp. 222–248, Apr. 2018. [Online]. Available: https://www.sciencedirect.com/science/ article/pii/S2210650217302717   
-[36] R. Azzouz, S. Bechikh, and L. Ben Said, “Multi-objective optimization with dynamic constraints and objectives: New challenges for evolutionary algorithms,” in Proc. Annu. Conf. Genetic Evol. Comput., Jul. 2015, pp. 615–622.   
-[37] Q. Chen, J. Ding, G. G. Yen, S. Yang, and T. Chai, “Multipopulation evolution-based dynamic constrained multiobjective optimization under diverse changing environments,” IEEE Trans. Evol. Comput., vol. 28, no. 3, pp. 763–777, Jun. 2024.   
+[21] D. Gong, M. Rong, N. Hu, Y. Wang, W. Pedrycz, and S. Yang, “A prediction and weak coevolution-based dynamic constrained multiobjective optimization,” IEEE Trans. Evol. Comput., vol. 29, no. 4, pp. 1328–1342, Aug. 2025.
+[22] D. Zhang et al., “History-assisted two-state auxiliary task collaboration approach for dynamic constrained multiobjective optimization,” IEEE Trans. Evol. Comput., vol. 29, no. 6, pp. 2386–2400, Dec. 2025.
+[23] D. D. Yoon, B. Ayalew, and G. G. M. N. Ali, “Performance of decentralized cooperative perception in V2V connected traffic,” IEEE Trans. Intell. Transp. Syst., vol. 23, no. 7, pp. 6850–6863, Jul. 2022.
+[24] J. Su et al., “Semantic communication-based dynamic resource allocation in D2D vehicular networks,” IEEE Trans. Veh. Technol., vol. 72, no. 8, pp. 10784–10796, Aug. 2023.
+[25] B. Liang, X. Xu, W. Lu, F. Wang, and B. Ran, “Optimizing the deployment of static and mobile roadside units using a branch-andprice algorithm,” IEEE Trans. Intell. Transp. Syst., vol. 25, no. 11, pp. 17078–17091, Nov. 2024.
+[26] Q. Bao, M. Wang, S. Yang, G. Dai, and X. Chen, “A coevolutionary response framework for dynamic constrained multi-objective optimization problems,” IEEE Trans. Evol. Comput., early access, Aug. 4, 2025, doi: 10.1109/TEVC.2025.3595410.
+[27] Q. Gong, Y. Xia, J. Zou, Z. Hou, and Y. Liu, “Enhancing dynamic constrained multiobjective optimization with multicenters-based prediction,” IEEE Trans. Evol. Comput., vol. 29, no. 5, pp. 1604–1618, Oct. 2025.
+[28] Z. Chang, H. Deng, L. You, G. Min, S. Garg, and G. Kaddoum, “Trajectory design and resource allocation for multi-UAV networks: Deep reinforcement learning approaches,” IEEE Trans. Netw. Sci. Eng., vol. 10, no. 5, pp. 2940–2951, Sep. 2023.
+[29] Z. Zhang and M. Krunz, “Preamble forgery and injection in Wi-Fi networks: Attacks and defenses,” IEEE Trans. Mobile Comput., vol. 23, no. 12, pp. 10752–10769, Dec. 2024.
+[30] Q. Wu, Y. Zeng, and R. Zhang, “Joint trajectory and communication design for multi-UAV enabled wireless networks,” IEEE Trans. Wireless Commun., vol. 17, no. 3, pp. 2109–2121, Mar. 2018.
+[31] Z. Yang, S. Bi, and Y.-J.-A. Zhang, “Online trajectory and resource optimization for stochastic UAV-enabled MEC systems,” IEEE Trans. Wireless Commun., vol. 21, no. 7, pp. 5629–5643, Jul. 2022.
+[32] Y. Wu, T. Cheng, and J. Huang, “Research on the models of the distribution of files on the networks,” in Proc. Int. Conf. Commun., Circuits Syst., vol. 1, May 2004, pp. 108–112.
+[33] K. Deb, A. Pratap, S. Agarwal, and T. Meyarivan, “A fast and elitist multiobjective genetic algorithm: NSGA-II,” IEEE Trans. Evol. Comput., vol. 6, no. 2, pp. 182–197, Apr. 2002.
+[34] E. Zitzler, M. Laumanns, and L. Thiele, “SPEA2: Improving the strength Pareto evolutionary algorithm for multi-objective optimization,” in Proc. 5th Conf. Evol. Methods Design, Optim. Control Appl. Ind. Problems, 2001, pp. 95–100.
+[35] R. Azzouz, S. Bechikh, L. B. Said, and W. Trabelsi, “Handling time-varying constraints and objectives in dynamic evolutionary multiobjective optimization,” Swarm Evol. Comput., vol. 39, pp. 222–248, Apr. 2018. [Online]. Available: https://www.sciencedirect.com/science/ article/pii/S2210650217302717
+[36] R. Azzouz, S. Bechikh, and L. Ben Said, “Multi-objective optimization with dynamic constraints and objectives: New challenges for evolutionary algorithms,” in Proc. Annu. Conf. Genetic Evol. Comput., Jul. 2015, pp. 615–622.
+[37] Q. Chen, J. Ding, G. G. Yen, S. Yang, and T. Chai, “Multipopulation evolution-based dynamic constrained multiobjective optimization under diverse changing environments,” IEEE Trans. Evol. Comput., vol. 28, no. 3, pp. 763–777, Jun. 2024.
 [38] G. Chen, Y. Guo, Y. Wang, J. Liang, D. Gong, and S. Yang, “Evolutionary dynamic constrained multiobjective optimization: Test suite and algorithm,” IEEE Trans. Evol. Comput., vol. 28, no. 5, pp. 1381–1395, Oct. 2024.
 
 ![](images/1f687b7db4329a17a8b3e39750ce4d0726db06970f77fb685dfc253a7e0ef70e.jpg)
@@ -795,6 +820,7 @@ In this paper, we have proposed the UAV-enabled cooperative perception system fo
 <summary>natural_image</summary>
 
 Portrait of a woman in formal attire with dark hair and collared shirt (no visible text or symbols)
+
 </details>
 
 Qiqi Xie is currently pursuing the master’s degree in computer science and technology with South China Agricultural University. Her research interests include UAV path planning, evolutionary computation, and dynamic constrained multi-objective optimization.
@@ -805,6 +831,7 @@ Qiqi Xie is currently pursuing the master’s degree in computer science and tec
 <summary>natural_image</summary>
 
 Portrait photo of a young man with short dark hair wearing a gray shirt (no text or symbols visible)
+
 </details>
 
 Zexiong Wu is currently pursuing the B.S. degree in mathematics and applied mathematics with South China Agricultural University. His research interests include mobile edge computing, evolutionary computation, and multi-objective optimization.
@@ -815,9 +842,10 @@ Zexiong Wu is currently pursuing the B.S. degree in mathematics and applied math
 <summary>natural_image</summary>
 
 Portrait photo of a young man in a blue shirt (no text or symbols visible)
+
 </details>
 
-Chaoda Peng (Member, IEEE) received the Ph.D. degree from the School of Automation, Guangdong University of Technology, Guangzhou, China, in 2019. He was a Visiting Ph.D. Student with the Department of Electrical and Computer Engineering, Michigan State University, East Lansing, MI, USA, under the supervision of Prof. Erik D. Goodman. He is currently an Associate Professor with the College of Mathematics and Informatics, South China Agricultural University, Guangzhou. His current research interests include evolutionary computation, multi-  
+Chaoda Peng (Member, IEEE) received the Ph.D. degree from the School of Automation, Guangdong University of Technology, Guangzhou, China, in 2019. He was a Visiting Ph.D. Student with the Department of Electrical and Computer Engineering, Michigan State University, East Lansing, MI, USA, under the supervision of Prof. Erik D. Goodman. He is currently an Associate Professor with the College of Mathematics and Informatics, South China Agricultural University, Guangzhou. His current research interests include evolutionary computation, multi-
 objective optimization, deep learning, UAV path planning, and mobile edge computing.
 
 ![](images/316c7e67a2aaf17c83825409bc4cc6c5ae384bc4a936348c9859ad8bbd904da1.jpg)
@@ -826,6 +854,7 @@ objective optimization, deep learning, UAV path planning, and mobile edge comput
 <summary>natural_image</summary>
 
 Portrait photo of a man in a white shirt against a blue background (no text or symbols visible)
+
 </details>
 
 Xumin Huang (Member, IEEE) received the Ph.D. degree from Guangdong University of Technology, Guangzhou, China, in 2019. He was Macau Young Scholar with the State Key Laboratory of Internet of Things for Smart City, University of Macau, Macau, China. He is currently an Associate Professor with Guangdong University of Technology. His research interests include resource and service optimizations for connected vehicles, the Internet of Things, blockchain, and edge intelligence.
@@ -836,6 +865,7 @@ Xumin Huang (Member, IEEE) received the Ph.D. degree from Guangdong University o
 <summary>natural_image</summary>
 
 Portrait photo of a young woman with long dark hair wearing a collared shirt and sweater (no text or symbols visible)
+
 </details>
 
 Yanglin Chen is currently pursuing the B.S. degree in big data management and application with South China Agricultural University. Her research interests include mobile edge computing and evolutionary computation.
@@ -846,7 +876,8 @@ Yanglin Chen is currently pursuing the B.S. degree in big data management and ap
 <summary>natural_image</summary>
 
 Portrait of a man wearing glasses and a striped shirt against a blue background (no text or symbols visible)
+
 </details>
 
-Yuan Wu (Senior Member, IEEE) is currently a Full Professor with the State Key Laboratory of Internet of Things for Smart City and the Department of Electronic and Communication Engineering, University of Macau, Macau, SAR, China. His research interests include resource management for wireless networks, mobile edge computing and edge intelligence, and integrated sensing and communications. He was a recipient of the Best Paper Award from the IEEE ICC 2016, IEEE TCGCC 2017, IWCMC 2021, and IEEE WCNC 2023. He serves on the editorial   
+Yuan Wu (Senior Member, IEEE) is currently a Full Professor with the State Key Laboratory of Internet of Things for Smart City and the Department of Electronic and Communication Engineering, University of Macau, Macau, SAR, China. His research interests include resource management for wireless networks, mobile edge computing and edge intelligence, and integrated sensing and communications. He was a recipient of the Best Paper Award from the IEEE ICC 2016, IEEE TCGCC 2017, IWCMC 2021, and IEEE WCNC 2023. He serves on the editorial
 board of IEEE TRANSACTIONS ON WIRELESS COMMUNICATIONS, IEEE TRANSACTIONS ON VEHICULAR TECHNOLOGY, and IEEE TRANSACTIONS ON NETWORK SCIENCE AND ENGINEERING. He is a Distinguished Lecturer of the IEEE Vehicular Technology Society (VTS).
