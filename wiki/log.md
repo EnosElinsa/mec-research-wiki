@@ -411,7 +411,7 @@ Three low-concurrency extraction agents handled the passive-detection, urban-LoS
 Added five source pages, seven reusable concepts, and one recurring-author entity:
 
 - [[dang-2026-uav-fl-energy]] - Dang et al. 2026, *IEEE TGCN*, DOI `10.1109/TGCN.2025.3599309`. [[simultaneous-interference-uav-federated-learning]] jointly controls same-resource model uploads, local training resources, and rotary-wing 3-D placement under mixed LoS/NLoS A2G propagation and a return-energy constraint.
-- [[kanani-2026-haps-uav-isac]] - Kanani et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3608619`. [[haps-uav-isac-resource-allocation]] uses GA and NSGA-II to trade target-echo power against worst-user SINR with HAPS processing.
+- [[kanani-2026-haps-uav-isac]] - Kanani et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3608619`. Its HAPS-UAV ISAC resource-allocation design uses GA and NSGA-II to trade target-echo power against worst-user SINR with HAPS processing.
 - [[yu-2026-ris-uav-iab-outage]] - Yu et al. 2026, *IEEE TWC*, DOI `10.1109/TWC.2025.3630746`. [[integrated-access-and-backhaul]] couples a rooftop RIS backhaul with UAV access, while [[access-backhaul-rate-matching]] prevents relay accumulation.
 - [[tan-2025-sagin-outage-altitude]] - Tan et al. 2025, *IEEE TWC*, DOI `10.1109/TWC.2024.3503060`. [[outage-aware-sagin-uav-altitude]] combines solar/battery energy outage, link SNR outage, and relayed/direct transmission-capacity comparison.
 - [[v-2026-pb-papp-survivor-detection]] - V et al. 2026, *IEEE TMC*, DOI `10.1109/TMC.2025.3649563`. [[prediction-based-priority-aware-path-planning]] and [[tree-structured-weight-synthesis]] couple PSL prediction, lightweight routing, and hierarchical model aggregation.

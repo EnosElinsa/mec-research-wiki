@@ -1478,7 +1478,7 @@
 - [[weighted-minimum-mean-square-error]] - sum-rate/WMMSE equivalence used for alternating multi-user beamforming and geometry optimization.
 - [[selective-uniform-cost-search]] - lower-bound-prioritized grid search with retained communication and movable-array state.
 - [[simultaneous-interference-uav-federated-learning]] - UAV-FL resource control that keeps same-resource inter-user interference and rotary-wing return energy explicit.
-- [[haps-uav-isac-resource-allocation]] - HAPS-processed multi-UAV sensing/communication trade-offs optimized with GA and NSGA-II.
+- [[haps-uav-isac-resource-allocation]] - processed-AoI scheduling for HAPS-assisted multi-UAV ISAC with dual buffers and hybrid-action PPO.
 - [[integrated-access-and-backhaul]] - shared wireless access/backhaul architecture whose end-to-end service is limited by the weaker segment.
 - [[access-backhaul-rate-matching]] - anti-accumulation reliability condition coupling relay access rates to finite backhaul capacity.
 - [[outage-aware-sagin-uav-altitude]] - ground-UAV-satellite altitude selection under energy- and SNR-outage conditions.

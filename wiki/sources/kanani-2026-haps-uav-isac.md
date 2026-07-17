@@ -6,13 +6,7 @@ year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3608619"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 4098-4112"
 tags: [source, haps, uav, isac, resource-allocation, multi-objective-optimization, nsga-ii]
-related:
-  - "[[haps-uav-isac-resource-allocation]]"
-  - "[[high-altitude-platform-station]]"
-  - "[[integrated-sensing-and-communication]]"
-  - "[[genetic-algorithm]]"
-  - "[[non-dominated-sorting-genetic-algorithm]]"
-  - "[[halim-yanikomeroglu]]"
+related: ["[[high-altitude-platform-station]]", "[[integrated-sensing-and-communication]]", "[[genetic-algorithm]]", "[[non-dominated-sorting-genetic-algorithm]]", "[[halim-yanikomeroglu]]"]
 created: 2026-07-14
 modeling_card: required
 updated: 2026-07-16
@@ -71,7 +65,7 @@ The bi-objective problem maximizes HAPS-received echo power and the minimum user
 
 ## Method
 
-The [[haps-uav-isac-resource-allocation]] design exposes both a weighted-sum scalarization and the original Pareto problem. A canonical [[genetic-algorithm]] solves the scalarized form, while [[non-dominated-sorting-genetic-algorithm|NSGA-II]] evolves a diverse Pareto set without collapsing the two objectives into one reward. A PPO comparator instead uses a scalar reward based on echo power, minimum SINR, and constraint penalties.
+The HAPS-UAV ISAC resource-allocation design exposes both a weighted-sum scalarization and the original Pareto problem. A canonical [[genetic-algorithm]] solves the scalarized form, while [[non-dominated-sorting-genetic-algorithm|NSGA-II]] evolves a diverse Pareto set without collapsing the two objectives into one reward. A PPO comparator instead uses a scalar reward based on echo power, minimum SINR, and constraint penalties.
 
 ## Key findings
 
