@@ -4,6 +4,9 @@
 # Curation scratch space (per-pass extraction drafts; safe to delete)
 .curation-out/
 
+# Locally staged IEEE papers pending manual curation
+raw/tmp/
+
 # Local planning/specification artifacts (never tracked)
 docs/
 

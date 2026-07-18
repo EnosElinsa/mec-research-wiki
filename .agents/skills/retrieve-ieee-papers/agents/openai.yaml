@@ -1,0 +1,4 @@
+interface:
+  display_name: "IEEE Paper Retriever"
+  short_description: "Retrieve authorized IEEE papers and stage MinerU parses"
+  default_prompt: "Use $retrieve-ieee-papers to retrieve this IEEE paper through Guangxi University and stage it under raw/tmp."
