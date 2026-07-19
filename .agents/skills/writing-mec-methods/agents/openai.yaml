@@ -1,0 +1,4 @@
+interface:
+  display_name: "MEC Method Writing"
+  short_description: "Draft rigorous evolutionary and RL methods for MEC"
+  default_prompt: "Use $writing-mec-methods to draft or audit this MEC Method section through its evolutionary or reinforcement-learning route."
