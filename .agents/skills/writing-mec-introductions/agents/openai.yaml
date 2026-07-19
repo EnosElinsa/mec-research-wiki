@@ -1,4 +1,0 @@
-interface:
-  display_name: "MEC Introduction Writer"
-  short_description: "Draft reference-grounded MEC paper introductions"
-  default_prompt: "Use $writing-mec-introductions to draft or revise this MEC paper introduction."

@@ -1,4 +1,0 @@
-interface:
-  display_name: "MEC System Model Writing"
-  short_description: "Draft consistent MEC system models and formulations"
-  default_prompt: "Use $writing-mec-system-models to draft or audit this MEC System Model and Problem Formulation against the bundled reference-derived workflow and consistency gates."

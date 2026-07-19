@@ -1,4 +1,0 @@
-interface:
-  display_name: "MEC Related Work Writing"
-  short_description: "Mechanism-organized Related Work for MEC papers"
-  default_prompt: "Use $writing-mec-related-work to draft or audit this MEC Related Work section against the bundled reference-derived structure and evidence gates."
