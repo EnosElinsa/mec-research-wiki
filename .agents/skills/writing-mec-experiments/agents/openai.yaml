@@ -1,0 +1,4 @@
+interface:
+  display_name: "MEC Experiment Writing"
+  short_description: "Draft rigorous evolutionary and RL experiments"
+  default_prompt: "Use $writing-mec-experiments to draft or audit this MEC experimental-results section."
