@@ -37,8 +37,15 @@ function Test-MineruCdnTransportFailure([string]$Text) {
 
 function Protect-MineruLog([string]$Text, [string]$Secret) {
   if ($null -eq $Text) { return "" }
-  if ([string]::IsNullOrEmpty($Secret)) { return $Text }
-  return $Text.Replace($Secret, "[REDACTED]")
+  $protected = $Text
+  if (-not [string]::IsNullOrEmpty($Secret)) {
+    $protected = $protected.Replace($Secret, "[REDACTED]")
+  }
+  return [regex]::Replace(
+    $protected,
+    '(?i)(https://[^\s"''?]+)\?[^\s"'']+',
+    '$1?[REDACTED]'
+  )
 }
 
 function Add-NoProxyHost([Diagnostics.ProcessStartInfo]$StartInfo, [string]$Hostname) {
@@ -66,6 +73,7 @@ function Invoke-MineruChild {
   $startInfo.RedirectStandardError = $true
   $startInfo.Arguments = (($Arguments | ForEach-Object { Quote-ProcessArgument $_ }) -join " ")
   Add-NoProxyHost $startInfo "cdn-mineru.openxlab.org.cn"
+  Add-NoProxyHost $startInfo "mineru.oss-cn-shanghai.aliyuncs.com"
   if ([string]::IsNullOrEmpty($Token)) {
     [void]$startInfo.EnvironmentVariables.Remove("MINERU_TOKEN")
   }
@@ -188,8 +196,10 @@ if ($precision.ExitCode -ne 0) {
   )
   New-Item -ItemType Directory -Path $flashOutputDir -Force | Out-Null
   $flash = Invoke-MineruChild -Arguments $flashArguments
-  $finalStdout = ($precisionStdout.TrimEnd() + "`n[flash fallback]`n" + $flash.Stdout.TrimStart()).Trim()
-  $finalStderr = ($precisionStderr.TrimEnd() + "`n[flash fallback]`n" + $flash.Stderr.TrimStart()).Trim()
+  $flashStdout = Protect-MineruLog $flash.Stdout ""
+  $flashStderr = Protect-MineruLog $flash.Stderr ""
+  $finalStdout = ($precisionStdout.TrimEnd() + "`n[flash fallback]`n" + $flashStdout.TrimStart()).Trim()
+  $finalStderr = ($precisionStderr.TrimEnd() + "`n[flash fallback]`n" + $flashStderr.TrimStart()).Trim()
   $flashCombined = "$($flash.Stdout)`n$($flash.Stderr)"
   if (Test-MineruRateLimit $flashCombined) {
     Set-Content -LiteralPath $stdoutLog -Value $finalStdout -Encoding UTF8

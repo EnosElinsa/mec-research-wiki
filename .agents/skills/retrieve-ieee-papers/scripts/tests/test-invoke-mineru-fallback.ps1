@@ -74,9 +74,11 @@ if (process.env.MINERU_TOKEN !== expected) {
 }
 for (const name of ["NO_PROXY", "no_proxy"]) {
   const entries = String(process.env[name] || "").split(",").map(value => value.trim().toLowerCase());
-  if (!entries.includes("cdn-mineru.openxlab.org.cn")) {
-    process.stderr.write(`missing ${name} CDN bypass`);
-    process.exit(8);
+  for (const host of ["cdn-mineru.openxlab.org.cn", "mineru.oss-cn-shanghai.aliyuncs.com"]) {
+    if (!entries.includes(host)) {
+      process.stderr.write(`missing ${name} bypass for ${host}`);
+      process.exit(8);
+    }
   }
 }
 const outputIndex = args.indexOf("-o");
@@ -86,7 +88,7 @@ fs.mkdirSync(path.join(outputDir, "images"), { recursive: true });
 fs.writeFileSync(path.join(outputDir, "full.md"), "# Parsed by fake MinerU\n");
 fs.writeFileSync(path.join(outputDir, "invocation.json"), JSON.stringify(args));
 process.stdout.write(`converted with ${expected}`);
-process.stderr.write(`diagnostic ${expected}`);
+process.stderr.write(`diagnostic ${expected}\nPut "https://mineru.oss-cn-shanghai.aliyuncs.com/api-upload/extract/paper.pdf?Expires=123&OSSAccessKeyId=synthetic-key&Signature=synthetic-signature": EOF`);
 '@ | Set-Content -LiteralPath $fakeCli -Encoding UTF8
 
   $outputDir = Join-Path $tempRoot "output"
@@ -115,6 +117,10 @@ process.stderr.write(`diagnostic ${expected}`);
   Assert-True (-not $stderrLog.Contains($syntheticToken)) "stderr log must redact token"
   Assert-True ($stdoutLog.Contains("[REDACTED]")) "stdout redaction marker"
   Assert-True ($stderrLog.Contains("[REDACTED]")) "stderr redaction marker"
+  Assert-True (-not $stderrLog.Contains("OSSAccessKeyId")) "signed URL access-key parameter must be removed"
+  Assert-True (-not $stderrLog.Contains("Signature=")) "signed URL signature parameter must be removed"
+  Assert-True (-not $stderrLog.Contains("synthetic-key")) "signed URL access-key value must be removed"
+  Assert-True ($stderrLog.Contains("paper.pdf?[REDACTED]")) "signed URL query must use a redaction marker"
 
   $rateCli = Join-Path $tempRoot "fake-rate-limit.mjs"
   @'
@@ -157,6 +163,7 @@ if (args[0] === "flash-extract") {
   }
   fs.writeFileSync(path.join(outputDir, "full.md"), "# Parsed by flash fallback\n");
   process.stdout.write("flash converted");
+  process.stderr.write('downloaded https://cdn-mineru.openxlab.org.cn/result.zip?Expires=456&Signature=flash-signature');
   process.exit(0);
 }
 process.exit(13);
@@ -173,6 +180,9 @@ process.exit(13);
   Assert-Equal $cdnInvocations[1] "flash-extract" "flash must run once after CDN EOF"
   Assert-True (Test-Path -LiteralPath (Join-Path $cdnOutput "precision\full.md")) "partial precision output remains isolated"
   Assert-True (Test-Path -LiteralPath (Join-Path $cdnResult.outputDir "full.md")) "flash fallback Markdown output"
+  $cdnStderrLog = Get-Content -Raw -LiteralPath $cdnResult.stderrLog
+  Assert-True (-not $cdnStderrLog.Contains("Signature=")) "flash fallback log must remove signed URL queries"
+  Assert-True ($cdnStderrLog.Contains("result.zip?[REDACTED]")) "flash fallback signed URL must use a redaction marker"
 
   $nonCdnCli = Join-Path $tempRoot "fake-non-cdn-failure.mjs"
   @'

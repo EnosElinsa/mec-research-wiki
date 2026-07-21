@@ -35,9 +35,9 @@ The command performs the whole pipeline:
 
 1. Resolve IEEE metadata and stop immediately if the paper already exists in `raw/sources/` or `raw/tmp/`.
 2. Auto-install `playwright-core@1.61.1` under `%LOCALAPPDATA%\Codex\deps\retrieve-ieee-papers` on first use from the fixed official npm registry and integrity-pinned lockfile, with lifecycle scripts disabled.
-3. Open and control a dedicated Chrome window with the isolated session under `%LOCALAPPDATA%\Codex\browser-profiles\retrieve-ieee-papers`; never attach to or inspect the user's normal Chrome profile. The window requires no user interaction and closes automatically.
-4. Request the PDF through Playwright's browser-context request API, which shares the authorized session cookie jar without exporting cookies. Automatic redirects are disabled so request headers cannot be forwarded to another host. If the first response is not a direct PDF, perform one CARSI login and retry once.
-5. Run `mineru-open-api` precision extraction with the protected token. The child process adds only `cdn-mineru.openxlab.org.cn` to `NO_PROXY/no_proxy`; if the precision result download from that exact CDN fails with an explicit EOF/TLS error, run one token-free `flash-extract` fallback. Precision and flash write to separate directories, and only the successful directory reaches staging. Then atomically stage same-named PDF, Markdown, and `images/` under `raw/tmp/<safe-title>/`.
+3. Open and control a dedicated Chrome window with the isolated session under `%LOCALAPPDATA%\Codex\browser-profiles\retrieve-ieee-papers`; never attach to or inspect the user's normal Chrome profile. Routine login is automatic. By default, a Guangxi University SAML attribute-release page waits for the user. Use `-AcceptAttributeRelease` only when the user explicitly authorizes automatic acceptance for the retrieval; the script never selects rejection.
+4. Request the PDF through Playwright's browser-context request API, which shares the authorized session cookie jar without exporting cookies. Automatic redirects are disabled so request headers cannot be forwarded to another host. If the first response is not a direct PDF, perform one CARSI login, navigate directly to the pinned IEEE IEL resource gateway, require a return to `ieeexplore.ieee.org`, and retry once.
+5. Run `mineru-open-api` precision extraction with the protected token. The child process adds only the exact upload host `mineru.oss-cn-shanghai.aliyuncs.com` and result host `cdn-mineru.openxlab.org.cn` to `NO_PROXY/no_proxy`; signed URL query parameters are removed from all stored logs. If the precision result download from the exact result host fails with an explicit EOF/TLS error, run one token-free `flash-extract` fallback. Precision and flash write to separate directories, and only the successful directory reaches staging. Then atomically stage same-named PDF, Markdown, and `images/` under `raw/tmp/<safe-title>/`.
 
 The final stdout is one JSON object. Report `directory` when its status is `staged`; report the existing path and stop when its status is `existing`. Exit code `75` means MinerU rate-limited the request; stop without retrying.
 
@@ -56,9 +56,11 @@ Use `-DownloadOnly` only to isolate download failures or choose MinerU MCP manua
 - Never echo, inspect, summarize, or log credentials, tokens, filled form values, cookies, local storage, or browser profiles.
 - Never release credentials for a hostname other than exact `idp.gxu.edu.cn`. A hostname change requires fresh user approval and a code/test change.
 - Submit credentials once. Stop on an invalid credential, CAPTCHA, OTP, safety interstitial, unexpected host, or missing entitlement.
+- Never accept SAML attribute release unless the user explicitly authorizes it and the command carries `-AcceptAttributeRelease`. Never reject automatically. Without authorization, wait for the user's choice and stop with `attribute-release-required` after the bounded timeout.
 - Never bypass publisher or institutional access controls and never bulk-download speculative search results.
 - Never attach Playwright to the normal Chrome profile, enumerate its state, or export cookies. The dedicated profile is an opaque session store.
 - Never publish partial MinerU output as a final bundle and never overwrite an existing candidate automatically.
+- Never retain MinerU signed upload/download query parameters in stdout or stderr logs.
 - Never write under `raw/sources/`; manual promotion belongs to the user.
 
 ## Page drift

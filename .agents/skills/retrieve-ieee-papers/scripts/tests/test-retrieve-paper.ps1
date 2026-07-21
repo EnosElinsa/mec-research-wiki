@@ -37,6 +37,7 @@ try {
 '@
 
   $fakeDownloader = Join-Path $root "fake-downloader.mjs"
+  $downloaderArgsPath = Join-Path $root "downloader-args.json"
   Set-Content -LiteralPath $fakeDownloader -Encoding UTF8 -Value @'
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -46,6 +47,9 @@ const args = Object.fromEntries(process.argv.slice(2).reduce((pairs, value, inde
   }
   return pairs;
 }, []));
+if (process.env.FAKE_DOWNLOADER_ARGS_PATH) {
+  await writeFile(process.env.FAKE_DOWNLOADER_ARGS_PATH, JSON.stringify(args), "utf8");
+}
 await mkdir(args["--work-dir"], { recursive: true });
 const pdfPath = path.join(args["--work-dir"], "paper.pdf");
 await writeFile(pdfPath, "%PDF-1.7\nsynthetic\n", "ascii");
@@ -74,6 +78,7 @@ if ((Split-Path -Leaf $MineruOutputDir) -ne "precision") { throw "Staging receiv
 @{ status = "staged"; title = $Title; doi = $Doi; directory = (Join-Path $RepoRoot "raw\tmp\synthetic") } | ConvertTo-Json -Compress
 '@
 
+  $env:FAKE_DOWNLOADER_ARGS_PATH = $downloaderArgsPath
   $resultJson = & powershell -NoProfile -ExecutionPolicy Bypass -File $scriptPath `
     -Reference "https://ieeexplore.ieee.org/document/11014597" `
     -RepoRoot $repoRoot `
@@ -84,12 +89,15 @@ if ((Split-Path -Leaf $MineruOutputDir) -ne "precision") { throw "Staging receiv
     -MineruInvokerPath $fakeMineru `
     -StageScriptPath $fakeStage `
     -NodePath (Get-Command node -ErrorAction Stop).Source `
+    -AcceptAttributeRelease `
     -TestMode
   if ($LASTEXITCODE -ne 0) { throw "One-command retrieval exited with $LASTEXITCODE" }
   $result = $resultJson | ConvertFrom-Json
   Assert-True ($result.status -eq "staged") "Pipeline did not return the staged result."
   Assert-True ($result.title -eq "A Synthetic IEEE Paper") "Paper metadata was not forwarded."
   Assert-True ($result.doi -eq "10.1109/TEST.2026.1") "DOI was not forwarded."
+  $downloaderArgs = Get-Content -LiteralPath $downloaderArgsPath -Raw | ConvertFrom-Json
+  Assert-Equal $downloaderArgs.'--accept-attribute-release' "true" "Explicit attribute-release authorization must reach the browser adapter"
 
   $defaultWorkRoot = Join-Path $repoRoot "default-path-test"
   $savedErrorActionPreference = $ErrorActionPreference
@@ -254,6 +262,7 @@ Set-Content -LiteralPath (Join-Path $dependencyRoot "package-lock.json") -Encodi
   Write-Output "PASS: one command performs download, MinerU conversion, and staging."
 }
 finally {
+  Remove-Item Env:FAKE_DOWNLOADER_ARGS_PATH -ErrorAction SilentlyContinue
   if (Test-Path -LiteralPath $root) {
     Remove-Item -LiteralPath $root -Recurse -Force
   }

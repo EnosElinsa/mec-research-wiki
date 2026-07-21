@@ -8,6 +8,7 @@ import { promisify } from "node:util";
 const execFileAsync = promisify(execFile);
 const MODULE_DIR = path.dirname(fileURLToPath(import.meta.url));
 const CARSI_DISCOVERY_URL = "https://ds.carsi.edu.cn/ds/index.html";
+const CARSI_IEEE_RESOURCE_ACCESS_URL = "https://ds.carsi.edu.cn/resource/gotoResource.php?id=resource:6";
 const IEEE_HOST = "ieeexplore.ieee.org";
 const GXU_IDP_HOST = "idp.gxu.edu.cn";
 
@@ -391,10 +392,21 @@ async function authenticateThroughCarsi({ page, credentialReader, secretPath, ti
     );
   }
 
+  const usernameCandidate = page.getByLabel(SELECTORS.gxuUsername, { exact: true });
+  if (await usernameCandidate.count() === 0 && typeof page.waitForURL === "function") {
+    try {
+      await page.waitForURL((url) => url.hostname.toLowerCase() !== GXU_IDP_HOST, { timeout: timeoutMs });
+      await waitForDocument(page, timeoutMs);
+    } catch {
+      // The selector check below reports page drift if the IdP does not reuse its live session.
+    }
+    if (!isApprovedCredentialHost(hostnameOf(page.url(), "authentication-result"))) return;
+  }
+
   const credential = await credentialReader(authHost, { secretPath });
   try {
     const username = await uniqueLocator(
-      page.getByLabel(SELECTORS.gxuUsername, { exact: true }),
+      usernameCandidate,
       "gxu-username",
       "Guangxi University username field",
     );
@@ -429,6 +441,55 @@ async function authenticateThroughCarsi({ page, credentialReader, secretPath, ti
       "authentication-not-complete",
       "Institutional login did not complete; the visible page may require CAPTCHA or OTP, or the credential may be invalid.",
       { requiresUserAction: true },
+    );
+  }
+}
+
+async function authorizeIeeeThroughCarsi({ page, timeoutMs, acceptAttributeRelease = false }) {
+  await page.goto(CARSI_IEEE_RESOURCE_ACCESS_URL, { waitUntil: "domcontentloaded", timeout: timeoutMs });
+  await waitForDocument(page, timeoutMs);
+
+  let currentHost = hostnameOf(page.url(), "carsi-ieee-resource");
+  if (currentHost === GXU_IDP_HOST) {
+    const proceed = page.locator('button[name="_eventId_proceed"]');
+    const reject = page.locator('button[name="_eventId_AttributeReleaseRejected"]');
+    if (await proceed.count() !== 1 || await reject.count() !== 1) {
+      throw new IeeeFlowError(
+        "authentication-not-complete",
+        "The Guangxi University authentication page did not expose the expected institutional return state.",
+        { requiresUserAction: true },
+      );
+    }
+    if (acceptAttributeRelease) {
+      await proceed.click();
+    }
+    try {
+      await page.waitForURL((url) => url.hostname.toLowerCase() !== GXU_IDP_HOST, { timeout: timeoutMs });
+    } catch {
+      throw new IeeeFlowError(
+        "attribute-release-required",
+        "Guangxi University requires the user to accept or reject attribute release in the visible browser; no choice was made automatically.",
+        { requiresUserAction: true },
+      );
+    }
+    await waitForDocument(page, timeoutMs);
+    currentHost = hostnameOf(page.url(), "institutional-return");
+  }
+
+  if (currentHost !== IEEE_HOST && typeof page.waitForURL === "function") {
+    try {
+      await page.waitForURL((url) => url.hostname.toLowerCase() === IEEE_HOST, { timeout: timeoutMs });
+      await waitForDocument(page, timeoutMs);
+      currentHost = hostnameOf(page.url(), "institutional-return");
+    } catch {
+      // The explicit host check below reports the bounded institutional return failure.
+    }
+  }
+  if (currentHost !== IEEE_HOST) {
+    throw new IeeeFlowError(
+      "institutional-return",
+      `CARSI did not return to IEEE Xplore; received host ${currentHost}.`,
+      { hostname: currentHost },
     );
   }
 }
@@ -477,6 +538,12 @@ export async function retrieveIeeePaper(options) {
     credentialReader,
     secretPath,
     timeoutMs,
+  });
+  await authorizeIeeeThroughCarsi({
+    page: options.page,
+    timeoutMs,
+    acceptAttributeRelease: options.acceptAttributeRelease === true
+      || String(options.acceptAttributeRelease ?? "").toLowerCase() === "true",
   });
   const secondPdf = await tryFetchPdf({
     page: options.page,

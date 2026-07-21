@@ -55,6 +55,13 @@ class FakeLocator {
     if (this.key === "pdf-primary") return 1;
     if (this.key === "iframe") return this.page.currentUrl.includes("/stamp/stamp.jsp") ? 1 : 0;
     if (this.key === "institution") return this.page.institutionReady ? 1 : 0;
+    if (this.key === "username" && this.page.idpSessionAutoRedirect) {
+      this.page.pendingRedirect = "https://ds.carsi.edu.cn/resource/resource.php";
+      return 0;
+    }
+    if (this.key === "attribute-proceed" || this.key === "attribute-reject") {
+      return this.page.currentUrl.includes("/idp/profile/SAML2/Redirect/SSO") ? 1 : 0;
+    }
     return 1;
   }
 
@@ -98,7 +105,7 @@ class FakeLocator {
 }
 
 class FakePage {
-  constructor({ redirectHost = "idp.gxu.edu.cn", denyFirstStamp = false, institutionInitiallyReady = true, evaluateFailures = 0, deferCarsiRedirect = false, stayOnCarsi = false } = {}) {
+  constructor({ redirectHost = "idp.gxu.edu.cn", denyFirstStamp = false, institutionInitiallyReady = true, evaluateFailures = 0, deferCarsiRedirect = false, stayOnCarsi = false, requireAttributeRelease = false, attributeReleaseProceeds = false, idpSessionAutoRedirect = false } = {}) {
     this.currentUrl = "about:blank";
     this.redirectHost = redirectHost;
     this.actions = [];
@@ -111,12 +118,26 @@ class FakePage {
     this.evaluateFailures = evaluateFailures;
     this.deferCarsiRedirect = deferCarsiRedirect;
     this.stayOnCarsi = stayOnCarsi;
+    this.requireAttributeRelease = requireAttributeRelease;
+    this.attributeReleaseProceeds = attributeReleaseProceeds;
+    this.idpSessionAutoRedirect = idpSessionAutoRedirect;
     this.pendingRedirect = "";
+    this.navigations = [];
   }
 
   async goto(url) {
+    this.navigations.push(url);
     if (url.includes("/stamp/stamp.jsp") && this.denyFirstStamp && !this.authenticated) {
       this.currentUrl = "https://ieeexplore.ieee.org/document/11014597?denied=";
+    } else if (url === "https://ds.carsi.edu.cn/resource/gotoResource.php?id=resource:6") {
+      if (this.requireAttributeRelease) {
+        this.currentUrl = "https://idp.gxu.edu.cn/idp/profile/SAML2/Redirect/SSO?execution=e2s1";
+        if (this.attributeReleaseProceeds) {
+          this.pendingRedirect = "https://ieeexplore.ieee.org/Xplore/home.jsp";
+        }
+      } else {
+        this.currentUrl = "https://ieeexplore.ieee.org/Xplore/home.jsp";
+      }
     } else {
       this.currentUrl = url;
     }
@@ -151,6 +172,8 @@ class FakePage {
     if (selector === 'a[href*="/stamp/stamp.jsp"]') return new FakeLocator(this, "pdf");
     if (selector === 'a.xpl-btn-pdf[href*="/stamp/stamp.jsp"]') return new FakeLocator(this, "pdf-primary");
     if (selector === 'iframe[src*="/stampPDF/getPDF.jsp"]') return new FakeLocator(this, "iframe");
+    if (selector === 'button[name="_eventId_proceed"]') return new FakeLocator(this, "attribute-proceed");
+    if (selector === 'button[name="_eventId_AttributeReleaseRejected"]') return new FakeLocator(this, "attribute-reject");
     throw new Error(`Unexpected selector: ${selector}`);
   }
 
@@ -314,6 +337,118 @@ test("authenticates exactly once and retries the PDF request in the same persist
     assert.equal(page.school, "广西大学");
     assert.equal(page.username, "synthetic-user");
     assert.equal(page.password, "synthetic-password");
+    assert.equal(
+      page.navigations.includes("https://ds.carsi.edu.cn/resource/gotoResource.php?id=resource:6"),
+      true,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("waits for the user at Guangxi University attribute release without choosing for them", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "ieee-playwright-attribute-release-"));
+  const page = new FakePage({ requireAttributeRelease: true });
+  try {
+    await assert.rejects(
+      subject.retrieveIeeePaper({
+        page,
+        browserContext: fakeContext([
+          new FakeResponse("not a pdf", { status: 418, contentType: "text/html" }),
+        ]),
+        reference: "https://ieeexplore.ieee.org/document/11014597",
+        workDir: root,
+        credentialReader: async () => ({
+          username: "synthetic-user",
+          password: "synthetic-password",
+        }),
+      }),
+      (error) => error?.phase === "attribute-release-required",
+    );
+    assert.equal(page.actions.some((action) => action[1] === "attribute-proceed"), false);
+    assert.equal(page.actions.some((action) => action[1] === "attribute-reject"), false);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("continues after the user completes Guangxi University attribute release", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "ieee-playwright-attribute-return-"));
+  try {
+    const page = new FakePage({ requireAttributeRelease: true, attributeReleaseProceeds: true });
+    const result = await subject.retrieveIeeePaper({
+      page,
+      browserContext: fakeContext([
+        new FakeResponse("not a pdf", { status: 418, contentType: "text/html" }),
+        new FakeResponse("%PDF-1.7\nauthorized after attribute release\n"),
+      ]),
+      reference: "https://ieeexplore.ieee.org/document/11014597",
+      workDir: root,
+      credentialReader: async () => ({
+        username: "synthetic-user",
+        password: "synthetic-password",
+      }),
+    });
+    assert.equal(result.status, "downloaded");
+    assert.equal(
+      page.navigations.includes("https://ds.carsi.edu.cn/resource/gotoResource.php?id=resource:6"),
+      true,
+    );
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("accepts Guangxi University attribute release only when explicitly enabled", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "ieee-playwright-attribute-accept-"));
+  try {
+    const page = new FakePage({ requireAttributeRelease: true, attributeReleaseProceeds: true });
+    const result = await subject.retrieveIeeePaper({
+      page,
+      browserContext: fakeContext([
+        new FakeResponse("not a pdf", { status: 418, contentType: "text/html" }),
+        new FakeResponse("%PDF-1.7\nauthorized after explicit attribute acceptance\n"),
+      ]),
+      reference: "https://ieeexplore.ieee.org/document/11014597",
+      workDir: root,
+      acceptAttributeRelease: true,
+      credentialReader: async () => ({
+        username: "synthetic-user",
+        password: "synthetic-password",
+      }),
+    });
+    assert.equal(result.status, "downloaded");
+    assert.equal(page.actions.some((action) => action[1] === "attribute-proceed"), true);
+    assert.equal(page.actions.some((action) => action[1] === "attribute-reject"), false);
+  } finally {
+    await rm(root, { recursive: true, force: true });
+  }
+});
+
+test("reuses a live Guangxi University IdP session without reading credentials again", async () => {
+  const root = await mkdtemp(path.join(os.tmpdir(), "ieee-playwright-idp-session-"));
+  let credentialReads = 0;
+  try {
+    const page = new FakePage({ idpSessionAutoRedirect: true });
+    const result = await subject.retrieveIeeePaper({
+      page,
+      browserContext: fakeContext([
+        new FakeResponse("not a pdf", { status: 418, contentType: "text/html" }),
+        new FakeResponse("%PDF-1.7\nauthorized with existing IdP session\n"),
+      ]),
+      reference: "https://ieeexplore.ieee.org/document/11014597",
+      workDir: root,
+      credentialReader: async () => {
+        credentialReads += 1;
+        return { username: "synthetic-user", password: "synthetic-password" };
+      },
+    });
+    assert.equal(result.status, "downloaded");
+    assert.equal(credentialReads, 0);
+    assert.equal(
+      page.navigations.includes("https://ds.carsi.edu.cn/resource/gotoResource.php?id=resource:6"),
+      true,
+    );
   } finally {
     await rm(root, { recursive: true, force: true });
   }

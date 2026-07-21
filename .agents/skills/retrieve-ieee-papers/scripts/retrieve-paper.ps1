@@ -16,6 +16,7 @@ param(
   [string]$MineruScriptPath = "",
   [string]$PlaywrightVersion = "1.61.1",
   [int]$BrowserTimeoutSeconds = 90,
+  [switch]$AcceptAttributeRelease,
   [switch]$DownloadOnly,
   [switch]$TestMode
 )
@@ -223,6 +224,9 @@ $downloadArgs = @(
 )
 if (-not [string]::IsNullOrWhiteSpace($SecretPath)) {
   $downloadArgs += @("--secret-path", $SecretPath)
+}
+if ($AcceptAttributeRelease) {
+  $downloadArgs += @("--accept-attribute-release", "true")
 }
 $downloadProcess = $null
 $downloadStdoutPath = ""
