@@ -4,17 +4,18 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
-$approvedHost = "idp.gxu.edu.cn"
-if ($ExpectedHost.Trim().ToLowerInvariant() -ne $approvedHost) {
-  throw "Credential release denied for unapproved host."
-}
-
+[Console]::OutputEncoding = [Text.UTF8Encoding]::new($false)
 . (Join-Path $PSScriptRoot "secret-store.ps1")
 if ([string]::IsNullOrWhiteSpace($SecretPath)) { $SecretPath = Get-RetrievalSecretPath }
 
 $password = $null
 try {
   $payload = Import-RetrievalSecrets -Path $SecretPath
+  $expected = $ExpectedHost.Trim()
+  if ($expected.EndsWith(".") -or
+      $expected.ToLowerInvariant() -ne $payload.InstitutionProfile.CredentialHost.ToLowerInvariant()) {
+    throw "Credential release denied for unapproved host."
+  }
   $password = ConvertFrom-RetrievalSecureString $payload.IeeeCredential.Password
   [pscustomobject]@{
     username = $payload.IeeeCredential.UserName
