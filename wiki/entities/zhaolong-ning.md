@@ -14,6 +14,7 @@ related:
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
+  - "[[chen-2025-srcl-iov-service-migration]]"
 created: 2026-07-13
 updated: 2026-07-13
 ---
@@ -22,7 +23,7 @@ updated: 2026-07-13
 
 IEEE Senior Member. Full professor in the College of Communication and Information Engineering at **Chongqing University of Posts and Telecommunications (CQUPT)**. He received a Ph.D. from Northeastern University in 2014 and was a research fellow at Kyushu University in 2013-2014. Matching degree, affiliation, email, and recurring-coauthor evidence ties the source records below to the same researcher.
 
-Co-authored 11 sources in this wiki across differentiated UAV services, multi-UAV MEC, traffic-aware SAGIN control, IRS-assisted communication, wireless-powered edge control, secure LAE scheduling, collaborative inference, and UAV-ISAC security:
+Co-authored 12 sources in this wiki across differentiated UAV services, multi-UAV MEC, traffic-aware SAGIN control, IRS-assisted communication, wireless-powered edge control, secure LAE scheduling, collaborative inference, UAV-ISAC security, and vehicular service migration:
 
 - [[ning-2026-uav-isac-secure-beamforming]] - robust UAV-ISAC sensing, jamming, trajectory, and secure beamforming.
 - [[wang-2026-robust-anti-uav-isac]] - cooperative multi-UAV anti-UAV sensing, tracking, and robust beamforming.
@@ -36,6 +37,7 @@ Co-authored 11 sources in this wiki across differentiated UAV services, multi-UA
 - [[wang-2026-glint-aoi-wireless-powered-edge]] - decentralized AoI control in UAV-assisted wireless-powered edge networks.
 - [[wang-2026-secure-lae-uav-scheduling]] - secrecy-energy-efficient UAV communication/jamming scheduling.
 - [[wu-2026-secure-split-offloading-ci]] - secure split offloading for dual-UAV multi-exit collaborative inference.
+- [[chen-2025-srcl-iov-service-migration]] - mobility-aware IoV service migration and edge resource allocation.
 
 ## Contributions to this wiki
 

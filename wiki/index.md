@@ -1,7 +1,6 @@
 # Wiki Index
 
 ## Sources (curated)
-
 ### Foundational surveys & overviews
 
 - [[mao-2017-mec-survey-communication]] — Mao et al. 2017. Canonical **MEC survey** from the communication perspective (joint radio + compute resource management).
@@ -46,6 +45,9 @@
 - [[xiang-sac-mapless-robot-navigation]] — Xiang et al. Mapless mobile-robot navigation via **Soft Actor-Critic** (LSTM value/Q nets); laser+target→velocity continuous control (venue/year not in parse).
 
 ### Joint trajectory / caching / migration
+
+- [[qiu-2025-tom-stateful-vec]] - Qiu et al. 2025. TOM dynamic multifactorial optimization of stateful UAV-VEC trajectory, offloading, and parallel migration.
+
 
 - [[hua-2026-ddrl-content-delivery]] - Hua et al. 2026. Multi-BS UAV content delivery with CNN-GRU clipped PPO for movement/transmission decisions and PSO-tuned cache replacement over popularity, size, and request frequency (IEEE TWC).
 - [[zhao-2025-traj-offload-cache-migration]] — Zhao et al. 2025. Joint trajectory + offloading + migration + **computational-task caching**; Lyapunov + BCD + QCQP-SDR.
@@ -100,6 +102,9 @@
 - [[wang-acve-constraint-violation-cmop]] — Wang et al. 2025. **ACVE** — adaptive constraint-violation-evaluation framework + DDCo dual-population coevolution (IEEE TEVC early access; DOI grounded by the source parse sidecar and by [[huang-2025-cmop-dispersed-computing]]).
 
 ### Compute offloading & DRL
+
+- [[long-2026-ft-dsac-mec]] - Long et al. 2026. Fault-tolerant DAG task offloading with primary/backup replicas and discrete SAC.
+
 
 - [[wang-2025-ppo-uav-positioning-offloading]] - Wang et al. 2025. PPO-based joint UAV positioning and partial task offloading in multi-UAV MEC; BS/UAV task splitting, access/backhaul links, latency minimization, and UAV-failure resilience (IEEE TMC).
 - [[guo-2026-aot-uav-inspection-offloading]] - Guo et al. 2026. AGI-oriented Transformer for UAV-assisted railway inspection; shared encoder with trajectory and offloading heads for hive/UAV/sensor execution decisions (IEEE TMC).
@@ -264,6 +269,9 @@
 
 ### UAV-swarm collaborative computing
 
+- [[mei-2026-energy-aware-multiuav-maddpg]] - Mei et al. 2026. Energy-aware MADDPG for multi-UAV data collection and trajectory planning.
+
+
 - [[li-2026-jscfg-uav-grouping]] - Li, Xia, and Zhang 2026. Joint-switch coalition formation for dynamic heterogeneous-UAV mission grouping under ordered type requirements, overlapping coalitions, and predicted link persistence (IEEE TMC).
 - [[zhang-2026-distance-attention-uav-navigation]] - Zhang et al. 2026. Distance-attention augmented CTDE reinforcement learning for cooperative 3-D UAV navigation in dense urban environments, with historical-feature-flow critics and explicit collision, timeout, and energy evaluation (IEEE TMC).
 - [[zhang-2026-dt-aircomp-cluster-formation]] - Zhang et al. 2026. Digital-twin-empowered UAV-swarm cluster formation for AirComp, jointly optimizing UAV-group association, receiver scaling, device power, and collision-safe trajectories with BCD, SCA, and Dinkelbach iteration (IEEE TWC).
@@ -283,6 +291,7 @@
 
 ### Generative-AI MEC
 
+- [[wang-2026-context-aigc-migration]] - Wang et al. 2026. Context-aware AIGC service migration using Value of Context and transformer Soft Actor-Critic (IEEE TSC).
 - [[gong-2026-safe-economic-lae-trajectory]] - Gong et al. 2026. Hybrid SAC-LLM low-altitude UAV trajectory planning with obstacle avoidance, no-fly-zone/residential-zone compliance, landing, and energy constraints (IEEE TMC).
 - [[wen-2026-hybridrag-low-carbon-lae]] - Wen et al. 2026. HybridRAG-formulated low-carbon LAE network optimization with R^2DSAC, a double-regularized diffusion-enhanced SAC solver (IEEE TMC).
 - [[cai-2026-llm-drl-secure-lae-data]] - Cai et al. 2026. LLM-enhanced DRL for secure LAE data collection; LLM state/reward/simulator support for DDPG/TD3 with a data-collection UAV and a jamming UAV (IEEE TMC).
@@ -331,6 +340,12 @@
 
 ### Vehicular MEC
 
+- [[chen-2025-srcl-iov-service-migration]] - Chen et al. 2025. SR-CL mobility-aware IoV service migration and convex resource allocation (IEEE TMC).
+- [[liang-2021-multicell-jmh]] - Liang et al. 2021. Joint multi-cell MEC migration/handover and radio-compute resource allocation with relaxation and matching recovery (IEEE TWC).
+- [[ren-2023-haps-handoff-distributed-computing]] - Ren et al. 2023. HAPS/RSU/vehicle distributed computing with handoff-aware task splitting and SCA (IEEE TWC).
+- [[hou-not-in-parse-avsi-mempo]] - Hou et al. AVSI-MEMPO partial-observation, multi-objective IoV service-migration policies.
+
+
 - [[ji-2026-llm-iov-uav-offloading]] - Ji et al. 2026. Multi-UAV-assisted IoV offloading; SOCP 3D trajectory, DRL+LLM resource scheduling, and LP task ratios for latency/energy/task-success tradeoffs (IEEE TMC).
 
 - [[hu-2026-ertatd3-secure-caching]] - Hu et al. 2026. UAV-assisted vehicular MEC with secure task-result caching and ERTATD3 twin-actor reward shaping over trajectory/offloading/resource/caching decisions (IEEE TMC).
@@ -358,6 +373,21 @@
 - [[ye-2021-ran-slicing-offloading]] — Ye et al. 2021. **Two-timescale joint RAN slicing + computation offloading** for autonomous vehicular networks (C-AVN); small-timescale task scheduling for load balancing with minimal offloading variation via cooperative **multi-agent deep Q-learning** (fingerprint), large-timescale **RAN slicing** as a convex program with statistical QoS, in a learning-assisted hierarchical loop (IEEE OJVT).
 - [[dai-2024-uav-vehicular-offloading-lyapunov]] — Dai et al. 2024. UAV relieves **overloaded RSUs** in VEC; minimizes time-average vehicular task delay under long-term UAV energy via **Lyapunov** + **Markov-approximation** online offloading (IEEE TMC).
 - [[mou-2025-adm-dt-migration]] — Mou et al. 2025. **Adaptive digital-twin migration** in vehicular edge networks (VECONs); minimizes communication + colocation + migration cost (NP-hard, three-way DT-communication latency) with an off-policy **actor-critic** agent **warm-started on expert (Greedy) demonstrations** then decayed; ~39% average migration-latency reduction on real Cologne traces (IEEE TVT).
+
+### Edge service migration & orchestration
+
+- [[calagna-2025-mose-stateful-migration]] - Calagna et al. 2025. MOSE orchestration for stateful edge-microservice migration with COAT/PAM mode and parameter selection (IEEE TNSM).
+- [[meliani-2026-layer-reuse-microservice-migration]] - Meliani et al. 2026. Layer-reuse-aware UAV-edge microservice placement, registry selection, routing, and migration SLA optimization (IEEE ICC).
+- [[rong-2024-video-analytics-live-migration]] - Rong et al. 2024. Warm-up, synchronization, and replay for near-transparent edge video-analytics migration (IEEE TMC).
+- [[scheuer-not-in-parse-resync]] - Scheuer et al. ReSync coordinated stateful-container migration with replay synchronization and handover timing.
+- [[fernando-not-in-parse-vrecover]] - Fernando et al. V-Recover incremental-checkpoint recovery when live VM migration fails.
+- [[garcia-gil-2025-uav-microservice-migration-energy]] - García-Gil et al. 2025. MILP battery-balanced microservice deployment and migration across UAV networks (Internet of Things).
+
+
+- [[calagna-2026-cormo-ran]] - Calagna et al. 2026. CORMO-RAN jointly activates near-RT RIC compute nodes and migrates stateful O-RAN xApps to reduce energy under downtime and control-loop constraints (IEEE TMC).
+- [[calagna-2024-robust-stateful-migration]] - Calagna et al. 2024. COAT connection-aware stateful container migration and the processing-aware PAM model, validated with Podman/CRIU and a UAV autopilot case (IEEE TNSM).
+- [[ma-2019-layered-container-migration]] - Ma et al. 2019. Docker layered-storage edge service handoff with dirty-memory pre-dumps and pipelined transfer (IEEE TMC).
+- [[adeppady-2026-step-composite-edge]] - Adeppady et al. 2026. STEP graph-search orchestration for composite stateful/stateless microservices, sharing, quality versions, migration, and resource allocation (IEEE TNSM).
 
 ### Maritime MEC
 
@@ -519,6 +549,10 @@
 
 ### Architectural / spectrum / governance
 
+- [[an-2026-intelligent-metasurfaces-overview]] - An et al. 2026. Survey of RIS, stacked intelligent metasurfaces, and flexible intelligent metasurfaces (IEEE TAP).
+- [[roy-not-in-parse-serv-hu]] - Roy et al. Serv-HU provider-level UAV-as-a-Service handoff and KKT pricing.
+
+
 - [[fan-2026-directional-neighbor-discovery]] - Fan et al. 2026. Synchronous/asynchronous directional FANET neighbor discovery optimized by power-delay surrogates, GP, and CCP with chamber validation (IEEE TMC).
 
 - [[guo-2026-event-triggered-sinr-navigation]] - Guo et al. 2026. UT-Grid refreshes local/global SINR maps when MC-dropout uncertainty crosses a threshold, while Top-1 MoE-D3QN plans a cellular-UAV path under outage, update-traffic, and inference-cost tradeoffs (IEEE TMC).
@@ -554,6 +588,10 @@
 
 ### Energy efficiency & WPT
 
+- [[arribas-not-in-parse-uav-resupply-scheduling]] - Arribas et al. HORR exact and PHERR near-exact fleet resupply schedules for persistent UAV service.
+- [[gupta-not-in-parse-uav-replacement]] - Gupta et al. UAV replacement continuity with max-min throughput, 3-D trajectory, and SCA resource allocation.
+
+
 - [[chen-2026-laser-powered-multiuav-qoe]] - Chen and Jiang 2026. Laser-powered UAV access points combine rematching, placement, and redundant power/backhaul reallocation to maximize QoE-qualified users (IEEE TMC).
 - [[peng-2023-dual-domain-eh-ris]] - Peng & Wang 2023. UAV-mounted RIS combines time splitting with element-level reflection/harvesting; SD3 controls harvesting time, power, scheduling, and phases under QoS constraints (IEEE TWC).
 - [[zhang-2022-solar-charging-uav-iot]] - Zhang et al. 2022. Action-confined Q-learning and SARSA route one solar-powered UAV among charging stations and serving points under battery, downlink-data, and Jain-fairness rewards (IEEE TMC).
@@ -584,6 +622,9 @@
 > [[wu-2025-iopo-irs-uav-thz-mec]] (IRS-assisted THz energy optimization) also targets energy efficiency; it is filed under **IRS / THz / anti-jamming** above as its primary home.
 
 ### MEC / MCC fundamentals & edge offloading theory
+
+- [[sharghivand-not-in-parse-oshn]] - Sharghivand et al. OSHM online truthful, time-constrained VM/container handoff path planning in 5G MEC.
+
 
 - [[zhang-2013-energy-optimal-mcc-stochastic]] — Zhang et al. 2013. **Energy-optimal mobile cloud computing** under a stochastic (Gilbert-Elliott) channel; mobile vs cloud execution with DVS CPU-frequency / transmission-rate scheduling; closed-form policies + a **threshold policy** on data consumption rate $L/T$ (IEEE TWC).
 - [[mao-2016-lodco-eh-mec-offloading]] — Mao et al. 2016. **Green MEC with energy-harvesting devices**; execution-cost (delay + task failure) minimization via the **LODCO** Lyapunov online algorithm deciding offloading + DVFS CPU frequency + transmit power from current state only; asymptotically optimal (IEEE JSAC).
@@ -748,6 +789,8 @@
 
 ### Authors
 
+- [[antonio-calagna]] - Politecnico di Torino researcher across stateful edge migration and O-RAN xApp orchestration.
+- [[yenchia-yu]] - Politecnico di Torino researcher across connection-aware migration and composite edge placement.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
@@ -884,6 +927,10 @@
 - [[task-offloading]]
 - [[sequential-task-offloading]]
 - [[task-migration]]
+- [[stateful-edge-microservice-migration]]
+- [[container-layered-storage-migration]]
+- [[multi-microservice-application-placement]]
+- [[value-of-context-aigc]]
 - [[vehicle-twin-migration]]
 - [[service-migration]]
 - [[device-association]]
@@ -1460,6 +1507,9 @@
 - [[elastic-task-scheduling]]
 
 ### Scheduling
+
+- [[yao-2026-wamspres-npu]] - Yao et al. 2026. WAMSPRES workload-aware soft-preemptive NPU scheduling for airborne embedded systems.
+
 
 - [[interdependent-tasks-dag]]
 - [[longest-transmission-time-first-uav-grouping]]

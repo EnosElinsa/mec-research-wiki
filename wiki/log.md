@@ -1,5 +1,19 @@
 # Research Log
 
+## [2026-08-27] Curated the remaining newly ingested sources
+
+Curated the 19 genuinely new Raw sources remaining after the first five-source batch. The additions cover intelligent-metasurface foundations; energy-aware multi-UAV data collection, resupply, replacement, and airborne NPU scheduling; fault-tolerant task offloading and HAPS handoff computing; stateful edge migration, live video analytics, microservice layer reuse, MOSE/ReSync/V-Recover, and service-handoff mechanisms; and vehicular service migration including SR-CL, JMH, AVSI-MEMPO, and TOM. Each source includes the current paper-source schema, an evidence-grounded Related Work paragraph, and a Modeling Quick-Use Card only when the paper defines reusable decisions, objective, and constraints.
+
+No new concept or entity pages were required: all links reuse the live vocabulary, and one-off authors were deferred because a single source does not establish a recurring entity. Existing author links were used only where identity continuity was already clear, including Antonio Calagna, Yenchia Yu, Carla Fabiana Chiasserini, Halim Yanikomeroglu, and Zhaolong Ning. The full reconciliation now reports 638 Raw folders, 635 curated paper sources, and zero genuinely new folders; the three-folder difference is accounted for by duplicate or non-paper ingest reconciliation rather than uncurated papers.
+
+The completed corpus has 635 sources, 660 concepts, 190 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Source-schema, link, process-reference, index, and frontmatter audits pass with zero errors or dangling links. `git diff --check` remains nonzero only because of pre-existing trailing whitespace in user-modified Raw Markdown parses outside this curation's wiki edits; the new wiki files themselves are clean. No optional local LLM Wiki service was used.
+
+## [2026-08-27] Curated batch 1 of newly ingested sources
+
+Curated five genuinely new Raw sources: [[calagna-2026-cormo-ran]], [[wang-2026-context-aigc-migration]], [[calagna-2024-robust-stateful-migration]], [[ma-2019-layered-container-migration]], and [[adeppady-2026-step-composite-edge]]. Added four reusable concepts ([[stateful-edge-microservice-migration]], [[container-layered-storage-migration]], [[multi-microservice-application-placement]], and [[value-of-context-aigc]]) and two identity-checked author entities ([[antonio-calagna]] and [[yenchia-yu]]); extended [[carla-fabiana-chiasserini]] with the three matching coauthored sources. Each source was grounded in its Raw parse; DOI and venue fields were filled only where the parse or exact-title metadata verification supported them. No source required review_required or was deferred in this batch.
+
+The reconciliation baseline was 638 Raw folders, 614 curated, and 24 genuinely new; after this batch it reports 19 genuinely new folders remaining. Current corpus counts are 616 sources, 660 concepts, 190 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Navigation and overview counts were refreshed. Link, process-reference, index, frontmatter, source-schema, and entity-roster checks passed for the edited wiki; `git diff --check` still reports trailing whitespace in unrelated user-modified Raw Markdown files and was not altered.
+
 ## [2026-07-16] Migrated the paper-source corpus to conditional modeling cards
 
 Revised the paper-source contract around raw Markdown evidence rather than a BibTeX ingest path. Every one of the 611 English source pages now declares `modeling_card: required` or `modeling_card: not_applicable`, keeps the canonical early order of Citation, TL;DR, the conditional Modeling Quick-Use Card, and Related Work Paragraph, and records an English copy-ready literature-review paragraph grounded in the corresponding Raw parse.
