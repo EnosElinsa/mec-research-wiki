@@ -38,7 +38,7 @@ In this work, we present a UAV replacement framework to maintain the coverage co
 
 • In comparison to the existing literature (Table I) on the UWC system, this paper is the first to provide a unified framework on UAV replacement to maintain coverage continuity, where a fully charged UAV is launched to replace the serving UAV low on energy. This is carried out to provide uninterrupted service to the ground users.
 
-![](images/e294f98e1b5a37f18fbdda42c18c26da686b93a1078677c950f25317a7c27896.jpg)  
+![](images/a96c9fc23b6a82138639ddfdca4c777d8666f0bdd4256ecd91eca374d9a8b7d9.jpg)  
 Fig. 1. Model to represent the UAV replacement framework.
 
 • We formulate a UAV replacement problem to maximize the minimum achievable rate to each user by optimizing the multi-UAV trajectory and resource allocation. Furthermore, the UAVs should provide sufficient rate to each user in the presence of onboard energy constraints and UAV mobility constraints.
@@ -53,22 +53,21 @@ The organization of the paper is as follows. Section II describes the UAV trajec
 
 ## A. Communication Model
 
-We consider a UWC system as shown in Fig. 1 with $\mathcal { K } = \{ 1 , \cdots , K \}$ ground users (or users) that are distributed over a circular field of radius r. Location of the $k ^ { t h }$ -user is given by $\mathbf { w } _ { k } = [ x _ { k } , y _ { k } ]$ , where $k \in \mathcal { K }$ . The users are assumed to be stationary and their location is known. To consider the UAV replacement scenario, we consider $m \in { \mathcal { M } } { \mathrm { U A V s } } ,$ where $\mathcal { M } ~ = ~ \{ 1 , 2 \}$ One is the currently serving UAV, denoted by $U _ { 1 } ( m = 1 )$ and the other one is a fully charged UAV, denoted by $U _ { 2 } ( m \ = \ 2 )$ . At the start of the replacement process, we assume that $U _ { 1 }$ is located at the final location ${ \bf X } _ { F } = [ x _ { F } , y _ { F } , z _ { F } ]$ and is serving users while $U _ { 2 }$ is at the charging station ${ \bf X } _ { I } = [ x _ { I } , y _ { I } , z _ { I } ]$ and proceeding towards $\mathbf { X } _ { F }$ to replace $U _ { 1 }$ . Over time T , the replacement of the UAV takes place with $U _ { 2 }$ taking position $\mathbf { X } _ { F }$ while $U _ { 1 }$ returning back to the charging station $\mathbf { X } _ { I }$
+We consider a UWC system as shown in Fig. 1 with $\mathcal { K } = \{ 1 , \cdots , K \}$ ground users (or users) that are distributed over a circular field of radius r. Location of the $k ^ { t h }$ -user is given by $\mathbf { w } _ { k } = [ x _ { k } , y _ { k } ]$ , where $k \in \mathcal { K }$ . The users are assumed to be stationary and their location is known. To consider the UAV replacement scenario, we consider $m \in { \mathcal { M } } { \mathrm { U A V s } } ,$ where $\mathcal { M } ~ = ~ \{ 1 , 2 \}$ . One is the currently serving UAV, denoted by $U _ { 1 } ( m = 1 )$ and the other one is a fully charged UAV, denoted by $U _ { 2 } ( m \ = \ 2 )$ . At the start of the replacement process, we assume that $U _ { 1 }$ is located at the final location ${ \bf X } _ { F } = [ x _ { F } , y _ { F } , z _ { F } ]$ and is serving users while $U _ { 2 }$ is at the charging station ${ \bf X } _ { I } = [ x _ { I } , y _ { I } , z _ { I } ]$ and proceeding towards $\mathbf { X } _ { F }$ to replace $U _ { 1 }$ . Over time T, the replacement of the UAV takes place with $U _ { 2 }$ taking position $\mathbf { X } _ { F }$ while $U _ { 1 }$ returning back to the charging station $\mathbf { X } _ { I }$
 
 TABLE I  
 KEY DIFFERENCES OF THIS WORK COMPARED TO THE EXISTING LITERATURE. PLOS HERE STANDS FOR PROBABILISTIC LOS CHANNEL
-
-<table><tr><td>Ref.</td><td>Objective</td><td>Design 3D</td><td>A2G model</td><td>Bandwidth allocation</td><td>Energy constraint</td><td>Application/Restrictions</td><td>Fair</td></tr><tr><td>[17]</td><td>Aggregate sum rate of the UAV</td><td>√</td><td>×</td><td>×</td><td>×</td><td>Restricted: No. of UAVs = No. of users</td><td>×</td></tr><tr><td>[18]</td><td>Max-min throughput among users</td><td>√</td><td>×</td><td>×</td><td>×</td><td>Restricted: Each UAV serves atmost one requester</td><td>√</td></tr><tr><td>[19]</td><td>Maximize the downlink capacity</td><td>√</td><td>PLoS</td><td>×</td><td>×</td><td>Restricted: Downlink setup, no energy limitations</td><td>×</td></tr><tr><td>[20]</td><td>Min-max completion time</td><td>×</td><td>×</td><td>×</td><td>√</td><td>Restricted: Each UAV serves atmost one user, 2D Geometry</td><td>√</td></tr><tr><td>[21]</td><td>Minimize the total latency &amp; energy consumption</td><td>×</td><td>PLoS</td><td>×</td><td>√</td><td>Restricted: 2D Geometry &amp; UAV-centric</td><td>×</td></tr><tr><td>[22]</td><td>Maximize the minimum energy-efficiency among all UAVs</td><td>×</td><td>×</td><td>×</td><td>√</td><td>Restricted: Each UAV serves atmost one user, 2D Geometry</td><td>√</td></tr><tr><td>[23]</td><td>Max-min achievable rate among all users</td><td>√</td><td>PLoS</td><td>Orthogonal channels</td><td>×</td><td>Restricted: One UAV serves to atmost one user, no energy limitations</td><td>√</td></tr><tr><td>[27][28]</td><td>Minimize no. of active UAVs over time</td><td>×</td><td>×</td><td>×</td><td>×</td><td>Replacement: Minimize number of UAVs, Restricted: 2D Geometry, no energy limitations</td><td>×</td></tr><tr><td>[29]</td><td>Outage probability minimization</td><td>√</td><td>PLoS</td><td>×</td><td>×</td><td>Replacement: Outage Minimization Restricted: No energy limitations and fairness</td><td>×</td></tr><tr><td>[30]</td><td>Minimizing energy consumption</td><td>×</td><td>×</td><td>×</td><td>×</td><td>Restricted: 2D Geometry, UAV-centric, no trajectory optimization</td><td>×</td></tr><tr><td>[31]</td><td>Max-min transmission rate</td><td>×</td><td>×</td><td>OFDMA</td><td>×</td><td>Replacement: Uplink scenario Restricted: 2D geometry, no energy limitations</td><td>√</td></tr><tr><td>Ours</td><td>Max-min aggregate throughput among all users over all time</td><td>√</td><td>PLoS</td><td>√</td><td>√</td><td>Replacement: Downlink setup, UAV provides coverage to multiple users and users can connect to multiple UAVs</td><td>√</td></tr></table>
+<table><tr><td rowspan=1 colspan=1>Ref.</td><td rowspan=1 colspan=1>Objective</td><td rowspan=1 colspan=1>Design3D</td><td rowspan=1 colspan=1>A2Gmodel</td><td rowspan=1 colspan=1>Bandwidthallocation</td><td rowspan=1 colspan=1>Energyconstraint</td><td rowspan=1 colspan=1>Application/Restrictions</td><td rowspan=1 colspan=1>Fair</td></tr><tr><td rowspan=1 colspan=1>[17]</td><td rowspan=1 colspan=1>Aggregate sum rate of the UAV</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>Restricted: No. of UAVs = No. of users</td><td rowspan=1 colspan=1>×</td></tr><tr><td rowspan=1 colspan=1>[18]</td><td rowspan=1 colspan=1>Max-min throughput among users</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>Restricted: Each UAV serves atmost one requester</td><td rowspan=1 colspan=1>√</td></tr><tr><td rowspan=1 colspan=1>[19]</td><td rowspan=1 colspan=1>Maximize the downlink capacity</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>PLoS</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>Restricted: Downlink setup, no energy limitations</td><td rowspan=1 colspan=1>×</td></tr><tr><td rowspan=1 colspan=1>[20]</td><td rowspan=1 colspan=1>Min-max completion time</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>Restricted: Each UAV serves atmost one user, 2D Geometry</td><td rowspan=1 colspan=1>√</td></tr><tr><td rowspan=1 colspan=1>[21]</td><td rowspan=1 colspan=1>Minimize the total latency &amp;energy consumption</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>PLoS</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>Restricted: 2D Geometry &amp; UAV-centric</td><td rowspan=1 colspan=1>×</td></tr><tr><td rowspan=1 colspan=1>[22]</td><td rowspan=1 colspan=1>Maximize the minimum energy-efficiency among all UAVs</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>Restricted: Each UAV serves atmost one user,2D Geometry</td><td rowspan=1 colspan=1>√</td></tr><tr><td rowspan=1 colspan=1>[23]</td><td rowspan=1 colspan=1>Max-min achievable rateamong all users</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>PLoS</td><td rowspan=1 colspan=1>Orthogonalchannels</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>Restricted: One UAV serves to atmost one user,no energy limitations</td><td rowspan=1 colspan=1>√</td></tr><tr><td rowspan=1 colspan=1>[27][28]</td><td rowspan=1 colspan=1>Minimize no. of active UAVsover time</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>Replacement: Minimize number of UAVs,Restricted: 2D Geometry, no energy limitations</td><td rowspan=1 colspan=1>X</td></tr><tr><td rowspan=1 colspan=1>[29]</td><td rowspan=1 colspan=1>Outage probability minimization</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>PLoS</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>Replacement: Outage MinimizationRestricted: No energy limitations and fairness</td><td rowspan=1 colspan=1>×</td></tr><tr><td rowspan=1 colspan=1>[30]</td><td rowspan=1 colspan=1>Minimizing energy consumption</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>×</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>Restricted: 2D Geometry, UAV-centric,no trajectory optimization</td><td rowspan=1 colspan=1>×</td></tr><tr><td rowspan=1 colspan=1>[31]</td><td rowspan=1 colspan=1>Max-min transmission rate</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>OFDMA</td><td rowspan=1 colspan=1>X</td><td rowspan=1 colspan=1>Replacement: Uplink scenarioRestricted: 2D geometry, no energy limitations</td><td rowspan=1 colspan=1>√</td></tr><tr><td rowspan=1 colspan=1>Ours</td><td rowspan=1 colspan=1>Max-min aggregate throughputamong all users over all time</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>PLoS</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>√</td><td rowspan=1 colspan=1>Replacement: Downlink setup, UAV provides coverageto multiple users and users can connect to multiple UÁVs</td><td rowspan=1 colspan=1>√</td></tr></table>
 
 For analytical tractability, we assume the total flight time $T$ of the UAV is discretized into N slots of equal length, indexed by $\mathcal { N } = \{ 1 , \cdots , N \}$ . The slot duration is given by $\tau = T / N$ . The slot duration τ is set to be sufficiently small such that the UAV is assumed to be stationary within the time slot [33]. The UAV location at the $n ^ { t h }$ -time slot is given by ${ \bf X } _ { m } [ n ] = [ { \bf q } _ { m } [ n ] , z _ { m } [ n ] ]$ , where $m \in \{ 1 , 2 \}$ , and $\mathbf { q } _ { m } [ n ]$ and $z _ { m } [ n ]$ are the horizontal and vertical coordinates of the $m ^ { t h } .$ UAV, respectively. Then, the constraint on the UAV locations with respect to time is given as
 
 $$
-\mathbf {X} _ {1} [ 0 ] = \mathbf {X} _ {F}, \mathbf {X} _ {1} [ N _ {f} ] = \mathbf {X} _ {I}, \mathbf {X} _ {2} [ 0 ] = \mathbf {X} _ {I}, \mathbf {X} _ {2} [ N ] = \mathbf {X} _ {F}.\tag{1}
+\mathbf { X } _ { 1 } [ 0 ] = \mathbf { X } _ { F } , \mathbf { X } _ { 1 } [ N _ { f } ] = \mathbf { X } _ { I } , \mathbf { X } _ { 2 } [ 0 ] = \mathbf { X } _ { I } , \mathbf { X } _ { 2 } [ N ] = \mathbf { X } _ { F } .\tag{1}
 $$
 
 The slot index $N _ { f } \ \leq \ N$ is the number of time slots taken by the UAV $U _ { 1 }$ to reach $\mathbf { X } _ { I }$ . Accordingly, if $N _ { f } < N$ , then after $N _ { f }$ time slots only UAV $U _ { 2 }$ will provide communication to the ground users considering that the UAV $U _ { 1 }$ has reached the charging station and has terminated its service. Note that, in our work, we consider two-UAVs for better insights but this work is also valid for more than two UAVs.
 
-We assume the maximum flying velocity of the UAV is constrained by $V _ { m a x }$ such that $v _ { m } [ n ] \leq V _ { m a x } , \forall n , m \in \{ 1 , 2 \}$ where $v _ { m } [ n ]$ is the velocity of $\therefore \dot { m } ^ { t h } \ – \mathrm { U A V }$ at time slot n. $v _ { m } [ n ] = d _ { m } [ n ] / \tau$ , where $d _ { m } [ n ] = \| { \bf X } _ { m } [ n ] - { \bf X } _ { m } [ n - 1 ] \|$ is the distance travelled by the $m ^ { t h }  – \mathrm { U A V }$ in the $n ^ { t h }$ -time slot. Also, we assume that the minimum separation distance required to avoid collision between the two UAVs is $D _ { m i n }$
+We assume the maximum flying velocity of the UAV is constrained by $V _ { m a x }$ such that $v _ { m } [ n ] \leq V _ { m a x } , \forall n , m \in \{ 1 , 2 \}$ where $v _ { m } [ n ]$ is the velocity of $\therefore M A V$ at time slot n. $v _ { m } [ n ] = d _ { m } [ n ] / \tau$ , where $d _ { m } [ n ] = \| { \bf X } _ { m } [ n ] - { \bf X } _ { m } [ n - 1 ] \|$ is the distance travelled by the $m ^ { t h }  – \mathrm { U A V }$ in the $n ^ { t h }$ -time slot. Also, we assume that the minimum separation distance required to avoid collision between the two UAVs is $D _ { m i n }$
 
 Note that after UAVs $U _ { 1 }$ and $U _ { 2 }$ have reached their respective locations, the UAV $U _ { 2 }$ will continue to serve the ground users by hovering at the final location until its energy level falls below a certain threshold. Therefore, the final location should be the optimal location where the performance is optimal [34]. In this work, to better understand the replacement mechanism, we have considered the final location to be any location in 3D space and did not impose any constraint on the final location.
 
@@ -79,13 +78,13 @@ Energy consumption plays a critical role in deciding when the UAV needs to be re
 In general, the energy consumption consists of manoeuvring and communication-related energy consumption. In this paper, we have considered the manoeuvring energy because the communication-related energy is far less than the manoeuvring energy [14]. Since the UAV is launched to hover at the final location, we consider a rotary-wing UAV because of its hovering feature. The energy model of a rotary-wing UAV as a function of velocity is given as [35, Eq. 11]
 
 $$
-\begin{array}{l} e _ {m} [ n ] = \tau P _ {o} \left(1 + \frac {3 v _ {m} ^ {x y} [ n ] ^ {2}}{U _ {t i p} ^ {2}}\right) + \tau P _ {i} \left(\sqrt {1 + \frac {v _ {m} ^ {x y} [ n ] ^ {4}}{4 v _ {o} ^ {2}}} - \frac {v _ {m} ^ {x y} [ n ] ^ {2}}{2 v _ {o} ^ {4}}\right) ^ {\frac {1}{2}} \\ + \tau \frac {1}{2} d _ {0} \rho S A v _ {m} ^ {x y} [ n ] ^ {3} + W \tau v _ {m} ^ {z} [ n ], \end{array} \tag {2}
+\begin{array} { r l r } {  { e _ { m } [ n ] = \tau P _ { o } ( 1 + \frac { 3 v _ { m } ^ { x y } [ n ] ^ { 2 } } { U _ { t i p } ^ { 2 } } ) + \tau P _ { i } ( \sqrt { 1 + \frac { v _ { m } ^ { x y } [ n ] ^ { 4 } } { 4 v _ { o } ^ { 2 } } } - \frac { v _ { m } ^ { x y } [ n ] ^ { 2 } } { 2 v _ { o } ^ { 4 } } ) ^ { \frac { 1 } { 2 } } } } \\ & { } & { + \tau \frac { 1 } { 2 } d _ { 0 } \rho S A v _ { m } ^ { x y } [ n ] ^ { 3 } + W \tau v _ { m } ^ { z } [ n ] , \quad \quad \quad ( 2 ) } \end{array}
 $$
 
 where $v _ { m } ^ { x y } [ n ]$ and $v _ { m } ^ { z } [ n ]$ represent the horizontal and vertical component of velocity, respectively, at the $n ^ { t h }$ -time slot. $v _ { o }$ is the mean rotor induced velocity. $U _ { t i p }$ is the tip speed of rotor blade. $d _ { 0 } , \rho ,$ and S are the fuselag ratio, air density, and rotor solidity, respectively. A and $W$ represent the rotor disc area, and weight of UAV, respectively. $P _ { o }$ and $P _ { i }$ are the constants and denote the blade profile power and induced power, respectively. Since only UAV $U _ { 1 }$ is low on energy, in this work, we consider the onboard energy constraint for UAV $U _ { 1 }$ only, which is given by
 
 $$
-\sum_ {n = 1} ^ {N _ {f}} e _ {1} [ n ] \leq E _ {l e f t},\tag{3}
+\sum _ { n = 1 } ^ { N _ { f } } e _ { 1 } [ n ] \leq E _ { l e f t } ,\tag{3}
 $$
 
 where $E _ { l e f t }$ is the energy left with the UAV $U _ { 1 }$
@@ -97,7 +96,7 @@ Although UAVs can adjust altitude to maintain a LoS communication link, in some 
 The probability of LoS link $P _ { k , m } ^ { L } [ n ]$ depends upon the elevation angle (in degrees) of the $\mathbf { \xi } _ { m } { t h \mathbf { \xi } _ { - } } \mathrm { U A V }$ with the $k ^ { t h }$ user given by $\begin{array} { r } { \phi _ { k , m } \mathopen { } \mathclose \bgroup \left[ n \aftergroup \egroup \right] = \tan ^ { - 1 } \left( \frac { z _ { m } \left[ n \right] } { \left\| \mathbf { q } _ { m } \left[ n \right] - \mathbf { w } _ { k } \right\| } \right) } \end{array}$ . Thus, $P _ { k , m } ^ { L } [ n ]$ is given by [37]
 
 $$
-P _ {k, m} ^ {L} [ n ] = \frac {1}{(1 + C \exp (- D [ \phi_ {k , m} [ n ] - C ])}),\tag{4}
+P _ { k , m } ^ { L } [ n ] = \frac { 1 } { ( 1 + C \exp \left( - D [ \phi _ { k , m } [ n ] - C ] \right) ) } ,\tag{4}
 $$
 
 where $C$ and $D$ are parameters describing either the suburban, urban, or dense urban environment.
@@ -105,31 +104,31 @@ where $C$ and $D$ are parameters describing either the suburban, urban, or dense
 Noting the small-scale fading effects, the channel model for $k ^ { t h }$ -user from $m ^ { t h }  – \mathrm { U A V }$ in time slot n is given by $H _ { k , m } [ n ] = h _ { k , m } ^ { s } [ n ] h _ { k , m } ^ { l } [ n ]$ , where $h _ { k , m } ^ { l } [ n ]$ is the large-scale fading effects, and $h _ { k , m } ^ { s } [ n ]$ is the small-scale fading effects with $\mathbb { E } [ | h _ { k , m } ^ { s } [ n ] | ^ { 2 } ] = 1 \ [ 3 8 ]$ . Then, $\mathbb { E } [ | H _ { k , m } [ n ] | ^ { 2 } ]$ , considering $\bar { \alpha } = 2$ is given by
 
 $$
-\mathbb {E} [ | H _ {k, m} [ n ] | ^ {2} ] = \beta_ {0} \frac {(1 - \kappa) P _ {k , m} ^ {L} [ n ] + \kappa}{\| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| ^ {2} + z _ {m} [ n ] ^ {2}}.\tag{5}
+\mathbb { E } [ | H _ { k , m } [ n ] | ^ { 2 } ] = \beta _ { 0 } \frac { ( 1 - \kappa ) P _ { k , m } ^ { L } [ n ] + \kappa } { \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } + z _ { m } [ n ] ^ { 2 } } .\tag{5}
 $$
 
 This paper considers the downlink communication system model where the UAV uses frequency division multiple access (FDMA) scheme for sharing resources among the ground users. Let $b _ { k , m } [ n ]$ denote the bandwidth allocated by the $m ^ { t h }$ -UAV to the $\bar { k ^ { t h } }$ -user in the $n ^ { t h }$ -time slot from the total bandwidth B (Hz) available. Then, we have
 
 $$
-\sum_ {k = 1} ^ {K} \sum_ {m = 1} ^ {2} b _ {k, m} [ n ] = B.\tag{6}
+\sum _ { k = 1 } ^ { K } \sum _ { m = 1 } ^ { 2 } b _ { k , m } [ n ] = B .\tag{6}
 $$
 
 We assume that each UAV transmits with power $P _ { t r }$ to all the users in every time slot. Then, the average achievable data rate by averaging over the small-scale fading effects at the $k ^ { t h }$ -user by the $\bar { m } ^ { t h } \ – \mathrm { U A V }$ at time slot n is given by [38, Eq. 5]
 
 $$
-\tilde {r} _ {k, m} [ n ] = b _ {k, m} [ n ] \log_ {2} \left(1 + \frac {P _ {t r} | H _ {k , m} [ n ] | ^ {2}}{\sigma^ {2} b _ {k , m} [ n ]}\right),\tag{7}
+\tilde { r } _ { k , m } [ n ] = b _ { k , m } [ n ] \log _ { 2 } \left( 1 + \frac { P _ { t r } | H _ { k , m } [ n ] | ^ { 2 } } { \sigma ^ { 2 } b _ { k , m } [ n ] } \right) ,\tag{7}
 $$
 
 where $\sigma ^ { 2 }$ is the noise power spectral density at the receiver. Since, the channel $H _ { k , m } [ n ]$ is a random variable, and so is $\tilde { r } _ { k , m } [ n ]$ . Furthermore, due to the complexity of the probabilistic channel model, it is challenging to obtain the probability distribution of $\tilde { r } _ { k , m } [ n ]$ . Therefore, in this work, we are focused towards the expected communication throughput which is $r _ { k , m } [ n ] = \mathbb { E } [ \tilde { r } _ { k , m } [ n ] ]$ . Then, the expected data rate is given as [14] and [39]
 
 $$
-r _ {k, m} [ n ] \approx b _ {k, m} [ n ] \log_ {2} \left(1 + \frac {P _ {t r} \mathbb {E} [ | H _ {k , m} [ n ] | ^ {2} ]}{\sigma^ {2} b _ {k , m} [ n ]}\right),\tag{8}
+r _ { k , m } [ n ] \approx b _ { k , m } [ n ] \log _ { 2 } \left( 1 + \frac { P _ { t r } \mathbb { E } [ | H _ { k , m } [ n ] | ^ { 2 } ] } { \sigma ^ { 2 } b _ { k , m } [ n ] } \right) ,\tag{8}
 $$
 
 Consequently, the expected achievable sum data rate of $k ^ { t h }$ user during flight time T is expressed as
 
 $$
-R _ {k} \triangleq \sum_ {n = 1} ^ {N _ {f}} r _ {k, 1} [ n ] + \sum_ {n = 1} ^ {N} r _ {k, 2} [ n ].\tag{9}
+R _ { k } \triangleq \sum _ { n = 1 } ^ { N _ { f } } r _ { k , 1 } [ n ] + \sum _ { n = 1 } ^ { N } r _ { k , 2 } [ n ] .\tag{9}
 $$
 
 ## III. PROBLEM STATEMENT
@@ -137,37 +136,37 @@ $$
 In this paper, we intend to maximize the minimum rate among all the users in a UWC system. Our multi-UAVenabled communication design is aimed to target user-centric applications rather than UAV-centric applications, where the best-effort delivery is made to maximize the service rate to the ground users. Note that if we consider the UAV-centric applications, in such a scenario, the UAV moves to the charging station with the minimum propulsion energy consumption instead of choosing a path with a maximum service rate. We define $\mathbf { B } \ = \ \{ b _ { k , m } [ n ] , \forall k \in \mathcal { K } , m \in \mathcal { M } , n \in \mathcal { N } \}$ , and $\mathbf { T } = \{ \mathbf { X } _ { m } [ n ] , \forall m \in \mathcal { M } , n \in \mathcal { N } \}$ as bandwidth, and multi-UAV trajectory, respectively. Then, the optimization problem is formulated as
 
 $$
-\mathrm{P1}: \max _ {\mathbf {B}, \mathbf {T}} \quad \min _ {k} \quad R _ {k} \triangleq \sum_ {n = 1} ^ {N _ {f}} r _ {k, 1} [ n ] + \sum_ {n = 1} ^ {N} r _ {k, 2} [ n ],
+\mathbf { P } 1 : \operatorname* { m a x } _ { \mathbf { B } , \mathbf { T } } \quad \operatorname* { m i n } _ { k } \quad R _ { k } \triangleq \sum _ { n = 1 } ^ { N _ { f } } r _ { k , 1 } [ n ] + \sum _ { n = 1 } ^ { N } r _ { k , 2 } [ n ] ,
 $$
 
 $$
-s. t. \mathbf {X} _ {1} [ 0 ] = \mathbf {X} _ {F}, \mathbf {X} _ {1} [ N _ {f} ] = \mathbf {X} _ {I},
+s . t . \mathbf { X } _ { 1 } [ 0 ] = \mathbf { X } _ { F } , \mathbf { X } _ { 1 } [ N _ { f } ] = \mathbf { X } _ { I } ,
 $$
 
 $$
-\mathbf {X} _ {2} [ 0 ] = \mathbf {X} _ {I}, \mathbf {X} _ {2} [ N ] = \mathbf {X} _ {F},
+\begin{array} { r } { { \bf X } _ { 2 } [ 0 ] = { \bf X } _ { I } , { \bf X } _ { 2 } [ N ] = { \bf X } _ { F } , } \end{array}
 $$
 
 $$
-v _ {m} [ n ] \leq V _ {m a x}, \forall m, n,\tag{10a}
+v _ { m } [ n ] \leq V _ { m a x } , \forall m , n ,\tag{10a}
 $$
 
 (10b)
 
 $$
-\| \mathbf {X} _ {m} [ n ] - \mathbf {X} _ {j} [ n ] \| ^ {2} \geq D _ {m i n} ^ {2}, \forall n, m \neq j,\tag{10c}
+\| \mathbf { X } _ { m } [ n ] - \mathbf { X } _ { j } [ n ] \| ^ { 2 } \geq D _ { m i n } ^ { 2 } , \forall n , m \neq j ,\tag{10c}
 $$
 
 $$
-\sum_ {n = 1} ^ {N _ {f}} e _ {1} [ n ] \leq E _ {l e f t}, N _ {f} \leq N,\tag{10d}
+\sum _ { n = 1 } ^ { N _ { f } } e _ { 1 } [ n ] \leq E _ { l e f t } , N _ { f } \leq N ,\tag{10d}
 $$
 
 $$
-r _ {k, 1} [ n ] + r _ {k, 2} [ n ] \geq R _ {t h}, \forall k, n,
+r _ { k , 1 } [ n ] + r _ { k , 2 } [ n ] \geq R _ { t h } , \forall k , n ,
 $$
 
 $$
-\sum_ {k = 1} ^ {K} \sum_ {m = 1} ^ {2} b _ {k, m} [ n ] = B, \forall n,\tag{10e}
+\sum _ { k = 1 } ^ { K } \sum _ { m = 1 } ^ { 2 } b _ { k , m } [ n ] = B , \forall n ,\tag{10e}
 $$
 
 (10f)
@@ -181,7 +180,7 @@ It can be observed that problem P1 is highly complex and is difficult to solve d
 In this section, we first transform the max-min problem defined in P1 to a maximization problem by introducing an auxiliary variable R = min $R _ { k }$ , as a function of B and T. k Then, the problem is defined as
 
 $$
-\begin{array}{l} \text { P1.1 }: \max _ {\mathcal {R}, \mathbf {B}, \mathbf {T}} \mathcal {R} \\ \quad s. t. R _ {k} \geq \mathcal {R}, \forall k \in \mathcal {K}, \\ (1 0 a) - (1 0 f). \end{array}\tag{11a}
+\begin{array} { r l } & { \mathrm { P l . 1 : ~ } \displaystyle \operatorname* { m a x } _ { \mathcal { R } , \mathbf { B } , \mathbf { T } } ~ \mathcal { R } } \\ & { ~ \quad ~ s . t . ~ R _ { k } \geq \mathcal { R } , \forall k \in \mathcal { K } , } \\ & { \quad ( 1 0 \mathrm { a } ) - ( 1 0 \mathrm { f } ) . } \end{array}\tag{11a}
 $$
 
 The problem P1.1 is still non-convex with additional non-convex constraint in (11a). We solve this problem by decoupling it into two sub-problems, namely bandwidth optimization and UAV trajectory optimization. Thereafter, we apply alternating optimization to solve this problem. In alternating optimization, we solve the two subproblems alternatively. In particular, we first solve the bandwidth optimization under the initially given UAV trajectories using linear programming. Then, the UAV trajectory optimization problem is solved to obtain the optimal trajectory using the SCA approach. This repeats until the difference in the objective value between the two successive iterations is below an acceptable tolerance. Furthermore, we show the analytical complexity and convergence of the proposed iterative algorithm. In the following sub-section, we discuss these subproblems in detail.
@@ -191,7 +190,7 @@ The problem P1.1 is still non-convex with additional non-convex constraint in (1
 For a given UAV trajectories T, the bandwidth optimization problem can be formulated as
 
 $$
-\begin{array}{c} \text {P2:} \max _ {\mathcal {R}, \mathbf {B}} \quad \mathcal {R} \\ s. t. (1 1 \mathrm{a}), (1 0 \mathrm{e}), (1 0 \mathrm{f}). \end{array}
+\begin{array} { r l } & { \mathrm { P 2 : ~ \operatorname* { m a x } _ { \mathcal { R } , \mathbf { B } } ~ \mathcal { R } ~ } } \\ & { ~ \mathrm { ~ \ } s . t . ~ \mathrm { ( 1 1 a ) } , ( 1 0 \mathrm { e } ) , ( 1 0 \mathrm { f } ) . } \end{array}
 $$
 
 It can be observed that $r _ { k , m } [ n ]$ defined in (8) is convex in $b _ { k , m } [ n ]$ and so is $R _ { k }$ defined in (11a). Thus, (11a) and (10e) are convex constraints. On the other hand, (10f) is a linear constraint. As a result, problem P2 is a convex programming problem and it can be solved using interior point method.
@@ -201,7 +200,7 @@ It can be observed that $r _ { k , m } [ n ]$ defined in (8) is convex in $b _ {
 We optimize the UAV trajectories T for a given bandwidth allocation B. The trajectory optimization problem is formulated as follows
 
 $$
-\begin{array}{c} \text {P3:} \max _ {\mathcal {R}, \mathbf {T}} \quad \mathcal {R} \\ s. t. (1 1 \mathrm{a}), (1 0 \mathrm{a}) - (1 0 \mathrm{e}). \end{array}
+\operatorname { P 3 } : \operatorname* { m a x } _ { \mathcal { R } , \mathbf { T } } \quad \mathcal { R }
 $$
 
 It can be observed that due to the presence of non-convex constraints in (11a), (10c) − (10e), the problem P3 is nonconvex. To tackle this difficulty efficiently, we solve for $\mathbf { q } _ { m } [ n ]$ (horizontal) and $z _ { m } [ n ]$ (vertical) trajectory coordinates separately in trajectory optimization.
@@ -209,7 +208,7 @@ It can be observed that due to the presence of non-convex constraints in (11a), 
 1) Horizontal Coordinate Optimization: Given the vertical coordinates of the UAVs $i . e . , \ \{ z _ { m } [ n ] , \forall m , n \}$ , the horizontal coordinate problem is formulated as follows
 
 $$
-\begin{array}{c} \text {P3.1:} \max _ {\mathcal {R}, \{\mathbf {q} _ {m} [ n ], \forall m, n \}} \mathcal {R} \\ s. t. (1 1 \mathrm{a}), (1 0 \mathrm{a}) - (1 0 \mathrm{e}). \end{array}
+\operatorname { P 3 . 1 } : \operatorname* { m a x } _ { \mathcal { R } , \{ \mathbf { q } _ { m } [ n ] , \forall m , n \} } \mathcal { R }
 $$
 
 Note that the problem P3.1 is non-convex due to non-convex constraints in (11a), (10c) − (10e). To obtain a solution to this problem, we apply SCA method to convert the non-convex constraints to convex.
@@ -219,13 +218,13 @@ Since $R _ { k }$ in (11a) is a non-negative sum function of $r _ { k , m } [ n 
 is a logarithmic function of average channel gain $h _ { k , m } [ n ]$ As from [40], we know that the logarithmic function preserves the concavity, therefore, we only need to deal with $h _ { k , m } [ n ]$ To transform $h _ { k , m } [ n ]$ , let us introduce an auxiliary variable $\alpha _ { k , m } [ n ]$ , such that
 
 $$
-\alpha_ {k, m} [ n ] \leq \frac {(1 - \kappa) P _ {k , m} ^ {L} [ n ] + \kappa}{\| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| ^ {2} + z _ {m} [ n ] ^ {2}}.\tag{12}
+\alpha _ { k , m } [ n ] \leq \frac { ( 1 - \kappa ) P _ { k , m } ^ { L } [ n ] + \kappa } { \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } + z _ { m } [ n ] ^ { 2 } } .\tag{12}
 $$
 
 Then, the $r _ { k , m } [ n ]$ defined in constraints (11a) and (10e) can be written in the form
 
 $$
-\bar {r} _ {k, m} [ n ] = b _ {k, m} [ n ] \log_ {2} (1 + \tilde {\gamma} _ {o} \alpha_ {k, m} [ n ]),\tag{13}
+\bar { r } _ { k , m } [ n ] = b _ { k , m } [ n ] \log _ { 2 } ( 1 + \tilde { \gamma } _ { o } \alpha _ { k , m } [ n ] ) ,\tag{13}
 $$
 
 where $\begin{array} { r } { \tilde { \gamma } _ { o } = \frac { P _ { t r } \beta _ { 0 } } { \sigma ^ { 2 } } } \end{array}$ . As a consequence, the constraints (11a) and (10e) results in a convex constraints in $\alpha _ { k , m } [ n ]$ . The constraint introducing the auxiliary variable i.e., (12) is however a nonconvex constraint.
@@ -237,7 +236,7 @@ Proof: See Appendix A.
 Accounting Lemma 1, the problem P3.1 can now be represented as P3.1.1
 
 $$
-\begin{array}{l} \text { P3.1.1: } \max _ {\mathcal {R}, \{\mathbf {q} _ {m} [ n ], \forall m, n \}, \mathcal {X}} \mathcal {R} \\ \quad s. t. (1 0 \mathrm{a}) - (1 0 \mathrm{d}), (\mathrm{A}. 1) - (\mathrm{A}. 5) \\ \bar {r} _ {k, 1} [ n ] + \bar {r} _ {k, 2} [ n ] \geq R _ {t h}, \forall k, n, \\ \sum_ {n = 1} ^ {N _ {f}} \bar {r} _ {k, 1} [ n ] + \sum_ {n = 1} ^ {N} \bar {r} _ {k, 2} [ n ] \geq \mathcal {R}, \forall k, \end{array}\tag{14a}
+\begin{array} { r l } {  { \mathrm { P 3 . 1 . 1 : } \quad \operatorname* { m a x } } } & { \mathscr { R } } \\ & { \mathscr { R } , \{ \mathbf { q } _ { m } [ n ] , \forall m , n \} , \mathscr { X } } \\ & { \quad \quad \quad s . t . \ ( 1 0 \mathrm { a } ) - ( 1 0 \mathrm { d } ) , ( \mathrm { A } . 1 ) - ( \mathrm { A } . 5 ) } \\ & { \quad \quad \quad \bar { r } _ { k , 1 } [ n ] + \bar { r } _ { k , 2 } [ n ] \geq R _ { t h } , \forall k , n , } \\ & { \quad \quad \displaystyle \sum _ { n = 1 } ^ { N _ { f } } \bar { r } _ { k , 1 } [ n ] + \sum _ { n = 1 } ^ { N } \bar { r } _ { k , 2 } [ n ] \geq \mathscr { R } , \forall k , } \end{array}\tag{14a}
 $$
 
 (14b)
@@ -247,7 +246,7 @@ where $\begin{array} { r } { \mathcal { X } \ = \ \{ \alpha _ { k , m } [ n ] , 
 Lemma 2: The constraint (A.1) can be represented in the convex form using the SCA method given as
 
 $$
-\frac {1}{2} \left(\Phi_ {k, m} [ n ] + \| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \|\right) ^ {2} - \lambda_ {k, m} [ n ] \leq z _ {m} [ n ],\tag{15}
+\frac { 1 } { 2 } \left( \Phi _ { k , m } [ n ] + \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| \right) ^ { 2 } - \lambda _ { k , m } [ n ] \leq z _ { m } [ n ] ,\tag{15}
 $$
 
 where $\lambda _ { k , m } [ n ]$ is defined in (B.3).
@@ -257,25 +256,26 @@ Proof: See Appendix B.
 In a similar fashion as in Lemma 1, we can transform (A.2) to obtain
 
 $$
-P _ {\Phi_ {k, m} [ n ]} - \left(\frac {1}{y _ {k , m} ^ {r} [ n ]} + \frac {(y _ {k , m} [ n ] - y _ {k , m} ^ {r} [ n ])}{y _ {k , m} ^ {r} [ n ] ^ {2}}\right) \leq 0,\tag{16}
+P _ { \Phi _ { k , m } [ n ] } - \left( \frac { 1 } { y _ { k , m } ^ { r } [ n ] } + \frac { \left( y _ { k , m } [ n ] - y _ { k , m } ^ { r } [ n ] \right) } { y _ { k , m } ^ { r } [ n ] ^ { 2 } } \right) \le 0 ,\tag{16}
 $$
 
 where $P _ { \Phi _ { k , m } [ n ] } ~ = ~ 1 + C \exp \left( - D \left[ \tan ^ { - 1 } \Phi _ { k , m } [ n ] - C \right] \right)$ (refer Appendix C for the convexity of $P _ { \Phi _ { k , m } [ n ] } )$ . Similarly, (A.4) can be replaced by its convex form which is given by
 
 $$
-\begin{array}{l} \frac {1}{2} \left(\alpha_ {k, m} [ n ] + \| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| ^ {2}\right) ^ {2} + \alpha_ {k, m} [ n ] z _ {m} [ n ] ^ {2} \\ - \gamma_ {k, m} [ n ] \leq \beta_ {k, m} [ n ], \end{array}\tag{17}
+\begin{array} { l } { \displaystyle \frac { 1 } { 2 } \left( \alpha _ { k , m } [ n ] + \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } \right) ^ { 2 } + \alpha _ { k , m } [ n ] z _ { m } [ n ] ^ { 2 } } \\ { - \gamma _ { k , m } [ n ] \leq \beta _ { k , m } [ n ] , } \end{array}\tag{17}
 $$
 
-<div class="mineru-algorithm" style="white-space: pre-wrap; font-family:monospace;">
-Algorithm 1 Trajectory Optimization Algorithm
-Require:  $X_{I}, X_{F}, w_{k}, \forall k \in K, V_{max}$ .
-1: Initialize  $B^{0}, \{q_{m}[n]^{0}, \forall m, n\}, \{z_{m}[n]^{0}, \forall m, n\}$ . Set acceptable tolerance  $\epsilon = 10^{-4}$ , and iteration count r = 0.
-2: Repeat
-3: Fix  $\{z_{m}[n]^{r}, \forall m, n\}$  and solve for  $\{q_{m}[n]^{r+1}, \forall m, n\}$  in problem P3.1.1.
-4: Fix  $\{q_{m}[n]^{r+1}, \forall m, n\}$  and solve for  $\{z_{m}[n]^{r+1}, \forall m, n\}$  in problem P3.2.1.
-5: Set  $r = r + 1$ , and calculate  $R^{r+1}$ .
-6: Until  $R^{r+1} - R^{r} \leq \epsilon$ .
-</div>
+Algorithm 1 Trajectory Optimization Algorithm   
+Require: $\mathbf { X } _ { I } , \mathbf { X } _ { F } , \mathbf { w } _ { k } , \forall k \in { \mathcal { K } } , V _ { m a x } .$   
+1: Initialize ${ \bf B } ^ { 0 } , \{ { \bf q } _ { m } [ n ] ^ { 0 } , \forall m , n \} , \{ z _ { m } [ n ] ^ { 0 } , \forall m , n \}$ . Set   
+acceptable tolerance $\epsilon = 1 0 ^ { - 4 }$ , and iteration count $r = 0$   
+2: Repeat   
+3: Fix $\{ z _ { m } [ n ] ^ { r } , \forall m , n \}$ and solve for $\{ \mathbf { q } _ { m } [ n ] ^ { r + 1 } , \forall m , n \}$ in   
+problem P3.1.1.   
+4: Fix $\{ \mathbf { q } _ { m } [ n ] ^ { r + 1 } , \forall m , n \}$ and solve for $\{ z _ { m } [ n ] ^ { r + 1 } , \forall m , n \}$   
+in problem P3.2.1.   
+5: Set $r = r + 1$ , and calculate $\mathcal { R } ^ { r + 1 }$   
+6: Until $\mathcal { R } ^ { r + 1 } - \mathcal { R } ^ { r } \leq \epsilon .$
 
 where $\begin{array} { r l r } { \gamma _ { k , m } [ n ] } & { { } = } & { \frac { 1 } { 2 } ( \alpha _ { k , m } ^ { r } [ n ] ^ { 2 } + \frac { } { } \Vert \mathbf { q } _ { m } ^ { r } [ n ] - \mathbf { w } _ { k } \Vert ^ { 4 } ) + } \end{array}$ $\alpha _ { k , m } ^ { r } [ n ] \big ( \alpha _ { k , m } [ n ] - \alpha _ { k , m } ^ { r } [ n ] \big ) + \| \mathbf { q } _ { m } ^ { r } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } \big ( \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } \big ) ^ { \otimes \otimes \otimes \otimes \otimes \otimes \ - \{ 1 \} / 2 } .$ $\lVert \mathbf { q } _ { m } ^ { r } [ n ] - \mathbf { w } _ { k } \rVert ^ { 2 } )$
 
@@ -284,7 +284,7 @@ To deal with the non-convex set (10c) and (10d), we introduce the following lemm
 Lemma 3: The collision constraint in (10c) can be transformed into its convex form given in (D.2) and the energy constraint in (10d) can be written as $\begin{array} { r } { \sum _ { n = 1 } ^ { N _ { f } } \tilde { e } _ { 1 } [ n ] \ \le \ E _ { l e f t } , } \end{array}$ along with the additional convex constraint defined in (D.4), where $\tilde { e } _ { 1 } [ n ]$ is given as
 
 $$
-\begin{array}{l} \tilde {e} _ {1} [ n ] = \tau P _ {o} \left(1 + \frac {3 v _ {1} ^ {x y} [ n ] ^ {2}}{U _ {t i p} ^ {2}}\right) + P _ {i} g _ {1} [ n ] + \frac {\tau}{2} d _ {0} \rho S A v _ {1} ^ {x y} [ n ] ^ {3} \\ + W \tau v _ {1} ^ {z} [ n ]. \end{array} \tag {18}
+\begin{array} { r l r } {  { \widetilde { e } _ { 1 } [ n ] = \tau P _ { o } ( 1 + \frac { 3 v _ { 1 } ^ { x y } [ n ] ^ { 2 } } { U _ { t i p } ^ { 2 } } ) + P _ { i } g _ { 1 } [ n ] + \frac { \tau } { 2 } d _ { 0 } \rho S A v _ { 1 } ^ { x y } [ n ] ^ { 3 } } } \\ & { } & { + W \tau v _ { 1 } ^ { z } [ n ] . } \end{array}
 $$
 
 Proof: See Appendix D.
@@ -294,24 +294,24 @@ Accounting all the above discussion and lemmas to convexify the constraints, it 
 2) Vertical Coordinate Optimization: Given the horizontal coordinates $\{ \mathbf { q } _ { m } [ n ] , \forall m , n \}$ obtained from the horizontal coordinate optimization subproblem, the vertical coordinate optimization subproblem is given as
 
 $$
-\begin{array}{c} \text {P3.2:} \max _ {\mathcal {R}, \{z _ {m} [ n ], \forall m, n \}} \mathcal {R} \\ s. t. (1 1 a), (1 0 a) - (1 0 e). \end{array}
+\mathrm { P 3 . 2 : ~ \operatorname* { m a x } _ { \mathcal { R } , \{ z _ { m } [ n ] , \forall m , n \} } ~ } \overset { \mathcal { R } } { \mathcal { R } }
 $$
 
 It can be observed that the problem is non-convex due to the non-convex constraints (11a), (10c), and (10e). Following the same procedure as done for the horizontal coordinate optimization problem, the problem P3.2 can be written as
 
 $$
-\begin{array}{c} \text {P3.2.1:} \max _ {\{z _ {m} [ n ], \forall m, n \}, \mathcal {X}} \mathcal {R} \\ s. t. (1 0 \mathrm{a}) - (1 0 \mathrm{d}), (1 4 \mathrm{a}), (1 4 \mathrm{b}), (\mathrm{A}. 1) - (\mathrm{A}. 5). \end{array}
+\begin{array} { r l } {  { \operatorname { P 3 . 2 . 1 : } \operatorname* { m a x } _ { \{ z _ { m } [ n ] , \forall m , n \} , x } \mathcal { R } } } \\ & { \quad \quad \quad \quad s . t . ( 1 0 \mathrm { a } ) - ( 1 0 \mathrm { d } ) , ( 1 4 \mathrm { a } ) , ( 1 4 \mathrm { b } ) , ( \mathrm { A . 1 } ) - ( \mathrm { A . 5 } ) . } \end{array}
 $$
 
 where $\begin{array} { r } { \mathcal { X } \ = \ \{ \alpha _ { k , m } [ n ] , \Phi _ { k , m } [ n ] , y _ { k , m } [ n ] , \beta _ { k , m } [ n ] \} , \forall k , m , n . } \end{array}$ The constraints (14a), (14b), $( \mathrm { A } . 1 ) - ( \mathrm { A } . 5 )$ are obtained using the same procedure as defined in horizontal coordinate optimization. It can be observed that the problem is non-convex due to the constraints (10c), (A.2), and (A.4).
 
-![](images/5f21618dad6aa8e91b896a880a52159c2015fd2009d297310a94624dc4a514a6.jpg)  
+![](images/c672a593c2c82561ceba4a06a90b38423f85549052bf8cc79882884d31317a5c.jpg)  
 Fig. 2. Trajectory initialization based on straight-line path.
 
 Utilizing similar methods as used in the previous subsection, the constraint (10c) can be written as (D.2) with ${ \bf X } _ { m } ^ { r } [ n ] =$ $( \mathbf { q } _ { m } [ n ] , z _ { m } ^ { r } [ n ] )$ and ${ \bf X } _ { j } ^ { r } [ n ] = ( { \bf q } _ { j } [ n ] , z _ { j } ^ { r } [ n ] )$ , and the constraint (A.2) can be transformed to a convex function as (16). Similarly, non-convex constraint (A.4) can be written in convex form as
 
 $$
-\begin{array}{c} \frac {1}{2} \left(\alpha_ {k, m} [ n ] + z _ {m} [ n ] ^ {2}\right) ^ {2} + \alpha_ {k, m} [ n ] \| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| ^ {2} \\ - \gamma_ {k, m} ^ {v} [ n ] \leq \beta_ {k, m} [ n ], \end{array}\tag{19}
+\begin{array} { r l } & { \frac { 1 } { 2 } \left( \alpha _ { k , m } [ n ] + z _ { m } [ n ] ^ { 2 } \right) ^ { 2 } + \alpha _ { k , m } [ n ] \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } } \\ & { \quad - \gamma _ { k , m } ^ { v } [ n ] \leq \beta _ { k , m } [ n ] , } \end{array}\tag{19}
 $$
 
 where $\begin{array} { r } { \gamma _ { k , m } ^ { v } [ n ] = \frac { 1 } { 2 } ( \alpha _ { k , m } ^ { r } [ n ] ^ { 2 } + z _ { m } ^ { r } [ n ] ^ { 4 } ) + \alpha _ { k , m } ^ { r } [ n ] ( \alpha _ { k , m } [ n ] - } \end{array}$ $\alpha _ { k , m } ^ { r } [ n ] ) + z _ { m } ^ { r } [ \bar { n } ] ^ { 2 } ( z _ { m } [ n ] ^ { 2 } - z _ { m } ^ { r } [ n ] ^ { 2 } )$ . Accounting the first-order Taylor expansions, the problem P3.2.1 is now convex and can be solved using the interior point method. Similar to the horizontal coordinate subproblem, P3.2.1 also converges to locally optimal solution of P3.2.
@@ -330,7 +330,7 @@ Furthermore, in this initial trajectory design, the UAV moves with a fixed speed
 
 ## B. Overall Algorithm
 
-Based on the analysis provided by decomposing the problem into subproblems, we present an alternating optimization algorithm to obtain a sub-optimal solution. The overall algorithm is presented in Algorithm 2. The steps in the Algorithm 2 are as follows. In step 1, we initialize the bandwidth allocation $\mathbf { B } ^ { 0 }$ , and multi-UAV trajectory $\mathbf { T } ^ { 0 }$ . Step 2 to Step 7 involve the steps corresponding to alternating optimization, where bandwidth allocation and multi-UAV trajectory are optimized iteratively by fixing the other design variables. Particularly, in Step 3, for any given multi-UAV trajectory $\mathbf { T } ^ { r }$ we optimize the bandwidth allocated to each user by solving a linear programming problem. In Step 4, for an optimized bandwidth $\bar { \mathbf { B } } ^ { r + 1 }$ , the UAV trajectories $\mathbf T ^ { r + 1 }$ are optimized using Algorithm 1. The algorithm returns a solution when the difference in the objective function of the current iteration to the previous iteration is below the pre-defined tolerance ϵ.
+Based on the analysis provided by decomposing the problem into subproblems, we present an alternating optimization algorithm to obtain a sub-optimal solution. The overall algorithm is presented in Algorithm 2. The steps in the Algorithm 2 are as follows. In step 1, we initialize the band width allocation $\mathbf { B } ^ { 0 }$ , and multi-UAV trajectory $\mathbf { T } ^ { 0 }$ . Step 2 to Step 7 involve the steps corresponding to alternating optimization, where bandwidth allocation and multi-UAV trajectory are optimized iteratively by fixing the other design variables. Particularly, in Step 3, for any given multi-UAV trajectory $\mathbf { T } ^ { r }$ we optimize the bandwidth allocated to each user by solving a linear programming problem. In Step 4, for an optimized bandwidth $\bar { \mathbf { B } } ^ { r + 1 }$ , the UAV trajectories $\mathbf T ^ { r + 1 }$ are optimized using Algorithm 1. The algorithm returns a solution when the difference in the objective function of the current iteration to the previous iteration is below the pre-defined tolerance ϵ.
 
 ## C. Computational Complexity
 
@@ -340,28 +340,27 @@ The computational complexity of the overall algorithm depends on the complexity 
 
 Since we have solved the approximate problems to obtain the multi-UAV trajectory and allocated bandwidth to each user, we need to ensure the convergence of the alternating optimization method. This is proved by showing that the objective value increases in each iteration in a maximization problem. Here, we first present the convergence of Algorithm 1. Then, using the convergence of Algorithm 1, we prove the convergence of the overall algorithm.
 
-<div class="mineru-algorithm" style="white-space: pre-wrap; font-family:monospace;">
-Algorithm 2 Overall Algorithm to Obtain Solution of (P1.1)
-Require:  $X_{I}, X_{F}, w_{k}, \forall k \in K, V_{max}$ .
-1: Initialize  $B^{0}, T^{0}$ , set acceptable tolerance  $\epsilon = 10^{-4}$ , and iteration count r = 0.
-2: Repeat
-3: Fix  $T^{r}$  and solve for  $B^{r+1}$  in problem P2.
-4: Fix  $B^{r+1}$ , call Algorithm 1 to obtain  $T^{r+1}$ .
-5: Update  $\{T^{r}, B^{r}\}$  with  $\{T^{r+1}, B^{r+1}\}$ .
-6: Set  $r = r + 1$ , and calculate  $R^{r+1}$ .
-7: Until  $R^{r+1} - R^{r} \leq \epsilon$ .
-</div>
+Algorithm 2 Overall Algorithm to Obtain Solution of (P1.1)   
+Require: $\mathbf { \overline { { X } } } _ { I } , \mathbf { X } _ { F } , \mathbf { w } _ { k } , \forall k \in \mathcal { K } , V _ { m a x } .$   
+1: Initialize $\mathbf { B } ^ { 0 } , \mathbf { T } ^ { 0 } ,$ , set acceptable tolerance $\epsilon = 1 0 ^ { - 4 }$ , and   
+iteration count $r = 0 .$   
+2: Repeat   
+3: Fix $\mathbf { T } ^ { r }$ and solve for $\mathbf { B } ^ { r + 1 }$ in problem P2.   
+4: Fix $\mathbf { B } ^ { r + 1 }$ , call Algorithm 1 to obtain $\mathbf { T } ^ { r + 1 }$   
+5: Update $\{ \mathbf { T } ^ { r } , \mathbf { B } ^ { r } \}$ with $\{ \mathbf T ^ { r + 1 } , \mathbf B ^ { r + 1 } \}$   
+6: Set $r = r + 1 ,$ , and calculate $\mathcal { R } ^ { r + 1 } .$   
+7: Until $\mathcal { R } ^ { r + 1 } - \mathcal { R } ^ { r } \leq \epsilon .$
 
-We define $\mathcal { R } ( \mathbf { Q } , \mathbf { Z } ) , \ \mathcal { R } _ { h o r } ^ { l b } ( \mathbf { Q } , \mathbf { Z } )$ , and $\mathcal { R } _ { v e r } ^ { l b } ( \mathbf { Q } , \mathbf { Z } )$ as the objective value of P3, horizontal coordinate optimization problem P3.1.3, and the vertical coordinate optimization problem P3.2.1, respectively, with $\textbf { Q } = \ \{ \mathbf { q } _ { m } [ n ] , \forall m , n \}$ and ${ \textbf { Z } } =$ $\{ z _ { m } [ n ] , \forall m , n \}$ . In Algorithm 1, for a fixed $\dot { \mathbf { Z } } ^ { r } , ~ \mathbf { Q } ^ { r + 1 }$ is optimized by solving P3.1.3. Then, we have
+We define $\mathcal { R } ( \mathbf { Q } , \mathbf { Z } ) , \mathcal { R } _ { h o r } ^ { l b } ( \mathbf { Q } , \mathbf { Z } )$ , and $\mathcal { R } _ { v e r } ^ { l b } ( \mathbf { Q } , \mathbf { Z } )$ as the objective value of P3, horizontal coordinate optimization problem P3.1.3, and the vertical coordinate optimization problem P3.2.1, respectively, with $\textbf { Q } = \ \{ \mathbf { q } _ { m } [ n ] , \forall m , n \}$ and ${ \textbf { Z } } =$ $\{ z _ { m } [ n ] , \forall m , n \}$ . In Algorithm 1, for a fixed $\dot { \mathbf { Z } } ^ { r } , ~ \mathbf { Q } ^ { r + 1 }$ is optimized by solving P3.1.3. Then, we have
 
 $$
-\begin{array}{r l} & {\mathcal {R} (\mathbf {Q} ^ {r}, \mathbf {Z} ^ {r}) \overset {\mathrm{(a)}} {=} \mathcal {R} _ {h o r} ^ {l b} (\mathbf {Q} ^ {r}, \mathbf {Z} ^ {r})} \\ & {\qquad \overset {\mathrm{(b)}} {\leq} \mathcal {R} _ {h o r} ^ {l b} (\mathbf {Q} ^ {r + 1}, \mathbf {Z} ^ {r})} \\ & {\qquad \overset {\mathrm{(c)}} {\leq} \mathcal {R} (\mathbf {Q} ^ {r + 1}, \mathbf {Z} ^ {r}),} \end{array}\tag{20}
+\begin{array} { r l } & { { \mathcal { R } } ( \mathbf { Q } ^ { r } , \mathbf { Z } ^ { r } ) \stackrel { \mathrm { ( a ) } } { = } { \mathcal { R } } _ { h o r } ^ { l b } ( \mathbf { Q } ^ { r } , \mathbf { Z } ^ { r } ) } \\ & { \stackrel { \mathrm { ( b ) } } { \leq } { \mathcal { R } } _ { h o r } ^ { l b } ( \mathbf { Q } ^ { r + 1 } , \mathbf { Z } ^ { r } ) } \\ & { \stackrel { \mathrm { ( c ) } } { \leq } { \mathcal { R } } ( \mathbf { Q } ^ { r + 1 } , \mathbf { Z } ^ { r } ) , } \end{array}\tag{20}
 $$
 
 where (a) holds because of the tightness of the first-order Taylor expansion of the constraints at the local point, (b) holds since the optimal solution $\mathbf { Q } ^ { r + 1 }$ is obtained for the approximate problem with the given $\mathbf { Z } ^ { r }$ , and (c) holds because the approximate problem is the lower bound of the original problem at $\mathbf { Q } ^ { r + 1 }$ . Thus, (20) implies the objective function is non-decreasing after each iteration. Since the procedure to compute Z is similar to Q, then we have
 
 $$
-\mathcal {R} (\mathbf {Q} ^ {r + 1}, \mathbf {Z} ^ {r}) \leq \mathcal {R} (\mathbf {Q} ^ {r + 1}, \mathbf {Z} ^ {r + 1}).\tag{21}
+\mathcal { R } ( \mathbf { Q } ^ { r + 1 } , \mathbf { Z } ^ { r } ) \leq \mathcal { R } ( \mathbf { Q } ^ { r + 1 } , \mathbf { Z } ^ { r + 1 } ) .\tag{21}
 $$
 
 Through (20) and (21), we obtain $\begin{array} { r l } { \mathcal { R } ( \mathbf { Q } ^ { r } , \mathbf { Z } ^ { r } ) } & { { } \leq } \end{array}$ $\mathscr { R } ( \mathbf { Q } ^ { r \mp 1 } , \mathbf { Z } ^ { { \dot { r } } + { \dot { 1 } } } )$ . This implies that the objective value of Algorithm 1 is non-decreasing after each iteration by solving for both the horizontal and vertical coordinate optimization problems. Therefore, the trajectory optimization algorithm i.e., Algorithm 1 guarantees convergence.
@@ -369,22 +368,22 @@ Through (20) and (21), we obtain $\begin{array} { r l } { \mathcal { R } ( \math
 Since we have followed the alternating optimization approach in Algorithm 2 to obtain $\mathbf { B } ^ { r + 1 }$ and $\mathbf { \bar { T } } ^ { r + 1 }$ , then we can directly write
 
 $$
-\mathcal {R} (\mathbf {B} ^ {r}, \mathbf {T} ^ {r}) \leq \mathcal {R} (\mathbf {B} ^ {r + 1}, \mathbf {T} ^ {r + 1}).\tag{22}
+\mathcal { R } ( \mathbf { B } ^ { r } , \mathbf { T } ^ { r } ) \leq \mathcal { R } ( \mathbf { B } ^ { r + 1 } , \mathbf { T } ^ { r + 1 } ) .\tag{22}
 $$
 
 This shows that Algorithm 2 guarantees convergence. It is known that for alternating optimization algorithms, the performance of the converged solution in general depends on the initialization methods [14]. In our paper, we have considered a low-complexity and simple trajectory initialization as discussed in Section V-A.
 
-![](images/3297f22a5ee83fc9f41e57678c49fbe1a780af43f7813d4fdee57d714c20560d.jpg)
+![](images/56919ffea716fc44985df439c0a0c602ddd1895ee64c18bcafb4abccc5c88708.jpg)
 
-![](images/1c9a56ee0c02f583cc054e7e0cbb02fbd4fb7b7290478aba7bc82899ad573a02.jpg)  
+![](images/b538c9fdd28832c541ef283cc3faf04d2c6cf66ec9f00b20e7d715f94ba0d1cd.jpg)  
 (b)
 
 (a)  
 Fig. 3. UAV trajectories for both UAV $U _ { 1 }$ and $\mathrm { U A V } \ U _ { 2 }$ with $E _ { l e f t } = 5 0 0 0 \mathrm { J }$ in (a) 3D-plane, and (b) XY-plane.  
-![](images/1e3baf233cda4088f73571bb5615ccf8e59b089d2e72e0a7bb51b02648c09ae7.jpg)  
-(a)
+![](images/c4e954b83c711ae93060d3d63fd8a34e3ecd8dd7f26eeea4855cf1633bfb9511.jpg)
 
-![](images/b0462a0633dc2983303bb6069c00068c021cd2391ec8e78d276dee44157f0f1a.jpg)  
+![](images/954da67657aa3fb138b971a06368a96c59cd08c1f569f01d266570f387ef7d2c.jpg)  
+(a)  
 (b)  
 Fig. 4. UAV trajectories for both $\mathrm { U A V } \ U _ { 1 }$ and UAV $U _ { 2 }$ with $E _ { l e f t } = 2 0 0 0 \mathrm { J }$ in (a) 3D-plane, and (b) XY-plane.
 
@@ -392,35 +391,35 @@ Fig. 4. UAV trajectories for both $\mathrm { U A V } \ U _ { 1 }$ and UAV $U _ {
 
 To enable multi-UAV replacement, the following points needs to be considered. First, we need to consider M hovering/final locations $\mathbf { X } _ { F }$ . Accordingly, in problem P1, there will be 2M initial and final location constraints in (10a) instead of four in the (10a). Second, instead of one energy availability constraint in (10d), there will be M onboard energy constraints as we are replacing M UAVs.
 
-As stated in Section IV-A, for the given UAV trajectories, the bandwidth optimization problem will still be a convex problem (since $R _ { k }$ is the sum of rate achieved by the $k ^ { t h }$ user from each UAV, non-negative addition always results in a convex function). For the trajectory optimization, we can use similar approach because the non-negative sum of concave function is still concave. Therefore, for larger M , the function remains concave. Furthermore, the following conversions as described in Section IV-B to convert this non-convex constraint into the convex constraint will still hold. As a result, the same proposed approach described in Section V-B can be utilized to solve multi-UAV replacement problem. Hence, the proposed approach is valid even if we have more than two UAVs or we need to replace more than one UAV at a time. Next, we only focus on the optimization problem P1 when two UAVs are present.
+As stated in Section IV-A, for the given UAV trajectories, the bandwidth optimization problem will still be a convex problem (since $R _ { k }$ is the sum of rate achieved by the $k ^ { t h }$ user from each UAV, non-negative addition always results in a convex function). For the trajectory optimization, we can use similar approach because the non-negative sum of concave function is still concave. Therefore, for larger M, the function remains concave. Furthermore, the following conversions as described in Section IV-B to convert this non-convex constraint into the convex constraint will still hold. As a result, the same proposed approach described in Section V-B can be utilized to solve multi-UAV replacement problem. Hence, the proposed approach is valid even if we have more than two UAVs or we need to replace more than one UAV at a time. Next, we only focus on the optimization problem P1 when two UAVs are present.
 
 ## VI. NUMERICAL RESULTS
 
 In this section, to evaluate the performance of our proposed scheme, we consider three scenarios. In Scenario 1, we consider a single user because when a single user is present, the algorithm maximizes the user’s throughput instead of max-min. Therefore, the max-min problem P1.1 will be equivalent to a maximization problem. In Scenario 2, we consider a multi-user UAV replacement mechanism. In Scenario 3, we consider the case when $K = 1 2$ users forming three clusters.
 
-![](images/df824425900204a1532c08b9393eaf71493b1199e0287d5a1b9d8549225e146a.jpg)  
+![](images/6bf650d4f159dabcf3c2315647afda6feb01a55b51838e5563d840e49c871835.jpg)  
 (a)  
 (b)  
 Fig. 5. UAV trajectories for both $U _ { 1 }$ and $U _ { 2 }$ with $E _ { l e f t } = 5 0 0 0 ~ \mathrm { J }$ in (a) 3D-plane, and (b) XY-plane for Scenario 2.
 
-![](images/8d21c34b50d90660df15b3785b69e1ab96db038cbab816404e1284649c0c4fb0.jpg)  
+![](images/70b12bcadaf37277e6b28e66af77cd1d60be38af1f4a8e3804e5fb30c32e93d8.jpg)  
 (a)  
 (b)  
 Fig. 6. UAV trajectories for both $U _ { 1 }$ and $U _ { 2 }$ with $E _ { l e f t } = 2 5 0 0 ~ \mathrm { J }$ in (a) 3D-plane, and (b) XY-plane for Scenario 2.
 
 In our system, we consider reference distance $\beta _ { 0 } = 1$ m and the environment parameters are set to $C = 1 0$ , and $D = 0 . 6$ We consider the pathloss exponent and additional attenuation as $\bar { \alpha } = 2$ , and $\kappa = 0 . 2$ , respectively [38], [41]. The time slot duration τ is set to $0 . 2 \ : \mathrm { s }$ with $N = 2 4$ time slots. Note that to keep the understanding of the UAV replacement mechanism simple, we have considered a smaller value of N and smaller field with closer initial and final locations. In general, this approach can also be applied to a larger value of N. The UAV’s starting location is considered as $\mathbf { X } _ { I } = \left( - 5 0 , 0 , 1 5 \right)$ m, and the final location is considered as $\mathbf { X } _ { F } = ( 0 , 0 , 3 0 ) ~ \mathbf { m }$ . The UAV transmits to each user with power $P _ { t r } = 0 . 1 \mathrm { ~ W ~ } [ 1 8 ]$ , and the total communication bandwidth B of the system is set to 20 MHz unless specified. The UAV’s maximum velocity is set to $V _ { m a x } = 3 0$ m/s [14]. The minimum safe distance between the UAVs to avoid collision is set to $D _ { m i n } \ = \ 1 0 \ \mathrm { ~ m ~ }$ . The parameters in energy consumption model are taken as follows: $P _ { o } = 7 9 . 8 6 ~ \mathrm { W } ,$ $P _ { i } = 8 8 . 6 3$ W, $v _ { o } = 4 . 0 3$ m/s, $d _ { 0 } = 0 . 6$
 
-![](images/2229072d90d7c541b72fca857ea46f48af6d07a55d05bc28620f30a6c3244437.jpg)
+![](images/11184b9d0ff2c7f73f257ca49494fe48b28bc3c8000af501e803c112c878c569.jpg)
 
-![](images/b3362b10b5d7fbd845ff9f26064914aa889df033b0bd72fc12c4ac8f74ef7777.jpg)  
+![](images/2e43291d992f5ca9bde5eb201a23f273338660f40275996b4296e0bd469b7f8a.jpg)  
 (b) User 2
 
 (a) User 1  
 Fig. 7. Optimal bandwidth allocated to (a) the user 1, and (b) user 2, when $E _ { l e f t } = 5 0 0 0 ~ \mathrm { J }$  
-![](images/e1ec0b3eb1783903a85c9a5da100172299d59baaa21247a4a2df9475a60241e2.jpg)  
+![](images/d1fead1576919985ea38a40bc847a36ae097281da550a8fb4f49407dd7ea3480.jpg)  
 (a) User 1
 
-![](images/4b408bd57a8138f92c17d5c8a2d3f19346bba131f6d3948c67b4ee0190381d64.jpg)  
+![](images/a535527a2be97cbcb6c5595759dcfa7979f2203e472b64f6668b402aceed04b7.jpg)  
 (a) User 2  
 Fig. 8. Optimal bandwidth allocated to (a) the user 1, and (b) user 2, when $\bar { E _ { l e f t } } = \bar { 2 5 } 0 0 \mathrm { ~ J ~ }$
 
@@ -434,45 +433,45 @@ In this sub-section, we study a single-user UAV replacement mechanism. Figs. 3 a
 
 Here, we consider two users and observe how the proposed scheme achieves fairness among the two ground users by adjusting the UAV trajectory and bandwidth allocation when the UAVs starting location $\mathbf { X } _ { I } = \left( - 1 0 0 , 0 , 1 5 \right)$ m, and ${ \bf X } _ { F } = { \bf \Phi }$ (0, 0, 30) m. Figs. 5 and 6 depicts the optimized trajectories of the UAVs based on different onboard energy available with the UAV $U _ { 1 }$ . It is worth noting that when two users are present, the UAV must move close to each user to provide a higher rate. However, to maintain fairness among the ground users (corresponding to our max-min problem), the UAV must maintain equal coverage to both the users for the whole flight duration. The term fairness here describes that a user must be provided with a sum rate equal to or comparable to other users during the service duration. The max-min problem achieves this fairness by maximizing the minimum rate provided to the users and finally, the solution returns the sum rate, which is equal or comparable to all the users. Similar to a single-user case, when UAV $U _ { 1 }$ has lesser energy available, UAV $U _ { 1 }$ takes a shorter path (straight line) to reach the charging station.
 
-![](images/86a0737a132ab93cacb38dfc31c635d518104908da4ccb190859e6dfd14bb536.jpg)  
+![](images/688d8acad124a8a7bcade2db411684641768555ca90bc18b7d829a2520fcaa3b.jpg)  
 (a) User 1
 
-![](images/b70a46037f5a1b9df5b76caa0d4e4dd4ef1508da8be96b1e685e40dd6a93f886.jpg)  
+![](images/505e001d8210985a9b9f966981b088aa3f35fdad5e12574197a0194c14a05051.jpg)  
 (b) User 2  
 Fig. 9. Achievable rate for (a) the user 1, and (b) user 2, when $E _ { l e f t } = 5 0 0 0 ~ \mathrm { J }$
 
-![](images/1d7a51561225d36fe5b6e233c7ca72b7d39e91ed6b5a6bd1fd8669e5f0a05767.jpg)
+![](images/1c324f5006b6d40b104f4f793f9e8847211e0933118227cb204e1687803ef8aa.jpg)
 
-![](images/298968e3dfc8c4833f3a999e6ded71e04e10ab7c98dd5fad9ea634f245a75b32.jpg)  
+![](images/4613d393e1096cf14a8e29c123885d4b81d7c559ed1f20078bf94ff35f44d040.jpg)  
 (a) User 1  
 (b) User 2  
 Fig. 10. Achievable rate for (a) the user 1, and (b) user 2, when $E _ { l e f t } = 2 5 0 0 ~ \mathrm { J }$
 
 To illustrate how much bandwidth is allocated to each user, we plot Fig. 7, and Fig. 8, with both $E _ { l e f t } = 5 0 0 0 ~ \mathrm { J } ,$ and $E _ { l e f t } = 2 5 0 0 ~ \mathrm { J }$ , respectively. Note that to ensure the user is under coverage in a particular time slot, we have applied a minimum rate constraint. As a result, the user will experience at least the minimum rate $R _ { t h }$ within a time slot. It can be seen from Fig. 7, and Fig. 8 that initially both users are associated with UAV $U _ { 1 }$ . After certain time slots, both the UAVs are functional and provide communication service to each ground user. Thereafter, at later stages, since UAV $U _ { 1 }$ is far from the ground users and is approaching charging station $\mathbf { X } _ { I } ,$ , only UAV $U _ { 2 }$ will be functional. Furthermore, we have plotted Fig. 9 and $\mathrm { F i g }$ . 10 to show the achievable rate for each user at every time slot. It can be observed that at every time slot, the ground user will experience a minimum threshold achievable rate $R _ { t h }$ due to the presence of constraint (10e). As a result, each user will get an uninterrupted rate of $R _ { t h }$
 
-![](images/ff25f17e1e9ac8051676b093b06c0d138cf05307a5a8d4a150c7214eb1227f42.jpg)
+![](images/2997bd82dcc5dee416d4dea009f7e906931cbf81a0669eca95c3a1c00e82e3ba.jpg)
 
 (a)  
 (b)  
 Fig. 11. Schematic for benchmark scheme considered for performance comparison.  
-![](images/9ac9e72e7c0a839412e72b49bc4bba6be2029a3b398c2b2250441c4bbee722d2.jpg)  
+![](images/5a0deb73c5119435cfd18a3707c4eac82a4d6dc4ae9f12e5bb94774b42a2f715.jpg)  
 Fig. 12. Comparison of proposed schemes with conventional schemes with different energy levels for Scenario 2.
 
 To verify the performance of the proposed scheme, we consider four benchmark schemes as follows. (i) Straight flight trajectory [43]; (ii) Straight flight trajectory with bandwidth optimization (BWO); (iii) Ellipsoidal trajectory [44], [45]; (iv) Ellipsoidal trajectory with BWO. In a straight flight trajectory, the UAV travels in a straight line to reach the final location ensuring a minimum safe distance between the UAVs as described in Section V-A. In an ellipsoidal trajectory, UAVs travel by forming an arc in the opposite direction to reach their respective location, resulting in a trajectory that resembles an ellipse. For both the straight flight and ellipsoidal trajectory, the equal amount of bandwidth is allocated to each user from each UAV irrespective of the channel conditions. The schematic for straight flight trajectory and ellipsoidal trajectory is shown in Fig. 11. Under BWO scheme, the problem P2 (BWO) is solved for the pre-specified path of the UAVs, $i . e . ,$ , straight flight and ellipsoidal trajectory, such that the bandwidth is optimized to provide a fair rate to each user.
 
 It can be observed from Fig. 12 that the proposed scheme provides better max-min rate compared to the other schemes as the energy availability increases. This is because as the energy level increases, the UAV has more freedom to get closer to the users and thereby providing higher rates. However, in the other schemes, such as straight flight and ellipsoidal trajectory with
 
-![](images/06745471bb0c52562c150dc00b481b75ede9cf8c5bfac03472aff0699faa8eb4.jpg)  
+![](images/f04395e651278e32d8c14a74c044e386cbc33d8a28cac4162dc3669d25049881.jpg)  
 (a)
 
-![](images/c1f2ffce43e4cea10ee6959c8c6edf9464e3bca8d2272ba2ba5f55faf7dc59bc.jpg)  
+![](images/f79f4bdae8534eecb52e824019f14461e58aa78bffe00eca5740faaae4601efb.jpg)  
 (b)
 
 Fig. 13. UAV trajectories for both UAV $U _ { 1 }$ and UAV $U _ { 2 }$ with $E _ { l e f t } = 5 0 0 0 ~ \mathrm { J }$ in (a) 3D-plane, and (b) XY-plane for Scenario 3.  
-![](images/277b0dee62f57f7380317e45a8bd75f1ea3faa942685687466f16850134e5fa7.jpg)  
+![](images/493054f7f9a7fe6d3040a4187ed50c9207173c2152b5807ea3930e961189973f.jpg)  
 (a)
 
-![](images/11f6938dab666c1fc54523c23cd5ff83537cd8496970648a68c6ce7872c42d8c.jpg)  
+![](images/a60a46e0e08a1dee527e8871c94e96877c759e7b0193a3115fb974347bd4c078.jpg)  
 (b)  
 Fig. 14. UAV trajectories for both UAV $U _ { 1 }$ and UAV $U _ { 2 }$ with $E _ { l e f t } = 2 0 0 0$ J in (a) 3D-plane, and (b) XY-plane for Scenario 3.
 
@@ -482,10 +481,10 @@ BWO, straight flight trajectory, and ellipsoidal trajectory, the throughput is s
 
 In this scenario, instead of following the user’s individual locations, the UAV treats the group of users as a cluster and optimizes its trajectory. This is useful in a real-world scenario because the computational complexity of the proposed scheme is linked directly to the number of ground users K. So, to obtain a low-complexity solution with large number of ground users, the best possible way is to group the users into some clusters and then compute the optimal UAV trajectories while providing sufficient coverage within the clusters (treating a group of users collectively). Note that a dedicated investigation is required on the clustering approach to obtain a low-complexity solution with better performance. This is because clustering can increase the efficiency of the network by distributing the nodes into a cluster and scheduling the UAV with the cluster head or cluster centroid. The choice of accurate clustering to improve the performance of the system is beyond the scope of this work.
 
-![](images/5335a758a5957560d610ff18575aa17c09ee242727c4fe177d18c58a1d657f84.jpg)  
+![](images/e203a82df2889111c40ea13928111763151ed856ebe92457392c5393368f8d8d.jpg)  
 Fig. 15. Comparison of max-min throughput with different energy levels for a clustered-user UAV replacement scenario.
 
-![](images/7b51172b03ba030d8719662abbd7de155ac0731145ad9ab4754ea3a781c6b8da.jpg)  
+![](images/1ac32c1ab78921b25daca79d5564e9bc076e34c4622a6f0d58ea4434f6190b66.jpg)  
 Fig. 16. Comparison of achievable sum throughput of $K = 1 2$ users using different schemes for Scenario 3.
 
 Similar to Scenario 1 and Scenario 2, Figs. 13, and 14 show the optimized trajectories for $E _ { l e f t } ~ = ~ 5 0 0 0 ~ \mathrm { ~ J ~ }$ and $E _ { l e f t } = 2 0 0 0 ~ \mathrm { J }$ energy levels, respectively. The comparison of the proposed scheme for Scenario 3 with other schemes is shown in Fig. 15. Apart from this, we also present the sum throughput obtained by each user during the total flight time in comparison to the benchmark schemes in Fig. 16. It can be observed that the benchmark schemes, such as straight flight trajectory and ellipsoidal trajectory provide a better rate to only some of the ground users that are closer to the trajectory of the UAVs. As a result, the other ground users get a significantly lesser rate. Furthermore, it is also challenging to maintain fairness among the ground users under such schemes. However, schemes such as straight flight with BWO and ellipsoidal with BWO can achieve fairness but at a lesser rate. In comparison to the benchmark schemes, multifold enhancement is achieved due to the joint optimization of multi-UAV trajectory and bandwidth allocation. In particular, we observe that our proposed scheme provides 110% and 250% improvement in the minimum rate provided to the users in comparison to the ellipsoidal with BWO and straight flight trajectory, respectively.
@@ -501,27 +500,27 @@ Given the UAV’s limited onboard energy availability, in this paper, we design 
 For ease of representation of $P _ { k , m } ^ { L } [ n ]$ defined in (4), we take
 
 $$
-\Phi_ {k, m} [ n ] = \frac {z _ {m} [ n ]}{\| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \|},\tag{A.1}
+\Phi _ { k , m } [ n ] = { \frac { z _ { m } [ n ] } { \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| } } ,\tag{A.1}
 $$
 
 such that $P _ { k , m } ^ { L } [ n ]$ can be expressed as $\begin{array} { r l } { P _ { k , m } ^ { L } [ n ] } & { { } = } \end{array}$ $\big ( 1 + C \exp \big ( { - D [ \tan ^ { - 1 } \Phi _ { k , m } [ n ] - C ] } \big ) \big ) ^ { - 1 }$ . Then by introducing a variable $y _ { k , m } [ n ]$ , such that $0 \leq \operatorname { \mathcal { Y } } _ { k , m } [ n ] \leq P _ { k , m } ^ { L } [ n ]$ we have
 
 $$
-\left(1 + C \exp \left(- D [ \tan^ {- 1} \Phi_ {k, m} [ n ] - C ]\right)\right) \leq \frac {1}{y _ {k , m} [ n ]},\tag{A.2}
+\big ( 1 + C \exp \big ( { - D [ \tan ^ { - 1 } \Phi _ { k , m } [ n ] - C ] } \big ) \big ) \leq \frac { 1 } { y _ { k , m } [ n ] } ,\tag{A.2}
 $$
 
 $$
-y _ {k, m} [ n ] \geq 0.\tag{A.3}
+y _ { k , m } [ n ] \geq 0 .\tag{A.3}
 $$
 
 Substituting $y _ { k , m } [ n ] \qquad \mathrm { i n } \qquad ( 1 2 ) ,$ we get $\alpha _ { k , m } [ n ] \left( \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } + z _ { m } [ n ] ^ { 2 } \right) \leq ( 1 - \kappa ) y _ { k , m } [ n ] + \kappa$ To simplify further, we introduce $\beta _ { k , m } [ n ]$ , where
 
 $$
-\alpha_ {k, m} [ n ] (\| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| ^ {2} + z _ {m} [ n ] ^ {2}) \leq \beta_ {k, m} [ n ],\tag{A.4}
+\alpha _ { k , m } [ n ] ( \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } + z _ { m } [ n ] ^ { 2 } ) \leq \beta _ { k , m } [ n ] ,\tag{A.4}
 $$
 
 $$
-(1 - \kappa) y _ {k, m} [ n ] + \kappa \geq \beta_ {k, m}.\tag{A.5}
+( 1 - \kappa ) y _ { k , m } [ n ] + \kappa \geq \beta _ { k , m } .\tag{A.5}
 $$
 
 With the above substitutions and introduction of auxiliary variables, it can be written in its equivalent forms represented by $( \mathrm { A } . 1 ) \mathrm { ~ - ~ } ( \mathrm { A } . 5 )$ .
@@ -531,7 +530,7 @@ With the above substitutions and introduction of auxiliary variables, it can be 
 Here, to tackle the difficulty of (A.1), we change the equality to inequality, represented as
 
 $$
-\Phi_ {k, m} [ n ] \leq \frac {z _ {m} [ n ]}{\| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \|}, \forall k, m, n.\tag{B.1}
+\Phi _ { k , m } [ n ] \leq { \frac { z _ { m } [ n ] } { \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| } } , \forall k , m , n .\tag{B.1}
 $$
 
 In the problem P3.1.1 with (B.1) instead of (A.1) (we name this problem as P3.1.2), the optimal solution can only be achieved when (B.1) is active, that is, $\Phi _ { k , m } [ n ] =$ $\frac { z _ { m } [ n ] } { \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| } , \forall k , m , n$ . This can be proved by the contradiction. We assume that the optimal solution to P3.1.2 is $\mathcal { R } ^ { * } , \mathbf { q } _ { k , m } [ n ] ^ { * } , \mathcal { X } ^ { * }$ , which satisfies $R _ { i } \left( \alpha _ { i , m } [ n ] ^ { * } \right) > \mathcal { R } ^ { * } , \exists i \in$ k, and $R _ { k } \left( \alpha _ { k , m } [ n ] ^ { * } \right) ~ = ~ \mathcal { R } ^ { * } , k ~ \neq ~ i$ . Then the value of $R _ { i } \left( \alpha _ { i , m } [ n ] ^ { * } \right)$ to make $R _ { i } \left( \alpha _ { i , m } [ n ] ^ { * } \right) ~ = ~ \mathcal { R } ^ { * }$ hold, whereas the objective function $\mathcal { R } ^ { * }$ does not change. Then to make this happen, we need to decrease the $b _ { i , m } [ n ]$ , which will not return a feasible solution as the value of $b _ { i , m } [ n ]$ is fixed from the bandwidth optimization problem. This is in contradiction to the optimal solution. Therefore, the constraint (B.1) need to be active while obtaining the optimal solution to P3.1.2. Then, it can be observed that the problem P3.1.2 has the same condition on constraints as of P3.1.1. Moreover, due to the presence of the same objective function, the solution to P3.1.1 can be obtained while solving P3.1.2. Thus, problem P3.1.2 is equivalent to P3.1.1.
@@ -539,25 +538,25 @@ In the problem P3.1.1 with (B.1) instead of (A.1) (we name this problem as P3.1.
 Since (B.1) is of the form “convex × convex $\leq$ constant”, we use square of sum formula to make (B.1) a difference of convex function. Then, we get
 
 $$
-\begin{array}{r l} & {\frac {1}{2} \left(\Phi_ {k, m} [ n ] + \| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \|\right) ^ {2}} \\ & {- \frac {1}{2} \left(\Phi_ {k, m} [ n ] ^ {2} + \| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| ^ {2}\right) \leq z _ {m} [ n ].} \end{array}\tag{B.2}
+\begin{array} { l } { \displaystyle \frac 1 2 \left( \Phi _ { k , m } [ n ] + \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| \right) ^ { 2 } } \\ { \displaystyle - \frac 1 2 \left( \Phi _ { k , m } [ n ] ^ { 2 } + \| \mathbf { q } _ { m } [ n ] - \mathbf { w } _ { k } \| ^ { 2 } \right) \le z _ { m } [ n ] . } \end{array}\tag{B.2}
 $$
 
 It can be observed that the (B.2) is of the form $f - g ,$ , where $f$ and g are both convex. To make (B.2) a convex constraint, g must be affine. Thus, we use first-order Taylor series expansion at any feasible point [23]. Then, $g$ can be approximated as
 
 $$
-\begin{array}{l} \lambda_ {k, m} [ n ] = \frac {1}{2} \big (\Phi_ {k, m} ^ {r} [ n ] ^ {2} + \| \mathbf {q} _ {m} ^ {r} [ n ] - \mathbf {w} _ {k} \| ^ {2} \big) + \big (\Phi_ {k, m} [ n ] - \Phi_ {k, m} ^ {r} [ n ] \big) \\ \Phi_ {k, m} ^ {r} [ n ] + \| \mathbf {q} _ {m} ^ {r} [ n ] - \mathbf {w} _ {k} \| \left(\| \mathbf {q} _ {m} [ n ] - \mathbf {w} _ {k} \| - \| \mathbf {q} _ {m} ^ {r} [ n ] - \mathbf {w} _ {k} \|\right), \end{array}\tag{B.3}
+\begin{array} { l } { { \displaystyle \lambda _ { k , m } [ n ] = \frac { 1 } { 2 } \big ( \boldsymbol { \Phi } _ { k , m } ^ { r } [ n ] ^ { 2 } + \| { \bf q } _ { m } ^ { r } [ n ] - { \bf w } _ { k } \| ^ { 2 } \big ) + \big ( \Phi _ { k , m } [ n ] - \Phi _ { k , m } ^ { r } [ n ] \big ) } } \\ { { \displaystyle \Phi _ { k , m } ^ { r } [ n ] + \| { \bf q } _ { m } ^ { r } [ n ] - { \bf w } _ { k } \| \big ( \| { \bf q } _ { m } [ n ] - { \bf w } _ { k } \| - \| { \bf q } _ { m } ^ { r } [ n ] - { \bf w } _ { k } \| \big ) , } } \end{array}\tag{B.3}
 $$
 
 where $\Phi _ { k , m } ^ { r } [ n ] , \mathbf { q } _ { m } ^ { r } [ n ]$ is the value of $\Phi _ { k , m } [ n ] , \mathbf { q } _ { m } [ n ]$ in the $r ^ { t h } -$ iteration, respectively. Using (B.3) in (B.2), the constraint in (B.1) is approximated to a convex constraint given in (15).
 
 ## APPENDIX C PROOF OF CONVEXITY OF $P _ { \Phi _ { k , m } [ n ] }$
 
-From composition property, $P _ { \Phi _ { k , m } [ n ] }$ can also be represented in the form of $f ~ = ~ 1 + \overrightarrow { C } h \big ( g ( \Phi _ { k , m } [ n ] ) \big )$ , where $h \ = \ \exp { } \quad$ , and $g ( \Phi ) ~ = ~ - D \left[ \tan ^ { - 1 } \Phi _ { k , m } [ n ] - \stackrel { . } { C } \right]$ . Then, $f$ is convex, if h is convex and non-decreasing, and $g$ is convex [40].
+From composition property, $P _ { \Phi _ { k , m } [ n ] }$ can also be represented in the form of $f ~ = ~ 1 + \overrightarrow { C } h \big ( g ( \Phi _ { k , m } [ n ] ) \big )$ , where $h \ = \ \exp { . }$ , and $g ( \Phi ) ~ = ~ - D \left[ \tan ^ { - 1 } \Phi _ { k , m } [ n ] - \stackrel { . } { C } \right]$ . Then, $f$ is convex, if h is convex and non-decreasing, and $g$ is convex [40].
 
 To prove that g is convex, we first noticed that $\Phi _ { k , m } [ n ] =$ $\frac { z _ { m } [ n ] } { \| \mathbf { q } _ { m } [ n ] - w _ { k } \| }$ , which implies $\Phi _ { k , m } [ n ] ~ \in ~ ( 0 , \operatorname { i n f } )$ . Taking the second derivative of $g ( \Phi _ { k , m } [ n ] )$ with respect to $\Phi _ { k , m } [ n ]$ we get
 
 $$
-\frac {\partial^ {2} g (\Phi_ {k , m} [ n ])}{\partial \Phi_ {k , m} [ n ] ^ {2}} = \frac {2 D \Phi_ {k , m} [ n ]}{(1 + \Phi_ {k , m} [ n ] ^ {2}) ^ {2}}
+\frac { \partial ^ { 2 } g ( \Phi _ { k , m } [ n ] ) } { \partial \Phi _ { k , m } [ n ] ^ { 2 } } = \frac { 2 D \Phi _ { k , m } [ n ] } { ( 1 + \Phi _ { k , m } [ n ] ^ { 2 } ) ^ { 2 } }
 $$
 
 Since $\Phi _ { k , m } [ n ] ~ \in ~ ( 0 , \operatorname { i n f } )$ , the $\frac { \partial ^ { 2 } g ( \Phi _ { k , m } [ n ] ) } { \partial \Phi _ { k , m } [ n ] ^ { 2 } } > 0 .$ , because $D ~ > ~ 0$ that corresponds to the parameter representing the nature of the environment, such as urban, sub-urban, etc. Thus, $g ( \Phi _ { k , m } [ n ] )$ is convex.
@@ -569,17 +568,17 @@ Now, according to [40], since $e ^ { x }$ is always a convex and non-decreasing 
 To deal with the non-convex constraint in (10c), we introduce an auxiliary variable $D _ { m , j } [ n ] = \{ { \bf X } _ { m } [ n ] - { \bf X } _ { j } [ n ] , \forall n , j \neq$ m}. Then, (10c) can be written as $\begin{array} { r l } { \| D _ { m , j } [ n ] \| ^ { 2 } } & { { } \ge } \end{array}$ $D _ { m i n } ^ { 2 } , \forall n , j \neq m$ , so that the left side $\| D _ { m , j } [ n ] \| ^ { 2 }$ is convex in $D _ { m , j } [ n ]$ ]. Using first order Taylor series expansion to obtain the global lower bound of convex function, we get
 
 $$
-\left\| D _ {m, j} [ n ] \right\| ^ {2} \geq 2 \left(D _ {m, j} ^ {r} [ n ]\right) ^ {T} \left(D _ {m, j} [ n ] - D _ {m, j} ^ {r} [ n ]\right) + \left\| D _ {m, j} ^ {r} [ n ] \right\| ^ {2},\tag{D.1}
+\| D _ { m , j } [ n ] \| ^ { 2 } \geq 2 \left( D _ { m , j } ^ { r } [ n ] \right) ^ { T } \left( D _ { m , j } [ n ] - D _ { m , j } ^ { r } [ n ] \right) + \| D _ { m , j } ^ { r } [ n ] \| ^ { 2 } ,\tag{D.1}
 $$
 
 for a given $D _ { m , j } ^ { r } [ n ]$ . Using (10c), (D.1) is converted into
 
 $$
-2 \left(\mathbf {X} _ {m} ^ {r} [ n ] - \mathbf {X} _ {j} ^ {r} [ n ]\right) ^ {T} \left(\mathbf {X} _ {m} [ n ] - \mathbf {X} _ {j} [ n ] - \mathbf {X} _ {m} ^ {r} [ n ] - \mathbf {X} _ {j} ^ {r} [ n ]\right) +
+2 \left( \mathbf { X } _ { m } ^ { r } [ n ] - \mathbf { X } _ { j } ^ { r } [ n ] \right) ^ { T } \left( \mathbf { X } _ { m } [ n ] - \mathbf { X } _ { j } [ n ] - \mathbf { X } _ { m } ^ { r } [ n ] - \mathbf { X } _ { j } ^ { r } [ n ] \right) +
 $$
 
 $$
-\left\| \mathbf {X} _ {m} ^ {r} [ n ] - \mathbf {X} _ {j} ^ {r} [ n ] \right\| ^ {2} \geq D _ {m i n} ^ {2},\tag{D.2}
+\| \mathbf { X } _ { m } ^ { r } [ n ] - \mathbf { X } _ { j } ^ { r } [ n ] \| ^ { 2 } \geq D _ { m i n } ^ { 2 } ,\tag{D.2}
 $$
 
 where ${ \bf X } _ { m } ^ { r } [ n ] = ( { \bf q } _ { m } ^ { r } [ n ] , z _ { m } [ n ] )$ and ${ \bf X } _ { j } ^ { r } [ n ] = ( { \bf q } _ { j } ^ { r } [ n ] , z _ { j } [ n ] )$
@@ -587,17 +586,17 @@ where ${ \bf X } _ { m } ^ { r } [ n ] = ( { \bf q } _ { m } ^ { r } [ n ] , z _
 From (10d), it can be observed that the energy constraint is the non-negative sum of $e _ { 1 } [ n ]$ , where $e _ { 1 } [ n ]$ is defined in (10d). It can be observed that the first and third term is convex, where as the second term is non-convex. To deal with the second term, we follow the same procedure as described in [38] and add an additional non-convex constraint to make $e _ { 1 } [ n ]$ convex. The additional non-convex constraint is given by
 
 $$
-\frac {\tau^ {4}}{g _ {1} [ n ] ^ {2}} = g _ {1} [ n ] ^ {2} + \frac {\Delta_ {1} [ n ] ^ {2}}{v _ {o} ^ {2}}, g _ {1} [ n ] \geq 0, \forall n,\tag{D.3}
+\frac { \tau ^ { 4 } } { g _ { 1 } [ n ] ^ { 2 } } = g _ { 1 } [ n ] ^ { 2 } + \frac { \Delta _ { 1 } [ n ] ^ { 2 } } { v _ { o } ^ { 2 } } , g _ { 1 } [ n ] \geq 0 , \forall n ,\tag{D.3}
 $$
 
 where $\Delta _ { 1 } [ n ] = \| { \bf q } _ { 1 } [ n + 1 ] - { \bf q } _ { 1 } [ n ] \|$ . Then the first order taylor expansion can be utilized to obtain its global lower bound, which is given by
 
 $$
-g _ {1} [ n ] ^ {2} + \frac {\Delta_ {1} [ n ]}{v _ {o} ^ {2}} \geq g _ {1} ^ {r} [ n ] ^ {2} + 2 g _ {1} ^ {r} [ n ] \left(g _ {1} [ n ] - g _ {1} ^ {r} [ n ]\right) - \frac {\Delta_ {1} ^ {r} [ n ]}{v _ {o} ^ {2}}
+g _ { 1 } [ n ] ^ { 2 } + \frac { \Delta _ { 1 } [ n ] } { v _ { o } ^ { 2 } } \ge g _ { 1 } ^ { r } [ n ] ^ { 2 } + 2 g _ { 1 } ^ { r } [ n ] \left( g _ { 1 } [ n ] - g _ { 1 } ^ { r } [ n ] \right) - \frac { \Delta _ { 1 } ^ { r } [ n ] } { v _ { o } ^ { 2 } }
 $$
 
 $$
-+ \frac {2}{v _ {o} ^ {2}} \left(\mathbf {q} _ {1} ^ {r} [ n + 1 ] - \mathbf {q} _ {1} ^ {r} [ n ]\right) ^ {T} \left(\mathbf {q} _ {1} ^ {r} [ n + 1 ] - \mathbf {q} _ {1} [ n ]\right),\tag{D.4}
++ \frac { 2 } { v _ { o } ^ { 2 } } \left( \mathbf { q } _ { 1 } ^ { r } [ n + 1 ] - \mathbf { q } _ { 1 } ^ { r } [ n ] \right) ^ { T } \left( \mathbf { q } _ { 1 } ^ { r } [ n + 1 ] - \mathbf { q } _ { 1 } [ n ] \right) ,\tag{D.4}
 $$
 
 where $\Delta _ { 1 } ^ { r } [ n ] = \| { \bf q } _ { 1 } ^ { r } [ n + 1 ] - { \bf q } _ { 1 } ^ { r } [ n ] \|$ , and $g _ { 1 } ^ { r } [ n ] , \mathbf { q } _ { 1 } ^ { r } [ n ]$ , and $\mathbf { q } _ { 1 } ^ { r } [ n + 1 ]$ are the values of $g _ { 1 } [ n ] , \mathbf { q } _ { 1 } [ n ]$ , and $\mathbf { q } _ { 1 } [ n + 1 ] { \mathrm { ~ a t ~ } } r ^ { t h } .$ iteration, respectively.
@@ -608,19 +607,19 @@ where $\Delta _ { 1 } ^ { r } [ n ] = \| { \bf q } _ { 1 } ^ { r } [ n + 1 ] - {
 
 In this section, we show the comparison of our proposed initialization scheme with other schemes. We consider three different initialization schemes, proposed initialization (as described in Section $\mathrm { V } { \cdot } \mathrm { A } )$ , straight-flight initialization [43], and ellipsoidal-based initialization [44], [45] as described in Section VI-B. In both the scheme, we assume the existing UAV $U _ { 1 }$ that low on energy travels in a straight line to reach $\mathbf { X } _ { I }$ . Furthermore, for all the initialization schemes, we assume equal amount of bandwidth is allocated to each user from each UAV irrespective of the channel conditions.
 
-To compare the performance of the proposed initialization scheme, we plot two figures, Figs. 17 and 18 for clustered-based setup (Scenario 3), where 12 users are distributed in clusters. We consider the initial and final locations to be $( - 1 0 0 , 0 , 1 5 )$ m and (0, 0, 30) m, respectively. First, Fig. 17 shows the achievable rate delivered at each time slot by different initialization schemes. Then, Fig. 18 shows the amount of rate achieved by each user with different initialization scheme during the replacement process. It can be verified from Fig. 17 that the sum achievable rate provided by the proposed initialization is more compared to the other schemes. This is because, the fully charged UAV $U _ { 2 }$ first goes to location $\left( D _ { m i n } - { \bf X } _ { F } \right)$ even when $U _ { 1 }$ is serving at the final location (as described in the Section $\mathrm { V } { \mathrm { - } } \mathrm { A } )$ , this in turns increases the achievable rate to a higher extent. Furthermore, Fig. 18 shows the achievable rate by each user during the flight time. Same can also be observed that the rate provided by the proposed initialization scheme is high compared to the other schemes because one of the UAV will always serve from the location that is closer to the final location.
+To compare the performance of the proposed initialization scheme, we plot two figures, Figs. 17 and 18 for clustered-based setup (Scenario 3), where 12 users are distributed in clusters. We consider the initial and final locations to be $( - 1 0 0 , 0 , 1 5 )$ m and (0, 0, 30) m, respectively. First, Fig. 17 shows the achievable rate delivered at each time slot by different initialization schemes. Then, Fig. 18 shows the amount of rate achieved by each user with different initialization scheme during the replacement process. It can be verified from Fig. 17 that the sum achievable rate provided by the proposed initialization is more compared to the other schemes. This is because, the fully charged UAV $U _ { 2 }$ first goes to location $\left( D _ { m i n } - { \bf X } _ { F } \right)$ even when $U _ { 1 }$ is serving at the final location (as described in the Section V-A), this in turns increases the achievable rate to a higher extent. Furthermore, Fig. 18 shows the achievable rate by each user during the flight time. Same can also be observed that the rate provided by the proposed initialization scheme is high compared to the other schemes because one of the UAV will always serve from the location that is closer to the final location.
 
-![](images/11c0c8f88c5330c48fada97612f47a97619c8b8cba1e0c58cb519f2a597c8dcf.jpg)  
+![](images/aef594e6b759454d9182fbef0abfb371bd837a430953c2c1f0371abc75e1ca70.jpg)  
 (a)
 
-![](images/b8451dac4b399a7a3b09134f9054e1ebfb6849b5421588b2e335a08be4f8d361.jpg)  
+![](images/07c73eb63fc4106be94c225ede8b5c6ab84b6486ecd3e89e8597186fe35e10e0.jpg)  
 (b)
 
-![](images/ec8829ff454b755642f6fd1f4875331c8175bf2983166435c2129b56cbe03d26.jpg)  
+![](images/20c163706bc10d7135e4475e4de0bef20e20a3cb5f1df2f41ef817051c844c08.jpg)  
 (c)
 
 Fig. 17. Achievable rate delivered by the communication setup with different initialization UAV trajectories, (a) ellipsoidal trajectory, (b) straight flight trajectory, and (c) proposed initialization.  
-![](images/3abb2f0eee0e73c81f4318a4972ace0a7f81f3b002592f7aaba14d812b79a199.jpg)  
+![](images/0aa607b44331611d3c6ec68c1c2bd7d83049040f79ca45e4532c52a55224e27d.jpg)  
 Fig. 18. Performance comparison of different initialization schemes based on the achievable rate achieved by each ground user.
 
 ## REFERENCES
@@ -715,21 +714,21 @@ Fig. 18. Performance comparison of different initialization schemes based on the
 
 [45] C. Villaseñor, A. A. Gallegos, G. Lopez-Gonzalez, J. Gomez-Avila, J. Hernandez-Barragan, and N. Arana-Daniel, “Ellipsoidal path planning for unmanned aerial vehicles,” Appl. Sci., vol. 11, no. 17, p. 7997, Aug. 2021.
 
-![](images/52dd5e93cc64ce074c7b0ec23eeead83322c676cc2308b442405ff8643cb1152.jpg)
+![](images/d409ef055781df473ad444c659fb21da79fae2f831037d86c494452bebb5091a.jpg)
 
 Nishant Gupta (Member, IEEE) received the B.Tech. degree in electronics and communication engineering from the Chandigarh Engineering College, Mohali, India, in 2015, the M.Tech. degree in electronics and communication from Panjab University, Chandigarh, India, in 2018, and the Ph.D. degree from the Indian Institute of Technology at Ropar, India, in 2023. He is currently a Post-Doctoral Researcher with the Department of Electrical Engineering, Linköping University, Linköping, Sweden. His current research interests include 5G networks, UAV communications, air-borne networks, and optimization.
 
-![](images/da9d20e16994f68af6d0004626e0ef3ea46bf964b9f94135c83adc11d3474e10.jpg)
+![](images/a200ad7c0c5663b8abc9142c9b90583095f12e28e2e84b4b81aee913ddbee391.jpg)
 
 Satyam Agarwal (Senior Member, IEEE) received the Ph.D. degree in electrical engineering from IIT Delhi in 2016. He was an Assistant Professor with IIT Guwahati. In 2017, he was a Post-Doctoral Researcher with Politecnico di Torino, Turin, Italy. He is currently an Assistant Professor with the Department of Electrical Engineering, IIT Ropar, India. His current research interests include wireless communication networks, including next-generation networks, 5G networks and architecture, and airborne networks.
 
-![](images/3ddd5d37de07826a9cfc579ac0d3ac452f2a9058d8ad5240a26936fe98b9d2f6.jpg)
+![](images/d7b6e9869271f5760c66b2a23a0130f2e58765bc3ebe0438f4de21c34ea29a7e.jpg)
 
 Deepak Mishra (Senior Member, IEEE) received the Ph.D. degree in electrical engineering from the Indian Institute of Technology (IIT) Delhi in 2017. Currently, he is a Senior Lecturer with the School of Electrical Engineering and Telecommunications, University of New South Wales (UNSW) Sydney, Australia, where he joined as a Senior Research Associate in August 2019. Before that, he was a Post-Doctoral Researcher with Linköping University, Sweden, from August 2017 to July 2019. He has also been a Visiting Researcher with Northeastern
 
 University, USA, the University of Rochester, USA, Huawei Technologies, France, and Southwest Jiaotong University, China. His current research interests include energy harvesting cooperative communication networks, MIMO, backscattering, physical layer security, and signal processing and energy optimization schemes for the uninterrupted operation of wireless networks. He serves as an Associate Editor for IEEE WIRELESS COMMUNICATIONS LETTERS, IEEE ACCESS, and Communication Theory Track of Frontiers in Communications and Networks.
 
-![](images/8004d064f4660890fa348823e3476d959ad31aa318bfee1192db69f812795d6f.jpg)
+![](images/8fe92eeeab9b677107402b170dc56750b4d2c4c2d1d17f04ead574f4fbff25dd.jpg)
 
 Brijesh Kumbhani (Senior Member, IEEE) received the B.E. degree in electronics and communication engineering (ECE) from Dharmsinh Desai University (DDU), Nadiad, India, in 2010, and the Ph.D. degree from the Department of Electronics and Electrical Engineering (EEE), Indian Institute of Technology at Guwahati, in 2015. Since June 2016, he has been an Assistant Professor with the Indian Institute of Technology at Ropar. He was an Assistant Professor with the Indian Institute of Information Technology
 

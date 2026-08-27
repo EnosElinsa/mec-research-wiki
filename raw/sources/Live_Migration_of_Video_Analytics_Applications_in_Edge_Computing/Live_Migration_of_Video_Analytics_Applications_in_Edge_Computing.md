@@ -10,9 +10,9 @@ Index Terms—Container migration, edge computing, state migration, video analyt
 
 UBLIC edge platforms have been increasingly popular, By bringing computation and storage closer to end customers, they can provide lower latency and better quality of service (QoS) for edge applications compared to cloud platforms.
 
-The killer application for edge platforms is real-time video analytics (VA) applications [3], which have drawn many researchers to make efforts to optimize their performance. Particularly, edge platforms need to adaptively change the placement of edge applications to cope with the mobility of users or to improve resource efficiency. Many works have focused on the issue of making scheduling decisions on when and where to migrate applications [4], [5], [6], [7], [8], [9]. But, how to implement the migration decisions made by these works? In other words, edge platforms need a solution to migrate the VA applications on them without significantly degrading the performance of applications.
+The killer application for edge platforms is real-time video analytics (VA) applications [3], which have drawn many researchers to make efforts to optimize their performance. Particularly, edge platforms need to adaptively change the placement of edge applications to cope with the mobility ofusers or to improve resource efficiency. Many works have focused on the issue of making scheduling decisions on when and where to migrate applications [4], [5], [6], [7], [8], [9]. But, how to implement the migration decisions made by these works? In other words, edge platforms need a solution to migrate the VA applications on them without significantly degrading theperformance ofapplications.
 
-Migrating VA applications within an edge platform is essentially migrating containers because edge platforms typically use container technology to serve applications due to its simplicity and low overhead [10], [11]. When an edge platform decides to migrate a containerized application, it needs to transfer the memory states of the migrated application containers [12]. The migration of application’s memory states within a cloud has been studied by many researchers, and the proposed solutions can be classified into three types according to their basic ideas, i.e., Checkpoint/Restore [13], [14], [15], [16], [17], Pre-copy [12], [18], [19], [20], [21], [22], Post-copy [11], [23], [24], [25], [26], [27].
+Migrating VA applications within an edge platform is essentially migrating containers because edge platforms typically use container technology to serve applications due to its simplicity and low overhead [10], [11]. When an edge platform decides to migrate a containerized application, it needs to transfer the memory states of the migrated application containers [12]. The migration ofapplication’s memory states within a cloud has been studied by many researchers, and the proposed solutions can be classified into three types according to their basic ideas, i.e., Checkpoint/Restore [13], [14], [15], [16], [17], Pre-copy [12], [18], [19], [20], [21], [22], Post-copy [11], [23], [24], [25], [26], [27].
 
 However, our measurements reveal that these migration methods cannot solve the issue of migrating VA applications within an edge platform. The size of the memory states of typical VA applications is huge, which makes Checkpoint/Restore inefficient. The dirty page rate of the memory states during the running of typical VA applications is very large, which makes Pre-copy methods infeasible. Post-copy methods take longer time to finish migration, and they cannot guarantee the application performance during migration, which is unacceptable for edge VA applications because these applications are usually delay-critical.
 
@@ -30,7 +30,7 @@ To summarize, our work makes three contributions. First, we analyze the memory s
 
 Edge platforms need to adaptively change the placements of VA applications to cope with the mobility of users or to improve resource efficiency. Specifically, in the scenarios where cameras are constantly moving, such as autonomous delivery vehicles [30] and dashboard cameras [31], a VA application typically offloads its computation to the nearby edge server to obtain lower latency and more computing resources. However, when the user (device) move away from the nearby edge server, the application QoS will be significantly degraded due to the deteriorating network connection. Ideally, when users move, the VA applications on the edge server should also be live migrated to a new nearby server. Besides, resources of an edge platform are dynamic. An edge platform may change the placement of applications among edge servers (or between the edge server and the cloud) to improve resource efficiency [4], [5], [6], [7], [8], [9]. Therefore, efficient live migration is essential for VA applications in edge computing scenarios.
 
-A good migration scheme hands off the migrated application from the source server to the destination server without degrading the latency and accuracy of VA applications. Typically, an application migration takes several minutes to complete, and the application may be interrupted for a while during migration [18], [32]. We refer to the period from the timepoint at which a migration command is received to the timepoint at which everything is settled down in the destination server as migration time and the period of application interruption as downtime. Real-time VA applications often require analysis latency within a few hundred milliseconds [33], so a minimal downtime is a must. During application interruptions, newly arriving video frames cannot be analyzed, and these frames must be analyzed after the migration is completed. Although many works have shown that we can obtain accurate analysis results by only analyzing key frames because video frames are redundant [34], [35], [36], the information about key frames is not available to edge platforms. The selection of key frames is implemented by application developers and is packaged into the image. An edge platform does not know how the application is implemented [29], so it is agnostic to the information about key frames. Blindly discarding video frames may lead to inaccurate analysis results. Therefore, the migration of VA applications also needs to ensure that each video frame must be analyzed.
+A good migration scheme hands off the migrated application from the source server to the destination server without degrading the latency and accuracy of VA applications. Typically, an application migration takes several minutes to complete, and the application may be interrupted for a while during migration [18], [32]. We refer to the period from the timepoint at which a migration command is received to the timepoint at which everything is settled down in the destination server as migration time and the period of application interruption as downtime. Real-time VA applications often require analysis latency within a few hundred milliseconds [33], so a minimal downtime is a must. During application interruptions, newly arriving video frames cannot be analyzed, and these frames must be analyzed after the migration is completed. Although many works have shown that we can obtain accurate analysis results by only analyzing key frames because video frames are redundant [34], [35], [36], the information about key frames is not available to edge platforms. The selection of key frames is implemented by application developers and is packaged into the image. An edge platform does not know how the application is implemented [29], so it is agnostic to the information about key frames. Blindly discarding video frames may lead to inaccurate analysis results. Therefore, the migration ofVA applications also needs to ensure that each videoframe must be analyzed.
 
 ## B. VA Application Migration is Essentially Migrating Memory States
 
@@ -38,7 +38,7 @@ Edge platforms usually work in a multi-tenant way, so an isolated and lightweigh
 
 The image of an application is read-only and never changes during running, so we can transfer the image without stopping the application, which does not necessarily incur any downtime. The key issue is the transfer of memory states. Memory states are changed continuously as the application runs. To maintain consistency in the memory states of the running application, we must pause the application to complete the transfer of the memory states during migration [12], [39]. Therefore, migrating VA applications is essentially migrating the memory states of containerized applications.
 
-## C. Memory States of a Typical VA Application
+## C. Memory States ofa Typical VA Application
 
 A typical VA application consists of a pipeline of video processing components, i.e., a front-end object detector and a back-end task-specific module to track the object of interest and further analyze the video frames [40]. To migrate the VA application memory state, it is necessary to understand the memory state generated by a typical VA application.
 
@@ -54,11 +54,11 @@ State migration has been well-studied in cloud computing scenarios for various a
 
 We need to choose some representative VA applications to conduct our measurements. Particularly, the selected applications should cover two popular types of object detectors, i.e., CNN-based object detection and background subtraction, and they should be implemented with all representative deep learning (DL) frameworks (i.e., TensorFlow and PyTorch) and different ways to store model files.
 
-Application A: Vehicle Counter (CNN-based detector, Py-Torch). An edge server receives video streams from cameras at traffic lights, identifies vehicles, and responds to periodical queries from users, such as the number of vehicles per day/hour/minute. The application uses Faster R-CNN + ResNet101 and Deep Sort [41] to identify various vehicles with PyTorch. The model file we use is PyTorch’s default format.
+\- Application A: Vehicle Counter (CNN-based detector, Py-Torch). An edge server receives video streams from cameras at traffic lights, identifies vehicles, and responds to periodical queries from users, such as the number of vehicles per day/hour/minute. The application uses Faster R-CNN + ResNet101 and Deep Sort [41] to identify various vehicles with PyTorch. The model file we use is PyTorch’s default format.
 
 \- Application B: Object Tracking (CNN-based detector, TensorFlow, frozen graph model). Some cameras are constantly moving, such as autonomous delivery vehicles [30] and dashboard cameras [31]. We use the same algorithms as application A to detect and track objects for alerts with TensorFlow. The model file we use is a frozen graph model (a way to store model files), which consumes more memory in exchange for inference efficiency.
 
-Application C: Person Detection (background subtraction, CNN-based classifier, TensorFlow). An edge server receives video streams for real-time analysis of intrusions. The application uses the background subtraction method to extract RoIs of objects in frames, EfficientDet [42] to classify objects to search persons, and SURF [43] to track the moving persons with TensorFlow. The model file format used by this application is SavedModel, which is the recommended way to save models in TensorFlow.
+\- Application C: Person Detection (background subtraction, CNN-based classifier, TensorFlow). An edge server receives video streams for real-time analysis of intrusions. The application uses the background subtraction method to extract RoIs of objects in frames, EfficientDet [42] to classify objects to search persons, and SURF [43] to track the moving persons with TensorFlow. The model file format used by this application is SavedModel, which is the recommended way to save models in TensorFlow.
 
 We implement the prototypes of these applications and encapsulate each prototype into a container. We prepare several input videos in advance instead of collecting data in real time to facilitate our measurements and ensure the fairness of comparison. The video quality of input videos is 480p, 5fps, and this quality has been sufficient to obtain relatively accurate analytics results [9], [44], [45]. During measurements, these videos are pushed to application’s containers via the RTMP protocol, which is widely used in real-time video analytics.
 
@@ -70,8 +70,7 @@ We implement three live migration methods that are widely used, i.e.,Checkpoint/
 
 TABLE I  
 THE SIZE OF SNAPSHOT AND THE DOWNTIME OF MIGRATING VA APPLICATIONS UNDER THE CHECKPOINT/RESTORE METHOD
-
-<table><tr><td>App</td><td>Snapshot Size (GB)</td><td>Downtime (s)</td></tr><tr><td>A</td><td>2.13</td><td>425.64</td></tr><tr><td>B</td><td>3.78</td><td>703.72</td></tr><tr><td>C</td><td>1.59</td><td>325.98</td></tr></table>
+<table><tr><td rowspan=1 colspan=1>App</td><td rowspan=1 colspan=1>Snapshot Size (GB)</td><td rowspan=1 colspan=1>Downtime (s)</td></tr><tr><td rowspan=1 colspan=1>A</td><td rowspan=1 colspan=1>2.13</td><td rowspan=1 colspan=1>425.64</td></tr><tr><td rowspan=1 colspan=1>B</td><td rowspan=1 colspan=1>3.78</td><td rowspan=1 colspan=1>703.72</td></tr><tr><td rowspan=1 colspan=1>C</td><td rowspan=1 colspan=1>1.59</td><td rowspan=1 colspan=1>325.98</td></tr></table>
 
 These three methods represent the basic ideas of all current migration methods [37]. Checkpoint/Restore simply freezes the running application at the source server (hereafter called source application), checkpoints all the related memory states into a base snapshot, sends the base snapshot to the destination server, and resumes the migrated application at the destination (hereafter called destination application) with the base snapshot [13], [14]. Obviously, it is preferred when migrating applications whose memory states are small.
 
@@ -83,27 +82,26 @@ Post-copy first freezes the source application and transfers a snapshot of boot 
 
 2) Dirty Page Rates and Migration Performance of Pre-Copy: We set the maximum iterations of pre-copy to 10 and gradually reduce the time interval of each iteration from 100 seconds to 10 seconds. We measure the size of dirty pages to be transferred in each iteration, and calculate the dirty page rate which represents the minimum network bandwidth needed to complete the transfer before the end of one iteration.
 
-![](images/c81dbd07540c2b1563988f691a26238a6f03dc5db81fac8a9a478b045379816a.jpg)  
+![](images/a12e483058685e62752afc302d3f9f519b5f70843e5a07729ea3ac625a985ef3.jpg)  
 (a) without compression
 
-![](images/46609148d728707c400db8d47e737339cf3f3644f571b31999fb187d15907c34.jpg)  
+![](images/54c4ba4e0d277d7f142c3358d47a1d238407537f8a90efe346dc8f6fa30e9598.jpg)  
 (b) with compression  
 Fig. 1. Dirty page rates under the Pre-copy method versus the typical network bandwidth between edge servers.
 
 TABLE II  
 THE MIGRATION PERFORMANCE AND APPLICATION PERFORMANCE UNDER THE POST-COPY METHOD
-
-<table><tr><td>App</td><td>Downtime (s)</td><td>Migration time (s)</td><td>Number of processing frames</td></tr><tr><td>A</td><td>2.50</td><td>527.8</td><td>23</td></tr><tr><td>B</td><td>2.36</td><td>822.6</td><td>21</td></tr><tr><td>C</td><td>1.41</td><td>504.7</td><td>27</td></tr></table>
+<table><tr><td rowspan=1 colspan=1>App</td><td rowspan=1 colspan=1>Downtime (s)</td><td rowspan=1 colspan=1>Migrationtime (s)</td><td rowspan=1 colspan=1>Number ofprocessing frames</td></tr><tr><td rowspan=1 colspan=1>A</td><td rowspan=1 colspan=1>2.50</td><td rowspan=1 colspan=1>527.8</td><td rowspan=1 colspan=1>23</td></tr><tr><td rowspan=1 colspan=1>B</td><td rowspan=1 colspan=1>2.36</td><td rowspan=1 colspan=1>822.6</td><td rowspan=1 colspan=1>21</td></tr><tr><td rowspan=1 colspan=1>C</td><td rowspan=1 colspan=1>1.41</td><td rowspan=1 colspan=1>504.7</td><td rowspan=1 colspan=1>27</td></tr></table>
 
 As shown in Fig. 1(a), the dirty page rate is greater than the network bandwidth among edge servers for all applications, i.e., the speed of generating dirty pages is greater than the available transmission speed. We further try to use a compression technology (such as gzip) to reduce the size of data to be transferred. The results are shown in Fig. 1(b). We can see that the compressed dirty page rate is still greater than the network bandwidth between edge servers. We can conclude that pre-copy does not serve the purpose of migrating VA applications since VA applications generate dirty pages very frequently.
 
-3) Application Performance and Migration Performance of Post-Copy: Table II shows the migration performance and application performance when the Post-copy method is used. Since it transfers only boot memory to the destination server, the VA application’s downtime is significantly shorter compared to Checkpoint/Restore. But the migration time of VA applications is extremely long because it takes a very long time to trigger all page faults to retrieve all memory pages. Although the application starts to run at the destination very quickly, the application performance degrades significantly before the migration is completed. For example, the downtime is 2.5 seconds for the vehicle counter application, but the migration time is about 500 seconds, and the application only analyzes 23 video frames in these 500 seconds. Note that the application needs to analyze 500 5 frames in this period, and these frames are queued up to be analyzed, which causes bursts in computing resource demand and is detrimental to the stability of the edge system.
+3) Application Performance and Migration Performance of Post-Copy: Table II shows the migration performance and application performance when the Post-copy method is used. Since it transfers only boot memory to the destination server, the VA application’s downtime is significantly shorter compared to Checkpoint/Restore. But the migration time of VA applications is extremely long because it takes a very long time to trigger all page faults to retrieve all memory pages. Although the application starts to run at the destination very quickly, the application performance degrades significantly before the migration is completed. For example, the downtime is 2.5 seconds for the vehicle counter application, but the migration time is about 500 seconds, and the application only analyzes 23 video frames in these 500 seconds. Note that the application needs to analyze 500  5 frames in this period, and these frames are queued up to be analyzed, which causes bursts in computing resource demand and is detrimental to the stability of the edge system.
 
 ## C. Breakdown of Memory States of VA Applications
 
 The most important concern of VA applications is the analysis latency for each frame, so minimizing the downtime and guaranteeing the application performance during migration are our primary goals.
 
-![](images/b94ce1e1c0436f1e88a7c832d6fbd4922b8383bdc28a87910b590e35809495bc.jpg)  
+![](images/503a917b9da1bddc80b44869da74ecda951acb6caf2cd7a65b99942a6435fc8a.jpg)  
 Fig. 2. The percentage of three memory state types in the base snapshot.
 
 The basic idea to achieve these two goals is to transfer static memory states as much as possible and start the application at the destination only after all memory states have been recovered. We try to minimize the size of dirty pages so as to reduce the downtime which is necessary for transferring dirty pages. Fortunately, we note that not all dirty pages are worthy to be migrated. For example, inference with CNN models generates intermediate features, which are part of the dirty pages. These features can be gotten by analyzing the same frames at the destination, which means transferring these states is not necessary.
@@ -124,7 +122,7 @@ Permanent states can be warmed up in advance at the destination server since the
 
 Ephemeral states can be gotten at the destination by replaying and re-analyzing the related frames with the same model. Then, we can eliminate the transmission of these ephemeral states during migration. Moreover, since the time of analyzing a frame is very short (about a few hundred milliseconds depending on the model used), re-analyzing video frames does not raise a long downtime.
 
-Crucial states must be synchronized from the source to the destination, which incurs downtime. Fortunately, the size of crucial states is not very large (less than 1% of the base snapshot), and we hope the downtime will be acceptable.
+Crucial states must be synchronized from the source to the destination, which incurs downtime. Fortunately, the size of crucial states is not very large (less than 1% ofthe base snapshot), and we hope the downtime will be acceptable.
 
 ## IV. OVERALL SYSTEM DESIGN
 
@@ -136,18 +134,18 @@ Problem 1: Edge platforms cannot obtain crucial states in real time during migra
 
 First, the memory addresses of crucial states are not fixed each time the application is loaded into memory. Due to system security concerns, current operating systems enable address space layout randomization (ASLR) [49], [50]. Edge platforms cannot quickly read crucial states from fixed memory addresses. Second, in Section III-C, we use an offline approach to get the crucial states in debug mode with the premise of having VA application’s source codes. However, in a production edge platform, VA applications are implemented by edge platform’s customers, and the source codes are packaged as an image, so edge platforms do not have access to the source codes and cannot obtain crucial states.
 
-Problem 2: Edge platforms do not know which frames should be replayed to get ephemeral states of the applications.
+Problem 2: Edge platforms do not know whichframes should be replayed to get ephemeral states ofthe applications.
 
 The execution process of the application is completely invisible to the edge platform, so the location of the frames being analyzed of an application is also not accessible by the edge platform. When edge platforms need to replay frame analysis to get ephemeral states, they do not know the location of the frame being replayed.
 
-![](images/160f7aa2d3b3f60407ef820c61404616275ae4294d45fa2572f347295974f5f5.jpg)  
+![](images/9bbd41b66b8fd003f6d0d11f313d9c34dcd76c19ba1cbac6a6d1fb2d2163ef20.jpg)  
 Fig. 3. System architecture.
 
 ## A. Architecture
 
 The two problems mentioned above tell us that completely transparent migration of VA applications is impossible because the crucial states and the location of the frames being analyzed of an application (hereafter called states for convenience) are completely invisible to the edge platform. To obtain states quickly during migration, we ask edge applications to actively report the states of migrated applications to edge platforms, and use a proxy for each VA application to transparently migrate the states. In this way, we can quickly acquire states with minimal application modifications.
 
-Specifically, the edge platform sets up a state store to receive and save the states from applications. During running, applications write their states to the state store. When applications need to be migrated, they can read the states from the state store. However, a VA application container cannot know the network address of the state store as they are different containers. Therefore, applications cannot accomplish the write process by themselves. Although we can ask the edge platform to notify applications of the address, it urges applications to take more jobs and revise their implement codes.
+Specifically, the edge platform sets up a state store to receive and save the states from applications. During running, applications write their states to the state store. When applications need to be migrated, they can read the states from the state store. However, a VA application container cannot know the network address ofthe state store as they are different containers. Therefore, applications cannot accomplish the write process by themselves. Although we can ask the edge platform to notify applications of the address, it urges applications to take more jobs and revise their implement codes.
 
 In this work, we propose a proxy for each application, named sidecar, which shares a network address with the application. When a VA application needs to write states, it first delivers the states to its sidecar. Then the sidecar writes the states to the state store. When a VA application needs to read states, it first notifies its sidecar of the request to get states. Then the sidecar reads the states from the state store and returns the states to the application.
 
@@ -165,7 +163,7 @@ Because of the reproducibility of permanent states, we can recreate the permanen
 
 Due to the feature named “lazy initialization” of Cuda and DL frameworks, model parameters are not initialized when a container is created, which means not all permanent states are created. Analyzing the first frame would take a longer time than analyzing the later frames because the first frame would trigger the initialization of model parameters. For example, when we use Faster R-CNN + ResNet101 to analyze video frames with RTX 3090, the first inference takes about 8 seconds, while the inference of each later frame only takes about 120 milliseconds.
 
-We need to warm up the complete permanent states and avoid the long delay of analyzing the first frame. In our design, the sidecar sends a random picture to the application container after the container of the destination application is started. The application container analyzes the picture to complete the lazy initialization of Cuda and DL frameworks. This process is named as pre-initialization of model parameters. It does not increase the downtime because the source application is not stopped during this process.
+We need to warm up the complete permanent states and avoid the long delay of analyzing the first frame. In our design, the sidecar sends a random picture to the application container after the container of the destination application is started. The application container analyzes the picture to complete the lazy initialization of Cuda and DL frameworks. This process is named aspre-initialization ofmodel parameters. It does not increase the downtime because the source application is not stopped during this process.
 
 ## C. Sync Phase: Crucial State Synchronization
 
@@ -183,46 +181,41 @@ Customers only need to add one stateGET and one statePUT in their codes appropri
 
 Obviously, we should complete a send/request command of an application by accessing the database (local state store) only once because each database access would incur latency. An object tracker may require the feature points from multiple frames to associate the same objects across frames. We should not read/write the states of each individual frame separately. In our design, a sidecar uses a single key-value pair to store the states of all previous frames needed by analyzing the current frame. The number of frames in a single key-value pair depends on object tracking algorithms used by VA applications.
 
-```txt
-Algorithm 1: An Object Detection-Based Application.
-
-1: model ← loadWeight(model_path)
-2: image ← extractFrameFromRTMP(rtmp_url)
-3: while image ≠ NULL do
-4: img ← preprocess(image)
-5: obj ← objectDetector(model, img)
-6: feat ← extractFeaturePoints(obj)
-7: pre_feats, pre_res ← stateGET(num)
-8: tracker ← objectTracker(feat, pre_feats)
-9: res ← objectCounter(tracker, pre_res) ▷
-Application-specific components
-10: statePUT(feat, res)
-11: image ← extractFrameFromRTMP(rtmp_url)
+Algorithm 1: An Object Detection-Based Application.   
+1: model loadWeight(model\_path)   
+2: image extractFrameFromRTMP(rtmp\_url)   
+3: while image = NULL do   
+4: img  preprocess(image)   
+5: obj objectDetector(model, img)   
+6: feat extractFeaturePoints(obj)   
+7: pre\_feats, pre\_res  stateGET(num)   
+8: tracker objectTracker(feat, pre\_feats)   
+9: res  objectCounter(tracker, pre\_res) -   
+Application-specific components   
+10: stateP UT(feat, res)   
+11: image  extractF rameF romRTMP(rtmp\_url)   
 12: end while
-```
 
-```txt
-Algorithm 2: A Background Subtraction-Based Application.
-
-1: model ← loadWeight(model_path)
-2: image ← extractFrameFromRTMP(rtmp_url)
-3: while image ≠ NULL do
-4: img ← preprocess(image)
-5: RoIs ← backgroundSubtractor(img)
-6: obj ← objectClassifier(RoIs, model)
-7: feat ← extractFeaturePoints(obj, RoIs)
-8: pre_feats, pre_res ← stateGET(num)
-9: tracker ← objectTracker(feat, pre_feats)
-10: res ← objectCounter(tracker, pre_res) ▷
-Application-specific components
-11: statePUT(feat, res)
-12: image ← extractFrameFromRTMP(rtmp_url)
+Algorithm 2: A Background Subtraction-Based Applica  
+tion.   
+1: model  loadW eight(model\_path)   
+2: image extractFrameFromRTMP(rtmp\_url)   
+3: while image = NULL do   
+4: img  preprocess(image)   
+5: RoIs  backgroundSubtractor(img)   
+6: obj objectClassifier(RoIs, model)   
+7: feat extractFeaturePoints(obj, RoIs)   
+8: pre\_feats, pre\_res stateGET(num)   
+9: tracker objectTracker(feat, pre\_feats)   
+10: res objectCounter(tracker, pre\_res) -   
+Application-specific components   
+11: statePUT(feat, res)   
+12: image extractFrameFromRTMP(rtmp\_url)   
 13: end while
-```
 
 To implement the above design, in writeState, a sidecar maintains a queue, containing feature points of the needed previous frames. The maximum length of the queue is the number of previous frames needed by the application’s object tracker. When the sidecar receives the states of a new frame, the sidecar removes the feature points at the head of this queue and pushes the new frame’s feature points to the tail of this queue. Then, we use application ID (the unique identifier of an application in edge platforms) as the key and package the queue and the latest results of application-specific components as the value. At last, sidecar writes the key-value pair to the local state store. In readState, a sidecar only needs to perform an operation of reading the database to get the states needed by an application.
 
-![](images/1fca7364f4d1a5421fb9de3e04a012276d5e58fff7952428452c518baf37431a.jpg)  
+![](images/90314c08d0c0bdb4cf4c5a408e3066dd6c5d6ac7a5b8109d0e6c4868527d866e.jpg)  
 Fig. 4. The overall procedures for migrating a VA application.
 
 Since the local state store and the sidecar are located on the same server, the time overhead of reading and writing states is tiny.
@@ -239,7 +232,7 @@ In the replay phase, the destination sidecar has gotten the identifier of frame 
 
 Fig. 4 shows the procedure of application migration. After receiving a migration command from the scheduler, the migration controller immediately creates a pod of the migrated application in the destination server ( 1 ).
 
-Warm-Up Phase: After the pod is created, the destination sidecar sends a random picture to the destination application ( 2 ). The destination application starts the step pre-initialization <sup>(</sup><sup>3</sup> <sup>).</sup> <sup>Once</sup> <sup>the</sup> <sup>destination</sup> <sup>application</sup> <sup>finishes</sup> <sup>pre-initialization,</sup> it returns an HTTP status code 200 (successful response) to the destination sidecar.
+Warm-Up Phase: After the pod is created, the destination sidecar sends a random picture to the destination application ( 2 ). The destination application starts the step pre-initialization ( 3 ). Once the destination application finishes pre-initialization, it returns an HTTP status code 200 (successful response) to the destination sidecar.
 
 Sync Phase: After the destination sidecar receives the status code 200, it sends a request for synchronizing state to the migration controller ( 4 ). At the same time, the destination sidecar starts to fetch video frames from the RTMP stream and store them in a video frame queue ( 5 ). After the migration controller receives the request for synchronizing state, it reads the crucial states from the local state store of the source server and writes these states to the local state store of the destination server ( 6 ). After the migration controller gets the states from the local state store of the source server, it immediately stops the source application pod ( 7 ) and sends the frame identifier in the crucial states to the destination sidecar ( 8 ).
 
@@ -271,10 +264,10 @@ Overall Migration Time: The migration of an application starts when the schedule
 
 We evaluate the migration time with different applications and different network bandwidths. We conduct experiments for each setting five times and show the average migration time in
 
-![](images/0ccab4f804383dcb1122b3e513d3a549d6b3c733ea72313e15e18428647324df.jpg)
+![](images/72a2a789ddab20379367f463cd29a793d9c6df70b5773e2afc0c3dfa9896bf4d.jpg)
 
 (a) Migrating applications from server A to server B  
-![](images/c2e56d6922d0abea5e004c078f037881dca39e9277383c6bace70cb44ae84203.jpg)  
+![](images/88a878f4ec88d7f1b97bbc114bea38b6a65e0aa70f211d3743dd17bdc3e9f168.jpg)  
 Fig. 5. Overall migration time under different computation resources.
 
 Fig. 5. We only show the results when the network bandwidth is 25 Mbps because the conclusions under other network bandwidths are similar to this case.
@@ -285,14 +278,14 @@ Downtime: Application migration can cause an application interruption. During th
 
 Fig. 6 shows the results of the scenario where VA applications are migrated from server A to server B. The first frame analyzed by the destination application is denoted as frame 0. As shown in Fig. 6(a), when the frame rate is 5, the latency of frame 0 is larger than the baseline. Even in the worst case (migrating person detection application), the gap between the latency of frame 0 and the baseline is 405 ms, which is extremely low compared with the results in Tables I and II. It shows that our migration method can achieve a near-seamless application migration. Besides, we also note that the gaps between the latency of frame 0 and the baseline are small for the other two applications (85 ms and 109 ms). This is because the size of feature points of SURF (used in person detection) is larger than that of Deep Sort (used in vehicle counter and object tracking). Constrained by the low bandwidth, the sync phase of person detection takes more time, so the downtime of the person detection application is larger than that of the other two applications.
 
-![](images/657349a295a5dcda5c4cf05451abedae244f51afd7bac5f0b8cddd05cb23b37d.jpg)
+![](images/4078ec5f71ed47423b38af6590dc3dd30163067f59f43bf0ca799145397fbb78.jpg)
 
 (a) The frame rate is 5.  
-![](images/c61551cea92f536d749f9d6f5a647c4be6dfc9736874bf7d51539fabce73f412.jpg)  
+![](images/ed242117c240e0ef2d0d8a3814b4e108bc3a97f19702717ec38615f7bafded84.jpg)  
 (b) The frame rate is 3.
 
-![](images/3cd79dc5149dc7af0a62ff0b34653d93efafdc1fae837cb739debabf12ca8be9.jpg)  
-(c) The frame rate is 2.  
+![](images/4ec5c24a90e1d23bdd495371d2e6e910ce5e3a89f5805fb6a470bb5e7d1c7585.jpg)  
+(c) The frame rate is 2  
 Fig. 6. The latency of frame analysis with different frame rates (25 Mbps).
 
 The gap between the latency of frame 0 and the baseline decreases as the frame rate becomes small. As shown in Fig. 6(b) and (c), in the worst case (migrating person detection application), the gap between the latency of frame 0 and the baseline is 159 ms when the frame rate is 2, and the gap is 284 ms when the frame rate is 3. The gaps become significantly smaller at lower frame rates. The interval between two consecutive frames is long at a low frame rate, and then the source application may be stopped at the interval between two consecutive frames, which means there is no new frame arriving during downtime. Therefore, the application interruption does not affect the latency of the analysis of new frames. In short, the migration downtime is hidden in the interval between two consecutive frames when the frame rate is low.
@@ -303,10 +296,10 @@ We can also see that, with our solution, the latency of frame analysis degrades 
 
 During the migration downtime, many arrived frames are queued up for analysis. If too many frames are queued, the system will consume a lot of resources to analyze these queued frames after migration, which may lead to resource load burst and affect system stability. Therefore, we evaluate the resource usage of our system during migration. We use the average GPU utilization during the application is running normally as the baseline.
 
-![](images/9e11453129097ad572a4cfcc5dc36e4fd929fee7e5d05978c20d065a131409ca.jpg)
+![](images/bbbda186e2f1cea5d9aad0c881c858e2b4abf37d8686178602f27dd49389de62.jpg)
 
 (a) server A  
-![](images/3d78da86e20c0037ac00522eef3b4e7aee4b19a64d396cab0ecd33df7dae9897.jpg)  
+![](images/7c553432bc7baf018a945eaf56eaf55daad29b5203c88a826df3799fda9f47da.jpg)  
 (b) Server B  
 Fig. 7. GPU utilization of the destination server during migration (5fps).
 
@@ -318,10 +311,10 @@ In short, our migration solution does not have a perceptible impact on the compu
 
 With sidecar, an edge platform enables near-transparent migration, but sidecar also consumes computation resources during application running. To evaluate the resource usage of the sidecar, we implement the version of VA applications without a sidecar for each application and use its resource usage as the baseline. We consider the difference between the two versions as the resource usage of a sidecar. Since sidecar does not use GPU, we only measure the CPU usage.
 
-![](images/7bb35844905a20597e63e5b80a6f7896c84b0438c8bbe92e6777a9c741804175.jpg)
+![](images/f208c68bcd9732da8374985b35b5487db86d0f544a8ba8715a72433c2cbb9605.jpg)
 
 (a) server A  
-![](images/398b68e4d147092f719ed1b12551f697a8ac8ca38bfaa953a88c2ab88563a1f8.jpg)  
+![](images/a4080c3c0fef3d8da689a906fa120b7676eccfbba3df280771042356cf993992.jpg)  
 (b) Server B  
 Fig. 8. CPU usage of sidecar (5fps).
 
@@ -337,14 +330,12 @@ Table III shows the average overhead of state read/write when a VA application u
 
 TABLE III  
 THE PERFORMANCE OF STATE READ/WRITE USING WHEN A VA APPLICATION USES DEEP SORT TO TRACK OBJECTS
-
-<table><tr><td>β</td><td>Write (ms)</td><td>Read (ms)</td><td>data size (Kb)</td></tr><tr><td>10</td><td>3.60</td><td>7.03</td><td>42.56</td></tr><tr><td>20</td><td>4.62</td><td>7.87</td><td>63.12</td></tr><tr><td>30</td><td>6.45</td><td>8.97</td><td>93.48</td></tr></table>
+<table><tr><td rowspan=1 colspan=1>β</td><td rowspan=1 colspan=1>Write (ms)</td><td rowspan=1 colspan=1>Read (ms)</td><td rowspan=1 colspan=1>data size (Kb)</td></tr><tr><td rowspan=1 colspan=1>10</td><td rowspan=1 colspan=1>3.60</td><td rowspan=1 colspan=1>7.03</td><td rowspan=1 colspan=1>42.56</td></tr><tr><td rowspan=1 colspan=1>20</td><td rowspan=1 colspan=1>4.62</td><td rowspan=1 colspan=1>7.87</td><td rowspan=1 colspan=1>63.12</td></tr><tr><td rowspan=1 colspan=1>30</td><td rowspan=1 colspan=1>6.45</td><td rowspan=1 colspan=1>8.97</td><td rowspan=1 colspan=1>93.48</td></tr></table>
 
 TABLE IV
 
 THE PERFORMANCE OF STATE READ/WRITE WHEN A VA APPLICATION USES SURF TO TRACK OBJECTS
-
-<table><tr><td>α</td><td>Write (ms)</td><td>Read (ms)</td><td>data size (Kb)</td></tr><tr><td>200</td><td>8.51</td><td>30.22</td><td>323.67</td></tr><tr><td>300</td><td>11.78</td><td>39.56</td><td>430.21</td></tr><tr><td>400</td><td>15.88</td><td>48.17</td><td>583.49</td></tr></table>
+<table><tr><td rowspan=1 colspan=1>α</td><td rowspan=1 colspan=1>Write (ms)</td><td rowspan=1 colspan=1>Read (ms)</td><td rowspan=1 colspan=1>data size (Kb)</td></tr><tr><td rowspan=1 colspan=1>200</td><td rowspan=1 colspan=1>8.51</td><td rowspan=1 colspan=1>30.22</td><td rowspan=1 colspan=1>323.67</td></tr><tr><td rowspan=1 colspan=1>300</td><td rowspan=1 colspan=1>11.78</td><td rowspan=1 colspan=1>39.56</td><td rowspan=1 colspan=1>430.21</td></tr><tr><td rowspan=1 colspan=1>400</td><td rowspan=1 colspan=1>15.88</td><td rowspan=1 colspan=1>48.17</td><td rowspan=1 colspan=1>583.49</td></tr></table>
 
 However, as shown in Table IV, the operations of writing and reading states take longer when a VA application uses SURF to track objects. It is because the states of applications using SURF are much larger than that of applications using Deep Sort. In the worst case (α is 400), the operations take 64 ms. This time overhead is not negligible compared to the latency of frame analysis (about 400 ms). The performance of state read/write greatly depends on the speed of data serialization. Using high-performance data serialization methods or avoiding data serialization can greatly reduce this latency. To ensure low latency of VA applications, we recommend that edge platform customers should use lightweight object tracking algorithms, e.g., Deep Sort.
 
@@ -386,7 +377,7 @@ In this paper, we conducted measurements to understand the characteristics of th
 
 [3] G. Ananthanarayanan et al., “Real-time video analytics: The killer app for edge computing,” Computer, vol. 50, no. 10, pp. 58–67, 2017.
 
-[4] C.-C. Hung et al., “VideoEdge: Processing camera streams using hierarchical clusters,” in Proc. IEEE/ACM Symp. Edge Comput., 2018, pp. 115–131.
+[4] C.-C. Hung et al., “VideoEdge: Processing camera streams using hierarchical clusters,” in Proc. IEEE/ACMSymp. Edge Comput., 2018, pp. 115–131.
 
 [5] P. Yang, F. Lyu, W. Wu, N. Zhang, L. Yu, and X. S. Shen, “Edge coordinated query configuration for low-latency and accurate video analytics,” IEEE Trans. Ind. Inform., vol. 16, no. 7, pp. 4855–4864, Jul. 2020.
 
@@ -408,7 +399,7 @@ In this paper, we conducted measurements to understand the characteristics of th
 
 [14] C. Yang, “Checkpoint and restoration of micro-service in docker containers,” in Proc. 3rd Int. Conf. Mechatron. Ind. Informat., 2015, pp. 915–918.
 
-[15] S. Nadgowda, S. Suneja, N. Bila, and C. Isci, “Voyager: Complete container state migration,” in Proc. IEEE 37th Int. Conf. Distrib. Comput. Syst., 2017, pp. 2137–2142.
+[15] S. Nadgowda, S. Suneja, N. Bila, and C. Isci, “Voyager: Complete container state migration,” in Proc. IEEE 37th Int. Conf. Distrib. Comput Syst., 2017, pp. 2137–2142.
 
 [16] C. Prakash, D. Mishra, P. Kulkarni, and U. Bellur, “Portkey: Hypervisorassisted container migration in nested cloud environments,” in Proc. 18th ACM SIGPLAN/SIGOPS Int. Conf. Virtual Execution Environ., 2022, pp. 3–17.
 
@@ -462,7 +453,7 @@ In this paper, we conducted measurements to understand the characteristics of th
 
 [41] N. Wojke, A. Bewley, and D. Paulus, “Simple online and realtime tracking with a deep association metric,” in Proc. IEEE Int. Conf. Image Process., 2017, pp. 3645–3649.
 
-[42] M. Tan, R. Pang, and Q. V. Le, “EfficientDet: Scalable and efficient object detection,” in Proc. IEEE/CVF Conf. Comput. Vis. Pattern Recognit., 2020, pp. 10781–10790.
+[42] M. Tan, R. Pang, and Q. V. Le, “EfficientDet: Scalable and efficient object detection,” in Proc. IEEE/CVFConf. Comput. Vis. Pattern Recognit., 2020, pp. 10781–10790.
 
 [43] H. Bay, A. Ess, T. Tuytelaars, and L. Van Gool, “Speeded-up robust features (SURF),” Comput. Vis. Image Understanding, vol. 110, no. 3, pp. 346–359, 2008.
 
@@ -480,13 +471,13 @@ In this paper, we conducted measurements to understand the characteristics of th
 
 [50] K. Z. Snow, F. Monrose, L. Davi, A. Dmitrienko, C. Liebchen, and A.-R. Sadeghi, “Just-in-time code reuse: On the effectiveness of fine-grained address space layout randomization,” in Proc. IEEE Symp. Secur. Privacy, 2013, pp. 574–588.
 
-[51] M. Orlov, “4 reasons why your docker containers can’t talk to each other.” Accessed: Nov. 16, 2022. [Online]. Available: https://maximorlov.com/4- reasons-why-your-docker-containers-cant-talk-to-each-other
+[51] M. Orlov, “4 reasons why your docker containers can’t talk to each other.” Accessed: Nov. 16, 2022. [Online]. Available: https://maximorlov.com/4- reasons-why-your-docker-containers-cant-talk-to-each-other/
 
 [52] Kubernetes, “Kubernetes, production-grade container orchestration.” Accessed: Nov. 16, 2022. [Online]. Available: https://kubernetes.io/
 
 [53] State migration for va application. Accessed: Feb. 15, 2023. [Online]. Available: https://github.com/lolo-pop/State-Migration-for-VA-Application/
 
-[54] OpenCV, “How to use background subtraction methods.” Accessed: Apr. 15, 2022. [Online]. Available: https://docs.opencv.org/3.4/d1/dc5/ tutorial-background-subtraction.htm
+[54] OpenCV, “How to use background subtraction methods.” Accessed: Apr. 15, 2022. [Online]. Available: https://docs.opencv.org/3.4/d1/dc5/ tutorial-background-subtraction.html
 
 [55] A. Geiger, P. Lenz, C. Stiller, and R. Urtasun, “Vision meets robotics: The KITTI dataset,” Int. J. Robot. Res., vol. 32, no. 11, pp. 1231–1237, 2013.
 
@@ -542,24 +533,22 @@ In this paper, we conducted measurements to understand the characteristics of th
 
 [81] M. Kablan, A. Alsudais, E. Keller, and F. Le, “Stateless network functions: Breaking the tight coupling of state and processing,” in Proc. 14th USENIX Symp. Netw. Syst. Des. Implementation, Boston, MA: USENIX Association, 2017, pp. 97–112. [Online]. Available: https://www.usenix. org/conference/nsdi17/technical-sessions/presentation/kablan
 
-![](images/3bf915aa4a5b7de766ec842089e062386de4e26620749cbb3b688dd8a82cca4e.jpg)  
+![](images/cac65093c74738f34f4a8b9f683e76107ca1d8eb27f9bfa760c6892f398f50fe.jpg)  
 Chenghao Rong received the BS degree from Shandong University, in 2015, and the MS degree from the University of Chinese Academy of Sciences, in 2018. He is currently working toward the PhD degree with Tsinghua University, China. His research interests include edge computing and video analytics.
 
-![](images/0a8a7014d9818a75b6803ea23324163960e55d93070bdcebce5b998663c94274.jpg)
+![](images/a9e5e482dfb146737c6790e312068c17e92b123831cf97c1a47184272fcd72ce.jpg)
 
 Jessie Hui Wang received the BS and MS degrees in computer science from Tsinghua University, and the PhD degree in information engineering from The Chinese University of Hong Kong, in 2007. She is currently an associate professor with Tsinghua University. Her research interests include Internet routing, distributed computing, network measurement, and Internet economics.
 
-![](images/3311fcd36819634a055e1b676518184f8d94a701e463a6e13c781e4984ffb143.jpg)  
+![](images/65a75c4280ea6a1a065d45cb8e3f810af043d5929cf6029dc9c66e44c17e9fff.jpg)  
 Jilong Wang received the PhD degree in computer science from Tsinghua University, in 2000. He is currently a professor with Tsinghua University. He has served as the chair of the board of directors for Asia Pacific Advanced Network (APAN) since 2019. His research focuses on network measurement, cyberspace governance and Internet testbed.
 
-![](images/c21481af086baaf23f56119416c7b65313bb47b89c8e930aa053fe2a3acfa0aa.jpg)
+![](images/29e759445c681b7227de1281765ec4c179b0b95ab64caadbf23e1d0bc4ac34dc.jpg)
 
 Jun Zhang (Fellow, IEEE) received the PhD degree in electrical and computer engineering from the University of Texas at Austin, in 2009. He is an associate professor with the Department of Electronic and Computer Engineering, Hong Kong University of Science and Technology. His research interests include wireless communications and networking, mobile edge computing and edge AI, and cooperative AI. He is a co-authored the book Fundamentals of LTE (Prentice-Hall, 2010). He is a co-recipient of several best paper awards, including the 2021 Best
 
-![](images/9b04f8d4f9c255b6f0222a087ddb8d1267fad3ead57d335d9d0e9bbce63f8fdf.jpg)
+![](images/a513f3c69f316f57541ee5125e1f6c758a99d80a835ccdbbd4d49d9292c620d2.jpg)
 
-Yipeng Zhou received the PhD degree from Information Engineering Department, CUHK, in 2012. He is a senior lecturer with the School of Computing, Faculty of Science and Engineering, Macquarie University, and the recipient of ARC Discover Early Career Researcher Award (DECRA), in 2018. He was a research fellow at the Institute of Telecommunication Research (ITR), University of South Australia from 2016 to 2018. His research interests lie in distributed/federated learning, privacy preserved distributed learning and networking. He has
-
-published more than 90 papers including IEEE INFOCOM, ICNP, IWQoS, IEEE/ACM Transactions on Networking, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Mobile Computing, IEEE Transactions on Multimedia, etc.
+Yipeng Zhou received the PhD degree from Information Engineering Department, CUHK, in 2012. He is a senior lecturer with the School of Computing, Faculty of Science and Engineering, Macquarie University, and the recipient of ARC Discover Early Career Researcher Award (DECRA), in 2018. He was a research fellow at the Institute of Telecommunication Research (ITR), University of South Australia from 2016 to 2018. His research interests lie in distributed/federated learning, privacy preserved distributed learning and networking. He has published more than 90 papers including IEEE INFOCOM, ICNP, IWQoS, IEEE/ACM Transactions on Networking, IEEE Journal on Selected Areas in Communications, IEEE Transactions on Parallel and Distributed Systems, IEEE Transactions on Mobile Computing, IEEE Transactions on Multimedia, etc.
 
 Survey Paper Award of the IEEE Communications Society, the 2019 IEEE Communications Society, and Information Theory Society Joint Paper Award. He also received the 2016 IEEE ComSoc Asia-Pacific Best Young Researcher Award. He is an IEEE ComSoc distinguished lecturer.
