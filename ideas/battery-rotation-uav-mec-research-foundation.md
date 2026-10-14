@@ -50,11 +50,11 @@ $$
 \mathcal U.
 $$
 
-对每个工作 UAV $u\in\mathcal A_e$，用 $\mu_{u,e}\in\mathcal M$ 表示其在第 $e$ 次交接开始时负责的区域。记 $\mathbb I\{\cdot\}$ 为指示函数，条件成立时取 1，否则取 0。每个区域恰由一架工作 UAV 服务，因此需要满足
+对每个工作 UAV $u\in\mathcal A_e$，用 $\mu_{u,e}\in\mathcal M$ 表示其在第 $e$ 次交接开始时负责的区域。每个区域恰由一架工作 UAV 服务，因此需要满足
 
 $$
 \sum_{u\in\mathcal A_e}
-\mathbb I\{\mu_{u,e}=m\}
+\mathbb I(\mu_{u,e}=m)
 =1,
 \qquad
 \forall m\in\mathcal M.
@@ -91,9 +91,9 @@ $$
 \sum_{u\in\mathcal U}x_{u,e}=1,\qquad
 x_{u,e}
 \le
-\mathbb I\left\{
+\mathbb I\left(
 \rho_{u,e}\le T_e^{\mathrm{start}}+\tau_e^{\mathrm{dep}}
-\right\}
+\right)
 \chi_{u,e},
 \qquad
 x_{u,e}\in\{0,1\},

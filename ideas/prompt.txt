@@ -8,7 +8,7 @@ C:\Users\labs2\Desktop\Projects\mec-research-wiki\ideas\<idea-slug>.md
 
 Derive `<idea-slug>` from the final idea title unless the user supplies a filename. Use the existing idea document in this folder as the structural and depth template:
 
-C:\Users\labs2\Desktop\Projects\mec-research-wiki\ideas\battery-rotation-uav-mec-stateful-service-handover.md
+C:\Users\labs2\Desktop\Projects\uav-mec-service-continuity\manuscript\uav-mec-service-continuity.md
 
 The final document must be written in natural, technically precise Chinese. English may remain for official paper titles, algorithm and framework names, standard abbreviations, mathematical symbols, and local file paths.
 
