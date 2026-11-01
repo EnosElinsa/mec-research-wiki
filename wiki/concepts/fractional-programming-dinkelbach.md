@@ -27,8 +27,9 @@ related:
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
   - "[[lu-2026-icsn-beamforming]]"
   - "[[crb-guided-angular-confidence-beamforming]]"
+  - "[[zeng-2020-qoe-energy-efficient-uav]]"
 created: 2026-05-28
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Fractional Programming and Dinkelbach Transform
@@ -70,3 +71,6 @@ The EE objective in WPT-MEC, NOMA, and joint communication-computation problems 
 [[huroon-2026-bd-ris-rsma-uav]] uses the Shen-Yu quadratic transform variant for a BD-RIS/RSMA rate-per-power objective. [[xie-2023-wireless-powered-short-packet-uav]] uses Dinkelbach-style subtractive updates inside its blocklength and WPT-power subproblems.
 
 [[li-2026-secrecy-ee-uav-ris-iov]] applies Dinkelbach to [[secrecy-energy-efficiency]] against an untrusted relay, then couples the power/amplification block to MM-based two-hop RIS phases and a warm-started DDPG trajectory policy.
+
+
+[[zeng-2020-qoe-energy-efficient-uav]] applies Dinkelbach's transform with block coordinate descent to QoE-constrained UAV energy efficiency over scheduling, trajectory, power, and bandwidth.

@@ -10,8 +10,9 @@ related:
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[tian-2026-joint-localization-communication]]"
   - "[[ammar-2026-oran-maritime-slicing]]"
+  - "[[huang-2025-hap-aav-spectrum-sharing-stackelberg]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Air-Ground Integrated Network (AGIN)

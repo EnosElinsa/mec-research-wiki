@@ -16,8 +16,10 @@ related:
   - "[[cao-2026-radio-map-cargo-pickup]]"
   - "[[li-2026-radio-map-predictive-routing]]"
   - "[[radio-map-assisted-predictive-routing]]"
+  - "[[channel-knowledge-map]]"
+  - "[[rong-not-in-parse-3dckmdiff]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Radio-Map-Assisted Channel Estimation
@@ -33,3 +35,5 @@ In [[yang-2026-generative-radio-map-lae]], the radio map is built for a low-alti
 [[cao-2026-radio-map-cargo-pickup]] consumes an expected-SNR map for a different purpose: [[radio-map-aided-uav-path-planning]] thresholds the map into feasible cells and searches communication-safe cargo routes, without treating the map as a channel estimator.
 
 [[li-2026-radio-map-predictive-routing]] is another distinct consumer: [[radio-map-assisted-predictive-routing]] queries future large-scale channel and interference statistics along fixed UAV trajectories to plan the data route, hop timing, and power rather than estimate a current channel.
+
+3-D map construction for low-altitude airspace is covered under [[channel-knowledge-map]], including the diffusion-based completion in [[rong-not-in-parse-3dckmdiff]].

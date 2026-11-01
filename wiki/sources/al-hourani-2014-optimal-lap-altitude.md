@@ -13,8 +13,10 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[post-disaster-mec]]"
   - "[[high-altitude-platform-station]]"
+  - "[[al-hourani-2020-urban-los-probability]]"
+  - "[[akram-al-hourani]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Optimal LAP Altitude for Maximum Coverage

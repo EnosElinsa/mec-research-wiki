@@ -10,8 +10,9 @@ related:
   - "[[zhao-2026-mappo-jscc-aec]]"
   - "[[xie-2026-geoagg-hsac]]"
   - "[[tian-2026-coded-cache-repair]]"
+  - "[[huang-2025-hap-aav-spectrum-sharing-stackelberg]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Zheng Chang
@@ -20,7 +21,7 @@ IEEE Senior Member working across UAV communications, IoT, cloud/edge computing,
 
 The records below refer to the same researcher: the 2022 and 2023 parses repeat his 2007 Jilin University B.Eng., 2009 Helsinki University of Technology/Aalto M.Sc., 2013 University of Jyväskylä Ph.D., Finnish research positions, and research profile.
 
-Co-authored seven sources in this wiki:
+Co-authored eight sources in this wiki:
 
 - [[chang-2022-marl-multiuav-trajectory]] - multi-agent DRL for multi-UAV trajectory and resource allocation.
 - [[xie-2023-wireless-powered-short-packet-uav]] - WPT-powered finite-blocklength UAV communication.
@@ -29,6 +30,7 @@ Co-authored seven sources in this wiki:
 - [[zhao-2026-mappo-jscc-aec]] - HAP-assisted sensing, communication, and aerial edge computing.
 - [[xie-2026-geoagg-hsac]] - terrain-aware graph state aggregation and hybrid-action control for mountainous localization/communication.
 - [[tian-2026-coded-cache-repair]] - coded UAV caching, fragment repair, resource pairing, and trajectory control.
+- [[huang-2025-hap-aav-spectrum-sharing-stackelberg]] - Stackelberg spectrum pricing and power allocation between a HAP and AAVs (UESTC address).
 
 ## Contributions to this wiki
 

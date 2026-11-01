@@ -20,6 +20,8 @@
 - [[belmekki-2022-networked-tethered-flying-platforms]] - Belmekki & Alouini 2022. Survey of networked tethered flying platforms: types, regulation, NTN integration, 6G enablers, channel models, and economics (IEEE OJVT).
 - [[elkhazraji-not-in-parse-haps-optical-sensing-survey]] - Elkhazraji et al. Tutorial-survey on HAPS FSO backhaul integrated with telecom-band DIAL atmospheric sensing. *(Venue, year, and DOI not in parse.)*
 - [[al-hourani-2014-optimal-lap-altitude]] — Al-Hourani et al. 2014. Foundational **air-to-ground channel** letter: closed-form sigmoid LoS-probability vs elevation angle + **optimal LAP altitude** for maximum ground coverage (IEEE WCL). *(Channel-model anchor, not MEC.)*
+- [[al-hourani-2020-urban-los-probability]] - Al-Hourani 2020. Stochastic-geometry LoS probability between arbitrary heights in urban environments, validated against ray tracing (IEEE WCL).
+- [[al-hourani-2024-los-holding-distance-ntn]] - Al-Hourani 2024. Camera-measured LoS probability and continuous-space Markov LoS holding distance for NTN links (IEEE COMML).
 - [[xu-2024-mobile-aigc-survey]] — Xu et al. 2024. Survey of **edge-cloud generative AI / AIGC services** in mobile networks (**mobile AIGC networks**); generative-model fundamentals, AIGC lifecycle, cloud-edge-mobile infrastructure, and implementation challenges (resource allocation, offloading, caching, mobility, incentives) (IEEE COMST).
 - [[mozaffari-2019-uav-wireless-tutorial]] — Mozaffari et al. 2019. **Tutorial** on UAVs for wireless networks; UAVs as aerial base stations vs cellular-connected UAVs, 3D deployment, channel modeling, energy efficiency, and the analytical toolbox (optimization, ML, stochastic geometry, game theory) (IEEE COMST). *(UAV-communications anchor, not MEC.)*
 - [[mozaffari-2017-uav-iot-energy-efficient]] — Mozaffari et al. 2017. Energy-efficient **IoT data collection** via multiple mobile UAVs; joint 3D placement + device association + uplink power control + closed-form update-times/trajectory; −45% device tx power, +28% reliability vs stationary (IEEE TWC). *(UAV-deployment/data-collection anchor, not MEC.)*
@@ -313,6 +315,8 @@
 ### Generative-AI / GAN for ISAC & channels
 
 - [[yang-2026-generative-radio-map-lae]] - Yang et al. 2026. CVCGAN-assisted generative radio map for LAE air-corridor channel estimation, with CNN integration over generated and estimated CSI (IEEE TMC).
+- [[rong-not-in-parse-3dckmdiff]] - Rong et al. 3DCKMDiff completes 3-D channel knowledge maps from sparse slices with a 2-D diffusion model. *(Venue, year, and DOI not in parse.)*
+- [[li-2025-ckm-air-corridor-isac-bs-deployment]] - Li et al. 2025. CKM-enabled joint air corridor planning and ISAC base station deployment via coarse-to-fine integer programming (IEEE WCL).
 - [[faisal-2025-cgan-ris-isac-channel]] — Faisal et al. 2025. **Conditional GAN** for channel estimation in RIS-assisted ISAC.
 - [[zhang-2025-gan-td3-isac-active-ris]] — Zhang et al. 2025. **GAN-TD3** beamforming for ISAC with double active RISs.
 
@@ -722,6 +726,11 @@
 - [[tian-2026-joint-localization-communication]] - Tian et al. 2026. Air-ground emergency-network localization and communication; AOA/ESPRIT localization feeds CoMP beamforming and DDQN control of UAV movement, time, and power (IEEE TWC).
 - [[bor-yaliniz-2016-3d-abs-placement]] – Bor-Yaliniz et al. 2016. First **3-D placement** of a drone-cell (aerial base station): jointly choose altitude + coverage location/size to maximize covered users; quadratically-constrained MINLP via bisection + interior-point solver (IEEE ICC). *(Aerial-base-station deployment anchor, not MEC.)*
 - [[mozaffari-not-in-parse-3d-drone-cellular-network]] - Mozaffari et al. Foundational 3-D wireless cellular network with LAP drone-BSs, drone-UEs, HAP/FSO backhaul, truncated-octahedron frequency reuse, KDE demand modeling, and optimal-transport association. *(Parsed metadata lacks DOI/venue/year.)*
+- [[zeng-2020-qoe-energy-efficient-uav]] - Zeng et al. 2020. QoE-constrained UAV energy efficiency over scheduling, 3-D trajectory, power, and bandwidth with Dinkelbach and BCD (IEEE TVT).
+- [[chen-2023-cfg-mappo-uav-data-collection]] - Chen et al. 2023. Coalition-formation-game association plus MAPPO trajectories for fair, energy-efficient multi-UAV data collection (IEEE TWC).
+- [[huang-2025-hap-aav-spectrum-sharing-stackelberg]] - Huang et al. 2025. HAP-led Stackelberg spectrum pricing and power allocation for AAVs in air-ground networks (IEEE TNSM).
+- [[zhang-2019-dual-band-airborne-access]] - Zhang et al. 2019. Airship UHF/S-band A2G measurements up to 70 km and joint band assignment and power allocation (IEEE Access).
+- [[piao-2019-uav-csi-measurement-gtsp]] - Piao et al. 2019. Energy-minimal drone CSI fingerprint collection cast as GTSP on an orientation-aware graph, validated on hardware (IEEE INFOCOM).
 - [[li-2026-uav-bs-semantic-mfmaddpg-kde]] - Li et al. 2026. Semantic-communication UAV-BS 3-D deployment; MF-MADDPG-KDE models continuous neighboring actions and optimizes BLEU-derived semantic fidelity under SINR/interference constraints (IEEE TWC).
 - [[you-2019-rician-uav-data-harvesting]] - You & Zhang 2019. UAV-enabled WSN data harvesting under angle-dependent Rician fading; outage-aware effective fading power regression plus BCD/SCA scheduling and 3-D trajectory optimization (IEEE TWC).
 - [[jiang-2012-uav-heading-sdma]] — Jiang & Swindlehurst 2012. Multi-antenna fixed-wing UAV heading optimization for ground-to-air **SDMA** uplink; adaptive heading maximizes ergodic sum rate via prediction filter + line search; SDMA >> TDMA (IEEE JSAC). *(Multi-antenna UAV relay / heading-optimization anchor.)*
@@ -831,6 +840,7 @@
 - [[mohamed-slim-alouini]] - KAUST IEEE Fellow across HAPS flight and payload design, tethered platforms, and wireless-powered underground networks; 5 sources.
 - [[zdenek-becvar]] - Czech Technical University researcher across MEC architecture and flying base station energy; 3 sources.
 - [[mohammadsaleh-nikooroo]] - flying base station energy researcher with Zdenek Becvar.
+- [[akram-al-hourani]] - RMIT University researcher on LoS probability and air-to-ground channel modeling; 3 sources.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
@@ -1385,6 +1395,7 @@
 - [[three-dimensional-frequency-reuse]]
 - [[angle-dependent-rician-fading]]
 - [[radio-map-assisted-channel-estimation]]
+- [[channel-knowledge-map]]
 - [[radio-map-aided-uav-path-planning]]
 - [[multi-modal-intelligent-channel-modeling]]
 - [[multi-scale-unet-pathloss-prediction]]

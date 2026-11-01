@@ -6,8 +6,9 @@ related:
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[he-2026-dt-sagimec-lae]]"
+  - "[[huang-2025-hap-aav-spectrum-sharing-stackelberg]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Stackelberg Game (Leader-Follower)
@@ -36,3 +37,6 @@ Network operators or service providers naturally play leader: they set prices, a
 [[he-2026-dt-sagimec-lae]] uses a Stackelberg-game decision layer inside an online decentralized optimizer for DT-assisted SAGIMEC resource management.
 
 Multi-leader Stackelberg variants (multiple competing operators) appear in some adjacent literature but aren't yet curated in this wiki.
+
+
+[[huang-2025-hap-aav-spectrum-sharing-stackelberg]] lets a HAP lead with spectrum prices and power while AAVs follow with transmit power.

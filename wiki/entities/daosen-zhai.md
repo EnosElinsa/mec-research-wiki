@@ -6,8 +6,9 @@ related:
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[ruonan-zhang]]"
+  - "[[zhang-2019-dual-band-airborne-access]]"
 created: 2026-07-14
-updated: 2026-07-15
+updated: 2026-11-02
 ---
 
 # Daosen Zhai
@@ -18,6 +19,7 @@ Authored corpus sources:
 
 - [[li-2026-full-duplex-noma-uav-relay]] - robust UAV relay position and power optimization under Gaussian location error.
 - [[wang-2026-diffusion-semantic-uav-edge]] - diffusion-policy trajectory and semantic resource optimization.
+- [[zhang-2019-dual-band-airborne-access]] - airship dual-band A2G channel measurement and spectrum-power allocation (Northwestern Polytechnical University address).
 
 ## Contributions to this wiki
 

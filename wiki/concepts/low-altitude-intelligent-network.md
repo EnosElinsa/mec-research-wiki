@@ -41,8 +41,10 @@ related:
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[lu-2026-icsn-beamforming]]"
   - "[[integrated-communication-sensing-navigation]]"
+  - "[[channel-knowledge-map]]"
+  - "[[li-2025-ckm-air-corridor-isac-bs-deployment]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Low-Altitude Intelligent Network (LAIN / Low-Altitude Economy)
@@ -71,6 +73,8 @@ The LAE sensing-control line also includes [[ye-2026-mode-lae-isac]], which uses
 [[yang-2025-hcdrl-pursuit-evasion]] adds a counter-UAV control case through [[cooperative-uav-pursuit-evasion]]. Its low-altitude network provides the application frame, but the evaluated pursuit model assumes ideal communication and does not optimize radio resources.
 
 [[lu-2026-icsn-beamforming]] adds [[integrated-communication-sensing-navigation]] at the physical layer for airborne users and targets. Its navigation function distributes angular information; the model does not evaluate end-to-end navigation error or energy consumption.
+
+[[channel-knowledge-map]] priors support low-altitude planning, as in the joint air corridor and ISAC base station deployment of [[li-2025-ckm-air-corridor-isac-bs-deployment]].
 
 ## Open architectural questions
 

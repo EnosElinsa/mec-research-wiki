@@ -47,8 +47,11 @@ related:
   - "[[ren-2026-distributed-uav-los]]"
   - "[[krishna-m-2026-multiuav-nbiot]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
+  - "[[al-hourani-2020-urban-los-probability]]"
+  - "[[al-hourani-2024-los-holding-distance-ntn]]"
+  - "[[zhang-2019-dual-band-airborne-access]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Air-to-Ground Channel Model
@@ -71,3 +74,6 @@ The **air-to-ground (ATG) channel model** describes propagation between an aeria
 - [[wang-2026-bayesian-uav-spectrum-mapping]] and [[belgiovine-not-in-parse-multidt-abs-deployment]] move toward environment-specific channel knowledge: the former learns a 3-D REM from sparse UAV samples, while the latter uses ray-tracing digital twins for airborne-base-station placement. [[heo-not-in-parse-blockage-aided-multiuav-interference]] adds the urban blockage case, where LoS/NLoS status is optimized for both desired and interfering links.
 - [[zhang-2026-control-assisted-beam-tracking]] studies a LoS-dominant single-path mmWave link where propagation is not the main unknown; [[control-assisted-uav-beam-tracking]] instead predicts beam misalignment from UAV attitude, velocity, position, and waypoint-control state.
 - [[ren-2026-distributed-uav-los]] uses the distance-, height-, and deployment-dependent [[3gpp-uav-los-probability-model]] with spatially distributed urban base stations. [[krishna-m-2026-multiuav-nbiot]] instead evaluates fixed-altitude relay links through standardized tapped-delay-line and terrestrial EPA/ETU channel profiles.
+
+
+LoS modeling refinements: [[al-hourani-2020-urban-los-probability]] gives geometric LoS probability between two arbitrary heights from four environment parameters, [[al-hourani-2024-los-holding-distance-ntn]] adds how far a moving user stays in LoS through a continuous-space Markov chain, and [[zhang-2019-dual-band-airborne-access]] measures airship A2G path loss at 785 and 2160 MHz up to 70 km.

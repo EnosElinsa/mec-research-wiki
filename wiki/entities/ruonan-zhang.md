@@ -6,8 +6,9 @@ related:
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[daosen-zhai]]"
+  - "[[zhang-2019-dual-band-airborne-access]]"
 created: 2026-07-14
-updated: 2026-07-15
+updated: 2026-11-02
 ---
 
 # Ruonan Zhang
@@ -18,6 +19,7 @@ Authored corpus sources:
 
 - [[li-2026-full-duplex-noma-uav-relay]] - full-duplex NOMA relay design under UAV position uncertainty.
 - [[wang-2026-diffusion-semantic-uav-edge]] - UAV-assisted semantic edge computing with diffusion trajectory control.
+- [[zhang-2019-dual-band-airborne-access]] - airship dual-band A2G channel measurement and spectrum-power allocation (Northwestern Polytechnical University address).
 
 ## Contributions to this wiki
 

@@ -20,15 +20,16 @@ related:
   - "[[zhan-2018-uav-wsn-data-collection]]"
   - "[[jiang-2026-ray-antenna-array]]"
   - "[[xiao-2020-secrecy-energy-efficiency-relaying]]"
+  - "[[rong-not-in-parse-3dckmdiff]]"
 created: 2026-06-01
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Yong Zeng
 
 A foundational author of the **UAV-communications** research line in this wiki. Earlier parses list the **Department of Electrical and Computer Engineering, National University of Singapore**; the 2024 UAV-ISAC parse records his current professorship at Southeast University's National Mobile Communications Research Laboratory and Purple Mountain Laboratories. He is widely associated with UAV trajectory optimization and energy-efficient UAV communication.
 
-Co-authored 17 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
+Co-authored 18 sources in this wiki — the corpus's UAV-communications / trajectory-optimization foundations and low-altitude physical-layer design:
 
 - [[zeng-2016-throughput-relaying]] — throughput maximization for UAV-enabled **mobile relaying** (trajectory + power, staircase water-filling) (lead author).
 - [[zeng-2017-energy-efficient-uav-trajectory]] — energy-efficient UAV communication + the first **fixed-wing propulsion-energy model** (bits/Joule) (lead author).
@@ -47,6 +48,7 @@ Co-authored 17 sources in this wiki — the corpus's UAV-communications / trajec
 - [[xiao-2020-secrecy-energy-efficiency-relaying]] - fixed-wing collect-store-forward relaying optimized for secrecy energy efficiency.
 - [[min-2026-sparse-bistatic-nearfield-isac]] - sparse XL-MIMO bi-static near-field ISAC and fourth-order virtual-array localization for UAV swarms.
 - [[zeng-2018-uav-multicasting-completion-time]] - RLNC multicast completion-time minimization with virtual-base-station waypoint design.
+- [[rong-not-in-parse-3dckmdiff]] - diffusion-based 3-D channel knowledge map construction for low-altitude networks (Southeast University and Purple Mountain Laboratories address).
 
 ## Contributions to this wiki
 
