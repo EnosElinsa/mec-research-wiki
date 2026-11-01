@@ -19,8 +19,10 @@ related:
   - "[[uav-assisted-edge-inference]]"
   - "[[cui-2026-aris-v2x-icac]]"
   - "[[zhao-2026-uav-fl-inspection-incentives]]"
+  - "[[wen-2025-iscc-air-feel]]"
+  - "[[liu-2025-iscc-v2x-latency]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Integrated Sensing, Computation, and Communication (ISCC)
@@ -42,3 +44,6 @@ In [[tang-2024-iscc-uav-feel]], ISCC resources (bandwidth, batch size, position)
 [[wen-2026-uav-edge-inference-iscc]] adds a UAV-relayed edge-inference variant: distributed ground devices sense and extract features, a UAV visits them to collect quantized feature vectors, and an edge server completes classification. The paper keeps downstream task accuracy explicit through [[discriminant-gain]] while optimizing access order, hovering locations, sensing power, compute frequency, and transmission parameters.
 
 [[cui-2026-aris-v2x-icac]] is adjacent to this page's ISCC framing but does not include radar sensing: it integrates V2X communication and computation only, with ARIS/UAV resource allocation optimized under an [[effective-energy-efficiency]] metric.
+
+
+[[wen-2025-iscc-air-feel]] brings ISCC into over-the-air federated learning, where sensing noise and batch size enter the convergence bound, and [[liu-2025-iscc-v2x-latency]] minimizes the worst vehicle's sensing-task latency in V2X with sub-band, power, beamforming, and CPU allocation.

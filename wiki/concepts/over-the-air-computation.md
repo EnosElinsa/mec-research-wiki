@@ -15,8 +15,11 @@ related:
   - "[[zhang-2026-dt-aircomp-cluster-formation]]"
   - "[[qian-2026-federated-bandit-aircomp]]"
   - "[[federated-linear-bandit-learning]]"
+  - "[[wen-2025-iscc-air-feel]]"
+  - "[[gong-2025-secure-uav-aircomp]]"
+  - "[[yao-not-in-parse-hierarchical-airfl-power]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Over-the-Air Computation (AirComp)
@@ -28,3 +31,6 @@ In [[fu-2025-otae-inference-lae-batching]], AirComp aggregates multi-sensor feat
 [[huang-2026-aircomp-uav-swarms-afl]] makes AirComp the uplink aggregation primitive for [[aircomp-assisted-asynchronous-fl]] in UAV swarms: selected communication UAVs aggregate sensing-UAV model updates while beamforming and participant scheduling manage aggregation error and model staleness.
 
 [[qian-2026-federated-bandit-aircomp]] aggregates Gram matrices and reward vectors for [[federated-linear-bandit-learning]] rather than gradients. Event-triggered clients transmit simultaneously to a mobile UAV server, while BCD-ADMM trajectory/power control reduces aggregation MSE and the resulting channel perturbation appears in the regret analysis.
+
+
+Further AirComp designs: [[wen-2025-iscc-air-feel]] couples device sensing, batch size, and AirComp distortion in federated edge learning; [[gong-2025-secure-uav-aircomp]] moves a UAV fusion center and shapes transmit scalers to keep an eavesdropper's MSE high; and [[yao-not-in-parse-hierarchical-airfl-power]] controls device and base-station amplify-and-forward power under inter-cluster interference.

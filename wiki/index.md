@@ -511,6 +511,9 @@
 - [[tang-2024-iscc-uav-feel]] — Tang et al. 2025. **ISCC** for UAV-assisted federated edge learning; deployment + sensing/compute/comm via AO (BBPO).
 - [[wang-2024-ttw-amd-localization]] — Wang et al. 2024. **Through-the-wall (TTW)** passive AMD detection + localization via CSI; reference-channel SSI cancellation + 2D matrix pencil ToF/PLCR estimation; hardware-validated (glass/brick walls: 0.964/0.952 detection accuracy, 1.65/2.05 m median error) (IEEE JSAC).
 - [[yao-2025-secure-isac-dual-eavesdropping]] — Yao et al. 2025. Secure UAV-ISAC against dual eavesdropping; AO + SCA + SDR for secrecy + sensing security.
+- [[gong-2025-secure-uav-aircomp]] - Gong et al. 2025. Secure UAV fusion-center AirComp; receiver, transmit-scaler, and trajectory design under an eavesdropper MSE floor (IEEE WCL).
+- [[yao-not-in-parse-hierarchical-airfl-power]] - Yao et al. Interference-resilient hierarchical over-the-air FL with AF relaying; closed-form alternating power control. *(Venue, year, and DOI not in parse.)*
+- [[yao-not-in-parse-secure-rsma-mec]] - Yao et al. Secure RSMA offloading to mutually untrusted helper users; BCD and SCA latency minimization. *(Venue, year, and DOI not in parse.)*
 - [[chen-2024-three-party-hierarchical-game-pls]] — Chen et al. 2024. **Three-party hierarchical game** for PLS with dynamic trilateral coalitions (LUs / EVs / JAs); HCSF + DRL (IEEE TWC).
 - [[wang-2026-secure-lae-uav-scheduling]] — Wang et al. 2026. Secure low-altitude aerial communications; UAVs dynamically switch between communication and artificial-noise jamming roles while optimizing scheduling, power, 3D trajectory, and velocity for secrecy energy efficiency (IEEE TWC).
 - [[li-2026-secrecy-ee-uav-ris-iov]] - Li et al. 2026. Untrusted-relay mobile-IoV security with vehicle jamming and UAV-mounted RIS; Dinkelbach/CCCP, MM, and firefly-warm-started DDPG maximize secrecy energy efficiency (IEEE TWC).
@@ -522,6 +525,10 @@
 - [[michailidis-2024-secure-ris-uav-mec-iot]] — Michailidis et al. 2024. Secure UAV-**RIS**-MEC-IoT offloading against **aerial + ground eavesdroppers**; SOP over Nakagami-m + max-min **secure computation efficiency** via Dinkelbach + BCD + bisection (IEEE TCOMM).
 - [[su-2024-sensing-aided-isac-pls]] — Su et al. 2024. **Sensing-aided PLS** for ISAC: dual-functional BS estimates eavesdropper directions (CAML) then jointly minimizes CRB and maximizes AN-aided secrecy rate via AO + fractional programming (IEEE TWC).
 - [[wen-2024-iscc-edge-ai]] — Wen et al. 2024. **Task-oriented ISCC** for multi-device **edge-AI inference**: ISAC devices radar-sense multi-view data, quantize + offload features to an edge server running split inference; maximize **discriminant gain** (KL-divergence accuracy surrogate) over sensing/transmit power + comm time + quantization bits; non-convex but solved **optimally** by the **sum-of-ratios** method (IEEE TWC).
+- [[wen-2025-iscc-air-feel]] - Wen et al. 2025. ISCC over-the-air federated edge learning; convergence with sensing noise and AirComp distortion guides batch-size and resource design (IEEE TWC).
+- [[liu-2025-iscc-v2x-latency]] - Liu et al. 2025. ISCC V2X max-latency minimization over sub-bands, power, receive beamforming, and edge CPU via BnB and SCA (IEEE TCOM).
+- [[li-2025-wireless-control-hrllc-scheduling]] - Li et al. 2025. Wireless networked control with HRLLC; joint task order, power, slot, and CPU design minimizes the stability-constrained period (IEEE TWC).
+- [[liu-not-in-parse-wireless-control-association]] - Liu et al. Multi-BS massive-MIMO wireless control with joint association and communication-computation co-design. *(Venue, year, and DOI not in parse.)*
 - [[zhu-2024-sensing-comm-doppler-uav-swarm]] — Zhu et al. 2024. **Sensing-communication co-design** for UAV-swarm-assisted vehicular networks in perspective of **Doppler**; min-max GV **CRLB** under SNR-loss constraint via differential evolution (IEEE TVT).
 - [[chu-2024-secure-ris-isac]] — Chu et al. 2024. **Secure RIS-ISAC** correspondence; maximize radar output SNR under per-user comm SINR + eavesdropping-SINR ceiling + power + RIS unit-modulus; AO + SDR + fractional programming + **majorization-minimization**; ~2 dB radar gain vs no-RIS (IEEE TVT). *(PHY secure-ISAC anchor, not MEC.)*
 - [[zhu-2024-crb-active-ris-isac]] — Zhu et al. 2024. **Active-RIS-empowered ISAC** for an obstructed target; derives the **CRB** for target **DoA** estimation and minimizes it over BS precoding + active-RIS reflection beamforming under per-user SINR + BS/RIS power + RIS amplitude constraints; AO + SDR + **majorization-minimization**; >30 dB CRB reduction vs passive RIS (IEEE TWC). *(PHY active-RIS ISAC anchor, not MEC.)*
@@ -841,6 +848,11 @@
 - [[zdenek-becvar]] - Czech Technical University researcher across MEC architecture and flying base station energy; 3 sources.
 - [[mohammadsaleh-nikooroo]] - flying base station energy researcher with Zdenek Becvar.
 - [[akram-al-hourani]] - RMIT University researcher on LoS probability and air-to-ground channel modeling; 3 sources.
+- [[jianping-yao]] - Guangdong University of Technology researcher on secure AirComp, ISAC, and offloading; 5 sources.
+- [[yi-fang]] - Guangdong University of Technology researcher on secure and hierarchical AirComp; 3 sources.
+- [[guojun-han]] - Guangdong University of Technology researcher on secure and hierarchical AirComp; 3 sources.
+- [[dingzhu-wen]] - ShanghaiTech University researcher across ISCC edge AI, UAV edge inference, and over-the-air FEEL; 3 sources.
+- [[yiyang-li]] - CUHK Shenzhen researcher on wireless networked control with HRLLC; 2 sources.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
@@ -1050,6 +1062,7 @@
 - [[uav-assisted-mobile-crowd-sensing]]
 - [[dynamic-qos-constraints]]
 - [[finite-blocklength-urllc]]
+- [[wireless-networked-control-system]]
 - [[layered-semantic-communication]]
 - [[semantic-reference-signal-matching]]
 - [[network-function-virtualization]]

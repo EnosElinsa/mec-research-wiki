@@ -10,8 +10,9 @@ related:
   - "[[uav-mounted-ris]]"
   - "[[noma]]"
   - "[[morshed-2026-active-ris-uav-noma-mappo]]"
+  - "[[yao-not-in-parse-secure-rsma-mec]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Rate-Splitting Multiple Access
@@ -21,3 +22,5 @@ In the one-layer rate-splitting multiple access (RSMA) design used by the linked
 This creates an interference-management continuum between fully treating interference as noise and decoding complete interfering messages as in some [[noma|NOMA]] designs. Beamformers and common-rate allocations determine how much interference is decoded versus tolerated.
 
 [[huroon-2026-bd-ris-rsma-uav]] applies RSMA inside each UAV user group while orthogonalizing groups and assigning [[beyond-diagonal-ris]] clusters. [[mihertie-2026-aerial-irs-rsma-ee]] jointly optimizes common/private precoders, common rates, a [[uav-mounted-ris]], and aerial placement under hardware distortion.
+
+[[yao-not-in-parse-secure-rsma-mec]] uses RSMA for secure task offloading to helper users that may eavesdrop on each other, jointly choosing offloading ratios, common rates, and the precoder.

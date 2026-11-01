@@ -21,8 +21,10 @@ related:
   - "[[isac-sensing-in-aerial-mec]]"
   - "[[jie-xu]]"
   - "[[yuanming-shi]]"
+  - "[[dingzhu-wen]]"
+  - "[[wen-2025-iscc-air-feel]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Task-Oriented Sensing, Computation, and Communication Integration for Multi-Device Edge AI

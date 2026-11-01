@@ -14,8 +14,9 @@ related:
   - "[[lyapunov-optimization]]"
   - "[[maddpg]]"
   - "[[uav-trajectory-control]]"
+  - "[[jianping-yao]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Prediction-Assisted Multi-UAV Online Service Migration and Trajectory Control for MEC-Empowered Vehicular Networks

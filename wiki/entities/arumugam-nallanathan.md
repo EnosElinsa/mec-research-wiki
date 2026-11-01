@@ -10,15 +10,16 @@ related:
   - "[[xu-2026-prizty-uav-mec-auction]]"
   - "[[zhang-2026-dwell-time-aerial-vec]]"
   - "[[cui-2020-marl-uav-resource-allocation]]"
+  - "[[liu-2025-iscc-v2x-latency]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Arumugam Nallanathan
 
 IEEE Fellow and Professor of Wireless Communications at Queen Mary University of London, where the current source biography identifies him as head of the Communication Systems Research Group.
 
-Co-authored 7 sources in this wiki:
+Co-authored 8 sources in this wiki:
 
 - [[deng-2025-covert-isac-trajectory]] - covert UAV-ISAC beam and trajectory control.
 - [[lu-2023-uav-relay-secure-maritime-mec]] - secure maritime MEC with a UAV relay.
@@ -27,6 +28,7 @@ Co-authored 7 sources in this wiki:
 - [[zhang-2026-dwell-time-aerial-vec]] - dwell-time-aware aerial vehicular edge computing.
 - [[cui-2020-marl-uav-resource-allocation]] - decentralized tabular learning for UAV user, subchannel, and power selection.
 - [[zhang-2021-safe-dqn-emergency]] - Safe-DQN trajectory control under user-energy constraints.
+- [[liu-2025-iscc-v2x-latency]] - ISCC-enabled V2X latency minimization (Queen Mary University of London address).
 
 ## Contributions to this wiki
 

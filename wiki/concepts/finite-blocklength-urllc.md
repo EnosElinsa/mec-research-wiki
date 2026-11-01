@@ -17,8 +17,11 @@ related:
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[zhu-2026-fas-uav-fbl]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
+  - "[[wireless-networked-control-system]]"
+  - "[[li-2025-wireless-control-hrllc-scheduling]]"
+  - "[[liu-not-in-parse-wireless-control-association]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Finite-Blocklength URLLC
@@ -38,3 +41,6 @@ In the wiki, [[wu-2024-urllc-uav-mec-latency]] is the corpus's first UAV-MEC stu
 [[zhu-2026-fas-uav-fbl]] adds receiver-side spatial selection to short-packet UAV relaying. Its effective fluid-antenna diversity lowers the access-hop BLER, but per-port probing consumes channel uses and energy, so useful port count is constrained by the same finite blocklength it is intended to protect. A fixed-power first hop also creates an end-to-end error floor that access-hop diversity cannot remove.
 
 Finite blocklength also changes both Bob's coding penalty and Willie's observation budget in covert designs; [[aerial-observation-control-covertness-surveillance-and-monitoring]] keeps that rate/detection tradeoff distinct from surveillance and tracking metrics.
+
+
+Short-packet reliability also constrains closed-loop control: see [[wireless-networked-control-system]], with single-BS scheduling in [[li-2025-wireless-control-hrllc-scheduling]] and multi-BS association in [[liu-not-in-parse-wireless-control-association]].

@@ -16,8 +16,9 @@ related:
   - "[[meng-2024-uav-isac-overview]]"
   - "[[benaya-2025-aerial-isac-haps]]"
   - "[[zhang-2024-gdmtd3-aerial-secure-cb]]"
+  - "[[jianping-yao]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # UAV-Enabled Secure ISAC Against Dual Eavesdropping Threats: Joint Beamforming and Trajectory Design

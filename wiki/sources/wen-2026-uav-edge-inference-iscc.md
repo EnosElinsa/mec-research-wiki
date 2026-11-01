@@ -16,8 +16,9 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
   - "[[yuanming-shi]]"
+  - "[[dingzhu-wen]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # UAV-Assisted Edge Inference With Integrated Sensing, Communication, and Computation

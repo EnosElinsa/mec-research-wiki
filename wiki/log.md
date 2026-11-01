@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-02] Curated over-the-air computation, ISCC, and wireless-control sources
+
+Curated seven genuinely new Raw sources: [[wen-2025-iscc-air-feel]], [[gong-2025-secure-uav-aircomp]], [[yao-not-in-parse-hierarchical-airfl-power]], [[liu-2025-iscc-v2x-latency]], [[li-2025-wireless-control-hrllc-scheduling]], [[liu-not-in-parse-wireless-control-association]], and [[yao-not-in-parse-secure-rsma-mec]]. All seven carry `modeling_card: required`. None has a companion PDF; journal DOIs and venues come from the parse footnotes, and the three conference-format parses record venue, year, and DOI as not in parse.
+
+Added the concept [[wireless-networked-control-system]] and five identity-checked author entities: [[jianping-yao]], [[yi-fang]], and [[guojun-han]] (shared GDUT addresses and emails), [[dingzhu-wen]] (ShanghaiTech address and email across three sources), and [[yiyang-li]] (CUHK Shenzhen address and topic continuity on two sources). Extended [[jie-xu]], [[yuanming-shi]], [[shuguang-cui]], [[tony-q-s-quek]], [[yuan-wu]], [[arumugam-nallanathan]], and [[zhiyong-feng]], and linked the sources from [[over-the-air-computation]], [[hierarchical-over-the-air-federated-learning]], [[integrated-sensing-computation-communication]], [[rate-splitting-multiple-access]], [[finite-blocklength-urllc]], [[wen-2024-iscc-edge-ai]], [[wen-2026-uav-edge-inference-iscc]], [[feng-2026-prediction-service-migration]], and [[yao-2025-secure-isac-dual-eavesdropping]]. One-off authors were deferred.
+
+Reconciliation moved from 20 to 13 genuinely new Raw folders. Corpus counts are 680 sources, 665 concepts, 207 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Link, process-reference, index, frontmatter, source-schema, and entity-roster audits report zero errors.
+
 ## [2026-11-02] Curated UAV channel, LoS, and air-ground resource sources
 
 Curated nine genuinely new Raw sources: [[rong-not-in-parse-3dckmdiff]], [[li-2025-ckm-air-corridor-isac-bs-deployment]], [[al-hourani-2024-los-holding-distance-ntn]], [[al-hourani-2020-urban-los-probability]], [[piao-2019-uav-csi-measurement-gtsp]], [[zhang-2019-dual-band-airborne-access]], [[huang-2025-hap-aav-spectrum-sharing-stackelberg]], [[chen-2023-cfg-mappo-uav-data-collection]], and [[zeng-2020-qoe-energy-efficient-uav]]. Six carry `modeling_card: required`; the 3DCKMDiff map-construction method and the two LoS channel models are `not_applicable`. 3DCKMDiff and the CKM air-corridor letter have no companion PDF; the letter's DOI and venue come from its parse, while 3DCKMDiff's venue, year, and DOI are recorded as not in parse. The INFOCOM CSI paper has no DOI in its PDF metadata.

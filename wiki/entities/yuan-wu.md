@@ -23,15 +23,16 @@ related:
   - "[[qian-2024-marine-fl-dt-secrecy]]"
   - "[[wang-2026-noma-marine-data-computation]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
+  - "[[liu-2025-iscc-v2x-latency]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Yuan Wu
 
 IEEE Senior Member. Affiliated with the **State Key Laboratory of Internet of Things for Smart City** and the **Department of Computer and Information Science, University of Macau** (Macau SAR, China; email `yuanwu@um.edu.mo`).
 
-Co-authored 19 sources in this wiki - seven in the **CMOP-evolutionary UAV-MEC** lineage, seven maritime / multi-access offloading and computation papers, three air-ground / UAV-LEO / end-edge-cloud game-theoretic and online offloading papers, an adaptive digital-twin migration paper, and an AoI-aware UAV mobile-crowdsensing incentive paper:
+Co-authored 20 sources in this wiki - seven in the **CMOP-evolutionary UAV-MEC** lineage, seven maritime / multi-access offloading and computation papers, three air-ground / UAV-LEO / end-edge-cloud game-theoretic and online offloading papers, an adaptive digital-twin migration paper, and an AoI-aware UAV mobile-crowdsensing incentive paper:
 
 - [[peng-2022-cmop-uav-path-planning]] (lineage seed), [[peng-2024-energy-time-uav-its]], [[peng-2026-demand-aware-multiuav-mec]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]], [[wu-2026-terrain-aware-uav-mec]], [[xie-2026-uav-multisource-fusion]].
 - [[dai-2023-hybrid-marine-mmwl]] - hybrid offshore + aerial multi-access offloading for marine networks (MMWL); corresponding author.
@@ -46,6 +47,7 @@ Co-authored 19 sources in this wiki - seven in the **CMOP-evolutionary UAV-MEC**
 - [[chen-2022-qoe-game-end-edge-cloud]] - QoE-aware decentralized end-edge-cloud offloading as a potential game (MUTO-Game / GDTO; PoA analysis); co-author with ying-chen and [[xuemin-shen]].
 - [[mou-2025-adm-dt-migration]] - adaptive digital-twin migration in vehicular edge networks; off-policy actor-critic with expert warm-start, minimizing communication + colocation + migration cost.
 - [[guo-2026-aoi-uav-mcs-contract]] - AoI-aware hierarchical contract incentives for UAV-assisted mobile crowdsensing; co-author with ying-chen.
+- [[liu-2025-iscc-v2x-latency]] - ISCC-enabled V2X latency minimization (University of Macau address).
 
 ## Contributions to this wiki
 

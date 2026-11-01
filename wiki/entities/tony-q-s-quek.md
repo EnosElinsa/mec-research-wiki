@@ -17,6 +17,8 @@ related:
   - "[[chen-2026-pointrl-uav-isac]]"
   - "[[chen-2026-aris-location-privacy]]"
   - "[[xing-2026-genai-agent-hap-power-allocation]]"
+  - "[[gong-2025-secure-uav-aircomp]]"
+  - "[[yao-not-in-parse-secure-rsma-mec]]"
 created: 2026-05-29
 updated: 2026-11-02
 ---
@@ -25,7 +27,7 @@ updated: 2026-11-02
 
 IEEE Fellow. Affiliated with the **Information Systems Technology and Design (ISTD) Pillar, Singapore University of Technology and Design (SUTD)** (Singapore; email `tonyquek@sutd.edu.sg`); some papers also list Yonsei University / Kyung Hee University. Consistent identity across his papers in this wiki.
 
-Co-authored 14 sources in this wiki:
+Co-authored 16 sources in this wiki:
 
 - [[liu-2025-haps-uav-maritime-iot]] — HAP-UAV-assisted maritime IoT communication network.
 - [[yao-2025-secure-isac-dual-eavesdropping]] — UAV-enabled secure ISAC against dual eavesdropping threats.
@@ -42,6 +44,8 @@ Co-authored 14 sources in this wiki:
 - [[chen-2026-pointrl-uav-isac]] - radar-point-cloud-driven UAV-to-vehicle sensing and communication control.
 - [[chen-2026-aris-location-privacy]] - virtual-partitioned active-RIS communication and source-UAV location privacy.
 - [[xing-2026-genai-agent-hap-power-allocation]] - generative-AI-agent propulsion modeling and Q3E beamforming for HAPs (SUTD address).
+- [[gong-2025-secure-uav-aircomp]] - secure UAV-enabled over-the-air computation.
+- [[yao-not-in-parse-secure-rsma-mec]] - secure RSMA-assisted MEC latency minimization.
 
 ## Contributions to this wiki
 

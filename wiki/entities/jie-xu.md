@@ -16,6 +16,13 @@ related:
   - "[[xie-2021-uav-wpt-tutorial]]"
   - "[[rong-not-in-parse-3dckmdiff]]"
   - "[[li-2025-ckm-air-corridor-isac-bs-deployment]]"
+  - "[[wen-2025-iscc-air-feel]]"
+  - "[[gong-2025-secure-uav-aircomp]]"
+  - "[[yao-not-in-parse-hierarchical-airfl-power]]"
+  - "[[liu-2025-iscc-v2x-latency]]"
+  - "[[li-2025-wireless-control-hrllc-scheduling]]"
+  - "[[liu-not-in-parse-wireless-control-association]]"
+  - "[[yao-not-in-parse-secure-rsma-mec]]"
 created: 2026-05-30
 updated: 2026-11-02
 ---
@@ -24,7 +31,7 @@ updated: 2026-11-02
 
 IEEE Fellow. Affiliated with the **School of Science and Engineering (SSE), The Chinese University of Hong Kong, Shenzhen** and, in the secure-ISAC / LAE-ISAC papers, the **Shenzhen Future Network of Intelligence Institute** and the **Guangdong Provincial Key Laboratory of Future Networks of Intelligence**. Earlier papers place him at the **School of Information Engineering, Guangdong University of Technology**. The biographies across these affiliations repeat his USTC degrees, NUS research fellowship, and SUTD postdoctoral appointment, establishing the same identity.
 
-Co-author of thirteen wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
+Co-author of twenty wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
 
 - [[xu-2018-uav-wpt-trajectory]] - UAV-enabled wireless power transfer with trajectory and max-min energy optimization.
 - [[zeng-2019-rotary-wing-energy-min]] - rotary-wing UAV propulsion modeling and energy-minimizing communication trajectories.
@@ -39,6 +46,13 @@ Co-author of thirteen wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources
 - [[xie-2021-uav-wpt-tutorial]] - tutorial treatment of UAV-enabled WPT, WPCN, and wireless-powered MEC trajectory/resource design.
 - [[rong-not-in-parse-3dckmdiff]] - diffusion-based 3-D channel knowledge map construction (SSE and FNii, CUHK Shenzhen address).
 - [[li-2025-ckm-air-corridor-isac-bs-deployment]] - CKM-enabled joint air corridor planning and ISAC base station deployment (CUHK Shenzhen address).
+- [[wen-2025-iscc-air-feel]] - ISCC for over-the-air federated edge learning (CUHK Shenzhen address).
+- [[gong-2025-secure-uav-aircomp]] - secure UAV-enabled over-the-air computation.
+- [[yao-not-in-parse-hierarchical-airfl-power]] - interference-resilient power control for hierarchical over-the-air FL (CUHK Shenzhen address).
+- [[liu-2025-iscc-v2x-latency]] - ISCC radio and computation allocation for V2X latency.
+- [[li-2025-wireless-control-hrllc-scheduling]] - task scheduling and communication-computation design for wireless networked control (CUHK Shenzhen address).
+- [[liu-not-in-parse-wireless-control-association]] - multi-BS association and co-design for wireless control networks (CUHK Shenzhen address).
+- [[yao-not-in-parse-secure-rsma-mec]] - secure RSMA-assisted MEC latency minimization.
 
 ## Contributions to this wiki
 

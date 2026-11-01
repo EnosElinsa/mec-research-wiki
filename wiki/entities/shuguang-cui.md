@@ -10,15 +10,17 @@ related:
   - "[[wen-2024-iscc-edge-ai]]"
   - "[[tang-2024-iscc-uav-feel]]"
   - "[[du-2024-gdm-network-optimization-tutorial]]"
+  - "[[wen-2025-iscc-air-feel]]"
+  - "[[liu-not-in-parse-wireless-control-association]]"
 created: 2026-06-03
-updated: 2026-06-03
+updated: 2026-11-02
 ---
 
 # Shuguang Cui
 
 IEEE Fellow. Affiliated with the **School of Science and Engineering, the Shenzhen Future Network of Intelligence Institute, and the Guangdong Provincial Key Laboratory of Future Networks of Intelligence, The Chinese University of Hong Kong, Shenzhen** (Shenzhen, China; email `shuguangcui@cuhk.edu.cn`) across his papers in this wiki.
 
-Co-authored 7 sources in this wiki, spanning graph-based resource management, extremely-large-scale MIMO, generative-AI/ISAC physical-layer work, integrated sensing-computation-communication edge AI, and generative-diffusion network optimization:
+Co-authored 9 sources in this wiki, spanning graph-based resource management, extremely-large-scale MIMO, generative-AI/ISAC physical-layer work, integrated sensing-computation-communication edge AI, and generative-diffusion network optimization:
 
 - [[dai-2024-graph-rm-survey-optimization]] — Part I (optimization approaches) of the two-part graph-based-resource-management survey.
 - [[dai-2024-graph-rm-survey-learning]] — Part II (learning approaches / GNNs) of the same two-part survey.
@@ -27,6 +29,8 @@ Co-authored 7 sources in this wiki, spanning graph-based resource management, ex
 - [[wen-2024-iscc-edge-ai]] — task-oriented sensing, computation, and communication integration for multi-device edge AI.
 - [[tang-2024-iscc-uav-feel]] — integrated sensing, computation, and communication for UAV-assisted federated edge learning.
 - [[du-2024-gdm-network-optimization-tutorial]] — tutorial on generative diffusion models in network optimization (enhancing DRL).
+- [[wen-2025-iscc-air-feel]] - ISCC for over-the-air federated edge learning.
+- [[liu-not-in-parse-wireless-control-association]] - association and communication-computation co-design for wireless control networks (CUHK Shenzhen address).
 
 ## Contributions to this wiki
 
