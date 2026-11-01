@@ -23,6 +23,8 @@ related:
   - "[[li-2025-wireless-control-hrllc-scheduling]]"
   - "[[liu-not-in-parse-wireless-control-association]]"
   - "[[yao-not-in-parse-secure-rsma-mec]]"
+  - "[[lyu-2026-pruning-aware-laim-co-inference]]"
+  - "[[lyu-2026-laim-deployment-lae]]"
 created: 2026-05-30
 updated: 2026-11-02
 ---
@@ -31,7 +33,7 @@ updated: 2026-11-02
 
 IEEE Fellow. Affiliated with the **School of Science and Engineering (SSE), The Chinese University of Hong Kong, Shenzhen** and, in the secure-ISAC / LAE-ISAC papers, the **Shenzhen Future Network of Intelligence Institute** and the **Guangdong Provincial Key Laboratory of Future Networks of Intelligence**. Earlier papers place him at the **School of Information Engineering, Guangdong University of Technology**. The biographies across these affiliations repeat his USTC degrees, NUS research fellowship, and SUTD postdoctoral appointment, establishing the same identity.
 
-Co-author of twenty wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
+Co-author of twenty-two wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
 
 - [[xu-2018-uav-wpt-trajectory]] - UAV-enabled wireless power transfer with trajectory and max-min energy optimization.
 - [[zeng-2019-rotary-wing-energy-min]] - rotary-wing UAV propulsion modeling and energy-minimizing communication trajectories.
@@ -53,6 +55,8 @@ Co-author of twenty wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources i
 - [[li-2025-wireless-control-hrllc-scheduling]] - task scheduling and communication-computation design for wireless networked control (CUHK Shenzhen address).
 - [[liu-not-in-parse-wireless-control-association]] - multi-BS association and co-design for wireless control networks (CUHK Shenzhen address).
 - [[yao-not-in-parse-secure-rsma-mec]] - secure RSMA-assisted MEC latency minimization.
+- [[lyu-2026-pruning-aware-laim-co-inference]] - pruning-aware large AI model co-inference (CUHK Shenzhen address).
+- [[lyu-2026-laim-deployment-lae]] - large AI model deployment for the low-altitude economy (CUHK Shenzhen address).
 
 ## Contributions to this wiki
 

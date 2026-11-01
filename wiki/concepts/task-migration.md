@@ -9,8 +9,9 @@ related:
   - "[[vehicle-twin-migration]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
   - "[[wang-2026-llm-qos-multiuav-resource]]"
+  - "[[meng-2026-dnn-partition-migration-multiuav]]"
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-11-02
 ---
 
 # Task Migration in MEC
@@ -42,3 +43,6 @@ The mechanism of forwarding an in-flight task from one edge server to another, m
 [[chen-2026-hc-mappo-vehicle-twin-migration]] specializes migration to [[vehicle-twin-migration]], where the state/service for a vehicle's digital twin follows high-mobility vehicles across RSUs and UAV edge servers.
 
 [[wang-2026-llm-qos-multiuav-resource]] treats task migration as an air-to-air fractional allocation among UAV edge servers, controlled together with access, trajectory, bandwidth, and compute decisions for delay-fairness optimization.
+
+
+[[meng-2026-dnn-partition-migration-multiuav]] migrates partitioned DNN subtasks between UAVs to balance load and energy, learned with SAC and prioritized replay.

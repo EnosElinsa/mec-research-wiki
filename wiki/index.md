@@ -118,6 +118,10 @@
 - [[chen-2026-qos-noma-multiuav]] - Chen et al. 2026. QoS-oriented NOMA multi-UAV MEC offloading with task priorities, Lagrange-dual constraint handling, and improved SAC for trajectories/association/offloading/resources (IEEE TWC).
 - [[bui-2025-noma-near-far-offloading]] - Bui et al. 2025. UAV-aided NOMA MEC with near-field/far-field coexistence around large UAV arrays; alternating optimization over offloading decisions, transmit powers, and UAV computing allocation (IEEE TGCN).
 - [[zhai-2026-collaborative-inference-uav-mec]] — Zhai et al. 2026. Multi-UAV DNN inference offloading; OPPS partition-point selection + fairness matching + TD3 trajectory/transmit-power control (IEEE T-ITS).
+- [[meng-2026-dnn-partition-migration-multiuav]] - Meng et al. 2026. DNN partitioning plus UAV-to-UAV subtask migration; SAC-PER with convex computing allocation cuts weighted energy by up to 14.6% (IEEE IoT-J).
+- [[lyu-2026-pruning-aware-laim-co-inference]] - Lyu et al. 2026. Pruning-aware large AI model co-inference minimizing a rate-distortion bound over pruning, split, power, and CPU (IEEE JSAC).
+- [[lyu-2026-laim-deployment-lae]] - Lyu et al. 2026. Magazine architecture and case studies for large AI model deployment in the low-altitude economy (IEEE Wireless Commun.).
+- [[ghoshal-not-in-parse-5g-mmwave-edge-ar]] - Ghoshal et al. Measurement study: 5G mmWave uplink cannot support baseline edge-assisted AR object detection; app optimizations matter more. *(Venue, year, and DOI not in parse.)*
 - [[wu-2026-secure-split-offloading-ci]] - Wu et al. 2026. Secure UAV-assisted collaborative DNN inference; multi-exit DNN, DNN partitioning, dual-UAV trajectories, cooperative jamming, SCA, and discrete WOA (IEEE TMC).
 - [[shi-2026-aoi-active-ris-noma-agmec]] - Shi et al. 2026. **AoI-aware active-RIS + NOMA air-ground MEC**; joint UAV trajectory, active-RIS beamforming, and UE offloading via AADDPG with an action adjuster and battery-protection rule (IEEE TWC).
 - [[liu-2026-lyapunov-diffusion-uav-vehicular]] - Liu et al. 2026. UAV-assisted vehicular V2X with **delayed CSI feedback**; Lyapunov energy queue + diffusion-actor DDPG (**D3PG**) over V2V channel reuse, power control, and UAV altitude (IEEE TWC).
@@ -389,9 +393,12 @@
 - [[scheuer-not-in-parse-resync]] - Scheuer et al. ReSync coordinated stateful-container migration with replay synchronization and handover timing.
 - [[fernando-not-in-parse-vrecover]] - Fernando et al. V-Recover incremental-checkpoint recovery when live VM migration fails.
 - [[garcia-gil-2025-uav-microservice-migration-energy]] - García-Gil et al. 2025. MILP battery-balanced microservice deployment and migration across UAV networks (Internet of Things).
+- [[frejo-martin-2025-uav-stateful-microservice-live-migration]] - Frejo-Martin et al. 2025. Pre-copy live migration of stateful containerized microservices across UAV replacements with digital twin and swarm manager (IEEE ISCC).
+- [[hu-2026-seer-on-demand-container-migration]] - Hu et al. 2026. SEER predicts needed snapshot files to migrate containers on demand, cutting median traffic by 88.1% (IEEE TMC).
 
 
 - [[calagna-2026-cormo-ran]] - Calagna et al. 2026. CORMO-RAN jointly activates near-RT RIC compute nodes and migrates stateful O-RAN xApps to reduce energy under downtime and control-loop constraints (IEEE TMC).
+- [[baena-not-in-parse-space-o-ran]] - Baena et al. Space-O-RAN hierarchical O-RAN control for satellite constellations with onboard dApps and Space-RICs. *(Venue, year, and DOI not in parse.)*
 - [[calagna-2024-robust-stateful-migration]] - Calagna et al. 2024. COAT connection-aware stateful container migration and the processing-aware PAM model, validated with Podman/CRIU and a UAV autopilot case (IEEE TNSM).
 - [[ma-2019-layered-container-migration]] - Ma et al. 2019. Docker layered-storage edge service handoff with dirty-memory pre-dumps and pipelined transfer (IEEE TMC).
 - [[adeppady-2026-step-composite-edge]] - Adeppady et al. 2026. STEP graph-search orchestration for composite stateful/stateless microservices, sharing, quality versions, migration, and resource allocation (IEEE TNSM).
@@ -853,6 +860,9 @@
 - [[guojun-han]] - Guangdong University of Technology researcher on secure and hierarchical AirComp; 3 sources.
 - [[dingzhu-wen]] - ShanghaiTech University researcher across ISCC edge AI, UAV edge inference, and over-the-air FEEL; 3 sources.
 - [[yiyang-li]] - CUHK Shenzhen researcher on wireless networked control with HRLLC; 2 sources.
+- [[zhonghao-lyu]] - KTH and CUHK Shenzhen researcher on large AI model edge inference; 2 sources.
+- [[juan-manuel-murillo]] - University of Extremadura researcher on UAV microservice migration; 2 sources.
+- [[jaime-galan-jimenez]] - University of Extremadura researcher on UAV microservice migration; 2 sources.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.

@@ -43,6 +43,7 @@ related:
   - "[[integrated-communication-sensing-navigation]]"
   - "[[channel-knowledge-map]]"
   - "[[li-2025-ckm-air-corridor-isac-bs-deployment]]"
+  - "[[lyu-2026-laim-deployment-lae]]"
 created: 2026-05-28
 updated: 2026-11-02
 ---

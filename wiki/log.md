@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-02] Curated migration, edge-inference, and O-RAN sources
+
+Curated seven genuinely new Raw sources: [[meng-2026-dnn-partition-migration-multiuav]], [[frejo-martin-2025-uav-stateful-microservice-live-migration]], [[hu-2026-seer-on-demand-container-migration]], [[ghoshal-not-in-parse-5g-mmwave-edge-ar]], [[lyu-2026-pruning-aware-laim-co-inference]], [[lyu-2026-laim-deployment-lae]], and [[baena-not-in-parse-space-o-ran]]. The DNN-partitioning and pruning-aware co-inference papers carry `modeling_card: required`; the UAV live-migration architecture, the SEER container system, the 5G AR measurement study, the large-model deployment magazine article, and the Space-O-RAN architecture are `not_applicable`. The AR measurement and Space-O-RAN parses have no PDF and no venue, year, or DOI, so those fields are recorded as not in parse.
+
+Added three identity-checked author entities: [[zhonghao-lyu]] (shared KTH affiliation and coauthor), [[juan-manuel-murillo]], and [[jaime-galan-jimenez]] (same University of Extremadura department on both bylines). Extended [[jie-xu]], [[junting-chen]], and [[marco-di-renzo]], and linked the sources from [[stateful-edge-microservice-migration]], [[container-layered-storage-migration]], [[task-migration]], [[dnn-model-partition]], [[open-radio-access-network]], [[low-altitude-intelligent-network]], [[video-analytics-offloading]], and [[garcia-gil-2025-uav-microservice-migration-energy]]. Deferred Dimitrios Koutsonikolas: the name recurs on three new sources, but the parses show a SUNY Buffalo affiliation in 2019 and Northeastern University only for coauthors later, without a biography confirming the move.
+
+Reconciliation moved from 13 to 6 genuinely new Raw folders. Corpus counts are 687 sources, 665 concepts, 210 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Link, process-reference, index, frontmatter, source-schema, and entity-roster audits report zero errors.
+
 ## [2026-11-02] Curated over-the-air computation, ISCC, and wireless-control sources
 
 Curated seven genuinely new Raw sources: [[wen-2025-iscc-air-feel]], [[gong-2025-secure-uav-aircomp]], [[yao-not-in-parse-hierarchical-airfl-power]], [[liu-2025-iscc-v2x-latency]], [[li-2025-wireless-control-hrllc-scheduling]], [[liu-not-in-parse-wireless-control-association]], and [[yao-not-in-parse-secure-rsma-mec]]. All seven carry `modeling_card: required`. None has a companion PDF; journal DOIs and venues come from the parse footnotes, and the three conference-format parses record venue, year, and DOI as not in parse.

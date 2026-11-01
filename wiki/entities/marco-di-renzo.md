@@ -7,8 +7,9 @@ related:
   - "[[feng-2026-aerial-ris-secure]]"
   - "[[meixia-tao]]"
   - "[[xiaojun-yuan]]"
+  - "[[lyu-2026-pruning-aware-laim-co-inference]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Marco Di Renzo
@@ -19,6 +20,7 @@ Authored corpus sources:
 
 - [[li-2021-robust-ris-uav-secrecy]] - bounded-CSI robust RIS assistance for bidirectional UAV secrecy.
 - [[feng-2026-aerial-ris-secure]] - learning and conformal-symplectic optimization for aerial-RIS security.
+- [[lyu-2026-pruning-aware-laim-co-inference]] - pruning-aware large AI model co-inference (Universite Paris-Saclay, CNRS, CentraleSupelec address).
 
 ## Contributions to this wiki
 

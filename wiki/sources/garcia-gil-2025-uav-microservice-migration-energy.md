@@ -11,8 +11,11 @@ related:
   - "[[service-migration]]"
   - "[[autonomous-uav-swarms]]"
   - "[[container-layered-storage-migration]]"
+  - "[[frejo-martin-2025-uav-stateful-microservice-live-migration]]"
+  - "[[juan-manuel-murillo]]"
+  - "[[jaime-galan-jimenez]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-02
 ---
 
 # Microservices Migration: A Pathway to Improved Energy Efficiency in UAV Networks
