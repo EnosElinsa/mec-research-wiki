@@ -10,8 +10,9 @@ related:
   - "[[tun-2025-thz-sag-mec-resource-allocation]]"
   - "[[song-2026-thz-multiuav-mec]]"
   - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
+  - "[[li-2023-thz-uav-recharging-transmission]]"
 created: 2026-05-29
-updated: 2026-07-11
+updated: 2026-11-02
 ---
 
 # Terahertz (THz) Communication

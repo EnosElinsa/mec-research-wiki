@@ -21,8 +21,9 @@ related:
   - "[[wang-2024-twotier-satellite-marine]]"
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
+  - "[[yunfei-chen]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Maritime Coverage Enhancement Using UAVs Coordinated With Hybrid Satellite-Terrestrial Networks

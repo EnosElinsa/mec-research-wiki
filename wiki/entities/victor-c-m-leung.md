@@ -15,15 +15,16 @@ related:
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
+  - "[[zhao-2024-mahdrl-multi-uav-wpcn]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Victor C. M. Leung
 
 IEEE Life Fellow. Affiliated with the **Artificial Intelligence Research Institute, Shenzhen MSU-BIT University** and the **College of Computer Science and Software Engineering, Shenzhen University** (Shenzhen, China), and the **Department of Electrical and Computer Engineering, University of British Columbia** (Vancouver, Canada); email `vleung@ieee.org` (consistent across his sources).
 
-Co-authored 12 sources in this wiki, spanning the Jilin-University / NTU aerial-MEC and collaborative-beamforming cluster, the generative-AI survey thread, satellite three-tier offloading, DT-assisted SAGIMEC, SAGIN hybrid-action offloading, LAE WDC/WET service balancing, and secure vehicular communication:
+Co-authored 13 sources in this wiki, spanning the Jilin-University / NTU aerial-MEC and collaborative-beamforming cluster, the generative-AI survey thread, satellite three-tier offloading, DT-assisted SAGIMEC, SAGIN hybrid-action offloading, LAE WDC/WET service balancing, and secure vehicular communication:
 
 - [[sun-2025-tjcct-twotimescale-uav-mec]] — two-timescale UAV-assisted MEC (TJCCT).
 - [[sun-2024-mvtora-postdisaster-vfc]] — post-disaster aerial-terrestrial MEC + vehicle fog computing (MVTORA).
@@ -38,6 +39,7 @@ Co-authored 12 sources in this wiki, spanning the Jilin-University / NTU aerial-
 - [[li-2026-secrecy-ee-uav-ris-iov]] - untrusted-relay mobile-IoV security through UAV-RIS assistance and secrecy-energy-efficiency optimization.
 
 - [[huang-2026-uav-friendly-jamming-transsac]] - transformer-enhanced SAC for satellite-maritime friendly jamming.
+- [[zhao-2024-mahdrl-multi-uav-wpcn]] - two-tier SAC/DQN control of multi-UAV wireless powered communication with role-switching nodes (Shenzhen MSU-BIT and Shenzhen University biography).
 
 ## Contributions to this wiki
 

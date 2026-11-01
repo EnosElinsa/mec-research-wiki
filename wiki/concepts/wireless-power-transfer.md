@@ -23,8 +23,13 @@ related:
   - "[[wang-2018-uav-powered-d2d]]"
   - "[[harvest-transmit-store-scheduling]]"
   - "[[energy-causality-constraint]]"
+  - "[[in-flight-uav-energy-replenishment]]"
+  - "[[li-2023-thz-uav-recharging-transmission]]"
+  - "[[yan-2020-uav-wpt-bs-charging]]"
+  - "[[yan-2025-in-flight-uav-charging-distance]]"
+  - "[[zhu-2022-aerial-refueling-uav-charging]]"
 created: 2026-05-28
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Wireless Power Transfer (WPT) for MEC
@@ -65,3 +70,5 @@ Two trajectory-control cases expose opposite WPT directions. [[wang-2026-wutf-fa
 A naive per-slot greedy ignores the energy queue: if you spend the harvest immediately, you starve future-slot tasks that need the buffered energy. The right framing is **long-term energy efficiency** under queue stability — see [[lyapunov-optimization]] and [[zhu-2025-lycnn-drl-wpt-mec]].
 
 [[chen-2026-laser-powered-multiuav-qoe]] adds [[laser-power-transfer]], where ground optical stations charge hovering UAV access points and harvested energy is coupled to association, placement, and QoE allocation.
+
+UAV-side WPT studies in this wiki also include [[yan-2020-uav-wpt-bs-charging]], where a UAV charger first loads energy from a base station and its own propulsion consumption shifts the optimal charging position toward the station; [[li-2023-thz-uav-recharging-transmission]], where UAVs harvest from a central base station before THz downlink transmission; and UAV-to-UAV transfer in [[zhu-2022-aerial-refueling-uav-charging]] and [[yan-2025-in-flight-uav-charging-distance]], collected under [[in-flight-uav-energy-replenishment]].

@@ -330,6 +330,7 @@
 
 
 - [[nabi-2025-jour-hierarchical-aerial]] — Nabi & Moh 2025. *JOUR* — Gale-Shapley matching + ESAC for joint offloading, association, and resource allocation in UAV+HAP MEC.
+- [[li-2026-two-timescale-uav-replacement-hap]] - Li et al. 2026. UAV trajectory, replacement, and substitute choice on a slow timescale plus HAP delegation and bandwidth on a fast timescale; two coupled stochastic games with NE existence solved by UTRTD MADRL (IEEE TVT).
 - [[chen-2026-dart-hap-uav-mec]] — Chen et al. 2026. HAP-UAV-MEC with NOMA and WPT; DART combines Lyapunov decomposition, DDPG-attention trajectory/offloading, and convex resource allocation (IEEE TMC).
 - [[bao-2025-ddpg-video-offloading]] — Bao et al. 2025. UAV+HAP video-analytics offloading with adaptive transcoding; DDPG over a QoE reward.
 - [[jia-2026-dro-lawn-trajectory]] — Jia et al. 2026. Distributionally robust task-size offloading and UAV-trajectory optimization in a UAV/HAP low-altitude wireless network; L1/L-infinity/Fortet-Mourier ambiguity sets plus Benders/SCA (IEEE TMC).
@@ -595,6 +596,17 @@
 
 - [[arribas-not-in-parse-uav-resupply-scheduling]] - Arribas et al. HORR exact and PHERR near-exact fleet resupply schedules for persistent UAV service.
 - [[gupta-not-in-parse-uav-replacement]] - Gupta et al. UAV replacement continuity with max-min throughput, 3-D trajectory, and SCA resource allocation.
+- [[wang-2023-multi-uav-dynamic-demand-charging]] - Wang et al. 2023. Deadline-driven UAV-swarm routing over hotspots and charging stations; polynomial single-UAV DP, 1-(1-1/K)^K multi-UAV ratio, DAG-based ILP with charging (IEEE TMC).
+- [[song-2024-k-coverage-uav-recharging]] - Song et al. 2024. MILP maximizing K-coverage lifetime with solar charging platforms; GMM-forecast MPC and MCTS reach 81.04% and 67.07% of the optimum (IEEE TMC).
+- [[ma-2025-adrl-si-uav-charging-coverage]] - Ma et al. 2025. ADRL-SI: MOPSO-assisted DDPG with a survival incentive for fair UAV coverage and station recharging (IEEE TVT).
+- [[yang-2026-udi-docking-point-charging]] - Yang et al. 2026. Urban traffic lights, lamps, and base stations retrofitted as UAV docking points; HUDD layout plus CRIR convex-relaxation access coordination (IEEE TCCN).
+- [[li-2026-battery-mule-uav-swarm-scheduling]] - Li et al. 2026. Airborne battery-mule swapping for a UAV swarm; load-balanced ENS-RA assignment and time-constrained TSP scheduling raise continuous service ratio by at least 30.70% (IEEE TAES).
+- [[zhu-2022-aerial-refueling-uav-charging]] - Zhu et al. 2022. Charging UAVs wirelessly refuel mission UAVs in flight; DDPG and MADDPG schedule charging routes and targets to shorten data-collection missions (IEEE TGCN).
+- [[yan-2025-in-flight-uav-charging-distance]] - Yan & Chen 2025. Optimum UAV-to-UAV RF charging distance under a rate constraint lies in the Fresnel zone for aligned and fly-by schemes (IEEE Access).
+- [[yan-2020-uav-wpt-bs-charging]] - Yan et al. 2020. UAV charger for ground sensors with base-station loading and propulsion consumption; optimal charging position moves toward the base station (IEEE TVT).
+- [[li-2023-thz-uav-recharging-transmission]] - Li et al. 2023. Save-then-transmit powered UAVs with THz downlink; placement and sub-band association alternate to minimize the minimum timeslot requirement (IEEE TVT).
+- [[zhao-2024-mahdrl-multi-uav-wpcn]] - Zhao et al. 2024. Multi-UAV WPCN with double-threshold role-switching nodes; two-tier SAC trajectory/WET and DQN data collection (IEEE TMC).
+- [[gupta-2022-energy-aware-outage-trajectory]] - Gupta et al. 2022. Energy- and velocity-constrained 3-D UAV trajectory minimizing average outage; vertex and sequential approaches (IEEE TGCN).
 
 
 - [[chen-2026-laser-powered-multiuav-qoe]] - Chen and Jiang 2026. Laser-powered UAV access points combine rematching, placement, and redundant power/backhaul reallocation to maximize QoE-qualified users (IEEE TMC).
@@ -799,6 +811,11 @@
 - [[jiangling-cao]] - Nanchang University and Xi'an Jiaotong University researcher across four radio-map cargo-UAV logistics sources.
 - [[nesrine-cherif]] - University of Ottawa researcher on handoff- and disconnectivity-aware cargo-UAV trajectories.
 - [[wael-jaafar]] - Carleton University and ETS Montreal researcher on handoff-aware cellular-connected cargo UAVs.
+- [[nishant-gupta]] - UAV trajectory and replacement researcher with Deepak Mishra and Satyam Agarwal.
+- [[deepak-mishra]] - UNSW Sydney researcher on energy-aware UAV trajectory and replacement.
+- [[satyam-agarwal]] - IIT Ropar researcher on energy-aware UAV trajectory and replacement.
+- [[hua-yan]] - Warwick, Durham, and Leeds Trinity researcher on UAV wireless power transfer.
+- [[yunfei-chen]] - Warwick and Durham researcher across secure, emergency, maritime UAV communications and UAV WPT; 5 sources.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
@@ -948,6 +965,7 @@
 - [[redundant-resource-reallocation]]
 - [[uav-content-caching]]
 - [[battery-swapping-uav-mec]]
+- [[in-flight-uav-energy-replenishment]]
 - [[coded-caching]]
 - [[erasure-coded-edge-storage]]
 - [[regenerating-codes]]

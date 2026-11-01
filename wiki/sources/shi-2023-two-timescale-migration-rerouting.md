@@ -20,8 +20,9 @@ related:
   - "[[ye-2021-ran-slicing-offloading]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[li-2026-two-timescale-uav-replacement-hap]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Service Migration or Task Rerouting: A Two-Timescale Online Resource Optimization for MEC

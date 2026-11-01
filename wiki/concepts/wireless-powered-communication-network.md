@@ -7,8 +7,9 @@ related:
   - "[[wireless-power-transfer]]"
   - "[[energy-causality-constraint]]"
   - "[[xu-2018-uav-wpt-trajectory]]"
+  - "[[zhao-2024-mahdrl-multi-uav-wpcn]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Wireless-Powered Communication Network
@@ -16,3 +17,5 @@ updated: 2026-07-14
 A harvest-then-transmit network in which energy-constrained devices first receive dedicated RF power and later spend the harvested energy on uplink communication. Joint design typically couples energy-transfer duration, uplink scheduling, transmit power, mobility, and an [[energy-causality-constraint]].
 
 [[xie-2021-uav-wpt-tutorial]] develops the UAV-enabled form: a mobile aerial energy transmitter alternates downlink WPT with per-device uplink WIT, and trajectory control balances charging proximity against collection time and uplink fairness.
+
+[[zhao-2024-mahdrl-multi-uav-wpcn]] relaxes the fixed harvest-then-transmit order: each node switches between energy-harvesting and transmitting roles by a double-threshold battery rule, and multiple UAVs learn trajectory, energy transmission, and data collection with a two-tier SAC and DQN hierarchy.

@@ -12,8 +12,9 @@ related:
   - "[[dual-domain-ris-energy-harvesting]]"
   - "[[peng-2023-dual-domain-eh-ris]]"
   - "[[lu-2026-multiuav-iscpt]]"
+  - "[[yan-2025-in-flight-uav-charging-distance]]"
 created: 2026-06-02
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Simultaneous Wireless Information and Power Transfer (SWIPT)

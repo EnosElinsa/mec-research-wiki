@@ -21,8 +21,9 @@ related:
   - "[[tian-2026-joint-localization-communication]]"
   - "[[joint-localization-and-communication]]"
   - "[[kai-kit-wong]]"
+  - "[[yunfei-chen]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # UAV-Assisted Emergency Networks in Disasters

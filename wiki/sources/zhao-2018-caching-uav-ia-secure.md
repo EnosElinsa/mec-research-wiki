@@ -20,8 +20,9 @@ related:
   - "[[zhao-2019-uav-emergency-disasters]]"
   - "[[chen-2024-dro-video-caching]]"
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
+  - "[[yunfei-chen]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment

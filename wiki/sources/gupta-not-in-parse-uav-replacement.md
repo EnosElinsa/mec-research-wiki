@@ -11,8 +11,13 @@ related:
   - "[[battery-swapping-uav-mec]]"
   - "[[uav-trajectory-control]]"
   - "[[rotary-wing-propulsion-energy-model]]"
+  - "[[gupta-2022-energy-aware-outage-trajectory]]"
+  - "[[li-2026-two-timescale-uav-replacement-hap]]"
+  - "[[nishant-gupta]]"
+  - "[[deepak-mishra]]"
+  - "[[satyam-agarwal]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-02
 ---
 
 # Trajectory and Resource Allocation for UAV Replacement to Provide Uninterrupted Service
@@ -78,7 +83,7 @@ The evaluation is numerical and does not include application-state migration, ob
 
 ## Relation to the corpus
 
-This source complements [[battery-swapping-uav-mec]] with a communication-throughput view of UAV replacement and links replacement timing to [[uav-trajectory-control]].
+This source complements [[battery-swapping-uav-mec]] with a communication-throughput view of UAV replacement and links replacement timing to [[uav-trajectory-control]]. The same authors' single-UAV outage study [[gupta-2022-energy-aware-outage-trajectory]] treats the on-board energy budget as a trajectory constraint rather than a trigger for replacement, and [[li-2026-two-timescale-uav-replacement-hap]] studies replacement inside hierarchical aerial computing.
 
 ## Raw artifacts
 

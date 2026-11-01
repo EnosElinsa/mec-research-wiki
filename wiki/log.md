@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-02] Curated UAV charging, replacement, and wireless-power sources
+
+Curated twelve genuinely new Raw sources on UAV energy supply and service continuity: [[li-2023-thz-uav-recharging-transmission]], [[li-2026-two-timescale-uav-replacement-hap]], [[zhu-2022-aerial-refueling-uav-charging]], [[yan-2025-in-flight-uav-charging-distance]], [[yang-2026-udi-docking-point-charging]], [[ma-2025-adrl-si-uav-charging-coverage]], [[li-2026-battery-mule-uav-swarm-scheduling]], [[song-2024-k-coverage-uav-recharging]], [[wang-2023-multi-uav-dynamic-demand-charging]], [[yan-2020-uav-wpt-bs-charging]], [[zhao-2024-mahdrl-multi-uav-wpcn]], and [[gupta-2022-energy-aware-outage-trajectory]]. Every page carries `modeling_card: required` because each paper defines decisions, an objective, and constraints. Venue and DOI fields come from the parse header or the companion PDF.
+
+Added the concept [[in-flight-uav-energy-replenishment]] and five identity-checked author entities: [[hua-yan]], [[yunfei-chen]] (matching Shanghai Jiao Tong, Alberta, Warwick, and Durham biography evidence across five sources), [[nishant-gupta]], [[deepak-mishra]], and [[satyam-agarwal]] (matching biographies and coauthor group across two sources each). Extended [[zehui-xiong]], [[wei-yang-bryan-lim]], and [[victor-c-m-leung]], and linked the new sources from [[uav-charging-scheduling]], [[battery-swapping-uav-mec]], [[wireless-power-transfer]], [[wireless-powered-communication-network]], [[hierarchical-aerial-mec]], and [[gupta-not-in-parse-uav-replacement]]. Deferred Changyan Yi, Kun Zhu, You Shi, and F. Richard Yu: their names recur, but no entity existed before and confirming identity across all their parses was outside this batch. One-off authors were also deferred.
+
+Reconciliation moved from 53 to 41 genuinely new Raw folders. Corpus counts are 652 sources, 662 concepts, 198 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Link, process-reference, index, frontmatter, source-schema, and entity-roster audits report zero errors.
+
 ## [2026-11-02] Curated cargo-UAV logistics and handoff sources
 
 Curated five genuinely new Raw sources on cellular-connected cargo UAVs: [[peng-2025-cargo-uav-energy-outage-tradeoff]], [[huang-2026-hgadrl-cargo-uav-pickup-delivery]], [[deng-2024-radio-map-uav-pickup-delivery]], [[cherif-2021-disconnectivity-aware-cargo-uav]], and [[cherif-2024-rl-cargo-uav-cell-association]]. All five define decisions, objectives, and constraints, so each carries `modeling_card: required`. Venue, volume, and DOI fields come from the companion PDF metadata because the parses omit them.

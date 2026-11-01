@@ -18,15 +18,16 @@ related:
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[chen-2026-pointrl-uav-isac]]"
   - "[[huang-2026-star-ris-nearfield-isac]]"
+  - "[[zhu-2022-aerial-refueling-uav-charging]]"
 created: 2026-07-13
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Zehui Xiong
 
 IEEE Senior Member and Full Professor in the School of Electronics, Electrical Engineering and Computer Science at **Queen's University Belfast**. He received a Ph.D. from Nanyang Technological University and previously worked at Singapore University of Technology and Design and NTU, with visiting appointments at Princeton University and the University of Waterloo. The rare full name and biography's explicit institution history connect the source records below across his affiliation change.
 
-Co-authored 15 sources in this wiki across aerial anti-jamming, edge intelligence, mobile AIGC, generative network optimization, semantic communication, physical-layer security, localization, satellite offloading, digital twins, UAV-ISAC, UAV content incentives, and federated-learning mechanisms:
+Co-authored 16 sources in this wiki across aerial anti-jamming, in-flight UAV charging, edge intelligence, mobile AIGC, generative network optimization, semantic communication, physical-layer security, localization, satellite offloading, digital twins, UAV-ISAC, UAV content incentives, and federated-learning mechanisms:
 
 - [[lim-2021-uav-iov-contract-matching]] - contract screening and stable matching for UAV-assisted federated IoV learning.
 - [[jin-2026-skyndn-incentivizer]] - auction- and diffusion-based incentives for content sharing in UAV named-data networks.
@@ -43,6 +44,7 @@ Co-authored 15 sources in this wiki across aerial anti-jamming, edge intelligenc
 - [[zhou-2026-multiscale-dt-uav-delivery]] - multiscale digital twins for cooperative UAV delivery.
 - [[chen-2026-pointrl-uav-isac]] - radar-point-cloud-driven UAV-to-vehicle sensing and communication control.
 - [[huang-2026-star-ris-nearfield-isac]] - near-field air-ground ISAC with a semi-passive STAR-RIS.
+- [[zhu-2022-aerial-refueling-uav-charging]] - DRL scheduling of charging UAVs that recharge mission UAVs in flight (SUTD affiliation).
 
 ## Contributions to this wiki
 
