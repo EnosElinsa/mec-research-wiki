@@ -10,8 +10,9 @@ related:
   - "[[wu-2026-service-oriented-segmented-trajectory]]"
   - "[[wu-2026-parallel-cooperative-charging]]"
   - "[[parallel-cooperative-uav-charging]]"
+  - "[[guo-2026-location-privacy-hap-data-collection]]"
 created: 2026-07-07
-updated: 2026-07-12
+updated: 2026-11-02
 ---
 
 # Trajectory Privacy
@@ -21,3 +22,5 @@ A trajectory-design constraint that treats where a UAV flies and what it can vis
 In [[wu-2026-service-oriented-segmented-trajectory]], the metric is the trajectory privacy preservation level, based on how many privacy-sensitive smart windows are crossed by UAV routes. TRA and SOS-TRA refine service paths to avoid those crossings, turning privacy from an after-the-fact policy concern into a route-feasibility and utility term. It is adjacent to [[compliance-aware-uav-trajectory]], but narrower: trajectory privacy focuses on visual exposure, while compliance-aware planning also includes no-fly zones, obstacles, speed limits, and landing constraints.
 
 [[wu-2026-parallel-cooperative-charging]] adds an adjacent privacy mechanism rather than a trajectory constraint: its Section VI extension requires each nonempty charging group to contain at least `K` UAVs so station observations do not isolate one UAV's path or target. The paper assumes anonymity already exists on station entry, so this group-size rule is narrower than full trajectory privacy.
+
+[[guo-2026-location-privacy-hap-data-collection]] protects a high-altitude platform's own location during IoT data collection with a differential-privacy perturbation and TD3-based steering.

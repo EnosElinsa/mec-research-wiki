@@ -17,6 +17,8 @@
 - [[meng-2024-uav-isac-overview]] — Meng et al. 2024. Overview of **UAV-enabled ISAC** for 6G (motion control, resource allocation, S&C synergy).
 - [[du-2024-distributed-foundation-models-6g]] — Du et al. 2024. Overview of **distributed foundation models** over 6G (pipeline/data parallelism + multi-modal learning).
 - [[zeng-2019-uav-comm-tutorial-5g]] — Zeng et al. 2019. **Tutorial** on UAV communications for 5G and beyond; UAV-assisted comms vs **cellular-connected UAV** taxonomy (Proceedings of the IEEE).
+- [[belmekki-2022-networked-tethered-flying-platforms]] - Belmekki & Alouini 2022. Survey of networked tethered flying platforms: types, regulation, NTN integration, 6G enablers, channel models, and economics (IEEE OJVT).
+- [[elkhazraji-not-in-parse-haps-optical-sensing-survey]] - Elkhazraji et al. Tutorial-survey on HAPS FSO backhaul integrated with telecom-band DIAL atmospheric sensing. *(Venue, year, and DOI not in parse.)*
 - [[al-hourani-2014-optimal-lap-altitude]] — Al-Hourani et al. 2014. Foundational **air-to-ground channel** letter: closed-form sigmoid LoS-probability vs elevation angle + **optimal LAP altitude** for maximum ground coverage (IEEE WCL). *(Channel-model anchor, not MEC.)*
 - [[xu-2024-mobile-aigc-survey]] — Xu et al. 2024. Survey of **edge-cloud generative AI / AIGC services** in mobile networks (**mobile AIGC networks**); generative-model fundamentals, AIGC lifecycle, cloud-edge-mobile infrastructure, and implementation challenges (resource allocation, offloading, caching, mobility, incentives) (IEEE COMST).
 - [[mozaffari-2019-uav-wireless-tutorial]] — Mozaffari et al. 2019. **Tutorial** on UAVs for wireless networks; UAVs as aerial base stations vs cellular-connected UAVs, 3D deployment, channel modeling, energy efficiency, and the analytical toolbox (optimization, ML, stochastic geometry, game theory) (IEEE COMST). *(UAV-communications anchor, not MEC.)*
@@ -676,6 +678,16 @@
 - [[liu-2026-usp-nfrp-emergency-communication]] - Liu et al. 2026. Persistent emergency UAV swarm service with periodic replacement paths, dynamic tree backhaul repair, and max-min ant-system planning to minimize required fleet size (IEEE TGCN).
 - [[li-2026-dff-slam]] - Li et al. 2026. DFF-SLAM combines YOLOv3, multiscale optical flow, and epipolar filtering for GPS-suppressed UAV positioning, with TUM RGB-D accuracy tests and 16-FPS Jetson Xavier NX platform execution (IEEE TMC).
 - [[fan-2026-hap-uav-iort-oee]] - Fan et al. 2026. HAP-UAV IoRT collection with overall energy efficiency, joint aerial trajectories, HAP selection, UAV power, bandwidth allocation, meteorological fading, and Dinkelbach/BCD/SCA optimization (IEEE TMC).
+- [[javed-2023-hale-haps-noma-flight]] - Javed et al. 2023. Solar HAPS station keeping with NOMA multicell beams; day sum-rate and night propulsion problems over power coefficients, altitude, and airspeed (IEEE TAES).
+- [[xing-2026-genai-agent-hap-power-allocation]] - Xing et al. 2026. Generative-AI-agent hull-propeller propulsion model and Q3E beamforming trading energy efficiency against QoS satisfaction (IEEE TCCN).
+- [[huang-2026-haps-sar-trajectory-resource]] - Huang et al. 2026. Energy-aware HAPS-SAR trajectory and power MINLP maximizing beam coverage with real-time backhaul; SCA plus finite search (IEEE TWC).
+- [[abderrahim-2024-data-center-hap]] - Abderrahim et al. 2024. Analytical case for a flying data center on a HAP saving up to 14% energy (IEEE TMC).
+- [[renga-2022-haps-sustainable-6g]] - Renga & Meo 2022. HAPS-mounted base station offloading lets terrestrial base stations sleep; over 70% grid energy saving with local renewables (IEEE ComMag).
+- [[mashiko-2026-leo-haps-user-association]] - Mashiko et al. 2026. Time-extended-graph link-set selection and switching control for LEO-HAPS downlink association (IEEE TCCN).
+- [[guo-2026-location-privacy-hap-data-collection]] - Guo et al. 2026. Differential-privacy-aware HAP IoT data collection with TD3-based PDCTO steering (IEEE TCOM).
+- [[liu-2024-airship-mmwave-hsr-scheduling]] - Liu et al. 2024. Airship mmWave coverage for high-speed railway; MR selection and max-flow scheduling maximize QoS-satisfied flows (IEEE TVT).
+- [[becvar-2022-airship-flybs-energy]] - Becvar et al. 2022. Airship flying base stations for moving users; flying-energy minimization under a relative sum-capacity guarantee (IEEE TCOM).
+- [[nikooroo-2022-flybs-total-power]] - Nikooroo & Becvar 2022. Closed-form and multi-step minimization of FlyBS propulsion plus transmission power under per-user capacity (IEEE TNSE).
 - [[chen-not-in-parse-uav-human-medical-delivery]] - Chen et al. Cooperative emergency medical pickup-delivery scheduling with UAVs and human couriers; an attention-based cooperative DRL policy uses type-specific decoders, feasibility masks, and a vehicle coordinator. *(Parsed metadata lacks DOI/venue/year.)*
 - [[yang-2025-hcdrl-pursuit-evasion]] - Yang et al. 2025. Hierarchical cooperative DRL for multi-UAV pursuit-evasion; a meta-policy selects five encirclement subtasks and CTDE lower policies control collision-aware maneuvers (IEEE GC Wkshps).
 - [[zhang-2022-uav-relay-substitution]] - Zhang et al. 2022. HUS/SEUS UAV substitution relaying extends service beyond one relay's flight duration and co-optimizes relay trajectories and source/relay powers (IEEE TGCN).
@@ -816,6 +828,9 @@
 - [[satyam-agarwal]] - IIT Ropar researcher on energy-aware UAV trajectory and replacement.
 - [[hua-yan]] - Warwick, Durham, and Leeds Trinity researcher on UAV wireless power transfer.
 - [[yunfei-chen]] - Warwick and Durham researcher across secure, emergency, maritime UAV communications and UAV WPT; 5 sources.
+- [[mohamed-slim-alouini]] - KAUST IEEE Fellow across HAPS flight and payload design, tethered platforms, and wireless-powered underground networks; 5 sources.
+- [[zdenek-becvar]] - Czech Technical University researcher across MEC architecture and flying base station energy; 3 sources.
+- [[mohammadsaleh-nikooroo]] - flying base station energy researcher with Zdenek Becvar.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
@@ -1064,6 +1079,7 @@
 - [[hierarchical-uav-swarm]]
 - [[releasing-collecting-recycling-uav-framework]]
 - [[high-altitude-platform-station]]
+- [[hap-solar-propulsion-energy-balance]]
 - [[hierarchical-aerial-mec]]
 - [[air-ground-integrated-network]]
 - [[low-altitude-intelligent-network]]

@@ -19,8 +19,9 @@ related:
   - "[[you-2019-rician-uav-data-harvesting]]"
   - "[[zeng-2019-rotary-wing-energy-min]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
+  - "[[mohamed-slim-alouini]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-02
 modeling_card: required
 ---
 

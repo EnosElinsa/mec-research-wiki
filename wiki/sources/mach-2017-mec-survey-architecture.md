@@ -16,8 +16,9 @@ related:
   - "[[virtual-machine-multiplexing]]"
   - "[[mao-2017-mec-survey-communication]]"
   - "[[wang-2025-lae-network-survey]]"
+  - "[[zdenek-becvar]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Mobile Edge Computing: A Survey on Architecture and Computation Offloading

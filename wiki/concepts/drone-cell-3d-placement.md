@@ -18,8 +18,10 @@ related:
   - "[[mozaffari-not-in-parse-3d-drone-cellular-network]]"
   - "[[belgiovine-not-in-parse-multidt-abs-deployment]]"
   - "[[multi-digital-twin-network-optimization]]"
+  - "[[becvar-2022-airship-flybs-energy]]"
+  - "[[nikooroo-2022-flybs-total-power]]"
 created: 2026-06-01
-updated: 2026-07-11
+updated: 2026-11-02
 ---
 
 # Drone-Cell 3-D Placement
@@ -39,3 +41,6 @@ The canonical formulation in this wiki is [[bor-yaliniz-2016-3d-abs-placement]],
 [[chakareski-2019-uav-mmwave-hetnet-ee]] is an early energy-efficiency instance: the UAV tier coexists with a microwave macro BS and mmWave SBSs, and the UAV coverage radius/altitude is tied to maximum path loss before radio resources are allocated. [[lin-2025-energy-effective-ris-multiuav-coverage]] is a RIS-assisted communications-coverage variant, where [[k-dbscan-uav-deployment]] bounds each UAV's movement region before TDQN trajectory/service control.
 
 [[mozaffari-not-in-parse-3d-drone-cellular-network]] moves from a single drone-cell to a fully 3-D cellular lattice: truncated-octahedron cells place LAP drone-BSs, HAP drones provide FSO backhaul, and [[optimal-transport-theory]] assigns drone-UEs by total latency. [[belgiovine-not-in-parse-multidt-abs-deployment]] adds the ray-tracing digital-twin variant, where [[multi-digital-twin-network-optimization]] validates airborne-base-station placements under mobile UEs before deployment.
+
+
+For moving users, [[nikooroo-2022-flybs-total-power]] minimizes total propulsion and transmission power of one flying base station under per-user capacity guarantees, and [[becvar-2022-airship-flybs-energy]] shows that letting airship flying base stations lose up to 1% sum capacity saves most of their flying energy.

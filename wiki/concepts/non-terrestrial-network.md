@@ -15,8 +15,11 @@ related:
   - "[[krishna-m-2026-multiuav-nbiot]]"
   - "[[kim-2026-qmarl-sagin-access]]"
   - "[[kim-2026-scale-reconfigurable-marl]]"
+  - "[[mashiko-2026-leo-haps-user-association]]"
+  - "[[belmekki-2022-networked-tethered-flying-platforms]]"
+  - "[[elkhazraji-not-in-parse-haps-optical-sensing-survey]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Non-Terrestrial Network (NTN)
@@ -32,3 +35,6 @@ In [[mao-2024-ntn-hierarchical-caching-cav]], an NTN of LEO satellites and UAVs 
 [[krishna-m-2026-multiuav-nbiot]] uses stationary decode-and-forward UAVs as an aerial access layer for NB-IoT devices that cannot reach the terrestrial base station directly.
 
 [[kim-2026-qmarl-sagin-access]] schedules CubeSats and HALE-UAVs jointly, using a quantum-circuit policy representation to balance access utility and residual energy.
+
+
+Stratospheric and tethered layers appear in [[mashiko-2026-leo-haps-user-association]], which selects LEO-direct or HAPS-relayed downlinks on a time-extended graph, [[elkhazraji-not-in-parse-haps-optical-sensing-survey]], which surveys HAPS FSO links with lidar sensing, and [[belmekki-2022-networked-tethered-flying-platforms]], which surveys tether-powered platforms.

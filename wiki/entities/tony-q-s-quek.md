@@ -16,15 +16,16 @@ related:
   - "[[yao-2026-transformer-mean-field-isac-sagin]]"
   - "[[chen-2026-pointrl-uav-isac]]"
   - "[[chen-2026-aris-location-privacy]]"
+  - "[[xing-2026-genai-agent-hap-power-allocation]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Tony Q. S. Quek
 
 IEEE Fellow. Affiliated with the **Information Systems Technology and Design (ISTD) Pillar, Singapore University of Technology and Design (SUTD)** (Singapore; email `tonyquek@sutd.edu.sg`); some papers also list Yonsei University / Kyung Hee University. Consistent identity across his papers in this wiki.
 
-Co-authored 13 sources in this wiki:
+Co-authored 14 sources in this wiki:
 
 - [[liu-2025-haps-uav-maritime-iot]] — HAP-UAV-assisted maritime IoT communication network.
 - [[yao-2025-secure-isac-dual-eavesdropping]] — UAV-enabled secure ISAC against dual eavesdropping threats.
@@ -40,6 +41,7 @@ Co-authored 13 sources in this wiki:
 - [[yao-2026-transformer-mean-field-isac-sagin]] - transformer-enabled mean-field interference management in ISAC-SAGINs.
 - [[chen-2026-pointrl-uav-isac]] - radar-point-cloud-driven UAV-to-vehicle sensing and communication control.
 - [[chen-2026-aris-location-privacy]] - virtual-partitioned active-RIS communication and source-UAV location privacy.
+- [[xing-2026-genai-agent-hap-power-allocation]] - generative-AI-agent propulsion modeling and Q3E beamforming for HAPs (SUTD address).
 
 ## Contributions to this wiki
 

@@ -14,8 +14,19 @@ related:
   - "[[fan-2026-hap-uav-iort-oee]]"
   - "[[overall-energy-efficiency]]"
   - "[[kanani-2026-haps-uav-isac]]"
+  - "[[hap-solar-propulsion-energy-balance]]"
+  - "[[javed-2023-hale-haps-noma-flight]]"
+  - "[[renga-2022-haps-sustainable-6g]]"
+  - "[[abderrahim-2024-data-center-hap]]"
+  - "[[xing-2026-genai-agent-hap-power-allocation]]"
+  - "[[elkhazraji-not-in-parse-haps-optical-sensing-survey]]"
+  - "[[huang-2026-haps-sar-trajectory-resource]]"
+  - "[[guo-2026-location-privacy-hap-data-collection]]"
+  - "[[liu-2024-airship-mmwave-hsr-scheduling]]"
+  - "[[mashiko-2026-leo-haps-user-association]]"
+  - "[[becvar-2022-airship-flybs-energy]]"
 created: 2026-05-28
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # High-Altitude Platform Station (HAPS / HAS)
@@ -37,6 +48,8 @@ This makes HAPS a natural **upper tier** in a hierarchical aerial MEC stack — 
 [[fan-2026-hap-uav-iort-oee]] uses moving HAPs as the aggregation tier for two-hop IoRT collection. Its [[overall-energy-efficiency]] objective jointly prices HAP propulsion, UAV propulsion/transmission, relayed data, weather-impaired links, HAP selection, and both aerial trajectories.
 
 [[kanani-2026-haps-uav-isac]] uses HAPS as a centralized processor for multi-UAV ISAC and exposes the echo-power versus worst-user-SINR trade-off through GA and NSGA-II.
+
+Platform energy and payload design form another thread, collected under [[hap-solar-propulsion-energy-balance]]: [[javed-2023-hale-haps-noma-flight]] co-designs NOMA power with altitude and airspeed, [[xing-2026-genai-agent-hap-power-allocation]] refines the propulsion model before beamforming, [[huang-2026-haps-sar-trajectory-resource]] carries a SAR payload with real-time backhaul, and [[abderrahim-2024-data-center-hap]] hosts a data center. Network-level roles include terrestrial offloading for base-station sleep in [[renga-2022-haps-sustainable-6g]], LEO-HAPS user association in [[mashiko-2026-leo-haps-user-association]], privacy-aware IoT collection in [[guo-2026-location-privacy-hap-data-collection]], airship mmWave coverage of high-speed railways in [[liu-2024-airship-mmwave-hsr-scheduling]], and airship flying base stations in [[becvar-2022-airship-flybs-energy]]. [[elkhazraji-not-in-parse-haps-optical-sensing-survey]] surveys FSO backhaul with optical atmospheric sensing.
 
 ## Limitations
 
