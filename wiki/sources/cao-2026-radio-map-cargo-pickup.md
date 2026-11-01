@@ -21,8 +21,11 @@ related:
   - "[[lee-2026-uav-delivery-time-energy]]"
   - "[[dingcheng-yang]]"
   - "[[tiankui-zhang]]"
+  - "[[jiangling-cao]]"
+  - "[[peng-2025-cargo-uav-energy-outage-tradeoff]]"
+  - "[[deng-2024-radio-map-uav-pickup-delivery]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Energy Minimization in UAV-Enabled Cargo Pickup Systems: A Radio Map-Aided Hierarchical Optimization Framework

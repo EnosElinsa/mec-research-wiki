@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-02] Curated cargo-UAV logistics and handoff sources
+
+Curated five genuinely new Raw sources on cellular-connected cargo UAVs: [[peng-2025-cargo-uav-energy-outage-tradeoff]], [[huang-2026-hgadrl-cargo-uav-pickup-delivery]], [[deng-2024-radio-map-uav-pickup-delivery]], [[cherif-2021-disconnectivity-aware-cargo-uav]], and [[cherif-2024-rl-cargo-uav-cell-association]]. All five define decisions, objectives, and constraints, so each carries `modeling_card: required`. Venue, volume, and DOI fields come from the companion PDF metadata because the parses omit them.
+
+Added the concept [[handoff-aware-uav-trajectory-planning]] and three identity-checked author entities: [[jiangling-cao]] (Nanchang University M.S. biography, Nanchang and Xi'an Jiaotong addresses, four cargo sources), [[nesrine-cherif]], and [[wael-jaafar]] (same coauthor group; Jaafar's Carleton to ETS move is in the bylines). Extended [[dingcheng-yang]], [[yu-xu]], [[lin-xiao]], [[haixia-peng]], [[zhou-su]], and [[halim-yanikomeroglu]] after matching bylines, emails, or biographies, and linked the new sources from [[cellular-connected-uav]], [[radio-map-aided-uav-path-planning]], and [[uav-delivery-pickup-dropoff]]. Deferred one-off authors, plus Liang Yang, Chenxi Li, and Tom H. Luan, whose two appearances each do not yet justify an entity.
+
+Reconciliation moved from 58 to 53 genuinely new Raw folders. Corpus counts are 640 sources, 661 concepts, 193 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Link, process-reference, index, frontmatter, source-schema, and entity-roster audits report zero errors. The optional LLM Wiki service was not used.
+
 ## [2026-08-27] Curated the remaining newly ingested sources
 
 Curated the 19 genuinely new Raw sources remaining after the first five-source batch. The additions cover intelligent-metasurface foundations; energy-aware multi-UAV data collection, resupply, replacement, and airborne NPU scheduling; fault-tolerant task offloading and HAPS handoff computing; stateful edge migration, live video analytics, microservice layer reuse, MOSE/ReSync/V-Recover, and service-handoff mechanisms; and vehicular service migration including SR-CL, JMH, AVSI-MEMPO, and TOM. Each source includes the current paper-source schema, an evidence-grounded Related Work paragraph, and a Modeling Quick-Use Card only when the paper defines reusable decisions, objective, and constraints.

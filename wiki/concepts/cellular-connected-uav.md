@@ -25,8 +25,12 @@ related:
   - "[[challita-2019-cellular-uav-interference-drl]]"
   - "[[jiang-2026-sensing-assisted-uav-tracking]]"
   - "[[ren-2026-movable-antenna-uav-trajectory]]"
+  - "[[handoff-aware-uav-trajectory-planning]]"
+  - "[[cherif-2021-disconnectivity-aware-cargo-uav]]"
+  - "[[cherif-2024-rl-cargo-uav-cell-association]]"
+  - "[[peng-2025-cargo-uav-energy-outage-tradeoff]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Cellular-Connected UAV
@@ -58,3 +62,5 @@ The tutorial uses this dichotomy to organize the UAV-communications design space
 Two navigation entries focus directly on aerial-user interference. [[challita-2019-cellular-uav-interference-drl]] jointly learns path, serving cell, and power with deep reservoir memory, while [[guo-2026-event-triggered-sinr-navigation]] plans from grid SINR maps and updates those maps only when predictive uncertainty justifies the traffic.
 
 [[ren-2026-movable-antenna-uav-trajectory]] adds mechanically reconfigurable reception: a cellular UAV jointly plans its grid path, serving BS, MMSE combiner, and local antenna positions to minimize mission time using a Jensen lower bound on expected SINR as the feasibility condition.
+
+For cargo missions, [[handoff-aware-uav-trajectory-planning]] treats serving-cell changes and coverage holes as path costs: [[cherif-2021-disconnectivity-aware-cargo-uav]] plans with dynamic programming, [[cherif-2024-rl-cargo-uav-cell-association]] learns cell association with Q-learning, and [[peng-2025-cargo-uav-energy-outage-tradeoff]] weights expected outage time against delivery energy.

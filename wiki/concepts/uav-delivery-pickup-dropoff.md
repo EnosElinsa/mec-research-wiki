@@ -18,8 +18,13 @@ related:
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[cao-2026-radio-map-cargo-pickup]]"
   - "[[radio-map-aided-uav-path-planning]]"
+  - "[[peng-2025-cargo-uav-energy-outage-tradeoff]]"
+  - "[[deng-2024-radio-map-uav-pickup-delivery]]"
+  - "[[huang-2026-hgadrl-cargo-uav-pickup-delivery]]"
+  - "[[cherif-2021-disconnectivity-aware-cargo-uav]]"
+  - "[[cherif-2024-rl-cargo-uav-cell-association]]"
 created: 2026-07-07
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # UAV Delivery Pickup/Drop-Off Optimization
@@ -35,3 +40,5 @@ In [[lee-2026-uav-delivery-time-energy]], the problem is formulated with no-fly-
 [[chen-not-in-parse-uav-human-medical-delivery]] adds [[cooperative-uav-human-courier-delivery]] for emergency medical pickup and delivery. It jointly assigns orders and routes a dedicated courier/UAV fleet under soft deadlines, type-specific capacities, and different consolidation rules.
 
 [[cao-2026-radio-map-cargo-pickup]] adds offline expected-SNR-map feasibility, all-pairs A* paths, PSO trip allocation, and payload-dependent speed selection. [[chen-2026-cargo-uav-pickup-lae]] instead learns communication-aware paths from local measurements and adds multi-UAV conflict resolution. In this wiki the concept remains logistics/control infrastructure rather than MEC offloading.
+
+Cellular-connected cargo logistics adds a link-quality layer to the route. [[deng-2024-radio-map-uav-pickup-delivery]] solves a precedence- and payload-constrained PDP with a hybrid GA over communication-reliable paths; [[peng-2025-cargo-uav-energy-outage-tradeoff]] trades delivery energy against outage time with IACO and D3QN; and [[huang-2026-hgadrl-cargo-uav-pickup-delivery]] mixes pickups and deliveries under a hard outage threshold. [[cherif-2021-disconnectivity-aware-cargo-uav]] and [[cherif-2024-rl-cargo-uav-cell-association]] treat single-package missions where handoffs and disconnectivity, rather than visit order, drive the path.

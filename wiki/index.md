@@ -559,6 +559,11 @@
 
 - [[chen-2026-cargo-uav-pickup-lae]] - Chen et al. 2026. Cellular-connected cargo-UAV pickup in the low-altitude economy; CACMO combines D3QN trajectory learning, simulated annealing sequence planning, and collision-aware refinement (IEEE TMC).
 - [[cao-2026-radio-map-cargo-pickup]] - Cao et al. 2026. Radio-map-aided cargo pickup; expected-SNR-grid A* paths feed PSO trip allocation and payload-dependent speed selection for propulsion-energy minimization (IEEE T-ITS).
+- [[cherif-2021-disconnectivity-aware-cargo-uav]] - Cherif et al. 2021. Dynamic-programming cargo-UAV trajectory minimizing energy and handoffs under battery and disconnectivity-rate limits (IEEE ICC).
+- [[cherif-2024-rl-cargo-uav-cell-association]] - Cherif et al. 2024. Q-learning joint cargo-UAV trajectory and cell association minimizing energy, disconnectivity, and handoffs (IEEE TVT).
+- [[peng-2025-cargo-uav-energy-outage-tradeoff]] - Peng et al. 2025. Cargo-UAV delivery minimizing weighted energy plus expected outage time; IACO delivery order and speed plus radio-map D3QN trajectory (IEEE IoT-J).
+- [[deng-2024-radio-map-uav-pickup-delivery]] - Deng et al. 2024. Radio-map Dijkstra paths with interruption-time weights feed a hybrid GA for payload-aware, energy-minimizing UAV pickup and delivery (IEEE TVT).
+- [[huang-2026-hgadrl-cargo-uav-pickup-delivery]] - Huang et al. 2026. Cellular-connected cargo-UAV multi-package pickup and delivery; GA service order plus multistep dueling DDQN trajectories under a per-position outage threshold (IEEE TCCN).
 - [[lee-2026-uav-delivery-time-energy]] - Lee & Chae 2026. UAV-enabled parcel pickup/drop-off with payload-weight, no-fly-zone, 3-D trajectory, and variable-slot optimization; SCA+PCCP exposes a completion-time vs propulsion-energy tradeoff (IEEE T-ITS).
 - [[jiang-2026-bi-level-uav-delivery-safety]] - Jiang et al. 2026. Bi-level urban low-altitude UAV delivery with TC-NSGA-III assignment and RG-FMT* trajectory planning under target-level-of-safety risk constraints. *(DOI 10.1109/TITS.2026.3660878; venue not in parse.)*
 - [[gao-2026-air-ground-instant-delivery]] - Gao et al. 2026. Cooperative UAV-taxi instant delivery with delivery-gap station placement, demand-driven UAV repositioning, courier-preference transfer, and generalized parcel assignment on Shanghai traces (IEEE TMC).
@@ -791,6 +796,9 @@
 
 - [[antonio-calagna]] - Politecnico di Torino researcher across stateful edge migration and O-RAN xApp orchestration.
 - [[yenchia-yu]] - Politecnico di Torino researcher across connection-aware migration and composite edge placement.
+- [[jiangling-cao]] - Nanchang University and Xi'an Jiaotong University researcher across four radio-map cargo-UAV logistics sources.
+- [[nesrine-cherif]] - University of Ottawa researcher on handoff- and disconnectivity-aware cargo-UAV trajectories.
+- [[wael-jaafar]] - Carleton University and ETS Montreal researcher on handoff-aware cellular-connected cargo UAVs.
 - [[chunguo-li]] - Southeast University researcher across delay-aligned cell-free transmission, robust UAV collection, and covert ISAC.
 - [[dongming-wang]] - Southeast University researcher across cell-free distributed MIMO and cooperative low-altitude ISAC.
 - [[xiaohu-you]] - Southeast University IEEE Fellow across cell-free UAV service, cooperative ISAC, and control-assisted beam tracking.
@@ -859,7 +867,7 @@
 - [[kaoru-ota]] (Muroran Inst. of Technology, `ota@csse.muroran-it.ac.jp` — with [[mianxiong-dong]]; 2 sources, blockchain-secured + air-ground IoRT UAV-MEC). [[mianxiong-dong]] is now at 3 sources (+[[wang-2024-blockchain-uav-mec-dpos]]).
 - [[dong-jun-han]] & [[christopher-brinton]] (Purdue University — non-terrestrial **federated-learning** offloading cluster with Mung Chiang / David J. Love / Seyyedali Hosseinalipour; 2 sources each — [[han-2024-ground-satellite-fl]] + [[han-2024-sagin-fl-handover]]).
 - [[yong-zeng]] (Southeast University / Purple Mountain Laboratories; earlier National University of Singapore — **UAV-communications / trajectory-optimization** foundations plus low-altitude [[movable-antenna]], ISAC-localization, secure relaying, multicast, and ray-array design; 17 sources, including [[zeng-2016-throughput-relaying]], [[zeng-2017-energy-efficient-uav-trajectory]], [[zeng-2018-uav-multicasting-completion-time]], [[xiao-2020-secrecy-energy-efficiency-relaying]], and [[jiang-2026-ray-antenna-array]]).
-- [[lin-xiao]], [[yu-xu]], and [[dingcheng-yang]] (Nanchang University/BUPT progression - UAV relaying, secure MEC, and aerial resource optimization; 2, 3, and 5 sources), [[xulong-li]] and [[wei-huangfu]] (USTB - MARL for aerial ISAC and UAV-IRS secrecy; 2 sources each), [[jiahao-huo]] (USTB - satellite offloading and UAV secure communication; 2 sources), [[huabing-lu]] (Nanchang University - NOMA, URLLC, and air-ground MEC; 2 sources), [[chengwen-xing]] (Beijing Institute of Technology - RIS-ISAC and finite-blocklength security; 3 sources), and [[xianbin-wang]] (Western University - trusted maritime and robust aerial communications; 4 sources).
+- [[lin-xiao]], [[yu-xu]], and [[dingcheng-yang]] (Nanchang University/BUPT progression - UAV relaying, secure MEC, aerial resource optimization, and radio-map cargo logistics; 3, 4, and 7 sources), [[xulong-li]] and [[wei-huangfu]] (USTB - MARL for aerial ISAC and UAV-IRS secrecy; 2 sources each), [[jiahao-huo]] (USTB - satellite offloading and UAV secure communication; 2 sources), [[huabing-lu]] (Nanchang University - NOMA, URLLC, and air-ground MEC; 2 sources), [[chengwen-xing]] (Beijing Institute of Technology - RIS-ISAC and finite-blocklength security; 3 sources), and [[xianbin-wang]] (Western University - trusted maritime and robust aerial communications; 4 sources).
 - [[shuguang-cui]] (The Chinese University of Hong Kong, Shenzhen — physical-layer / edge-AI / surveys; 7 sources spanning the graph-based-resource-management two-part survey, XL-MIMO, generative-AI/ISAC physical-layer, ISCC edge-AI, and generative-diffusion network optimization).
 
 (One recurring author name remains deferred for human confirmation as genuine **namesakes**: "Nan Zhao" appears in [[zhao-2022-matd3-multiuav-ec-offloading]] (Hubei Univ. of Technology) and [[zhang-2025-gan-td3-isac-active-ris]] (Dalian Univ. of Technology) — different institutions and emails, so not merged. The Tsinghua-era "Jingjing Wang" in [[yang-2020-loadbalance-multiuav-iot]] is the same [[jingjing-wang]] now at Beihang: both biographies report the 2014 Dalian B.S., 2019 Tsinghua Ph.D., 2017-2018 Southampton visit, and collaboration with [[chunxiao-jiang]].)
@@ -1126,6 +1134,7 @@
 - [[path-aware-3d-visual-coverage]]
 - [[fixed-wing-propulsion-energy-model]]
 - [[uav-delivery-pickup-dropoff]]
+- [[handoff-aware-uav-trajectory-planning]]
 - [[cooperative-uav-taxi-delivery]]
 - [[cooperative-uav-human-courier-delivery]]
 - [[cooperative-uav-pursuit-evasion]]

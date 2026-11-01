@@ -22,8 +22,10 @@ related:
   - "[[cao-2026-radio-map-cargo-pickup]]"
   - "[[radio-map-aided-uav-path-planning]]"
   - "[[weijie-yuan]]"
+  - "[[jiangling-cao]]"
+  - "[[huang-2026-hgadrl-cargo-uav-pickup-delivery]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-02
 ---
 
 # Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality, Battery Energy, and Time Window Constraints

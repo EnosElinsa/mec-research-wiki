@@ -7,18 +7,20 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[dingcheng-yang]]"
   - "[[yu-xu]]"
+  - "[[deng-2024-radio-map-uav-pickup-delivery]]"
 created: 2026-07-14
-updated: 2026-07-15
+updated: 2026-11-02
 ---
 
 # Lin Xiao
 
 Associate Professor with the Information Engineering School, Nanchang University. Her matching Queen Mary University of London Ph.D. biography and Nanchang affiliation establish the same identity across both sources.
 
-Co-authored two sources in this wiki:
+Co-authored three sources in this wiki:
 
 - [[xiao-2020-secrecy-energy-efficiency-relaying]] - fixed-wing mobile-relay secrecy energy efficiency with collect-store-forward scheduling.
 - [[zhang-2019-uav-iot-comp-comm]] - joint computation and communication design for UAV-assisted IoT MEC.
+- [[deng-2024-radio-map-uav-pickup-delivery]] - radio-map-based energy-minimizing UAV pickup and delivery (Nanchang University address).
 
 ## Contributions to this wiki
 
