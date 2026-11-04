@@ -20,7 +20,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[ctde-multi-agent-drl-protocol]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Agent DRL With Trajectory Prediction for Task Migration-Assisted Computation Offloading
@@ -47,7 +47,7 @@ Evaluated on synthetic (Grid3×3, Net4) and realistic (Pasubio, Aurelio Costa) t
 
 **Scenario**: Multiple MEC servers collocated with base stations cover non-overlapping road intersections. Mobile vehicles execute tasks locally, offload them to the serving server, or migrate them through multi-hop links between base stations while sharing wireless bandwidth and edge computing capacity.
 
-**Problem & objective**: The NP-hard constrained sequential problem minimizes total task completion latency, $\min_{\mathbf a^o,\mathbf a^{r_b},\mathbf a^{r_c}}\sum_{t=1}^{T}L^t$, and is represented as a multi-agent POMDP.
+**Problem & objective**: Problem (11)-(17), NP-hard and sequential, minimizes total task completion latency, $\min_{\mathbf a^o,\mathbf a^{r_b},\mathbf a^{r_c}}\sum_{t=1}^{T}L^t$, and is represented as a multi-agent POMDP.
 
 **Decision variables**:
 
@@ -61,10 +61,10 @@ Evaluated on synthetic (Grid3×3, Net4) and realistic (Pasubio, Aurelio Costa) t
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task has exactly one execution choice: $\sum_{k=1}^{N+1}a_{i,j,k}^{o,t}=1$. |
-| C2 | Resource shares are bounded: $a_{i,j}^{r_b,t},a_{i,j}^{r_c,t}\in(0,1]$. |
-| C3 | Allocated radio bandwidth cannot exceed the serving BS budget: $\sum_j B_{i,j}^{t}\leq B_i$. |
-| C4 | Computing allocated to tasks placed at server $k$ cannot exceed $f_k$. |
+| (13)-(14) | Each task has exactly one execution choice: $\sum_{k=1}^{N+1}a_{i,j,k}^{o,t}=1$. |
+| (15) | Resource shares are bounded: $a_{i,j}^{r_b,t},a_{i,j}^{r_c,t}\in(0,1]$. |
+| (16) | Allocated radio bandwidth cannot exceed the serving BS budget: $\sum_j B_{i,j}^{t}\leq B_i$. |
+| (17) | Computing allocated to tasks placed at server $k$ cannot exceed $f_k$. |
 
 **Algorithm**: Predict multi-step vehicle trajectories centrally with Informer, feed the forecasts to the servers, use MAPPO for discrete offloading and migration, use MADDPG for continuous bandwidth and computing allocation, and train both stages cooperatively under CTDE.
 

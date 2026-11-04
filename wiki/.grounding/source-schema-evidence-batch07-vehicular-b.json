@@ -1,0 +1,952 @@
+{
+  "entries": [
+    {
+      "slug": "mao-2024-ntn-hierarchical-caching-cav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md",
+          "lines": "255-259",
+          "note": "WMVC problem with connectivity (14)"
+        },
+        {
+          "path": "raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md",
+          "lines": "277-282",
+          "note": "delay problem (16) and C1-C5 text"
+        },
+        {
+          "path": "raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md",
+          "lines": "284-299",
+          "note": "two-layer MDP and substitution actions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md",
+          "lines": "255-282",
+          "note": "WMVC and delay minimization"
+        },
+        {
+          "path": "raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md",
+          "lines": "282-299",
+          "note": "MADRL-HCAU layers and asynchronous substitution"
+        },
+        {
+          "path": "raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md",
+          "lines": "458,541,548",
+          "note": "PDR <7.64%, delay <4.13 s, CHR 78.3% and 81.1%"
+        }
+      ]
+    },
+    {
+      "slug": "mou-2025-adm-dt-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "180,212",
+          "note": "latency (8) and total cost (13)"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "220-255",
+          "note": "constraints (14)-(19), Problem 1"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "348-378",
+          "note": "MDP state, policy, objective (22)-(23)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "180,212",
+          "note": "communication, colocation, migration latency"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "220-255,375",
+          "note": "NP-hard binary program recast as MDP"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "364,422",
+          "note": "feature extraction, actor-critic, expert demonstrations"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md",
+          "lines": "25,39,589,1012",
+          "note": "Cologne traces, ~39% improvement"
+        }
+      ]
+    },
+    {
+      "slug": "peng-2020-maddpg-uav-vehicular",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md",
+          "lines": "155-159",
+          "note": "MeNB problem (6)"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md",
+          "lines": "165-169",
+          "note": "UAV problem (7)"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md",
+          "lines": "253,459",
+          "note": "MADDPG training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md",
+          "lines": "155-169",
+          "note": "task-satisfaction objective and coupled fractions"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md",
+          "lines": "5,253,459",
+          "note": "POMG and cooperative MADDPG"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md",
+          "lines": "5,435,470",
+          "note": "~200 episodes, beats SADDPG and random"
+        }
+      ]
+    },
+    {
+      "slug": "qi-2026-drone-vehicle-mec-inspection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection.md",
+          "lines": "494-509",
+          "note": "P1 objective, variable list, constraint groups"
+        },
+        {
+          "path": "raw/sources/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection.md",
+          "lines": "210,465-489",
+          "note": "routing and t_end constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection.md",
+          "lines": "507",
+          "note": "joint route, sortie, speed problem"
+        },
+        {
+          "path": "raw/sources/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection.md",
+          "lines": "509",
+          "note": "non-convex MINLP"
+        },
+        {
+          "path": "raw/sources/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection.md",
+          "lines": "884,894",
+          "note": "138.72->107.04 and 429.96->356.24 min"
+        }
+      ]
+    },
+    {
+      "slug": "qiu-2025-tom-stateful-vec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "202-232",
+          "note": "P0 (16) with constraints (17)-(22)"
+        },
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "177-185",
+          "note": "VM-memory migration time and parallel groups"
+        },
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "258-288",
+          "note": "random, Circle-map, K-means initialization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "5,26",
+          "note": "joint trajectory, offloading, migration"
+        },
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "202-205",
+          "note": "four-objective dynamic problem"
+        },
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "489",
+          "note": "TOM components"
+        },
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "5,34,409",
+          "note": "taxi and EV datasets, beats peer methods"
+        },
+        {
+          "path": "raw/sources/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System/TOM_Joint_Trajectory_Offloading_and_Migration_Optimization_in_Stateful_Service-Oriented_UAV-Enabled_VEC_System.md",
+          "lines": "491",
+          "note": "future work: obstacle avoidance and UAV collaboration"
+        }
+      ]
+    },
+    {
+      "slug": "ren-2026-security-aware-vec-td3",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "150-158",
+          "note": "problem (12) and C1-C5"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "135-145",
+          "note": "secure rate (10) and latency (11)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "164-219",
+          "note": "TD3 MDP, state (16)-(19)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "152-158",
+          "note": "min-max latency over ratio, movement, association"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "164-170",
+          "note": "standard TD3 with MDP transformation"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "135",
+          "note": "secure effective rate"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md",
+          "lines": "5,48,511,594",
+          "note": ">=20% reward, >=1.7% latency, 38% vs PPO"
+        }
+      ]
+    },
+    {
+      "slug": "samir-2021-uav-cell-free-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "109-136",
+          "note": "coverage and energy indicators (6)-(9), variable sets"
+        },
+        {
+          "path": "raw/sources/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "139-146",
+          "note": "objective weights and constraint descriptions C1-C9"
+        },
+        {
+          "path": "raw/sources/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "154",
+          "note": "centralized actor-critic agent"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "109-146",
+          "note": "deployment-coverage tradeoff with constraints"
+        },
+        {
+          "path": "raw/sources/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "154",
+          "note": "centralized DDPG with continuous movement"
+        },
+        {
+          "path": "raw/sources/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach/Leveraging_UAVs_for_Coverage_in_Cell-Free_Vehicular_Networks_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "403,405,409",
+          "note": "fewer UAVs at full coverage, 16% energy at 80% coverage, 40% average gain"
+        }
+      ]
+    },
+    {
+      "slug": "shi-2021-dqn-air-assisted-vehicular-caching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "85-117",
+          "note": "cache size (1), probabilities (2)-(5)"
+        },
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "123-140",
+          "note": "objectives (6)-(7), constraints (8)-(9)"
+        },
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "146-189,218",
+          "note": "DQN adaptive actions and reward (12)-(13)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "13",
+          "note": "vehicular caching problems"
+        },
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "44,63,80",
+          "note": "three-layer DAVC and energy-aware scheduling"
+        },
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "123-140,146",
+          "note": "multi-objective model and DQN"
+        },
+        {
+          "path": "raw/sources/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving/A_Novel_Deep_Q-Learning-Based_Air-Assisted_Vehicular_Caching_Scheme_for_Safe_Autonomous_Driving.md",
+          "lines": "5,276",
+          "note": "real map and outperforming counterparts"
+        }
+      ]
+    },
+    {
+      "slug": "spampinato-2025-uabs-v2x-3dqn-ilp",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "121-148",
+          "note": "ILP variables and objective (4a)"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "143-244",
+          "note": "constraints (4b)-(4w)"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "251-286,371-372",
+          "note": "MDP, 3DQN, reward functions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "5,45",
+          "note": "UABS-assisted urban V2X"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "135-148",
+          "note": "served-vehicle ILP"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "251-259,322",
+          "note": "3DQN trajectory with RRM reward"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "45,85,408,426",
+          "note": "Bologna SUMO, coverage- and capacity-limited scenarios"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md",
+          "lines": "466-499,599",
+          "note": "Dummy, Oracle, [28] benchmarks; no-UABS baseline"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2023-bargain-match-vec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "310-366",
+          "note": "vehicle/server utilities and SW (22)"
+        },
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "373-409",
+          "note": "problem P (23) with C1-C12, NP-hard"
+        },
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "474-529,652",
+          "note": "bargaining closed form and matching"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "5,373",
+          "note": "JRATOP three-tier VEC"
+        },
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "373-405",
+          "note": "social welfare over offloading, allocation, pricing"
+        },
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "5,474,652",
+          "note": "bargaining and matching"
+        },
+        {
+          "path": "raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "5",
+          "note": "stability, weak Pareto, complexity and simulation claims"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2024-mvtora-postdisaster-vfc",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "296-334",
+          "note": "utilities and problem P (22)"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "338-386",
+          "note": "constraints 22a-22j and P' (23)"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "413-622",
+          "note": "game, P1 (29), P2 (31)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "5,331",
+          "note": "three-layer post-disaster offloading"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "331-334",
+          "note": "time-average utility"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "395,434,486-537",
+          "note": "game, convex MEC, evolutionary VFC"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md",
+          "lines": "49,836-848",
+          "note": "utility, delay, energy vs baselines"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-ikpp-vehicular-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "186-189",
+          "note": "problem (21a) EE objective and variables"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "193-246",
+          "note": "constraints and their explanation"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "250,364,445",
+          "note": "MDP and PPO-clip"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "186-246",
+          "note": "joint EE problem and constraints"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "445-449",
+          "note": "PPO-clip policy"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "605",
+          "note": "load balancing and action reconstruction (Algorithm 1)"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach/Joint_Trajectory_Design_and_Resource_Allocation_for_Energy-Efficient_Multi-UAV_Assisted_Vehicular_Networks_An_IKPP_Approach.md",
+          "lines": "562,605-636",
+          "note": "schemes a-f, 0.005 s execution"
+        }
+      ]
+    },
+    {
+      "slug": "wei-2026-airfogsim-uav-vfc",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing.md",
+          "lines": "5",
+          "note": "simulator paper; no single decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing.md",
+          "lines": "5",
+          "note": "AirFogSim modular simulator"
+        },
+        {
+          "path": "raw/sources/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing.md",
+          "lines": "44-74,117,141",
+          "note": "traffic, communication, energy, security, blockchain modules, discrete time"
+        },
+        {
+          "path": "raw/sources/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing/AirFogSim_A_Light-Weight_and_Modular_Simulator_for_UAV-Integrated_Vehicular_Fog_Computing.md",
+          "lines": "5,50-56,90-94",
+          "note": "missions, use case, and policy interfaces"
+        }
+      ]
+    },
+    {
+      "slug": "xie-2026-uav-multisource-fusion",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "265-297",
+          "note": "DCMOP (28), individual (25), objectives (26)-(27), C1-C9"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "116-252",
+          "note": "constraint equations (3)-(23)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "301,35",
+          "note": "DCMOEA with cascaded dependency generation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "5,31",
+          "note": "UAV fusion for cooperative perception"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "265-286",
+          "note": "reliability-latency DCMOP"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "35,301",
+          "note": "DCMOEA strategy"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md",
+          "lines": "5,39",
+          "note": "outperforms four baselines"
+        }
+      ]
+    },
+    {
+      "slug": "ye-2021-ran-slicing-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "177-203",
+          "note": "cost (7)-(9) and P1 with (10a)-(10c)"
+        },
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "229-253",
+          "note": "utility (13), rates (14)-(15), P2 with (16a)-(16f)"
+        },
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "322-425",
+          "note": "cooperative MA-DQL with fingerprint, SP2, P3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "199-208",
+          "note": "small-timescale stochastic scheduling"
+        },
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "249-256",
+          "note": "large-timescale convex slicing"
+        },
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "322,372,401",
+          "note": "MA-DQL fingerprint and iterative slicing"
+        },
+        {
+          "path": "raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md",
+          "lines": "511,634",
+          "note": "load balancing, highest throughput"
+        }
+      ]
+    },
+    {
+      "slug": "zang-2026-uav-ev-priority-cav-speed",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "72-124",
+          "note": "decision variables and constraints (1)-(6)"
+        },
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "127-153",
+          "note": "objectives (7)-(8)"
+        },
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "162-218,293-299",
+          "note": "uncertainty sets, quintic trajectories, PSO and rolling SROC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "5,25",
+          "note": "UAV-assisted EV priority and CAV speed control"
+        },
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "70-101",
+          "note": "O-CAV selection and speed scheduling"
+        },
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "127-130,293-296",
+          "note": "robust min-max objective"
+        },
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "293,299",
+          "note": "dual-layer PSO and rolling SROC"
+        },
+        {
+          "path": "raw/sources/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways/A_UAV-Assisted_Coordination_Framework_for_Emergency_Vehicle_Priority_and_CAV_Speed_Optimization_in_Hybrid_Human-Machine_Driving_on_Expressways.md",
+          "lines": "323",
+          "note": "M0 no CAV control, M1 rolling, M2 one-time baselines"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2025-mcma-task-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "181-215",
+          "note": "problem (11) with (12)-(17)"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "144",
+          "note": "waiting delay (6)"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "80,250,345,369",
+          "note": "Informer prediction, MAPPO and critic losses"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "5,38",
+          "note": "mobility-induced load imbalance and MCMA"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "181-215",
+          "note": "latency minimization under one-choice, bandwidth, computing constraints"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "80,250,345,369",
+          "note": "Informer, MAPPO, MADDPG stages"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading/Multi-Agent_Deep_Reinforcement_Learning_With_Trajectory_Prediction_for_Task_Migration-Assisted_Computation_Offloading.md",
+          "lines": "5,450,526,550",
+          "note": "synthetic and realistic traffic, lower latency and failure rate"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-msialns-air-ground-inspection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "80-86",
+          "note": "objective (1) min-max completion time"
+        },
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "89-370",
+          "note": "constraints (2)-(41) and explanations"
+        },
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "533,559,589",
+          "note": "destroy and repair operators"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "5,15,35",
+          "note": "MUMV-CIVRP-BLRN problem"
+        },
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "86-370",
+          "note": "makespan objective and constraint families"
+        },
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "533-609",
+          "note": "M-SIALNS operators"
+        },
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "5",
+          "note": "1.6%-11.0% reduction"
+        },
+        {
+          "path": "raw/sources/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks/M-SIALNS_for_Air-Ground_Collaborative_Inspection_Spatio-Temporal_Conflict_Mitigation_in_Complex_Bi-Layer_Networks.md",
+          "lines": "565-609,655",
+          "note": "ablation and conflict reductions"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2018-caching-uav-ia-secure",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "144-170",
+          "note": "system model, UAV and SBS users, eavesdropper"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "174-252",
+          "note": "IA conditions (4)-(9), jamming ZF (15)-(16), sum rate (12)"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "254-334",
+          "note": "distributed Algorithm 1"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "336-340",
+          "note": "feasibility conditions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "5,25,144",
+          "note": "cache UAVs in hyper-dense networks"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "39,178",
+          "note": "IA precoders and decoders"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "5,240-250",
+          "note": "zero-forced friendly jamming"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "25,316-338",
+          "note": "feasibility and distributed design"
+        },
+        {
+          "path": "raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md",
+          "lines": "614,665-782",
+          "note": "interference leakage and secrecy simulations"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-uav-carrier-vcs",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update.md",
+          "lines": "169-183",
+          "note": "efficiency (16) and P1"
+        },
+        {
+          "path": "raw/sources/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update.md",
+          "lines": "187-194",
+          "note": "Dec-POMDP, hybrid actions, inactive rule (17)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update.md",
+          "lines": "5,26",
+          "note": "UAV-carrier VCS"
+        },
+        {
+          "path": "raw/sources/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update.md",
+          "lines": "169-187",
+          "note": "efficiency objective and Dec-POMDP"
+        },
+        {
+          "path": "raw/sources/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update.md",
+          "lines": "5,26,340",
+          "note": "Guangzhou and Madrid OSM maps, five baselines"
+        },
+        {
+          "path": "raw/sources/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update/UAV_Carrier_Enabled_Vehicular_Crowdsensing_by_Multi-Agent_Reinforcement_Learning_with_Mutual_Policy_Divergence_and_Attentive_Memory_Update.md",
+          "lines": "362-375",
+          "note": "ablations without AMIE and MPDE"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2026-a2g-madrl-air-ground-vcs",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "81",
+          "note": "binary channel indicator and channel limits"
+        },
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "98-132",
+          "note": "NOMA and relay rate model"
+        },
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "276-298",
+          "note": "POMDP, action spaces, reward (21)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "13-27",
+          "note": "cooperative UAV-UGV NOMA VCS"
+        },
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "170-239",
+          "note": "sAoI and latency-weighted collection ratio"
+        },
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "276-298",
+          "note": "POMDP over movement and channels"
+        },
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "302-431",
+          "note": "HVGCN and DOMPG"
+        },
+        {
+          "path": "raw/sources/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning/AoI_and_Latency-Aware_Air-Ground_Vehicular_Crowdsensing_by_Sequential_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "5,29,440",
+          "note": "KAIST and Roma, seven baselines"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2024-zdrl-uav-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking.md",
+          "lines": "199-223",
+          "note": "problem (13) with 13a-13f"
+        },
+        {
+          "path": "raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking.md",
+          "lines": "455,477",
+          "note": "positioning error bounds (30)-(31)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking.md",
+          "lines": "5,45",
+          "note": "3-D target tracking with active and passive UAVs"
+        },
+        {
+          "path": "raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking.md",
+          "lines": "199-223",
+          "note": "cumulative positioning error under energy, delay, angle, separation"
+        },
+        {
+          "path": "raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking.md",
+          "lines": "5,45,1048",
+          "note": "39.4% vs VD-RL, 64.6% vs independent DRL"
+        }
+      ]
+    }
+  ]
+}

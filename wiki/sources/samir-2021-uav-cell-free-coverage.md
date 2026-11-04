@@ -22,7 +22,7 @@ related:
   - "[[chadi-assi]]"
   - "[[ali-ghrayeb]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Leveraging UAVs for Coverage in Cell-Free Vehicular Networks: A Deep Reinforcement Learning Approach
@@ -43,7 +43,7 @@ A centralized DDPG controller dispatches and moves UAV base stations along a hig
 
 **Scenario**: Mobile vehicles traverse a highway outside terrestrial coverage and are served by fixed-altitude UAV base stations connected to an ingress station, with propulsion energy and residual return-to-charge energy modeled.
 
-**Problem & objective**: The deployment formulation minimizes the number of dispatched UAVs, $\min\sum_m\gamma_m$, while preserving vehicle coverage and service quality.
+**Problem & objective**: The MINLP $\mathcal{OP}$ balances the number of dispatched UAVs $\gamma_m$ against vehicle coverage $c_{i,m}^n$ through weights $\xi$ and $\psi$ with $\xi+\psi=1$; a larger coverage weight deploys more UAVs, and a larger deployment weight accepts gaps in coverage. The parsed objective expression is garbled and should be checked against the published paper.
 
 **Decision variables**:
 
@@ -59,12 +59,12 @@ A centralized DDPG controller dispatches and moves UAV base stations along a hig
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Coverage requires acceptable rate: $\sum_m y_{i,m}^n r_{i,m}^n\geq r_{min}$. |
-| C2 | Each vehicle is served by at most one UAV in a slot. |
-| C3 | Movement is speed bounded: $\lVert w_m^{n+1}-w_m^n\rVert\leq v_{max}\Delta t$. |
-| C4 | Service assignments require deployment: $y_{i,m}^n\leq\gamma_m$. |
-| C5 | A deployed UAV retains enough residual energy to serve and return to its charging station. |
-| C6 | Initial UAV positions are fixed by the deployment scenario. |
+| C1-C2 | Coverage indicators linearized by (8a)-(8b): a vehicle counts as covered when $\sum_my_{i,m}^nr_{i,m}^n$ exceeds $r_{min}$ |
+| C3 | Per-slot UAV travel distance is limited by its maximum speed |
+| C5 | Vehicles can be served only by dispatched UAVs |
+| C6 | Each vehicle is served by at most one UAV at a time |
+| C7 | A UAV, once used, stays deployed as long as it has energy to serve |
+| C8-C9 | Return-energy indicators (9a)-(9b): residual energy must cover serving and the flight back to the charging station |
 
 **Algorithm**: Train a centralized DDPG policy with continuous travel-distance and direction actions, using coverage, deployment, energy, and boundary penalties together with replay, target networks, and exploration noise.
 
@@ -72,7 +72,7 @@ A centralized DDPG controller dispatches and moves UAV base stations along a hig
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Samir et al. [x] formulate highway coverage as a deployment and trajectory problem for mobile vehicles outside terrestrial service. The model minimizes dispatched UAVs while enforcing rate coverage, one-UAV service, speed, deployment, residual-energy, and initial-position constraints. A centralized DDPG controller selects continuous movement actions and uses penalties to coordinate coverage with return-to-charge energy. The paper reports nearly full coverage with fewer UAVs, a 16% energy reduction at 80% coverage in one setting, and an average 40% coverage gain over fixed or random baselines.
+Samir et al. [x] formulate highway coverage as a deployment and trajectory problem for mobile vehicles outside terrestrial service. The model trades off the number of dispatched UAVs against vehicle coverage while enforcing rate coverage, one-UAV service, speed, deployment, continued-deployment, and residual-energy constraints. A centralized DDPG controller selects continuous movement actions and uses penalties to coordinate coverage with return-to-charge energy. The paper reports nearly full coverage with fewer UAVs, a 16% energy reduction at 80% coverage in one setting, and an average 40% coverage gain over fixed or random baselines.
 
 ## Problem and system model
 

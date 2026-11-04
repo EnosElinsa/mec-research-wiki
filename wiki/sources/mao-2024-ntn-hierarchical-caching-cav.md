@@ -54,8 +54,8 @@ Content caching for **connected automated vehicles (CAVs)** served by **non-terr
 |---|---|
 | WMVC connectivity | Selected caching vertices keep the topology connected: $\sum_{\bar{k}=1}^{\bar{K}}(cs_{\bar{k}})^{\circ}\geq 2S$ |
 | C1, C2 | Cache indicators are binary for UAVs and LEO satellites: $C_{u_j,F}^{t},C_{s_k,F}^{t}\in\{0,1\}$ |
-| C3 | UAV cache size is bounded: $\sum_q C_{u_j,f_q}^{t}S_{f_q}\leq\mathcal C_{u_j}$ |
-| C4 | LEO cache size is bounded: $\sum_q C_{s_k,f_q}^{t}S_{f_q}\leq\mathcal C_{s_k}$ |
+| C3 | Cached content size at UAV $u_j$ does not exceed its caching capacity $\mathcal C_{u_j}$ |
+| C4 | Cached content size at satellite $s_k$ does not exceed its caching capacity $\mathcal C_{s_k}$; the parse omits the formula block of (16) |
 | C5 | Actual content transmission time does not exceed its delay threshold: $D_{v_i,f_q}^{t}\leq D_{f_q}$ |
 
 **Algorithm**: Use DM-ACO to construct a low-delay WMVC caching-satellite set from pheromone and degree-based visibility. Then use Layer 1 multi-agent DQN for UAV cache decisions and Layer 2 centralized DQN for LEO cache decisions, with asynchronous switch-out and switch-in actions to smooth update traffic.

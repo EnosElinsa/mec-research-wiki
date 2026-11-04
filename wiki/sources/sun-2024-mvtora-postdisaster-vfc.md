@@ -17,7 +17,7 @@ related:
   - "[[sun-2023-bargain-match-vec]]"
   - "[[kang-2023-mappo-hierarchical-aerial]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Task Offloading and Resource Allocation in Aerial-Terrestrial UAV Networks With Edge and Fog Computing for Post-Disaster Rescue
@@ -34,30 +34,32 @@ A **three-layer post-disaster rescue** computing architecture combining MEC and 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A three-layer post-disaster architecture contains vehicle fog nodes, UAV clients, and UAV edge servers. Rescue tasks can move among the vehicle, UAV, and edge layers, and the controller allocates computation resources across the heterogeneous nodes.
+**Scenario**: A three-layer post-disaster architecture contains client UAVs (C-UAVs) that generate rescue tasks, an edge UAV (E-UAV) with MEC resources, and rescue vehicles acting as fog nodes. A C-UAV computes locally, offloads to the E-UAV, or splits its task across selected vehicle fog nodes within communication range.
 
-**Problem & objective**: JTRAOP, an NP-hard joint offloading and resource-allocation problem, maximizes time-average system utility, $\max\lim_{T\to\infty}T^{-1}\sum_t U(t)$, over task destinations and MEC/VFC resources.
+**Problem & objective**: JTRAOP, problem P (22), is NP-hard and maximizes time-average system utility, $\max_{\mathcal A,\mathcal F,\mathcal S,\boldsymbol\Lambda}\frac1T\sum_t\sum_i\sum_ng_n(t)a_n^i(t)U_n^i(t)$, where each utility rewards delay slack through $\log(\beta+T_n^{\max}-T_n)$ and penalizes energy; because tasks finish within one slot, P reduces to the per-slot problem P′ (23).
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Task offloading | $o_i(t)$ | discrete/binary | Execution layer selected for task $i$ |
-| MEC resource allocation | $f_{i,k}^{\mathrm{MEC}}(t)$ | continuous, nonnegative | CPU resource assigned by UAV edge node $k$ |
-| VFC resource allocation | $f_{i,v}^{\mathrm{VFC}}(t)$ | continuous, nonnegative | CPU resource assigned by vehicle fog node $v$ |
-| Server matching | $m_{i,s}(t)$ | binary | Task-to-server association |
+| Offloading decision | $a_n^i(t)$ | binary | C-UAV $n$ chooses local, E-UAV, or vehicle-fog execution $i$ |
+| MEC resource allocation | $F_n(t)$ | continuous, $[0,F_u^{\max}]$ | E-UAV CPU resource for C-UAV $n$ |
+| Fog-node selection | $\mathbf S_n'(t)$ | subset of $\mathbf S_n(t)$ | Vehicle fog nodes serving C-UAV $n$ |
+| Task division | $\lambda_{n,j}^t$ | continuous, $[0,1]$ | Share of C-UAV $n$'s task sent to vehicle $j$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task is assigned to one feasible vehicle, UAV, or edge execution layer |
-| C2 | MEC and VFC CPU allocations do not exceed node capacities |
-| C3 | Offloading links, task sizes, and execution delays remain feasible |
-| C4 | Time-average utility and resource constraints are respected over the rescue horizon |
-| C5 | The three-layer coordination maintains service connectivity after the disaster |
+| 22a-22b | Offloading decisions are binary and each C-UAV picks exactly one strategy |
+| 22c-22d | E-UAV allocations are nonnegative and sum to at most $F_u^{\max}$ |
+| 22e-22f | Task-division shares lie in $[0,1]$ and sum to one |
+| 22g | Each vehicle fog node serves at most one C-UAV |
+| 22h | Selected fog nodes are within the C-UAV's communication range |
+| 22i | Task-generation indicator $g_n(t)\in\{0,1\}$ |
+| 22j | Task completion time stays within $T_n^{\max}(t)$ |
 
-**Algorithm**: Solve task offloading with the MVTORA game-theoretic algorithm → solve MEC resource allocation by convex optimization → solve VFC allocation with the evolutionary hybrid algorithm → alternate the blocks and evaluate time-average utility, delay, and energy.
+**Algorithm**: Solve task offloading with a potential game in MVTORA → obtain the E-UAV allocation of P1 (29) in closed form by convex optimization → solve the fog-node selection and task division P2 (31) with the evolutionary hybrid algorithm → alternate the blocks and evaluate time-average utility, delay, and energy.
 
 ## Related Work Paragraph
 

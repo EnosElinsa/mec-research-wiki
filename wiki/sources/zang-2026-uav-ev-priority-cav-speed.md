@@ -13,7 +13,7 @@ related:
   - "[[uav-data-collection]]"
   - "[[particle-swarm-optimization]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A UAV-Assisted Coordination Framework for Emergency Vehicle Priority and CAV Speed Optimization in Hybrid Human-Machine Driving on Expressways
@@ -30,31 +30,31 @@ Uses UAV sensing and relaying to coordinate emergency-vehicle priority on expres
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: UAVs sense and relay mixed traffic state on a two-lane expressway containing an emergency vehicle, human-driven vehicles, connected vehicles, and CAVs. Selected CAVs adjust speed to create safe merge gaps under uncertain human lane-change start and duration.
+**Scenario**: UAVs sense and relay mixed traffic state on a two-lane expressway containing an emergency vehicle (EV), human-driven vehicles, connected vehicles, and CAVs. An objective-lane CAV (O-CAV) and an evacuation-lane CAV (E-CAV) adjust speed so that non-priority vehicles in the EV's lane can merge, while human lane-change acceptance margins and durations are uncertain.
 
-**Problem & objective**: SROC is a robust integer nonlinear min-max problem that minimizes worst-case emergency-vehicle travel loss or non-priority impact, $\min_{\mathbf x}\max_{\boldsymbol\xi\in\Xi}J(\mathbf x,\boldsymbol\xi)$.
+**Problem & objective**: The speed-coordinated robust optimization control (SROC) is an integer nonlinear min-max problem (7)/(23): minimize over the O-CAV choice and speed-adjustment times the worst case, over the uncertainty sets, of the EV travel loss $J_1=1-\frac{x_E(t_{end}^{impact})-x_E(t_{start})}{V_E(t_{end}^{impact}-t_{start})}$; objective (8), $J_2$, is the alternative non-priority-vehicle impact measure.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Objective-lane CAV | $x_j$ | binary | CAV selected to create a merge gap |
-| Speed-adjustment start | $t_j^{\mathrm s}$ | continuous/discrete time | Start time of CAV control |
-| Target speed | $v_j^{\mathrm tar}$ | continuous, bounded | Commanded CAV speed |
-| Adjustment order | $o_j$ | binary/categorical | Whether objective-lane or evacuation-lane CAV acts first |
-| Human uncertainty | $\boldsymbol\xi$ | bounded adversarial parameters | Merge timing and lane-change duration |
+| O-CAV selection | $s_{O-CAV}$ | discrete, $\{CAV_1,\ldots,CAV_n\}$ | CAV in the objective lane chosen to open a gap |
+| E-CAV adjustment times | $t_{1,a}^1,t_{1,b}^1$ | continuous | Start and end of E-CAV speed adjustment |
+| O-CAV adjustment times | $t_{2,a}^1,t_{2,b}^1$ | continuous | Start and end of O-CAV speed adjustment |
+| Adjustment order | $\sigma$ | binary | 1 if the O-CAV adjusts speed first, 0 if the E-CAV does |
+| Uncertainty (inner max) | $M_{TC}^r(i),M_{TC}^p(i),\Delta t_c(i)$ | bounded intervals (11), (12), (17) | Accepted collision margins and lane-change durations of human drivers |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Exactly one feasible objective-lane CAV is selected for each coordination event |
-| C2 | Vehicle speed and acceleration remain within road and comfort limits |
-| C3 | CAV following distances and human merge gaps remain collision-safe |
-| C4 | Fifth-degree lane-change trajectories satisfy boundary conditions |
-| C5 | Robust feasibility holds for all merge uncertainties in $\Xi$ |
+| (1)-(4) | Piecewise speed profiles of the O-CAV and E-CAV with comfortable deceleration $a_c$ |
+| (5) | Adjusted speeds stay nonnegative, the E-CAV stays below its leader's speed, and safe gaps to preceding vehicles are kept |
+| (6) | In the gap-creation cases, the E-CAV's adjusted speed exceeds the O-CAV's |
+| (11)-(13), (17) | Uncertainty sets for collision margins and lane-change time, and the margin condition that triggers a lane change |
+| (14)-(16) | Fifth-degree polynomial lane-change trajectories with their boundary conditions |
 
-**Algorithm**: Fuse UAV and connected-vehicle state → enumerate or encode candidate objective-lane CAVs and adjustment order → let inner PSO search worst-case merge timing and duration → let outer PSO optimize CAV selection and speed timing → execute the first control step → observe lane changes and recompute in rolling SROC.
+**Algorithm**: Fuse UAV and connected-vehicle state → solve the inner worst-case search over margins and lane-change time with PSO → solve the outer search over O-CAV selection and adjustment times with PSO → execute the control and observe lane changes → re-optimize with rolling SROC when some vehicles have finished changing lanes.
 
 ## Related Work Paragraph
 

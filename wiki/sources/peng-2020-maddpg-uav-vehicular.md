@@ -16,7 +16,7 @@ related:
   - "[[uav-enabled-its]]"
   - "[[ddpg]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -51,13 +51,14 @@ Peng, H., & Shen, X. (2020). *Multi-Agent Reinforcement Learning Based Resource 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Association is binary: $b_{i,m}(t),b_{i,j}(t)\in\{0,1\}$ |
-| C2 | A vehicle in overlapping coverage selects one server: $b_{i,m}(t)+b_{i,j}(t)=1$ |
-| C3 | Resource fractions lie in $[0,1]$ |
-| C4 | MeNB spectrum shares sum to one: $\sum_i b_{i,m}f_{i,m}=1$ |
-| C5 | MeNB computing shares sum to one: $\sum_i b_{i,m}f_{i,m}^{co}=1$ |
-| C6 | MeNB caching shares sum to one: $\sum_i b_{i,m}f_{i,m}^{ca}=1$ |
-| C7 | UAV analogues hold: $\sum_i b_{i,j}f_{i,j}=\sum_i b_{i,j}f_{i,j}^{co}=\sum_i b_{i,j}f_{i,j}^{ca}=1$ |
+| 6a, 7a | System-model relations (1), (2), (5) for the MeNB and (3), (4), (5) for UAV j hold |
+| 6b, 7b | Association is binary: $b_{i,m}(t),b_{i,j}(t)\in\{0,1\}$ |
+| 6c, 7c | A vehicle in overlapping coverage selects one server: $b_{i,m}(t)+b_{i,j}(t)=1$ |
+| 6d, 7d | Resource fractions lie in $[0,1]$ |
+| 6e | MeNB spectrum shares sum to one: $\sum_i b_{i,m}f_{i,m}=1$ |
+| 6f | MeNB computing shares sum to one: $\sum_i b_{i,m}f_{i,m}^{co}=1$ |
+| 6g | MeNB caching shares sum to one: $\sum_i b_{i,m}f_{i,m}^{ca}=1$ |
+| 7e-7g | UAV analogues hold: $\sum_i b_{i,j}f_{i,j}=\sum_i b_{i,j}f_{i,j}^{co}=\sum_i b_{i,j}f_{i,j}^{ca}=1$ |
 
 **Algorithm**: Recast the coupled per-server problems as a partially observable Markov game, use each MEC server as an agent, and train a cooperative MADDPG with centralized critics and decentralized execution; shape rewards from delay and caching satisfaction.
 

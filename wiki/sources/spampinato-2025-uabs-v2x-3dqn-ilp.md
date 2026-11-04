@@ -12,7 +12,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[multi-agent-q-learning]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory Design and Radio Resource Management for UAV-Aided Vehicular Networks
@@ -29,36 +29,40 @@ Studies an Unmanned Aerial Base Station (UABS) assisting a terrestrial mmWave ma
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: One fixed-altitude unmanned aerial base station assists terrestrial millimeter-wave macro base stations serving mobile connected vehicles in an urban V2X sensing network. Vehicle motion follows SUMO traces, the UABS uses discrete directional actions, and per-slot radio-resource management assigns beam and time-frequency resources to service windows.
+**Scenario**: One unmanned aerial base station (UABS) with a wireless backhaul to a macro base station (MBS) assists terrestrial MBSs serving connected vehicles in an urban V2X network. Vehicle motion follows SUMO traces, vehicles and the UABS attach to the MBS with the strongest SINR, and each MBS runs radio-resource management (RRM) over a shared pool of resource units (RUs) per time step.
 
-**Problem & objective**: The joint control loop maximizes the number of satisfied vehicle service windows, $\max\sum_g y_g$, through an ILP resource-allocation block while the 3DQN trajectory policy maximizes the resulting RRM reward.
+**Problem & objective**: At each time step and each MBS $m$, the ILP $\mathcal P$ (4a)-(4w) maximizes $\sum_{g\in\mathcal G_m}p_g\psi_g$, the number of served vehicles weighted by their continuous-service counters $p_g$; a vehicle is satisfied when served for at least $\hat N_s$ of $N_w$ intervals. The UABS trajectory is learned separately with a Double Dueling DQN (3DQN) whose reward comes from the RRM outcome.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UABS movement | $a_t$ | discrete, direction or hover | Trajectory action at slot $t$ |
-| Resource assignment | $x_{g,b,s}$ | binary | Whether vehicle $g$ receives beam/resource slot $s$ from BS/UABS $b$ |
-| Service satisfaction | $y_g$ | binary | Whether vehicle $g$'s service window is met |
-| Beam and time allocation | $r_{g,b,s}$ | continuous/binary ILP variables | Radio resource assigned to vehicle $g$ |
+| Served vehicle | $\psi_g$ | binary | Vehicle $g$ uploads its demand $D_g$ in the interval |
+| Link assignment | $\lambda_{g,m},\lambda_{g,u},\lambda_{u,m}$ | binary | Vehicle served by the MBS or the UABS; UABS backhaul assigned by MBS $m$ |
+| Active beam | $e_j$ | binary | Beam $j$ of the UABS is used |
+| Interference indicators | $\iota_{g,m},\iota_{g,u},\iota_{u,m}^{(b)},\iota_{m,u}^{(b)}$ | binary | Whether a link suffers effective interference |
+| Resource units | $w_{g,m},w_{g,u},w_{u,m}$ | integer | RUs given to access links and to the UABS backhaul |
+| UABS movement | $a_t$ | discrete direction and speed | 3DQN trajectory action |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each resource slot and beam serves only feasible vehicle assignments |
-| C2 | A satisfied vehicle receives its required data rate over its service window |
-| C3 | UABS trajectory actions stay in the urban flight region and preserve backhaul connectivity |
-| C4 | SINR and interference conditions determine feasible MBS/UABS assignments |
-| C5 | Vehicle service windows and per-slot resource capacities are respected |
+| 4b-4c | Assigned RUs carry each served vehicle's demand $D_g$, with (4b) applying when interference is present |
+| 4d-4e | RUs used at the MBS and at the UABS do not exceed $W_m^*$ and $W_u^*$ |
+| 4f | UABS access traffic fits the backhaul capacity scaled by the backhaul factor $F_B$ |
+| 4g-4h | At most $N_{\mathrm{beam}}$ beams are active, and RUs are used only on active beams |
+| 4i-4n | Interference indicators between the MBS and UABS links |
+| 4o | Each vehicle is served by at most one of the MBS and the UABS |
+| 4p-4w | RU allocations require the corresponding link, and variable domains |
 
-**Algorithm**: Observe UABS/vehicle positions and link strengths → execute a 3DQN movement action → solve the per-slot ILP for beam/time-frequency assignments and satisfied users → feed the ILP service outcome into the trajectory reward → update the deep Q policy and repeat.
+**Algorithm**: Observe UABS and vehicle positions and link strengths → execute a 3DQN movement action → solve the per-slot ILP for RU and beam assignments and served vehicles → feed the RRM outcome into the trajectory reward → update the Q-network and repeat.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Spampinato et al. [x] studied joint trajectory design and radio resource management for an unmanned aerial base station assisting connected vehicles in urban V2X networks. They formulated an integer linear resource-allocation problem that maximizes the number of satisfied vehicle service windows and coupled it to a trajectory policy. A Double Dueling Deep Q-Network learns UABS movement from vehicle positions and signal observations, while the ILP supplies the per-slot resource-management outcome as the reward. The evaluation uses SUMO mobility for Bologna and compares coverage-limited and capacity-limited scenarios. Simulations report a higher satisfied-vehicle percentage than random-trajectory, fixed-hover, and MBS-only baselines in both scenarios.
+Spampinato et al. [x] studied joint trajectory design and radio resource management for an unmanned aerial base station assisting connected vehicles in urban V2X networks. They formulated an integer linear resource-allocation problem that maximizes the number of satisfied vehicle service windows and coupled it to a trajectory policy. A Double Dueling Deep Q-Network learns UABS movement from vehicle positions and signal observations, while the ILP supplies the per-slot resource-management outcome as the reward. The evaluation uses SUMO mobility for Bologna and compares coverage-limited and capacity-limited scenarios. The learned policy outperforms a greedy Dummy UABS after about 10 evaluation episodes and is also compared with an Oracle UABS and a prior DRL agent; in both scenarios the UABS raises the percentage of satisfied vehicles over the network without a UABS.
 
 ## Problem framing
 

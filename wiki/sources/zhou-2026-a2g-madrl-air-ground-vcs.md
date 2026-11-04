@@ -20,7 +20,7 @@ related:
   - "[[gao-2023-uav-mcs-uma]]"
   - "[[chi-harold-liu]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # AoI and Latency-Aware Air-Ground Vehicular Crowdsensing by Sequential Multi-Agent Deep Reinforcement Learning
@@ -54,11 +54,11 @@ Introduces A2G-MADRL for air-ground vehicular crowdsensing with UAV-UGV pairs. T
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each agent uses at most $C$ channels, $\sum_{c,p}\chi_{t,c}^{n,p}\leq C$ |
-| C2 | Each channel of one agent is assigned to at most one PoI, $\sum_p\chi_{t,c}^{n,p}\leq1$ |
-| C3 | UAV travel is bounded by $l_{\max}^u$, and UGV moves remain on one-slot reachable road nodes |
-| C4 | NOMA rates and relay transmissions follow the paired-channel SINR model |
-| C5 | Energy depletion is penalized and unavailable actions are removed by action masks |
+| Channel budget (Sec. III) | Each agent uses at most $C$ channels, $\sum_{c,p}\chi_{t,c}^{n,p}\leq C$ |
+| One PoI per channel (Sec. III) | Each channel of one agent is assigned to at most one PoI, $\sum_p\chi_{t,c}^{n,p}\leq1$ |
+| Action space | UAV travel is bounded by $l_{\max}^u$, and UGV moves remain on one-slot reachable road nodes |
+| (5)-(8) | NOMA rates and relay transmissions follow the paired-channel SINR model |
+| Reward (21) and masks | Energy depletion is penalized and unavailable actions are removed by action masks |
 
 **Algorithm**: Build the dynamic UAV-UGV-PoI graph → project heterogeneous features and compute interaction-aware HVGCN embeddings → choose a dynamic agent order → generate masked actions autoregressively with DOMPG → update the shared policy using sequential weighted importance factors.
 

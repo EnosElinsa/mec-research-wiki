@@ -16,7 +16,7 @@ related:
   - "[[xiaotian-zhou]]"
   - "[[haixia-zhang]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory Design and Resource Allocation for Energy-Efficient Multi-UAV Assisted Vehicular Networks: An IKPP Approach
@@ -33,28 +33,33 @@ Multiple fixed-altitude UAV base stations collect OFDMA uplink traffic from movi
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple fixed-altitude UAV base stations collect OFDMA uplink traffic from road-constrained moving vehicles. Subcarriers are orthogonal within a UAV and reused across UAVs, creating co-channel interference, while UAV propulsion power depends on flight speed.
+**Scenario**: Multiple fixed-altitude UAV base stations collect OFDMA uplink traffic from road-constrained moving vehicles. Sub-carriers are orthogonal within a UAV and reused across UAVs, creating co-channel interference, while UAV propulsion power depends on flight speed. In the paper's notation $j$ indexes UAVs and $m$ indexes vehicles.
 
-**Problem & objective**: A constrained fractional mixed-action problem maximizes horizon energy efficiency, $\max \sum_t\frac{\sum_k R_k(t)}{\sum_m P_m^{\mathrm{fly}}(t)}$, through UAV motion, association, vehicle power, and carrier assignment.
+**Problem & objective**: Problem (21) is a mixed-integer non-convex fractional program that maximizes long-term energy efficiency, $\max_{\{\boldsymbol\Lambda,\boldsymbol\Omega,\mathbf P,\mathbf Q\}}\sum_n\frac{\sum_m\sum_j\sum_c\beta_{j,m}[n]\omega_m^c[n]R_{j,m}^c[n]}{\sum_jP_j^{fl}[n]}$, the per-slot sum rate divided by UAV propulsion power, summed over slots.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV speed and heading | $v_m(t),\theta_m(t)$ | continuous, bounded | Trajectory-control action of UAV $m$ |
-| Vehicle association | $x_{k,m}(t)$ | binary | UAV serving vehicle $k$ |
-| Vehicle transmit power | $p_k(t)$ | continuous, bounded | Uplink power of vehicle $k$ |
-| Subcarrier assignment | $a_{k,n}(t)$ | binary | Carrier $n$ allocated to vehicle $k$ |
+| Vehicle-UAV association | $\beta_{j,m}[n]\in\boldsymbol\Lambda$ | binary | Vehicle $m$ is served by UAV $j$ |
+| Sub-carrier assignment | $\omega_m^c[n]\in\boldsymbol\Omega$ | binary | Vehicle $m$ uses sub-carrier $c$ |
+| Vehicle transmit power | $p_m[n]\in\mathbf P$ | continuous, $[0,P_m^{max}]$ | Uplink power of vehicle $m$ |
+| UAV trajectory | $\mathbf q_j[n]\in\mathbf Q$ | continuous 2-D position | Position of UAV $j$, updated by its velocity |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each vehicle associates with one UAV and receives one feasible carrier |
-| C2 | A UAV serves no more vehicles than its available subcarriers |
-| C3 | Vehicle rates satisfy QoS and powers remain within their limits |
-| C4 | UAVs remain inside the service region, meet endpoint conditions, and obey speed limits |
-| C5 | Pairwise UAV separation remains above the collision threshold |
+| QoS | Each vehicle's rate is at least $R_m^{QoS}$ |
+| 21b | $0\le p_m[n]\le P_m^{max}$ |
+| 21c | Each vehicle associates with at most one UAV |
+| 21e-21f | Each vehicle uses at most one sub-carrier, and each sub-carrier at a UAV serves at most one vehicle; association and sub-carrier variables are binary |
+| 21g | UAVs stay inside the $s_x\times s_y$ service region |
+| 21h, 21k | Per-slot UAV displacement is at most $D_{\max}$, with $\mathbf q_j[n]=\mathbf q_j[n-1]+\mathbf v_j[n]\tau_t$ |
+| 21j | UAV separation is at least $S_{\min}$ |
+| 21l-21m | Vehicle speed bounds and road-following movement model |
+
+The paper's text numbers these constraints one step off from the parsed tags; the IDs above follow the parsed equation tags.
 
 **Algorithm**: Let PPO-clip output motion, power, and carrier scores → associate each vehicle with its nearest proposed UAV → move excess vehicles to other UAVs until carrier capacities hold → reconstruct binary carrier assignments from the scores → apply QoS, boundary, and collision penalties and update the policy.
 
@@ -62,7 +67,7 @@ Multiple fixed-altitude UAV base stations collect OFDMA uplink traffic from movi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied joint trajectory design and resource allocation for energy-efficient multi-UAV vehicular networks. They formulated horizon throughput-to-propulsion-power maximization over UAV speed and heading, vehicle association, uplink power, and OFDMA carrier assignment under QoS, capacity, boundary, endpoint, and collision constraints. IKPP uses PPO-clip to generate continuous motion, power, and carrier scores. A nearest-UAV load-balancing procedure enforces service capacity, and discrete action reconstruction converts the carrier scores into assignments. Simulations report higher reward and energy efficiency than the evaluated PPO, DDPG, static, and ablation baselines, with policy inference below the simulated slot duration.
+Wang et al. [x] studied joint trajectory design and resource allocation for energy-efficient multi-UAV vehicular networks. They formulated horizon throughput-to-propulsion-power maximization over UAV speed and heading, vehicle association, uplink power, and OFDMA carrier assignment under QoS, power, association, sub-carrier, boundary, movement, and collision constraints. IKPP uses PPO-clip to generate continuous motion, power, and carrier scores. A nearest-UAV load-balancing procedure enforces service capacity, and discrete action reconstruction converts the carrier scores into assignments. Simulations report the highest reward and system energy efficiency against schemes that optimize only part of the variables and against a variant without the action-space reduction of Algorithm 1, with per-slot execution time below 0.005 s.
 
 ## Problem and system model
 

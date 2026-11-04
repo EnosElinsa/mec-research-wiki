@@ -14,7 +14,7 @@ related:
   - "[[vehicular-mec]]"
   - "[[age-of-information]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # TOM: Joint Trajectory, Offloading and Migration Optimization in Stateful Service-Oriented UAV-Enabled VEC System
@@ -31,29 +31,29 @@ TOM jointly controls UAV trajectories, vehicle offloading, and parallel stateful
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAV edge servers follow moving vehicles that generate partially offloadable tasks and depend on stateful services whose runtime context must migrate when hosting changes.
+**Scenario**: Multiple UAV edge servers follow moving vehicles that generate partially offloadable tasks and depend on stateful services whose virtual-machine memory must migrate when hosting changes; parallel migration is limited by inter-UAV distance and bandwidth.
 
-**Problem & objective**: Jointly minimize the dynamic objective vector $\mathbf F=(F_{\mathrm{flight}},F_{\mathrm{energy}},F_{\mathrm{migration}},F_{\mathrm{AoI}})$ over UAV motion, offloading ratios, and service migration plans.
+**Problem & objective**: Problem $\mathbb P0$ (16) is a dynamic multi-objective problem, $\min_{L_j,\theta_i,PSG}\{FC,EC,AoI,MT\}$, minimizing UAV flight cost, vehicle energy consumption, age of information, and service migration time.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 | --- | --- | --- | --- |
-| UAV trajectory | $\mathbf q_k(t)$ | continuous position | Position of UAV $k$ over time |
-| Offloading ratio | $\theta_i(t)$ | continuous, $[0,1]$ | Fraction of vehicle $i$'s task offloaded |
-| Service host | $h_i(t)$ | discrete UAV index | UAV hosting vehicle $i$'s stateful service |
-| Migration plan | $\pi_t$ | ordering / grouping | Parallel service-transfer schedule |
+| UAV trajectory | $L_j$ | continuous positions | Trajectory decision of UAV $j$ |
+| Offloading ratio | $\theta_i$ | continuous, $[0,1]$ | Fraction of vehicle $i$'s task offloaded |
+| Parallel service groups | $PSG$ | grouping / ordering | Service-migration decision that groups compatible migrations in parallel |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Mobility | UAV positions and displacement obey the modeled flight limits. |
-| Offloading | Each ratio satisfies $0\leq\theta_i(t)\leq1$. |
-| Capacity | Computation and communication loads remain within UAV resources. |
-| State continuity | Hosting changes incur live-migration time and preserve stateful service continuity. |
+| (17) | $\theta_i\in[0,1]$ |
+| (18)-(19) | Storage and computational resources of each UAV are not exceeded |
+| (20) | Local plus edge delay is within the task's maximum admissible delay $\psi_i$ |
+| (21) | Per-slot UAV travel distance is at most $\Delta t\times\nu^{uav}$ |
+| (22) | Each vehicle is within the service range of its nearest UAV |
 
-**Algorithm**: Initialize solutions through random, inherited, and K-means seeds; evolve linked optimization tasks through dynamic multifactorial evolution and custom mutation; schedule compatible service migrations in parallel; and trigger environmental adaptation when vehicle and network state change.
+**Algorithm**: Initialize solutions through random, Circle-map, and K-means seeds; evolve linked optimization tasks through dynamic multifactorial evolution and custom mutation; schedule compatible service migrations in parallel; and trigger environmental adaptation when vehicle and network state change.
 
 ## Related Work Paragraph
 

@@ -17,7 +17,7 @@ related:
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # BARGAIN-MATCH: A Game Theoretical Approach for Resource Allocation and Task Offloading in Vehicular Edge Computing Networks
@@ -34,36 +34,38 @@ A hierarchical, game-theoretic scheme for joint resource allocation and task off
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A three-tier vehicular edge network contains vehicles, VEC servers, and a cloud, with both horizontal peer collaboration and vertical cross-layer offloading. Heterogeneous tasks and server capacities require joint resource pricing, intra-server allocation, and inter-server task matching.
+**Scenario**: A three-tier vehicular edge network contains vehicles, VEC servers, and a cloud, with both horizontal peer collaboration and vertical cross-layer offloading. Vehicles move between server coverage areas, so offloading must finish within sojourn times, and servers sell computation resources at a price.
 
-**Problem & objective**: JRATOP, an NP-hard game-and-matching optimization, maximizes system utility, $\max\sum_i U_i(\mathbf r_i,\mathbf p_i,\mathbf o_i)$, over resource amounts/prices and task-offloading matches.
+**Problem & objective**: JRATOP, problem P (23), is NP-hard and maximizes social welfare over the horizon, $\max_{S_t,S_c}\sum_tSW(t)$, where $SW(t)$ (22) adds vehicle utilities $U_i^a(t)$ and server utilities $U_j^i(t)$; $S_t$ is the offloading strategy and $S_c$ the resource allocation and pricing strategy.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Resource allocation | $r_{i,s}$ | continuous, capacity-bounded | Resource amount assigned to vehicle $i$ by server $s$ |
-| Resource price | $p_{i,s}$ | continuous, nonnegative | Incentive price for traded server resource |
-| Offloading match | $o_{i,s}$ | binary matching | Vehicle-task assignment to a peer, edge, or cloud server |
-| Server collaboration | $m_{s,s'}$ | binary/ordered match | Horizontal or vertical server collaboration relation |
+| Offloading strategy | $s_i^a(t)\in S_t$ | binary | Vehicle $i$ executes locally ($a=0$), at an edge server, or at the cloud |
+| Computation allocation | $f_{j,i}(t)$ in $S_c$ | continuous, bounded by $f_j^{\max}$ | CPU frequency that server $j$ gives vehicle $i$ |
+| Resource price | $c_{j,i}(t)$ in $S_c$ | continuous, nonnegative | Unit price server $j$ charges vehicle $i$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Resource allocations do not exceed each vehicle or server capacity |
-| C2 | Each task is assigned to one feasible execution server or collaboration path |
-| C3 | Prices and bargaining utilities remain individually rational |
-| C4 | Matching respects server load, task requirements, and cross-layer connectivity |
-| C5 | The resulting allocation is stable and satisfies the weak Pareto condition |
+| C1-C2 | Offloading indicators are binary and each vehicle selects at most one destination |
+| C3 | Task-generation indicator $p_i^{\mathrm{gen}}(t)\in\{0,1\}$ |
+| C4 | Completion time is within $T_i^{\max}(t)$ |
+| C5-C6 | Transmission and server-handover times fit within the vehicle's sojourn time in the current and arrival coverage |
+| C7 | Vehicle speed lies in $[v^{\min},v^{\max}]$ |
+| C8-C9 | Server CPU capacity $f_j^{\max}$ and core count $N_j^{\mathrm{core}}$ are not exceeded |
+| C10-C11 | Vehicle local energy and server energy stay within their limits |
+| C12 | A vehicle's payment stays within its budget $C_i^{\max}$ |
 
-**Algorithm**: Solve intra-server trading with a bargaining game → compute stable resource prices and allocations → construct horizontal/vertical preference lists → run matching for inter-server offloading → iterate until a stable, weakly Pareto allocation is obtained.
+**Algorithm**: Solve intra-server trading with a bargaining game to obtain closed-form prices and CPU allocations → construct horizontal and vertical preference lists → run matching for inter-server offloading → iterate until a stable, weakly Pareto-optimal allocation is obtained.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] studied joint resource allocation and task offloading in a three-tier vehicular edge-computing network. They formulated JRATOP to maximize system utility over intra-server resource amounts and prices and inter-server horizontal and vertical offloading matches. BARGAIN-MATCH uses a bargaining game for intra-server trading and a matching-based collaboration procedure for inter-server offloading. The paper proves stability, weak Pareto optimality, and polynomial complexity of the resulting scheme. Simulations report higher system, vehicle, and server utilities and improved task-processing rate and delay than the conventional approaches, especially under heavy workloads.
+Sun et al. [x] studied joint resource allocation and task offloading in a three-tier vehicular edge-computing network. They formulated JRATOP to maximize social welfare, the sum of vehicle and server utilities, over intra-server resource amounts and prices and inter-server horizontal and vertical offloading matches. BARGAIN-MATCH uses a bargaining game for intra-server trading and a matching-based collaboration procedure for inter-server offloading. The paper proves stability, weak Pareto optimality, and polynomial complexity of the resulting scheme. Simulations report higher system, vehicle, and server utilities and improved task-processing rate and delay than the conventional approaches, especially under heavy workloads.
 
 ## Problem framing
 

@@ -22,7 +22,7 @@ related:
   - "[[michailidis-2024-secure-ris-uav-mec-iot]]"
   - "[[yunfei-chen]]"
 created: 2026-06-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Caching UAV Assisted Secure Transmission in Hyper-Dense Networks Based on Interference Alignment
@@ -39,30 +39,29 @@ A **caching-UAV-assisted secure transmission** scheme for **hyper-dense small-ce
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Cache-equipped single-antenna UAVs replace selected SBSs in a hyper-dense small-cell network and deliver cached video enhancement layers. Multi-antenna active SBSs cooperatively align interference, while idle replaced SBSs transmit friendly jamming toward a passive eavesdropper.
+**Scenario**: In a hyper-dense small-cell network, $A$ cache-equipped single-antenna UAVs replace SBSs and deliver cached video enhancement layers to users $i=1,\ldots,A$, while $K-A$ multi-antenna active SBSs serve users $l=A+1,\ldots,K$ with $d$ streams each. The $A$ idle replaced SBSs transmit friendly jamming toward a passive eavesdropper.
 
-**Problem & objective**: A secure transceiver design minimizes legitimate interference leakage while degrading the eavesdropper, $\min \sum_k\operatorname{tr}(\mathbf U_k^H\mathbf Q_k^{\mathrm{int}}\mathbf U_k)$, subject to IA, zero-forcing, rank, and power feasibility.
+**Problem & objective**: The paper states no formal optimization program. The design goal is an interference-alignment (IA) transceiver that removes all inter-user interference and all jamming at legitimate users, so that every legitimate user sees only its desired signal, for example $\mathbf U^{[l]\dagger}\mathbf H^{[lk]}\mathbf V^{[k]}=\mathbf 0$ for $k\neq l$, and the sum rate (12) is preserved while the jamming degrades the eavesdropper; feasibility conditions on antenna and stream numbers are derived in Section IV.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| SBS precoder | $\mathbf V_k$ | complex matrix | Data-stream beamformer of active SBS $k$ |
-| User decoder | $\mathbf U_k$ | complex matrix | Receive subspace for legitimate user $k$ |
-| Jammer precoder | $\mathbf W_j$ | complex/unitary matrix | Friendly-jamming beam of idle SBS $j$ |
-| UAV/SBS service role | $x_k$ | binary/fixed selection | Whether cache UAV replaces SBS $k$ |
+| SBS precoder | $\mathbf V^{[l]}$ | complex $M\times d$, $\mathbf V^{[l]\dagger}\mathbf V^{[l]}=\mathbf I_d$ | Precoding matrix of active SBS $l$ |
+| UAV-user decoder | $\mathbf u^{[i]}$ | complex vector | Receive vector of the user served by UAV $i$ |
+| SBS-user decoder | $\mathbf U^{[l]}$ | complex matrix | Receive matrix of the user served by SBS $l$ |
+| Jamming precoder | $\boldsymbol\Gamma^{[j]}$ | complex matrix, $d_{jam}$ streams | Friendly-jamming precoder of idle SBS $j$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Interfering data streams align outside each desired receive subspace |
-| C2 | Desired effective channels retain the required rank |
-| C3 | Friendly jamming is zero-forced at legitimate receivers |
-| C4 | Active and idle SBS precoders satisfy power and unitary conditions |
-| C5 | IA antenna/stream dimensions meet the derived feasibility inequalities |
+| (4)-(7) | Interference from other UAVs and SBSs is aligned to zero after decoding at every UAV-served and SBS-served user |
+| (8)-(9) | Desired signals survive: $\mathbf u^{[i]\dagger}\mathbf h^{[ii]}\neq0$ and $\operatorname{rank}(\mathbf U^{[l]\dagger}\mathbf H^{[ll]}\mathbf V^{[l]})=d$ |
+| (15)-(16) | Jamming from idle SBSs is zero-forced at every legitimate user |
+| Section IV | Antenna and stream numbers satisfy the derived IA feasibility conditions (Theorems 1 and 2) |
 
-**Algorithm**: Select cache-UAV/SBS roles → initialize active-SBS precoders and user decoders → alternately minimize interference leakage in transmit and receive subspaces → project idle-SBS jamming into the aligned interference subspace → repeat distributed updates until IA and legitimate zero-forcing conditions hold.
+**Algorithm**: Algorithm 1 starts from arbitrary orthonormal precoders → computes interference covariance matrices (17)-(18) and takes decoders as eigenvectors of the smallest eigenvalues (19)-(20) → reverses the link direction and updates precoders (21)-(22) → repeats until convergence → computes the jamming precoders from the jamming covariance (23)-(24) so jamming lies in the aligned interference subspace.
 
 ## Related Work Paragraph
 

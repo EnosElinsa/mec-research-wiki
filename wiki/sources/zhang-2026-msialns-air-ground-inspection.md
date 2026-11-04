@@ -15,7 +15,7 @@ related:
   - "[[jia-2026-ufsp-rail-inspection]]"
   - "[[guo-2026-aot-uav-inspection-offloading]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # M-SIALNS for Air-Ground Collaborative Inspection: Spatio-Temporal Conflict Mitigation in Complex Bi-Layer Networks
@@ -51,12 +51,14 @@ M-SIALNS schedules multiple vehicles and UAVs on coupled road and aerial inspect
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every aerial inspection arc is covered at least once, $\sum_{\nu_k}\sum_x u_{a_i\to a_j}^{x,\nu_k}\ge1$ |
-| C2 | Vehicle routes obey depot departure and return, node visitation, flow balance, and MTZ subtour elimination |
-| C3 | Spatio-temporal node locks prevent overlapping vehicle occupancy at the same ground node |
-| C4 | Launch, arrival, recovery, parking, and cross-vehicle docking times remain synchronized |
-| C5 | UAV sorties stay within communication range and endurance, including launch, inspection, and recovery flight time |
-| C6 | Vehicle carrying capacity, UAV ownership transitions, aerial flow balance, and task-chain continuity remain feasible |
+| (2) | Every aerial inspection arc is covered at least once |
+| (3)-(7) | Vehicle depot departure and return, node visitation, flow balance, and MTZ subtour elimination |
+| (8)-(10) | Spatio-temporal node locks: vehicles' time windows at the same ground node do not overlap |
+| (11)-(16) | Vehicle time windows, departure after launch and recovery, early arrival for recovery, and parking duration |
+| (17)-(24) | Launch and recovery balance, cross-vehicle recovery logic, and synchronized UAV arrival and departure times |
+| (25)-(30) | UAV task timing over multi-task sorties, launch and recovery within communication range $R_{\mathrm{comm}}$, and total sortie time within endurance |
+| (31)-(37) | UAV-vehicle affiliation and the number of UAVs carried at each node |
+| (38)-(41) | Aerial flow balance and task-chain continuity |
 
 **Algorithm**: Build the bi-layer graph and cluster aerial tasks around ground nodes → construct low-congestion vehicle routes and initial UAV task chains → adaptively select RANDOM, SIM, or WORST destruction → propagate removals through dependent task chains → repair with GREEDY, REGRET, or NOISE insertion → accept and reweight operators until the stopping criterion.
 

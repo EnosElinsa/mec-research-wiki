@@ -41,36 +41,36 @@ The optimization problem: maximize **reliability** (perception accuracy / covera
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A mobile UAV acts as an airborne cooperative-perception fusion server for moving vehicular users. In each cycle it approaches requesting vehicles, collects their observations of non-connected objects, fuses the data, and broadcasts a unified result over dynamic air-to-ground links.
+**Scenario**: A mobile UAV acts as an airborne cooperative-perception fusion server for moving vehicular users (VUs). In each time slot it responds to requesting VUs, collects their local observations of non-connected objects, fuses the data, and returns compressed fusion results over dynamic air-to-ground links.
 
-**Problem & objective**: A dynamic constrained multi-objective problem maximizes perception reliability and minimizes fusion latency, $\max R_{\mathrm{fusion}}(t),\;\min T_{\mathrm{fusion}}(t)$, as vehicles, requests, and visible objects change.
+**Problem & objective**: The dynamic constrained multi-objective problem (28) minimizes $\{-G_1(\mathbf x(n)),G_2(\mathbf x(n))\}$, maximizing average fusion reliability $G_1$ (26) and minimizing average VU waiting time $G_2$ (27), over the individual $\mathbf x(n)=(\mathbf q^{\mathrm u}(n),\boldsymbol\beta(n),\boldsymbol\alpha(n),\boldsymbol h(n),\boldsymbol B(n))$ (25).
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV position | $\mathbf q(t)$ | continuous 3-D position | Fusion-server deployment in cycle $t$ |
-| Vehicle participation | $x_i(t)$ | binary | Whether vehicle $i$ uploads observations in the cycle |
-| Observation allocation | $y_{i,o}(t)$ | binary | Vehicle observation of object $o$ selected for fusion |
-| Radio/fusion resource | $r_i(t)$ | continuous, nonnegative | Communication or processing share assigned to vehicle $i$ |
+| UAV position | $\mathbf q^{\mathrm u}(n)$ | continuous 3-D position | UAV location in slot $n$ |
+| Request response | $\beta_m(n)$ | binary | UAV responds to VU $m$'s request |
+| Data collection | $\alpha_m(n)$ | binary | VU $m$ uploads local observation data |
+| Compression degree | $h_m(n)$ | continuous | Compression of the fusion result returned to VU $m$ |
+| Bandwidth allocation | $B_m(n)$ | continuous, nonnegative | Uplink bandwidth assigned to VU $m$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The UAV remains within its flight and service region |
-| C2 | Participating vehicles are covered by feasible air-to-ground links |
-| C3 | Selected observations fit uplink and fusion-resource capacity |
-| C4 | Each requested object receives sufficient source coverage for reliable fusion |
-| C5 | Cycle latency includes collection, fusion, and result broadcast |
+| C1-C4 | UAV kinematics: speed at most $v^{\max}$, altitude within $[h^{\min},h^{\max}]$, and turning angle at most $\theta^{\max}$ |
+| C5-C6 | The UAV responds only to requesting VUs and collects data from every VU it responds to |
+| C7-C8 | Bandwidth goes only to uploading VUs, and total bandwidth is at most $B^{\max}$ |
+| C9 | Each accepted request completes within one slot: $\beta_m(n)T_m^{\mathrm{wait}}(n)\le\delta$ |
 
-**Algorithm**: Update the current vehicle, request, and object sets → encode UAV position, participation, observation, and resource decisions → evolve a population under the current dynamic constraints → retain feasible nondominated reliability-latency solutions → transfer or warm-start the population at the next vehicular cycle.
+**Algorithm**: Extend constrained NSGA-II into a dynamic constrained multi-objective evolutionary algorithm (DCMOEA) → when a new slot changes the environment, regenerate decision variables in their dependency order (request response, then data collection, then bandwidth) with the cascaded dependency generation strategy → evolve and retain feasible nondominated reliability-latency solutions.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xie et al. [x] studied UAV-enabled multi-source data fusion for cooperative perception in vehicular networks. A UAV collects local observations of non-connected objects from moving vehicles, fuses the observations, and broadcasts a unified perception result. They formulated a dynamic constrained multi-objective problem that maximizes perception reliability and minimizes latency as vehicle positions, requests, and observable objects change. An evolutionary algorithm tracks the changing feasible Pareto set through population-based search. Simulations report better reliability-latency tradeoffs than the evaluated vehicle-to-vehicle and fixed-infrastructure fusion alternatives.
+Xie et al. [x] studied UAV-enabled multi-source data fusion for cooperative perception in vehicular networks. A UAV collects local observations of non-connected objects from moving vehicles, fuses the observations, and broadcasts a unified perception result. They formulated a dynamic constrained multi-objective problem that maximizes perception reliability and minimizes latency as vehicle positions, requests, and observable objects change. A DCMOEA built on constrained NSGA-II uses a cascaded dependency generation strategy to rebuild feasible decisions when the environment changes. Simulations report better reliability-latency tradeoff solutions than four baseline dynamic multi-objective algorithms.
 
 ## Why this is interesting
 

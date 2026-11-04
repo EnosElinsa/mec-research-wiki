@@ -19,7 +19,7 @@ related:
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
 modeling_card: required
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Collaborative Reinforcement Learning Based Unmanned Aerial Vehicle (UAV) Trajectory Design for 3D UAV Tracking
@@ -52,11 +52,11 @@ A **collaborative-RL trajectory + power design** for **real-time 3D localization
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Flight energy satisfies $E_{m,t}\le E_{\max}$ |
-| C2 | Passive-UAV reporting delay satisfies $T_{m,t}^{\mathrm B}(\mathbf u_{m,t})\le\xi$ |
-| C3 | Yaw and pitch actions remain within $[\varphi^{\min},\varphi^{\max}]$ and $[\phi^{\min},\phi^{\max}]$ |
-| C4 | Controlled-UAV distance to the target remains within $[L_{\min},L_{\max}]$ |
-| C5 | Pairwise controlled-UAV distance remains within $[L_{\min},L_{\max}]$ |
+| 13a | Flight energy satisfies $E_{m,t}\le E_{\max}$ |
+| 13b | Passive-UAV reporting delay satisfies $T_{m,t}^{\mathrm B}(\mathbf u_{m,t})\le\xi$ |
+| 13c-13d | Yaw and pitch actions remain within $[\varphi^{\min},\varphi^{\max}]$ and $[\phi^{\min},\phi^{\max}]$ |
+| 13e | Controlled-UAV distance to the target remains within $[L_{\min},L_{\max}]$ |
+| 13f | Pairwise controlled-UAV distance remains within $[L_{\min},L_{\max}]$ |
 
 **Algorithm**: ZD-RL, let each UAV select yaw, pitch, and where applicable power by epsilon-greedy actions, estimate individual return distributions with quantile Z functions, aggregate them at the BS into a global Z function and reward, and update each UAV's DNN.
 

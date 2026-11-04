@@ -1,5 +1,14 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 7 (vehicular MEC, second half)
+
+- Scope: 22 vehicular and air-ground source pages (21 required cards, 1 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch07-vehicular-b.json`. Grounded total: 177/699.
+- Card rewrites to the paper's own problem, symbols, and constraint IDs: [[qiu-2025-tom-stateful-vec]] (P0 (16), (17)-(22)), [[ren-2026-security-aware-vec-td3]] (problem (12), C1-C5 with BS or UAV targets), [[spampinato-2025-uabs-v2x-3dqn-ilp]] (ILP (4a)-(4w)), [[sun-2023-bargain-match-vec]] (social-welfare problem (23), C1-C12), [[sun-2024-mvtora-postdisaster-vfc]] (problem (22), 22a-22j), [[wang-2026-ikpp-vehicular-uav]] (problem (21), paper indexes j for UAVs and m for vehicles), [[xie-2026-uav-multisource-fusion]] (DCMOP (28) over trajectory, response, collection, compression, bandwidth), [[zang-2026-uav-ev-priority-cav-speed]] (SROC min-max (7)/(23)), [[zhao-2018-caching-uav-ia-secure]] (IA conditions (4)-(9) and jamming zero-forcing (15)-(16); no formal optimization program).
+- Constraint IDs relabeled to the paper's numbering: [[peng-2020-maddpg-uav-vehicular]] ((6)-(7)), [[qi-2026-drone-vehicle-mec-inspection]] (constraint groups of P1), [[samir-2021-uav-cell-free-coverage]] (C1-C9; weighted deployment-coverage objective), [[zhang-2025-mcma-task-migration]] ((13)-(17)), [[zhang-2026-msialns-air-ground-inspection]] ((2)-(41)), [[zhao-2026-uav-carrier-vcs]] (P1 has only the energy constraint), [[zhou-2026-a2g-madrl-air-ground-vcs]] (system-model and reward labels), [[zhu-2024-zdrl-uav-tracking]] (13a-13f).
+- Other card corrections: [[mao-2024-ntn-hierarchical-caching-cav]] (capacity expressions absent from the parse removed).
+- Related Work fixes: Spampinato benchmarks are Dummy, Oracle, and a prior DRL agent plus a no-UABS baseline; IKPP comparisons are partial-optimization schemes and an ablation, with execution below 0.005 s; Xie compares with four baseline algorithms; Samir objective is a weighted tradeoff; Sun 2023 maximizes social welfare; Ren includes the base station as an offloading target.
+- Gates: manifest 699/699 resolved, 0 evidence conflicts (2 orphan raw folders unchanged); source schema, frontmatter, link, index, process-ref audits clean; 58 tests pass.
+
 ## [2026-11-03] Grounded batch 6 (vehicular MEC, first half)
 
 - Scope: 23 vehicular and IoV source pages (21 required cards, 2 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch06-vehicular-a.json`. Grounded total: 155/699.

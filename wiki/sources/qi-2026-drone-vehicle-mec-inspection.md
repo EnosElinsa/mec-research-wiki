@@ -22,7 +22,7 @@ related:
   - "[[xumin-huang]]"
   - "[[shengli-xie]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative Drone-Vehicle Mobile Edge Computing for Low-Altitude Inspection
@@ -56,12 +56,10 @@ Proposes a drone-vehicle MEC (DVMEC) model for low-altitude inspection. A ground
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every collection node is visited exactly once by the vehicle/accompanying drone or the detached drone |
-| C2 | Vehicle-route and detached-sortie flow conservation produce connected feasible tours |
-| C3 | Departure, collection, rendezvous, offloading, and processing times are synchronized |
-| C4 | Detached-drone flight and computing energy remains within one battery per sortie |
-| C5 | Data processed by the drone and vehicle covers every node's collected workload |
-| C6 | Speed and route variables remain within their prescribed domains |
+| (1), (2), (6), (7), (19) | Flight and energy model: speed-dependent flight power and one battery per detached-drone sortie |
+| (21)-(24), (26)-(32), (34)-(36) | Route model: depot start and end, single visits by the vehicle team or the detached drone, flow conservation, and sortie launch and rendezvous rules |
+| (39), (43)-(52) | Transmission and computation model: time synchronization, in-flight processing, offloading, and coverage of every node's workload |
+| (53)-(62) | Variable bounds and the definition of $t_{\mathrm{end}}$ as the latest completion time |
 
 **Algorithm**: Initialize a feasible vehicle tour → insert and exchange detached-drone sorties while updating the vehicle route → approximate rotary-wing flight power by series expansion → optimize sortie speed from the relation between speed and in-flight processed data → accept mission-time-improving route/sortie moves → iterate to convergence.
 
