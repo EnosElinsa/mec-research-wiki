@@ -13,7 +13,7 @@ related:
   - "[[advantage-actor-critic]]"
   - "[[zhaolong-ning]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Mobility-Aware Seamless Service Migration and Resource Allocation in Multi-Edge IoV Systems
@@ -32,7 +32,7 @@ SR-CL separates long-term vehicle service migration from per-server computation 
 
 **Scenario**: Moving intelligent vehicles offload tasks to service instances on MEC servers colocated with base stations. Hosting can change across slots, and each target server divides finite computation among its associated vehicles.
 
-**Problem & objective**: Minimize long-term total QoS delay, $\min \sum_t\sum_u G_{u,t}$, where $G_{u,t}$ contains migration, wireless and backhaul communication, and computation delay.
+**Problem & objective**: P1 (9), an NP-hard MINLP, minimizes long-term system delay, $\min_{\mathcal X_t,\mathcal E_t}\sum_{t=0}^{T}\mathcal G(\mathcal X_t,\mathcal E_t)$, where (8) gives $\mathcal G=\sum_u(MT_{u,t}+HT_{u,t}+CT_{u,t})$: migration delay, wireless plus backhaul communication delay, and computation delay.
 
 **Decision variables**:
 
@@ -45,11 +45,9 @@ SR-CL separates long-term vehicle service migration from per-server computation 
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Host | Each vehicle selects one available MEC server in each slot. |
-| Allocation | $0\leq e_{u,t}\leq1$. |
-| Server capacity | Shares assigned at one server satisfy $\sum_u e_{u,t}\leq1$. |
-| Delay | $G_{u,t}$ includes state transfer, access, backhaul, and task execution induced by the decisions. |
-
+| C1 | Migration decision $x_{u,t}\in\{1,\ldots,M\}$: each vehicle's service instance runs on one edge node per slot |
+| C2 | Resource share $e_{u,t}\in[0,1]$ |
+| C3 | Shares at edge node $f_m$ satisfy $\sum_{u\in\mathcal{IV}_m}e_{u,t}\leq1$ |
 **Algorithm**: Decompose the mixed-integer nonlinear problem into migration and allocation subproblems. Train an asynchronous actor-critic with a delayed actor and one-step critic for migrations, then derive the optimal CPU shares of each selected server through convex optimization and KKT conditions.
 
 ## Related Work Paragraph

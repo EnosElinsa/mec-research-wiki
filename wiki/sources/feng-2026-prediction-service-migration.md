@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[jianping-yao]]"
 created: 2026-07-07
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Prediction-Assisted Multi-UAV Online Service Migration and Trajectory Control for MEC-Empowered Vehicular Networks
@@ -35,7 +35,7 @@ Combines short-term vehicle-trajectory prediction, [[lyapunov-optimization]], an
 
 **Scenario**: Multiple UAV MEC servers follow vehicular hotspots. Each user accesses a local UAV while its service instance may reside on another UAV, so delay includes migration, wireless communication, multi-hop UAV backhaul, and computation under uncertain future mobility.
 
-**Problem & objective**: Minimize long-term aggregate user delay, $\min_{\boldsymbol\pi,\mathbf x,\mathbf y}\lim_{N\to\infty}N^{-1}\sum_{n=1}^{N}\sum_u\ell_u[n]$, by jointly selecting service migrations and continuous UAV positions.
+**Problem & objective**: (P1) minimizes long-term aggregate user delay, $\min_{\boldsymbol\pi,\mathbf x,\mathbf y}\lim_{N\to\infty}N^{-1}\sum_{n=1}^{N}\sum_u\ell_u[n]$, by jointly selecting service migrations $\pi_u[n]$ and continuous UAV positions.
 
 **Decision variables**:
 
@@ -48,11 +48,11 @@ Combines short-term vehicle-trajectory prediction, [[lyapunov-optimization]], an
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Serving, local-access, and migration-destination UAV indices belong to the available set $\mathcal V$. |
-| C2 | Long-term average migration cost satisfies $\lim_{N\to\infty}N^{-1}\sum_n E[n]\leq E_{\mathrm{avg}}$. |
-| C3 | Any two UAVs remain at least safety distance $l_1$ apart. |
-| C4 | Each UAV's per-slot displacement satisfies $0\leq l_v[n]\leq l_2$. |
-| C5 | Slot delay includes migration, access, backhaul, and computation induced by the chosen host and UAV geometry. |
+| 14a | Serving, local-access, and migration-destination UAV indices belong to the available set $\mathcal V$. |
+| (14), budget | Long-term average migration cost satisfies $\lim_{N\to\infty}N^{-1}\sum_n E[n]\leq E_{\mathrm{avg}}$. |
+| (14), separation | Any two UAVs remain at least safety distance $l_1$ apart. |
+| (14), movement | Each UAV's per-slot displacement satisfies $0\leq l_v[n]\leq l_2$. |
+| Delay model | Not a constraint of (P1): slot delay includes migration, access, backhaul, and computation induced by the chosen host and UAV geometry. |
 
 **Algorithm**: Predict short-term vehicle positions with a stacked LSTM, maintain a virtual queue for migration cost, and use Lyapunov drift-plus-penalty to convert the time-average budget into a per-slot weighted cost. Cast the resulting mixed discrete-continuous control problem as a cooperative Markov game and train MADDPG with centralized critics and decentralized UAV actors for migration and movement actions.
 

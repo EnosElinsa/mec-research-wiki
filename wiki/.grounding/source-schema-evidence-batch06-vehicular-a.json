@@ -1,0 +1,1026 @@
+{
+  "entries": [
+    {
+      "slug": "ahmed-2026-noma-irs-vehicular",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "89-97",
+          "note": "P1 sum capacity (6)-(7), C1-C4"
+        },
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "92",
+          "note": "minimum SINR of individual vehicles"
+        },
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "105-168",
+          "note": "Taylor linearization (8)-(10), fixed-point IRS (11)-(12), power subproblem (13)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "5,51-53",
+          "note": "NOMA UAV, IRS, Rician/Rayleigh channels"
+        },
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "35,92",
+          "note": "joint power and phase design under min SINR"
+        },
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "7,35,124-168",
+          "note": "Taylor linearization and alternating fixed-point/convex steps"
+        },
+        {
+          "path": "raw/sources/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks/Efficient_Resource_Management_for_NOMA_Enabled_UAV_Communications_in_6G_IRS-Assisted_Vehicular_Networks.md",
+          "lines": "187,233,238",
+          "note": "2-3 iteration convergence; ~42 vs benchmark at 30 dBm; capacity grows with K"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2025-srcl-iov-service-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "120-132",
+          "note": "delay (8) and P1 (9) with C1-C3"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "65,99,115",
+          "note": "MT, HT, CT delay terms"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "154-177,310-357",
+          "note": "decomposition P2/P3, KKT allocation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "5,23,58",
+          "note": "multi-edge IoV migration and allocation"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "126-129",
+          "note": "long-term delay minimization over host and share"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "5,23-25,229",
+          "note": "delayed actor, one-step critic, convex allocation"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "5,27,415,459,542",
+          "note": "Rome taxi traces, Simu5G testbed, baselines"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems/Mobility-Aware_Seamless_Service_Migration_and_Resource_Allocation_in_Multi-Edge_IoV_Systems.md",
+          "lines": "562",
+          "note": "future work: energy, distributed, more datasets"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-hc-mappo-vehicle-twin-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "137-178",
+          "note": "problem (10a)-(10e)"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "305,342",
+          "note": "hybrid discrete/continuous actions; index mapping"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "176,346,366",
+          "note": "ACB-LSTM, A-star routing controller"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "137-178",
+          "note": "latency plus UAV energy under workload and assignment limits"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "342-400",
+          "note": "priority weight a_u, A-star routing"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "176,305,366",
+          "note": "ACB-LSTM and hierarchical MAPPO"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md",
+          "lines": "432,458",
+          "note": "45.54% vs Random-uav, 32.93% vs Greedy-uav; ACB-LSTM loss vs LSTM baselines"
+        }
+      ]
+    },
+    {
+      "slug": "chen-not-in-parse-uav-human-medical-delivery",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "85-87,182",
+          "note": "objective (1)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "89-177",
+          "note": "constraints (2)-(20)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "213-364",
+          "note": "MDP, attention encoder, decoders, REINFORCE"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "85-182",
+          "note": "cost plus lateness under routing constraints"
+        },
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "157-165",
+          "note": "UAV one-request rule"
+        },
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "252-364",
+          "note": "cooperative DRL architecture"
+        },
+        {
+          "path": "raw/sources/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service/Cooperative_Learning-Based_Joint_UAV_and_Human_Courier_Scheduling_for_Emergency_Medical_Delivery_Service.md",
+          "lines": "461,477-478",
+          "note": "H4U5-PDP160: 1262.60 vs OR-Tools 3320.10 (1259.33 s), Mixed-DRL 2785.22"
+        }
+      ]
+    },
+    {
+      "slug": "cui-2026-aris-v2x-icac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "180",
+          "note": "EEE fractional objective P"
+        },
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "184-214",
+          "note": "constraints C1-C9"
+        },
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "219-229",
+          "note": "variables and Dinkelbach reformulation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "35,219",
+          "note": "effective energy efficiency and joint variables"
+        },
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "221-229",
+          "note": "Dinkelbach, BCD subproblems"
+        },
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "431-437,447",
+          "note": "passive RIS, random ARIS, no ARIS, MRT baselines"
+        },
+        {
+          "path": "raw/sources/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization/ARIS-Aided_Multi-UAV-Enabled_V2X_Communication_and_Computation_Resource_Allocation_and_Performance_Optimization.md",
+          "lines": "454",
+          "note": "random alpha/beta convergence at ~4 iterations to 175.9"
+        }
+      ]
+    },
+    {
+      "slug": "dai-2024-uav-vehicular-offloading-lyapunov",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "208",
+          "note": "binary assistance s_k^t, one overloaded RSU per slot"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "211-325",
+          "note": "constraints (4), (5), (17), (20)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "353-357",
+          "note": "P1 (22)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "372-462",
+          "note": "Lyapunov P2 and Markov approximation P3/P4"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "208",
+          "note": "one overloaded RSU per slot"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "353-357,325",
+          "note": "delay objective and net energy budget"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "372-462",
+          "note": "deficit queue and Markov approximation"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md",
+          "lines": "717,833,626,930",
+          "note": "NUA baseline, V tradeoff, multi-UAV extension"
+        }
+      ]
+    },
+    {
+      "slug": "fatemidokht-2021-vru-vanet-routing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "169,193",
+          "note": "trust threshold rule"
+        },
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "225-245,271-279",
+          "note": "connectivity (8), dispersion (10)-(11), segment score (12)"
+        },
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "283-325",
+          "note": "ACO (13)-(15), Request/Reply-Ant, route pheromone (16), repair"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "5,19,37",
+          "note": "VRU with UAV-assisted ACO fallback"
+        },
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "169-279",
+          "note": "trusted CH, segment score"
+        },
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "283-325",
+          "note": "ACO pheromone routing and alternate-route repair"
+        },
+        {
+          "path": "raw/sources/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems/Efficient_and_Secure_Routing_Protocol_Based_on_Artificial_Intelligence_Algorithms_With_UAV-Assisted_for_Vehicular_Ad_Hoc_Networks_in_Intelligent_Transportation_Systems.md",
+          "lines": "393,404,417,436,442",
+          "note": "16% PDR, 13% delay, 40% overhead vs AODV; ~7% detection"
+        }
+      ]
+    },
+    {
+      "slug": "feng-2026-prediction-service-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md",
+          "lines": "152-180",
+          "note": "(P1) with constraints (14a)-(14e)"
+        },
+        {
+          "path": "raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md",
+          "lines": "137-149",
+          "note": "migration cost (11)-(13)"
+        },
+        {
+          "path": "raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md",
+          "lines": "201-231,248,27",
+          "note": "virtual queue, drift-plus-penalty, stacked LSTM, Markov game"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md",
+          "lines": "154-180",
+          "note": "objective and constraints"
+        },
+        {
+          "path": "raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md",
+          "lines": "5,27,201-231,248",
+          "note": "LSTM, Lyapunov, MADDPG"
+        },
+        {
+          "path": "raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md",
+          "lines": "460,464,469-494",
+          "note": "~2 m prediction error, ~220 iterations, lower latency than DQN, Greedy, MAPPO, no-LSTM"
+        }
+      ]
+    },
+    {
+      "slug": "gong-2023-edge-intelligence-its-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey.md",
+          "lines": "5",
+          "note": "survey with no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey.md",
+          "lines": "5,118",
+          "note": "survey scope and three-layer architecture"
+        },
+        {
+          "path": "raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey.md",
+          "lines": "5,17-21",
+          "note": "enablers and taxonomy incl. AD, UAV, rail, platforms, datasets"
+        },
+        {
+          "path": "raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey.md",
+          "lines": "11,17,136,386",
+          "note": "challenges, deployment levels, future directions"
+        }
+      ]
+    },
+    {
+      "slug": "hou-not-in-parse-avsi-mempo",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "106-112",
+          "note": "problem (11) with action-set and capacity constraints"
+        },
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "42,54,66,78",
+          "note": "delay and energy terms"
+        },
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "173-222,283",
+          "note": "AVSI latent z_t, MEMPO max-entropy and dynamic weights"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "15,116",
+          "note": "POMDP with incomplete information"
+        },
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "19,173-216,345",
+          "note": "AVSI encoder components"
+        },
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "19,26,222,283",
+          "note": "MEMPO entropy and dynamic weights"
+        },
+        {
+          "path": "raw/sources/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization/Service_Migration_Strategies_Based_on_Partially_Observable_and_Multi-Objective_Optimization.md",
+          "lines": "354-384,449",
+          "note": "SF and Rome traces, DRACM and VRMPO_AC baselines, near-optimal"
+        }
+      ]
+    },
+    {
+      "slug": "hu-2026-ertatd3-secure-caching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "341-346,385",
+          "note": "utility U and problem (29) over X, Y, Z, J"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "349-389",
+          "note": "constraints C1-C9"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "266",
+          "note": "EU_k UAV computing energy (19)"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "391,468-476",
+          "note": "ERTATD3 hierarchical reward and twin actors"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "31,96-104",
+          "note": "secure partial-result caching"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "343-385",
+          "note": "objective and variables"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "391,572",
+          "note": "twin actors and hierarchical reward"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md",
+          "lines": "615,657-678",
+          "note": "~1,800 episodes, lowest variance, lower delay than TD3/DDPG variants, lower leakage"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2024-fed-idcco-iov-caching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md",
+          "lines": "259-275",
+          "note": "problem (19) with C1-C4"
+        },
+        {
+          "path": "raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md",
+          "lines": "363,455",
+          "note": "TD3 critic update and federated training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md",
+          "lines": "259",
+          "note": "cache-miss plus delay objective"
+        },
+        {
+          "path": "raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md",
+          "lines": "263-275",
+          "note": "constraints"
+        },
+        {
+          "path": "raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md",
+          "lines": "455,559",
+          "note": "Fed-IDCCO local training; faster convergence than centralized"
+        },
+        {
+          "path": "raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md",
+          "lines": "644",
+          "note": "25.1/27.6/30.7/60.1% vs LRU/LFU/FIFO/Random"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-slim-eiv-uav-fleet",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "165-172",
+          "note": "SLIM+ objective, s.t. (2)-(8), (11)"
+        },
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "94-155",
+          "note": "constraints (2)-(11)"
+        },
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "78-80",
+          "note": "speed range and setup time"
+        },
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "183-247,324-471",
+          "note": "SLIM-DP, SLIM-AG, DP-AG"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "5,165-172",
+          "note": "joint EIV placement and fleet sizing"
+        },
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "175",
+          "note": "strongly NP-hard"
+        },
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "183-247,404,442",
+          "note": "outer DP and inner SLIM, approximation bound (23)"
+        },
+        {
+          "path": "raw/sources/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks/SLIM_Jointly_Optimizing_EIV_Placement_and_UAV_Fleet_Sizing_for_Deadline-Driven_Tasks.md",
+          "lines": "5,34,575,588",
+          "note": "21.3% fleet, up to 21.9% cost"
+        }
+      ]
+    },
+    {
+      "slug": "ji-2026-llm-iov-uav-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md",
+          "lines": "294-300",
+          "note": "energy and objective (36a)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md",
+          "lines": "304-343",
+          "note": "constraints (36b)-(36k)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md",
+          "lines": "5,489,493,712",
+          "note": "SOCP trajectory, DDPG plus LLM, LP ratios"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md",
+          "lines": "297-343",
+          "note": "joint variables, objective, constraints"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md",
+          "lines": "5,489,642,712,820",
+          "note": "SOCP, DDPG with event-triggered LLM, LP, reward decoupling"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md",
+          "lines": "727,762-766",
+          "note": "module-combination comparison, LLM improves success near capacity"
+        }
+      ]
+    },
+    {
+      "slug": "li-2025-energy-latency-uav-vec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "244-250",
+          "note": "cost (29) and problem (30)"
+        },
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "254-293",
+          "note": "constraints 30a-30f"
+        },
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "5,376,393-415",
+          "note": "MDP, Double-DQN target, BOA tuning"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "5,247",
+          "note": "HFL participant selection and resource allocation"
+        },
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "250-293",
+          "note": "weighted cost and constraints"
+        },
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "5,393-415",
+          "note": "AB-DDQN with AdamW and BOA"
+        },
+        {
+          "path": "raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md",
+          "lines": "434-438,532,567,612",
+          "note": "GTSDB and DDPG-CRA, DQN-USCRA, Q-US cost comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-secrecy-ee-uav-ris-iov",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "188-224",
+          "note": "P1 (15) objective and constraints"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "170",
+          "note": "SIC at the target vehicle"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "239-363",
+          "note": "Dinkelbach, CCCP subproblems (16)-(25)"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "25,55",
+          "note": "MM for phases and FA-DDPG trajectory"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "7,65,142",
+          "note": "untrusted half-duplex relay with UAV-RIS"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "188-221",
+          "note": "joint SEE problem"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "25,55",
+          "note": "Dinkelbach, CCCP, MM, FA-DDPG"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "49-53,110-126",
+          "note": "Doppler-aware channels and vehicle jamming"
+        },
+        {
+          "path": "raw/sources/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL/Enhancing_Secrecy_Energy_Efficiency_in_UAV-RIS_Assisted_Mobile_IoV_Networks_Through_DRL.md",
+          "lines": "25",
+          "note": "33.3% vs DDPG-only, 64.2% vs FA-based"
+        }
+      ]
+    },
+    {
+      "slug": "lim-2021-uav-iov-contract-matching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "141-150",
+          "note": "accuracy (8) and profit (9)"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "173-193",
+          "note": "IR (10), IC (11), problem (12)"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "163-171",
+          "note": "types and coverage-reward bundles"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "329-337,411,482",
+          "note": "IR/IC reduction, ironing, GS matching"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "5,25,58",
+          "note": "UAV-enabled IoV FL data collection"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "150,163-171",
+          "note": "profit and heterogeneous costs"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "329-337,411",
+          "note": "IR/IC reduction and bunching/ironing"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "68,482",
+          "note": "Gale-Shapley one-to-one matching"
+        },
+        {
+          "path": "raw/sources/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach/Towards_Federated_Learning_in_UAV-Enabled_Internet_of_Vehicles_A_Multi-Dimensional_Contract-Matching_Approach.md",
+          "lines": "509,568",
+          "note": "truthful reporting and assignments"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2021-edivert-mobile-crowdsensing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "73-109",
+          "note": "system model and three objectives"
+        },
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "113-175",
+          "note": "POMDP, action space, reward, Bellman formulation"
+        },
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "151-162",
+          "note": "energy model and penalty"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "5,17,77",
+          "note": "e-Divert scenario with obstacles and charging stations"
+        },
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "101-109,131,156-159",
+          "note": "continuous actions; data, Jain fairness, energy"
+        },
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "5,25-27,208-239",
+          "note": "CNN, LSTM N-step, prioritized replay, Ape-X"
+        },
+        {
+          "path": "raw/sources/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning/Distributed_and_Energy-Efficient_Mobile_Crowdsensing_with_Charging_Stations_by_Deep_Reinforcement_Learning.md",
+          "lines": "5,615",
+          "note": "3.62x and 2.36x over MADDPG"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2024-sagin-spherical-sg-connectivity",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis.md",
+          "lines": "5,25",
+          "note": "analytical connectivity model; no decision optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis.md",
+          "lines": "5,25",
+          "note": "spherical stochastic geometry for SAGIN uplink connectivity"
+        },
+        {
+          "path": "raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis.md",
+          "lines": "43,133-153",
+          "note": "PCP ground users, AV per cluster, link distribution regions"
+        },
+        {
+          "path": "raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis.md",
+          "lines": "151-153,492",
+          "note": "GU-AV, AV-satellite, GAS, G2S path metrics"
+        },
+        {
+          "path": "raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis.md",
+          "lines": "492,579,593",
+          "note": "analysis-simulation match and optimal path-selection ratio"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2025-mad2rl-dnn-vec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "273-319",
+          "note": "P1 (19)-(27) variables and constraints"
+        },
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "135-139,197,217",
+          "note": "partition semantics"
+        },
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "394-405,544-601",
+          "note": "P2 drift-plus-penalty, P3 KKT closed form"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "273-276",
+          "note": "long-term MINLP minimizing completion time with stability"
+        },
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "394-405",
+          "note": "Lyapunov per-slot decisions and MAD2RL"
+        },
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "405,569,601",
+          "note": "KKT closed-form RSU allocation"
+        },
+        {
+          "path": "raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md",
+          "lines": "57",
+          "note": "OpenStreetMap, SUMO, real DNN models"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2025-multimodal-semantic-iov-jamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "44",
+          "note": "system model, orthogonal channels, DeepSC-VQA"
+        },
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "157-165",
+          "note": "P1 (13) variables and constraints C1-C6"
+        },
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "167-226",
+          "note": "MDP and SC-MA-TD3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "5,25",
+          "note": "multi-modal semantic UAV MEC under jamming"
+        },
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "5,159-165",
+          "note": "accuracy-delay problem over trajectory, association, channels"
+        },
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "5,167-226",
+          "note": "MDP reformulation and SC-MA-TD3"
+        },
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "44",
+          "note": "image and text tasks processed on UAVs"
+        },
+        {
+          "path": "raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md",
+          "lines": "280,321",
+          "note": "SC-D4N, SC-MA-DDPG, fixed-action, non-semantic baselines"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-lyapunov-diffusion-uav-vehicular",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "189-219",
+          "note": "P1 (14) with C1-C8"
+        },
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "230-260",
+          "note": "virtual queue (15), drift-plus-penalty, P2 (20)"
+        },
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "287-392",
+          "note": "diffusion actor and action amender"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "189-219",
+          "note": "V2U sum rate with reliability, reuse, power, altitude, energy"
+        },
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "245-260",
+          "note": "per-slot Lyapunov decomposition"
+        },
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "287-392",
+          "note": "D3PG diffusion denoiser and amender"
+        },
+        {
+          "path": "raw/sources/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback/A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach_for_UAV-Assisted_Vehicular_Networks_With_Delayed_CSI_Feedback.md",
+          "lines": "491-493,509-522",
+          "note": "D3PG-WCSI, DDPG, H-DDQN comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "ma-2025-pdqn-vehicular-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "216-227",
+          "note": "utility (20) and problem (21)"
+        },
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "231-258",
+          "note": "constraints 21a-21g"
+        },
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "82,108",
+          "note": "wired RSUs, Rayleigh fading"
+        },
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "507,529",
+          "note": "P-DQN parameterized Q and multi-step target"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "5,82",
+          "note": "three-tier vehicular MEC"
+        },
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "216-258",
+          "note": "utility maximization over destination, resources, power"
+        },
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "224,507",
+          "note": "hybrid action and coverage-limited delay tolerance"
+        },
+        {
+          "path": "raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md",
+          "lines": "690,696,838",
+          "note": "DDQN, DDPG, AllCloud benchmarks"
+        }
+      ]
+    }
+  ]
+}

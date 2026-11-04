@@ -13,7 +13,7 @@ related:
   - "[[pomdp]]"
   - "[[soft-actor-critic]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Service Migration Strategies Based on Partially Observable and Multi-Objective Optimization
@@ -30,34 +30,32 @@ AVSI-MEMPO selects MEC migration nodes for highly mobile vehicles under incomple
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A vehicle moves across MEC coverage areas and must select a target server for its service instance using only partial observations of a changing IoV environment.
+**Scenario**: A vehicle moves across MEC coverage areas and must select a target server for its service instance using only partial observations of a changing IoV environment; non-local server loads are not observed in real time.
 
-**Problem & objective**: Learn migration policies that approximate the Pareto front for minimizing user-perceived latency $D$ and energy consumption $E$ under partial observability.
+**Problem & objective**: Problem (11) chooses migration decisions $\{a_t(n)\}$ that minimize total cost over horizon $T$, $\min_{\{a_t(n)\}}\sum_{t=1}^{T}r(T_t^{\mathrm{total}}(n),E_t^{\mathrm{total}}(n))$, where $T^{\mathrm{total}}$ is migration, transmission, propagation, and computation delay, $E^{\mathrm{total}}$ is the corresponding energy consumption, and $r$ is either reward, their average, or their sum.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 | --- | --- | --- | --- |
-| Migration destination | $a_t$ | discrete MEC node | Server selected at decision time $t$ |
-| Objective weight | $\mathbf w_t$ | simplex vector | Preference between latency and energy objectives |
-| Latent state | $z_t$ | continuous encoding | AVSI estimate of hidden environment state |
+| Migration destination | $a_t(n)$ | discrete, $a_t(n)\in\mathcal M$ | MEC server selected for user $n$ in slot $t$ |
+| Learned objective weights | $\delta^t,\eta^t$ | continuous, updated by (26)-(27) | MEMPO weights between the latency and energy critics; not part of (11) |
+| Latent state | $z_t(n)$ | continuous encoding | AVSI estimate of the hidden environment state; not part of (11) |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Feasibility | The action selects an available MEC migration node. |
-| Partial observation | Decisions use observation histories rather than complete global state. |
-| Multi-objective return | Policies optimize weighted latency and energy returns for varying $\mathbf w_t$. |
-| Service continuity | Migration cost and communication/computation delay are included in user-perceived latency. |
+| (11), action set | Each user's migration target is a server in $\mathcal M$: $a_t(n)\in\mathcal M$ |
+| (11), capacity | Task load plus real-time server load stays within the server capacity: $\sum_n(c_t(n)+\eta_t(n))\leq f_{\max}$ |
 
-**Algorithm**: Encode observation sequences with a variational LSTM trained with reconstruction and adversarial objectives, then use maximum-entropy multi-objective policy optimization with dynamic weights to learn a set of migration policies.
+**Algorithm**: Encode observation sequences with a variational LSTM trained with reconstruction and adversarial objectives, then use maximum-entropy multi-objective policy optimization with separate latency and energy critics and dynamic weights to learn migration policies.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hou et al. [x] modeled vehicular MEC service migration with incomplete information as a partially observable Markov decision process. Their AVSI encoder combines an encoder-decoder, variational inference, adversarial learning, and LSTM memory to estimate hidden environmental state from observation histories. MEMPO then uses maximum entropy and dynamic objective weights to search for migration policies balancing latency and energy consumption. Experiments on real mobility trajectories report consistent gains over four baselines and near-optimal results in the evaluated scenarios. The near-optimal statement is empirical for those scenario sets rather than a general optimality guarantee.
+Hou et al. [x] modeled vehicular MEC service migration with incomplete information as a partially observable Markov decision process. Their AVSI encoder combines an encoder-decoder, variational inference, adversarial learning, and LSTM memory to estimate hidden environmental state from observation histories. MEMPO then uses maximum entropy and dynamic objective weights to search for migration policies balancing latency and energy consumption. Experiments on San Francisco and Rome mobility traces report consistent gains over the compared migration baselines, including DRACM and VRMPO_AC, and near-optimal results in the evaluated scenarios. The near-optimal statement is empirical for those scenario sets rather than a general optimality guarantee.
 
 ## Problem and system model
 

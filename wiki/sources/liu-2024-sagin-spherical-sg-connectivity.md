@@ -12,7 +12,7 @@ related:
   - "[[ullah-2026-mec-drl-ntn-survey]]"
   - "[[liu-2023-sagecn-online-offloading]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: not_applicable
 ---
 
@@ -30,7 +30,7 @@ Develops an analytical model for the **uplink path connectivity** of SAGINs — 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] developed a spherical stochastic-geometry model for uplink path connectivity in a space-air-ground integrated network. Ground users follow a Poisson cluster process on the Earth surface and aerial vehicles follow a spherical Poisson process, enabling direct and relay-assisted connectivity analysis under global node distributions. The paper derives analytical probabilities for GU to AV, AV to satellite, GU to AV to satellite, direct GU to satellite, and overall paths. Monte Carlo experiments match the analytical expressions and show that an optimal path-selection ratio can maximize overall connectivity. This contribution is an analytical connectivity foundation rather than a resource-allocation or offloading control formulation.
+Liu et al. [x] developed a spherical stochastic-geometry model for uplink path connectivity in a space-air-ground integrated network. Ground users follow a Poisson cluster process on the Earth surface, with cluster centers forming a homogeneous spherical PPP, and one aerial vehicle at a common altitude serves each cluster, enabling direct and relay-assisted connectivity analysis under global node distributions. The paper derives analytical probabilities for GU to AV, AV to satellite, GU to AV to satellite, direct GU to satellite, and overall paths. Monte Carlo experiments match the analytical expressions and show that an optimal path-selection ratio can maximize overall connectivity. This contribution is an analytical connectivity foundation rather than a resource-allocation or offloading control formulation.
 
 ## Problem framing
 

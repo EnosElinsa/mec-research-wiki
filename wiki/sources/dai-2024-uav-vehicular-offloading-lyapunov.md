@@ -19,7 +19,7 @@ related:
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[zhu-xiao]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Assisted Task Offloading in Vehicular Edge Computing Networks
@@ -38,7 +38,7 @@ Introduces a **UAV** to relieve **overloaded road-side units (RSUs)** in vehicul
 
 **Scenario**: Vehicles first offload computation to roadside units, and a mobile edge-equipped UAV serves one overloaded roadside unit per slot. Task arrivals, overloaded locations, and harvested energy vary across slots, while UAV computation, hovering, and flight contribute to its energy use.
 
-**Problem & objective**: The long-term problem minimizes expected time-average vehicular task delay under a net UAV energy budget, $\min_{\{s_k^t\}}\frac{1}{T}\sum_{t=0}^{T-1}\mathbb E[T_u^t]$.
+**Problem & objective**: The long-term problem P1 (22) minimizes expected time-average vehicular task delay under a net UAV energy budget, $\min_{\{s_k^t\}}\frac{1}{T}\sum_{t=0}^{T-1}\mathbb E[T_u^t]$.
 
 **Decision variables**:
 
@@ -50,7 +50,7 @@ Introduces a **UAV** to relieve **overloaded road-side units (RSUs)** in vehicul
 
 | ID | Meaning and key expression |
 |---|---|
-| Service rule | The UAV serves a single overloaded RSU per slot, so the selected $s_k^t$ must be a feasible one-RSU assistance action |
+| Model rule | Outside P1's listed constraints (4), (5), (17), (20), the system model lets the UAV serve a single overloaded RSU per slot, so the selected $s_k^t$ must be a feasible one-RSU assistance action |
 | 4-5 | Offloaded CPU cycles and data cannot exceed the tasks arriving at the selected RSU, $c_k^t\leq\sum_v\lambda_v^t c$ and $d_k^t\leq\sum_v\lambda_v^t d$ |
 | 17 | Harvested energy is bounded per slot, $0\leq e^t\leq e_{\max}^t$ |
 | 20 | Average net energy respects the UAV budget, $\frac{1}{T}\sum_t\mathbb E[E_u^t-e^t]\leq\bar E_u$ |

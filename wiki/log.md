@@ -1,5 +1,14 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 6 (vehicular MEC, first half)
+
+- Scope: 23 vehicular and IoV source pages (21 required cards, 2 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch06-vehicular-a.json`. Grounded total: 155/699.
+- Card rewrites to the paper's own problem, symbols, and constraint IDs: [[chen-2025-srcl-iov-service-migration]] (P1 (9), C1-C3), [[fatemidokht-2021-vru-vanet-routing]] (rule-based protocol with score (12) and route pheromone (16); no formal optimization problem), [[hou-not-in-parse-avsi-mempo]] (problem (11) with action-set and capacity constraints), [[lim-2021-uav-iov-contract-matching]] (profit (9), problem (12), IR (10), IC (11)), [[liu-2025-mad2rl-dnn-vec]] (P1 (19)-(27); invented admission variable removed), [[liu-2025-multimodal-semantic-iov-jamming]] (P1 (13) over trajectory, channel, association; offloading variable removed), [[liu-2026-lyapunov-diffusion-uav-vehicular]] (P1 (14), C1-C8), [[ma-2025-pdqn-vehicular-mec]] (utility maximization (21) with computation allocation, 21a-21g).
+- Constraint IDs relabeled to the paper's numbering: [[chen-2026-hc-mappo-vehicle-twin-migration]] (10b-10e), [[chen-not-in-parse-uav-human-medical-delivery]] ((2)-(19)), [[dai-2024-uav-vehicular-offloading-lyapunov]] (P1 (22)), [[feng-2026-prediction-service-migration]] ((14)), [[huang-2026-slim-eiv-uav-fleet]] ((2)-(11)), [[ji-2026-llm-iov-uav-offloading]] ((36)), [[li-2025-energy-latency-uav-vec]] (30a-30f), [[li-2026-secrecy-ee-uav-ris-iov]] ((15)).
+- Other card corrections: [[hu-2026-ertatd3-secure-caching]] (C7 uses UAV computing energy), [[huang-2024-fed-idcco-iov-caching]] (paper symbols in C2-C3), [[li-2026-secrecy-ee-uav-ris-iov]] (SIC decoding, not NOMA), [[liu-2021-edivert-mobile-crowdsensing]] (charged energy is an outcome, not an action).
+- Related Work fixes: HC-MAPPO validation loss belongs to ACB-LSTM; Hou baselines are DRACM and VRMPO_AC on San Francisco and Rome traces; Fed-IDCCO delay gains are against LRU, LFU, FIFO, random in that order; Ma baselines are DDQN, DDPG, AllCloud, and the reward has no handoff cost; Liu 2024 SAGIN aerial-vehicle placement.
+- Gates: manifest 699/699 resolved, 0 evidence conflicts (2 orphan raw folders unchanged); source schema, frontmatter, link, index, process-ref audits clean; 58 tests pass.
+
 ## [2026-11-03] Grounded batch 5 (ISAC and sensing, second half)
 
 - Scope: 33 ISAC and sensing source pages (25 required cards, 8 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch05-isac-b.json`. Grounded total: 132/699.

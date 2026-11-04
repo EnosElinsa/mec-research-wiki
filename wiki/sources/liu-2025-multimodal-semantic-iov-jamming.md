@@ -16,7 +16,7 @@ related:
   - "[[sun-2024-mfris-semantic-antijamming]]"
   - "[[shao-2024-drl-antijamming-mec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -34,30 +34,29 @@ Combines UAV-assisted IoV MEC, [[multi-modal-semantic-communication]], and anti-
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Image collection points, image-transmission vehicles, text-transmission RSUs, multiple UAV MEC nodes, and one jammer form a multi-modal IoV network. UAVs receive image and text semantic tasks and compute traffic-condition results; channel selection is made per modality under jamming-aware air-to-ground links.
+**Scenario**: Image collection points, image-transmission vehicles, text-transmission RSUs, $N$ UAV MEC nodes, and one jammer form a multi-modal IoV network. In each slot every UAV hovers near an associated vehicle, receives one image and one text semantic task over orthogonal channels, and processes them with DeepSC-VQA; image channels have unequal bandwidths and are selected, while text channels are fixed.
 
-**Problem & objective**: Dynamic semantic anti-jamming control, a non-convex mixed decision problem reformulated as an MDP, maximizes semantic accuracy while minimizing communication/computation delay, $\max(\mathrm{Accuracy})-\lambda\,\mathrm{Delay}$, subject to association, channel, distance, and jamming constraints.
+**Problem & objective**: Problem P1 (13), non-convex and NP-hard, jointly selects UAV trajectory $L$, channel selection $\rho$, and user association $\delta$ to maximize semantic accuracy and minimize total communication and computation delay $D_t^{\mathrm{sum}}$ (12). The parsed equation is garbled, so the exact objective expression should be checked against the published paper.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV trajectory | $\mathbf q_u(t)$ | continuous 3-D position | Movement of UAV $u$ across slots |
-| Modal-user association | $a_{u,v}^{m}(t)$ | binary | UAV $u$ serves image/text user $v$ of modality $m$ |
-| Channel selection | $c_{u,v}^{m}(t)$ | discrete | Communication channel selected for the modal link |
-| Offloading decision | $o_{u,v}(t)$ | binary/discrete | Semantic task is processed at UAV $u$ |
+| UAV trajectory | $L$ | continuous positions | Hover positions of the UAVs across slots |
+| Channel selection | $\rho$ | discrete | Image-task channel chosen by each UAV |
+| User association | $\delta$ | binary | Image-transmission and text-transmission user served by each UAV |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each modal task is associated with a valid UAV and channel |
-| C2 | UAV motion obeys per-slot displacement and service-distance limits |
-| C3 | Semantic accuracy remains above the required threshold under jammer interference |
-| C4 | Communication and computation queues meet the modeled delay limits |
-| C5 | Association and channel indicators are binary/discrete and mutually feasible |
+| C1 | Semantic accuracy is at least the threshold $\varpi_{th}$ |
+| C2 | Channel selection respects the limited number of channels |
+| C3 | Each episode has $T$ time slots |
+| C4-C5 | Each UAV associates with one image-transmission user and one text-transmission user per slot |
+| C6 | Inter-UAV distance stays above the minimum to avoid collisions |
 
-**Algorithm**: Encode the jamming/environment state as an MDP → SC-MA-TD3 agents choose trajectories, modal associations, and channels → compute semantic accuracy and delay rewards → update centralized critics and decentralized actors until the policy converges.
+**Algorithm**: Reformulate P1 as an MDP → SC-MA-TD3 agents choose trajectories, associations, and channels → compute semantic-accuracy and delay rewards → update centralized critics and decentralized actors until the policy converges.
 
 ## Related Work Paragraph
 

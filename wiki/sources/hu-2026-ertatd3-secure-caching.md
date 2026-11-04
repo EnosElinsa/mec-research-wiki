@@ -16,7 +16,7 @@ related:
   - "[[task-offloading]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimizing Energy and Revenue Efficiency in UAV-Assisted Vehicular Networks with Enhanced Reward Twin Actor TD3 and Secure Caching Strategies
@@ -55,7 +55,7 @@ Proposes a cache-enabled UAV vehicular MEC architecture where UAVs process offlo
 | C1-C2 | Offloading and UAV movement decisions are binary |
 | C3-C5 | UAV and local computing shares lie in $[0,1]$ and aggregate UAV allocation is at most one |
 | C6 | Vehicle power satisfies $P_k\leq\bar P_k$ |
-| C7 | Vehicle task energy plus UAV energy does not exceed $\bar E$ |
+| C7 | UAV computing energy for offloaded tasks, $\sum_kEU_k$ in (19), plus UAV energy $E_j$ does not exceed $\bar E$ |
 | C8 | Each result delay satisfies $T_k\leq Sd_k$ |
 | C9 | UAV coordinates remain in the $1000\times1000$ service region |
 

@@ -19,7 +19,7 @@ related:
   - "[[he-2026-memdrl-uav-navigation]]"
   - "[[memory-augmented-multi-uav-navigation]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,7 +39,7 @@ Introduces e-Divert, a CTDE actor-critic system for unmanned-vehicle crowdsensin
 
 **Scenario**: Unmanned vehicles navigate a bounded two-dimensional area containing obstacles, finite-data PoIs, and powered charging stations for $T$ sensing slots, starting from a common origin with full batteries.
 
-**Problem & objective**: Learn a distributed navigation policy that maximizes collected data and geographical fairness while minimizing vehicle and charging energy, $\max D_T(\pi),\ \max\omega_T(\pi),\ \min e_T(\pi)$.
+**Problem & objective**: Learn a distributed navigation policy that maximizes collected data and geographical fairness while minimizing vehicle and charging energy, $\max D_T(\pi),\ \max\omega_T(\pi),\ \min e_T(\pi)$. Section 4 casts this as a POMDP whose per-vehicle energy-efficiency reward is $r_t^v=\omega_td_t^v/\phi(d_t^v,l_t^v)+\omega_tf_t^v/\phi(0,l_t^v)-\rho_t^v$.
 
 **Decision variables**:
 
@@ -47,17 +47,17 @@ Introduces e-Divert, a CTDE actor-critic system for unmanned-vehicle crowdsensin
 | --- | --- | --- | --- |
 | Vehicle heading | $\theta_t^v$ | continuous in $[0,2\pi)$ for UAVs | Movement direction of vehicle $v$ in slot $t$ |
 | Movement distance | $l_t^v$ | continuous in $[0,l_{\max}]$ | Distance traveled by vehicle $v$ |
-| Charging action | $f_t^v(c)$ | nonnegative station supply | Energy obtained by vehicle $v$ from station $c$ in slot $t$ |
+| Charged energy | $f_t^v$ | nonnegative, outcome | Battery energy gained in slot $t$ when the vehicle reaches a charging station; the action itself is only $(\theta_t^v,l_t^v)$ |
 | Control policy | $\pi_v$ | local-observation policy | Maps each vehicle observation to a movement or charging decision |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Vehicle positions remain within the fixed target-area border. |
-| C2 | Vehicles avoid obstacles and incur penalties for collision or for taking a slot with neither valid collection nor charging. |
-| C3 | Movement actions satisfy $\theta_t^v\in[0,2\pi)$ and $0\leq l_t^v\leq l_{\max}$. |
-| C4 | Collected data, fairness, and vehicle plus station energy evolve over the finite horizon, with charging limited by station supply and vehicle battery state. |
+| Border (Sec. 3.1) | Vehicle positions remain within the fixed target-area border. |
+| Penalty $\rho_t^v$ | Vehicles avoid obstacles and incur penalties for collision or for taking a slot with neither valid collection nor charging. |
+| Action space (4.3) | Movement actions satisfy $\theta_t^v\in[0,2\pi)$ and $0\leq l_t^v\leq l_{\max}$. |
+| Energy model (4.6) | Collected data, fairness, and vehicle plus station energy evolve over the finite horizon, with charging limited by station supply and vehicle battery state. |
 
 **Algorithm**: Use distributed multi-agent actor-critic learning with CNN spatial encoding, LSTM N-step temporal modeling, prioritized replay, and Ape-X multiple actors feeding one learner under centralized training and local execution.
 

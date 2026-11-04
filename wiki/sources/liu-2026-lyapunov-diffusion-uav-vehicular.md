@@ -24,7 +24,7 @@ related:
   - "[[xuemin-shen]]"
   - "[[xianbin-wang]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -42,30 +42,30 @@ Optimizes a UAV-assisted vehicular network where V2U links upload sensing data t
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A UAV aerial base station serves V2U sensing uploads while V2V pairs exchange safety data on reused OFDM channels. V2U links use probabilistic-LoS air-to-ground channels, V2V CSI arrives with feedback delay, and UAV propulsion energy is constrained over the long term.
+**Scenario**: A UAV aerial base station serves V2U sensing uploads while V2V pairs exchange safety data by reusing V2U OFDM channels. V2U links use probabilistic-LoS air-to-ground channels, V2V CSI arrives with feedback delay, and UAV propulsion energy is constrained over the long term.
 
-**Problem & objective**: Delayed-CSI UAV vehicular resource-control MINLP, transformed by Lyapunov optimization, maximizes V2U sum rate, $\max\sum_i R_i^{\mathrm{V2U}}$, subject to V2V reliability, channel/power/altitude feasibility, and a long-term UAV-energy bound.
+**Problem & objective**: Problem P1 (14), an MINLP, maximizes the time-average V2U sum rate, $\max_{\{\boldsymbol x,\boldsymbol p,\Delta H\}}\frac{1}{TM}\sum_t\sum_mR_m^{\mathrm U}(t)$; Lyapunov drift-plus-penalty turns it into the per-slot problem P2 (20).
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| V2V channel reuse | $x_{i,j}(t)$ | binary | V2V pair $j$ reuses V2U channel $i$ |
-| V2U/V2V powers | $p_i^{\mathrm{V2U}}(t),p_j^{\mathrm{V2V}}(t)$ | continuous, bounded | Transmit powers on the two link types |
-| UAV altitude | $h(t)$ | continuous, bounded | Aerial base-station altitude decision |
-| Virtual energy queue | $Q(t)$ | nonnegative state | Queue tracking long-term propulsion-energy excess |
+| V2V channel reuse | $x_{k,m}(t)$ | binary | V2V pair $k$ reuses the spectrum of V2U link $m$ |
+| V2U and V2V powers | $p_m(t),p_k(t)$ | continuous, $[0,p_{\max}]$ | Transmit powers of V2U and V2V vehicles |
+| UAV altitude adjustment | $\Delta H(t)$ | continuous | Altitude change, giving $H(t)\in[H_{\min},H_{\max}]$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each V2V pair reuses at most one orthogonal V2U channel |
-| C2 | V2V reliability/rate constraints are satisfied under delayed CSI |
-| C3 | V2U and V2V powers stay within their per-link limits |
-| C4 | UAV altitude remains in the permitted flight interval |
-| C5 | Virtual energy-queue drift enforces the long-term propulsion-energy threshold |
+| C1 | Channel reuse decisions are binary |
+| C2-C3 | V2U and V2V powers lie in $[0,p_{\max}]$ |
+| C4 | UAV altitude stays in $[H_{\min},H_{\max}]$ |
+| C5-C6 | Each V2V pair reuses at most one V2U channel, and each V2U channel serves at most one V2V pair |
+| C7 | V2V outage: $\Pr\{\gamma_k^{\mathrm V}(t)<\gamma_{\mathrm{th}}^{\mathrm V}\}\le\Pr_{\mathrm{th}}^{\mathrm V}$ |
+| C8 | Long-term average propulsion energy stays within $E_{\mathrm{th}}^{\mathrm U}$, enforced through the virtual queue $Q(t)$ in (15) |
 
-**Algorithm**: Build the virtual energy queue → apply Lyapunov drift-plus-penalty for per-slot deterministic control → use diffusion-model denoising inside DDPG (D3PG) for channel/power/altitude actions → amend actions to the feasible set → update critic, actor, and target networks.
+**Algorithm**: Build the virtual energy queue → apply Lyapunov drift-plus-penalty for per-slot deterministic control → use diffusion-model denoising inside DDPG (D3PG) for channel, power, and altitude actions → amend actions to the feasible set → update critic, actor, and target networks.
 
 ## Related Work Paragraph
 

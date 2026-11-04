@@ -18,7 +18,7 @@ related:
   - "[[deng-2026-eret-fanet-routing]]"
   - "[[chen-2026-maddpg-uav-swarm-antijamming]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Efficient and Secure Routing Protocol Based on Artificial Intelligence Algorithms With UAV-Assisted for Vehicular Ad Hoc Networks in Intelligent Transportation Systems
@@ -37,27 +37,26 @@ VRU combines vehicle/UAV road-segment routing with on-demand FANET routing. Its 
 
 **Scenario**: Vehicles, UAVs, roadside units, and a trusted authority form an urban vehicular network with ground and aerial links. UAVs observe road-segment density and connectivity, aggregate direct and recommended trust, and provide a FANET fallback when vehicle-only forwarding becomes disconnected.
 
-**Problem & objective**: Select a secure and stable route that increases packet delivery and malicious-node detection while reducing end-to-end delay and control overhead. The ground rule chooses the next feasible road segment by $\arg\max_j \mathrm{Trust}_j\gamma_jR_v/((1+\sigma_j)D_j)$, and the aerial fallback chooses the discovered route with maximal accumulated pheromone.
+**Problem & objective**: The paper defines no formal optimization problem; VRU is a rule-based routing protocol aiming at higher packet delivery and malicious-node detection with lower end-to-end delay and overhead. VRU_vu forwards through the road segment with the largest score (12), $\mathrm{Score}_s=\mathrm{Trust}\times\gamma\times R_v/((1+\sigma)\times D)$, and VRU_u selects the discovered UAV route with the largest route pheromone value (16).
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Cluster head | $v_i^{\mathrm{CH}}$ | discrete vehicle choice | Trusted vehicle representing a road-segment cluster |
-| Next road segment | $j^*$ | discrete segment choice | Connected segment selected toward the destination |
-| Routing mode | $m$ | binary choice | Ground VRU_vu forwarding or UAV VRU_u fallback |
-| UAV next hop and route | $u_{h+1},\mathcal P$ | discrete path choices | ACO forwarding choices in the aerial network |
+| Cluster head | CH of each segment | discrete vehicle choice | Trusted vehicle representing a road-segment cluster |
+| Next road segment | segment $s$ with maximal $\mathrm{Score}_s$ | discrete segment choice | Connected segment selected toward the destination |
+| Routing mode | VRU_vu or VRU_u | binary choice | Ground forwarding or UAV fallback |
+| UAV next hop and route | node $j$ drawn with $p_{ij}^k(t)$ (13) | discrete path choices | ACO forwarding choices in the aerial network |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Candidate cluster heads and forwarding vehicles must pass the configurable trust threshold. |
-| C2 | A ground segment is eligible only when its connectivity measure is positive: $\gamma_j>0$. |
-| C3 | Direct ground forwarding requires the candidate distance to be within vehicle range $R_v$. |
-| C4 | Segment scoring combines trust, connectivity, density dispersion, and distance to destination. |
-| C5 | ACO next-hop selection uses unvisited feasible UAV neighbors and route-request lifetime limits. |
-| C6 | Route selection favors the highest pheromone score, while stored alternatives support repair after a link break. |
+| Trust rule | A vehicle is trustworthy, and eligible as cluster head or forwarder, only when $\mathrm{Trust}(i,j)$ exceeds the pre-specified threshold |
+| (8) | A segment is connected only when its connectivity $\gamma=\prod_i\lfloor R_v/\mathrm{distance}(n_i,n_{i+1})\rfloor>0$ |
+| (10)-(12) | Segment score combines trust, connectivity, density dispersion $\sigma$, range $R_v$, and distance $D$ to the destination |
+| (13)-(15) | ACO next-hop probability over neighbor set $I_k$ and pheromone update with evaporation $\rho$ |
+| (16) | Route pheromone value $\prod_i\lfloor R_U/\mathrm{distance}(u_i,u_{i+1})\rfloor$ ranks discovered UAV routes; stored alternatives support route repair |
 
 **Algorithm**: Use Hello messages to estimate vehicle density, select cluster heads from trust, position, and speed, and update direct and indirect trust evidence and blacklists. Test road-segment connectivity and forward through the maximum-score segment; when no ground segment is connected, launch Request-Ant and Reply-Ant discovery, update UAV-link pheromones, choose the highest-scoring route, and reuse an alternate route during repair.
 

@@ -16,7 +16,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[j-ppo-vs-pdqn]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,36 +36,37 @@ Optimization target: weighted long-term sum of latency, energy, and monetary cos
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Vehicles in a road network choose local execution, one of $M$ RSU-MEC servers, or a cloud tier for each task. V2I links use Rayleigh fading with shadowing, RSUs are connected by wired backhaul, and tasks have input size, computation intensity, and deadlines.
+**Scenario**: Vehicles in a road network choose local execution, one of $M$ RSU-MEC servers, or a cloud server for each task. V2I links use Rayleigh fading, RSUs are connected by wired links, and each task has input size, computation demand, and a delay tolerance shortened when the vehicle is about to leave all RSU coverage.
 
-**Problem & objective**: Three-tier vehicular MEC hybrid-action optimization, a long-term mixed discrete-continuous problem, minimizes weighted latency, energy, and monetary cost, $\min\mathbb E[\alpha T+\beta E+\gamma C]$, over destination selection and transmit power.
+**Problem & objective**: Problem (21) maximizes the long-term average utility, $J=\max_{\mathcal A,\mathcal F,\mathcal P}\frac1T\sum_t\sum_iU_i(t)$, where (20) gives $U_i=w_1\frac{T_{\max}-T_i}{T_{\max}}+w_2\frac{E_{\max}-E_i}{E_{\max}}-w_3\frac{\epsilon_i}{\epsilon_{\max}}$, so higher utility means lower normalized delay, energy, and monetary cost.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Offloading destination | $a_i(t)$ | discrete, local/RSU/cloud | Tier selected by vehicle $i$ for its task |
-| Transmit power | $p_i(t)$ | continuous, bounded | Power used for the selected offload link |
-| Local/offloaded split | $\rho_i(t)$ | continuous, $[0,1]$ | Optional partial-offloading ratio in the task model |
-| Queue/service state | $Q_i(t)$ | nonnegative state | Backlog and handoff state used by the policy |
+| Offloading decision | $a_i(t)$ | discrete, $\{0,1,\ldots,M+1\}$ | Local execution, one RSU-MEC server, or the cloud |
+| Execution indicators | $s_i^l(t),s_i^E(t),s_i^c(t)$ | binary | Local, MEC, or cloud execution of vehicle $i$'s task |
+| Computation allocation | $f_{i,m}^E(t),f_i^c(t)$ in $\mathcal F$ | continuous, bounded | MEC-server and cloud CPU resources for vehicle $i$ |
+| Transmit power | $p_i(t)$ in $\mathcal P$ | continuous, $[P_{\min},P_{\max}]$ | Uplink power of vehicle $i$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Exactly one destination is selected for each task |
-| C2 | Transmit powers satisfy per-vehicle limits |
-| C3 | Local, RSU, and cloud CPU capacities and task deadlines are respected |
-| C4 | V2I/V2V rates and handoff costs follow the Rayleigh/shadowing model |
-| C5 | Queues and wired-backhaul resource capacities remain feasible over time |
+| 21a-21b | Exactly one of local, MEC, or cloud execution is chosen, with binary indicators |
+| 21c | Offloading decision $a_i(t)\in\{0,1,\ldots,M+1\}$ |
+| 21d | Task delay satisfies $T_i(t)\le T_i^{\max}(t)=\min\{t_i^{\mathrm{finish}},t_i^{\mathrm{link}}\}$ |
+| 21e | Each MEC server's allocations stay within its capacity $F$ |
+| 21f | Cloud allocation per vehicle stays within $F^c$ |
+| 21g | Transmit power lies in $[P_{\min},P_{\max}]$ |
 
-**Algorithm**: Encode each discrete destination with a Q-value and attach a continuous power actor to each option → train the parameterized DQN with replay and target updates → evaluate the hybrid action per vehicle → update the weighted latency-energy-cost reward.
+**Algorithm**: Treat each discrete offloading choice as an action with continuous resource and power parameters → a parameter actor outputs the continuous parameters for every discrete option → a Q-network evaluates each option and its parameters → train with replay, target networks, and multi-step returns.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ma et al. [x] studied computation offloading and resource allocation in a three-tier vehicular MEC network with local vehicles, RSU-MEC servers, and a cloud. They formulated a hybrid discrete-continuous problem that minimizes a weighted long-term sum of latency, energy, and monetary cost by selecting an execution destination and transmit power for each task. They proposed Parameterized DQN, which learns a discrete Q-function and a continuous actor parameterized by each candidate destination. The action design preserves destination integrality without discretizing transmit power, and the reward includes handoff costs when vehicles move between RSU regions. Simulations report higher cumulative reward than DQN, DDPG, and convex-optimization baselines in the evaluated vehicular settings.
+Ma et al. [x] studied computation offloading and resource allocation in a three-tier vehicular MEC network with local vehicles, RSU-MEC servers, and a cloud. They formulated a hybrid discrete-continuous problem that maximizes long-term average utility, which rewards lower normalized delay, energy, and monetary cost, by selecting an execution destination, computation resources, and transmit power for each task. They proposed Parameterized DQN, which learns a discrete Q-function and a continuous actor parameterized by each candidate destination. The action design preserves destination integrality without discretizing resource and power parameters, and each task's delay tolerance is shortened when the vehicle is about to leave all RSU coverage. Simulations report higher cumulative reward than DDQN, DDPG, and AllCloud baselines in the evaluated vehicular settings.
 
 ## Why this matters
 

@@ -16,7 +16,7 @@ related:
   - "[[lee-2026-uav-delivery-time-energy]]"
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -52,12 +52,12 @@ Jointly assigns urgent medical pickup-delivery orders to UAVs and human couriers
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every pickup is served once: $\sum_{k\in\mathcal K}\sum_{j\in\mathcal V}x_{ij}^{k}=1$ |
-| C2 | Paired pickup and delivery use the same vehicle, with depot departure, depot return, and route-flow balance enforced by (3)-(9) |
-| C3 | Pickup precedes delivery: $a_i^k\leq a_{i+n}^k$ |
-| C4 | Capacity: $Q_j^k+(1-x_{ij}^k)M_2\geq Q_i^k+q_j$ and $Q_i^k\leq C^k$ |
-| C5 | UAV service rule: constraints (16)-(18) force a UAV to complete its current request before another pickup |
-| C6 | Soft deadline: $e_i\geq a_i^k-l_i$ and $e_i\geq0$ |
+| (2) | Every pickup is served once: $\sum_{k\in\mathcal K}\sum_{j\in\mathcal V}x_{ij}^{k}=1$ |
+| (3)-(9) | Paired pickup and delivery use the same vehicle, with depot departure, depot return, and route-flow balance enforced by (3)-(9) |
+| (10)-(11) | Pickup precedes delivery, $a_i^k\leq a_{i+n}^k$, and arrival times propagate along used arcs: $a_j^k+(1-x_{ij}^k)M_1\geq a_i^k+\theta_i+t_{ij}^k$ |
+| (12)-(14) | Capacity: $Q_j^k+(1-x_{ij}^k)M_2\geq Q_i^k+q_j$ and $Q_i^k\leq C^k$ |
+| (16)-(18) | UAV service rule: constraints (16)-(18) force a UAV to complete its current request before another pickup |
+| (19) | Soft deadline: $e_i\geq a_i^k-l_i$ and $e_i\geq0$ |
 
 **Algorithm**: Reformulate routing as an MDP, encode depots and paired nodes with heterogeneous multi-head attention, apply separate UAV and courier decoders with precedence, capacity, and vehicle-specific masks, combine compatibilities through a vehicle coordinator, train with REINFORCE and an exponential moving-average baseline, and use greedy decoding at inference.
 

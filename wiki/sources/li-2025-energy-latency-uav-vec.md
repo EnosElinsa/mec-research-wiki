@@ -17,7 +17,7 @@ related:
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -37,7 +37,7 @@ Optimizes **vehicle selection** and communication / computation resource allocat
 
 **Scenario**: Hierarchical federated learning uses vehicles as clients, UAVs as local aggregators, a base station as edge aggregator, and a cloud coordinator over mobile vehicular links.
 
-**Problem & objective**: Select FL participants and allocate communication and local-compute shares to minimize the weighted round cost $\sum_k\left(\alpha T_k+(1-\alpha)E_k\right)$.
+**Problem & objective**: Problem (30) selects FL participants and allocates communication and local-compute shares to minimize the weighted round cost $\sum_k\left(\alpha T_k+(1-\alpha)E_k\right)$.
 
 **Decision variables**:
 
@@ -51,11 +51,11 @@ Optimizes **vehicle selection** and communication / computation resource allocat
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Round latency is within the vehicle departure time and participant count lies between $M_{\min}$ and UAV capacity $M_u$. |
-| C2 | Cumulative vehicle energy stays below its battery limit, $\hat E_{u,m}^K\leq E_{u,m}^{\mathrm{limit}}$. |
-| C3 | BS-UAV and UAV-vehicle bandwidth allocation ratios remain in $[0,1]$. |
-| C4 | Aggregate BS-UAV and UAV-vehicle bandwidth does not exceed each link capacity. |
-| C5 | Local CPU allocation ratios satisfy $\tau_{u,m}^k\in[0,1]$. |
+| 30a | Round latency is within the vehicle departure time and participant count lies between $M_{\min}$ and UAV capacity $M_u$. |
+| 30b | Cumulative vehicle energy stays below its battery limit, $\hat E_{u,m}^K\leq E_{u,m}^{\mathrm{limit}}$. |
+| 30c | BS-UAV and UAV-vehicle bandwidth allocation ratios remain in $[0,1]$. |
+| 30d-30e | Aggregate BS-UAV and UAV-vehicle bandwidth does not exceed each link capacity. |
+| 30f | Local CPU allocation ratios satisfy $\tau_{u,m}^k\in[0,1]$. |
 
 **Algorithm**: Model the MINLP as an MDP and solve it with AB-DDQN, using Double-DQN targets, AdamW updates, a butterfly optimizer for hidden-size, replay-buffer, and discount-factor tuning, and a mobility-aware departure filter.
 

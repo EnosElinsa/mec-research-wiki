@@ -20,7 +20,7 @@ related:
   - "[[pingyi-fan]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -40,7 +40,7 @@ Studies multi-UAV and base-station-assisted IoV offloading in dense urban enviro
 
 **Scenario**: Vehicles in a dense urban Internet of Vehicles network offload tasks locally, to multi-UAV edge servers, or to a ground base station while UAVs move in three-dimensional airspace.
 
-**Problem & objective**: Jointly select UAV trajectories, communication resources, and task splits to minimize normalized delay, energy, and deadline-violation penalties, $\min \omega_1T+\omega_2E+\omega_3\sum_m\xi_m$.
+**Problem & objective**: Problem (36) jointly selects UAV trajectories, communication resources, and task splits to minimize normalized delay, energy, and deadline-violation penalties, $\min \omega_1T+\omega_2E+\omega_3\sum_m\xi_m$.
 
 **Decision variables**:
 
@@ -56,11 +56,11 @@ Studies multi-UAV and base-station-assisted IoV offloading in dense urban enviro
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Split ratios lie in $[0,1]$ and sum to one for each vehicle |
-| C2 | UAV positions remain in the airspace, obey speed, displacement, altitude, and inter-UAV separation limits |
-| C3 | Vehicle transmit powers stay within their maximum values and associations are binary |
-| C4 | Total bandwidth and UAV or base-station processing capacities are not exceeded |
-| C5 | Per-task delay stays below its deadline plus nonnegative violation slack $\xi_m$ |
+| 36b-36e | Split ratios lie in $[0,1]$ and sum to one for each vehicle |
+| 36f, (1), (3), (4) | UAV positions remain in the airspace, obey speed, displacement, altitude, and inter-UAV separation limits |
+| 36g-36i | Vehicle transmit powers stay within their maximum values and associations are binary |
+| (8), (26)-(27) | Total bandwidth is not exceeded, and data offloaded to the base station and each UAV stays within its maximum amount |
+| (31), 36j | Per-task delay stays below its deadline plus nonnegative violation slack $\xi_m$ |
 
 **Algorithm**: Solve trajectory control with sequential SOCP, schedule resources with DDPG and an event-triggered ground-side LLM macro-adjuster for failed or surplus tasks, and solve task ratios with LP while using reward decoupling for stable DRL updates.
 
@@ -68,7 +68,7 @@ Studies multi-UAV and base-station-assisted IoV offloading in dense urban enviro
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ji et al. [x] jointly optimized three-dimensional multi-UAV trajectories, communication resources, and task splitting for dense urban IoV offloading. Their objective combines normalized system delay, total communication, computation, and flight energy, and deadline-violation penalties under airspace, collision, bandwidth, power, association, capacity, and per-task delay constraints. The decomposition uses SOCP for trajectories, DDPG with an event-triggered LLM macro-scheduler for long-tail resource repair, and LP for task ratios. Simulations report that the proposed CVX plus DDPG and LLM plus LP pipeline gives the strongest balance of task success, delay, and energy among the tested module combinations, while the LLM improves success near capacity by reallocating failed and surplus tasks.
+Ji et al. [x] jointly optimized three-dimensional multi-UAV trajectories, communication resources, and task splitting for dense urban IoV offloading. Their objective combines normalized system delay, total communication, computation, and flight energy, and deadline-violation penalties under airspace, collision, bandwidth, power, association, offloaded-data, and per-task delay constraints. The decomposition uses SOCP for trajectories, DDPG with an event-triggered LLM macro-scheduler for long-tail resource repair, and LP for task ratios. Simulations report that the proposed CVX plus DDPG and LLM plus LP pipeline gives the strongest balance of task success, delay, and energy among the tested module combinations, while the LLM improves success near capacity by reallocating failed and surplus tasks.
 
 ## Problem framing
 

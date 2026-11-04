@@ -22,7 +22,7 @@ related:
   - "[[fuhui-zhou]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -40,7 +40,7 @@ Protects mobile vehicular communication against an amplify-and-forward relay tha
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A base station sends confidential traffic through an untrusted half-duplex ground relay to a mobile target vehicle, while a UAV-mounted RIS assists both hops and the vehicle transmits jamming on the first hop. Multiple access uses the paper's NOMA-enabled two-hop relay model; channels include Rician/Rayleigh air-to-ground components and mobility-induced Doppler.
+**Scenario**: A base station sends confidential traffic through an untrusted half-duplex ground relay to a mobile target vehicle, while a UAV-mounted RIS assists both hops and the vehicle transmits jamming on the first hop. The target vehicle decodes the relayed signals with successive interference cancellation; channels include Rician/Rayleigh air-to-ground components and mobility-induced Doppler.
 
 **Problem & objective**: Secrecy energy-efficiency maximization (P1), a non-convex fractional program, maximizes $\eta_s=R_s[n]/P_t$ over transmit powers, relay amplification, two-hop RIS phases, and UAV trajectory, subject to rate, motion, phase, and power constraints.
 
@@ -57,11 +57,11 @@ Protects mobile vehicular communication against an amplify-and-forward relay tha
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | BS and vehicle transmit powers stay within $[0,P_{\max}]$ |
-| C2 | Relay amplification satisfies $0<\varpi^2[n]<1$ |
-| C3 | Every RIS element has a unit-modulus phase in both hops |
-| C4 | UAV initial position, per-slot displacement, and flight-area constraints hold |
-| C5 | The second-hop rate satisfies $R_2[n]\ge R_{th}$ |
+| (15), power | BS and vehicle transmit powers stay within $[0,P_{\max}]$ |
+| (15), amplification | Relay amplification satisfies $0<\varpi^2[n]<1$ |
+| 15c | Every RIS element has a unit-modulus phase in both hops |
+| 15d-15f | UAV initial position, per-slot displacement, and flight-area constraints hold |
+| 15h | The second-hop rate satisfies $R_2[n]\ge R_{th}$ |
 
 **Algorithm**: Apply Dinkelbach and CCCP to power/amplification → update two-hop RIS phases with MM and SDR/randomization → seed a DDPG trajectory policy with firefly samples → alternate the blocks until secrecy energy efficiency stabilizes.
 

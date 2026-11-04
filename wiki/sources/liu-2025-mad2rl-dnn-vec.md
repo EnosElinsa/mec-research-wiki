@@ -16,7 +16,7 @@ related:
   - "[[diffusion-model-as-optimizer]]"
   - "[[bai-2024-delay-aware-cooperative-edge-cloud]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -34,30 +34,29 @@ In vehicular edge computing (VEC), vehicles run DNN inference tasks (e.g., auton
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Client vehicles run DNN inference tasks and offload layer prefixes to one RSU or nearby service vehicles over OFDMA V2I/V2V links. Queues at client vehicles, the RSU, and service vehicles evolve under mobile channels and long-term stability requirements.
+**Scenario**: Client vehicles run DNN inference tasks and offload layer suffixes to one RSU or nearby service vehicles over OFDMA V2I/V2V links after computing the earlier layers locally. Queues at client vehicles, the RSU, and service vehicles evolve under mobile channels and long-term stability requirements.
 
-**Problem & objective**: Long-term VEC task-partitioning and offloading MINLP, minimized through Lyapunov drift-plus-penalty, with objective $\min\mathbb E[\text{DNN completion time}]$ subject to queue stability and per-slot resource feasibility.
+**Problem & objective**: Problem $(\mathcal P_1)$ (19)-(27) is a long-term MINLP that minimizes time-average expected DNN task completion time, $\min_{\{\boldsymbol\varphi(t),\boldsymbol\xi(t),\boldsymbol F(t)\}}\lim_{T\to\infty}\frac1T\sum_t\sum_i\mathbb E[d_i(t)]$, while keeping all task queues stable.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| DNN split layer | $\phi_i(t)$ | integer, $1\ldots L$ | First layer executed at the selected edge node |
-| Offload destination | $\xi_{i,j}(t)$ | binary | Client vehicle $i$ selects RSU or service vehicle $j$ |
-| RSU CPU allocation | $F_k^{\mathrm{rsu}}(t)$ | continuous, nonnegative | RSU frequency assigned to DNN model type $k$ |
-| Task admission/service | $a_i(t)$ | discrete | Number of DNN jobs admitted to the per-slot service process |
+| DNN partition point | $\varphi_i(t)$ | integer, $\{1,\ldots,L_k+1\}$ | Layer from which client vehicle $i$ offloads; $1$ offloads the whole task and $L_k+1$ computes it locally |
+| Offload destination | $\xi_{i,j}(t)$ | binary | Client vehicle $i$ offloads to the RSU or service vehicle $j$ |
+| RSU CPU allocation | $f_k^{\mathrm{rsu}}(t)$ in $\boldsymbol F(t)$ | continuous, nonnegative | RSU frequency assigned to DNN model type $k$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each client chooses one valid split and at most one edge destination |
-| C2 | RSU CPU allocation stays within the RSU capacity |
-| C3 | V2I/V2V transmission rates and queues remain feasible in each slot |
-| C4 | Long-term queue drift is bounded, ensuring system stability |
-| C5 | Offloaded and local layer workloads respect per-task processing order and deadlines |
+| (20)-(22) | Client-vehicle, RSU, and service-vehicle queues are mean-rate stable |
+| (23) | Partition decisions are integers in $\{1,\ldots,L_k+1\}$ |
+| (24) | Offloading decisions are binary |
+| (25) | A client vehicle offloads to a service vehicle only within V2V range $dis^{\mathrm{v2v}}$ |
+| (26)-(27) | Per-model RSU allocations lie in $[0,f^{\mathrm{rsu,max}}]$ and their sum stays within $f^{\mathrm{rsu,max}}$ |
 
-**Algorithm**: Apply Lyapunov drift-plus-penalty → solve per-slot partition/offload actions with MAD2RL's diffusion actor → use closed-form KKT/CVX allocation for RSU resources → update queues and repeat across mobile traces.
+**Algorithm**: Apply Lyapunov drift-plus-penalty to obtain the per-slot problem $(\mathcal P_2(t))$ → choose partition and offloading actions with MAD2RL's diffusion-based multi-agent policy → solve the RSU allocation subproblem $(\mathcal P_3(t))$ in closed form from KKT conditions with bisection → update queues and repeat.
 
 ## Related Work Paragraph
 

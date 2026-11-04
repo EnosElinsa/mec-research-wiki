@@ -33,7 +33,7 @@ In UAV-assisted IoV, UAVs hover above traffic intersections, serving vehicles wi
 
 **Scenario**: One macro base station stores the complete content library, while fixed-hover UAVs at road intersections provide limited cache and MEC capacity to moving vehicles. Each vehicle generates a data-intensive task whose input can be sent either to its serving UAV or to the macro base station, and a UAV cache hit avoids fetching the requested data from the macro base station.
 
-**Problem & objective**: The joint caching, offloading, and computing problem minimizes $\frac{1}{T}\sum_{t=1}^{T}\left[\sum_{u=1}^{U}\lambda\left(1-H_u^t\right)+\sum_{n=1}^{N}T_n(t)\right]$, combining cache misses and task-processing delay.
+**Problem & objective**: Problem (19) jointly selects caching, offloading, and computing shares to minimize $\frac{1}{T}\sum_{t=1}^{T}\left[\sum_{u=1}^{U}\lambda\left(1-H_u^t\right)+\sum_{n=1}^{N}T_n(t)\right]$, combining cache misses and task-processing delay.
 
 **Decision variables**:
 
@@ -48,8 +48,8 @@ In UAV-assisted IoV, UAVs hover above traffic intersections, serving vehicles wi
 | ID | Meaning and key expression |
 |---|---|
 | C1 | Compute shares are normalized and bounded: $\sum_n\gamma_{u,n}(t)=1$ and $0\le\gamma_{u,n}(t)\le1$ |
-| C2 | Cached items fit the UAV storage budget: $\sum_f x_{u,f}^{t}s_f\le S_u$ |
-| C3 | Every admitted task finishes within the slot duration: $T_n(t)\le\tau$ |
+| C2 | Cached items fit the UAV storage budget: $\sum_{f=1}^{F}l_fx_{u,f}^{t}\le L_u$ |
+| C3 | Every admitted task finishes within the slot duration: $T_n(t)\le l_t$ |
 | C4 | Caching and offloading decisions are binary: $x_{u,f}^{t},a_n(t)\in\{0,1\}$ |
 
 **Algorithm**: IDCCO represents cache placement, offloading, and compute allocation in a TD3 actor, learns from replay with twin critics and delayed policy updates, and updates each UAV from local observations. Fed-IDCCO lets UAVs train locally, upload model parameters rather than vehicle data, and periodically applies weighted federated averaging at the macro base station before broadcasting the global parameters.
@@ -58,7 +58,7 @@ In UAV-assisted IoV, UAVs hover above traffic intersections, serving vehicles wi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Huang et al. [x] jointly controlled content caching, UAV-versus-MBS task offloading, and UAV compute slicing in a fixed-hover UAV-assisted Internet of Vehicles. They minimized a weighted sum of cache misses and processing delay under compute-share, cache-capacity, per-slot delay, and binary-decision constraints. IDCCO uses TD3 for the mixed control problem, while Fed-IDCCO trains local UAV agents and averages their weights at the MBS without uploading raw vehicle data. Fed-IDCCO converged faster than centralized IDCCO and reduced average delay by 25.1%, 27.6%, 30.7%, and 60.1% versus LRU, FIFO, LFU, and random caching across cache-capacity tests.
+Huang et al. [x] jointly controlled content caching, UAV-versus-MBS task offloading, and UAV compute slicing in a fixed-hover UAV-assisted Internet of Vehicles. They minimized a weighted sum of cache misses and processing delay under compute-share, cache-capacity, per-slot delay, and binary-decision constraints. IDCCO uses TD3 for the mixed control problem, while Fed-IDCCO trains local UAV agents and averages their weights at the MBS without uploading raw vehicle data. Fed-IDCCO converged faster than centralized IDCCO and reduced average delay by 25.1%, 27.6%, 30.7%, and 60.1% versus LRU, LFU, FIFO, and random caching across cache-capacity tests.
 
 ## Problem framing
 

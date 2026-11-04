@@ -19,7 +19,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[task-offloading]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # SLIM+: Jointly Optimizing EIV Placement and UAV Fleet Sizing for Deadline-Driven Tasks
@@ -56,12 +56,12 @@ Jointly places mobile edge-support vehicles along a linear task route and choose
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every UAV starts at the segment's initial EIV and finishes at its ending EIV |
-| C2 | Every indivisible task is served exactly once and task transitions follow route order |
-| C3 | Acquisition, offloading, processing, and travel finish before each task deadline |
-| C4 | Flight plus service energy remains within each UAV's energy budget |
-| C5 | The fleet assigned to a segment does not exceed the supporting EIV capacity |
-| C6 | EIV setup time and segment speed bounds remain feasible |
+| (3) | Every UAV starts at the segment's initial EIV and finishes at its ending EIV |
+| (2), (4)-(5) | Every indivisible task is served exactly once and task transitions follow route order |
+| (6)-(7) | Acquisition, offloading, processing, and travel finish before each task deadline |
+| (9)-(11) | Flight plus service energy remains within each UAV's energy budget |
+| (8) | The fleet assigned to a segment does not exceed the supporting EIV capacity |
+| Model bounds | Segment speed lies in $[v_{min},v_{max}]$ and scheduling starts after EIV setup time $T_s(s_k)$; these come from the system model rather than the listed constraints (2)-(8), (11) |
 
 **Algorithm**: For each candidate segment, prune and discretize the feasible speed interval, solve the inner fleet-sizing problem exactly with SLIM-DP and bisection for small instances or approximately with slack ordering, workload splitting, and indivisibility repair in SLIM-AG, then use the outer DP-AG recurrence to select segment boundaries and reconstruct EIV placements and schedules.
 

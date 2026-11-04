@@ -20,7 +20,7 @@ related:
   - "[[jiawen-kang]]"
   - "[[dusit-niyato]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,30 +38,28 @@ Uses a multidimensional contract to screen independently owned sensing UAVs by h
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A model owner divides an IoV sensing region into subregions and hires heterogeneous sensing UAVs to collect data for federated learning. Each UAV flies from its base to a subregion, senses and computes locally, then uploads a model update; access is one UAV per subregion with orthogonal point-to-point uploads over air-to-ground links.
+**Scenario**: A model owner divides an IoV sensing region into $N$ subregions and hires heterogeneous sensing UAVs to collect data for federated learning. Each UAV flies from its base to a subregion, senses and computes locally, then uploads a model update; one UAV covers each subregion, and UAV types differ in traversal, sensing, computation, and transmission cost.
 
-**Problem & objective**: Multi-dimensional contract design and one-to-one matching, a discrete-continuous incentive optimization, maximizes the model owner's profit, $\max\sum_r[V_r(c_r)-\pi_r]$, subject to coverage, individual-rationality, incentive-compatibility, and stable-assignment constraints.
+**Problem & objective**: Problem (12) is a multi-dimensional contract design that maximizes the model owner's profit (9), $\Pi(\Omega)=\sigma\Upsilon(\sum_n\theta_{j^*}^nD^n)-\sum_nR_{j^*}^n$, where $\Upsilon$ in (8) is a concave accuracy function of the covered data, subject to IR (10) and IC (11). A separate Gale-Shapley step then matches UAVs to subregions.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Coverage allocation | $c_r$ | continuous, monotone | Sensing coverage promised to subregion $r$ |
-| Contract reward | $\pi_r$ | continuous, nonnegative | Payment offered for a coverage type |
-| UAV-subregion matching | $x_{u,r}$ | binary | UAV $u$ is assigned to subregion $r$ |
-| Reported UAV type | $\hat\theta_u$ | discrete type | Sensing, travel, computation, and upload cost type reported by UAV $u$ |
+| Node coverage | $\theta_{y,z}^n$ | continuous proportion | Share of nodes in subregion $n$ that a type-$(y,z)$ UAV covers |
+| Contract reward | $\tilde R_{y,z}^n+\hat R$ | continuous, nonnegative | Coverage reward plus traversal and transmission cost compensation |
+| Contract item | $\omega_{y,z}$ | coverage-reward bundle | Item designed for sensing type $y$ and computation type $z$ |
+| UAV-subregion match | $j^*$ for subregion $n$ | discrete, one-to-one | UAV selected by Gale-Shapley matching |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every subregion is assigned at most one UAV, $\sum_u x_{u,r}\le1$ |
-| C2 | Contract offers satisfy individual rationality for participating UAV types |
-| C3 | Adjacent contract types satisfy incentive compatibility and monotone coverage |
-| C4 | A matching is one-to-one and respects UAV availability and subregion preference lists |
-| C5 | UAV utility includes sensing, travel, computation, and model-upload costs |
+| (10) | Individual rationality: $u_{y,z}(\omega_{y,z})\geq0$ for every type |
+| (11) | Incentive compatibility: $u_{y,z}(\omega_{y,z})\geq u_{y,z}(\omega_{y',z'})$ for other types |
+| Matching rule | Outside (12), each subregion is matched to one UAV using preference lists, and rewards are calibrated downward until a one-to-one matching is reached |
 
-**Algorithm**: Reduce multidimensional IR/IC to worst-type IR and adjacent IC → recurse minimum rewards for a monotone coverage vector → repair non-monotone allocations by bunching/ironing → build preference lists → run Gale-Shapley matching → perform local federated updates.
+**Algorithm**: Sort UAVs by a one-dimensional type based on marginal node-coverage cost → reduce IR/IC to a single-dimensional contract → derive coverage-reward bundles, using bunching and ironing when coverage is non-monotone → add traversal and transmission compensation → build preference lists → run Gale-Shapley matching → perform local federated updates.
 
 ## Related Work Paragraph
 

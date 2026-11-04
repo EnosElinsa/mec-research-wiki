@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[mou-2025-adm-dt-migration]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Hierarchical Control Multi-Agent DRL for Vehicle Twin Migration with Workload Prediction in UAV-Assisted Vehicular Metaverses
@@ -50,11 +50,11 @@ Combines RSU workload prediction with hierarchical MAPPO to decide vehicle-twin 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | RSU workload remains bounded: $L_e(t)\le L_e^{\max}$ for every RSU $e$. |
-| C2 | UAV workload remains bounded: $L_u(t)\le L_u^{\max}$ for every UAV $u$. |
-| C3 | UAV energy stays within its budget: $E_u(t)\le E_u^{\max}$. |
-| C4 | Each VT task is assigned to exactly one RSU: $k_v(t)=e$. |
-| C5 | A mapped migration action must use an available UAV or a reachable RSU; out-of-range RSU indices are clipped to the nearest available server. |
+| 10b | RSU workload remains bounded: $L_e(t)\le L_e^{\max}$ for every RSU $e$. |
+| 10c | UAV workload remains bounded: $L_u(t)\le L_u^{\max}$ for every UAV $u$. |
+| 10d | UAV energy stays within its budget: $E_u(t)\le E_u^{\max}$. |
+| 10e | Each VT task is assigned to exactly one RSU: $k_v(t)=e$. |
+| Action mapping | Outside problem (10), the lower-layer controller maps an RSU index k larger than the available count $N_e(t)$ to the $N_e(t)$-th nearest RSU. |
 
 **Algorithm**: Train ACB-LSTM with convolution, bidirectional LSTM, and Gaussian-noise augmentation, feed predicted workloads to an upper MAPPO controller, and use lower-layer VT-migration and A*-based UAV-routing controllers to map high-level actions to valid server selections, task partitions, and paths.
 
@@ -62,7 +62,7 @@ Combines RSU workload prediction with hierarchical MAPPO to decide vehicle-twin 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] addressed vehicle-twin migration in UAV-assisted vehicular metaverses by jointly minimizing VT service latency and UAV energy under RSU and UAV workload limits. The model assigns each vehicle to a single RSU or UAV and lets UAVs choose continuous priority weights that trade overloaded-area service against charging, with A* enforcing executable routes. ACB-LSTM predicts RSU loads, while hierarchical MAPPO learns migration and routing decisions before deterministic lower-layer controllers enforce feasibility. The prediction-enabled HC-MAPPO variant reduced latency by 45.54% versus Random-uav and by 32.93% versus Greedy-uav, and its validation loss beat the listed LSTM baselines.
+Chen et al. [x] addressed vehicle-twin migration in UAV-assisted vehicular metaverses by jointly minimizing VT service latency and UAV energy under RSU and UAV workload limits. The model assigns each vehicle to a single RSU or UAV and lets UAVs choose continuous priority weights that trade overloaded-area service against charging, with A* enforcing executable routes. ACB-LSTM predicts RSU loads, while hierarchical MAPPO learns migration and routing decisions before deterministic lower-layer controllers enforce feasibility. The prediction-enabled HC-MAPPO variant reduced latency by 45.54% versus Random-uav and by 32.93% versus Greedy-uav, and the ACB-LSTM predictor reached lower validation loss than LSTM, BiLSTM, and CNN-BiLSTM.
 
 ## Problem framing
 
