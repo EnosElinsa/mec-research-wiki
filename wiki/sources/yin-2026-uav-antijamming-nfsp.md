@@ -19,7 +19,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[shi-jin]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,7 +39,7 @@ Models a communicating UAV and an adaptive mobile jammer as a partially observab
 
 **Scenario**: A fixed-altitude rotary-wing UAV collects uplink data from ground devices while a mobile ground jammer pursues it. Both agents move simultaneously on a square grid with incomplete knowledge of the opponent's private state.
 
-**Problem & objective**: The UAV solves $\max\mathbb E[\sum_t(\varphi_1\eta(t)-\varphi_2E_{\mathrm{con}}(t))]$, while the jammer solves $\max\mathbb E[\sum_t-\eta(t)]$; their coupled trajectory policies form a partially observable pursuit-evasion game.
+**Problem & objective**: In P1 (14) the UAV solves $\max\mathbb E[\sum_t(\varphi_1\eta(t)-\varphi_2E_{\mathrm{con}}(t))]$, while in P2 (15) the jammer solves $\max\mathbb E[\sum_t-\eta(t)]$; their coupled trajectory policies form a partially observable pursuit-evasion game.
 
 **Decision variables**:
 

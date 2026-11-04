@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 12 (UAV security, anti-jamming, and RIS-UAV)
+
+- Grounded 25 UAV security, anti-jamming, covert-communication, and RIS-UAV source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch12-uav-security-ris.json`. Grounded total: 288/699.
+- Rewrote Modeling Quick-Use Cards whose variables, objectives, or constraints did not match the paper: lin-2025-energy-effective-ris-multiuav-coverage, ma-2026-game-ibs-deployment, qi-2026-ocma-ddqn-data-collection (potential-game utility (10)-(11) and reward (14)), shi-2026-aoi-active-ris-noma-agmec, and zhang-2024-gdmtd3-aerial-secure-cb.
+- Relabeled constraint rows to the papers' IDs on the RIS-UAV energy-efficiency, swarm anti-jamming, aerial-RIS secure, proactive-eavesdropping, aerial-RIS attitude, cooperative-jamming relay, covert-jamming, UAV localization, FedX RIS trajectory, and DRL IRS trajectory pages. Rows that are reward terms or algorithm rules, such as collision penalties, are now labeled as such.
+- Noted where the parse garbles constraint expressions (alsenwi (14f), ma (13d), huang (20)) or shifts tag numbers (li-2026-aerial-ris-trajectory-phase, tang-2026-gat-antijamming); the cards follow the text and point to the published paper.
+- Corrected Related Work claims: named the actual baselines on the IBS deployment, GDMTD3, cooperative-jamming, MAPPO-NOMA, and DRL IRS pages; noted that the DDPG baseline reaches slightly higher spectral efficiency than MARL on morshed-2026-active-ris-uav-noma-mappo, and that DQN trains faster than DDPG on wang-2023-drl-irs-uav-trajectory.
+
 ## [2026-11-03] Grounded batch 11 (multi-UAV DRL edge computing, second half)
 
 - Grounded 15 multi-UAV DRL edge-computing source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch11-multiuav-b.json`. Grounded total: 263/699.

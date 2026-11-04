@@ -23,7 +23,7 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Air-Ground Cooperative Covert Transmission: A Jamming Dynamic Management and Security Enhancement Approach
@@ -42,7 +42,7 @@ Designs a friendly-jamming covert air-ground link where a decode-and-forward UAV
 
 **Scenario**: An aerial hovering platform sends confidential data through a decode-and-forward UAV relay to ground users while a terrestrial friendly jammer and the UAV-mounted RIS direct interference toward a warden over time-varying Rician air-ground channels.
 
-**Problem & objective**: The dynamic non-convex control problem maximizes effective-throughput energy efficiency, $\max\sum_{k=1}^{K}\sum_{t=1}^{T}\tau\eta_k(t)/e_u(t)$, under per-slot covertness and mission constraints.
+**Problem & objective**: Problem (45) maximizes effective-throughput energy efficiency, $\max\sum_{k=1}^{K}\sum_{t=1}^{T}\tau\eta_k(t)/e_u(t)$, under per-slot covertness and mission constraints.
 
 **Decision variables**:
 
@@ -58,11 +58,11 @@ Designs a friendly-jamming covert air-ground link where a decode-and-forward UAV
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The KL-divergence-based covertness expression remains no greater than $\varepsilon$ in every slot. |
-| C2 | At most one user is served per slot: $\sum_k c_k(t)\leq1$. |
-| C3 | Each user receives its required data: $\sum_t\tau\eta_k(t)\geq D_k$. |
-| C4 | Horizontal position, altitude, and horizontal and vertical speeds remain within mission limits. |
-| C5 | RIS coefficients and phases satisfy $0\leq\beta_n\leq1$ and $0\leq\theta_n<2\pi$. |
+| (45a) | Per-slot covertness: the KL-divergence-based detection expression stays within $\varepsilon$ |
+| (45b) | At most one user per slot, $\sum_kc_k(t)\leq1$ |
+| (45c) | Task completion $\sum_t\tau\eta_k(t)\geq D_k$ |
+| (45d)-(45g) | Horizontal region, altitude range, and horizontal and vertical speed limits |
+| Static problem | RIS amplitudes $0\leq\beta_n\leq1$ and phases $0\leq\theta_n<2\pi$ are bounded in the static subproblem |
 
 **Algorithm**: For a fixed position, alternate UAV-power, RIS-phase, and RIS-amplitude updates using closed-form boundary power, SDR, Dinkelbach iteration, and Gaussian randomization; for the mission horizon, let DDQN choose grid movements and users and invoke the static optimizer for transmit power and RIS settings.
 

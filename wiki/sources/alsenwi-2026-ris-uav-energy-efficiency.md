@@ -18,7 +18,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[sheng-2025-ris-online-uav-mec]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # RIS-UAV Integration for Enhanced Coverage and Energy-Efficient 6G Wireless Networks
@@ -37,7 +37,7 @@ Uses an actor-critic policy to jointly control a UAV-mounted passive RIS, its qu
 
 **Scenario**: A multi-antenna BS serves dynamic single-antenna users $\mathcal K$ through a UAV-mounted passive RIS in a blocked mmWave downlink with no direct BS-to-user path. The UAV moves in three dimensions, the RIS has $N$ elements with quantized phases and amplitudes, and channel states vary over time.
 
-**Problem & objective**: The stochastic problem $\max_{x,y,h,W,\Phi}\frac{1}{T}\sum_{t\in\mathcal T}\eta(t)$ maximizes average energy efficiency, where $\eta(t)=\frac{\sum_{k\in\mathcal K}B\log_2(1+\mathrm{SINR}_k(t))}{\sum_{k\in\mathcal K}\|w_k\|^2+P_{\mathrm{uav}}}$.
+**Problem & objective**: The stochastic problem (14) $\max_{x,y,h,W,\Phi}\frac{1}{T}\sum_{t\in\mathcal T}\eta(t)$ maximizes average energy efficiency, where $\eta(t)=\frac{\sum_{k\in\mathcal K}B\log_2(1+\mathrm{SINR}_k(t))}{\sum_{k\in\mathcal K}\|w_k\|^2+P_{\mathrm{uav}}}$.
 
 **Decision variables**:
 
@@ -52,12 +52,11 @@ Uses an actor-critic policy to jointly control a UAV-mounted passive RIS, its qu
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Chance-constrained user QoS: $\Pr\{r_k(t)\ge r_k^{\min}\}\ge1-\varepsilon,\ \forall k$ |
-| C2 | BS transmit power: $\sum_{k\in\mathcal K}\|w_k\|^2\le P_{\max}$ |
-| C3 | RIS structure: $\Phi=\operatorname{diag}(b_ne^{j\phi_n})$ |
-| C4 | Quantized RIS phase: $\phi_n=\frac{\kappa\pi}{2^{c-1}},\ \kappa\in\{0,1,\ldots,2^c-1\}$ |
-| C5 | RIS amplitudes are feasible: $b_n\in[0,1]$ |
-| C6 | Flight region: $h_{\min}\le h(t)\le h_{\max}$, $x_{\min}\le x(t)\le x_{\max}$, and $y_{\min}\le y(t)\le y_{\max}$ |
+| (14b) | Chance-constrained QoS $\Pr\{r_k(t)\ge r_k^{\min}\}\ge1-\varepsilon$ |
+| (14c) | BS power $\sum_k\|w_k\|^2\le P_{\max}$ |
+| (14d) | RIS structure $\Phi=\mathrm{diag}(b_1e^{j\phi_1},\ldots,b_Ne^{j\phi_N})$ with quantized $\phi_n=\kappa\pi/2^{c-1}$ |
+| (14e)-(14f) | Amplitudes $b_n\in[0,1]$ (the (14f) expression is not legible in the parse) |
+| (14g)-(14i) | Flight region $h_{\min}\le h(t)\le h_{\max}$, $x_{\min}\le x(t)\le x_{\max}$, $y_{\min}\le y(t)\le y_{\max}$ |
 
 **Algorithm**: Model the problem as an MDP with state $\mathbf s(t)=\{\mathbf g_k(t),\mathbf G(t)\}$, action $\mathcal A=\{x,y,h,W,\Phi\}$, and reward $R(t)=\eta(t)+\beta(t)\sum_k[r_k(t)-r_k^{\min}]$; train an actor-critic policy offline at a cloud server with experience replay, execute it online at an edge server, return observations and rewards for periodic retraining, and update dimensions when user cardinality changes.
 
@@ -65,7 +64,7 @@ Uses an actor-critic policy to jointly control a UAV-mounted passive RIS, its qu
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Alsenwi et al. [x] studied energy-efficient downlink communication from a base station through a UAV-mounted passive RIS to dynamic users in blocked mmWave environments. They formulated a stochastic average-energy-efficiency maximization over UAV coordinates, altitude, BS precoding, and quantized RIS coefficients with chance-constrained minimum data rates and power and flight-region limits. Their actor-critic framework trains offline at a cloud server, executes online at an edge server, and periodically retrains from observed channels and rewards. Simulations reported approximately 6 bit/s/Hz average spectral efficiency, about 97% reliability at a 4 Mbps threshold, and about 80% reliability at an 8 Mbps threshold for the proposed approach.
+Alsenwi et al. [x] studied energy-efficient downlink communication from a base station through a UAV-mounted passive RIS to dynamic users in blocked mmWave environments. They formulated a stochastic average-energy-efficiency maximization over UAV coordinates, altitude, BS precoding, and quantized RIS coefficients with chance-constrained minimum data rates and power and flight-region limits. Their actor-critic framework trains offline at a cloud server, executes online at an edge server, and periodically retrains from observed channels and rewards. Simulations reported approximately 6 bit/s/Hz average spectral efficiency, about 97% reliability at a 4 Mbps threshold, and about 80% reliability at an 8 Mbps threshold for the proposed approach, which outperformed fixed-UAV, fixed-RIS, and random baselines.
 
 ## Problem and system model
 

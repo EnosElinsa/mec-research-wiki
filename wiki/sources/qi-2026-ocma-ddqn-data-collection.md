@@ -28,7 +28,7 @@ related:
   - "[[shi-jin]]"
   - "[[chunguo-li]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Robust and Energy-Efficient Multi-UAV Trajectory Planning for Data Collection: A Game-Theoretic and Deep Reinforcement Learning Approach
@@ -45,30 +45,21 @@ Combines an exact-potential-game cooperation model with distributed DDQN for fix
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple fixed-altitude UAVs collect data from ground base stations in a gridded urban airspace containing buildings, no-fly zones, and directional jammers. TDMA separates data collection from inter-UAV exchange, hybrid LoS/NLoS fading and jammer interference determine rates, and intermittent neighbor links limit map and replay-experience sharing.
-
-**Problem & objective**: A distributed exact-potential game and finite-action MDP maximizes each UAV's expected discounted utility, $\max_{\pi_m}\mathbb E_{\pi_m}[\sum_t\gamma^t r_m(t)]$, where reward combines collected data, propulsion energy, cooperation cost, collision penalties, landing, and remaining energy.
-
+**Scenario**: Multiple fixed-altitude UAVs collect data from ground base stations in a gridded urban area with buildings, no-fly zones, and directional jammers. UAVs exchange maps and experience over intermittent neighbor links, which costs communication resources.
+**Problem & objective**: Each UAV $i$ maximizes the game utility (10)-(11), $U_i(a)=F_i(a_i)-\sum_{j\ne i}w_{ij}(a_i,a_j)-E_i(a_i)$, where $F_i=\beta_d\Delta D(t)$ rewards collected data (9), $w_{ij}$ is the pairwise cooperation cost, and $E_i$ is energy; the bilateral game is an exact potential game (Theorem 1).
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV motion action | $a_m(t)$ | discrete, north/south/east/west/hover/land | Grid movement or landing selected by UAV $m$ |
-| DDQN policy | $\pi_m(a\mid s)$ | discrete stochastic or greedy policy | Mapping from local/global-map state to a motion action |
-| Experience exchange | $e_{m,j}(t)$ | binary/probabilistic | Whether connected UAVs share replay experience and map information |
-| Predicted neighbor action | $\hat a_j(t)$ | discrete with confidence threshold | LSTM estimate used during a short link interruption |
-
+| UAV action | $a_m(t)\in\mathcal A=\{0,\ldots,5\}$ | discrete | Move east, south, west, or north, land, or hover |
+| DDQN policy | $\pi_m$ | learned | Maps state (12) of base stations, jammers, landing zone, buildings, no-fly zones, location, and battery to an action |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Actions remain in the six-element discrete strategy set and within map boundaries |
-| C2 | Entering a building/no-fly cell or colliding triggers the paper's position reset and collision penalty |
-| C3 | Data are collected only when the selected base-station link exceeds the rate threshold |
-| C4 | Propulsion and communication/computation energy remain within the UAV battery budget and landing is required |
-| C5 | Neighbor predictions are used only when LSTM Softmax confidence exceeds 0.95 |
-
-**Algorithm**: Define pairwise cooperation costs as an exact potential game → train independent DDQNs with policy and target networks → share maps and replay experience according to distance-based value circles → train an online LSTM from recent neighbor states/actions → substitute high-confidence predictions during short outages → execute the distributed policies locally.
+| (13) | Actions lie in the six-element strategy set |
+| Model rule | Entering a no-fly zone or hitting a building resets the UAV to its previous position and counts a collision |
+| Reward (14) | $r_m(t)=-r_{mov}+\varepsilon_{col}\Delta D_m(t)-r_{cop}-r_{crash}+r_{land}+\varepsilon_{ele}E_m(t)$ |
+| Prediction rule | A neighbor-action prediction is used only if its confidence exceeds $\tau=0.95$ |
+**Algorithm**: OCMA-DDQN-LSTM trains independent DDQNs whose reward mirrors the potential-game utility, shares maps and replay experience with neighbors inside distance-based value circles, and uses an online LSTM to predict neighbor actions during short link interruptions.
 
 ## Related Work Paragraph
 

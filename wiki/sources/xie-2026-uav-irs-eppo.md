@@ -22,7 +22,7 @@ related:
   - "[[jiacheng-wang]]"
   - "[[dusit-niyato]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Optimization of UAV-Carried IRS for Urban Low Altitude mmWave Communications With Deep Reinforcement Learning
@@ -43,7 +43,7 @@ Controls a rotary-wing UAV carrying a passive IRS through enhanced PPO while com
 
 **Scenario**: A source user communicates with mobile terrestrial users through a rotary-wing UAV carrying a planar IRS in an obstructed urban mmWave environment, with blocked direct links and TDMA service.
 
-**Problem & objective**: The joint design maximizes long-term fairness-weighted rate per propulsion energy, $\max_{\boldsymbol\Theta,\mathbf A}\sum_{t=1}^{T}F_t$ with $F_t=\xi\sum_iR_{i,t}/E_t$, by controlling IRS phases and UAV displacement.
+**Problem & objective**: Problem (9) maximizes long-term fairness-weighted rate per propulsion energy, $\max_{\boldsymbol\Theta,\mathbf A}\sum_{t=1}^{T}F_t$ with $F_t=\xi\sum_iR_{i,t}/E_t$, by controlling IRS phases and UAV displacement.
 
 **Decision variables**:
 

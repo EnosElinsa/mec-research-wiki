@@ -22,7 +22,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[naofal-al-dhahir]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimization-Driven DRL for Resource Allocation Under Licensed and Unlicensed UAV Spectrum Sharing Networks Against Uncertain Jamming
@@ -41,7 +41,7 @@ Combines robust SCA/CVX solutions with DQN-DDPG targets to learn licensed/unlice
 
 **Scenario**: A cognitive UAV serves secondary users over licensed cellular and unlicensed Wi-Fi subchannels while protecting primary and Wi-Fi users from interference. A multi-antenna jammer attacks the secondary links, and jammer-to-user CSI lies in a norm-bounded uncertainty set.
 
-**Problem & objective**: The robust joint design maximizes time-average secondary sum rate, $\max_{\mathcal A,\mathcal B,\mathcal P,\mathcal U,\mathcal Q}\frac{1}{N}\sum_{n=1}^{N}\sum_{k=1}^{K}R_k[n]$.
+**Problem & objective**: Problem P1 (10) maximizes time-average secondary sum rate, $\max_{\mathcal A,\mathcal B,\mathcal P,\mathcal U,\mathcal Q}\frac{1}{N}\sum_{n=1}^{N}\sum_{k=1}^{K}R_k[n]$.
 
 **Decision variables**:
 

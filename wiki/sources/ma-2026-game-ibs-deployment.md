@@ -14,7 +14,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[uav-localization-under-jamming]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -32,36 +32,26 @@ Places multiple ground interference base stations to disrupt an unauthorized UAV
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple fixed interference base stations (IBSs) are deployed around a sensitive area to disrupt an unauthorized UAV's GNSS and operator link while protecting supportive devices. The UAV follows an OFDM ground-operator link through probabilistic-LoS/NLoS channels with Nakagami fading.
-
-**Problem & objective**: Anti-UAV IBS deployment and response, a discrete placement plus continuous trajectory game, maximizes UAV disruption while preserving supportive-device service, $\max_{\mathbf b,\mathbf q(\cdot)}[U_{\mathrm{disrupt}}-\lambda U_{\mathrm{support}}]$, with each IBS choosing a placement and the UAV minimizing its capture score.
-
+**Scenario**: Multiple interference base stations (IBSs) $j$ are deployed around a sensitive area to jam an unauthorized UAV's GNSS navigation and operator link, while fixed supportive devices still need communication and navigation service. Terrain attenuates the communication and interference channels, and the UAV chooses its own flight path.
+**Problem & objective**: Problem P1 (13) chooses IBS locations $L_{bs,j}$ to maximize the expected cumulative UAV capture probability plus the supportive-device metric, $\arg\max_{L_{bs,j}}\mathbb E[\sum_t\mathbb P(t)+\sum_t\sum_j\varrho_j^s(t)]$, where $\varrho_j^s$ combines normalized communication rate and navigation SINR of supportive devices.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| IBS placement | $\mathbf b_j$ | discrete grid position | Fixed location of interference base station $j$ |
-| IBS strategy | $s_j$ | continuous/discrete utility action | Jamming intensity and directional response of IBS $j$ |
-| UAV trajectory | $\mathbf q(t)$ | continuous path | Unauthorized UAV route through the sensitive area |
-| Capture/disruption score | $J(\mathbf b,\mathbf q)$ | continuous value | Composite objective used to evaluate a placement/path pair |
-
+| IBS deployment | $L_{bs,j}=(x_{bs,j},y_{bs,j})$ | discrete candidate positions in a rectangle | Location of IBS $j$ |
+| UAV trajectory (adversary) | $\tau$ | path under constrained motion sets (7a)-(7h) | Path that minimizes the UAV's capture probability, learned by SAC |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | IBS positions stay in the allowed grid/rectangle and remain fixed during a flight |
-| C2 | UAV path stays inside the area, avoids obstacles, and reaches the destination |
-| C3 | Supportive-device communication and navigation performance stays within its service requirement |
-| C4 | Utilities and strategy updates satisfy the potential-game action sets |
-| C5 | Placement enumeration evaluates every candidate before selecting the best utility table entry |
-
-**Algorithm**: Define the Multiple IBS Anti-UAV Game and its potential utility → enumerate IBS placements → train SAC for the UAV's minimum-capture path at each placement → fill the placement utility table → choose the maximizing deployment/path pair.
+| (13b) | IBS coordinates $x_{\min}\le x_{bs,j}\le x_{\max}$, $y_{\min}\le y_{bs,j}\le y_{\max}$ |
+| (13c)-(13e) | Interference powers $0<p_{j,m}\le P_{j,m}$ and $0<p_{j,n}\le P_{j,n}$ ((13d) is not legible in the parse) |
+| (13f)-(13g) | Supportive-device powers $0<p_m\le P_c$ and $0<\sum_mp_m\le P_c$ |
+**Algorithm**: The Multiple IBSs Anti-UAV Game (MIAUG) gives each IBS the utility (14) and is shown to be an exact potential game with a Nash equilibrium. IBSs-DO (Algorithm 1) enumerates candidate deployments, trains a SAC agent to find the UAV's minimum-capture path for each, fills a utility table, and selects the best deployment; complexity grows as $\mathcal O(N_1\cdots N_J)$.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ma et al. [x] studied game-theoretic deployment of multiple interference base stations against an unauthorized UAV. They formulated a placement and trajectory interaction that maximizes UAV disruption while retaining supportive-device communication and navigation performance. The Multiple IBSs Anti-UAV Game assigns each IBS a utility and is presented as an exact potential game, while an SAC policy computes a minimum-capture UAV path for every candidate placement. IBSs-DO enumerates placements, evaluates the learned path responses, and selects the placement with the highest utility-table value. Simulations report lower capture scores for the proposed SAC-based response than PPO, Q-learning, Sarsa, and heuristic path baselines in the tested synthetic areas.
+Ma et al. [x] studied game-theoretic deployment of multiple interference base stations against an unauthorized UAV. They formulated IBS placement to maximize the UAV's capture probability along its best evasion path together with a supportive-device communication and navigation metric, under placement and power limits. The Multiple IBSs Anti-UAV Game assigns each IBS a utility and is presented as an exact potential game, while an SAC policy computes a minimum-capture UAV path for every candidate placement. IBSs-DO enumerates placements, evaluates the learned path responses, and selects the placement with the highest utility-table value. For the UAV path, simulations compare the SAC response with PPO, Q-learning, Sarsa, and B3L learners and with maximum-step and nearest-path strategies.
 
 ## Problem framing
 

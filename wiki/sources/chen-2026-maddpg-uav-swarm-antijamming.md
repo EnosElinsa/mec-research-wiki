@@ -19,7 +19,7 @@ related:
   - "[[yang-2026-embodied-antijamming-uav]]"
   - "[[embodied-anti-jamming-resource-allocation]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Robust Multi-Domain Adaptive Anti-Jamming Communication System for a UAV Swarm in Urban ITS Traffic Monitoring via Multi-Agent Deep Deterministic Policy Gradient
@@ -38,7 +38,7 @@ Models urban ITS monitoring by a UAV swarm under co-channel interference and mal
 
 **Scenario**: A UAV swarm monitors urban traffic through U2U coordination links and U2G reporting to a ground station in the presence of co-channel interference and fixed, swept, or random jammers. Each UAV observes local channel gain and interference, selects a channel and transmit power, and follows Gaussian-Markov mobility.
 
-**Problem & objective**: The anti-jamming problem minimizes expected long-term weighted transmission energy and frequency-hopping overhead, $\min_{L^t,P^t}\mathbb E\{\sum_{t=0}^{T-1}\sum_{n=1}^{N}[\beta E_n^t+(1-\beta)F_n^t]\}$, while every U2U payload is delivered within a slot.
+**Problem & objective**: Problem (13) minimizes expected long-term weighted transmission energy and frequency-hopping overhead, $\min_{L^t,P^t}\mathbb E\{\sum_{t=0}^{T-1}\sum_{n=1}^{N}[\beta E_n^t+(1-\beta)F_n^t]\}$, while every U2U payload is delivered within a slot.
 
 **Decision variables**:
 
@@ -53,10 +53,10 @@ Models urban ITS monitoring by a UAV swarm under co-channel interference and mal
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each U2U link delivers its payload: $R_n^{t,l}t\ge K$ for every link and slot. |
-| C2 | Transmit powers remain within the platform limits. |
-| C3 | Frequency-hopping cost is incurred only when channels change: $F_n^t=g(L_n^t,L_n^{t-1})W$. |
-| C4 | Agents act from local observations in decentralized execution, while centralized training may use joint observations and actions. |
+| (13b) | Each U2U link delivers its payload in every slot: $R_n^{t,l}t\ge K$ |
+| Model rule | One channel per link per slot; transmit powers bounded by the U2G and U2U platform limits |
+| Model rule | Hopping cost $F_n^t$ is incurred only when the channel changes between slots |
+| Learning rule | Decentralized execution from local observations; centralized critics during training |
 
 **Algorithm**: Model local observations and mixed channel-power actions as a Dec-POMDP, train MADDPG with centralized critics and decentralized actors using replay and target networks, and shape rewards from U2G capacity, U2U success, transmission energy, and hopping penalties under fixed, swept, and random jamming.
 

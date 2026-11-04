@@ -19,7 +19,7 @@ related:
   - "[[shao-2024-drl-antijamming-mec]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,7 +39,7 @@ A **wireless information surveillance** scenario where a legitimate party uses *
 
 **Scenario**: Multiple full-duplex UAV monitors track moving suspicious UAV-to-ground links while receiving intercepted signals and transmitting cooperative jamming.
 
-**Problem & objective**: Jointly choose motion and jamming to maximize long-run eavesdropping reward, $\max \liminf_{T\to\infty}\frac{1}{T}\sum_t r_t$, where $r_t$ combines eavesdropping rate and collision penalties.
+**Problem & objective**: Problem (14) jointly chooses motion and jamming to maximize long-run eavesdropping reward, $\max\lim_{T\to\infty}\frac{1}{T}\sum_t r_t$, where $r_t$ combines eavesdropping rate and collision penalties.
 
 **Decision variables**:
 
@@ -53,11 +53,11 @@ A **wireless information surveillance** scenario where a legitimate party uses *
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Each motion action belongs to the feasible velocity set $\mathcal{V}$ |
-| C2 | Jamming powers are nonnegative, $p_n^m(t)\geq0$ |
-| C3 | Each monitor obeys its total jamming-power budget |
-| C4 | The eavesdropping rate must meet the suspicious-link rate for successful decoding |
-| C5 | Monitor trajectories preserve collision-avoidance and flight-safety separation |
+| (14a) | Each motion action belongs to the feasible velocity set, $v_n(t)\in\mathcal V$ |
+| (14b) | Nonnegative jamming powers $p_n^m(t)\geq0$ |
+| (14c) | Per-monitor jamming budget $\sum_mp_n^m(t)\leq P_{\max}$ |
+| (14d) | Successful eavesdropping $\mathbf C_{S_m}^E(t)\geq\mathbf C_m(t)$ on every suspicious link |
+| Reward (13) | Collision avoidance enters as the penalty $r_t^K=-\nu\sum_n\exp(-(d_{\min}^n(t)/\sigma_d)^2)$, not as a constraint |
 
 **Algorithm**: Solve jamming powers with successive convex approximation, then train decentralized parameter-shared MAPPO movement policies in the resulting multi-agent decision process.
 

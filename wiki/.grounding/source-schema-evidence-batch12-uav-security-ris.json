@@ -1,0 +1,604 @@
+{
+  "entries": [
+    {
+      "slug": "alsenwi-2026-ris-uav-energy-efficiency",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/RIS-UAV_Integration_for_Enhanced_Coverage_and_Energy-Efficient_6G_Wireless_Networks/RIS-UAV_Integration_for_Enhanced_Coverage_and_Energy-Efficient_6G_Wireless_Networks.md",
+          "lines": "166-200",
+          "note": "problem (14a)-(14i); card relabeled from invented C1-C6"
+        },
+        {
+          "path": "raw/sources/RIS-UAV_Integration_for_Enhanced_Coverage_and_Energy-Efficient_6G_Wireless_Networks/RIS-UAV_Integration_for_Enhanced_Coverage_and_Energy-Efficient_6G_Wireless_Networks.md",
+          "lines": "200-260",
+          "note": "MDP, actor-critic offline/online training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/RIS-UAV_Integration_for_Enhanced_Coverage_and_Energy-Efficient_6G_Wireless_Networks/RIS-UAV_Integration_for_Enhanced_Coverage_and_Energy-Efficient_6G_Wireless_Networks.md",
+          "lines": "341,348",
+          "note": "about 6 bit/s/Hz vs Fixed-UAV, Fixed-RIS, Random; 97% at 4 Mbps, 80% at 8 Mbps"
+        }
+      ]
+    },
+    {
+      "slug": "beishenalieva-2026-secrecy-aware-uav-path-planning",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization.md",
+          "lines": "112-164",
+          "note": "constraints (11), (13)-(19); card matches"
+        },
+        {
+          "path": "raw/sources/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization.md",
+          "lines": "173-199,444-472",
+          "note": "PPO and A2C losses, PSO slot allocation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization/Secrecy-Aware_UAV_Path_Planning_and_Offloading_Strategy_Optimization_Using_Deep_Reinforcement_Learning_and_Particle_Swarm_Optimization.md",
+          "lines": "522-549",
+          "note": "PSO 30 particles within 10 iterations, 600 vs 3,200,000 evaluations; HRF-PPO, OHA, RASA baselines"
+        }
+      ]
+    },
+    {
+      "slug": "cai-2026-llm-drl-secure-lae-data",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking.md",
+          "lines": "181-209",
+          "note": "problem (18a)-(18h); card matches"
+        },
+        {
+          "path": "raw/sources/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking.md",
+          "lines": "297-431",
+          "note": "LLM state-reward design, Lipschitz feedback (38), DDPG/TD3 training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking.md",
+          "lines": "29,570-608",
+          "note": "about 35% faster convergence; AoI up to 95% and energy up to 33% lower vs DRL baselines"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-maddpg-uav-swarm-antijamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Robust_Multi-Domain_Adaptive_Anti-Jamming_Communication_System_for_a_UAV_Swarm_in_Urban_ITS_Traffic_Monitoring_via_Multi-Agent_Deep_Deterministic_Policy_Gradient/A_Robust_Multi-Domain_Adaptive_Anti-Jamming_Communication_System_for_a_UAV_Swarm_in_Urban_ITS_Traffic_Monitoring_via_Multi-Agent_Deep_Deterministic_Policy_Gradient.md",
+          "lines": "124,180-190",
+          "note": "single-channel rule, problem (13a)-(13b); only (13b) is a constraint; card relabeled"
+        },
+        {
+          "path": "raw/sources/A_Robust_Multi-Domain_Adaptive_Anti-Jamming_Communication_System_for_a_UAV_Swarm_in_Urban_ITS_Traffic_Monitoring_via_Multi-Agent_Deep_Deterministic_Policy_Gradient/A_Robust_Multi-Domain_Adaptive_Anti-Jamming_Communication_System_for_a_UAV_Swarm_in_Urban_ITS_Traffic_Monitoring_via_Multi-Agent_Deep_Deterministic_Policy_Gradient.md",
+          "lines": "192-334",
+          "note": "Dec-POMDP and MADDPG training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Robust_Multi-Domain_Adaptive_Anti-Jamming_Communication_System_for_a_UAV_Swarm_in_Urban_ITS_Traffic_Monitoring_via_Multi-Agent_Deep_Deterministic_Policy_Gradient/A_Robust_Multi-Domain_Adaptive_Anti-Jamming_Communication_System_for_a_UAV_Swarm_in_Urban_ITS_Traffic_Monitoring_via_Multi-Agent_Deep_Deterministic_Policy_Gradient.md",
+          "lines": "400,409-436",
+          "note": "4 UAVs; MADQN, DDPG, PPO, random baselines; about 500 episodes; about 45 Mbps"
+        }
+      ]
+    },
+    {
+      "slug": "chhea-2025-irs-uav-swipt-drl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL.md",
+          "lines": "178-192",
+          "note": "problem (15) with C1-C4 (16)-(19); card matches"
+        },
+        {
+          "path": "raw/sources/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL.md",
+          "lines": "220-226",
+          "note": "Q-learning updates (20)-(21) and SINR-map reward"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL.md",
+          "lines": "443-488",
+          "note": "SHF, REINFORCE, GS, DRL without IRS comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "ding-2026-optimization-driven-spectrum-sharing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimization-Driven_DRL_for_Resource_Allocation_Under_Licensed_and_Unlicensed_UAV_Spectrum_Sharing_Networks_Against_Uncertain_Jamming/Optimization-Driven_DRL_for_Resource_Allocation_Under_Licensed_and_Unlicensed_UAV_Spectrum_Sharing_Networks_Against_Uncertain_Jamming.md",
+          "lines": "145-209",
+          "note": "P1 (10a)-(10l) C1-C11, jammer CSI uncertainty (11); card matches"
+        },
+        {
+          "path": "raw/sources/Optimization-Driven_DRL_for_Resource_Allocation_Under_Licensed_and_Unlicensed_UAV_Spectrum_Sharing_Networks_Against_Uncertain_Jamming/Optimization-Driven_DRL_for_Resource_Allocation_Under_Licensed_and_Unlicensed_UAV_Spectrum_Sharing_Networks_Against_Uncertain_Jamming.md",
+          "lines": "241-437",
+          "note": "robust reformulation P2-P6 with S-procedure and SCA blocks"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimization-Driven_DRL_for_Resource_Allocation_Under_Licensed_and_Unlicensed_UAV_Spectrum_Sharing_Networks_Against_Uncertain_Jamming/Optimization-Driven_DRL_for_Resource_Allocation_Under_Licensed_and_Unlicensed_UAV_Spectrum_Sharing_Networks_Against_Uncertain_Jamming.md",
+          "lines": "5,701,762",
+          "note": "about 200 episodes faster convergence; about twice the licensed-only sum rate"
+        }
+      ]
+    },
+    {
+      "slug": "feng-2026-aerial-ris-secure",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Reinforcement_Learning_With_Conformal_Symplectic_Optimization_for_Aerial_RIS-Aided_Secure_Communication/Reinforcement_Learning_With_Conformal_Symplectic_Optimization_for_Aerial_RIS-Aided_Secure_Communication.md",
+          "lines": "81-89,219-247",
+          "note": "motion (2a)-(2c), P0 (23a)-(23g); card relabeled to equation IDs"
+        },
+        {
+          "path": "raw/sources/Reinforcement_Learning_With_Conformal_Symplectic_Optimization_for_Aerial_RIS-Aided_Secure_Communication/Reinforcement_Learning_With_Conformal_Symplectic_Optimization_for_Aerial_RIS-Aided_Secure_Communication.md",
+          "lines": "258-476",
+          "note": "PRAD optimizer, ESIA mechanism, two TD3 agents and rewards"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Reinforcement_Learning_With_Conformal_Symplectic_Optimization_for_Aerial_RIS-Aided_Secure_Communication/Reinforcement_Learning_With_Conformal_Symplectic_Optimization_for_Aerial_RIS-Aided_Secure_Communication.md",
+          "lines": "497,515-531",
+          "note": "reward about 40 after about 1000 episodes; SSR 4.5 at M=48 vs TTD3 needing M=64; SEE about 60 bits/s/Hz/kJ"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2024-multiuav-proactive-eavesdropping",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping.md",
+          "lines": "230-259",
+          "note": "collision penalty (13), problem (14)-(14d); card relabeled (collision row was a reward term)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping.md",
+          "lines": "308-549",
+          "note": "MDP (19)-(21), SCA power problem (24)-(27), MAPPO surrogate (32)-(33)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping/Joint_Optimization_of_Trajectory_and_Jamming_Power_for_Multiple_UAV-Aided_Proactive_Eavesdropping.md",
+          "lines": "702-717",
+          "note": "SCA close to exhaustive; CPPO needs 4000 episodes to pass 1.4 bps/Hz, MAPPO under 2000"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2025-fedx-ris-uav-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Fast_UAV_Trajectory_Planning_Framework_in_RIS-Assisted_Communication_Systems_With_Accelerated_Learning_via_Multithreading_and_Federating/A_Fast_UAV_Trajectory_Planning_Framework_in_RIS-Assisted_Communication_Systems_With_Accelerated_Learning_via_Multithreading_and_Federating.md",
+          "lines": "199-223",
+          "note": "energy model (19), problem (20) partly garbled, first two constraints from text at 221; card relabeled"
+        },
+        {
+          "path": "raw/sources/A_Fast_UAV_Trajectory_Planning_Framework_in_RIS-Assisted_Communication_Systems_With_Accelerated_Learning_via_Multithreading_and_Federating/A_Fast_UAV_Trajectory_Planning_Framework_in_RIS-Assisted_Communication_Systems_With_Accelerated_Learning_via_Multithreading_and_Federating.md",
+          "lines": "225-300",
+          "note": "MDP state (21), FedX multithreaded federated training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Fast_UAV_Trajectory_Planning_Framework_in_RIS-Assisted_Communication_Systems_With_Accelerated_Learning_via_Multithreading_and_Federating/A_Fast_UAV_Trajectory_Planning_Framework_in_RIS-Assisted_Communication_Systems_With_Accelerated_Learning_via_Multithreading_and_Federating.md",
+          "lines": "500",
+          "note": "FedSAC speedups about 3.72 and 7.43, FedPPO 4.53 and 7.44 with 5 and 10 agents"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-aerial-ris-trajectory-phase",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design.md",
+          "lines": "52-59,254-291",
+          "note": "kinematics (1)-(2), problem (30a)-(30i) with IDs from text at 291 (parse tags shifted); card relabeled"
+        },
+        {
+          "path": "raw/sources/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design.md",
+          "lines": "311-320",
+          "note": "MDP action, beamforming subproblem (31)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design/Aerial_RIS-Enhanced_Communications_Joint_UAV_Trajectory_Altitude_Control_and_Phase_Shift_Design.md",
+          "lines": "5,568,586,668-682",
+          "note": "SAC-PER about 150K steps vs 200K for PPO/SAC; up to 14.4% sum rate; multi-ARIS case"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-credit-aware-uav-irs-secrecy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secrecy_Sum_Rate_Maximization_in_UAV-IRS_Assisted_Networks_With_Credit-Aware_Cooperative_Multi-Agent_Reinforcement_Learning/Secrecy_Sum_Rate_Maximization_in_UAV-IRS_Assisted_Networks_With_Credit-Aware_Cooperative_Multi-Agent_Reinforcement_Learning.md",
+          "lines": "175-199",
+          "note": "problem P1 (17) with (17a)-(17f); card matches"
+        },
+        {
+          "path": "raw/sources/Secrecy_Sum_Rate_Maximization_in_UAV-IRS_Assisted_Networks_With_Credit-Aware_Cooperative_Multi-Agent_Reinforcement_Learning/Secrecy_Sum_Rate_Maximization_in_UAV-IRS_Assisted_Networks_With_Credit-Aware_Cooperative_Multi-Agent_Reinforcement_Learning.md",
+          "lines": "250-464",
+          "note": "Shapley credit, PD-CMASAC algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secrecy_Sum_Rate_Maximization_in_UAV-IRS_Assisted_Networks_With_Credit-Aware_Cooperative_Multi-Agent_Reinforcement_Learning/Secrecy_Sum_Rate_Maximization_in_UAV-IRS_Assisted_Networks_With_Credit-Aware_Cooperative_Multi-Agent_Reinforcement_Learning.md",
+          "lines": "491-501",
+          "note": "MASAC-TR and MASAC-IR baselines; PD-CMASAC outperforms"
+        }
+      ]
+    },
+    {
+      "slug": "lin-2025-energy-effective-ris-multiuav-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Energy_Effective_RIS-Assisted_Multi-UAV_Coverage_Scheme_for_Fairness-Aware_Ground_Terminals/An_Energy_Effective_RIS-Assisted_Multi-UAV_Coverage_Scheme_for_Fairness-Aware_Ground_Terminals.md",
+          "lines": "127-161",
+          "note": "problem (P) (11)-(11f); card rewritten (invented cluster variable, C1-C5)"
+        },
+        {
+          "path": "raw/sources/An_Energy_Effective_RIS-Assisted_Multi-UAV_Coverage_Scheme_for_Fairness-Aware_Ground_Terminals/An_Energy_Effective_RIS-Assisted_Multi-UAV_Coverage_Scheme_for_Fairness-Aware_Ground_Terminals.md",
+          "lines": "378",
+          "note": "TDQN implementation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Energy_Effective_RIS-Assisted_Multi-UAV_Coverage_Scheme_for_Fairness-Aware_Ground_Terminals/An_Energy_Effective_RIS-Assisted_Multi-UAV_Coverage_Scheme_for_Fairness-Aware_Ground_Terminals.md",
+          "lines": "389-415",
+          "note": "throughput variance metric; DQN-noRIS, DQN, DDQN, Dueling, DBSCAN and K-means variants; RIS improves energy efficiency"
+        }
+      ]
+    },
+    {
+      "slug": "ma-2026-game-ibs-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Game-Theoretic_Optimization_of_Multiple_Interfering_Base_Stations_Deployment/Game-Theoretic_Optimization_of_Multiple_Interfering_Base_Stations_Deployment.md",
+          "lines": "117-143,182-222",
+          "note": "motion sets (7a)-(7h), problem P1 (13a)-(13g); card rewritten (invented objective, IBS strategy and score variables, C1-C5)"
+        },
+        {
+          "path": "raw/sources/Game-Theoretic_Optimization_of_Multiple_Interfering_Base_Stations_Deployment/Game-Theoretic_Optimization_of_Multiple_Interfering_Base_Stations_Deployment.md",
+          "lines": "224-559",
+          "note": "MIAUG definition, utility (14), potential (263-271), IBSs-DO Algorithm 1, SAC path, complexity"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Game-Theoretic_Optimization_of_Multiple_Interfering_Base_Stations_Deployment/Game-Theoretic_Optimization_of_Multiple_Interfering_Base_Stations_Deployment.md",
+          "lines": "569-584",
+          "note": "PPO, Q-learning, Sarsa, B3L, maximum-step and nearest comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "morshed-2026-active-ris-uav-noma-mappo",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Intelligence_for_Energy-Efficient_6G_TN-NTN_A_Cooperative_Multi-Agent_DRL_Framework_for_Active_RIS-Aided_UAV-NOMA_Communications/Decentralized_Intelligence_for_Energy-Efficient_6G_TN-NTN_A_Cooperative_Multi-Agent_DRL_Framework_for_Active_RIS-Aided_UAV-NOMA_Communications.md",
+          "lines": "222-230",
+          "note": "problem (20) with C1-C4; card matches"
+        },
+        {
+          "path": "raw/sources/Decentralized_Intelligence_for_Energy-Efficient_6G_TN-NTN_A_Cooperative_Multi-Agent_DRL_Framework_for_Active_RIS-Aided_UAV-NOMA_Communications/Decentralized_Intelligence_for_Energy-Efficient_6G_TN-NTN_A_Cooperative_Multi-Agent_DRL_Framework_for_Active_RIS-Aided_UAV-NOMA_Communications.md",
+          "lines": "232-300",
+          "note": "cooperative MMDP and MAPPO with CTDE"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Intelligence_for_Energy-Efficient_6G_TN-NTN_A_Cooperative_Multi-Agent_DRL_Framework_for_Active_RIS-Aided_UAV-NOMA_Communications/Decentralized_Intelligence_for_Energy-Efficient_6G_TN-NTN_A_Cooperative_Multi-Agent_DRL_Framework_for_Active_RIS-Aided_UAV-NOMA_Communications.md",
+          "lines": "5,403-429",
+          "note": "19.31 bps/Hz, 1.61 Mbits/J; DDPG 19.54/1.13; SARL 18.00/1.15; latency 2.85 ms"
+        }
+      ]
+    },
+    {
+      "slug": "ning-2025-channel-aware-irs-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Channel-Aware_User_Association_and_Trajectory_Design_for_Multi-IRS_Assisted_Multi-UAV_Communications/Channel-Aware_User_Association_and_Trajectory_Design_for_Multi-IRS_Assisted_Multi-UAV_Communications.md",
+          "lines": "135-154",
+          "note": "P0 with C1-C11; card matches"
+        },
+        {
+          "path": "raw/sources/Channel-Aware_User_Association_and_Trajectory_Design_for_Multi-IRS_Assisted_Multi-UAV_Communications/Channel-Aware_User_Association_and_Trajectory_Design_for_Multi-IRS_Assisted_Multi-UAV_Communications.md",
+          "lines": "287-313",
+          "note": "SCA power subproblem (23) with C13; MAPPO trajectory and association"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Channel-Aware_User_Association_and_Trajectory_Design_for_Multi-IRS_Assisted_Multi-UAV_Communications/Channel-Aware_User_Association_and_Trajectory_Design_for_Multi-IRS_Assisted_Multi-UAV_Communications.md",
+          "lines": "372-395",
+          "note": "RUS, RPS, QMIX, MGBA-T comparisons; MADDPG and MATD3 fail to converge"
+        }
+      ]
+    },
+    {
+      "slug": "qi-2026-ocma-ddqn-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Robust_and_Energy-Efficient_Multi-UAV_Trajectory_Planning_for_Data_Collection_A_Game-Theoretic_and_Deep_Reinforcement_Learning_Approach/Robust_and_Energy-Efficient_Multi-UAV_Trajectory_Planning_for_Data_Collection_A_Game-Theoretic_and_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "150-217",
+          "note": "utility (9)-(11), Theorem 1, state (12), action (13), reward (14), transitions (15); card rewritten (invented exchange variables, discounted objective, C1-C5)"
+        },
+        {
+          "path": "raw/sources/Robust_and_Energy-Efficient_Multi-UAV_Trajectory_Planning_for_Data_Collection_A_Game-Theoretic_and_Deep_Reinforcement_Learning_Approach/Robust_and_Energy-Efficient_Multi-UAV_Trajectory_Planning_for_Data_Collection_A_Game-Theoretic_and_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "229-267",
+          "note": "value circles, LSTM prediction with threshold 0.95"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Robust_and_Energy-Efficient_Multi-UAV_Trajectory_Planning_for_Data_Collection_A_Game-Theoretic_and_Deep_Reinforcement_Learning_Approach/Robust_and_Energy-Efficient_Multi-UAV_Trajectory_Planning_for_Data_Collection_A_Game-Theoretic_and_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "337,359,410",
+          "note": "about 31% higher reward vs non-cooperative; about 80% prediction accuracy for first 2 steps"
+        }
+      ]
+    },
+    {
+      "slug": "shi-2026-aoi-active-ris-noma-agmec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks.md",
+          "lines": "172-210",
+          "note": "centralized BS agent, P1 with C1-C6; card rewritten (invented variables q, o_k and C1-C5)"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks.md",
+          "lines": "214-259",
+          "note": "MDP formulation and reward design"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks/Age_of_Information_AoI--Aware_Joint_Optimization_for_Active_RIS_and_NOMA-Assisted_AGMEC_Networks.md",
+          "lines": "494-512",
+          "note": "23% AoI improvement vs DDPG; 67.68% NOMA vs OMA; 33.9% active vs passive RIS"
+        }
+      ]
+    },
+    {
+      "slug": "tang-2026-gat-antijamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Graph_Attention_Network-Driven_Hierarchical_Learning_for_Anti-Jamming_UAV_Communications/Graph_Attention_Network-Driven_Hierarchical_Learning_for_Anti-Jamming_UAV_Communications.md",
+          "lines": "93-130,160-164",
+          "note": "problems (5)-(6), zero-sum game (7), inner beamforming (10); card matches (parse tag on 5b/5c shifted)"
+        },
+        {
+          "path": "raw/sources/Graph_Attention_Network-Driven_Hierarchical_Learning_for_Anti-Jamming_UAV_Communications/Graph_Attention_Network-Driven_Hierarchical_Learning_for_Anti-Jamming_UAV_Communications.md",
+          "lines": "233-370",
+          "note": "GAT message passing, two-agent MADDPG outer layer"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Graph_Attention_Network-Driven_Hierarchical_Learning_for_Anti-Jamming_UAV_Communications/Graph_Attention_Network-Driven_Hierarchical_Learning_for_Anti-Jamming_UAV_Communications.md",
+          "lines": "382-419",
+          "note": "SCA, MLP, GCN inner baselines; DDQN and genetic deployment baselines; fine-tuned transfer"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2023-drl-irs-uav-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Passive_Beamforming_Design_for_Intelligent_Reflecting_Surface-Aided_UAV_Communications_A_Deep_Reinforcement_Learning_Approach/Joint_Trajectory_and_Passive_Beamforming_Design_for_Intelligent_Reflecting_Surface-Aided_UAV_Communications_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "156-195",
+          "note": "problem P (15a)-(15i), max over Theta and Z; card relabeled"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Passive_Beamforming_Design_for_Intelligent_Reflecting_Surface-Aided_UAV_Communications_A_Deep_Reinforcement_Learning_Approach/Joint_Trajectory_and_Passive_Beamforming_Design_for_Intelligent_Reflecting_Surface-Aided_UAV_Communications_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "200-260",
+          "note": "DQN and DDPG algorithms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Passive_Beamforming_Design_for_Intelligent_Reflecting_Surface-Aided_UAV_Communications_A_Deep_Reinforcement_Learning_Approach/Joint_Trajectory_and_Passive_Beamforming_Design_for_Intelligent_Reflecting_Surface-Aided_UAV_Communications_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "354,363,382",
+          "note": "DDPG slightly better than DQN, both above FF and RR; reward grows with elements; DQN shorter training time"
+        }
+      ]
+    },
+    {
+      "slug": "wen-2026-cooperative-jamming-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Power_Design_With_Cooperative_Jamming_UAV_Assistance_Based_on_Reinforcement_Learning/Joint_Trajectory_and_Power_Design_With_Cooperative_Jamming_UAV_Assistance_Based_on_Reinforcement_Learning.md",
+          "lines": "63-324",
+          "note": "role, kinetic and power constraints (C1)-(C14), secrecy rates (25)-(30), P1 (31); card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Power_Design_With_Cooperative_Jamming_UAV_Assistance_Based_on_Reinforcement_Learning/Joint_Trajectory_and_Power_Design_With_Cooperative_Jamming_UAV_Assistance_Based_on_Reinforcement_Learning.md",
+          "lines": "326-439",
+          "note": "imperfect-CSI outage (38)-(40), Markov game, MADDPG-based MAJDTP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Power_Design_With_Cooperative_Jamming_UAV_Assistance_Based_on_Reinforcement_Learning/Joint_Trajectory_and_Power_Design_With_Cooperative_Jamming_UAV_Assistance_Based_on_Reinforcement_Learning.md",
+          "lines": "33,515-530",
+          "note": "comparison with reference DDPG; secrecy rate and outage vs relay power"
+        }
+      ]
+    },
+    {
+      "slug": "xie-2026-uav-irs-eppo",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV-Carried_IRS_for_Urban_Low_Altitude_mmWave_Communications_With_Deep_Reinforcement_Learning/Joint_Optimization_of_UAV-Carried_IRS_for_Urban_Low_Altitude_mmWave_Communications_With_Deep_Reinforcement_Learning.md",
+          "lines": "176-206",
+          "note": "F_t (8), problem (9a)-(9f) with C1-C5; card matches"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV-Carried_IRS_for_Urban_Low_Altitude_mmWave_Communications_With_Deep_Reinforcement_Learning/Joint_Optimization_of_UAV-Carried_IRS_for_Urban_Low_Altitude_mmWave_Communications_With_Deep_Reinforcement_Learning.md",
+          "lines": "208-370",
+          "note": "phase-alignment rule and EPPO"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV-Carried_IRS_for_Urban_Low_Altitude_mmWave_Communications_With_Deep_Reinforcement_Learning/Joint_Optimization_of_UAV-Carried_IRS_for_Urban_Low_Altitude_mmWave_Communications_With_Deep_Reinforcement_Learning.md",
+          "lines": "380-386",
+          "note": "PPO, DDPG, TD3, SAC baselines"
+        }
+      ]
+    },
+    {
+      "slug": "yin-2026-uav-antijamming-nfsp",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Pursuit-Evasion_Game_for_UAV_Anti-Jamming_Communications_An_Opponent_Modeling_Based_Reinforcement_Learning_Approach/Pursuit-Evasion_Game_for_UAV_Anti-Jamming_Communications_An_Opponent_Modeling_Based_Reinforcement_Learning_Approach.md",
+          "lines": "129-157",
+          "note": "P1 (14a)-(14d) and P2 (15a)-(15c); card matches"
+        },
+        {
+          "path": "raw/sources/Pursuit-Evasion_Game_for_UAV_Anti-Jamming_Communications_An_Opponent_Modeling_Based_Reinforcement_Learning_Approach/Pursuit-Evasion_Game_for_UAV_Anti-Jamming_Communications_An_Opponent_Modeling_Based_Reinforcement_Learning_Approach.md",
+          "lines": "160-300",
+          "note": "partially observable pursuit-evasion game and NFSP-D3RN"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Pursuit-Evasion_Game_for_UAV_Anti-Jamming_Communications_An_Opponent_Modeling_Based_Reinforcement_Learning_Approach/Pursuit-Evasion_Game_for_UAV_Anti-Jamming_Communications_An_Opponent_Modeling_Based_Reinforcement_Learning_Approach.md",
+          "lines": "476,486,501",
+          "note": "10.89/36.82/90.97% reward and 17.65/25/42.86% success over NFSP-D3QN, D3RN, D3QN; comparable to MADDPG"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2024-gdmtd3-aerial-secure-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "281-311",
+          "note": "P1 (20a)-(20g); card rewritten (invented C1-C5 power, link and energy rows)"
+        },
+        {
+          "path": "raw/sources/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "363,436",
+          "note": "TD3 target, diffusion noise schedule (32)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "45",
+          "note": "four deployment policies and five DRL benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-air-ground-covert-jamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Air-Ground_Cooperative_Covert_Transmission_A_Jamming_Dynamic_Management_and_Security_Enhancement_Approach/Air-Ground_Cooperative_Covert_Transmission_A_Jamming_Dynamic_Management_and_Security_Enhancement_Approach.md",
+          "lines": "406-450",
+          "note": "dynamic problem (45)-(45g) and MDP; card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Air-Ground_Cooperative_Covert_Transmission_A_Jamming_Dynamic_Management_and_Security_Enhancement_Approach/Air-Ground_Cooperative_Covert_Transmission_A_Jamming_Dynamic_Management_and_Security_Enhancement_Approach.md",
+          "lines": "243-378",
+          "note": "static SDR, Dinkelbach and Gaussian randomization solver"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Air-Ground_Cooperative_Covert_Transmission_A_Jamming_Dynamic_Management_and_Security_Enhancement_Approach/Air-Ground_Cooperative_Covert_Transmission_A_Jamming_Dynamic_Management_and_Security_Enhancement_Approach.md",
+          "lines": "515-551",
+          "note": "maximum-jamming, random, disabled-RIS and GA benchmarks; better energy-efficiency CDF"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2026-uav-localization-jamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/3D_UAV_Localization_Optimization_Under_Jamming_Attacks_A_Mixture_Gaussian_Distribution_Based_Collaborative_Reinforcement_Learning/3D_UAV_Localization_Optimization_Under_Jamming_Attacks_A_Mixture_Gaussian_Distribution_Based_Collaborative_Reinforcement_Learning.md",
+          "lines": "165-192",
+          "note": "problem (13) with (13a)-(13f); card relabeled to equation IDs"
+        },
+        {
+          "path": "raw/sources/3D_UAV_Localization_Optimization_Under_Jamming_Attacks_A_Mixture_Gaussian_Distribution_Based_Collaborative_Reinforcement_Learning/3D_UAV_Localization_Optimization_Under_Jamming_Attacks_A_Mixture_Gaussian_Distribution_Based_Collaborative_Reinforcement_Learning.md",
+          "lines": "200-350",
+          "note": "collaborative mixture-Gaussian distributional RL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/3D_UAV_Localization_Optimization_Under_Jamming_Attacks_A_Mixture_Gaussian_Distribution_Based_Collaborative_Reinforcement_Learning/3D_UAV_Localization_Optimization_Under_Jamming_Attacks_A_Mixture_Gaussian_Distribution_Based_Collaborative_Reinforcement_Learning.md",
+          "lines": "423",
+          "note": "37.4%, 24.8%, 14.0% positioning-error gains at 5 W"
+        }
+      ]
+    }
+  ]
+}

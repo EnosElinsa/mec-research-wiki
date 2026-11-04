@@ -20,7 +20,7 @@ related:
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[guo-2024-multiuav-proactive-eavesdropping]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory and Power Design With Cooperative Jamming UAV Assistance Based on Reinforcement Learning
@@ -41,7 +41,7 @@ A relay UAV forwards confidential traffic while another legitimate UAV acts as a
 
 **Scenario**: A source sends confidential traffic through a relay UAV to a ground user while a second UAV jams a mobile eavesdropper; relay and jammer positions and powers change over time, with perfect or imperfect wiretap CSI.
 
-**Problem & objective**: The perfect-CSI problem maximizes the worst secrecy rate, $\max_{\mathbf q_{m_r},\mathbf q_{m_j},p_{m_r},p_{m_j}}R_{m_r,n}^{sec}$, while the imperfect-CSI variant minimizes secrecy-outage risk.
+**Problem & objective**: The perfect-CSI problem P1 (31), subject to (C1)-(C14), maximizes the worst-case secrecy rate, $\max_{\mathbf q_{m_r},\mathbf q_{m_j},p_{m_r},p_{m_j}}R_{m_r,n}^{sec}$, while the imperfect-CSI variant minimizes secrecy-outage risk.
 
 **Decision variables**:
 
@@ -56,11 +56,10 @@ A relay UAV forwards confidential traffic while another legitimate UAV acts as a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Relay and jammer role allocation follows the modeled UAV-role indicators. |
-| C2 | UAV trajectories obey initial, final, speed, and collision or separation constraints. |
-| C3 | Source power obeys average and peak bounds. |
-| C4 | Relay power obeys average and peak bounds. |
-| C5 | Imperfect wiretap CSI is evaluated through a secrecy-outage probability constraint. |
+| (C1)-(C5), (C10) | UAV role-allocation rules distinguishing the relay and jamming UAVs |
+| (C6)-(C9) | Kinetic constraints on the UAV trajectories |
+| (C11)-(C14) | Average and peak transmit-power limits for the source and the UAVs, e.g. $\frac1T\sum_tp_{m_a}[t]\le P_{UAV}^{ave}$ and $0\le p_{m_a}[t]\le P_{UAV}^{\max}$ |
+| Imperfect CSI (38) | Security is evaluated by the secrecy outage probability $P_{out}=1-F_Z(\theta_1)$ instead of the secrecy rate |
 
 **Algorithm**: Cast relay, jammer, and eavesdropper interactions as a Markov game, use centralized-training decentralized-execution MADDPG with actor and critic target networks and replay, and switch the reward between secrecy rate and outage minimization according to CSI availability.
 
@@ -68,7 +67,7 @@ A relay UAV forwards confidential traffic while another legitimate UAV acts as a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wen et al. [x] study physical-layer security when a relay UAV and a cooperative-jamming UAV protect a ground user from an aerial eavesdropper. The design maximizes worst-case secrecy rate with perfect CSI and minimizes secrecy-outage risk with uncertain wiretap channels by controlling both UAV trajectories and powers under kinetic and average or peak power constraints. A multiagent Markov game and MADDPG coordinate the relay and jammer through centralized training and decentralized execution. The reported simulations compare the learned policies under perfect and imperfect CSI and show improved secrecy performance over non-cooperative and baseline strategies.
+Wen et al. [x] study physical-layer security when a relay UAV and a cooperative-jamming UAV protect a ground user from an aerial eavesdropper. The design maximizes worst-case secrecy rate with perfect CSI and minimizes secrecy-outage risk with uncertain wiretap channels by controlling both UAV trajectories and powers under kinetic and average or peak power constraints. A multiagent Markov game and MADDPG coordinate the relay and jammer through centralized training and decentralized execution. The reported simulations compare the learned policies under perfect and imperfect CSI and report higher secrecy rate for the MAJDTP algorithm than a reference DDPG algorithm.
 
 ## Problem and system model
 

@@ -19,7 +19,7 @@ related:
   - "[[drone-cell-3d-placement]]"
   - "[[weighted-kmeans-uav-deployment]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -37,36 +37,30 @@ Studies emergency/temporary communications where facade-mounted RIS panels assis
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: In emergency or temporary coverage, multiple rotary-wing UAV-BSs serve ground terminals with facade-mounted RIS panels. Ground terminals are scheduled in TDMA slots over RIS-assisted air-to-ground channels, and UAV propulsion energy is included.
-
-**Problem & objective**: RIS-assisted multi-UAV coverage optimization, a non-convex mixed discrete-continuous problem, maximizes summed UAV energy efficiency, $\max\sum_u \mathrm{EE}_u$, while enforcing cumulative-throughput fairness, movement, speed, altitude, energy, and TDMA constraints.
-
+**Scenario**: For emergency or temporary coverage, rotary-wing UAV base stations each serve the ground terminals (GTs) of one cluster area with help from facade-mounted RIS panels. GTs are served in TDMA slots, and UAV propulsion energy is modeled.
+**Problem & objective**: Problem (P) (11) maximizes summed UAV energy efficiency, $\max_{L,H,C,\Theta}\sum_uEE_u$, over horizontal positions $L$, altitudes $H$, GT scheduling $C$, and RIS phases $\Theta$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV position | $\mathbf o_u(t),z_u(t)$ | continuous, bounded flight region | Horizontal and vertical trajectory of UAV $u$ |
-| GT scheduling | $c_{u,n,t}$ | binary | GT $n$ is served by UAV $u$ in slot $t$ |
-| RIS phase | $\boldsymbol\theta_{u,n,t}$ | unit-modulus phase vector | Reflection configuration for the scheduled link |
-| Cluster assignment | $a_{u,n}$ | binary | GT $n$ belongs to UAV service region $u$ |
-
+| Horizontal position | $L_t^u$ | continuous | UAV $u$ location in slot $t$ |
+| Altitude | $H_t^u$ | continuous, $[h_{\min},h_{\max}]$ | UAV height |
+| GT scheduling | $c_{u,n,t}$ | binary | UAV $u$ serves GT $n$ in slot $t$ |
+| RIS phases | $\Theta_{t,r}$ | continuous phase | Reflection configuration of RIS $r$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV positions obey per-slot movement, speed, and altitude limits |
-| C2 | Propulsion and communication energy stay within each UAV budget |
-| C3 | TDMA scheduling serves at most the permitted GTs per slot |
-| C4 | Each RIS phase has unit modulus and follows the scheduled UAV-GT link |
-| C5 | Cumulative throughput satisfies the fairness requirement for every GT |
-
-**Algorithm**: K-DBSCAN clusters GTs and determines outliers/regions → encode movement and scheduling actions in an MDP → TDQN learns 3-D movement and GT service → fair screening removes already-over-served GT actions → compute RIS phases from the selected positions.
+| (11a) | TDMA: binary $c_{u,n,t}$ with one GT per UAV per slot, $\sum_nc_{u,n,t}=1$ |
+| (11b) | Fairness: no service when the cumulative-throughput ratio $\omega_{u,n,t}>1/n_u$ |
+| (11c) | UAV energy $\sum_te_t^u\leq e_{\max}$ |
+| (11d) | UAV stays within radius $r_u$ of its cluster center $C_u$ |
+| (11e)-(11f) | Horizontal and vertical speed limits and altitude range |
+**Algorithm**: K-DBSCAN clusters GTs and sets each UAV's service area. A triple deep Q-network (TDQN) learns 3-D movement and GT scheduling in an MDP, a fair-screening rule removes actions that serve over-served GTs, and RIS phases are set from the selected UAV positions.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lin et al. [x] studied energy-efficient and fairness-aware coverage for ground terminals using RIS-assisted multi-UAV mobile base stations. They formulated a non-convex optimization problem that maximizes summed UAV energy efficiency while jointly selecting 3-D trajectories, terminal scheduling, and RIS phase shifts under movement, energy, TDMA, and cumulative-throughput fairness constraints. K-DBSCAN partitions terminals and determines cluster centers and UAV movement regions. A triple deep Q-network then learns movement and scheduling actions, with a fair-screening rule preventing repeated service of already over-served terminals. Simulations report higher energy efficiency for the RIS-supported TDQN and lower throughput variance than the evaluated DQN, DDQN, dueling-DQN, clustering, and no-RIS baselines.
+Lin et al. [x] studied energy-efficient and fairness-aware coverage for ground terminals using RIS-assisted multi-UAV mobile base stations. They formulated a non-convex optimization problem that maximizes summed UAV energy efficiency while jointly selecting 3-D trajectories, terminal scheduling, and RIS phase shifts under TDMA, cumulative-throughput fairness, energy, service-area, speed, and altitude constraints. K-DBSCAN partitions terminals and determines cluster centers and UAV movement regions. A triple deep Q-network then learns movement and scheduling actions, with a fair-screening rule preventing repeated service of already over-served terminals. Simulations report higher energy efficiency for the RIS-supported TDQN and lower throughput variance than the evaluated DQN, DDQN, dueling-DQN, clustering, and no-RIS baselines.
 
 ## Problem
 

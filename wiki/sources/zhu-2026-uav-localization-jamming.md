@@ -17,7 +17,7 @@ related:
   - "[[zhu-2024-zdrl-uav-tracking]]"
 modeling_card: required
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # 3D UAV Localization Optimization Under Jamming Attacks: A Mixture Gaussian Distribution Based Collaborative Reinforcement Learning
@@ -51,11 +51,11 @@ Extends collaborative UAV localization to adversarial jamming. A BS, an active U
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Active-UAV flight energy satisfies $E_t^{\mathrm F}\le E_{\max}^{\mathrm F}$ |
-| C2 | Selected passive-UAV reporting delay satisfies $q_{u,t}T_{u,t}^{\mathrm G}\le T_{\max}$ |
-| C3 | Inter-UAV separation satisfies $\|\mathbf l_{u,t}-\mathbf l_{0,t}\|\ge L_{\min}$ |
-| C4 | Yaw and pitch remain in $[\alpha_{\min},\alpha_{\max}]$ and $[\beta_{\min},\beta_{\max}]$ |
-| C5 | Exactly four passive measurements are selected, $\sum_{u=0}^{U}q_{u,t}=4$ |
+| (13a) | Active-UAV flight energy satisfies $E_t^{\mathrm F}\le E_{\max}^{\mathrm F}$ |
+| (13b) | Selected passive-UAV reporting delay satisfies $q_{u,t}T_{u,t}^{\mathrm G}\le T_{\max}$ |
+| (13c) | Inter-UAV separation satisfies $\|\mathbf l_{u,t}-\mathbf l_{0,t}\|\ge L_{\min}$ |
+| (13d)-(13e) | Yaw and pitch remain in $[\alpha_{\min},\alpha_{\max}]$ and $[\beta_{\min},\beta_{\max}]$ |
+| (13f) | Exactly four passive measurements are selected, $\sum_{u=0}^{U}q_{u,t}=4$ |
 
 **Algorithm**: Mixture-Gaussian collaborative RL, observe active-UAV and BS states, select actions by epsilon-greedy exploration, predict mixture means, variances, and weights for return distributions, exchange value estimates, compute the joint loss at the BS, and update both agents' DNNs.
 

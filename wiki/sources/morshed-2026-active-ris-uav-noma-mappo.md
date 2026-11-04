@@ -18,7 +18,7 @@ related:
   - "[[non-terrestrial-network]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Decentralized Intelligence for Energy-Efficient 6G TN-NTN: A Cooperative Multi-Agent DRL Framework for Active RIS-Aided UAV-NOMA Communications
@@ -63,7 +63,7 @@ Splits active-RIS UAV-NOMA control among BS, UAV, and RIS agents. A shared-criti
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Morshed et al. [x] studied decentralized resource allocation for active-RIS-aided UAV-NOMA communication in an integrated terrestrial and non-terrestrial network. They formulated a non-convex stochastic problem that jointly controls UAV trajectory, active-RIS amplification and phase shifts, and NOMA power factors using a reward that combines sum rate, energy efficiency, fairness, outage, and airspace penalties. Their cooperative multi-agent formulation assigns separate actors to the BS, UAV, and RIS and trains them with MAPPO under centralized training and decentralized execution. The shared critic uses global state during training, while each actor uses local observations for parallel execution. Simulations report 19.31 bps/Hz spectral efficiency, 1.61 Mbits/Joule energy efficiency, and approximately 2.85 ms parallel inference latency for the stated configuration.
+Morshed et al. [x] studied decentralized resource allocation for active-RIS-aided UAV-NOMA communication in an integrated terrestrial and non-terrestrial network. They formulated a non-convex stochastic problem that jointly controls UAV trajectory, active-RIS amplification and phase shifts, and NOMA power factors using a reward that combines sum rate, energy efficiency, fairness, outage, and airspace penalties. Their cooperative multi-agent formulation assigns separate actors to the BS, UAV, and RIS and trains them with MAPPO under centralized training and decentralized execution. The shared critic uses global state during training, while each actor uses local observations for parallel execution. Simulations report 19.31 bps/Hz spectral efficiency, 1.61 Mbits/Joule energy efficiency, and approximately 2.85 ms parallel inference latency for the stated configuration; the DDPG baseline reaches slightly higher spectral efficiency (19.54 bps/Hz) at lower energy efficiency (1.13 Mbits/Joule).
 
 ## Problem
 

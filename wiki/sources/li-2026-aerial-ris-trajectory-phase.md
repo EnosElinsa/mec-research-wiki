@@ -20,7 +20,7 @@ related:
   - "[[huang-2025-fedx-ris-uav-trajectory]]"
   - "[[dusit-niyato]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -40,7 +40,7 @@ Optimizes aerial RIS communication when the UAV-mounted RIS does not behave like
 
 **Scenario**: A UAV-mounted aerial RIS serves single-antenna ground users from a multi-antenna BS when direct BS-user links can be blocked; RIS gain depends on position, incidence angles, and UAV attitude.
 
-**Problem & objective**: Jointly control aerial-RIS motion and attitude, RIS sub-surface phases, and BS beamforming to maximize horizon sum rate, $\max\sum_l\sum_kR_k[l]$.
+**Problem & objective**: Problem (30) chooses Euler angles $\Phi$, BS beamforming $\mathbf W$, and RIS phases $\Theta$ to maximize the horizon sum rate $R_{sum}=\sum_l\sum_kR_k[l]$; the attitude drives the ARIS trajectory.
 
 **Decision variables**:
 
@@ -55,11 +55,14 @@ Optimizes aerial RIS communication when the UAV-mounted RIS does not behave like
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | BS transmit power and per-user beamforming satisfy the power budget. |
-| C2 | RIS phases and Euler angles, including per-slot angle variations, remain physically bounded. |
-| C3 | UAV position stays in the permitted region and speed and acceleration obey their maxima. |
-| C4 | Flight energy remains nonnegative and the safety penalties for leaving the region or violating motion limits are avoided. |
-| C5 | In multi-ARIS extensions, inter-ARIS distance stays above the minimum separation. |
+| (30b) | BS power $\mathrm{Tr}(\mathbf W^H[l]\mathbf W[l])\leq P_{BS}^{\max}$ |
+| (30c) | Sub-surface phases $\varphi_{\bar n}[l]\in[0,2\pi)$ |
+| (30d) | Euler-angle bounds $\Phi[l]\in[\Phi_{\min},\Phi_{\max}]$ on roll and pitch |
+| (30e) | Per-slot Euler-angle variation within $\tilde\Phi_{\max}$ |
+| (30f) | Flight energy $E^{fly}\leq E_{\max}^{fly}$ |
+| (30g)-(30h) | ARIS position inside the rectangle with vertices $\mathbf q_l$ and $\mathbf q_r$ |
+| (30i) = (1), (2) | Speed and acceleration limits |
+| Extension | Multi-ARIS case adds a minimum inter-ARIS distance |
 
 **Algorithm**: Cast sequential control as an MDP, compute BS beamforming with zero forcing plus water-filling or bisection, and train a maximum-entropy SAC policy with prioritized experience replay and automatic temperature tuning.
 
@@ -67,7 +70,7 @@ Optimizes aerial RIS communication when the UAV-mounted RIS does not behave like
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied aerial-RIS communication with attitude-aware UAV motion, sub-surface phase shifts, and separate BS beamforming. They maximized horizon sum rate under transmit-power, phase, Euler-angle, flight-region, speed, acceleration, energy, and safety constraints, while the source model captures orientation-dependent RIS gain. Their SAC-PER controller learns the continuous motion and phase policy and uses zero-forcing with water-filling for the BS beamformer. Simulations report convergence near 150 thousand steps and up to 14.4% higher sum rate than PPO, with additional gains from larger RISs, BS arrays, energy budgets, and multi-ARIS deployment.
+Li et al. [x] studied aerial-RIS communication with attitude-aware UAV motion, sub-surface phase shifts, and separate BS beamforming. They maximized horizon sum rate under transmit-power, phase, Euler-angle, flight-region, speed, acceleration, energy, and safety constraints, while the source model captures orientation-dependent RIS gain. Their SAC-PER controller learns the continuous motion and phase policy and uses zero-forcing with water-filling for the BS beamformer. Simulations report convergence near 150 thousand steps versus about 200 thousand for PPO and SAC, up to 14.4% higher sum rate than PPO, with additional gains from larger RISs, BS arrays, energy budgets, and multi-ARIS deployment.
 
 ## Problem
 

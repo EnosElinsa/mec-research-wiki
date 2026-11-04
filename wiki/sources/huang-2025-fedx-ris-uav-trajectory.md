@@ -20,7 +20,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Fast UAV Trajectory Planning Framework in RIS-Assisted Communication Systems With Accelerated Learning via Multithreading and Federating
@@ -39,7 +39,7 @@ Designs FedX, a parallel training framework for RL-based trajectory planning in 
 
 **Scenario**: A quadrotor UAV serves ground terminals in an urban RIS-assisted communication system with imperfect channel information. Over discrete slots, it moves horizontally and vertically, selects a terminal, chooses the slot duration, uploads the terminal's data, and eventually navigates toward a charging station while expending propulsion energy.
 
-**Problem & objective**: The trajectory-planning problem minimizes $\sum_{n=1}^{N}E[n]$, the UAV's total three-dimensional propulsion energy across the mission, while completing the terminals' data transmissions.
+**Problem & objective**: Problem (20) minimizes $\sum_{n=1}^{N}E[n]$, the UAV's total three-dimensional propulsion energy across the mission, while completing the terminals' data transmissions.
 
 **Decision variables**:
 
@@ -54,11 +54,10 @@ Designs FedX, a parallel training framework for RL-based trajectory planning in 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one ground terminal is served in each slot: $\sum_k c_{k,i}[n]\le1$ |
-| C2 | Every terminal's required data volume is delivered within the mission |
-| C3 | Horizontal and vertical speeds do not exceed their maximum values |
-| C4 | The UAV remains within the admissible altitude and operating region |
-| C5 | Terminal scheduling is binary and movement actions belong to their discrete action sets |
+| (20), first | At most one terminal per slot, $\sum_kc_{k,i}[n]\le1$ |
+| (20), second | Each task of length $L_k$ completes within the mission, $\sum_n\delta_t[n]R_{k,i}[n]\ge L_k$ |
+| (20), remaining | Speed and altitude limits; the parse garbles these expressions, so check the published paper |
+| Action rule | Discrete horizontal moves, vertical moves in $\{-h_s,0,h_s\}$, binary scheduling, and discrete slot durations |
 
 **Algorithm**: FedX forks multiple training threads, gives each an independent replay stream, runs a selected RL solver in parallel, and periodically aggregates thread parameters by data-weighted averaging. FedSAC and FedPPO instantiate this framework with SAC and PPO, using UAV position, remaining data, and charging-station distance as state and movement, scheduling, and slot duration as action.
 

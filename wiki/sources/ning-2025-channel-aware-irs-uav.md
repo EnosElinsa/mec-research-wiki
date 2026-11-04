@@ -20,7 +20,7 @@ related:
   - "[[xiaojie-wang]]"
   - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -40,7 +40,7 @@ Studies a multi-IRS, multi-UAV NOMA downlink where urban obstacles switch direct
 
 **Scenario**: A blocked urban downlink has $K$ UAVs, $I$ IRSs, and $N$ users over slots $t$. Each IRS is partitioned to serve multiple users, each UAV serves two NOMA users, and a user can use a direct LoS path or an IRS virtual-LoS path.
 
-**Problem & objective**: Maximize the average system sum rate $\frac{1}{T}\sum_{t=1}^{T}\sum_{k=1}^{K}R_k[t]$ by jointly choosing IRS association, LoS indicators, phase shifts, UAV positions, and NOMA powers.
+**Problem & objective**: Problem P0 maximizes the average system sum rate $\frac{1}{T}\sum_{t=1}^{T}\sum_{k=1}^{K}R_k[t]$ by jointly choosing IRS association, LoS indicators, phase shifts, UAV positions, and NOMA powers.
 
 **Decision variables**:
 

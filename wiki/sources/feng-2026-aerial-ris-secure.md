@@ -24,7 +24,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[marco-di-renzo]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Reinforcement Learning With Conformal Symplectic Optimization for Aerial RIS-Aided Secure Communication
@@ -43,7 +43,7 @@ Proposes IA-CSORL, a cooperating two-agent [[td3|TD3]] framework for a [[uav-mou
 
 **Scenario**: A multi-antenna BS communicates with mobile users only through an RIS mounted on a fixed-altitude UAV in the presence of an eavesdropper. The model includes imperfect CSI, GPS error, UAV jitter, RIS phase error, and rotary-wing propulsion energy.
 
-**Problem & objective**: Maximize robust accumulated secrecy energy efficiency, $\max_{\mathbf G,\boldsymbol\psi,\mathbf p}\min_{\{\Delta\mathbf H_i\}}\sum_{n=1}^{T}\mathrm{SEE}[n]$, by jointly controlling BS beamforming, RIS phases, and UAV motion.
+**Problem & objective**: Problem P0 (23) maximizes robust accumulated secrecy energy efficiency, $\max_{\mathbf G,\boldsymbol\psi,\mathbf p}\min_{\{\Delta\mathbf H_i\}}\sum_{n=1}^{T}\mathrm{SEE}[n]$, by jointly controlling BS beamforming, RIS phases, and UAV motion.
 
 **Decision variables**:
 
@@ -57,12 +57,12 @@ Proposes IA-CSORL, a cooperating two-agent [[td3|TD3]] framework for a [[uav-mou
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user's secrecy rate meets its target with outage probability at most $\rho_q$. |
-| C2 | Every RIS phase satisfies $0\leq\theta_m[n]<2\pi$. |
-| C3 | BS beamforming respects $\sum_q\lVert\mathbf g_q\rVert_2^2\leq P_{\max}$. |
-| C4 | The UAV begins at the prescribed initial position. |
-| C5 | Horizontal UAV coordinates remain inside the flight region. |
-| C6 | Per-slot motion satisfies $\lVert\mathbf p[n]-\mathbf p[n-1]\rVert_2\leq D_{\max}$. |
+| (23b) | Each user's secrecy rate meets its target with outage probability at most $\rho_q$. |
+| (23c) | Every RIS phase satisfies $0\leq\theta_m[n]<2\pi$. |
+| (23d) | BS beamforming respects $\sum_q\lVert\mathbf g_q\rVert_2^2\leq P_{\max}$. |
+| (23e) | The UAV begins at the prescribed initial position. |
+| (23f) | Horizontal UAV coordinates remain inside the flight region. |
+| (23g) | Per-slot motion satisfies $\lVert\mathbf p[n]-\mathbf p[n-1]\rVert_2\leq D_{\max}$. |
 
 **Algorithm**: Express per-slot SEE as secrecy sum rate divided by propulsion energy and map the dynamic robust problem to two cooperating TD3 agents. The PRAD agent updates BS beamforming and RIS phases with conformal-symplectic integration and phase-aware gradient correction, while the ESIA agent fuses position history, communication state, and mobility features to update UAV displacement; constraint violations enter the reward as penalties.
 
@@ -70,7 +70,7 @@ Proposes IA-CSORL, a cooperating two-agent [[td3|TD3]] framework for a [[uav-mou
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Feng et al. [x] studied aerial-RIS secure communication under UAV jitter, phase errors, imperfect CSI, mobile users, and an eavesdropper. They maximized worst-case accumulated secrecy energy efficiency over UAV trajectory, BS beamforming, and RIS phases under secrecy-outage, phase-range, transmit-power, initial-position, flight-region, and per-slot movement constraints. IA-CSORL couples a PRAD-optimized TD3 beamforming agent with an attention-enhanced TD3 trajectory agent and constraint penalties. Simulations reported convergence near reward 40, 4.5 bit/s/Hz secrecy sum rate with 48 RIS elements, and about 60 bit/s/Hz/kJ secrecy energy efficiency.
+Feng et al. [x] studied aerial-RIS secure communication under UAV jitter, phase errors, imperfect CSI, mobile users, and an eavesdropper. They maximized worst-case accumulated secrecy energy efficiency over UAV trajectory, BS beamforming, and RIS phases under secrecy-outage, phase-range, transmit-power, initial-position, flight-region, and per-slot movement constraints. IA-CSORL couples a PRAD-optimized TD3 beamforming agent with an attention-enhanced TD3 trajectory agent and constraint penalties. Simulations reported convergence near reward 40, 4.5 bit/s/Hz secrecy sum rate with 48 RIS elements, and about 60 bit/s/Hz/kJ secrecy energy efficiency, levels that the TTD3 baseline needs 64 elements to reach.
 
 ## Problem and system model
 

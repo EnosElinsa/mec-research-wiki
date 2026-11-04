@@ -18,7 +18,7 @@ related:
   - "[[nauman-aslam]]"
   - "[[wang-2021-maddpg-multiuav-trajectory]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory and Passive Beamforming Design for Intelligent Reflecting Surface-Aided UAV Communications: A Deep Reinforcement Learning Approach
@@ -45,17 +45,17 @@ One rotary-wing UAV tracks a moving UE through one selected building-mounted IRS
 |---|---|---|---|
 | UAV displacement | $a_t^x,a_t^y,a_t^z$ | continuous, bounded by $\pm x^{\max},\pm y^{\max},\pm z^{\max}$ | 3D movement in slot $t$ |
 | IRS phase matrix | $\Theta_{k,t}$ | diagonal unit-modulus complex matrix | Passive phase shifts of IRS $k$ |
-| IRS schedule | $c_{k,t}$ | binary, one selected per slot | Active IRS indicator |
+| IRS schedule | $c_{k,t}$ | binary, set by the nearest-IRS rule (15i) | Active IRS indicator (not in the max set of P) |
 | UAV trajectory | $Z$ | sequence of displacements | Complete 3D path over $T$ slots |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1-C3 | Per-slot displacement bounds on $a_t^x,a_t^y,a_t^z$ |
-| C4-C6 | Area and altitude: $0\le x_t^u\le X^{\max}$, $0\le y_t^u\le Y^{\max}$, and $Z^{\min}\le z_t^u\le Z^{\max}$ |
-| C7 | Passive phases: $-\pi\le\theta_{k,m_r,m_c,t}<\pi$ |
-| C8 | One IRS per slot: $\sum_kc_{k,t}=1$ with nearest-IRS rule |
+| (15b)-(15d) | Per-slot displacement bounds $\lvert a_t^x\rvert\le x^{\max}$, $\lvert a_t^y\rvert\le y^{\max}$, $\lvert a_t^z\rvert\le z^{\max}$ |
+| (15e)-(15f) | Area $0\le x_t^u\le X^{\max}$, $0\le y_t^u\le Y^{\max}$, and altitude $Z^{\min}\le z_t^u\le Z^{\max}$ |
+| (15g) | Passive phases $-\pi\le\theta_{k,m_r,m_c,t}<\pi$ |
+| (15h)-(15i) | One IRS per slot, chosen by the nearest-IRS rule $c_{k,t}=1$ for $k=\arg\min\boldsymbol d_t^{IE}$ |
 
 **Algorithm**: DQN discretizes signed axis movements, while DDPG learns continuous 3D displacements with actor and critic networks. After each movement, select the nearest IRS and align its phases in closed form; use reward rate divided by propulsion energy minus an out-of-area penalty.
 
@@ -63,7 +63,7 @@ One rotary-wing UAV tracks a moving UE through one selected building-mounted IRS
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied blocked UAV-to-UE communication assisted by multiple fixed IRSs and a moving ground user. They maximized rate per propulsion energy by jointly controlling the UAV trajectory and IRS scheduling, with passive phases aligned after selecting one IRS per slot under movement, area, altitude, and phase bounds. A DQN handles discrete signed-axis moves, whereas DDPG learns continuous three-dimensional displacements from the same rate-energy reward. The reported tests show DDPG outperforming DQN and fixed or random trajectories, with energy efficiency increasing as the number of reflecting elements grows.
+Wang et al. [x] studied blocked UAV-to-UE communication assisted by multiple fixed IRSs and a moving ground user. They maximized rate per propulsion energy by jointly controlling the UAV trajectory and IRS scheduling, with passive phases aligned after selecting one IRS per slot under movement, area, altitude, and phase bounds. A DQN handles discrete signed-axis moves, whereas DDPG learns continuous three-dimensional displacements from the same rate-energy reward. The reported tests show DDPG outperforming DQN and fixed or random trajectories, with average reward increasing as the number of reflecting elements grows; DQN trains faster than DDPG.
 
 ## Problem and system model
 
