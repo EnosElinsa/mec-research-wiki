@@ -14,7 +14,7 @@ related:
   - "[[liu-2023-sagecn-online-offloading]]"
   - "[[three-tier-cloud-edge-end]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -50,10 +50,10 @@ One of the **first papers to study computing offloading in a SAGIN** (Space-Air-
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one execution mode per unfinished task: $x_{ij}^{l}(t)+x_{ij}^{e}(t)+x_{ij}^{c}(t)\leq m_{ij}(t)$ |
-| C2 | VM task deadline: $\sum_{k=1}^{n}y_{m,k}\frac{Z_m}{c_m}\leq t_{m,n}$ |
-| C3 | UAV compute capacity: $\sum_m c_m\leq\mathcal C$ |
-| C4 | Domains: $c_m\geq0$ and $y_{m,n}\in\{0,1\}$ |
+| (6)-(7) | At most one execution mode per unfinished task: $x_{ij}^{l}(t)+x_{ij}^{e}(t)+x_{ij}^{c}(t)\leq m_{ij}(t)$ |
+| (14) C1 | VM task deadline: $\sum_{k=1}^{n}y_{m,k}\frac{Z_m}{c_m}\leq t_{m,n}$ |
+| (14) C2 | UAV compute capacity: $\sum_m c_m\leq\mathcal C$ |
+| (14) C3-C4 | Domains: $c_m\geq0$ and $y_{m,n}\in\{0,1\}$ |
 
 **Algorithm**: First initialize all UAV-VM tasks as scheduled, compute $c_m$, repeatedly remove the task with the tightest normalized requirement until $\sum_m c_m\leq\mathcal C$, and return VM allocation and scheduling. Then train deep actor and critic networks on the offloading MDP, use the critic's temporal-difference signal to update the policy each slot, and map each task action to wait, local execution, UAV edge, or satellite cloud.
 

@@ -22,7 +22,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Digital Twin-Assisted Space-Air-Ground Integrated Multi-Access Edge Computing for Low-Altitude Economy: An Online Decentralized Optimization Approach
@@ -41,7 +41,7 @@ Proposes a **digital-twin-assisted space-air-ground integrated multi-access edge
 
 **Scenario**: Intelligent sensing devices can compute locally, offload to an aerial MEC UAV, or use that UAV and a selected LEO satellite to reach a cloud center. A cloud digital twin stores physical-layer and workload feedback, including uncertain satellite round-trip latency, for online space-air-ground control.
 
-**Problem & objective**: Minimize time-averaged sensing-device cost, $\min_{\mathbf A,\mathbf B,\mathbf F,\mathbf W,\mathbf Q}T^{-1}\sum_t\sum_m C_m(t)$, where cost combines task latency and device energy and the decisions cover offloading, satellite relay, resources, and UAV motion.
+**Problem & objective**: Problem P (22) minimizes time-averaged sensing-device cost, $\min_{\mathbf A,\mathbf B,\mathbf F,\mathbf W,\mathbf Q}T^{-1}\sum_t\sum_m C_m(t)$, where cost combines task latency and device energy and the decisions cover offloading, satellite relay, resources, and UAV motion.
 
 **Decision variables**:
 
@@ -57,12 +57,12 @@ Proposes a **digital-twin-assisted space-air-ground integrated multi-access edge
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Long-term average UAV energy does not exceed $\bar E_u$. |
-| C2 | Each task chooses local, UAV, or cloud execution and meets its completion deadline. |
-| C3 | The UAV selects one relay from the currently accessible satellite set. |
-| C4 | Per-task and aggregate UAV compute allocations do not exceed $F_u^{\max}$. |
-| C5 | Communication shares are positive and sum to at most one for offloaded tasks. |
-| C6 | The UAV starts at the prescribed point and moves at most $v_u^{\max}\tau$ per slot. |
+| 22a | Long-term average UAV energy does not exceed $\bar E_u$. |
+| 22b-22c | Each task chooses local, UAV, or cloud execution and meets its completion deadline. |
+| 22d | The UAV selects one relay from the currently accessible satellite set. |
+| 22e-22f | Per-task and aggregate UAV compute allocations do not exceed $F_u^{\max}$. |
+| 22g-22h | Communication shares are positive and sum to at most one for offloaded tasks. |
+| 22i-22j | The UAV starts at the prescribed point and moves at most $v_u^{\max}\tau$ per slot. |
 
 **Algorithm**: Maintain digital-twin virtual queues for UAV communication, computation, and propulsion energy, and apply Lyapunov drift-plus-penalty to form a current-slot MINLP. Predict each accessible satellite's round-trip latency with an upper-confidence-bound multi-armed bandit, decompose offloading and UAV responses as a multi-leader common-follower Stackelberg game, solve resource and trajectory subproblems, and update the queues after physical execution.
 

@@ -20,7 +20,7 @@ related:
   - "[[device-association]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Mobile-Edge Computing in SAGINs: A Hybrid Action Space P-DDQN Algorithm for Joint Offloading and Resource Allocation
@@ -55,12 +55,12 @@ Proposes a MEC-enabled SAGIN for remote areas where IoT devices can compute loca
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each scheduled IoT device has one association: $\sum_m\alpha_m(n)=1$. |
-| C2 | Each IoT device uses at most one LEO satellite: $\sum_k b_{m,k}(n)\le1$. |
-| C3 | Satellite service delay fits its remaining coverage time: $T_{m,k}^{s}(n)\le T_{m,k}^{re}(n)$. |
-| C4 | Task portions sum to the generated task: $D_m^l(n)+D_m^u(n)+D_m^s(n)=D_m(n)$. |
-| C5 | IoT transmit powers are bounded: $0\le P_{mu}^t(n)\le P_{mu}^{\max}$ and $0\le P_{m,k}^t(n)\le P_{m,k}^{\max}$. |
-| C6 | The required task volume is processed: $\sum_{n,m}\alpha_m(n)D_m(n)\ge D_{\mathrm{total}}$. |
+| 39a | Each scheduled IoT device has one association: $\sum_m\alpha_m(n)=1$. |
+| 39b | Each IoT device uses at most one LEO satellite: $\sum_k b_{m,k}(n)\le1$. |
+| 39c | Satellite service delay fits its remaining coverage time: $T_{m,k}^{s}(n)\le T_{m,k}^{re}(n)$. |
+| 39d | Task portions sum to the generated task: $D_m^l(n)+D_m^u(n)+D_m^s(n)=D_m(n)$. |
+| 39e-39f | IoT transmit powers are bounded: $0\le P_{mu}^t(n)\le P_{mu}^{\max}$ and $0\le P_{m,k}^t(n)\le P_{m,k}^{\max}$. |
+| 39g | The required task volume is processed: $\sum_{n,m}\alpha_m(n)D_m(n)\ge D_{\mathrm{total}}$. |
 
 **Algorithm**: Represent each discrete action with a DDPG-style continuous policy parameter, use a DDQN critic to select the discrete action, update actor and critic alternately with double-DQN targets and soft target updates, and train from replayed hybrid-action transitions.
 

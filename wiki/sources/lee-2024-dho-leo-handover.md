@@ -18,7 +18,7 @@ related:
   - "[[walker-star-constellation]]"
   - "[[soohyun-park]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Handover Protocol Learning for LEO Satellite Networks: Access Delay and Collision Minimization
@@ -37,7 +37,7 @@ A DRL-based **handover (HO) protocol** for **regenerative-type LEO satellite net
 
 **Scenario**: Ground user equipment must hand over from a serving regenerative LEO satellite to a target satellite before the serving link disappears. At each of $N$ handover opportunities, the serving satellite can wait or send a handover request for each user to a candidate satellite on another orbital plane, with limited target resource blocks and random-access preambles creating collisions.
 
-**Problem & objective**: DHO minimizes $\sum_{n=1}^{N}\left(D[n]+\nu C[n]\right)$, the horizon sum of average access delay and weighted collision rate, by controlling per-user handover requests and target-satellite selection.
+**Problem & objective**: Problem (11) minimizes $\sum_{n=1}^{N}\left(D[n]+\nu C[n]\right)$, the horizon sum of average access delay and weighted collision rate, by controlling per-user handover requests and target-satellite selection.
 
 **Decision variables**:
 
@@ -51,11 +51,11 @@ A DRL-based **handover (HO) protocol** for **regenerative-type LEO satellite net
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Exactly one wait-or-target action is selected per user: $\sum_{k=0}^{K-1}a_k=1$ |
-| C2 | A handover cannot select another satellite on the serving satellite's orbital plane |
-| C3 | Satellite positions evolve according to the predetermined discrete orbital model |
-| C4 | A target admits no more requests than its available resource blocks |
-| C5 | Successful random access requires a non-colliding preamble after admission |
+| (13) | Exactly one wait-or-target action is selected per user: $\sum_{k=0}^{K-1}a_k=1$ |
+| Handover rule | A handover cannot select another satellite on the serving satellite's orbital plane |
+| (2), the only constraint of (11) | Satellite positions evolve according to the predetermined discrete orbital model |
+| Collision model | A target admits no more requests than its available resource blocks |
+| RACH model | Successful random access requires a non-colliding preamble after admission |
 
 **Algorithm**: DHO removes the Measurement Report step and learns the request and target decisions with IMPALA. Parallel actors interact with independent LEO handover environments, upload trajectories to a central learner, and use V-trace targets with truncated importance weights to correct actor-policy lag before updated parameters are redistributed.
 

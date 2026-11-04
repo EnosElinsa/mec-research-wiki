@@ -31,7 +31,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[zhaolong-ning]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 authors:
   - Zheyi Chen
   - Junjie Zhang
@@ -75,9 +75,9 @@ THOAS is a traffic-aware hierarchical offloading framework for slicing-enabled [
 |---|---|
 | C1 | Communication-slice capacity satisfies $B_j\le B_j^{\max}$ for every platform and slot. |
 | C2 | Computing-slice capacity satisfies $F_j\le F_j^{\max}$ for every platform and slot. |
-| C3 | Revenue is $\varphi_i^t=\Phi$ only when $T_i^{\mathrm{total}}\le T^{\max}$ and is zero otherwise. |
-| C4 | Upload and compute budgets split the deadline as $T_{cap}^{\max}=\omega T^{\max}$ and $T_{cop}^{\max}=(1-\omega)T^{\max}$. |
-| C5 | Slice adjustment occurs only when expected profit gain exceeds interruption cost, $\Delta P-C^{int}>0$. |
+| (9), revenue model | Revenue is $\varphi_i^t=\Phi$ only when $T_i^{\mathrm{total}}\le T^{\max}$ and is zero otherwise. |
+| (14), deadline split | Upload and compute budgets split the deadline as $T_{cap}^{\max}=\omega T^{\max}$ and $T_{cop}^{\max}=(1-\omega)T^{\max}$. |
+| Adjustment rule (Alg. lines 7-11) | Slice adjustment occurs only when expected profit gain exceeds interruption cost, $\Delta P-C^{int}>0$. |
 
 **Algorithm**: THOAS predicts traffic with probsparse self-attention, estimates peak communication and computing demand, adjusts slices when profitable, assigns subchannels from a conservative SNR bound, learns VM choices with GAE and dynamically clipped PPO, and distills the policy into a shallow student network.
 
@@ -85,7 +85,7 @@ THOAS is a traffic-aware hierarchical offloading framework for slicing-enabled [
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] studied traffic-aware computation offloading and adaptive network slicing in a satellite, UAV, and ground-base-station integrated network. They formulated an NP-hard long-term profit maximization over rented communication subchannels, computing virtual machines, and task execution destinations subject to platform capacities and task deadlines. THOAS predicts traffic with probsparse self-attention, adjusts slices only when expected profit exceeds interruption cost, learns offloading with dynamically clipped PPO and GAE, and compresses the converged policy by knowledge distillation. Experiments on Milan cellular traffic report the highest provider profit among the prediction baselines and lower completion time and deadline violations than the DRL baselines. A student network at 6% of teacher size retained 73% of performance, while a 50%-size student retained 97%.
+Chen et al. [x] studied traffic-aware computation offloading and adaptive network slicing in a satellite, UAV, and ground-base-station integrated network. They formulated an NP-hard long-term profit maximization over rented communication subchannels, computing virtual machines, and task execution destinations subject to platform capacities and task deadlines. THOAS predicts traffic with probsparse self-attention, adjusts slices only when expected profit exceeds interruption cost, learns offloading with dynamically clipped PPO and GAE, and compresses the converged policy by knowledge distillation. Experiments on Milan cellular traffic report the highest provider profit among the prediction baselines and lower completion time and deadline violations than the DRL baselines. A student network with the teacher's size performed about the same, and one at 6% of the teacher's size retained 73% of the performance.
 
 ## Problem
 The emerging [[space-air-ground-integrated-network|SAGIN]] empowers [[mobile-edge-computing|MEC]] with global coverage by integrating LEO satellites, UAVs, and ground base stations, but fluctuating user traffic and a constrained, heterogeneous computing architecture seriously degrade QoS and resource utilization. Existing work assumes static traffic / fixed capacity, depends on prior knowledge, or ignores the cost and service interruption caused by frequent slice adjustments — leading to resource under- or over-supply. Because satellites and UAVs are low-power and compute-weak, heavy DRL models are impractical to run on them. The paper addresses the **coupled, NP-hard** problem of joint slice resource allocation and [[task-offloading|computation offloading]], maximizing the long-term profit of an Edge Service Provider (ESP) that rents communication/compute slices from an Infrastructure Provider (InP) and is paid by users only when tasks finish within a maximum tolerable delay.

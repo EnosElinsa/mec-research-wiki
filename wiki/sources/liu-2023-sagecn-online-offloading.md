@@ -23,7 +23,7 @@ related:
   - "[[cheng-2025-dos-satellite-edge-computing]]"
   - "[[qi-qi]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -43,7 +43,7 @@ Proposes a **collaborative space/aerial-aided edge computing network (SAGECN)** 
 
 **Scenario**: Time-slotted LEO satellites and aircrafts provide collaborative MEC; each satellite can compute locally, send a task one hop to an aircraft, or forward it over multi-hop satellite links to the cloud.
 
-**Problem & objective**: Minimize long-term completion delay over offloading modes and dispatched task counts, $\min_{\alpha,\beta,\theta,k}\lim_{T\to\infty}\frac{1}{T}\sum_tD(t)$, while keeping queues stable.
+**Problem & objective**: Problem (P1) minimizes long-term completion delay over offloading modes and dispatched task counts, $\min_{\alpha,\beta,\theta,k}\lim_{T\to\infty}\frac{1}{T}\sum_tD(t)$, while keeping queues stable.
 
 **Decision variables**:
 
@@ -61,7 +61,7 @@ Proposes a **collaborative space/aerial-aided edge computing network (SAGECN)** 
 | C1 | At most one local or cooperative route is selected, $\alpha_n(t)+\sum_m\beta_{n,m}(t)+\sum_u\theta_{n,u}(t)\leq1$. |
 | C2 | Satellite dispatch is capacity-bounded, $\sum_m k_{m,n}(t)\leq J_{\max}^{S}$. |
 | C3 | Aircraft dispatch is capacity-bounded, $\sum_u k_{n,u}(t)\leq J_{\max}^{U}$. |
-| C4 | Queue dynamics remain stable, with bounded time-averaged backlog $\bar Q_{\mathrm{sys}}<\infty$. |
+| Stability (Sec. II) | Queue dynamics remain stable, with bounded time-averaged backlog $\bar Q_{\mathrm{sys}}<\infty$. |
 
 **Algorithm**: Use Lyapunov drift-plus-penalty to obtain per-slot deterministic objectives, delayed online gradient learning to predict arrivals and queues, and a bounded integer branch-and-bound scheduler for each satellite.
 

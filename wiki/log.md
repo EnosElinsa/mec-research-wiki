@@ -1,5 +1,14 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 8 (SAGIN and satellite, first half)
+
+- Scope: 27 SAGIN, satellite, and NTN source pages (23 required cards, 4 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch08-sagin-a.json`. Grounded total: 204/699.
+- Constraint IDs relabeled to the paper's numbering: [[chen-2026-pddqn-sagin-mec]] (39a-39g), [[cheng-2019-sagin-iot-offloading-rl]] ((6)-(7), (14) C1-C4), [[cheng-2025-dos-satellite-edge-computing]] ((9), (21), (23), 25c-25h), [[he-2026-dt-sagimec-lae]] (22a-22j by the paper's text), [[huang-2026-amappo-satellite-edge]] (41a-41j; satellite links are one-to-one assignments, not bandwidth caps), [[li-2020-maritime-uav-satellite-coverage]] ((11)-(24) of problem (25)), [[li-2024-emodrl-ground-space-cb]] (P1 (11b)-(11d); the rate threshold 11d was missing), [[lee-2024-dho-leo-handover]] (problem (11) s.t. (2) and one-hot (13)).
+- Rows that were not constraints of the stated problem relabeled as model, action, or reward rules: [[chen-2024-thoas-traffic-aware-sagin]], [[chen-2024-ulse-game]], [[kim-2026-qmarl-sagin-access]] (objective (36) is a long-term average, constraints (37) and (43)), [[kim-2026-scale-reconfigurable-marl]] (long-term average objective), [[liao-2026-semantic-twinning-tracking]] (no constrained program; reward terms (19), (21)), [[liu-2023-sagecn-online-offloading]] (stability is a model condition outside P1).
+- Other card corrections: [[huang-2026-uav-friendly-jamming-transsac]] (C5 bounds jamming transmit energy), [[mao-2024-fso-leo-hierarchical-routing]] (QoS weights are given per service, not optimized).
+- Related Work fixes: THOAS distillation claim limited to the reported 6%-size student (the 50%-size figure is not in the parse); ULSE baselines are ICSOC, CCPM, and Random; BCSA-FRL rewards 13 and 17 are FedAvg-FRL under the two poisoning attacks; Liu 2024 SAGIN-style aerial-vehicle wording kept; Kim access objective wording.
+- Gates: manifest 699/699 resolved, 0 evidence conflicts (2 orphan raw folders unchanged); source schema, frontmatter, link, index, process-ref audits clean; 58 tests pass.
+
 ## [2026-11-03] Grounded batch 7 (vehicular MEC, second half)
 
 - Scope: 22 vehicular and air-ground source pages (21 required cards, 1 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch07-vehicular-b.json`. Grounded total: 177/699.

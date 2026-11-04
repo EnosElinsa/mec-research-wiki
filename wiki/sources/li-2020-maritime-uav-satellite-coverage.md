@@ -23,7 +23,7 @@ related:
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
   - "[[yunfei-chen]]"
 created: 2026-06-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Maritime Coverage Enhancement Using UAVs Coordinated With Hybrid Satellite-Terrestrial Networks
@@ -42,7 +42,7 @@ Deploys **fixed-wing UAVs** as on-demand aerial base stations to enhance broadba
 
 **Scenario**: A fixed-wing UAV accompanies a moving ship user and supplies on-demand maritime coverage while sharing spectrum with satellite links. A coastal terrestrial base station or satellite provides the UAV backhaul, and the preflight design uses ship positions plus location-dependent large-scale CSI rather than unavailable future small-scale fading.
 
-**Problem & objective**: The coverage problem maximizes $\min_t R_{u,u,t}^{\mathrm U,\Psi}$, the ship user's minimum ergodic access rate over the service horizon, through joint UAV trajectory and transmit-power control.
+**Problem & objective**: Problem (25) maximizes $\min_t R_{u,u,t}^{\mathrm U,\Psi}$, the ship user's minimum ergodic access rate over the service horizon, through joint UAV trajectory and transmit-power control.
 
 **Decision variables**:
 
@@ -57,12 +57,12 @@ Deploys **fixed-wing UAVs** as on-demand aerial base stations to enhance broadba
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Expected interference to each satellite-served user stays below $I_0$ |
-| C2 | The UAV access rate cannot exceed its terrestrial or satellite backhaul rate |
-| C3 | Fixed-wing speed remains between stall and maximum speed and acceleration is bounded |
-| C4 | UAV altitude remains in the permitted interval |
-| C5 | Total communication energy satisfies $\sum_tP_{u,t}^{\mathrm U}\Delta t\le E_0$ |
-| C6 | Per-slot transmit power is bounded by $P_{\max}^{\mathrm U}$ |
+| (11) | Expected interference to each satellite-served user stays below $I_0$ |
+| (12) | The UAV access rate cannot exceed its terrestrial or satellite backhaul rate |
+| (17)-(21) | Fixed-wing speed remains between stall and maximum speed and acceleration is bounded |
+| (22) | UAV altitude remains in the permitted interval |
+| (23) | Total communication energy satisfies $\sum_tP_{u,t}^{\mathrm U}\Delta t\le E_0$ |
+| (24) | Per-slot transmit power is bounded by $P_{\max}^{\mathrm U}$ |
 
 **Algorithm**: The method replaces fading expectations with functions of average SNR under the composite channel model, decomposes the max-min design, and uses bisection on a candidate minimum rate. At each bisection step, successive convex approximations update the coupled trajectory and power variables until feasibility and convergence are reached.
 

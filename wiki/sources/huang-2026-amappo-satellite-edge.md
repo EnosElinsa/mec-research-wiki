@@ -20,7 +20,7 @@ related:
   - "[[qin-2025-matd3-noma-queue-sagin]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cost-Aware Dependent Task Offloading and Resource Allocation for Satellite Edge Computing: An Asynchronous Deep Reinforcement Learning Approach
@@ -56,13 +56,13 @@ A UAV-assisted satellite edge computing (SEC) framework for remote IoT applicati
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every application meets its latency deadline: $T_n^{\mathrm{comp}}\le T_n^{\max}$ |
-| C2 | Each IoT device associates with exactly one UAV in the obstructed area |
-| C3 | Every DAG task is assigned to exactly one execution tier |
-| C4 | Aggregate UAV and LEO CPU allocations stay within their capacities |
-| C5 | IoT transmit power remains within its device limit |
-| C6 | Uplink and downlink allocations respect visible-satellite bandwidth capacity |
-| C7 | UAV trajectories satisfy the stated movement constraints |
+| 41a | Every application meets its latency deadline: $T_n^{\mathrm{comp}}\le T_n^{\max}$ |
+| 41b | Each IoT device associates with exactly one UAV in the obstructed area |
+| 41c-41d | Every DAG task is assigned to exactly one execution tier |
+| 41e-41f | Aggregate UAV and LEO CPU allocations stay within their capacities |
+| 41g | IoT transmit power remains within its device limit |
+| 41h-41i | Each visible satellite's uplink and downlink is allocated to exactly one UAV and one IoT device |
+| 41j | UAV trajectories satisfy the stated movement constraints |
 
 **Algorithm**: A swap-based one-to-many matching algorithm associates IoT devices with UAVs. MATS merges multiple applications, computes dependency-aware residual workloads, and ranks tasks, after which a graph-neural-network encoder and asynchronous MAPPO agents choose offloading and resource allocation without waiting for synchronous inter-agent updates.
 

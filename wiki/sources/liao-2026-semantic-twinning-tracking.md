@@ -18,7 +18,7 @@ related:
   - "[[shaohua-wu]]"
   - "[[qinyu-zhang]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Goal-Oriented Semantic Twinning-Enabled Collaborative Target Tracking in Communication-Constrained Satellite-UAV Networks
@@ -37,7 +37,7 @@ Builds a task-scoped satellite-edge twin for multi-cluster UAV tracking. Stale o
 
 **Scenario**: Geographically separated UAV clusters track one target and exchange status and commands only through continuously covering LEO satellites. A satellite-edge goal-oriented semantic twin reconstructs missing network and motion state, schedules intra-cluster communication, fuses target observations, and controls cluster motion.
 
-**Problem & objective**: Communication and tracking policies maximize $J(\boldsymbol\mu)=\mathbb E\left[\sum_t\gamma^tr_t\right]$, using one reward for AoI and power-threshold compliance and another for joint target coverage, target retention, safe tracking distance, and collision avoidance.
+**Problem & objective**: The paper states no constrained program; communication and tracking policies maximize $J(\boldsymbol\mu)=\mathbb E\left[\sum_t\gamma^tr_t\right]$, using one reward for AoI and power-threshold compliance and another for joint target coverage, target retention, safe tracking distance, and collision avoidance.
 
 **Decision variables**:
 
@@ -52,12 +52,12 @@ Builds a task-scoped satellite-edge twin for multi-cluster UAV tracking. Stale o
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Power and frequency actions remain in their predefined discrete sets |
-| C2 | Communication scheduling penalizes total power above $P_{\mathrm{th}}$ |
-| C3 | Tracking seeks to keep the target inside the clusters' combined fields of view |
-| C4 | Cluster-target distance remains above $d_{c,v}^{\mathrm{safe}}$ |
-| C5 | Inter-cluster distance remains above $d_{c,c}^{\mathrm{safe}}$ |
-| C6 | A UAV falls back to its local policy when a satellite command is stale |
+| Action sets (10), (12) | Power and frequency actions remain in their predefined discrete sets |
+| Reward (19) | Communication scheduling penalizes total power above $P_{\mathrm{th}}$ |
+| Reward (21), field of view | Tracking seeks to keep the target inside the clusters' combined fields of view |
+| Reward (21), safe distance | Cluster-target distance remains above $d_{c,v}^{\mathrm{safe}}$ |
+| Reward (21), collision | Inter-cluster distance remains above $d_{c,c}^{\mathrm{safe}}$ |
+| Staleness rule (15) | A UAV falls back to its local policy when a satellite command is stale |
 
 **Algorithm**: GOST first rejects stale samples and reconstructs missing state with ARIMA, Kalman or unscented information filtering, graph attention, and causal inference. Global and local MADDPG policies then learn communication and tracking actions, while elastic weight consolidation and a replay mixture that shifts from new toward historical samples adapt the controller after target-motion changes.
 

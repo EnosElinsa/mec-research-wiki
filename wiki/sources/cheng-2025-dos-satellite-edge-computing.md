@@ -31,7 +31,7 @@ related:
   - "[[shuang-qin]]"
   - "[[wei-2026-runs-uav-network-slicing]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -50,7 +50,7 @@ Proposes **DOS** (dynamic offloading strategy), an online [[leo-satellite-edge-c
 
 **Scenario**: A satellite-terrestrial integrated network serves remote user devices through a LEO satellite equipped with an edge server and connected to a terrestrial cloud through a gateway. Divisible tasks may be processed locally, at the satellite edge, or in the cloud, while the satellite battery evolves with computation and transmission consumption, solar harvesting, and eclipse periods.
 
-**Problem & objective**: Problem P0 is a long-term stochastic mixed-integer optimization, $\min\frac{1}{T}\sum_{t=0}^{T-1}\mathbb E[\sum_{n=1}^{N(t)}\gamma_n(t)]$, where $\gamma_n(t)=d_n(t)+\beta x_n^d(t)$ includes parallel task-completion time and the re-execution delay for a dropped task.
+**Problem & objective**: Problem P0 (25) is a long-term stochastic mixed-integer optimization, $\min\frac{1}{T}\sum_{t=0}^{T-1}\mathbb E[\sum_{n=1}^{N(t)}\gamma_n(t)]$, where $\gamma_n(t)=d_n(t)+\beta x_n^d(t)$ includes parallel task-completion time and the re-execution delay for a dropped task.
 
 **Decision variables**:
 
@@ -65,11 +65,11 @@ Proposes **DOS** (dynamic offloading strategy), an online [[leo-satellite-edge-c
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Partition or drop: $x_n^l(t)+x_n^e(t)+x_n^c(t)+x_n^d(t)=1$ |
-| C2 | Deadline: $d_n(t)\leq\tau_a^{\max}$ |
-| C3 | Satellite energy evolution: $E^S(t+1)=E^S(t)-e^S(t)+e^{S,h}(t)$ with $e^S(t)\leq E^{S,\max}(t)$ |
-| C4 | UD energy: $e_n^D(x_n(t),z_n(t),p_n(t))\leq E^{D,\max}(t)$ |
-| C5 | Compute and power are zero when their route is unused and otherwise satisfy (25e)-(25h) |
+| (9) | Partition or drop: $x_n^l(t)+x_n^e(t)+x_n^c(t)+x_n^d(t)=1$ |
+| (23) | Deadline: $d_n(t)\leq\tau_a^{\max}$ |
+| (21), 25c | Satellite energy evolution: $E^S(t+1)=E^S(t)-e^S(t)+e^{S,h}(t)$ with $e^S(t)\leq E^{S,\max}(t)$ |
+| 25d | UD energy: $e_n^D(x_n(t),z_n(t),p_n(t))\leq E^{D,\max}(t)$ |
+| 25e-25h | Compute and power are zero when their route is unused and otherwise satisfy (25e)-(25h) |
 
 **Algorithm**: Form the virtual satellite-energy queue $\widehat E^S(t)=E^S(t)-\phi$, minimize the per-slot drift-plus-penalty upper bound $V\gamma(t)-\widehat E^S(t)e^S(t)$, decompose each one-slot problem into task-offloading, local resource-allocation, and edge resource-allocation convex subproblems, iterate them to convergence, and then update the physical energy queue.
 

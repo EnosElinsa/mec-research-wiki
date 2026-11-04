@@ -1,0 +1,1152 @@
+{
+  "entries": [
+    {
+      "slug": "al-hourani-2024-los-holding-distance-ntn",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks.md",
+          "lines": "5",
+          "note": "LoS measurement and channel model; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks.md",
+          "lines": "5",
+          "note": "camera-based LoS probability for NTN"
+        },
+        {
+          "path": "raw/sources/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks.md",
+          "lines": "5,16-18,49",
+          "note": "continuous-space Markov chain and holding distance"
+        },
+        {
+          "path": "raw/sources/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks.md",
+          "lines": "71",
+          "note": "kappa_0 = 103, 74, 28 for rural, suburban, dense urban"
+        },
+        {
+          "path": "raw/sources/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks/Line-of-Sight_Probability_and_Holding_Distance_in_Non-Terrestrial_Networks.md",
+          "lines": "18,148-156",
+          "note": "open-source simulation algorithms"
+        }
+      ]
+    },
+    {
+      "slug": "baena-not-in-parse-space-o-ran",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "9-11",
+          "note": "architecture paper; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "47",
+          "note": "isolated, static NTN control"
+        },
+        {
+          "path": "raw/sources/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "9,21-37,69,76,118-130",
+          "note": "dApps, Space RICs, terrestrial SMO"
+        },
+        {
+          "path": "raw/sources/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "11,128,205",
+          "note": "dynamic interface mapping to satellite links"
+        },
+        {
+          "path": "raw/sources/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G/Space-O-RAN_Enabling_Intelligent_Open_and_Interoperable_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "11,122,174",
+          "note": "Starlink-topology latency simulations"
+        }
+      ]
+    },
+    {
+      "slug": "chai-2026-random-position-relay-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information.md",
+          "lines": "205-257",
+          "note": "constraints C1-C8 (21)-(28) and problem (29)"
+        },
+        {
+          "path": "raw/sources/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information.md",
+          "lines": "260-262",
+          "note": "multi-agent DQN decomposition"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information.md",
+          "lines": "5",
+          "note": "UAV-assisted satellite system"
+        },
+        {
+          "path": "raw/sources/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information.md",
+          "lines": "205-257",
+          "note": "transmission-time problem and constraints"
+        },
+        {
+          "path": "raw/sources/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information.md",
+          "lines": "260-262",
+          "note": "DQN deployment and improved K-means association"
+        },
+        {
+          "path": "raw/sources/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information/Transmission_Time_Minimization-Based_UAV_Deployment_and_Resource_Allocation_With_Random_User_Position_Information.md",
+          "lines": "460",
+          "note": "20% and 18% reductions vs [27], [29]"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2024-thoas-traffic-aware-sagin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "243,265-273",
+          "note": "revenue (9), P1 with C1-C2"
+        },
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "283-305",
+          "note": "NP-hard MKP reduction and deadline split (14)"
+        },
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "415-475,497-555",
+          "note": "slice adjustment, PPO state/action, actor loss"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "5,25",
+          "note": "SAGIN slicing and offloading"
+        },
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "265-290",
+          "note": "NP-hard profit maximization"
+        },
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "36,452-468,555,582",
+          "note": "probsparse attention, adjustment rule, PPO, distillation"
+        },
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "648-650,840",
+          "note": "Milan traffic results"
+        },
+        {
+          "path": "raw/sources/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN/Traffic-Aware_Lightweight_Hierarchical_Offloading_Toward_Adaptive_Slicing-Enabled_SAGIN.md",
+          "lines": "696",
+          "note": "teacher-size and 6% students"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2024-ulse-game",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "379-401",
+          "note": "problem (26) with C1-C4"
+        },
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "138-145",
+          "note": "UAV coverage condition (1)"
+        },
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "417,525,569-613",
+          "note": "NP-hardness, JULTO updates, PoA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "5,55",
+          "note": "UAV-assisted LEO edge without terrestrial BS"
+        },
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "379-401",
+          "note": "aggregate cost under coverage, IR, CPU constraints"
+        },
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "37,525,569",
+          "note": "potential game and Nash equilibrium"
+        },
+        {
+          "path": "raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md",
+          "lines": "660,664,765-787",
+          "note": "1.78 ms vs 512096.68 ms; ICSOC, CCPM, Random"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-pddqn-sagin-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md",
+          "lines": "340-343",
+          "note": "objective (39)"
+        },
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md",
+          "lines": "347-371",
+          "note": "constraints 39a-39g"
+        },
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md",
+          "lines": "124,202",
+          "note": "UAV offloading condition and slot structure"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md",
+          "lines": "5",
+          "note": "SAGIN MEC with UAV and LEO"
+        },
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md",
+          "lines": "340-371",
+          "note": "weighted delay-energy MINLP and constraints"
+        },
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md",
+          "lines": "568,580",
+          "note": "~500 episodes; ~2.30 vs ~2.65 fixed altitude"
+        }
+      ]
+    },
+    {
+      "slug": "cheng-2019-sagin-iot-offloading-rl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "127-131",
+          "note": "offloading indicators (6)-(7)"
+        },
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "206-222",
+          "note": "VM problem (14) C1-C4"
+        },
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "228-264,294-314",
+          "note": "heuristic (15)-(20), MDP and policy (22)-(24)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "5",
+          "note": "SAG-IoT online offloading"
+        },
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "131,314",
+          "note": "discounted cost with one tier per task"
+        },
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "240-264,368-380",
+          "note": "VM heuristic and actor-critic"
+        },
+        {
+          "path": "raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md",
+          "lines": "527-532",
+          "note": "~10th-episode convergence; Random and Greedy-on-edge"
+        }
+      ]
+    },
+    {
+      "slug": "cheng-2025-dos-satellite-edge-computing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "191,254-300",
+          "note": "portions (9), energy (18), (21), deadline (23)"
+        },
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "313-365",
+          "note": "P0 (25a)-(25h)"
+        },
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "417-658",
+          "note": "P1 drift-plus-penalty and TO/LRA/ERA subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "5",
+          "note": "SEC in STIN with harvesting"
+        },
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "313-316",
+          "note": "long-term completion-time objective"
+        },
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "417-449,501,577",
+          "note": "Lyapunov and convex subproblems"
+        },
+        {
+          "path": "raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md",
+          "lines": "673,786-797",
+          "note": "O(1/V) and lowest completion time and dropping rate"
+        }
+      ]
+    },
+    {
+      "slug": "dai-2024-graph-rm-survey-optimization",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.md",
+          "lines": "5",
+          "note": "survey with no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.md",
+          "lines": "5,21",
+          "note": "Part I of a two-part survey"
+        },
+        {
+          "path": "raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.md",
+          "lines": "29-33,51,86",
+          "note": "graph optimization tools across network types"
+        },
+        {
+          "path": "raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.md",
+          "lines": "27,38,199,216",
+          "note": "strengths and complexity limits"
+        },
+        {
+          "path": "raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.md",
+          "lines": "5,61,73",
+          "note": "companion learning part"
+        }
+      ]
+    },
+    {
+      "slug": "diallo-2026-system-cost-uav-leo-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "111-119",
+          "note": "system cost (7)"
+        },
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "177-261",
+          "note": "constraints C1-C13 (16)-(28)"
+        },
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "506",
+          "note": "virtual-time-axis scheduling"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "5,111",
+          "note": "UAV-assisted LEO deadline-aware execution"
+        },
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "116-261",
+          "note": "cost objective and decisions"
+        },
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "39,506",
+          "note": "alternating LP, SCA, dual, scheduling"
+        },
+        {
+          "path": "raw/sources/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks/System_Cost_Optimization-Based_Task_Offloading_for_UAV-Assisted_LEO_Satellite_Networks.md",
+          "lines": "562-589",
+          "note": "500 trials vs [29], [33], [36]"
+        }
+      ]
+    },
+    {
+      "slug": "gao-2024-sagin-perception-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "228-269",
+          "note": "queues and offloading (17)-(22)"
+        },
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "361-393",
+          "note": "problem (35) with 35b-35i"
+        },
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "443-556",
+          "note": "P1 DDPG, P2 DQN, P3 harmony search"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "5,43",
+          "note": "perception-aided SAGIN offloading"
+        },
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "361-393",
+          "note": "long-term cost with stability"
+        },
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "443-521",
+          "note": "Lyapunov, DDPG, DQN, SGHS"
+        },
+        {
+          "path": "raw/sources/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach/Cost-Efficient_Computation_Offloading_in_SAGIN_A_Deep_Reinforcement_Learning_and_Perception-Aided_Approach.md",
+          "lines": "673-730",
+          "note": "baselines incl. perception-free; cost and queue results"
+        }
+      ]
+    },
+    {
+      "slug": "han-2024-ground-satellite-fl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "568-608",
+          "note": "round latency (32)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "618-659",
+          "note": "problem (35) with 35b-35j"
+        },
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "674-762",
+          "note": "block subproblems (36)-(39) and bisection"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "27-41",
+          "note": "ground-to-satellite FL without terrestrial infrastructure"
+        },
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "618-659",
+          "note": "latency problem under privacy, energy, convergence, load"
+        },
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "674-762",
+          "note": "BCD and nested bisection"
+        },
+        {
+          "path": "raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md",
+          "lines": "785,903-907",
+          "note": "no-offload, max-offload, fixed-portion baselines; 56.89/55.23/67.23%"
+        }
+      ]
+    },
+    {
+      "slug": "han-2024-sagin-fl-handover",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "271-297",
+          "note": "round latency and makespan objective"
+        },
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "319-351,453-493",
+          "note": "completion times and offloading bounds"
+        },
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "371-431",
+          "note": "nested bisection algorithms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "5",
+          "note": "SAGIN FL without terrestrial BS"
+        },
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "271-297,458",
+          "note": "adaptive offloading for per-round latency"
+        },
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "371-431",
+          "note": "direction selection and nested bisection"
+        },
+        {
+          "path": "raw/sources/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover/Orchestrating_Federated_Learning_in_Space-Air-_Ground_Integrated_Networks_Adaptive_Data_Offloading_and_Seamless_Handover.md",
+          "lines": "548,595-610",
+          "note": "MNIST, FMNIST, CIFAR-10 vs static, proportional, no-offloading, single-layer"
+        }
+      ]
+    },
+    {
+      "slug": "he-2026-dt-sagimec-lae",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md",
+          "lines": "256-312",
+          "note": "problem P (22) with 22a-22j (text numbering)"
+        },
+        {
+          "path": "raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md",
+          "lines": "321,387,459,495",
+          "note": "Stackelberg game, UCB, resource and trajectory subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md",
+          "lines": "5,9",
+          "note": "DT-assisted SAGIMEC for LAE"
+        },
+        {
+          "path": "raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md",
+          "lines": "258-312",
+          "note": "latency-energy cost over offloading, satellite, resources, trajectory"
+        },
+        {
+          "path": "raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md",
+          "lines": "9,29,321,387",
+          "note": "Lyapunov, UCB, Stackelberg"
+        },
+        {
+          "path": "raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md",
+          "lines": "9,794",
+          "note": ">=14.5% QoS over DRL; 59 ms runtime"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-amappo-satellite-edge",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "361-404",
+          "note": "problem (41) with 41a-41j"
+        },
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "86",
+          "note": "UAV trajectory variables"
+        },
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "430-596",
+          "note": "matching, MATS, GNN, AMAPPO reward (52)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "5,25",
+          "note": "UAV-assisted satellite edge for DAG tasks"
+        },
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "361-404",
+          "note": "weighted latency-energy problem"
+        },
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "33,449,526",
+          "note": "swap matching, MATS, graph encoding, asynchronous MAPPO"
+        },
+        {
+          "path": "raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "755,764",
+          "note": "10.3% energy at 200 IoTDs; 10.9% latency at 50 tasks"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-uav-friendly-jamming-transsac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "250-280",
+          "note": "problem (15) with C1-C7"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "296-308",
+          "note": "single-objective variant (16)"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "404-519",
+          "note": "MDP, transformer, epsilon-greedy MAB"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "5",
+          "note": "UAV friendly jamming for LEO-maritime"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "250-280",
+          "note": "secrecy-energy multi-objective problem"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "429-495",
+          "note": "TransSAC transformer encoding"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "418,510-519",
+          "note": "MAB weight adaptation"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning/Low-Altitude_UAV_Friendly-Jamming_for_Satellite-Maritime_Communications_via_Generative_AI-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "572-578,627-629,766",
+          "note": "DDPG, PPO, SAC, TD3 comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "kim-2026-qmarl-sagin-access",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "320-336",
+          "note": "objective (36) and limit (37)"
+        },
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "339-378",
+          "note": "reward (38)-(42) and capacity (43)"
+        },
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "436",
+          "note": "basis measurement for binary actions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "5,324",
+          "note": "cooperative SAGIN access scheduling"
+        },
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "324-378",
+          "note": "QoS, capacity, residual energy objective"
+        },
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "47-79,436",
+          "note": "PQC encoding and measurement"
+        },
+        {
+          "path": "raw/sources/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks/Quantum_Multi-Agent_Reinforcement_Learning_for_Cooperative_Mobile_Access_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "544-554,603",
+          "note": "MARL, IQL, DQN, Random benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "kim-2026-scale-reconfigurable-marl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "329-344",
+          "note": "main objective, access limit, binary selections, reward"
+        },
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "482-556",
+          "note": "active-width masking and hidden-layer communication"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "5,329",
+          "note": "aerial access scheduling with changing visible sets"
+        },
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "329-344,506",
+          "note": "Dec-POMDP reward design"
+        },
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "482-484",
+          "note": "activating required neurons"
+        },
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "536-556",
+          "note": "layerwise communication with centralized critic"
+        },
+        {
+          "path": "raw/sources/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments/Scale-Reconfigurable_Multi-Agent_Reinforcement_Learning_for_Aerial_Networks_in_Dynamic_Environments.md",
+          "lines": "671-677",
+          "note": "0.775 vs 0.329 in DPO-MDP"
+        }
+      ]
+    },
+    {
+      "slug": "lee-2024-dho-leo-handover",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "306",
+          "note": "problem (11) s.t. (2)"
+        },
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "181,218,377",
+          "note": "orbital model (2), plane rule, one-hot (13)"
+        },
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "222-247",
+          "note": "RB NACK and preamble collisions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "5,31",
+          "note": "per-user LEO handover learning"
+        },
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "306,222-247",
+          "note": "delay plus collision objective"
+        },
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "5,31",
+          "note": "IMPALA without measurement report"
+        },
+        {
+          "path": "raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md",
+          "lines": "685,760",
+          "note": "6.8x vs conventional, 5.02x vs random"
+        }
+      ]
+    },
+    {
+      "slug": "li-2020-maritime-uav-satellite-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "263-321",
+          "note": "kinematics, altitude, energy, power, problem (25)"
+        },
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "325-404",
+          "note": "large-scale CSI approximation and bisection form (38)"
+        },
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "554-596",
+          "note": "SCA subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "5,851",
+          "note": "UAV coordinated with satellite-terrestrial maritime"
+        },
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "309-321",
+          "note": "max-min ergodic rate problem"
+        },
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "43,325-404,554",
+          "note": "large-scale CSI, SCA, bisection"
+        },
+        {
+          "path": "raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md",
+          "lines": "657-659,847",
+          "note": "full-CSI baselines [20], [22]; <25 iterations"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-emodrl-ground-space-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "322-346",
+          "note": "P1 (11a)-(11d)"
+        },
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "369-399",
+          "note": "convex transition problem (P2)"
+        },
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "484-611",
+          "note": "ED3QN, masking, evolution, Pareto archive"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "5,27",
+          "note": "DCB ground-to-LEO uplink"
+        },
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "322-340",
+          "note": "rate, energy, switching objectives"
+        },
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "369,527-611",
+          "note": "action-space-reduced MOMDP and EMODRL-ED3QN"
+        },
+        {
+          "path": "raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "27,121",
+          "note": "30% handover saving vs rate greedy"
+        }
+      ]
+    },
+    {
+      "slug": "liao-2026-semantic-twinning-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "124-148",
+          "note": "action spaces (9)-(12)"
+        },
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "191,271-291",
+          "note": "staleness rule (15), rewards (19), (21)"
+        },
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "301-345",
+          "note": "MADDPG and EWC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "5",
+          "note": "GOST over satellite links"
+        },
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "173-229",
+          "note": "state reconstruction"
+        },
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "301-345,495",
+          "note": "MADDPG, EWC, replay mixture"
+        },
+        {
+          "path": "raw/sources/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks/Goal-Oriented_Semantic_Twinning-Enabled_Collaborative_Target_Tracking_in_Communication-Constrained_Satellite-UAV_Networks.md",
+          "lines": "5,515",
+          "note": "68% AoI, 75% error, 50% loss, ~66% samples"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2023-sagecn-online-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "137-186",
+          "note": "processing, queues (7)-(14), stability condition"
+        },
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "221-236",
+          "note": "problem (P1) with C1-C3"
+        },
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "242-462",
+          "note": "Lyapunov P2, online learning, BnB"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "5",
+          "note": "collaborative space-aerial MEC"
+        },
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "221-236",
+          "note": "route variables and dispatch bounds"
+        },
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "186,242-285",
+          "note": "stability and Lyapunov decomposition"
+        },
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "303-462",
+          "note": "delayed online learning and BnB scheduler"
+        },
+        {
+          "path": "raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md",
+          "lines": "592",
+          "note": "delay-stability tradeoff results"
+        }
+      ]
+    },
+    {
+      "slug": "mahboob-2024-ai-ntn-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "5",
+          "note": "survey with no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "5",
+          "note": "AI for satellite NTN in 6G"
+        },
+        {
+          "path": "raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "5,32,91,1162-1168",
+          "note": "challenge taxonomy, testbeds, O-RAN"
+        },
+        {
+          "path": "raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "81,133,391-393",
+          "note": "supervised, RL, distributed learning roles"
+        },
+        {
+          "path": "raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G.md",
+          "lines": "31,698,988,1158",
+          "note": "implementation challenges"
+        }
+      ]
+    },
+    {
+      "slug": "mao-2024-fso-leo-hierarchical-routing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "289-319",
+          "note": "utility (16)-(17) and problem (19) with C1-C4"
+        },
+        {
+          "path": "raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "373-415",
+          "note": "k-route screening with LCSS, monotonic argmax"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "5",
+          "note": "FSO LEO hierarchical routing"
+        },
+        {
+          "path": "raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "289-319",
+          "note": "aggregate utility under constraints"
+        },
+        {
+          "path": "raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "326,373-415",
+          "note": "regions, k routes, Dec-POMDP MADRL with monotonicity"
+        },
+        {
+          "path": "raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "433-513",
+          "note": "vs DQN and MT-OSPF"
+        }
+      ]
+    },
+    {
+      "slug": "mao-2025-bcsa-frl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "137",
+          "note": "P1 with C1-C4"
+        },
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "126,193,213,247-257",
+          "note": "consensus, rollback, CCVM, CSRA rules"
+        },
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "270",
+          "note": "DDQN target (18)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "5,137",
+          "note": "zero-trust LEO offloading"
+        },
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "137",
+          "note": "delay minimization with deadlines"
+        },
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "126-257",
+          "note": "blockchain FRL, CCVM, CSRA"
+        },
+        {
+          "path": "raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md",
+          "lines": "296,318-322",
+          "note": "26 vs 13/17; up to 50%; 6.16% and 5.95 ms"
+        }
+      ]
+    },
+    {
+      "slug": "moon-2024-ground-satellite-uam-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "301-351",
+          "note": "problem (P1) with 22b-22i"
+        },
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "362-488",
+          "note": "satellite-user selection SP1-SP3"
+        },
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "743-941",
+          "note": "power allocation P2-P3 with SCA and subgradient"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "29,301",
+          "note": "UAM downlink in satellite-ground NTN"
+        },
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "301-346",
+          "note": "sum-rate problem and constraints"
+        },
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "351,362-488",
+          "note": "predicted interference and satellite-user selection"
+        },
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "5,703,743-941",
+          "note": "MCMF association and SCA power allocation"
+        },
+        {
+          "path": "raw/sources/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks/Cooperative_Ground-Satellite_Scheduling_and_Power_Allocation_for_Urban_Air_Mobility_Networks.md",
+          "lines": "892-901,949-1053",
+          "note": "distance-based scheduling and equal-power comparisons"
+        }
+      ]
+    }
+  ]
+}

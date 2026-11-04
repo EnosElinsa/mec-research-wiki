@@ -19,7 +19,7 @@ related:
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[dcb-cuts-satellite-handover-frequency]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,7 +39,7 @@ Proposes a **Distributed Collaborative Beamforming (DCB)**-based **uplink** para
 
 **Scenario**: Energy-limited terrestrial terminals form a distributed virtual antenna array for uplink transmission to a visible LEO satellite. Multiple access is single-satellite association per slot, with orbital, elevation-dependent ground-to-satellite channels and time-varying satellite availability.
 
-**Problem & objective**: Long-term multi-objective optimization reformulated as an action-space-reduced MOMDP, with vector objective $\max_\pi\mathbb E_\pi[\sum_t\gamma^t(\hat R(t),-\sum_iP_i(t)\Delta T,-\kappa_t)]$, balancing uplink achievable rate, terminal energy consumption, and satellite switching frequency.
+**Problem & objective**: Problem (P1) (11) minimizes $F=\{-f_1,f_2,f_3\}$ over terminal powers and satellite selections, a non-convex mixed-integer long-term multi-objective problem reformulated as an action-space-reduced MOMDP, with vector objective $\max_\pi\mathbb E_\pi[\sum_t\gamma^t(\hat R(t),-\sum_iP_i(t)\Delta T,-\kappa_t)]$, balancing uplink achievable rate, terminal energy consumption, and satellite switching frequency.
 
 **Decision variables**:
 
@@ -53,10 +53,11 @@ Proposes a **Distributed Collaborative Beamforming (DCB)**-based **uplink** para
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each slot selects one satellite from the available set with adequate angle and spectrum |
-| C2 | Terminal powers satisfy $P_{\min}<P_i(t)<P_{\max}$ |
-| C3 | The action-space transition uses a fixed finite weight set, $a_k=k/\|\mathcal K\|$, $b_k=1-a_k$ |
-| C4 | The reward records a handover indicator $\kappa_t\in\{0,1\}$ and long-term discounted returns |
+| 11c | Each slot selects one satellite from the available set with adequate angle and spectrum |
+| 11b | Terminal powers satisfy $P_{\min}<P_i(t)<P_{\max}$ |
+| 11d | The uplink achievable rate satisfies $R_t\ge\bar R$ in every slot |
+| Transition rule (P2) | The action-space transition uses a fixed finite weight set, $a_k=k/\|\mathcal K\|$, $b_k=1-a_k$ |
+| Reward | The reward records a handover indicator $\kappa_t\in\{0,1\}$ and long-term discounted returns |
 
 **Algorithm**: Solve the per-slot convex power/weight transition → encode satellite and weight actions in a universal MOMDP → warm-up multi-task ED3QN → mask unavailable or low-value actions → evolutionary task updates and Pareto-policy archiving.
 

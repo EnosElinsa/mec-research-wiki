@@ -21,7 +21,7 @@ related:
   - "[[soohyun-park]]"
   - "[[joongheon-kim]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Scale-Reconfigurable Multi-Agent Reinforcement Learning for Aerial Networks in Dynamic Environments
@@ -40,7 +40,7 @@ SR-MARL lets ground-station agents schedule a changing visible set of CubeSats a
 
 **Scenario**: Multiple ground stations select a time-varying visible set of CubeSats and fixed-wing or eVTOL-class UAVs for global aerial-network access. Link observations include geometry, path loss, SNR, capacity, and residual energy; CubeSat and UAV energy follow orbital charging and fixed-wing propulsion models. Binary device access scheduling is performed under partial observability and changing observation dimensions.
 
-**Problem & objective**: The system is formulated as a decentralized partially observable MDP whose policy maximizes expected cumulative reward, $\max_\pi \mathbb E_\pi[\sum_t\gamma^t\Re_i(t)]$, combining QoS, capacity, carrier-to-noise ratio, and high, balanced residual energy across CubeSats and UAVs.
+**Problem & objective**: Each ground station's main objective maximizes the long-term average reward over its selection vectors, $\max_{\mathfrak S_j^i(t),\mathfrak S_l^i(t)}\lim_{\tau\to\infty}\frac1\tau\sum_t\Re_i(t)$, solved as a decentralized partially observable MDP and combining QoS, capacity, carrier-to-noise ratio, and high, balanced residual energy across CubeSats and UAVs.
 
 **Decision variables**:
 
@@ -54,11 +54,11 @@ SR-MARL lets ground-station agents schedule a changing visible set of CubeSats a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each station selects only currently visible CubeSats and UAVs |
-| C2 | Device-selection indicators remain binary |
-| C3 | The number of selected devices is at most the station access limit $\bar M_i$ |
-| C4 | Active input and hidden widths follow the current visible-device count and fixed maximum architecture |
-| C5 | The reward penalizes low or imbalanced residual energy while promoting network-service metrics |
+| Visible sets | Each station selects only currently visible CubeSats and UAVs |
+| Domain | Device-selection indicators remain binary |
+| Access limit | The number of selected devices is at most the station access limit $\bar M_i$ |
+| Architecture rule (not a constraint of the objective) | Active input and hidden widths follow the current visible-device count and fixed maximum architecture |
+| Reward design | The reward penalizes low or imbalanced residual energy while promoting network-service metrics |
 
 **Algorithm**: Mask inactive input and hidden neurons according to the current device count, normalize only active neurons, exchange and aggregate intermediate hidden states among ground-station actors, train decentralized scale-reconfigurable actors with a centralized critic through temporal-difference actor-critic updates, and deploy the active-width policies under local observations.
 

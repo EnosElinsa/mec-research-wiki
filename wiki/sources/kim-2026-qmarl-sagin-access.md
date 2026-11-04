@@ -19,7 +19,7 @@ related:
   - "[[soohyun-park]]"
   - "[[joongheon-kim]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Quantum Multi-Agent Reinforcement Learning for Cooperative Mobile Access in Space-Air-Ground Integrated Networks
@@ -38,7 +38,7 @@ Represents each CubeSat/HALE-UAV scheduling bit with one qubit and uses projecti
 
 **Scenario**: Multiple ground stations cooperatively select visible CubeSats and fixed-wing HALE-UAVs for differentiated mobile access in a space-air-ground integrated network. CubeSat links use orbital geometry, channel capacity, QoS, and sun-side or dark-side energy models, while HALE-UAV links use air-to-ground propagation and aerodynamic energy models. Access is controlled by binary device scheduling rather than a separate multiple-access allocation.
 
-**Problem & objective**: The cooperative scheduling problem is formulated as a multi-agent MDP whose policy maximizes expected cumulative reward, $\max_\pi \mathbb E_\pi[\sum_t\gamma^t R_i(t)]$, combining ground-station QoS and capacity with high and balanced residual energy for CubeSats and HALE-UAVs.
+**Problem & objective**: Problem (36) selects binary schedules $x_{j,l}^i(t)\in\{0,1\}$ to maximize the long-term average reward $\lim_{\mathscr T\to\infty}\frac1{\mathscr T}\sum_t\sum_{j,l}R_i(d_{j,l}^i(t),x_{j,l}^i(t))$, with $R_i=U_i-C_i$ in (38), combining ground-station QoS and capacity with high and balanced residual energy for CubeSats and HALE-UAVs.
 
 **Decision variables**:
 
@@ -51,11 +51,11 @@ Represents each CubeSat/HALE-UAV scheduling bit with one qubit and uses projecti
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | A ground station can select only CubeSats and HALE-UAVs within its coverage |
-| C2 | Scheduling indicators are binary for every visible NTN device |
-| C3 | The number of selected NTN devices does not exceed the station's monitoring limit $\bar H_i$ |
-| C4 | Differentiated capacity targets cap unnecessary access service for each ground station |
-| C5 | Reward terms preserve residual energy and penalize uneven device-energy use |
+| Coverage sets | A ground station can select only CubeSats and HALE-UAVs within its coverage |
+| (36) domain | Scheduling indicators are binary for every visible NTN device |
+| (37) | The number of selected NTN devices does not exceed the station's monitoring limit $\bar H_i$ |
+| (43) | Differentiated capacity targets cap unnecessary access service for each ground station |
+| (42), reward cost | Reward terms preserve residual energy and penalize uneven device-energy use |
 
 **Algorithm**: Encode the classical SAGIN state into parameterized quantum circuits, represent the binary scheduling distribution with projection-valued measurements using one qubit per device decision, train decentralized quantum actors with a centralized quantum critic, and update actor-critic parameters until the cooperative reward converges.
 

@@ -26,7 +26,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[victor-c-m-leung]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Low-Altitude UAV Friendly-Jamming for Satellite-Maritime Communications via Generative AI-Enabled Deep Reinforcement Learning
@@ -61,7 +61,7 @@ A rotary-wing UAV jointly chooses 3-D motion and jamming power to protect a sate
 |---|---|
 | C1-C3 | Horizontal coordinates and altitude remain inside the feasible flight region |
 | C4 | Jamming power remains between its minimum and maximum values |
-| C5 | Cumulative UAV energy use does not exceed $E_0$ |
+| C5 | Cumulative jamming transmit energy satisfies $\sum_tP_U[t]\Delta t\le E_0$ |
 | C6 | Interference received by the legitimate vessel does not exceed $I_0$ |
 | C7 | The corresponding UAV interference-temperature condition for the eavesdropping link is enforced |
 

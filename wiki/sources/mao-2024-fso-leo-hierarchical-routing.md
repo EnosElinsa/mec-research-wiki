@@ -18,7 +18,7 @@ related:
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
   - "[[bomin-mao]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # On an Intelligent Hierarchical Routing Strategy for Ultra-Dense Free Space Optical Low Earth Orbit Satellite Networks
@@ -45,7 +45,7 @@ A **routing** strategy for ultra-dense **LEO satellite constellations** with **f
 |---|---|---|---|
 | Candidate route | $p_{i,j}$ | discrete path selected from k candidates | End-to-end LEO route for a source-destination pair |
 | Service action | $u^a$ | discrete candidate-path index | Path chosen by the MEO agent for service agent $a$ |
-| QoS weights | $(w_1,w_2,w_3)$ | continuous, nonnegative | Service-specific sensitivity to latency, loss, and delivery rate |
+| QoS weights | $(w_1,w_2,w_3)$ | given per service class, nonnegative | Service-specific sensitivity to latency, loss, and delivery rate; set by service type, not optimized |
 
 **Constraints**:
 
