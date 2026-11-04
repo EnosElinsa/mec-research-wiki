@@ -21,7 +21,7 @@ related:
   - "[[deng-2026-uav-cpn-energy]]"
   - "[[ning-2025-channel-aware-irs-uav]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dynamically Segmented IRS-Assisted UAV Computing Power Networks: Towards System Delay and Energy Consumption Optimization
@@ -38,38 +38,33 @@ Jointly controls UAV trajectories, user-UAV association, computing allocation, I
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAV aerial computing servers serve users through one fixed elevated IRS in a slotted computing-power network. Each indivisible task is fully offloaded to one UAV, and IRS rows are dynamically partitioned among users. OFDMA divides bandwidth among users; the main channel model is LoS-dominant with direct and IRS-reflected paths, and an NLoS extension is evaluated.
-
-**Problem & objective**: The paper formulates a mixed discrete-continuous, nonconvex multi-objective design that minimizes a weighted sum of total system delay and UAV computation energy, $\min w_1 D^{tot}+w_2 E^{comp}$, over trajectories, associations, computing power, IRS segmentation, and phase shifts.
-
+**Scenario**: Multiple UAV computing servers $k\in\mathcal K$ serve users $n\in\mathcal N$ through one fixed IRS in a slotted computing-power network. Each user's task is fully offloaded to one UAV, IRS rows are dynamically partitioned among users, and links combine direct and IRS-reflected paths.
+**Problem & objective**: P0 (12) is a two-objective problem over total user delay and total UAV computation energy; P1 (13) scalarizes it as $\min_{\mathbf L,\beta,c,I,\phi}\omega_1\sum_t\sum_nD_n[t]+\omega_2\sum_t\sum_kE_k[t]$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV trajectory | $\mathbf q_m[t]$ | continuous 2D position | Horizontal location of UAV $m$ in slot $t$ |
-| User-UAV association | $a_{k,m}[t]$ | binary | Whether user $k$ offloads to UAV $m$ |
-| Computing power | $f_{k,m}[t]$ | continuous, nonnegative | UAV CPU resource allocated to user $k$ |
-| IRS row allocation | $b_k[t]$ | integer, nonnegative | Number of reflecting rows assigned to user $k$ |
-| IRS phase shift | $\theta_{k,r}[t]$ | continuous phase | Phase applied by row $r$ for user $k$ |
-
+| UAV trajectory | $\mathbf L_k[t]$ | continuous position | Location of UAV $k$ in slot $t$ |
+| User-UAV association | $\beta_{n,k}[t]$ | binary | User $n$ offloads to UAV $k$ |
+| Computing power | $c_{n,k}[t]$ | continuous | UAV $k$ computing power allocated to user $n$ |
+| IRS row allocation | $I_n[t]$ | integer | Reflecting-element rows assigned to user $n$ |
+| IRS phase shift | $\phi$ | continuous, $[0,2\pi)$ | Phase of each reflecting element |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user associates with one UAV in each slot |
-| C2 | Per-UAV computing allocations do not exceed available computing power |
-| C3 | Every task meets its delay limit after transmission and execution |
-| C4 | Integer IRS-row allocations are nonnegative and their sum does not exceed the IRS row budget |
-| C5 | Reflecting coefficients satisfy the phase-shift and unit-modulus model |
-| C6 | UAV motion, operating-region, and collision-separation requirements hold |
-
-**Algorithm**: Learn UAV trajectories with shared-parameter MAPPO, align IRS phases in closed form, select best-channel user-UAV associations, alternately solve convex computing-power allocation and SCA-relaxed IRS segmentation, then round row counts and assign residual rows by marginal delay improvement.
+| C1 | Fixed per-slot movement $\lVert\mathbf L_k[t+1]-\mathbf L_k[t]\rVert=\tau V$ |
+| C2 | Safety distance $\lVert\mathbf L_k[t]-\mathbf L_j[t]\rVert\geq L_{\min}$ |
+| C3-C4 | Binary association; each user is assigned to one UAV |
+| C5 | Per-UAV computing power $\sum_nc_{n,k}[t]\leq C^{\max}$ |
+| C6 | Task delay limit for each user |
+| C7-C8 | Limits on the number of reflecting rows per user and in total (expressions garbled in the parse; check the published paper) |
+| C9 | Phase shifts in $[0,2\pi)$ |
+**Algorithm**: TCPA decomposes P1 into three subproblems. Closed-form phase alignment (Theorem 1) and best-channel matching set phases and associations; an SCA-based block alternates computing-power allocation and relaxed IRS-row allocation, then rounds rows down and gives remaining rows to users with the largest channel-gain increase; MAPPO with parameter sharing among homogeneous UAV agents learns the trajectories.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hu et al. [x] studied a dynamically segmented IRS-assisted UAV computing power network for fully offloaded user tasks. They formulated a multi-objective problem that minimizes total system delay and UAV computation energy by jointly optimizing UAV trajectories, phase shifts, user association, computing-power allocation, and IRS-row segmentation. Their TCPA scheme applies shared-parameter MAPPO to UAV trajectory control, closed-form phase alignment and best-channel association to communication matching, and alternating convex and SCA updates to computing power and dynamic IRS segmentation. The continuous row allocation is rounded and remaining rows are assigned according to marginal channel-gain and delay improvement. Simulations report that dynamic segmentation reduces total delay across the evaluated user-load, IRS-size, UAV-count, and computing-demand settings while maintaining the modeled energy-delay tradeoff.
+Hu et al. [x] studied a dynamically segmented IRS-assisted UAV computing power network for fully offloaded user tasks. They formulated a multi-objective problem that minimizes total system delay and UAV computation energy by jointly optimizing UAV trajectories, phase shifts, user association, computing-power allocation, and IRS-row segmentation. Their TCPA scheme applies shared-parameter MAPPO to UAV trajectory control, closed-form phase alignment and best-channel association to communication matching, and alternating convex and SCA updates to computing power and dynamic IRS segmentation. The continuous row allocation is rounded down and the remaining rows go to the users with the largest channel-power-gain increase. Simulations report faster convergence and higher reward than MATD3-based, static-IRS, no-IRS, and delay-only baselines; the delay-only baseline reaches lower delay only by sharply raising UAV computation energy.
 
 ## Problem
 

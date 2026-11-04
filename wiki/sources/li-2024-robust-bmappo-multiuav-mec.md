@@ -18,7 +18,7 @@ related:
   - "[[safety-and-robustness-mechanisms-in-mec]]"
   - "[[uav-trajectory-safety-guarantee-ladder]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,7 +38,7 @@ A multi-UAV-assisted MEC network with **both communication and computation uncer
 
 **Scenario**: A multi-UAV MEC network serves heterogeneous UE tasks over multiple slots with partial CSI and bounded task-complexity estimation errors.
 
-**Problem & objective**: Jointly choose trajectories, UE-UAV association, task partition, beamforming, and CPU resources to minimize weighted UE and UAV energy, $\min E_{\mathrm{total}}$.
+**Problem & objective**: Jointly choose trajectories, UE-UAV association, task partition, beamforming, and CPU resources to minimize weighted UE and UAV energy, $\min E_{\mathrm{total}}$ in problem (29) (the parse prints max in (29a), but the text states minimization).
 
 **Decision variables**:
 
@@ -55,11 +55,13 @@ A multi-UAV-assisted MEC network with **both communication and computation uncer
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Association is single-UAV, $\sum_m\alpha_{k,m}\leq1$, with $\alpha_{k,m}\in\{0,1\}$. |
-| C2 | UAV kinematics, speed, acceleration, and collision separation are enforced. |
-| C3 | UE transmit power, UE CPU, and aggregate per-UAV CPU allocations stay within their maxima. |
-| C4 | Each task meets its slot delay deadline, $t_k[n]\leq\delta$. |
-| C5 | Robust CSI and task-complexity errors remain bounded, $\lVert\Delta h_{k,m}[n]\rVert\leq\varepsilon_{k,m}$ and $\lvert\Delta\delta_z\rvert\leq\varepsilon_z$. |
+| (29b) | Offloading ratio $0\leq\rho_k[n]\leq1$ |
+| (29c)-(29d) | Binary single-UAV association $\sum_m\alpha_{k,m}\leq1$, $\alpha_{k,m}\in\{0,1\}$ |
+| (29e)-(29f) | Each task belongs to exactly one type, $\sum_z\zeta_{k,z}[n]=1$ (type indicator, not a decision) |
+| (29g)-(29i) | UAV acceleration $\lVert\mathbf a_m[n]\rVert\leq a_{\max}$, speed $\lVert\mathbf v_m[n]\rVert\leq v_{\max}$, separation $\lVert\mathbf q_i[n]-\mathbf q_j[n]\rVert^2\geq d_{\min}^2$ |
+| (29j)-(29m) | UE power $p_k[n]\leq p_{k,\max}$, UE CPU $f_k[n]\leq f_{k,\max}$, UAV CPU per task and per UAV $\leq f_{u,\max}$ |
+| (29n) | Worst-case delay $\max_{\lvert\Delta\delta_z\rvert,\lVert\Delta h_{k,m}[n]\rVert}t_k[n]\leq\delta$ |
+| (29o)-(29p) | Bounded errors $\lVert\Delta\mathbf h_{k,m}[n]\rVert\leq\varepsilon_{k,m}$ and $\lvert\Delta\delta_z\rvert\leq\varepsilon_z$ |
 
 **Algorithm**: Reformulate as a CTDE multiagent MDP and train b-MAPPO, replacing the Gaussian actor with a bounded Beta-distribution policy for the joint UE and UAV actions.
 

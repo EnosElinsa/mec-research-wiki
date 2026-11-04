@@ -26,7 +26,7 @@ related:
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[differentiated-uav-service-market]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Agent Deep Reinforcement Learning Based UAV Trajectory Optimization for Differentiated Services
@@ -45,7 +45,7 @@ Achieves **distributed trajectory control of multiple UAVs** in a UAV-assisted M
 
 **Scenario**: $M$ service providers each deploy one MEC-enabled UAV over a rectangular area to offer a differentiated service to $N$ users. Every user generates one task per slot with a non-binary, time-varying preference $l_{ij}(t)$ for service $j$, and each UAV executes horizontal flight using only its own location as a local observation.
 
-**Problem & objective**: Choose UAV trajectories to minimize the instantaneous aggregate user cost $\sum_i C_i(t)$ and each provider's long-term UAV cost $\sum_t U_j(t)$ simultaneously. Costs combine local or offloaded computation with preference-weighted transmission and computing energy.
+**Problem & objective**: Choose UAV trajectories to minimize the instantaneous aggregate user cost $\sum_i C_i(t)$ in P1 (26) and each provider's long-term UAV cost $\sum_t U_j(t)$ in P2 (27) simultaneously. Costs combine local or offloaded computation with preference-weighted transmission and computing energy.
 
 **Decision variables**:
 

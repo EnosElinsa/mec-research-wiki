@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 10 (multi-UAV DRL edge computing, first half)
+
+- Grounded 16 multi-UAV DRL edge-computing source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch10-multiuav-a.json`. Grounded total: 248/699.
+- Rewrote the Modeling Quick-Use Card for hu-2026-segmented-irs-cpn, whose user and UAV indices, variables, and constraint list did not match P0 (12) and P1 (13).
+- Relabeled invented constraint rows to the papers' IDs on the AIoT association, HVMAPPO maritime SAR, robust b-MAPPO, CDTO inland-waterway, blockchain MASAC, MADRL IoT edge, anti-jamming PER-MATD3, and U-FSP rail-inspection pages. Rows that are dynamics or reward rules rather than problem constraints are now labeled as such.
+- Corrected Chang et al.: the paper's C4-C5 are minimum user-rate constraints, and the constraint block (14) is missing from the parse.
+- Corrected Related Work claims: removed an unsupported Raspberry Pi and USRP testbed (shao-2024-drl-antijamming-mec) and a chart-only completion claim (hao-2024-clp-multiuav-priority-offloading); stated that the delay-only baseline reaches lower delay than TCPA at higher energy (hu-2026-segmented-irs-cpn); and noted that DQM beats U-FSP on the first task type (jia-2026-ufsp-rail-inspection).
+
 ## [2026-11-03] Grounded batch 9 (SAGIN and satellite, second half)
 
 - Grounded 28 SAGIN, satellite, and maritime source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch09-sagin-b.json`. Grounded total: 232/699.

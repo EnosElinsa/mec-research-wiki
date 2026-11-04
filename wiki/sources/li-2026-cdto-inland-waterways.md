@@ -15,7 +15,7 @@ related:
   - "[[task-offloading]]"
   - "[[vehicular-mec]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Distributed Game-Based Joint Task Offloading Over UAV-Assisted Inland Waterways Edge Networks
@@ -34,7 +34,7 @@ Introduces **cluster-based distributed task offloading (CDTO)** for UAV-assisted
 
 **Scenario**: Computationally intensive USVs split safety-critical perception tasks across nearby assisting USVs through time-varying D2D links. One UAV cluster head per intensive client relays global tasks to and from a terrestrial base station and moves to the projected cluster barycenter inside the admissible inland-waterway flight region.
 
-**Problem & objective**: CDTO minimizes $T=\sum_{l=1}^{L}T_l$, the sum of end-to-end decision latency across all USV clusters, by coordinating clustering, sequential task splitting, and TBS-to-UAV bandwidth allocation.
+**Problem & objective**: Problem (16) minimizes $T=\sum_{l=1}^{L}T_l$ over $\{\mathbf n_l,\mathbf s_l,\mathbf B_l\}$ subject to (3)-(5), the sum of end-to-end decision latency across all USV clusters, by coordinating clustering, sequential task splitting, and TBS-to-UAV bandwidth allocation.
 
 **Decision variables**:
 
@@ -49,12 +49,10 @@ Introduces **cluster-based distributed task offloading (CDTO)** for UAV-assisted
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each assisting USV joins at most one cluster: $\sum_ls_{l,h}\leq1$ |
-| C2 | The task begins at its computationally intensive client and each selected cluster member holds at most one sequential subtask |
-| C3 | TBS bandwidth is fully allocated: $\sum_lB_l=B$ |
-| C4 | Selected D2D links must form a connected offloading chain under the current topology and rates |
-| C5 | UAV cluster-head positions remain inside the admissible flight region after barycenter projection |
-| C6 | Uplink bandwidth respects the total budget, per-cluster bounds, and UAV transmission-energy limit |
+| (3) | Each assisting USV joins at most one cluster: $\sum_ls_{l,h}\leq1$ |
+| (4) | Task-layer split indicators per cluster: $\sum_mk_{l,m}\leq M$; a relay UAV without computing holds a zero-workload segment |
+| (5) | TBS bandwidth fully allocated: $\sum_lB_l=B$, $B_l>0$ |
+| Model rule (2) | UAV cluster head moves to the cluster barycenter projected onto the admissible region $\mathcal A$ |
 
 **Algorithm**: CDTO uses a task-relevant GNN to encode dynamic D2D topology and a shared multi-agent policy inside an exact potential game to select cluster links. Given those links, a greedy heuristic assigns task layers in proportion to USV computing capacity, closed-form convex updates allocate downlink bandwidth, and a one-dimensional search allocates uplink bandwidth.
 
@@ -62,7 +60,7 @@ Introduces **cluster-based distributed task offloading (CDTO)** for UAV-assisted
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] proposed cluster-based distributed task offloading for safety-critical perception in UAV-assisted inland-waterway edge networks. Their formulation minimizes aggregate decision latency over D2D cluster associations, sequential task splits, and TBS bandwidth under exclusivity, connectivity, computation, communication, and energy limits. CDTO combines a task-relevant graph neural network and exact-potential-game multi-agent learning with greedy task allocation and convex bandwidth updates. Simulations reported convergence after about 50 iterations, up to 28.6% lower safety-critical decision latency, and the only tested global mechanism that stayed within the prescribed latency threshold as the number of intensive clients increased.
+Li et al. [x] proposed cluster-based distributed task offloading for safety-critical perception in UAV-assisted inland-waterway edge networks. Their formulation minimizes aggregate decision latency over D2D cluster associations, sequential task splits, and TBS bandwidth under cluster-exclusivity, task-split, and total-bandwidth constraints. CDTO combines a task-relevant graph neural network and exact-potential-game multi-agent learning with greedy task allocation and convex bandwidth updates. Simulations reported convergence after about 50 iterations, up to 28.6% lower safety-critical decision latency, and that CDTO was the only one of four global mechanisms to stay within the prescribed latency threshold as the number of intensive clients increased.
 
 ## Problem
 

@@ -16,7 +16,7 @@ related:
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[zheng-chang]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Trajectory Design and Resource Allocation for Multi-UAV Networks: Deep Reinforcement Learning Approaches
@@ -49,12 +49,12 @@ DRL-based trajectory design + resource allocation for a **multi-UAV communicatio
 
 | ID | Meaning and key expression |
 |---|---|
-| 1 and C4 | Each UAV returns to its base, $\boldsymbol\psi_m(1)=\boldsymbol\psi_m(T)$ |
-| 2 | Per-slot movement is bounded, $\|\boldsymbol\psi_m(t+1)-\boldsymbol\psi_m(t)\|\leq V_{\max}$ |
-| 3 | UAV separation is safe, $\|\boldsymbol\psi_m(t)-\boldsymbol\psi_j(t)\|\geq S_{\min}$ |
-| C1-C2 | Association is binary and each user has at most one UAV, $\sum_{m=1}^{M}\beta_{m,u}(t)\leq1$ |
-| C3 | Transmit power is bounded, $0\leq p_{m,u}(t)\leq p_m^{\max}$ |
-| C5 | Each served user meets its data-rate requirement, $R_u(t)\geq R_u^{\min}$ |
+| Model rule (1) | Each UAV returns to its base, $\boldsymbol\psi_m(1)=\boldsymbol\psi_m(T)$ |
+| Model rule (2) | Per-slot movement $\|\boldsymbol\psi_m(t+1)-\boldsymbol\psi_m(t)\|\leq V_{\max}$ |
+| Model rule (3) | Inter-UAV separation $\|\boldsymbol\psi_m(t)-\boldsymbol\psi_j(t)\|\geq S_{\min}$ |
+| C1-C2 | Binary association, each user served by one UAV per slot |
+| C3 | Transmit power below the UAV maximum, $p_{m,u}(t)\leq p_m^{\max}$ |
+| C4-C5 | Minimum data requirement of each ground user; the parse omits the expressions of (14), so check the published paper |
 
 **Algorithm**: The centralized solution encodes rates and UAV battery levels as state and uses DQN with epsilon-greedy actions, experience replay, an online network, and a frozen target network to learn the joint association, power, and trajectory policy. The distributed extension uses centralized learning and decentralized execution, with each UAV maintaining a recurrent hidden state from its private observation and exchanging learned messages over a limited-bandwidth signaling channel.
 
@@ -62,7 +62,7 @@ DRL-based trajectory design + resource allocation for a **multi-UAV communicatio
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chang et al. [x] studied joint trajectory design, user association, and downlink power allocation for multiple UAV base stations serving ground users over a finite horizon. They formulated an NP-hard mixed-integer utility-maximization problem with binary association, bounded transmit power, return-to-base, speed, inter-UAV separation, and minimum-user-rate constraints. Their centralized DQN uses system data rates and UAV battery levels as state, learns the joint action through replay and a target network, and is extended to a cooperative multi-agent scheme with centralized learning, decentralized execution, partial observations, and limited-bandwidth inter-UAV signaling. Simulations show that both DRL schemes outperform tabular Q-learning in throughput and utility, that centralized DRL gives the highest reported performance, and that multi-agent DRL remains close to it.
+Chang et al. [x] studied joint trajectory design, user association, and downlink power allocation for multiple UAV base stations serving ground users over a finite horizon. They formulated an NP-hard mixed-integer utility-maximization problem with binary single-UAV association, maximum transmit power, and minimum user-rate constraints, plus return-to-base, speed, and inter-UAV separation rules on the trajectories. Their centralized DQN uses system data rates and UAV battery levels as state, learns the joint action through replay and a target network, and is extended to a cooperative multi-agent scheme with centralized learning, decentralized execution, partial observations, and limited-bandwidth inter-UAV signaling. Simulations show that both DRL schemes outperform tabular Q-learning in throughput and utility, that centralized DRL gives the highest reported performance, and that multi-agent DRL remains close to it.
 
 ## Problem framing
 

@@ -22,7 +22,7 @@ related:
   - "[[shaohua-wu]]"
   - "[[qinyu-zhang]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory and Communication Optimization for Heterogeneous Vehicles in Maritime SAR: Multi-Agent Reinforcement Learning
@@ -41,7 +41,7 @@ A **maritime search-and-rescue (SAR)** system of heterogeneous vehicles — obse
 
 **Scenario**: A maritime search-and-rescue team contains observation UAVs, routing UAVs, and autonomous surface vehicles carrying MEC servers. Observation UAVs track drifting targets and may offload image recognition, routing UAVs maintain multi-hop connectivity, and surface vehicles approach and rescue targets under ocean-current disturbance.
 
-**Problem & objective**: The joint policy minimizes $\sum_{t=1}^{T}\left(1+\mu_1E_{\mathrm{tot}}^t-\mu_2\mathcal F_{\mathrm{tot}}^t\right)$, combining mission duration, heterogeneous-vehicle energy, and the negative of relay-network fault tolerance.
+**Problem & objective**: Problem (27) selects the joint policy to minimize $\sum_{t=1}^{T}\left(1+\mu_1E_{\mathrm{tot}}^t-\mu_2\mathcal F_{\mathrm{tot}}^t\right)$, combining mission duration, heterogeneous-vehicle energy, and the negative of relay-network fault tolerance.
 
 **Decision variables**:
 
@@ -57,11 +57,11 @@ A **maritime search-and-rescue (SAR)** system of heterogeneous vehicles — obse
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every vehicle obeys its type-specific maximum speed and acceleration |
-| C2 | Mission completion time satisfies $0\le T\le T_{\max}$ |
-| C3 | Routing links remain within the routing-UAV communication range |
-| C4 | Aggregate MEC use remains within the available edge-server capacity |
-| C5 | Offloading ratios and continuous actions remain in their feasible ranges |
+| (27) speed | Type-specific speed limits $0\le v\le v_{\max}^{U_o},v_{\max}^{U_r},v_{\max}^{A_s}$ |
+| (27) acceleration | Type-specific acceleration limits $0\le a\le a_{\max}^{U_o},a_{\max}^{U_r},a_{\max}^{A_s}$ |
+| (27) horizon | Mission end time $0\le T\le T_{\max}$ |
+| (27) routing range | Router link distance $0\le r^{router}\le R_{\max}^{U_r}$ |
+| (27) MEC | MEC usage $0\le R_{MEC}\le j$ |
 
 **Algorithm**: HVMAPPO casts the coupled control as a Dec-POMDP and uses centralized training with decentralized execution. Mixed heterogeneous rewards combine observation, rescue, relay fault tolerance, and energy terms; parameter sharing, normalized generalized advantage estimation, Pop-Art value scaling, and PPO clipping stabilize the heterogeneous multi-agent updates.
 

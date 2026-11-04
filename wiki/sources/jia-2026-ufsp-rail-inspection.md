@@ -19,7 +19,7 @@ related:
   - "[[chen-2024-ulse-game]]"
   - "[[game-theoretic-offloading-formulations]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,7 +39,7 @@ A decentralized game-theoretic learning framework for multi-UAV rail-line inspec
 
 **Scenario**: Multiple UAVs inspect a long rail line while choosing local, cooperative-UAV, or wayside-edge task processing from private local observations and delayed aggregate information.
 
-**Problem & objective**: Each UAV selects a decentralized policy to maximize expected discounted utility, $\max_{\pi_i}\mathbb E[\sum_{k=0}^{H}\gamma^kU_i(s_i,a_i,a_{-i})]$, balancing progress and success against time, energy, and shared-queue costs.
+**Problem & objective**: Problem $\mathcal P_i$ (9) lets each UAV select a decentralized policy to maximize expected discounted utility, $\max_{\pi_i}\mathbb E[\sum_{k=0}^{H}\gamma^kU_i(s_i,a_i,a_{-i})]$, balancing progress and success against time, energy, and shared-queue costs.
 
 **Decision variables**:
 
@@ -54,11 +54,11 @@ A decentralized game-theoretic learning framework for multi-UAV rail-line inspec
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Energy remains above the operational threshold, $E_i(t)\geq E_{\min}$ |
-| C2 | Task load evolves with the selected processing rate and cannot become negative |
-| C3 | Cooperative and edge actions require communication range and fall back to local processing when links fail |
-| C4 | Tasks must reach zero remaining load by their individual deadlines |
-| C5 | Shared cooperative and edge capacities impose congestion-dependent processing limits |
+| Model rule (1) | Energy evolution $E_i(t+1)=E_i(t)-\Delta E_i(a_i(t),s_i(t))$, including flight to reach a link |
+| (2) | Operational energy threshold $E_i(t)\geq E_{\min}$; depletion fails the task with a penalty |
+| Model rule (3) | Load evolution $L_i(t+1)=L_i(t)-\rho_i(a_i(t),s_i(t))\Delta t$, with concurrency decay for shared modes |
+| Model rule | Cooperative and edge actions need the communication range; the UAV moves to connect and falls back to slower local processing when the link fails |
+| Reward rule | Missing the deadline $T_{dead,i}$ turns the success reward into a failure penalty; queue congestion is penalized beyond capacities $C_1,C_2$ |
 
 **Algorithm**: Model the interaction as an exact potential stochastic game, augment each UAV MDP with a belief over peer actions, and alternate Q-learning best responses with fictitious-self-play policy averaging.
 
@@ -66,7 +66,7 @@ A decentralized game-theoretic learning framework for multi-UAV rail-line inspec
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Jia et al. [x] formulated decentralized multi-UAV rail-line inspection as an imperfect-information stochastic game over local, cooperative, and wayside-edge processing actions. Each UAV maximizes discounted progress and success utility while penalizing time, energy, queue congestion, energy depletion, communication failure, and missed deadlines. U-FSP proves an exact potential-game structure and alternates belief-aware Q-learning best responses with policy averaging to approach a Nash equilibrium. In simulation, U-FSP reaches completion rates of 0.877, 0.853, and 0.915 for three task types, and in the two-UAV flight experiment it achieves 83.7% completion and 17.7 s average time versus 61.3% and 21.7 s for DQM.
+Jia et al. [x] formulated decentralized multi-UAV rail-line inspection as an imperfect-information stochastic game over local, cooperative, and wayside-edge processing actions. Each UAV maximizes discounted progress and success utility while penalizing time, energy, queue congestion, energy depletion, communication failure, and missed deadlines. U-FSP proves an exact potential-game structure and alternates belief-aware Q-learning best responses with policy averaging to approach a Nash equilibrium. In simulation, U-FSP reaches completion rates of 0.877, 0.853, and 0.915 for three task types (DQM is higher on the first type), and in the two-UAV flight experiment it achieves 83.7% completion and 17.7 s average time versus 61.3% and 21.7 s for DQM.
 
 ## Problem
 

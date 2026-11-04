@@ -17,7 +17,7 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[dynamic-uav-clustering]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Agent Deep Reinforcement Learning for Task Offloading and Resource Allocation in Multi-UAV Enabled IoT Edge Network
@@ -36,7 +36,7 @@ A **clustered multi-UAV** system provides computing **task offloading and resour
 
 **Scenario**: IoT devices in clustered multi-UAV aerial edge networks choose local execution or offloading to a base station or UAV computational node over stochastic channels and dynamic task requests.
 
-**Problem & objective**: The resource-control formulation minimizes total computation cost, $\min_{\chi,\mathcal F,\mathcal P}\mathcal Z_{lx}(t)$, combining energy and delay across agents.
+**Problem & objective**: Problem P1 (31) minimizes total computation cost, $\min_{\chi,\mathcal F,\mathcal P}\mathcal Z_{lx}(t)$, combining energy and delay across agents.
 
 **Decision variables**:
 
@@ -51,12 +51,13 @@ A **clustered multi-UAV** system provides computing **task offloading and resour
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Offloading, subchannel, and resource-block indicators are binary. |
-| C2 | Each device selects at most one computational node: $\sum_x\alpha_{lx}(t)\leq1$. |
-| C3 | A node's resource block is allocated consistently: $\sum_xs_x^m(t)=1$ in the parsed formulation. |
-| C4 | Computation capacity is bounded: $\sum_xf_{lx}(t)\leq F_x^{max}$. |
-| C5 | Transmission power is bounded: $\sum_xp_{lx}(t)\leq P_x^{max}$. |
-| C6 | QoS must meet the threshold: $\gamma_{lx}(t)\geq\bar\gamma(t)$, with fairness $\Upsilon^u(t)\in[0,1]$. |
+| C1 (31b) | Offloading, subchannel-availability, and resource-block indicators are binary |
+| C2 (31c) | Each device offloads to at most one node: $\sum_x\alpha_{lx}(t)\leq1$ |
+| C3 (31d) | Subchannel allocation $\sum_xs_x^m(t)=1$ |
+| C4 (31e) | Computation capacity $\sum_xf_{lx}(t)\leq F_x^{max}$ |
+| C5 (31f) | Transmission power $\sum_xp_{lx}(t)\leq P_x^{max}$ |
+| C6 (31g) | Fairness level $\Upsilon^u(t)\in[0,1]$ |
+| Game rule | In the stochastic game, served devices must meet the QoS threshold $\gamma_{lx}(t)\geq\bar\gamma(t)$ |
 
 **Algorithm**: Cast the dynamic resource problem as a stochastic game and train MADDPG with centralized critics and decentralized actors, joint rewards, replay, and local observations containing task, SINR, power, and UAV status.
 
@@ -64,7 +65,7 @@ A **clustered multi-UAV** system provides computing **task offloading and resour
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Seid et al. [x] formulate cooperative task offloading in a clustered multi-UAV edge network as a stochastic game. The MINLP minimizes energy, delay, and allocation cost through offloading choices, CPU resources, transmit powers, channel indicators, QoS, capacity, power, and fairness constraints. MADDPG uses centralized training with decentralized execution so each IoT agent can act from local task, SINR, power, and UAV-status observations. Against single-agent and heuristic baselines, the reported scheme reduces average cost by 38.643% and 55.621% and raises reward by 58.289% and 85.289%.
+Seid et al. [x] formulate cooperative task offloading in a clustered multi-UAV edge network as a stochastic game. The MINLP minimizes energy, delay, and allocation cost through offloading choices, CPU resources, transmit powers, channel indicators under single-node, subchannel, capacity, power, and fairness constraints. MADDPG uses centralized training with decentralized execution so each IoT agent can act from local task, SINR, power, and UAV-status observations. Against single-agent DRL and heuristic baselines, the reported scheme reduces average cost by 38.643% and 55.621% and raises reward by 58.289% and 85.289%.
 
 ## Problem framing
 

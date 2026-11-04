@@ -20,7 +20,7 @@ related:
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
   - "[[li-2025-twohop-airground-drl-offloading]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Enhancing AIoT Device Association With Task Offloading in Aerial MEC Networks
@@ -54,10 +54,11 @@ A **distributed multi-UAV MEC** scheme that jointly optimizes **device associati
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | OFDMA association limits each device to at most one server-subchannel and each server to at most $K$ occupied subchannels as in (9). |
-| C2 | Server workload must not exceed $C_j(\tau)$ in (14), and each device's uploaded data must satisfy $\sum_t\beta_i^t(\tau)l_i^t\le\delta T R_i(\tau)$. |
-| C3 | UAV movement must retain enough battery to return to its depot, with the maximum step determined by (4). |
-| C4 | Offloading and local decisions obey $0\le\beta_i^t(\tau)+b_i^t(\tau)\le1$, while UAV coordinates remain inside horizontal and altitude bounds. |
+| (21b)-(21d) | Each task is fully offloaded or not, $\beta_i^t(\tau)\in\{0,1\}$; $0\le b_i^t(\tau)\le1$; $0\le\beta_i^t(\tau)+b_i^t(\tau)\le1$ |
+| (21e)-(21g) | UAV coordinates inside $[x_l,x_r]$, $[y_b,y_f]$, and altitude $[z_d,z_u]$ |
+| (21h) = (4) | Movement step bounded so the UAV keeps enough battery to return to its depot |
+| (21h) = (9) | OFDMA association: $\sum_j\sum_ka_{ij,k}(\tau)\le1$ per device and $\sum_i\sum_ka_{ij,k}(\tau)\le K$ per server |
+| (21h) = (14)-(15) | Server workload within $C_j(\tau)$ and per-device upload $\sum_t\beta_i^t(\tau)l_i^t\le\delta TR_i(\tau)$ |
 
 **Algorithm**: RSRT recursively assigns each device to its highest-rate available server-subchannel, BTO solves the variable-value binary knapsack offloading stage with backtracking and pruning, and MADDPG learns coordinated UAV trajectories.
 
@@ -65,7 +66,7 @@ A **distributed multi-UAV MEC** scheme that jointly optimizes **device associati
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] studied joint device association, indivisible-task offloading, and three-dimensional UAV trajectory control in a distributed ground-and-aerial MEC network. They maximized a QoE product combining task-latency satisfaction and remaining cache capacity subject to subchannel, server-compute, upload-volume, movement-energy, and flight-region constraints. Their solution combines recursive rate-based association, a pruned backtracking solver for variable-value binary-knapsack offloading, and MADDPG trajectory control. At 100 IoT devices, the proposed scheme achieved reward improvements of 2.347, 2.126, 1.723, and 1.110 times over FUT, WKMC+NA, NA, and WKMC, respectively, while recording no task loss in the reported 80-to-100-device tests.
+Chen et al. [x] studied joint device association, indivisible-task offloading, and three-dimensional UAV trajectory control in a distributed ground-and-aerial MEC network. They maximized a QoE product combining task-latency satisfaction and remaining cache capacity subject to subchannel, server-compute, upload-volume, movement-energy, and flight-region constraints. Their solution combines recursive rate-based association, a pruned backtracking solver for variable-value binary-knapsack offloading, and MADDPG trajectory control. At 100 IoT devices, the proposed scheme achieved objective-value improvements of 2.347, 2.126, 1.723, and 1.110 times over FUT, WKMC+NA, NA, and WKMC, respectively, while recording no task loss in the reported 80-to-100-device tests.
 
 ## Problem framing
 
