@@ -18,7 +18,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[zhang-2025-cooperative-anti-uav-isac]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative Pursuit-Evasion With Low Altitude Wireless Network: A Hierarchical Reinforcement Learning Approach
@@ -37,7 +37,7 @@ Decomposes multi-UAV interception into Approach, Expand, Surround, Enclose, and 
 
 **Scenario**: A homogeneous team of pursuing UAVs intercepts a faster evading UAV in a two-dimensional urban obstacle field at a common altitude. Pursuers and the evader follow second-order kinematics, while ideal inter-agent communication provides state information for cooperative encirclement.
 
-**Problem & objective**: The pursuit-evasion game minimizes capture time for the pursuers and maximizes it for the evader, $\min_{\Pi_p}\max_{\Pi_e}\tau$, where capture must occur within horizon $T$ and satisfy distance and angular-formation criteria.
+**Problem & objective**: Problem (9) minimizes capture time for the pursuers and maximizes it for the evader, $\min_{\Pi_p}\max_{\Pi_e}\tau$, where capture must occur within horizon $T$ and satisfy distance and angular-formation criteria.
 
 **Decision variables**:
 
@@ -52,11 +52,11 @@ Decomposes multi-UAV interception into Approach, Expand, Surround, Enclose, and 
 
 | ID | Meaning and key expression |
 |---|---|
-| 3-4 | Pursuer speed and acceleration satisfy $\|\mathbf v_i(t)\|_2\le v_{\max}^p$ and $\|\mathbf a_i(t)\|_2\le a_{\max}^p$ |
-| 5-6 | Capture requires $d_{ie}(t)\le d_{\mathrm{capture}}$ and nearly uniform angular spacing |
-| 10 | UAVs maintain prescribed safety distances from buildings and one another |
-| 13-17 | Evader and pursuer velocity and acceleration capabilities stay within their bounds |
-| 18 | Encirclement completes within $0<\tau\le T$ |
+| (3)-(4) | Pursuer kinematic limits, $\lVert\mathbf v_i(t)\rVert_2\le v_{\max}^p$ and $\lVert\mathbf a_i(t)\rVert_2\le a_{\max}^p$ |
+| (5)-(6) | Capture requires $d_{ie}(t)\le d_{\mathrm{capture}}$ and nearly uniform angular spacing within $\epsilon_\theta$ |
+| (10)-(11) | Safety distances from buildings, $\lVert p_i(t)-p_b\rVert_2>R_{\mathrm{building}}$, and between UAVs, $\lVert p_i(t)-p_j\rVert_2>R_{\mathrm{UAV}}$ (the parse shifts tags in (10)-(17); numbering follows the paper's text) |
+| (12)-(17) | Pursuer and evader speed and acceleration bounds, with the evader at least as capable, $v_{\max}^p\le v_{\max}^e$ and $a_{\max}^p\le a_{\max}^e$ |
+| (18) | Encirclement completes within $0<\tau\le T$ |
 
 **Algorithm**: HCDRL uses an upper Q-network to evaluate the global pursuit situation and select a subtask. Lower actor-critic policies are trained with centralized critics and execute decentralized continuous accelerations from local observations; subtask-specific rewards, collision penalties, and a duration-decayed upper reward coordinate both layers.
 
@@ -64,7 +64,7 @@ Decomposes multi-UAV interception into Approach, Expand, Surround, Enclose, and 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yang et al. [x] modeled cooperative urban UAV interception as a pursuit-evasion game with bounded acceleration, speed, collision avoidance, formation, and capture-time requirements. They decomposed encirclement into Approach, Expand, Surround, Enclose, and Capture subtasks and minimized pursuer capture time against a faster evader. HCDRL uses an upper Q-network for adaptive subtask selection and lower centralized-training decentralized-execution actor-critic policies for continuous acceleration control. The reported evaluation achieved an 89.08 percent capture rate and a 26.63 s average capture time under the default three-pursuer setting. Relative to the stated state-of-the-art comparison, the abstract reports an 11.18 percent higher success rate and a 9.94 percent reduction in completion time.
+Yang et al. [x] modeled cooperative urban UAV interception as a pursuit-evasion game with bounded acceleration, speed, collision avoidance, formation, and capture-time requirements. They decomposed encirclement into Approach, Expand, Surround, Enclose, and Capture subtasks and minimized pursuer capture time against a faster evader. HCDRL uses an upper Q-network for adaptive subtask selection and lower centralized-training decentralized-execution actor-critic policies for continuous acceleration control. The reported evaluation achieved an 89.08 percent capture rate and a 26.63 s average capture time under the default three-pursuer setting, above MAPPO, MADDPG, MATD3, MAC3, SA-MATD3, and CEL-MADDPG. Relative to the stated state-of-the-art comparison, the abstract reports an 11.18 percent higher success rate and a 9.94 percent reduction in completion time.
 
 ## Problem
 

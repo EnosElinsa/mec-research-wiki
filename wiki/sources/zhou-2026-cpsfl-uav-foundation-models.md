@@ -21,7 +21,7 @@ related:
   - "[[han-2024-sagin-fl-handover]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Communication-Pipelined Split Federated Learning for Foundation Model Fine-Tuning in UAV Networks
@@ -54,11 +54,10 @@ Proposes CPSFL, a communication-pipelined split federated learning paradigm for 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Compute shares sum to one, $\sum_k\alpha_k(n)=1$ |
-| C2 | Uplink bandwidth shares sum to one, $\sum_k\beta_k(n)=1$ |
-| C3 | Each share satisfies its minimum allocation bound |
-| C4 | The split point belongs to the feasible model-stage set $\mathcal U$ |
-| C5 | CPSFL downlink gradients follow lag-priority scheduling with one active transmission |
+| (14b) | Server compute shares satisfy $\alpha_{\min}\le\alpha_k(n)\le1$ and $\sum_k\alpha_k(n)=1$ |
+| (14c) | Uplink bandwidth shares satisfy $\beta_{\min}\le\beta_k(n)\le1$ and $\sum_k\beta_k(n)=1$ |
+| (14d) | The split point belongs to the feasible model-stage set, $u(n)\in\mathcal U$ |
+| Model rule | CPSFL sends downlink gradients one at a time with all downlink resources, prioritizing the client with the largest lag |
 
 **Algorithm**: Use sequential downlink gradient transmission → prioritize the client with the largest lag → start transmission as soon as any server-side computation finishes → encode previous-round variable-length trajectories with attention → let a PPO base-station agent select $u$, $\boldsymbol\alpha$, and $\boldsymbol\beta$ for the next round.
 
@@ -66,7 +65,7 @@ Proposes CPSFL, a communication-pipelined split federated learning paradigm for 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhou et al. [x] studied communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks. They formulated joint split-point selection, uplink bandwidth allocation, and server computing-frequency allocation to minimize a weighted sum of per-round training latency and worst-case client energy consumption. CPSFL dedicates all downlink resources to the current gradient transmission, prioritizes clients with larger lag, and enables intra-round asynchronous training. An attention-based PPO agent uses previous-round information, including variable-length UAV trajectories, to choose the next round's split point and resource allocation. Simulations report lower latency than the parallel-gradient SFL-PP, PipeSFL, and CPSFL ablation variants, and the DRL controller approaches the best evaluated fixed split point.
+Zhou et al. [x] studied communication-pipelined split federated learning for LoRA fine-tuning of foundation models in UAV networks. They formulated joint split-point selection, uplink bandwidth allocation, and server computing-frequency allocation to minimize a weighted sum of per-round training latency and worst-case client energy consumption. CPSFL dedicates all downlink resources to the current gradient transmission, prioritizes clients with larger lag, and enables intra-round asynchronous training. An attention-based PPO agent uses previous-round information, including variable-length UAV trajectories, to choose the next round's split point and resource allocation. Simulations report lower latency than the parallel-gradient SFL-PP, PipeSFL, and CPSFL ablation variants, and the DRL controller outperforms its trajectory-blind variant and a heuristic resource-allocation scheme while approaching the best fixed split point.
 
 ## Problem framing
 

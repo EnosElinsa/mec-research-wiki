@@ -15,7 +15,7 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[air-to-ground-channel-model]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Distributed Deep Joint Source-Channel Coding of Videos in Unmanned Aerial Vehicle Networks
@@ -34,7 +34,7 @@ Moves most video-reconstruction complexity from resource-constrained UAV encoder
 
 **Scenario**: Mobile UAVs send video to mobile ground users either directly or through another UAV acting as a two-hop amplify-and-forward relay. A lightweight distributed JSCC encoder sends key and Wyner-Ziv-inspired frame features over time-varying probabilistic LoS/NLoS air-ground channels.
 
-**Problem & objective**: The lifetime-oriented link-control problem maximizes residual-energy-weighted video utility, $\max\sum_{t,u,k}L_{u,k}(t)[\phi E_u(t)+\mu f_{\mathrm{DVC}}(s_u,\gamma_{u,k}(t))]$, under mobility, energy, power, association, and reconstruction-quality limits.
+**Problem & objective**: Problem (15a) maximizes residual-energy-weighted video utility, $\max\sum_{t,u,k}L_{u,k}(t)[\phi E_u(t)+\mu f_{\mathrm{DVC}}(s_u,\gamma_{u,k}(t))]$, under mobility, energy, power, association, and reconstruction-quality limits.
 
 **Decision variables**:
 
@@ -48,11 +48,11 @@ Moves most video-reconstruction complexity from resource-constrained UAV encoder
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV and user positions remain inside their horizontal and altitude bounds. |
-| C2 | Residual energy and power satisfy $0\leq E_u(t)\leq E_{\max}$ and $0\leq P_u(t)\leq P_{\max}$. |
-| C3 | Associations are binary and each UAV serves at most one user or relay destination per slot. |
-| C4 | Reconstructed video quality satisfies $f_{\mathrm{DVC}}(s_u,\gamma_{u,k}(t))\geq L_{\min}$. |
-| C5 | Direct and AF modes use their respective physical SNR and total-power expressions. |
+| (15b)-(15d) | UAV and user positions remain inside their horizontal and altitude bounds |
+| (15e)-(15f) | Residual energy and power satisfy $0\leq E_u(t)\leq E_{\max}$ and $0\leq P_u(t)\leq P_{\max}$ (the parse leaves the power line untagged and shifts later tags; check the published paper) |
+| (15g)-(15h) | Associations are binary and each UAV serves at most one user or relay destination per slot |
+| (15i) | Reconstructed video quality satisfies $f_{\mathrm{DVC}}(s_u,\gamma_{u,k}(t))\geq L_{\min}$ |
+| (15j)-(15k) | Direct and AF modes use their respective end-to-end SNR and total-power expressions |
 
 **Algorithm**: Train the lightweight distributed JSCC codec, let each UAV observe normalized locations, noise, and residual energy, use a DQN to choose direct or AF association and transmit power with epsilon-greedy exploration, and update policy and target networks from replay memory using the energy-aware transmission reward.
 

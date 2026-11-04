@@ -22,7 +22,7 @@ related:
   - "[[chadi-assi]]"
   - "[[ali-ghrayeb]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Online Altitude Control and Scheduling Policy for Minimizing AoI in UAV-Assisted IoT Wireless Networks
@@ -41,7 +41,7 @@ Uses online PPO to alternate between scheduling one IoT-to-UAV or UAV-to-BS stat
 
 **Scenario**: IoT devices send status updates through a half-duplex UAV relay to a base station, with a virtual latest-packet queue per stream and altitude-dependent probabilistic-LoS rates on both hops.
 
-**Problem & objective**: The stochastic scheduling problem minimizes expected weighted sum Age of Information, $\min_{\mathbf L,\mathbf S}\frac{1}{NM}\mathbb E[\sum_{n,i}\xi_iA_i^n]$.
+**Problem & objective**: Stochastic problem OP minimizes expected weighted sum Age of Information, $\min_{\mathbf L,\mathbf S}\frac{1}{NM}\mathbb E[\sum_{n,i}\xi_iA_i^n]$.
 
 **Decision variables**:
 
@@ -56,11 +56,12 @@ Uses online PPO to alternate between scheduling one IoT-to-UAV or UAV-to-BS stat
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one transmission is scheduled in a slot across IoT-to-UAV and UAV-to-base-station links. |
-| C2 | Reliable decoding requires both-hop rates to meet $S_{th}$. |
-| C3 | Altitude stays bounded: $H_{min}\leq H_U^n\leq H_{max}$. |
-| C4 | Queue and virtual-queue recursions enforce packet causality and latest-packet retention. |
-| C5 | Vertical movement is bounded: $\lvert H_U^{n+1}-H_U^n\rvert\leq V_{max}\Delta t$. |
+| C1-C3 | Binary uplink and downlink schedules $\alpha_{1,i}^n,\alpha_{2,j}^n$ and initial virtual-queue ages (the parse garbles these rows; check the published paper) |
+| C4 | Device-queue recursion (15) |
+| C5 | Altitude stays bounded, $H_{min}\leq H_U^n\leq H_{max}$ |
+| C6-C8 | Virtual-queue and AoI recursions (16)-(18), where a hop succeeds only if its rate meets $S_{th}$ |
+| C9 | Vertical movement per slot is bounded by $V_{max}\Delta t$ |
+| Model rule | In each slot the half-duplex UAV stays idle, schedules one IoT uplink, or forwards one virtual queue to the BS |
 
 **Algorithm**: Form an online MDP whose state contains stream AoI, relay-queue ages, and instantaneous rates, then use PPO actor-critic updates with a discrete action that combines one transmission choice with upward, downward, or hover altitude control.
 
@@ -68,7 +69,7 @@ Uses online PPO to alternate between scheduling one IoT-to-UAV or UAV-to-BS stat
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Samir et al. [x] treat UAV-relay status updating as joint vertical control and binary link scheduling. Their expected weighted AoI objective couples altitude, latest-packet queue dynamics, reliable two-hop rates, one-action-per-slot scheduling, and bounded vertical motion. An online PPO policy observes current ages, queue states, and rates, then chooses a transmission or a vertical movement action without a learned channel-transition model. Across the reported environments, PPO achieves lower weighted AoI than random and heuristic deployment and scheduling baselines.
+Samir et al. [x] treat UAV-relay status updating as joint vertical control and binary link scheduling. Their expected weighted AoI objective couples altitude, latest-packet queue dynamics, reliable two-hop rates, one-action-per-slot scheduling, and bounded vertical motion. An online PPO policy observes current ages, queue states, and rates, then chooses a transmission or a vertical movement action without a learned channel-transition model. Across the reported environments, PPO achieves lower weighted AoI than the random deployment and scheduling (RDRS) and heuristic deployment with greedy scheduling (HDGS) baselines.
 
 ## Problem and system model
 

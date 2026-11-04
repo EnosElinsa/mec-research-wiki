@@ -46,31 +46,31 @@ Studies downlink service continuity when energy-limited UAV base stations stop o
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Energy-constrained UAV base stations serve moving ground users until individual UAV energy falls below an operating threshold. Surviving UAVs must alter their trajectories and radio allocations to recover coverage and preserve terminal service fairness.
+**Scenario**: Energy-constrained UAV base stations serve moving ground users until individual UAV energy falls below an operating threshold. Surviving UAVs must alter their trajectories and radio allocations to recover coverage and preserve cumulative throughput fairness.
 
-**Problem & objective**: Problem (21) maximizes cumulative downlink throughput, $\max\sum_{t,n,k}R_{n,k}(t)$, by jointly controlling UAV motion and communication resources while enforcing a final Jain-fairness target and per-UAV energy budgets.
+**Problem & objective**: Problem (21) maximizes cumulative downlink throughput, $\max_{v,\theta,P,B,A,T}\sum_t\sum_kR_k[t]$, by jointly controlling UAV motion and communication resources while enforcing a terminal fairness target $f[T]\geq\eta_{\mathrm{th}}$ and per-UAV energy budgets.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV speed | $v_n(t)$ | continuous, bounded | Per-slot flight speed |
-| UAV heading | $\theta_n(t)$ | continuous, bounded | Per-slot movement direction |
-| User association | $a_{n,k}(t)$ | binary | Indicates whether UAV $n$ serves user $k$ |
-| Bandwidth allocation | $b_{n,k}(t)$ | continuous, nonnegative | Bandwidth assigned to a served user |
-| Power allocation | $p_{n,k}(t)$ | continuous, nonnegative | Downlink transmit power assigned to a served user |
-| Operating period | $T_n$ | integer stopping time | Last slot before UAV $n$ reaches its energy threshold |
+| UAV speed | $v_m[t]$ | continuous, $[0,v_{\max}]$ | Per-slot flight speed |
+| UAV heading | $\theta_m[t]$ | continuous, $(-\pi,\pi]$ | Per-slot movement direction |
+| User association | $\alpha_{m,k}[t]$ | binary | UAV $m$ serves user $k$ |
+| Bandwidth allocation | $\beta_{m,k}[t]$ | continuous, $[0,B]$ | Bandwidth assigned to a served user |
+| Power allocation | $p_{m,k}[t]$ | continuous, $[0,P_m]$ | Downlink power assigned to a served user |
+| Task period length | $T$ | integer slots | Length of the task period, also optimized in (21) |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| 11-12 | Association is binary and every user is associated with at most one UAV per slot |
-| 13-16 | Per-UAV bandwidth and transmit-power allocations remain within available budgets |
-| 21b | Terminal Jain fairness satisfies $J(T)\geq\eta_{\mathrm{th}}$ |
-| 21c | Each UAV's cumulative propulsion and communication energy stays within its budget |
-| 21d | Speed and heading satisfy the flight-control bounds |
-| 21e | UAV positions remain inside the prescribed operating region |
+| (11)-(12) | Association is binary and each user is associated with at most one UAV per slot |
+| (13)-(16) | Per-UAV total and per-user bandwidth stay within $B$, and power within $P_m$ |
+| (21b) | Terminal fairness satisfies $f[T]\geq\eta_{\mathrm{th}}$ |
+| (21c) | Each UAV's cumulative energy stays within its budget, $\sum_tE_m[t]\leq E_m^{\max}$ |
+| (21d) | Speed and heading bounds, $v_m[t]\in[0,v_{\max}]$, $\theta_m[t]\in(-\pi,\pi]$ |
+| (21e) | UAV positions remain inside the operating region, $\mathbf q_m[t]\in\mathcal Q$ |
 
 **Algorithm**: JTCRA is a decentralized partially observable MARL controller with separate trajectory and communication agents and parameter sharing within each role. The trajectory agent selects speed and heading, while the communication agent selects power and bandwidth; normalized allocation and strongest-signal association produce feasible radio decisions. The paper implements this controller with both MAPPO and QMIX.
 
@@ -78,7 +78,7 @@ Studies downlink service continuity when energy-limited UAV base stations stop o
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] addressed service recovery when energy-constrained UAV base stations stop operating at different times. They maximized cumulative downlink throughput over trajectory, association, bandwidth, power, and operating-period decisions subject to terminal Jain fairness, energy, mobility, and area constraints. Their JTCRA framework separates trajectory and communication roles, shares parameters within each role, and supports MAPPO or QMIX training. In simulation, the MAPPO implementation provided the strongest and most stable performance and was the only compared method reported to satisfy the 0.9 fairness target while attaining the highest throughput. The learned surviving UAVs reconfigured their coverage after fleet members depleted their energy, yielding a reported mean per-user throughput of 168.4 Mbit in the highlighted setting.
+Wang et al. [x] addressed service recovery when energy-constrained UAV base stations stop operating at different times. They maximized cumulative downlink throughput over trajectory, association, bandwidth, power, and task-period-length decisions subject to terminal Jain fairness, energy, mobility, and area constraints. Their JTCRA framework separates trajectory and communication roles, shares parameters within each role, and supports MAPPO or QMIX training. In simulation, the MAPPO implementation provided the strongest and most stable performance and was the only method to satisfy the 0.9 fairness target while attaining the highest throughput against IPPO variants, HAPPO-HSA, and a hovering baseline. The learned surviving UAVs reconfigured their coverage after fleet members depleted their energy, yielding a reported mean per-user throughput of 168.4 Mbit in the highlighted setting.
 
 ## Problem framing
 

@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 15 (UAV DRL: data collection, cargo, swarm, second half)
+
+- Grounded 24 UAV DRL source pages (peng through zhou, alphabetical) against their raw parses; evidence in `wiki/.grounding/source-schema-evidence-batch15-uav-drl-b.json`. This completes the UAV DRL track.
+- Full card rewrites where objectives, variables, or constraint sets did not match the papers: sun-2025 EMOPPO (MOP (15a)-(15i)), wang-2026 GLINT (P0 (13a)-(13l)), wang-2026 lifelong reuse (P1 (17.a)-(17.f)), wang-2026 MAT (problem (15)), wang-2026 JTCRA (paper symbols), wu-2026 segmented trajectory (P1 (12), P2 (13)), xu-2026 MRLMN ((P1) with (C1)-(C3)), and zhao-2026 DT-DDQN (C1-C8).
+- Relabeled invented or misaligned constraint IDs on samir-2022, wang-2023, wu AASBR, xie-2026, yang-2025, zhang-2025 F-DADC (added C12-C14), zhang-2026 JSCC, zhang-2026 E-QMIX, zhao-2026 spectrum cartography, zhou-2026 CPSFL, and peng-2025; flagged parse tag shifts on samir-2022, tian-2026, yang-2025, and zhang-2026 JSCC.
+- RW fixes: corrected the beam direction on sun-2025; named actual baselines; noted mixed results (peng IACO lower energy, wang-2023 expert policy best, WUTF trailing LTCC-UDUA on throughput, E-VDN trailing VDN with small ensembles, zhao-2026 DT-DDQN trailing ideal PSO and straight-line transfer).
+- Grounded count: 359/699; evidence conflicts: 0.
+
 ## [2026-11-03] Grounded batch 14 (UAV DRL: data collection, cargo, swarm, first half)
 
 - Grounded 24 UAV DRL source pages (betalo through mei, alphabetical) against their raw parses; evidence in `wiki/.grounding/source-schema-evidence-batch14-uav-drl-a.json`.

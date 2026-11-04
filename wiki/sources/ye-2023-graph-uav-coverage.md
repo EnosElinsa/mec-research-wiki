@@ -18,7 +18,7 @@ related:
   - "[[jains-fairness-index]]"
   - "[[pytorch]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,7 +38,7 @@ Combines two-hop FANET graph attention, GRU memory, shared discrete-action Q-val
 
 **Scenario**: Fixed-altitude UAV base stations navigate a planar region to cover static points of interest. Each UAV observes only a bounded local area and exchanges learned embeddings with neighbors connected through a distance-limited flying ad hoc network.
 
-**Problem & objective**: The policy problem maximizes the terminal coverage-fairness-energy score, $\pi^*=\arg\max_\pi \mathrm{CFE}_T$ with $\mathrm{CFE}_T=c_Tf_T/e_T$, where $c_T$ is cumulative coverage, $f_T$ is Jain fairness, and $e_T$ is average movement energy.
+**Problem & objective**: Problem (7) maximizes the terminal coverage-fairness-energy score, $\pi^*=\arg\max_\pi \mathrm{CFE}_T$ with $\mathrm{CFE}_T=c_Tf_T/e_T$, where $c_T$ is cumulative coverage, $f_T$ is Jain fairness, and $e_T$ is average movement energy.
 
 **Decision variables**:
 
@@ -63,7 +63,7 @@ Combines two-hop FANET graph attention, GRU memory, shared discrete-action Q-val
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ye et al. [x] formulated partially observable multi-UAV coverage as decentralized policy optimization over cumulative coverage, Jain fairness, and movement energy. Their SDRGN controller combines two-hop graph attention, GRU memory, parameter sharing, and maximum-entropy discrete action sampling. A local heuristic reward enables training without exposing the global coverage-fairness-energy score to individual UAVs. With twenty UAVs, SDRGN achieved the highest reported CFE score of 0.5436 among the listed methods while using less movement energy than the deterministic DRGN variant. Adding recurrent memory to the graph network improved coverage, fairness, and CFE over DGN in the reported ablation. Network-only inference on a Jetson Nano averaged 0.0232 seconds over the measured executions.
+Ye et al. [x] formulated partially observable multi-UAV coverage as decentralized policy optimization over cumulative coverage, Jain fairness, and movement energy. Their SDRGN controller combines two-hop graph attention, GRU memory, parameter sharing, and maximum-entropy discrete action sampling. A local heuristic reward enables training without exposing the global coverage-fairness-energy score to individual UAVs. With twenty UAVs, SDRGN achieved the highest reported CFE score of 0.5436 among the listed methods while using less movement energy than the deterministic DRGN variant at slightly lower coverage and fairness; the baselines were Random, MB-Greedy, MB-GA, DQN, MAAC, CommNet, and DGN. Adding recurrent memory to the graph network improved coverage, fairness, and CFE over DGN in the reported ablation. Network-only inference on a Jetson Nano averaged 0.0232 seconds over the measured executions.
 
 ## Problem and system model
 

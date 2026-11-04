@@ -15,7 +15,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[task-offloading]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deep Lifelong Learning for Adaptive Semantic-Aware Content Reuse in UAV-Assisted Metaverse
@@ -34,34 +34,34 @@ A UAV-assisted Metaverse edge-rendering framework where UAV servers cache semant
 
 **Scenario**: Users submit Metaverse frame-rendering requests to UAV semantic edge servers with bounded subject and object caches. Requests are served by exact cache hits, similarity-based semantic reuse, or full rendering as popularity, task arrivals, queues, and semantic environments change.
 
-**Problem & objective**: A stochastic semantic caching and association MDP maximizes discounted service reward, $\max_{\pi}\mathbb E_{\pi}[\sum_t\gamma^t r_t]$, where reward combines computation-time savings, queue reduction, latency satisfaction, and resolution quality.
+**Problem & objective**: Problem P1 (17) jointly chooses user-server association, subject and object caching, and content-reuse selection to maximize server utility $U_j(t)$ (16), a weighted sum of average computation-time saving $S_{j,v}^{ave}(t)$ and task completion quality $Sa_j(t)$ (15). The parse garbles the objective and constraint block of (17); check the published paper. P1 is then recast as a sequence of MDP tasks whose reward equals $U_j(t)$, with long-term objective (18).
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| User-server association | $x_{u,m}(t)$ | binary | UAV server selected for user $u$ |
-| Subject cache placement | $c^{\mathrm{sub}}_{m,f}(t)$ | binary | Subject component $f$ stored at UAV $m$ |
-| Object cache placement | $c^{\mathrm{obj}}_{m,f}(t)$ | binary | Object component $f$ stored at UAV $m$ |
-| Service mode | $z_{u}(t)$ | categorical | Exact hit, semantic reuse, or full rendering |
+| User-server association | $z_{i,j}^v(t)$ | binary | User $i$ uploads frame $v$ to UAV server $j$ |
+| Subject caching | $\mathbf 1_{j,n}^s(t)$ | binary | Subject content $n$ is cached at server $j$ |
+| Object caching | $\mathbf 1_{j,k}^o(t)$ | binary | Object content $k$ is cached at server $j$ |
+| Content reuse | $x_{j,n,n'}^s,\ y_{j,k,k'}^o$ | binary | Cached item reused for a missed subject or object; set deterministically, not learned |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each request associates with one reachable UAV server |
-| C2 | Subject and object placements respect each UAV cache capacity |
-| C3 | Semantic reuse is selected only when similarity and reuse-probability conditions hold |
-| C4 | Rendering and queue service obey UAV computation capacity and request latency limits |
-| C5 | Completion quality reflects both latency and resolution satisfaction |
+| (17.a) | Each user selects only one UAV server per time step |
+| (17.b) | The number of users choosing servers is at most the maximum number of users |
+| (17.c) | Cached subjects and objects at each server fit its storage capacity $N_{F_j}$ |
+| (17.d)-(17.e) | Reused content is the most similar item and must already be cached |
+| (17.f) | Exactly one cached item is reused for each content request |
 
-**Algorithm**: Extract subject and object features with the semantic encoder → compute content-level and environment-level similarity → choose association, cache updates, and service mode with local PPO learners → transfer environment-conditioned policy knowledge from the centralized DC-ELLA dictionary → update the lifelong knowledge base after each semantic environment.
+**Algorithm**: Extract subject and object features with the semantic encoder, compute content-level and environment-level similarity, let each UAV server's local PPO learner choose association and cache updates, transfer environment-conditioned policy knowledge from the centralized DC-ELLA dictionary, and update the lifelong knowledge base after each semantic environment.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied adaptive semantic-aware content reuse for UAV-assisted Metaverse rendering. They modeled user-server association, semantic subject and object caching, similarity-based reuse, full rendering, queueing, and service quality as a stochastic decision problem. The service policy chooses among exact semantic hits, semantic reuse after a cache miss, and full rendering under cache and computation limits. DC-ELLA maintains a centralized environment dictionary and transfers prior policy knowledge to local PPO-style UAV learners when semantic preferences and arrivals change. Simulations report faster adaptation and greater computation-time savings than the evaluated exact-hit, local-learning, transfer-learning, and lifelong-learning baselines.
+Wang et al. [x] studied adaptive semantic-aware content reuse for UAV-assisted Metaverse rendering. They modeled user-server association, semantic subject and object caching, similarity-based reuse, full rendering, queueing, and service quality as a stochastic decision problem. The service policy chooses among exact semantic hits, semantic reuse after a cache miss, and full rendering under association, cache-capacity, and reuse-selection constraints. DC-ELLA maintains a centralized environment dictionary and transfers prior policy knowledge to local PPO-style UAV learners when semantic preferences and arrivals change. Simulations report higher long-term rewards than PPO, PG-ELLA, and transfer-learning baselines, and 20% to 65% more computation-time saving than an exact-hit-only PPO baseline; the gap narrows when semantic reuse is degraded.
 
 ## Problem
 

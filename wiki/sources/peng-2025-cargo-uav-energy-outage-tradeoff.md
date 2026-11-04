@@ -42,7 +42,7 @@ A cellular-connected cargo UAV delivers packages of different weights from a war
 
 **Scenario**: One cellular-connected cargo UAV serves $K$ ground users in an $L\times L$ urban area with buildings and $G$ terrestrial cells. It departs a warehouse loaded with all packages, flies at maximum altitude $H_{\max}$, descends vertically at each user, and returns. A building-based radio map gives the outage probability at every location.
 
-**Problem & objective**: P0, a mixed sequence and trajectory problem: $\min E(\{\Phi,\nu_d(t),\mathbf q(t)\})+\mu\rho(t)T_{\mathrm{out}}(\{\mathbf q(t),c(t)\})$, where $\mu$ weights communication quality and $\rho(t)$ is the horizontal flight power used as a compensation factor.
+**Problem & objective**: P0 (18), a mixed sequence and trajectory problem: $\min E(\{\Phi,\nu_d(t),\mathbf q(t)\})+\mu\rho(t)T_{\mathrm{out}}(\{\mathbf q(t),c(t)\})$, where $\mu$ weights communication quality and $\rho(t)$ is the horizontal flight power used as a compensation factor.
 
 **Decision variables**:
 
@@ -62,7 +62,7 @@ A cellular-connected cargo UAV delivers packages of different weights from a war
 | (18c) | Start and end at the warehouse, $\mathbf q(0)=\mathbf q(T)=(x_0,y_0,0)$. |
 | (18d) | Every user $\phi_k$ is visited at some time $t_{\phi_k}\in[0,T]$. |
 | (18e)-(18f) | Trajectory stays in the area, $0\le x_u(t),y_u(t)\le L$. |
-| Association | $c(t)$ selects one of the $G$ cells at every time. |
+| (18g) | $c(t)$ selects one of the $G$ cells at every time. |
 
 **Algorithm**: Hybrid DRL (HDRL). IACO solves the directed weighted TSP for delivery order and flight speed under payload-dependent energy; D3QN then plans the horizontal trajectory between consecutive users on the radio map to reduce outage time and energy.
 
@@ -70,7 +70,7 @@ A cellular-connected cargo UAV delivers packages of different weights from a war
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Peng et al. [x] investigated the tradeoff between energy efficiency and communication quality in a cellular-connected cargo UAV delivery system. They formulated an optimization problem that minimizes the weighted sum of the UAV's energy consumption and expected outage time, accounting for both horizontal and vertical flight energy. With the aid of a radio map, they proposed a hybrid deep reinforcement learning algorithm in which an improved ant colony optimization algorithm determines the delivery sequence and flight speed and a dueling double deep Q network optimizes the flight trajectory. Numerical results show that the proposed algorithm reduces both energy consumption and outage time, with a performance improvement of approximately 6% to 50% over the comparison schemes. The results also show that a larger weight factor improves communication quality at the cost of higher energy consumption.
+Peng et al. [x] investigated the tradeoff between energy efficiency and communication quality in a cellular-connected cargo UAV delivery system. They formulated an optimization problem that minimizes the weighted sum of the UAV's energy consumption and expected outage time, accounting for both horizontal and vertical flight energy. With the aid of a radio map, they proposed a hybrid deep reinforcement learning algorithm in which an improved ant colony optimization algorithm determines the delivery sequence and flight speed and a dueling double deep Q network optimizes the flight trajectory. Numerical results show that the proposed algorithm achieves the lowest weighted objective, with improvements of approximately 6% to 50% over the comparison schemes, although the sequence-only IACO scheme consumes slightly less energy because it does not trade energy for outage time. The results also show that a larger weight factor improves communication quality at the cost of higher energy consumption.
 
 ## Problem framing
 

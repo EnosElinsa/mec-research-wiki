@@ -16,7 +16,7 @@ related:
   - "[[wireless-powered-uav-fair-service-control]]"
   - "[[victor-c-m-leung]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # On Designing Multi-UAV Aided Wireless Powered Dynamic Communication via Hierarchical Deep Reinforcement Learning
@@ -62,7 +62,7 @@ Multiple UAVs power and collect data from low-power wireless nodes (WNs) whose r
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] proposed a design for wireless powered communication networks in dynamic environments assisted by multiple UAVs. Under a double-threshold based node type updating rule, each wireless node repeatedly switches between an E-node for non-linear energy harvesting over time slots and an I-node for transmitting data over sub-slots. To maximize the total transmission data size over all slots, each UAV determines its trajectory and binary wireless energy transmission decisions over slots and its binary data collection decisions over sub-slots, subject to its on-board energy and the node type rule. They proposed a multi-agent hierarchical deep reinforcement learning framework in which a soft actor critic policy in tier 1 decides trajectory and energy transmission and a deep Q-learning policy in tier 2 decides data collection, both executed distributively at each UAV. Simulation results show that the approach outperforms state-of-the-art benchmarks in training and testing and scales across network sizes.
+Zhao et al. [x] proposed a design for wireless powered communication networks in dynamic environments assisted by multiple UAVs. Under a double-threshold based node type updating rule, each wireless node repeatedly switches between an E-node for non-linear energy harvesting over time slots and an I-node for transmitting data over sub-slots. To maximize the total transmission data size over all slots, each UAV determines its trajectory and binary wireless energy transmission decisions over slots and its binary data collection decisions over sub-slots, subject to its on-board energy and the node type rule. They proposed a multi-agent hierarchical deep reinforcement learning framework in which a soft actor critic policy in tier 1 decides trajectory and energy transmission and a deep Q-learning policy in tier 2 decides data collection, both executed distributively at each UAV. Simulation results show higher total transmitted data than a DDPG-based tier-1 variant during training and than MAHDRL without HoE, phase division, TEAM, and random WDC schemes in testing, across network sizes.
 
 ## Problem framing
 

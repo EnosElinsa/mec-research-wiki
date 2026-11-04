@@ -20,7 +20,7 @@ related:
   - "[[zheng-chang]]"
   - "[[zhu-han]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # GeoAgg-HSAC: An RL-Based Framework for Trajectory and Resource Optimization in Mountainous UAV Integrated Localization and Communication Networks
@@ -39,7 +39,7 @@ Uses terrain-induced LoS/NLoS patterns to pretrain a graph state encoder, then a
 
 **Scenario**: Multiple UAV base stations provide two-way-ranging localization and TDMA downlink service to moving users in mountainous terrain, where occlusion determines LoS availability, channel gain, and localization geometry.
 
-**Problem & objective**: The online mixed-integer control problem maximizes combined communication and localization utility, $\max_{\mathbf v,\mathbf p,\boldsymbol\beta}\frac{1}{T}\sum_t[\bar C_t+\lambda\bar L_t-(\delta_t^q+\delta_t^c+\delta_t^l+\delta_t^e)]$, with penalties for violated safety and service constraints.
+**Problem & objective**: The online mixed-integer problem $\phi_{opt}$ maximizes average communication and localization performance, $\frac{1}{T}\sum_t(\bar C_t+\lambda\bar L_t)$, under $c_1$-$c_8$. Its learning form (16) subtracts penalty terms $\delta_t^q+\delta_t^c+\delta_t^l+\delta_t^e$ for violated collision, terrain, rate, localization, and energy constraints.
 
 **Decision variables**:
 
@@ -54,11 +54,14 @@ Uses terrain-induced LoS/NLoS patterns to pretrain a graph state encoder, then a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Per-cycle motion satisfies $\lVert\mathbf q_{k,t+1}-\mathbf q_{k,t}\rVert\leq V_{\max}^UT^{ctrl}$ |
-| C2 | UAVs maintain separation and remain in $\Theta=\{(x,y,z):z>h(x,y)\}$ |
-| C3 | Propulsion and transmission use no more than the available UAV energy |
-| C4 | Each user has one serving UAV, $\sum_k\beta_{i,k,t}=1$ |
-| C5 | Power, minimum communication rate, and localization-quality thresholds are respected |
+| $c_1$ | Per-cycle motion, $\lVert\mathbf q_{k,t+1}-\mathbf q_{k,t}\rVert\leq V_{\max}^UT^{ctrl}$ |
+| $c_2$ | Pairwise UAV separation above $D_{\min}$ |
+| $c_3$ | Propulsion and transmission use no more than the available UAV energy |
+| $c_4$ | Each user is served by only one UAV, $\sum_k\beta_{i,k,t}=1$ |
+| $c_5$ | UAV transmit power stays within its maximum |
+| $c_6$-$c_7$ | User rate and localization performance exceed $\gamma^r$ and $\gamma^l$ |
+| $c_8$ | UAVs stay above the terrain, $\Theta=\{(x,y,z):z>h(x,y)\}$ |
+| Algorithm rule | $c_2,c_3,c_6,c_7,c_8$ become reward penalties in (16); $c_1,c_4,c_5$ are enforced through action ranges |
 
 **Algorithm**: GeoAgg pretrains a two-layer BiGAT and Set2Set graph encoder with contrastive learning on terrain-occlusion patterns, then HSAC uses Gaussian continuous heads and Gumbel-Softmax association heads with twin critics, replay, and expert demonstrations.
 
@@ -66,7 +69,7 @@ Uses terrain-induced LoS/NLoS patterns to pretrain a graph state encoder, then a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xie et al. [x] addressed joint UAV trajectory, transmit-power, and user-association control for localization and downlink communication in mountainous terrain. Their objective combines average communication rate and inverse-GDOP localization utility under motion, separation, energy, association, power, rate, localization, and terrain-clearance constraints. GeoAgg maps states with similar terrain occlusions into compact graph embeddings, and HSAC handles the continuous flight and power actions together with discrete associations. The reported simulations show faster convergence, higher average communication rates, and lower GDOP than SAC, PADDPG, and GeoAgg-PDQN in the reconstructed mountain environment.
+Xie et al. [x] addressed joint UAV trajectory, transmit-power, and user-association control for localization and downlink communication in mountainous terrain. Their objective combines average communication rate and inverse-GDOP localization utility under motion, separation, energy, association, power, rate, localization, and terrain-clearance constraints. GeoAgg maps states with similar terrain occlusions into compact graph embeddings, and HSAC handles the continuous flight and power actions together with discrete associations. The reported simulations show faster convergence, average communication rates 106.73%, 193.24%, and 43.7% higher, and better GDOP, than SAC, PADDPG, and GeoAgg-PDQN in the reconstructed mountain environment.
 
 ## Problem framing
 

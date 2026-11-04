@@ -17,7 +17,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -64,7 +64,7 @@ WUTF coordinates wireless-powered UAV base stations through centralized training
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied long-duration fair communication by wireless-powered UAV base stations that can recharge near fixed charging towers. They maximized total throughput multiplied by Jain fairness per unit UAV energy over speed, yaw, and user-association decisions subject to battery, association, mobility, and area constraints. WUTF uses CNN-GRU actors, a centralized critic, and sequential PPO-style policy updates within a multi-agent partially observable model. For four UAVs, the reported Jain fairness was 0.748 compared with 0.529 for modified LTCC-UDUA, corresponding to a 41.4% improvement. The authors also reported higher communication efficiency than all listed learning and heuristic baselines across the examined charging ranges. A separate Shanghai-map simulation with 378 users demonstrated the learned two-UAV trajectories over a one-hour mission.
+Wang et al. [x] studied long-duration fair communication by wireless-powered UAV base stations that can recharge near fixed charging towers. They maximized total throughput multiplied by Jain fairness per unit UAV energy over speed, yaw, and user-association decisions subject to battery, association, mobility, and area constraints. WUTF uses CNN-GRU actors, a centralized critic, and sequential PPO-style policy updates within a multi-agent partially observable model. For four UAVs, the reported Jain fairness was 0.748 compared with 0.529 for modified LTCC-UDUA, corresponding to a 41.4% improvement. The authors also reported higher communication efficiency than MAPPO, LTCC-UDUA, MADDPG, QMIX, KM-GA, and Random across the examined UAV numbers and charging ranges, although LTCC-UDUA kept the highest total throughput. A separate Shanghai-map simulation with 378 users demonstrated the learned two-UAV trajectories over a one-hour mission.
 
 ## Problem
 

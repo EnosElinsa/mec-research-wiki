@@ -18,7 +18,7 @@ related:
   - "[[uav-mobile-relaying]]"
   - "[[xinlei-chen]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Scalable UAV Multi-Hop Networking via Multi-Agent Reinforcement Learning With Large Language Models
@@ -35,36 +35,34 @@ MRLMN trains decentralized UAV policies for disaster-area multi-hop relaying by 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A disaster-area UAV swarm forms a dynamic multi-hop relay graph between mobile users and surviving base stations. Connectivity depends on link-SNR thresholds, users select eligible UAVs by data rate, and backhaul follows the fewest-hop qualifying path while UAVs move at fixed speed in a plane.
+**Scenario**: A disaster-area UAV swarm forms a dynamic multi-hop relay graph between mobile user equipment (UEs) and surviving base stations. Connectivity depends on link-SNR thresholds, UEs select the connected UAV with the highest data rate, and backhaul follows the fewest-hop qualifying path while UAVs move at fixed speed in a plane.
 
-**Problem & objective**: A decentralized multi-agent control problem maximizes a team utility, $\max \mathbb E[\sum_t\gamma^t(\omega_C C_t+\omega_R R_t+\omega_A A_t)]$, combining user coverage, data rate, and UAV availability.
+**Problem & objective**: Problem (P1) chooses all UAV trajectories $\tau=\{l_u(t)\}$ to maximize average UE coverage and rate, $\tau^*=\arg\max_\tau\frac{1}{T}\sum_t\left(\frac{1}{M}\sum_mc_m^{\mathrm{UE}}(t)+\frac{\kappa}{M}\sum_mr_m^{\mathrm{UE}}(t)\right)$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
+| UAV trajectory | $l_u(t)$ | continuous 2-D position | Relay-node location over time |
 | UAV movement action | $a_u(t)$ | 9-way categorical | Eight planar directions or hover |
-| UAV position | $\mathbf q_u(t)$ | continuous 2-D state | Relay-node location induced by actions |
 | Agent group | $g_u$ | categorical fixed group | Near-BS relay or distant access emphasis |
-| Distillation target | $\tilde\pi_u(a\mid s)$ | probability vector | Soft action guidance from verified LLM plans |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV positions remain inside the deployment region |
-| C2 | Direct or multi-hop connectivity requires every path link to exceed the SNR threshold |
-| C3 | A critical near-BS UAV losing all BS links triggers the connectivity behavioral loss |
-| C4 | LLM target plans pass reachability, boundary, connectivity, isolation, and coverage checks |
-| C5 | Deployed policies use only decentralized observations and the fixed nine-action domain |
+| (C1) | Per-slot movement, $\lVert l_u(t+1)-l_u(t)\rVert_2\leq\Delta l_u=\omega\Delta t$ |
+| (C2) | UAV positions remain inside the environment, $l_u(t)\in L^E$ |
+| (C3) | Connectivity rules (11)-(12): a UAV connects if it reaches a BS or a connected UAV above $\rho_{\mathrm{th}}$, and a UE connects through a connected UAV above $\rho_{\mathrm{th}}$ |
+| Algorithm rule | A critical near-BS UAV losing all BS links triggers the connectivity behavioral loss; LLM target plans must pass the rule-based verifier |
 
-**Algorithm**: Group UAVs by initial distance to a base station → train decentralized PPO with access, relay, and team rewards → add behavioral loss when a critical relay disconnects → query GPT-4o offline for grid deployment targets → verify plans and assign targets by Hungarian matching → distill directional soft targets → deploy without the LLM.
+**Algorithm**: Group UAVs by initial distance to a base station, train decentralized IPPO-style PPO agents with information aggregation and decomposed access, relay, and team rewards, add a behavioral loss when a critical relay disconnects, query GPT-4o for grid deployment targets every $Q_{\mathrm{LLM}}$ steps during training, verify the plans, assign targets by Hungarian matching, distill directional soft targets, and deploy without the LLM.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xu et al. [x] studied scalable UAV multi-hop networking for disaster-area user access through decentralized multi-agent reinforcement learning. Their model uses SNR-threshold relay graphs, rate-based user association, fewest-hop backhaul, and fixed-speed planar UAV actions. MRLMN groups agents by relay or access role, decomposes team rewards, and adds a behavioral loss when a critical UAV loses base-station connectivity. Offline GPT-4o plans are filtered by a rule-based verifier, assigned to UAVs with Hungarian matching, and distilled as soft PPO action targets before deployment. Simulations report higher user coverage, data rate, and UAV availability than the evaluated MARL and graph-visualization baselines as area and swarm size increase.
+Xu et al. [x] studied scalable UAV multi-hop networking for disaster-area user access through decentralized multi-agent reinforcement learning. Their model uses SNR-threshold relay graphs, rate-based user association, fewest-hop backhaul, and fixed-speed planar UAV actions. MRLMN groups agents by relay or access role, decomposes team rewards, and adds a behavioral loss when a critical UAV loses base-station connectivity. Offline GPT-4o plans are filtered by a rule-based verifier, assigned to UAVs with Hungarian matching, and distilled as soft PPO action targets before deployment. Simulations report higher user coverage, data rate, and UAV availability than GVis, GA2C, MAPPO, IA2C, and MAA2C as area and swarm size increase.
 
 ## Problem and system model
 

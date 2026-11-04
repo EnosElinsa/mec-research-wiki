@@ -18,7 +18,7 @@ related:
   - "[[ppo]]"
 modeling_card: required
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Temporal Spectrum Cartography in Low-Altitude Economy Networks: A Generative AI Framework With Multi-Agent Learning
@@ -37,7 +37,7 @@ Builds temporal RF power maps for low-altitude economy networks using sparse sta
 
 **Scenario**: Static sensors and fixed-altitude UAV-mounted dynamic sensors sample RSSI on a gridded low-altitude economy network over multiple time slots. The model uses sensing footprints rather than a multiple-access scheduler and generates RF power maps with probabilistic LoS/NLoS path loss and spatially correlated shadow fading.
 
-**Problem & objective**: Equations (13)-(17), a constrained temporal tensor-completion and cooperative POMDP problem, minimize cumulative reconstruction error $E=\sum_{t=1}^{n_T}\lVert\tilde{\mathbf P}^{t}-\hat{\mathbf P}^{t}\rVert_2$ by selecting time-varying UAV sensing locations.
+**Problem & objective**: Problem (14), with error (13) and constraints (15)-(17), is a constrained temporal tensor-completion and cooperative POMDP problem, minimize cumulative reconstruction error $E=\sum_{t=1}^{n_T}\lVert\tilde{\mathbf P}^{t}-\hat{\mathbf P}^{t}\rVert_2$ by selecting time-varying UAV sensing locations.
 
 **Decision variables**:
 
@@ -51,10 +51,10 @@ Builds temporal RF power maps for low-altitude economy networks using sparse sta
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | A mask entry is one only when the grid cell lies within a dynamic or static sensor's sensing radius, as in (15) |
-| C2 | Each UAV move is bounded by $d((x_u^t,y_u^t),(x_u^{t+1},y_u^{t+1}))\le d_m$ |
-| C3 | Sensor counts remain fixed at $M_d$ dynamic UAV sensors and $M_s$ static sensors for every slot |
-| C4 | UAV actions remain within the gridded sensing region and the configured per-slot movement limit |
+| (15) | A mask entry is one only when the grid cell lies within a dynamic sensor's radius $R_d$ or a static sensor's radius $R_s$ |
+| (16) | Each UAV move is bounded by $d((x_u^t,y_u^t),(x_u^{t+1},y_u^{t+1}))\le d_m$ |
+| (17) | Sensor counts stay fixed, $\lvert\mathcal U_t\rvert=M_d$ and $\lvert\mathcal S\rvert=M_s$ in every slot |
+| Action range | UAV actions remain within the gridded sensing region and the per-slot movement limit |
 
 **Algorithm**: Train RecMAE with pixel-level and patch-level masks $\rightarrow$ use reconstruction error as the shared planning reward $\rightarrow$ encode observation histories with 3D convolution and temporal attention $\rightarrow$ generate decentralized UAV actions with diffusion actors and train centralized critics from replayed experience.
 

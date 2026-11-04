@@ -18,7 +18,7 @@ related:
   - "[[blockage-aware-channel-model]]"
   - "[[weijie-yuan]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deployment Design for Multi-UAV-Assisted IoT Networks: A Digital Twin-Driven Deep Reinforcement Learning Approach
@@ -35,37 +35,38 @@ Divides a multi-UAV IoT collection mission into balanced service regions, 3-D tr
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs transfer through a partially known three-dimensional area to balanced IoT service regions, then collect all node data at fixed altitude. Known buildings and newly sensed obstacles affect motion and radio blockage, while digital twins refresh policies online.
+**Scenario**: Multiple UAVs first transfer through a partially known three-dimensional area to balanced IoT service regions (mission transfer stage, MTS), then collect data from all ground nodes at fixed altitude (mission maintenance stage, MMS). Known buildings and newly sensed obstacles affect motion and radio blockage, while digital twins refresh policies online.
 
-**Problem & objective**: A discrete multi-stage deployment problem minimizes total transfer and service time, $\min T_{\mathrm{transfer}}+T_{\mathrm{service}}$, under space, obstacle, SINR, access-count, duration, and complete-service constraints.
+**Problem & objective**: Problem (3) minimizes mission execution time, $\min_{\mathbf p_{u,t},\mathbf a_{u,t}}T_{\mathrm{mission}}$, which contains the MTS and MMS durations, under location, maneuvering, time, obstacle, SINR, access-count, and complete-service constraints.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Region assignment | $c_{k,m}$ | binary | IoT node $k$ assigned to UAV $m$ |
-| Transfer action | $a_m^{3D}(t)$ | 27-way categorical | Three-axis move or hover |
-| Service action | $a_m^{2D}(t)$ | discrete planar action | Fixed-altitude collection movement |
-| Service altitude | $H_m$ | discrete/continuous candidate | Height used for mission maintenance |
-| Policy refresh | $z_m(t)$ | binary | Trigger for digital-twin retraining/update |
+| UAV position | $\mathbf p_{u,t}=[x_{u,t},y_{u,t},z_{u,t}]$ | discrete grid in $[0,L]\times[0,W]\times[0,H]$ | Location of UAV $u$ in slot $t$ |
+| UAV action | $\mathbf a_{u,t}=[a_{x,t},a_{y,t},a_{z,t}]$ | each component in $\{-1,0,1\}$ | Three-axis move or hover (27 combinations) |
+| Node access | $\eta_{g,t}$ | binary | Ground node $g$ is connected in slot $t$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Assigned service regions balance ground-node loads |
-| C2 | Movement stays inside the mission space and avoids known or sensed obstacles |
-| C3 | Served IoT nodes meet SINR and per-UAV access-count limits |
-| C4 | Every assigned ground node is served within mission duration |
-| C5 | Unsafe physical actions are halted before execution and synchronized to the twin |
+| $C_1$-$C_3$ | Location bounds, position update $\mathbf p_{u,t}=T_0\,\mathbf a_{u,t}\odot\mathbf v+\mathbf p_{u,t-1}$, and ternary action components |
+| $C_4$ | Mission time limits, $t\leq T$ and $\bar\tau\leq T_0$ |
+| $C_5$ | Obstacle avoidance during transfer, $\mathbf p_{u,t}\notin\mathcal S$ |
+| $C_6$ | A connected node meets the SINR threshold, $\gamma_{u,g}\geq\gamma_{\mathrm{th}}$ |
+| $C_7$ | Per-UAV access limit, $\sum_g\eta_{g,t}\leq N_{\max}$ |
+| $C_8$ | Every ground node is served, $\sum_t\sum_gs_{g,t}=\lvert\mathcal G\rvert$ |
 
-**Algorithm**: Divide nodes by K-means and coarse/fine remapping → pretrain separate transfer and maintenance DDQNs in parallel digital twins → execute 3-D transfer → synchronize newly sensed obstacles and halt unsafe actions → retrain affected twin environments and push updated parameters → execute fixed-altitude collection until all nodes are served.
+The parse tags these as (3a)-(3h) with some rows merged; numbering follows the paper's $C_1$-$C_8$ labels.
+
+**Algorithm**: Divide nodes by K-means with coarse and fine remapping, pretrain separate transfer and maintenance DDQNs in parallel digital twins, execute the 3-D transfer, synchronize newly sensed obstacles and halt unsafe actions, retrain affected twin environments and push updated parameters, then execute fixed-altitude collection until all nodes are served.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] studied multi-UAV deployment for IoT data collection using digital-twin-driven deep reinforcement learning. They formulated total transfer-plus-service-time minimization over service-region assignment, three-dimensional transfer actions, fixed-altitude collection actions, and altitude under spatial, obstacle, SINR, access-count, duration, and complete-service constraints. K-means and cell remapping balance service regions, and separate DDQNs control transfer and mission maintenance. Parallel digital twins synchronize newly discovered obstacles, halt unsafe actions, retrain affected environments, and return updated policy parameters. Simulations report fewer training crashes and shorter service time than the evaluated ACO, scanning, DDQN, and QMIX baselines, while an ideal fully informed PSO remains faster.
+Zhao et al. [x] studied multi-UAV deployment for IoT data collection using digital-twin-driven deep reinforcement learning. They formulated mission-execution-time minimization over UAV positions and three-axis actions under location, maneuvering, time, obstacle, SINR, access-count, and complete-service constraints. K-means and cell remapping balance service regions, and separate DDQNs control transfer and mission maintenance. Parallel digital twins synchronize newly discovered obstacles, halt unsafe actions, retrain affected environments, and return updated policy parameters. Simulations report fewer training crashes and shorter service time than the evaluated ACO, scanning, DDQN, and QMIX baselines, while an ideal fully informed PSO remains faster and the straight-line transfer path is shorter, though the method beats a fully safe parallel transfer.
 
 ## Problem
 

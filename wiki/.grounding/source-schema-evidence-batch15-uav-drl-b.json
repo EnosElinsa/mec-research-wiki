@@ -1,0 +1,700 @@
+{
+  "entries": [
+    {
+      "slug": "peng-2025-cargo-uav-energy-outage-tradeoff",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems.md",
+          "lines": "181,185,189,193,197,201,205,209",
+          "note": "P0 (18) and (18a)-(18g)"
+        },
+        {
+          "path": "raw/sources/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems.md",
+          "lines": "275,337,408,416",
+          "note": "subproblems (25), (33), (38)"
+        },
+        {
+          "path": "raw/sources/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems.md",
+          "lines": "646,686,690",
+          "note": "K=5 case, Table results, weight factor"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems/Balancing_Energy_Efficiency_and_Communication_Quality_in_UAV_Cargo_Delivery_Systems.md",
+          "lines": "5,714,716,718",
+          "note": "6-50% improvement, IACO lowest energy, weight factor tradeoff"
+        }
+      ]
+    },
+    {
+      "slug": "samir-2022-aoi-altitude-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks.md",
+          "lines": "96,166,168,178",
+          "note": "half-duplex relay, S_th reliability, single-packet queues"
+        },
+        {
+          "path": "raw/sources/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks.md",
+          "lines": "181,187,193,203,205,211,212,213,214,215,216,218",
+          "note": "AoI recursions and OP constraints (garbled parse)"
+        },
+        {
+          "path": "raw/sources/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks.md",
+          "lines": "223,229,239",
+          "note": "closed-form C6*/C7*, combined action"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks/Online_Altitude_Control_and_Scheduling_Policy_for_Minimizing_AoI_in_UAV-Assisted_IoT_Wireless_Networks.md",
+          "lines": "400,436,441",
+          "note": "RDRS and HDGS baselines, lower AoI"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2025-emoppo-vlh-aerial-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "5,35,137,143,199",
+          "note": "downlink UVAA, Rician fading, Gaussian-Markov mobility"
+        },
+        {
+          "path": "raw/sources/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "228,234,244,248,252,256,260,264,268,272,276,279",
+          "note": "objectives (13)-(14), MOP (15a)-(15i)"
+        },
+        {
+          "path": "raw/sources/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "368,533",
+          "note": "vectorized PPO clip, task selection"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md",
+          "lines": "632,636,693,719",
+          "note": "IGD/HV, six baselines, results"
+        }
+      ]
+    },
+    {
+      "slug": "tian-2026-joint-localization-communication",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems.md",
+          "lines": "279,283,287,291,295,298,301,305,309,313,317,320",
+          "note": "problem P (28), (28a)-(28j) with shifted tags"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems.md",
+          "lines": "499,503,507",
+          "note": "beamforming subproblem P1 (43)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems.md",
+          "lines": "635,637,639,643",
+          "note": "baselines"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems/Energy-Efficient_Joint_Localization_and_Communication_via_Air-Ground_Collaboration_in_UAV-Assisted_Emergency_Systems.md",
+          "lines": "11,47,704,706,708",
+          "note": "efficiency, RMSE, 43% claim"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2023-differentiated-uav-services",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach.md",
+          "lines": "100,122,136,144,159,162",
+          "note": "utility, budget, cost and profit models"
+        },
+        {
+          "path": "raw/sources/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach.md",
+          "lines": "165,168,172,175,177,180",
+          "note": "P1 with (8a) and P2"
+        },
+        {
+          "path": "raw/sources/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach.md",
+          "lines": "207,218,266,288",
+          "note": "equilibrium price, NE, action range"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach/Dynamic_UAV_Deployment_for_Differentiated_Services_A_Multi-Agent_Imitation_Learning_Based_Approach.md",
+          "lines": "5,448,453,455,457,463,465",
+          "note": "expert, OMD, MDDPG comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-glint-aoi-wireless-powered-edge",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks.md",
+          "lines": "197,199,202",
+          "note": "P0 objective (13)"
+        },
+        {
+          "path": "raw/sources/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks.md",
+          "lines": "206,210,214,218,222,226,229,232,236,240,244,248,252,255",
+          "note": "(13a)-(13l) and explanation"
+        },
+        {
+          "path": "raw/sources/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks.md",
+          "lines": "392,432,464",
+          "note": "association matching, monotonic mixing, GRU, Gumbel-Softmax"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks/Decentralized_Learning-Driven_AoI_Optimization_in_UAV-Assisted_Wireless_Powered_Edge_Networks.md",
+          "lines": "634,636,638,640,642,644,646,737,743",
+          "note": "five baselines and AoI bound, results"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-lifelong-semantic-content-reuse",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse.md",
+          "lines": "162,164,168,171,180,183,186",
+          "note": "hit/reuse model, quality (15), utility (16)"
+        },
+        {
+          "path": "raw/sources/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse.md",
+          "lines": "192,195,198,200",
+          "note": "P1 (17) and (17.a)-(17.f) meaning"
+        },
+        {
+          "path": "raw/sources/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse.md",
+          "lines": "204,208,212,214,216,236",
+          "note": "MDP recast, actions, deterministic reuse, objective (18)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse.md",
+          "lines": "34,491,561",
+          "note": "PPO, PG-ELLA, transfer baselines; 20-65% saving; narrower gap"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-mat-target-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms.md",
+          "lines": "162,164,167,170,173,176,179,182,185",
+          "note": "objective (12), constraints (13)-(15)"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms.md",
+          "lines": "206,230,241,248,251",
+          "note": "virtual points, Hungarian (18), observations (19)"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms.md",
+          "lines": "262,272,278",
+          "note": "reward terms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms/Multi-Agent_Transformer_Learning_for_Moving_Target_Positioning_and_Tracking_in_Complex_Environments_Using_UAV_Swarms.md",
+          "lines": "439,441,443,445,466,467,478,482,512,522",
+          "note": "four baselines, Tables, zero-shot maps"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-robust-multiuav-jtcra",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation.md",
+          "lines": "109,113,119,123,127,131",
+          "note": "constraints (11)-(16)"
+        },
+        {
+          "path": "raw/sources/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation.md",
+          "lines": "158,160,166,171,175,179,183,187,191",
+          "note": "problem (21) variables and (21a)-(21e)"
+        },
+        {
+          "path": "raw/sources/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation.md",
+          "lines": "345,351",
+          "note": "strongest-signal association, discrete power/bandwidth actions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation/Enhancing_A2G_Robustness_in_Energy-Constrained_Multi-UAV_Networks_MADRL_for_Trajectory_Control_and_Resource_Allocation.md",
+          "lines": "479,481,487,506,508",
+          "note": "0.9 threshold, IPPO/HAPPO-HSA/hovering, 168.4 Mbit"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-wutf-fair-communication",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication.md",
+          "lines": "212,215,219,223,227,231,235",
+          "note": "P1 (23) and (23a)-(23c)"
+        },
+        {
+          "path": "raw/sources/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication.md",
+          "lines": "239,243,247,251,255,259,263,267",
+          "note": "(23d)-(23g)"
+        },
+        {
+          "path": "raw/sources/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication.md",
+          "lines": "126,749,759,769",
+          "note": "charging coverage and channel model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication/DRL-Based_Wireless-Powered_UAVs_Trajectories_Planning_for_Fair_Communication.md",
+          "lines": "524,551,553,557,566,800",
+          "note": "0.748 vs 0.529, LTCC-UDUA throughput, efficiency, Shanghai 378 GUs"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2026-service-oriented-segmented-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks.md",
+          "lines": "158,161,164,166,169,172,175",
+          "note": "delay, energy-efficiency, privacy metrics (8)-(10)"
+        },
+        {
+          "path": "raw/sources/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks.md",
+          "lines": "190,194,197,201,205,208",
+          "note": "P1 (12), (12a)-(12b)"
+        },
+        {
+          "path": "raw/sources/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks.md",
+          "lines": "216,219,223,227,231,235,239,243,247,250,261,264",
+          "note": "P2 (13a)-(13g), P3 TSP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks.md",
+          "lines": "472,474,476,478,480",
+          "note": "SGA, SSA, MGA, MSA baselines"
+        }
+      ]
+    },
+    {
+      "slug": "wu-not-in-parse-aoi-sampling-buffering-routing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach.md",
+          "lines": "220,224,228,231",
+          "note": "P1 (13a) with C1 (13b) and C2 (13c)"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach.md",
+          "lines": "233,241,243",
+          "note": "AASBR and Dec-POMDP formulation"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach.md",
+          "lines": "634,649",
+          "note": "TFPS sampling and LCFS/FCFS comparisons"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach/AoI-Aware_Joint_Sampling-Buffering-Routing_Optimization_for_Autonomous_UAV_Swarms_via_a_MARL_Approach.md",
+          "lines": "5,609,632,661",
+          "note": "48% and 15% AoI gains vs MARL and ablation benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "xie-2026-geoagg-hsac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks.md",
+          "lines": "124,132,135,138,148,154",
+          "note": "rate, motion (11)-(12), energy (13)-(14)"
+        },
+        {
+          "path": "raw/sources/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks.md",
+          "lines": "159,161,164,167,169",
+          "note": "phi_opt and c1-c8"
+        },
+        {
+          "path": "raw/sources/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks.md",
+          "lines": "181,183,186,189",
+          "note": "hybrid action, penalty reformulation (16)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks/GeoAgg-HSAC_An_RL-Based_Framework_for_Trajectory_and_Resource_Optimization_in_Mountainous_UAV_Integrated_Localization_and_Communication_Networks.md",
+          "lines": "550,554,565,567",
+          "note": "SAC, PADDPG, GeoAgg-PDQN; rate and GDOP gains"
+        }
+      ]
+    },
+    {
+      "slug": "xu-2026-mrlmn-llm-multihop",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models.md",
+          "lines": "142,144,147,152,155,158,160",
+          "note": "connectivity rules (11)-(12), fewest-hop backhaul"
+        },
+        {
+          "path": "raw/sources/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models.md",
+          "lines": "168,171,175,179,183,186",
+          "note": "P1 and (C1)-(C3)"
+        },
+        {
+          "path": "raw/sources/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models.md",
+          "lines": "36,190,392,396,440",
+          "note": "IPPO base, offline GPT-4o guidance every Q_LLM steps"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models/Scalable_UAV_Multi-Hop_Networking_via_Multi-Agent_Reinforcement_Learning_With_Large_Language_Models.md",
+          "lines": "5,450,452,454,456,458,460,462",
+          "note": "five baselines and training curves"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2025-hcdrl-pursuit-evasion",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach.md",
+          "lines": "72,74,77,81,84,87,91,96",
+          "note": "second-order kinematics, pursuer bounds (3)-(4)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach.md",
+          "lines": "98,101,105,110,113,117,120,123",
+          "note": "capture criteria (5)-(6), objective (9)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach.md",
+          "lines": "126,129,133,137,145,149,153,161,165,169,172",
+          "note": "constraints (10)-(18) and tag meaning"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach/Cooperative_Pursuit-Evasion_With_Low_Altitude_Wireless_Network_A_Hierarchical_Reinforcement_Learning_Approach.md",
+          "lines": "5,19,440,442,482",
+          "note": "89.08%, 26.63 s, six baselines, 11.18%/9.94%"
+        }
+      ]
+    },
+    {
+      "slug": "ye-2023-graph-uav-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning.md",
+          "lines": "15,95",
+          "note": "partial observation, 17-action set"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning.md",
+          "lines": "49,133,142",
+          "note": "CFE definition and objective (7)"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning.md",
+          "lines": "17,64,236",
+          "note": "GAT-FANET communication and max-entropy policy"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning/Multi-UAV_Navigation_for_Partially_Observable_Communication_Coverage_by_Graph_Reinforcement_Learning.md",
+          "lines": "348,405,417,423,425,429,468,469",
+          "note": "baselines, Table 4 CFE 0.5436, DRGN ablation, Jetson 0.0232 s"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2021-safe-dqn-emergency",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach.md",
+          "lines": "99,103,106,110",
+          "note": "P1 (7) with (7a)-(7c)"
+        },
+        {
+          "path": "raw/sources/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach.md",
+          "lines": "124,128,131,134,137,173,179,185",
+          "note": "surrogate (7a''), W and E, CMDP (13)"
+        },
+        {
+          "path": "raw/sources/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach.md",
+          "lines": "200,206,359,365",
+          "note": "Lyapunov benchmark policy and safe-DQN"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach/Trajectory_Optimization_for_UAV_Emergency_Communication_With_Limited_User_Equipment_Energy_A_Safe-DQN_Approach.md",
+          "lines": "7,435,437,442,444,458,464",
+          "note": "50 Mbps in 1000 episodes, SFD and FFT benchmarks, EE"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2025-f-dadc-aoi-multiuav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning.md",
+          "lines": "5,33,231,239,245",
+          "note": "segmented Rayleigh/Rician channel"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning.md",
+          "lines": "134,302,308,433,453",
+          "note": "speed (3), K_max (16), energy (17), coverage (19), UAV energy (22)"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning.md",
+          "lines": "465,468,470,472,474,476,478,480,482,484,486,488,494",
+          "note": "problem (23) C1-C14 meanings"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning/Age_of_Information_Minimization_in_UAV-Enabled_IoT_Networks_via_Federated_Reinforcement_Learning.md",
+          "lines": "1171",
+          "note": "45.6% and 45.9% vs greedy"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-distributed-jscc-uav-video",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks.md",
+          "lines": "168,171,216",
+          "note": "objective (15a) and weights"
+        },
+        {
+          "path": "raw/sources/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks.md",
+          "lines": "175,179,183,187,191,195,199,202,205,209,213",
+          "note": "constraints (15b)-(15k)"
+        },
+        {
+          "path": "raw/sources/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks.md",
+          "lines": "5,28,448",
+          "note": "codec complexity 1.81% DCVC, 16.56% L-DVC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks/Distributed_Deep_Joint_Source-Channel_Coding_of_Videos_in_Unmanned_Aerial_Vehicle_Networks.md",
+          "lines": "474,494,503,517",
+          "note": "nearest-user greedy baseline, 13.62% and 24.36% rounds"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-ensemble-marl-uav-target-search",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space.md",
+          "lines": "64,72,121,123,126,132",
+          "note": "motion models (1)-(2), J1 and J2"
+        },
+        {
+          "path": "raw/sources/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space.md",
+          "lines": "135,138,141,143",
+          "note": "problem (11) with (a)-(e)"
+        },
+        {
+          "path": "raw/sources/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space.md",
+          "lines": "158,166,252,264,458",
+          "note": "Dec-POMDP, safety mask (25), voting (39)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space/An_Ensemble_MARL_Approach_for_Heterogeneous_UAV_Swarm_Target_Search_in_3D_Space.md",
+          "lines": "658,673,698,707,740",
+          "note": "baselines, E-QMIX highest, E-VDN vs VDN"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2024-mahdrl-multi-uav-wpcn",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning.md",
+          "lines": "83,86,114,140,143",
+          "note": "battery dynamics (4), (8), (11)"
+        },
+        {
+          "path": "raw/sources/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning.md",
+          "lines": "149,151,154,158,162,166,170,174,178",
+          "note": "P1 and (12)-(17)"
+        },
+        {
+          "path": "raw/sources/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning.md",
+          "lines": "187,218,237,294,309",
+          "note": "two-tier SAC/DQN design and rewards"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning/On_Designing_Multi-UAV_Aided_Wireless_Powered_Dynamic_Communication_via_Hierarchical_Deep_Reinforcement_Learning.md",
+          "lines": "364,371,373,375,377,379,381",
+          "note": "DDPG variant and four benchmark schemes"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-dt-ddqn-bisd-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "118,120,122,125",
+          "note": "T_mission objective (3)"
+        },
+        {
+          "path": "raw/sources/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "129,133,137,141,145,149,153,157,161,165,168",
+          "note": "C1-C8 and meaning"
+        },
+        {
+          "path": "raw/sources/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "103,306,350",
+          "note": "DT retraining, crash penalty, threat indicator"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach/Deployment_Design_for_Multi-UAV-Assisted_IoT_Networks_A_Digital_Twin-Driven_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "458,460,510,512,516,518,520,538,572",
+          "note": "QMIX/DDQN, parallel, PSO, scanning, ACO comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-temporal-spectrum-cartography",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning.md",
+          "lines": "70,182,187,189",
+          "note": "sensors, error (13), problem (14)"
+        },
+        {
+          "path": "raw/sources/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning.md",
+          "lines": "192,196,200",
+          "note": "constraints (15)-(17)"
+        },
+        {
+          "path": "raw/sources/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning.md",
+          "lines": "368,378,439,441",
+          "note": "multi-agent POMDP and MADDPG-style training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning/Temporal_Spectrum_Cartography_in_Low-Altitude_Economy_Networks_A_Generative_AI_Framework_With_Multi-Agent_Learning.md",
+          "lines": "619,621,623",
+          "note": "MSE 50.00 vs baselines, static density, UAV count"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2026-cpsfl-uav-foundation-models",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks.md",
+          "lines": "20,26,28,32,38",
+          "note": "SFL-PP/SP/PS paradigms, CPSFL design"
+        },
+        {
+          "path": "raw/sources/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks.md",
+          "lines": "194,198,202,206",
+          "note": "problem (14) and (14b)-(14d)"
+        },
+        {
+          "path": "raw/sources/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks.md",
+          "lines": "215,310,312",
+          "note": "latency analysis vs SFL-PP and PipeSFL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks/Communication-Pipelined_Split_Federated_Learning_for_Foundation_Model_Fine-Tuning_in_UAV_Networks.md",
+          "lines": "5,46",
+          "note": "baselines, ablations, heuristic CCRA, best fixed SPS"
+        }
+      ]
+    }
+  ]
+}

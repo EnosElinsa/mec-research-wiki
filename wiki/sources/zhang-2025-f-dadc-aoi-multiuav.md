@@ -14,7 +14,7 @@ related:
   - "[[jie-xu]]"
   - "[[shuguang-cui]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Age of Information Minimization in UAV-Enabled IoT Networks via Federated Reinforcement Learning
@@ -51,12 +51,14 @@ Several UAVs each collect data in their own area under a segmented channel that 
 |---|---|
 | C1 | Each device served by one UAV, $\sum_n\lambda_{k,n}=1$. |
 | C2 | Slot time, $t^{\mathrm{fly}}_{n,t}+t^{\mathrm{hov}}_{n,t}=\varsigma$. |
-| C3 | $\tau_n\le T$. |
-| C4-C7 | Heading in $[0,2\pi]$, speed in $[0,V_{\max}]$, positions in $[0,D]$. |
-| C8 | UAV separation, $\lVert q_{n,t}-q_{j,t}\rVert\ge D_U$. |
+| C3 | Mission completion time, $\tau_n\le T$. |
+| C4-C5 | Heading in $[0,2\pi]$ and speed in $[0,V_{\max}]$. |
+| C6-C8 | Positions stay in $[0,D]$ and UAV separation satisfies $\lVert q_{n,t}-q_{j,t}\rVert\ge D_U$. |
 | C9 | UAV energy, $\sum_t(e_{n,t}+e^{\mathrm{off}}_{n,t})\le E_{\max}$. |
-| C10-C11 | Device power and energy limits. |
-| (19) | All devices served once per block. |
+| C10-C11 | Device power $P_k\le P_{\max}$ and transmission energy within $E^k_{\max}$. |
+| C12 | Device transmission and UAV offloading times fit within the UAV hovering time. |
+| C13 | Scheduled devices per UAV do not exceed $K_{\max}$ (16). |
+| C14 | All devices are collected by the end of the mission, (19). |
 
 **Algorithm**: A DRL algorithm handles the single-UAV case with a variable-length horizon; F-DADC extends it to multiple UAVs by federated aggregation of the UAVs' DRL models.
 

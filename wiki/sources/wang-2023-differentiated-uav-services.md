@@ -22,7 +22,7 @@ related:
   - "[[ning-2023-madrl-uav-trajectory-differentiated-services]]"
   - "[[wang-2025-ctmig-task-migration-uav]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dynamic UAV Deployment for Differentiated Services: A Multi-Agent Imitation Learning Based Approach
@@ -56,11 +56,11 @@ Models competing UAV owners as a [[differentiated-uav-service-market]] and train
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Hotspot budget: $\sum_kp_k(t)q_{hk}(t)\le e_h$ |
-| C2 | Differentiation parameter: $0<\alpha<1$ |
-| C3 | Quantity nonnegativity: $q_{hk}(t)\ge0$ |
-| C4 | Action bound: $-\alpha e_h/(4A_k)\le\Delta q_{hk}(t)\le\alpha e_h/(4A_k)$ |
-| C5 | Owner cost: $c_{hk}(t)=(g_0+g_s)\lceil q_{hk}(t)/b_k\rceil+g_cq_{hk}(t)$ |
+| (8a) | Hotspot budget: $\sum_kp_k(t)q_{hk}(t)\le e_h$ |
+| Model rule | Differentiation parameter $\alpha$ in the CES-style utility $u(t)=\sum_{h,k}f_{hk}(t)q_{hk}(t)^{\alpha}$ |
+| Model rule | Quantities are nonnegative, $q_{hk}(t)\ge0$, with equilibrium bound $q_{hk}^{max}=\alpha e_h/4A_k$ |
+| Action range | $-\alpha e_h/(4A_k)\le\Delta q_{hk}(t)\le\alpha e_h/(4A_k)$ |
+| Model rule | Owner cost: $c_{hk}(t)=(g_0+g_s)\lceil q_{hk}(t)/b_k\rceil+g_cq_{hk}(t)$ |
 
 **Algorithm**: Derive full-information Nash-equilibrium quantities as expert demonstrations, then train decentralized MILU policies with CNN and GAN imitation, an opponent-action predictor, and a policy-gradient/value-network update under partial observations.
 
@@ -68,7 +68,7 @@ Models competing UAV owners as a [[differentiated-uav-service-market]] and train
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] modeled differentiated UAV services as a competition among owners that choose service quantities and prices across user hotspots. The formulation maximizes CES-based user utility under hotspot budgets while each owner maximizes long-term revenue minus deployment, hovering, and service costs. Full-information analysis supplies Nash-equilibrium expert actions, and the MILU learner imitates those actions with decentralized CNN, GAN, opponent-model, and policy-gradient networks. Experiments reported higher user utility and owner profit with faster convergence than multi-agent DRL and optimization baselines, while the framework retains partial-observation operation.
+Wang et al. [x] modeled differentiated UAV services as a competition among owners that choose service quantities and prices across user hotspots. The formulation maximizes CES-based user utility under hotspot budgets while each owner maximizes long-term revenue minus deployment, hovering, and service costs. Full-information analysis supplies Nash-equilibrium expert actions, and the MILU learner imitates those actions with decentralized CNN, GAN, opponent-model, and policy-gradient networks. Experiments on Hangzhou hotspots reported higher owner profit and user utility than the MDDPG-based and OMD-based solutions under partial observations, while the full-information expert policy remained best.
 
 ## Problem
 

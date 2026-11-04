@@ -16,7 +16,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # An Ensemble MARL Approach for Heterogeneous UAV Swarm Target Search in 3D Space
@@ -35,7 +35,7 @@ Builds a heterogeneous UAV-swarm target-search controller in 3D space. Fixed-win
 
 **Scenario**: Fixed-wing and multirotor UAVs cooperatively search a discretized three-dimensional region containing unknown targets and no-fly zones. Fixed-wing UAVs provide fast high-altitude coverage, multirotor UAVs provide lower-altitude detection, and each agent acts from local observations under partial observability.
 
-**Problem & objective**: The finite-horizon search problem is a mixed-integer, nonconvex Dec-POMDP that maximizes correctly found targets and penalizes mission duration, $\max_{\mathbf a^{\mathrm F},\mathbf a^{\mathrm M}} J=\lambda_1\kappa_1J_1-\lambda_2\kappa_2J_2$, or equivalently learns policies maximizing expected discounted shared reward.
+**Problem & objective**: Problem (11) is a finite-horizon mixed-integer, nonconvex search problem, later cast as a Dec-POMDP, that maximizes correctly found targets and penalizes mission duration, $\max_{\mathbf a^{\mathrm F},\mathbf a^{\mathrm M}} J=\lambda_1\kappa_1J_1-\lambda_2\kappa_2J_2$, or equivalently learns policies maximizing expected discounted shared reward.
 
 **Decision variables**:
 
@@ -50,11 +50,11 @@ Builds a heterogeneous UAV-swarm target-search controller in 3D space. Fixed-win
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Fixed-wing heading, altitude, and horizontal-velocity changes obey the maneuver limits in Eq. (1) |
-| C2 | Multirotor coordinate increments and altitude remain within the discrete motion limits in Eq. (2) |
-| C3 | Every UAV remains at least $\rho_{\mathrm{safe}}^{\mathrm O}$ from each no-fly zone |
-| C4-C5 | Same-type UAVs maintain separations $\rho_{\mathrm{safe}}^{\mathrm F}$ and $\rho_{\mathrm{safe}}^{\mathrm M}$ |
-| C6 | The safety mask $m_t^k(a^k)=m_{1,t}^k m_{2,t}^k m_{3,t}^k$ removes collision, no-fly-zone, and boundary-violating actions |
+| (11a) | Fixed-wing heading, altitude, and horizontal-velocity changes obey the maneuver limits in (1) |
+| (11b) | Multirotor coordinate increments and altitude remain within the discrete motion limits in (2) |
+| (11c) | Every UAV remains at least $\rho_{\mathrm{safe}}^{\mathrm O}$ from each no-fly zone |
+| (11d)-(11e) | Same-type UAVs maintain separations $\rho_{\mathrm{safe}}^{\mathrm F}$ and $\rho_{\mathrm{safe}}^{\mathrm M}$ |
+| Algorithm rule (25) | The safety mask $m_t^k(a^k)=m_{1,t}^k m_{2,t}^k m_{3,t}^k$ removes collision, no-fly-zone, and boundary-violating actions |
 
 **Algorithm**: Define the Dec-POMDP and shared search-time reward → mask unsafe actions → train separate CTDE E-QMIX ensembles for fixed-wing and multirotor agents with independent replay partitions → obtain one candidate action from each network → execute the majority-voted action during decentralized search.
 
@@ -62,7 +62,7 @@ Builds a heterogeneous UAV-swarm target-search controller in 3D space. Fixed-win
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied target search in a large-scale three-dimensional environment using a heterogeneous swarm of fixed-wing and multirotor UAVs. They formulated the cooperative search as a mixed-integer, nonconvex MARL problem that maximizes target discovery while minimizing search time under partial observability, no-fly-zone restrictions, and collision constraints. Their safety-aware action mask removes inadmissible moves, and their Ensemble QMIX framework trains multiple independent QMIX networks and aggregates their decentralized actions by majority voting. A mathematical analysis shows that majority voting increases an agent's probability of selecting the optimal action when the individual-network success probability exceeds one half. Simulations report that E-QMIX achieves the highest search efficiency and coverage rate among the evaluated single-network MARL and ensemble baselines.
+Zhang et al. [x] studied target search in a large-scale three-dimensional environment using a heterogeneous swarm of fixed-wing and multirotor UAVs. They formulated the cooperative search as a mixed-integer, nonconvex MARL problem that maximizes target discovery while minimizing search time under partial observability, no-fly-zone restrictions, and collision constraints. Their safety-aware action mask removes inadmissible moves, and their Ensemble QMIX framework trains multiple independent QMIX networks and aggregates their decentralized actions by majority voting. A mathematical analysis shows that majority voting increases an agent's probability of selecting the optimal action when the individual-network success probability exceeds one half. Simulations report that E-QMIX achieves the highest search efficiency and coverage rate against QMIX, VDN, MAPPO, MADQN, and random baselines, and an ensemble VDN variant beats plain VDN once enough networks are combined but can trail it when the ensemble is small.
 
 ## Problem
 

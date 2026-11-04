@@ -22,7 +22,7 @@ related:
   - "[[zheng-chang]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Joint Localization and Communication via Air-Ground Collaboration in UAV-Assisted Emergency Systems
@@ -58,7 +58,7 @@ Pairs one collaborative UAV with one ground rescuer to localize a person from fo
 |---|---|
 | 28a | Localization-phase duration does not exceed slot duration |
 | 28b-28d | UAV altitude and horizontal and vertical speeds remain below their limits |
-| 28f | Total mission energy satisfies $\sum_tE_{total}(t)\leq E_{all}$ |
+| 28f | (28e) is missing from the parse and later tags shift by one; check the published paper. Total mission energy satisfies $\sum_tE_{total}(t)\leq E_{all}$ |
 | 28g-28h | UAV and rescuer transmit powers lie in $(0,p_{\max}]$ |
 | 28i-28j | Both CoMP beamforming vectors have unit norm |
 
@@ -68,7 +68,7 @@ Pairs one collaborative UAV with one ground rescuer to localize a person from fo
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Tian et al. [x] considered joint localization and communication for an emergency system containing one collaborative UAV, one ground rescuer, and one person to be rescued. Four angle-of-arrival estimates feed an ESPRIT and least-squares localization pipeline, after which geometry-derived CoMP beams support downlink communication. Their objective maximizes a normalized communication and localization utility per unit energy by controlling UAV position, localization duration, transmit powers, and beamforming under flight, energy, power, and unit-norm constraints. The SYNCORE controller uses double deep Q-learning to update movement, time, and power decisions while localization and beamforming modules evaluate each action. Simulations report better communication, localization, and energy efficiency than the evaluated learning, heuristic, and non-synergistic baselines and show that larger localization errors sharply reduce received data through beamforming mismatch.
+Tian et al. [x] considered joint localization and communication for an emergency system containing one collaborative UAV, one ground rescuer, and one person to be rescued. Four angle-of-arrival estimates feed an ESPRIT and least-squares localization pipeline, after which geometry-derived CoMP beams support downlink communication. Their objective maximizes a normalized communication and localization utility per unit energy by controlling UAV position, localization duration, transmit powers, and beamforming under flight, energy, power, and unit-norm constraints. The SYNCORE controller uses double deep Q-learning to update movement, time, and power decisions while localization and beamforming modules evaluate each action. Simulations report better communication, localization, and energy efficiency than the DQN-BF, DPS-BF, GRA-BF, and NSOCL baselines and show that larger localization errors sharply reduce received data through beamforming mismatch.
 
 ## Problem
 
