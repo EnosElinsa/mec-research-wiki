@@ -1,0 +1,11 @@
+{
+  "citekey": "li2022iclr",
+  "source": "official author preprint; conference attribution retained separately",
+  "pdf_url": "https://arxiv.org/pdf/2109.05490",
+  "bibtex_url": "https://openreview.net/forum.bib?id=64trBbOhdGU",
+  "first_page": "Published as a conference paper at ICLR 2022\nHYAR: ADDRESSING DISCRETE-CONTINUOUS\nACTION REINFORCEMENT LEARNING\nVIA HYBRID\nACTION REPRESENTATION\nBoyan Li1∗, Hongyao Tang1∗, Yan Zheng1†, Jianye Hao1†, Pengyi Li1, Zhen Wang2†,\nZhaopeng Meng1, Li Wang1\n1College of Intelligence and Computing, Tianjin University,\n2School of Artiﬁcial Intelligence, Optics and Electronics (iOPEN) and School of\nCybersecurity, Northwestern Polytechnical University\nABSTRACT\nDiscrete-continuous hybrid action space is a natural setting in many practical\nproblems, such as robot control and game AI. However, most previous R",
+  "pages": 22,
+  "pdf_sha256": "b5561cb4f97c69a61ee2d82805c6357b18a0edb2b4ffe0ce4f5ceed67306b3ba",
+  "bib_url": "https://arxiv.org/bibtex/2109.05490",
+  "bib_sha256": "44b5c2c7f1c78e7790049d0e8ec3984cf4c911f97663d4a2223324a9fdad512c"
+}

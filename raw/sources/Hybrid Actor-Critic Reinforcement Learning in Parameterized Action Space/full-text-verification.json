@@ -1,0 +1,10 @@
+{
+  "citekey": "fan2019ijcai",
+  "source": "official public full text",
+  "pdf_url": "https://www.ijcai.org/proceedings/2019/0316.pdf",
+  "bibtex_url": "https://www.ijcai.org/proceedings/2019/0316.bib",
+  "pages": 7,
+  "first_page": "Hybrid Actor-Critic Reinforcement Learning in Parameterized Action Space\nZhou Fan∗, Rui Su∗, Weinan Zhang† and Yong Yu\nShanghai Jiao Tong University\nzhou.fan@sjtu.edu.cn, {surui, wnzhang, yyu}@apex.sjtu.edu.cn\nAbstract\nIn this paper we propose a hybrid architecture\nof actor-critic algorithms for reinforcement learn-\ning in parameterized action space, which consists\nof multiple parallel sub-actor networks to decom-\npose the structured action space into simpler ac-\ntion spaces along with a critic ",
+  "pdf_sha256": "edb37908aa7070f03ba1996050ce5eb27e341735ed976d9ad3c94b0c89d7b068",
+  "bib_error": "404 Client Error: Not Found for url: https://ijcai.org/proceedings/2019/0316.bib"
+}

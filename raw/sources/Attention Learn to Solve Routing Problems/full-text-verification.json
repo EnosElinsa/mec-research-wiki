@@ -1,0 +1,11 @@
+{
+  "citekey": "kool2019iclr",
+  "source": "official author preprint; conference attribution retained separately",
+  "pdf_url": "https://arxiv.org/pdf/1803.08475",
+  "bibtex_url": "https://openreview.net/forum.bib?id=ByxBFsRqYm",
+  "first_page": "Published as a conference paper at ICLR 2019\nATTENTION, LEARN TO SOLVE ROUTING PROBLEMS!\nWouter Kool\nUniversity of Amsterdam\nORTEC\nw.w.m.kool@uva.nl\nHerke van Hoof\nUniversity of Amsterdam\nh.c.vanhoof@uva.nl\nMax Welling\nUniversity of Amsterdam\nCIFAR\nm.welling@uva.nl\nABSTRACT\nThe recently presented idea to learn heuristics for combinatorial optimization\nproblems is promising as it can save costly development. However, to push this\nidea towards practical implementation, we need better models and better ways\nof training. We contribute in both directions: we propose a model based on at-\ntention lay",
+  "pages": 25,
+  "pdf_sha256": "fa783d096ff3986d5e9745acf75152cecb4ec7b3d1d0798ba765449e9eace4fd",
+  "bib_url": "https://arxiv.org/bibtex/1803.08475",
+  "bib_sha256": "94f88e17359ee8cb907f0e6541d32ddfb707cd6c8ab17077f1f5710b765bfec9"
+}

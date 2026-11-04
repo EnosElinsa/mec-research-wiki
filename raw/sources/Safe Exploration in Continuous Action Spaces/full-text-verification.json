@@ -1,0 +1,10 @@
+{
+  "citekey": "dalal2018arxiv",
+  "source": "official public full text",
+  "pdf_url": "https://arxiv.org/pdf/1801.08757",
+  "bibtex_url": "https://arxiv.org/bibtex/1801.08757",
+  "pages": 9,
+  "first_page": "Safe Exploration in Continuous Action Spaces\nGal Dalal 1 2 Krishnamurthy Dvijotham 2 Matej Vecerik 2 Todd Hester 2 Cosmin Paduraru 2 Yuval Tassa 2\nAbstract\nWe address the problem of deploying a reinforce-\nment learning (RL) agent on a physical system\nsuch as a datacenter cooling unit or robot, where\ncritical constraints must never be violated. We\nshow how to exploit the typically smooth dynam-\nics of these systems and enable RL algorithms\nto never violate constraints during learning. Our\ntechniq",
+  "pdf_sha256": "5822e0022373a3be9aac4e7faa7e8de114971c0e7ec33b9f7a087c7e6310dd5b",
+  "bib_sha256": "64847dd0ef9c4a2eec3d9c7e4f1b19db915fe9e85592b49538e87e0016483464"
+}
