@@ -14,8 +14,9 @@ related:
   - "[[hierarchical-federated-drl]]"
   - "[[hierarchical-federated-a3c]]"
   - "[[ron-2026-federated-a3c-uav-energy]]"
+  - "[[zhang-2025-f-dadc-aoi-multiuav]]"
 created: 2026-05-28
-updated: 2026-07-10
+updated: 2026-11-02
 ---
 
 # Federated Reinforcement Learning (FRL)

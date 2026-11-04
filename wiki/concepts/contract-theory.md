@@ -13,8 +13,9 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[contract-theoretic-fl-incentives]]"
   - "[[zhao-2026-uav-fl-inspection-incentives]]"
+  - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Contract Theory (Principal-Agent Incentive Mechanism)
@@ -29,3 +30,5 @@ Unlike a [[stackelberg-game]] (observable leader-follower moves) or [[matching-t
 [[zhao-2026-uav-fl-inspection-incentives]] applies contract theory to UAV federated learning rather than AIGC service pricing. There, the contract mechanism builds a viable UAV-client candidate pool under private participation costs and battery constraints, before Bayesian optimization selects clients for incentive assignment.
 
 [[guo-2026-aoi-uav-mcs-contract]] adds [[aoi-aware-contract-incentives]] for UAV-assisted mobile crowdsensing. It uses one contract layer for UAV service slots and another multidimensional layer for user update frequency under hidden sensing/computation costs, with [[age-of-information]] linking rewards to data freshness.
+
+[[wen-2026-diffusion-dynamic-contract-ai-agent]] designs two-period dynamic contracts for edge servers whose private types change over time, solved with a pruned diffusion-model soft actor-critic.

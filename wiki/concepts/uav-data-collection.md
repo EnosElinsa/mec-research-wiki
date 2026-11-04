@@ -43,8 +43,11 @@ related:
   - "[[samir-2022-aoi-altitude-scheduling]]"
   - "[[hsu-2022-collision-avoidance-trajectory]]"
   - "[[convex-tsp-uav-data-collection]]"
+  - "[[sun-2026-mde-ch-3d-uav-trajectory]]"
+  - "[[zhang-2025-f-dadc-aoi-multiuav]]"
+  - "[[chen-2023-cfg-mappo-uav-data-collection]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # UAV Data Collection
@@ -54,6 +57,8 @@ updated: 2026-07-14
 [[lin-2026-layered-semantic-uav-aggregation]] adds image-semantic aggregation at a hovering UAV base station. Unlike route- and freshness-oriented collection, it fixes the user grouping and optimizes semantic signal processing plus a static horizontal hovering point for reconstruction quality.
 
 A UAV mission pattern where the aircraft acts as a flying **data sink**, flying to (or hovering over) ground IoT devices to collect their sensed data directly over LoS links — reducing device transmit power and preventing data overflow in hard-to-reach areas. It is the **data-gathering** counterpart to UAV-assisted **computation offloading** ([[task-offloading]]): the former maximizes collected data volume, the latter minimizes compute latency/energy.
+
+Trajectory-design variants include [[sun-2026-mde-ch-3d-uav-trajectory]], which minimizes energy over a continuous Bezier-curve 3-D path above terrain with constraint-handling differential evolution, and [[chen-2023-cfg-mappo-uav-data-collection]], which combines coalition-formation association with MAPPO trajectories for fairness-weighted energy efficiency.
 
 ## Joint MEC + DC
 
@@ -78,3 +83,6 @@ When the collected data is delay-sensitive, data-collection objectives connect t
 [[li-2023-energy-constrained-uav-data-collection]] treats collection as [[energy-constrained-uav-data-collection-orienteering]] over depot-returning hover tours, distinguishing full/partial collection and non-overlap guarantees from overlap heuristics. [[wang-2026-glint-aoi-wireless-powered-edge]] adds the wireless-powered freshness case, where multiple UAVs first move and associate sensors, then allocate charging time and update transmissions through [[dual-network-sequential-aoi-control]].
 
 [[fu-2026-dubins-uav-data-collection]] adds a carrier/subordinate architecture through the [[releasing-collecting-recycling-uav-framework]]: a transport UAV releases communication UAVs for obstacle-aware collection tours and later synchronizes airborne recovery.
+
+
+[[zhang-2025-f-dadc-aoi-multiuav]] minimizes average AoI with a variable mission completion time and a segmented Rayleigh/Rician channel, using federated DRL across UAVs.

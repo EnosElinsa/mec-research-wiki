@@ -13,8 +13,9 @@ related:
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
   - "[[gai-generator-vs-optimizer-in-isac]]"
+  - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Diffusion Model as Optimizer

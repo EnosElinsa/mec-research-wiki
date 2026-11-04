@@ -7,8 +7,9 @@ related:
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
   - "[[particle-swarm-optimization]]"
   - "[[liao-2025-ris-uav-usv-resource-allocation]]"
+  - "[[sun-2026-mde-ch-3d-uav-trajectory]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-11-02
 ---
 
 # Differential Evolution (DE)

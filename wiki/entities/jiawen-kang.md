@@ -28,15 +28,16 @@ related:
   - "[[wen-2026-hybridrag-low-carbon-lae]]"
   - "[[ye-2026-flight-speed-battery-swapping]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
+  - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Jiawen Kang
 
 IEEE Senior Member. Affiliated with the **School of Automation, Guangdong University of Technology** (Guangzhou, China). The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] repeat the same Guangdong University of Technology affiliation, confirming the same researcher identity across these corpus sources.
 
-Co-authored 24 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage, collaborative beamforming, generative-AI/diffusion methods, semantic communication, physical-layer security, localization, federated-learning incentives, air-ground MEC service placement, digital twins, UAV-swarm collaborative inference, cooperative drone-vehicle MEC, low-carbon LAE optimization, and UAV-ground-robot information quality:
+Co-authored 25 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage, collaborative beamforming, generative-AI/diffusion methods, semantic communication, physical-layer security, localization, federated-learning incentives, air-ground MEC service placement, digital twins, UAV-swarm collaborative inference, cooperative drone-vehicle MEC, low-carbon LAE optimization, and UAV-ground-robot information quality:
 
 - [[peng-2022-cmop-uav-path-planning]], [[peng-2024-energy-time-uav-its]], [[huang-2023-mu-aec-task-energy]], [[huang-2025-cmop-dispersed-computing]] - CMOP-evolutionary lineage.
 - [[sun-2025-emoppo-vlh-aerial-cb]], [[li-2024-emodrl-ground-space-cb]] - aerial / ground-space collaborative beamforming via evolutionary multi-objective RL.
@@ -58,6 +59,7 @@ Co-authored 24 sources in this wiki across the CMOP-evolutionary UAV-MEC lineage
 - [[ye-2026-flight-speed-battery-swapping]] - flight-speed scheduling, battery swapping, and offloading for UAV-enabled MEC patrol inspection.
 - [[guo-2026-spatiotemporal-information-quality-ugrnet]] - martingale/Wasserstein information-quality analysis for heterogeneous UAV-ground-robot networks.
 - [[lim-2021-uav-iov-contract-matching]] - multidimensional contract and matching mechanism for UAV-assisted federated IoV learning.
+- [[wen-2026-diffusion-dynamic-contract-ai-agent]] - diffusion-based two-period dynamic contracts for federated AI agent construction (GDUT School of Automation address).
 
 Email: kavinkang@gdut.edu.cn
 

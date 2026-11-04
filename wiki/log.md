@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-02] Curated trajectory, caching, AoI, contract, and aerial-edge sources
+
+Curated the last six genuinely new Raw sources from the session-start backlog: [[sun-2026-mde-ch-3d-uav-trajectory]], [[shi-2021-dqn-air-assisted-vehicular-caching]], [[zhang-2025-f-dadc-aoi-multiuav]], [[wen-2026-diffusion-dynamic-contract-ai-agent]], [[kang-2025-hdmoea-aerial-edge-computing]], and [[nguyen-2024-heterogeneous-aerial-edge-noma]]. Five carry `modeling_card: required`; the Holt-based dynamic multiobjective EA is `not_applicable` because it is evaluated only on generic benchmark functions.
+
+No new concept or entity was needed. Extended [[jie-xu]], [[shuguang-cui]], [[jiawen-kang]], and [[dusit-niyato]] after matching bylines, and linked the sources from [[uav-data-collection]], [[age-of-information]], [[federated-reinforcement-learning]], [[contract-theory]], [[diffusion-model-as-optimizer]], [[uav-content-caching]], [[hierarchical-aerial-mec]], [[differential-evolution]], and [[dynamic-constrained-multi-objective-optimization]]. Deferred Liang Zhao, Xingwei Wang, Jinbo Wen, and Chau Yuen, whose recurrences were not reverified for identity in this batch, and one-off authors.
+
+All 58 Raw folders that were uncurated at the start of this run are now curated. Corpus counts are 693 sources, 665 concepts, 210 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Link, process-reference, index, frontmatter, source-schema, and entity-roster audits report zero errors.
+
 ## [2026-11-02] Curated migration, edge-inference, and O-RAN sources
 
 Curated seven genuinely new Raw sources: [[meng-2026-dnn-partition-migration-multiuav]], [[frejo-martin-2025-uav-stateful-microservice-live-migration]], [[hu-2026-seer-on-demand-container-migration]], [[ghoshal-not-in-parse-5g-mmwave-edge-ar]], [[lyu-2026-pruning-aware-laim-co-inference]], [[lyu-2026-laim-deployment-lae]], and [[baena-not-in-parse-space-o-ran]]. The DNN-partitioning and pruning-aware co-inference papers carry `modeling_card: required`; the UAV live-migration architecture, the SEER container system, the 5G AR measurement study, the large-model deployment magazine article, and the Space-O-RAN architecture are `not_applicable`. The AR measurement and Space-O-RAN parses have no PDF and no venue, year, or DOI, so those fields are recorded as not in parse.

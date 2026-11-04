@@ -80,6 +80,7 @@
 - [[sun-2024-mvtora-postdisaster-vfc]] — Sun et al. 2024. Post-disaster aerial-terrestrial MEC + **vehicle fog computing**; game theory + convex + evolutionary (MVTORA).
 - [[chen-2022-qoe-game-end-edge-cloud]] — Chen et al. 2022. **QoE-aware decentralized end-edge-cloud offloading** as a **potential game** (MUTO-Game); self-interested user devices compete for channels + edge compute, maximizing sum QoE; proven NE existence + the distributed GDTO algorithm + a convergence bound and a **Price-of-Anarchy** worst-case guarantee (IEEE TMC).
 - [[ma-2026-mean-field-green-aec]] — Ma et al. 2026. Green aerial edge computing for metaverse users; [[mean-field-game]] task allocation + Lyapunov energy valuation across CE-UAVs and energy-harvesting EF-UAVs, with Raspberry Pi5/A100 hardware-in-the-loop validation (IEEE TMC).
+- [[kang-2025-hdmoea-aerial-edge-computing]] - Kang et al. 2025. Holt-based prediction correction dynamic multiobjective EA motivated by AAV aerial edge computing, evaluated on benchmarks (IEEE IoT-J).
 
 > [[chen-2024-ulse-game]] (UAV-LEO offloading as a potential game) is also game-theoretic; it is filed under **SAGIN / satellite offloading** below as its primary architectural home.
 > [[zhang-2026-uav-task-path-lu-its]] (multi-UAV low-altitude ITS task allocation as a potential game) is filed under **Architectural / spectrum / governance** as its primary low-altitude-economy home; [[jia-2026-ufsp-rail-inspection]] (imperfect-information stochastic potential game) is filed under **UAV-swarm collaborative computing**.
@@ -313,6 +314,7 @@
 - [[zhang-2024-gdmtd3-aerial-secure-cb]] — Zhang et al. 2024. UAV-swarm secure collaborative beamforming via **generative-diffusion-model-enhanced TD3** (GDMTD3).
 - [[fu-2025-otae-inference-lae-batching]] — Fu et al. 2025. Over-the-air edge inference for low-altitude airspace; diffusion-based online batching + beamforming.
 - [[du-2024-d2sac-aigc-asp-selection]] — Du et al. 2024. Edge AIGC-as-a-Service provider selection; diffusion decision generator (AGOD) inside SAC (**D2SAC**); beats 7 DRL baselines (IEEE TMC).
+- [[wen-2026-diffusion-dynamic-contract-ai-agent]] - Wen et al. 2026. Two-period dynamic contracts for federated AI agent construction solved by pruned diffusion SAC (IEEE TSC).
 - [[wang-2024-wipe-gai]] — Wang et al. 2024. **WiPe-GAI** — wireless perception guides GAI for edge AIGC; sequential multi-scale perception predicts the user skeleton + a diffusion model generates the optimal **pricing** incentive strategy (IEEE TMC).
 - [[du-2024-yolo-semcom-digital-twin]] — Du et al. 2024. **YOLO-based semantic communication** for **digital-twin** construction (apple orchard); a slimmed YOLOv7 (ELAN-H + SimAM) extracts semantic content from UAV images and transmission power is allocated by per-object importance — a confidence rule and a **diffusion-model-generated** scheme — cutting transmitted data ~91% on its case study (IEEE IoT-J).
 
@@ -341,6 +343,7 @@
 
 - [[nabi-2025-jour-hierarchical-aerial]] — Nabi & Moh 2025. *JOUR* — Gale-Shapley matching + ESAC for joint offloading, association, and resource allocation in UAV+HAP MEC.
 - [[li-2026-two-timescale-uav-replacement-hap]] - Li et al. 2026. UAV trajectory, replacement, and substitute choice on a slow timescale plus HAP delegation and bandwidth on a fast timescale; two coupled stochastic games with NE existence solved by UTRTD MADRL (IEEE TVT).
+- [[nguyen-2024-heterogeneous-aerial-edge-noma]] - Nguyen et al. 2024. HAP plus UAV NOMA edge computing; MADDPG over association, partial offloading, power, and CPU (IEEE TNSE).
 - [[chen-2026-dart-hap-uav-mec]] — Chen et al. 2026. HAP-UAV-MEC with NOMA and WPT; DART combines Lyapunov decomposition, DDPG-attention trajectory/offloading, and convex resource allocation (IEEE TMC).
 - [[bao-2025-ddpg-video-offloading]] — Bao et al. 2025. UAV+HAP video-analytics offloading with adaptive transcoding; DDPG over a QoE reward.
 - [[jia-2026-dro-lawn-trajectory]] — Jia et al. 2026. Distributionally robust task-size offloading and UAV-trajectory optimization in a UAV/HAP low-altitude wireless network; L1/L-infinity/Fortet-Mourier ambiguity sets plus Benders/SCA (IEEE TMC).
@@ -351,6 +354,7 @@
 
 ### Vehicular MEC
 
+- [[shi-2021-dqn-air-assisted-vehicular-caching]] - Shi et al. 2021. Airship-scheduled UAV caching of driving-safety content with DQN placement (IEEE T-ITS).
 - [[chen-2025-srcl-iov-service-migration]] - Chen et al. 2025. SR-CL mobility-aware IoV service migration and convex resource allocation (IEEE TMC).
 - [[liang-2021-multicell-jmh]] - Liang et al. 2021. Joint multi-cell MEC migration/handover and radio-compute resource allocation with relaxation and matching recovery (IEEE TWC).
 - [[ren-2023-haps-handoff-distributed-computing]] - Ren et al. 2023. HAPS/RSU/vehicle distributed computing with handoff-aware task splitting and SCA (IEEE TWC).
@@ -742,6 +746,8 @@
 - [[mozaffari-not-in-parse-3d-drone-cellular-network]] - Mozaffari et al. Foundational 3-D wireless cellular network with LAP drone-BSs, drone-UEs, HAP/FSO backhaul, truncated-octahedron frequency reuse, KDE demand modeling, and optimal-transport association. *(Parsed metadata lacks DOI/venue/year.)*
 - [[zeng-2020-qoe-energy-efficient-uav]] - Zeng et al. 2020. QoE-constrained UAV energy efficiency over scheduling, 3-D trajectory, power, and bandwidth with Dinkelbach and BCD (IEEE TVT).
 - [[chen-2023-cfg-mappo-uav-data-collection]] - Chen et al. 2023. Coalition-formation-game association plus MAPPO trajectories for fair, energy-efficient multi-UAV data collection (IEEE TWC).
+- [[sun-2026-mde-ch-3d-uav-trajectory]] - Sun et al. 2026. Terrain-aware continuous 3-D Bezier UAV trajectory for IoT data collection via matrix-based DE with constraint handling (IEEE TMC).
+- [[zhang-2025-f-dadc-aoi-multiuav]] - Zhang et al. 2025. Multi-UAV AoI minimization with variable completion time via federated DRL F-DADC (IEEE TWC).
 - [[huang-2025-hap-aav-spectrum-sharing-stackelberg]] - Huang et al. 2025. HAP-led Stackelberg spectrum pricing and power allocation for AAVs in air-ground networks (IEEE TNSM).
 - [[zhang-2019-dual-band-airborne-access]] - Zhang et al. 2019. Airship UHF/S-band A2G measurements up to 70 km and joint band assignment and power allocation (IEEE Access).
 - [[piao-2019-uav-csi-measurement-gtsp]] - Piao et al. 2019. Energy-minimal drone CSI fingerprint collection cast as GTSP on an orientation-aware graph, validated on hardware (IEEE INFOCOM).

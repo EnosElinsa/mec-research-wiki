@@ -5,8 +5,9 @@ tags: [optimization, multi-objective, evolutionary]
 related:
   - "[[xie-2026-uav-multisource-fusion]]"
   - "[[lyapunov-optimization]]"
+  - "[[kang-2025-hdmoea-aerial-edge-computing]]"
 created: 2026-05-28
-updated: 2026-05-28
+updated: 2026-11-02
 ---
 
 # Dynamic Constrained Multi-Objective Optimization (DCMOO)
@@ -34,3 +35,5 @@ In MEC, DCMOO arises whenever the underlying environment (vehicle positions, cha
 ## In this wiki
 
 [[xie-2026-uav-multisource-fusion]] is the first DCMOO entry — chooses evolutionary because the V-MEC environment shifts faster than DRL can re-train. Most other curated sources sit in the DRL or Lyapunov-DRL families.
+
+[[kang-2025-hdmoea-aerial-edge-computing]] frames AAV-assisted aerial edge computing as a dynamic multiobjective problem and proposes Holt-based prediction correction with change-intensity detection and bi-mutation, evaluated on benchmark suites.

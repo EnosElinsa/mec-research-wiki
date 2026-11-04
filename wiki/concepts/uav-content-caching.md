@@ -11,8 +11,9 @@ related:
   - "[[service-caching-mec]]"
   - "[[coded-caching]]"
   - "[[tian-2026-coded-cache-repair]]"
+  - "[[shi-2021-dqn-air-assisted-vehicular-caching]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # UAV Content Caching
@@ -24,6 +25,8 @@ In [[hua-2026-ddrl-content-delivery]], each cache-enabled UAV serves users acros
 This concept is distinct from [[service-caching-mec]], which places executable service programs, and from computational-task caching, which reuses computation inputs or outputs. It is also broader than [[secure-caching-uav-mec]], where cache placement is coupled to adversarial or confidentiality constraints, and different from [[coded-caching]], which coordinates encoded fragments and multicast opportunities across nodes.
 
 [[tian-2026-coded-cache-repair]] is the coded, multi-UAV counterpart: it optimizes fragment placement and repair together with requester matching and motion.
+
+[[shi-2021-dqn-air-assisted-vehicular-caching]] places driving-safety content on UAVs with DQN, using an airship to schedule a holder UAV when a vehicle's resident UAV misses the request.
 
 ## Design questions
 

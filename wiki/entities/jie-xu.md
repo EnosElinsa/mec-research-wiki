@@ -25,6 +25,8 @@ related:
   - "[[yao-not-in-parse-secure-rsma-mec]]"
   - "[[lyu-2026-pruning-aware-laim-co-inference]]"
   - "[[lyu-2026-laim-deployment-lae]]"
+  - "[[zhang-2025-f-dadc-aoi-multiuav]]"
+  - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
 created: 2026-05-30
 updated: 2026-11-02
 ---
@@ -33,7 +35,7 @@ updated: 2026-11-02
 
 IEEE Fellow. Affiliated with the **School of Science and Engineering (SSE), The Chinese University of Hong Kong, Shenzhen** and, in the secure-ISAC / LAE-ISAC papers, the **Shenzhen Future Network of Intelligence Institute** and the **Guangdong Provincial Key Laboratory of Future Networks of Intelligence**. Earlier papers place him at the **School of Information Engineering, Guangdong University of Technology**. The biographies across these affiliations repeat his USTC degrees, NUS research fellowship, and SUTD postdoctoral appointment, establishing the same identity.
 
-Co-author of twenty-two wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
+Co-author of twenty-four wireless-power, UAV-energy, MEC, ISAC, and edge-AI sources in this wiki:
 
 - [[xu-2018-uav-wpt-trajectory]] - UAV-enabled wireless power transfer with trajectory and max-min energy optimization.
 - [[zeng-2019-rotary-wing-energy-min]] - rotary-wing UAV propulsion modeling and energy-minimizing communication trajectories.
@@ -57,6 +59,8 @@ Co-author of twenty-two wireless-power, UAV-energy, MEC, ISAC, and edge-AI sourc
 - [[yao-not-in-parse-secure-rsma-mec]] - secure RSMA-assisted MEC latency minimization.
 - [[lyu-2026-pruning-aware-laim-co-inference]] - pruning-aware large AI model co-inference (CUHK Shenzhen address).
 - [[lyu-2026-laim-deployment-lae]] - large AI model deployment for the low-altitude economy (CUHK Shenzhen address).
+- [[zhang-2025-f-dadc-aoi-multiuav]] - federated DRL for multi-UAV AoI minimization (CUHK Shenzhen address).
+- [[wen-2026-diffusion-dynamic-contract-ai-agent]] - diffusion-based dynamic contracts for federated AI agent construction.
 
 ## Contributions to this wiki
 

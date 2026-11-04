@@ -30,8 +30,9 @@ related:
   - "[[liao-2026-semantic-twinning-tracking]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
+  - "[[zhang-2025-f-dadc-aoi-multiuav]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Age of Information (AoI)
@@ -45,3 +46,6 @@ In a UAV data-collection setting, a device's AoI resets when the UAV collects it
 [[wang-2026-glint-aoi-wireless-powered-edge]] adds a nonlinear energy-harvesting constraint to the freshness loop. Its [[dual-network-sequential-aoi-control]] first resolves multi-UAV mobility and sensor association, then schedules WPT duration and sensor updates from the resulting coverage and battery state.
 
 [[liao-2026-semantic-twinning-tracking]] uses AoI to evaluate satellite acquisition of UAV state under packet loss and inference. Its semantic-twinning layer frequently samples variables that can reconstruct others and sparsely samples reconstructed variables for validation, so freshness is coupled to inferability rather than update age alone.
+
+
+[[zhang-2025-f-dadc-aoi-multiuav]] minimizes multi-UAV average AoI with federated DRL when the mission completion time is itself a decision.

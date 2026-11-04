@@ -69,8 +69,9 @@ related:
   - "[[li-2026-full-duplex-noma-uav-relay]]"
   - "[[huang-2026-star-ris-nearfield-isac]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
+  - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Dusit Niyato
@@ -147,6 +148,7 @@ The most frequently recurring author roster in the wiki currently links 66 sourc
 - [[lim-2021-uav-iov-contract-matching]] - contract screening and matching for UAV-assisted federated IoV learning.
 - [[wang-2026-fd-covert-isac]] - full-duplex receiver jamming for UAV-aided covert ISAC.
 - [[wang-2026-covert-cognitive-radio]] - primary-signal-assisted covertness in cooperative cognitive radio.
+- [[wen-2026-diffusion-dynamic-contract-ai-agent]] - diffusion-based dynamic contracts for federated AI agent construction in mobile metaverses (NTU College of Computing and Data Science address).
 
 ## Contributions to this wiki
 
