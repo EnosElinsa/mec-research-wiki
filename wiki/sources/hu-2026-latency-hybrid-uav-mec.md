@@ -20,7 +20,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[kun-yang]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Latency-Aware Computation Offloading in Hybrid UAV-Assisted MEC Systems: Time Scheduling and 3D Trajectory Design
@@ -55,12 +55,13 @@ Studies a wireless-powered hybrid UAV-MEC system where one UAV and one ground ba
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | TDMA durations fit each slot, or NOMA users share the scheduled resource under SIC |
-| C2 | User and UAV energy causality covers computing, transmission, propulsion, and harvested energy |
-| C3 | Information causality limits UAV computing and relay bits by previously received task bits |
-| C4 | CPU frequencies and transmit powers remain within node-specific bounds |
-| C5 | UAV initial and final positions, horizontal and vertical speeds, and altitude bounds are satisfied |
-| C6 | Every user completes its required task bits by the selected final slot |
+| (1) | UAV initial and final positions, horizontal and vertical speed limits, and altitude bounds $H_{\min}\le z[n]\le H_{\max}$ |
+| (6) | TDMA durations fit each slot, $\sum_kt_k[n]\le\delta_t$ (NOMA uses its own timing constraint (33)) |
+| (15), (18) | Local, UAV, and GBS CPU frequencies stay within their maxima |
+| (19) | Every user completes its required task bits $I_k$ by the final slot |
+| (20)-(21) | Information causality limits UAV computing and GBS relaying by previously received task bits |
+| (27), (32) | User energy causality with harvested energy, and total UAV energy within $E_{\mathrm{UAV}}^{\max}$ |
+| (40)-(42), (46), (49) | NOMA counterparts of the causality, CPU, and energy constraints in (P1) |
 
 **Algorithm**: Bisect on $N$ with a feasibility test, transform the fixed-$N$ problem into max-min computation-completion-ratio optimization, alternately update trajectory, CPU frequencies, time scheduling, and powers, and solve the updates with SCA, Lagrangian duality, linear programming, and convex optimization until convergence.
 
@@ -68,7 +69,7 @@ Studies a wireless-powered hybrid UAV-MEC system where one UAV and one ground ba
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hu et al. [x] studied latency-aware computation offloading in a wireless-powered hybrid UAV-assisted MEC system where one UAV cooperates with a ground base station under TDMA and NOMA. They formulated mixed-integer nonconvex problems that minimize task-completion latency by jointly optimizing time-slot scheduling, CPU-frequency allocation, transmit powers, the UAV three-dimensional trajectory, and the number of required slots. Their double-loop alternating-optimization algorithm uses bisection to adjust the slot count and transforms the inner problem into max-min computation-completion-ratio optimization. The inner loop decomposes the design into trajectory, CPU-frequency, time-scheduling, and power-allocation subproblems addressed through SCA, Lagrangian duality, linear programming, and convex optimization. Simulations report reduced task-completion latency relative to the evaluated benchmark schemes, particularly when computing resources are limited or user density is high.
+Hu et al. [x] studied latency-aware computation offloading in a wireless-powered hybrid UAV-assisted MEC system where one UAV cooperates with a ground base station under TDMA and NOMA. They formulated mixed-integer nonconvex problems that minimize task-completion latency by jointly optimizing time-slot scheduling, CPU-frequency allocation, transmit powers, the UAV three-dimensional trajectory, and the number of required slots. Their double-loop alternating-optimization algorithm uses bisection to adjust the slot count and transforms the inner problem into max-min computation-completion-ratio optimization. The inner loop decomposes the design into trajectory, CPU-frequency, time-scheduling, and power-allocation subproblems addressed through SCA, Lagrangian duality, linear programming, and convex optimization. Simulations report reduced task-completion latency relative to the without-altitude-optimization, without-local-computation, UAV-as-relay-only, equal-time-scheduling, and GA-based benchmarks, particularly when computing resources are limited or user density is high.
 
 ## Problem framing
 

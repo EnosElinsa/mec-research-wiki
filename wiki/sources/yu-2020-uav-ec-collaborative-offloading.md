@@ -16,7 +16,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[liu-2022-miso-uav-mec-trajectory]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Task Offloading and Resource Allocation in UAV-Enabled Mobile Edge Computing
@@ -33,36 +33,35 @@ A UAV-enabled MEC system where a UAV and edge clouds (ECs) **collaboratively** s
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Stationary IoT devices split tasks among local computation, one UAV MEC server, and terrestrial edge clouds that may be blocked from direct access. UAV placement couples ground-to-air communication, UAV-edge-cloud cooperation, computing delay, and aerial energy.
+**Scenario**: Stationary IoT mobile users (MUs) do not compute locally; they offload every task to one UAV over ground-to-air (G2A) links, and the UAV processes a portion onboard and forwards the rest over air-to-ground (A2G) links to terrestrial edge clouds (ECs). The service delay of MU $i$ is $T_i=t_i^{\mathrm{G2A}}+\max_j\{t_i^{\mathrm{UAV}},t_{ij}^{\mathrm{A2G}}+t_{ij}^{\mathrm{EC}}\}$ (13).
 
-**Problem & objective**: A non-convex joint offloading problem minimizes weighted service delay and UAV energy, $\min \omega_T\sum_k T_k+\omega_E E_{\mathrm U}$.
+**Problem & objective**: Problem (14) minimizes the weighted sum of UAV energy and service delay, $\min\sum_iE_i^{\mathrm{UAV}}+\rho\sum_iT_i$, over UAV position, uplink bandwidth, task partition, and UAV and EC CPU allocation.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV position | $\mathbf q$ | continuous 3-D position | Aerial MEC deployment |
-| Task split | $\alpha_{k,j}$ | continuous, $[0,1]$ | Fraction of device $k$'s task sent to execution tier $j$ |
-| Communication allocation | $b_k,p_k$ | continuous, bounded | Bandwidth and power used by device $k$ |
-| Computing allocation | $f_{k,j}$ | continuous, nonnegative | CPU resource assigned at UAV or edge cloud $j$ |
+| UAV position | $Q^{\mathrm{UAV}}$ | continuous position | Aerial MEC deployment |
+| Uplink bandwidth | $B_i^{\mathrm{UL}}$ | continuous, nonnegative | G2A bandwidth for MU $i$ |
+| Task partition | $\beta_{i0},\beta_{ij}$ | continuous, $[0,1]$ | Portion of MU $i$'s task processed at the UAV or EC $j$ |
+| CPU allocation | $f_i^{\mathrm{UAV}},f_{ij}^{\mathrm{EC}}$ | continuous, nonnegative | UAV and EC computation assigned to MU $i$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Task fractions sum to one for each device |
-| C2 | Radio bandwidth and power allocations stay within budgets |
-| C3 | UAV and edge-cloud CPU allocations do not exceed capacity |
-| C4 | Local, UAV, and cloud execution and transmission satisfy task timing conditions |
-| C5 | UAV placement and energy consumption remain feasible |
+| (14b) | Total uplink bandwidth, $\sum_iB_i^{\mathrm{UL}}\leq B^{\mathrm{UL}}$ |
+| (14c) | Each task is fully processed, $\beta_{i0}+\sum_j\beta_{ij}=1$ |
+| (14d)-(14e) | UAV and EC CPU allocations stay within $F^{\mathrm{UAV}}$ and $F_j^{\mathrm{EC}}$ |
+| (14f)-(14i) | Partition variables in $[0,1]$ and nonnegative bandwidth and CPU allocations |
 
-**Algorithm**: Express communication, computation, and task-splitting costs in one non-convex program → introduce auxiliary variables and first-order convex lower bounds → solve the resulting convex approximation → update the expansion point → repeat SCA until the delay-energy objective converges.
+**Algorithm**: Linearize the max term with auxiliary variables $z_i$ to obtain (15), then apply SCA: replace nonconvex terms with convex approximations around the current point, solve the convex problem, update the expansion point, and repeat until the cost converges.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yu et al. [x] studied joint task offloading and resource allocation in a UAV-enabled mobile edge computing network where a UAV and terrestrial edge clouds serve stationary IoT devices collaboratively. They formulated a weighted service-delay and UAV-energy minimization problem over UAV placement, task splitting, communication resources, and computing resources. The constraints enforce complete task partitioning, radio and processor capacities, service timing, and UAV operation. Their algorithm replaces non-convex terms with tractable local convex approximations and iterates successive convex optimization. Numerical results show lower weighted cost than the evaluated UAV-only and edge-cloud-only service schemes.
+Yu et al. [x] studied joint task offloading and resource allocation in a UAV-enabled mobile edge computing network where a UAV and terrestrial edge clouds serve stationary IoT devices collaboratively. They formulated a weighted service-delay and UAV-energy minimization problem over UAV placement, task splitting, communication resources, and computing resources. Users offload all tasks to the UAV, which splits them between onboard processing and the edge clouds; the constraints enforce complete task partitioning and bandwidth and processor capacities. Their algorithm replaces non-convex terms with tractable local convex approximations and iterates successive convex optimization. Numerical results show lower weighted cost than UAV-only, edge-cloud-only, and fixed UAV-EC schemes, and than a random UAV location.
 
 ## Problem framing
 

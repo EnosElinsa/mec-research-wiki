@@ -16,7 +16,7 @@ related:
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
   - "[[fuhui-zhou]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,7 +36,7 @@ A **multiple-input single-output (MISO)** UAV-assisted MEC network that uses UAV
 
 **Scenario**: A multi-antenna UAV MEC server serves single-antenna UEs with partial task offloading and can relay unprocessed results to an access point over a LoS link during $N$ slots.
 
-**Problem & objective**: Jointly optimize resource allocation and UAV trajectory to minimize weighted UE and UAV energy, $\min_{\mathbf L,\mathbf w_u,\mathbf q[n]}E_I[n]+\eta E_U[n]$.
+**Problem & objective**: Per-slot problem P1 (21a) jointly optimizes resource allocation and UAV trajectory to minimize weighted UE and UAV energy, $\min_{\mathbf L,\mathbf w_u,\mathbf q[n]}E_I[n]+\eta E_U[n]$.
 
 **Decision variables**:
 
@@ -52,10 +52,11 @@ A **multiple-input single-output (MISO)** UAV-assisted MEC network that uses UAV
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Each UE completes its task within the slot horizon and processed bits do not exceed causally offloaded bits. |
-| C2 | CPU frequencies and UE/UAV transmit powers satisfy their individual and aggregate upper bounds. |
-| C3 | Beamforming meets each UE's minimum SINR and maximum tolerated interference, with $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\leq d_{\min}$. |
-| C4 | The UAV starts at $\mathbf q_I$, reaches $\mathbf q_F$, and obeys the per-slot mobility and reachability constraints. |
+| (21b)-(21c) | Local plus offloaded bits complete each slot's task $Q_k$, and UAV-processed bits do not exceed offloaded bits |
+| (21d)-(21g) | UE CPU in $[0,f_{l,\max}]$, UAV CPU nonnegative with $\sum_kf_{u,k}[n]\leq f_{u,\max}$, and UE power in $[0,p_{l,\max}]$ |
+| (21h)-(21i) | UAV beamforming power stays within $p_{u,\max}$, and relaying of unprocessed bits to the access point is power-feasible |
+| (21j)-(21m) | Per-slot movement $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\leq d_{\min}$, start $\mathbf q_I$ and end $\mathbf q_F$, reachability, and $V_{\max}\Delta_T\geq d_{\min}$ |
+| (21n)-(21o) | Each UE's SINR meets $\Gamma_{req,k}$, and leakage to other UEs stays below $\Gamma_{seq,k}$ |
 
 **Algorithm**: Alternate three blocks for CPU frequency and UE power, semidefinite-relaxed beamforming, and trajectory SCA; use closed-form frequency and power updates and recover rank-one beams by eigenvalue decomposition.
 
@@ -63,7 +64,7 @@ A **multiple-input single-output (MISO)** UAV-assisted MEC network that uses UAV
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] extended UAV-assisted MEC to a MISO server that jointly acts as a computing node and relay. Their per-slot formulation minimizes weighted UE and UAV energy over partial offloading, CPU frequencies, UE transmit powers, beamforming vectors, and UAV trajectory, subject to task, SINR, power, and mobility constraints. A three-stage alternating method combines dual and subgradient updates, semidefinite relaxation, and successive convex approximation, with closed-form CPU and UE-power solutions. The derived offloading rule depends on the UAV UE channel state, and simulations show lower energy than benchmark designs, especially for computation-intensive tasks. The model makes beamforming and trajectory coupling explicit in an optimization-based UAV MEC formulation.
+Liu et al. [x] extended UAV-assisted MEC to a MISO server that jointly acts as a computing node and relay. Their per-slot formulation minimizes weighted UE and UAV energy over partial offloading, CPU frequencies, UE transmit powers, beamforming vectors, and UAV trajectory, subject to task, SINR, power, and mobility constraints. A three-stage alternating method combines dual and subgradient updates, semidefinite relaxation, and successive convex approximation, with closed-form CPU and UE-power solutions. The derived offloading rule depends on the UAV UE channel state, and simulations show lower energy than no-access-point and offload-only benchmark designs, especially for computation-intensive tasks. The model makes beamforming and trajectory coupling explicit in an optimization-based UAV MEC formulation.
 
 ## Problem framing
 

@@ -18,7 +18,7 @@ related:
   - "[[nabi-2025-jour-hierarchical-aerial]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # TJCCT: A Two-Timescale Approach for UAV-Assisted Mobile Edge Computing
@@ -35,36 +35,38 @@ A **two-timescale** joint computing-resource-allocation, computation-offloading,
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Mobile devices, terrestrial edge servers, UAV edge servers, and a controller cooperate in a hierarchical UAV-MEC network. Short-timescale slots allocate computing resources and offloading, while long-timescale frames control UAV trajectories; wireless channels, queues, and energy budgets evolve online.
+**Scenario**: Mobile devices (MDs), a terrestrial base-station edge server $b$, UAV edge servers $\mathcal U$, and a controller cooperate in a hierarchical UAV-MEC network. Short-timescale slots decide offloading and computing-resource allocation, while long-timescale frames control UAV trajectories under speed and boundary limits.
 
-**Problem & objective**: A non-convex NP-hard MINLP maximizes system utility, $\max U_{\mathrm{system}}$, over two-timescale resource, offloading, and trajectory decisions under stability and energy constraints.
+**Problem & objective**: Problem $\mathbf P_0$ (23) minimizes the total normalized delay-energy cost $\sum_tC^t$; it is recast as problem $\mathbf P$ (30), which maximizes total system utility $\sum_tU^t$ over offloading $\mathbf O$, resource allocation $\mathbf F$, and UAV trajectories $\mathbf Q$ under (23b)-(23j). The paper proves $\mathbf P$ is a non-convex NP-hard MINLP.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Resource allocation | $r_i(\tau)$ | continuous, capacity-bounded | Computing resource assigned to mobile device $i$ |
-| Offloading decision | $o_i(\tau)$ | binary/matching choice | Execution server selected by device $i$ |
-| UAV trajectory | $\mathbf q_k(t)$ | continuous long-timescale position | UAV edge-server path |
-| Price/incentive | $p_s(\tau)$ | continuous, nonnegative | Resource price used in the short-timescale game |
+| Offloading decision | $o_{i,n}^t$ | binary | MD $i$ executes its task at node $n$ (local, BS, or a UAV) |
+| Resource allocation | $f_{j,i}^t$ | continuous, nonnegative | Computing resource server $j$ assigns to MD $i$ |
+| UAV trajectory | $\mathbf q_j^t$ | continuous position | Long-timescale UAV path |
+| Resource price | $p_{j,i}^t$ | continuous, nonnegative | Price negotiated in the short-timescale incentive model |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Mobile-device and edge queues remain stable |
-| C2 | Long-term device/UAV energy constraints are respected |
-| C3 | Resource allocations do not exceed terrestrial or UAV edge capacity |
-| C4 | Offloading matches satisfy server association and task latency limits |
-| C5 | UAV trajectories obey region, speed, and energy-feasibility constraints |
+| (23b)-(23c) | Binary offloading with at most one execution node per task |
+| (23d) | Each MD generates at most one task per slot |
+| (23e) | Task completion delay meets the deadline, $o_{i,n}^tD_{i,n}^t\leq\tau_i^t$ |
+| (23f)-(23g) | Server computing resources within $f_j^{\max}$ and served MDs within the CPU core count |
+| (23h) | The price paid by each MD stays within its budget $G_i^{\max}$ |
+| (23i) | Remaining task lifespan update |
+| (23j) | MD and UAV mobility limits (1)-(4), including region bounds and maximum UAV speed |
 
-**Algorithm**: Solve short-timescale resource allocation with a price-incentive model → match devices to offloading servers → optimize long-timescale UAV trajectory by convex programming → alternate the timescales and apply the proven stable TJCCT updates.
+**Algorithm**: In each short-timescale slot, derive the optimal computing resource and price through a price-incentive model with Rubinstein bargaining, then match MDs to servers with a stable matching. In each long-timescale frame, optimize UAV trajectories by convex optimization. The paper proves matching stability, optimality properties, and polynomial complexity.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] studied two-timescale joint resource allocation, task offloading, and trajectory control for hierarchical UAV-assisted mobile edge computing. They formulated an NP-hard MINLP that maximizes system utility under queue stability and energy constraints. The short-timescale procedure uses a price-incentive model and a matching mechanism for resource allocation and offloading, while the long-timescale procedure optimizes UAV trajectories with convex optimization. The paper proves stability, optimality properties, and polynomial complexity for TJCCT. Simulations report higher system utility, processing rate, completion ratio, and average cost than the evaluated comparators, with the stated delay-energy tradeoff under heavy load.
+Sun et al. [x] studied two-timescale joint resource allocation, task offloading, and trajectory control for hierarchical UAV-assisted mobile edge computing. They formulated an NP-hard MINLP that maximizes system utility under binary offloading, deadline, computing-capacity, CPU-core, price-budget, and mobility constraints. The short-timescale procedure uses a price-incentive model and a matching mechanism for resource allocation and offloading, while the long-timescale procedure optimizes UAV trajectories with convex optimization. The paper proves matching stability, optimality properties, and polynomial complexity for TJCCT. Simulations report higher system utility, processing rate, and completion ratio and lower completion delay than LS, ECRAS, PAS, GCOS, STCS, and PPO-based PCCT, at the cost of higher total and computing energy consumption.
 
 ## Problem framing
 

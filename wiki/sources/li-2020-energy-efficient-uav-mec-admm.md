@@ -15,7 +15,7 @@ related:
   - "[[nan-cheng]]"
   - "[[xuemin-shen]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient UAV-Assisted Mobile Edge Computing: Resource Allocation and Trajectory Optimization
@@ -34,7 +34,7 @@ Considers a **UAV-mounted cloudlet** serving IoT nodes in remote/unattended area
 
 **Scenario**: A fixed-wing UAV-mounted cloudlet flies over mobile IoT users during a finite computation cycle. Users partially offload divisible tasks through orthogonal or non-orthogonal uplinks, and the UAV buffers and executes received bits with dynamic CPU frequency while propulsion dominates its energy budget.
 
-**Problem & objective**: The fractional program maximizes $\eta=\frac{\sum_{i,k}R_{i,k}(\boldsymbol\delta_k,\mathbf Q_k)}{\sum_{i,k}E_{i,k}^{C,U}(\mathbf W_k)+\sum_kE_k^F(\mathbf Q)}$, the ratio of total offloaded bits to UAV computing plus propulsion energy.
+**Problem & objective**: Fractional problem (14) maximizes $\eta=\frac{\sum_{i,k}R_{i,k}(\boldsymbol\delta_k,\mathbf Q_k)}{\sum_{i,k}E_{i,k}^{C,U}(\mathbf W_k)+\sum_kE_k^F(\mathbf Q)}$, the ratio of total offloaded bits to UAV computing plus propulsion energy.
 
 **Decision variables**:
 
@@ -48,12 +48,13 @@ Considers a **UAV-mounted cloudlet** serving IoT nodes in remote/unattended area
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user offloads between its required minimum and total task size |
-| C2 | The UAV processes only received bits and completes all offloaded bits by the cycle end |
-| C3 | Per-slot cloudlet CPU frequency remains below $f_{\max}^U$ |
-| C4 | Each user's communication and local-computing energy budgets are respected |
-| C5 | UAV speed and acceleration remain below $v_{\max}$ and $a_{\max}$ |
-| C6 | The UAV reaches the designated final position and velocity |
+| (6) | Each user offloads between its minimum $\check I_i$ and total task size $I_i$ |
+| (7a)-(7b) | The UAV processes only received bits and completes all offloaded bits by the cycle end |
+| (8) | Per-slot cloudlet CPU frequency stays below $f_{\max}^U$ |
+| (10) | Each user's communication energy stays within $E_i^T$ |
+| (14a)-(14b) | UAV speed and acceleration remain below $v_{\max}$ and $a_{\max}$ |
+| (14c) | The UAV reaches the designated final position $\mathbf Q_f$ with velocity $\mathbf v_0$ |
+| (14d) | Power fractions satisfy $0\le\delta_{i,k}\le1$, together with (6), (7a), (7b), (8), and (10) |
 
 **Algorithm**: SCA forms inner convex approximations of channel-rate and propulsion terms, while Dinkelbach iterations solve the resulting fractional program. ADMM then separates user-side power and expected-trajectory updates from UAV-side trajectory and workload allocation, allowing users to solve in parallel; Gaussian kernel density estimation supplies proactive user locations when future mobility is unavailable.
 

@@ -18,7 +18,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[yang-2022-stochastic-uav-mec-lyapunov]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Latency Minimization for UAV-Enabled URLLC-Based Mobile Edge Computing Systems
@@ -37,35 +37,36 @@ A UAV-enabled MEC system where K ground devices offload **mission-critical, late
 
 **Scenario**: $K$ ground devices partially offload mission-critical tasks to one UAV MEC server over finite-blocklength URLLC links and compute the remaining bits locally. An angle-dependent Rician channel couples three-dimensional UAV placement, bandwidth, decoding reliability, and computation time.
 
-**Problem & objective**: A non-convex min-max latency problem minimizes the slowest device, $\min \max_k T_k$, over UAV location, offloading bandwidth, device and UAV CPU frequencies, and computation times.
+**Problem & objective**: Problem (P1) (13) minimizes the system computation latency $t^{\mathrm{comp}}$, the time by which every device's local and remote computing finishes, over computing times, offloading bandwidths, device and UAV CPU frequencies, and the UAV horizontal location and altitude.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
 | UAV horizontal location | $\mathbf q$ | continuous 2-D position | Ground projection of the UAV MEC server |
-| UAV altitude | $H$ | continuous, bounded | Server altitude and elevation angle |
-| Offloading bandwidth | $b_k$ | continuous, nonnegative | URLLC bandwidth allocated to device $k$ |
-| CPU frequencies | $f_k,f_k^{\mathrm U}$ | continuous, bounded | Local and UAV computing rates for device $k$ |
-| Computing time | $t_k$ | continuous, nonnegative | End-to-end computation latency variable |
+| UAV altitude | $h$ | continuous, $[h_{\min},h_{\max}]$ | Server altitude and elevation angle |
+| Offloading bandwidth | $W_k$ | continuous, nonnegative | URLLC bandwidth allocated to device $k$ |
+| CPU frequencies | $f_k,f_{\mathrm U,k}$ | continuous, bounded | Local and UAV computing rates for device $k$ |
+| Computing times | $t_k^{\mathrm{local}},t_k^{\mathrm{remote}}$ | continuous, nonnegative | Local and UAV computation durations |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Local and offloaded computation together complete each task |
-| C2 | Finite-blocklength offloading meets the target decoding-error probability |
-| C3 | Bandwidth allocations satisfy $\sum_k b_k\le B$ |
-| C4 | Device and UAV CPU frequencies stay within their limits |
-| C5 | UAV horizontal position and altitude remain in the feasible deployment region |
+| (13b)-(13c) | Local time and offloading-plus-remote time stay within $t^{\mathrm{comp}}$ |
+| (13d) | Local and remote computation complete each task of $L_k$ bits |
+| (13e) | Finite-blocklength information causality, $(1-\epsilon_k)N_kR_k\geq t_k^{\mathrm{remote}}f_{\mathrm U,k}/c_k$ |
+| (13f) | Device energy for offloading and local computing stays within $E_{k,\max}$ |
+| (13g)-(13i) | $\sum_kW_k\leq W_{\max}$, $\sum_kf_{\mathrm U,k}\leq f_{\mathrm U,\max}$, and $0\leq f_k\leq f_{k,\max}$ |
+| (13j) | UAV altitude bounds, $h_{\min}\leq h\leq h_{\max}$ |
 
-**Algorithm**: Approximate the finite-blocklength rate by a tractable logarithmic form → update horizontal UAV location with SCA → update altitude with SCA → transform bandwidth and CPU allocation into a max-min completed-task-ratio problem → solve it with the two-layer semi-closed-form routine → alternate the BCD blocks.
+**Algorithm**: Replace the finite-blocklength rate by a tractable lower bound, update the horizontal UAV location with SCA (P5) and the altitude with SCA (P7), then solve bandwidth, CPU frequency, and computing times in the semi-closed-form problem (P8)/(P9), and alternate these BCD blocks until convergence.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied latency minimization for UAV-enabled URLLC mobile edge computing with partial offloading and finite-blocklength links. They formulated a non-convex min-max problem over three-dimensional UAV placement, device bandwidth, computing times, and device and UAV CPU frequencies. The channel model uses angle-dependent Rician fading, and the finite-blocklength rate is approximated by a tractable logarithmic expression. Their block-coordinate method alternates SCA updates of horizontal position and altitude with a two-layer semi-closed-form bandwidth and frequency solver. Simulations report lower maximum computation latency than the evaluated location, resource-allocation, and Shannon-rate baselines.
+Wu et al. [x] studied latency minimization for UAV-enabled URLLC mobile edge computing with partial offloading and finite-blocklength links. They formulated a non-convex latency-minimization problem over three-dimensional UAV placement, device bandwidth, computing times, and device and UAV CPU frequencies. The channel model uses angle-dependent Rician fading, and the finite-blocklength rate is approximated by a tractable logarithmic expression. Their block-coordinate method alternates SCA updates of horizontal position and altitude with a two-layer semi-closed-form bandwidth and frequency solver. Simulations report lower computation latency than the Shannon-based, without-location-optimization, and without-bandwidth-and-frequency-optimization schemes, approaching an infinite-blocklength lower bound.
 
 ## Problem framing
 

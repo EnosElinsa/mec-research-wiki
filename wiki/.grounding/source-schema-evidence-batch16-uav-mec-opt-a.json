@@ -1,0 +1,700 @@
+{
+  "entries": [
+    {
+      "slug": "apostolopoulos-2021-prospect-theory-uav-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty.md",
+          "lines": "271,275,278,284,287,290",
+          "note": "best response (17)-(19) and constraint set C_i"
+        },
+        {
+          "path": "raw/sources/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty.md",
+          "lines": "295,296,326",
+          "note": "DCP algorithm and complexity"
+        },
+        {
+          "path": "raw/sources/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty.md",
+          "lines": "332",
+          "note": "simulation setup"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty.md",
+          "lines": "5,369,524,526",
+          "note": "convergence under 4 iterations, five alternatives"
+        }
+      ]
+    },
+    {
+      "slug": "hu-2019-pdd-uav-mec-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems.md",
+          "lines": "35,85",
+          "note": "single moving UAV cloudlet, speed limit (2)"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems.md",
+          "lines": "273,277,281,285,289,293,297,301,305",
+          "note": "problem (14a)-(14i)"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems.md",
+          "lines": "189,193,391,488,492",
+          "note": "reformulation (16), PDD, l0-norm (33)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems.md",
+          "lines": "5,562,708,751",
+          "note": "circular and fixed-location benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "hu-2019-uav-relay-edge-computing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "90,93,112,119",
+          "note": "preset endpoints, speed (1), local computing"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "207,210,214,218,226,230,234,238,242,246,250,254",
+          "note": "P1 (17a)-(17g)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "258,262,270,278,286,294,302,310,318,322,500,504",
+          "note": "(17h)-(17q), trajectory subproblem (43)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "51,573,605,705,730",
+          "note": "four benchmark schemes and energy results"
+        }
+      ]
+    },
+    {
+      "slug": "hu-2026-latency-hybrid-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design.md",
+          "lines": "49,55,59,102,162,180,184",
+          "note": "trajectory (1), TDMA time (6), CPU limits (15), (18)"
+        },
+        {
+          "path": "raw/sources/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design.md",
+          "lines": "192,198,204,240,276,333,337,343,381,399",
+          "note": "completion (19), causality (20)-(21), energy (27), (32), NOMA (40)-(49)"
+        },
+        {
+          "path": "raw/sources/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design.md",
+          "lines": "404,407,411,416,419,422,430,446,454,476",
+          "note": "P0 (50a), P1 (51a), bisection and max-min ratio"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design.md",
+          "lines": "5,1050,1057,1064",
+          "note": "five benchmark schemes and latency results"
+        }
+      ]
+    },
+    {
+      "slug": "jeong-2018-uav-cloudlet-bit-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning.md",
+          "lines": "119,128,134,211",
+          "note": "frames, speed (2)-(3), bit variables"
+        },
+        {
+          "path": "raw/sources/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning.md",
+          "lines": "225,228,232,236,244,252,256,260,264,268,272,276",
+          "note": "problem (13a)-(13k)"
+        },
+        {
+          "path": "raw/sources/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning.md",
+          "lines": "360,386,592",
+          "note": "SCA subproblems and acceleration (31f)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning.md",
+          "lines": "797",
+          "note": "36.8/29.9 J vs 43.1/44.3 J, 14.5% and 32.7%"
+        }
+      ]
+    },
+    {
+      "slug": "ji-2021-uav-mec-noma-oma-energy-min",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design.md",
+          "lines": "100,115,215,217",
+          "note": "displacement (1), DFS local computing"
+        },
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design.md",
+          "lines": "220,224,228,232,236,240,244,248,252,256,260",
+          "note": "P1 (13a)-(13k)"
+        },
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design.md",
+          "lines": "475,521,589,595,599",
+          "note": "P2.1 Lagrange duality, P2.2 SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design.md",
+          "lines": "609,611,612,800",
+          "note": "three benchmarks and one-thousandth result"
+        }
+      ]
+    },
+    {
+      "slug": "li-2020-energy-efficient-uav-mec-admm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization.md",
+          "lines": "124,127,135,139,145,161",
+          "note": "offloading (6), causality (7a)-(7b), CPU (8), energy (10)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization.md",
+          "lines": "186,189,192,195,199,203,207,210,212",
+          "note": "problem (14) and (14a)-(14d)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization.md",
+          "lines": "216,220,334,441,470",
+          "note": "SCA, Dinkelbach, ADMM"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization.md",
+          "lines": "522,556,622",
+          "note": "circular benchmark, convergence at t=30, minimum offloading"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2020-wpt-cooperative-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization.md",
+          "lines": "103,105,187,189,233,242",
+          "note": "system, TDMA offloading, UAV energy (14)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization.md",
+          "lines": "247,249,252,256,260,264,268,272,276,280,284,288,292,296,300,304,308,312,316,319",
+          "note": "P1 (15a)-(15n)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization.md",
+          "lines": "432,447,499,502",
+          "note": "SCA and DAI subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization.md",
+          "lines": "60,95",
+          "note": "convergence, SCA feasibility at large bits, propulsion dominance, idle-SD gain"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2022-miso-uav-mec-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.md",
+          "lines": "140,148,271",
+          "note": "tasks, LoS CSI, relay power (12)"
+        },
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.md",
+          "lines": "335,339,343,347,351,355,359,363,367,371,375,379,383,387,391,394,400",
+          "note": "P1 (21a)-(21o)"
+        },
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.md",
+          "lines": "407,480,493,503,515,575",
+          "note": "subproblems, offloading threshold, SDR, SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.md",
+          "lines": "5,53,790,832,842",
+          "note": "no-AP and offload-only benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "mohammadi-2026-star-ris-uav-mec-noma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA.md",
+          "lines": "47,68",
+          "note": "formulation and LoS links"
+        },
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA.md",
+          "lines": "199,203,211,215,219,223,226,228,230,232,235",
+          "note": "P0 C1-C12 (18)"
+        },
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA.md",
+          "lines": "463",
+          "note": "energy model notes"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA.md",
+          "lines": "5,51,512,558,560,572",
+          "note": "OMA and other schemes, grid-search gap"
+        }
+      ]
+    },
+    {
+      "slug": "qin-2023-ris-uav-mec-ee",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems.md",
+          "lines": "182,185,189,193,197,201,205,209,213,217,220",
+          "note": "problem (20a)-(20h)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems.md",
+          "lines": "27,265,283,312,349,360,407",
+          "note": "Dinkelbach, Lagrange dual, SDR/DC, SCA"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems.md",
+          "lines": "641,661",
+          "note": "imperfect CSI extension"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems.md",
+          "lines": "29,610,670,672",
+          "note": "5-6 iterations, benchmarks, NOMA 10%/7% gain"
+        }
+      ]
+    },
+    {
+      "slug": "song-2026-thz-multiuav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System.md",
+          "lines": "94,97,100,103,106,109,112,117,120,123,126,132,139,142,154",
+          "note": "model constraints (6)-(14)"
+        },
+        {
+          "path": "raw/sources/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System.md",
+          "lines": "199,201,204,210,214,218,221,223",
+          "note": "P1 (21)-(24)"
+        },
+        {
+          "path": "raw/sources/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System.md",
+          "lines": "227,239,265,739",
+          "note": "PDD and LAO variant"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System.md",
+          "lines": "5,772,774",
+          "note": "2.3687 s vs 2.1319 s ES, upper bound 2.3894 s"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2025-tjcct-twotimescale-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "161,165,173,177,213",
+          "note": "mobility (1)-(4), LoS probability"
+        },
+        {
+          "path": "raw/sources/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "346,356,360,364,368,372,376,380,384,388,392,395,399",
+          "note": "P0 (23a)-(23j) and NP-hard"
+        },
+        {
+          "path": "raw/sources/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "464,468,490,511,666",
+          "note": "P (30), price/bargaining, trajectory subproblem"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "791,795,819,820,821,829,830,831,832,1123",
+          "note": "stability proofs, six benchmarks, energy tradeoff"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2018-multiuav-minrate-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks.md",
+          "lines": "49,52,56,94,98,104,135",
+          "note": "periodic return, speed (5), separation (6), power"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks.md",
+          "lines": "154,158,162,166,170,174,178,182,186",
+          "note": "problem (15a)-(15i)"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks.md",
+          "lines": "196,200,214,240,284,384,495",
+          "note": "relaxed BCD subproblems (17),(18),(29), circular init"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks.md",
+          "lines": "663,671,759,761",
+          "note": "static, circular, no-power-control comparisons, 40 iterations"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2024-urllc-uav-mec-latency",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems.md",
+          "lines": "88,96,148,154,159,162",
+          "note": "altitude (1), bandwidth (2), CPU (8),(10), energy (9)"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems.md",
+          "lines": "188,192,196,200,204,208,212,216,220,224,227",
+          "note": "P1 (13a)-(13j)"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems.md",
+          "lines": "245,271,346,368,416,425",
+          "note": "rate bound, SCA (P5),(P7), (P8)-(P9)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems.md",
+          "lines": "668,699,718,719,721,723",
+          "note": "four benchmarks incl. lower bound"
+        }
+      ]
+    },
+    {
+      "slug": "xiao-2025-star-ris-bidirectional-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading.md",
+          "lines": "150,154,160,168,172,176",
+          "note": "constraints (14)-(19)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading.md",
+          "lines": "250,254,258,262,266,270,274,278",
+          "note": "problem (26) and (26a)-(26h)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading.md",
+          "lines": "284,294,308,393,411,513",
+          "note": "Dinkelbach, BCD subproblems, SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading/Energy-Efficient_STAR-RIS_Enhanced_UAV-Enabled_MEC_Networks_With_Bi-Directional_Task_Offloading.md",
+          "lines": "13,556,571,581,594",
+          "note": "four benchmarks and SDR exception"
+        }
+      ]
+    },
+    {
+      "slug": "xu-2021-secure-uav-mec-dual-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "85,92,96,153,160,163,167",
+          "note": "trajectory (1), power (4), TDMA time (5)"
+        },
+        {
+          "path": "raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "185,203,209,217,231,235,239,259,277,281,287,293",
+          "note": "secrecy rates, (11)-(14), (20)-(22)"
+        },
+        {
+          "path": "raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "313,317,321,324,326,329,333",
+          "note": "problems (25)-(26) and (25b)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "50,984,986,1182",
+          "note": "benchmarks, upper bound, flight designs, NOMA vs TDMA"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2019-sum-power-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md",
+          "lines": "122,140,158",
+          "note": "CPU and power limits (8), (11), (14)"
+        },
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md",
+          "lines": "228,232,236,240,244,248,252,256,260,264,268,272,276,281",
+          "note": "problem (24a)-(24k)"
+        },
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md",
+          "lines": "324,366,372,453,527,644",
+          "note": "association, closed-form CPU, placement search, FCM init"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md",
+          "lines": "712,714,762",
+          "note": "EXH, SCAFAH, ECC comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2022-stochastic-uav-mec-lyapunov",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.md",
+          "lines": "71,93,105,142",
+          "note": "slots, LoS probability, queue (9)"
+        },
+        {
+          "path": "raw/sources/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.md",
+          "lines": "168,172,176,180,184,188,192,196,200,203",
+          "note": "P1 (12a)-(12i)"
+        },
+        {
+          "path": "raw/sources/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.md",
+          "lines": "214,250,264,311,479,504,568,630",
+          "note": "virtual queue (13), drift-plus-penalty, solvers, O(1/V)/O(V)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.md",
+          "lines": "5,636,638,639,640",
+          "note": "GO, GE, DDQN benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "yu-2020-uav-ec-collaborative-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "33,92,132,136,142,146,152,199",
+          "note": "no local computing, UAV-EC split, delay (13)"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "202,205,209,213,217,221,225,229,233,237,240",
+          "note": "problem (14a)-(14i)"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "244,248,251,372",
+          "note": "reformulation (15), SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "5,583,590,676,709",
+          "note": "UAV-only, EC-only, fixed UAV-EC, random location"
+        }
+      ]
+    },
+    {
+      "slug": "zhan-2020-completion-time-energy-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System.md",
+          "lines": "131,151,155,159,163,167,171,175,179,183,186",
+          "note": "P1 and (7)-(15)"
+        },
+        {
+          "path": "raw/sources/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System.md",
+          "lines": "190,212,215,219,227,231,243,247,262",
+          "note": "path discretization, P2 (19)-(28)"
+        },
+        {
+          "path": "raw/sources/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System.md",
+          "lines": "266,269,314,361,386,398,406,415,497,517",
+          "note": "two-stage SCA and Pareto boundary"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System.md",
+          "lines": "5,41,741,766",
+          "note": "straight-line and equal-time benchmarks, U-shape"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2019-stochastic-offloading-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "32,88,94",
+          "note": "queues (3)-(4)"
+        },
+        {
+          "path": "raw/sources/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "154,157,159,161",
+          "note": "problem P with C1-C9 meanings"
+        },
+        {
+          "path": "raw/sources/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "172,178,186,210,218,222,230,306,310,314,333",
+          "note": "Lyapunov drift-plus-penalty and SP1-SP3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "386,410,603",
+          "note": "MAES, MAEU, MAWESU comparison"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2019-uav-iot-comp-comm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.md",
+          "lines": "35,101,157,175,179",
+          "note": "task demand (2), relay (11), CPU (13)-(14)"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.md",
+          "lines": "217,243,247,251,254,256",
+          "note": "trajectory (18c), power (22a)-(22c), weight w"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.md",
+          "lines": "260,316,320,549,601,630",
+          "note": "P2 Lagrange duality, P3 SCA, Algorithm 2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.md",
+          "lines": "5,61,661,663,664,665,666,668",
+          "note": "four benchmarks, ~15 iterations"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2018-uav-wireless-powered-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "207,211,219,231,235,239,243",
+          "note": "P1 with C1-C5 (12b)-(12f)"
+        },
+        {
+          "path": "raw/sources/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "253,335,415,436,439,443,481",
+          "note": "P2-P7 and binary mode"
+        },
+        {
+          "path": "raw/sources/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "764,786,792",
+          "note": "dual closed-form solutions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "554,556,621",
+          "note": "benchmarks and computation bits results"
+        }
+      ]
+    }
+  ]
+}

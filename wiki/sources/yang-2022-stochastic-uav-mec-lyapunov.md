@@ -17,7 +17,7 @@ related:
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Online Trajectory and Resource Optimization for Stochastic UAV-Enabled MEC Systems
@@ -63,7 +63,7 @@ A UAV-enabled MEC platform serving multiple mobile ground users with **random mo
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yang et al. [x] studied online trajectory and resource control for a UAV-enabled MEC server serving mobile users with stochastic arrivals. They minimized long-term weighted UE energy while enforcing average UAV propulsion energy, queue stability, CPU, TDMA, and flight constraints. Lyapunov drift-plus-penalty converts the multi-stage stochastic program into per-slot deterministic decisions, and two proposed solvers optimize resource allocation and UAV movement either sequentially or jointly. The analysis reports queue stability and satisfaction of the UAV energy constraint with an $O(1/V)$ energy and $O(V)$ queue tradeoff. Simulations compare the two proposed solvers with geometric-center, equal-allocation, and DDQN baselines under changing user mobility and task arrivals.
+Yang et al. [x] studied online trajectory and resource control for a UAV-enabled MEC server serving mobile users with stochastic arrivals. They minimized long-term weighted UE energy while enforcing average UAV propulsion energy, queue stability, CPU, TDMA, and flight constraints. Lyapunov drift-plus-penalty converts the multi-stage stochastic program into per-slot deterministic decisions, and two proposed solvers optimize resource allocation and UAV movement either sequentially or jointly. The analysis reports queue stability and satisfaction of the UAV energy constraint with an $O(1/V)$ energy and $O(V)$ queue tradeoff. Simulations show both proposed solvers use less UE energy than geometric-center tracking with optimal (GO) or equal (GE) resource allocation and a DDQN method, with the joint solver ahead of the two-stage solver.
 
 ## Problem framing
 

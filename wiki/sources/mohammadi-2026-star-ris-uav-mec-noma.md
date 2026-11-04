@@ -18,7 +18,7 @@ related:
   - "[[ji-2021-uav-mec-noma-oma-energy-min]]"
   - "[[shi-2026-aoi-active-ris-noma-agmec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA
@@ -57,7 +57,7 @@ Proposes a two-tier UAV-terrestrial MEC framework where a UAV carries both an ME
 | C5 | $\sum_n(d_i^{\mathrm{local}}[n]+d_i^{\mathrm{UAV}}[n]+d_i^{\mathrm{BS}}[n])\ge D_{\mathrm{Total}}$ |
 | C6-C7 | Cumulative UAV/BS executed bits do not exceed the corresponding received offloaded data |
 | C8-C10 | Each STAR-RIS element selects exactly one binary mode and uses a phase in $[0,2\pi)$ |
-| C11-C12 | UAV displacement satisfies $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\le v_{\max}\tau$ with fixed endpoints |
+| C11-C12 (18) | UAV displacement satisfies $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\le v_{\max}\tau$ with fixed endpoints |
 
 **Algorithm**: Split $P_0$ into bit/power, STAR-RIS, and trajectory blocks → convexify coupled rate expressions with SCA → obtain phase updates with maximum-ratio transmission structure → alternate the three blocks with BCD → stop at a converged suboptimal solution.
 
@@ -65,7 +65,7 @@ Proposes a two-tier UAV-terrestrial MEC framework where a UAV carries both an ME
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mohammadi et al. [x] studied weighted energy minimization in a STAR-RIS-assisted UAV-MEC network with NOMA. Their two-tier architecture lets users partially compute tasks locally and offload remaining bits through a UAV-mounted STAR-RIS to either the UAV MEC server or a terrestrial MEC server. They formulated a non-convex problem that jointly optimizes task-bit allocation, user transmit power, STAR-RIS phase shifts, mode selection, and UAV trajectory under communication, computation, and mobility constraints. The proposed solution decomposes the problem into three subproblems, applies successive convex approximation and maximum-ratio transmission based phase updates, and alternates the blocks with block coordinate descent. Simulations report energy savings over the evaluated orthogonal multiple-access and fixed-resource benchmark schemes.
+Mohammadi et al. [x] studied weighted energy minimization in a STAR-RIS-assisted UAV-MEC network with NOMA. Their two-tier architecture lets users partially compute tasks locally and offload remaining bits through a UAV-mounted STAR-RIS to either the UAV MEC server or a terrestrial MEC server. They formulated a non-convex problem that jointly optimizes task-bit allocation, user transmit power, STAR-RIS phase shifts, mode selection, and UAV trajectory under communication, computation, and mobility constraints. The proposed solution decomposes the problem into three subproblems, applies successive convex approximation and maximum-ratio transmission based phase updates, and alternates the blocks with block coordinate descent. Simulations report energy savings over OMA, fixed STAR-RIS, random-phase, fixed-trajectory, and imperfect-CSI variants, with a small optimality gap to a grid-search benchmark.
 
 ## Problem framing
 

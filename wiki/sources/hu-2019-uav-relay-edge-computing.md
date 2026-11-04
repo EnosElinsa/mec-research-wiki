@@ -22,7 +22,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[kun-yang]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Assisted Relaying and Edge Computing: Scheduling and Trajectory Optimization
@@ -41,7 +41,7 @@ A UAV-assisted MEC architecture where one **cellular-connected UAV** simultaneou
 
 **Scenario**: One cellular-connected fixed-wing UAV serves multiple ground UEs as both an onboard MEC server and a relay to an AP with abundant computing resources. FDD bandwidth separates UE-to-UAV offloading, UAV-to-AP forwarding, and UAV-to-UE result downloading over a discretized trajectory, and the UAV can compute or forward only data already received.
 
-**Problem & objective**: Problem P1 is a nonconvex weighted-sum-energy minimization, $\min w_U E_U+\sum_k w_kE_k$, over computation scheduling, three-link bandwidth allocation, and UAV trajectory.
+**Problem & objective**: Problem P1 (17a) is a nonconvex weighted-sum-energy minimization, $\min w_U E_U+\sum_k w_kE_k$, over computation scheduling, three-link bandwidth allocation, and UAV trajectory.
 
 **Decision variables**:
 
@@ -60,7 +60,7 @@ A UAV-assisted MEC architecture where one **cellular-connected UAV** simultaneou
 | 17b-17c | Information causality permits computing, forwarding, or downloading only already available input or output bits |
 | 17d-17f | Every UE task is completely processed and its output is returned by the deadline |
 | 17g | The three FDD allocations share total bandwidth $B$ in every slot |
-| 17h-17o | CPU frequencies, bit allocations, and bandwidth variables are nonnegative and capacity bounded |
+| 17h-17o | CPU frequencies, bit allocations, and bandwidth variables are nonnegative and fixed at zero in slots where that operation cannot yet occur |
 | 17p-17q | UAV initial and final positions and maximum per-slot speed are enforced |
 
 **Algorithm**: Alternate three blocks: obtain computation scheduling in closed form through Lagrange duality with subgradient and bisection multiplier updates; obtain bandwidth allocation in closed form with bisection; approximate the trajectory subproblem by first-order SCA and solve it with CVX; repeat the three steps until WSEC converges.

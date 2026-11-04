@@ -19,7 +19,7 @@ related:
   - "[[chang-2022-marl-multiuav-trajectory]]"
   - "[[hu-2019-pdd-uav-mec-offloading]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory and Communication Design for Multi-UAV Enabled Wireless Networks
@@ -38,7 +38,7 @@ A foundational **multi-UAV communications** paper where multiple UAV-mounted aer
 
 **Scenario**: Multiple fixed-altitude UAV base stations share one downlink band and serve ground users in periodic TDMA slots, with return-to-start trajectories and collision avoidance.
 
-**Problem & objective**: The max-min fairness formulation maximizes the minimum user average rate, $\max_{\eta,\mathbf A,\mathbf Q,\mathbf P}\eta$, where each user's average throughput is at least $\eta$.
+**Problem & objective**: Problem (15) maximizes the minimum user average rate, $\max_{\eta,\mathbf A,\mathbf Q,\mathbf P}\eta$, where each user's average throughput is at least $\eta$.
 
 **Decision variables**:
 
@@ -53,13 +53,13 @@ A foundational **multi-UAV communications** paper where multiple UAV-mounted aer
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user's average rate is at least $\eta$. |
-| C2 | At most one user is scheduled by a UAV in a slot: $\sum_k\alpha_{k,m}[n]\leq1$. |
-| C3 | At most one UAV serves a user in a slot: $\sum_m\alpha_{k,m}[n]\leq1$. |
-| C4 | Scheduling is binary: $\alpha_{k,m}[n]\in\{0,1\}$. |
-| C5 | Trajectories obey speed and periodic return: $\lVert\mathbf q_m[n+1]-\mathbf q_m[n]\rVert^2\leq S_{max}^2$ and $\mathbf q_m[1]=\mathbf q_m[N]$. |
-| C6 | UAVs maintain separation: $\lVert\mathbf q_m[n]-\mathbf q_j[n]\rVert^2\geq d_{min}^2$. |
-| C7 | Transmit power obeys $0\leq p_m[n]\leq P_{max}$. |
+| (15b) | Each user's average rate is at least $\eta$ |
+| (15c) | At most one user is scheduled by a UAV in a slot: $\sum_k\alpha_{k,m}[n]\leq1$ |
+| (15d) | At most one UAV serves a user in a slot: $\sum_m\alpha_{k,m}[n]\leq1$ |
+| (15e) | Scheduling is binary: $\alpha_{k,m}[n]\in\{0,1\}$ |
+| (15f)-(15g) | Speed limit $\lVert\mathbf q_m[n+1]-\mathbf q_m[n]\rVert^2\leq S_{\max}^2$ and periodic return $\mathbf q_m[1]=\mathbf q_m[N]$ |
+| (15h) | UAV separation: $\lVert\mathbf q_m[n]-\mathbf q_j[n]\rVert^2\geq d_{\min}^2$ |
+| (15i) | Transmit power: $0\leq p_m[n]\leq P_{\max}$ |
 
 **Algorithm**: Relax binary scheduling, alternately solve scheduling with linear programming, trajectory and power with successive convex optimization, and initialize with circular trajectories and circle packing before reconstructing a binary solution.
 
@@ -67,7 +67,7 @@ A foundational **multi-UAV communications** paper where multiple UAV-mounted aer
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] formulate multi-UAV downlink control as max-min average-rate optimization for users sharing one frequency band. Binary scheduling and association, UAV trajectories, and transmit powers are coupled by rate, one-user-per-slot, periodic-return, collision-avoidance, and power constraints. Their block-coordinate descent alternates linear scheduling with successive convex trajectory and power updates, initialized by circular trajectories and circle packing. The iterative method is proved to converge and improves throughput and fairness over static or simpler deployment baselines.
+Wu et al. [x] formulate multi-UAV downlink control as max-min average-rate optimization for users sharing one frequency band. Binary scheduling and association, UAV trajectories, and transmit powers are coupled by rate, one-user-per-slot, periodic-return, collision-avoidance, and power constraints. Their block-coordinate descent alternates linear scheduling with successive convex trajectory and power updates, initialized by circular trajectories and circle packing. The iterative method is proved to converge, about 40 iterations for two UAVs, and achieves higher max-min rate than a static UAV, circular trajectories, and a variant without power control.
 
 ## Problem framing
 

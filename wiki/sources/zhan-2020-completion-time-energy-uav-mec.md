@@ -23,7 +23,7 @@ related:
   - "[[zeng-2017-energy-efficient-uav-trajectory]]"
   - "[[dusit-niyato]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Completion Time and Energy Optimization in the UAV-Enabled Mobile-Edge Computing System
@@ -42,15 +42,15 @@ A **classical/convex** treatment of a single **fixed-wing** UAV acting as a flyi
 
 **Scenario**: One fixed-wing UAV MEC server flies between prescribed endpoints and partially processes tasks from fixed IoT devices over TDMA. Local and UAV DVFS, information causality, LoS rates, and speed/acceleration-dependent propulsion energy couple offloading, trajectory, energy, and mission duration.
 
-**Problem & objective**: Two non-convex designs minimize UAV energy, $\min E_{\mathrm U}$, or mission completion time, $\min T$, followed by a weighted Pareto energy-time formulation.
+**Problem & objective**: Problem (P1) minimizes UAV propulsion plus computing energy, $\min E_p^u+\sum_k\int_0^T\kappa_Uf_{U,k}^3(t)dt$; a companion problem minimizes completion time $T$, and the Pareto boundary is traced by minimizing UAV energy for each given $T\in[T_{\min},T^e]$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Offloaded bits | $l_k(t)$ | continuous, nonnegative | Input data sent by device $k$ |
-| TDMA schedule | $x_k(t)$ | continuous/binary share | Device allowed to offload at time $t$ |
-| CPU frequencies | $f_k(t),f_k^{\mathrm U}(t)$ | continuous, bounded | Local and UAV DVFS rates |
+| Offloading time share | $\omega_{kn}$ | continuous, nonnegative | Discretized offloading time of device $k$ on segment $n$ |
+| TDMA schedule | $x_k(t)$ | binary, relaxed to time shares after discretization | Device allowed to offload at time $t$ |
+| CPU frequencies | $f_k(t),f_{U,k}(t)$ | continuous, bounded | Local and UAV DVFS rates |
 | UAV trajectory | $\mathbf q(t)$ | continuous 2-D path | Fixed-wing MEC flight path |
 | Completion time | $T$ | continuous, positive | Mission duration |
 
@@ -58,19 +58,20 @@ A **classical/convex** treatment of a single **fixed-wing** UAV acting as a flyi
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Local and UAV computation complete every device workload |
-| C2 | UAV computing cannot precede reception of offloaded bits |
-| C3 | TDMA shares sum to at most one and device energy budgets hold |
-| C4 | CPU frequencies stay within device and UAV limits |
-| C5 | UAV dynamics satisfy endpoints, minimum/maximum speed, and acceleration bounds |
+| (7)-(8) | TDMA scheduling, $x_k(t)\in\{0,1\}$ and $\sum_kx_k(t)\leq1$ (relaxed after path discretization) |
+| (9) | Local and UAV computation complete each device workload $I_k$ |
+| (10) | CPU limits, $\sum_kf_{U,k}(t)\leq f_U^{\max}$ and $f_k(t)\leq f_k^{\max}$ |
+| (11) | Device energy budgets for offloading and local computing, within $E_k^{\max}$ |
+| (12) | Information causality: UAV computing cannot exceed offloaded bits received so far |
+| (13)-(15) | $V_{\min}\leq\lVert\mathbf v(t)\rVert\leq V_{\max}$, $\lVert\mathbf a(t)\rVert\leq a_{\max}$, and endpoints $\mathbf q_I$, $\mathbf q_F$ |
 
-**Algorithm**: Discretize the continuous flight path without fixing completion time → split variables into offloading/resource and trajectory/time blocks → convexify each block by SCA → alternate blocks to a KKT solution for energy minimization → solve the analogous time problem → sweep the weighted objective to trace the Pareto frontier.
+**Algorithm**: Discretize the continuous flight path without fixing completion time → split variables into offloading/resource and trajectory/time blocks → convexify each block by SCA → alternate blocks to a KKT solution for energy minimization → solve the analogous time problem → trace the Pareto boundary by minimizing energy for each fixed completion time.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhan et al. [x] studied completion-time and energy optimization in a fixed-wing UAV-enabled mobile edge computing system. They jointly optimized partial offloading, TDMA and CPU resources, UAV trajectory, and mission duration under task, information-causality, device-energy, CPU, speed, acceleration, and endpoint constraints. Path discretization converts the continuous-time formulations without prescribing completion time. Alternating optimization separates resource and trajectory-time blocks, and successive convex approximation solves each block to a KKT point. Simulations report lower energy and completion time than the evaluated baselines and characterize the Pareto tradeoff between the two objectives.
+Zhan et al. [x] studied completion-time and energy optimization in a fixed-wing UAV-enabled mobile edge computing system. They jointly optimized partial offloading, TDMA and CPU resources, UAV trajectory, and mission duration under task, information-causality, device-energy, CPU, speed, acceleration, and endpoint constraints. Path discretization converts the continuous-time formulations without prescribing completion time. Alternating optimization separates resource and trajectory-time blocks, and successive convex approximation solves each block to a KKT point. Simulations report lower energy and completion time than straight-line-flight and equal-offloading-time benchmarks and characterize the Pareto tradeoff between the two objectives.
 
 ## Problem framing
 

@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 16 (UAV-MEC optimization, first half)
+
+- Grounded 24 optimization-based UAV-MEC source pages (SCA, BCD, PDD, Dinkelbach, Lyapunov) against their raw parses; evidence in `wiki/.grounding/source-schema-evidence-batch16-uav-mec-opt-a.json`.
+- Full card rewrites where objectives or variables did not match the papers: jeong-2018 (MU energy only, SCA rather than Lagrangian alternation), qin-2023 (problem (20) symbols), wu-2024 URLLC (latency $t^{\mathrm{comp}}$ and paper symbols), yu-2020 (no local computing; UAV splits tasks to edge clouds), song-2026 THz (expected service delay (21), constraints (6)-(24)), and sun-2025 TJCCT (deadline, capacity, price-budget, and mobility constraints rather than queue and energy constraints).
+- Relabeled invented constraint IDs to equation tags on apostolopoulos-2021, hu-2019 PDD, hu-2026, ji-2021, li-2020, liu-2020, liu-2022, xiao-2025, xu-2021, yang-2019, wu-2018, zhan-2020 (Pareto boundary via fixed-time energy minimization), and zhou-2018.
+- RW fixes: named actual benchmarks; removed unsupported numbers on ji-2021; noted mixed results (xiao-2025 SDR variant marginally better at low UAV energy coefficients, yang-2019 exhaustive search best, sun-2025 higher energy use, liu-2020 DAI infeasible for large tasks, zhang-2019 stochastic tradeoff between MAES and MAEU).
+- Grounded count: 383/699; evidence conflicts: 0.
+
 ## [2026-11-03] Grounded batch 15 (UAV DRL: data collection, cargo, swarm, second half)
 
 - Grounded 24 UAV DRL source pages (peng through zhou, alphabetical) against their raw parses; evidence in `wiki/.grounding/source-schema-evidence-batch15-uav-drl-b.json`. This completes the UAV DRL track.

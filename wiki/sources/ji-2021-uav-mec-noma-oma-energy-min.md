@@ -13,7 +13,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[li-2020-energy-efficient-uav-mec-admm]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -33,7 +33,7 @@ Studies a fixed-wing UAV carrying a MEC server and serving user devices (UDs) wi
 
 **Scenario**: A fixed-altitude fixed-wing UAV MEC server serves user devices that split each task between local execution and UAV offloading through either OMA or NOMA.
 
-**Problem & objective**: Jointly choose partial offloading, CPU frequencies, and the UAV path to minimize weighted UAV and user energy, $\min_{\mathbf F,\mathbf L,\mathbf Q}\sum_n(\sum_s\omega_sE_{s,n}+\omega_uE_{u,n})$.
+**Problem & objective**: Problem P1 (13a) for OMA, and its NOMA counterpart P2, jointly choose partial offloading, CPU frequencies, and the UAV path to minimize weighted UAV and user energy, $\min_{\mathbf F,\mathbf L,\mathbf Q}\sum_n(\sum_s\omega_sE_{s,n}+\omega_uE_{u,n})$.
 
 **Decision variables**:
 
@@ -49,11 +49,10 @@ Studies a fixed-wing UAV carrying a MEC server and serving user devices (UDs) wi
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Computation and downlink causality prevent use of bits before uplink receipt or computation |
-| C2 | Local plus offloaded bits complete each user task and returned bits match output size |
-| C3 | All CPU frequencies and bit allocations are nonnegative, with terminal-slot timing restrictions |
-| C4 | Weighted UAV communication, computation, and propulsion energy remains feasible |
-| C5 | The UAV starts and ends at prescribed points and satisfies per-slot displacement $\|\mathbf q_u[n+1]-\mathbf q_u[n]\|\leq D_{\max}$ |
+| (13b)-(13c) | Computation and downlink causality prevent use of bits before uplink receipt or computation |
+| (13d)-(13f) | Offloaded bits are fully computed, returned bits match output size $O_s$, and local plus offloaded bits complete task $L_s$ |
+| (13g)-(13i) | Terminal-slot timing: no UAV computing in the first and last slots, no downloading in the first two, no offloading in the last two |
+| (13j)-(13k) | Per-slot displacement $\lVert\mathbf q_u[n+1]-\mathbf q_u[n]\rVert\leq D_{\max}$ and prescribed start and end points |
 
 **Algorithm**: Alternate a convex resource-allocation block solved by Lagrange duality with an SCA trajectory block, deriving separate update procedures for OMA and NOMA interference structures.
 
@@ -61,7 +60,7 @@ Studies a fixed-wing UAV carrying a MEC server and serving user devices (UDs) wi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ji et al. [x] formulated partial offloading for a fixed-wing UAV MEC server as a joint resource-allocation and trajectory problem under OMA and NOMA. Their objective minimizes weighted UAV and user energy over local and offloaded bits, CPU frequencies, and UAV positions subject to causality, completion, mobility, and energy conditions. A block-alternating method solves resource allocation by Lagrange duality and trajectory updates by successive convex approximation. Simulations show the joint design is the lowest-energy scheme in both access modes, and at UAV weight 0.2 it reduces user energy from about $2.2\times10^5$ J for local computing to 19 J while preserving the weighted objective.
+Ji et al. [x] formulated partial offloading for a fixed-wing UAV MEC server as a joint resource-allocation and trajectory problem under OMA and NOMA. Their objective minimizes weighted UAV and user energy over local and offloaded bits, CPU frequencies, and UAV positions subject to causality, completion, terminal-slot, and mobility constraints. A block-alternating method solves resource allocation by Lagrange duality and trajectory updates by successive convex approximation. Simulations show the joint design is the lowest-energy scheme in both access modes against offloading-only, direct-trajectory, and local-computing schemes; under NOMA its weighted energy is about one thousandth of local computing.
 
 ## Problem framing
 

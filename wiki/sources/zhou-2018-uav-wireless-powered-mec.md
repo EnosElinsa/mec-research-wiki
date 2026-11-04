@@ -19,7 +19,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[fuhui-zhou]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Computation Rate Maximization in UAV-Enabled Wireless-Powered Mobile-Edge Computing Systems
@@ -54,12 +54,12 @@ An early, foundational study of a **UAV-enabled wireless-powered MEC system**: a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | CPU frequency and offloading power remain in their feasible nonnegative ranges |
+| C1 (12b) | CPU frequency and offloading power remain in their feasible nonnegative ranges |
 | C2 | Cumulative local-computing and offloading energy cannot exceed cumulatively harvested RF energy |
 | C3 | TDMA time satisfies $\sum_m t_m[n]\leq 1$ in every slot |
 | C4 | UAV displacement obeys the maximum-speed constraint |
 | C5 | The UAV starts at $\mathbf q_0$ and ends at $\mathbf q_F$ |
-| C6 | Binary mode sets partition users into local and offloading groups |
+| P5 mode sets | Binary mode sets partition users into local and offloading groups |
 
 **Algorithm**: Fix the trajectory and derive closed-form resource allocations by dual optimization → update the trajectory through SCA → alternate the two stages for partial offloading → add relaxed binary mode selection and threshold recovery as a third stage for binary offloading.
 
@@ -67,7 +67,7 @@ An early, foundational study of a **UAV-enabled wireless-powered MEC system**: a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhou et al. [x] studied computation-rate maximization in a UAV-enabled wireless-powered mobile-edge computing system under partial and binary computation offloading modes. They jointly optimized user CPU frequencies, offloading times, transmit powers, the UAV trajectory, and, in the binary mode, each user's local-or-offload selection to maximize weighted computation bits. The formulations enforce energy-harvesting causality, per-slot offloading-time limits, and UAV speed and endpoint constraints. A two-stage alternating algorithm derives closed-form continuous resource allocations and updates the trajectory, while a three-stage variant additionally determines binary computing modes. Simulation results show that the proposed resource-allocation schemes outperform the evaluated benchmarks and converge with low computational complexity.
+Zhou et al. [x] studied computation-rate maximization in a UAV-enabled wireless-powered mobile-edge computing system under partial and binary computation offloading modes. They jointly optimized user CPU frequencies, offloading times, transmit powers, the UAV trajectory, and, in the binary mode, each user's local-or-offload selection to maximize weighted computation bits. The formulations enforce energy-harvesting causality, per-slot offloading-time limits, and UAV speed and endpoint constraints. A two-stage alternating algorithm derives closed-form continuous resource allocations and updates the trajectory, while a three-stage variant additionally determines binary computing modes. Simulation results show that partial offloading achieves the most weighted computation bits, ahead of binary offloading and of all-offloading and all-local benchmarks with optimized trajectories, and that the algorithms converge with low complexity.
 
 ## Problem framing
 

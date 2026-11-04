@@ -20,7 +20,7 @@ related:
   - "[[kai-kit-wong]]"
   - "[[kun-yang]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient STAR-RIS Enhanced UAV-Enabled MEC Networks With Bi-Directional Task Offloading
@@ -54,11 +54,11 @@ Proposes a UAV-enabled MEC system where a horizontally mounted [[star-ris]] lets
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Offloaded bits fit the corresponding link rates and each user completes at least $L_k$ bits |
-| C2 | BS and UAV CPU allocations satisfy per-slot capacity and processing-causality limits |
-| C3 | Flight speed, acceleration, and endpoints satisfy the UAV motion constraints |
-| C4 | Exactly one user is scheduled per slot, $\sum_k\zeta_k[n]=1$ and $\zeta_k[n]\in\{0,1\}$ |
-| C5 | Each STAR-RIS element obeys $(\beta_r^m[n])^2+(\beta_t^m[n])^2=1$ and phase bounds |
+| (26a) | Offloading-rate, computation-requirement, CPU-capacity, and processing-causality constraints (14)-(19) |
+| (26b)-(26c) | Speed $\lVert\mathbf v_{\mathrm{ua}}[n]\rVert\leq v_{\max}$, acceleration $\lVert\mathbf a_{\mathrm{ua}}[n]\rVert\leq a_{\max}$, and endpoints $\mathbf q_{\mathrm I}$, $\mathbf q_{\mathrm F}$ |
+| (26d) | Exactly one user is scheduled per slot, $\sum_k\zeta_k[n]=1$, $\zeta_k[n]\in\{0,1\}$ |
+| (26e) | No computing in the first slot and no offloading in the last slot |
+| (26f)-(26h) | STAR-RIS amplitudes satisfy $(\beta_r^m[n])^2+(\beta_t^m[n])^2=1$ with $\beta\in(0,1]$, and phases lie in $[0,2\pi)$ |
 
 **Algorithm**: An outer Dinkelbach iteration converts the fractional objective, and block coordinate descent alternates resource and scheduling, STAR-RIS beamforming, and trajectory subproblems using penalty relaxation, closed-form phase alignment, and successive convex approximation.
 
@@ -66,7 +66,7 @@ Proposes a UAV-enabled MEC system where a horizontally mounted [[star-ris]] lets
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xiao et al. [x] proposed a STAR-RIS-enhanced UAV MEC architecture that supports concurrent task offloading to a ground BS and an onboard UAV server. Their formulation maximizes completed task bits per modeled energy by jointly allocating task and CPU resources, scheduling users, configuring STAR-RIS transmission and reflection, and designing the UAV trajectory. The solution combines Dinkelbach fractional programming, block coordinate descent, penalty relaxation, closed-form phase updates, and successive convex approximation. Simulations show that the proposed design converges within a small number of iterations and achieves higher energy efficiency than conventional RIS, fixed-trajectory, heuristic, and SDR-based alternatives across the evaluated parameter sweeps.
+Xiao et al. [x] proposed a STAR-RIS-enhanced UAV MEC architecture that supports concurrent task offloading to a ground BS and an onboard UAV server. Their formulation maximizes completed task bits per modeled energy by jointly allocating task and CPU resources, scheduling users, configuring STAR-RIS transmission and reflection, and designing the UAV trajectory. The solution combines Dinkelbach fractional programming, block coordinate descent, penalty relaxation, closed-form phase updates, and successive convex approximation. Simulations show that the proposed design converges within a small number of iterations and achieves higher energy efficiency than conventional-RIS, fixed-trajectory, and heuristic schemes; an SDR-based variant is marginally better at low UAV computing-energy coefficients but degrades as that coefficient grows.
 
 ## Problem
 

@@ -19,7 +19,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[cunhua-pan]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Efficient Resource Allocation in UAV-Enabled Mobile Edge Computing Networks
@@ -38,7 +38,7 @@ A multiple-UAV MEC network where ground UEs either compute locally or offload (b
 
 **Scenario**: $N$ ground UEs with binary local or offloaded tasks are served by $M$ hovering rotary-wing UAV MEC servers. Directional antenna beamwidth, altitude, coverage, LoS uplinks, CPU allocation, and propulsion power jointly determine system power and latency.
 
-**Problem & objective**: A non-convex mixed allocation and placement problem minimizes total UE and UAV power, $\min P_{\mathrm{UE}}+P_{\mathrm{UAV}}$, including communication, computation, and UAV mechanical power.
+**Problem & objective**: Problem (24) is a non-convex mixed allocation and placement problem that minimizes total weighted UE and UAV power, $\min P_{\mathrm{UE}}+P_{\mathrm{UAV}}$, including communication, computation, and UAV mechanical power.
 
 **Decision variables**:
 
@@ -54,11 +54,13 @@ A multiple-UAV MEC network where ground UEs either compute locally or offload (b
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UE selects local computation or exactly one UAV |
-| C2 | Local or offloaded execution meets the common latency limit |
-| C3 | UE and UAV communication or computing power stay within budgets |
-| C4 | Per-UAV CPU allocation and associated-UE count remain within capacity |
-| C5 | Associated UEs lie in directional coverage, $R_{ij}\le H_j\tan\theta_j$ |
+| (24b) | Each UE computes locally ($j=0$) or offloads to exactly one UAV, $\sum_{j=0}^Ma_{ij}=1$ |
+| (24c) | UAV computing plus hovering power stays within $P_{j,\max}^{\mathrm{uav}}$, with hovering power counted only for UAVs serving at least one UE |
+| (24d) | Offloaded or local execution meets the common latency $T$ |
+| (24e)-(24f) | Associated UEs lie in the directional coverage, $a_{ij}R_{ij}\le H_j\tan\theta_j$ |
+| (24g) | UE transmit or local computing power stays within $P_{i,\max}^{\mathrm{ue}}$ |
+| (24h)-(24i) | UAV CPU allocation within $f_{j,\max}^{\mathrm{uav}}$ and at most $U_j$ associated UEs |
+| (24j)-(24k) | Binary association, local CPU limit, nonnegative allocations, and altitude and beamwidth bounds |
 
 **Algorithm**: Initialize feasible UAV clusters with fuzzy c-means → approximate association cardinality by iteratively reweighted $\ell_1$ minimization and update associations → solve CPU allocation in closed form → search each UAV's position, altitude, and beamwidth in one dimension → alternate the three blocks until sum power converges.
 
@@ -66,7 +68,7 @@ A multiple-UAV MEC network where ground UEs either compute locally or offload (b
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yang et al. [x] studied energy-efficient resource allocation in multi-UAV mobile edge computing networks with binary task offloading. They formulated joint UE and UAV power minimization over user association, transmit power, computing capacity, three-dimensional UAV placement, and antenna beamwidth under latency, coverage, power, and capacity constraints. Their IACL algorithm approximates association cardinality by iteratively reweighted $\ell_1$ optimization, solves computing allocation in closed form, and updates placement and beamwidth by one-dimensional search. Fuzzy c-means clustering supplies a feasible initialization. Simulations report lower sum power than the evaluated fixed-altitude, fixed-beamwidth, and equal-computation-capacity baselines and performance close to exhaustive search in the tested small cases.
+Yang et al. [x] studied energy-efficient resource allocation in multi-UAV mobile edge computing networks with binary task offloading. They formulated joint UE and UAV power minimization over user association, transmit power, computing capacity, three-dimensional UAV placement, and antenna beamwidth under latency, coverage, power, and capacity constraints. Their IACL algorithm approximates association cardinality by iteratively reweighted $\ell_1$ optimization, solves computing allocation in closed form, and updates placement and beamwidth by one-dimensional search. Fuzzy c-means clustering supplies a feasible initialization. Simulations report lower sum power than an SCA method with fixed altitude and beamwidth (SCAFAH) and an equal-computation-capacity scheme, while a 1000-start exhaustive search remains best with a small gap, especially at long latency limits.
 
 ## Problem framing
 

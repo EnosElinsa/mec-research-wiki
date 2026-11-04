@@ -17,7 +17,7 @@ related:
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -35,37 +35,36 @@ An early **UAV-mounted cloudlet** MEC paper: a moving UAV carries computing reso
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A fixed-altitude UAV-mounted cloudlet serves ground mobile users by receiving input bits, computing them onboard, and returning output bits while flying from a prescribed start to end point.
+**Scenario**: A UAV-mounted cloudlet at fixed altitude $H$ serves $K$ ground mobile users (MUs) over $N$ frames of length $\Delta$. Each MU offloads its input bits, the cloudlet computes them, and the output bits are returned in the downlink while the UAV flies from $\mathbf p_I^c$ to $\mathbf p_F^c$. Both orthogonal and non-orthogonal access are studied.
 
-**Problem & objective**: Jointly allocate communication and computing bits and the cloudlet route to minimize weighted mobile energy, $\min_{\mathbf F,\mathbf L,\mathbf Q}\sum_n(\sum_k\omega_kE_{k,n}+\omega_uE_{u,n})$, under a deadline and UAV energy budget.
+**Problem & objective**: Problem (13a) minimizes total MU offloading energy, $\min\sum_k\sum_{n=1}^{N-2}E_{O,k,n}^m(L_{k,n}^m,\mathbf p_n^c)$, over uplink bits, cloudlet computing bits, downlink bits, and the cloudlet trajectory, subject to a UAV energy budget $\mathcal E$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 | --- | --- | --- | --- |
-| Uplink bits | $L_{k,n}^{m}$ | nonnegative continuous | Input bits sent by mobile user $k$ in frame $n$ |
-| Cloudlet-computed bits | $l_{k,n}$ | nonnegative continuous | Input bits computed at the UAV cloudlet |
-| Downlink bits | $L_{k,n}^{c}$ | nonnegative continuous | Output bits returned to user $k$ in frame $n$ |
-| CPU frequencies | $f_k^m[n],f_n^c$ | nonnegative continuous | Local and cloudlet computation rates |
+| Uplink bits | $L_{k,n}^{m}$ | nonnegative continuous | Input bits sent by MU $k$ in frame $n$ |
+| Cloudlet-computed bits | $l_{k,n}$ | nonnegative continuous | Input bits computed at the UAV cloudlet in frame $n$ |
+| Downlink bits | $L_{k,n}^{c}$ | nonnegative continuous | Output bits returned to MU $k$ in frame $n$ |
 | Cloudlet trajectory | $\mathbf p_n^c$ | continuous 2-D positions | UAV location at each frame |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Computation and downlink causality prevent processing or returning bits before they arrive |
-| C2 | All input, computed, and output bits satisfy the task-completion equalities |
-| C3 | Bit allocations and CPU frequencies are nonnegative |
-| C4 | Joint communication, computation, and flying energy stays within the UAV budget $\mathcal E$ |
-| C5 | The cloudlet starts and ends at prescribed positions and obeys $\|\mathbf v_n^c\|\leq v_{\max}$ |
+| (13b) | Cloudlet computing, downlink, and flying energy stay within the UAV budget $\mathcal E$ |
+| (13c)-(13d) | Computation and downlink causality prevent processing or returning bits before they arrive |
+| (13e)-(13g) | All input, computed, and output bits are delivered, $\sum_nL_{k,n}^m=I_k$, $\sum_nl_{k,n+1}=I_k$, $\sum_nL_{k,n+2}^c=O_kI_k$ |
+| (13h) | Bit allocations are nonnegative |
+| (13i)-(13k) | Prescribed start and end positions, speed limit $\lVert\mathbf v_n^c\rVert\leq v_{\max}$, and velocity definition |
 
-**Algorithm**: Alternate a convex bit-allocation and CPU-frequency subproblem solved by Lagrange methods with an SCA trajectory subproblem, and repeat the block updates for both OMA and NOMA access until convergence to a local solution.
+**Algorithm**: Apply successive convex approximation within the inner convex approximation framework, iteratively solving convex surrogates of the nonconvex energy and rate terms for both orthogonal and non-orthogonal access until convergence to a local minimum. An extension adds an acceleration limit (31f).
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Jeong et al. [x] introduced a UAV-mounted cloudlet that jointly plans a fixed-altitude trajectory and bit allocation for uplink, cloudlet computation, and downlink return. They minimize mobile energy under computation-causality, task-completion, UAV-energy, endpoint, and speed constraints for both orthogonal and non-orthogonal access. The alternating solver uses Lagrange-based resource allocation and successive convex approximation for trajectory updates, with separate interference models for OMA and NOMA. At a 2.7 s deadline, the joint design requires 36.8 J with OMA and 29.9 J with NOMA versus 43.1 J and 44.3 J for equal allocation and constant-velocity flight, corresponding to 14.5% and 32.7% reductions.
+Jeong et al. [x] introduced a UAV-mounted cloudlet that jointly plans a fixed-altitude trajectory and bit allocation for uplink, cloudlet computation, and downlink return. They minimize total mobile-user energy under a UAV energy budget and computation-causality, task-completion, UAV-energy, endpoint, and speed constraints for both orthogonal and non-orthogonal access. The solver applies successive convex approximation to the joint bit-allocation and trajectory problem, with separate interference models for orthogonal and non-orthogonal access. At a 2.7 s deadline, the joint design requires 36.8 J with OMA and 29.9 J with NOMA versus 43.1 J and 44.3 J for equal allocation and constant-velocity flight, corresponding to 14.5% and 32.7% reductions.
 
 ## Problem framing
 

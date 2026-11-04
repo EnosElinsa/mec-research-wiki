@@ -17,7 +17,7 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -65,7 +65,7 @@ A UAV-assisted MEC system with **stochastic computation tasks** (task streaming 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied stochastic computation offloading, resource allocation, and trajectory scheduling in a UAV-assisted mobile edge computing system. They formulated a nonconvex stochastic problem that minimizes the average weighted energy consumption of smart mobile devices and the UAV under task-queue, computation, offloading, and mobility constraints. A Lyapunov-based approach transforms the long-term problem into a deterministic per-slot drift-plus-penalty problem and decomposes it into three subproblems. Their JSORT algorithm combines ADMM, an interior-point method, and a CVX-based trajectory update to solve the subproblems iteratively. Simulations report lower average weighted energy consumption than the MAES benchmark and more processed queue backlog than the MAEU benchmark, while illustrating the energy and queue-stability tradeoff controlled by $V$ and the weight factors.
+Zhang et al. [x] studied stochastic computation offloading, resource allocation, and trajectory scheduling in a UAV-assisted mobile edge computing system. They formulated a nonconvex stochastic problem that minimizes the average weighted energy consumption of smart mobile devices and the UAV under task-queue, computation, offloading, and mobility constraints. A Lyapunov-based approach transforms the long-term problem into a deterministic per-slot drift-plus-penalty problem and decomposes it into three subproblems. Their JSORT algorithm combines ADMM, an interior-point method, and a CVX-based trajectory update to solve the subproblems iteratively. Simulations report that the weighted scheme saves more energy than the device-only MAES benchmark and processes more queue backlog than the UAV-only MAEU benchmark, with device and UAV energy lying between those two benchmarks, while illustrating the energy and queue-stability tradeoff controlled by $V$ and the weight factors.
 
 ## Problem framing
 

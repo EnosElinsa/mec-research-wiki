@@ -18,7 +18,7 @@ related:
   - "[[tun-2025-thz-sag-mec-resource-allocation]]"
   - "[[wu-2025-iopo-irs-uav-thz-mec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Terahertz Communication Multi-UAV-Assisted Mobile Edge Computing System
@@ -35,36 +35,37 @@ Optimizes a THz multi-UAV relay MEC system where IoT devices either offload dire
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: IoT devices with Poisson task arrivals either connect directly to MEC servers or use multiple UAV relays over wideband THz links. Molecular absorption and blockage determine communication delay, while each MEC server is modeled as an M/M/s queue and UAV relay selection, power, position, and user-subband association are coupled.
+**Scenario**: IoT devices with Poisson task arrivals offload to MEC servers over wideband THz links, either directly or through one of multiple half-duplex decode-and-forward UAV relays. Molecular absorption and distance shape the sub-band rates, OMA assigns one sub-band per association pair, and each MEC server is an M/M/s queue.
 
-**Problem & objective**: Problem P1, a mixed-integer nonlinear queue-aware program, minimizes long-term average service delay, $\min\limsup_T T^{-1}\sum_t D_{\mathrm{service}}(t)$, subject to queue stability and communication, association, power, and UAV-position limits.
+**Problem & objective**: Problem (P1) (21) minimizes the expected user service delay, $\min_{\alpha,\mathbf P,\mathbf q,\mathbf z}\frac{1}{\lvert\mathcal T\rvert}\sum_it_{\mathrm{serv},i}$, the sum of communication and queueing computation delay, subject to (22)-(24). It is a mixed-integer nonlinear program.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Relay selection | $x_{i,u}(t)$ | binary | Whether IoT device $i$ uses UAV relay $u$ |
-| UAV transmit power | $p_u(t)$ | continuous, bounded | Relay transmit power |
-| UAV position | $\mathbf q_u(t)$ | continuous 2-D/3-D position | Deployment location of relay $u$ |
-| User-subband association | $a_{i,s}(t)$ | binary | THz sub-band/resource assigned to device $i$ |
+| Relay selection | $\alpha_{i,m}$ | binary | IoT device $i$ uses UAV $m$ as relay |
+| UAV power control | $P_{i,m}$ | continuous, nonnegative | Power UAV $m$ allocates to device $i$ |
+| UAV deployment | $\mathbf q_m$ | continuous position | Location of UAV relay $m$ |
+| User-resource association | $z_{j,i}^u$ | binary | Device $i$ offloads to MEC server $j$ via sub-band $u$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each device uses a direct or one-relay path and each sub-band serves feasible users |
-| C2 | Relay and device powers satisfy peak limits |
-| C3 | THz communication queues and M/M/s MEC queues remain stable |
-| C4 | UAV positions and relay links satisfy deployment and blockage assumptions |
-| C5 | Service rates, molecular absorption, and queueing delays meet the long-term delay domain |
+| (6) | Each device uses at most one UAV relay, $\alpha_i=\sum_m\alpha_{i,m}\leq1$ |
+| (7) | UAV separation, $\lVert\mathbf q_m-\mathbf q_{m'}\rVert^2\geq d_{\min}^2$ |
+| (8) | Per-UAV power budget, $\sum_iP_{i,m}\leq P_{\mathrm{UAV}}$ |
+| (10)-(11) | Each sub-band serves one association pair, and each device associates with one MEC server |
+| (14) | M/M/s queue stability at each MEC server, $s>\frac1\mu\sum_i\sum_uz_{j,i}^u\lambda_i$ |
+| (23)-(24) | Binary relay-selection and association variables |
 
-**Algorithm**: Introduce slack equalities and an augmented Lagrangian for binary variables → alternate relay selection, power control, UAV positioning, and user-resource association in a PDD inner loop → update dual variables and penalties in the outer loop → optionally use theorem-based closed forms, clustering, and greedy association for a lower-complexity variant.
+**Algorithm**: Introduce slack equalities and an augmented Lagrangian for the binary variables, alternate relay selection, power control, UAV positioning, and user-resource association in the PDD inner loop, and update dual variables and penalties in the outer loop. A lower-complexity variant uses theorem-based closed forms, clustering, and greedy association.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Song et al. [x] studied long-term service-delay minimization in a terahertz multi-UAV relay MEC system. IoT devices use direct or relayed THz paths to MEC servers, while molecular absorption, blockage, and M/M/s queueing determine communication and execution delay. They formulated a mixed-integer nonlinear problem that jointly optimizes relay selection, UAV transmit power and positions, and user-subband association under queue-stability and resource constraints. A penalty dual decomposition method alternates the four variable blocks and updates augmented-Lagrangian multipliers, with closed-form relay and power structures at convergence. In the stated 400 m by 400 m simulation, PDD reaches 2.3687 s average service delay versus 2.1319 s for exhaustive search and 2.3894 s for the upper-bound reference.
+Song et al. [x] studied expected service-delay minimization in a terahertz multi-UAV relay MEC system. IoT devices use direct or relayed THz paths to MEC servers, while molecular absorption, blockage, and M/M/s queueing determine communication and execution delay. They formulated a mixed-integer nonlinear problem that jointly optimizes relay selection, UAV transmit power and positions, and user-subband association under single-relay, UAV-separation, power, sub-band association, and queue-stability constraints. A penalty dual decomposition method alternates the four variable blocks and updates augmented-Lagrangian multipliers, with closed-form relay and power structures at convergence. In the stated 400 m by 400 m simulation, PDD reaches 2.3687 s average service delay versus 2.1319 s for exhaustive search, with its own delay upper bound at 2.3894 s.
 
 ## Problem
 
