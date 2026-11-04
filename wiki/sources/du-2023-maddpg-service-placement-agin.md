@@ -17,7 +17,7 @@ related:
   - "[[zhao-2024-caching-service-placement-uav]]"
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # MADDPG-Based Joint Service Placement and Task Offloading in MEC Empowered Air-Ground Integrated Networks
@@ -36,7 +36,7 @@ A comprehensive **air-ground integrated MEC** framework where UAV-carried edge s
 
 **Scenario**: A slotted air-ground integrated network contains IoT devices, user equipment, and multiple UAV-mounted MEC servers. UEs access UAVs over NOMA links, while each UAV has finite service-storage and computation capacity; the primary UAV performs centralized training and the UAVs execute their policies as distributed agents.
 
-**Problem & objective**: The mixed-integer nonlinear program P1 jointly minimizes long-term average UE cost, $\min_{\boldsymbol{\Delta}(t),\boldsymbol{\rho}(t),\mathbf A(t),\mathbf P(t),\mathbf F(t)}\frac{1}{T_{\max}}\sum_{t=1}^{T_{\max}}\sum_i \mathrm{Cost}_i(t)$, where each cost combines task-completion delay and economic expenditure.
+**Problem & objective**: The mixed-integer nonlinear program $(\mathcal P_1)$ jointly minimizes long-term average UE cost, $\min_{\boldsymbol{\Delta}(t),\boldsymbol{\rho}(t),\mathbf A(t),\mathbf P(t),\mathbf F(t)}\frac{1}{T_{\max}}\sum_{t=1}^{T_{\max}}\sum_i \mathrm{Cost}_i(t)$, where each cost combines task-completion delay and economic expenditure.
 
 **Decision variables**:
 
@@ -52,11 +52,17 @@ A comprehensive **air-ground integrated MEC** framework where UAV-carried edge s
 
 | ID | Meaning and key expression |
 |---|---|
-| C1-C3 | Service-instance installation, removal, and inventory counts remain consistent across slots |
-| C10 | UAV storage is bounded by $\sum_h n_{hj}(t)w_h\leq \Pi_j$ |
-| C11-C12 | Each offloaded task selects one UAV and one feasible idle or newly installed service instance |
-| C13-C14 | Transmit-power and computation allocations respect the UE and UAV capacity bounds |
-| C15 | The resulting task-completion delay satisfies the UE delay requirement |
+| (C1) | Integer instance adjustment: $\delta_{h,j}(t)\in\mathbb N$ |
+| (C2) | Removals do not exceed deployed instances: $n_{h,j}(t-1)\ge\lvert\delta_{h,j}(t)\rvert\mathbb I\{\delta_{h,j}(t)<0\}$ |
+| (C3) | Installed instances per UAV at most thres (load balancing) |
+| (C4)–(C6) | Binary offloading $\varrho_i$, access $a_{i,j}$, and idle/new instance selection |
+| (C7) | An offloading UE accesses one UAV |
+| (C8) | Idle plus new instance selection equals $a_{i,j}r_{i,h}$ |
+| (C9) | UAV storage: $\sum_hn_{h,j}(t)w_h\le\Pi_j$ |
+| (C10) | Served requests at most the deployed instances $n_{h,j}(t)$ |
+| (C11) | $\sum_j\varrho_i(t)a_{i,j}(t)=1$ |
+| (C12)–(C14) | UE power $0<p_{i,j}<p^{\max}$; UAV CPU per UE and in total within $f_j^{\max}$ |
+| (C15) | Task delay $T_i(t)\le T_h^{\max}$ |
 
 **Algorithm**: Reformulate P1 as an MDP whose UAV observations contain requests, resident instances, storage, and UE positions; let each MADDPG actor output placement, offloading, access, power, and computation controls; normalize continuous outputs and convert the coupled placement and selection components to feasible discrete decisions; train the actors with centralized critics, replay, target networks, and a reciprocal-cost reward with a penalty for infeasible actions; then execute the learned UAV policies distributively.
 
@@ -64,7 +70,7 @@ A comprehensive **air-ground integrated MEC** framework where UAV-carried edge s
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Du et al. [x] studied joint service placement and task offloading in a MEC-empowered air-ground integrated network with UAV-mounted edge servers. They formulated a mixed-integer nonlinear program that minimizes the long-term average weighted sum of task-completion delay and economic expenditure over service-instance adjustment, offloading, access, transmit-power, and computation-allocation decisions. They transformed the problem into a multi-agent MDP and used MADDPG with centralized training, distributed execution, and continuous-to-discrete action conversion that preserves coupled decisions. Simulation results reported fast convergence and lower system cost than the evaluated benchmark schemes.
+Du et al. [x] studied joint service placement and task offloading in a MEC-empowered air-ground integrated network with UAV-mounted edge servers. They formulated a mixed-integer nonlinear program that minimizes the long-term average weighted sum of task-completion delay and economic expenditure over service-instance adjustment, offloading, access, transmit-power, and computation-allocation decisions. They transformed the problem into a multi-agent MDP and used MADDPG with centralized training, distributed execution, and continuous-to-discrete action conversion that preserves coupled decisions. Simulation results reported fast convergence and lower system cost than POPO (random access control), OTPOA (random power and computing), All-Offloading, and random decisions.
 
 ## Problem framing
 

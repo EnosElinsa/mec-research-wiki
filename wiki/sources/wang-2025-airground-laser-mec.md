@@ -28,7 +28,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[decomposition-beats-end-to-end-drl-in-mec]]"
 created: 2026-06-03
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Air–Ground Coordinated MEC: Joint Task, Time Allocation and Trajectory Design
@@ -45,7 +45,7 @@ An air-ground coordinated MEC system pairs a **laser-powered rotary-wing UAV** w
 
 **Scenario**: A laser-powered rotary-wing UAV and a grid-powered AP jointly serve UEs; the UAV computes some tasks locally, relays other tasks to the AP, and harvests energy from the AP within each slot.
 
-**Problem & objective**: The long-term problem minimizes average UAV energy, $\min_{\mathbf U,\boldsymbol\beta,\mathbf Q}\lim_{T\to\infty}T^{-1}\sum_tE_u(t)$.
+**Problem & objective**: Problem $\mathcal P1$ in (29) minimizes average UAV energy, $\min_{\mathbf U,\boldsymbol\beta,\mathbf Q}\lim_{T\to\infty}T^{-1}\sum_tE_u(t)$.
 
 **Decision variables**:
 
@@ -60,11 +60,11 @@ An air-ground coordinated MEC system pairs a **laser-powered rotary-wing UAV** w
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV motion is bounded: $0\leq\theta(t)\leq2\pi$, $0\leq d(t)\leq d_{max}$, and the position stays in the service region. |
-| C2 | Task fractions partition each UE task: $\beta_n^u(t)+\beta_n^{AP}(t)=1$. |
-| C3 | Harvesting time is bounded: $0\leq q(t)\leq1$. |
-| C4 | Every task meets its deadline: $T_n(t)\leq T_{max}$. |
-| C5 | Harvested energy covers consumption: $E_u(t)\leq E_u^{EH}(t)$. |
+| (29b)–(29d) | UAV motion: heading $0\le\theta(t)\le2\pi$, distance $0\le d(t)\le d_{\max}$, position within $[0,X_{\max}]\times[0,Y_{\max}]$ |
+| (29e)–(29g) | Task fractions: $0\le\beta_n^u(t),\beta_n^{AP}(t)\le1$, $\beta_n^u(t)+\beta_n^{AP}(t)=1$ |
+| (29h) | Harvesting time ratio: $0\le q(t)\le1$ |
+| (29i) | Deadline: $T_n(t)\le T_{\max}$ |
+| (29j) | Energy causality: $E_u(t)\le E_u^{EH}(t)$ |
 
 **Algorithm**: Alternate a linear-programming allocation and harvesting-time step solved with PuLP with a DDPG trajectory step, holding the other block fixed to form the LP-DDPG procedure.
 
@@ -72,7 +72,7 @@ An air-ground coordinated MEC system pairs a **laser-powered rotary-wing UAV** w
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] study laser-powered air-ground MEC in which a UAV is both an edge server and a relay for a grid-powered AP. The long-term energy model jointly selects the UAV trajectory, UAV versus AP task fractions, and laser-harvesting time under movement, task partition, deadline, and energy-causality constraints. Their LP-DDPG decomposition solves allocation and harvesting with linear programming and updates the trajectory with DDPG. Simulations report reliable convergence and the lowest modeled UAV energy among the compared allocation and trajectory baselines.
+Wang et al. [x] study laser-powered air-ground MEC in which a UAV is both an edge server and a relay for a grid-powered AP. The long-term energy model jointly selects the UAV trajectory, UAV versus AP task fractions, and laser-harvesting time under movement, task partition, deadline, and energy-causality constraints. Their LP-DDPG decomposition solves allocation and harvesting with linear programming and updates the trajectory with DDPG. Simulations report reliable convergence and average UAV energy savings of 2.07%, 3.61%, 8.04%, and 11.87% over the CO, AO, RO, and FT benchmark schemes; an LP-PPO variant is also compared.
 
 ## Problem framing
 UEs in remote or emergency settings (maritime, mountainous, post-disaster) may be far from sparse, fixed ground base stations, suffering poor coverage; meanwhile UAVs make flexible airborne MEC servers but have limited compute and battery. An air-ground architecture lets the UAV switch between MEC-server and relay roles to extend service, and laser-charged WPT (which can deliver hundreds of watts through a narrow beam, with field-tested feasibility) co-locates the laser emitter with the ground server to sustain the UAV. Because harvested energy is **uncertain**, the system must use it efficiently. The paper notes that with the UAV's position fixed, the task-/time-allocation problem is strictly linear — the structural insight that motivates the decomposition.

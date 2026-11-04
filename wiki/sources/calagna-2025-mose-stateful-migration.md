@@ -16,7 +16,7 @@ related:
   - "[[yenchia-yu]]"
   - "[[carla-fabiana-chiasserini]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # MOSE: A Novel Orchestration Framework for Stateful Microservice Migration at the Edge
@@ -33,36 +33,31 @@ MOSE orchestrates stateful microservice migration for moving edge users while pr
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A moving aerial or mobile user accesses a stateful microservice through edge hosts. The service may migrate between hosts using Cold, Pre-copy, or Iterative Pre-copy while a COAT overlay preserves the user's connection.
+**Scenario**: An autonomous aerial vehicle (AAV) or other mobile user reaches stateful microservices on the edge server co-located with its serving gNB, so the services must follow it when the gNB changes. MOSE orchestrates the migration with CRIU/Podman, the COAT overlay preserves the established connection, and edge agents profile the microservice and network.
 
-**Problem & objective**: Select migration mode and parameters to meet target downtime and duration, $\min T^{\mathrm{down}}$ subject to $T^{\mathrm{mig}}\leq\theta^{\mathrm{mig}}$ and $T^{\mathrm{down}}\leq\theta^{\mathrm{down}}$.
+**Problem & objective**: This is an orchestration design with no formal optimization problem. Given target KPIs (migration duration $T^{\mathrm{mig}}$ and downtime $T^{\mathrm{down}}$) and the vertical's objective, either minimizing resource usage (bandwidth and CPU) or minimizing downtime, MOSE picks and configures a migration strategy using PAM upper bounds.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
-| --- | --- | --- | --- |
-| Migration mode | $m$ | categorical | Cold, Pre-copy, or Iterative Pre-copy |
-| Migration bandwidth | $L$ | positive continuous | Link bandwidth allocated to migration |
-| Pre-copy iterations | $I$ | nonnegative integer | Number of iterative memory-transfer rounds |
-| Service state size | $M$ | positive continuous | Runtime memory and state volume |
+|---|---|---|---|
+| Migration strategy | Cold / PreCopy / Iterative PreCopy | categorical | Technique chosen by the migration designer (no symbol in the paper) |
+| Migration bandwidth | $L$ | continuous, at most the available bandwidth | Bandwidth the network controller allocates |
+| PreCopy iterations | $I$ | nonnegative integer | Iterations for Iterative PreCopy |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
-| --- | --- |
-| Duration KPI | $T^{\mathrm{mig}}\leq\theta^{\mathrm{mig}}$. |
-| Downtime KPI | $T^{\mathrm{down}}\leq\theta^{\mathrm{down}}$. |
-| Bandwidth | $L$ is bounded by available source-destination capacity. |
-| Dirty state | PAM uses measured or conservative dirty-page rates to bound iterative transfer. |
-| Connection | COAT overlay keeps the established connection reachable across relocation. |
+|---|---|
+| Model rule | Resource-usage objective: Cold Migration, with PAM giving the minimum bandwidth that meets the downtime target, checked against the available bandwidth |
+| Model rule | Downtime objective: Iterative PreCopy, first checked against the migration-duration target, then given the largest iteration count that meets it |
+| Model rule | PAM uses the maximum dirty-page rate, so the KPIs are upper bounds independent of the iteration index |
 
-**Algorithm**: Edge agents report migration conditions; the orchestrator evaluates PAM bounds, chooses migration mode, and configures bandwidth and iterations. COAT and CRIU/Podman execute the selected migration while preserving connectivity.
+**Algorithm**: The migration task handler passes target KPIs and the objective; the profiling module collects metrics from source and destination agents; the migration designer runs the configuration algorithm (Fig. 5) and sends strategy, bandwidth, and iteration count to the agents over Zenoh, which run the COAT migration.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Calagna et al. [x] proposed MOSE, an orchestrator for stateful microservice migration at the network edge. MOSE combines CRIU/Podman migration, the COAT overlay for connection continuity, and PAM upper bounds that account for state size, dirty-page rate, processing, and network conditions. Edge agents profile the application and the orchestrator chooses Cold, Pre-copy, or Iterative Pre-copy together with bandwidth and iteration settings to meet downtime and duration targets. Testbed experiments report up to 77% lower downtime than the compared schemes and substantial reductions in transfer overhead for SockPerf and iPerf3 workloads. The measured gains depend on the tested edge stack and conservative model parameters.
+Calagna et al. [x] proposed MOSE, an orchestrator for stateful microservice migration at the network edge. MOSE combines CRIU/Podman migration, the COAT overlay for connection continuity, and PAM upper bounds that account for state size, dirty-page rate, processing, and network conditions. Edge agents profile the application and the orchestrator chooses Cold, Pre-copy, or Iterative Pre-copy together with bandwidth and iteration settings to meet downtime and duration targets. Testbed experiments with SockPerf and iPerf3 report up to 77% lower downtime than the state of the art, mainly because Zenoh signaling removes the SSH overhead of the transfer step. The measured gains depend on the tested edge stack and conservative model parameters.
 
 ## Problem and system model
 

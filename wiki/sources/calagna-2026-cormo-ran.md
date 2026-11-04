@@ -15,7 +15,7 @@ related:
   - "[[calagna-2024-robust-stateful-migration]]"
   - "[[carla-fabiana-chiasserini]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # CORMO-RAN: Energy Efficiency at the Near-RT RIC via Lossless Migration of O-RAN xApps
@@ -34,7 +34,7 @@ CORMO-RAN jointly activates near-RT RIC compute nodes and migrates stateful O-RA
 
 **Scenario**: A near-RT RIC cluster hosts heterogeneous stateful xApps on resource-constrained servers. A non-RT RIC rApp periodically or event-wise consolidates xApps, migrates them from servers that can be switched off, and keeps their control service available through stateful migration or a shared data layer.
 
-**Problem & objective**: Minimize cluster energy, $\min_{\mathbf{x},\boldsymbol\mu}\sum_{s\in\mathcal S}E_s$, including server execution, migration, and shared-data-layer maintenance energy.
+**Problem & objective**: Problem (SAL), an NP-hard MIQP, minimizes cluster energy, $\min_{\mathbf{x},\boldsymbol\mu}\sum_{s\in\mathcal S}E_s$, including server execution, migration, and shared-data-layer maintenance energy.
 
 **Decision variables**:
 
@@ -49,11 +49,15 @@ CORMO-RAN jointly activates near-RT RIC compute nodes and migrates stateful O-RA
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | All currently deployed xApps are reallocated exactly once: $\sum_{s'}x_{k,s,s'}=n^0_{k,s}$. |
-| C2 | xApps are instantiated only on active servers and no xApps remain on the virtual source server. |
-| C3 | CPU, memory, and disk usage satisfy $R_{\chi_s}\le R_{\chi_s}^{\max}\mu_s$ for each resource $\chi$. |
-| C4 | Only switchable servers can be shut down: $\mu_s\ge1-\alpha_s$. |
-| C5 | Migration downtime and SDL maintenance remain within $T_{D_s}^{\max}$ and the near-RT deadline $T_{DF}^{\max}$. |
+| (12) | All required xApps are allocated exactly once: $\sum_{s'}x_{k,s,s'}=n_{k,s}^0$ |
+| (13)–(14) | No xApp remains on the virtual server $\tilde s$ |
+| (15) | xApps are instantiated only on active servers ($\le M\mu_s^0$) |
+| (16)–(17) | Migrate only from active servers and shut down servers left empty (big-$M$ coupling with $\mu_s$) |
+| (18) | Server resources: $R_{\chi_s}\le R_{\chi_s}^{\max}\mu_s$, $\chi\in\{$CPU, MEM, DISK$\}$ |
+| (19) | Only switchable servers may be turned off: $\mu_s\ge1-\alpha_s$ |
+| (20) | Migration downtime at $s$: $\sum_kT_{D_{k,s}}^{\tau}\le T_{D_s}^{\max}$ |
+| (21)–(22) | SDL feasibility: $T_{\mathrm{DF}}^{\mathrm{SDL}}<T_{\mathrm{DF}}^{\max}$ and $T_{\mathrm{active}}>0$ |
+| Note | The parse misplaces tags (18)–(22); IDs follow the paper's text, so check the published paper |
 
 **Algorithm**: Build migration-energy terms from experimental state-size, dirty-page, and timing measurements, then solve the server activation and lossless migration MIQP with branch-and-bound/Gurobi; compare SDL, downtime-minimizing SM-MD, and resource-minimizing SM-MR.
 
@@ -61,7 +65,7 @@ CORMO-RAN jointly activates near-RT RIC compute nodes and migrates stateful O-RA
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Calagna et al. [x] studied lossless migration of stateful O-RAN xApps as a joint server-activation and migration problem for the near-RT RIC. They minimized cluster energy by choosing active servers, xApp reallocations, and either shared-data-layer or stateful-migration operation under resource, downtime, and control-loop deadline constraints. The paper experimentally compared Shared Data Layer, resource-minimizing stateful migration, and downtime-minimizing stateful migration for diverse xApp classes on a Red Hat OpenShift private-5G testbed. The resulting MIQP identifies feasible allocations and achieves up to 64% energy reduction against an always-active OpenShift baseline in low-load configurations. The evaluation is experimental and optimization-based, not a proof of a universally optimal migration policy outside the modeled cluster.
+Calagna et al. [x] studied lossless migration of stateful O-RAN xApps as a joint server-activation and migration problem for the near-RT RIC. They minimized cluster energy by choosing active servers, xApp reallocations, and either shared-data-layer or stateful-migration operation under resource, downtime, and control-loop deadline constraints. The paper experimentally compared Shared Data Layer, resource-minimizing stateful migration, and downtime-minimizing stateful migration for diverse xApp classes on a Red Hat OpenShift private-5G testbed. The resulting MIQP identifies feasible allocations and achieves up to 64% energy reduction against a baseline that keeps all servers active with OpenShift's native resource-based load balancing. The evaluation is experimental and optimization-based, not a proof of a universally optimal migration policy outside the modeled cluster.
 
 ## Problem and system model
 

@@ -20,7 +20,7 @@ related:
   - "[[lianming-xu]]"
   - "[[zheng-chang]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Agent DRL-Based Coded Caching and Resource Allocation in UAV-Assisted Networks
@@ -55,11 +55,11 @@ Uses erasure and regenerating codes to distribute emergency content across UAV c
 
 | ID | Meaning and key expression |
 |---|---|
-| 35b-35c | Cache placement is binary, fits UAV storage, and places each coded item on exactly $n_f$ UAVs |
-| 35d-35e | Speed and heading remain within their physical ranges |
-| 35f | Each UAV serves at most $q_i^{\max}$ download and repair recipients per slot |
-| 35g-35h | A download uses at least $k_f$ helpers and a repair uses at least $d_f$ helpers |
-| 35i-35j | UAVs maintain safety distance $D_{\min}$ and obey the per-slot movement limit $D_{\max}$ |
+| (35b)–(35c) | Cache placement is binary, fits UAV storage, and places each coded item on exactly $n_f$ UAVs |
+| (35d)–(35e) | Speed and heading remain within their physical ranges |
+| (35f) | Each UAV serves at most $q_i^{\max}$ download and repair recipients per slot |
+| (35g)–(35h) | A download uses at least $k_f$ helpers and a repair uses at least $d_f$ helpers |
+| (35i)–(35j) | UAVs maintain safety distance $D_{\min}$ and obey the per-slot movement limit $D_{\max}$ |
 
 **Algorithm**: H-MA-PDQN separates decisions across two timescales. A control-station CP-PDQN updates code family, code parameters, and cache placement by time frame, while decentralized PT-PDQN agents update requester and repair matching together with continuous speed and heading in each short slot.
 
@@ -67,7 +67,7 @@ Uses erasure and regenerating codes to distribute emergency content across UAV c
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Tian et al. [x] studied coded content delivery and cache repair in a mobile UAV network with requester churn and battery-driven UAV replacement. They maximize average download and repair success probability by jointly selecting code parameters, fragment placement, requester and repair matching, and UAV trajectories under storage, service-count, reconstruction, safety, and mobility constraints. Their H-MA-PDQN framework places code and cache decisions in a slow control-station layer and matching and motion decisions in faster decentralized UAV agents. Parameterized Q-networks represent the resulting mixture of categorical, binary, and continuous actions without uniformly discretizing the motion variables. Simulations report higher success probability and lower transmission cost than DQN and greedy baselines, and dynamic UAV trajectories outperform static deployment under the tested requester distributions.
+Tian et al. [x] studied coded content delivery and cache repair in a mobile UAV network with requester churn and battery-driven UAV replacement. They maximize average download and repair success probability by jointly selecting code parameters, fragment placement, requester and repair matching, and UAV trajectories under storage, service-count, reconstruction, safety, and mobility constraints. Their H-MA-PDQN framework places code and cache decisions in a slow control-station layer and matching and motion decisions in faster decentralized UAV agents. Parameterized Q-networks represent the resulting mixture of categorical, binary, and continuous actions without uniformly discretizing the motion variables. Simulations report higher success probability and lower transmission cost than H-MA-DQN, MA-PDQN, MA-DQN, and greedy baselines, and dynamic UAV trajectories outperform static deployment under the tested requester distributions.
 
 ## Problem and system model
 

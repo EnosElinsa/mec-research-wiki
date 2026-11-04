@@ -18,7 +18,7 @@ related:
   - "[[lyapunov-guided-drl]]"
 modeling_card: required
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Enhancing Energy Efficiency in Wireless-Powered MEC Systems Through Lyapunov-Guided Deep Reinforcement Learning
@@ -44,7 +44,7 @@ The sub-problem is solved with **golden search + KKT + Lagrange dual** (closed-f
 
 **Scenario**: Multiple wireless devices harvest energy from a power station and either compute locally or offload an indivisible task to a BS-side edge server in each slot; offloading devices share the uplink through TDMA under time-varying channels and stochastic task arrivals.
 
-**Problem & objective**: LSEM, a long-term fractional MINLP, minimizes the reciprocal energy efficiency $\lim_{K\to\infty}\eta(K)=\lim_{K\to\infty}\frac{\sum_t E_{\mathrm{tot}}(t)}{\sum_t D_{\mathrm{tot}}(t)}$ while stabilizing task and virtual-energy queues.
+**Problem & objective**: LSEM in (15), a long-term fractional MINLP, minimizes the reciprocal energy efficiency $\lim_{K\to\infty}\eta(K)=\lim_{K\to\infty}\frac{\sum_t E_{\mathrm{tot}}(t)}{\sum_t D_{\mathrm{tot}}(t)}$ while stabilizing task and virtual-energy queues.
 
 **Decision variables**:
 
@@ -60,10 +60,11 @@ The sub-problem is solved with **golden search + KKT + Lagrange dual** (closed-f
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Slot time satisfies $a(t)+\sum_i\tau_i(t)\le1$ |
-| C2 | Device energy consumption does not exceed available harvested and battery energy |
-| C3 | CPU frequency and offloading variables obey their domains, including $x_i(t)\in\{0,1\}$ |
-| C4 | Computation-task queues $Q_i(t)$ and virtual-energy queues $W_i(t)$ remain stable |
+| (15a) | Slot time: $a(t)+\sum_i\tau_i(t)\le1$ |
+| (15b) | Device energy: $E_i(t)\le\min[B_i(t)+E_i^H(t),B_i^{\max}]$ |
+| (15c) | Local CPU: $0\le f_i(t)\le f_i^{\max}$ |
+| (15d) | $x_i(t)\in\{0,1\}$; $a(t),e_i(t),\tau_i(t)\ge0$ |
+| (15e) | Task queues $Q_i(t)$ and virtual energy queues $W_i(t)$ are stable |
 
 **Algorithm**: LyCNN-DRL, apply fractional programming and Lyapunov drift to obtain a per-slot MINLP, let a CNN actor propose binary offloading, solve continuous resources by golden-section search, closed-form CPU allocation, and Lagrange-dual KKT updates, and use that subproblem value as the critic.
 

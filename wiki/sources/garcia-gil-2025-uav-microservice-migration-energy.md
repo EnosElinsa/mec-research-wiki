@@ -15,7 +15,7 @@ related:
   - "[[juan-manuel-murillo]]"
   - "[[jaime-galan-jimenez]]"
 created: 2026-08-27
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Microservices Migration: A Pathway to Improved Energy Efficiency in UAV Networks
@@ -34,7 +34,7 @@ Formulates battery-aware microservice deployment and migration across a computin
 
 **Scenario**: A mesh of computing-enabled UAVs hosts replicated microservices for rural IoT applications. UAVs have finite battery, memory, and CPU capacity, while requests create computation and communication energy demand.
 
-**Problem & objective**: Select microservice deployment and migration variables $x_{n,m}$ to maximize the minimum post-slot battery slack, $\max z$.
+**Problem & objective**: The MILP (6), solved in each time window, selects binary placements $x_{n_i,m_j}$ to maximize the slack $z$, the remaining battery of the UAV with the least battery.
 
 **Decision variables**:
 
@@ -42,17 +42,17 @@ Formulates battery-aware microservice deployment and migration across a computin
 | --- | --- | --- | --- |
 | Service placement | $x_{n,m}$ | binary | Whether UAV $n$ hosts microservice $m$ |
 | Minimum battery slack | $z$ | continuous | Lowest remaining battery across the fleet |
-| Request routing | $r_{n,m}$ | nonnegative load | Requests served or forwarded through UAV $n$ |
+| Request load (input) | $q_{n_i,m_j}$ | nonnegative | Requests reaching microservice $m_j$ on UAV $n_i$; uplink and downlink traffic $r^u,r^d$ enter the energy model |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Replica | Every required microservice replica is deployed on the UAV network. |
-| Memory | Hosted microservices do not exceed each UAV's RAM capacity. |
-| Compute | Request cycles assigned to a UAV remain within its CPU budget. |
-| Battery | Remaining energy stays above the configured minimum threshold. |
-| Balance | $z$ is no greater than the remaining battery of any UAV. |
+| (6b) | Every replica is deployed: $\sum_{n_i}x_{n_i,m_j}=d_{m_j}$ |
+| (6c) | RAM: $\sum_{m_j}x_{n_i,m_j}c_{m_j}\le c_{u_i}$ |
+| (6d) | CPU: $\sum_{m_j}x_{n_i,m_j}(f_{m_j}+f_{m_j}^rq_{n_i,m_j})\le f_{u_i}$ |
+| (6e) | Battery floor to reach the recharging station: $b_{n_i}-E(u_{n_i},r_{n_i}^u,r_{n_i}^d,t)\ge b$ |
+| (6f) | Slack is the lowest remaining battery: $b_{n_i}-E(\cdot)\ge z$ |
 
 **Algorithm**: Estimate CPU and network power from Raspberry Pi measurements, compute per-slot energy, and solve the resulting MILP repeatedly to relocate microservices so that the fleet's lowest remaining battery is maximized.
 

@@ -15,7 +15,7 @@ related:
   - "[[calagna-2024-robust-stateful-migration]]"
   - "[[chen-2026-hc-mappo-vehicle-twin-migration]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Efficient Management of Composite Heterogeneous Applications at the Network Edge
@@ -34,7 +34,7 @@ The paper formulates Multi-microservice Application Placement (MAP) for edge app
 
 **Scenario**: Mobile users request composite applications formed by chains of stateful and stateless microservices from an edge cluster attached to base stations. User handovers trigger reassessment of placement, migration or relocation, microservice sharing, quality-version selection, CPU allocation, and radio-block allocation.
 
-**Problem & objective**: Minimize the weighted deployment-cost and quality objective, $\min_{y,z,\hat\tau,v}\;\beta C(y,z,\hat\tau,v)-(1-\beta)Q(z)$, where cost includes memory, CPU, and communication resources and $Q$ is average normalized application quality.
+**Problem & objective**: The MAP problem (4) minimizes the weighted deployment-cost and quality objective, $\min_{y,z,\hat\tau,v}\;\beta C(y,z,\hat\tau,v)-(1-\beta)Q(z)$, where cost includes memory, CPU, and communication resources and $Q$ is average normalized application quality.
 
 **Decision variables**:
 
@@ -49,11 +49,14 @@ The paper formulates Multi-microservice Application Placement (MAP) for edge app
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every application meets its end-to-end response-latency and migration-downtime limits. |
-| C2 | Each microservice instance is placed on one server or a dummy server; shareable instances are reused subject to their semantics. |
-| C3 | Stateful non-shareable instances preserve user continuity and are not simultaneously assigned to multiple users. |
-| C4 | Entry microservices requested by the same user are co-located, and a user accesses only one instance of a given microservice. |
-| C5 | Server memory and CPU plus base-station radio blocks do not exceed available capacities. |
+| (13) | End-to-end latency: $d_{u,\mathcal A_j}^{\mathrm{proc}}+d_{u,\mathcal A_j}^{\mathrm{com}}\le l_{\mathcal A_j}$ |
+| (14) | Migration downtime: $D_{u,\mathcal A_j}^{\mathrm{down}}<D_{\mathcal A_j}$ |
+| (15)–(16) | Every instance is placed on exactly one server; unused instances go to the dummy server $s_0$ |
+| (17) | Shareable microservice: at most one instance per server |
+| (18)–(19) | Stateful non-shareable instances keep their user, and each serves one user |
+| (20) | A user is assigned an instance of every microservice its apps need |
+| (21) | Entry microservices of the same user's apps are co-located |
+| (22)–(24) | Server memory $M_s$, CPU $C_s$, and radio blocks $V_s$ are not exceeded |
 
 **Algorithm**: Construct a multi-layer Dynamic Network Topology Graph, prune it to a local decision graph for affected applications, expand it to encode additive latency and downtime constraints, and use a minimum-cost Dijkstra path followed by convex CPU recalibration. STEP has polynomial decision complexity after the graph construction, while MAP is proven NP-hard.
 

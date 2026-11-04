@@ -1,0 +1,580 @@
+{
+  "entries": [
+    {
+      "slug": "adeppady-2026-step-composite-edge",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_Management_of_Composite_Heterogeneous_Applications_at_the_Network_Edge/Efficient_Management_of_Composite_Heterogeneous_Applications_at_the_Network_Edge.md",
+          "lines": "260-297",
+          "note": "cost/quality (1)-(3), objective (4a), MAP NP-hard"
+        },
+        {
+          "path": "raw/sources/Efficient_Management_of_Composite_Heterogeneous_Applications_at_the_Network_Edge/Efficient_Management_of_Composite_Heterogeneous_Applications_at_the_Network_Edge.md",
+          "lines": "560-617",
+          "note": "Appendix B constraints (13)-(24)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_Management_of_Composite_Heterogeneous_Applications_at_the_Network_Edge/Efficient_Management_of_Composite_Heterogeneous_Applications_at_the_Network_Edge.md",
+          "lines": "5,43,381",
+          "note": "7% CPU cost; 50%/50%/15% vs E2MS, Edge-Mi, CMMF and others"
+        }
+      ]
+    },
+    {
+      "slug": "ammar-2026-oran-maritime-slicing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Maritime-Oriented_Network_Slicing_in_O-RAN_Integrated_Aerial-Terrestrial_Networks/Maritime-Oriented_Network_Slicing_in_O-RAN_Integrated_Aerial-Terrestrial_Networks.md",
+          "lines": "88-92,180-230",
+          "note": "C1 (5), C2, C3-C10, problem P with domains"
+        },
+        {
+          "path": "raw/sources/Maritime-Oriented_Network_Slicing_in_O-RAN_Integrated_Aerial-Terrestrial_Networks/Maritime-Oriented_Network_Slicing_in_O-RAN_Integrated_Aerial-Terrestrial_Networks.md",
+          "lines": "430",
+          "note": "A2C/PPO MDP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Maritime-Oriented_Network_Slicing_in_O-RAN_Integrated_Aerial-Terrestrial_Networks/Maritime-Oriented_Network_Slicing_in_O-RAN_Integrated_Aerial-Terrestrial_Networks.md",
+          "lines": "430,497",
+          "note": "2700 vs 20000 episodes; PPO stabler; 24%/22% power saving"
+        }
+      ]
+    },
+    {
+      "slug": "calagna-2024-robust-stateful-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Design_Modeling_and_Implementation_of_Robust_Migration_of_Stateful_Edge_Microservices/Design_Modeling_and_Implementation_of_Robust_Migration_of_Stateful_Edge_Microservices.md",
+          "lines": "365-449",
+          "note": "PAM components (19)-(32)"
+        },
+        {
+          "path": "raw/sources/Design_Modeling_and_Implementation_of_Robust_Migration_of_Stateful_Edge_Microservices/Design_Modeling_and_Implementation_of_Robust_Migration_of_Stateful_Edge_Microservices.md",
+          "lines": "505-589",
+          "note": "bandwidth (33), iterations (34), UAV safety (35)-(37)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Design_Modeling_and_Implementation_of_Robust_Migration_of_Stateful_Edge_Microservices/Design_Modeling_and_Implementation_of_Robust_Migration_of_Stateful_Edge_Microservices.md",
+          "lines": "5,34,456",
+          "note": "MQTT/Memcached; error up to 99.7% smaller than [4]"
+        }
+      ]
+    },
+    {
+      "slug": "calagna-2025-mose-stateful-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/MOSE_A_Novel_Orchestration_Framework_for_Stateful_Microservice_Migration_at_the_Edge/MOSE_A_Novel_Orchestration_Framework_for_Stateful_Microservice_Migration_at_the_Edge.md",
+          "lines": "59-92",
+          "note": "scenario; COAT; KPIs and vertical objectives"
+        },
+        {
+          "path": "raw/sources/MOSE_A_Novel_Orchestration_Framework_for_Stateful_Microservice_Migration_at_the_Edge/MOSE_A_Novel_Orchestration_Framework_for_Stateful_Microservice_Migration_at_the_Edge.md",
+          "lines": "103-120",
+          "note": "profiling, migration designer, Fig. 5 algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/MOSE_A_Novel_Orchestration_Framework_for_Stateful_Microservice_Migration_at_the_Edge/MOSE_A_Novel_Orchestration_Framework_for_Stateful_Microservice_Migration_at_the_Edge.md",
+          "lines": "5,154-185",
+          "note": "SockPerf/iPerf3; 77% downtime; SSH overhead removed"
+        }
+      ]
+    },
+    {
+      "slug": "calagna-2026-cormo-ran",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/CORMO-RAN_Energy_Efficiency_at_the_Near-RT_RIC_via_Lossless_Migration_of_O-RAN_xApps/CORMO-RAN_Energy_Efficiency_at_the_Near-RT_RIC_via_Lossless_Migration_of_O-RAN_xApps.md",
+          "lines": "253,335,402-453",
+          "note": "problem (SAL) (12)-(22); parse misplaces (18)-(22)"
+        },
+        {
+          "path": "raw/sources/CORMO-RAN_Energy_Efficiency_at_the_Near-RT_RIC_via_Lossless_Migration_of_O-RAN_xApps/CORMO-RAN_Energy_Efficiency_at_the_Near-RT_RIC_via_Lossless_Migration_of_O-RAN_xApps.md",
+          "lines": "455-461",
+          "note": "NP-hard MIQP; branch-and-bound"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/CORMO-RAN_Energy_Efficiency_at_the_Near-RT_RIC_via_Lossless_Migration_of_O-RAN_xApps/CORMO-RAN_Energy_Efficiency_at_the_Near-RT_RIC_via_Lossless_Migration_of_O-RAN_xApps.md",
+          "lines": "7,53,478",
+          "note": "64% vs always-active OpenShift load balancing"
+        }
+      ]
+    },
+    {
+      "slug": "deng-2026-uav-cpn-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints.md",
+          "lines": "132,262-309",
+          "note": "problem (P1) (22a)-(22e)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints.md",
+          "lines": "37",
+          "note": "alternating golden-section and quasi-Newton"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints.md",
+          "lines": "376-408",
+          "note": "46.65% to 99.14%; up to 29.6% over best baseline; five baselines"
+        }
+      ]
+    },
+    {
+      "slug": "du-2023-maddpg-service-placement-agin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.md",
+          "lines": "198-243",
+          "note": "P1 with (C1)-(C15)"
+        },
+        {
+          "path": "raw/sources/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.md",
+          "lines": "253,415-443",
+          "note": "MADDPG with continuous-to-discrete mapping"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.md",
+          "lines": "524-555,721-730",
+          "note": "POPO, OTPOA and other ablations; random baseline"
+        }
+      ]
+    },
+    {
+      "slug": "garcia-gil-2025-uav-microservice-migration-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Microservices_Migration_A_Pathway_to_Improved_Energy_Efficiency_in_UAV_Networks/Microservices_Migration_A_Pathway_to_Improved_Energy_Efficiency_in_UAV_Networks.md",
+          "lines": "140-168",
+          "note": "MILP (6a)-(6f)"
+        },
+        {
+          "path": "raw/sources/Microservices_Migration_A_Pathway_to_Improved_Energy_Efficiency_in_UAV_Networks/Microservices_Migration_A_Pathway_to_Improved_Energy_Efficiency_in_UAV_Networks.md",
+          "lines": "231-232",
+          "note": "operational time vs UAVs and requests"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Microservices_Migration_A_Pathway_to_Improved_Energy_Efficiency_in_UAV_Networks/Microservices_Migration_A_Pathway_to_Improved_Energy_Efficiency_in_UAV_Networks.md",
+          "lines": "268",
+          "note": "migration more energy efficient than task allocation"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-aot-uav-inspection-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach.md",
+          "lines": "179,257-283",
+          "note": "P0 (25a)-(25e)"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach.md",
+          "lines": "290-314",
+          "note": "P1 REINFORCE route, offloading MDP (29)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach.md",
+          "lines": "561-567",
+          "note": "Greedy, BO_ACO, ABC routes; LSTM, D3QN, DDQN rewards"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2025-cmop-dispersed-computing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_Computing _A_Multi-Objective_Optimization_Approach/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_C.md",
+          "lines": "126-158",
+          "note": "CMOP (10) C1-C8"
+        },
+        {
+          "path": "raw/sources/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_Computing _A_Multi-Objective_Optimization_Approach/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_C.md",
+          "lines": "162,195,316",
+          "note": "dual-population CMOEA, CV (11), ASF"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_Computing _A_Multi-Objective_Optimization_Approach/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_C.md",
+          "lines": "403,451",
+          "note": "88.6%/91.3% vs CMOEA/D-CDP; IGD 77.8%"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-smdrl-resource-constrained-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing.md",
+          "lines": "94,174-198",
+          "note": "virtual queue (2); P1 (3) C1-C4"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing.md",
+          "lines": "264-438",
+          "note": "MDP P2 (12), SMDRL training"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing.md",
+          "lines": "39,549,560-576",
+          "note": "LC, EC, SAC, MADDPG; 1.2%/11.3% energy; Table III delay"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-online-maritime-double-auction",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Online_Double_Auction_Mechanism_for_Dynamic_Resource_Allocation_in_Maritime_Networks/An_Online_Double_Auction_Mechanism_for_Dynamic_Resource_Allocation_in_Maritime_Networks.md",
+          "lines": "101-186",
+          "note": "primal 0-1 ILP (2a)-(2h), NP-hard"
+        },
+        {
+          "path": "raw/sources/An_Online_Double_Auction_Mechanism_for_Dynamic_Resource_Allocation_in_Maritime_Networks/An_Online_Double_Auction_Mechanism_for_Dynamic_Resource_Allocation_in_Maritime_Networks.md",
+          "lines": "188-247",
+          "note": "packing ILP (4a)-(4d), dual, online algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Online_Double_Auction_Mechanism_for_Dynamic_Resource_Allocation_in_Maritime_Networks/An_Online_Double_Auction_Mechanism_for_Dynamic_Resource_Allocation_in_Maritime_Networks.md",
+          "lines": "5,327-355",
+          "note": "RS, Tiresias, TDCDA; up to 17%"
+        }
+      ]
+    },
+    {
+      "slug": "ma-2026-mean-field-green-aec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach.md",
+          "lines": "76-174",
+          "note": "(1)-(11): assignment, energy SDE, cost (7), UAV problem (8), dispatcher (11)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach.md",
+          "lines": "185-260,390-438",
+          "note": "HJB, quadratic value (17)-(22), epsilon-Nash O(1/sqrt U)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach.md",
+          "lines": "467-480",
+          "note": "Raspberry Pi 5 agents, A100 dispatcher testbed"
+        }
+      ]
+    },
+    {
+      "slug": "meliani-2026-layer-reuse-microservice-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Layer-Reuse_Aware_Optimization_for_Efficient_Microservice_Migration_in_UAV_Edge_Systems/Layer-Reuse_Aware_Optimization_for_Efficient_Microservice_Migration_in_UAV_Edge_Systems.md",
+          "lines": "83-232",
+          "note": "constraints (3)-(23)"
+        },
+        {
+          "path": "raw/sources/Layer-Reuse_Aware_Optimization_for_Efficient_Microservice_Migration_in_UAV_Edge_Systems/Layer-Reuse_Aware_Optimization_for_Efficient_Microservice_Migration_in_UAV_Edge_Systems.md",
+          "lines": "237-261",
+          "note": "weighted objective; Gurobi setup"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Layer-Reuse_Aware_Optimization_for_Efficient_Microservice_Migration_in_UAV_Edge_Systems/Layer-Reuse_Aware_Optimization_for_Efficient_Microservice_Migration_in_UAV_Edge_Systems.md",
+          "lines": "265-271",
+          "note": "registries and cached layers reduce violations; zero at full preload"
+        }
+      ]
+    },
+    {
+      "slug": "pervez-2024-acm-multiuav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network.md",
+          "lines": "175-238",
+          "note": "problem (11a)-(11n)"
+        },
+        {
+          "path": "raw/sources/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network.md",
+          "lines": "242-666",
+          "note": "ACM: potential game (15)-(17), GWF (24)-(33), SCA (36)-(40), CPU (41)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network.md",
+          "lines": "751,915",
+          "note": "nine iterations; ~12%/~10% vs [39],[40]"
+        }
+      ]
+    },
+    {
+      "slug": "pham-2026-vnf-control-loop",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_VNF_Orchestration_for_UAV-Aided_Emergency_Networks_A_Learning_and_Optimization_Control_Loop_Framework/Dynamic_VNF_Orchestration_for_UAV-Aided_Emergency_Networks_A_Learning_and_Optimization_Control_Loop_Framework.md",
+          "lines": "66-151",
+          "note": "P1 (1)-(9)"
+        },
+        {
+          "path": "raw/sources/Dynamic_VNF_Orchestration_for_UAV-Aided_Emergency_Networks_A_Learning_and_Optimization_Control_Loop_Framework/Dynamic_VNF_Orchestration_for_UAV-Aided_Emergency_Networks_A_Learning_and_Optimization_Control_Loop_Framework.md",
+          "lines": "156-261",
+          "note": "P2 (10)-(22), cost (20), MINLP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_VNF_Orchestration_for_UAV-Aided_Emergency_Networks_A_Learning_and_Optimization_Control_Loop_Framework/Dynamic_VNF_Orchestration_for_UAV-Aided_Emergency_Networks_A_Learning_and_Optimization_Control_Loop_Framework.md",
+          "lines": "554,568,578",
+          "note": "65.9 ms vs A2C; 212.5 vs 218.1 Best-fit; A2C-SFC cost 33.78; 32/717"
+        }
+      ]
+    },
+    {
+      "slug": "roy-not-in-parse-serv-hu",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Serv-HU_Service_Hand-off_for_UAV-as-a-Service/Serv-HU_Service_Hand-off_for_UAV-as-a-Service.md",
+          "lines": "175-244",
+          "note": "SF (12), stage 1 (13)-(14b), KKT (15)-(18), fallback (19)"
+        },
+        {
+          "path": "raw/sources/Serv-HU_Service_Hand-off_for_UAV-as-a-Service/Serv-HU_Service_Hand-off_for_UAV-as-a-Service.md",
+          "lines": "440-500",
+          "note": "PSP profit (38), utility (39), stage 2 (40)-(43)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Serv-HU_Service_Hand-off_for_UAV-as-a-Service/Serv-HU_Service_Hand-off_for_UAV-as-a-Service.md",
+          "lines": "5,612",
+          "note": "10.3-12.7% price reduction vs random SSP selection"
+        }
+      ]
+    },
+    {
+      "slug": "sharghivand-not-in-parse-oshn",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Time-Constrained_Service_Handoff_for_Mobile_Edge_Computing_in_5G/Time-Constrained_Service_Handoff_for_Mobile_Edge_Computing_in_5G.md",
+          "lines": "187-207",
+          "note": "SHIP3 (10), (10a)-(10b)"
+        },
+        {
+          "path": "raw/sources/Time-Constrained_Service_Handoff_for_Mobile_Edge_Computing_in_5G/Time-Constrained_Service_Handoff_for_Mobile_Edge_Computing_in_5G.md",
+          "lines": "209-264",
+          "note": "rewrite (11)-(12), SHIP3-L (13)-(13f)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Time-Constrained_Service_Handoff_for_Mobile_Edge_Computing_in_5G/Time-Constrained_Service_Handoff_for_Mobile_Edge_Computing_in_5G.md",
+          "lines": "5",
+          "note": "61% workload, 33% handoff time, 29% energy vs benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "tian-2026-coded-cache-repair",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_DRL-Based_Coded_Caching_and_Resource_Allocation_in_UAV-Assisted_Networks/Multi-Agent_DRL-Based_Coded_Caching_and_Resource_Allocation_in_UAV-Assisted_Networks.md",
+          "lines": "91-235,321-325",
+          "note": "mobility (4)-(5), coding (17), success indicators"
+        },
+        {
+          "path": "raw/sources/Multi-Agent_DRL-Based_Coded_Caching_and_Resource_Allocation_in_UAV-Assisted_Networks/Multi-Agent_DRL-Based_Coded_Caching_and_Resource_Allocation_in_UAV-Assisted_Networks.md",
+          "lines": "383-419",
+          "note": "P1 (35) with (35b)-(35j)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Agent_DRL-Based_Coded_Caching_and_Resource_Allocation_in_UAV-Assisted_Networks/Multi-Agent_DRL-Based_Coded_Caching_and_Resource_Allocation_in_UAV-Assisted_Networks.md",
+          "lines": "678-680",
+          "note": "H-MA-DQN, MA-PDQN, MA-DQN, greedy; D-UAV vs S-UAV"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-airground-laser-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design.md",
+          "lines": "133-155,333-380",
+          "note": "motion (2)-(6), delay (28), P1 (29a)-(29j)"
+        },
+        {
+          "path": "raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design.md",
+          "lines": "384-492",
+          "note": "LP step P2 (30), DDPG trajectory P3 (31)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design.md",
+          "lines": "731-802",
+          "note": "five benchmarks; CO/AO/RO/FT savings"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-context-aigc-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Context-Aware_AIGC_Service_Migration_in_Edge_Intelligence_Networks_via_Transformer_DRL/Context-Aware_AIGC_Service_Migration_in_Edge_Intelligence_Networks_via_Transformer_DRL.md",
+          "lines": "171-191",
+          "note": "P1 (10) C1-C5 (11)-(14)"
+        },
+        {
+          "path": "raw/sources/Context-Aware_AIGC_Service_Migration_in_Edge_Intelligence_Networks_via_Transformer_DRL/Context-Aware_AIGC_Service_Migration_in_Edge_Intelligence_Networks_via_Transformer_DRL.md",
+          "lines": "242",
+          "note": "TFSCM transformer-actor SAC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Context-Aware_AIGC_Service_Migration_in_Edge_Intelligence_Networks_via_Transformer_DRL/Context-Aware_AIGC_Service_Migration_in_Edge_Intelligence_Networks_via_Transformer_DRL.md",
+          "lines": "295,319-325",
+          "note": "Telecom Shanghai; Static, Random, Fix, Full, PPO, SAC baselines"
+        }
+      ]
+    },
+    {
+      "slug": "wei-2026-runs-uav-network-slicing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/RUNs_Fast_and_Robust_Network_Slicing_for_UAV-Assisted_Wireless_Networks_Under_Imperfect_CSI_and_Node_Mobility/RUNs_Fast_and_Robust_Network_Slicing_for_UAV-Assisted_Wireless_Networks_Under_Imperfect_CSI_and_Node_Mobility.md",
+          "lines": "79-165",
+          "note": "constraints (1)-(3), (7)-(11)"
+        },
+        {
+          "path": "raw/sources/RUNs_Fast_and_Robust_Network_Slicing_for_UAV-Assisted_Wireless_Networks_Under_Imperfect_CSI_and_Node_Mobility/RUNs_Fast_and_Robust_Network_Slicing_for_UAV-Assisted_Wireless_Networks_Under_Imperfect_CSI_and_Node_Mobility.md",
+          "lines": "167-199",
+          "note": "RUSP (12)-(17)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/RUNs_Fast_and_Robust_Network_Slicing_for_UAV-Assisted_Wireless_Networks_Under_Imperfect_CSI_and_Node_Mobility/RUNs_Fast_and_Robust_Network_Slicing_for_UAV-Assisted_Wireless_Networks_Under_Imperfect_CSI_and_Node_Mobility.md",
+          "lines": "875-889",
+          "note": "SQP, SCA, SHIO, GBO; 20x faster, 0.9% gap; 25% rate gain"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2026-terrain-aware-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism.md",
+          "lines": "123-153,249-275",
+          "note": "G1 (3), C1-C5 (4)-(8), G2 (12), C6 (13)"
+        },
+        {
+          "path": "raw/sources/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism.md",
+          "lines": "307-480",
+          "note": "problem (23); multitasking CMOEA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism/Terrain-Aware_UAV-Enabled_Mobile_Edge_Computing_in_Urban_Environments_A_Constrained_Multi-Objective_Approach_With_Task-Adaptive_Mechanism.md",
+          "lines": "572,769-797",
+          "note": "CMOEMT, URCMO, ICMA, DPPPS; 70.2% IGD, 77.5% HV; ablation"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2025-lycnn-drl-wpt-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning.md",
+          "lines": "141-179",
+          "note": "battery (12), LSEM (15a)-(15e)"
+        },
+        {
+          "path": "raw/sources/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning.md",
+          "lines": "207-565",
+          "note": "Dinkelbach (18)-(19), Lyapunov (24), bi-layer, golden search, KKT"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning.md",
+          "lines": "5,643-649,756",
+          "note": "97% utility; 0.137 s vs LyCD 35.184 s; bounds (49)-(50)"
+        }
+      ]
+    }
+  ]
+}

@@ -43,7 +43,7 @@ Objectives: G₁ = safe-flight metric (sum of inverse distances to nearby terrai
 
 **Scenario**: A UAV MEC server follows a B-spline path over an urban digital-elevation mesh, offloads tasks from ground devices through geometry-classified LoS/NLoS links, and may optimize its terminal destination. Real terrain determines blockage and safe-flight clearance.
 
-**Problem & objective**: A constrained multi-objective problem minimizes terrain risk and task completion time, $\min\bigl(G_1(\mathbf Q),G_2(\mathbf Q,\mathbf r)\bigr)$, over trajectory control points, destination, and computing or communication resources.
+**Problem & objective**: Problem (23), a constrained multi-objective problem, minimizes terrain risk $G_1=\sum_m\sum_kd_{\mathrm{safe}}/d_{m,k}$ in (3) and task completion time $G_2$ in (12), over trajectory control points, destination, and computing or communication resources.
 
 **Decision variables**:
 
@@ -51,18 +51,19 @@ Objectives: G₁ = safe-flight metric (sum of inverse distances to nearby terrai
 |---|---|---|---|
 | B-spline control points | $\mathbf Q=\{\mathbf q_j\}$ | continuous 3-D positions | Smooth UAV trajectory representation |
 | Destination | $\mathbf q_F$ | continuous feasible position | Optimized terminal UAV location |
-| Task/resource allocation | $\mathbf r$ | continuous/discrete | Offloading and computing resources along the path |
+| Computing allocation | $f_i$ | continuous, $\sum_if_i\le F^{\max}$ | UAV CPU frequency for device $i$ |
 | Genetic operator | $o_i$ | categorical adaptive choice | Variation operator assigned to an individual |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV altitude remains within prescribed limits |
-| C2 | Every path point stays above its triangulated terrain face |
-| C3 | Consecutive B-spline segments satisfy the turning-angle limit |
-| C4 | Resource and offloading decisions complete each task feasibly |
-| C5 | Destination and all control points lie in the allowed urban region |
+| C1 (4) | Minimum altitude: $h^{\min}-z_s'\le0$ |
+| C2 (5) | Maximum altitude: $z_s'-h^{\max}\le0$ |
+| C3 (6) | Turning angle between consecutive B-spline segments at most $\theta^{\max}$ |
+| C4 (7) | Each path point lies above its terrain triangle: $[(\mathbf t_2-\mathbf t_1)\times(\mathbf t_3-\mathbf t_1)]\cdot(\mathbf{BP}_s-\mathbf t_1)\ge0$ |
+| C5 (8) | Path points stay in the service region: $\mathbf{BP}_s\in\mathbb D$ |
+| C6 (13) | UAV computing capacity: $\sum_if_i\le F^{\max}$ |
 
 **Algorithm**: Convert DEM data into a triangular mesh and per-device blocked regions → encode paths with B-spline control points and a variable destination → evolve multiple related terrain subtasks in parallel → track historical operator success and adapt operator assignment per individual → exchange useful solutions across tasks → return the feasible Pareto set.
 
@@ -70,7 +71,7 @@ Objectives: G₁ = safe-flight metric (sum of inverse distances to nearby terrai
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied terrain-aware UAV-enabled mobile edge computing in urban environments using real digital elevation data. They constructed geometric blocked regions for LoS and NLoS classification and represented UAV paths with B-spline control points. The constrained multi-objective formulation jointly minimizes a terrain-clearance risk metric and task-completion time over trajectory, destination, and resource decisions under altitude, turning, terrain, and task constraints. A multitasking constrained evolutionary algorithm shares solutions across related terrain subtasks and adapts genetic operators from their historical performance. Simulations report more accurate terrain-sensitive path-loss modeling and better objective values than the evaluated statistical-channel, fixed-destination, and single-task evolutionary baselines.
+Wu et al. [x] studied terrain-aware UAV-enabled mobile edge computing in urban environments using real digital elevation data. They constructed geometric blocked regions for LoS and NLoS classification and represented UAV paths with B-spline control points. The constrained multi-objective formulation jointly minimizes a terrain-clearance risk metric and task-completion time over trajectory, destination, and resource decisions under altitude, turning, terrain, and task constraints. A multitasking constrained evolutionary algorithm shares solutions across related terrain subtasks and adapts genetic operators from their historical performance. Against the CMOEMT, URCMO, ICMA, and DPPPS evolutionary algorithms on three CMOP instances, simulations report about 70.2% lower mean IGD and 77.5% higher mean HV, while URCMO matches some $G_1$ values in CMOP3; the task-adaptive mechanism adds 19.0% IGD and 32.2% HV gains in ablation.
 
 ## Why this matters
 

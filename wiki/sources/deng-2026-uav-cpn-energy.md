@@ -17,7 +17,7 @@ related:
   - "[[yuguang-fang]]"
   - "[[hu-2026-segmented-irs-cpn]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Enabled Computing Power Networks: Design and Performance Analysis Under Energy Constraints
@@ -36,7 +36,7 @@ Introduces [[uav-enabled-computing-power-network|UAV-enabled Computing Power Net
 
 **Scenario**: A UAV relays ground-user tasks from a bounded request zone to Poisson-distributed computing nodes in a larger service zone. Communication energy draws from the battery, propulsion energy draws from fuel, and a task succeeds only when both communication and computing latency conditions are met.
 
-**Problem & objective**: The energy-aware design jointly selects UAV downlink power and altitude to maximize the analytically derived average task-completion probability, $\max_{P_d,h}\overline P_{\mathrm{success}}(P_d,h)$.
+**Problem & objective**: Problem (P1) in (22) jointly selects UAV downlink power and altitude to maximize the analytically derived average task-completion probability, $\max_{P_d,h}\overline P_{\mathrm{success}}(P_d,h)$.
 
 **Decision variables**:
 
@@ -49,10 +49,10 @@ Introduces [[uav-enabled-computing-power-network|UAV-enabled Computing Power Net
 
 | ID | Meaning and key expression |
 |---|---|
-| 22b | Communication energy fits the battery budget, $E_{\mathrm{comm}}(P_d,h)\leq E_{\mathrm{battery}}$ |
-| 22c | Mobility and hovering energy fit the fuel budget, $E_{\mathrm{prop}}(P_d,h)\leq E_{\mathrm{fuel}}$ |
-| 22d | Transmit power stays within hardware bounds, $P_d\in[P_{\min},P_{\max}]$ |
-| 22e | Altitude stays within the permitted airspace, $h\in[h_{\min},h_{\max}]$ |
+| (22b) | Communication energy fits the battery budget, $E_{\mathrm{comm}}(P_d,h)\leq E_{\mathrm{battery}}$ |
+| (22c) | Mobility and hovering energy fit the fuel budget, $E_{\mathrm{prop}}(P_d,h)\leq E_{\mathrm{fuel}}$ |
+| (22d) | Transmit power stays within hardware bounds, $P_d\in[P_{\min},P_{\max}]$ |
+| (22e) | Altitude stays within the permitted airspace, $h\in[h_{\min},h_{\max}]$ |
 
 **Algorithm**: Alternating optimization fixes $P_d$ and applies golden-section search to $h$, then fixes the updated altitude and applies a modified quasi-Newton search to $P_d$. The procedure stops on a sliding-window improvement threshold or an iteration limit, validates both energy budgets, and falls back to a predefined feasible operating point if validation fails.
 
@@ -60,7 +60,7 @@ Introduces [[uav-enabled-computing-power-network|UAV-enabled Computing Power Net
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Deng et al. [x] analyzed a UAV-enabled computing power network in which an aerial relay connects a bounded user request zone to computing nodes distributed across a wider service region. They derived task-completion probability from joint communication and computation feasibility and optimized UAV transmit power and altitude under separate battery and fuel constraints. Their alternating solver combines golden-section altitude search with a modified quasi-Newton power update and explicitly checks energy feasibility. Expanding the computing-node radius from 200 m to 1000 m raises the reported completion probability from 46.65% to 99.14%, and joint power-altitude control achieves average gains of 29.6% to 247.7% over five fixed or single-variable baselines.
+Deng et al. [x] analyzed a UAV-enabled computing power network in which an aerial relay connects a bounded user request zone to computing nodes distributed across a wider service region. They derived task-completion probability from joint communication and computation feasibility and optimized UAV transmit power and altitude under separate battery and fuel constraints. Their alternating solver combines golden-section altitude search with a modified quasi-Newton power update and explicitly checks energy feasibility. Expanding the computing-node radius from 200 m to 1000 m raises the reported completion probability from 46.65% to 99.14%, and joint power-altitude control reaches up to 29.6% higher completion probability than the best of five power-only, altitude-only, and static baselines.
 
 ## Problem
 

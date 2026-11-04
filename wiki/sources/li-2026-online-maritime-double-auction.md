@@ -9,7 +9,7 @@ modeling_card: required
 tags: [source, maritime-network, double-auction, online-algorithm, resource-allocation, uav-communications, social-welfare]
 related: ["[[maritime-mec]]", "[[online-maritime-double-auction]]", "[[li-2020-maritime-uav-satellite-coverage]]", "[[dai-2024-multiuav-marine-welfare]]", "[[zeng-2024-usv-fleet-collaborative-offloading]]"]
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # An Online Double Auction Mechanism for Dynamic Resource Allocation in Maritime Networks
@@ -43,11 +43,11 @@ Designs an [[online-maritime-double-auction|online maritime double auction mecha
 
 | ID | Meaning and key expression |
 |---|---|
-| 2a-2b | Allocated slots respect bid and device deadlines, and a UAV has enough travel time to reach the ship |
-| 2c | Service occurs only within the device communication range: $g_{nmj}(t)z_{nimj}(t)\leq G_{mj}$ |
-| 2d | Allocated bandwidth does not exceed device capacity $c_{mj}(t)$ |
-| 2e-2f | Accepted bids receive the required number of slots and allocation indicators remain consistent with acceptance |
-| 2g-2h | Each ship has at most one accepted bid and all acceptance and allocation variables are binary |
+| (2a)–(2b) | Allocated slots respect bid and device deadlines, and a UAV has enough travel time to reach the ship |
+| (2c) | Service occurs only within the device communication range: $g_{nmj}(t)z_{nimj}(t)\leq G_{mj}$ |
+| (2d) | Allocated bandwidth does not exceed device capacity $c_{mj}(t)$ |
+| (2e)–(2f) | Accepted bids receive the required number of slots and allocation indicators remain consistent with acceptance |
+| (2g)–(2h) | Each ship has at most one accepted bid and all acceptance and allocation variables are binary |
 
 **Algorithm**: Reformulate the NP-hard primal ILP as a compact packing ILP, derive its dual LP, and interpret dual variables as marginal resource prices. For every arriving ship, $A_{\mathrm{online}}$ calls $A_{\mathrm{core}}$ to find a minimum-cost feasible schedule, select the bid with maximum nonnegative net utility, accept and allocate it when profitable, charge the buyer and reward the ISP, and update utilization and exponential marginal prices online.
 
@@ -55,7 +55,7 @@ Designs an [[online-maritime-double-auction|online maritime double auction mecha
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied online Internet-access allocation in maritime networks where ships buy bandwidth from ISPs operating terrestrial antennas and UAVs. They formulated social-welfare maximization as a 0-1 ILP over bid acceptance and device scheduling under deadline, travel-time, coverage, capacity, duration, and binary-allocation constraints. Their OMDAM mechanism derives a compact packing formulation and dual prices, then uses the online algorithm $A_{\mathrm{online}}$ and its allocation routine $A_{\mathrm{core}}$ to accept bids, assign feasible schedules, and update marginal prices. Simulations reported up to 17% higher social welfare than prior methods and consistently stronger welfare and bandwidth utilization under the tested user, bid, ISP, and asking-price settings.
+Li et al. [x] studied online Internet-access allocation in maritime networks where ships buy bandwidth from ISPs operating terrestrial antennas and UAVs. They formulated social-welfare maximization as a 0-1 ILP over bid acceptance and device scheduling under deadline, travel-time, coverage, capacity, duration, and binary-allocation constraints. Their OMDAM mechanism derives a compact packing formulation and dual prices, then uses the online algorithm $A_{\mathrm{online}}$ and its allocation routine $A_{\mathrm{core}}$ to accept bids, assign feasible schedules, and update marginal prices. Simulations on Google Cluster Data adapted to maritime traffic reported up to 17% higher social welfare than random selection, the Tiresias scheduler, and the TDCDA double auction and consistently stronger welfare and bandwidth utilization under the tested user, bid, ISP, and asking-price settings.
 
 ## Problem
 

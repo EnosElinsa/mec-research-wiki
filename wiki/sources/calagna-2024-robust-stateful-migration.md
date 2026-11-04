@@ -54,11 +54,10 @@ COAT preserves an established transport connection while migrating a stateful co
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | COAT downtime must satisfy the target bound, with bandwidth chosen using the paper's inequality (33). |
-| C2 | Total COAT migration duration must satisfy $T^{\mathrm{mig}}_{\mathrm{coat}}\le\theta^{\mathrm{mig}}$. |
-| C3 | Iteration count is selected as a nonnegative integer, bounded by the migration-duration expression (34). |
-| C4 | The UAV safety requirement is $D_s(v)\le D_s^*$, where stopping distance includes reaction and braking distance. |
-| C5 | The PAM upper bound uses $\hat R=R_{\max}$ for worst-case dirty-page behavior; it is not a global performance guarantee outside the measured tool/model parameters. |
+| (33) | Downtime target $T_{\mathrm{coat}}^{\mathrm{down}}\le\theta^{\mathrm{down}}$ gives the bandwidth bound $L>V(M,\hat R)/(\theta^{\mathrm{down}}-T_{\mathrm{podman}}^{\mathrm d}-\dots)$ (tag missing in the parse; check the published paper) |
+| (34) | Migration-duration target $T_{\mathrm{coat}}^{\mathrm{mig}}\le\theta^{\mathrm{mig}}$ gives the largest PreCopy iteration count $I=\lfloor(\theta^{\mathrm{mig}}-T_0-T_{\mathrm{coat}}^{\mathrm{down}})/T_i\rfloor$ (tag missing in the parse) |
+| (35)–(37) | UAV safety: stopping distance $D_s(v)=D_r(v)+D_b(v)\le D_s^*$, with reaction distance (35) and braking distance (36), gives the bandwidth bound (37) |
+| Model rule | The upper bounds use the worst-case dirty-page rate $R_i=\hat R$; they hold only for the measured CRIU/Podman parameters |
 
 **Algorithm**: Implement CRIU and Podman migration with COAT's OvS overlay network, measure processing and transfer components on MQTT Broker/Memcached, fit PAM's analytical upper bounds, and use the resulting inequalities to select bandwidth and iteration settings for the UAV autopilot case.
 
@@ -66,7 +65,7 @@ COAT preserves an established transport connection while migrating a stateful co
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Calagna et al. [x] addressed stateful edge-microservice migration together with preservation of an established transport connection. Their COAT overlay network avoids client reconnection, while the PAM model accounts for CRIU and Podman processing, memory dirtiness, network transfer, and relocation overhead when estimating migration duration and downtime. Experiments with MQTT Broker and Memcached show that PAM predicts the measured KPIs much more accurately than the compared state-of-the-art model. The authors then use bandwidth and iteration inequalities to configure migration for a UAV autopilot while bounding stopping distance during downtime. The results are testbed measurements and model-conditional upper bounds, not a theorem that every container runtime or network satisfies the same timing.
+Calagna et al. [x] addressed stateful edge-microservice migration together with preservation of an established transport connection. Their COAT overlay network avoids client reconnection, while the PAM model accounts for CRIU and Podman processing, memory dirtiness, network transfer, and relocation overhead when estimating migration duration and downtime. Experiments with MQTT Broker and Memcached show that PAM predicts the measured KPIs much more accurately than the compared state-of-the-art migration model, with errors up to 99.7% smaller. The authors then use bandwidth and iteration inequalities to configure migration for a UAV autopilot while bounding stopping distance during downtime. The results are testbed measurements and model-conditional upper bounds, not a theorem that every container runtime or network satisfies the same timing.
 
 ## Problem and system model
 

@@ -16,7 +16,7 @@ related:
   - "[[soft-actor-critic]]"
   - "[[xu-2024-mobile-aigc-survey]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Context-Aware AIGC Service Migration in Edge Intelligence Networks via Transformer DRL
@@ -35,7 +35,7 @@ The paper migrates historical AIGC context rather than large generative models w
 
 **Scenario**: A mobile user accesses an AIGC service through a current edge server while the service host may remain at the previous server or move to the current access server. Historical text or image context windows can be migrated to preserve inference continuity under model token limits and finite edge storage.
 
-**Problem & objective**: Maximize weighted utility, $\max_{u,b}\;\mathcal F=\mu_1A-\mu_2C-\mu_3D$, combining inference accuracy $A$, context migration cost $C$, and end-to-end latency $D$.
+**Problem & objective**: Problem $\mathcal P_1$ in (10) maximizes weighted utility, $\max_{u,b}\;\mathcal F=\mu_1A-\mu_2C-\mu_3D$, combining inference accuracy $A$, context migration cost $C$, and end-to-end latency $D$.
 
 **Decision variables**:
 

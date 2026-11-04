@@ -20,7 +20,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[basem-shihada]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Maritime-Oriented Network Slicing in O-RAN Integrated Aerial-Terrestrial Networks
@@ -64,6 +64,7 @@ An O-RAN maritime architecture jointly controls VNF scaling/migration, CPU and r
 | C8 | Slice throughput meets its target: $R_{f,i,s}^{\zeta}[t]\ge R_{\min}^{s}$ |
 | C9 | Slice reliability meets its target: $W_{f,i,s}^{\zeta}[t]\ge W_{\min}^{s}$ |
 | C10 | Slice delay stays below its target: $D_{f,i,s}^{\zeta}[t]+D_{\mathrm M,f,i}^{\zeta,\zeta'}[t]\le D_{\max}^{s}$ |
+| Domain | $\mu_{f,i,s}^{\zeta,\zeta'}[t]\in\{0,1\}$, $\eta_{f,s}^{\zeta}[t]\in\mathbb Z$ |
 
 **Algorithm**: Discretize UAV movement and CPU or power actions, model the problem as an MDP, train actor and critic networks with A2C or PPO using a weighted energy-efficiency and QoS-penalty reward, and deploy the learned policy to choose scaling, migration, resource, and trajectory actions at each slot.
 
@@ -71,7 +72,7 @@ An O-RAN maritime architecture jointly controls VNF scaling/migration, CPU and r
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ammar et al. [x] studied O-RAN integrated aerial-terrestrial maritime networks with non-tethered UAVs, tethered UAVs, marine buoys, and infotainment and emergency slices. They formulated a mixed-integer nonlinear problem that maximizes time-average network energy efficiency through VNF scaling or migration, resource slicing, and non-tethered UAV trajectory control subject to mobility, resource, throughput, reliability, and delay constraints. They solved the sequential decision problem with A2C and PPO using quantized hybrid actions and QoS-penalty rewards. In the reported simulations, A2C converged in about 2700 episodes versus up to 20000 for PPO, and trajectory control saved around 24% power for five ships and 22% for fifteen ships.
+Ammar et al. [x] studied O-RAN integrated aerial-terrestrial maritime networks with non-tethered UAVs, tethered UAVs, marine buoys, and infotainment and emergency slices. They formulated a mixed-integer nonlinear problem that maximizes time-average network energy efficiency through VNF scaling or migration, resource slicing, and non-tethered UAV trajectory control subject to mobility, resource, throughput, reliability, and delay constraints. They solved the sequential decision problem with A2C and PPO using quantized hybrid actions and QoS-penalty rewards. In the reported simulations, A2C converged in about 2700 episodes versus up to 20000 for PPO with a slightly higher cumulative reward, though PPO trained more stably, and trajectory control saved around 24% power for five ships and 22% for fifteen ships.
 
 ## Problem and system model
 

@@ -18,7 +18,7 @@ related:
   - "[[panahi-2026-uav-green-iot-offloading]]"
   - "[[wang-2026-lifelong-semantic-content-reuse]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,37 +36,34 @@ Proposes a green aerial edge computing (GAEC) framework for metaverse users, wit
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Computing-enhanced UAVs execute metaverse-user tasks while energy-focused UAVs harvest ambient energy and act as energy reservoirs. A dispatcher broadcasts an energy value signal at a large timescale, and each computing UAV makes local task/transmission decisions at a smaller timescale; unprocessed tasks can go to a cloud.
+**Scenario**: Computing-enhanced UAVs (CE-UAVs) process metaverse users' tasks, while energy-focused UAVs (EF-UAVs) harvest energy and feed it to CE-UAVs at inflow rate $\eta_u(t)$ in (5). Each CE-UAV's energy queue follows the SDE $de_u=(\eta_u-s_u)dt+\sigma_udW_u$ in (4) with power $s_u=P_u^{base}+f_u+r_u$ in (3); a dispatcher broadcasts an energy value signal $\rho[n]$ on the large timescale, and tasks left at the end of a slot go to the cloud.
 
-**Problem & objective**: Green aerial edge task allocation, a stochastic mean-field game with Lyapunov control, minimizes long-term task delay and energy cost, $\min\mathbb E[\text{delay}+\text{energy cost}]$, while maintaining battery stability and one-task-per-UAV service constraints.
+**Problem & objective**: Two levels. Each CE-UAV solves (8), $\min_{f_u(t),r_u(t)}w_u[n]$, where $w_u[n]$ in (7) sums base power, quadratic computation and communication costs $\kappa_uf_u^2+\psi_ur_u^2$, and an energy-balancing penalty $\xi(e_u-\bar e^U)^2$. The dispatcher solves (11), maximizing the long-term average utility $J_u[n]=\rho[n]T\phi(\rho[n])-w_u[n]$ in (9) over $\rho[n]$.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Task assignment | $x_{u,i}(t)$ | binary | Computing UAV $u$ serves task $i$ |
-| Local/cloud offloading | $y_i(t)$ | discrete | Task executes locally, at a CE-UAV, or in the cloud |
-| Compute/transmit allocation | $f_u(t),p_u(t)$ | continuous, bounded | CPU frequency and communication power at CE-UAV $u$ |
-| Energy value signal | $\rho[n]$ | continuous signal | Dispatcher valuation of stored energy |
-| Harvesting control | $h_v(t)$ | continuous/discrete | Energy collected by EF-UAV $v$ |
+| Task assignment | $X_{u,k}(t)$ | binary | CE-UAV $u$ processes task $k$ |
+| Computation power rate | $f_u(t)$ | continuous, nonnegative | Power above base load for computing |
+| Communication power | $r_u(t)$ | continuous, at least the rate-driven minimum $\underline r_{u,k}$ | Transmit power to the served user |
+| Energy value signal | $\rho[n]$ | continuous | Dispatcher's valuation; harvesting level $\eta[n]=\phi(\rho[n])$ |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task is assigned to at most one CE-UAV and each CE-UAV processes at most one task at a time |
-| C2 | Local, CE-UAV, and cloud execution choices obey the task-latency limits |
-| C3 | CPU and communication allocations remain within UAV capacities |
-| C4 | Battery stochastic dynamics stay within nonnegative energy bounds |
-| C5 | The Lyapunov energy queue and mean-field population state remain stable |
+| (1) | Each task assigned to at most one CE-UAV: $\sum_uX_{u,k}(t)\le1$ |
+| (2) | Each CE-UAV processes at most one task at a time: $\sum_kX_{u,k}(t)\le1$ |
+| (4) | Energy-queue dynamics (SDE) |
+| (10) | Slot-level queue update clipped to $[0,e_{\max}]$ |
+| (11) | Dispatcher problem with long-term energy-queue stability ($e_u[n]>0$) |
 
-**Algorithm**: Approximate the large UAV population by a mean-field representative agent → derive the energy valuation with Lyapunov optimization → solve the coupled HJB/ODE coefficients → broadcast $\rho[n]$ and execute local task policies → validate the $\epsilon$-Nash approximation and energy balance on the hardware-in-the-loop testbed.
+**Algorithm**: A mean-field approximation replaces $\bar e^U(t)$ by a deterministic $\bar e(t)$, so each UAV solves an HJB equation; a quadratic value function (17) gives closed-form power decisions (18) and coefficient ODEs (20)–(22). Lyapunov optimization sets $\rho[n]$ for the dispatcher, the policy forms an $\epsilon$-Nash equilibrium, and a hardware-in-the-loop testbed validates it.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ma et al. [x] studied energy-efficient task allocation for green aerial edge computing with computing-enhanced and energy-focused UAVs serving metaverse users. They formulated a stochastic long-term task-allocation problem that balances delay, computation/communication energy, and energy harvesting while assigning each task to at most one computing UAV or the cloud. A mean-field game replaces dense UAV interactions with a representative agent against the aggregate energy state, and Lyapunov optimization supplies an energy valuation signal for long-term stability. The resulting policy is analyzed with an epsilon-Nash approximation and implemented with a dispatcher and local UAV decisions. A Raspberry Pi and A100 hardware-in-the-loop testbed reports energy balancing and the predicted decrease of approximation error as the UAV population grows.
+Ma et al. [x] studied energy-efficient task allocation for green aerial edge computing with computing-enhanced and energy-focused UAVs serving metaverse users. They formulated per-UAV operational-cost minimization over computation and communication power, with an energy-balancing penalty and one-task-per-UAV assignment, under a dispatcher that sets an energy value signal to maximize long-term utility; unprocessed tasks go to the cloud. A mean-field game replaces dense UAV interactions with a representative agent against the aggregate energy state, and Lyapunov optimization supplies an energy valuation signal for long-term stability. The resulting policy is analyzed with an epsilon-Nash approximation and implemented with a dispatcher and local UAV decisions. A Raspberry Pi and A100 hardware-in-the-loop testbed reports energy balancing and the predicted decrease of approximation error as the UAV population grows.
 
 ## Problem
 

@@ -13,7 +13,7 @@ related:
   - "[[stateful-edge-microservice-migration]]"
   - "[[multi-microservice-application-placement]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Layer-Reuse Aware Optimization for Efficient Microservice Migration in UAV Edge Systems
@@ -30,36 +30,39 @@ This paper optimizes UAV-edge microservice placement and migration while account
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A UAV application is represented as communicating microservices deployed on geographically distributed edge servers. Servers cache image layers and may host registries; mobility can require a migratable service to move while non-migratable components remain on the UAV.
+**Scenario**: A UAV application is a graph of communicating microservices $M$ (edges $\mathcal E$) hosted on edge servers $V$ of an infrastructure graph. Container images share Docker layers; a server that lacks some layers of microservice $v$ ($\varphi_{i,v}=1$) pulls them from one registry in $R$, and $\mathcal V'_{v,i}$ records the previous placement.
 
-**Problem & objective**: Minimize the weighted provisioning-time violations, migration flags, and latency-SLA violations used by the paper, $\min\alpha T_v+\beta\varphi_v+\gamma z_{u,v}$.
+**Problem & objective**: A weighted-sum MILP minimizes $\frac{1}{|M|}(\alpha\sum_v\mathcal T_v+\beta\sum_v\phi_v)+\frac{\gamma}{|\mathcal E|}\sum_{(u,v)}z_{u,v}$ with $\alpha+\beta+\gamma=1$: provisioning-time SLA violations, relocations, and end-to-end latency SLA violations.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
-| --- | --- | --- | --- |
-| Service placement | $y_{u,i}$ | binary | Host microservice $u$ on server $i$ |
-| Registry choice | $\chi_{i,r}^{u}$ | binary | Registry $r$ supplies missing layers to server $i$ |
-| Path selection | $X_{i,j}^{u,v}$ | binary | Link $(i,j)$ belongs to the route between services |
-| Migration flag | $\varphi_{i,u}$ | binary | At least one layer is missing at destination $i$ |
+|---|---|---|---|
+| Placement | $\mathcal V_{v,i}$ | binary | Microservice $v$ is hosted on edge $i$ |
+| Routing | $\mathcal X_{i,j}^{u,v}$ | binary | Link $(i,j)$ carries traffic from $u$ to $v$ |
+| Registry choice | $\chi_{i,r}^v$ | binary | Edge $i$ pulls missing layers of $v$ from registry $r$ |
+| Relocation flag | $\phi_v$ | binary | $v$ changed its edge |
+| SLA flags | $z_{u,v}$, $\mathcal T_v$ | binary | Latency SLA violated; provisioning time $\zeta_v$ exceeds $B_u$ |
+| Delay intervals | $\mu_{i,j}^k$ | binary | Piecewise interval for linearizing the queueing delay |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
-| --- | --- |
-| Hosting | Each migratable microservice is assigned to an eligible edge server. |
-| Layer reuse | Cached layers reduce missing-layer transfer and provisioning time. |
-| Path | Selected routes obey link capacity and flow continuity. |
-| SLA | End-to-end delay and provisioning time remain within application bounds. |
-| Non-migratable | UAV-local components remain fixed. |
+|---|---|
+| (3) | Each microservice on exactly one edge: $\sum_i\mathcal V_{v,i}=1$ |
+| (4)–(5) | Traffic leaves the edge hosting $u$ and enters the edge hosting $v$ |
+| (6)–(7) | Loop-free, continuous paths (big-$\mathcal A$ linearization) |
+| (10)–(13) | Link load $\Lambda_{i,j}$ within the piecewise breakpoints; one interval per used link; linearized end-to-end delay |
+| (14) | $z_{u,v}=1$ when $D_{e2e}^{u,v}\ge W_{u,v}$ |
+| (15)–(19) | Provisioning cost $\zeta_v=\sum_{i,r}\psi_{i,r}^v\chi_{i,r}^v$; a registry only if $v$ is hosted there and layers are missing, and at most one registry |
+| (20) | $\mathcal T_v=1$ when $\zeta_v\ge B_u$ |
+| (22)–(23) | $\phi_v$ marks a change from the previous placement $\mathcal V'_{v,i}$ |
 
-**Algorithm**: Solve the weighted mixed-integer formulation with Gurobi over placement, registry, path, and migration variables; use the optimum as a benchmark for scalable methods.
+**Algorithm**: Solve the MILP with Gurobi (60 s time limit), averaging 1000 repetitions over application graphs built from the 100 most-downloaded Docker Hub images; the paper treats the exact model as a baseline for future heuristics.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Meliani et al. [x] formulated layer-aware microservice migration for UAV-assisted edge applications. Their mixed-integer model jointly selects service placements, registries, routes, and migrations while penalizing provisioning-time and end-to-end latency SLA violations. Docker's shared immutable layers reduce the transfer required when the destination already caches part of an image. Gurobi experiments show that more registries and cached layers reduce provisioning violations, reaching zero in the fully preloaded case, while larger infrastructures increase migration decisions. The optimization is intended as an exact baseline; execution-time energy objectives and scalable heuristics are left for future work.
+Meliani et al. [x] formulated layer-aware microservice migration for UAV-assisted edge applications. Their mixed-integer model jointly selects service placements, registries, routes, and migrations while penalizing provisioning-time and end-to-end latency SLA violations. Docker's shared immutable layers reduce the transfer required when the destination already caches part of an image. Gurobi experiments show that more registries and cached layers reduce provisioning violations, reaching zero in the fully preloaded case, while larger infrastructures increase migration decisions. The optimization is intended as an exact baseline; execution-time metrics, an energy objective, and comparisons with heuristic and learning-based strategies are left for future work.
 
 ## Problem and system model
 

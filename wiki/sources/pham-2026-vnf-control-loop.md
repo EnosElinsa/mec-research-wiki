@@ -19,7 +19,7 @@ related:
   - "[[zhang-2025-vnf-sgin-dql]]"
   - "[[du-2023-maddpg-service-placement-agin]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dynamic VNF Orchestration for UAV-Aided Emergency Networks: A Learning and Optimization Control Loop Framework
@@ -36,36 +36,40 @@ Couples fast distributed multipath routing with slower centralized VNF scaling i
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A UAV-aided emergency network is represented as a graph of UAV and terrestrial base stations, edge/cloud compute nodes, routers, and wired or wireless links. User sessions request latency-bounded service function chains, traffic can split over candidate paths, and virtual network functions may be replicated and placed across compute nodes under changing topology, load, battery, and link conditions.
+**Scenario**: A UAV-aided emergency network (UAVs, terrestrial nodes, wired and wireless links) serves user sessions through service function chains (SFCs) under a hybrid O-RAN architecture. Wireless link capacity $B_e(t)$ depends on SNR and LoS probability, UAV batteries drain with operation and computing, and flows may split over candidate paths $\mathcal P_i$.
 
-**Problem & objective**: A two-timescale constrained control loop minimizes fast routing latency and slow VNF running/scaling cost, represented by $\min J_{\mathrm{route}}$ for path traffic and $\min J_{\mathrm{scale}}=C_{\mathrm{run}}+C_{\mathrm{change}}$ for replica placement and rates.
+**Problem & objective**: Two coupled problems run at different time scales. P1 in (8)–(9) chooses path rates to minimize $\sum_t\mathbb L(t)$, where $\mathbb L(t)$ in (7) weights the worst-path latency of each critical SFC, a handoff/rerouting latency, and a path-splitting penalty. P2 in (22) chooses VNF instances and virtual-link rates to minimize $\sum_t\zeta(t)$, with $\zeta(t)$ in (20) the instance cost plus a penalty on scaling events.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Path traffic split | $x_{s,p}(t)$ | continuous, $[0,1]$ | Fraction of session $s$ routed over candidate path $p$ |
-| BS/user association | $a_{u,b}(t)$ | binary | Base station serving user $u$ in the slot |
-| VNF replica count | $n_{v,j}$ | nonnegative integer | Instances of function $v$ hosted at node $j$ |
-| VNF placement/rate | $z_{v,j},r_{v,j}$ | binary or relaxed placement; continuous rate | Location and processed traffic of each virtual function |
+| Path rate (P1) | $w_{ij}(t)$ | continuous, nonnegative | Data rate of flow $i$ on path $j$ |
+| VNF instances (P2) | $x_{nv}^c(t)$ | integer | Instances of the $n$-th VNF of chain $c$ on node $v$ |
+| Virtual-link rate (P2) | $r_{n\to(vv')}^c(t)$ | continuous | Rate of the $n$-th virtual link of chain $c$ on physical link $(v,v')$ |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| R1 | Path fractions conserve every admitted session's traffic and meet its minimum rate |
-| R2 | Link capacity, node buffer, battery, and energy limits are respected |
-| R3 | End-to-end SFC delay includes path, handoff, rerouting, and path-splitting terms and remains bounded |
-| S1 | VNF placement, replica count, compute capacity, and survival-throughput constraints remain feasible |
-| S2 | Virtual-link traffic, scaling energy, and SFC latency constraints hold after orchestration |
+| (1) | P1 link capacity: $\sum w_{ij}(t)a_{e,j}\le B_e(t)$ |
+| (2) | P1 minimum flow rate: $\sum_jw_{ij}(t)\ge\bar w_i$ |
+| (3) | P1 node backlog within buffer $\epsilon_v(t)$ |
+| (4)–(5) | P1 UAV energy per slot and minimum battery $E_v(t)\ge E_{\min}$ |
+| (6) | P1 mission-critical latency: $\max_jL_j(t)\phi(w_{ij}(t))\le\bar L_i$ |
+| (10) | P2 node compute: $\sum_{c,n}x_{nv}^c(t)p_n\le\kappa_vp_v$ (battery-scaled) |
+| (11) | P2 minimum instances: $\sum_vx_{nv}^c(t)\ge I_n^c(t)$ |
+| (12)–(13) | P2 SFC demand from P1 and survival throughput $\ge\varrho^c\lambda^c(t)$ |
+| (14) | P2 link capacity for virtual-link rates |
+| (17) | P2 end-to-end SFC latency including processing (15)–(16), propagation, and migration latency |
+| (18)–(19) | P2 UAV energy and minimum battery |
+| (21) | P2 big-$M$ coupling of placement and traffic |
 
-**Algorithm**: Train distributed routing actors with centralized MADDPG critics → execute local multipath routing each slot → detect persistent routing infeasibility → relax and block the VNF scaling/placement problem → apply proximal BSUM with convexified rate terms → round placement decisions and feed the new infrastructure state back to routing.
+**Algorithm**: Distributed MADDPG routing agents (centralized training, decentralized execution) solve P1 each slot; persistent infeasibility triggers the orchestrator, which relaxes $x_{nv}^c$, solves P2 by proximal BSUM, rounds the placement, and feeds the new state back to routing.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Pham and Nguyen [x] studied dynamic virtual network function orchestration for UAV-aided emergency networks through a learning and optimization control loop. They formulated fast multipath service-function-chain routing under link, rate, buffer, battery, energy, and latency constraints and a slower VNF scaling problem under compute, replica, throughput, link, and energy constraints. Distributed routing agents are trained with MADDPG under centralized training and decentralized execution. Persistent routing infeasibility triggers a centralized orchestrator that relaxes placement variables, applies proximal block successive upper-bound minimization, and rounds the resulting placement. Simulations report 65.9 ms average end-to-end delay for MADDPG-BSUM, 212.5 average VNF instances, and 32 scaling events across 717 routing decisions in the stated experiment.
+Pham and Nguyen [x] studied dynamic virtual network function orchestration for UAV-aided emergency networks through a learning and optimization control loop. They formulated fast multipath service-function-chain routing under link, rate, buffer, battery, energy, and latency constraints and a slower VNF scaling problem under compute, replica, throughput, link, and energy constraints. Distributed routing agents are trained with MADDPG under centralized training and decentralized execution. Persistent routing infeasibility triggers a centralized orchestrator that relaxes placement variables, applies proximal block successive upper-bound minimization, and rounds the resulting placement. Simulations report 65.9 ms average end-to-end delay for MADDPG-BSUM, close to but slightly worse than A2C in the varying setting, and 212.5 average VNF instances (2.6% fewer than Best-fit), while A2C-SFC reaches a lower scaling cost (33.78 versus 36.12); scaling occurred 32 times across 717 routing decisions.
 
 ## Problem
 

@@ -15,7 +15,7 @@ related:
   - "[[ant-colony-optimization]]"
   - "[[jia-2026-ufsp-rail-inspection]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -35,7 +35,7 @@ Introduces an AGI-oriented Transformer (AoT) for UAV-assisted railway inspection
 
 **Scenario**: A UAV departs from a hive, visits railway sensor clusters, gathers inspection tasks, chooses where each task executes, and returns to recharge.
 
-**Problem & objective**: Jointly plan the visit route and task execution locations to minimize weighted inspection delay and energy, $\min_{\pi_p,\pi_o}\omega_DD_{\mathrm{total}}+\omega_EE_{\mathrm{total}}$.
+**Problem & objective**: Problem $\mathrm P_0$ in (25) jointly plans the visit route and task execution locations to minimize weighted inspection delay and energy, $\min_{\pi_p,\pi_o}\omega_DD_{\mathrm{total}}+\omega_EE_{\mathrm{total}}$.
 
 **Decision variables**:
 
@@ -49,10 +49,10 @@ Introduces an AGI-oriented Transformer (AoT) for UAV-assisted railway inspection
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | The route starts and ends at the hive and visits each selected cluster once |
-| C2 | Offloading mode variables are binary and exactly one location is selected per task |
-| C3 | UAV computation energy remains within its budget |
-| C4 | Each task's processing and communication latency satisfies its deadline or service limit |
+| (25a) | Closed tour from and back to the hive, visiting each cluster once |
+| (25b)–(25c) | Binary one-hot execution choice: local, UAV, or hive, summing to 1 |
+| (25d) | UAV computation energy budget: $\sum_n\sum_i\lambda_{n,i}^uE_{c,u}^{n,i}\le E_{c,u}^{\max}$ |
+| (25e) | Offloading latency: $D_{\mathrm{off}}^{n,i}\le D_{\mathrm{off}}^{\max}$ |
 
 **Algorithm**: Encode cluster and task tokens with a shared Transformer encoder, train a trajectory head with REINFORCE, train an offloading head on its task MDP, then fuse and fine-tune the heads while freezing the shared representation when appropriate.
 
@@ -60,7 +60,7 @@ Introduces an AGI-oriented Transformer (AoT) for UAV-assisted railway inspection
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Guo et al. [x] jointly planned a UAV inspection route and task execution locations for railway sensor clusters connected to a hive edge server. Their objective minimizes a weighted total of inspection delay and energy over a cluster permutation and one-hot sensor, UAV, or hive offloading choices under tour, computation-energy, and task-latency constraints. The AoT method uses a shared Transformer encoder with separate trajectory and offloading heads, training the route with REINFORCE and the execution policy with a dedicated offloading process. In the 45-cluster experiment, AoT shortened the route to 5869.52 m versus 7093.39 m for Greedy, 7075.64 m for BO_ACO, and 8154.82 m for ABC, and it reached about -85 average offloading reward by episode 300.
+Guo et al. [x] jointly planned a UAV inspection route and task execution locations for railway sensor clusters connected to a hive edge server. Their objective minimizes a weighted total of inspection delay and energy over a cluster permutation and one-hot sensor, UAV, or hive offloading choices under tour, computation-energy, and task-latency constraints. The AoT method uses a shared Transformer encoder with separate trajectory and offloading heads, training the route with REINFORCE and the execution policy with a dedicated offloading process. In the 45-cluster experiment, AoT shortened the route to 5869.52 m versus 7093.39 m for Greedy, 7075.64 m for BO_ACO, and 8154.82 m for ABC, and it reached about -85 average reward by episode 300, ahead of an LSTM encoder (episode 400) and D3QN and DDQN.
 
 ## Problem
 

@@ -29,7 +29,7 @@ related:
   - "[[liu-2022-miso-uav-mec-trajectory]]"
   - "[[bai-2024-delay-aware-cooperative-edge-cloud]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy and Latency Efficient Joint Communication and Computation Optimization in a Multi-UAV-Assisted MEC Network
@@ -47,7 +47,7 @@ A multi-UAV + terrestrial-BS MEC network where multiple UAV-MEC servers and one 
 
 **Scenario**: $K$ ground users either compute locally or fully offload to one of $M-1$ rotary-wing UAV-MEC servers or one terrestrial BS-MEC server over time-varying multiple-access links. UAV access links are LoS-dominant, the user-to-BS link includes Rayleigh fading, UAVs move horizontally at fixed altitude, and UAV backhaul uses assumed reliable FSO links.
 
-**Problem & objective**: A non-convex MINLP jointly minimizes weighted energy and execution latency, $\min\sum_k(\sigma_k^E E_k+\sigma_k^{\psi}T_k)$, over offloading/server selection, uplink and downlink power, UAV trajectories, and server CPU allocation.
+**Problem & objective**: Problem (11), a non-convex MINLP, minimizes the weighted energy-latency cost $\min\sum_t\sum_k\sum_md_{km}[t]X_{km}[t]$, over offloading/server selection, uplink and downlink power, UAV trajectories, and server CPU allocation.
 
 **Decision variables**:
 
@@ -62,11 +62,14 @@ A multi-UAV + terrestrial-BS MEC network where multiple UAV-MEC servers and one 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task is executed locally or fully offloaded to exactly one MEC server |
-| C2 | User and server transmit powers satisfy their respective limits |
-| C3 | Per-server CPU allocations do not exceed available computing capacity |
-| C4 | UAV positions, speeds, and prescribed trajectory endpoints remain feasible |
-| C5 | Upload, execution, and download rates determine feasible latency and energy under co-channel interference |
+| (11b)–(11c) | Binary execution choice, local or exactly one MEC server: $\sum_md_{km}[t]=1$ |
+| (11d) | Total bandwidth: $\sum_k\sum_mB_{km}\le B_{\mathrm{total}}$ |
+| (11e) | Minimum upload and download rates: $R_{km}^o[t]\ge u_{km}[t]$, $R_{km}^d[t]\ge u_{km}^d[t]$ |
+| (11f)–(11h) | Uplink power $0\le p_{km}^o\le p_k^{\max}$; server downlink power $\sum_kp_{km}^d\le q_m^{\max}$, $p_{km}^d\ge0$ |
+| (11i)–(11k) | Local CPU $0\le f_{k(M+1)}\le L_k^{\max}$; server CPU $\sum_kf_{km}\le S_m^{\max}$, $f_{km}\ge0$ |
+| (11l) | Closed UAV trajectory: $\mathbf a_m[1]=\mathbf a_m[T]$ |
+| (11m) | UAV speed: $\lVert\mathbf a_m[t+1]-\mathbf a_m[t]\rVert^2\le V_m^{\max}\delta$ |
+| (11n) | UAV separation: $\lVert\mathbf a_m[t]-\mathbf a_i[t]\rVert^2\ge\chi_{\min}^2$ |
 
 **Algorithm**: Solve offloading and server selection as a best-response potential game → allocate upload/download power by geometric water filling → update segmented UAV trajectories with SCA → optimize CPU frequencies by gradient descent → alternate the three layers until the weighted cost converges.
 

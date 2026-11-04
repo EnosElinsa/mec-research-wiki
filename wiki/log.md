@@ -1,5 +1,11 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 23 (edge services: microservice migration, slicing, VNF orchestration, and MEC resource control)
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch23-edge-services.json`. Grounded total: 551/699.
+- Relabeled constraint IDs to the papers' own tags (for example adeppady-2026 (13)–(24), garcia-gil-2025 (6b)–(6f), wei-2026 (1)–(15), du-2023 (C1)–(C15), pervez-2024 (11b)–(11n), wang-2025 laser (29b)–(29j), zhu-2025 (15a)–(15e), guo-2026 AoT (25a)–(25e), li-2024 SMDRL C1–C4 (3b)–(3e), wu-2026 terrain C1–C6); where the parse shifts tags (calagna-2026 (18)–(22)) or drops them (calagna-2024 (33)–(34)), the card says to check the published paper.
+- Rewrote the Modeling Quick-Use Card for calagna-2025 MOSE (an orchestration design with no formal problem), meliani-2026 (placement, routing, registry, and relocation variables with (3)–(23)), roy Serv-HU (two-stage selection (13)–(14b) and pricing (40)–(41)), sharghivand OSHM (SHIP$^3$ (10) and SHIP$^3$-L (13)), pham-2026 (P1 (8) and P2 (22) with $w_{ij}$, $x_{nv}^c$, $r^c$), and ma-2026 (per-UAV problem (8) and dispatcher problem (11)).
+- Related Work paragraphs now name the actual baselines and note results where the method does not win everywhere (for example pham-2026 delay slightly above A2C and scaling cost above A2C-SFC, RUNs 0.9% below SQP, PPO more stable than A2C in ammar-2026, URCMO matching some terrain-risk values in wu-2026); an unsupported 247.7% gain was removed from deng-2026.
+
 ## [2026-11-03] Grounded batch 22 (federated learning, AirComp, generative AI, and learning-based offloading)
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch22-fl-genai.json`. Grounded total: 527/699.
 - Relabeled constraint IDs to the papers' own tags (for example chen-2026 SDHFL C1–C12, huang-2026 (3), (10), (20b)–(20c), qian-2026 (8b)–(8d), fu-2025 (6), (8), (9), (11), (12e), (24b), du-2024 D2SAC (2)–(3), du-2024 YOLO (2a)–(2b), wen-2026 HybridRAG (28b)–(28j), niazmand-2025 (17a)–(17h), lin-2026 $\mathcal C_1$–$\mathcal C_4$); where the parse shifts tags (dang-2026 (16b)–(16l), zhong-2026 (28b)–(28f), zhang-2026 DT-AirComp (17e)–(17f)), the card says to check the published paper.
