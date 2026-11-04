@@ -1,0 +1,595 @@
+{
+  "entries": [
+    {
+      "slug": "chen-2024-three-party-hierarchical-game-pls",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions.md",
+          "lines": "138,151,154,166,169,174,178,182",
+          "note": "secrecy rate, EV utility and problem EP (9)-(11)"
+        },
+        {
+          "path": "raw/sources/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions.md",
+          "lines": "188,202,212,216,220,224,228,232,235,240,246,249,254,258,262,266,269",
+          "note": "LU and JA problems (15)-(26)"
+        },
+        {
+          "path": "raw/sources/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions.md",
+          "lines": "274,444,579,609",
+          "note": "hierarchical game, HCSF and PPO-based DRL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions.md",
+          "lines": "710,712,713,714,715,716,717,782,937,939",
+          "note": "benchmarks and utility/cost results"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-air-ground-covert",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Air-to-Ground_Covert_Communication_With_Location_and_Interference_Uncertainty/Air-to-Ground_Covert_Communication_With_Location_and_Interference_Uncertainty.md",
+          "lines": "55,100,116,172,192,211",
+          "note": "PPP interferers, radiometer detection, gamma fit"
+        },
+        {
+          "path": "raw/sources/Air-to-Ground_Covert_Communication_With_Location_and_Interference_Uncertainty/Air-to-Ground_Covert_Communication_With_Location_and_Interference_Uncertainty.md",
+          "lines": "279,287,289,297,356,359,363",
+          "note": "optimal thresholds, cases 1-2, covert throughput (38)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Air-to-Ground_Covert_Communication_With_Location_and_Interference_Uncertainty/Air-to-Ground_Covert_Communication_With_Location_and_Interference_Uncertainty.md",
+          "lines": "375,402,407,429,435",
+          "note": "covert probability and throughput results"
+        }
+      ]
+    },
+    {
+      "slug": "feng-2026-secure-short-packet-noma-relay",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secure_Short-Packet_Transmission_of_UAV_Relaying_via_NOMA/Secure_Short-Packet_Transmission_of_UAV_Relaying_via_NOMA.md",
+          "lines": "46,120,146,256,259,263,267,271,275,279,283,287",
+          "note": "system model and P1 (32a)-(32h)"
+        },
+        {
+          "path": "raw/sources/Secure_Short-Packet_Transmission_of_UAV_Relaying_via_NOMA/Secure_Short-Packet_Transmission_of_UAV_Relaying_via_NOMA.md",
+          "lines": "309,313,321,335,353,395,447,454",
+          "note": "BCD decomposition P2-P2.4a and SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secure_Short-Packet_Transmission_of_UAV_Relaying_via_NOMA/Secure_Short-Packet_Transmission_of_UAV_Relaying_via_NOMA.md",
+          "lines": "842,844,852,854,864",
+          "note": "convergence, relay position and baseline comparison"
+        }
+      ]
+    },
+    {
+      "slug": "gong-2025-secure-uav-aircomp",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Transceiver_and_Trajectory_Design_for_Secure_UAV-Enabled_Over-the-Air_Computation/Joint_Transceiver_and_Trajectory_Design_for_Secure_UAV-Enabled_Over-the-Air_Computation.md",
+          "lines": "61,114,141,144,148,152,156,160",
+          "note": "system model and (P0) (13a)-(13e)"
+        },
+        {
+          "path": "raw/sources/Joint_Transceiver_and_Trajectory_Design_for_Secure_UAV-Enabled_Over-the-Air_Computation/Joint_Transceiver_and_Trajectory_Design_for_Secure_UAV-Enabled_Over-the-Air_Computation.md",
+          "lines": "174,189,192,196,201,204,207,215,218,222,229,257,264,274,302,317,319",
+          "note": "EVE constraint transform and AO with SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Transceiver_and_Trajectory_Design_for_Secure_UAV-Enabled_Over-the-Air_Computation/Joint_Transceiver_and_Trajectory_Design_for_Secure_UAV-Enabled_Over-the-Air_Computation.md",
+          "lines": "329,331,332,373,375,377",
+          "note": "benchmarks and MSE results"
+        }
+      ]
+    },
+    {
+      "slug": "he-not-in-parse-cipc-covert-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Channel_Inversion_Power_Control-Aided_Multi-User_Secret_and_Covert_UAV_Communications/Channel_Inversion_Power_Control-Aided_Multi-User_Secret_and_Covert_UAV_Communications.md",
+          "lines": "362,365,369,373,377,381,385,408,411,415,494,550,579",
+          "note": "rotary-wing (P1) (55a)-(55f) and solutions"
+        },
+        {
+          "path": "raw/sources/Channel_Inversion_Power_Control-Aided_Multi-User_Secret_and_Covert_UAV_Communications/Channel_Inversion_Power_Control-Aided_Multi-User_Secret_and_Covert_UAV_Communications.md",
+          "lines": "587,590,594,598,602,606,610,614,620,624,628,632,636,640,646,649,653,655,660,688,738",
+          "note": "fixed-wing (P2) (87) and AO-SCA subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Channel_Inversion_Power_Control-Aided_Multi-User_Secret_and_Covert_UAV_Communications/Channel_Inversion_Power_Control-Aided_Multi-User_Secret_and_Covert_UAV_Communications.md",
+          "lines": "895,908,912,914,916,918,920,925,927",
+          "note": "optimal vs coordinate descent and fixed-wing baselines"
+        }
+      ]
+    },
+    {
+      "slug": "hosseini-2026-aoi-covert-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Assisted_Covert_Communication_Trajectory_and_Beamforming_Design/Age_of_Information_Minimization_in_UAV-Assisted_Covert_Communication_Trajectory_and_Beamforming_Design.md",
+          "lines": "42,48,84,184,197,201,205,209,213,217,221,225,229,232",
+          "note": "system model and problem (22a)-(22h)"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Assisted_Covert_Communication_Trajectory_and_Beamforming_Design/Age_of_Information_Minimization_in_UAV-Assisted_Covert_Communication_Trajectory_and_Beamforming_Design.md",
+          "lines": "247,271,339,359,385,389,429,453,465,670",
+          "note": "AoI LP, SCA trajectory, SDR beamforming and Eve detector"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Assisted_Covert_Communication_Trajectory_and_Beamforming_Design/Age_of_Information_Minimization_in_UAV-Assisted_Covert_Communication_Trajectory_and_Beamforming_Design.md",
+          "lines": "541,543,563,565,580,582,587",
+          "note": "covertness, packet-size, OMA and path comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "hua-2026-unpredictable-uav-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Unpredictable_Trajectory_Optimization_for_UAV-Assisted_Anti-Jamming_Data_Collection/Unpredictable_Trajectory_Optimization_for_UAV-Assisted_Anti-Jamming_Data_Collection.md",
+          "lines": "69,73,77,81,86,141,145,149,153,156",
+          "note": "Dubins motion, jammer prediction and P1 (7a)-(7d)"
+        },
+        {
+          "path": "raw/sources/Unpredictable_Trajectory_Optimization_for_UAV-Assisted_Anti-Jamming_Data_Collection/Unpredictable_Trajectory_Optimization_for_UAV-Assisted_Anti-Jamming_Data_Collection.md",
+          "lines": "167,185,194,199,203,207,213,217,220,292,296",
+          "note": "UTF decomposition (8)-(11) and bounds (17)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Unpredictable_Trajectory_Optimization_for_UAV-Assisted_Anti-Jamming_Data_Collection/Unpredictable_Trajectory_Optimization_for_UAV-Assisted_Anti-Jamming_Data_Collection.md",
+          "lines": "459,461,463,465,475,479,500,504,518",
+          "note": "SPOC, IBUR and EMOPSO comparisons and parameter study"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-intelligent-jamming-maritime",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secure_Low-altitude_Maritime_Communications_via_Intelligent_Jamming/Secure_Low-altitude_Maritime_Communications_via_Intelligent_Jamming.md",
+          "lines": "101,105,164,221,225,229,233,237,241,245,249,255",
+          "note": "Eve mobility and problem (14) C1-C8"
+        },
+        {
+          "path": "raw/sources/Secure_Low-altitude_Maritime_Communications_via_Intelligent_Jamming/Secure_Low-altitude_Maritime_Communications_via_Intelligent_Jamming.md",
+          "lines": "271,275,279,283,287,291,484,488,509,534,550",
+          "note": "reformulation (15), CVAE policy and LSTM"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secure_Low-altitude_Maritime_Communications_via_Intelligent_Jamming/Secure_Low-altitude_Maritime_Communications_via_Intelligent_Jamming.md",
+          "lines": "599,601,603,618,625,647",
+          "note": "non-jamming and DRL baselines, secrecy and reward results"
+        }
+      ]
+    },
+    {
+      "slug": "li-2021-robust-ris-uav-secrecy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Robust_Secure_UAV_Communications_With_the_Aid_of_Reconfigurable_Intelligent_Surfaces/Robust_Secure_UAV_Communications_With_the_Aid_of_Reconfigurable_Intelligent_Surfaces.md",
+          "lines": "39,43,50,53,57,147,151,209,213,223,227,236,241,245,249,253",
+          "note": "mobility, power, uncertainty sets and problem (22)"
+        },
+        {
+          "path": "raw/sources/Robust_Secure_UAV_Communications_With_the_Aid_of_Reconfigurable_Intelligent_Surfaces/Robust_Secure_UAV_Communications_With_the_Aid_of_Reconfigurable_Intelligent_Surfaces.md",
+          "lines": "343,427,431,451,463,481,489,515,547,559,637,641,867",
+          "note": "power closed form, S-procedure SDR and robust trajectory SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Robust_Secure_UAV_Communications_With_the_Aid_of_Reconfigurable_Intelligent_Surfaces/Robust_Secure_UAV_Communications_With_the_Aid_of_Reconfigurable_Intelligent_Surfaces.md",
+          "lines": "882,884,886,888,890,892,915,917",
+          "note": "benchmarks and worst-case secrecy results"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-directional-modulation-irs-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Direction_Modulation_Design_for_UAV_Assisted_by_IRS_With_Discrete_Phase_Shift/Direction_Modulation_Design_for_UAV_Assisted_by_IRS_With_Discrete_Phase_Shift.md",
+          "lines": "220,223,226,228,233,239,263",
+          "note": "problem P1 (30) and robust P2 C1'-C6"
+        },
+        {
+          "path": "raw/sources/Direction_Modulation_Design_for_UAV_Assisted_by_IRS_With_Discrete_Phase_Shift/Direction_Modulation_Design_for_UAV_Assisted_by_IRS_With_Discrete_Phase_Shift.md",
+          "lines": "332,335,471",
+          "note": "power-minimizing positioning and VT phase design"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Direction_Modulation_Design_for_UAV_Assisted_by_IRS_With_Discrete_Phase_Shift/Direction_Modulation_Design_for_UAV_Assisted_by_IRS_With_Discrete_Phase_Shift.md",
+          "lines": "704,723,733",
+          "note": "signal power, BER and rate results"
+        }
+      ]
+    },
+    {
+      "slug": "li-not-in-parse-movable-antenna-pls",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Can_Movable_Antenna-Enabled_Micro-Mobility_Replace_UAV-Enabled_Macro-Mobility_A_Physical_Layer_Security_Perspective/Can_Movable_Antenna-Enabled_Micro-Mobility_Replace_UAV-Enabled_Macro-Mobility_A_Physical_Layer_Security_Perspective.md",
+          "lines": "70,82,155,159,163,167,171,174,179,183,187,191",
+          "note": "scenario, P1 (10) and P2 (11)"
+        },
+        {
+          "path": "raw/sources/Can_Movable_Antenna-Enabled_Micro-Mobility_Replace_UAV-Enabled_Macro-Mobility_A_Physical_Layer_Security_Perspective/Can_Movable_Antenna-Enabled_Micro-Mobility_Replace_UAV-Enabled_Macro-Mobility_A_Physical_Layer_Security_Perspective.md",
+          "lines": "223,264,267,331,339,345,365",
+          "note": "alternating MA/BF and SCA trajectory subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Can_Movable_Antenna-Enabled_Micro-Mobility_Replace_UAV-Enabled_Macro-Mobility_A_Physical_Layer_Security_Perspective/Can_Movable_Antenna-Enabled_Micro-Mobility_Replace_UAV-Enabled_Macro-Mobility_A_Physical_Layer_Security_Perspective.md",
+          "lines": "37,460,468,485,525",
+          "note": "micro- versus macro-mobility results"
+        }
+      ]
+    },
+    {
+      "slug": "mao-2025-irs-noma-fl-secrecy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence.md",
+          "lines": "106,114,154,157,161,165,168",
+          "note": "FL model and problem (5)"
+        },
+        {
+          "path": "raw/sources/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence.md",
+          "lines": "172,174,193,529,556",
+          "note": "MDP and DDPG design"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence.md",
+          "lines": "576,625,633,638,647,653",
+          "note": "baselines and secrecy-rate tables"
+        }
+      ]
+    },
+    {
+      "slug": "meng-2026-fullspace-star-ris-secure",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Full-Space_UAV_Trajectory_Design_for_STAR-RIS-Assisted_Secure_Ground-Air_Communications/Full-Space_UAV_Trajectory_Design_for_STAR-RIS-Assisted_Secure_Ground-Air_Communications.md",
+          "lines": "73,77,83,87,152,155,161,165,169,173,177,181,185,189,193,196",
+          "note": "channels and problem (14)"
+        },
+        {
+          "path": "raw/sources/Full-Space_UAV_Trajectory_Design_for_STAR-RIS-Assisted_Secure_Ground-Air_Communications/Full-Space_UAV_Trajectory_Design_for_STAR-RIS-Assisted_Secure_Ground-Air_Communications.md",
+          "lines": "200,204,289,295,299,303,315,504,549,729",
+          "note": "AO with binary relaxation, S-procedure, SDR and trajectory SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Full-Space_UAV_Trajectory_Design_for_STAR-RIS-Assisted_Secure_Ground-Air_Communications/Full-Space_UAV_Trajectory_Design_for_STAR-RIS-Assisted_Secure_Ground-Air_Communications.md",
+          "lines": "784,792,817,825",
+          "note": "benchmarks and secrecy-rate results"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2024-active-passive-ris-receiver",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing.md",
+          "lines": "184,187,190,193,197,201,204,208,210",
+          "note": "problem (6) C1-C4"
+        },
+        {
+          "path": "raw/sources/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing.md",
+          "lines": "216,228,261,289,355,467,485,554",
+          "note": "Pareto-dual precoder, UM-ZF and AMM/C-M-CCD"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing.md",
+          "lines": "129,745,761,797,798,800,801,1003,1112,1117,1119",
+          "note": "scaling law and receiver comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2024-imssa-uav-secure-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information.md",
+          "lines": "122,127,141,152,159,165,175,183,194,196,202,207,248,256",
+          "note": "array, secrecy, energy models and objectives (12)-(14)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information.md",
+          "lines": "264,268,272,276,280,284,288,292,296,300,303,311,333",
+          "note": "SCMOP (15a)-(15j)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information.md",
+          "lines": "387,389,448,460,502,504,506,557,558,564",
+          "note": "IMSSA factors and steps"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information.md",
+          "lines": "581,638,652",
+          "note": "benchmarks and CDF comparison"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2024-mfris-semantic-antijamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks.md",
+          "lines": "75,129,153,213,216,257,260,264,268,272,276,280,284,288,292,295",
+          "note": "scenario, MF-RIS model and problem (13)"
+        },
+        {
+          "path": "raw/sources/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks.md",
+          "lines": "25,63,65,344,464,720,760,774,778,800,881",
+          "note": "worst-case discretization, MO-DSOCP and GPI-DSOCP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks.md",
+          "lines": "920,1078,1098",
+          "note": "benchmarks and semantic-rate results"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-covert-cognitive-radio",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Covert_Transmission_for_Cooperative_Cognitive_Radio_Networks/UAV-Assisted_Covert_Transmission_for_Cooperative_Cognitive_Radio_Networks.md",
+          "lines": "21,65,128,146,226,297,304,308,311,315,319,323,326,330",
+          "note": "two-phase relay model, KL covertness and problem (36)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Covert_Transmission_for_Cooperative_Cognitive_Radio_Networks/UAV-Assisted_Covert_Transmission_for_Cooperative_Cognitive_Radio_Networks.md",
+          "lines": "334,337,341,499,515,519,523,809",
+          "note": "BCD power and trajectory subproblems with SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Covert_Transmission_for_Cooperative_Cognitive_Radio_Networks/UAV-Assisted_Covert_Transmission_for_Cooperative_Cognitive_Radio_Networks.md",
+          "lines": "854,871",
+          "note": "convergence and benchmark comparison"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-secure-lae-uav-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "56,59,62,96,140,142,145,149,153,157,161,165,169,173,177,181,185,189,193,196",
+          "note": "uncertainty region and problem (P) C1-C11"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "208,228,244,276,288,302,376,382,386,442,524,542,575",
+          "note": "penalty double loop, SCA power and Dinkelbach-SCA trajectory"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization.md",
+          "lines": "620,622,626,640,642,663,673,675,699,701",
+          "note": "SUS, FRS and MPS comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2026-secure-split-offloading-ci",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference.md",
+          "lines": "218,221,225,229,233,237,241,245,249,253,257,261",
+          "note": "problem P0 (26a)-(26k)"
+        },
+        {
+          "path": "raw/sources/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference.md",
+          "lines": "287,291,295,299,309,398,454,552,574,579",
+          "note": "closed-form compute, SCA trajectory subproblems and DWOA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference.md",
+          "lines": "724,726,728,736,738,743,745,747,751,753",
+          "note": "ablations and baselines"
+        }
+      ]
+    },
+    {
+      "slug": "xiao-2020-secrecy-energy-efficiency-relaying",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying.md",
+          "lines": "22,61,67,71,77,85,93,117,141,147,153,161,167,173,179",
+          "note": "relay, channel, secrecy and energy models"
+        },
+        {
+          "path": "raw/sources/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying.md",
+          "lines": "191,201,205,209,213,217,221,225,229,233,237,241,244,246",
+          "note": "problem (P1) (28)-(38)"
+        },
+        {
+          "path": "raw/sources/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying.md",
+          "lines": "250,254,290,396,406,546,562",
+          "note": "AO with SCA and Dinkelbach"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying/Secrecy_Energy_Efficiency_Maximization_for_UAV-Enabled_Mobile_Relaying.md",
+          "lines": "615,617,619,621,663,669",
+          "note": "benchmarks and SEE table"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2026-embodied-antijamming-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Embodied_Intelligence-Enhanced_Anti-Jamming_Resource_Allocation_for_Low-Altitude_Communication_Networks/Embodied_Intelligence-Enhanced_Anti-Jamming_Resource_Allocation_for_Low-Altitude_Communication_Networks.md",
+          "lines": "56,165,168,172,175,178",
+          "note": "success probability and problem (17)"
+        },
+        {
+          "path": "raw/sources/Embodied_Intelligence-Enhanced_Anti-Jamming_Resource_Allocation_for_Low-Altitude_Communication_Networks/Embodied_Intelligence-Enhanced_Anti-Jamming_Resource_Allocation_for_Low-Altitude_Communication_Networks.md",
+          "lines": "188,193,196,198,201,207,210,213,239,241,265,283,293",
+          "note": "MAMDP, reward and DDQN-PER-TL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Embodied_Intelligence-Enhanced_Anti-Jamming_Resource_Allocation_for_Low-Altitude_Communication_Networks/Embodied_Intelligence-Enhanced_Anti-Jamming_Resource_Allocation_for_Low-Altitude_Communication_Networks.md",
+          "lines": "345,369,376,402,411",
+          "note": "simulation and experiment comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "zhai-2026-uav-ma-secrecy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Minimum_Secrecy_Rate_Maximization_for_UAV-Mounted_Movable_Antenna_Empowered_Wireless_Networks/Minimum_Secrecy_Rate_Maximization_for_UAV-Mounted_Movable_Antenna_Empowered_Wireless_Networks.md",
+          "lines": "43,46,52,55,58,64,67,77,83,87,93,99,110,114,118",
+          "note": "MA, mobility, secrecy models and problem (10)"
+        },
+        {
+          "path": "raw/sources/Minimum_Secrecy_Rate_Maximization_for_UAV-Mounted_Movable_Antenna_Empowered_Wireless_Networks/Minimum_Secrecy_Rate_Maximization_for_UAV-Mounted_Movable_Antenna_Empowered_Wireless_Networks.md",
+          "lines": "155,177,181,203,251,283,341,375,468",
+          "note": "bounded reformulation and four-block BCD"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Minimum_Secrecy_Rate_Maximization_for_UAV-Mounted_Movable_Antenna_Empowered_Wireless_Networks/Minimum_Secrecy_Rate_Maximization_for_UAV-Mounted_Movable_Antenna_Empowered_Wireless_Networks.md",
+          "lines": "595,597,599,601,603,608,614,638,643,655,664",
+          "note": "benchmarks and minimum secrecy results"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2019-secure-uav-trajectory-power",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Securing_UAV_Communications_via_Joint_Trajectory_and_Power_Control/Securing_UAV_Communications_via_Joint_Trajectory_and_Power_Control.md",
+          "lines": "42,45,49,57,76,81,85,125,129,141,145,149,160,172,174",
+          "note": "mobility, power and secrecy models, (P1)-(P2)"
+        },
+        {
+          "path": "raw/sources/Securing_UAV_Communications_via_Joint_Trajectory_and_Power_Control/Securing_UAV_Communications_via_Joint_Trajectory_and_Power_Control.md",
+          "lines": "180,202,247,291,302,305,357,361,367,402,417",
+          "note": "Lemma 1, BCD and SCA algorithms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Securing_UAV_Communications_via_Joint_Trajectory_and_Power_Control/Securing_UAV_Communications_via_Joint_Trajectory_and_Power_Control.md",
+          "lines": "421,423,427,443,448,464",
+          "note": "benchmarks and secrecy-rate results"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-irs-uav-covert-fbl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_IRS-Assisted_Multi-Antenna_UAV_Covert_Communications_With_a_Finite_Blocklength/Joint_Trajectory_and_Beamforming_Optimization_for_IRS-Assisted_Multi-Antenna_UAV_Covert_Communications_With_a_Finite_Blocklength.md",
+          "lines": "56,59,113,116,200,212,216",
+          "note": "mobility, power, covertness and problem (22)"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_IRS-Assisted_Multi-Antenna_UAV_Covert_Communications_With_a_Finite_Blocklength/Joint_Trajectory_and_Beamforming_Optimization_for_IRS-Assisted_Multi-Antenna_UAV_Covert_Communications_With_a_Finite_Blocklength.md",
+          "lines": "232,248,264,280,306,328,352,378,512,516,527,613",
+          "note": "BCD-SDR subproblems, trajectory SCA and PDDGP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_IRS-Assisted_Multi-Antenna_UAV_Covert_Communications_With_a_Finite_Blocklength/Joint_Trajectory_and_Beamforming_Optimization_for_IRS-Assisted_Multi-Antenna_UAV_Covert_Communications_With_a_Finite_Blocklength.md",
+          "lines": "617,619,621,629",
+          "note": "benchmarks, convergence and complexity"
+        }
+      ]
+    }
+  ]
+}

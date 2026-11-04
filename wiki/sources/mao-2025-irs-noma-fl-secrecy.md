@@ -17,7 +17,7 @@ related:
   - "[[han-2024-ground-satellite-fl]]"
   - "[[bomin-mao]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimizing Secrecy Rate for Federated Learning Model Aggregation With Intelligent Reflecting Surface Toward 6G Ubiquitous Intelligence
@@ -51,10 +51,10 @@ Secures the **model-uploading phase of NOMA-based federated learning (FL)** with
 
 | ID | Meaning and key expression |
 |---|---|
-| Power budget | Device powers obey $\mathbf P\leq P_{\mathrm{Max}}$ |
-| Unit modulus | Each IRS element is lossless: $\lvert\Phi_l\rvert^2=1,\ \forall l\in\mathcal N_{\mathcal I}$ |
-| Phase range | The phase parameter is bounded by $0\leq\phi_l<2\pi$ |
-| Secrecy metric | $R_{sn}=R_{nb}-R_{ne}$ uses the legitimate and eavesdropper rates |
+| (5) power | Device powers obey $\mathbf P\le P_{\mathrm{Max}}$ |
+| (5) unit modulus | Each IRS element is lossless, $\lvert\Phi_l\rvert^2=1,\ \forall l\in\mathcal N_{\mathcal I}$ |
+| Model rule | The phase parameter satisfies $0\le\phi_l<2\pi$ |
+| Model rule | Secrecy rate $R_{sn}=R_{nb}-R_{ne}$ from the legitimate and eavesdropper rates |
 
 **Algorithm**: Cast the coupled non-convex design as a continuous-action MDP. DDPG uses an actor, critic, target networks, and replay buffer; the state contains current power and real/imaginary CSI, the action jointly emits normalized power and phase values, and the reward is the minimum secrecy rate.
 
@@ -62,7 +62,7 @@ Secures the **model-uploading phase of NOMA-based federated learning (FL)** with
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mao et al. [x] studied physical-layer protection for NOMA federated-learning model aggregation with an IRS and a nearby eavesdropper. They formulated max-min secrecy-rate maximization over device transmit powers and IRS phase shifts subject to a total power budget and unit-modulus reflection constraints. Their DDPG agent observes current powers and complex channel information, emits the joint continuous power and phase action, and uses the minimum secrecy rate as its reward. Simulations showed that the proposed IRS design outperformed no-IRS and random-phase baselines, with a minimum secrecy rate of about 1.56 versus 1.01 and 0.72 at 30 dBW and about 2.0 when the IRS used 36 elements.
+Mao et al. [x] studied physical-layer protection for NOMA federated-learning model aggregation with an IRS and a nearby eavesdropper. They formulated max-min secrecy-rate maximization over device transmit powers and IRS phase shifts subject to a total power budget and unit-modulus reflection constraints. Their DDPG agent observes current powers and complex channel information, emits the joint continuous power and phase action, and uses the minimum secrecy rate as its reward. Simulations showed that the proposed IRS design outperformed no-IRS and random-phase baselines, with a minimum secrecy rate of about 1.56 versus 1.01 and 0.72 at 30 dBW (random phases did worse than no IRS here) and about 2.0 versus 0.9 and 1.7 with 36 IRS elements.
 
 ## Problem framing
 

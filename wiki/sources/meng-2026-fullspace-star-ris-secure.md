@@ -15,7 +15,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[alternating-optimization-sdr-sca]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -33,36 +33,34 @@ Introduces a binary side variable and unified cascaded-channel expressions so a 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Two single-antenna ground nodes upload through a fixed $M$-element energy-splitting STAR-RIS to a single-antenna rotary-wing UAV at fixed altitude. Node A is confidential, node B is regular, colluding eavesdroppers target node A, and the UAV can cross the STAR-RIS plane; the access scheme uses NOMA with a fixed SIC order.
+**Scenario**: Two single-antenna ground nodes upload through a fixed $M$-element energy-splitting STAR-RIS to a single-antenna rotary-wing UAV at fixed altitude. Node A is confidential, node B is regular, colluding eavesdroppers target node A, and the UAV can fly on either side of the STAR-RIS plane. The nodes transmit with fixed powers $P_{\mathrm A},P_{\mathrm B}$ under NOMA with a fixed SIC order.
 
-**Problem & objective**: Full-space robust secure trajectory design, a mixed-integer non-convex robust program, maximizes worst-case average secrecy rate, $\max\min_{\Delta\mathbf H_e}\bar R_s$, subject to node-B throughput, SIC, STAR-RIS, side, and UAV-mobility constraints.
+**Problem & objective**: Problem (14) is a mixed-integer nonlinear program that maximizes the worst-case average secrecy rate $\frac1N\sum_{n=1}^{N}R_{\mathrm s}[n]$ over $\Theta^{\mathrm R},\Theta^{\mathrm T},\mathbf Q,\lambda$, where $R_{\mathrm s}[n]=[R_{\mathrm A}[n]-\max_{\Delta\mathbf h\in\Omega}R_{\mathrm E}[n]]^+$ in (13) uses the worst eavesdropper CSI error in a norm-bounded set.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV trajectory | $\mathbf q[n]$ | continuous 3-D position | UAV location across slots |
-| STAR-RIS coefficients | $\boldsymbol\alpha[n],\boldsymbol\beta[n]$ | continuous amplitudes/phases | Reflection/transmission coefficients under energy splitting |
-| Side indicator | $b[n]$ | binary | UAV side and corresponding STAR-RIS role assignment |
-| User powers | $p_A[n],p_B[n]$ | continuous, bounded | Confidential and regular NOMA uplink powers |
+| UAV trajectory | $\mathbf Q=\{\mathbf q[n]\}$ | continuous, fixed altitude | UAV location across slots |
+| STAR-RIS coefficients | $\Theta^{\mathrm R}[n],\Theta^{\mathrm T}[n]$ | amplitudes $\beta_{m,n}^{\mathrm F}\in[0,1]$, phases $\theta_{m,n}^{\mathrm F}\in[0,2\pi)$ | Reflection and transmission coefficients under energy splitting |
+| Side indicator | $\lambda_n$ | binary | 1 when the STAR-RIS reflects node A and transmits node B, 0 for the reverse; set by the UAV's side of the surface |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Node B achieves its minimum data rate |
-| C2 | Fixed SIC order and received-power separation constraints hold |
-| C3 | STAR-RIS amplitudes/phases satisfy energy-splitting and unit-modulus feasibility |
-| C4 | UAV trajectory obeys fixed altitude, initial/end position, and per-slot displacement limits |
-| C5 | Worst-case eavesdropper CSI lies in the norm-bounded uncertainty set |
+| (14a) | SIC: the ratio of node A's to node B's received power is at least $\eta$ |
+| (14b) | Node B throughput, $\sum_{n=1}^{N}R_{\mathrm B}[n]\ge R_{\mathrm{th}}$ |
+| (14c)–(14e) | Energy conservation $\beta_{m,n}^{\mathrm R}+\beta_{m,n}^{\mathrm T}=1$, amplitudes in $[0,1]$, phases in $[0,2\pi)$; the parse shifts these tags, so check the published paper |
+| (14f) | $\lambda_n$ follows the UAV's position relative to the STAR-RIS |
+| (14g) | $\lVert\mathbf q[n]-\mathbf q[n-1]\rVert\le V_{\max}\tau$ |
+| (14h) | $\mathbf q[0]=\mathbf q_{\mathrm I}$, $\mathbf q[N]=\mathbf q_{\mathrm F}$ |
 
-**Algorithm**: Alternate robust STAR-RIS/role optimization and UAV trajectory blocks → relax binary/rank constraints with S-procedure and SDR plus Gaussian randomization → apply first-order convexification/SCA to trajectory terms → iterate DS-JO until the local objective stabilizes.
+**Algorithm**: DS-JO alternates two blocks. With the trajectory fixed, it optimizes $\{\Theta^{\mathrm F},\lambda\}$ by relaxing the binary side variables with (28)–(29), handling the worst-case CSI with the S-procedure, and applying SDR with Gaussian randomization. With the coefficients fixed, it updates the trajectory through first-order bounds and SCA (problem (79)), and repeats until the average secrecy rate stabilizes.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Meng and Wu [x] studied full-space UAV mobility for secure ground-air communications assisted by an energy-splitting STAR-RIS. They formulated a robust mixed-integer problem that maximizes the worst-case average secrecy rate of a confidential NOMA user while preserving a regular user's throughput under colluding-eavesdropper CSI uncertainty. A binary side variable unifies reflection and transmission roles as the UAV crosses the STAR-RIS plane. Their DS-JO algorithm alternates robust STAR-RIS coefficient optimization with trajectory SCA, using SDR, the S-procedure, Gaussian randomization, and first-order channel bounds. Simulations report higher secrecy performance than fixed-trajectory, random-phase, and conventional reflecting benchmarks in the tested full-space trajectories.
+Meng and Wu [x] studied full-space UAV mobility for secure ground-air communications assisted by an energy-splitting STAR-RIS. They formulated a robust mixed-integer problem that maximizes the worst-case average secrecy rate of a confidential NOMA user while preserving a regular user's throughput under colluding-eavesdropper CSI uncertainty. A binary side variable unifies reflection and transmission roles as the UAV crosses the STAR-RIS plane. Their DS-JO algorithm alternates robust STAR-RIS coefficient optimization with trajectory SCA, using SDR, the S-procedure, Gaussian randomization, and first-order channel bounds. Simulations report a higher average secrecy rate than single-side flight (SS-JO), random STAR-RIS phases (DS-RP), a fixed straight trajectory (DS-FT), and a conventional RIS (CR-JO); all schemes lost secrecy rate as eavesdropper CSI became less accurate.
 
 ## Problem framing
 

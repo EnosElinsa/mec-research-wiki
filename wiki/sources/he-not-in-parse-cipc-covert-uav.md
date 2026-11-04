@@ -20,7 +20,7 @@ related:
   - "[[jingjing-wang]]"
   - "[[chunxiao-jiang]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Channel Inversion Power Control-Aided Multi-User Secret and Covert UAV Communications
@@ -55,12 +55,14 @@ Combines confidential and covert uplink traffic in one UAV receiver. Bob's stron
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Willie's minimum detection error probability satisfies the covertness target. |
-| C2 | Bob's secret connection probability and secrecy outage probability meet reliability and secrecy targets. |
-| C3 | Covert-user powers remain within their peak limits. |
-| C4 | Rotary-wing altitude remains inside its prescribed interval. |
-| C5 | Fixed-wing TDMA serves one user per slot and enforces a minimum average effective rate for every user. |
-| C6 | Fixed-wing initial and final positions, speed range, acceleration limit, and motion recursion are satisfied. |
+| (55b) | Rotary-wing covertness: Willie's minimum detection error $\tilde P_{\mathrm e}\ge1-\epsilon$ |
+| (55c), (55d) | Rotary-wing reliability and secrecy: $\bar P_{\mathrm{sc}}^*\ge1-\delta$ and $P_{\mathrm{so}}^*\le\zeta$ |
+| (55e) | $0\le Q_{\mathrm c}\le Q_{\mathrm c}^{\max}$ |
+| (55f) | $H_{\min}\le H\le H_{\max}$ |
+| (87b) | Fixed-wing fairness: each covert user's average effective covert rate $\frac1N\sum_n\alpha_k[n]P_{\mathrm{cc}}^k[n]R_{\mathrm c}\ge\eta$ |
+| (87c)–(87e) | Slotwise $P_{\mathrm{sc}}^k[n]\ge1-\delta$, $P_{\mathrm{so}}[n]\le\zeta$, $P_{\mathrm e}[n]\ge1-\epsilon$ |
+| (87f)–(87h) | Slotwise power $0\le Q_{\mathrm c}^k[n]\le Q_{\mathrm c}^{\max}$, binary scheduling $\alpha_k[n]\in\{0,1\}$, and one covert user per slot $\sum_k\alpha_k[n]=1$; the parse shifts these tags, so check the published paper |
+| (87i)–(87n) | Velocity update by acceleration, $v_{\min}\le\lVert\mathbf v[n]\rVert\le v_{\max}$, $\lVert\mathbf a[n]\rVert\le a_{\max}$, endpoints $\mathbf L_{\mathrm a}[1]=\mathbf L_{\mathrm I}$, $\mathbf L_{\mathrm a}[N]=\mathbf L_{\mathrm F}$, and position recursion; the parse shifts these tags, so check the published paper |
 
 **Algorithm**: Derive closed-form connection, secrecy-outage, and detection-error expressions under CIPC. For hovering operation, combine theorem-based one-dimensional search with a lower-complexity coordinate-descent update for $Q_c$, $I$, and $H$; for fixed-wing operation, alternate relaxed scheduling, user power, trajectory-velocity-acceleration, and CIPC updates using SCA and convex interior-point subproblems.
 
@@ -68,7 +70,7 @@ Combines confidential and covert uplink traffic in one UAV receiver. Bob's stron
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-He et al. [x] combined multi-user covert uplink traffic with a secret user's channel-inversion-controlled signal as natural cover at a UAV receiver. They optimized rotary-wing covert power, CIPC target, and altitude for average effective sum covert rate, then extended the model to max-min fixed-wing scheduling, user powers, trajectory, velocity, and acceleration under covertness, connection, secrecy, power, fairness, and flight constraints. Closed-form performance measures support theorem-based and coordinate-descent hovering solutions, while alternating optimization and SCA handle the fixed-wing mixed decisions. Numerical results showed the coordinate-descent solution close to exhaustive optimization and the fixed-wing method above fixed-power and fixed-schedule baselines while preserving fair service.
+He et al. [x] combined multi-user covert uplink traffic with a secret user's channel-inversion-controlled signal as natural cover at a UAV receiver. They optimized rotary-wing covert power, CIPC target, and altitude for average effective sum covert rate, then extended the model to max-min fixed-wing scheduling, user powers, trajectory, velocity, and acceleration under covertness, connection, secrecy, power, fairness, and flight constraints. Closed-form performance measures support theorem-based and coordinate-descent hovering solutions, while alternating optimization and SCA handle the fixed-wing mixed decisions. Numerical results showed the coordinate-descent solution close to the optimal one, especially at low covert-user density. For fixed-wing operation, the AO method beat fixed power allocation and fixed time allocation; greedy time allocation reached slightly higher throughput but served users unevenly.
 
 ## Problem
 

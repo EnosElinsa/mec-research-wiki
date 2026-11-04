@@ -19,7 +19,7 @@ related:
   - "[[zhaolong-ning]]"
   - "[[lei-guo]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Secure Split Offloading and Trajectory Design for UAV-Assisted Multi-Exit Collaborative DNN Inference
@@ -36,37 +36,37 @@ Combines [[collaborative-dl-inference]], [[multi-exit-dnn]] early exits, and a f
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Wireless devices execute initial layers of a multi-exit DNN and securely upload intermediate features to a UAV inference server, while a second UAV sends artificial noise toward an uncertain-location eavesdropper. Both UAVs move at fixed altitude over discrete slots.
+**Scenario**: $K$ wireless devices run the first layers of a multi-exit DNN and upload intermediate features to an inference UAV server, while a second UAV sends cooperative jamming toward an eavesdropper whose location is known only within radius $\chi$ of an estimate $\tilde{\mathbf q}_E$. Both UAVs fly at fixed altitude $H$ over $N$ slots of length $\tau$ and return to their start points.
 
-**Problem & objective**: A robust mixed discrete-continuous problem minimizes energy while rewarding inference accuracy, $\min E_{\mathrm{dev}}+E_{\mathrm{UAV}}-\lambda_A A_{\mathrm{inf}}$, over dual trajectories, early exits, split points, and UAV compute allocation.
+**Problem & objective**: Problem $\mathcal P_0$ (26a) minimizes $\sum_{n=1}^{N}\big(E_I[n]+E_J[n]+\sum_kE_k[n]-\sum_k\omega_\Gamma\Gamma(s_k[n])\big)$, the UAV and device energy minus a weighted inference-accuracy reward, over $\mathbf Q_I,\mathbf Q_J,\mathbf S,\mathbf M,\mathbf F$.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Inference-UAV trajectory | $\mathbf q_S(t)$ | continuous position | UAV server path |
-| Jammer-UAV trajectory | $\mathbf q_J(t)$ | continuous position | Friendly jammer path |
-| Early-exit choice | $e_k$ | integer/categorical | DNN exit used for device $k$ |
-| DNN partition point | $l_k$ | integer layer index | Last locally executed layer |
-| UAV compute allocation | $f_k(t)$ | continuous, nonnegative | Server CPU resource for device $k$ |
+| Server-UAV trajectory | $\mathbf Q_I=\{\mathbf q_I[n]\}$ | continuous, fixed altitude | Inference UAV path |
+| Jammer-UAV trajectory | $\mathbf Q_J=\{\mathbf q_J[n]\}$ | continuous, fixed altitude | Cooperative-jamming UAV path |
+| Early-exit selection | $s_k[n]$ | integer, $\{0,1,\dots,M\}$ | Exit branch used by device $k$ |
+| DNN partition point | $m_k[n]$ | integer, $\{0,1,\dots,M_{s_k[n]}\}$ | Split layer within the chosen exit branch |
+| UAV computing allocation | $f_k^{\mathrm{UAV}}[n]$ | continuous, $\ge0$ | Server CPU resource for device $k$ |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | End-to-end inference delay remains below each task deadline |
-| C2 | Worst-case secure split-offloading rate exceeds its threshold |
-| C3 | Selected exit achieves the minimum inference accuracy |
-| C4 | UAV compute allocations do not exceed server capacity |
-| C5 | Both UAVs obey speed, endpoint, region, separation, and energy limits |
+| (26b) | Total inference delay, $T_k^{\mathrm{total}}[n]\le\tau$ |
+| (26c) | Secure split-offloading rate, $R_{k,I}^{\mathrm{sec}}[n]\ge R_{\min}$ |
+| (26d) | Exit accuracy, $\Gamma(s_k[n])\ge\mu_{\min}$ |
+| (26e), (26f) | $\lVert\mathbf q_U[n+1]-\mathbf q_U[n]\rVert\le\tau V_{\max}$ and $\mathbf q_U[1]=\mathbf q_U[N]=\mathbf q_U^0$ for $U\in\{I,J\}$ |
+| (26g) | UAV separation, $\lVert\mathbf q_I[n]-\mathbf q_J[n]\rVert\ge d_{\min}$ |
+| (26h), (26k) | $\sum_kf_k^{\mathrm{UAV}}[n]\le f_{\max}$ and $f_k^{\mathrm{UAV}}[n]\ge0$ |
+| (26i), (26j) | Integer ranges of $s_k[n]$ and $m_k[n]$ |
 
-**Algorithm**: Derive closed-form compute allocation from KKT conditions → fix discrete inference decisions and update the server-UAV trajectory by SCA → update the jammer-UAV trajectory by SCA → map whale-optimization updates to valid early-exit and partition choices → alternate all blocks to convergence.
+**Algorithm**: First derive the optimal computing allocation in closed form and substitute it, giving problem (28). Then alternate three subproblems: SCA for the server-UAV trajectory ($\mathcal P_1$), SCA for the jammer-UAV trajectory ($\mathcal P_2$) using the worst-case eavesdropper distance, and a discrete whale optimization algorithm (DWOA) for early-exit selection and DNN partitioning. Repeat until the objective converges.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied secure split offloading and trajectory design for UAV-assisted multi-exit collaborative DNN inference. Devices execute initial layers locally, upload intermediate features to a UAV server, and receive protection from a friendly-jamming UAV. The formulation jointly selects both UAV trajectories, early exits, DNN partition points, and UAV computing resources under delay, secure-rate, accuracy, computation, mobility, and collision constraints. A KKT step allocates compute, SCA updates the two trajectories, and discrete whale optimization selects exit and partition decisions inside an alternating loop. Simulations report a better energy-accuracy objective than the evaluated fixed-trajectory, no-early-exit, one-shot, and independently alternating baselines.
+Wu et al. [x] studied secure split offloading and trajectory design for UAV-assisted multi-exit collaborative DNN inference. Devices execute initial layers locally, upload intermediate features to a UAV server, and receive protection from a friendly-jamming UAV. The formulation jointly selects both UAV trajectories, early exits, DNN partition points, and UAV computing resources under delay, secure-rate, accuracy, computation, mobility, and collision constraints. A closed-form step allocates compute, SCA updates the two trajectories, and a discrete whale optimization algorithm selects exit and partition decisions inside an alternating loop. Ablations against fixed circular trajectories, no early exit, and no cooperative jamming show the value of each component, and the scheme gave a better energy-accuracy objective than iterative alternating resource allocation (IAO) and on-server inference (OSI) across device computing capacities and bandwidths.
 
 ## Problem
 

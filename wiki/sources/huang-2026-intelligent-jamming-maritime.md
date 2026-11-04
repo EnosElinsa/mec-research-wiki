@@ -32,7 +32,7 @@ related:
   - "[[yan-2026-uav-trajectory-monitoring]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Secure Low-altitude Maritime Communications via Intelligent Jamming
@@ -66,11 +66,14 @@ Coordinates a relay UAV and a friendly-jamming UAV around a moving vessel and an
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Alice and Bob remain within their respective three-dimensional flight regions |
-| C2 | Per-slot powers satisfy $P_{\min}\le P_A[n],P_B[n]\le P_{\max}$ |
-| C3 | The maritime user's rate remains above $R_{\min}$ |
-| C4 | Each UAV's total transmit power over the horizon does not exceed $P_T$ |
-| C5 | Bob's interference at the maritime user remains below the temperature limit $I_0$ |
+| C1 (14b) | Alice stays in her 3-D flight region, $\mathbb L_{A\min}\le\mathbb L_A[n]\le\mathbb L_{A\max}$ |
+| C2 (14c) | $P_{\min}\le P_A[n]\le P_{\max}$ |
+| C3 (14d) | Bob stays in his 3-D flight region, $\mathbb L_{B\min}\le\mathbb L_B[n]\le\mathbb L_{B\max}$ |
+| C4 | $P_{\min}\le P_B[n]\le P_{\max}$; untagged in the parse, so check the published paper |
+| C5 (14e) | Maritime user rate, $R_M[n]>R_{\min}$ |
+| C6 (14f) | Alice's total power, $\sum_{n=1}^{N}P_A[n]\le P_T$ |
+| C7 (14g) | Bob's total power, $\sum_{n=1}^{N}P_B[n]\le P_T$ |
+| C8 (14i) | Bob's interference at the maritime user, $P_B[n]G_B\lvert\mathcal C_{B,M}[n]\rvert^2\le I_0$ |
 
 **Algorithm**: The problem is recast as a POMDP whose observation includes an LSTM summary of Eve's recent trajectory. SAC-CVAE augments soft actor-critic with an advantage-conditioned conditional variational autoencoder that disentangles policy representations and generates actions for the coupled UAV trajectory and power controls under partial observability.
 
@@ -78,7 +81,7 @@ Coordinates a relay UAV and a friendly-jamming UAV around a moving vessel and an
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Huang et al. [x] coordinated a communication UAV and a friendly-jamming UAV to secure a low-altitude maritime link against a mobile aerial eavesdropper. They maximized cumulative secrecy rate and minimized UAV flight energy over both UAVs' three-dimensional trajectories and transmit powers under flight-region, user-rate, power-budget, and interference-temperature constraints. SAC-CVAE treats hidden eavesdropper motion as partial observability, uses LSTM trajectory prediction, and conditions a CVAE policy representation on action advantage within soft actor-critic. Intelligent jamming kept secrecy high while the non-jamming result stayed near zero, and SAC-CVAE obtained the best reward and secrecy-energy tradeoff across the approaching and receding eavesdropper patterns.
+Huang et al. [x] coordinated a communication UAV and a friendly-jamming UAV to secure a low-altitude maritime link against a mobile aerial eavesdropper. They maximized cumulative secrecy rate and minimized UAV flight energy over both UAVs' three-dimensional trajectories and transmit powers under flight-region, user-rate, power-budget, and interference-temperature constraints. SAC-CVAE treats hidden eavesdropper motion as partial observability, uses LSTM trajectory prediction, and conditions a CVAE policy representation on action advantage within soft actor-critic. Intelligent jamming kept secrecy high while the non-jamming result stayed near zero, and SAC-CVAE obtained the highest secrecy rate and cumulative reward against SAC, DDPG, TD3, and PPO for both approaching and receding eavesdroppers; when Eve approached, DDPG used the least energy but gave no effective secrecy rate.
 
 ## Problem
 

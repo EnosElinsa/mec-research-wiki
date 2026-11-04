@@ -18,7 +18,7 @@ related:
   - "[[guojun-han]]"
   - "[[tony-q-s-quek]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Joint Transceiver and Trajectory Design for Secure UAV-Enabled Over-the-Air Computation
@@ -62,7 +62,7 @@ A UAV acts as a mobile fusion center that aggregates ground-sensor data by AirCo
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gong et al. [x] investigated a secure UAV-enabled over-the-air computation network in which a UAV acts as a mobile fusion center to aggregate data from multiple ground sensors while an eavesdropper attempts to intercept the transmitted signals. To ensure secure and efficient computation, they jointly optimized the UAV's receiver coefficients, the sensors' transmitter scaling factors, and the UAV trajectory to minimize the mean square error at the UAV. The problem is subject to an MSE constraint at the eavesdropper, a maximum transmit power constraint, and UAV trajectory constraints. Given its nonconvexity, an efficient algorithm combining alternating optimization with successive convex approximation is proposed. Numerical results show that the scheme outperforms benchmark approaches, including straight-line trajectories, constant-power transmission, and designs that ignore the eavesdropper.
+Gong et al. [x] investigated a secure UAV-enabled over-the-air computation network in which a UAV acts as a mobile fusion center to aggregate data from multiple ground sensors while an eavesdropper attempts to intercept the transmitted signals. To ensure secure and efficient computation, they jointly optimized the UAV's receiver coefficients, the sensors' transmitter scaling factors, and the UAV trajectory to minimize the mean square error at the UAV. The problem is subject to an MSE constraint at the eavesdropper, a maximum transmit power constraint, and UAV trajectory constraints. Given its nonconvexity, an efficient algorithm combining alternating optimization with successive convex approximation is proposed. Numerical results show lower MSE than transceiver designs with fly-hover-fly or straight-line trajectories and a constant-power benchmark, slightly higher MSE than a benchmark without the eavesdropper constraint, and little loss under a 10 m eavesdropper-location error.
 
 ## Problem framing
 

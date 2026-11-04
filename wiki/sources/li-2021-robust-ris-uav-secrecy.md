@@ -19,7 +19,7 @@ related:
   - "[[feng-2026-aerial-ris-secure]]"
   - "[[xu-2021-secure-uav-mec-dual-uav]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Robust Secure UAV Communications With the Aid of Reconfigurable Intelligent Surfaces
@@ -54,11 +54,11 @@ Jointly optimizes a UAV trajectory, uplink and downlink transmit powers, and sep
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV displacement per slot is bounded and initial and final positions are fixed |
-| C2 | UAV downlink power satisfies average and peak limits |
-| C3 | Ground-user uplink power satisfies average and peak limits |
-| C4 | Every uplink and downlink RIS element has a unit-modulus phase in $[0,2\pi)$ |
-| C5 | Secrecy is evaluated against the worst channel error in each uncertainty set |
+| (1a), (1b) | Per-slot displacement $\lVert\mathbf q[n+1]-\mathbf q[n]\rVert^2\le D^2$, start $\mathbf q[1]=\mathbf q_0$, and $\lVert\mathbf q[N]-\mathbf q_F\rVert^2\le D^2$ |
+| (2a), (2b) | UAV downlink power, $\frac1N\sum_n p[n]\le\bar P$ and $0\le p[n]\le P_{peak}$ |
+| (12a), (12b) | User uplink power, $\frac1N\sum_n g[n]\le\bar G$ and $0\le g[n]\le G_{peak}$ |
+| (22b), (22c) | RIS phases $0\le\theta_i^d[n]<2\pi$ and $0\le\theta_i^u[n]<2\pi$ |
+| Model rule | Downlink and uplink secrecy rates use the worst eavesdropper channel error in the norm-bounded sets $\Omega_1,\Omega_2$ |
 
 **Algorithm**: Alternating optimization separates closed-form transmit-power control, RIS passive beamforming, and UAV trajectory updates. The RIS block uses the S-procedure, SCA, and semidefinite relaxation with Gaussian randomization, while the trajectory block estimates the current small-scale UAV-RIS channel from the previous path and applies robust SCA until the secrecy objective converges.
 
@@ -66,7 +66,7 @@ Jointly optimizes a UAV trajectory, uplink and downlink transmit powers, and sep
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied bidirectional physical-layer security between a UAV and a ground user assisted by a building-mounted RIS under imperfect eavesdropper CSI. They maximized weighted average worst-case uplink and downlink secrecy over trajectory, separate RIS phase matrices, and both legitimate transmit powers under mobility, phase, average-power, and peak-power constraints. Their alternating method combines closed-form power updates with the S-procedure, successive convex approximation, semidefinite relaxation, and robust trajectory refinement. It converged in about 10 iterations and achieved the highest worst-case secrecy rate among the tested benchmark designs as wiretap-channel uncertainty increased.
+Li et al. [x] studied bidirectional physical-layer security between a UAV and a ground user assisted by a building-mounted RIS under imperfect eavesdropper CSI. They maximized weighted average worst-case uplink and downlink secrecy over trajectory, separate RIS phase matrices, and both legitimate transmit powers under mobility, phase, average-power, and peak-power constraints. Their alternating method combines closed-form power updates with the S-procedure, successive convex approximation, semidefinite relaxation, and robust trajectory refinement. It converged in about 10 iterations and achieved a higher average worst-case secrecy rate than robust designs without passive beamforming (JO/NPB) or with a heuristic trajectory (JO/HT) and the non-robust design JO/NR, although all schemes lost secrecy rate as wiretap-channel uncertainty grew.
 
 ## Problem and system model
 

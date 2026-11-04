@@ -23,7 +23,7 @@ related:
   - "[[zhu-2026-fas-uav-fbl]]"
   - "[[zhang-2026-irs-uav-covert-fbl]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Secure Short-Packet Transmission of UAV Relaying via NOMA
@@ -58,12 +58,14 @@ Maximizes two users' [[weighted-effective-secrecy-rate]] in a half-duplex short-
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user's secrecy block error probability is at most $\varepsilon_i^{\max}$. |
-| C2 | Each user rate satisfies $R_i\geq R_i^{\min}$. |
-| C3 | Blocklength satisfies $M\in\mathbb N^+$ and $M\leq BT_{\max}$. |
-| C4 | NOMA shares sum to one in each phase and give the first user no less power than the second. |
-| C5 | All NOMA shares are positive and $0<\phi_{\mathrm I},\phi_{\mathrm{II}}<1$. |
-| C6 | Legitimate receivers apply the specified SIC order, and the eavesdropper is conservatively modeled with perfect SIC and two-phase combining. |
+| (32b) | Each user's secrecy decoding error meets $\varepsilon(\gamma_{bi},\gamma_{Ei},R_i,M/2)\le\varepsilon_i^{\max}$ |
+| (32c) | $R_i\geq R_i^{\min}$ |
+| (32d) | Latency: $M\leq BT_{\max}$ |
+| (32e) | $M\in\mathbb N^+$ |
+| (32f) | Phase-I NOMA shares: $\alpha_1+\alpha_2=1$, $\alpha_1\ge\alpha_2$ |
+| (32g) | Phase-II NOMA shares: $\hat\alpha_1+\hat\alpha_2=1$, $\hat\alpha_1\ge\hat\alpha_2$ |
+| (32h) | $\alpha_i>0$, $\hat\alpha_i>0$, $0<\phi_{\mathrm I}<1$, $0<\phi_{\mathrm{II}}<1$ |
+| Model rule | Legitimate receivers use the specified SIC order; the eavesdropper is conservatively modeled with perfect SIC and two-phase combining |
 
 **Algorithm**: Replace rates by finite-blocklength decoding-error variables and exploit the monotonic benefit of the largest feasible blocklength. Apply block-coordinate descent: update error targets with a convex subproblem, then use SCA for phase-wise NOMA shares, information and artificial-noise fractions, and horizontal relay position until the weighted effective secrecy rate converges to a stationary design.
 
@@ -71,7 +73,7 @@ Maximizes two users' [[weighted-effective-secrecy-rate]] in a half-duplex short-
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Feng et al. [x] optimized secure finite-blocklength NOMA transmission from a multi-antenna BS through a hovering decode-and-forward UAV to two users under a two-hop eavesdropper. They maximized weighted effective secrecy rate over integer blocklength, user rates or error targets, two-phase NOMA allocations, information-to-artificial-noise shares, and relay position under error, minimum-secrecy-rate, latency, allocation, and ordering constraints. Their BCD method fixes the maximal feasible blocklength and alternates a convex error update with SCA updates for power, artificial noise, and relay position. The reported design converged in about three outer iterations and moved the relay away from the eavesdropper while outperforming random-position and fixed-allocation baselines.
+Feng et al. [x] optimized secure finite-blocklength NOMA transmission from a multi-antenna BS through a hovering decode-and-forward UAV to two users under a two-hop eavesdropper. They maximized weighted effective secrecy rate over integer blocklength, user rates or error targets, two-phase NOMA allocations, information-to-artificial-noise shares, and relay position under error, minimum-secrecy-rate, latency, allocation, and ordering constraints. Their BCD method fixes the maximal feasible blocklength and alternates a convex error update with SCA updates for power, artificial noise, and relay position. In simulations, the weighted effective secrecy rate converged, the optimized relay moved away from the eavesdropper, and the design beat a random relay-position baseline and a fixed power-allocation baseline; the gain from larger blocklength and relay power flattened at high values.
 
 ## Problem
 

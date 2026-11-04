@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 18 (physical-layer security: secrecy, covert, anti-jamming)
+
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch18-pls.json`. Grounded total: 431/699.
+- Relabeled invented constraint IDs to the papers' own tags (for example chen-2024 (10)–(26), feng-2026 (32b)–(32h), hosseini-2026 (22b)–(22h), xiao-2020 (28)–(38), wang-2026 covert CR (36a)–(36d)); where the parse shifts tags (he CIPC (87f)–(87n), meng-2026 (14c)–(14e), yang-2026 (17)), the card says to check the published paper.
+- Rewrote the Modeling Quick-Use Card for meng-2026 (no user-power decisions; side indicator $\lambda_n$), sun-2024 active-passive RIS (problem (6) C1–C4), sun-2024 IMSSA (three-objective SCMOP (15)), sun-2024 MF-RIS (aerial platform offloading, problem (13) C1–C9), wu-2026 (problem $\mathcal P_0$ (26)), and zhai-2026 (problem (10) with $\mathbf A,\mathbf X,\mathbf W,\mathbf Q$).
+- Related Work paragraphs now name the actual baselines and note results where the method does not win everywhere (for example hosseini-2026 AoI rising as covertness is relaxed, MF-RIS below an ideal active STAR-RIS, IMSSA using more flight energy, gong-2025 MSE slightly above the no-eavesdropper benchmark, mao-2025 random IRS phases below no IRS).
+
 ## [2026-11-03] Grounded batch 17 (UAV-MEC optimization, second half: maritime and secure/RIS/WPT MEC)
 
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch17-uav-mec-opt-b.json`. Grounded total: 407/699.

@@ -25,7 +25,7 @@ related:
   - "[[dingcheng-yang]]"
   - "[[yong-zeng]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Secrecy Energy Efficiency Maximization for UAV-Enabled Mobile Relaying
@@ -59,11 +59,13 @@ Maximizes a fixed-wing relay UAV's confidential destination throughput per unit 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Cumulative forwarded secrecy bits do not exceed previously received secrecy bits |
-| C2 | Endpoints and discrete kinematics hold, including $\mathbf q[0]=\mathbf q_0$ and $\mathbf q[N]=\mathbf q_F$ |
-| C3 | Flight limits hold, $\lVert\mathbf v[n]\rVert\leq V_{\max}$ and $\lVert\mathbf a[n]\rVert\leq a_{\max}$ |
-| C4 | Average source and relay powers do not exceed $\bar P_s$ and $\bar P_r$ |
-| C5 | Per-slot powers do not exceed $P_s^{\max}$ and $P_r^{\max}$ |
+| (28) | Secrecy information causality: cumulative forwarded secrecy bits do not exceed previously received secrecy bits, $n=2,\dots,N$ |
+| (29) | $\mathbf q[0]=\mathbf q_0$, $\mathbf q[N]=\mathbf q_F$ |
+| (30) | $0\le\lambda[n]\le1$ |
+| (31)–(33) | Kinematics $\mathbf q[n+1]=\mathbf q[n]+\mathbf v[n]\delta_t+\tfrac12\mathbf a[n]\delta_t^2$, $\mathbf v[n+1]=\mathbf v[n]+\mathbf a[n]\delta_t$, and $\mathbf v[0]=\mathbf v[N]$ |
+| (34) | $\lVert\mathbf v[n]\rVert\le V_{\max}$, $\lVert\mathbf a[n]\rVert\le a_{\max}$ |
+| (35), (36) | Average powers $\frac1N\sum_np_s[n]\le\bar P_s$ and $\frac1N\sum_np_r[n]\le\bar P_r$ |
+| (37), (38) | Peak powers $p_s[n]\le P_s^{\max}$ and $p_r[n]\le P_r^{\max}$ |
 
 **Algorithm**: The solver alternates a convex scheduling block, an SCA power-allocation block, and an SCA trajectory block whose concave-over-convex surrogate is handled by Dinkelbach iterations; the outer objective is non-decreasing and converges to a suboptimal point.
 
@@ -71,7 +73,7 @@ Maximizes a fixed-wing relay UAV's confidential destination throughput per unit 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xiao et al. [x] studied secrecy-energy-efficiency maximization for a fixed-wing UAV that buffers confidential data and relays it between a ground source and destination in the presence of an eavesdropper. They jointly optimized receive-forward scheduling, source and relay powers, and trajectory under secrecy information causality, flight dynamics, speed, acceleration, and power constraints. The proposed alternating method combines convex scheduling, successive convex approximation, and Dinkelbach fractional programming to obtain a monotonic suboptimal design. At a 200-second horizon, the reported design achieves 17.05 kbits/J, compared with 7.86 kbits/J for secrecy-capacity maximization and lower values for the fixed double-circular and running-track baselines.
+Xiao et al. [x] studied secrecy-energy-efficiency maximization for a fixed-wing UAV that buffers confidential data and relays it between a ground source and destination in the presence of an eavesdropper. They jointly optimized receive-forward scheduling, source and relay powers, and trajectory under secrecy information causality, flight dynamics, speed, acceleration, and power constraints. The proposed alternating method combines convex scheduling, successive convex approximation, and Dinkelbach fractional programming to obtain a monotonic suboptimal design. At a 200-second horizon, the reported design achieves 17.05 kbits/J, compared with 7.86 kbits/J for secrecy-capacity maximization and 10.97 and 8.72 kbits/J for double-circular and running-track flights; with an uncertain eavesdropper location the design still reached 16.09 kbits/J.
 
 ## Problem
 

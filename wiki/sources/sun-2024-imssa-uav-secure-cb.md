@@ -20,7 +20,7 @@ related:
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Enabled Secure Communications via Collaborative Beamforming With Imperfect Eavesdropper Information
@@ -37,36 +37,35 @@ A group of UAVs forms a **UAV-enabled virtual antenna array (UVAA)** and uses **
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs form a collaborative-beamforming virtual antenna array to serve a legitimate receiver while a passive eavesdropper has uncertain location information. The UAVs coordinate excitation currents and positions over a wireless channel, and robust design accounts for imperfect Eve information.
+**Scenario**: $N_{UAV}$ rotary-wing UAVs that have finished data collection form a UAV-enabled virtual antenna array (UVAA) and send the data by collaborative beamforming to one selected base station in a BS cluster. Known eavesdroppers are detected only within an approximate region, so their angles carry errors in a set $\Omega$, and unknown eavesdroppers may hide anywhere. Time and phase synchronization among the UAVs is assumed.
 
-**Problem & objective**: A robust physical-layer-security multi-objective program maximizes secrecy rate while minimizing UAV propulsion energy, $\max\big(R_s,-E_{\mathrm{UAV}}\big)$, over VAA geometry and excitation weights under worst-case Eve uncertainty.
+**Problem & objective**: The secure communication multi-objective problem (SCMOP) (15a) minimizes $F=\{-f_1,f_2,f_3\}$ over $X=(\mathbb X^{\mathcal U},\mathbb Y^{\mathcal U},\mathbb Z^{\mathcal U},\mathbb I^{\mathcal U},\mathbb B)$. Here $f_1=R_{sec}$ in (12) is the worst-case secrecy rate (9) against the known eavesdroppers under angle errors, $f_2$ in (13) is the maximum sidelobe level relative to the mainlobe (against unknown eavesdroppers), and $f_3=\sum_iE_i(t_i)$ in (14) is the UAVs' flight energy.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV positions | $\mathbf q_i$ | continuous 3-D positions | VAA element locations |
-| Excitation weights | $w_i$ | complex continuous | Collaborative-beamforming amplitudes and phases |
-| Artificial-noise/secure signal split | $\alpha$ | continuous bounded | Power or waveform allocation used for secrecy |
-| Robust uncertainty realization | $\hat{\mathbf e}$ | bounded uncertainty variable | Worst-case eavesdropper location/channel instance |
+| UAV 3-D positions | $\mathbb X^{\mathcal U},\mathbb Y^{\mathcal U},\mathbb Z^{\mathcal U}$ | continuous, bounded | Element locations of the virtual antenna array |
+| Excitation current weights | $\mathbb I^{\mathcal U}=\{I_i\}$ | continuous, $[0,1]$ | Per-UAV beamforming weight |
+| Receiver BS | $\mathbb B$ | discrete, $\{1,\dots,N_{BS}\}$ | BS in the cluster that receives the data |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Total UAV transmit and propulsion energy remains within the mission budget |
-| C2 | VAA positions satisfy flight-region, separation, and mobility constraints |
-| C3 | Excitation weights obey per-UAV power and beamforming normalization limits |
-| C4 | The secrecy-rate requirement holds for every allowed eavesdropper-information error |
-| C5 | Legitimate-user quality and collaborative-beamforming synchronization remain feasible |
+| C1 (15b) | $0\le I_i^U\le1$ |
+| C2, C3 (15c), (15d) | Horizontal range $L_{\min}\le x_i^U,y_i^U\le L_{\max}$ |
+| C4 (15e) | Altitude range $H_{\min}\le z_i^U\le H_{\max}$ |
+| C5 (15f) | Speed range $V_{\min}\le v_i^U\le V_{\max}$ |
+| C6 (15g) | $\mathbb B\in\{1,2,\dots,N_{BS}\}$ |
+| C7, C8 (15h), (15i) | Sidelobe directions lie outside the first nulls of the mainlobe in elevation and azimuth |
+| C9 (15j) | Neighbouring UAVs are separated by at least $D_{\min}$ and $\lambda/2$ to avoid collisions |
 
-**Algorithm**: Formulate worst-case Eve uncertainty → optimize VAA positions and excitation weights with the proposed multi-objective evolutionary/iterative solver → evaluate secrecy and propulsion objectives over uncertainty realizations → retain the nondominated robust designs.
+**Algorithm**: The improved multi-objective salp swarm algorithm (IMSSA) adds three factors to conventional MSSA: circle-map chaotic initialization for a uniform initial population, a discrete solution update operator that selects the receiver BS, and a migration and adaptive mutation operator inspired by biogeography-based optimization. Continuous dimensions follow the MSSA update, an archive keeps the nondominated solutions, and the decision maker picks a final solution from the archive. The complexity is $\mathcal O(N_f N_{pop}^2)$.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] studied secure UAV communications using collaborative beamforming with imperfect eavesdropper information. They formulated a robust multi-objective design that balances secrecy rate and UAV propulsion energy through the joint choice of virtual-antenna-array positions and excitation currents. The uncertainty treatment evaluates the secrecy design over bounded eavesdropper-location errors rather than assuming exact Eve information. Their iterative collaborative-beamforming algorithm generates robust rate-energy operating points. Simulations report improved secrecy performance and energy behavior against the evaluated perfect-information and non-collaborative benchmark designs.
+Sun et al. [x] studied secure UAV communications using collaborative beamforming with imperfect eavesdropper information. They formulated a mixed-integer multi-objective problem that maximizes the worst-case secrecy rate against known eavesdroppers, minimizes the maximum sidelobe level against unknown eavesdroppers, and minimizes UAV flight energy over UAV positions, excitation current weights, and the choice of receiver base station. The secrecy rate is evaluated at the worst angle error within the region where each known eavesdropper is detected. Their improved multi-objective salp swarm algorithm (IMSSA) adds circle-map initialization, a discrete base-station update operator, and migration with adaptive mutation to the conventional MSSA. Simulations report higher worst-case secrecy rate and lower sidelobe level than linear and rectangular antenna arrays, MOPSO, NSGA-II, MODE, MSSA, and IMODACH, at the cost of higher UAV flight energy.
 
 ## Problem framing
 

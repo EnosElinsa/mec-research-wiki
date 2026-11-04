@@ -24,7 +24,7 @@ related:
   - "[[secrecy-energy-efficiency]]"
   - "[[li-2026-secrecy-ee-uav-ris-iov]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -44,7 +44,7 @@ Studies secure multi-UAV downlink communication for low-altitude economy, where 
 
 **Scenario**: Multiple UAVs provide downlink service to ground users in the presence of uncertain ground eavesdroppers. Each UAV can be scheduled for communication or cooperative jamming and follows a three-dimensional trajectory with propulsion costs.
 
-**Problem & objective**: Problem P1 maximizes secrecy energy efficiency, $\max \frac{\sum_{t,k}R_k^{\mathrm{sec}}(t)}{\sum_{t,m}E_m^{\mathrm{fly}}(t)}$, by jointly scheduling UAV functions and optimizing transmit powers, trajectories, and velocities.
+**Problem & objective**: Problem (P) in (13) maximizes secrecy energy efficiency, $\max_{\mathbf A,\mathbf P,\mathbf Q,\mathbf V}\frac{\sum_t\sum_m[R_m[t]-\max_{n}R_n[t]]^+}{\sum_t\sum_kP_k^f[t]\delta}$, by jointly scheduling UAV functions and optimizing transmit powers, trajectories, and velocities; eavesdropper locations are known only within circles of radius $\Delta r_n$.
 
 **Decision variables**:
 
@@ -73,7 +73,7 @@ Studies secure multi-UAV downlink communication for low-altitude economy, where 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] investigated secrecy-energy-efficient aerial communication with UAVs that can alternate between user service and cooperative jamming. They maximized aggregate secrecy rate per unit propulsion energy over binary role scheduling, communication and jamming powers, and three-dimensional trajectories under power, rate, collision, and flight constraints. Their EAIA solver combines a penalty double-loop scheduling method, successive convex approximation for power control, and Dinkelbach-based trajectory optimization. The reported experiments showed that EAIA attained the highest secrecy energy efficiency among the compared schemes while retaining latency comparable to fixed-role scheduling. The learned role switches and trajectories remained effective under the examined eavesdropper-location errors and in both two-UAV and four-UAV settings.
+Wang et al. [x] investigated secrecy-energy-efficient aerial communication with UAVs that can alternate between user service and cooperative jamming. They maximized aggregate secrecy rate per unit propulsion energy over binary role scheduling, communication and jamming powers, and three-dimensional trajectories under power, rate, collision, and flight constraints. Their EAIA solver combines a penalty double-loop scheduling method, successive convex approximation for power control, and Dinkelbach-based trajectory optimization. The reported experiments showed that EAIA attained higher secrecy energy efficiency than a single-UAV scheme (SUS), fixed-role dual-UAV jamming (FRS), and maximum-power scheduling (MPS); its latency was close to FRS, while SUS had the lowest latency. The learned role switches and trajectories remained effective under the examined eavesdropper-location errors and in both two-UAV and four-UAV settings.
 
 ## Problem
 

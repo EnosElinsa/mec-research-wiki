@@ -18,7 +18,7 @@ related:
   - "[[deng-2025-covert-isac-trajectory]]"
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory and Beamforming Optimization for IRS-Assisted Multi-Antenna UAV Covert Communications With a Finite Blocklength
@@ -51,10 +51,10 @@ A fixed-altitude multi-antenna UAV covertly serves Bob while a building-mounted 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Consecutive UAV positions satisfy $\|\mathbf o_a[\iota+1]-\mathbf o_a[\iota]\|\le V_{\max}\delta_t$ and the prescribed endpoints |
-| C2 | UAV transmit power is bounded, $\|\mathbf w[\iota]\|^2\le P_{a,\max}$ |
-| C3 | Willie-side covertness satisfies $\xi^*[\iota]\ge1-\epsilon$, enforced through $\varphi[\iota]\le\bar\varphi$ |
-| C4 | Every IRS phase obeys $0\le\theta_m[\iota]<2\pi$ and has unit modulus |
+| (1) | Mobility: $\lVert\mathbf o_a[1]-\mathbf o_{a,I}\rVert\le V_{\max}\delta_t$, consecutive positions within $V_{\max}\delta_t$, and the prescribed final position |
+| (9) | UAV transmit power, $\lVert\mathbf w[\iota]\rVert^2\le P_{a,\max}$ |
+| (21) | Covertness at Willie, $\xi^*[\iota]\ge1-\epsilon$, enforced through $\varphi[\iota]\le\bar\varphi$ |
+| (22a) | IRS phases $0\le\theta_m[\iota]\le2\pi$ with unit-modulus reflection |
 
 **Algorithm**: Split trajectory, UAV beamforming, and IRS phases into BCD blocks → solve active and passive beamforming by SDR → convexify the trajectory block by SCA → alternate offline LoS trajectory and online instantaneous-CSI beamforming; for lower complexity, replace both SDR blocks with inner projected-gradient augmented-Lagrangian updates and outer penalty-dual updates in BCD-PDDGP.
 
@@ -62,7 +62,7 @@ A fixed-altitude multi-antenna UAV covertly serves Bob while a building-mounted 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied IRS-assisted multi-antenna UAV covert communication with a finite blocklength. They formulated average covert transmission rate maximization over the UAV trajectory, UAV transmit beamforming, and IRS phase shifts under mobility, transmit-power, unit-modulus, and covertness constraints. Their BCD-SDR algorithm applies semidefinite relaxation to active and passive beamforming and successive convex approximation to trajectory design. They also developed BCD-PDDGP, which uses projected-gradient penalty-dual updates to reduce the beamforming complexity. Numerical results show that both algorithms converge within three outer iterations in the displayed settings and that BCD-PDDGP attains a covert rate close to BCD-SDR while its reported complexity grows more slowly with the number of IRS elements.
+Zhang et al. [x] studied IRS-assisted multi-antenna UAV covert communication with a finite blocklength. They formulated average covert transmission rate maximization over the UAV trajectory, UAV transmit beamforming, and IRS phase shifts under mobility, transmit-power, unit-modulus, and covertness constraints. Their BCD-SDR algorithm applies semidefinite relaxation to active and passive beamforming and successive convex approximation to trajectory design. They also developed BCD-PDDGP, which uses projected-gradient penalty-dual updates to reduce the beamforming complexity. Numerical results show that both algorithms converge within three iterations, that BCD-PDDGP attains a covert rate close to BCD-SDR while its complexity grows much more slowly with the number of IRS elements, and that the joint design beats designs without the IRS, with straight flight, or with a single-antenna UAV.
 
 ## Problem and system model
 

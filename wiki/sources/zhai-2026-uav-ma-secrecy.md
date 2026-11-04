@@ -15,7 +15,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[alternating-optimization-sdr-sca]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Minimum Secrecy Rate Maximization for UAV-Mounted Movable Antenna Empowered Wireless Networks
@@ -32,36 +32,34 @@ Jointly optimizes user scheduling, UAV trajectory, transmit beamforming, and one
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: One fixed-altitude UAV with multiple one-dimensional movable antenna elements serves single-antenna ground users, at most one per slot, while eavesdroppers lie in bounded circular uncertainty regions. LoS channels couple whole-UAV motion and wavelength-scale array movement.
+**Scenario**: A UAV at fixed height $H$ carries $M$ movable antennas (MAs) on a one-dimensional linear region of length $D$ and serves $K$ single-antenna ground users, at most one per slot, over LoS channels. $L$ eavesdroppers are known only to lie inside circular uncertainty regions, so their angles carry errors.
 
-**Problem & objective**: A robust non-smooth problem maximizes the worst user's average secrecy rate, $\max \min_k\bar R_k^{\mathrm{sec}}$, over scheduling, beamforming, UAV trajectory, and antenna positions.
+**Problem & objective**: Problem (10) maximizes the minimum average secrecy rate $\max_{\mathbf A,\mathbf X,\mathbf W,\mathbf Q}\min_{k}\frac1N\sum_nR_{u_k}^{\mathrm{sec}}[n]$, where $R_{u_k}^{\mathrm{sec}}[n]$ in (9) subtracts the largest eavesdropping rate over all eavesdroppers and all positions in their regions.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| User schedule | $s_k[n]$ | binary | User served in slot $n$ |
-| Transmit beamformer | $\mathbf w[n]$ | complex continuous vector | UAV downlink beam |
-| UAV trajectory | $\mathbf q[n]$ | continuous horizontal position | Macro-scale flight path |
-| Antenna positions | $r_m[n]$ | continuous 1-D coordinates | Micro-scale element locations |
+| User scheduling | $\mathbf A=\{\alpha_k[n]\}$ | binary | User $k$ served in slot $n$ |
+| MA positions | $\mathbf X=\{x_m[n]\}$ | continuous, $[0,D]$ | Position of antenna $m$ on the linear region |
+| Transmit beamforming | $\mathbf W=\{\mathbf w_k[n]\}$ | complex vectors | UAV beam for the scheduled user |
+| UAV trajectory | $\mathbf Q=\{\mathbf q[n]\}$ | continuous, fixed height | Horizontal UAV position per slot |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one user is scheduled in each slot |
-| C2 | Transmit beam power stays within the UAV budget |
-| C3 | UAV trajectory satisfies endpoints and per-slot speed |
-| C4 | Each movable element stays inside its travel region |
-| C5 | Element spacing exceeds the minimum and secrecy is robust to every eavesdropper region |
+| (10b) | $\sum_k\lVert\mathbf w_k[n]\rVert^2\le P_{\max}$ |
+| (1), (2) | $x_m[n]\in[0,D]$ and spacing $x_m[n]-x_{\bar m}[n]\ge D_{\min}$ for $m>\bar m$ |
+| (3), (4) | $\mathbf q[1]=\mathbf q_I$, $\mathbf q[N]=\mathbf q_F$, and $\lVert\mathbf q[n+1]-\mathbf q[n]\rVert\le v_{\max}\tau$ |
+| (6), (7) | $\sum_k\alpha_k[n]\le1$ and $\alpha_k[n]\in\{0,1\}$ |
+| Model rule | Secrecy is evaluated for the worst eavesdropper position within each uncertainty region |
 
-**Algorithm**: Bound worst-case path loss by triangle inequality and approximate the corresponding steering direction → relax scheduling and update it convexly → update beamforming by SCA → update UAV trajectory by SCA → lower-bound antenna-position terms to update element coordinates → alternate the four BCD blocks.
+**Algorithm**: Triangle-inequality bounds give the worst-case eavesdropper path loss, and a representative steering direction approximates the angular uncertainty. BCD then alternates four blocks: relaxed scheduling $0\le\alpha_k[n]\le1$ solved as a convex problem, SCA for the beamforming, SCA for the trajectory, and lower bounds on the antenna-position terms for the MA positions. The algorithm converged in about 15 iterations in simulation.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhai and Luo [x] studied minimum secrecy-rate maximization in UAV-mounted movable-antenna wireless networks with uncertain eavesdropper locations. They jointly optimized user scheduling, transmit beamforming, the UAV trajectory, and onboard antenna positions under power, mobility, movement-region, spacing, and robust secrecy constraints. Triangle inequalities bound worst-case path loss and a representative steering direction approximates angular uncertainty. A four-block BCD method alternates relaxed scheduling, SCA beamforming, SCA trajectory control, and second-order antenna-position updates. Simulations report higher secrecy rate and supportable user count than the evaluated fixed-antenna and restricted-mobility baselines.
+Zhai and Luo [x] studied minimum secrecy-rate maximization in UAV-mounted movable-antenna wireless networks with uncertain eavesdropper locations. They jointly optimized user scheduling, transmit beamforming, the UAV trajectory, and onboard antenna positions under power, mobility, movement-region, spacing, and robust secrecy constraints. Triangle inequalities bound worst-case path loss and a representative steering direction approximates angular uncertainty. A four-block BCD method alternates relaxed scheduling, SCA beamforming, SCA trajectory control, and second-order antenna-position updates. Simulations report a higher minimum secrecy rate than fixed user scheduling, fixed beamforming, a fixed circular trajectory, and fixed-position antennas, across user numbers, power, flight time, antenna number, and movable range; the secrecy rate saturated as the movable range grew.
 
 ## Problem and system model
 

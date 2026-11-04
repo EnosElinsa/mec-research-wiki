@@ -18,7 +18,7 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[al-hourani-2014-optimal-lap-altitude]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Air-to-Ground Covert Communication With Location and Interference Uncertainty
@@ -50,10 +50,10 @@ Analyzes a UAV Alice sending covertly to ground Bob while a location-uncertain g
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Average covert probability meets its target: $\bar p_{cv}(P_a,\epsilon^*)\ge\beta$. |
-| C2 | Alice-to-Bob connection probability meets its target: $p_{cn}(P_a,R)\ge\gamma$. |
-| C3 | Covertness and reliability targets satisfy $\beta,\gamma\in(0,1)$. |
-| C4 | Willie uses the detection-error-minimizing threshold $\epsilon^*$ for the applicable knowledge case. |
+| (38) covertness | Average covert probability meets its target, $\bar p_{cv}(P_a,\epsilon^*)\ge\beta$ |
+| (38) reliability | Alice-to-Bob connection probability meets its target, $p_{cn}(P_a,R)\ge\gamma$ |
+| Model rule | Targets satisfy $\beta,\gamma\in(0,1)$ |
+| Model rule | Willie uses the detection-error-minimizing threshold $\epsilon^*$ for the applicable knowledge case |
 
 **Algorithm**: Derive aggregate-interference moments with Campbell's theorem and PPP second-order product density, fit the interference by a gamma distribution with parameters $\rho$ and $\theta$, and derive Willie's optimal threshold and average covert probability for the instantaneous-power and distribution-knowledge cases. Evaluate Bob's connection probability with the fitted distribution, use the monotonic decrease of covertness in $P_a$ to find the largest $P_a^*$ satisfying $\bar p_{cv}(P_a^*,\epsilon^*)=\beta$, and then search for the largest $R^*$ satisfying $p_{cn}(P_a^*,R^*)=\gamma$.
 

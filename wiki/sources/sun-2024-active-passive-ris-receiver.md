@@ -16,7 +16,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[sun-2024-mfris-semantic-antijamming]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Active-Passive Cascaded RIS-Aided Receiver Design for Jamming Nulling and Signal Enhancing
@@ -33,36 +33,34 @@ Proposes an **active-passive cascaded [[intelligent-reflecting-surface|RIS]]-aid
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A base station transmits to a user whose receiver is built from a passive RIS layer cascaded with an active RIS layer and a digital decoder. Multiple jammers have imperfect angular CSI, active elements add dynamic noise and amplification power, and the design targets robust anti-jamming reception.
+**Scenario**: A multi-antenna base station transmits to a user whose receiver cascades a passive RIS layer, an active RIS layer and a small digital antenna array. $M$ jammers attack the link, their angular CSI is imperfect within the uncertainty set $\Delta_{\mathrm J}$, and the active layer amplifies signals but adds dynamic noise $\sigma_z^2$.
 
-**Problem & objective**: A worst-case non-convex rate-maximization problem maximizes the minimum achievable rate, $\max\min_{\boldsymbol\theta\in\mathcal U}R(\boldsymbol\theta)$, over BS precoding, active/passive RIS coefficients, and receive combining under angular uncertainty.
+**Problem & objective**: Problem (6) maximizes the worst-case achievable rate $\max_{\mathbf w_{\mathrm B},\mathbf P,\boldsymbol\Xi,\mathbf v_{\mathrm U}}\min_{\Delta_{\mathrm J}}R_{\mathrm U}(\mathbf w_{\mathrm B},\mathbf P,\boldsymbol\Xi,\mathbf v_{\mathrm U})$.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| BS precoder | $\mathbf w$ | complex continuous, power-bounded | Downlink signal beamformer |
-| Passive RIS phases | $\boldsymbol\phi_P$ | unit-modulus complex vector | Phase-only coefficients of the passive layer |
-| Active RIS coefficients | $\boldsymbol\phi_A$ | complex amplitude and phase | Gain and phase of active elements |
-| Receive combiner | $\mathbf u$ | complex continuous vector | Digital decoding beamformer |
+| BS precoder | $\mathbf w_{\mathrm B}$ | complex vector, cluster-power bounded | Downlink transmit beamformer |
+| Passive RIS coefficients | $\mathbf P$ | diagonal, unit modulus | Phase-only coefficients of the passive layer |
+| Active RIS coefficients | $\boldsymbol\Xi$ | diagonal, amplitude $\le\alpha_{n_1,\max}$ | Amplitudes and phases of the active layer |
+| Rx digital decoder | $\mathbf v_{\mathrm U}$ | complex vector | Receive combining at the user |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | BS transmit power satisfies its budget |
-| C2 | Passive RIS coefficients have unit modulus |
-| C3 | Active RIS gains satisfy amplifier-power and dynamic-noise limits |
-| C4 | The robust rate holds for every jammer angle in the uncertainty set $\mathcal U$ |
-| C5 | Receive-combiner normalization and cascaded channel dimensions remain feasible |
+| C1 (5) | Per-cluster BS power, $\mathbf w_{\mathrm B}^H\mathbf E_c\mathbf w_{\mathrm B}\le p_{\mathrm B,c}$ for $c=1,\dots,C$; $C=1$, $\mathbf E_c=\mathbf I$ gives the total power constraint |
+| C2 | Worst-case active-RIS amplification power, $\max_{\Delta_{\mathrm J}}(\lVert\boldsymbol\Xi\tilde{\mathbf w}_{\mathrm B}\rVert^2+\sigma_z^2\lVert\boldsymbol\Xi\rVert_F^2)\le P_{\mathrm{R,max}}$ |
+| C3 | Active amplification factor, $\lvert[\boldsymbol\Xi]_{n_1,n_1}\rvert\le\alpha_{n_1,\max}$ with $\alpha_{n_1,\max}>1$ |
+| C4 | Passive unit modulus, $\lvert[\mathbf P]_{n_2,n_2}\rvert=1$ |
+| Model rule | The rate is evaluated for the worst jammer angle error in $\Delta_{\mathrm J}$ |
 
-**Algorithm**: Use Lagrange duality and Pareto optimization for the BS precoder → optimize active/passive RIS coefficients and combiner through alternating closed-form or semi-closed-form updates → apply robust angle discretization/uncertainty handling → iterate until worst-case rate converges.
+**Algorithm**: A Pareto-dual scheme turns C1 into a tractable form through Lagrange duality and Pareto optimization and gives a semi-closed-form BS precoder. The passive coefficients come from a unified unit-modulus zero-forcing (UM-ZF) design that nulls jamming, with feasibility conditions on the number of passive units. The active coefficients come from alternating majorization-minimization (AMM) or conventional/modified cyclic coordinate descent (C/M-CCD), which handle the fractional objective created by the active-RIS noise.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] studied anti-jamming receiver design with a passive RIS cascaded with an active RIS at the user side. They formulated a worst-case achievable-rate maximization problem under imperfect angular jammer CSI, jointly designing the BS precoder, passive phases, active gains and phases, and receive combiner. Their low-complexity alternating framework uses Lagrange duality and Pareto optimization for the BS precoder and semi-closed-form updates for the cascaded RIS receiver. The analysis derives receive-power and asymptotic-SINR scaling laws for the two-layer architecture. Numerical results report improved robust rate and jamming suppression for the active-passive receiver over the evaluated single-layer and conventional receiver designs.
+Sun et al. [x] studied anti-jamming receiver design with a passive RIS cascaded with an active RIS at the user side. They formulated a worst-case achievable-rate maximization problem under imperfect angular jammer CSI, jointly designing the BS precoder, passive phases, active gains and phases, and receive combiner. Their low-complexity framework uses Lagrange duality and Pareto optimization for the BS precoder, unit-modulus zero-forcing for the passive layer, and AMM or C/M-CCD updates for the active layer, all in semi-closed form. The analysis derives receive-power and asymptotic-SINR scaling laws for the two-layer architecture. Numerical results report a higher achievable rate than fully digital, phase-array, and single-layer active RIS receivers, even with a 30 dBm amplification budget, at power consumption far below the digital and phase-array designs.
 
 ## Problem framing
 

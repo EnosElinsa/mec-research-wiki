@@ -17,7 +17,7 @@ related:
   - "[[zhiyong-feng]]"
   - "[[qixun-zhang]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Can Movable Antenna-Enabled Micro-Mobility Replace UAV-Enabled Macro-Mobility? A Physical Layer Security Perspective
@@ -50,11 +50,11 @@ Compares two physical-layer-security control scales for an air-to-ground link: w
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each antenna's inter-slot movement is bounded by $L_{\max}^{\mathrm{MA}}$ |
-| C2 | Every movable element remains inside its designated local positioning interval |
-| C3 | Antenna spacing respects the minimum separation used to limit mutual coupling |
-| C4 | Beamforming obeys $\operatorname{tr}(\mathbf w\mathbf w^H)\leq P_{\max}$ |
-| C5 | The macro-mobility UAV flies at fixed altitude with speed and acceleration below $v_{\max}$ and $a_{\max}$ |
+| (10b) | Each antenna's inter-slot movement, $\lvert x_m^{\mathrm{Loc}}[n]-x_m^{\mathrm{Loc}}[n-1]\rvert\le L_{\max}^{\mathrm{MA}}$ |
+| (10c) | Each element stays in its local interval, $x_m^{\mathrm{Loc}}\in[x_{\min}^{m,\mathrm{Loc}},x_{\max}^{m,\mathrm{Loc}}]$ |
+| (10d), (11d) | Beamforming power, $\operatorname{tr}(\mathbf w\mathbf w^H)\le P_{\max}$ |
+| (11b), (11c) | Macro-mobility speed and acceleration, $\lvert v_u[n]\rvert\le v_{\max}$ and $\lvert a_u[n]\rvert\le a_{\max}$, at fixed altitude $H$ |
+| Simulation setting | A minimum inter-MA spacing is listed in the parameter table to limit mutual coupling; it is not a tagged constraint of P1 |
 
 **Algorithm**: A block-coordinate alternating framework updates spatial variables and beamforming. For micro-mobility, projected gradient ascent with AdaGrad steps, feasibility projection, and simulated annealing updates antenna positions and beamforming; for macro-mobility, successive convex approximation and first-order bounds turn the trajectory block into CVX subproblems before beamforming is refreshed.
 
@@ -62,7 +62,7 @@ Compares two physical-layer-security control scales for an air-to-ground link: w
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] compared movable-antenna micro-mobility with UAV trajectory macro-mobility for secure air-to-ground transmission. They maximized average secrecy rate by jointly optimizing beamforming with either wavelength-scale antenna positions under local movement limits or a platform trajectory under speed and acceleration limits. Their alternating solvers combine projected gradient ascent and simulated annealing for antenna motion with successive convex approximation for UAV flight. In the reported simulations, micro-mobility performed better at 0.1 W, whereas macro-mobility generally dominated from 1 W upward and continued to benefit from larger antenna arrays.
+Li et al. [x] compared movable-antenna micro-mobility with UAV trajectory macro-mobility for secure air-to-ground transmission. They maximized average secrecy rate by jointly optimizing beamforming with either wavelength-scale antenna positions under local movement limits or a platform trajectory under speed and acceleration limits. Their alternating solvers combine projected gradient ascent and simulated annealing for antenna motion with successive convex approximation for UAV flight. In the reported simulations, micro-mobility performed better at low power (0.1 W) and with few antennas, saturating around five elements, whereas macro-mobility dominated from 1 W upward and kept gaining from larger arrays; neither approach was better in all settings.
 
 ## Problem
 

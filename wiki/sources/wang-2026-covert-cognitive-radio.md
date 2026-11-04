@@ -25,7 +25,7 @@ related:
   - "[[chengwen-xing]]"
   - "[[dusit-niyato]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Assisted Covert Transmission for Cooperative Cognitive Radio Networks
@@ -44,26 +44,25 @@ A decode-and-forward UAV relays a primary user's short packet while superposing 
 
 **Scenario**: A fixed-altitude decode-and-forward UAV receives a short primary packet, then forwards the primary signal while superposing a covert secondary message. A primary receiver, secondary receiver, and multiple wardens observe finite-blocklength air-to-ground links with probabilistic LoS/NLoS fading.
 
-**Problem & objective**: A non-convex finite-blocklength design maximizes time-average secondary effective throughput, $\max \frac{1}{N}\sum_{n=1}^{N}R_{\mathrm s}^{\mathrm{eff}}[n]$, under primary quality of service, per-warden covertness, power, and UAV-mobility constraints.
+**Problem & objective**: A non-convex finite-blocklength design maximizes time-average secondary effective throughput, $\max_{\mathbf P,\mathbf Q}\frac{1}{N}\sum_{n=1}^{N}\eta_1[n]$ in (36), under primary quality of service, per-warden covertness, power, and UAV-mobility constraints.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Primary forwarding power | $p_{mathrm p}[n]$ | continuous, nonnegative | UAV power allocated to the relayed primary signal |
-| Covert transmit power | $p_{mathrm s}[n]$ | continuous, nonnegative | UAV power allocated to the secondary signal |
-| UAV trajectory | $\mathbf q[n]$ | continuous horizontal position | Fixed-altitude UAV location in slot $n$ |
-| Auxiliary rate/slack variables | $\boldsymbol\xi[n]$ | continuous | SCA surrogates for throughput and covertness terms |
+| Primary forwarding power | $P_{RP}[n]$ | continuous, nonnegative | UAV power allocated to the relayed primary signal |
+| Covert transmit power | $P_{RS}[n]$ | continuous, nonnegative | UAV power allocated to the secondary signal |
+| UAV trajectory | $\mathbf q_R[n]$ | continuous horizontal position | Fixed-altitude UAV location in slot $n$ |
+| Auxiliary slack variables | $t_1[n]$, $\omega[n]$, $\zeta[n]$ | continuous | Slack variables introduced in the power and trajectory subproblems |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Total UAV power satisfies $p_{\mathrm p}[n]+p_{\mathrm s}[n]\le P_{\max}$ |
-| C2 | The forwarded primary effective throughput exceeds its per-slot QoS threshold |
-| C3 | Every warden satisfies the KL/Pinsker sufficient covertness condition |
-| C4 | UAV motion satisfies prescribed endpoints and per-slot displacement limits |
-| C5 | Finite-blocklength decoding-error and bottleneck-rate definitions remain feasible |
+| (36a) | Primary QoS, $\eta_2[n]\ge\eta_{\min}$ |
+| (36b) | UAV power, $P_{RS}[n]+P_{RP}[n]\le P_{R,\max}$ |
+| (36c) | Per-warden KL covertness condition, $\ln(1+\chi_i[n])-\frac{\chi_i[n]}{\chi_i[n]+1}\le\frac{2\epsilon^2}{l_2}$ |
+| (36d) | Mobility (1a)–(1b): $\mathbf q_R[1]=\mathbf q_I$, $\mathbf q_R[N]=\mathbf q_F$, and $\lVert\mathbf q_R[n+1]-\mathbf q_R[n]\rVert^2\le(V_{\max}T/N)^2$ |
 
 **Algorithm**: Derive finite-blocklength effective throughputs and a KL-based covertness surrogate → fix the trajectory and solve power allocation with slack variables and SCA → fix powers and solve the trajectory block with first-order lower bounds → alternate the convex subproblems until the objective value converges.
 
@@ -71,7 +70,7 @@ A decode-and-forward UAV relays a primary user's short packet while superposing 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied UAV-assisted covert transmission in a cooperative cognitive radio network with finite-blocklength packets and multiple wardens. A decode-and-forward UAV relays the primary signal and superposes a covert secondary message, allowing the primary waveform to mask the secondary transmission. They formulated time-average secondary effective-throughput maximization under primary quality-of-service, transmit-power, trajectory, and per-warden covertness constraints. Their block-coordinate method alternates power allocation and horizontal trajectory updates, with slack variables and successive convex approximation used in both blocks. Simulations show higher covert throughput than the evaluated fixed-power, fixed-trajectory, shorter-duration, and non-UAV baselines over the tested settings.
+Wang et al. [x] studied UAV-assisted covert transmission in a cooperative cognitive radio network with finite-blocklength packets and multiple wardens. A decode-and-forward UAV relays the primary signal and superposes a covert secondary message, allowing the primary waveform to mask the secondary transmission. They formulated time-average secondary effective-throughput maximization under primary quality-of-service, transmit-power, trajectory, and per-warden covertness constraints. Their block-coordinate method alternates power allocation and horizontal trajectory updates, with slack variables and successive convex approximation used in both blocks. Simulations show higher average effective throughput than fixed transmit power, fixed trajectory, a shorter 40 s flight, and a non-UAV covert CR network, with throughput lower when three wardens are present instead of two.
 
 ## Problem
 

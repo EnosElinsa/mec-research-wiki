@@ -19,7 +19,7 @@ related:
   - "[[ma-2024-covert-mmwave-finite-blocklength]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Age of Information Minimization in UAV-Assisted Covert Communication: Trajectory and Beamforming Design
@@ -52,12 +52,13 @@ Minimizes AoI for UAV-assisted covert communication in the presence of an aerial
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Total beamforming power per slot remains within Alice's budget. |
-| C2 | NOMA power ordering enables Bob's SIC and allocates stronger received power to the public flow. |
-| C3 | Eve's minimum detection error satisfies $\xi^*[n]\geq1-\epsilon$. |
-| C4 | Maximum packet age remains below the channel-variation interval. |
-| C5 | Achievable public and covert rates deliver their required packet sizes. |
-| C6 | Consecutive UAV positions satisfy the maximum-speed distance bound. |
+| (22b) | Per-slot beamforming power, $\sum_{k\in\{b,c\}}\lVert\mathbf w_k[n]\rVert^2\le\Gamma$ |
+| (22c) | NOMA ordering, $\lvert\mathbf h_k^H[n]\mathbf w_c[n]\rvert^2>\lvert\mathbf h_k^H[n]\mathbf w_b[n]\rvert^2$, giving Carol's public flow more power so Bob can apply SIC |
+| (22d) | Eve's minimum detection error satisfies $\min\xi[n]\ge1-\epsilon$ |
+| (22e) | $\max_k\Delta_k[n]\le\delta$ |
+| (22f) | Public packet delivery per slot, $\Delta_c[n]R_c[n]\ge S_c[n]/B$ |
+| (22g) | Covert packet delivery over the flight, $\sum_n\Delta_b[n]R_b[n]\ge S_b/B$ |
+| (22h) | Mobility, $\lVert\mathbf q[n+1]-\mathbf q[n]\rVert\le\max_k\Delta_k[n]V_{\max}$ |
 
 **Algorithm**: First derive Eve's optimal threshold and location for the conservative covertness constraint. Alternate an LP update for AoI, an SCA trajectory update using first-order rate bounds, and an SDR plus SCA beamforming update; use the rank-one recovery result and repeat the three blocks until total AoI converges.
 
@@ -65,7 +66,7 @@ Minimizes AoI for UAV-assisted covert communication in the presence of an aerial
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hosseini et al. [x] studied information freshness in a UAV NOMA downlink where a public flow covers covert packets from an aerial eavesdropper. They minimized aggregate AoI over UAV positions, public and covert beamformers, and freshness variables under power, SIC ordering, covertness, channel-coherence, packet-delivery, and mobility constraints. Their alternating method derives Eve's adverse detector setting, solves AoI by linear programming, updates trajectory by SCA, and updates beamforming by SDR and SCA. Numerical results showed that the optimized path reduced AoI relative to straight and random paths, while tighter covertness and larger covert packets increased the freshness cost.
+Hosseini et al. [x] studied information freshness in a UAV NOMA downlink where a public flow covers covert packets from an aerial eavesdropper. They minimized aggregate AoI over UAV positions, public and covert beamformers, and freshness variables under power, SIC ordering, covertness, channel-coherence, packet-delivery, and mobility constraints. Their alternating method derives Eve's adverse detector setting, solves AoI by linear programming, updates trajectory by SCA, and updates beamforming by SDR and SCA. Numerical results showed that the optimized path gave a higher covert rate and lower total AoI than straight-line and random paths. Relaxing the covertness requirement raised the covert rate but also raised total AoI because the public rate fell, and larger covert packets increased total AoI.
 
 ## Problem
 
