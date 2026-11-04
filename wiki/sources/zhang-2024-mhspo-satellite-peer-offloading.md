@@ -22,7 +22,7 @@ related:
   - "[[mao-2024-fso-leo-hierarchical-routing]]"
   - "[[zehui-xiong]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Computation Peer Offloading in Satellite Edge Computing Networks
@@ -39,36 +39,29 @@ A **multi-hop computation peer-offloading** scheme for **MEC-enabled LEO satelli
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: MEC-enabled LEO satellites receive uneven geographic workloads and forward tasks over time-varying multi-hop laser ISLs to less-loaded peers. Each satellite maintains arrival, forwarding, and computation queues under solar and battery limits.
-
-**Problem & objective**: MHSPO minimizes long-term weighted delay and energy, $\min \limsup_T\frac1T\sum_t(\rho_d D(t)+\rho_e E(t))$, subject to queue stability and dispatch/link capacities.
-
+**Scenario**: MEC-enabled LEO satellites receive geographically uneven task arrivals and forward tasks hop by hop over time-varying laser ISLs to less-loaded peers. Each satellite keeps a forwarding queue $Q_n^F$ and a computing queue $Q_n^B$, and solar and battery limits motivate an energy term in the cost.
+**Problem & objective**: P1 (12) minimizes the time-average weighted delay-energy cost, $\min_{\mathbf a,\mathbf s}\frac{1}{|\mathcal T|}\sum_tC(t)$, where $C(t)$ (11) sums $\rho_d$-weighted delay and $\rho_e$-weighted energy of local computing and forwarding decisions.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Local computation | $\alpha_n^i(t)$ | binary | Task $i$ processed at satellite $n$ |
-| Neighbor offloading | $\beta_{nm}^i(t)$ | binary | Task $i$ forwarded from $n$ to neighbor $m$ |
-| Multi-hop route | $\mathcal P_i(t)$ | discrete path | Peer-satellite forwarding path |
-| Dispatch workload | $d_n(t)$ | integer/continuous bounded | Tasks served or forwarded in the slot |
-
+| Admission decision | $a_n^i(t)$ | binary | Admit arriving task $i$ at satellite $n$ |
+| Local computing | $\alpha_n^i(t)$ | binary | Move task $i$ from $Q_n^F$ to the computing queue of $n$ |
+| Neighbor forwarding | $\beta_{nm}^i(t)$ | binary | Forward task $i$ from $n$ to one-hop neighbor $m\in N_n$; multi-hop paths arise from repeated forwarding |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every task is computed locally or forwarded to one next hop |
-| C2 | Per-satellite dispatch does not exceed $E_n$ |
-| C3 | ISL forwarding respects link capacity $B_{nm}$ and topology availability |
-| C4 | Arrival, forwarding, and computation queues remain stable |
-| C5 | Satellite computation and transmission energy stay feasible |
-
-**Algorithm**: Introduce queue-based Lyapunov drift-plus-penalty → predict unknown per-task delay and energy by delayed online learning → form the per-slot network-wide cost → apply gap-preserving reduction into per-satellite subproblems → solve decisions distributively → update queues and learning estimates.
+| (12a) | Compute locally, forward to one neighbor, or wait: $\alpha_n^i(t)+\sum_{m\in N_n}\beta_{nm}^i(t)\leq1$ |
+| (12b) | Forward only if not slower than local: $d_m^{i,C}+s^i/b_{nm}(t)+T_{nm}(t)\leq d_n^i$ |
+| (12c) | Dispatch cap $\sum_i\alpha_n^i(t)\leq E_n$ |
+| (12d) | Offloading capacity $\sum_is^i\beta_{nm}^i(t)\leq B_{nm}$, $B_{nm}\in[0,B^{\max}]$ |
+| (12e) | Queue stability: bounded time-average $\mathbb E\{Q_n^F(t)+Q_n^B(t)\}$ |
+**Algorithm**: Lyapunov drift-plus-penalty turns P1 into per-slot problem P2 (15). Delayed online gradient descent (DOGD, Algorithm 1) predicts the computing backlog $Q_n^{B*}$ with bounded regret. A gap-preserving reduction to P3 decomposes the slot problem into per-satellite admission (22)-(23) and offloading (24) subproblems with threshold $\theta_n$ (25), solved distributively.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied energy-efficient multi-hop computation peer offloading in LEO satellite edge networks. They formulated long-term weighted delay and energy minimization over local-computing and neighbor-forwarding decisions under queue-stability, dispatch, ISL-capacity, topology, and energy constraints. Lyapunov drift-plus-penalty converts the long-term problem into per-slot optimization. Delayed online learning estimates unknown task delay and energy, and a gap-preserving reduction decomposes the slot problem into distributed per-satellite subproblems. Simulations report lower delay and energy than the evaluated local, single-hop, and centralized or heuristic peer-offloading baselines.
+Zhang et al. [x] studied energy-efficient multi-hop computation peer offloading in LEO satellite edge networks. They formulated long-term weighted delay and energy minimization over local-computing and neighbor-forwarding decisions under one-choice, beneficial-forwarding, dispatch, offloading-capacity, and queue-stability constraints. Lyapunov drift-plus-penalty converts the long-term problem into per-slot optimization. Delayed online learning estimates unknown task delay and energy, and a gap-preserving reduction decomposes the slot problem into distributed per-satellite subproblems. In simulations, MHSPO gives lower backlog and delay overhead than single-hop and local-only processing, while local-only processing uses the least energy and the energy-agnostic variant has the lowest delay at a higher energy cost.
 
 ## Problem framing
 

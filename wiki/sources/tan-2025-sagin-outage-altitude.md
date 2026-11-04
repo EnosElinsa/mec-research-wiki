@@ -14,7 +14,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[nei-kato]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Outage Probability, Performance, and Fairness Analysis of Space-Air-Ground Integrated Network (SAGIN): UAV Altitude and Position Angle
@@ -42,7 +42,7 @@ Derives energy- and SNR-outage expressions plus a feasible UAV altitude for a so
 | UAV altitude | $h_U$ | continuous, positive | Relay altitude that changes both hop rates and return-flight energy |
 | Ground-air position angle | $\theta_{GA}$ | continuous angle | Geometry between the base station and UAV |
 | Air-space position angle | $\theta_{AS}$ | continuous angle | Geometry between the UAV and satellite |
-| Transmission duration | $T_t$ | continuous, $0<T_t\leq T_t^*$ | Service time adjusted to preserve energy feasibility |
+| Transmission duration | $T_t$ | continuous, $0<T_t\leq T_t^*$; not an optimization variable of (29) | Service time shortened afterward to preserve energy feasibility |
 
 **Constraints**:
 

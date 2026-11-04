@@ -21,7 +21,7 @@ related:
   - "[[qin-2025-matd3-noma-queue-sagin]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Collaborative Task Offloading Optimization for Satellite Mobile Edge Computing Using Multi-Agent Deep Reinforcement Learning
@@ -38,35 +38,30 @@ A **multi-agent collaborative task-offloading** scheme for **distributed satelli
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: MEC-enabled LEO satellites receive divisible tasks and cooperatively process them over time-varying single-hop laser ISLs. Each satellite observes local topology and workload, while periodic orbital visibility changes the eligible helper set.
-
-**Problem & objective**: A cooperative POMDP minimizes long-term system energy, $\min\mathbb E[\sum_t\gamma^t E_{\mathrm{sys}}(t)]$, over offloading ratios and satellite computing resources under delay and capacity limits.
-
+**Scenario**: MEC-enabled LEO satellites cooperatively process divisible tasks: the satellite $L_u$ that receives task $\mathcal K_t$ keeps part of it and offloads parts to visible satellites $M_v$ over single-hop ISLs. ISL visibility changes periodically, and each satellite observes only its own visibility and distance rows.
+**Problem & objective**: Problem (10) minimizes long-term system energy, $\min_{x_t,f_t}\sum_{t=1}^{\mathcal T}E_t^{exe}$, where $E_t^{exe}=\sum_v(E_t^{tran}+E_t^{comp})$ (9).
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Offloading ratio | $\alpha_{i,j}(t)$ | continuous, $[0,1]$ | Fraction of satellite $i$'s task sent to helper $j$ |
-| CPU allocation | $f_{i,j}(t)$ | continuous, nonnegative | Computing resource assigned to task fraction |
-| Helper selection | $x_{i,j}(t)$ | binary/visibility-limited | Eligible local or neighboring execution node |
-
+| Offloading ratio | $x_t^v$ | continuous, $[0,1]$ | Fraction of task $\mathcal K_t$ processed by satellite $M_v$ |
+| Computing capability | $f_t^v$ | continuous, $[0,F]$ | CPU frequency satellite $M_v$ assigns to its fraction |
+| Agent action | $a_t^u=\{x_t^u,f_t^u\}$ | discretized (14) | Per-satellite action in the POMDP |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Task fractions across visible satellites sum to one |
-| C2 | Offloading uses only currently visible single-hop ISLs |
-| C3 | Per-satellite CPU allocations stay within capacity |
-| C4 | Transmission, propagation, and computation finish before the deadline |
-| C5 | Satellite communication and computing energy remain feasible |
-
-**Algorithm**: Encode each satellite's local POMDP observation → process topology history with an attention-based BiLSTM actor → sample offloading and compute actions → train a centralized COMA critic with per-agent counterfactual baselines on the ground → share actor parameters → execute the learned actors independently onboard.
+| (10a) = (7) | Parallel completion time within the deadline: $T_t^{exe}=\max\{T_t\}\leq T_t^{\max}$ |
+| (10a) = (8) | Offloaded parts finish within the ISL visibility window: $T_t\leq T_t^{hold}$ |
+| (10b) | $0\leq x_t^v\leq1$ |
+| (10c) | Ratios sum to one: $\sum_vx_t^v=1$ |
+| (10d) | $0\leq f_t^v\leq F$ |
+| Reward (15) | $r_t=\mathcal R-\omega E_t^{exe}-\varrho_1-\varrho_2$, with penalties for timeout and broken ISL windows |
+**Algorithm**: Model the satellites as cooperative agents in a POMDP with global state (12) and local observations (13). COMA trains a centralized critic with TD($\lambda$) targets and a per-agent counterfactual baseline on the ground; an attention-based BiLSTM actor captures periodic topology changes, and the trained actors execute onboard from local observations.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied collaborative task offloading in distributed satellite mobile edge computing with time-varying inter-satellite visibility. They formulated a POMDP in which satellites select offloading ratios and computing resources to minimize energy under task-delay, visibility, and resource constraints. COMA uses a centralized critic and per-agent counterfactual baselines during terrestrial training while satellite actors execute from local observations. An attention-based bidirectional LSTM actor captures periodic topology evolution. STK-based simulations report better convergence and energy performance than the evaluated MADDPG, DDPG, independent actor-critic, random-offloading, and local-computing baselines.
+Zhang et al. [x] studied collaborative task offloading in distributed satellite mobile edge computing with time-varying inter-satellite visibility. They formulated a POMDP in which satellites select offloading ratios and computing resources to minimize energy under task-delay, visibility, and resource constraints. COMA uses a centralized critic and per-agent counterfactual baselines during terrestrial training while satellite actors execute from local observations. An attention-based bidirectional LSTM actor captures periodic topology evolution. STK-based simulations report better convergence and energy performance than the evaluated MADDPG, DDPG, independent actor-critic, unimproved-actor, random-offloading, and local-computing baselines.
 
 ## Problem framing
 

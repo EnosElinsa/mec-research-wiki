@@ -18,7 +18,7 @@ related:
   - "[[you-2025-uncertain-maritime-hasac]]"
   - "[[sun-2023-bargain-match-vec]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Two-Tier Task Offloading for Satellite-Assisted Marine Networks: A Hybrid Stackelberg-Bargaining Game Approach
@@ -52,13 +52,16 @@ A two-tier task-offloading scheme for **satellite-assisted marine MEC** using a 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | AUV offloading ratio is bounded: $0\leq a_{i,m}\leq1$. |
-| C2 | AUV computation and transmission energy stays below $E_i^{max}$. |
-| C3 | AUV task completion time meets the coverage bound: $T_i^{tot}\leq T^{max}$. |
-| C4 | AUV, MASS, and LEOS utilities are nonnegative. |
-| C5 | MASS price is bounded: $0\leq k_i\leq k_i^{max}$. |
-| C6 | MASS to LEOS offloading ratio is bounded: $0\leq b_{i,n}\leq1$. |
-| C7 | MASS and LEOS energy budgets are respected. |
+| (C1) | AUV offloading ratio bounded: $0\leq a_{i,m}\leq1$ |
+| (C2) | AUV energy: $E_i^{com}+E_{i,m}^{ts}\leq E_i^{max}$ |
+| (C3) | AUV completion time within LEOS coverage: $T_i^{tot}\leq T^{max}$ |
+| (C4) | AUV utility nonnegative: $Z_i\geq0$ |
+| (C5) | MASS price bounded: $0\leq k_i\leq k_i^{max}$ |
+| (C6) | MASS to LEOS ratio bounded: $0\leq b_{i,n}\leq1$ |
+| (C7) | MASS energy: $E_{i,m}^{com}+E_{i,n}^{ts}+E_{i,m}^{tc}\leq E_{i,m}^{max}$ |
+| (C8) | MASS utility nonnegative: $Z_m\geq0$ |
+| (C9) | LEOS energy: $E_{i,n}^{com}\leq E_{i,n}^{max}$ |
+| (C10) | LEOS utility nonnegative: $Z_n\geq0$ |
 
 **Algorithm**: Solve the AUV and MASS Stackelberg subgames with binary search and linear search, solve the MASS-LEOS bargaining equilibrium, and combine the equilibria in the two-tier task-offloading algorithm.
 
@@ -66,7 +69,7 @@ A two-tier task-offloading scheme for **satellite-assisted marine MEC** using a 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] model satellite-assisted marine offloading as a two-tier incentive system linking AUVs, MASSs, and a LEO edge server. The Stackelberg tier jointly selects AUV offloading ratios and MASS prices under energy, delay, price, and nonnegative-utility constraints, while the bargaining tier selects MASS to satellite ratios and a surplus share. Binary search, linear search, and a bargaining equilibrium are combined into the two-tier task-offloading algorithm. The reported experiments show convergence to stable utility or offloading values and higher utility than the benchmark bargaining and pricing settings.
+Wang et al. [x] model satellite-assisted marine offloading as a two-tier incentive system linking AUVs, MASSs, and a LEO edge server. The Stackelberg tier jointly selects AUV offloading ratios and MASS prices under energy, delay, price, and nonnegative-utility constraints, while the bargaining tier selects MASS to satellite ratios and a surplus share. Binary search, linear search, and a bargaining equilibrium are combined into the two-tier task-offloading algorithm. The reported experiments show convergence to stable utility or offloading values and higher AUV utility than OFDMA-based transmission and fixed- or random-ratio offloading benchmarks.
 
 ## Problem framing
 

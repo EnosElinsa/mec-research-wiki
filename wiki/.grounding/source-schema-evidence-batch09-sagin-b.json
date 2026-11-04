@@ -1,0 +1,801 @@
+{
+  "entries": [
+    {
+      "slug": "prabhath-not-in-parse-3d-space-spectrum-utilization",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks.md",
+          "lines": "5",
+          "note": "analytical performance study; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks.md",
+          "lines": "5,23",
+          "note": "3D UAV cellular SUE analysis"
+        },
+        {
+          "path": "raw/sources/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks.md",
+          "lines": "5,23,29,33",
+          "note": "truncated octahedron reuse, RWP mobility, channel models"
+        },
+        {
+          "path": "raw/sources/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks.md",
+          "lines": "5,31,471-477",
+          "note": "average expressions and bounds"
+        },
+        {
+          "path": "raw/sources/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks/Analysis_of_3D_Space_Spectrum_Utilization_in_UAV-Enabled_Cellular_Networks.md",
+          "lines": "634-656",
+          "note": "parameter sweeps and 0.78 bit/s/Hz/km^3 radius gain"
+        }
+      ]
+    },
+    {
+      "slug": "qin-2025-matd3-noma-queue-sagin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "96-103,144-182",
+          "note": "task split (2)-(3), motion (10)-(17)"
+        },
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "360-415",
+          "note": "cost (41), P0 (42) with C1-C9"
+        },
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "419-501,598,634",
+          "note": "Lyapunov SP1-SP3, MATD3, GSCRA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "5,31",
+          "note": "NOMA queue-aware SAGIN offloading"
+        },
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "367-415",
+          "note": "system-cost problem"
+        },
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "36,419,501",
+          "note": "Lyapunov decomposition into MATD3, CVX, GSCRA"
+        },
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "788",
+          "note": "18.76/29.40/35.38/52.14% cost reductions"
+        },
+        {
+          "path": "raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md",
+          "lines": "874",
+          "note": "4.36/12.49/15.95/30.38% backlog reductions"
+        }
+      ]
+    },
+    {
+      "slug": "tan-2025-sagin-outage-altitude",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle.md",
+          "lines": "259-277",
+          "note": "problem (29) with C1-C3 and T_t* (30)"
+        },
+        {
+          "path": "raw/sources/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle.md",
+          "lines": "288,368,569",
+          "note": "case analysis and T_t reduction or replacement"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle.md",
+          "lines": "5,43",
+          "note": "solar-powered hybrid UAV relay to satellite"
+        },
+        {
+          "path": "raw/sources/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle.md",
+          "lines": "5",
+          "note": "energy and SNR outage derivations"
+        },
+        {
+          "path": "raw/sources/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle.md",
+          "lines": "259-274",
+          "note": "max-min rate placement problem"
+        },
+        {
+          "path": "raw/sources/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle/Outage_Probability_Performance_and_Fairness_Analysis_of_Space-Air-Ground_Integrated_Network_SAGIN_UAV_Altitude_and_Position_Angle.md",
+          "lines": "288,368,569",
+          "note": "case-wise altitude and service-time bound"
+        }
+      ]
+    },
+    {
+      "slug": "tang-2021-cecls-hybrid-cloud-edge",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "204-220",
+          "note": "problem (13) with 13b-13e"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "236-240,290-358",
+          "note": "relaxed LP (14), consensus (17), ADMM updates"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "27",
+          "note": "three-tier CECLS architecture"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "204-220",
+          "note": "energy minimization with capacity and coverage"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "236,290-358",
+          "note": "LP relaxation and distributed ADMM"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "269,349",
+          "note": "convergence and interior-point comparison"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing/Computation_Offloading_in_LEO_Satellite_Networks_With_Hybrid_Cloud_and_Edge_Computing.md",
+          "lines": "452,480",
+          "note": "COS, OSCLOCs, CL comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "tun-2025-thz-sag-mec-resource-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md",
+          "lines": "256-326",
+          "note": "objective (30) and problem (31) with 31b-31n"
+        },
+        {
+          "path": "raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md",
+          "lines": "330-660",
+          "note": "BCD subproblems P1-P4"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md",
+          "lines": "5,27",
+          "note": "THz-assisted SAG MEC"
+        },
+        {
+          "path": "raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md",
+          "lines": "258-326",
+          "note": "energy minimization and constraints"
+        },
+        {
+          "path": "raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md",
+          "lines": "330,359,441-535,557-611,656",
+          "note": "convex, matching+CCP, SCA, BSUM"
+        },
+        {
+          "path": "raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md",
+          "lines": "780,841",
+          "note": "all-local and no-UAV-collaboration baselines"
+        }
+      ]
+    },
+    {
+      "slug": "ullah-2026-mec-drl-ntn-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways.md",
+          "lines": "5",
+          "note": "survey with no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways.md",
+          "lines": "5",
+          "note": "MEC-DRL in NTN survey"
+        },
+        {
+          "path": "raw/sources/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways.md",
+          "lines": "39,47,90-98,128,147,411-429",
+          "note": "architectures, offloading models, DRL design"
+        },
+        {
+          "path": "raw/sources/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways/Convergence_of_MEC_and_DRL_in_Non-Terrestrial_Wireless_Networks_Key_Innovations_Challenges_and_Future_Pathways.md",
+          "lines": "7,39-51,858",
+          "note": "security and open challenges"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-hybrid-oma-noma-sagin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "363-392",
+          "note": "P0 (25) and C1-C6 match card"
+        },
+        {
+          "path": "raw/sources/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "405-523",
+          "note": "P1/P2 SCA and Lagrange dual power block; P3 DQN mode selection; alternation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "5,33,130,709,858-862,892",
+          "note": "benchmarks I-V include NOMA-only, OMA-only, link-fixed hybrid and two hybrid schemes; sum rate, average rate, outage"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-satellite-terrestrial-computing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks.md",
+          "lines": "210-254",
+          "note": "problem (18) objective and (18b)-(18k); card relabeled from invented C1-C5, (18g) is equality"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks.md",
+          "lines": "258-460",
+          "note": "AO: B&B and relaxation mapping (19)-(20), SCA plus SDR beamforming, convex resource allocation (32)-(39)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks.md",
+          "lines": "60,529-537,554,556,576",
+          "note": "converges within 5 iterations; five baselines; minimum weighted energy over delay range"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-twotier-satellite-marine",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.md",
+          "lines": "350-387",
+          "note": "P1 (27), P2 (28), P3 (29) with (C1)-(C10) in (30); card had merged C7 and omitted C8-C10"
+        },
+        {
+          "path": "raw/sources/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.md",
+          "lines": "422-556",
+          "note": "binary and linear search Stackelberg stage, bargaining (38)-(41), TTA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.md",
+          "lines": "5,572-576,605-611",
+          "note": "convergence to fixed values; OTS, OSFP and OSRP benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-double-edge-samin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.md",
+          "lines": "309-371",
+          "note": "P0 (25) and (25a)-(25l); card relabeled from invented C1-C6"
+        },
+        {
+          "path": "raw/sources/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.md",
+          "lines": "380-628",
+          "note": "P1 offloading mode and volume (26)-(35) by Alg. 1, P2 compute allocation (39)-(48) by KKT, layered AO Alg. 2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.md",
+          "lines": "5,693-697,998",
+          "note": "POMT, EOS and EACR benchmarks; lower total energy"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-spatiotemporal-leo-channel-prediction",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications.md",
+          "lines": "5",
+          "note": "CSI prediction model; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications.md",
+          "lines": "5",
+          "note": "spatiotemporal attention channel prediction"
+        },
+        {
+          "path": "raw/sources/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications.md",
+          "lines": "5,37,190-213",
+          "note": "tokens, global/local attention, masked pretraining"
+        },
+        {
+          "path": "raw/sources/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications.md",
+          "lines": "288-306,430",
+          "note": "dominant DFT beams, 6.06 to 1.52 GMac"
+        },
+        {
+          "path": "raw/sources/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications.md",
+          "lines": "384,388,396",
+          "note": "lowest NMSE across horizons, -19.4 dB"
+        },
+        {
+          "path": "raw/sources/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications/Spatiotemporal-Attention-Based_Channel_Prediction_for_UAV-RIS-Assisted_LEO_Satellite_MIMO_Communications.md",
+          "lines": "461-465",
+          "note": "MRT spectral efficiency vs stale CSI"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2024-satellite-maritime-spectrum-sharing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks.md",
+          "lines": "214-244",
+          "note": "problem (1)-(3), U share-channel set, priority-weighted D_i^SAT"
+        },
+        {
+          "path": "raw/sources/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks.md",
+          "lines": "477-515",
+          "note": "task queue sorted by priority, action (30) TERF/SATF/THRF, matrix (31)-(32), reward (33); card rewritten (invented pi_t and tau_ij)"
+        },
+        {
+          "path": "raw/sources/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks.md",
+          "lines": "525-549,621,639",
+          "note": "SCA-D3QN Double DQN plus LSTM plus Dueling, offline training and online deployment, history length 8"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks.md",
+          "lines": "5,39,836-840",
+          "note": "throughput and stability gains over TERF, Whittle Index and DQN comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "xie-2025-stin-delay-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computation_Offloading_and_Resource_Allocation_in_LEO_Satellite-Terrestrial_Integrated_Networks_With_System_State_Delay/Computation_Offloading_and_Resource_Allocation_in_LEO_Satellite-Terrestrial_Integrated_Networks_With_System_State_Delay.md",
+          "lines": "270-329",
+          "note": "energy (21) and P0 (22a)-(22j); min set is X, F^N, F^M; card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Computation_Offloading_and_Resource_Allocation_in_LEO_Satellite-Terrestrial_Integrated_Networks_With_System_State_Delay/Computation_Offloading_and_Resource_Allocation_in_LEO_Satellite-Terrestrial_Integrated_Networks_With_System_State_Delay.md",
+          "lines": "337-354,478-570",
+          "note": "RAMLFQ (24)-(25), SDMDP to augmented MDP, Delay-DDQN loss"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computation_Offloading_and_Resource_Allocation_in_LEO_Satellite-Terrestrial_Integrated_Networks_With_System_State_Delay/Computation_Offloading_and_Resource_Allocation_in_LEO_Satellite-Terrestrial_Integrated_Networks_With_System_State_Delay.md",
+          "lines": "5,593,682-691,836",
+          "note": "DDQN, DQN, PSO, GA, SA, Random and actor-critic baselines; delay robustness; RAMLFQ vs MLFQ turnaround and waiting time"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2026-clustered-leo-adaptive-selection",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-.md",
+          "lines": "5",
+          "note": "coverage analysis; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-.md",
+          "lines": "5,19",
+          "note": "UAV-assisted clustered LEO downlink"
+        },
+        {
+          "path": "raw/sources/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-.md",
+          "lines": "5,31-45",
+          "note": "SPPP model and shadowed-Rician links"
+        },
+        {
+          "path": "raw/sources/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-.md",
+          "lines": "49,83,111",
+          "note": "adaptive direct vs DF selection"
+        },
+        {
+          "path": "raw/sources/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-.md",
+          "lines": "5,55,86,162",
+          "note": "Gamma approximation and bounds"
+        },
+        {
+          "path": "raw/sources/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-/Adaptive_Selecting_in_Clustered_LEO_Systems_Direct_or_Cooperative_Communication-.md",
+          "lines": "5,65,493,506",
+          "note": "~200 m altitude and cluster-size results"
+        }
+      ]
+    },
+    {
+      "slug": "yao-2026-secure-maritime-sutn",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Relay-Aided_Secure_Maritime_Networks_Coexisting_With_Satellite_Networks_Robust_Beamforming_and_Trajectory_Optimization/UAV-Relay-Aided_Secure_Maritime_Networks_Coexisting_With_Satellite_Networks_Robust_Beamforming_and_Trajectory_Optimization.md",
+          "lines": "59-69,122,170-207",
+          "note": "flight (1a)-(1c), bounded CSI errors, relay causality (11), SU rate (12), problem (13) with (13b)-(13e)"
+        },
+        {
+          "path": "raw/sources/UAV-Relay-Aided_Secure_Maritime_Networks_Coexisting_With_Satellite_Networks_Robust_Beamforming_and_Trajectory_Optimization/UAV-Relay-Aided_Secure_Maritime_Networks_Coexisting_With_Satellite_Networks_Robust_Beamforming_and_Trajectory_Optimization.md",
+          "lines": "223-587,622-647",
+          "note": "reformulation (14), S-procedure and sign-definiteness, SCA, trust-region trajectory, Algorithm 1 AO"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Relay-Aided_Secure_Maritime_Networks_Coexisting_With_Satellite_Networks_Robust_Beamforming_and_Trajectory_Optimization/UAV-Relay-Aided_Secure_Maritime_Networks_Coexisting_With_Satellite_Networks_Robust_Beamforming_and_Trajectory_Optimization.md",
+          "lines": "5,682,691,702,727-729",
+          "note": "benchmarks; outer loop converges in about 7 iterations; about 150% SR gain over random beamforming; Fig. 8 CSI uncertainty"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2026-movable-antenna-u2u-channel",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks.md",
+          "lines": "371-400",
+          "note": "ergodic capacity (50), Kronecker R_T, R_R, problem (51) with (51b)-(51d); card rewritten (wrong symbols, invented C3-C4 and momentum variables)"
+        },
+        {
+          "path": "raw/sources/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks.md",
+          "lines": "402-451",
+          "note": "Algorithm 1 momentum gradient ascent, clipping, spacing repulsion; (51) splits into independent Tx and Rx subproblems; gradient (52)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks.md",
+          "lines": "5,282,328,509-515",
+          "note": "PSDS vs measurement data; fixed ULA, UPA and UCA comparison; movement-region cases"
+        }
+      ]
+    },
+    {
+      "slug": "zhai-2023-fedleo-decentralized-fl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "208-225",
+          "note": "P1 (15) objective and C1-C5; card rewritten (invented x_ij, d_ij, a_ij and lambda objective)"
+        },
+        {
+          "path": "raw/sources/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "233-295,456-566,742-851",
+          "note": "P2 (20) D1-D6, power and data subproblems (25)-(P5), Algorithm 2 thresholds, Algorithm 3 greedy with ratio 2 Upsilon"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.md",
+          "lines": "5,38-39,1448",
+          "note": "up to 41% delay reduction and 9.39% accuracy gain; FedAvg, FedProx, FedNova baselines"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2023-three-tier-satellite-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks.md",
+          "lines": "194-241",
+          "note": "problem (16) objective and C1-C11; card had merged C1-C11 into invented C1-C5 and stated equality bit split"
+        },
+        {
+          "path": "raw/sources/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks.md",
+          "lines": "244-480",
+          "note": "association LP, quadratic-transform power block (23), bit bounds (28)-(30), bandwidth factor convex problem with C8 and C11'"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks.md",
+          "lines": "493,519-521",
+          "note": "TTCO, GCO, Max-SNR and MPA baselines"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2024-coma-satellite-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "200-252",
+          "note": "delay (6)-(8), energy (9), problem (10) with (10a)-(10d); card rewritten (invented alpha_ij, x_ij helper selection and discounted objective)"
+        },
+        {
+          "path": "raw/sources/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "256-338,456-472",
+          "note": "POMDP state (12), observation (13), action (14), reward (15); COMA critic with TD(lambda) (17)-(19); Atten-BiLSTM actor"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "5,41-43",
+          "note": "STK constellation; MADDPG, DDPG, independent AC, unimproved actor, random offloading and local computing baselines"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2024-mhspo-satellite-peer-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks.md",
+          "lines": "277-327",
+          "note": "cost (11), P1 (12) with (12a)-(12e), decisions a and s = {alpha, beta}; card rewritten (invented route P_i, d_n and energy constraint)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks.md",
+          "lines": "358-476,525",
+          "note": "P2 (15) drift-plus-penalty, DOGD Algorithm 1, gap-preserving P3, subproblems (22)-(24), theta_n (25)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks.md",
+          "lines": "33,43-44,592-596,659-663",
+          "note": "SHSPO, NESPO and LSO benchmarks; MHSPO lowest backlog and delay among MHSPO, SHSPO, LSO; LSO lowest energy; NESPO best delay; RW S5 corrected"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2024-qos-vne-sagoin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network.md",
+          "lines": "138-192",
+          "note": "constraints (2)-(5), revenue (6), cost (7), LAR (8), LRC (9), delay (10); no single optimization problem; card rewritten (invented discounted objective, x_vn, z_s, C1-C5)"
+        },
+        {
+          "path": "raw/sources/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network.md",
+          "lines": "198-356",
+          "note": "K-means classification, five node features (13)-(17), convolutional policy (19)-(20), reward selection (21)-(22), k-shortest-path link embedding, gradient (25)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network.md",
+          "lines": "86,92,557-567,640-642",
+          "note": "re-embedding of failed subgraphs; providers withhold information; SA-RL-VNE, RL-VNE and BaseLine comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2025-three-tier-maritime-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network/Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.md",
+          "lines": "320-381",
+          "note": "problem (21) with (21a)-(21n); card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network/Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.md",
+          "lines": "383-662",
+          "note": "P0 (22), P1 association, P2/P2a power, P3/P3a partition bounds (36)-(37), P4 Lagrangian dual (42)-(47), Alg. 5"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network/Energy_Oriented_Three-Tier_Computation_Offloading_Scheme_in_Maritime_Edge_Computing_Network.md",
+          "lines": "5,165,842,864",
+          "note": "39.3% energy saving vs benchmarks; Max-Gain association baseline"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2025-vnf-sgin-dql",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks.md",
+          "lines": "244-279,337-356,417-463",
+          "note": "constraints (13)-(17), (26)-(28), (36), (39); profit (37)-(38); P1; card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks.md",
+          "lines": "465-470,749",
+          "note": "VSCP sets and sharing ratio (42); DQN target (55)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks/Learning-Assisted_Dynamic_VNF_Selection_and_Chaining_for_6G_Satellite-Ground_Integrated_Networks.md",
+          "lines": "889",
+          "note": "9.5%, 32.9%, 8.9% higher accumulated profit; 3.4% below upper bound"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2025-probabilistic-semantic-sagin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "274-332",
+          "note": "problem (24) and (24a)-(24k); parse tag shift resolved by text at 330 (24d altitude, 24e bandwidth); card rewritten (invented satellite CPU and C1-C5)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "336-755,885",
+          "note": "six alternating subproblems (25), (34), (38)-(39), (40) closed form, (42)/(47), (48)-(54)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks.md",
+          "lines": "47,808-810,837",
+          "note": "five baselines; lowest energy; ties comp-only-at-satellite in Fig. 7"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-hcdrl-ga-sagin-sar",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework.md",
+          "lines": "94-111,247-285",
+          "note": "indicators and Eq. (3), problem P (19) with (19a)-(19g); card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework.md",
+          "lines": "293,355,370-378,509-547",
+          "note": "wind velocity (23a)-(23c), GA fitness (32) with rollout evaluation, chromosome of takeoff and recovery cells"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework/Joint_Offloading_Trajectory_and_Deployment_Optimization_for_Multi-UAV_Cooperative_Regional_Search_in_SAGINs_A_Hybrid_DRL-GA_Framework.md",
+          "lines": "7,29,704",
+          "note": "up to 38% lifetime, 33% coverage under strong winds, nearly 18% coverage lift from GA deployment"
+        }
+      ]
+    },
+    {
+      "slug": "zheng-2024-semcom-sec-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Semantic_Communication_in_Satellite-Borne_Edge_Cloud_Network_for_Computation_Offloading/Semantic_Communication_in_Satellite-Borne_Edge_Cloud_Network_for_Computation_Offloading.md",
+          "lines": "425-470",
+          "note": "problem (36) objective (36a) and (36b)-(36i); card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Semantic_Communication_in_Satellite-Borne_Edge_Cloud_Network_for_Computation_Offloading/Semantic_Communication_in_Satellite-Borne_Edge_Cloud_Network_for_Computation_Offloading.md",
+          "lines": "286-354,520-552",
+          "note": "PSFed problems (27), (30); CTPS mode subproblems (39)-(40) by Lagrangian dual decomposition"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Semantic_Communication_in_Satellite-Borne_Edge_Cloud_Network_for_Computation_Offloading/Semantic_Communication_in_Satellite-Borne_Edge_Cloud_Network_for_Computation_Offloading.md",
+          "lines": "5,53,640,755-759,802",
+          "note": "PSFed 40.50% communication and 51.43% privacy-leakage reduction vs FedAvg; convergence similar to FedAvg; CTPS baselines local, SEC direct, cloud direct, CTPS without game"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2021-delay-sagin-task-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN.md",
+          "lines": "69,120-126,170-232",
+          "note": "Eq. (7), P1 (14a)-(14e) with IDs from the text at 196 (parse tags shifted), P2 (16), cost (15); card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN.md",
+          "lines": "198-214",
+          "note": "state, action, cost and policy definitions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN.md",
+          "lines": "9,382-384",
+          "note": "up to 30% delay reduction vs RPC and SPC probabilistic configuration"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2024-mco-satellite-edge-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks.md",
+          "lines": "336-378",
+          "note": "problem (25) with (25a)-(25c), relaxation (26) with (26a)-(26c); card relabeled from invented C1-C4"
+        },
+        {
+          "path": "raw/sources/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks.md",
+          "lines": "453-515",
+          "note": "distributed form (32), ADMM consensus (35), local and global updates"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks.md",
+          "lines": "5,714,774-776",
+          "note": "Optimal lowest cost, MCO-A second; 17.9/30.9/41.1/48.3% vs DRLCO, JTO-CCRO, Random, CL; runtime lower than Optimal"
+        }
+      ]
+    }
+  ]
+}

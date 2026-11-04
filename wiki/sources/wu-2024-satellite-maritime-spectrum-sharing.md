@@ -20,7 +20,7 @@ related:
   - "[[liu-2025-haps-uav-maritime-iot]]"
   - "[[zhang-2025-vnf-sgin-dql]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Intelligent Spectrum Sharing Strategy for Integrated Satellite-Maritime Heterogeneous Mobile Networks
@@ -37,35 +37,27 @@ A DRL-based **spectrum-sharing** strategy for an integrated satellite-maritime n
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: VDE-SAT satellite stations and VDE-TER maritime networks share VDES frequency and time resources, while a satellite observes channel occupancy and task queues only partially and must protect both uplink and downlink interference thresholds.
-
-**Problem & objective**: The spectrum-sharing problem maximizes weighted combined throughput, $\max_{U}\sum_i(D_i^{TER}+D_i^{SAT})$, subject to uplink and downlink interference limits.
-
+**Scenario**: VDE-SAT satellite links and VDE-TER maritime self-organizing networks (SONs) share VDES channels. The satellite observes share-channel occupancy and a priority-sorted VDE-SAT task queue only partially and must respect ITU-derived downlink and uplink interference limits.
+**Problem & objective**: Problem (1) selects the share-channel set for VDE-SAT to maximize system sum-throughput, $\max_U\sum_U(D_i^{TER}+D_i^{SAT})$, where $D_i^{SAT}$ is priority-weighted.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Share-channel allocation | $U$ | subset or binary allocation | Share channels assigned to VDE-SAT |
-| Logical-channel mapping | $A_t$ | discrete matrix | Maps tasks to share and logical channels |
-| Task priority order | $\pi_t$ | discrete permutation | Orders VDE-SAT transmission tasks |
-| Time-slot assignment | $\tau_{i,j}$ | continuous or discrete fraction | Busy or reserved share-channel slots |
-
+| Share-channel set | $U$ | subset of share channels | Share channels allocated to VDE-SAT in (1) |
+| Allocation method | $a_t$ | discrete, $\{0,1,2\}$ in (30) | TERF, SATF, or THRF share-channel allocation rule |
+| Channel allocation matrix | $\Gamma_t=[c_{i,j}^t]$ | discrete matrix (31)-(32) | Task $o_{t,l}^{tsk}$ mapped to share channel $i$ and logical channel $j$, or 0 |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Downlink interference is bounded: $\Phi_{DIC}^i\leq\Phi_{DIC}^{threshold}$. |
-| C2 | Uplink interference is bounded: $\Phi_{UIC}^i\leq\Phi_{UIC}^{threshold}$. |
-| C3 | Allocation respects VDES share-channel and logical-slot structure. |
-| C4 | Satellite decisions use only the partially observed channel and task history. |
-
-**Algorithm**: Model the satellite allocator as a POMDP, encode channel and task history in an LSTM observation state, and train an SCA-D3QN policy with Double DQN target evaluation and Dueling value and advantage streams for share-channel allocation.
+| (2) | Downlink interference limit: $\Phi_{DIC}^i\leq\Phi_{DIC}^{threshold}$, $i\in U$ (derived in (16)) |
+| (3) | Uplink interference limit: $\Phi_{UIC}^i\leq\Phi_{UIC}^{threshold}$, $i\in U$ |
+| Reward (33) | Penalty $\varpi$ when ship-station, DIC, or UIC observations violate thresholds; otherwise per-channel throughput |
+**Algorithm**: Model allocation as a POMDP with share-channel and task-queue observations (history length 8). SCA-D3QN combines Double DQN targets (36), LSTM streams for channel and task memory, and a Dueling value/advantage head; it is trained offline and executed online by the satellite.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] formulate VDES spectrum sharing between satellite and maritime terrestrial systems as a partially observable throughput-allocation problem. The satellite chooses shared channels, logical time mappings, and task ordering while satisfying ITU-derived downlink and uplink interference limits. An LSTM-enhanced Double Dueling DQN learns channel allocations from historical observations and task queues, with offline training and online execution. Simulations report higher combined throughput and more stable allocation than the compared spectrum-sharing policies.
+Wu et al. [x] formulate VDES spectrum sharing between satellite and maritime terrestrial systems as a partially observable throughput-allocation problem. The satellite chooses a share-channel allocation rule and maps priority-sorted tasks to share and logical channels while satisfying ITU-derived downlink and uplink interference limits. An LSTM-enhanced Double Dueling DQN learns channel allocations from historical observations and task queues, with offline training and online execution. Simulations report higher combined throughput and more stable allocation than the compared spectrum-sharing policies.
 
 ## Problem framing
 

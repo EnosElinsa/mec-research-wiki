@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 9 (SAGIN and satellite, second half)
+
+- Grounded 28 SAGIN, satellite, and maritime source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch09-sagin-b.json`. Grounded total: 232/699.
+- Rewrote Modeling Quick-Use Cards whose variables or objectives did not match the paper: qin-2025-matd3-noma-queue-sagin, tun-2025-thz-sag-mec-resource-allocation, wu-2024-satellite-maritime-spectrum-sharing, zeng-2026-movable-antenna-u2u-channel, zhai-2023-fedleo-decentralized-fl, zhang-2024-coma-satellite-offloading, zhang-2024-mhspo-satellite-peer-offloading, zhang-2024-qos-vne-sagoin (no single optimization problem; card now cites its metrics, rewards, and constraints (2)-(5)), and zhao-2025-probabilistic-semantic-sagin.
+- Relabeled invented C1-Cn constraint rows to the papers' equation IDs on the satellite-terrestrial computing, two-tier marine, double-edge SAMIN, STIN delay, three-tier satellite, three-tier maritime, VNF SGIN, HCDRL-GA SAR, SemCom SEC, delay-oriented SAGIN scheduling, and MCO pages.
+- Corrected Related Work claims: removed an unsupported LSTM error figure (wang-2026-spatiotemporal-leo-channel-prediction); named the actual baselines on the two-tier marine, double-edge SAMIN, VNE, COMA, and FedLEO pages; corrected the MHSPO result (local-only processing uses the least energy and the energy-agnostic variant has the lowest delay); stated that MCO-A ranks second to the exhaustive optimum; and replaced invented task ordering in the VDES spectrum-sharing summary.
+
 ## [2026-11-03] Grounded batch 8 (SAGIN and satellite, first half)
 
 - Scope: 27 SAGIN, satellite, and NTN source pages (23 required cards, 4 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch08-sagin-a.json`. Grounded total: 204/699.

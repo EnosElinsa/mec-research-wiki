@@ -22,7 +22,7 @@ related:
   - "[[zhang-2024-coma-satellite-offloading]]"
   - "[[you-2017-meco-resource-allocation]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Mobility-Aware Computation Offloading in Satellite Edge Computing Networks
@@ -55,10 +55,10 @@ Studies **mobility-aware computation offloading (MCO)** in a **satellite edge co
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task selects at most one remote execution node; no remote selection means local execution |
-| C2 | Original offloading entries satisfy $a_{i,m}\in\{0,1\}$ |
-| C3 | Every LEO respects its computing-resource cap, $\sum_i a_{i,m}x_i\leq Z_m$ |
-| C4 | Relaxed variables satisfy $0\leq a'_{i,m}\leq1$ and local ADMM copies agree with the global decision |
+| (25a) | At most one remote node per task, $\sum_ma_{i,m}\leq1$; no remote selection means local execution |
+| (25b) | Binary offloading $a_{i,m}\in\{0,1\}$ |
+| (25c) | LEO computing cap $\sum_ia_{i,m}x_i\leq Z_m$ |
+| (26a)-(26c) | Relaxed problem (26): same constraints with $0\leq a'_{i,m}\leq1$; ADMM form (35) adds consensus $\hat a_{i,m}^k=a'_{i,m}$ |
 
 **Algorithm**: Model LEO coverage time and four mobility-dependent execution routes → relax binary decisions to a feasible convex program → split global and local variables through ADMM → update satellite-local and consensus variables with primal and dual residual checks → restore one-hot binary offloading by maximum relaxed value.
 
@@ -66,7 +66,7 @@ Studies **mobility-aware computation offloading (MCO)** in a **satellite edge co
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhou et al. [x] studied mobility-aware computation offloading in a satellite edge computing network with GEO cloud centers, moving LEO edge servers, and ground users. They formulated the MCO problem to minimize a weighted sum of normalized network latency and energy consumption using mobility-aware route costs and heterogeneous LEO computing-resource constraints. Binary choices allow local execution, processing at the accessible LEO, forwarding to another LEO, or offloading to a GEO satellite. The authors relaxed the discrete non-convex formulation into a continuous convex problem and developed MCO-A, a distributed ADMM-based solver with a convergence analysis and binary recovery. Experiments in small-scale and large-scale scenarios report lower latency and energy consumption than the evaluated baseline and state-of-the-art approaches.
+Zhou et al. [x] studied mobility-aware computation offloading in a satellite edge computing network with GEO cloud centers, moving LEO edge servers, and ground users. They formulated the MCO problem to minimize a weighted sum of normalized network latency and energy consumption using mobility-aware route costs and heterogeneous LEO computing-resource constraints. Binary choices allow local execution, processing at the accessible LEO, forwarding to another LEO, or offloading to a GEO satellite. The authors relaxed the discrete non-convex formulation into a continuous convex problem and developed MCO-A, a distributed ADMM-based solver with a convergence analysis and binary recovery. In small- and large-scale experiments, MCO-A has the second-lowest average cost after the exhaustive optimum, and in the large-scale task-size test it is 17.9%, 30.9%, 41.1%, and 48.3% lower than DRLCO, JTO-CCRO, random, and local computing, at a lower running time than the optimum.
 
 ## Problem framing
 

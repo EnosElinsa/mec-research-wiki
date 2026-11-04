@@ -21,7 +21,7 @@ related:
   - "[[wang-2025-double-edge-samin]]"
   - "[[ao-sdr-sca-convex-pipeline]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Design of Satellite-Terrestrial Computing in 6G Wireless Networks
@@ -56,11 +56,12 @@ A joint design for **satellite-terrestrial computing** in 6G, where multiple ter
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Per-task delay bounds: $T_k^{g-g}+T_k^{g-s}\leq Z_k^g$ and $T_l^{s-s}\leq Z_l^s$. |
-| C2 | BS and satellite compute capacities are not exceeded. |
-| C3 | Offloading indicators are binary and each GUE chooses at most one BS or satellite; each SUE chooses one satellite. |
-| C4 | User transmit powers obey $0\leq p_k\leq P_k^{max}$ and $0\leq q_l\leq Q_l^{max}$. |
-| C5 | Receive beamformers are normalized: $\lVert\mathbf w_{k,m}\rVert^2=\lVert\mathbf v_{k,n}\rVert^2=1$. |
+| (18b)-(18c) | Per-task delay bounds: $T_k^{g-g}+T_k^{g-s}\leq Z_k^g$ and $T_l^{s-s}\leq Z_l^s$ |
+| (18d)-(18e) | BS capacity $\sum_k\alpha_{k,m}f_{k,m}^{gro}\leq F_m^{gro}$ and satellite capacity $\sum_k\beta_{k,n}f_{k,n}^{sat-g}+\sum_l\gamma_{l,n}f_{l,n}^{sat-s}\leq F_n^{sat}$ |
+| (18f) | Binary offloading indicators $\alpha_{k,m},\beta_{k,n},\gamma_{l,n}\in\{0,1\}$ |
+| (18g)-(18h) | Each GUE selects exactly one BS or satellite, $\sum_m\alpha_{k,m}+\sum_n\beta_{k,n}=1$; each SUE selects exactly one satellite, $\sum_n\gamma_{l,n}=1$ |
+| (18i)-(18j) | Power budgets $0\leq p_k\leq P_k^{max}$ and $0\leq q_l\leq Q_l^{max}$ |
+| (18k) | Unit-norm receive beamformers $\lVert\mathbf w_{k,m}\rVert^2=\lVert\mathbf v_{k,n}\rVert^2=1$ |
 
 **Algorithm**: Alternate offloading selection, beamforming, and resource-allocation subproblems; use relaxation mapping and branch-and-bound for binary selection, closed-form or convex approximations for powers and resources, and SDR with SCA for beamforming.
 
@@ -68,7 +69,7 @@ A joint design for **satellite-terrestrial computing** in 6G, where multiple ter
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] formulate satellite-terrestrial MEC as a joint offloading, beamforming, and resource-allocation problem for ground and space users. The MINLP minimizes weighted energy under per-task delays, server capacities, one-node selection, power budgets, and unit-norm receive beamformers. Their alternating-optimization pipeline combines relaxation mapping, branch-and-bound, convex approximation, and semidefinite relaxation across the coupled subproblems. The algorithm converges within about five iterations in the reported setting and consumes less weighted energy than the five comparison algorithms over the tested delay range.
+Wang et al. [x] formulate satellite-terrestrial MEC as a joint offloading, beamforming, and resource-allocation problem for ground and space users. The MINLP minimizes weighted energy under per-task delays, server capacities, exactly-one node selection, power budgets, and unit-norm receive beamformers. Their alternating-optimization pipeline combines relaxation mapping, branch-and-bound, convex approximation, and semidefinite relaxation across the coupled subproblems. The algorithm converges within about five iterations in the reported setting and consumes less weighted energy than the five comparison algorithms over the tested delay range.
 
 ## Problem framing
 

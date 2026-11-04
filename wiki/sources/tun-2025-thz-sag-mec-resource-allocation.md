@@ -17,7 +17,7 @@ related:
   - "[[two-stage-decomposition]]"
   - "[[zhou-2021-delay-sagin-task-scheduling]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint UAV Deployment and Resource Allocation in THz-Assisted MEC-Enabled Integrated Space-Air-Ground Networks
@@ -34,31 +34,33 @@ Formulates energy minimization for THz-assisted MEC-enabled [[space-air-ground-i
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: $J$ devices access $K$ UAVs over short-range THz OFDMA sub-bands in a space-air-ground network, while UAVs compute locally, forward tasks to neighboring UAVs, or use 28 GHz mmWave links to LEO satellites. Distance-based K-means initializes device-UAV association, and satellite energy is omitted.
+**Scenario**: Devices access $K$ UAVs over short-range THz OFDMA sub-bands in a space-air-ground network, while UAVs compute offloaded data locally, forward it to a neighboring UAV, or send it over mmWave links to an LEO satellite. Distance-based K-means initializes device-UAV association, and satellite energy is omitted.
 
-**Problem & objective**: A non-convex mixed-integer program minimizes total device and UAV energy, $\min E_{\mathrm{devices}}+E_{\mathrm{UAVs}}$, over task fractions, THz sub-band and power allocation, UAV deployment, and UAV-to-UAV/satellite forwarding.
+**Problem & objective**: Problem P (31) is a non-convex mixed-integer program that minimizes total device and UAV energy, $\min_{o,\beta,P,a,w,v,z}\mathbf Q=\sum_k\sum_j(E_j^{k,\mathrm{loc}}+E_j^{k,\mathrm{trans}})+\sum_kE_k^{\mathrm{Tot}}$ (30).
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Device offloading fraction | $\rho_j$ | continuous, $[0,1]$ | Fraction of device $j$'s task sent to UAVs |
-| THz sub-band assignment | $a_{j,k,b}$ | binary matching | Sub-band $b$ assigned to device $j$ and UAV $k$ |
-| Device transmit power | $p_j$ | continuous, bounded | THz access power |
-| UAV deployment | $\mathbf q_k$ | continuous position | UAV location serving the device cluster |
-| UAV forwarding choice | $z_{k,k'}$ | binary | Forwarding from UAV $k$ to another UAV or LEO satellite |
+| UAV deployment | $o=\{(x_k,y_k)\}$ | continuous, within bounds | Horizontal UAV positions |
+| Device offloaded data | $\beta_j^k$ | continuous, $0\le\beta_j^k\le A_j$ | Bits of device $j$'s task sent to its UAV $k$ |
+| THz sub-band assignment | $a_j^{k,b}$ | binary | Sub-band $b$ of UAV $k$ assigned to device $j$ |
+| Device transmit power | $P_j^{k,b}$ | continuous, $[0,P_j^{\max}]$ | THz uplink power |
+| UAV offloading choice | $w_j^k,v_j^{k\to k'},z_j^{k\to s}$ | binary | Compute at UAV $k$, forward to UAV $k'$, or forward to satellite $s$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Device task fractions and execution bits meet each latency-sensitive task requirement |
-| C2 | Each THz sub-band is assigned consistently and access interference remains feasible |
-| C3 | Device and UAV transmit powers satisfy peak budgets |
-| C4 | Device, UAV, and satellite processing/forwarding delays remain below task deadlines |
-| C5 | UAV positions and binary forwarding decisions obey deployment and association limits |
+| 31b-31c | Local and remote processing of each task finish within its maximum delay $\varphi_j$ |
+| 31d | Offloaded data does not exceed the task input size, $0\le\beta_j^k\le A_j$ |
+| 31e-31f | Each device uses at most one sub-band of its UAV, and each sub-band serves at most one device |
+| 31g | Device power is at most $P_j^{\max}$ |
+| 31h | Offloaded data is computed at exactly one location: $w_j^k+\sum_{k'}v_j^{k\to k'}+\sum_sz_j^{k\to s}=1$ |
+| 31i-31l | Sub-band and offloading indicators are binary |
+| 31m-31n | UAV coordinates stay within $[X_k^{\min},X_k^{\max}]$ and $[Y_k^{\min},Y_k^{\max}]$ |
 
-**Algorithm**: Solve device offloading by convex optimization → match devices to THz sub-bands and update powers with a matching game and CCP → optimize UAV deployment with SCA → relax binary forwarding and solve the UAV task-offloading block with BSUM → alternate all blocks.
+**Algorithm**: Block coordinate descent over four subproblems: device offloading P1 (convex), sub-band assignment and power control P2 (matching game with CCP for power), UAV deployment P3 (SCA), and UAV task offloading P4 (relaxed binaries solved with BSUM), alternated until convergence.
 
 ## Related Work Paragraph
 

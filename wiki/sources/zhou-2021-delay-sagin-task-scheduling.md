@@ -19,7 +19,7 @@ related:
   - "[[xuemin-shen]]"
   - "[[nan-cheng]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deep Reinforcement Learning for Delay-Oriented IoT Task Scheduling in SAGIN
@@ -38,7 +38,7 @@ An early SAGIN task-scheduling paper where a rotary-wing UAV collects delay-orie
 
 **Scenario**: A rotary-wing UAV follows a predefined route, collects stochastic IoT tasks, executes them locally, or forwards them to an available terrestrial BS or an always-accessible LEO constellation. Separate BS and satellite interfaces avoid cross-tier interference; UAV-BS links use location-dependent air-to-ground path loss, and the UAV-satellite link includes Weibull rain attenuation and propagation delay.
 
-**Problem & objective**: P1 is an uncertain integer nonlinear scheduling problem recast as an energy-constrained MDP that minimizes long-run processing delay, $\min_{\pi}\lim_{T\to\infty}\frac{1}{T}\mathbb E_\pi[\sum_{t=1}^{T}C_t]$, subject to the UAV energy capacity.
+**Problem & objective**: P1 (14) is an uncertain integer nonlinear scheduling problem recast as the energy-constrained MDP P2 (16) that minimizes long-run processing delay, $\min_{\pi}\lim_{T\to\infty}\frac{1}{T}\mathbb E_\pi[\sum_{t=1}^{T}C_t]$, subject to the UAV energy capacity.
 
 **Decision variables**:
 
@@ -52,11 +52,12 @@ An early SAGIN task-scheduling paper where a rotary-wing UAV collects delay-orie
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Destination belongs to the location-dependent available set $\mathcal L_t$ |
-| C2 | Offloaded task count respects the forwarding limit and current queue backlog |
-| C3 | A busy forwarding interface admits no new tasks, giving $\alpha_t=-1$ and $\beta_t=0$ |
-| C4 | Expected time-average UAV energy consumption does not exceed capacity $\varepsilon$ |
-| C5 | Computing and forwarding queues remain within their finite capacities |
+| (14b) = (7) | BS forwarding of $\beta_t$ tasks finishes within the coverage duration $K_{\alpha_t}$ |
+| (14c) | Time-average UAV energy $\lim_T\frac1T\sum_t[e_0+e_1]\leq\varepsilon$; in P2 it becomes the expected form (16b) |
+| (14d) | Destination $\alpha_t\leq N$, $\alpha_t\in\mathcal L_t$ |
+| (14e) | Offloaded count $\beta_t\leq\beta_{\max}$, $\beta_t\in\mathbb N$ |
+| Model rule | A busy forwarding queue admits no new forwarding: $\alpha_t=-1$, $\beta_t=0$ |
+| Cost (15) | $C_t=D_t+\Lambda_t$ with drop penalty $\Lambda_t=\lambda\max(M_t+O_t-\rho,0)$ |
 
 **Algorithm**: Form the CMDP state from location, forwarding status, computing backlog, and cumulative energy → learn separate delay-cost and energy-risk Q-functions with target networks and replay → mask unavailable actions → combine cost and risk values → adjust the outer risk weight until the energy constraint is satisfied.
 

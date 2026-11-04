@@ -20,7 +20,7 @@ related:
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[mahboob-2024-ai-ntn-survey]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: not_applicable
 ---
 
@@ -38,7 +38,7 @@ Predicts future satellite-RIS-user MIMO channel tensors with global/local attent
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] developed a spatiotemporal-attention model for predicting satellite, UAV-RIS, and user MIMO channel tensors under rapid mobility. Their architecture expands antenna-time coefficients into tokens, combines global and local attention, and uses masked reconstruction pretraining to tolerate missing historical snapshots. A dominant DFT-beam representation reduces attention cost by retaining only the strongest complex beam coefficients and their indices. At a twenty-step horizon, the reported full-CSI NMSE was approximately -19.4 dB, compared with approximately -16.4 dB for the next-best LSTM baseline. Retaining nine beams in the small-array case reduced computation from 6.06 to 1.52 GMac while changing NMSE from -19.40 to -19.35 dB. A single-user MRT experiment also showed higher spectral efficiency with predicted CSI than with stale CSI at both five-step and twenty-step horizons.
+Wang et al. [x] developed a spatiotemporal-attention model for predicting satellite, UAV-RIS, and user MIMO channel tensors under rapid mobility. Their architecture expands antenna-time coefficients into tokens, combines global and local attention, and uses masked reconstruction pretraining to tolerate missing historical snapshots. A dominant DFT-beam representation reduces attention cost by retaining only the strongest complex beam coefficients and their indices. The model achieved lower NMSE than the compared predictors at every horizon, reaching about -19.4 dB at a twenty-step horizon with 30 history steps. Retaining nine beams in the small-array case reduced computation from 6.06 to 1.52 GMac while changing NMSE from -19.40 to -19.35 dB. A single-user MRT experiment also showed higher spectral efficiency with predicted CSI than with stale CSI at both five-step and twenty-step horizons.
 
 ## Problem
 

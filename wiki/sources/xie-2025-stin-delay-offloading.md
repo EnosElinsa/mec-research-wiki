@@ -27,7 +27,7 @@ related:
   - "[[liu-2023-sagecn-online-offloading]]"
   - "[[wang-2024-satellite-terrestrial-computing]]"
 created: 2026-06-03
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Computation Offloading and Resource Allocation in LEO Satellite-Terrestrial Integrated Networks With System State Delay
@@ -44,7 +44,7 @@ For a LEO satellite-terrestrial integrated network (STIN) where users can offloa
 
 **Scenario**: Mobile users in a LEO satellite-terrestrial integrated network execute tasks locally or offload them to terrestrial base stations, LEO edge servers, or a cloud data center over a finite time horizon with delayed observations and actions.
 
-**Problem & objective**: Problem P0 minimizes weighted execution and transmission energy, $\min_{\{\mathcal X,\mathbf F^{\mathcal N},\mathbf F^{\mathcal M},\boldsymbol\psi\}}E$, under task-latency and communication or computing resource limits.
+**Problem & objective**: Problem P0 (22) minimizes energy (21), with execution energy weighted by $\varphi\in(0,1)$, as $\min_{\{\mathcal X,F^{\mathcal N},F^{\mathcal M}\}}E$, under task-latency and communication or computing resource limits.
 
 **Decision variables**:
 
@@ -53,17 +53,17 @@ For a LEO satellite-terrestrial integrated network (STIN) where users can offloa
 | Offloading mode | $\mathcal X(t,k)$ | Discrete, $\{0,\mathcal N,N+1,N+2\}$ | Choose local, BS, LEO, or cloud execution |
 | BS CPU allocation | $\mathbf F^{\mathcal N}$ | Continuous, positive | Allocate BS cycles to offloaded tasks |
 | LEO CPU allocation | $\mathbf F^{\mathcal M}$ | Continuous, positive | Allocate satellite-edge cycles to offloaded tasks |
-| Bandwidth shares | $\psi_k,\hat\psi_k$ | Continuous, $(0,1)$ | Allocate BS and LEO uplink bandwidth |
+| Bandwidth shares | $\psi_k,\hat\psi_k$ | Continuous, $(0,1)$ | BS and LEO uplink bandwidth shares, constrained in (22d)-(22f) but not listed in the min set of (22a) |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Execution and transmission energies and assigned CPU resources are positive |
-| C2 | BS and LEO bandwidth shares each sum to one over their served users |
-| C3 | Aggregate task latency satisfies the deadline condition in (22g) |
-| C4 | Server allocations satisfy $\sum_k f_{n,k}\leq f_{n,\max}$ and $\sum_k f_{m,k}\leq f_{m,\max}$ |
-| C5 | Every task chooses one valid mode, $\mathcal X(t,k)\in\{0,\mathcal N,N+1,N+2\}$ |
+| (22b)-(22c) | Positive execution and transmission energies, and positive CPU assignments $f_{n,k}>0$, $f_{m,k}>0$ |
+| (22d)-(22f) | Bandwidth shares $\psi_k,\hat\psi_k\in(0,1)$ that sum to one over BS and LEO users: $\sum_{k\in\mathcal K_{bs}}\psi_k=1$, $\sum_{k\in\mathcal K_{leo}}\hat\psi_k=1$ |
+| (22g) | Aggregate delay $D\leq\sum_t\sum_kz_{k,\max}^t$ |
+| (22h)-(22i) | Server capacities $\sum_kf_{n,k}\leq f_{n,\max}$ and $\sum_kf_{m,k}\leq f_{m,\max}$ |
+| (22j) | Offloading mode $\mathcal X(t,k)\in\{0,\mathcal N,N+1,N+2\}$ |
 
 **Algorithm**: The offloading process is modeled as an SDMDP and transformed into an ordinary MDP with an augmented delayed-action state, then a Delay-DDQN selects offloading modes while RAMLFQ allocates edge CPU by task priority, queue level, and time-slice round robin.
 

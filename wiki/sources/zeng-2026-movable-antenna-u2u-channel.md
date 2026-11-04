@@ -16,7 +16,7 @@ related:
   - "[[mozaffari-2019-drone-antenna-array]]"
   - "[[dusit-niyato]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Modeling and Analysis of Movable Antenna Aided MIMO Wideband UAV-to-UAV Channels for Low-Altitude Economy Networks
@@ -33,28 +33,19 @@ Builds a wideband UAV-to-UAV MIMO channel model for low-altitude economy network
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A wideband MIMO UAV-to-UAV link has movable elements at both transmitter and receiver within bounded three-dimensional regions. A two-concentric-cylinder geometry models LoS, single-bounce, and double-bounce components while both UAVs move.
-
-**Problem & objective**: A non-convex antenna-positioning problem maximizes ergodic-capacity surrogates, $\max_{\mathbf r_T,\mathbf r_R}\log\det\mathbf R_T+\log\det\mathbf R_R$, using closed-form spatial correlation.
-
+**Scenario**: A wideband MIMO UAV-to-UAV link has movable antennas (MAs) at both transmitter and receiver within bounded three-dimensional regions. A two-concentric-cylinder geometry models LoS, single-bounce, and double-bounce components while both UAVs move.
+**Problem & objective**: Problem (51) maximizes an ergodic-capacity surrogate under the Kronecker model, $\max_{\mathbf D_{Tp},\mathbf D_{Rq}}\log\det(\mathbf R_T(\mathbf D_{Tp}))+\log\det(\mathbf R_R(\mathbf D_{Rq}))$, with spatial correlations from the derived closed-form STF-CF.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Transmit-element positions | $\mathbf r_{T,m}$ | continuous 3-D positions | Movable antennas on the transmitting UAV |
-| Receive-element positions | $\mathbf r_{R,n}$ | continuous 3-D positions | Movable antennas on the receiving UAV |
-| Momentum states | $\mathbf v_T,\mathbf v_R$ | continuous vectors | Gradient-ascent momentum for position updates |
-
+| Transmit MA positions | $\mathbf D_{Tp}$ | continuous 3-D, $\in\mathcal C_T$ | Positions of the $M_T$ transmit MAs |
+| Receive MA positions | $\mathbf D_{Rq}$ | continuous 3-D, $\in\mathcal C_R$ | Positions of the $M_R$ receive MAs |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every element stays inside its bounded movement region |
-| C2 | Pairwise antenna spacing remains above the mechanical minimum |
-| C3 | Spatial correlation matrices follow the derived wideband U2U channel model |
-| C4 | Position updates are projected back to the feasible region |
-
-**Algorithm**: Derive space-time-frequency correlation from the two-cylinder model → form transmit and receive spatial correlation matrices → differentiate the log-determinant capacity surrogate with respect to element positions → update positions by momentum gradient ascent → project region and spacing violations → alternate transmitter and receiver updates until convergence.
+| (51a)-(51b) | MAs stay in their feasible regions, $\mathbf D_{Tp}\in\mathcal C_T$, $\mathbf D_{Rq}\in\mathcal C_R$ (cube $[-L/2,L/2]^3$ in Algorithm 1) |
+| (51c)-(51d) | Minimum pairwise spacing $\lvert d_{pp'}\rvert\geq D$ and $\lvert d_{qq'}\rvert\geq D$ |
+**Algorithm**: Problem (51) splits into independent transmit and receive subproblems. Algorithm 1 runs momentum gradient ascent with the closed-form gradient (52), $\mathrm{Tr}(\mathbf R_T^{-1}\partial\mathbf R_T/\partial\mathbf D_{Tp})$, clips positions to the region, repairs spacing violations with a repulsion step, and accepts a step only if the log-determinant increases, adapting the learning rate.
 
 ## Related Work Paragraph
 

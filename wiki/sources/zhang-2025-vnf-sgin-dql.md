@@ -20,7 +20,7 @@ related:
   - "[[pham-2026-vnf-control-loop]]"
   - "[[routing-vnf-scaling-control-loop]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Learning-Assisted Dynamic VNF Selection and Chaining for 6G Satellite-Ground Integrated Networks
@@ -53,11 +53,13 @@ A **deep Q-learning (DQL)** framework for **dynamic VNF selection and chaining (
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | VNF processing load at node $v$ remains below $c_{f_i}^v$. |
-| C2 | Aggregate flow rate on physical link $(v,u)$ remains below $B_t^{(v,u)}/\sigma$. |
-| C3 | Each flow satisfies the end-to-end delay requirement: $D_{l,t}\leq D$. |
-| C4 | Virtual-link routes obey source, destination, and intermediate-node flow conservation. |
-| C5 | Placement and routing indicators are binary and satisfy service-request compatibility constraints. |
+| (13)-(14) | VNF maps only to a node with the instance installed, $a_{f_i}^v\geq x_t^v(f_{i,l}^j)$, and to exactly one node, $\sum_vx_t^v(f_{i,l}^j)=1$ |
+| (15)-(17) | Service-chain anchors: first VNF at the source terminal, second VNF at the access satellite or a ground node, last VNF at the destination |
+| (26) | Node load $\sum_l\sum_j\lambda_{l,t}x_t^v(f_{i,l}^j)<c_{f_i}^v$ |
+| (27) | Link load $\sum_l\sum\lambda_{l,t}y_t^{(v,u)}(\cdot)<B_t^{(v,u)}/\sigma$ |
+| (28) | End-to-end delay $D_{l,t}\leq D$, with $D_{l,t}$ from (32)-(35) |
+| (36) | Flow conservation at source, destination, and intermediate nodes |
+| (39) | Binary $x_t^v(f_{i,l}^j)$ and $y_t^{(v,u)}(f_{i,l}^j,f_{i',l}^{j+1})$ |
 
 **Algorithm**: Cluster historical network loads, enumerate feasible per-flow chains by breadth-first search, greedily retain a high-profit VSCP set for each load cluster using the sharing ratio, and train a DQN with replay memory, target-network updates, and epsilon-greedy selection over the compressed action space.
 

@@ -18,7 +18,7 @@ related:
   - "[[sun-2024-mfris-semantic-antijamming]]"
   - "[[du-2024-yolo-semcom-digital-twin]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Probabilistic Semantic Communication Over Space-Air-Ground Integrated Networks
@@ -35,37 +35,32 @@ Introduces a SAGIN-enabled probabilistic semantic communication (PSCom) model wh
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: One satellite sends data through one hovering UAV relay to multiple ground terminals. Shared probabilistic semantic graphs allow relation omission, while satellite or UAV compression computation trades processing energy against fewer transmitted bits.
-
-**Problem & objective**: A non-convex joint communication-computation problem minimizes total energy, $\min E_{\mathrm{comm}}+E_{\mathrm{comp}}$, over semantic compression, processing location, resources, and UAV placement.
-
+**Scenario**: One satellite sends data through one hovering UAV relay to $K$ ground terminals (GTs). Shared probabilistic semantic graphs let the sender omit inferable relations, and each GT's semantic compression is computed at the satellite or at the UAV, trading computation energy against transmitted bits.
+**Problem & objective**: Problem (24) minimizes total energy, $\min_{\mathbf L^U,H_U,\Theta,\mathbf b,\mathbf f,\mathbf p,\rho,\mathbf a^S,\mathbf a^U}e_S+e_{SU}+e_U+e_{UG}$, the satellite computing, satellite-UAV, UAV computing, and UAV-GT energies.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Compression placement | $x_k^S,x_k^U$ | binary | Satellite or UAV performs GT $k$'s compression |
-| Semantic ratio | $\rho_k$ | continuous, bounded | Transmitted semantic fraction for GT $k$ |
-| Compute capacity | $f_k^S,f_k^U$ | continuous, nonnegative | CPU assigned to semantic compression |
-| Power/bandwidth | $p_k,b_k$ | continuous, bounded | Satellite-UAV-GT communication resources |
-| UAV placement | $\mathbf q,H,\theta$ | continuous | Horizontal position, altitude, and beamwidth |
-
+| Compression placement | $a_k^S,a_k^U$ | binary | Satellite or UAV computes GT $k$'s semantic compression |
+| Semantic compression ratio | $\rho_k$ | continuous, $[\rho_k^{\min},1]$ | Fraction of data kept after compression |
+| UAV computation capacity | $f_k$ | continuous, $\geq0$ | UAV CPU assigned to GT $k$ |
+| UAV power and bandwidth | $p_k,b_k$ | continuous, $\geq0$ | UAV-to-GT transmit power and bandwidth |
+| UAV placement | $\mathbf L^U,H_U,\Theta$ | continuous | Horizontal location, altitude, and antenna beamwidth |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each GT's semantic compression is performed at most once |
-| C2 | Compression ratios satisfy semantic-recovery requirements |
-| C3 | Satellite and UAV compute allocations stay within capacity |
-| C4 | Communication power and bandwidth remain within budgets |
-| C5 | UAV altitude, beamwidth, coverage, and horizontal location are feasible |
-
-**Algorithm**: Update satellite/UAV compression-task allocation → optimize semantic ratios → apply closed-form compute allocation → update power and bandwidth → update UAV altitude and beamwidth, including the closed-form altitude step → plan horizontal location → iterate the six blocks until total energy stops decreasing.
+| (24a) | Latency $t_S+t_{SU}+t_k^U+t_k^{UG}\leq T$ |
+| (24b), (24e), (24f) | UAV budgets $\sum_kp_k\leq P_U$, $\sum_kb_k\leq B_U$, $\sum_kf_k\leq F_U$ |
+| (24c)-(24d), (24j) | Coverage $\lVert\mathbf L^U-\mathbf L_k^G\rVert\leq H_U\tan\Theta$, altitude $H_U^{\min}\leq H_U\leq H_U^{\max}$, beamwidth $\Theta_{\min}\leq\Theta\leq\Theta_{\max}$ |
+| (24g) | $\rho_k^{\min}\leq\rho_k\leq1$ |
+| (24h)-(24i) | Binary placement with $a_k^S+a_k^U\leq1$ |
+| (24k) | $b_k,f_k,p_k\geq0$ |
+**Algorithm**: Alternate six subproblems: task allocation (25), semantic ratio (34) via a piecewise reformulation (38)-(39), closed-form UAV computation capacity (40), power and bandwidth (42)/(47), altitude and beamwidth (48)-(53) with a closed-form altitude, and horizontal location (54), until total energy converges.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] studied energy-efficient probabilistic semantic communication over a satellite-UAV-ground integrated network. They formulated communication and computation energy minimization over compression placement, semantic ratios, computing capacity, power, bandwidth, and UAV position, altitude, and beamwidth. The method alternates six subproblems for processing assignment, semantic compression, compute allocation, radio allocation, vertical design, and horizontal placement. Closed-form updates are derived for computation capacity and UAV altitude within the iterative algorithm. Simulations report lower total energy than the evaluated non-semantic, random-allocation, simplified-semantic, and fixed-UAV baselines.
+Zhao et al. [x] studied energy-efficient probabilistic semantic communication over a satellite-UAV-ground integrated network. They formulated communication and computation energy minimization over compression placement, semantic ratios, computing capacity, power, bandwidth, and UAV position, altitude, and beamwidth. The method alternates six subproblems for processing assignment, semantic compression, compute allocation, radio allocation, vertical design, and horizontal placement. Closed-form updates are derived for computation capacity and UAV altitude within the iterative algorithm. Simulations report lower total energy than non-semantic, random-allocation, simplified-semantic, and fixed-UAV-location baselines, and matches computation only at the satellite in the data-size test.
 
 ## Problem
 

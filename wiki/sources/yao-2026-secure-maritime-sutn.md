@@ -21,7 +21,7 @@ related:
   - "[[chan-byoung-chae]]"
   - "[[kai-kit-wong]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Relay-Aided Secure Maritime Networks Coexisting With Satellite Networks: Robust Beamforming and Trajectory Optimization
@@ -69,7 +69,7 @@ Jointly designs TBS, decode-and-forward UAV-relay, and satellite beamformers wit
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yao et al. [x] studied robust secure maritime communication in a spectrum-sharing satellite-UAV-terrestrial network with a decode-and-forward UAV relay and imperfect CSI. They maximized worst-case weighted average secrecy rate over TBS, UAV, and satellite beamformers and the UAV trajectory while enforcing power, flight, relay-backhaul, and satellite-user rate constraints. Their alternating method uses auxiliary variables, the S-procedure, sign-definiteness reformulations, successive convex approximation, and trust-region trajectory updates. The plotted outer objective converges after roughly seven iterations for the examined satellite-user rate thresholds. Simulations report about 150 percent higher average secrecy rate than random beamforming in the flight-duration comparison and show that the robust joint design remains stronger than the compared schemes as bounded CSI error increases.
+Yao et al. [x] studied robust secure maritime communication in a spectrum-sharing satellite-UAV-terrestrial network with a decode-and-forward UAV relay and imperfect CSI. They maximized worst-case weighted average secrecy rate over TBS, UAV, and satellite beamformers and the UAV trajectory while enforcing power, flight, relay-backhaul, and satellite-user rate constraints. Their alternating method uses auxiliary variables, the S-procedure, sign-definiteness reformulations, successive convex approximation, and trust-region trajectory updates. The plotted outer objective converges after roughly seven iterations for the examined satellite-user rate thresholds. Simulations report about 150 percent higher average secrecy rate than random beamforming in the flight-duration comparison and show that the robust joint design stays above the random-beamforming and straight-line benchmarks across the tested CSI-uncertainty levels.
 
 ## Problem
 

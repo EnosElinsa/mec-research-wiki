@@ -18,7 +18,7 @@ related:
   - "[[fu-2025-otae-inference-lae-batching]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Learning-Based NOMA-Enabled Queue-Aware Task Offloading and AAV 3D Trajectory Planning for SAGIN
@@ -35,36 +35,37 @@ A hierarchical **SAGIN** where AAVs provide access and satellites provide backha
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A space-air-ground integrated network uses AAVs for access and satellites for backhaul. NOMA serves users over reused channels, AAVs execute or forward tasks, and queue backlogs evolve as trajectories, task assignment, offloading, and CPU allocations change.
+**Scenario**: A space-air-ground integrated network uses AAVs for access and satellites for backhaul. Users reach AAVs over NOMA links, each AAV computes part of a task and forwards the rest to one satellite, and user, AAV, and satellite queue backlogs evolve with the offloading and computing decisions.
 
-**Problem & objective**: A queue-aware stochastic non-convex program minimizes long-term system cost, $\min\limsup_{T\to\infty}T^{-1}\sum_t\big(C_{\mathrm{energy}}(t)+C_{\mathrm{delay}}(t)\big)$, under queue-delay and resource constraints.
+**Problem & objective**: Problem P0 (42) minimizes total system cost, $\min_{\Psi(t),A(t),W(t),F_{AAV}(t),F_{sat}(t)}\sum_i\sum_tC_i(t)$, where (41) gives $C_i(t)=\delta_1E_i(t)+\delta_2T_i(t)$, a weighted sum of energy and delay.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Task offloading | $\beta_i(t)$ | binary/continuous model variable | Local or AAV/satellite execution choice for task $i$ |
-| Task assignment | $a_{i,k}(t)$ | binary | Access AAV or backhaul destination for task $i$ |
-| AAV 3-D trajectory | $\mathbf q_k(t)$ | continuous position | AAV location over the planning horizon |
-| Resource allocation | $f_{i,k}(t),p_{i,k}(t)$ | continuous, bounded | CPU frequency and NOMA transmit power |
+| AAV 3-D coordinates | $\Psi(t)$ | continuous positions | AAV trajectory over slots |
+| Task offloading | $a_{i,j}(t)\in A(t)$ | binary | User $i$ connects to AAV $j$ |
+| AAV task proportion | $w_{j,k}^i(t)\in W(t)$ | continuous, $[0,1]$ | Share of user $i$'s task computed at AAV $j$; the rest, $1-w_{j,k}^i(t)$, goes to satellite $k$ |
+| Computing resources | $F_{AAV}(t),F_{sat}(t)$ | continuous, bounded | CPU allocation at AAVs and satellites |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Queue dynamics and virtual queues keep task backlog and delay finite |
-| C2 | NOMA access rates and task assignments respect link capacity |
-| C3 | AAV and satellite CPU resources and transmit powers remain bounded |
-| C4 | AAV 3-D motion satisfies speed, region, and trajectory limits |
-| C5 | Long-term queue-delay constraints are enforced by Lyapunov virtual queues |
+| C1 | Task split limit $w_{j,k}^i(t)\in[0,1]$ |
+| C2-C3 | Each user connects to at most one AAV per slot |
+| C4-C5 | Each AAV connects to at most one satellite, $b_{j,k}(t)\in\{0,1\}$ |
+| C6-C7 | Satellite and AAV computing allocations stay within available resources |
+| C8 | Queue constraints (6)-(7) and (27) |
+| C9 | AAV motion constraints (11)-(17): altitude, horizontal and vertical step, region, coverage separation, and minimum distance |
 
-**Algorithm**: Construct virtual queues and a drift-plus-penalty bound → decompose each slot into trajectory/offloading learning, CVX resource updates, and GSCRA task assignment → train MATD3 actors and critics for the continuous control block → update the queues and repeat.
+**Algorithm**: Construct virtual queues and a drift-plus-penalty bound → split each slot into SP1 (trajectory and offloading, learned by MATD3), SP2 (AAV task proportion and AAV computing, solved with CVX), and SP3 (satellite computing, solved by the greedy GSCRA allocation) → update the queues and repeat.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Qin et al. [x] studied queue-aware task offloading and three-dimensional AAV trajectory planning in a NOMA-enabled space-air-ground integrated network. They formulated a stochastic system-cost minimization problem that jointly considers AAV trajectories, task offloading and assignment, and computing-resource allocation under queue-delay and resource constraints. Lyapunov optimization decomposes the long-term problem into three subproblems solved by the MATD3-based trajectory/offloading module, a CVX-based resource module, and GSCRA task assignment. In the reported setting, the proposed method reduces total system cost by 18.76%, 29.40%, 35.38%, and 52.14% against MADDPG, MATD3-F, MATD3-P, and DDPG, respectively. The corresponding average queue-backlog reductions are 4.36%, 12.49%, 15.95%, and 30.38%.
+Qin et al. [x] studied queue-aware task offloading and three-dimensional AAV trajectory planning in a NOMA-enabled space-air-ground integrated network. They formulated a stochastic system-cost minimization problem that jointly considers AAV trajectories, user-AAV offloading, AAV-satellite task splitting, and computing-resource allocation under queue, connection, computing, and motion constraints. Lyapunov optimization decomposes the long-term problem into three subproblems solved by the MATD3-based trajectory/offloading module, a CVX-based resource module, and GSCRA task assignment. In the reported setting, the proposed method reduces total system cost by 18.76%, 29.40%, 35.38%, and 52.14% against MADDPG, MATD3-F, MATD3-P, and DDPG, respectively. The corresponding average queue-backlog reductions are 4.36%, 12.49%, 15.95%, and 30.38%.
 
 ## Problem framing
 

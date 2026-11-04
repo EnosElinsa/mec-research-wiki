@@ -23,7 +23,7 @@ related:
   - "[[sun-2024-mfris-semantic-antijamming]]"
 modeling_card: required
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Semantic Communication in Satellite-Borne Edge Cloud Network for Computation Offloading
@@ -58,11 +58,11 @@ A framework integrating **semantic communication (SemCom)** into a **LEO satelli
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Computing capacities satisfy $f_{cloud}\ge f_a\ge f_{c,\max}\ge0$ |
-| C2 | At most one offloading mode is selected: $\gamma_{1c}+\gamma_{2c}+\gamma_{3c}+\gamma_{4c}\le1$ |
-| C3 | TST and direct-link power satisfy $\sum_{d_0}x_{d_0}^{cb}p_{c,d_0}^{cb}\le P_{c,\max}$ and $p_c^{ca}\le P_{c,\max}$ |
-| C4 | Subcarriers are binary and their allocation does not exceed the $D_0$ available subcarriers |
-| C5 | The selected transmission completes within satellite visibility: $t^*<t_a'$ |
+| (36b) | Computing capacities $f_{cloud}\ge f_a\ge f_{c,\max}\ge0$ |
+| (36c)-(36d) | Binary mode indicators with at most one offloading mode: $\gamma_{1c}+\gamma_{2c}+\gamma_{3c}+\gamma_{4c}\le1$ |
+| (36e)-(36f) | TST-access and direct-link power: $\sum_{d_0}x_{d_0}^{cb}p_{c,d_0}^{cb}\le P_{c,\max}$, $p_c^{ca}\le P_{c,\max}$ |
+| (36g)-(36h) | Binary subcarrier assignment with $\sum_{d_0}x_{d_0}^{cb}\le D_0$ |
+| (36i) | Transmission completes within satellite visibility: $t^*<t_a'$ |
 
 **Algorithm**: Rubinstein bargaining allocates TST subcarriers without revealing private computing and power states $\rightarrow$ convert the incomplete-information MINLP into a complete-information problem $\rightarrow$ decompose it into five processing modes per accessible satellite $\rightarrow$ optimize local CPU or subcarrier power and task allocation with Lagrangian dual decomposition $\rightarrow$ select the minimum-cost mode.
 
@@ -70,7 +70,7 @@ A framework integrating **semantic communication (SemCom)** into a **LEO satelli
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zheng et al. [x] studied semantic communication for computation offloading in a LEO satellite-borne edge cloud network. They introduced SemCom-SEC with semantic coders on TSTs and satellites and considered local, SEC, and terrestrial-cloud processing through direct or TST-assisted access. For semantic coders in maintenance, they proposed PSFed, which adaptively splits and prunes encoder parameters for federated aggregation while retaining complete local coder models. For coders in service, they formulated delay and energy minimization with privacy and fairness as an incomplete-information MINLP and proposed CTPS based on Rubinstein bargaining and Lagrangian dual decomposition. Simulations report that PSFed reduces communication-resource consumption by 40.50% and privacy leakage by 51.43% relative to FedAvg while preserving similar accuracy and convergence. The CTPS simulations report lower processing cost than the evaluated local, direct SEC, direct cloud, and non-game scheduling alternatives.
+Zheng et al. [x] studied semantic communication for computation offloading in a LEO satellite-borne edge cloud network. They introduced SemCom-SEC with semantic coders on TSTs and satellites and considered local, SEC, and terrestrial-cloud processing through direct or TST-assisted access. For semantic coders in maintenance, they proposed PSFed, which adaptively splits and prunes encoder parameters for federated aggregation while retaining complete local coder models. For coders in service, they formulated delay and energy minimization with privacy and fairness as an incomplete-information MINLP and proposed CTPS based on Rubinstein bargaining and Lagrangian dual decomposition. Simulations report that PSFed reduces communication-resource consumption by 40.50% and privacy leakage by 51.43% relative to FedAvg with convergence similar to FedAvg. The CTPS simulations report lower processing cost than the evaluated local, direct SEC, direct cloud, and non-game scheduling alternatives.
 
 ## Problem framing
 

@@ -17,7 +17,7 @@ related:
   - "[[zhao-2025-probabilistic-semantic-sagin]]"
 modeling_card: required
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Offloading, Trajectory and Deployment Optimization for Multi-UAV Cooperative Regional Search in SAGINs: A Hybrid DRL-GA Framework
@@ -36,7 +36,7 @@ Targets multi-UAV search and rescue in [[space-air-ground-integrated-network|SAG
 
 **Scenario**: Multiple fixed-altitude UAVs search a gridded mountainous region and generate sensing tasks that can be processed locally or through BS, HAPS, LEO, edge, and cloud tiers in a SAGIN. Links use orthogonal subcarriers; channel coefficients combine antenna gain, free-space attenuation, atmospheric and rain loss, small-scale fading, and AWGN, while UAV motion is driven by terrain uncertainty and NOAA-derived wind fields.
 
-**Problem & objective**: Coupled long-horizon MINLP with online offloading and trajectory control plus mission-level deployment search; the offloading model minimizes $\sum_{t=1}^{I} L(t)$, while the GA maximizes $w_c\bar C(\mathcal F)-w_e\bar E_{\mathrm{total}}(\mathcal F)-w_d\bar D_{\mathrm{lat}}(\mathcal F)$ to favor search coverage and penalize energy and latency.
+**Problem & objective**: Coupled long-horizon MINLP with online offloading and trajectory control plus mission-level deployment search; the offloading problem P (19) minimizes $\sum_{t=1}^{I} L(t)$, while the GA fitness (32) maximizes $w_c\bar C(\mathcal F)-w_e\bar E_{\mathrm{total}}(\mathcal F)-w_d\bar D_{\mathrm{lat}}(\mathcal F)$ to favor search coverage and penalize energy and latency.
 
 **Decision variables**:
 
@@ -51,11 +51,12 @@ Targets multi-UAV search and rescue in [[space-air-ground-integrated-network|SAG
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Exactly one execution mode is selected: $\alpha_u(t)+\sum_i\beta_{u,i}(t)+\sum_{i,k}e_{u,i}e_{i,k}\gamma_{u,i,k}(t)=1$ |
-| C2 | Computation and channel allocations do not exceed the selected SAGIN nodes' available resources, as in (19a)-(19c) |
-| C3 | Task latency satisfies $L_o^u(t)\le d_{c,u}(t)$ |
-| C4 | Residual energy is protected by $E_u^{\mathrm{total}}(t)\le \mathrm{Battery}_u(t)-\xi\mathrm{Battery}_u$ |
-| C5 | Trajectory actions remain inside the grid and respect terrain hazards and wind-adjusted motion feasibility |
+| (19a) | Server computation load $\sum_urr_{i,u}(t)\leq\zeta$ |
+| (19b)-(19c) | Primary and secondary channel allocations within $ChannelAll_i$ and $ChannelAll_k$ |
+| (19d) | Task latency $L_o^u(t)\leq d_{c,u}(t)$ |
+| (19f) = (3) | One execution mode per task: $\alpha_u(t)+\sum_i\beta_{u,i}(t)+\sum_{i,k}e_{u,i}e_{i,k}\gamma_{u,i,k}(t)=1$; a task with no feasible mode is dropped |
+| (19g) | Battery reserve $E_u^{total}(t)\leq Battery_u(t)-\xi Battery_u$ |
+| Model rule | Movement actions stay on the grid; wind adds $\vec V_w^p$ to the UAV airspeed in (23a)-(23c) |
 
 **Algorithm**: Two-stage HCDRL plus GA, CNN local-map encoding and GCN SAGIN-topology encoding $\rightarrow$ parallel HCSAC policies for movement and offloading $\rightarrow$ policy rollouts for each deployment chromosome $\rightarrow$ GA selection, crossover, mutation, and elitism.
 

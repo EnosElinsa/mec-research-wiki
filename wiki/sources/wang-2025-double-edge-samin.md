@@ -18,7 +18,7 @@ related:
   - "[[you-2025-uncertain-maritime-hasac]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Double-Edge-Assisted Computation Offloading and Resource Allocation for Space-Air-Marine Integrated Networks
@@ -52,12 +52,15 @@ A computation-offloading scheme for **space-air-marine integrated networks (SAMI
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Offloading ratio is bounded: $0\leq a_{mn}\leq1$. |
-| C2 | Uploaded workload cannot exceed the task: $0\leq s_{mn}\leq S_{mn}$. |
-| C3 | Total task and satellite latency meet their limits: $T_{mn}^{tot}\leq T_{mn}^{max}$ and $t_{mn}^L+T_{mn}^L\leq T^{max}$. |
-| C4 | MASS-UAV distance is bounded: $\lVert\mathbf q_m-\mathbf q_{mn}\rVert\leq d^{max}$. |
-| C5 | UAV and satellite compute capacities are bounded by $\rho_m^{max}$ and $\rho_{max}^L$. |
-| C6 | UAV and satellite transmit powers and energy budgets remain within their maxima. |
+| (25a) | Offloading ratio bounded: $0\leq a_{mn}\leq1$ |
+| (25b) | Uploaded workload within the task: $0\leq s_{mn}\leq S_{mn}$ |
+| (25c) | Task delay bound: $T_{mn}^{tot}\leq T_{mn}^{max}$ |
+| (25d) | LEO offloading within the coverage window: $t_{mn}^L+T_{mn}^L\leq T^{max}$ |
+| (25e) | MASS-UAV distance: $\lVert\mathbf q_m-\mathbf q_{mn}\rVert\leq d^{max}$ |
+| (25f)-(25g) | UAV and LEO compute capacities: $\sum_n\rho_{mn}^U\leq\rho_m^{max}$, $\sum_m\sum_n\rho_{mn}^L\leq\rho_{max}^L$ |
+| (25h) | Nonnegative compute allocations $\rho_{mn}^l,\rho_{mn}^U,\rho_{mn}^L\geq0$ |
+| (25i)-(25j) | Transmit powers $p_{mn}^U\leq P_{max}^U$ and $p_{mn}^L\leq P_{max}^L$ |
+| (25k)-(25l) | UAV and LEO energy budgets: $\sum_nE_{mn}^U\leq E_m^{max}$, $\sum_m\sum_nE_{mn}^L\leq E_{max}^L$ |
 
 **Algorithm**: Optimize offloading mode and volume with a multi-round iterative search, then solve UAV and LEO compute allocations with convex or KKT subproblems inside a layered alternating-optimization framework.
 
@@ -65,7 +68,7 @@ A computation-offloading scheme for **space-air-marine integrated networks (SAMI
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] study double-edge computation offloading for maritime devices served concurrently by UAVs and a LEO satellite. Their energy-minimization problem jointly chooses offloading ratios, uploaded volumes, and UAV and satellite compute allocations under workload, latency, distance, capacity, power, and energy constraints. A multi-round iterative search handles offloading mode and volume, while convex and KKT allocation blocks form the layered alternating-optimization solution. Numerical experiments show convergent offloading and resource updates and lower energy than paired, equal-offloading, and other benchmark schemes.
+Wang et al. [x] study double-edge computation offloading for maritime devices served concurrently by UAVs and a LEO satellite. Their energy-minimization problem jointly chooses offloading ratios, uploaded volumes, and UAV and satellite compute allocations under workload, latency, distance, capacity, power, and energy constraints. A multi-round iterative search handles offloading mode and volume, while convex and KKT allocation blocks form the layered alternating-optimization solution. Numerical experiments show convergent offloading and resource updates and lower total energy than paired offloading, equal offloading, and even compute-allocation benchmarks.
 
 ## Problem framing
 

@@ -17,7 +17,7 @@ related:
   - "[[wang-2025-double-edge-samin]]"
   - "[[zhang-2024-dlrl-maritime-usv]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Oriented Three-Tier Computation Offloading Scheme in Maritime Edge Computing Network
@@ -52,11 +52,11 @@ A **three-tier maritime edge computing** system where a LEO satellite and an off
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each device associates with at most one LEO: $\sum_m a_{k,m}\leq1$. |
-| C2 | Transmit powers satisfy $p_k\leq P_k^{\max}$ and $p_m\leq P_m^{\max}$. |
-| C3 | Offloaded partitions cannot exceed the task: $l_k^S+l_k^B\leq L_k$. |
-| C4 | Aggregate satellite and OBS allocations satisfy their CPU-capacity limits. |
-| C5 | Local, satellite, and OBS completion times each satisfy $t_k^L,t_k^S,t_k^B\leq T_k$. |
+| (21a)-(21b) | Binary association $a_{k,m}\in\{0,1\}$; each device associates with at most one LEO, $\sum_ma_{k,m}\leq1$ |
+| (21c)-(21d) | Transmit powers $p_k\leq P_k^{\max}$ and $p_m\leq P_m^{\max}$ |
+| (21e)-(21g) | Offloaded partitions $l_k^S+l_k^B\leq L_k$, $l_k^S\geq0$, $l_k^B\geq0$ |
+| (21h)-(21k) | CPU capacities $\sum_ka_{k,m}f_{k,m}\leq f_S^{\max}$, $\sum_kf_k^B\leq f_B^{\max}$, and nonnegative allocations |
+| (21l)-(21n) | Local, LEO, and OBS completion times $t_k^L,t_k^S,t_k^B\leq T_k$, expanded as (22b)-(22d) in P0 |
 
 **Algorithm**: Relax and solve association with a slack variable, optimize transmission powers by quadratic transformation and a difference-of-convex procedure, derive feasible task-partition bounds and solve the convex partition block, update LEO and OBS computing resources by Lagrangian dual coordinate iteration, and alternate the four blocks to convergence.
 

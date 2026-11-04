@@ -19,7 +19,7 @@ related:
   - "[[zhang-2025-vnf-sgin-dql]]"
   - "[[du-2023-maddpg-service-placement-agin]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # QoS Aware Virtual Network Embedding in Space-Air-Ground-Ocean Integrated Network
@@ -36,36 +36,27 @@ Abstracts the **space-air-ground-ocean integrated network (SAGOI-Net)** as a **t
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: An SDN controller embeds virtual network requests across satellite, air, and ground-ocean infrastructure domains with time-varying topology. Each request has node CPU and delay plus link bandwidth and delay demands, and providers disclose limited resource information.
-
-**Problem & objective**: A sequential VNE control problem maximizes QoS-conditioned long-term reward, $\max\mathbb E[\sum_t\gamma^t r_{c(v)}(t)]$, such as acceptance, revenue-cost ratio, compute, bandwidth, or delay performance.
-
+**Scenario**: An SDN controller embeds virtual network requests (VNRs) $G^V$ into a space-air-ground-ocean substrate network with time-varying topology. Virtual nodes demand CPU, virtual links demand bandwidth and delay, and infrastructure providers do not disclose all physical information.
+**Problem & objective**: The paper states no single optimization problem. It evaluates long-term average revenue (8) and revenue-cost ratio $LRC=\lim_{T\to\infty}\sum_tR(G^V,t)/\sum_tCost(G^V,t)$ (9), plus embedding delay (10) and acceptance rate, and trains with reward $r_{r/c}=R/Cost$ (21) or $r_{delay}=\beta\sum BW/Delay(G^V,t)$ (22) chosen by QoS category.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Virtual-node placement | $x_{v,n}$ | binary | Physical node $n$ hosting virtual node $v$ |
-| Virtual-link path | $\mathcal P_e$ | discrete path | Substrate path embedding virtual link $e$ |
-| QoS category | $c(v)$ | categorical | Compute-, bandwidth-, or delay-dominant request class |
-| Re-embedding decision | $z_s$ | binary | Failed VNR subgraph selected for remapping |
-
+| Node mapping | $n^v\uparrow n^s$ | discrete | Physical node hosting each virtual node, sampled from the softmax policy (20) |
+| Link mapping | $(n_i^s,n_j^s)\uparrow(n_m^v,n_n^v)$ | discrete path | Substrate path for each virtual link, chosen by k-shortest paths |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each virtual node maps to one physical node with sufficient CPU |
-| C2 | Each virtual link path has sufficient bandwidth |
-| C3 | Physical node and path delay meet virtual delay requirements |
-| C4 | Residual substrate resources are not oversubscribed |
-| C5 | Placements and re-embeddings use currently working topology nodes |
-
-**Algorithm**: Cluster VNRs by K-means into three QoS categories → extract five normalized physical-node features → sample node placements from the convolutional policy distribution using the category-specific reward → embed links by k-shortest paths → re-embed failed subgraphs after topology changes → update the policy from acceptance, revenue, and delay feedback.
+| (2) | Node CPU: $CPU_{n^s}\geq CPU_{n^v}$ if $n^v\uparrow n^s$ |
+| (3) | Link bandwidth: $BW_{(n_i^s,n_j^s)}\geq BW_{(n_m^v,n_n^v)}$ for mapped links |
+| (4) | Link delay: $D_{(n_i^s,n_j^s)}\leq D_{(n_m^v,n_n^v)}$ for mapped links |
+| (5) | One substrate node per virtual node: $Num_{\max}(n^v)=1$ |
+**Algorithm**: K-means (11)-(12) classifies each VNR into three QoS categories; compute- and bandwidth-dominant requests use $r_{r/c}$ and delay-dominant requests use $r_{delay}$. A policy network with a convolutional layer takes the five-feature node matrix $M_f$ (13)-(17) as state and outputs node-embedding probabilities; links are embedded by k-shortest paths, the policy is updated by reward-scaled gradients (25), and VNR subgraphs that fail after topology changes are re-embedded.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied QoS-aware virtual network embedding in a space-air-ground-ocean integrated network. They modeled node CPU and delay, link bandwidth and delay, time-varying topology, and limited multi-domain information sharing. K-means classifies requests as compute-, bandwidth-, or delay-dominant, and the corresponding reward guides a convolutional policy that places virtual nodes. Virtual links use k-shortest paths, and failed request subgraphs are re-embedded after topology changes. Simulations report improvements in embedding delay, acceptance rate, and revenue over the evaluated VNE schemes.
+Zhang et al. [x] studied QoS-aware virtual network embedding in a space-air-ground-ocean integrated network. They modeled node CPU and delay, link bandwidth and delay, time-varying topology, and limited multi-domain information sharing. K-means classifies requests as compute-, bandwidth-, or delay-dominant, and the corresponding reward guides a convolutional policy that places virtual nodes. Virtual links use k-shortest paths, and failed request subgraphs are re-embedded after topology changes. Simulations report lower embedding delay and higher acceptance rate and long-term average revenue than SA-RL-VNE, RL-VNE, and a baseline embedding algorithm.
 
 ## Problem framing
 

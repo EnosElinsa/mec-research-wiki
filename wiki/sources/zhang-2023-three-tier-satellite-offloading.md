@@ -24,7 +24,7 @@ related:
   - "[[wang-2016-partial-offloading-dvs]]"
   - "[[jiahao-huo]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Partial Computation Offloading in Satellite-Based Three-Tier Cloud-Edge Integration Networks
@@ -49,7 +49,7 @@ Constructs a **three-tier cloud-edge integration network** in which remote groun
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UE-LEO association | $a_{u,s}$ | binary/relaxed $[0,1]$ | Satellite serving UE $u$ |
+| UE-LEO association | $a_{u,s}$ | binary (C2), relaxed to $[0,1]$ in the LP block | Satellite serving UE $u$ |
 | UE and LEO power | $p_{u,s},p_{s,c}$ | continuous, bounded | Fronthaul and backhaul power |
 | Edge/cloud task bits | $l_u^S,l_u^C$ | continuous, nonnegative | Bits processed at LEO and cloud |
 | Backhaul bandwidth factor | $\alpha$ | continuous, $[0,1]$ | Spectrum split between fronthaul and backhaul |
@@ -58,11 +58,11 @@ Constructs a **three-tier cloud-edge integration network** in which remote groun
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UE associates with one LEO satellite |
-| C2 | Local, edge, and cloud bit allocations sum to the task size |
-| C3 | UE and LEO powers satisfy peak limits |
-| C4 | Fronthaul load does not exceed corresponding backhaul capacity |
-| C5 | Local, LEO, and cloud execution paths meet the task deadline |
+| C1-C2 | Each UE is served by at most one LEO, $\sum_sa_{u,s}\leq1$, with binary $a_{u,s}\in\{0,1\}$ |
+| C3-C4 | Power limits $p_{u,s}\leq p_{\max}^U$ and $p_{s,c}\leq p_{\max}^S$ |
+| C5-C7 | Offloaded bits $l_u^S+l_u^C\leq L_u$, with $l_u^S\geq0$ and $l_u^C\geq0$ |
+| C8 | Fronthaul load within backhaul rate: $\sum_ua_{u,s}R_{u,s}\leq R_{s,c}$ |
+| C9-C11 | Local, LEO, and cloud paths meet the deadline: $t_u^L,t_u^S,t_u^C\leq T_u$ |
 
 **Algorithm**: Relax association and solve the per-UE LP → update fronthaul/backhaul powers by quadratic transform → derive task-bit scheduling from upper and lower bounds → solve the bandwidth factor as a convex problem → cycle the four blocks until system energy stops decreasing.
 
