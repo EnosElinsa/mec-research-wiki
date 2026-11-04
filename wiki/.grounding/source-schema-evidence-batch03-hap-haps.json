@@ -1,0 +1,741 @@
+{
+  "entries": [
+    {
+      "slug": "abderrahim-2024-data-center-hap",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative.md",
+          "lines": "5",
+          "note": "Analytical energy study without a decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative.md",
+          "lines": "5",
+          "note": "Abstract: data-center HAP, energy and communication analysis, up to 14% saving"
+        },
+        {
+          "path": "raw/sources/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative.md",
+          "lines": "34-39",
+          "note": "Arrival-rate effect"
+        },
+        {
+          "path": "raw/sources/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative/Data_Center-Enabled_High_Altitude_Platforms_A_Green_Computing_Alternative.md",
+          "lines": "375-402",
+          "note": "Effect of number of servers"
+        }
+      ]
+    },
+    {
+      "slug": "an-2024-multilayer-ris-hap-swipt",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks.md",
+          "lines": "69",
+          "note": "RIS coefficient matrix"
+        },
+        {
+          "path": "raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks.md",
+          "lines": "350-383",
+          "note": "Robust worst-case sum-rate problem and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks.md",
+          "lines": "5",
+          "note": "Abstract: multi-layer refracting RIS receiver, HAP-SWIPT"
+        },
+        {
+          "path": "raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks.md",
+          "lines": "25",
+          "note": "LogSumExp and M-CCD solver"
+        },
+        {
+          "path": "raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks.md",
+          "lines": "1146",
+          "note": "Convergence within about 15 iterations"
+        }
+      ]
+    },
+    {
+      "slug": "becvar-2022-airship-flybs-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users.md",
+          "lines": "84",
+          "note": "Flying energy E_{F,m}"
+        },
+        {
+          "path": "raw/sources/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users.md",
+          "lines": "91",
+          "note": "Problem 4 with capacity constraint"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users.md",
+          "lines": "5",
+          "note": "Abstract: airship FlyBSs, capacity-energy relation, bounds, multi-FlyBS algorithm, 55.4% to 90.7%"
+        },
+        {
+          "path": "raw/sources/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users/On_Energy_Consumption_of_Airship-Based_Flying_Base_Stations_Serving_Mobile_Users.md",
+          "lines": "339",
+          "note": "Energy savings at 1% capacity degradation"
+        }
+      ]
+    },
+    {
+      "slug": "benaya-2025-aerial-isac-haps",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced.md",
+          "lines": "173",
+          "note": "Radar receive vector"
+        },
+        {
+          "path": "raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced.md",
+          "lines": "236-240",
+          "note": "Problem 21 objective"
+        },
+        {
+          "path": "raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced.md",
+          "lines": "771",
+          "note": "Alternating optimization blocks"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced.md",
+          "lines": "5",
+          "note": "Abstract: HAPS full-duplex ISAC, friendly-jamming AAV, offloading, SDR and SCA"
+        },
+        {
+          "path": "raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced.md",
+          "lines": "765",
+          "note": "About 47% spectral-efficiency gain"
+        }
+      ]
+    },
+    {
+      "slug": "bi-2025-sg-mapg",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "149",
+          "note": "Task allocation ratio"
+        },
+        {
+          "path": "raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "313",
+          "note": "Price influence q"
+        },
+        {
+          "path": "raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "435-462",
+          "note": "Problem 46 and variables"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "5",
+          "note": "Abstract: three-tier MEC, Stackelberg, auction, SG-MAPG, 12.3% and 22.7%"
+        },
+        {
+          "path": "raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems.md",
+          "lines": "790-792",
+          "note": "12.3% fairness and 22.7% cost vs RANDOM for two UAVs"
+        }
+      ]
+    },
+    {
+      "slug": "elkhazraji-not-in-parse-haps-optical-sensing-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing.md",
+          "lines": "5",
+          "note": "Tutorial-cum-survey; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing.md",
+          "lines": "5",
+          "note": "Abstract: HAPS optical communication with atmospheric sensing, DIAL, C-band roadmap"
+        },
+        {
+          "path": "raw/sources/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing.md",
+          "lines": "17-51",
+          "note": "DIAL selection and C-band roadmap"
+        },
+        {
+          "path": "raw/sources/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing/HAPS_Communication_Networks_A_Tutorial-cum-Survey_on_Integration_with_Optical_Atmospheric_Sensing.md",
+          "lines": "142-176",
+          "note": "Trace-gas retrieval"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-location-privacy-hap-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization.md",
+          "lines": "127-181",
+          "note": "Collected data and P1 with mission constraints"
+        },
+        {
+          "path": "raw/sources/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization.md",
+          "lines": "241-253",
+          "note": "Perturbed collection C^f and P2"
+        },
+        {
+          "path": "raw/sources/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization.md",
+          "lines": "356-374",
+          "note": "TD3-based PDCTO"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization.md",
+          "lines": "7",
+          "note": "Abstract: privacy-aware HAP collection, satellites, differential privacy, MDP, DRL"
+        },
+        {
+          "path": "raw/sources/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization/Location_Privacy-Aware_High-Altitude_Platforms_Data_Collection_and_Trajectory_Optimization.md",
+          "lines": "437-458",
+          "note": "Comparison with unperturbed TD3"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2025-hap-aav-spectrum-sharing-stackelberg",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Spectrum_Sharing_and_Resource_Allocation_for_6G_Air-Ground_Integrated_Networks/Energy_Efficient_Spectrum_Sharing_and_Resource_Allocation_for_6G_Air-Ground_Integrated_Networks.md",
+          "lines": "183-221",
+          "note": "HAP and AAV power and price variables"
+        },
+        {
+          "path": "raw/sources/Energy_Efficient_Spectrum_Sharing_and_Resource_Allocation_for_6G_Air-Ground_Integrated_Networks/Energy_Efficient_Spectrum_Sharing_and_Resource_Allocation_for_6G_Air-Ground_Integrated_Networks.md",
+          "lines": "258-269",
+          "note": "Leader constraints C1.2-C1.3, P1 and follower P2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Spectrum_Sharing_and_Resource_Allocation_for_6G_Air-Ground_Integrated_Networks/Energy_Efficient_Spectrum_Sharing_and_Resource_Allocation_for_6G_Air-Ground_Integrated_Networks.md",
+          "lines": "5",
+          "note": "Abstract: HAP-owned spectrum, AAVs, pricing and power, Stackelberg game, convex optimization"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-haps-sar-trajectory-resource",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Resource_Optimization_for_HAPs-SAR_Systems_With_Energy-Aware_Constraints/Joint_Trajectory_and_Resource_Optimization_for_HAPs-SAR_Systems_With_Energy-Aware_Constraints.md",
+          "lines": "280-297",
+          "note": "Harvested power and energy model"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Resource_Optimization_for_HAPs-SAR_Systems_With_Energy-Aware_Constraints/Joint_Trajectory_and_Resource_Optimization_for_HAPs-SAR_Systems_With_Energy-Aware_Constraints.md",
+          "lines": "322-332",
+          "note": "P1 SAR coverage maximization, constraints C1-C16, integer N"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Resource_Optimization_for_HAPs-SAR_Systems_With_Energy-Aware_Constraints/Joint_Trajectory_and_Resource_Optimization_for_HAPs-SAR_Systems_With_Energy-Aware_Constraints.md",
+          "lines": "5",
+          "note": "Abstract: HAPS SAR trajectory and resource allocation, real-time transmission, solar harvesting, MINLP, SCA"
+        }
+      ]
+    },
+    {
+      "slug": "javed-2023-hale-haps-noma-flight",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms.md",
+          "lines": "180-214",
+          "note": "NOMA signal model and power budget"
+        },
+        {
+          "path": "raw/sources/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms.md",
+          "lines": "320-360",
+          "note": "P1 sum-rate objective and constraints 32a-32f"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms.md",
+          "lines": "566",
+          "note": "57.8% to 88.7% propulsion power reduction"
+        },
+        {
+          "path": "raw/sources/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms.md",
+          "lines": "587",
+          "note": "69.8% to 119.1% sum-rate gain"
+        },
+        {
+          "path": "raw/sources/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms.md",
+          "lines": "591",
+          "note": "NOMA over OMA spectral efficiency gain"
+        },
+        {
+          "path": "raw/sources/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms/An_Interdisciplinary_Approach_to_Optimal_Communication_and_Flight_Operation_of_High-Altitude_Long-Endurance_Platforms.md",
+          "lines": "595",
+          "note": "Conclusion: power budgeting, trajectory, NOMA"
+        }
+      ]
+    },
+    {
+      "slug": "kanani-2026-haps-uav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G.md",
+          "lines": "65-71",
+          "note": "Sensing beamformer r_j^m"
+        },
+        {
+          "path": "raw/sources/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G.md",
+          "lines": "149-195",
+          "note": "Echo power Omega"
+        },
+        {
+          "path": "raw/sources/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G.md",
+          "lines": "271-287",
+          "note": "Bi-objective and scalarized form"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G.md",
+          "lines": "5",
+          "note": "Abstract: HAPS-UAV ISAC, beamforming, positions, GA and NSGA-II"
+        },
+        {
+          "path": "raw/sources/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G.md",
+          "lines": "352-360",
+          "note": "NSGA-II Pareto front"
+        },
+        {
+          "path": "raw/sources/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G/Optimizing_Network_Performance_and_Resource_Allocation_in_HAPS-UAV_Integrated_Sensing_and_Communication_Systems_for_6G.md",
+          "lines": "436-453",
+          "note": "Comparison with PPO and GA"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-twohop-iort-packet-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network.md",
+          "lines": "108-122",
+          "note": "Packet schedules and HAP bandwidth"
+        },
+        {
+          "path": "raw/sources/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network.md",
+          "lines": "212-252",
+          "note": "P1 average queue delay and constraints 16b-16i"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network.md",
+          "lines": "5",
+          "note": "Abstract: two-hop HAP-UAV-IoRT scheduling, MADDPG-APER"
+        },
+        {
+          "path": "raw/sources/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network.md",
+          "lines": "669",
+          "note": "Round-robin and other baselines"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2024-airship-mmwave-hsr-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway.md",
+          "lines": "55-80",
+          "note": "Frame and TS structure, gains, scheduling variable"
+        },
+        {
+          "path": "raw/sources/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway.md",
+          "lines": "150-179",
+          "note": "P1 QoS-satisfied flows and constraints 15-16"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway.md",
+          "lines": "5",
+          "note": "Abstract: airship mmWave HSR, scheduling problem, MR selection, max-flow scheduling"
+        },
+        {
+          "path": "raw/sources/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway/QoS-Aware_Scheduling_of_Airship-Assisted_Millimeter_Wave_Communications_for_High-Speed_Railway.md",
+          "lines": "318-322",
+          "note": "36% and 131% gains after 1,900 frames"
+        }
+      ]
+    },
+    {
+      "slug": "mashiko-2026-leo-haps-user-association",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks.md",
+          "lines": "236-262",
+          "note": "Spectral-efficiency objective P1 and link constraints 9-12"
+        },
+        {
+          "path": "raw/sources/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks.md",
+          "lines": "284-296",
+          "note": "Long-term switching problem P2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks.md",
+          "lines": "5",
+          "note": "Abstract: LEO-HAPS NTN, downlink user association, time-extended graph, adaptive switching"
+        },
+        {
+          "path": "raw/sources/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks/Spectral-Efficient_Dynamic_User_Association_in_LEO_Satellite_Constellation-HAPS_Cooperative_Networks.md",
+          "lines": "420",
+          "note": "19.8% average improvement over fixed-period switching"
+        }
+      ]
+    },
+    {
+      "slug": "qian-2024-marine-fl-dt-secrecy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks.md",
+          "lines": "211",
+          "note": "NOMA upload duration"
+        },
+        {
+          "path": "raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks.md",
+          "lines": "246-249",
+          "note": "Secrecy probability constraint 18"
+        },
+        {
+          "path": "raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks.md",
+          "lines": "261-299",
+          "note": "TEM objective, constraints 21-25, variables, TEM-Sub decomposition"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks.md",
+          "lines": "5",
+          "note": "Abstract: FL-assisted marine DT, NOMA uploads, chaotic spread spectrum, energy minimization, layered algorithm"
+        },
+        {
+          "path": "raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks.md",
+          "lines": "293",
+          "note": "Vertical decomposition"
+        }
+      ]
+    },
+    {
+      "slug": "raivi-2024-jdaco-postdisaster-iot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md",
+          "lines": "186-200",
+          "note": "Motion model and area bounds"
+        },
+        {
+          "path": "raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md",
+          "lines": "421-470",
+          "note": "P1 weighted energy-time objective, constraints C1-C8, P2 hovering locations"
+        },
+        {
+          "path": "raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md",
+          "lines": "521-531",
+          "note": "Discrete joint action and reward terms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md",
+          "lines": "5",
+          "note": "Abstract: JDACO, two-tier UAVs, Markov model, value decomposition with double DQN, 20%, 11.4%, 5.6%, 11.2%, 98%"
+        },
+        {
+          "path": "raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md",
+          "lines": "35",
+          "note": "VD3QN"
+        },
+        {
+          "path": "raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md",
+          "lines": "678-755",
+          "note": "Reported improvements"
+        }
+      ]
+    },
+    {
+      "slug": "renga-2022-haps-sustainable-6g",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable.md",
+          "lines": "69",
+          "note": "Threshold-based sleep-mode policy rather than an optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable.md",
+          "lines": "7",
+          "note": "Abstract: HAPS-mounted base stations for 6G sustainability"
+        },
+        {
+          "path": "raw/sources/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable.md",
+          "lines": "59-69",
+          "note": "Sleep modes with traffic offloaded to HAPS"
+        },
+        {
+          "path": "raw/sources/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable/Can_High_Altitude_Platform_Stations_Make_6G_Sustainable.md",
+          "lines": "79",
+          "note": "Grid energy savings above 70% with renewables"
+        }
+      ]
+    },
+    {
+      "slug": "seid-2026-mafdrl-tn-ntn-incentive",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks.md",
+          "lines": "251",
+          "note": "Resource demands and prices"
+        },
+        {
+          "path": "raw/sources/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks.md",
+          "lines": "286-320",
+          "note": "Social welfare U[t] and P1 constraints C1-C6"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks.md",
+          "lines": "9",
+          "note": "Abstract: TN-NTN hierarchical auction, DDPG auctioneer, MADDPG, federated aggregation, 6.38% to 28.73%"
+        },
+        {
+          "path": "raw/sources/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks/A_Hierarchical_MAFDRL-Based_Resource_Allocation_and_Incentive_Mechanism_for_TN-NTN_in_6G_Networks.md",
+          "lines": "505",
+          "note": "Social-welfare gains over baselines"
+        }
+      ]
+    },
+    {
+      "slug": "song-2024-mol-aoi-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.md",
+          "lines": "95-101",
+          "note": "Flight direction and distance"
+        },
+        {
+          "path": "raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.md",
+          "lines": "169",
+          "note": "Partial offloading ratio"
+        },
+        {
+          "path": "raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.md",
+          "lines": "255-367",
+          "note": "Multi-objective MDP and MOL-AET with mutation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.md",
+          "lines": "5",
+          "note": "Abstract: AoI-energy tradeoff, UAV and HAP, MOL-AET"
+        },
+        {
+          "path": "raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.md",
+          "lines": "19",
+          "note": "39.8%, 2.1%, 15.3% average improvements"
+        },
+        {
+          "path": "raw/sources/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach/AoI_and_Energy_Tradeoff_for_Aerial-Ground_Collaborative_MEC_A_Multi-Objective_Learning_Approach.md",
+          "lines": "855-877",
+          "note": "Comparison with MOEA and MORL baselines"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-lae-network-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions.md",
+          "lines": "5",
+          "note": "Survey abstract; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions.md",
+          "lines": "5",
+          "note": "Abstract: LAE networks, architecture, integrated technologies, future directions"
+        },
+        {
+          "path": "raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions.md",
+          "lines": "57-62",
+          "note": "Architecture figure with six numbered components"
+        },
+        {
+          "path": "raw/sources/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions/Toward_Realization_of_Low-Altitude_Economy_Networks_Core_Architecture_Integrated_Technologies_and_Future_Directions.md",
+          "lines": "342-535",
+          "note": "Three layers and the supervision, flight service, and flight control systems"
+        }
+      ]
+    },
+    {
+      "slug": "xing-2026-genai-agent-hap-power-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems.md",
+          "lines": "205",
+          "note": "QoS-satisfied set"
+        },
+        {
+          "path": "raw/sources/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems.md",
+          "lines": "307-326",
+          "note": "Problem P weighting EE and satisfied fraction"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems.md",
+          "lines": "5",
+          "note": "Abstract: GAI agent for HAP power allocation, hull-propeller propulsion model, QoS-enhanced EE beamforming"
+        },
+        {
+          "path": "raw/sources/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems.md",
+          "lines": "49",
+          "note": "84.3% lower average deviation"
+        },
+        {
+          "path": "raw/sources/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems/Generative_AI_Agent_Empowered_Power_Allocation_for_HAP_Propulsion_and_Communication_Systems.md",
+          "lines": "531-549",
+          "note": "Simulation results"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2016-uav-comm-opportunities-challenges",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges.md",
+          "lines": "7",
+          "note": "Magazine overview; no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges.md",
+          "lines": "7",
+          "note": "Overview abstract"
+        },
+        {
+          "path": "raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges.md",
+          "lines": "23",
+          "note": "Three use cases: coverage, relaying, information dissemination and data collection"
+        },
+        {
+          "path": "raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges.md",
+          "lines": "29-88",
+          "note": "Channel, CNPC, and design challenges"
+        },
+        {
+          "path": "raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges.md",
+          "lines": "184",
+          "note": "Controlled mobility as an opportunity"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-dwell-time-aerial-vec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks.md",
+          "lines": "61",
+          "note": "Binary UAV and HAP offloading decisions"
+        },
+        {
+          "path": "raw/sources/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks.md",
+          "lines": "133-189",
+          "note": "Bandwidth constraints and dwell-time constraint"
+        },
+        {
+          "path": "raw/sources/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks.md",
+          "lines": "236-249",
+          "note": "Cost C_k and problem P1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks.md",
+          "lines": "7",
+          "note": "Abstract: multi-layer aerial VEC, HAP and UAVs, dwell time, BCD"
+        },
+        {
+          "path": "raw/sources/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks/Dwell-Time-Constrained_Joint_Task_Offloading_and_Resource_Allocation_for_Multi-Layer_Aerial_Vehicular_Edge_Computing_Networks.md",
+          "lines": "35",
+          "note": "8.26% to 58.11% cost reduction; Lagrangian, ADMM"
+        }
+      ]
+    }
+  ]
+}

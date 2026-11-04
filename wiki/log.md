@@ -1,5 +1,18 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 3 (remaining HAP and HAPS sources)
+
+Grounding batch 3 covers the remaining 23 source pages tagged or linked as HAP or HAPS work: 18 with `modeling_card: required` and 5 surveys or analyses with `not_applicable`. Each card symbol, objective, and constraint and each Related Work sentence was checked against the parse; evidence is in `wiki/.grounding/source-schema-evidence-batch03-hap-haps.json`. The merged manifest reports 66/699 grounded and 0 evidence conflicts. This is a batch result, not a whole-corpus grounding audit.
+
+- **Cards rewritten from the parse (high).**
+  - [[raivi-2024-jdaco-postdisaster-iot]]: the card stated an objective with a coverage term $-\mu C_{\mathrm{covered}}$ and variables $g_{j,k}$, $b_{j,k}$, and $\mathbf a_k$ that the paper does not define. Problem $P_1$ minimizes $\omega_1 E_n + \omega_2 T_n$ over hovering locations with constraints C1-C8, and a companion problem $P_2$ selects hovering locations. The Related Work sentence that placed coverage inside the objective was corrected.
+  - [[qian-2024-marine-fl-dt-secrecy]]: the card named the global accuracy $\Theta$ and per-USV local accuracies $\phi_i$; the paper uses $\epsilon$ and one shared $\phi$. The objective and constraints now follow problem (TEM) and (18), (21)-(25).
+- **Survey description corrected (medium).** [[wang-2025-lae-network-survey]] described a "six-layer" architecture. The parse defines three layers and describes supervision, flight service, and flight control systems within the service-assurance layer; its architecture figure numbers the six components. The TL;DR, Related Work paragraph, and architecture section now say so.
+- **Checked without changes.** The other 20 pages matched their parses, including every quoted number (for example 57.8% to 88.7% propulsion savings and 69.8% to 119.1% sum-rate gains in [[javed-2023-hale-haps-noma-flight]], and 12.3% and 22.7% in [[bi-2025-sg-mapg]]). [[renga-2022-haps-sustainable-6g]] stays `not_applicable` because it evaluates a threshold-based sleep-mode policy rather than an optimization model.
+- **Formatting.** Removed a byte-order mark that an edit had introduced into the Raivi card, which `source_schema_audit` flagged.
+
+Gates: curation_status reports 0 genuinely new folders; linkcheck, process_refs, index_audit, frontmatter_audit, and source_schema_audit report zero errors; entity_roster_audit reports 0 over-claims; 58 tool tests pass. Counts are unchanged.
+
 ## [2026-11-03] Grounded batch 2 (hierarchical aerial MEC) and tracked the grounding evidence
 
 Grounding batch 2 covers 20 hierarchical aerial MEC (UAV plus HAP or HAPS) source pages: the 11 sources catalogued under that index section other than [[li-2026-two-timescale-uav-replacement-hap]] (grounded in batch 1), plus [[peng-2025-drudm-cfg]], [[wang-2026-aerial-marine-msar]], [[hsu-2025-drl-hues-hap-noma]], [[zhao-2026-mappo-jscc-aec]], [[zhou-2026-radar-energy-iscac]], [[li-2024-airground-vec-offloading]], [[li-2025-twohop-airground-drl-offloading]], [[liu-2025-haps-uav-maritime-iot]], [[fan-2026-hap-uav-iort-oee]], and [[ren-2023-haps-handoff-distributed-computing]]. Each card symbol, objective, and constraint and each Related Work sentence was checked against the parse. The merged manifest reports 43/699 grounded and 0 evidence conflicts. This is a batch result, not a whole-corpus grounding audit.

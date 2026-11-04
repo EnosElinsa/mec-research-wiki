@@ -9,7 +9,7 @@ venue: "IEEE Internet of Things Journal (IEEE IoT-J)"
 tags: [source, federated-learning, digital-twin, maritime-mec, noma, physical-layer-security, energy-minimization, hap]
 related: ["[[energy-harvesting-mec]]", "[[blockchain-for-fl-aggregation]]", "[[simultaneous-wireless-information-and-power-transfer]]", "[[qian-wang]]", "[[liping-qian]]", "[[bin-lin]]", "[[yuan-wu]]", "[[wang-2026-noma-marine-data-computation]]", "[[li-2023-secure-marine-iot-jamming]]", "[[lyu-2023-noma-marine-emergency-offloading]]"]
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Secrecy-Driven Energy Minimization in Federated-Learning-Assisted Marine Digital Twin Networks
@@ -28,14 +28,14 @@ Constructs a Marine Internet of Things (M-IoT) digital twin via **federated lear
 
 **Scenario**: Unmanned surface vehicles train local models for a marine digital twin and simultaneously upload them by uplink NOMA to one high-altitude platform for global aggregation. The HAP broadcasts the aggregate through a chaotic spread-spectrum downlink in the presence of an eavesdropper, and both USVs and the HAP have limited communication/computation energy.
 
-**Problem & objective**: Problem TEM, a non-convex layered energy-minimization problem, solves $\min_{\Theta,\boldsymbol\phi,p_S,t^U}E^{\mathrm{tot}}$ over global accuracy, local accuracies, HAP broadcast power, and NOMA upload duration subject to learning, secrecy, and latency requirements.
+**Problem & objective**: Problem TEM, a non-convex layered energy-minimization problem, solves $\min E^{\mathrm{tot}} = N\big[\sum_{i}(E_i^{\mathrm L}+E_i^{U}) + E_S^{E} + E_S^{D}\big]$ over $\epsilon$, $\phi$, $p_S$, and $t^U$ over global accuracy, local accuracies, HAP broadcast power, and NOMA upload duration subject to learning, secrecy, and latency requirements.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Global accuracy target | $\Theta$ | continuous feasible accuracy | Required accuracy of the aggregated digital-twin model |
-| Local accuracy | $\phi_i$ | continuous feasible accuracy | Training accuracy selected for USV $i$ |
+| Global accuracy | $\epsilon$ | continuous, $[0,\epsilon^{\max}]$ | Accuracy target of the aggregated global model |
+| Local accuracy | $\phi$ | continuous, $[0,\phi^{\max}]$ | Local training accuracy shared by the USVs |
 | HAP transmit power | $p_S$ | continuous, power-bounded | Chaotic spread-spectrum broadcast power |
 | NOMA upload duration | $t^U$ | continuous, nonnegative | Time used for simultaneous local-model uploads |
 
@@ -43,13 +43,13 @@ Constructs a Marine Internet of Things (M-IoT) digital twin via **federated lear
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Global and local accuracies remain in their feasible ranges and meet the target model quality |
-| C2 | NOMA upload rates deliver all local model parameters within $t^U$ |
-| C3 | HAP broadcast power remains within its transmit-power budget |
-| C4 | The chaotic spread-spectrum downlink satisfies the required secrecy probability |
-| C5 | Local training, upload, aggregation, and broadcast complete within the latency bound |
+| (22)-(23) | Accuracy ranges, $0 \le \epsilon \le \epsilon^{\max}$ and $0 \le \phi \le \phi^{\max}$ |
+| (25) | USV transmit powers, $p_i \le P_i^{\max}$ |
+| (24) | HAP broadcast power, $0 \le p_S \le P_S^{\max}$ |
+| (18) | The chaotic spread-spectrum broadcast meets the secrecy probability threshold $\phi_0$ |
+| (21) | $N$ rounds of local training, upload, aggregation, and broadcast finish within $T$ |
 
-**Algorithm**: Fix the global and local accuracy variables → derive closed-form lower-bound solutions for HAP power and NOMA duration from monotonicity → substitute them into the upper problem → transform the remaining accuracy problem into a one-to-one logarithmic domain → solve the unique optimum with the proposed layered low-complexity procedure.
+**Algorithm**: Fix the global and local accuracies and solve TEM-Sub for the HAP power and NOMA upload duration, then substitute these solutions into the upper-level accuracy problem and solve it with the layered low-complexity procedure.
 
 ## Related Work Paragraph
 

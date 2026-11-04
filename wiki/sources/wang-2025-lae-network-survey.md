@@ -14,7 +14,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Toward Realization of Low-Altitude Economy Networks: Core Architecture, Integrated Technologies, and Future Directions
@@ -25,7 +25,7 @@ Wang, Y., Sun, G., Sun, Z., Wang, J., Li, J., Zhao, C., Wu, J., Liang, S., Yin, 
 
 ## TL;DR
 
-A **survey + architecture paper** on the low-altitude economy (LAE) — the rapidly emerging market combining UAVs, eVTOL aircraft, drone delivery, urban air mobility, and low-altitude IoT. Defines a six-layer LAE network architecture and surveys the integrated technologies (communication, sensing, computing, GAI, navigation, surveillance, flight control, airspace management) that support it.
+A **survey + architecture paper** on the low-altitude economy (LAE) — the rapidly emerging market combining UAVs, eVTOL aircraft, drone delivery, urban air mobility, and low-altitude IoT. Defines an LAE network architecture of three layers plus three low-altitude systems and surveys the integrated technologies (communication, sensing, computing, GAI, navigation, surveillance, flight control, airspace management) that support it.
 
 This is the wiki's **panoramic foundation paper** — most other curated sources solve a narrow technical sub-problem within this larger LAE landscape.
 
@@ -33,9 +33,9 @@ This is the wiki's **panoramic foundation paper** — most other curated sources
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] surveyed the realization of low-altitude economy networks and presented a six-layer architecture spanning airborne terminals, intelligent collaboration, service assurance, supervision, flight services, and flight control. They reviewed communication, sensing, computing, navigation, surveillance, and control technologies for UAV, eVTOL, logistics, rescue, and urban-air-mobility applications. The article also discussed generative artificial intelligence, digital twins, cloud-edge-end collaboration, and terrestrial, high-altitude, and satellite integration. It identified dynamic airspace management, cross-tier coordination, and intelligent network operation as future research directions. The paper is a survey and architecture study and does not formulate one application-specific decision model with a reusable objective and constraint set.
+Wang et al. [x] surveyed the realization of low-altitude economy networks and presented a network architecture with three layers (airborne terminal and physical infrastructure, intelligent collaboration and digital airspace, and multi-collaboration and service assurance) together with low-altitude supervision, flight service, and flight control systems. They reviewed communication, sensing, computing, navigation, surveillance, and control technologies for UAV, eVTOL, logistics, rescue, and urban-air-mobility applications. The article also discussed generative artificial intelligence, digital twins, cloud-edge-end collaboration, and terrestrial, high-altitude, and satellite integration. It identified dynamic airspace management, cross-tier coordination, and intelligent network operation as future research directions. The paper is a survey and architecture study and does not formulate one application-specific decision model with a reusable objective and constraint set.
 
-## The 6-layer LAE network architecture
+## The LAE network architecture
 
 | Layer | Role |
 |---|---|
@@ -46,7 +46,7 @@ Wang et al. [x] surveyed the realization of low-altitude economy networks and pr
 | 5. Low-Altitude Flight Service System | Flight planning, weather, NOTAMs |
 | 6. Low-Altitude Flight Control System | Tactical control, deconfliction, ATC integration |
 
-Layers 4–6 are governance / operations layers that the more technical MEC papers usually elide. The paper explicitly argues these *cannot* be ignored at scale.
+Items 1–3 are the paper's three layers; items 4–6 are the supervision, flight service, and flight control systems that the paper describes within its service-assurance layer and its architecture figure. These governance and operations components are what the more technical MEC papers usually elide. The paper explicitly argues these *cannot* be ignored at scale.
 
 ## Integrated technology stack surveyed
 
@@ -72,7 +72,7 @@ Layers 4–6 are governance / operations layers that the more technical MEC pape
 
 ## Why this paper anchors the wiki's LAE thread
 
-- **Vocabulary.** The 6-layer architecture gives a stable taxonomy for placing future LAE-MEC papers.
+- **Vocabulary.** The architecture gives a stable taxonomy for placing future LAE-MEC papers.
 - **Technology fusion.** Most narrow MEC papers assume an isolated communication stack; this paper reminds us that a real LAE system *must* fuse communication, sensing, computing, and control. Single-axis optimization is suboptimal.
 - **Governance.** Reminds us that LAE networks operate inside a regulatory and surveillance frame that affects the optimization variables themselves (e.g. flight clearance is not a free trajectory variable).
 
