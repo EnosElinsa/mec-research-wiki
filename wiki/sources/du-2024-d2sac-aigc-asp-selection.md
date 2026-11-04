@@ -19,7 +19,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[zehui-xiong]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Diffusion-Based Reinforcement Learning for Edge-Enabled AI-Generated Content Services
@@ -38,7 +38,7 @@ An **AIGC-as-a-Service (AaaS)** architecture deploys [[generative-ai-for-mec|gen
 
 **Scenario**: An AIGC-as-a-Service system deploys heterogeneous AIGC models at wireless edge servers operated by AIGC service providers. Sequential user tasks request content with a required number of diffusion denoising steps, and each provider has a finite concurrent resource budget; the wireless channel is abstracted into the observed environment state rather than modeled by a dedicated multiple-access equation.
 
-**Problem & objective**: The resource-constrained ASP-selection problem chooses an assignment vector to maximize aggregate user utility, $\max_{\mathbf A}U=\sum_j u_{a_j}(T_j)$, where $a_j$ selects a provider and $T_j$ is the denoising-step demand of task $j$.
+**Problem & objective**: Problem (1)–(3), resource-constrained ASP selection, chooses an assignment vector to maximize aggregate user utility, $\max_{\mathbf A}U=\sum_j u_{a_j}(T_j)$, where $a_j$ selects a provider and $T_j$ is the denoising-step demand of task $j$.
 
 **Decision variables**:
 
@@ -50,8 +50,8 @@ An **AIGC-as-a-Service (AaaS)** architecture deploys [[generative-ai-for-mec|gen
 
 | ID | Meaning and key expression |
 |---|---|
-| Resource limit | For provider $i=a_j$, $T_j+\sum_{j'\in\mathcal I_i^{\mathrm{running}}}T_{j'}\leq T_i$ |
-| Action domain | Every arriving task is assigned to one of the $I$ available ASPs, $a_j\in\{1,\ldots,I\}$ |
+| (2) | Task $j$ goes to the selected ASP: $i=a_j$, $a_j\in\{1,\ldots,I\}$ |
+| (3) | ASP resource limit: $T_j+\sum_{j'\in\hat{\mathcal J}_i}T_{j'}\le\mathcal T_i$ over its running tasks |
 
 **Algorithm**: Encode the arriving task and normalized ASP resource status as the MDP state; let the AI-Generated Optimal Decision actor start from noise and condition each reverse-diffusion step on that state to generate a discrete ASP choice; score the choice with double Q critics and a quality reward minus the resource-crash penalty; and train the diffusion actor inside entropy-regularized SAC using replay, target networks, and soft updates to obtain D2SAC.
 
@@ -59,7 +59,7 @@ An **AIGC-as-a-Service (AaaS)** architecture deploys [[generative-ai-for-mec|gen
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Du et al. [x] studied AIGC service-provider selection in an edge-enabled AIGC-as-a-Service architecture. They formulated sequential provider selection as a resource-constrained task-assignment MDP that maximizes user utility while respecting each provider's available denoising-step capacity. They proposed an AI-Generated Optimal Decision diffusion actor and embedded it in an entropy-regularized, double-critic soft actor-critic framework called D2SAC. Experiments reported the highest training and test rewards among seven representative DRL baselines, and D2SAC reached the Crash Avoid test-reward level after about 190 training steps.
+Du et al. [x] studied AIGC service-provider selection in an edge-enabled AIGC-as-a-Service architecture. They formulated sequential provider selection as a resource-constrained task-assignment MDP that maximizes user utility while respecting each provider's available denoising-step capacity. They proposed an AI-Generated Optimal Decision diffusion actor and embedded it in an entropy-regularized, double-critic soft actor-critic framework called D2SAC. Against DQN, DRQN, Prioritized-DQN, Rainbow, REINFORCE, PPO, and SAC, D2SAC reported the highest training and test rewards (537 test reward) and reached the Crash Avoid level after 190 training steps, but it stayed below the Prophet upper bound (596) and needed the longest total training time (7.0 h).
 
 ## Problem framing
 

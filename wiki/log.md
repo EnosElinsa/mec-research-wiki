@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 22 (federated learning, AirComp, generative AI, and learning-based offloading)
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch22-fl-genai.json`. Grounded total: 527/699.
+- Relabeled constraint IDs to the papers' own tags (for example chen-2026 SDHFL C1–C12, huang-2026 (3), (10), (20b)–(20c), qian-2026 (8b)–(8d), fu-2025 (6), (8), (9), (11), (12e), (24b), du-2024 D2SAC (2)–(3), du-2024 YOLO (2a)–(2b), wen-2026 HybridRAG (28b)–(28j), niazmand-2025 (17a)–(17h), lin-2026 $\mathcal C_1$–$\mathcal C_4$); where the parse shifts tags (dang-2026 (16b)–(16l), zhong-2026 (28b)–(28f), zhang-2026 DT-AirComp (17e)–(17f)), the card says to check the published paper.
+- Rewrote the Modeling Quick-Use Card for wu-2025 GAI-RIS (problem P0 (16) with utility (15) and C1–C8), long-2026 (replica placement $x_{i,Y}^{m,l}$, problem (19) with C1–C7), and yao-2026 WAMSPRES (a scheduling design with no formal optimization; minimum-quota condition (6)).
+- Related Work paragraphs now name the actual baselines and note results where the method does not win everywhere (for example ideal FedAvg above SDHFL, OMA below dang-2026 in energy, D2SAC below the Prophet bound with the longest training, BCD-SCA matching qian-2026, MNP better for low-priority tasks in hao-2025, wu-2025 compared only on channel estimation).
+- Restored parse-backed figures that an earlier pass removed by mistake: mihertie-2026 (2.20 versus 1.65 bps/J at two users), you-2017 (0.6338 s versus 247.4548 s runtime), and ji-2021 (123 J of UAV energy cutting user energy from $2.2\times10^5$ J to 19 J).
+
 ## [2026-11-03] Grounded batch 21 (collaborative beamforming, RIS/STAR-RIS, NOMA relays, movable antennas)
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch21-beamforming-ris.json`. Grounded total: 503/699.
 - Relabeled constraint IDs to the papers' own tags (for example sun-2021 (10b)–(10j), liang-2024 (11b)–(11i), zhao-2026 (13a)–(13g) and (31a), yu-2026 (25b)–(25c), pan-2025 (19b)–(19f), lu-2026 (11a)–(11f), li-2026 relay C1–C5); where the parse shifts or drops tags (meng-2026 (16a)–(16i), wu-2025 (18c) and (18e)), the card says to check the published paper.

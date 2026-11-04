@@ -13,7 +13,7 @@ related:
   - "[[interdependent-tasks-dag]]"
   - "[[centralized-training-decentralized-execution]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Fault-Tolerant Aware Task Offloading Based on Reinforcement Learning in Mobile Edge Computing
@@ -30,35 +30,34 @@ FT-DSAC schedules DAG tasks with primary and backup replicas on heterogeneous ME
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Applications are DAG workflows whose tasks execute in heterogeneous MEC subnets. Each task has primary and backup placements on different subnets so execution can continue after a server or relay failure.
+**Scenario**: Users submit DAG-structured applications to heterogeneous MEC subnets whose edge servers and relay devices can fail. Each task $n_i$ has a primary replica $n_i^P$ and a backup replica $n_i^B$ (primary-backup model); the backup runs only after the primary fails, and the actual finish time is $aft(n_i)=\min(ft(n_i^P),ft(n_i^B))$ in (16).
 
-**Problem & objective**: Maximize deadline-aware task success, $\max |\mathcal N_{\mathrm{ddl}}|/N$; the reward gives deadline slack for on-time completion and penalties otherwise, while WAET is an evaluation metric.
+**Problem & objective**: Problem (19) maximizes the deadline-meeting ratio $\max_{x_i^{m,l}}\lvert N_{ddl}\rvert/N$, where $N_{ddl}=\{n_i\mid aft(n_i)\le sd(n_i)\}$ in (18); the paper also targets low long-term average delay, evaluated as WAET.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
-| --- | --- | --- | --- |
-| Primary placement | $p_i$ | discrete server | Server executing task $i$ first |
-| Backup placement | $b_i$ | discrete server | Fault-tolerant replica server |
-| Task start/action | $a_t$ | masked discrete action | Offloading and scheduling action at decision step $t$ |
+|---|---|---|---|
+| Replica placement | $x_{i,Y}^{m,l}$ | binary, $Y\in\{P,B\}$ | Whether replica $Y$ of task $n_i$ runs on edge server $l$ of subnet $sub_m$ |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
-| --- | --- |
-| DAG | Predecessor tasks complete before successors. |
-| Replica separation | Primary and backup replicas use distinct subnets and obey predecessor-primary exclusion rules. |
-| Resources | Server and relay capacities bound active task placements and transmissions. |
-| Reliability | Failure-aware completion uses the earlier successful primary or backup execution. |
-| Deadlines | Schedules are rewarded for deadline completion and penalized for weighted average execution time. |
+|---|---|
+| (8) | Model rule: backup starts no earlier than primary, $st(n_i^B)\ge st(n_i^P)$ |
+| C1 (9) | Primary waits for predecessor primaries: $st(n_i^P)\ge\max_k\{ft(n_k^P)+TD_{i,P}^{k,P}\}$ |
+| C2 (10) | Primary waits for predecessor backups (rejected in favor of C3 because it adds delay) |
+| C3 (11) | Primary does not wait for predecessor backups: $st(n_i^P)<\max_k\{ft(n_k^B)+TD_{i,P}^{k,B}\}$ |
+| C4 (12) | Primary and backup in different subnets: $sub_i^B\ne sub_i^P$ |
+| C5 (13) | Backup not in a predecessor primary's subnet: $sub_i^B\ne sub_k^P$ |
+| C6 (14) | Backup waits for predecessor backups: $st(n_i^B)\ge\max_k\{ft(n_k^B)+TD_{i,B}^{k,B}\}$ |
+| C7 (17) | Server assignment count rule for $x_{i,Y}^{m,l}$ as printed in the parse; check the published paper |
 
-**Algorithm**: Filter invalid actions using fault-aware masks and trajectory constraints, then train a discrete Soft Actor-Critic policy with centralized value estimation and the paper's DSAC/CQL updates.
+**Algorithm**: FT-DSAC models scheduling as a multi-agent MDP, masks actions that violate the fault-tolerance constraints, filters trajectories, and trains discrete Soft Actor-Critic agents with twin critics and a soft value target under centralized training with value decomposition and decentralized execution (CTDE).
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Long et al. [x] addressed fault-tolerant DAG task offloading in heterogeneous MEC networks. Each task receives primary and backup placements with subnet-separation and precedence constraints, and the objective targets deadline-aware task success while the reward favors earlier completion. FT-DSAC combines action masking and trajectory filtering with discrete Soft Actor-Critic under centralized training. Experiments on synthetic and Montage, CyberShake, Epigenomics, and Inspiral workflows report 6% to 19% higher task-success reliability and 9% to 27% lower latency than the compared methods. Replica overhead and scaling to larger real business or language-model workflows remain open issues.
+Long et al. [x] addressed fault-tolerant DAG task offloading in heterogeneous MEC networks. Each task receives primary and backup placements with subnet-separation and precedence constraints, and the objective targets deadline-aware task success while the reward favors earlier completion. FT-DSAC combines action masking and trajectory filtering with discrete Soft Actor-Critic under centralized training and decentralized execution. Experiments on synthetic and Montage, CyberShake, Epigenomics, and Inspiral workflows report 6% to 19% higher task-success reliability and 9% to 27% lower latency than FT-DSAC-Soft, FECW, TPTO, and O2O-DRL. Replica overhead and scaling to larger real business or language-model workflows remain open issues.
 
 ## Problem and system model
 

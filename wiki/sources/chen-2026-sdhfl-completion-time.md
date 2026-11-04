@@ -18,7 +18,7 @@ related:
   - "[[han-2024-ground-satellite-fl]]"
   - "[[zhai-2023-fedleo-decentralized-fl]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,7 +38,7 @@ Proposes semi-decentralized hybrid federated learning (SDHFL) for wide-area IoT:
 
 **Scenario**: Wide-area IoT devices are partitioned into D2D clusters that perform local training and consensus over OFDMA links. A rotary-wing UAV flies among predefined hovering points, selects one cluster in each global round, receives its consensus model, performs global aggregation, and broadcasts the updated model under non-IID data and round-varying channels.
 
-**Problem & objective**: Problem P1 is a nonconvex MINLP that minimizes the expected overall SDHFL completion time, $\min \mathbb E[T]$, over cluster scheduling, UAV speed, computation, uplink power, D2D subcarrier assignment, and D2D transmit power.
+**Problem & objective**: Problem P1 in (29) is a nonconvex MINLP that minimizes the expected overall SDHFL completion time, $\min \mathbb E[T]$, over cluster scheduling, UAV speed, computation, uplink power, D2D subcarrier assignment, and D2D transmit power.
 
 **Decision variables**:
 
@@ -55,12 +55,18 @@ Proposes semi-decentralized hybrid federated learning (SDHFL) for wide-area IoT:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Target model accuracy: $F(\mathbf w^{(B)})-F(\mathbf w^*)\leq\varepsilon$ |
-| C2 | Mean-rate queue stability: $\lim_{V\to\infty}g_k(V)=0$ for every cluster $k$ |
-| C3 | UAV per-round energy: $E(b)\leq E_{\mathrm{limit}}$ |
-| C4 | Selected-head upload: $t_k^u B_U\log_2\!\left(1+\frac{p_kh_k}{B_UN_0}\right)\geq d_k$ |
-| C5 | Scheduling and staleness: $a_k(b)\in\{0,1\}$ and $\tau_k^b(a_k(b))\leq\tau_{\max}$ |
-| C6 | D2D interference and assignment obey C10 and $s_{m,m',g}^{b}\in\{0,1\}$ |
+| C1 | Target model accuracy: $F(\mathbf w^{(B)})-F(\mathbf w^*)\le\varepsilon$ |
+| C2 | Mean-rate queue stability: $\lim_{V\to\infty}g_k(V)=0$ |
+| C3 | UAV per-round energy: $E(b)\le E_{\mathrm{limit}}$ |
+| C4 | Selected-cluster upload within $t_k^u$: $t_k^uB_U\log_2(1+p_kh_k/(B_UN_0))\ge d_k$ |
+| C5 | Cluster selection: $a_k(b)\in\{0,1\}$ |
+| C6 | UAV speed: $0\le v(b)\le v_{\max}$ |
+| C7 | Head power: $0\le p_k\le p_{\max}$ |
+| C8 | Device CPU: $f_{\min}\le f_m\le f_{\max}$ |
+| C9 | Staleness: $\tau_k^b(a_k(b))\le\tau_{\max}$ |
+| C10 | D2D interference plus noise at each receiver at most $I_{\max}$ |
+| C11 | D2D subcarrier assignment: $s_{m,m',g}^b\in\{0,1\}$ |
+| C12 | UAV CPU: $0\le f_u\le f_{u,\max}$ |
 
 **Algorithm**: Analyze SDHFL convergence and derive a lower bound on the required global rounds, set the optimal head power and device CPU rate to their maxima, transform queue stability and per-round completion time with a Lyapunov drift-minus-utility bound, alternately optimize UAV speed and relaxed D2D subcarrier and power allocation, recover binary assignments, and select the cluster using the derived queue-aware rule.
 
@@ -68,7 +74,7 @@ Proposes semi-decentralized hybrid federated learning (SDHFL) for wide-area IoT:
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] studied completion-time minimization for UAV-assisted semi-decentralized hybrid federated learning in wide-area IoT networks with D2D clusters and non-IID data. They formulated a MINLP over cluster selection, UAV speed, device and UAV computation, uplink power, D2D subcarriers, and D2D power under accuracy, queue-stability, energy, staleness, and interference constraints. They derived a convergence bound on the required global rounds and designed a Lyapunov-based adaptive cluster-selection and alternating resource-allocation algorithm. Simulations reported accuracy above 98.26% on MNIST and 65.21% on CIFAR-10, respectively 1.06% and 3.76% above the asynchronous-FL baseline, while the proposed resource controller yielded lower completion time than the compared baselines.
+Chen et al. [x] studied completion-time minimization for UAV-assisted semi-decentralized hybrid federated learning in wide-area IoT networks with D2D clusters and non-IID data. They formulated a MINLP over cluster selection, UAV speed, device and UAV computation, uplink power, D2D subcarriers, and D2D power under accuracy, queue-stability, energy, staleness, and interference constraints. They derived a convergence bound on the required global rounds and designed a Lyapunov-based adaptive cluster-selection and alternating resource-allocation algorithm. Against synchronous FL, clustered synchronous FL, asynchronous FL, and semi-decentralized FL without consensus, simulations report accuracy above 98.26% on MNIST and 65.21% on CIFAR-10, 1.06% and 3.76% above asynchronous FL, and lower completion time; ideal FedAvg without communication limits still reaches the highest accuracy.
 
 ## Problem
 

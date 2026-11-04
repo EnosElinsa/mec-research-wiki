@@ -22,7 +22,7 @@ related:
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[yang-2024-taco-human-digital-twin-edge]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # YOLO-Based Semantic Communication With Generative AI-Aided Resource Allocation for Digital Twins Construction
@@ -41,7 +41,7 @@ A [[semantic-communication]] framework for building a [[digital-twin|digital twi
 
 **Scenario**: A UAV photographs an apple orchard, applies YOLOv7-HS to extract cropped fruit images, confidence scores, and positions, and transmits those semantic objects to construct a digital twin. The wireless link follows Fisher-Snedecor $\mathcal F$ composite fading, and a fixed total transmit-power budget is shared among detected objects; the multiple-access scheme is not specified.
 
-**Problem & objective**: The image-semantic-transmission formulation maximizes MIST, $E(A,\{W_i\},\{p_i\})=A\sum_i W_iQ(p_i)$; after detection fixes extraction accuracy $A$ and importance $W_i=c_i^{\sigma}$, the resource-allocation decision chooses $\{p_i\}$ to maximize this importance-weighted transmission quality.
+**Problem & objective**: Problem (2) maximizes MIST, $E(A,\{W_i\},\{p_i\})=A\sum_i W_iQ(p_i)$; after detection fixes extraction accuracy $A$ and importance $W_i=c_i^{\sigma}$, the resource-allocation decision chooses $\{p_i\}$ to maximize this importance-weighted transmission quality.
 
 **Decision variables**:
 
@@ -54,9 +54,9 @@ A [[semantic-communication]] framework for building a [[digital-twin|digital twi
 
 | ID | Meaning and key expression |
 |---|---|
-| Power budget | The object powers satisfy $\sum_i p_i\leq P$ |
-| Detection domain | Retained objects have confidence $c_i\in[c_{\min},1]$, which determines $W_i=c_i^{\sigma}$ |
-| Allocation domain | Object powers and generated allocation weights are nonnegative and normalized before mapping to the total budget |
+| (2a) | Total transmit power: $\sum_ip_i\le P$ |
+| (2b) | Detected objects have confidence $c_i\in[c_{\min},1]$ ($c_{\min}=0.25$), which sets $W_i=c_i^{\sigma}$ |
+| Algorithm rule | Generated allocation weights are nonnegative and normalized before mapping to the total budget |
 
 **Algorithm**: Detect fruit with the ELAN-H and SimAM enhanced YOLOv7-HS model; crop each object and derive its importance from detector confidence; either sort and allocate power by confidence or condition a reverse-diffusion actor on the channel, total power, and object count; train the actor with twin quality critics, target networks, soft updates, and exploration noise; then run five reverse-denoising steps to generate the power weights at inference.
 
@@ -64,7 +64,7 @@ A [[semantic-communication]] framework for building a [[digital-twin|digital twi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Du et al. [x] studied importance-aware semantic transmission for constructing an apple-orchard digital twin from UAV images. They defined the MIST metric and allocated a limited transmit-power budget among YOLO-detected fruit crops according to detector confidence and post-transmission image quality. They enhanced YOLOv7-X with ELAN-H and SimAM and proposed both a confidence-based allocation rule and a conditional diffusion allocator trained with double Q-learning. Experiments reported a 91 percent reduction from 595.2 MB of source images to 55.4 MB of semantic data, and the diffusion allocator achieved the highest MIST score in the reported comparison after overtaking the confidence-based method at roughly 500 training iterations.
+Du et al. [x] studied importance-aware semantic transmission for constructing an apple-orchard digital twin from UAV images. They defined the MIST metric and allocated a limited transmit-power budget among YOLO-detected fruit crops according to detector confidence and post-transmission image quality. They enhanced YOLOv7-X with ELAN-H and SimAM and proposed both a confidence-based allocation rule and a conditional diffusion allocator trained with double Q-learning. Experiments reported a 91 percent reduction from 595.2 MB of source images to 55.4 MB of semantic data, and the diffusion allocator overtook confidence-based allocation (Conf-SemCom) at roughly 500 training iterations and stayed above it and equal allocation (Avg-SemCom), though the MIST margins are small (about 17.24 versus 17.20 and 17.06 at 5000 iterations).
 
 ## Problem framing
 

@@ -24,7 +24,7 @@ related:
   - "[[xuemin-shen]]"
   - "[[zehui-xiong]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Unified Framework for Guiding Generative AI With Wireless Perception in Resource Constrained Mobile Edge Networks
@@ -43,7 +43,7 @@ Wang, J., Du, H., Niyato, D., Kang, J., Xiong, Z., Rajan, D., Mao, S., & Shen, X
 
 **Scenario**: A mobile-edge virtual service provider runs wireless perception and generative-AI character generation for a user, with CSI-derived skeleton quality, image quality, limited compute resources, and a price paid per unit of service quality.
 
-**Problem & objective**: The incentive problem maximizes user utility, $\max_{v_r,I_b,\chi_s,\chi_{ag}}U_{us}(v_r,I_b,\chi_s,\chi_{ag})$, while inducing a utility-maximizing provider response.
+**Problem & objective**: Problem (23), a joint pricing and resource-allocation problem, maximizes user utility, $\max_{v_r,I_b,\chi_s,\chi_{ag}}U_{us}(v_r,I_b,\chi_s,\chi_{ag})$, while inducing a utility-maximizing provider response.
 
 **Decision variables**:
 
@@ -58,10 +58,10 @@ Wang, J., Du, H., Niyato, D., Kang, J., Xiong, Z., Rajan, D., Mao, S., & Shen, X
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Provider resources are chosen as a utility best response: $(\chi_s',\chi_{ag}')\in\arg\max U_{vsp}$. |
-| C2 | Total provider compute is bounded: $\chi_s'+\chi_{ag}'\leq E_t$. |
-| C3 | Provider participation requires $U_{vsp}(\chi_s',\chi_{ag}',v_r,I_b)\geq U_{th}$. |
-| C4 | User utility is $U_{us}=(v_m-v_r)Q_t-I_b$, with $Q_t$ combining perception and AIGC quality. |
+| (23) | Provider best response: $(\chi_s',\chi_{ag}')\in\arg\max U_{vsp}(v_r,I_b,\chi_s,\chi_{ag})$ |
+| (23) | Provider compute budget: $\chi_s'+\chi_{ag}'\le E_t$ |
+| (23) | Provider participation: $U_{vsp}(\chi_s',\chi_{ag}',v_r,I_b)\ge U_{th}$ |
+| Model rule | User utility $U_{us}=(v_m-v_r)Q_t-I_b$, with $Q_t$ combining perception and AIGC quality |
 
 **Algorithm**: Extract CSI features and skeletons with sequential multi-scale perception, generate virtual characters from the inferred pose, and train a conditional diffusion model with Q-learning to produce pricing actions; the provider then solves its resource response by convex optimization.
 
@@ -69,7 +69,7 @@ Wang, J., Du, H., Niyato, D., Kang, J., Xiong, Z., Rajan, D., Mao, S., & Shen, X
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] propose WiPe-GAI, which uses wireless CSI perception to guide virtual-character generation at a mobile edge provider. The paper also formulates a pricing and resource-allocation problem that maximizes user utility through a QoS price, basic fee, and provider compute split under a provider best response, capacity bound, and participation threshold. A sequential multi-scale perception pipeline supplies the skeleton, while a conditional diffusion model with Q-learning generates pricing strategies and convex optimization completes the provider response. Experiments report accurate skeleton and character generation together with user utility gains over existing pricing solutions while preserving provider participation.
+Wang et al. [x] propose WiPe-GAI, which uses wireless CSI perception to guide virtual-character generation at a mobile edge provider. The paper also formulates a pricing and resource-allocation problem that maximizes user utility through a QoS price, basic fee, and provider compute split under a provider best response, capacity bound, and participation threshold. A sequential multi-scale perception pipeline supplies the skeleton, while a conditional diffusion model with Q-learning generates pricing strategies and convex optimization completes the provider response. Experiments report accurate skeleton and character generation and a diffusion pricing policy that converges faster than DRL-SAC and DRL-PPO and reaches a reward of about 1000 versus about 970 and 960.
 
 ## Problem framing
 

@@ -52,10 +52,10 @@ The DRL angle: the action space is **hybrid** (binary offload decision per task 
 
 | ID | Meaning and key expression |
 |---|---|
-| 22b | Each device transmit power remains between zero and its maximum |
-| 22c | Exactly one admissible local, edge, or cloud destination is selected for task $k$ |
-| Eqs. (6)-(7) | Local queue evolution, delay, and energy follow the device-computing model |
-| Eqs. (12)-(13), (16)-(17) | Edge and cloud transmission, queueing, computation delay, and device-energy relations hold |
+| (22b) | Each device transmit power remains between zero and its maximum |
+| (22c) | Exactly one admissible local, edge, or cloud destination is selected for task $k$ |
+| (22a): (6)–(7) | Local queue evolution, delay, and energy follow the device-computing model |
+| (22a): (12)–(13), (16)–(17) | Edge and cloud transmission, queueing, computation delay, and device-energy relations hold |
 
 **Algorithm**: Trigger an MDP transition whenever a task arrives; build the state from task attributes, local and edge queue delays, link delays, and computing capacities; encode the discrete destination with a learned embedding and the continuous power with a conditional latent representation; pretrain and update the representation from replay; optimize the latent actor with TD3 twin critics and target networks; decode one destination-power action per task and deploy the scheduler independently at each device.
 
@@ -63,7 +63,7 @@ The DRL angle: the action space is **hybrid** (binary offload decision per task 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hao et al. [x] studied task-driven priority-aware computation offloading in a collaborative cloud-edge-end system. They formulated a long-term average system-gain problem over a discrete local, edge, or cloud destination and continuous device transmit power, with priority-sensitive delay utility and energy cost. Their TPO method triggers decisions at task arrivals, represents the hybrid action in a learned latent space, and trains the latent policy with TD3 using queue, task, link, and computing state. Simulation and Kubernetes-based testbed results reported the highest system gain, the lowest overall task and waiting delays, and the highest high-priority completion rate among the evaluated approaches.
+Hao et al. [x] studied task-driven priority-aware computation offloading in a collaborative cloud-edge-end system. They formulated a long-term average system-gain problem over a discrete local, edge, or cloud destination and continuous device transmit power, with priority-sensitive delay utility and energy cost. Their TPO method triggers decisions at task arrivals, represents the hybrid action in a learned latent space, and trains the latent policy with TD3 using queue, task, link, and computing state. Against SNP, MNP, and MCP, simulation and Kubernetes-based testbed results reported the highest system gain, the lowest overall task and waiting delays, and the highest high-priority completion rate, while MNP gives lower delay and slightly higher completion for low-priority tasks.
 
 ## Problem framing
 

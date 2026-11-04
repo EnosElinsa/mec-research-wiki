@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[yuanming-shi]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Federated Linear Bandit Learning via UAV Aided Over-the-Air Computation
@@ -35,7 +35,7 @@ Combines event-triggered federated LinUCB with analog AirComp aggregation at a m
 
 **Scenario**: $N$ mobile IoT devices run federated LinUCB with one single-antenna UAV server flying at fixed altitude. On event-triggered rounds, clients simultaneously upload Gram-matrix and reward-vector statistics through noisy fading multiple-access AirComp; accurate CSI, tight synchronization, error-free downlink broadcast, and quasi-static intra-slot channels are assumed.
 
-**Problem & objective**: The communication problem is a non-convex time-averaged AirComp design, $\min_{\boldsymbol\alpha,\boldsymbol\eta,\mathbf q}\frac1T\sum_{t=1}^T\mathrm{MSE}_t$, jointly optimizing device transmission, UAV receive normalization, and horizontal trajectory while the learning layer minimizes cumulative group pseudo-regret.
+**Problem & objective**: Problem (8), a non-convex time-averaged AirComp design, $\min_{\boldsymbol\alpha,\boldsymbol\eta,\mathbf q}\frac1T\sum_{t=1}^T\mathrm{MSE}_t$, jointly optimizing device transmission, UAV receive normalization, and horizontal trajectory while the learning layer minimizes cumulative group pseudo-regret.
 
 **Decision variables**:
 
@@ -44,17 +44,17 @@ Combines event-triggered federated LinUCB with analog AirComp aggregation at a m
 | Device transmission factor | $\alpha_{i,t}$ | continuous, power-constrained | Analog scaling used by device $i$ in slot $t$ |
 | Receive normalization | $\eta_t$ | continuous, positive | UAV post-processing factor for the aggregated signal |
 | UAV trajectory | $\mathbf q_t$ | continuous horizontal position | UAV server location in slot $t$ |
-| Bandit action | $\theta_{i,t}$ | discrete candidate action | LinUCB action selected by device $i$ from its confidence bound |
+| Bandit action | $\mathbf a_{i,t}$ | feature vector from decision set $\mathcal D_{i,t}$ | LinUCB action selected by device $i$ from its confidence bound |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every device satisfies per-slot peak and horizon-average transmit-power limits |
-| C2 | Receive normalization remains positive and is shared by the simultaneous AirComp upload |
-| C3 | UAV displacement satisfies $\lVert\mathbf q_t-\mathbf q_{t-1}\rVert\le V_{\max}\Delta t$ |
-| C4 | UAV initial/final locations and horizontal flight-region limits are respected |
-| C5 | Synchronization occurs only when the determinant-ratio information-gain trigger fires |
+| (8b) | Receive normalization: $\eta_t\ge0$ |
+| (8c) | UAV mobility: $\lVert\mathbf q_t-\mathbf q_{t-1}\rVert_2\le V^{\max}$ |
+| (8d) | Device power (5): $0\le\lvert\alpha_{i,t}\rvert^2\le P_0$ and $0\le\frac1T\sum_t\lvert\alpha_{i,t}\rvert^2\le\bar P_0$ |
+| Model rule | The UAV starts at $\mathbf q_I$ ((30h) in the ADMM form) |
+| Algorithm rule | Devices synchronize only when the determinant-ratio event trigger fires |
 
 **Algorithm**: Run event-triggered federated LinUCB → aggregate cached statistics by AirComp → alternate a closed-form normalization update, KKT/binary-search transmission update, and trajectory QCQP → solve the trajectory block by ADMM projection and quadratic updates → repeat BCD until the average aggregation MSE converges.
 
@@ -62,7 +62,7 @@ Combines event-triggered federated LinUCB with analog AirComp aggregation at a m
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Qian et al. [x] studied federated contextual linear bandit learning through UAV-aided over-the-air computation. Their event-triggered federated LinUCB method aggregates client Gram matrices and reward vectors over noisy fading channels at a mobile UAV server. They formulated a non-convex problem that minimizes time-averaged AirComp mean-square error by jointly optimizing device transmission factors, receive normalization, and UAV trajectory under peak, average-power, and mobility constraints. The BCD-ADMM solution alternates closed-form normalization, KKT and binary-search signal-quality updates, and an ADMM trajectory QCQP. Theoretical analysis gives the stated regret upper bound, and simulations report lower pseudo-regret than the evaluated static-UAV, fixed-power, hover-with-power-control, and BCD-SCA baselines.
+Qian et al. [x] studied federated contextual linear bandit learning through UAV-aided over-the-air computation. Their event-triggered federated LinUCB method aggregates client Gram matrices and reward vectors over noisy fading channels at a mobile UAV server. They formulated a non-convex problem that minimizes time-averaged AirComp mean-square error by jointly optimizing device transmission factors, receive normalization, and UAV trajectory under peak, average-power, and mobility constraints. The BCD-ADMM solution alternates closed-form normalization, KKT and binary-search signal-quality updates, and an ADMM trajectory QCQP. Theoretical analysis gives the stated regret upper bound, and simulations report lower pseudo-regret and MSE than static-UAV, fixed-power, and hover-with-power-control baselines, while BCD-SCA performs about as well as BCD-ADMM.
 
 ## Problem framing
 

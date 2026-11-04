@@ -17,7 +17,7 @@ related:
   - "[[soft-actor-critic]]"
   - "[[generative-ai-for-mec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # HybridRAG-Based LLM Agents for Low-Carbon Optimization in Low-Altitude Economy Networks
@@ -36,7 +36,7 @@ Uses HybridRAG to help LLM agents formulate a low-carbon multi-UAV MEC optimizat
 
 **Scenario**: Multiple rotary-wing UAVs serve users with indivisible tasks in slotted low-altitude networks, while mobility, collision avoidance, coverage, communication, computation, propulsion energy, and carbon conversion are modeled jointly.
 
-**Problem & objective**: The generated MEC model minimizes total carbon emissions, $\min_{\{A,F,V\}}C^{Total}$, over task assignment, compute allocation, and UAV trajectory actions.
+**Problem & objective**: Problem (28), the generated MEC model, minimizes total carbon emissions, $\min_{\{A,F,V\}}C^{Total}$, over task assignment, compute allocation, and UAV trajectory actions.
 
 **Decision variables**:
 
@@ -51,11 +51,13 @@ Uses HybridRAG to help LLM agents formulate a low-carbon multi-UAV MEC optimizat
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task is assigned once: $\alpha_{k,m}(n)\in\{0,1\}$ and $\sum_m\alpha_{k,m}(n)=1$. |
-| C2 | UAV positions stay inside the service region. |
-| C3 | UAV movement is bounded: $\lVert\mathbf w_m(n+1)-\mathbf w_m(n)\rVert\leq\delta_tV_{max}$. |
-| C4 | UAV separation and user coverage are enforced. |
-| C5 | G2A bandwidth and compute capacity are bounded. |
+| (28b)–(28c) | Binary task assignment, one UAV per task: $\alpha_{k,m}(n)\in\{0,1\}$, $\sum_m\alpha_{k,m}(n)=1$ |
+| (28d) | Service region: $x_m(n)\in[0,X_{\max}]$, $y_m(n)\in[0,Y_{\max}]$ |
+| (28e) | UAV movement: $\lVert\mathbf w_m(n+1)-\mathbf w_m(n)\rVert\le\delta_tV_{\max}$ |
+| (28f) | UAV separation: $\lVert\mathbf w_m(n)-\mathbf w_{m'}(n)\rVert\ge D_{\min}$ |
+| (28g) | Coverage: $\alpha_{k,m}(n)\lVert\mathbf w_m(n)-\mathbf v_k(n)\rVert^2\le r_{\max}^2+H^2$ |
+| (28h) | G2A bandwidth: $\sum_kB_{k,m}^{\mathrm{G2A}}\le B_{\max}^{\mathrm{G2A}}$ |
+| (28i)–(28j) | UAV compute: $\sum_k\alpha_{k,m}(n)f_{k,m}(n)\le F_m^{\max}$, $0\le f_{k,m}(n)\le F_m^{\max}$ |
 
 **Algorithm**: Use KeywordRAG, VectorRAG, and GraphRAG to prompt an LLM into a grounded optimization model, then solve its MDP with R2DSAC, diffusion-policy and action-entropy regularization, Q guidance, and dynamic actor pruning.
 
@@ -63,7 +65,7 @@ Uses HybridRAG to help LLM agents formulate a low-carbon multi-UAV MEC optimizat
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wen et al. [x] combine HybridRAG-based formulation with a diffusion-enhanced SAC solver for low-carbon multi-UAV MEC. The generated model minimizes carbon emissions through binary task assignments, compute allocations, and UAV movement under assignment, region, speed, separation, coverage, bandwidth, and capacity constraints. Keyword, vector, and graph retrieval provide domain and relational context, while R2DSAC uses diffusion and entropy regularization, Q guidance, and dynamic pruning to learn the control policy. Experiments compare retrieval quality, carbon-aware training behavior, and reward against conventional RAG and DRL baselines.
+Wen et al. [x] combine HybridRAG-based formulation with a diffusion-enhanced SAC solver for low-carbon multi-UAV MEC. The generated model minimizes carbon emissions through binary task assignments, compute allocations, and UAV movement under assignment, region, speed, separation, coverage, bandwidth, and capacity constraints. Keyword, vector, and graph retrieval provide domain and relational context, while R2DSAC uses diffusion and entropy regularization, Q guidance, and dynamic pruning to learn the control policy. Experiments report a 6.6% F1 gain over traditional RAG (VectorRAG plus KeywordRAG), and R2DSAC reaches higher test reward than random, SAC (64%), and PPO (19.9%) and its ablated variants.
 
 ## Problem framing
 

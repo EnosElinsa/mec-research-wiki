@@ -26,7 +26,7 @@ related:
   - "[[xiaojun-yuan]]"
   - "[[ying-jun-angela-zhang]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Enabled Over-the-Air Federated Learning: A Hierarchical Aggregation Approach
@@ -45,7 +45,7 @@ Uses a mobile UAV parameter server to collect partial over-the-air gradient aggr
 
 **Scenario**: A fixed-altitude UAV parameter server flies a closed path over distributed edge devices and receives simultaneous local-gradient transmissions through AirComp before hierarchically combining partial aggregates. Uplink and downlink use orthogonal frequency bands, and device-to-UAV links follow slotwise free-space LoS fading with compensated Doppler.
 
-**Problem & objective**: Problem P1 is a non-convex mixed-integer communication-learning design that minimizes the coupled aggregation-error sum, $\min_{\Omega}\sum_{j=1}^{J}\mathbb{E}[\|\mathbf e^{(j)}\|^2]$, as a surrogate for the learning-convergence bound.
+**Problem & objective**: Problem (P1) in (28) is a non-convex mixed-integer communication-learning design that minimizes the coupled aggregation-error sum, $\min_{\Omega}\sum_{j=1}^{J}\mathbb{E}[\|\mathbf e^{(j)}\|^2]$, as a surrogate for the learning-convergence bound.
 
 **Decision variables**:
 
@@ -60,11 +60,12 @@ Uses a mobile UAV parameter server to collect partial over-the-air gradient aggr
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Device-selection entries are binary, $\alpha_m^{(j)}[n]\in\{0,1\}$ |
-| C2 | The UAV returns to its starting position after each flying round |
-| C3 | Consecutive positions obey the maximum-speed bound, $\|\mathbf u[n+1]-\mathbf u[n]\|\leq V_{\max}\delta$ |
-| C4 | Equivalent channel variables remain consistent with the distance-dependent free-space channel |
-| C5 | $\ell^{(j)}$ equals the total training weight selected for global update $j$ |
+| (28b) | Device selection is binary: $\alpha_m^{(j)}[n]\in\{0,1\}$ |
+| (28c) | Closed path: $\mathbf u[0]=\mathbf u[N]$ |
+| (28d) | Speed: $\lVert\mathbf u[n+1]-\mathbf u[n]\rVert^2\le(V_{\max}\delta)^2$ |
+| (28e) | Equivalent channel: $K_{m,n'}^{(j)}=\alpha_m^{(j)}[n]\sqrt{\varrho P_0}/\sqrt{z^2+\lVert\mathbf u[n]-\mathbf v_m\rVert^2}$ |
+| (28f) | Selected samples: $\ell^{(j)}=\sum_n\sum_mb_m\alpha_m^{(j)}[n]$ |
+| Note | The parse shifts the tags; IDs follow the paper's text, so check the published paper |
 
 **Algorithm**: Derive the correlation-aware aggregation MSE → update aggregation coefficients in closed form → optimize trajectory and equivalent channels by SCA → optimize relaxed device selection and sample totals by fractional programming and SCA → round selections and iterate the AO blocks to convergence.
 
@@ -72,7 +73,7 @@ Uses a mobile UAV parameter server to collect partial over-the-air gradient aggr
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhong et al. [x] studied UAV-enabled over-the-air federated learning with hierarchical aggregation over a large service area. They formulated a non-convex problem that minimizes a gradient-correlation-aware sum of aggregation MSE terms by jointly optimizing the UAV parameter-server trajectory, device selection states, and aggregation coefficients. Their hierarchical approach collects partial over-the-air gradient aggregates at multiple UAV positions and then combines them for global model updating with a tunable aggregation frequency. An alternating-optimization algorithm updates the coupled blocks using closed-form receiver coefficients, successive convex approximation, and fractional programming. Numerical simulations demonstrate improved learning performance over the evaluated static-server and trajectory-ablation baselines and show that aggregation frequency balances communication use against the number of model updates.
+Zhong et al. [x] studied UAV-enabled over-the-air federated learning with hierarchical aggregation over a large service area. They formulated a non-convex problem that minimizes a gradient-correlation-aware sum of aggregation MSE terms by jointly optimizing the UAV parameter-server trajectory, device selection states, and aggregation coefficients. Their hierarchical approach collects partial over-the-air gradient aggregates at multiple UAV positions and then combines them for global model updating with a tunable aggregation frequency. An alternating-optimization algorithm updates the coupled blocks using closed-form receiver coefficients, successive convex approximation, and fractional programming. Numerical simulations show higher test accuracy than a static PS (with one or $N$ aggregations) and a UAV-PS without trajectory and selection optimization, approaching the error-free bound, and show that aggregation frequency balances communication use against the number of model updates.
 
 ## Problem framing
 

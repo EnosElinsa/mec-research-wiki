@@ -60,7 +60,7 @@ Studies a fixed-wing UAV carrying a MEC server and serving user devices (UDs) wi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ji et al. [x] formulated partial offloading for a fixed-wing UAV MEC server as a joint resource-allocation and trajectory problem under OMA and NOMA. Their objective minimizes weighted UAV and user energy over local and offloaded bits, CPU frequencies, and UAV positions subject to causality, completion, terminal-slot, and mobility constraints. A block-alternating method solves resource allocation by Lagrange duality and trajectory updates by successive convex approximation. Simulations show the joint design is the lowest-energy scheme in both access modes against offloading-only, direct-trajectory, and local-computing schemes; under NOMA its weighted energy is about one thousandth of local computing.
+Ji et al. [x] formulated partial offloading for a fixed-wing UAV MEC server as a joint resource-allocation and trajectory problem under OMA and NOMA. Their objective minimizes weighted UAV and user energy over local and offloaded bits, CPU frequencies, and UAV positions subject to causality, completion, terminal-slot, and mobility constraints. A block-alternating method solves resource allocation by Lagrange duality and trajectory updates by successive convex approximation. Simulations show the joint design is the lowest-energy scheme in both access modes against offloading-only, direct-trajectory, and local-computing schemes; under NOMA its weighted energy is about one thousandth of local computing; in the weight sweep with $\omega_u=0.2$, the UAV spends 123 J to cut user energy from $2.2\times10^5$ J under local computing to 19 J.
 
 ## Problem framing
 

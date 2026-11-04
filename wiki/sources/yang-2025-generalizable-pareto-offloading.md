@@ -18,7 +18,7 @@ related:
   - "[[non-dominated-sorting-genetic-algorithm]]"
   - "[[song-2024-mol-aoi-energy]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Generalizable Pareto-Optimal Offloading With Reinforcement Learning in Mobile Edge Computing
@@ -50,10 +50,10 @@ Frames MEC offloading as a **multi-objective** delay-vs-energy problem with unkn
 
 | ID | Meaning and key expression |
 |---|---|
-| 12b | Every offloading indicator is binary, $x_{m,e}\in\{0,1\}$ |
-| 12c | Each task is assigned to exactly one server, $\sum_{e\in\mathcal E}x_{m,e}=1$ |
-| Context | Preference weights satisfy $\omega_T+\omega_E=1$ |
-| Queueing | Tasks are scheduled from each user's FIFO queue and share server compute capacity |
+| (12b) | Every offloading indicator is binary, $x_{m,e}\in\{0,1\}$ |
+| (12c) | Each task is assigned to exactly one server, $\sum_{e\in\mathcal E}x_{m,e}=1$ |
+| Model rule | Preference weights satisfy $\omega_T+\omega_E=1$ |
+| Model rule | Tasks are scheduled from each user's FIFO queue and share server compute capacity |
 
 **Algorithm**: GMORL casts the system as a contextual multi-objective MDP and trains one preference-conditioned Discrete-SAC policy. Histogram-based server-state encoding, context inputs for CPU frequencies and server count, and a masked fixed-size action head allow the same policy to operate across heterogeneous MEC systems.
 
@@ -61,7 +61,7 @@ Frames MEC offloading as a **multi-objective** delay-vs-energy problem with unkn
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yang et al. [x] formulated binary task offloading in a multi-server MEC system as a contextual multi-objective MDP that trades execution delay against energy consumption. Their problem assigns each stochastic task to exactly one cloud or edge server and seeks Pareto solutions across unknown preference weights and heterogeneous CPU configurations. GMORL trains a single preference-conditioned Discrete-SAC policy using histogram-based server features, a vector reward, and a masked action architecture that supports different server counts. For six edge servers, the reported Pareto hypervolume was 64.1, only about 0.3 percent below the multi-policy MORL upper-bound reference. The same experiments report hypervolume gains of up to 121.0 percent over the compared non-upper-bound schemes and test generalization beyond the CPU-frequency and server-count training ranges.
+Yang et al. [x] formulated binary task offloading in a multi-server MEC system as a contextual multi-objective MDP that trades execution delay against energy consumption. Their problem assigns each stochastic task to exactly one cloud or edge server and seeks Pareto solutions across unknown preference weights and heterogeneous CPU configurations. GMORL trains a single preference-conditioned Discrete-SAC policy using histogram-based server features, a vector reward, and a masked action architecture that supports different server counts. For six edge servers, the reported Pareto hypervolume was 64.1, only about 0.3 percent below the multi-policy MORL upper-bound reference. The same experiments report hypervolume gains of up to 121.0 percent over the LinUCB-based, SA-based, random, NSGA-II, and Pareto Q-learning schemes and test generalization beyond the CPU-frequency and server-count training ranges.
 
 ## Problem framing
 

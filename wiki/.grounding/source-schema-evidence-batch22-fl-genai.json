@@ -1,0 +1,580 @@
+{
+  "entries": [
+    {
+      "slug": "chen-2026-sdhfl-completion-time",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Completion_Time_Minimization_for_UAV-Assisted_Semi-Decentralized_Hybrid_Federated_Learning/Completion_Time_Minimization_for_UAV-Assisted_Semi-Decentralized_Hybrid_Federated_Learning.md",
+          "lines": "300-348",
+          "note": "P1 (29) with C1-C12"
+        },
+        {
+          "path": "raw/sources/Completion_Time_Minimization_for_UAV-Assisted_Semi-Decentralized_Hybrid_Federated_Learning/Completion_Time_Minimization_for_UAV-Assisted_Semi-Decentralized_Hybrid_Federated_Learning.md",
+          "lines": "360-535",
+          "note": "max power/CPU, Lyapunov drift, speed and relaxed subcarrier/power"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Completion_Time_Minimization_for_UAV-Assisted_Semi-Decentralized_Hybrid_Federated_Learning/Completion_Time_Minimization_for_UAV-Assisted_Semi-Decentralized_Hybrid_Federated_Learning.md",
+          "lines": "648-707",
+          "note": "baselines 1-4; 98.26%/65.21%; FedAvg highest in ideal case"
+        }
+      ]
+    },
+    {
+      "slug": "dang-2026-uav-fl-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Energy_Efficiency_for_Federated_Learning_in_Rotary-Wing_UAV_Air-to-Ground_Communications/Optimizing_Energy_Efficiency_for_Federated_Learning_in_Rotary-Wing_UAV_Air-to-Ground_Communications.md",
+          "lines": "64-67,199-250",
+          "note": "problem (16a)-(16l); parse shifts (16b)-(16c) and (16k)-(16l), text numbering used"
+        },
+        {
+          "path": "raw/sources/Optimizing_Energy_Efficiency_for_Federated_Learning_in_Rotary-Wing_UAV_Air-to-Ground_Communications/Optimizing_Energy_Efficiency_for_Federated_Learning_in_Rotary-Wing_UAV_Air-to-Ground_Communications.md",
+          "lines": "257-588",
+          "note": "P (17), P1 (25), (58), P2 (59) inner approximation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Energy_Efficiency_for_Federated_Learning_in_Rotary-Wing_UAV_Air-to-Ground_Communications/Optimizing_Energy_Efficiency_for_Federated_Learning_in_Rotary-Wing_UAV_Air-to-Ground_Communications.md",
+          "lines": "626-718",
+          "note": "Algorithms I-IV and OMA baselines; 30.12/50.04 m; 95% in 10 iterations; OMA best"
+        }
+      ]
+    },
+    {
+      "slug": "du-2024-d2sac-aigc-asp-selection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services.md",
+          "lines": "150-158",
+          "note": "problem (1)-(3)"
+        },
+        {
+          "path": "raw/sources/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services.md",
+          "lines": "389-539",
+          "note": "AGOD actor, SAC double critics, Algorithm 1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services.md",
+          "lines": "53,588-613",
+          "note": "seven DRL baselines; heuristics; Table: 537 vs Prophet 596, 190 steps, 7.0 h"
+        }
+      ]
+    },
+    {
+      "slug": "du-2024-yolo-semcom-digital-twin",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction.md",
+          "lines": "118-131",
+          "note": "problem (2), (2a), (2b), c_min=0.25"
+        },
+        {
+          "path": "raw/sources/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction.md",
+          "lines": "501-543",
+          "note": "diffusion actor, twin critics"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction.md",
+          "lines": "687,691-713",
+          "note": "595.2 to 55.4 MB; Avg/Conf-SemCom; Fig. 12 values"
+        }
+      ]
+    },
+    {
+      "slug": "fu-2025-otae-inference-lae-batching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.md",
+          "lines": "210-283",
+          "note": "(6),(8),(9),(11); P1 (12a)-(12e)"
+        },
+        {
+          "path": "raw/sources/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.md",
+          "lines": "362-540",
+          "note": "P3-P5 beamforming; P6 (24); MDP state/action/reward"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.md",
+          "lines": "783,1004",
+          "note": "29.89/24.85/22.44/49.61%; 4% below MINLP-Prior; 40.25-21.18%"
+        }
+      ]
+    },
+    {
+      "slug": "fu-2026-uav-fl-user-grouping",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_User_Grouping-Based_Federated_Learning_With_UAV_Assistance/Energy-Efficient_User_Grouping-Based_Federated_Learning_With_UAV_Assistance.md",
+          "lines": "63,205-219",
+          "note": "problem (P1) with (2),(3),(6)-(8),(10),(12),(18)-(20)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_User_Grouping-Based_Federated_Learning_With_UAV_Assistance/Energy-Efficient_User_Grouping-Based_Federated_Learning_With_UAV_Assistance.md",
+          "lines": "233-501",
+          "note": "P2 feasibility, DBSCAN grouping, two-phase UG-SCA (P3)-(P5)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_User_Grouping-Based_Federated_Learning_With_UAV_Assistance/Energy-Efficient_User_Grouping-Based_Federated_Learning_With_UAV_Assistance.md",
+          "lines": "525-591",
+          "note": "Random/Fixed-SCA, RL-only, RL-SCA, TSP-SCA, AO; small-model tie"
+        }
+      ]
+    },
+    {
+      "slug": "hao-2025-priority-aware-task-driven-co",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning.md",
+          "lines": "267-282",
+          "note": "problem (22) with (22a)-(22c)"
+        },
+        {
+          "path": "raw/sources/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning.md",
+          "lines": "284,548",
+          "note": "task-driven MDP, latent hybrid action, TD3; NHR/NCR ablation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning.md",
+          "lines": "526-617",
+          "note": "SNP, MNP, MCP; MNP better for low-priority tasks"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-aircomp-uav-swarms-afl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AirComp-Assisted_Asynchronous_Federated_Learning_for_UAV_Swarms_A_Self-Adaptive_Aggregation_Scheme_to_Tackle_Model_Staleness/AirComp-Assisted_Asynchronous_Federated_Learning_for_UAV_Swarms_A_Self-Adaptive_Aggregation_Scheme_to_Tackle_Model_Staleness.md",
+          "lines": "91-97,165,228-250",
+          "note": "linkage (2)-(3), alpha power (10), problem (20a)-(20c)"
+        },
+        {
+          "path": "raw/sources/AirComp-Assisted_Asynchronous_Federated_Learning_for_UAV_Swarms_A_Self-Adaptive_Aggregation_Scheme_to_Tackle_Model_Staleness/AirComp-Assisted_Asynchronous_Federated_Learning_for_UAV_Swarms_A_Self-Adaptive_Aggregation_Scheme_to_Tackle_Model_Staleness.md",
+          "lines": "255-418,520-554",
+          "note": "P1 (21) branch-and-bound, P2 beamforming, staleness (46)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AirComp-Assisted_Asynchronous_Federated_Learning_for_UAV_Swarms_A_Self-Adaptive_Aggregation_Scheme_to_Tackle_Model_Staleness/AirComp-Assisted_Asynchronous_Federated_Learning_for_UAV_Swarms_A_Self-Adaptive_Aggregation_Scheme_to_Tackle_Model_Staleness.md",
+          "lines": "616,655-663",
+          "note": "MNIST; Table II time-to-accuracy 27.014 vs 30.991 vs ~62"
+        }
+      ]
+    },
+    {
+      "slug": "lin-2026-layered-semantic-uav-aggregation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Semantic_Communications_for_UAV_Data_Aggregation_A_Layered_Design_Against_Alterable_Hovering_Position/Semantic_Communications_for_UAV_Data_Aggregation_A_Layered_Design_Against_Alterable_Hovering_Position.md",
+          "lines": "60,118-155",
+          "note": "OFDM-NOMA; (P1) (10) C1; (P2) (14)"
+        },
+        {
+          "path": "raw/sources/Semantic_Communications_for_UAV_Data_Aggregation_A_Layered_Design_Against_Alterable_Hovering_Position/Semantic_Communications_for_UAV_Data_Aggregation_A_Layered_Design_Against_Alterable_Hovering_Position.md",
+          "lines": "195-406",
+          "note": "CLAP (18) C2; AOPP (P5) (32) C3, (P5-3) C4, SCA/BCD"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Semantic_Communications_for_UAV_Data_Aggregation_A_Layered_Design_Against_Alterable_Hovering_Position/Semantic_Communications_for_UAV_Data_Aggregation_A_Layered_Design_Against_Alterable_Hovering_Position.md",
+          "lines": "5,31",
+          "note": "3.0/3.1 dB over end-to-end training; CLAP low SNR, AOPP Rician"
+        }
+      ]
+    },
+    {
+      "slug": "long-2026-ft-dsac-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Fault-Tolerant_Aware_Task_Offloading_Based_on_Reinforcement_Learning_in_Mobile_Edge_Computing/Fault-Tolerant_Aware_Task_Offloading_Based_on_Reinforcement_Learning_in_Mobile_Edge_Computing.md",
+          "lines": "110-217",
+          "note": "(8), C1-C6 (9)-(14), (15)-(18), C7 (17)"
+        },
+        {
+          "path": "raw/sources/Fault-Tolerant_Aware_Task_Offloading_Based_on_Reinforcement_Learning_in_Mobile_Edge_Computing/Fault-Tolerant_Aware_Task_Offloading_Based_on_Reinforcement_Learning_in_Mobile_Edge_Computing.md",
+          "lines": "223-306",
+          "note": "problem (19); MAMDP, masked DSAC, CTDE"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Fault-Tolerant_Aware_Task_Offloading_Based_on_Reinforcement_Learning_in_Mobile_Edge_Computing/Fault-Tolerant_Aware_Task_Offloading_Based_on_Reinforcement_Learning_in_Mobile_Edge_Computing.md",
+          "lines": "5,25,389-397,460-480,511-513",
+          "note": "FT-DSAC-Soft, FECW, TPTO, O2O-DRL; 6-19%, 9-27%; overhead future work"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2026-pruning-aware-laim-co-inference",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/The_Larger_the_Merrier_Efficient_Large_AI_Model_Inference_in_Wireless_Edge_Networks/The_Larger_the_Merrier_Efficient_Large_AI_Model_Inference_in_Wireless_Edge_Networks.md",
+          "lines": "112,551-582",
+          "note": "problem (P1) (44a)-(44f), power (1)"
+        },
+        {
+          "path": "raw/sources/The_Larger_the_Merrier_Efficient_Large_AI_Model_Inference_in_Wireless_Edge_Networks/The_Larger_the_Merrier_Efficient_Large_AI_Model_Inference_in_Wireless_Edge_Networks.md",
+          "lines": "586-670",
+          "note": "SCA (P2),(P3.k) per L_D, exhaustive split search"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/The_Larger_the_Merrier_Efficient_Large_AI_Model_Inference_in_Wireless_Edge_Networks/The_Larger_the_Merrier_Efficient_Large_AI_Model_Inference_in_Wireless_Edge_Networks.md",
+          "lines": "687,851-857",
+          "note": "on-device, on-server, PPO baselines; bound tight above 40% retained"
+        }
+      ]
+    },
+    {
+      "slug": "niazmand-2025-jopa-dnn-pruning-iiot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT.md",
+          "lines": "303-321",
+          "note": "problem (P1) (17a)-(17h); dropping rule"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT.md",
+          "lines": "353-467",
+          "note": "reward (21), hybrid-action SAC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT.md",
+          "lines": "662,759-769",
+          "note": "JOPAV1 and AGDM; dropping <1%; small gaps at low load"
+        }
+      ]
+    },
+    {
+      "slug": "qian-2026-federated-bandit-aircomp",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Federated_Linear_Bandit_Learning_via_UAV_Aided_Over-the-Air_Computation/Federated_Linear_Bandit_Learning_via_UAV_Aided_Over-the-Air_Computation.md",
+          "lines": "65-93,119-174",
+          "note": "scenario; power (5); problem (8a)-(8d)"
+        },
+        {
+          "path": "raw/sources/Federated_Linear_Bandit_Learning_via_UAV_Aided_Over-the-Air_Computation/Federated_Linear_Bandit_Learning_via_UAV_Aided_Over-the-Air_Computation.md",
+          "lines": "198-252,359-631",
+          "note": "event-triggered LinUCB; (16), KKT power, ADMM trajectory (30)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Federated_Linear_Bandit_Learning_via_UAV_Aided_Over-the-Air_Computation/Federated_Linear_Bandit_Learning_via_UAV_Aided_Over-the-Air_Computation.md",
+          "lines": "778-803",
+          "note": "static UAV, fixed power, hover with PC, BCD-SCA; BCD-SCA comparable"
+        }
+      ]
+    },
+    {
+      "slug": "ron-2026-federated-a3c-uav-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Energy_Efficiency_and_Service_Reliability_Optimization_for_UAV-Aided_Terrestrial_Networks/Intelligent_Energy_Efficiency_and_Service_Reliability_Optimization_for_UAV-Aided_Terrestrial_Networks.md",
+          "lines": "34-118",
+          "note": "P1 with C1-C6"
+        },
+        {
+          "path": "raw/sources/Intelligent_Energy_Efficiency_and_Service_Reliability_Optimization_for_UAV-Aided_Terrestrial_Networks/Intelligent_Energy_Efficiency_and_Service_Reliability_Optimization_for_UAV-Aided_Terrestrial_Networks.md",
+          "lines": "158-246",
+          "note": "UMDP, reward, A3C, hierarchical FL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Energy_Efficiency_and_Service_Reliability_Optimization_for_UAV-Aided_Terrestrial_Networks/Intelligent_Energy_Efficiency_and_Service_Reliability_Optimization_for_UAV-Aided_Terrestrial_Networks.md",
+          "lines": "375,416,420",
+          "note": "multi-agent DQN baseline; 99.06% vs 88.3% at 30 actions; 35.11% energy"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-wipe-gai",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks.md",
+          "lines": "427-437",
+          "note": "problem (23) and its three constraints"
+        },
+        {
+          "path": "raw/sources/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks.md",
+          "lines": "439-532",
+          "note": "diffusion pricing with Q-learning; convex provider response"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks.md",
+          "lines": "702,717-719",
+          "note": "DRL-SAC, DRL-PPO; ~1000 vs 970/960"
+        }
+      ]
+    },
+    {
+      "slug": "wen-2026-diffusion-dynamic-contract-ai-agent",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Diffusion-Based_Dynamic_Contract_for_Federated_AI_Agent_Construction_in_Mobile_Metaverses/Diffusion-Based_Dynamic_Contract_for_Federated_AI_Agent_Construction_in_Mobile_Metaverses.md",
+          "lines": "271-418",
+          "note": "Theorems 1,3 monotonicity, rewards (19),(24), utility (26), problem (27)"
+        },
+        {
+          "path": "raw/sources/Diffusion-Based_Dynamic_Contract_for_Federated_AI_Agent_Construction_in_Mobile_Metaverses/Diffusion-Based_Dynamic_Contract_for_Federated_AI_Agent_Construction_in_Mobile_Metaverses.md",
+          "lines": "420",
+          "note": "4K to 2K variables, EDMSAC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Diffusion-Based_Dynamic_Contract_for_Federated_AI_Agent_Construction_in_Mobile_Metaverses/Diffusion-Based_Dynamic_Contract_for_Federated_AI_Agent_Construction_in_Mobile_Metaverses.md",
+          "lines": "23,52,771",
+          "note": "DMSAC, PPO, SAC, DDPG; up to 23%"
+        }
+      ]
+    },
+    {
+      "slug": "wen-2026-hybridrag-low-carbon-lae",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks.md",
+          "lines": "274-310",
+          "note": "problem (28a)-(28j)"
+        },
+        {
+          "path": "raw/sources/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks.md",
+          "lines": "184,322",
+          "note": "HybridRAG; R2DSAC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks.md",
+          "lines": "7,29,549-561",
+          "note": "6.6% F1; 64%/19.9% over SAC/PPO; ablations"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2025-gai-ris-resource-management",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication.md",
+          "lines": "51,270-311",
+          "note": "scenario; utility (15); P0 (16) C1-C8"
+        },
+        {
+          "path": "raw/sources/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication.md",
+          "lines": "315-405",
+          "note": "CDL DNN, distributional RL with WGAN-GP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication.md",
+          "lines": "461-481,538,657-766",
+          "note": "LS/MMSE CE baselines; parameter sweeps only"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2025-generalizable-pareto-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Generalizable_Pareto-Optimal_Offloading_With_Reinforcement_Learning_in_Mobile_Edge_Computing/Generalizable_Pareto-Optimal_Offloading_With_Reinforcement_Learning_in_Mobile_Edge_Computing.md",
+          "lines": "162-170,252",
+          "note": "problem (12) (12b)-(12c); queue model"
+        },
+        {
+          "path": "raw/sources/Generalizable_Pareto-Optimal_Offloading_With_Reinforcement_Learning_in_Mobile_Edge_Computing/Generalizable_Pareto-Optimal_Offloading_With_Reinforcement_Learning_in_Mobile_Edge_Computing.md",
+          "lines": "314-502",
+          "note": "vector reward, Discrete-SAC, GMORL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Generalizable_Pareto-Optimal_Offloading_With_Reinforcement_Learning_in_Mobile_Edge_Computing/Generalizable_Pareto-Optimal_Offloading_With_Reinforcement_Learning_in_Mobile_Edge_Computing.md",
+          "lines": "13,545-547",
+          "note": "hypervolume 64.1 vs 64.3 upper bound; baselines; 121.0%"
+        }
+      ]
+    },
+    {
+      "slug": "yao-2026-wamspres-npu",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Workload-Aware_Performance_Model_Based_Soft_Preemptive_Real-Time_Scheduling_for_Neural_Processing_Units/Workload-Aware_Performance_Model_Based_Soft_Preemptive_Real-Time_Scheduling_for_Neural_Processing_Units.md",
+          "lines": "13-28,164-196",
+          "note": "task model (4), completion rate (5), minimum quota (6)"
+        },
+        {
+          "path": "raw/sources/Workload-Aware_Performance_Model_Based_Soft_Preemptive_Real-Time_Scheduling_for_Neural_Processing_Units/Workload-Aware_Performance_Model_Based_Soft_Preemptive_Real-Time_Scheduling_for_Neural_Processing_Units.md",
+          "lines": "198-249",
+          "note": "greedy priority scheduler Algorithm 1, BPNN"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Workload-Aware_Performance_Model_Based_Soft_Preemptive_Real-Time_Scheduling_for_Neural_Processing_Units/Workload-Aware_Performance_Model_Based_Soft_Preemptive_Real-Time_Scheduling_for_Neural_Processing_Units.md",
+          "lines": "313,350,368-374,388",
+          "note": "MAPE <5%/<8%; 48.7%; 54.6% Ascend; limitations"
+        }
+      ]
+    },
+    {
+      "slug": "yao-not-in-parse-hierarchical-airfl-power",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Power_for_Interference-Resilient_Hierarchical_Over-the-Air_Federated_Learning/Optimizing_Power_for_Interference-Resilient_Hierarchical_Over-the-Air_Federated_Learning.md",
+          "lines": "179-222,356-379",
+          "note": "power (11); problem (P1) (31a)-(31f)"
+        },
+        {
+          "path": "raw/sources/Optimizing_Power_for_Interference-Resilient_Hierarchical_Over-the-Air_Federated_Learning/Optimizing_Power_for_Interference-Resilient_Hierarchical_Over-the-Air_Federated_Learning.md",
+          "lines": "381-462",
+          "note": "P1.1-P1.3 closed-form AO"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Power_for_Interference-Resilient_Hierarchical_Over-the-Air_Federated_Learning/Optimizing_Power_for_Interference-Resilient_Hierarchical_Over-the-Air_Federated_Learning.md",
+          "lines": "489,520-533",
+          "note": "ridge regression; three benchmarks; table values"
+        }
+      ]
+    },
+    {
+      "slug": "ye-2025-aigc-diffusion-contract",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach/Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach.md",
+          "lines": "122-184,332-406",
+          "note": "stage 1 IR (7), IC (8), bounds (9); stage 2 (24)-(27)"
+        },
+        {
+          "path": "raw/sources/Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach/Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach.md",
+          "lines": "194-254,418-611",
+          "note": "conditional GDM contract generators, critics"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach/Optimizing_AIGC_Services_by_Prompt_Engineering_and_Edge_Computing_A_Generative_Diffusion_Model-Based_Contract_Theory_Approach.md",
+          "lines": "549,671,714,722",
+          "note": "GQCG vs DQCG, GLCG vs DLCG; 8%/2%/22%"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-dt-aircomp-cluster-formation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Digital-Twin-Empowered_Cluster_Formation_via_Over-the-Air_Computation_in_UAV_Swarm_Networks/Digital-Twin-Empowered_Cluster_Formation_via_Over-the-Air_Computation_in_UAV_Swarm_Networks.md",
+          "lines": "76,180-220",
+          "note": "problem P (17a)-(17h); parse misplaces (17e)/(17f)"
+        },
+        {
+          "path": "raw/sources/Digital-Twin-Empowered_Cluster_Formation_via_Over-the-Air_Computation_in_UAV_Swarm_Networks/Digital-Twin-Empowered_Cluster_Formation_via_Over-the-Air_Computation_in_UAV_Swarm_Networks.md",
+          "lines": "311-526",
+          "note": "BCD: formation, Dinkelbach eta and power, SCA trajectory (35),(40)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Digital-Twin-Empowered_Cluster_Formation_via_Over-the-Air_Computation_in_UAV_Swarm_Networks/Digital-Twin-Empowered_Cluster_Formation_via_Over-the-Air_Computation_in_UAV_Swarm_Networks.md",
+          "lines": "5,643-682",
+          "note": "OT-CF, fixed-traj, fixed-scale; 42%/34% vs Pre-set-AirComp"
+        }
+      ]
+    },
+    {
+      "slug": "zhong-2026-hierarchical-ota-fl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Over-the-Air_Federated_Learning_A_Hierarchical_Aggregation_Approach/UAV-Enabled_Over-the-Air_Federated_Learning_A_Hierarchical_Aggregation_Approach.md",
+          "lines": "101-140,356-389",
+          "note": "problem (P1) (28a)-(28f); parse shifts tags, text numbering used"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Over-the-Air_Federated_Learning_A_Hierarchical_Aggregation_Approach/UAV-Enabled_Over-the-Air_Federated_Learning_A_Hierarchical_Aggregation_Approach.md",
+          "lines": "395-620",
+          "note": "closed-form zeta, SCA trajectory (P2), FP/SCA selection (P3), Algorithm 2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Over-the-Air_Federated_Learning_A_Hierarchical_Aggregation_Approach/UAV-Enabled_Over-the-Air_Federated_Learning_A_Hierarchical_Aggregation_Approach.md",
+          "lines": "654-658",
+          "note": "error-free, static PS, static PS N times, UAV-PS w/o traj. optim."
+        }
+      ]
+    }
+  ]
+}

@@ -17,7 +17,7 @@ related:
   - "[[qin-2025-matd3-noma-queue-sagin]]"
   - "[[khoramnejad-2025-gai-wireless-optimization-survey]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Over-the-Air Edge Inference for Low-Altitude Airspace: Generative AI-Aided Multi-Task Batching and Beamforming Design
@@ -36,7 +36,7 @@ A multi-task **over-the-air edge inference** system for low-altitude (LA) airspa
 
 **Scenario**: Low-altitude sensors extract multi-view features and upload them simultaneously to a multi-antenna BS through over-the-air computation. The BS reconstructs each task's global feature and batches inference requests with heterogeneous deadlines and accuracy targets to amortize model-loading latency.
 
-**Problem & objective**: Maximize inference throughput, $\max_{B,\mathbf y,\mathbf t,\mathbf w,\mathbf v}\sum_n\sum_b y_{n,b}$, by jointly selecting completed tasks, batch count and timing, and AirComp transceiver beamforming for synchronous or stochastic asynchronous arrivals.
+**Problem & objective**: Problem P6 in (24) maximizes inference throughput, $\max_{B,\mathbf y,\mathbf t,\mathbf w,\mathbf v}\sum_n\sum_b y_{n,b}$, by jointly selecting completed tasks, batch count and timing, and AirComp transceiver beamforming for synchronous or stochastic asynchronous arrivals.
 
 **Decision variables**:
 
@@ -52,12 +52,13 @@ A multi-task **over-the-air edge inference** system for low-altitude (LA) airspa
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task is assigned at most once: $\sum_b y_{n,b}\leq1$. |
-| C2 | A batch starts after all included tasks arrive and after the preceding batch completes. |
-| C3 | Included tasks finish by their deadlines: $y_{n,b}(t_b+l_b)\leq D_n$. |
-| C4 | Expected feature-aggregation error meets the margin-derived accuracy bound. |
-| C5 | Every sensor beam respects $\lVert\mathbf w_{n,k}\rVert_2^2\leq P$, and each receive beam is unit norm. |
-| C6 | For asynchronous operation, $1\leq B\leq N$ and the BS cannot start a new batch while it is busy. |
+| (6) | Each task runs in at most one batch: $\sum_by_{n,b}\le1$ |
+| (8) | A batch starts after its tasks arrive and the previous batch ends: $t_b\ge\max\{\max_ny_{n,b}T_n,\,t_{b-1}+l_{b-1}\}$ |
+| (9) | Deadline: $y_{n,b}(t_b+l_b)\le D_n$ |
+| (11) | Accuracy via aggregation error: $\sum_by_{n,b}\mathbb E[\lVert\mathbf e_n\rVert^2]\le\gamma^2(1-A_n/A_0)$ |
+| (12e) | Sensor power $\lVert\mathbf w_{n,k}\rVert^2\le P$; unit-norm combiners $\lVert\mathbf v_n\rVert=1$ |
+| (24b) | $B\in\{1,\ldots,N\}$, $y_{n,b}\in\{0,1\}$ |
+| Model rule | Synchronous case P1 (12) uses one batch starting at $T$ with delay $\rho_1+\rho_2\sum_ny_n$ in (12b) |
 
 **Algorithm**: For synchronous arrivals, increase candidate batch size until feasibility fails, prioritize deadline- and accuracy-feasible tasks, and alternate spatial-correlation-aware transmit and receive beamforming updates. For asynchronous arrivals, formulate remaining deadlines, waiting-task count, and BS busy time as an MDP state and train a diffusion-model actor with critic feedback and replay to generate batch-start and task-selection actions online.
 
@@ -65,7 +66,7 @@ A multi-task **over-the-air edge inference** system for low-altitude (LA) airspa
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Fu et al. [x] developed multi-task over-the-air edge inference for low-altitude sensing with joint batching and transceiver beamforming. They maximized the number of completed tasks over task-batch assignments, batch timing, transmit beams, and receive combiners under one-execution, deadline, inference-accuracy, sensor-power, and combiner-normalization constraints. Their synchronous method searches for the largest feasible batch with spatial-correlation-aware alternating beamforming, while the asynchronous method uses a diffusion actor to generate online batch-start and task-selection actions. ModelNet experiments reported up to 29.89% higher synchronous inference throughput than the listed baselines, and the asynchronous policy was only 4% below prior-aware offline MINLP while exceeding other baselines by 21.18% to 40.25%.
+Fu et al. [x] developed multi-task over-the-air edge inference for low-altitude sensing with joint batching and transceiver beamforming. They maximized the number of completed tasks over task-batch assignments, batch timing, transmit beams, and receive combiners under one-execution, deadline, inference-accuracy, sensor-power, and combiner-normalization constraints. Their synchronous method searches for the largest feasible batch with spatial-correlation-aware alternating beamforming, while the asynchronous method uses a diffusion actor to generate online batch-start and task-selection actions. ModelNet experiments reported 22.44% to 49.61% higher synchronous throughput than four benchmarks (including spatial-correlation-unaware and ZF-based power control), and the asynchronous policy was 4% below the prior-aware MINLP benchmark while exceeding static batching, sequential inference, and the other benchmarks by 21.18% to 40.25%.
 
 ## Problem framing
 

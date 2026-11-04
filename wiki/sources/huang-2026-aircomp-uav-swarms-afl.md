@@ -20,7 +20,7 @@ related:
   - "[[zhou-2026-cpsfl-uav-foundation-models]]"
   - "[[two-tier-submodel-partition]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # AirComp-Assisted Asynchronous Federated Learning for UAV Swarms: A Self-Adaptive Aggregation Scheme to Tackle Model Staleness
@@ -39,7 +39,7 @@ Proposes [[aircomp-assisted-asynchronous-fl]], where UAV sensing nodes train loc
 
 **Scenario**: Sensing UAVs collect data and train local models, while multi-antenna communication UAVs form a connected backbone and aggregate selected uploads through over-the-air computation. Asynchronous participation avoids waiting for stragglers, but channel distortion constrains which sensing UAVs can upload and delayed local models introduce staleness.
 
-**Problem & objective**: At each global epoch, the communication design maximizes $\left\|\mathbf{L}^{[e]}\mathbf{D}\right\|_1$, the total training-data volume represented by the selected local models, by jointly choosing sensing-to-communication-UAV links and receive beamforming vectors.
+**Problem & objective**: Problem (20), solved at each global epoch, maximizes $\left\|\mathbf{L}^{[e]}\mathbf{D}\right\|_1$, the total training-data volume represented by the selected local models, by jointly choosing sensing-to-communication-UAV links and receive beamforming vectors.
 
 **Decision variables**:
 
@@ -54,11 +54,11 @@ Proposes [[aircomp-assisted-asynchronous-fl]], where UAV sensing nodes train loc
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each sensing UAV uploads to at most one communication UAV: $\sum_j l_{i,j}^{[e]}\le1$ |
-| C2 | AirComp aggregation error stays below the MSE threshold $\gamma$ for every communication UAV |
-| C3 | Receiver beamforming power is bounded: $\lVert\mathbf b_j\rVert^2\le P_N$ |
-| C4 | Sensing-UAV transmit scalars satisfy $\lvert\alpha_i\rvert^2\le P_S$ |
-| C5 | Linkage entries are binary and infeasible upload or transmission plans are excluded |
+| (3) | Each sensing UAV uploads to at most one communication UAV: $\sum_jl_{i,j}^{[e]}\le1$ |
+| (20b) | AirComp MSE at every communication UAV at most $\gamma$: $\frac{\sigma^2}{P_S}\max_il_{i,j}\rho_i^2\lVert\mathbf b_j\rVert^2/\lVert\mathbf b_j^H\mathbf h_{i,j}\rVert^2\le\gamma$ |
+| (20c) | Receive beamformer power: $\lVert\mathbf b_j\rVert^2\le P_N$ |
+| (10) | Sensing-UAV transmit scalar: $\lvert\alpha_i\rvert^2\le P_S$ (used to derive (20b)) |
+| (21c)–(21d) | Algorithm rule: branch-and-bound excludes previously found infeasible upload and transmission plans |
 
 **Algorithm**: A branch-and-bound search proposes linkage matrices in descending represented-data volume, while an alternating optimizer updates the beamforming vector and auxiliary channel phases and rejects infeasible plans. Before AirComp upload, each sensing UAV compares local and current-global layers by cosine similarity, preserves sufficiently aligned layers, replaces stale layers, and then participates in asynchronous weighted aggregation.
 

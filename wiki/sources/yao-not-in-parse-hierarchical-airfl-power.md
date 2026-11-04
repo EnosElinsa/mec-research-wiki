@@ -16,7 +16,7 @@ related:
   - "[[yi-fang]]"
   - "[[guojun-han]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Optimizing Power for Interference-Resilient Hierarchical Over-the-Air Federated Learning
@@ -61,7 +61,7 @@ In a hierarchical over-the-air FL network, devices aggregate gradients to their 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yao et al. [x] investigated a large-scale hierarchical over-the-air federated learning network comprising a fusion center and multiple clusters, each with a base station and several edge devices. Over-the-air computation is used for gradient aggregation from devices to their base stations and from the base stations to the fusion center, with a two-stage amplify-and-forward relaying mechanism to improve communication efficiency. Because clusters share wireless resources, inter-cluster interference is a major challenge. They first conducted a convergence analysis of the optimality gap and then proposed a power allocation strategy, solved by alternating optimization with closed-form subproblem solutions, that minimizes the gap. Simulation results on a ridge regression task show that the method has clear advantages over baseline schemes.
+Yao et al. [x] investigated a large-scale hierarchical over-the-air federated learning network comprising a fusion center and multiple clusters, each with a base station and several edge devices. Over-the-air computation is used for gradient aggregation from devices to their base stations and from the base stations to the fusion center, with a two-stage amplify-and-forward relaying mechanism to improve communication efficiency. Because clusters share wireless resources, inter-cluster interference is a major challenge. They first conducted a convergence analysis of the optimality gap and then proposed a power allocation strategy, solved by alternating optimization with closed-form subproblem solutions, that minimizes the gap. On a synthetic ridge-regression task, the method reaches a lower optimality gap and prediction error than per-round MSE minimization, constant power, and a benchmark that ignores inter-cluster interference, which it matches only after about 100 rounds.
 
 ## Problem framing
 

@@ -16,7 +16,7 @@ related:
   - "[[huang-2026-aircomp-uav-swarms-afl]]"
   - "[[wang-2026-blockchain-lae-fl-mappo]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient User Grouping-Based Federated Learning With UAV Assistance
@@ -51,12 +51,12 @@ Groups interfering FL clients with DBSCAN, derives how participation and data vo
 
 | ID | Meaning and key expression |
 |---|---|
-| 2-3 | UAV initial and final positions are fixed |
-| 6-8 | Flight, computation, communication, and hovering fit the slot timing limits |
-| 10 | Each UE respects its maximum transmit power |
-| 12 | Every participating UE uploads the model within the communication duration under the SINR-limited rate |
-| 18 | The expected-global-loss gap is no greater than its target bound |
-| 19-20 | Active UEs use at least the required data volume and participation remains feasible |
+| (2)–(3) | UAV initial and final positions are fixed |
+| (6)–(8) | Flight, computation, communication, and hovering fit the slot timing limits |
+| (10) | Each UE respects its maximum transmit power |
+| (12) | Every participating UE uploads the model within the communication duration under the SINR-limited rate |
+| (18) | The expected-global-loss gap is no greater than its target bound |
+| (19)–(20) | Active UEs use at least the required data volume and participation remains feasible |
 
 **Algorithm**: Use DBSCAN and the analytical SINR feasibility condition to form UE groups and initialize slots, hover points, power, and data; in Phase I relax participation through per-slot data and solve successive convex approximations; infer binary participation by thresholding; in Phase II restore one data amount per active UE and re-solve the SCA problem until the energy improvement is below $\epsilon$.
 
@@ -64,7 +64,7 @@ Groups interfering FL clients with DBSCAN, derives how participation and data vo
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Fu et al. [x] studied energy-efficient user grouping for UAV-assisted federated learning under rate-limited simultaneous model uploads. They formulated a nonconvex total-energy minimization over UAV trajectory, UE participation, transmit power, local data volume, and hovering time while enforcing communication feasibility and a target expected-global-loss gap. Their UG-SCA method applies DBSCAN grouping and a feasibility initializer, then uses a two-phase successive convex approximation procedure to relax participation, recover binary participants, and re-optimize the continuous variables. Simulations show lower energy and faster convergence than the evaluated fixed, random, and reinforcement-learning baselines, while additional groups support larger model transmissions at the stated learning-performance tradeoff.
+Fu et al. [x] studied energy-efficient user grouping for UAV-assisted federated learning under rate-limited simultaneous model uploads. They formulated a nonconvex total-energy minimization over UAV trajectory, UE participation, transmit power, local data volume, and hovering time while enforcing communication feasibility and a target expected-global-loss gap. Their UG-SCA method applies DBSCAN grouping and a feasibility initializer, then uses a two-phase successive convex approximation procedure to relax participation, recover binary participants, and re-optimize the continuous variables. Against Random-SCA, Fixed-SCA, RL-only, RL-SCA, TSP-SCA, and AO baselines, simulations show lower energy and faster convergence; UG-SCA only matches fixed participation for small models and RL-SCA comes close at moderate sizes, and more groups support larger models at some cost in expected-global-loss gap.
 
 ## Problem
 

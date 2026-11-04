@@ -16,7 +16,7 @@ related:
   - "[[energy-latency-tradeoff]]"
   - "[[jung-ryun-lee]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Intelligent Energy Efficiency and Service Reliability Optimization for UAV-Aided Terrestrial Networks
@@ -37,7 +37,7 @@ Uses a two-level federated multi-agent A3C framework to control ground-user and 
 
 **Scenario**: Ground users upload data and local federated-learning models through selected UAV relays to a terrestrial base station over licensed FR3 dynamic spectrum, with computation and transmission energy tracked at users and UAVs.
 
-**Problem & objective**: The mixed-integer nonlinear formulation minimizes long-run average energy, written as $\min \overline{E}_{GU+UAV}$, while keeping model round-trip delay reliable.
+**Problem & objective**: Problem P1, a mixed-integer nonlinear formulation, minimizes long-run average energy, written as $\min \overline{E}_{GU+UAV}$, while keeping model round-trip delay reliable.
 
 **Decision variables**:
 

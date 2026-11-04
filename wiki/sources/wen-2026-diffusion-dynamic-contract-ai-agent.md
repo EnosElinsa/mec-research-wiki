@@ -16,7 +16,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[jie-xu]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Diffusion-Based Dynamic Contract for Federated AI Agent Construction in Mobile Metaverses
@@ -51,7 +51,7 @@ Edge servers build AI agent modules for mobile metaverses, and a cloud server in
 |---|---|
 | (19) | Optimal period-2 rewards from individual rationality and incentive compatibility. |
 | (24) | Optimal period-1 rewards, accounting for period-2 information rents. |
-| Monotonicity | Contract items ordered by ES type. |
+| Theorems 1 and 3 | Model rule: monotone contract items by ES type, with simplified IR and IC/IIC conditions in each period |
 
 **Algorithm**: Substitute the optimal rewards to reduce variables from $4K$ to $2K$, then solve with EDMSAC, where a diffusion-model actor generates contracts and redundant actor neurons are pruned dynamically to improve denoising efficiency.
 
@@ -59,7 +59,7 @@ Edge servers build AI agent modules for mobile metaverses, and a cloud server in
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wen et al. [x] developed an edge-cloud collaboration-based federated AI agent construction framework for mobile metaverses, motivated by the latency and data-leakage risks of building AI agents on cloud-based large language and vision-language models. In the framework, edge servers create agent modules in a distributed manner, and the cloud server integrates them into AI agents and deploys them at the edge for low-latency services. Because edge servers may exhibit dynamic willingness to participate, they designed a two-period dynamic contract model that continuously incentivizes participation and addresses dynamic information asymmetry. They proposed an enhanced diffusion model-based soft actor-critic algorithm that applies dynamic structured pruning to diffusion-based actor networks to generate optimal dynamic contracts. Simulation results show that the algorithm outperforms the original diffusion-based soft actor-critic by up to 23% in optimal contract generation.
+Wen et al. [x] developed an edge-cloud collaboration-based federated AI agent construction framework for mobile metaverses, motivated by the latency and data-leakage risks of building AI agents on cloud-based large language and vision-language models. In the framework, edge servers create agent modules in a distributed manner, and the cloud server integrates them into AI agents and deploys them at the edge for low-latency services. Because edge servers may exhibit dynamic willingness to participate, they designed a two-period dynamic contract model that continuously incentivizes participation and addresses dynamic information asymmetry. They proposed an enhanced diffusion model-based soft actor-critic algorithm that applies dynamic structured pruning to diffusion-based actor networks to generate optimal dynamic contracts. Simulations compare it with DMSAC and the PPO, SAC, and DDPG benchmarks and report up to 23% improvement over DMSAC in optimal contract generation.
 
 ## Problem framing
 
