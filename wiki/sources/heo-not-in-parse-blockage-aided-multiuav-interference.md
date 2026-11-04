@@ -15,7 +15,7 @@ related:
   - "[[block-successive-upper-bound-minimization]]"
   - "[[multi-uav-assisted-mec]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Building Blockage-Aided Interference Coordination for Multi-UAV-Enabled Wireless Networks
@@ -34,7 +34,7 @@ Uses buildings as a resource rather than only a channel impairment. Multi-UAV tr
 
 **Scenario**: Cochannel rotary-wing UAVs serve ground nodes in a static 3-D city map with known cuboid buildings. UAV motion can preserve LoS desired links while intentionally placing buildings across interference links, but all continuous flight segments must avoid the buildings.
 
-**Problem & objective**: Maximize worst-user time-averaged spectral efficiency, $\max_{\mathbf S,\mathbf Q,\mathbf P,\eta}\eta$ subject to $\bar R_k\geq\eta$ for every ground node, by jointly controlling schedules, 3-D trajectories, powers, and blockage states.
+**Problem & objective**: Problem (P0) in (17) maximizes worst-user time-averaged spectral efficiency, $\max_{\mathbf S,\mathbf Q,\mathbf P,\eta}\eta$ subject to $\bar R_k\geq\eta$ for every ground node, by jointly controlling schedules, 3-D trajectories, powers, and blockage states.
 
 **Decision variables**:
 
@@ -49,12 +49,13 @@ Uses buildings as a resource rather than only a channel impairment. Multi-UAV tr
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Periodic trajectories respect 3-D and vertical speed limits and altitude bounds. |
-| C2 | Pairwise UAV separation remains at least $d_{\min}$. |
-| C3 | Every UAV avoids each cuboid building along the discretized continuous path. |
-| C4 | Each UAV serves at most one ground node and each node receives at most one UAV per slot. |
-| C5 | Transmit power satisfies $0\leq p_m[n]\leq P_{\mathrm{peak}}$. |
-| C6 | Big-M blockage indicators provide a lower bound for desired-link gain and an upper bound for interference-link gain. |
+| (1)–(4) | Periodic trajectory $\mathbf q_m[0]=\mathbf q_m[N]$, 3-D speed $\le\delta V_{\max}$, vertical speed $\le\delta V_z$, altitude $H_{\min}\le z_m[n]\le H_{\max}$ |
+| (5) | UAV separation: $\lVert\mathbf q_m[n]-\mathbf q_j[n]\rVert^2\ge d_{\min}^2$ |
+| (6) | Building avoidance for each cuboid $l$ (outside its footprint in $x$ or $y$, or above height $\mathcal H_l$) |
+| (7)–(9) | Binary scheduling $s_{m,k}[n]$; each UAV serves at most one node and each node at most one UAV per slot |
+| (10) | Transmit power: $0\le p_m[n]\le P_{\mathrm{peak}}$ |
+| Algorithm rule | Big-$M$ blockage indicators (21)–(23) bound the desired-link gain from below and the interference-link gain from above |
+| Note | The parse misplaces tags (1)–(9); IDs follow the paper's text, so check the published paper |
 
 **Algorithm**: Reformulate building intersections with separate signal-NLoS and interference-LoS indicator systems and conservative rate bounds. Alternate scheduling, trajectory plus blockage state, and power blocks using quadratic transforms, SCA, penalty convex-concave updates for binary variables, separating hyperplanes for building avoidance, and block coordinate descent until the minimum average rate stabilizes.
 

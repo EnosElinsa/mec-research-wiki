@@ -18,7 +18,7 @@ related:
   - "[[chen-2026-cargo-uav-pickup-lae]]"
   - "[[cao-2026-radio-map-cargo-pickup]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # 3D Trajectory and Pickup/Drop-Off Strategy for UAV-Enabled Delivery: Trade-Off Between Time and Energy Minimization
@@ -53,12 +53,15 @@ Formulates UAV parcel delivery as a joint 3-D trajectory, pickup/drop-off, and t
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The UAV starts and ends at prescribed locations and obeys $\lVert\mathbf c[n]-\mathbf c[n-1]\rVert\le V_{\max}\delta[n]$ |
-| C2 | Every continuous segment avoids each cylindrical no-fly zone |
-| C3 | Each parcel is picked up or delivered once, and at most one service event occurs per slot |
-| C4 | Carried payload never exceeds $W_{\max}$ |
-| C5 | Altitude remains within bounds except for valid landing operations inside pickup or delivery zones |
-| C6 | All required pickup and delivery events are completed before the destination is reached |
+| (1)–(2) | Start and end points $\mathbf c[0]=\mathbf c^{\mathrm{str}}$, $\mathbf c[N]=\mathbf c^{\mathrm{dst}}$; speed $\lVert\mathbf c[n]-\mathbf c[n-1]\rVert\le V_{\max}\delta[n]$ |
+| (3) | Continuous-segment avoidance of each cylindrical no-fly zone |
+| (4)–(5) | Binary pickup $\alpha_k[n]$ and drop-off $\beta_m[n]$ indicators |
+| (6)–(8) | Each parcel picked up or dropped off at most once; at most one service event per slot |
+| (9) | Carried payload $W[n]\le W_{\max}$ |
+| (10) | Altitude within $[H_{\min},H_{\max}]$ except during service (landing) slots |
+| (11)–(12) | Landing inside the pickup or delivery zone during service slots |
+| (13)–(14) | Mission completion: all $K$ pickups and $M$ drop-offs are done |
+| Note | The parse misplaces tags (4)–(7) and (13)–(14); IDs follow the paper's text, so check the published paper |
 
 **Algorithm**: The solver relaxes the binary indicators, forms convex inner approximations of the trajectory, service-zone, and propulsion terms with SCA, and adds PCCP slack penalties that are increased until pickup and drop-off decisions become binary. It repeatedly solves the resulting convex program and updates the linearization point until the weighted objective stabilizes.
 

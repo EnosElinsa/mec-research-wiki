@@ -15,7 +15,7 @@ related:
   - "[[radio-map-aided-uav-path-planning]]"
   - "[[uncertainty-triggered-radio-map-update]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Scalable Deployment of Aerial Networks via Radio Tomographic Attenuation Mapping
@@ -48,10 +48,10 @@ SKYSCALE reconstructs a terrain-dependent 3-D attenuation field from UE-UAV meas
 
 | ID | Meaning and key expression |
 |---|---|
-| 9 | Each waypoint exposes a grounded segment set, $S_n=\bigcup_{k=1}^{K}\mathcal Z_{k,n}$ with $S_n\subseteq\{1,\ldots,P\}$ |
-| 10 | The ordered path stays within its distance budget, $\mathtt{path\_length}(\Theta)\leq c$ |
-| Algorithm 1 | Candidate waypoints are navigable and satisfy $\mathrm{dist}(\ell^{cur},\ell^i)\geq d_{\min}$ |
-| 4-5 | Attenuation reconstruction uses the regularized inverse model $\arg\min_{\mathbf x}\|\mathbf A\mathbf x-\mathbf m\|_2^2+\beta\|L\mathbf x\|_2^2$ with $\beta>0$ |
+| (9) | Each waypoint exposes a grounded segment set, $S_n=\bigcup_{k=1}^{K}\mathcal Z_{k,n}$ with $S_n\subseteq\{1,\ldots,P\}$ |
+| (10) | The ordered path stays within its distance budget, $\mathtt{path\_length}(\Theta)\leq c$ |
+| Algorithm rule (Algorithm 1) | Candidate waypoints are navigable and satisfy $\mathrm{dist}(\ell^{cur},\ell^i)\geq d_{\min}$ |
+| (4)–(5) | Attenuation reconstruction uses the regularized inverse model $\arg\min_{\mathbf x}\|\mathbf A\mathbf x-\mathbf m\|_2^2+\beta\|L\mathbf x\|_2^2$ with $\beta>0$ |
 
 **Algorithm**: SKYSCALE segments the stereo depth map, constructs a reduced ray-segment projection matrix, and plans measurements with distance-weighted greedy set cover plus Bresenham 3-D paths until budget $c$ is exhausted. It solves the Laplacian-regularized RTI inverse problem, forward-projects REMs for current UE locations, selects the maximum-utility operating voxel, and triggers later reconstructions when estimated projection-matrix rank grows meaningfully.
 

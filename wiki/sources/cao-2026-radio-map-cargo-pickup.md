@@ -60,12 +60,12 @@ Minimizes propulsion energy for one cellular-connected cargo UAV that must colle
 
 | ID | Meaning and key expression |
 |---|---|
-| 4 and 28c | Every trip starts and ends at the warehouse, $\pi_{k,0}=\pi_{k,M_k}=0$ and $\mathbf q_k(0)=\mathbf q_k(T_k)=(x_0,y_0,0)$ |
-| 6-7 | Pickup is binary and each parcel is collected exactly once, $I_{k,m}(t)\in\{0,1\}$ and $\sum_k\int_0^{T_k}I_{k,m}(t)dt=1$ |
-| 8 | Payload stays legal, $W_k(t)\leq W_{\max}$ |
-| 16 and 29e | Communication remains feasible, $\bar\gamma(\mathbf q_i^j(t))\geq\gamma_{th}$ along every path |
-| 23 | Each trip respects onboard energy, $E_k(t)\leq E_{\max}$ |
-| 28a-28b | Motion follows $\dot{\mathbf q}_k(t)=\mathbf v_k(t)$ with $0\leq\|\mathbf v_k(t)\|\leq V_{\max}$ |
+| (4) and (28c) | Every trip starts and ends at the warehouse, $\pi_{k,0}=\pi_{k,M_k}=0$ and $\mathbf q_k(0)=\mathbf q_k(T_k)=(x_0,y_0,0)$ |
+| (6)–(7) | Pickup is binary and each parcel is collected exactly once, $I_{k,m}(t)\in\{0,1\}$ and $\sum_k\int_0^{T_k}I_{k,m}(t)dt=1$ |
+| (8) | Payload stays legal, $W_k(t)\leq W_{\max}$ |
+| (16) and (29e) | Communication remains feasible, $\bar\gamma(\mathbf q_i^j(t))\geq\gamma_{th}$ along every path |
+| (23) | Each trip respects onboard energy, $E_k(t)\leq E_{\max}$ |
+| (28a)–(28b) | Motion follows $\dot{\mathbf q}_k(t)=\mathbf v_k(t)$ with $0\leq\|\mathbf v_k(t)\|\leq V_{\max}$ |
 
 **Algorithm**: UPSEEO thresholds the expected-SNR map into a binary feasible grid and runs eight-neighbor A* for every ordered warehouse and pickup-point pair to build trajectory and distance matrices. PSO then searches the trip partition and pickup order, while each segment speed is derived from $\arg\min_{0\leq\|\mathbf v\|\leq V_{\max}}P_{\mathrm{hor}}(\|\mathbf v\|,W)/\|\mathbf v\|$ and assignments violating payload or energy limits are rejected.
 

@@ -13,7 +13,7 @@ related:
   - "[[dueling-dqn]]"
   - "[[cellular-connected-uav]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -35,7 +35,7 @@ Couples cellular-UAV navigation with bandwidth-aware SINR-map maintenance. UT-Gr
 
 **Scenario**: A cellular-connected UAV navigates a bounded urban grid with mobile interferers while maintaining a SINR map whose refreshes consume downlink bandwidth.
 
-**Problem & objective**: Choose the UAV path, association, and map-refresh decisions to minimize flight time plus weighted outage duration, $\min T+\mu\bar T_{\mathrm{out}}$.
+**Problem & objective**: Problem (7) chooses the UAV path and base-station association to minimize flight time plus weighted outage duration, $\min T+\mu\bar T_{\mathrm{out}}$.
 
 **Decision variables**:
 
@@ -50,11 +50,10 @@ Couples cellular-UAV navigation with bandwidth-aware SINR-map maintenance. UT-Gr
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | The UAV starts and ends at the prescribed grid locations |
-| C2 | Every motion action stays inside the bounded airspace and avoids collisions |
-| C3 | The serving base station is selected from the available set and follows the link model |
-| C4 | Refresh events obey the uncertainty and reconstruction-error trigger |
-| C5 | Inference and map communication remain within the prescribed bandwidth and active-parameter budget |
+| (7) | Endpoints: $\mathbf u(0)=\mathbf u_I$, $\mathbf u(T)=\mathbf u_F$ |
+| (7) | Bounded airspace: $\mathbf u(t)\preceq[x_{lo},x_{up}]\times[y_{lo},y_{up}]\times[z_{lo},z_{up}]$ |
+| (7) | Association: $b(t)\in\{1,\ldots,M\}$ |
+| Algorithm rule | UT-Grid requests a map refresh when MC-dropout uncertainty and prediction error exceed threshold $\tau$ |
 
 **Algorithm**: Reconstruct SINR maps with a U-Net, estimate uncertainty with 20 MC-dropout passes, trigger UT-Grid refreshes when uncertainty and error exceed $\tau$, and plan motion with a Top-1 mixture-of-experts D3QN.
 
@@ -62,7 +61,7 @@ Couples cellular-UAV navigation with bandwidth-aware SINR-map maintenance. UT-Gr
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Guo et al. [x] co-designed SINR-map maintenance and connectivity-aware navigation for a cellular UAV moving among mobile urban interferers. Their formal objective minimizes flight time plus weighted expected outage duration over the UAV path and base-station selection under endpoint, airspace, and association constraints. UT-Grid triggers map refreshes from MC-dropout uncertainty, while a Top-1 mixture-of-experts D3QN selects motion from local and global SINR grids with one active expert per step. At threshold 5, the method reports 0.11 updates per step and 84.58% destination reaching, compared with 0.33 updates and 86.27% for three-step periodic refresh, while the eight-expert planner uses 326.5K active parameters and 0.43 ms reported latency.
+Guo et al. [x] co-designed SINR-map maintenance and connectivity-aware navigation for a cellular UAV moving among mobile urban interferers. Their formal objective minimizes flight time plus weighted expected outage duration over the UAV path and base-station selection under endpoint, airspace, and association constraints. UT-Grid triggers map refreshes from MC-dropout uncertainty, while a Top-1 mixture-of-experts D3QN selects motion from local and global SINR grids with one active expert per step. At the recommended threshold $\tau=5$, UT-Grid keeps 98% of the navigation benefit of a 3 s periodic refresh while cutting map updates from 0.33 to 0.11 per step (about 67%), and the eight-expert MoE-D3QN raises the reaching rate from 77.98% to 84.58% at roughly $3.3\times10^5$ active parameters.
 
 ## Problem framing
 

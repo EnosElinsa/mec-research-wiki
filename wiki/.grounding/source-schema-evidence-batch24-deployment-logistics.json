@@ -1,0 +1,580 @@
+{
+  "entries": [
+    {
+      "slug": "belgiovine-not-in-parse-multidt-abs-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Better_Together_Leveraging_Multiple_Digital_Twins_for_Deployment_Optimization_of_Airborne_Base_Stations/Better_Together_Leveraging_Multiple_Digital_Twins_for_Deployment_Optimization_of_Airborne_Base_Stations.md",
+          "lines": "147-197",
+          "note": "location loss (1), penalties (2)-(7)"
+        },
+        {
+          "path": "raw/sources/Better_Together_Leveraging_Multiple_Digital_Twins_for_Deployment_Optimization_of_Airborne_Base_Stations/Better_Together_Leveraging_Multiple_Digital_Twins_for_Deployment_Optimization_of_Airborne_Base_Stations.md",
+          "lines": "206-266",
+          "note": "SIR model (8)-(11), losses (12)-(16)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Better_Together_Leveraging_Multiple_Digital_Twins_for_Deployment_Optimization_of_Airborne_Base_Stations/Better_Together_Leveraging_Multiple_Digital_Twins_for_Deployment_Optimization_of_Airborne_Base_Stations.md",
+          "lines": "311-379",
+          "note": "97% AOI satisfaction; Table VI SIR gains and losses"
+        }
+      ]
+    },
+    {
+      "slug": "cao-2026-radio-map-cargo-pickup",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_in_UAV-Enabled_Cargo_Pickup_Systems_A_Radio_Map-Aided_Hierarchical_Optimization_Framework/Energy_Minimization_in_UAV-Enabled_Cargo_Pickup_Systems_A_Radio_Map-Aided_Hierarchical_Optimization_Framework.md",
+          "lines": "180,241-260",
+          "note": "constraints (1)-(8),(16),(23); P0 (28a)-(28d)"
+        },
+        {
+          "path": "raw/sources/Energy_Minimization_in_UAV-Enabled_Cargo_Pickup_Systems_A_Radio_Map-Aided_Hierarchical_Optimization_Framework/Energy_Minimization_in_UAV-Enabled_Cargo_Pickup_Systems_A_Radio_Map-Aided_Hierarchical_Optimization_Framework.md",
+          "lines": "272-477",
+          "note": "UPSEEO: A* (29),(34), PSO (38)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_in_UAV-Enabled_Cargo_Pickup_Systems_A_Radio_Map-Aided_Hierarchical_Optimization_Framework/Energy_Minimization_in_UAV-Enabled_Cargo_Pickup_Systems_A_Radio_Map-Aided_Hierarchical_Optimization_Framework.md",
+          "lines": "5,607-609",
+          "note": "Table: 20.749 kJ vs [10],[19]; 5.0-50.0% gains"
+        }
+      ]
+    },
+    {
+      "slug": "chakareski-2019-uav-mmwave-hetnet-ee",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Energy_Efficient_Framework_for_UAV-Assisted_Millimeter_Wave_5G_Heterogeneous_Cellular_Networks/An_Energy_Efficient_Framework_for_UAV-Assisted_Millimeter_Wave_5G_Heterogeneous_Cellular_Networks.md",
+          "lines": "60-92",
+          "note": "EE; PL_max and z_e (5)-(6); macro problem (7)"
+        },
+        {
+          "path": "raw/sources/An_Energy_Efficient_Framework_for_UAV-Assisted_Millimeter_Wave_5G_Heterogeneous_Cellular_Networks/An_Energy_Efficient_Framework_for_UAV-Assisted_Millimeter_Wave_5G_Heterogeneous_Cellular_Networks.md",
+          "lines": "106-135",
+          "note": "weighted objective (8), Lagrangian, power (9), subgradient (10)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Energy_Efficient_Framework_for_UAV-Assisted_Millimeter_Wave_5G_Heterogeneous_Cellular_Networks/An_Energy_Efficient_Framework_for_UAV-Assisted_Millimeter_Wave_5G_Heterogeneous_Cellular_Networks.md",
+          "lines": "5,246-272",
+          "note": "EE nearly doubles at tau=0 dB; 140 m vs 10 m 35%"
+        }
+      ]
+    },
+    {
+      "slug": "chakraborty-2026-skyscale-rti-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Scalable_Deployment_of_Aerial_Networks_via_Radio_Tomographic_Attenuation_Mapping/Scalable_Deployment_of_Aerial_Networks_via_Radio_Tomographic_Attenuation_Mapping.md",
+          "lines": "88-94",
+          "note": "RTI regularized inverse (4)-(5)"
+        },
+        {
+          "path": "raw/sources/Scalable_Deployment_of_Aerial_Networks_via_Radio_Tomographic_Attenuation_Mapping/Scalable_Deployment_of_Aerial_Networks_via_Radio_Tomographic_Attenuation_Mapping.md",
+          "lines": "173-179",
+          "note": "segment sets (9), max-coverage problem (10)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Scalable_Deployment_of_Aerial_Networks_via_Radio_Tomographic_Attenuation_Mapping/Scalable_Deployment_of_Aerial_Networks_via_Radio_Tomographic_Attenuation_Mapping.md",
+          "lines": "293-384",
+          "note": "3 dB target; 3-4x flight-time cut at 100% churn; SKYRAN; ~600 s"
+        }
+      ]
+    },
+    {
+      "slug": "cherif-2021-disconnectivity-aware-cargo-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Disconnectivity-Aware_Energy-Efficient_Cargo-UAV_Trajectory_Planning_with_Minimum_Handoffs/Disconnectivity-Aware_Energy-Efficient_Cargo-UAV_Trajectory_Planning_with_Minimum_Handoffs.md",
+          "lines": "138-151",
+          "note": "P1 with (P1.a), (P1.b), handoff indicator"
+        },
+        {
+          "path": "raw/sources/Disconnectivity-Aware_Energy-Efficient_Cargo-UAV_Trajectory_Planning_with_Minimum_Handoffs/Disconnectivity-Aware_Energy-Efficient_Cargo-UAV_Trajectory_Planning_with_Minimum_Handoffs.md",
+          "lines": "153-160",
+          "note": "DP over grid, recursion (15)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Disconnectivity-Aware_Energy-Efficient_Cargo-UAV_Trajectory_Planning_with_Minimum_Handoffs/Disconnectivity-Aware_Energy-Efficient_Cargo-UAV_Trajectory_Planning_with_Minimum_Handoffs.md",
+          "lines": "182,235-237",
+          "note": "stricter alpha_max: longer paths, more energy and handoffs; no clear altitude trend for handoffs"
+        }
+      ]
+    },
+    {
+      "slug": "deng-2024-radio-map-uav-pickup-delivery",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_for_Radio_Map-Based_UAV_Pickup_and_Delivery_Logistics_System/Energy_Minimization_for_Radio_Map-Based_UAV_Pickup_and_Delivery_Logistics_System.md",
+          "lines": "104-130",
+          "note": "P0 (9a)-(9f), energy E_ij"
+        },
+        {
+          "path": "raw/sources/Energy_Minimization_for_Radio_Map-Based_UAV_Pickup_and_Delivery_Logistics_System/Energy_Minimization_for_Radio_Map-Based_UAV_Pickup_and_Delivery_Logistics_System.md",
+          "lines": "142-205",
+          "note": "variant Dijkstra on radio map, hybrid GA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_for_Radio_Map-Based_UAV_Pickup_and_Delivery_Logistics_System/Energy_Minimization_for_Radio_Map-Based_UAV_Pickup_and_Delivery_Logistics_System.md",
+          "lines": "5",
+          "note": "about 20% energy saving vs traditional PDP"
+        }
+      ]
+    },
+    {
+      "slug": "dong-2026-digital-tides-provisioning",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Digital_Tides_A_Fluid-Dynamic_Framework_for_Flux-Aware_Infrastructure_Provisioning_in_UAV_Logistics_Networks/Digital_Tides_A_Fluid-Dynamic_Framework_for_Flux-Aware_Infrastructure_Provisioning_in_UAV_Logistics_Networks.md",
+          "lines": "84-86,221-229,268-274",
+          "note": "P0 (16a)-(16c); triggers (19); boot latency"
+        },
+        {
+          "path": "raw/sources/Digital_Tides_A_Fluid-Dynamic_Framework_for_Flux-Aware_Infrastructure_Provisioning_in_UAV_Logistics_Networks/Digital_Tides_A_Fluid-Dynamic_Framework_for_Flux-Aware_Infrastructure_Provisioning_in_UAV_Logistics_Networks.md",
+          "lines": "333-350,444-463",
+          "note": "boundaries R_act/R_hold/R_flux; guard ring (32)-(33)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Digital_Tides_A_Fluid-Dynamic_Framework_for_Flux-Aware_Infrastructure_Provisioning_in_UAV_Logistics_Networks/Digital_Tides_A_Fluid-Dynamic_Framework_for_Flux-Aware_Infrastructure_Provisioning_in_UAV_Logistics_Networks.md",
+          "lines": "522-578",
+          "note": "8.25 km ring; ~5 min lead at 14.5 km; 99.1% vs RMS 99.0%; outage vs latency"
+        }
+      ]
+    },
+    {
+      "slug": "dong-2026-radio-map-d2d-relay",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Frequency_Radio_Map_Assisted_Unmanned_Aerial_Relay_for_Bridging_Ground_D2D_Networks/Multi-Frequency_Radio_Map_Assisted_Unmanned_Aerial_Relay_for_Bridging_Ground_D2D_Networks.md",
+          "lines": "183-244",
+          "note": "P0; D2D eligibility (13)-(15); gateway selection (16)-(20)"
+        },
+        {
+          "path": "raw/sources/Multi-Frequency_Radio_Map_Assisted_Unmanned_Aerial_Relay_for_Bridging_Ground_D2D_Networks/Multi-Frequency_Radio_Map_Assisted_Unmanned_Aerial_Relay_for_Bridging_Ground_D2D_Networks.md",
+          "lines": "251-369",
+          "note": "P1.2 (21)-(22); radio-map k-means; traversal complexity"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Frequency_Radio_Map_Assisted_Unmanned_Aerial_Relay_for_Bridging_Ground_D2D_Networks/Multi-Frequency_Radio_Map_Assisted_Unmanned_Aerial_Relay_for_Bridging_Ground_D2D_Networks.md",
+          "lines": "416-475",
+          "note": "free-space k-means, traversal baselines; 400-user study"
+        }
+      ]
+    },
+    {
+      "slug": "gao-2026-air-ground-instant-delivery",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Air-Ground_Instant_Delivery_by_UAVs_and_Crowdsourced_Taxis_Joint_UAV_Station_Deployment_and_Delivery_Scheduling/Cooperative_Air-Ground_Instant_Delivery_by_UAVs_and_Crowdsourced_Taxis_Joint_UAV_Station_Deployment_and_Delivery_Scheduling.md",
+          "lines": "366-394",
+          "note": "preference assignment (21)-(27)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Air-Ground_Instant_Delivery_by_UAVs_and_Crowdsourced_Taxis_Joint_UAV_Station_Deployment_and_Delivery_Scheduling/Cooperative_Air-Ground_Instant_Delivery_by_UAVs_and_Crowdsourced_Taxis_Joint_UAV_Station_Deployment_and_Delivery_Scheduling.md",
+          "lines": "402-422",
+          "note": "GAPAR (28)-(33)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Air-Ground_Instant_Delivery_by_UAVs_and_Crowdsourced_Taxis_Joint_UAV_Station_Deployment_and_Delivery_Scheduling/Cooperative_Air-Ground_Instant_Delivery_by_UAVs_and_Crowdsourced_Taxis_Joint_UAV_Station_Deployment_and_Delivery_Scheduling.md",
+          "lines": "7",
+          "note": "27.4% parcels, 19.2% cost, 36.3% passenger experience vs SOTA"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-event-triggered-sinr-navigation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Interference-Aware_UAV_Path_Planning_on_Grid_SINR_Maps_with_Event-Triggered_Updates/Interference-Aware_UAV_Path_Planning_on_Grid_SINR_Maps_with_Event-Triggered_Updates.md",
+          "lines": "84,109-122",
+          "note": "SINR outage; problem (7) with endpoints, box, association"
+        },
+        {
+          "path": "raw/sources/Interference-Aware_UAV_Path_Planning_on_Grid_SINR_Maps_with_Event-Triggered_Updates/Interference-Aware_UAV_Path_Planning_on_Grid_SINR_Maps_with_Event-Triggered_Updates.md",
+          "lines": "178-212",
+          "note": "UT-Grid trigger; MC-dropout; MoE-D3QN"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Interference-Aware_UAV_Path_Planning_on_Grid_SINR_Maps_with_Event-Triggered_Updates/Interference-Aware_UAV_Path_Planning_on_Grid_SINR_Maps_with_Event-Triggered_Updates.md",
+          "lines": "378,461-463",
+          "note": "threshold sweep; 0.33->0.11 updates; 77.98->84.58%"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-spatiotemporal-information-quality-ugrnet",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Spatiotemporal_Information_Quality_Optimization_for_UAV-Assisted_Ground_Robot_Networks/Spatiotemporal_Information_Quality_Optimization_for_UAV-Assisted_Ground_Robot_Networks.md",
+          "lines": "219-308",
+          "note": "martingale bound; (24)-(28) problem"
+        },
+        {
+          "path": "raw/sources/Spatiotemporal_Information_Quality_Optimization_for_UAV-Assisted_Ground_Robot_Networks/Spatiotemporal_Information_Quality_Optimization_for_UAV-Assisted_Ground_Robot_Networks.md",
+          "lines": "231",
+          "note": "heterogeneous supermartingale envelope"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Spatiotemporal_Information_Quality_Optimization_for_UAV-Assisted_Ground_Robot_Networks/Spatiotemporal_Information_Quality_Optimization_for_UAV-Assisted_Ground_Robot_Networks.md",
+          "lines": "315-353",
+          "note": "min-method baseline; minima in [0.6,0.8]"
+        }
+      ]
+    },
+    {
+      "slug": "gupta-2022-energy-aware-outage-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Aware_Trajectory_Design_for_Outage_Minimization_in_UAV-Assisted_Communication_Systems/Energy-Aware_Trajectory_Design_for_Outage_Minimization_in_UAV-Assisted_Communication_Systems.md",
+          "lines": "126-148",
+          "note": "P1 (C1)-(C4); equivalent P2"
+        },
+        {
+          "path": "raw/sources/Energy-Aware_Trajectory_Design_for_Outage_Minimization_in_UAV-Assisted_Communication_Systems/Energy-Aware_Trajectory_Design_for_Outage_Minimization_in_UAV-Assisted_Communication_Systems.md",
+          "lines": "154-318",
+          "note": "vertex approach (P3), Algorithms 1-3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Aware_Trajectory_Design_for_Outage_Minimization_in_UAV-Assisted_Communication_Systems/Energy-Aware_Trajectory_Design_for_Outage_Minimization_in_UAV-Assisted_Communication_Systems.md",
+          "lines": "5,50",
+          "note": "41% average; 31% vertex, 52% sequential"
+        }
+      ]
+    },
+    {
+      "slug": "heo-not-in-parse-blockage-aided-multiuav-interference",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Building_Blockage-Aided_Interference_Coordination_for_Multi-UAV-Enabled_Wireless_Networks/Building_Blockage-Aided_Interference_Coordination_for_Multi-UAV-Enabled_Wireless_Networks.md",
+          "lines": "44-162",
+          "note": "constraints (1)-(10) (parse misplaces tags); P0 (17)"
+        },
+        {
+          "path": "raw/sources/Building_Blockage-Aided_Interference_Coordination_for_Multi-UAV-Enabled_Wireless_Networks/Building_Blockage-Aided_Interference_Coordination_for_Multi-UAV-Enabled_Wireless_Networks.md",
+          "lines": "179-517",
+          "note": "blockage indicators (19)-(23), P1-P3, SCA (35)-(44)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Building_Blockage-Aided_Interference_Coordination_for_Multi-UAV-Enabled_Wireless_Networks/Building_Blockage-Aided_Interference_Coordination_for_Multi-UAV-Enabled_Wireless_Networks.md",
+          "lines": "5,752,807-811",
+          "note": "30 iterations; baselines; outperforms in most scenarios"
+        }
+      ]
+    },
+    {
+      "slug": "jiang-2026-bi-level-uav-delivery-safety",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Bi-Level_Optimization_Framework_for_Urban_Low-Altitude_UAV_Delivery_Ensuring_Target_Level_of_Safety/Bi-Level_Optimization_Framework_for_Urban_Low-Altitude_UAV_Delivery_Ensuring_Target_Level_of_Safety.md",
+          "lines": "53-141",
+          "note": "upper (1) with (2)-(8); lower (9) with (10)-(12)"
+        },
+        {
+          "path": "raw/sources/Bi-Level_Optimization_Framework_for_Urban_Low-Altitude_UAV_Delivery_Ensuring_Target_Level_of_Safety/Bi-Level_Optimization_Framework_for_Urban_Low-Altitude_UAV_Delivery_Ensuring_Target_Level_of_Safety.md",
+          "lines": "166-254",
+          "note": "TC-NSGA-III operators; RG-FMT* risk model and radius"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Bi-Level_Optimization_Framework_for_Urban_Low-Altitude_UAV_Delivery_Ensuring_Target_Level_of_Safety/Bi-Level_Optimization_Framework_for_Urban_Low-Altitude_UAV_Delivery_Ensuring_Target_Level_of_Safety.md",
+          "lines": "5,357-364",
+          "note": "Table I: RG-FMT* vs four RRT* variants"
+        }
+      ]
+    },
+    {
+      "slug": "lee-2026-uav-delivery-time-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/3D_Trajectory_and_Pickup-Drop-Off_Strategy_for_UAV-Enabled_Delivery_Trade-Off_Between_Time_and_Energy_Minimization/3D_Trajectory_and_Pickup-Drop-Off_Strategy_for_UAV-Enabled_Delivery_Trade-Off_Between_Time_and_Energy_Minimization.md",
+          "lines": "33-148",
+          "note": "constraints (1)-(14) (tags partly misplaced); P1"
+        },
+        {
+          "path": "raw/sources/3D_Trajectory_and_Pickup-Drop-Off_Strategy_for_UAV-Enabled_Delivery_Trade-Off_Between_Time_and_Energy_Minimization/3D_Trajectory_and_Pickup-Drop-Off_Strategy_for_UAV-Enabled_Delivery_Trade-Off_Between_Time_and_Energy_Minimization.md",
+          "lines": "150-370",
+          "note": "SCA, PCCP (17)-(28), convex P2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/3D_Trajectory_and_Pickup-Drop-Off_Strategy_for_UAV-Enabled_Delivery_Trade-Off_Between_Time_and_Energy_Minimization/3D_Trajectory_and_Pickup-Drop-Off_Strategy_for_UAV-Enabled_Delivery_Trade-Off_Between_Time_and_Energy_Minimization.md",
+          "lines": "24",
+          "note": "energy strategy >20% less energy, ~10% more time"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-radio-map-predictive-routing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Radio_Map-Assisted_Routing_and_Predictive_Resource_Allocation_Over_Dynamic_Low-Altitude_Networks/Radio_Map-Assisted_Routing_and_Predictive_Resource_Allocation_Over_Dynamic_Low-Altitude_Networks.md",
+          "lines": "124-150",
+          "note": "P1 (7)-(9); epigraph; multi-commodity note"
+        },
+        {
+          "path": "raw/sources/Radio_Map-Assisted_Routing_and_Predictive_Resource_Allocation_Over_Dynamic_Low-Altitude_Networks/Radio_Map-Assisted_Routing_and_Predictive_Resource_Allocation_Over_Dynamic_Low-Altitude_Networks.md",
+          "lines": "136-140",
+          "note": "dynamic space-time graph with virtual edges"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Radio_Map-Assisted_Routing_and_Predictive_Resource_Allocation_Over_Dynamic_Low-Altitude_Networks/Radio_Map-Assisted_Routing_and_Predictive_Resource_Allocation_Over_Dynamic_Low-Altitude_Networks.md",
+          "lines": "5,41,603-635",
+          "note": "30 dB vs graph methods; 13 dB; 100X multi-commodity; Dijkstra baseline"
+        }
+      ]
+    },
+    {
+      "slug": "nikooroo-2022-flybs-total-power",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_Total_Power_Consumed_by_Flying_Base_Station_Serving_Mobile_Users/Optimization_of_Total_Power_Consumed_by_Flying_Base_Station_Serving_Mobile_Users.md",
+          "lines": "136-139",
+          "note": "problem (11) with (a)-(d)"
+        },
+        {
+          "path": "raw/sources/Optimization_of_Total_Power_Consumed_by_Flying_Base_Station_Serving_Mobile_Users/Optimization_of_Total_Power_Consumed_by_Flying_Base_Station_Serving_Mobile_Users.md",
+          "lines": "179-404",
+          "note": "single-point closed form; multi-point numerical solutions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_Total_Power_Consumed_by_Flying_Base_Station_Serving_Mobile_Users/Optimization_of_Total_Power_Consumed_by_Flying_Base_Station_Serving_Mobile_Users.md",
+          "lines": "5,40",
+          "note": "up to 91% total power reduction vs existing solutions"
+        }
+      ]
+    },
+    {
+      "slug": "piao-2019-uav-csi-measurement-gtsp",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Automating_CSI_Measurement_with_UAVs_from_Problem_Formulation_to_Energy-Optimal_Solution/Automating_CSI_Measurement_with_UAVs_from_Problem_Formulation_to_Energy-Optimal_Solution.md",
+          "lines": "402-418",
+          "note": "MEMP (15)-(19)"
+        },
+        {
+          "path": "raw/sources/Automating_CSI_Measurement_with_UAVs_from_Problem_Formulation_to_Energy-Optimal_Solution/Automating_CSI_Measurement_with_UAVs_from_Problem_Formulation_to_Energy-Optimal_Solution.md",
+          "lines": "421-425",
+          "note": "equivalence to GTSP; LNS solver"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Automating_CSI_Measurement_with_UAVs_from_Problem_Formulation_to_Energy-Optimal_Solution/Automating_CSI_Measurement_with_UAVs_from_Problem_Formulation_to_Energy-Optimal_Solution.md",
+          "lines": "30",
+          "note": "37.8% energy saving vs coverage path planning"
+        }
+      ]
+    },
+    {
+      "slug": "ren-2026-movable-antenna-uav-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Movable_Antenna_Enhanced_Cellular-Connected_UAV_Communication_With_Trajectory_Planning/Movable_Antenna_Enhanced_Cellular-Connected_UAV_Communication_With_Trajectory_Planning.md",
+          "lines": "94-136",
+          "note": "P1 (8a)-(8h)"
+        },
+        {
+          "path": "raw/sources/Movable_Antenna_Enhanced_Cellular-Connected_UAV_Communication_With_Trajectory_Planning/Movable_Antenna_Enhanced_Cellular-Connected_UAV_Communication_With_Trajectory_Planning.md",
+          "lines": "140-305",
+          "note": "discretized P2 (12), P3-P5, closed-form MMSE, SUCS"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Movable_Antenna_Enhanced_Cellular-Connected_UAV_Communication_With_Trajectory_Planning/Movable_Antenna_Enhanced_Cellular-Connected_UAV_Communication_With_Trajectory_Planning.md",
+          "lines": "591-593",
+          "note": "6.46/18.55/28.35% vs MA-MRC, SA-MMSE, FPA-MMSE; AS-MMSE ties at 13 dB"
+        }
+      ]
+    },
+    {
+      "slug": "vitale-2026-density-aware-4d-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Density-Aware_4-D_Trajectory_Planning_for_Urban_Air_Traffic_With_Different_QoS_Levels/Density-Aware_4-D_Trajectory_Planning_for_Urban_Air_Traffic_With_Different_QoS_Levels.md",
+          "lines": "101-147",
+          "note": "admissibility (4), arrival times (5), P1 (6a)-(6b); ICPP Algorithm 1"
+        },
+        {
+          "path": "raw/sources/Density-Aware_4-D_Trajectory_Planning_for_Urban_Air_Traffic_With_Different_QoS_Levels/Density-Aware_4-D_Trajectory_Planning_for_Urban_Air_Traffic_With_Different_QoS_Levels.md",
+          "lines": "241-406",
+          "note": "Intra-Cube Optimum (10), Intra-Cube Planner (15a)-(15n)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Density-Aware_4-D_Trajectory_Planning_for_Urban_Air_Traffic_With_Different_QoS_Levels/Density-Aware_4-D_Trajectory_Planning_for_Urban_Air_Traffic_With_Different_QoS_Levels.md",
+          "lines": "435-518",
+          "note": "6500 requests; A* vs ICTP table"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-bayesian-uav-spectrum-mapping",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Bayesian_Learning-Based_Spectrum_Mapping_With_UAV_Path_Dynamic_Optimization_Under_3-D_Unknown_Environments/Bayesian_Learning-Based_Spectrum_Mapping_With_UAV_Path_Dynamic_Optimization_Under_3-D_Unknown_Environments.md",
+          "lines": "161-188",
+          "note": "SBL (15)-(16); path problem (17)-(18)"
+        },
+        {
+          "path": "raw/sources/Bayesian_Learning-Based_Spectrum_Mapping_With_UAV_Path_Dynamic_Optimization_Under_3-D_Unknown_Environments/Bayesian_Learning-Based_Spectrum_Mapping_With_UAV_Path_Dynamic_Optimization_Under_3-D_Unknown_Environments.md",
+          "lines": "297-335",
+          "note": "NP-hard; 3DIG-RRT* Algorithm 1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Bayesian_Learning-Based_Spectrum_Mapping_With_UAV_Path_Dynamic_Optimization_Under_3-D_Unknown_Environments/Bayesian_Learning-Based_Spectrum_Mapping_With_UAV_Path_Dynamic_Optimization_Under_3-D_Unknown_Environments.md",
+          "lines": "588-637",
+          "note": "MAE vs Kriging; runtime table; 70% fewer measurements"
+        }
+      ]
+    },
+    {
+      "slug": "xia-2026-ubt-emergency-response",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_Urban_Emergency_Multimodal_Transportation_Scheduling_With_UAV-Ground_Traffic_Coordination/Optimization_of_Urban_Emergency_Multimodal_Transportation_Scheduling_With_UAV-Ground_Traffic_Coordination.md",
+          "lines": "253-359",
+          "note": "case models (17)-(35)"
+        },
+        {
+          "path": "raw/sources/Optimization_of_Urban_Emergency_Multimodal_Transportation_Scheduling_With_UAV-Ground_Traffic_Coordination/Optimization_of_Urban_Emergency_Multimodal_Transportation_Scheduling_With_UAV-Ground_Traffic_Coordination.md",
+          "lines": "419-443",
+          "note": "bus selection (44)-(45), NP-hardness, NOCG-Greedy"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_Urban_Emergency_Multimodal_Transportation_Scheduling_With_UAV-Ground_Traffic_Coordination/Optimization_of_Urban_Emergency_Multimodal_Transportation_Scheduling_With_UAV-Ground_Traffic_Coordination.md",
+          "lines": "504,589,644-660",
+          "note": "Greedy, GA, AC, PSO; 100% coverage with 30 UAVs; 99.6% cost"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2019-dual-band-airborne-access",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Channel_Measurement_and_Resource_Allocation_Scheme_for_Dual-Band_Airborne_Access_Networks/Channel_Measurement_and_Resource_Allocation_Scheme_for_Dual-Band_Airborne_Access_Networks.md",
+          "lines": "209-214",
+          "note": "problem (8) C1-C5"
+        },
+        {
+          "path": "raw/sources/Channel_Measurement_and_Resource_Allocation_Scheme_for_Dual-Band_Airborne_Access_Networks/Channel_Measurement_and_Resource_Allocation_Scheme_for_Dual-Band_Airborne_Access_Networks.md",
+          "lines": "300-310",
+          "note": "spectrum assignment and Lagrange dual power"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Channel_Measurement_and_Resource_Allocation_Scheme_for_Dual-Band_Airborne_Access_Networks/Channel_Measurement_and_Resource_Allocation_Scheme_for_Dual-Band_Airborne_Access_Networks.md",
+          "lines": "343",
+          "note": "55% over random allocation"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-not-in-parse-cellular-uav-to-x",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cellular_UAV-to-X_Communications_Design_and_Optimization_for_Multi-UAV_Networks/Cellular_UAV-to-X_Communications_Design_and_Optimization_for_Multi-UAV_Networks.md",
+          "lines": "238-270",
+          "note": "problem (24) (tags partly lost)"
+        },
+        {
+          "path": "raw/sources/Cellular_UAV-to-X_Communications_Design_and_Optimization_for_Multi-UAV_Networks/Cellular_UAV-to-X_Communications_Design_and_Optimization_for_Multi-UAV_Networks.md",
+          "lines": "286-507",
+          "note": "subproblems (25)-(28), speed (35)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cellular_UAV-to-X_Communications_Design_and_Optimization_for_Multi-UAV_Networks/Cellular_UAV-to-X_Communications_Design_and_Optimization_for_Multi-UAV_Networks.md",
+          "lines": "5,25",
+          "note": "about 10% over greedy"
+        }
+      ]
+    }
+  ]
+}

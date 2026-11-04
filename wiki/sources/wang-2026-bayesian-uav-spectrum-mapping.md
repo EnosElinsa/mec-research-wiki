@@ -18,7 +18,7 @@ related:
   - "[[qihui-wu]]"
   - "[[qiuming-zhu]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Bayesian Learning-Based Spectrum Mapping With UAV Path Dynamic Optimization Under 3-D Unknown Environments
@@ -52,11 +52,9 @@ Constructs 3-D radio environment maps from sparse UAV spectrum measurements in u
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Path cost satisfies the mission budget, $C(\mathcal G)\le B$ |
-| C2 | Waypoints and connecting segments remain in collision-free space |
-| C3 | RRT* steering obeys UAV motion and sampling-distance limits |
-| C4 | Receding-horizon replanning occurs after each $m_{\mathrm{up}}$ measurements |
-| C5 | Sampled RSS values, sparse coefficients, and dictionary updates remain consistent with the recovery model |
+| (17)–(18) | Mission budget on path length: $C(\mathcal G)=\sum_gc(\mathbf w_g,\mathbf w_{g+1})\le B$ (stated with (17) in the text) |
+| Algorithm rule | RRT* steering keeps waypoints and segments in collision-free space |
+| Algorithm rule | Receding-horizon replanning after every $m_{up}$ measurements |
 
 **Algorithm**: Initialize the channel dictionary and REM uncertainty → grow 3DIG-RRT* using mutual-information utility → execute the first receding-horizon waypoints and collect RSS → estimate sparse emitters with SBL → refine dictionary atoms with K-SVD and shadowing with Gaussian processes → reconstruct the REM and replan.
 
@@ -64,7 +62,7 @@ Constructs 3-D radio environment maps from sparse UAV spectrum measurements in u
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied UAV-assisted three-dimensional spectrum mapping in unknown environments with sparse measurements. They formulated an NP-hard sampling-path problem that maximizes mutual information under path-cost, collision, and UAV-motion constraints. The proposed 3DIG-RRT* planner selects informative waypoints and periodically replans as new measurements arrive. SBDL-GP then combines sparse Bayesian learning, K-SVD dictionary refinement, and Gaussian-process shadowing estimation to reconstruct the radio environment map. Simulations and measurements report lower mapping error than the evaluated compressed-sensing and interpolation methods and higher sampling efficiency than the compared trajectory planners.
+Wang et al. [x] studied UAV-assisted three-dimensional spectrum mapping in unknown environments with sparse measurements. They formulated an NP-hard sampling-path problem that maximizes mutual information under path-cost, collision, and UAV-motion constraints. The proposed 3DIG-RRT* planner selects informative waypoints and periodically replans as new measurements arrive. SBDL-GP then combines sparse Bayesian learning, K-SVD dictionary refinement, and Gaussian-process shadowing estimation to reconstruct the radio environment map. Simulations and measurements report lower mapping error than SBL-GP, Kriging, Lasso, OMP, and KNN reconstruction (at a higher computation time than most of them) and up to 70% fewer measurements than benchmark planners for the same accuracy.
 
 ## Problem
 

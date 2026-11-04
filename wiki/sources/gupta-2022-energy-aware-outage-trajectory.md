@@ -17,7 +17,7 @@ related:
   - "[[deepak-mishra]]"
   - "[[satyam-agarwal]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Energy-Aware Trajectory Design for Outage Minimization in UAV-Assisted Communication Systems
@@ -60,7 +60,7 @@ A single UAV flies from a fixed start to a fixed end while providing 5G service 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gupta et al. [x] studied the flight trajectory of a UAV that provides fifth-generation cellular service in a given area while flying from a fixed initial location to a final location. Considering the UAV's limited on-board energy, they minimized the average outage probability of the system by optimizing the three-dimensional trajectory subject to velocity and on-board energy constraints under a probabilistic LoS channel model. They proposed a low-complexity vertex approach, which first obtains the optimal location with the velocity and energy constraints relaxed and then constructs a greedy solution, and a high-performance sequential approach that finds the optimal location in each time slot sequentially. Simulation results show that the proposed strategies provide on average 41% improvement in average outage probability over the benchmark schemes, with the sequential approach outperforming the vertex approach at higher computational complexity.
+Gupta et al. [x] studied the flight trajectory of a UAV that provides fifth-generation cellular service in a given area while flying from a fixed initial location to a final location. Considering the UAV's limited on-board energy, they minimized the average outage probability of the system by optimizing the three-dimensional trajectory subject to velocity and on-board energy constraints under a probabilistic LoS channel model. They proposed a low-complexity vertex approach, which first obtains the optimal location with the velocity and energy constraints relaxed and then constructs a greedy solution, and a high-performance sequential approach that finds the optimal location in each time slot sequentially. Simulation results show that the proposed strategies provide on average 41% improvement in average outage probability over the benchmark schemes (31% for the vertex approach and 52% for the sequential approach), with the sequential approach outperforming the vertex approach at higher computational complexity.
 
 ## Problem framing
 

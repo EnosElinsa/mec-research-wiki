@@ -12,7 +12,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Automating CSI Measurement with UAVs: from Problem Formulation to Energy-Optimal Solution
@@ -31,7 +31,7 @@ Building a CSI fingerprint map for indoor localization takes a lot of manual eff
 
 **Scenario**: A commodity programmable drone with a CSI measurement module must visit every required measurement location in an indoor area. A grid graph $G=(V,E,w)$ expands each physical location into a widget $\mathcal W_\eta$ of four vertices for the UAV's four orientations, replicated per access point; edge weights $w_{ij}$ are the energy of moving between grids, turning within a widget, and switching access points.
 
-**Problem & objective**: MEMP: $\min\sum_{i,j\in V}w_{ij}f_{ij}$, the total energy of the drone's walk on the graph.
+**Problem & objective**: MEMP (15): $\min\sum_{i,j\in V}w_{ij}f_{ij}$, the total energy of the drone's walk on the graph.
 
 **Decision variables**:
 
@@ -49,7 +49,7 @@ Building a CSI fingerprint map for indoor localization takes a lot of manual eff
 | (18) | Connectivity, every cut separating chosen vertices is crossed, $\sum f_{ij}+f_{ji}\ge1$. |
 | (19) | $f_{ij}\in\mathbb N$, $v_i\in\{0,1\}$. |
 
-**Algorithm**: Show MEMP is equivalent to the Generalized Traveling Salesman Problem on the partitioned vertex set and solve it with an existing GTSP solver.
+**Algorithm**: Show MEMP is equivalent to the Generalized Traveling Salesman Problem on the partitioned vertex set (real widgets become the GTSP sets; virtual widgets are removed) and solve it with a large-neighborhood-search GTSP solver.
 
 ## Related Work Paragraph
 

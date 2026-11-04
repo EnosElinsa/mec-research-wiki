@@ -14,7 +14,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[effective-energy-efficiency]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Digital Tides: A Fluid-Dynamic Framework for Flux-Aware Infrastructure Provisioning in UAV Logistics Networks
@@ -33,7 +33,7 @@ Models periodic logistics-UAV demand as a compressible fluid and activates groun
 
 **Scenario**: Logistics-UAV demand expands from and contracts toward a hub as a radial fluid-like workload field. Ground base stations have low-altitude radio sectors and colocated MEC servers that can sleep, but activation incurs a common radio and container startup delay.
 
-**Problem & objective**: The network chooses binary infrastructure states to maximize served-workload energy efficiency while bounding expansion-phase wavefront outage, $\max_{\boldsymbol\alpha}\eta_{\mathrm{EE}}(\boldsymbol\alpha)=\mathcal T_{\mathrm{total}}(\boldsymbol\alpha)/E_{\mathrm{total}}(\boldsymbol\alpha)$.
+**Problem & objective**: Problem $\mathcal P_0$ in (16) chooses binary infrastructure states to maximize served-workload energy efficiency while bounding expansion-phase wavefront outage, $\max_{\boldsymbol\alpha}\eta_{\mathrm{EE}}(\boldsymbol\alpha)=\mathcal T_{\mathrm{total}}(\boldsymbol\alpha)/E_{\mathrm{total}}(\boldsymbol\alpha)$.
 
 **Decision variables**:
 
@@ -48,10 +48,10 @@ Models periodic logistics-UAV demand as a compressible fluid and activates groun
 
 | ID | Meaning and key expression |
 |---|---|
-| 16b | Expansion-phase service unavailability stays below the QoS limit, $\mathcal O(t;\boldsymbol\alpha)\leq\epsilon_{\mathrm{th}}$ for every $t\in\mathbb T_{\mathrm{exp}}$ |
-| 16c | Every infrastructure state is binary, $\alpha(\mathbf x,t)\in\{0,1\}$ |
-| 19 | The hysteresis thresholds satisfy $\lambda_{\mathrm{hold}}<\lambda_{\mathrm{act}}$ |
-| Startup lead | The flux-triggered guard ring must cover wavefront travel during setup, approximately $\Delta R\geq v_{\mathrm{wf}}\tau_{\mathrm{boot}}$ |
+| (16b) | Expansion-phase service unavailability stays below the QoS limit, $\mathcal O(t;\boldsymbol\alpha)\leq\epsilon_{\mathrm{th}}$ for every $t\in\mathbb T_{\mathrm{exp}}$ |
+| (16c) | Every infrastructure state is binary, $\alpha(\mathbf x,t)\in\{0,1\}$ |
+| (19) | The triggering conditions (flux, load, hold) use hysteresis thresholds with $\lambda_{\mathrm{hold}}<\lambda_{\mathrm{act}}$ |
+| (32) | Model rule: the flux-triggered guard ring must cover wavefront travel during setup, $\mathcal G_{\mathrm{flux}}(t)\gtrsim v_{\mathrm{wf}}(t)\tau_{\mathrm{boot}}$ |
 
 **Algorithm**: During expansion, a station activates when local density exceeds $\lambda_{\mathrm{act}}$ or outward flux exceeds $\delta_{\mathrm{th}}$. During contraction, flux triggering is disabled and an active station remains on only while density exceeds $\lambda_{\mathrm{hold}}$; this local $O(M)$ rule is calibrated with a QoS-penalized effective-energy-efficiency surrogate.
 

@@ -16,7 +16,7 @@ related:
   - "[[jiang-2026-bi-level-uav-delivery-safety]]"
   - "[[chen-2026-cargo-uav-pickup-lae]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative Air-Ground Instant Delivery by UAVs and Crowdsourced Taxis: Joint UAV Station Deployment and Delivery Scheduling
@@ -48,12 +48,12 @@ Builds a city-scale instant-delivery system that pairs UAVs with crowdsourced ta
 
 | ID | Meaning and key expression |
 |---|---|
-| 22, 30 | UAV and taxi assignment variables are binary |
-| 23, 31 | Each parcel is assigned at most once, $\sum_u\eta(u,p)+\sum_b\eta(b,p)\leq1$ |
-| 24-25 | Preference-first assignment requires $\epsilon(u,p)\geq\varepsilon_U\eta(u,p)$ and $\epsilon(b,p)\geq\varepsilon_B\eta(b,p)$ |
-| 26-27, 32-33 | An assignment is permitted only when the UAV or taxi delivery path is feasible |
-| UAV model | Flight distance, payload, wind, reserve energy, deadline, and no-fly-zone requirements must hold |
-| Taxi model | Passenger priority, route compatibility, detour distance, pickup time, and participation limits must hold |
+| (22), (30) | UAV and taxi assignment variables are binary |
+| (23), (31) | Each parcel is assigned at most once, $\sum_u\eta(u,p)+\sum_b\eta(b,p)\leq1$ |
+| (24)–(25) | Preference-first assignment requires $\epsilon(u,p)\geq\varepsilon_U\eta(u,p)$ and $\epsilon(b,p)\geq\varepsilon_B\eta(b,p)$ |
+| (26)–(27), (32)–(33) | An assignment is permitted only when the UAV or taxi delivery path is feasible |
+| Model rule (UAV) | Flight distance, payload, wind, reserve energy, deadline, and no-fly-zone requirements must hold |
+| Model rule (taxi) | Passenger priority, route compatibility, detour distance, pickup time, and participation limits must hold |
 
 **Algorithm**: Cluster historical taxi-delivery gaps with weighted K-Means++ to deploy UAV stations; predict grid demand and reposition UAVs toward expected unmet demand; transfer and fine-tune courier-preference models for UAVs and taxis; greedily solve the preference assignment; then solve residual GAPAR with profit-density sorting that balances parcel count and delivery cost.
 

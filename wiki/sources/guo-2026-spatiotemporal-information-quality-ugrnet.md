@@ -24,7 +24,7 @@ related:
   - "[[zhang-2020-response-delay-uav-swarm]]"
   - "[[tang-2026-hg-maddpg-uav-rescue]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Spatiotemporal Information Quality Optimization for UAV-Assisted Ground Robot Networks
@@ -57,10 +57,10 @@ Couples a martingale upper bound on heterogeneous multi-hop queueing-delay viola
 
 | ID | Meaning and key expression |
 |---|---|
-| Completion domain | $0\leq\gamma_{j,i}\leq1$ with $0\leq\sum_j\gamma_{j,i}\leq D$ and $0\leq\sum_i\gamma_{j,i}\leq M$ |
-| Region assignment | Each destination subregion has exactly one incoming selected transition, as specified by Eq. (24) |
-| Route assignment | Each source subregion has exactly one outgoing selected transition, as specified by Eq. (24) |
-| Queue stability | The martingale delay bound is evaluated only for stable arrival and service processes with a valid positive decay rate |
+| (28) | $0\leq\gamma_{j,i}\leq1$ with $0\leq\sum_j\gamma_{j,i}\leq D$ and $0\leq\sum_i\gamma_{j,i}\leq M$ |
+| (24), incoming | Each destination subregion has exactly one incoming selected transition, as specified by Eq. (24) |
+| (24), outgoing | Each source subregion has exactly one outgoing selected transition, as specified by Eq. (24) |
+| Model rule | The martingale delay bound is evaluated only for stable arrival and service processes with a valid positive decay rate |
 
 **Algorithm**: Estimate finite-state Markov arrival and service parameters, derive each hop's martingale delay-violation bound and the heterogeneous joint decay rate, compute the Wasserstein distance induced by each feasible regional path, combine the temporal and spatial terms into $\Psi_{\mathcal M}$, and numerically evaluate feasible completion ratios and assignments to select the minimum-cost strategy; the paper reports this evaluation workflow rather than a standalone optimization algorithm.
 

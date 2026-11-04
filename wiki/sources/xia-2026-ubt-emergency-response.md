@@ -16,7 +16,7 @@ related:
   - "[[vehicle-fog-computing]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimization of Urban Emergency Multimodal Transportation Scheduling With UAV-Ground Traffic Coordination
@@ -35,7 +35,7 @@ Coordinates UAVs riding and charging on buses with dynamically recruited taxis, 
 
 **Scenario**: An urban grid is evaluated over time slots while UAVs ride and recharge on buses, recruit taxis for rendezvous or relay travel, and respond through four flight and ground-transport cases.
 
-**Problem & objective**: Bus selection maximizes joint emergency coverage utility, $P_0=\max_{\mathbb B_S}\sum_{(g_r,t)}\mathcal C_{\mathbb B_S}^{\mathrm{Union}}(g_r,t)$, under a recruitment budget, while each case utility combines delay, hover duration, and relay cost.
+**Problem & objective**: The bus-selection problem (44)–(45) maximizes joint emergency coverage utility $\sum_{(g_r,t)}\mathcal C_{\mathbb B_S}^{\mathrm{Union}}(g_r,t)$ over the selected bus set $\mathbb B_S$ under a recruitment budget, while each case utility combines delay, hover duration, and relay cost.
 
 **Decision variables**:
 
@@ -50,11 +50,12 @@ Coordinates UAVs riding and charging on buses with dynamically recruited taxis, 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Total recruitment cost respects the budget, $R\leq B$ |
-| C2 | Each response has positive hover duration, $T_h^{\mathrm{Case}_i}>0$ |
-| C3 | Response delay stays within the limit, $T_{\mathrm{delay}}^{\mathrm{Case}_i}\leq T_e^{\max}$ |
-| C4 | Relay cost stays within the limit, $C_{\mathrm{relay}}^{\mathrm{Case}_i}\leq C_{\mathrm{relay}}^{\max}$ |
-| C5 | The selected bus count is bounded, $\lvert\mathbb B_S\rvert\leq K$ |
+| (45) | Recruitment cost within budget: $R\le B$ |
+| (31) | Each response case keeps positive hover time: $T_h^{\mathrm{Case}i}>0$ |
+| (32)–(33) | Response delay (expected delay plus $N_{\mathrm{trans}}\Delta T$) within $T_e^{\max}$ |
+| (34) | Relay cost within $C_{\mathrm{relay}}^{\max}$ |
+| Model rule | Cases 1–4 have their own timing and energy feasibility conditions, e.g. (17)–(26) with $E_m\ge\lambda E_c$ |
+| Model rule | In the NP-hardness special case, at most $K$ buses are selected |
 
 **Algorithm**: Two MLP predictors estimate free-taxi counts and grid travel times from trajectory data, then NOCG-Greedy repeatedly selects the bus with the largest uncovered joint coverage gain until the budget or bus-count limit is reached.
 
@@ -62,7 +63,7 @@ Coordinates UAVs riding and charging on buses with dynamically recruited taxis, 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xia et al. [x] modeled urban emergency response as multimodal coordination among UAVs, buses, and relay taxis over spatiotemporal grids. The optimization selects bus teams and one of four response cases to maximize joint coverage utility while bounding recruitment cost, delay, hover feasibility, relay cost, and fleet size. Taxi availability and travel time are predicted with MLP models, and NOCG-Greedy adds buses by their non-overlapping coverage gain. Experiments report full citywide coverage with a limited team count, high hovering endurance and energy utilization, and lower infrastructure cost than bus-only and heuristic alternatives.
+Xia et al. [x] modeled urban emergency response as multimodal coordination among UAVs, buses, and relay taxis over spatiotemporal grids. The optimization selects bus teams and one of four response cases to maximize joint coverage utility while bounding recruitment cost, delay, hover feasibility, relay cost, and fleet size. Taxi availability and travel time are predicted with MLP models, and NOCG-Greedy adds buses by their non-overlapping coverage gain. Against Greedy, GA, ant-colony, and PSO bus selection, experiments report 100% citywide spatiotemporal coverage with 30 UAVs, longer hovering time and higher energy utilization, and 99.6% lower cost at 95% coverage.
 
 ## Problem and system model
 

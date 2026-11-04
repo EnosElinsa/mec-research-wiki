@@ -18,7 +18,7 @@ related:
   - "[[dong-2026-radio-map-d2d-relay]]"
   - "[[bujari-2018-stateless-fanet-routing]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,7 +38,7 @@ Uses predicted UAV trajectories and location-indexed radio-map statistics to joi
 
 **Scenario**: Delay-tolerant packets traverse a dynamic low-altitude UAV-relay network whose node trajectories are predetermined. Radio maps provide large-scale channel and terrestrial-interference statistics, and multi-commodity flows use orthogonal time-frequency shares.
 
-**Problem & objective**: Predictive interference-aware routing problem (P1), a bottleneck path and continuous resource-allocation problem, minimizes worst-case leakage, $\min_{\{p_{m,n}(t)\},\vartheta_{m,n}}\vartheta_{m,n}$, while delivering the full package and enforcing per-link interference bounds.
+**Problem & objective**: Problem $\mathcal P1$ in (7)–(9), per forwarding interval of a route through the dynamic graph, minimizes worst-case leakage, $\min_{\{p_{m,n}(t)\},\vartheta_{m,n}}\vartheta_{m,n}$, while delivering the full package and enforcing per-link interference bounds.
 
 **Decision variables**:
 
@@ -54,11 +54,11 @@ Uses predicted UAV trajectories and location-indexed radio-map statistics to joi
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The selected path connects source to destination through valid dynamic-graph edges and virtual caching edges |
-| C2 | Each package is delivered, $\int \mathbb E[B\log_2(1+ph/\delta^2)]\,dt\ge S$ |
-| C3 | Aerial leakage is bounded on every interval, $p_{m,n}(t)h_{m,j}(t)\le\vartheta_{m,n}$ |
-| C4 | Time boundaries are ordered and lie within the delivery deadline |
-| C5 | Multi-commodity time-frequency shares satisfy the shared-resource budget and orthogonality rule |
+| (8) | Full package delivered over the forwarding interval: $\int_{t_k}^{t_{k+1}}\mathbb E[B\log_2(1+p_{m,n}(t)h_{m,n}(t)/\delta^2)]dt\ge S$ |
+| (9) | Epigraph of worst-case leakage: $p_{m,n}(t)h_{m,j}(t)\le\vartheta_{m,n}$ for all $j$ and $t\in[t_k,t_{k+1})$ |
+| Model rule | The route is a path through the dynamic space-time graph with legitimate (forwarding) and zero-weight virtual (caching) edges; time boundaries $t_k$ are ordered within the deadline |
+| Model rule | The multi-commodity extension (Section IV) splits the package and shares time-frequency resources across commodities |
+| Note | The parse misplaces tags (8)–(9); check the published paper |
 
 **Algorithm**: Build the dynamic space-time graph with zero-cost virtual edges → solve each legitimate edge's robust power problem by bisection → select a bottleneck path → optimize time boundaries by monotonicity/bisection with backtracking → alternate route and resource updates, then extend to multi-commodity allocation.
 
@@ -66,7 +66,7 @@ Uses predicted UAV trajectories and location-indexed radio-map statistics to joi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li and Chen [x] studied interference-aware predictive communications over a dynamic low-altitude UAV-relay network with predetermined trajectories. They formulated a cross-layer problem that minimizes worst-case air-to-ground interference while routing a complete delay-tolerant data package through time-varying links. Their dynamic space-time graph uses legitimate forwarding edges and zero-cost virtual caching edges, so route selection becomes a bottleneck path problem. They derived deterministic bounds for channel uncertainty, solved link power policies by bisection, and used a monotonicity-based time-boundary search with backtracking; a multi-commodity extension allocates shared time-frequency resources by bisection. Simulations report more than 30 dB gains over classical graph-based methods in the stated delay-sensitive and large-data cases.
+Li and Chen [x] studied interference-aware predictive communications over a dynamic low-altitude UAV-relay network with predetermined trajectories. They formulated a cross-layer problem that minimizes worst-case air-to-ground interference while routing a complete delay-tolerant data package through time-varying links. Their dynamic space-time graph uses legitimate forwarding edges and zero-cost virtual caching edges, so route selection becomes a bottleneck path problem. They derived deterministic bounds for channel uncertainty, solved link power policies by bisection, and used a monotonicity-based time-boundary search with backtracking; a multi-commodity extension allocates shared time-frequency resources by bisection. Simulations report near-global optimality against brute force and more than 30 dB gains over classical graph-based methods (such as extended Dijkstra routing) in delay-sensitive and large-data cases, about 13 dB in another setting, and about 100 times gains for the multi-commodity method in dense service scenarios.
 
 ## Problem
 

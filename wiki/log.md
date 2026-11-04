@@ -1,5 +1,11 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 24 (UAV deployment, radio maps, cellular-connected UAVs, and delivery logistics)
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch24-deployment-logistics.json`. Grounded total: 575/699.
+- Relabeled constraint IDs to the papers' own tags (for example cao-2026 (4)–(29e), gao-2026 (22)–(33), jiang-2026 C1–C6 (6)–(12), ren-2026 (8b)–(8h), xia-2026 (31)–(45), dong-2026 D2D (13)–(22), guo-2026 navigation (7), chakareski-2019 (5)–(7)); where the parse misplaces or drops tags (heo (1)–(10), lee-2026 (4)–(14), li-2026 radio-map routing (8)–(9), zhang cellular U2X (24)), the card says to check the published paper.
+- Rewrote the Modeling Quick-Use Card for vitale-2026 (inter-cube OIPP problem (6) and the Intra-Cube Planner MIQCP (15)); penalty terms and modeling assumptions in belgiovine, cherif-2021, and wang-2026 spectrum mapping became model or algorithm rules.
+- Related Work paragraphs now name the actual baselines and note results where the method does not win everywhere (for example Informed RRT* finding shorter paths and risk-aware RRT* a lower risk than RG-FMT*, antenna-selection MMSE tying ren-2026 at 13 dB, slightly longer travel time in vitale-2026, higher reconstruction time in wang-2026); request counts in vitale-2026 and periodic-refresh figures in guo-2026 navigation were corrected to the parse.
+
 ## [2026-11-03] Grounded batch 23 (edge services: microservice migration, slicing, VNF orchestration, and MEC resource control)
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch23-edge-services.json`. Grounded total: 551/699.
 - Relabeled constraint IDs to the papers' own tags (for example adeppady-2026 (13)–(24), garcia-gil-2025 (6b)–(6f), wei-2026 (1)–(15), du-2023 (C1)–(C15), pervez-2024 (11b)–(11n), wang-2025 laser (29b)–(29j), zhu-2025 (15a)–(15e), guo-2026 AoT (25a)–(25e), li-2024 SMDRL C1–C4 (3b)–(3e), wu-2026 terrain C1–C6); where the parse shifts tags (calagna-2026 (18)–(22)) or drops them (calagna-2024 (33)–(34)), the card says to check the published paper.

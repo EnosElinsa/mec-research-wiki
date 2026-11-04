@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[low-altitude-intelligent-network]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Better Together: Leveraging Multiple Digital Twins for Deployment Optimization of Airborne Base Stations
@@ -50,11 +50,11 @@ Builds a multi-digital-twin workflow for airborne base station deployment. Sionn
 
 | ID | Meaning and key expression |
 |---|---|
-| Fixed altitude | Position optimization is restricted to $\mathbf{p}_i=(x_i,y_i)$ while every ABS hovers at elevation $h$ |
-| Separation penalty | $P_u=\sum_j\sum_i\max(0,d_{\min}-\lVert\mathbf{p}_i-\mathbf{p}_j\rVert)$ discourages ABS spacing below $d_{\min}$ |
-| Obstacle penalty | $P_b=\sum_i\sum_b\exp\left(\kappa_b(-d_{ib}+c_b)\right)$ penalizes proximity to buildings above the flight-clearance threshold |
-| AOI service | AOI attraction changes when $\lVert\mathbf{p}_i-\mathbf{c}_k\rVert<2r_k/3$, and the evaluation counts an AOI as served under the same distance condition |
-| AOI weights | Weighted SIR priorities satisfy $w_m\geq0$ and $\sum_{m=1}^{M}w_m=1$ |
+| Model rule | Position optimization is restricted to $\mathbf{p}_i=(x_i,y_i)$ while every ABS hovers at elevation $h$ |
+| Model rule (penalty) | $P_u=\sum_j\sum_i\max(0,d_{\min}-\lVert\mathbf{p}_i-\mathbf{p}_j\rVert)$ discourages ABS spacing below $d_{\min}$ |
+| Model rule (penalty) | $P_b=\sum_i\sum_b\exp\left(\kappa_b(-d_{ib}+c_b)\right)$ penalizes proximity to buildings above the flight-clearance threshold |
+| Model rule | AOI attraction changes when $\lVert\mathbf{p}_i-\mathbf{c}_k\rVert<2r_k/3$, and the evaluation counts an AOI as served under the same distance condition |
+| Model rule | Weighted SIR priorities satisfy $w_m\geq0$ and $\sum_{m=1}^{M}w_m=1$ |
 
 **Algorithm**: Adam-based gradient descent first differentiates $\mathcal{L}_p$ to generate obstacle-aware routes and final ABS locations. Sionna then differentiates ray-traced SIR losses with respect to $\{\phi_i,\theta_i,P_i^{\mathrm{tx}}\}$; AODT validates mobile-UE coverage, detects sustained drops below $T_{\min}$, and sends the affected UE route back to Sionna for reaction, stationary, and return trajectory refinement.
 

@@ -14,7 +14,7 @@ related:
   - "[[mozaffari-2015-drone-small-cells]]"
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # An Energy Efficient Framework for UAV-Assisted Millimeter Wave 5G Heterogeneous Cellular Networks
@@ -50,11 +50,11 @@ Analyzes a multi-band HetNet with one microwave macro BS, ground dual-mode mmWav
 
 | ID | Meaning and key expression |
 |---|---|
-| 5-6 | UAV coverage height is chosen so the farthest served user satisfies the maximum path-loss limit $\mathrm{PL}_{\max}$ |
-| 7a | Macro-tier power is bounded, $\sum_{m,n}p_{m,n}^{(\mu W)}\leq P_{\mu W}^{\max}$ |
-| 7b | Every served user meets minimum rate, $R_m\geq R_{\min}$ |
-| 7c-7d | Power is nonnegative and subcarrier assignment is binary and exclusive within a BS |
-| 12 | UAV power is high enough for $R_{\min}$ but capped by the macro-user QoS and cross-tier interference limit $I_t$ |
+| (5)–(6) | UAV coverage height is chosen so the farthest served user satisfies the maximum path-loss limit $\mathrm{PL}_{\max}$ |
+| (7), 1st constraint | Macro-tier power is bounded, $\sum_{m,n}p_{m,n}^{(\mu W)}\leq P_{\mu W}^{\max}$ |
+| (7), 2nd constraint | Every served user meets minimum rate, $R_m\geq R_{\min}$ |
+| (7), 3rd–4th constraints | Power is nonnegative and subcarrier assignment is binary and exclusive within a BS |
+| (12) | UAV power is high enough for $R_{\min}$ but capped by the macro-user QoS and cross-tier interference limit $I_t$ |
 
 **Algorithm**: The outer layer computes coverage radius and $z_e$ from the maximum path loss. The inner layer uses Lagrange multipliers and subgradient updates for power allocation, the Hungarian method for macro subcarrier assignment, QoS and interference clipping for UAV-tier power, and band-specific rate or energy-efficiency allocation for dual-mode small cells.
 

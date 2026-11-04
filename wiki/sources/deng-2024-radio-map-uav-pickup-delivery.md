@@ -51,7 +51,8 @@ A cellular-connected cargo UAV serves multiple pickup-delivery pairs and must ke
 
 | ID | Meaning and key expression |
 |---|---|
-| (9b)-(9c) | Every node is entered and left exactly once. |
+| (9a) | $x_{ij}\in\{0,1\}$. |
+| (9b)–(9c) | Every node is entered and left exactly once. |
 | (9d) | MTZ subtour elimination, $u_i-u_j+(2n+1)x_{ij}\le2n$. |
 | (9e) | Precedence, $T_{a_k}<T_{b_k}$ for every pickup-delivery pair. |
 | (9f) | Payload limit, $w_n\le m_{\max}$. |

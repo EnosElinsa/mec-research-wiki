@@ -18,7 +18,7 @@ related:
   - "[[stelios-timotheou]]"
   - "[[theocharides-2026-uav-traffic-estimation]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Density-Aware 4-D Trajectory Planning for Urban Air Traffic With Different QoS Levels
@@ -35,36 +35,36 @@ Coordinates urban UAV traffic through centralized cube-and-time reservations and
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A centralized urban air-traffic manager reserves 4-D cube-and-time slots for UAV requests with different arrival-time QoS classes. Each UAV then executes its reserved route with local uncertainty-aware MPC under linear-Gaussian motion, predicted-neighbor states, and finite cube capacity.
+**Scenario**: Urban airspace is split into cubes with a maximum number of simultaneous UAVs; a central planner reserves cube-time slots for UAV requests with two arrival-time QoS levels, and admissibility $\psi_i^m(k)$ marks cubes still below capacity. Inside each cube, every UAV follows its reservation with model-predictive control under linear-Gaussian motion and predicted neighbor states.
 
-**Problem & objective**: The reservation problem minimizes arrival-time deviation and latest-feasible departure subject to space-time capacity, while the local robust MPC solves a mixed-integer quadratically constrained problem, $\min\;T_{\mathrm{cube}}+\lambda s_{\mathrm{safety}}$.
+**Problem & objective**: The inter-cube OIPP problem $(\mathrm P_1)$ in (6) picks departure time $s^m$ and cube path $p^h$ to minimize $J_T=k_{des}^m-k_{0^h}(s^m)$, i.e., the latest departure that still arrives by $k_{des}^m$. Inside a cube, the Intra-Cube Planner (15), an MIQCP, minimizes the number of slots spent in the cube $\sum_tb_t^m$ plus a big-$M$ penalty on separation slacks $\zeta_t^{i,m}$.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Cube-time reservation | $r_{u,c,t}$ | binary | Whether UAV $u$ occupies cube $c$ at time $t$ |
-| Inter-cube route | $\mathcal P_u$ | discrete path | Ordered cube sequence from origin to destination |
-| Local force/control | $\mathbf u_u(t)$ | continuous bounded input | MPC force used inside a cube |
-| Safety slack | $s_{ij}(t)$ | continuous, nonnegative | Slack in pairwise separation constraints when infeasible |
+| Departure time | $s^m$ | discrete slot in $\mathcal H$ | Departure of UAV $m$ |
+| Cube path | $p^h$ | discrete path in $G(\mathcal V,\mathcal E)$ | Cube sequence from $O^m$ to $D^m$ |
+| Control input | $\mathbf u_{k+t}^m$ | continuous, $\lvert\mathbf u\rvert\le\mathbf u_{MAX}$ | MPC force inside the cube |
+| In-cube indicator | $b_t^m$ | binary, non-increasing | UAV $m$ is still inside the cube at step $t$ |
+| Separation slack | $\zeta_t^{i,m}$ | continuous, $\ge0$ | Relaxation of the safe distance to neighbor $i$ |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each cube admits no more than its configured simultaneous reservations |
-| C2 | Reserved paths connect requested origins and destinations and satisfy QoS arrival windows |
-| C3 | UAV linear dynamics, force, speed, control-rate, and no-return limits hold inside each cube |
-| C4 | Gaussian confidence ellipsoids and pairwise barycenter separation satisfy the chance-constraint risk bound |
-| C5 | Local safety slack is penalized and used only when strict separation is infeasible |
+| (6a) | Cube dynamics (3)–(5): traversal time is finite only through admissible cubes, so density limits hold |
+| (6b) | Arrival by the desired time: $k_{L^h}(s^m)\le k_{des}^m$ |
+| (15b)–(15d) | Leave the cube by the reserved exit slot; $b_t^m$ binary and non-increasing |
+| (15e)–(15i) | Mean dynamics (6) and staying within the cube until exit through its face |
+| (15j)–(15k) | Control-rate $\lvert\mathbf u_{k+t}-\mathbf u_{k+t-1}\rvert\le\Delta\mathbf u$ and speed $\le\mathbf v_{MAX}$ (with the force bound) |
+| (15m)–(15n) | Expected positions keep the sphere-based safe distance $d_{k+t}^{i,m}$ minus slack $\zeta_t^{i,m}\ge0$, a sufficient condition for the chance constraint (10l)–(10m) |
 
-**Algorithm**: Order requests by QoS and desired arrival time → build a reverse-time cube-time DAG → filter occupied nodes and choose the latest feasible departure/path → execute robust MPC in each cube using conservative spherical confidence bounds → update reservations and continue through the request set.
+**Algorithm**: Algorithm 1 (ICPP) sorts requests by QoS and desired arrival time, solves OIPP for each with a reverse-time search (Algorithm 2) that returns the latest feasible departure and path, and updates reservations and admissibility. Each UAV then runs the Intra-Cube Planner in every cube, enclosing Gaussian confidence ellipsoids in spheres to turn the separation chance constraint into a deterministic distance.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Vitale et al. [x] studied density-aware four-dimensional trajectory planning for urban UAV traffic with different arrival-time QoS levels. A central reverse-time graph planner reserves cube-time resources and selects the latest feasible route, while each UAV uses robust model-predictive control to follow the reservation under stochastic separation constraints. The local controller solves a mixed-integer quadratically constrained problem with force, speed, control-rate, and safety-slack variables. Gaussian confidence ellipsoids are conservatively enclosed by spheres to obtain a sufficient chance-constraint condition. In simulations with 6,500 requests, the proposed method reduces mean arrival-time deviation from 336.35 s to 202.79 s at capacity one and from 56.90 s to 39.18 s at capacity ten relative to the modified time-dependent A* baseline.
+Vitale et al. [x] studied density-aware four-dimensional trajectory planning for urban UAV traffic with different arrival-time QoS levels. A central reverse-time graph planner reserves cube-time resources and selects the latest feasible route, while each UAV uses robust model-predictive control to follow the reservation under stochastic separation constraints. The local controller solves a mixed-integer quadratically constrained problem with force, speed, control-rate, and safety-slack variables. Gaussian confidence ellipsoids are conservatively enclosed by spheres to obtain a sufficient chance-constraint condition. Against a time-dependent A* baseline, the proposed method reduces mean arrival-time gap from 336.35 to 202.79 at capacity one (3,000 requests) and from 56.90 to 39.18 at capacity ten (6,500 requests), with slightly longer mean travel time at capacity one.
 
 ## Problem
 

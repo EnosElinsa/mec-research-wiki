@@ -16,7 +16,7 @@ related:
   - "[[urban-air-mobility]]"
 created: 2026-07-11
 modeling_card: required
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Bi-Level Optimization Framework for Urban Low-Altitude UAV Delivery Ensuring Target Level of Safety
@@ -35,7 +35,7 @@ Models urban low-altitude UAV delivery as a coupled task-allocation and trajecto
 
 **Scenario**: A delivery hub dispatches heterogeneous UAVs with different speeds and payload capacities to serve multiple orders in a three-dimensional urban grid with static buildings and spatial ground-risk values.
 
-**Problem & objective**: The upper-level CTA-TOP minimizes the three-objective vector $(F_1,F_2,F_3)$ of delivery-time cost, total path risk, and workload-distance variance; for each assigned leg, the lower-level problem minimizes path length $\sum_{i=0}^{k-1}\lVert X_{i+1}-X_i\rVert_2$.
+**Problem & objective**: The upper-level CTA-TOP (1) minimizes the three-objective vector $(F_1,F_2,F_3)$ of delivery-time cost, total path risk, and workload-distance variance; for each assigned leg, the lower-level problem (9) minimizes path length $\sum_{i=0}^{k-1}\lVert X_{i+1}-X_i\rVert_2$.
 
 **Decision variables**:
 
@@ -49,11 +49,12 @@ Models urban low-altitude UAV delivery as a coupled task-allocation and trajecto
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every UAV receives at least one order: $\sum_m x_{mn}\geq 1$ |
-| C2 | Every order is assigned once: $\sum_n x_{mn}=1$ |
-| C3 | Each UAV respects its payload capacity: $\sum_m x_{mn}\leq W_n$ |
-| C4 | Waypoints remain inside the three-dimensional grid and avoid all obstacles |
-| C5 | Every waypoint meets the target level of safety: $R(X_k)\leq R_{\mathrm{TLS}}$ |
+| C1 (6) | Every UAV receives at least one order: $\sum_mx_{mn}\ge1$ |
+| C2 (7) | Every order is assigned once: $\sum_nx_{mn}=1$ |
+| C3 (8) | Payload capacity: $\sum_mx_{mn}\le W_n$ |
+| C4 (10) | Waypoints lie inside the 3-D urban grid |
+| C5 (11) | Waypoints keep positive distance from all obstacles |
+| C6 (12) | Target level of safety: $R(X_k)\le R_{\mathrm{TLS}}$ |
 
 **Algorithm**: TC-NSGA-III evolves dual-layer assignment and visit-order chromosomes to obtain a Pareto set; RG-FMT* then performs risk-guarded sampling and fast-marching-tree search for each leg, and its path lengths and risks feed the upper-level objective evaluation.
 
@@ -61,7 +62,7 @@ Models urban low-altitude UAV delivery as a coupled task-allocation and trajecto
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Jiang et al. [x] studied coordinated delivery by heterogeneous UAVs in a three-dimensional urban environment with static obstacles and spatial ground-risk values. They formulated a coupled task-allocation and trajectory-optimization problem that minimizes delivery-time cost, total ground risk, workload imbalance, and lower-level path length under assignment, payload, collision, and target-level-of-safety constraints. Their bi-level framework uses TC-NSGA-III for allocation and delivery sequencing and RG-FMT* for risk-guarded path planning. In simulation, RG-FMT* achieved a 100% TLS compliance rate with the shortest computation time among the compared planners. The overall framework also outperformed the compared methods on total risk and time cost, and large-scale urban simulations were reported to support its generalization and scalability.
+Jiang et al. [x] studied coordinated delivery by heterogeneous UAVs in a three-dimensional urban environment with static obstacles and spatial ground-risk values. They formulated a coupled task-allocation and trajectory-optimization problem that minimizes delivery-time cost, total ground risk, workload imbalance, and lower-level path length under assignment, payload, collision, and target-level-of-safety constraints. Their bi-level framework uses TC-NSGA-III for allocation and delivery sequencing and RG-FMT* for risk-guarded path planning. In simulation, RG-FMT* achieved a 100% TLS compliance rate with the shortest computation time against APF-RRT*, Fast-RRT*, Informed RRT*, and risk-aware RRT*, though Informed RRT* found shorter paths and risk-aware RRT* a slightly lower risk value. The overall framework also outperformed the compared methods on total risk and time cost, and large-scale urban simulations were reported to support its generalization and scalability.
 
 ## Problem
 

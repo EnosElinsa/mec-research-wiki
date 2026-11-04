@@ -52,7 +52,7 @@ A cargo-UAV flying beyond visual line of sight needs cellular command-and-contro
 |---|---|
 | P1.a | Battery budget, $\sum_i E(v,d_{i,i+1})\le E_A(v,h)$. |
 | P1.b | Disconnectivity rate, $d_{\mathrm{disc}}/(\lvert\mathcal T\rvert-1)\le\alpha_{\max}$. |
-| Motion | Each step moves to one of the neighboring grid cells. |
+| Model rule | Each step moves to one of the 8 neighboring grid cells (Fig. 2). |
 
 **Algorithm**: Build transition matrices for distance, disconnectivity, and handoff costs between grid cells from the heatmap, then run a dynamic-programming shortest-path search that returns the trajectory minimizing the weighted cost while respecting the battery and disconnectivity limits.
 
@@ -60,7 +60,7 @@ A cargo-UAV flying beyond visual line of sight needs cellular command-and-contro
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Cherif et al. [x] studied trajectory planning for cargo-UAV delivery missions that rely on cellular connectivity for command and control. They formulated a multi-objective problem that minimizes the UAV's energy consumption and handoff rate, constrained by the battery size and a tolerated disconnectivity rate. Because of the problem's complexity, they proposed a dynamic programming based solution over a cellular connectivity heatmap. Simulations show that a more stringent disconnectivity requirement increases both the handoff rate and the energy consumption because the trajectories become longer. The study also examines the impact of UAV altitude, disconnectivity tolerance, receiver sensitivity, and environment type, and derives guidelines for cargo-UAV operations.
+Cherif et al. [x] studied trajectory planning for cargo-UAV delivery missions that rely on cellular connectivity for command and control. They formulated a multi-objective problem that minimizes the UAV's energy consumption and handoff rate, constrained by the battery size and a tolerated disconnectivity rate. Because of the problem's complexity, they proposed a dynamic programming based solution over a cellular connectivity heatmap. Simulations show that a more stringent disconnectivity requirement increases both the handoff rate and the energy consumption because the trajectories become longer, while the handoff rate shows no clear trend with altitude. The study also examines the impact of UAV altitude, disconnectivity tolerance, receiver sensitivity, and environment type, and derives guidelines for cargo-UAV operations.
 
 ## Problem framing
 

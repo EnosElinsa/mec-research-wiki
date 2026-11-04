@@ -16,7 +16,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cellular UAV-to-X Communications: Design and Optimization for Multi-UAV Networks
@@ -49,12 +49,13 @@ Builds a cellular UAV sensing network in which high-SNR UAVs upload directly to 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every paired U2U link satisfies $\sum_k\psi_{i,k}(t)R_{i,j}^k(t)\ge R_0$ |
-| C2 | UAV speed obeys $0\le v_i(t)\le v_{\max}$ |
-| C3 | Each UAV completes its path by the horizon, $\sum_{t=1}^{T}v_i(t)\ge L_i$ |
-| C4 | Each subchannel is assigned to at most one direct U2N link or cellular user |
-| C5 | Each U2N, U2U, or cellular link receives at most $\chi_{\max}$ subchannels |
-| C6 | Allocation variables satisfy $\phi_{i,k}(t),\psi_{i,k}(t)\in\{0,1\}$ |
+| (24), U2U rate | Minimum rate of every paired U2U link: $\sum_k\psi_{i,k}(t)R_{i,j}^k(t)\ge R_0$ |
+| (24b) | Speed limit: $v_i(t)\le v_{\max}$ (with $v_i(t)\ge0$) |
+| (24c) | Path completion: $\sum_tv_i(t)\ge L_i$ |
+| (24e) | Subchannel exclusivity among direct U2N links and cellular users: $\sum_i\phi_{i,k}(t)\le1$ |
+| (24f)–(24g) | At most $\chi_{\max}$ subchannels per U2N/CU link and per U2U link |
+| (24h) | $\phi_{i,k}(t),\psi_{i,k}(t)\in\{0,1\}$ |
+| Note | The parse loses the tag of the U2U-rate constraint and leaves (24d) unattached; check the published paper |
 
 **Algorithm**: Run the six-phase cooperative sense-and-send protocol → select U2N or U2U mode from the SNR threshold and pair each U2U UAV with its nearest U2N relay → solve relaxed U2N and CU allocation as a linear program → search U2U allocation by feasible-solution initialization and branch-and-bound → convexify and solve UAV speed allocation → iterate the three blocks until the uplink sum rate converges.
 
@@ -62,7 +63,7 @@ Builds a cellular UAV sensing network in which high-SNR UAVs upload directly to 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied cellular UAV-to-X communications in a single-cell sensing network with direct U2N transmission and underlaid U2U relaying. They formulated an NP-hard joint subchannel-allocation and UAV-speed problem that maximizes uplink sum rate under minimum U2U-rate, path-completion, speed, subchannel-exclusivity, and per-link allocation constraints. Their cooperative sense-and-send protocol selects transmission modes from received SNR, pairs low-SNR UAVs with nearby U2N relays, and distributes the resulting resource instructions. ISASOA alternates a relaxed linear program for U2N and cellular-user allocation, branch-and-bound for U2U reuse, and convex speed optimization. Simulations over more than 1,000 algorithm instances report about 10% higher uplink sum rate than the evaluated greedy allocation scheme.
+Zhang et al. [x] studied cellular UAV-to-X communications in a single-cell sensing network with direct U2N transmission and underlaid U2U relaying. They formulated an NP-hard joint subchannel-allocation and UAV-speed problem that maximizes uplink sum rate under minimum U2U-rate, path-completion, speed, subchannel-exclusivity, and per-link allocation constraints. Their cooperative sense-and-send protocol selects transmission modes from received SNR, pairs low-SNR UAVs with nearby U2N relays, and distributes the resulting resource instructions. ISASOA alternates a relaxed linear program for U2N and cellular-user allocation, branch-and-bound for U2U reuse, and convex speed optimization. Simulations report about 10% higher uplink sum rate (more uploaded data) than a greedy allocation algorithm.
 
 ## Problem
 
