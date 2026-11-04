@@ -24,7 +24,7 @@ related:
   - "[[nan-cheng]]"
   - "[[xuemin-shen]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Situation-Aware Hybrid Sensing and Position Control for UAV-Assisted ISAC Systems
@@ -43,7 +43,7 @@ Coordinates sensing, transmit power, beam alignment, and UAV position control fo
 
 **Scenario**: An automatic guided vehicle sends industrial sensory data to a remote center through one half-duplex decode-and-forward UAV. An orthogonal two-phase relay frame carries the AGV-to-UAV hop and then the UAV-to-center hop; LoS-dominant flat-fading links include free-space path loss and directional-beam misalignment, while the center performs periodic or event-triggered sensing and the UAV applies antenna-angle or position control.
 
-**Problem & objective**: Problem $\mathcal P_0$, a mixed-integer nonlinear fractional program, maximizes end-to-end energy efficiency, $\max D^{\mathrm{end}}/P^{\mathrm{tot}}$ with $D^{\mathrm{end}}=\min\{D_{\mathrm I},D_{\mathrm{II}}\}$, over communication power, sensing beamforming, and the phase division point.
+**Problem & objective**: Problem $\mathcal P_0$, a mixed-integer nonlinear fractional program, maximizes energy efficiency, the achievable AGV-to-remote-center data volume divided by total power $P^{\mathrm{tot}}$, where the data volume is the smaller of the Phase-I and Phase-II volumes, over communication power, sensing beamforming, and the phase division point.
 
 **Decision variables**:
 

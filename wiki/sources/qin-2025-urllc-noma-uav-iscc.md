@@ -16,7 +16,7 @@ related:
   - "[[wu-2024-urllc-uav-mec-latency]]"
   - "[[wen-2024-iscc-edge-ai]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # URLLC-Aware Trajectory Plan and Beamforming Design for NOMA-Aided UAV Integrated Sensing, Communication, and Computation Networks
@@ -33,36 +33,35 @@ Proposes a NOMA-aided UAV ISCC (Integrated Sensing, Communication, and Computati
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A multi-antenna UAV serves ground URLLC users with an edge server and a fog node. Uplink NOMA carries partial offloading, while a dual-function ISAC beam senses targets and communicates; sensing quality, queue-tail reliability, computation, and mobility are coupled in each slot.
+**Scenario**: A UAV acts as a multi-functional aerial node for users $U_{m,k}$ in $M$ NOMA clusters of $K$ users. It computes part of each offloaded task at the edge, radiates an integrated sensing and communication beam to sense targets, and offloads the remaining part to a fog node; each task is split between UAV edge computing and fog computing.
 
-**Problem & objective**: A Lyapunov-constrained non-convex program maximizes computation throughput, $\max\sum_k R_k^{\mathrm{comp}}$, subject to extreme-value-theory URLLC tail bounds, sensing SINR, power, task, and UAV-trajectory constraints.
+**Problem & objective**: P1 maximizes long-term average weighted computation throughput, $\max_{\{\mathbf v(t),\mathbf w(t),\mathbf f(t)\}} \lim_{T\to\infty} \frac{1}{T}\sum_{t=1}^{T} \psi(t)$ with $\psi(t) = \sum_m \sum_k \omega_{m,k}\big[C_{m,k}^{\mathrm e}(t) + C_{m,k}^{\mathrm f}(t)\big]$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV trajectory | $\mathbf q(t)$ | continuous 2-D position | UAV movement over slots |
-| ISAC beamforming | $\mathbf W(t)$ | complex continuous matrix | Dual-function sensing and communication beam |
-| Offloading ratio | $\beta_k(t)$ | continuous, $[0,1]$ | Fraction of user $k$'s task sent to the UAV/fog node |
-| Compute allocation | $f_k(t)$ | continuous, nonnegative | UAV edge-compute resource for user $k$ |
+| UAV velocity | $\mathbf v(t)$ | continuous, $\lVert \mathbf v(t) \rVert \le v^{\max}$ | Sets the trajectory $\mathbf l(t+1) = \mathbf l(t) + \mathbf v(t)\tau$ |
+| ISAC beamformer | $\mathbf w(t)$ | complex continuous vector | Dual-function sensing and communication beam |
+| Computing resources | $\mathbf f(t) = [f_{m,k}^{\mathrm e}(t), f_{m,k}^{\mathrm f}(t)]$ | continuous, nonnegative | Edge (UAV) and fog computing allocated to user $U_{m,k}$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Queue-tail violation probabilities satisfy the URLLC bound derived from extreme-value theory |
-| C2 | ISAC sensing SINR and beampattern quality exceed their thresholds |
-| C3 | NOMA transmit powers and UAV total power remain within budgets |
-| C4 | Offloaded bits, UAV/fog CPU capacity, and per-slot latency remain feasible |
-| C5 | UAV trajectory obeys region, speed, and endpoint constraints |
+| C1 | Sensing SNR meets its threshold, $\Delta_m(t)\gamma_m^{\mathrm s}(t) \ge \Delta_m(t)\gamma_m^{\mathrm{s,th}}$. |
+| C2-C4 | Long-term URLLC constraints from extreme value theory: the probability, conditional mean, and second moment of excess queue delay stay below thresholds. |
+| C5 | UAV power, $\lVert \mathbf w(t) \rVert^2 + \sum_{m,k} \kappa [f_{m,k}^{\mathrm e}(t)]^3 \le P^{\max}$. |
+| C6-C7 | Trajectory dynamics with speed limit and fixed initial location. |
+| C8-C9 | Computation causality at the edge and fog nodes. |
 
-**Algorithm**: Introduce Lyapunov virtual queues for URLLC violations → solve joint trajectory and beamforming with SAC-TPBD using queue-backlog observations → solve compute allocation by convex optimization → update virtual queues and repeat per slot.
+**Algorithm**: Convert C2-C4 into virtual queues with Lyapunov optimization to obtain per-slot problem P2, then split it into SP1 (trajectory and beamforming), solved by the SAC-based SAC-TPBD, and SP2 (computing resources), solved as a convex subproblem.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Qin et al. [x] studied URLLC-aware trajectory and beamforming design for a NOMA-aided UAV integrated sensing, communication, and computation network. They formulated a throughput-maximization problem that jointly optimizes UAV trajectory, ISAC beamforming, partial offloading, and compute resources under sensing-quality, power, queue-tail, and URLLC constraints. Extreme value theory and Lyapunov optimization transform the long-term tail constraint into per-slot virtual-queue problems. SAC-TPBD learns the joint trajectory and beamforming block, while a convex subproblem allocates computation resources. The paper reports comparable computation and beampattern performance to convex-approximation baselines with higher implementation efficiency and lower task queue backlogs in the evaluated simulations.
+Qin et al. [x] studied URLLC-aware trajectory and beamforming design for a NOMA-aided UAV integrated sensing, communication, and computation network. They formulated a throughput-maximization problem that jointly optimizes UAV trajectory, ISAC beamforming, and edge and fog computing resources under sensing-quality, power, trajectory, computation-causality, and URLLC constraints. Extreme value theory and Lyapunov optimization transform the long-term tail constraint into per-slot virtual-queue problems. SAC-TPBD learns the joint trajectory and beamforming block, while a convex subproblem allocates computation resources. The paper reports comparable computation and beampattern performance to convex-approximation baselines with higher implementation efficiency and lower task queue backlogs in the evaluated simulations.
 
 ## Problem framing
 

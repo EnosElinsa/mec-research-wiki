@@ -1,5 +1,18 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 4 (ISAC and sensing, first half)
+
+The ISAC and sensing track holds 66 ungrounded source pages, so it is split into two batches. Batch 4 covers the first 33 in slug order, from [[bai-2026-aoi-uav-isac]] through [[qin-2025-urllc-noma-uav-iscc]]: 25 with `modeling_card: required` and 8 surveys, corrections, channel or estimation studies, and imaging or array papers with `not_applicable`. Each card symbol, objective, and constraint and each Related Work sentence was checked against the parse; evidence is in `wiki/.grounding/source-schema-evidence-batch04-isac-a.json`. The merged manifest reports 99/699 grounded and 0 evidence conflicts. This is a batch result, not a whole-corpus grounding audit.
+
+- **Cards rewritten from the parse (high).**
+  - [[qin-2025-urllc-noma-uav-iscc]]: the card listed an offloading ratio $\beta_k$ and compute share $f_k$ as decisions and an objective $\sum_k R_k^{\mathrm{comp}}$. Problem P1 maximizes long-run weighted throughput $\psi(t)$ over UAV velocity $\mathbf v(t)$, ISAC beamformer $\mathbf w(t)$, and edge and fog computing $\mathbf f(t)$ under constraints C1-C9, and splits into SP1 (SAC-TPBD) and SP2 (interior-point convex). The Related Work sentence was corrected to match.
+  - [[qin-2023-symmetry-augmented-uav-isac]]: the card used UAV index $m$, separate communication and sensing powers, and a policy variable. The paper indexes UAVs by $k$ and target users by $m$, uses one transmit power $p_{k,t}$, and states (P0) with constraints (11a)-(11g) including an energy budget. The Related Work sentence was corrected to match.
+- **Narrower correction (medium).** [[lyu-2026-situation-aware-uav-isac]] wrote the energy-efficiency objective with symbols $D_{\mathrm I}$, $D_{\mathrm{II}}$, and $D^{\mathrm{end}}$ that the paper does not define; the card now states it as the paper describes it in words.
+- **Checked without changes.** The other 30 pages matched their parses, including every quoted number checked (for example 5.71 s and hypervolume 0.88 in [[guo-2026-dual-objective-multiuav-isac]], 97.58% success in [[hou-2025-pbia-air-iscc-uav-its]], and the 7 m, 15 m, and 3 m approximation-accuracy positions in [[jiang-2026-sensing-assisted-uav-tracking]]).
+- **Next batch.** The remaining 33 ISAC and sensing pages, from [[su-2024-sensing-aided-isac-pls]] onward in slug order.
+
+Gates: curation_status reports 0 genuinely new folders; linkcheck, process_refs, index_audit, frontmatter_audit, and source_schema_audit report zero errors; entity_roster_audit reports 0 over-claims; 58 tool tests pass. Counts are unchanged.
+
 ## [2026-11-03] Grounded batch 3 (remaining HAP and HAPS sources)
 
 Grounding batch 3 covers the remaining 23 source pages tagged or linked as HAP or HAPS work: 18 with `modeling_card: required` and 5 surveys or analyses with `not_applicable`. Each card symbol, objective, and constraint and each Related Work sentence was checked against the parse; evidence is in `wiki/.grounding/source-schema-evidence-batch03-hap-haps.json`. The merged manifest reports 66/699 grounded and 0 evidence conflicts. This is a batch result, not a whole-corpus grounding audit.

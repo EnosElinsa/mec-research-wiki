@@ -1,0 +1,1041 @@
+{
+  "entries": [
+    {
+      "slug": "bai-2026-aoi-uav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems.md",
+          "lines": "299-341",
+          "note": "P1 average AoI objective and constraints"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems.md",
+          "lines": "328-331",
+          "note": "Beam power ratios"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems.md",
+          "lines": "370-377",
+          "note": "Adaptive threshold"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems.md",
+          "lines": "9",
+          "note": "Abstract: AoI-centric UAV-ISAC, SAC, Kalman prediction, RZF beams"
+        },
+        {
+          "path": "raw/sources/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems/Age_of_Information_Minimization_in_UAV-Enabled_Integrated_Sensing_and_Communication_Systems.md",
+          "lines": "658",
+          "note": "Cumulative average AoI about 1.62"
+        }
+      ]
+    },
+    {
+      "slug": "bai-2026-multimodal-uav-vehicle-channel",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications.md",
+          "lines": "5",
+          "note": "Channel modeling and dataset, no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications.md",
+          "lines": "5",
+          "note": "Abstract: MUMV channel model and dataset"
+        },
+        {
+          "path": "raw/sources/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications.md",
+          "lines": "33",
+          "note": "96,000 point clouds and 553,500 links"
+        },
+        {
+          "path": "raw/sources/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications.md",
+          "lines": "47",
+          "note": "SUMO trajectories"
+        },
+        {
+          "path": "raw/sources/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications/A_Multi-Modal_Intelligent_Channel_Model_for_6G_Multi-UAV-to-Multi-Vehicle_Communications.md",
+          "lines": "490-492",
+          "note": "Agreement with ray tracing"
+        }
+      ]
+    },
+    {
+      "slug": "bayessa-not-in-parse-uav-isac-secure-content-hdrl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks.md",
+          "lines": "53",
+          "note": "Caching variable"
+        },
+        {
+          "path": "raw/sources/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks.md",
+          "lines": "282-302",
+          "note": "Problem P2 in (28)"
+        },
+        {
+          "path": "raw/sources/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks.md",
+          "lines": "307-319",
+          "note": "Action mask in short-timescale agent"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks.md",
+          "lines": "5",
+          "note": "Abstract: secure content delivery, eavesdropper localization with ML, EKF, FIM, CRLB, hierarchical DDQN"
+        },
+        {
+          "path": "raw/sources/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks/Attention-Based_Hierarchical-DRL_With_Mask_for_Multi-Timescale_Caching_Association_and_Secure_Content_Delivery_in_UAV-Enabled_ISAC_Networks.md",
+          "lines": "33-37",
+          "note": "Contributions"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-pointrl-uav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud.md",
+          "lines": "103",
+          "note": "Power ratio"
+        },
+        {
+          "path": "raw/sources/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud.md",
+          "lines": "151-177",
+          "note": "Weighted capacity objective and fleet variant"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud.md",
+          "lines": "7",
+          "note": "Abstract: radar point-cloud U2V ISAC, PointRL"
+        },
+        {
+          "path": "raw/sources/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud.md",
+          "lines": "364",
+          "note": "6.34 Kbits and 13.89 Mbits"
+        },
+        {
+          "path": "raw/sources/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud/PointRL_Reinforcement_Learning-Based_Approach_for_Air-Ground_Communications_Using_Multi-Dimensional_Target_Sensing_Point_Cloud.md",
+          "lines": "376",
+          "note": "40.52% fewer parameters, 21.37 ms inference"
+        }
+      ]
+    },
+    {
+      "slug": "chu-2024-secure-ris-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems.md",
+          "lines": "69",
+          "note": "Radar receive filter"
+        },
+        {
+          "path": "raw/sources/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems.md",
+          "lines": "100-112",
+          "note": "Problem 9 and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems.md",
+          "lines": "9",
+          "note": "Abstract: secure RIS-ISAC, SDR, Dinkelbach and MM, about 2 dB gain"
+        },
+        {
+          "path": "raw/sources/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems/Joint_Beamforming_and_Reflection_Design_for_Secure_RIS-ISAC_Systems.md",
+          "lines": "229",
+          "note": "Dinkelbach-based RIS update"
+        }
+      ]
+    },
+    {
+      "slug": "deng-2025-covert-isac-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks.md",
+          "lines": "75-123",
+          "note": "Sensing and information beamformers"
+        },
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks.md",
+          "lines": "219",
+          "note": "Covert-rate problem 22 and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks.md",
+          "lines": "5",
+          "note": "Abstract: ISAC waveform masking, wardens, BCD with SDR and SCA"
+        },
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks/Joint_Beamforming_and_UAV_Trajectory_Optimization_for_Covert_Communications_in_ISAC_Networks.md",
+          "lines": "607-612",
+          "note": "0.6, 5.2, 1.1 bit/s/Hz gains"
+        }
+      ]
+    },
+    {
+      "slug": "faisal-2025-cgan-ris-isac-channel",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.md",
+          "lines": "5",
+          "note": "Channel estimation, no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.md",
+          "lines": "5",
+          "note": "Abstract: CGAN channel estimation for RIS-ISAC"
+        },
+        {
+          "path": "raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.md",
+          "lines": "31",
+          "note": "Benchmarks"
+        },
+        {
+          "path": "raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.md",
+          "lines": "514-552",
+          "note": "NMSE results"
+        },
+        {
+          "path": "raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.md",
+          "lines": "685",
+          "note": "ELM comparison"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-dual-objective-multiuav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective.md",
+          "lines": "61-68",
+          "note": "Target association"
+        },
+        {
+          "path": "raw/sources/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective.md",
+          "lines": "137-208",
+          "note": "Dual objectives with CRB and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective.md",
+          "lines": "5",
+          "note": "Abstract: multi-UAV ISAC dual-objective, SC-DO-MUOA"
+        },
+        {
+          "path": "raw/sources/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective/Integrated_Sensing_and_Communications_in_Multi-UAV_Networks_A_Dual-Objective_Optimization_Perspective.md",
+          "lines": "545",
+          "note": "100-UAV results: 5.71 s, 10.97 MB, 550 iterations, HV 0.88"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-irs-uav-isac-secrecy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation.md",
+          "lines": "36",
+          "note": "IRS reflection matrix with phases"
+        },
+        {
+          "path": "raw/sources/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation.md",
+          "lines": "88-97",
+          "note": "AN model and power constraint 8"
+        },
+        {
+          "path": "raw/sources/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation.md",
+          "lines": "122-142",
+          "note": "P1 secrecy objective and constraints 12b-12d"
+        },
+        {
+          "path": "raw/sources/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation.md",
+          "lines": "187-192",
+          "note": "AN power penalty in beamforming subproblem"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation.md",
+          "lines": "5",
+          "note": "Abstract: IRS-UAV ISAC-BS, AN, AO with closed-form IRS, fractional programming, SCA trajectory, S-procedure"
+        },
+        {
+          "path": "raw/sources/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation/Secrecy_Rate_Maximization_for_IRS-Enabled_UAV-ISAC_Systems_via_Phase_Shifting_Adjustment_and_Resource_Allocation.md",
+          "lines": "144-150",
+          "note": "Imperfect-CSI robust problem P2"
+        }
+      ]
+    },
+    {
+      "slug": "hazarika-2026-dynamo-uav-vehicle-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments.md",
+          "lines": "36-39",
+          "note": "DFRC signal model"
+        },
+        {
+          "path": "raw/sources/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments.md",
+          "lines": "192-201",
+          "note": "DTPM weights and CRLB problem 21 with constraints"
+        },
+        {
+          "path": "raw/sources/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments.md",
+          "lines": "228",
+          "note": "POMDP action"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments.md",
+          "lines": "5",
+          "note": "Abstract: decentralized multi-UAV tracking, DynaMo, DTPM, POMDP-MADDPG"
+        },
+        {
+          "path": "raw/sources/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments.md",
+          "lines": "205",
+          "note": "SCA solution"
+        },
+        {
+          "path": "raw/sources/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments/A_Predictive_UAV_Framework_for_Tracking_Fast-Moving_Vehicles_in_Dynamic_Environments.md",
+          "lines": "432-446",
+          "note": "0.622 m RMSE, 68.5% staleness, 15% reward"
+        }
+      ]
+    },
+    {
+      "slug": "hou-2025-pbia-air-iscc-uav-its",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems.md",
+          "lines": "147-226",
+          "note": "Compute shares and problem constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems.md",
+          "lines": "5",
+          "note": "Abstract: UAV swarm Air-ISCC, PBIA, 16.32% to 61.44% gains"
+        },
+        {
+          "path": "raw/sources/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems.md",
+          "lines": "552-595",
+          "note": "97.58% success, reward 279.527, load balance 0.863"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-offgrid-lae-imager",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network.md",
+          "lines": "5",
+          "note": "Imaging and learning method, no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network.md",
+          "lines": "5",
+          "note": "Abstract: cooperative ISAC imaging, PSF, physics-embedded learning"
+        },
+        {
+          "path": "raw/sources/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network.md",
+          "lines": "41-56",
+          "note": "OHEM loss"
+        },
+        {
+          "path": "raw/sources/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network.md",
+          "lines": "470-479",
+          "note": "97.55% detection rate"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-star-ris-nearfield-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC.md",
+          "lines": "58-61",
+          "note": "UAV hovering location"
+        },
+        {
+          "path": "raw/sources/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC.md",
+          "lines": "211-239",
+          "note": "Weighted-sum-rate problem 25 and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC.md",
+          "lines": "5",
+          "note": "Abstract: STAR-RIS near-field air-ground ISAC, BCD"
+        },
+        {
+          "path": "raw/sources/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC.md",
+          "lines": "25",
+          "note": "BCD decomposition"
+        },
+        {
+          "path": "raw/sources/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC/STAR-RIS_Enabled_Air-Ground_Near-Field_ISAC.md",
+          "lines": "917-919",
+          "note": "Benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "jiang-2025-isac-lae-overview",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges.md",
+          "lines": "7",
+          "note": "Overview without a decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges.md",
+          "lines": "7",
+          "note": "Overview of ISAC for LAE, stochastic geometry, future directions"
+        },
+        {
+          "path": "raw/sources/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges.md",
+          "lines": "86-103",
+          "note": "RSRP-based channel modeling and stochastic geometry"
+        }
+      ]
+    },
+    {
+      "slug": "jiang-2026-ray-antenna-array",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC.md",
+          "lines": "5",
+          "note": "Array receiver design, no decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC.md",
+          "lines": "5",
+          "note": "Abstract: ray antenna array for OFDM ISAC with UAV swarm"
+        },
+        {
+          "path": "raw/sources/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC.md",
+          "lines": "25-33",
+          "note": "Ray antenna array structure and processing chain"
+        },
+        {
+          "path": "raw/sources/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC/Ray_Antenna_Array_Achieves_Uniform_Angular_Resolution_Cost-Effectively_for_Low-Altitude_UAV_Swarm_ISAC.md",
+          "lines": "379-457",
+          "note": "MUSIC and periodogram estimation"
+        }
+      ]
+    },
+    {
+      "slug": "jiang-2026-sensing-assisted-uav-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming.md",
+          "lines": "31-89",
+          "note": "Sensing-duration ratio and SNR targets"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming.md",
+          "lines": "176",
+          "note": "Problem P1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming.md",
+          "lines": "5",
+          "note": "Abstract: cellular-connected UAV, monostatic ISAC BS, EKF, outage approximation"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming.md",
+          "lines": "521",
+          "note": "Approximations match at 7 m and 15 m, less accurate at 3 m"
+        },
+        {
+          "path": "raw/sources/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming/Low-Altitude_UAV_Tracking_via_Sensing-Assisted_Predictive_Beamforming.md",
+          "lines": "560",
+          "note": "More than 0.2 bps/Hz gain"
+        }
+      ]
+    },
+    {
+      "slug": "jing-2024-isac-trajectory-localization",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization.md",
+          "lines": "142-145",
+          "note": "Bandwidth variables"
+        },
+        {
+          "path": "raw/sources/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization.md",
+          "lines": "296-309",
+          "note": "Stage problem with weighting eta"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization.md",
+          "lines": "5",
+          "note": "Abstract: energy-limited UAV, communication and localization, multi-stage design"
+        },
+        {
+          "path": "raw/sources/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization.md",
+          "lines": "74",
+          "note": "Maximum-likelihood target estimation"
+        },
+        {
+          "path": "raw/sources/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization/ISAC_From_the_Sky_UAV_Trajectory_Design_for_Joint_Communication_and_Target_Localization.md",
+          "lines": "602",
+          "note": "At least 0.5 Gbits more data"
+        }
+      ]
+    },
+    {
+      "slug": "li-2023-adaptive-digital-twin-uav-iscc",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "63-74",
+          "note": "Digital-twin CPU estimates"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "146-223",
+          "note": "Task partition and models"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "252-267",
+          "note": "Beampattern mismatch and energy objectives"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "5",
+          "note": "Abstract: DT-assisted UAV ISCC, ATB-MAPPO"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "537-598",
+          "note": "Comparison with Beta-MAPPO, MAPPO, MADDPG"
+        },
+        {
+          "path": "raw/sources/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks/Adaptive_Digital_Twin_for_UAV-Assisted_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "620",
+          "note": "Reward about -0.40"
+        }
+      ]
+    },
+    {
+      "slug": "li-2025-ckm-air-corridor-isac-bs-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment.md",
+          "lines": "84",
+          "note": "BS deployment indicator"
+        },
+        {
+          "path": "raw/sources/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment.md",
+          "lines": "121-180",
+          "note": "P1 weighted cost and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment.md",
+          "lines": "5",
+          "note": "Abstract: air corridor and BS deployment, CKM, coarse-to-fine decomposition"
+        },
+        {
+          "path": "raw/sources/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment/Channel_Knowledge_Map_Enabled_Low-Altitude_ISAC_Networks_Joint_Air_Corridor_Planning_and_Base_Station_Deployment.md",
+          "lines": "25",
+          "note": "Hierarchical grid decomposition"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-control-based-uav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System.md",
+          "lines": "62-136",
+          "note": "Sensing covariance and dynamics"
+        },
+        {
+          "path": "raw/sources/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System.md",
+          "lines": "232-260",
+          "note": "Average weighted sum-rate problems P1 and P2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System.md",
+          "lines": "5",
+          "note": "Abstract: 3-DoF and 6-DoF dynamics, SCA and SDR, SQP"
+        },
+        {
+          "path": "raw/sources/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System.md",
+          "lines": "625",
+          "note": "SQP trajectory solution"
+        },
+        {
+          "path": "raw/sources/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System/A_Control-Based_Design_of_Beamforming_and_Trajectory_for_UAV-Enabled_ISAC_System.md",
+          "lines": "590",
+          "note": "Performance comparison"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-isac-vec-beamforming-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC.md",
+          "lines": "224-311",
+          "note": "P1 capacity maximization and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC.md",
+          "lines": "5",
+          "note": "Abstract: ISAC-enhanced UAV-assisted VEC, sparrow search and SCA, 10.51% and 19.83%"
+        },
+        {
+          "path": "raw/sources/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC.md",
+          "lines": "629",
+          "note": "Convergence within 300 to 400 iterations"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2025-aoi-iscc-five-stage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication.md",
+          "lines": "107-175",
+          "note": "Sensing repetitions and CPU frequency"
+        },
+        {
+          "path": "raw/sources/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication.md",
+          "lines": "262-418",
+          "note": "Weighted sensing-data and AoI objective and subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication.md",
+          "lines": "5",
+          "note": "Abstract: energy-constrained UAV ISCC, estimation rate and AoI, five-stage AO"
+        },
+        {
+          "path": "raw/sources/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication/Joint_Sensing_and_Age_of_Information_Optimization_for_Energy_Constrained_UAV-Assisted_Integrated_Sensing_Calculation_and_Communication.md",
+          "lines": "575",
+          "note": "Subgradient updates"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2025-iscc-v2x-latency",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC.md",
+          "lines": "229-320",
+          "note": "Computation and beamforming variables"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC.md",
+          "lines": "289-301",
+          "note": "Problem 19 and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC.md",
+          "lines": "5",
+          "note": "Abstract: ISCC V2X, min-max latency, branch-and-bound, SCA, closed forms"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC/Latency_Minimization_Oriented_Radio_and_Computation_Resource_Allocations_for_6G_V2X_Networks_With_ISCC.md",
+          "lines": "46",
+          "note": "Contributions"
+        }
+      ]
+    },
+    {
+      "slug": "lv-2026-isac-sar-tlsp",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging.md",
+          "lines": "247-296",
+          "note": "Mission objective and constraints"
+        },
+        {
+          "path": "raw/sources/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging.md",
+          "lines": "300-332",
+          "note": "Two-layer method with SQP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging.md",
+          "lines": "5",
+          "note": "Abstract: BS-assisted UAV ISAC SAR, two-layer successive programming, 27.41%"
+        },
+        {
+          "path": "raw/sources/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging/Joint_Power_and_Trajectory_Optimization_for_UAV-Enabled_ISAC_SAR_Imaging.md",
+          "lines": "744-773",
+          "note": "Results"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2023-isac-maneuver-beamforming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication.md",
+          "lines": "42-51",
+          "note": "Sensing covariance and power constraint"
+        },
+        {
+          "path": "raw/sources/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication.md",
+          "lines": "83-100",
+          "note": "Weighted sum rate and beampattern gain"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication.md",
+          "lines": "5",
+          "note": "Abstract: UAV ISAC with ULA, maneuver and beamforming"
+        },
+        {
+          "path": "raw/sources/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication.md",
+          "lines": "166-168",
+          "note": "Graph-based feasibility"
+        },
+        {
+          "path": "raw/sources/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication/Joint_Maneuver_and_Beamforming_Design_for_UAV-Enabled_Integrated_Sensing_and_Communication.md",
+          "lines": "308-364",
+          "note": "Trust-region SCA trajectory"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2026-situation-aware-uav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems.md",
+          "lines": "329-342",
+          "note": "Control activation and total power P^tot"
+        },
+        {
+          "path": "raw/sources/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems.md",
+          "lines": "336",
+          "note": "Energy-efficiency objective with minimum of phase data volumes"
+        },
+        {
+          "path": "raw/sources/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems.md",
+          "lines": "344-355",
+          "note": "P0 MINLP and SP1 decomposition"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems.md",
+          "lines": "5",
+          "note": "Abstract: situation-aware sensing and position control, golden-section Dinkelbach, penalty SCA"
+        },
+        {
+          "path": "raw/sources/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems/Situation-Aware_Hybrid_Sensing_and_Position_Control_for_UAV-Assisted_ISAC_Systems.md",
+          "lines": "619",
+          "note": "15.33%, 17.64%, 34.43%, 59.48% data-volume gains"
+        }
+      ]
+    },
+    {
+      "slug": "meng-2023-uav-ipsac-throughput",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication.md",
+          "lines": "53-60",
+          "note": "TDMA and target selection"
+        },
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication.md",
+          "lines": "127-174",
+          "note": "P1 average sum rate and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication.md",
+          "lines": "7",
+          "note": "Abstract: UAV IPSAC throughput, penalty and AO, SCA, symmetry-based low-complexity design"
+        },
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication/Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication.md",
+          "lines": "23-40",
+          "note": "Contributions"
+        }
+      ]
+    },
+    {
+      "slug": "meng-2024-uav-isac-overview",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.md",
+          "lines": "7",
+          "note": "Overview article without a decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.md",
+          "lines": "7",
+          "note": "Overview: motion control, resource allocation, interference, synergy scenarios, SWAP"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.md",
+          "lines": "120-181",
+          "note": "Synergy scenarios"
+        }
+      ]
+    },
+    {
+      "slug": "meng-2026-uav-isac-corrections",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-.md",
+          "lines": "5",
+          "note": "Correction note without a new model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-.md",
+          "lines": "5-13",
+          "note": "Corrected rate bound and negative-definiteness argument"
+        },
+        {
+          "path": "raw/sources/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-.md",
+          "lines": "19",
+          "note": "First-order Taylor transformation"
+        },
+        {
+          "path": "raw/sources/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-/Corrections_to_Throughput_Maximization_for_UAV-Enabled_Integrated_Periodic_Sensing_and_Communication-.md",
+          "lines": "35",
+          "note": "CVX solvability"
+        }
+      ]
+    },
+    {
+      "slug": "min-2026-sparse-bistatic-nearfield-isac",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm.md",
+          "lines": "5",
+          "note": "Estimation and array design without an optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm.md",
+          "lines": "5",
+          "note": "Abstract: sparse XL-MIMO bistatic near-field ISAC for UAV swarms"
+        },
+        {
+          "path": "raw/sources/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm.md",
+          "lines": "19-25",
+          "note": "Fourth-order cumulant virtual arrays"
+        },
+        {
+          "path": "raw/sources/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm/Sparse_XL-MIMO_Bi-Static_Near-Field_ISAC_for_Low-Altitude_UAV_Swarm.md",
+          "lines": "29",
+          "note": "MRT, ZF, MMSE precoding"
+        }
+      ]
+    },
+    {
+      "slug": "ning-2026-uav-isac-secure-beamforming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications.md",
+          "lines": "73-113",
+          "note": "Sensing ratio and scheduling"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications.md",
+          "lines": "125-172",
+          "note": "CRB constraint and secrecy problem"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications.md",
+          "lines": "5",
+          "note": "Abstract: secure UAV-ISAC, eavesdropper sensing, penalty SCA, robust SDR"
+        },
+        {
+          "path": "raw/sources/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications/Joint_Trajectory_and_Beamforming_Optimization_for_UAV-ISAC_Secure_Communications.md",
+          "lines": "744-766",
+          "note": "500 m area, secrecy 2.3 to 5.0 bit/s/Hz"
+        }
+      ]
+    },
+    {
+      "slug": "qin-2023-symmetry-augmented-uav-isac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network.md",
+          "lines": "39-97",
+          "note": "System model: UAVs, association, LoS gains, spectral efficiencies, energy constraint"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network.md",
+          "lines": "102-146",
+          "note": "Weighted spectral efficiency and P0 with constraints 11a-11g"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network.md",
+          "lines": "179-191",
+          "note": "Reward with Jain fairness"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network.md",
+          "lines": "5",
+          "note": "Abstract: multi-UAV ISAC, SAC with data augmentation, MASAC"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network.md",
+          "lines": "242-244",
+          "note": "Permutation-based augmentation"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network/Deep_Reinforcement_Learning_Based_Resource_Allocation_and_Trajectory_Planning_in_Integrated_Sensing_and_Communications_UAV_Network.md",
+          "lines": "510",
+          "note": "14.3% improvement over vanilla SAC"
+        }
+      ]
+    },
+    {
+      "slug": "qin-2025-urllc-noma-uav-iscc",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "322",
+          "note": "Partial offloading between edge and fog"
+        },
+        {
+          "path": "raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "364-412",
+          "note": "psi(t), P1, constraints C1-C9"
+        },
+        {
+          "path": "raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "416-419",
+          "note": "Virtual queues for URLLC constraints"
+        },
+        {
+          "path": "raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "449-489",
+          "note": "P2, SP1 and SP2 decomposition"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks.md",
+          "lines": "5",
+          "note": "Abstract: NOMA-aided UAV ISCC, throughput maximization, SAC-TPBD, comparison with convex baselines and queue backlog"
+        }
+      ]
+    }
+  ]
+}
