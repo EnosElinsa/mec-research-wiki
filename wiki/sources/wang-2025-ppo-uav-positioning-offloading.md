@@ -16,7 +16,7 @@ related:
   - "[[wang-2022-cat-rat-fmec-trajectory]]"
   - "[[hao-2024-clp-multiuav-priority-offloading]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Positioning and Computation Offloading in Multi-UAV MEC for Low Latency Applications: A Proximal Policy Optimization Approach
@@ -33,36 +33,27 @@ Uses [[ppo]] to jointly control 3D UAV positioning and partial computation offlo
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Ground UEs generate divisible low-latency tasks for multiple UAV MEC servers and one cellular BS. UAV positions determine access and multi-hop backhaul rates, while each task can be split among the BS and UAVs under computation and battery limits.
-
-**Problem & objective**: A non-convex continuous-control problem jointly positions UAVs and allocates partial offloading to minimize aggregate response latency, $\min \sum_k T_k$, while maintaining feasible access, backhaul, computation, and energy operation.
-
+**Scenario**: UEs $m\in\mathcal M$ generate divisible low-latency tasks that are split among UAV MEC servers $u\in\mathcal U$ and a ground BS. UAV positions $q_u$ set access-link rates and the multi-hop backhaul paths $\mathcal L_{u,m}$ (UAV-UAV or UAV-BS), and each UAV has computation and battery limits.
+**Problem & objective**: P0 (12) is a bi-level problem that minimizes total response latency, $\min_{\mathcal Q_{\mathcal U},\mathcal K_{\mathcal M}}\sum_{u,m}T_{u,m}$, where the lower level (12b) places UAVs to minimize total energy $\sum_{u,m}E_{u,m}$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV position | $\mathbf q_m$ | continuous 3-D position | Deployment or movement of UAV $m$ |
-| Task split | $\alpha_{k,m}$ | continuous, $[0,1]$ | Fraction of UE $k$'s task assigned to UAV $m$ |
-| BS task split | $\alpha_{k,0}$ | continuous, $[0,1]$ | Fraction of UE $k$'s task assigned to the BS |
-| Backhaul route | $r_{m,m'}$ | discrete link/path choice | UAV-to-UAV or UAV-to-BS forwarding path |
-
+| UAV positions | $\mathcal Q_{\mathcal U}=\{q_1,\ldots,q_U\}$ | continuous 3-D | Placement of each UAV server |
+| Task split | $k_{u,m}$ | continuous, $[0,1]$ | Share of UE $m$'s task processed at server $u$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Task fractions form a complete split, $\alpha_{k,0}+\sum_m\alpha_{k,m}=1$ |
-| C2 | UAV and BS computation loads do not exceed their capacities |
-| C3 | UAV computation, transmission, and propulsion energy stay within battery budgets |
-| C4 | Access and backhaul routes remain connected and use position-dependent feasible links |
-| C5 | UAV positions obey the allowed three-dimensional operating region and separation limits |
-
-**Algorithm**: Encode positions, task loads, and link state in a continuous MDP → output joint UAV-position and task-split actions with clipped PPO updates → construct low-latency backhaul paths → evaluate latency and energy rewards → repeat until the policy converges.
+| (12b) | Lower-level placement $\mathcal Q_{\mathcal U}\in\arg\min\sum_{u,m}E_{u,m}$ |
+| (12c)-(12d) | Split shares $0\le k_{u,m}\le1$ that sum to one over servers for each task |
+| (12e) | UAV energy budget $\sum_mE_{u,m}\le\hat E_{\max}$ |
+| (12f) | UAV computation $\sum_mk_{u,m}C_m\le\hat C_{\max}$ |
+**Algorithm**: The bi-level baseline alternates task allocation P1 (13) and UAV placement P2 (14). The proposed method recasts P0 as an MDP whose continuous action combines UAV movement (limited by battery, speed, and altitude) and task splits, and trains a clipped-objective PPO actor-critic with reward terms for placement and allocation.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied joint UAV positioning and computation offloading in a multi-UAV mobile edge computing network for low-latency applications. They modeled divisible user tasks, UAV access links, UAV-to-UAV and UAV-to-base-station backhaul, computation capacity, and UAV energy consumption. A proximal policy optimization controller jointly selects three-dimensional UAV positions and partial task-allocation ratios in a continuous action space. The learned deployment forms connected access and backhaul paths and adapts the task splits to the served user clusters. Simulations show lower response latency than the evaluated DQN and D3QN methods and improved scalability relative to the reported bi-level optimization baseline.
+Wang et al. [x] studied joint UAV positioning and computation offloading in a multi-UAV mobile edge computing network for low-latency applications. They modeled divisible user tasks, UAV access links, UAV-to-UAV and UAV-to-base-station backhaul, computation capacity, and UAV energy consumption. A proximal policy optimization controller jointly selects three-dimensional UAV positions and partial task-allocation ratios in a continuous action space. The formulation minimizes total response latency, with a lower-level placement that minimizes energy, under task-split, UAV-energy, and computation constraints. Simulations show lower average response latency than DQN and a bi-level optimization baseline as UAVs and user clusters grow, lower total energy than the baseline and DQN with more than four UAVs, and the fastest convergence among PPO, DQN, D3QN, and the baseline.
 
 ## Problem framing
 

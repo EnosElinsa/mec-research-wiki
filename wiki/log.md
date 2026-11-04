@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 11 (multi-UAV DRL edge computing, second half)
+
+- Grounded 15 multi-UAV DRL edge-computing source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch11-multiuav-b.json`. Grounded total: 263/699.
+- Rewrote Modeling Quick-Use Cards whose variables, objectives, or constraints did not match the paper: wang-2025-maddpg-lc-dynamic-trajectory, wang-2025-ppo-uav-positioning-offloading (bi-level P0 (12)), wang-2026-blockchain-lae-fl-mappo, wang-2026-llm-qos-multiuav-resource, wu-2025-security-aware-multiuav-service-placement, wu-2026-model-based-ppo-ris-uav-mec, yang-2020-loadbalance-multiuav-iot, zhai-2026-collaborative-inference-uav-mec (objective (15) garbled in the parse), zhan-2026-gatd3qn-dependent-offloading, and zhao-2022-matd3-multiuav-ec-offloading.
+- Relabeled constraint rows to the papers' IDs on wang-2021-maddpg-multiuav-trajectory (also removed a CPU variable that is not in P1), wang-2026-scalable-multiuav-analytics, zhang-2025-ssac-mgi-heterogeneous-uav, and zhou-2026-multiscale-dt-uav-delivery (P1 has C1-C3 only).
+- Corrected Related Work claims: removed an unsupported trajectory-error result (wang-2025-maddpg-lc-dynamic-trajectory); named the actual baselines on the PPO positioning, LLM teacher, service-placement, model-based PPO, load-balance, GATD3QN, SSAC-MGI, and MATD3 pages; noted that the manual policy keeps a slightly lower job miss rate than SSAC-MGI and that the bi-level baseline uses the least energy with few UAVs.
+- Kept zhao-2026-heuristic-supervised-drl as not applicable: its UAV-MEC problem (13) is only a case study of the general framework.
+
 ## [2026-11-03] Grounded batch 10 (multi-UAV DRL edge computing, first half)
 
 - Grounded 16 multi-UAV DRL edge-computing source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch10-multiuav-a.json`. Grounded total: 248/699.

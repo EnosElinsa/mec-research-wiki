@@ -16,7 +16,7 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,7 +36,7 @@ Builds a scalable collaborative multi-UAV video-analytics architecture where UAV
 
 **Scenario**: A UAV swarm monitors a target region, partitions video-analytics DNNs represented as DAGs, processes early stages locally, and offloads remaining stages to neighboring UAVs. A centralized controller is used for small swarms, whereas larger swarms use distributed decisions.
 
-**Problem & objective**: The centralized and distributed formulations minimize a weighted latency-energy cost, $\min \beta_1 d+\beta_2\overline E$, where $d$ is end-to-end inference latency and $\overline E$ is average UAV energy consumption.
+**Problem & objective**: P1 (16) and its distributed counterpart (23) minimize a weighted latency-energy cost, $\min \beta_1 d+\beta_2\overline E$, where $d$ is end-to-end inference latency and $\overline E$ is average UAV energy consumption.
 
 **Decision variables**:
 
@@ -51,11 +51,11 @@ Builds a scalable collaborative multi-UAV video-analytics architecture where UAV
 
 | ID | Meaning and key expression |
 |---|---|
-| Coverage | The union of UAV sensing regions covers the monitored area, $\bigcup_i\mathcal C_i=\mathcal S$ |
-| Separation | Pairwise UAV distance stays above the safety threshold |
-| Deadline | End-to-end inference completes before the task deadline |
-| Bandwidth | Allocated inter-UAV bandwidth does not exceed the available total |
-| Energy | Each UAV's computation, communication, and flight energy remains within its budget |
+| (17) | Coverage: the union of UAV sensing regions covers the area, $\cup C_\nu=S$ |
+| (18) | Separation $d^{\nu,\nu'}\geq d_{\min}$ |
+| (19) | Deadline: local or collaborative inference finishes within $T_{\nu,i}$ |
+| (20) | Total bandwidth $\sum_\nu(B^{\nu,\nu'}+B_{mm}^{\nu b})\leq B^{\max}$ |
+| (21) | UAV energy $E_\nu^{all}\leq E_\nu^{\max}$ |
 
 **Algorithm**: JDTSO uses a genetic algorithm for UAV placement and a lower-level combination of dynamic programming for offloading, convex optimization for bandwidth, and enumeration for DAG partitioning. MAPDP reformulates the scalable distributed case as a multi-agent decision process whose agents select offloading and bandwidth actions while enumerating feasible partition points.
 

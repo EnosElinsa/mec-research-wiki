@@ -19,7 +19,7 @@ related:
   - "[[cunhua-pan]]"
   - "[[nauman-aslam]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Agent Deep Reinforcement Learning-Based Trajectory Planning for Multi-UAV Assisted Mobile Edge Computing
@@ -38,7 +38,7 @@ A multi-UAV-aided MEC framework where several UAVs with distinct trajectories fl
 
 **Scenario**: $N$ UEs and $M$ fixed-altitude UAVs operate for $T$ slots. Each UE executes locally or offloads to one UAV while each UAV chooses a horizontal direction and travel distance.
 
-**Problem & objective**: The mixed-variable objective $P_1=\max\sum_t\frac{f_t^u f_t^e}{\sum_{n,m}z_{n,m,t}E_{n,m,t}}$ rewards UAV-load fairness and UE geographical fairness while reducing UE energy.
+**Problem & objective**: Problem $\mathcal P1$ (21) over $\mathbf P=\{\alpha_{m,t},d_{m,t}\}$ and $\mathbf Z$ maximizes $\sum_t\frac{f_t^u f_t^e}{\sum_{n,m}z_{n,m,t}E_{n,m,t}}$, which rewards UAV-load fairness and UE geographical fairness while reducing UE energy.
 
 **Decision variables**:
 
@@ -47,18 +47,16 @@ A multi-UAV-aided MEC framework where several UAVs with distinct trajectories fl
 | Execution association | $z_{n,m,t}$ | binary | UE $n$ uses local mode $m=0$ or UAV $m$ in slot $t$ |
 | Heading | $\alpha_{m,t}$ | continuous, $0\le\alpha_{m,t}\le2\pi$ | Horizontal movement direction of UAV $m$ |
 | Travel distance | $d_{m,t}$ | continuous, $0\le d_{m,t}\le d^{\max}$ | UAV displacement in slot $t$ |
-| CPU allocation | $f_{n,m,t}$ | continuous, nonnegative | Optional resource used in task completion and energy |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Binary association: $z_{n,m,t}\in\{0,1\}$ |
-| C2 | One execution place per UE: $\sum_mz_{n,m,t}=1$ |
-| C3 | Area bounds: $0\le X_{m,t}\le X^{\max}$ and $0\le Y_{m,t}\le Y^{\max}$ |
-| C4 | Movement bounds: $0\le\alpha_{m,t}\le2\pi$ and $0\le d_{m,t}\le d^{\max}$ |
-| C5 | Collision avoidance: $R_{m,m',t}\ge R^u$ |
-| C6-C7 | Coverage and deadline: $z_{n,m,t}R_{n,m,t}\le R^{\max}$ and $z_{n,m,t}T_{n,m,t}\le T^{\max}$ |
+| (21b)-(21c) | Binary association $z_{n,m,t}\in\{0,1\}$ with one execution place per UE, $\sum_{m=0}^Mz_{n,m,t}=1$ |
+| (21d)-(21e) | Area bounds $0\le X_{m,t}\le l^{\max}$, $0\le Y_{m,t}\le l^{\max}$ |
+| (21f)-(21g) | Heading $0\le\alpha_{m,t}<2\pi$ and distance $0\le d_{m,t}\le d^{\max}$ |
+| (21h) | Collision avoidance $R_{m,m',t}\ge R^u$ |
+| (21i)-(21j) | Coverage $z_{n,m,t}R_{n,m,t}\le R^{\max}$ and deadline $z_{n,m,t}T_{n,m,t}\le T^{\max}$ |
 
 **Algorithm**: Multi-agent MADDPG uses centralized training with decentralized execution for trajectory control; after trajectories are fixed, a low-complexity offloading and association step selects UE execution modes.
 
@@ -66,7 +64,7 @@ A multi-UAV-aided MEC framework where several UAVs with distinct trajectories fl
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] designed a multi-UAV MEC controller that combines geographical fairness among served UEs, fairness of UE loads across UAVs, and total UE energy. The formulation couples binary execution associations with continuous headings, travel distances, resource allocations, coverage, separation, and deadline constraints. A dedicated MADDPG agent controls each UAV under centralized training and decentralized execution, followed by a low-complexity offloading step for fixed trajectories. Simulations reported better fairness and energy performance than traditional trajectory baselines, while the model exposes the tradeoff between balanced service and battery use.
+Wang et al. [x] designed a multi-UAV MEC controller that combines geographical fairness among served UEs, fairness of UE loads across UAVs, and total UE energy. The formulation couples binary execution associations with continuous headings and travel distances under area, movement, separation, coverage, and deadline constraints. A dedicated MADDPG agent controls each UAV under centralized training and decentralized execution, followed by a low-complexity offloading step for fixed trajectories. Simulations reported better fairness and energy performance than random and circular trajectory baselines, while the model exposes the tradeoff between balanced service and battery use.
 
 ## Problem framing
 

@@ -17,7 +17,7 @@ related:
   - "[[he-2023-fairness-3d-multiuav-maddpg]]"
   - "[[chang-2022-marl-multiuav-trajectory]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Agent Deep Reinforcement Learning for Task Offloading in UAV-Assisted Mobile Edge Computing
@@ -34,36 +34,28 @@ A collaborative MEC system with **multiple UAVs and multiple edge clouds (ECs)**
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs act as assisted edge clouds and cooperate with terrestrial edge servers for mobile UE tasks. Dynamic UE state, UAV positions, radio resources, and heterogeneous computation jointly determine execution delay and energy.
-
-**Problem & objective**: A cooperative continuous-action MDP minimizes total system cost, $\min\mathbb E[\sum_t\gamma^t(D_{\mathrm{sum}}(t)+\lambda_EE_{\mathrm{sum}}(t))]$.
-
+**Scenario**: UAVs $n$ act as relays and edge servers for UEs $m$ in hotspots and cooperate with terrestrial edge clouds (ECs) $k$. Each UE task is partitioned between the UAV and the ECs over G2A and A2G links, and the UAVs move in three dimensions.
+**Problem & objective**: Problem (27) minimizes the total system cost $\sum_nU_n(t)$ with $U_n(t)=w_1E_n(t)+w_2T_n(t)$ (26), over UAV positions, task partition ratios, and UAV transmit power.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV trajectory action | $\Delta\mathbf q_m(t)$ | continuous bounded vector | Movement of UAV $m$ |
-| Task allocation | $\alpha_{k,j}(t)$ | continuous/discrete | Fraction or destination for UE task $k$ |
-| Communication resource | $b_k(t),p_k(t)$ | continuous, bounded | Bandwidth and power allocated to UE $k$ |
-| Computing resource | $f_{k,j}(t)$ | continuous, nonnegative | CPU allocated at UAV or edge cloud $j$ |
-
+| UAV position | $\boldsymbol\omega_n(t)$ | continuous 3-D | Location of UAV $n$ |
+| Task partition at the UAV | $\gamma_{m0}^n(t)$ | continuous, $[0,1]$ | Share of UE $m$'s task computed at UAV $n$ |
+| Task partition to ECs | $\gamma_{mk}^n(t)$ | continuous, $[0,1]$ | Share forwarded to EC $k$ |
+| UAV transmit power | $P_n^t(t)$ | continuous, $[0,P_{\max}]$ | A2G forwarding power |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UE workload is fully allocated among feasible execution nodes |
-| C2 | Radio and computing allocations remain within node capacities |
-| C3 | UE tasks meet execution-delay requirements |
-| C4 | UAV movement and coverage remain feasible |
-| C5 | UE, UAV, and edge-cloud energy budgets are respected |
-
-**Algorithm**: Observe local UAV, UE, task, and resource state → let each MATD3 actor output movement, task, and resource actions → train centralized twin critics on joint state/action → use the smaller target value, delayed actor updates, policy smoothing, and replay → execute decentralized UAV policies.
+| (27b)-(27d) | Partition shares in $[0,1]$ that sum to one, $\gamma_{m0}^n+\sum_k\gamma_{mk}^n=1$ |
+| (27e) | UAV power $0\le P_n^t(t)\le P_{\max}$ |
+| (27f) = (4)-(10) | Horizontal and vertical step limits, area bounds, and minimum separation between UAVs |
+**Algorithm**: Re-model (27) as a multi-agent MDP. Each UAV runs a MATD3 actor on local observations, while centralized twin critics use clipped double-Q targets, target-policy smoothing, delayed actor updates, and replay.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] studied task offloading in collaborative multi-UAV and multi-edge-cloud mobile edge computing. They formulated a cooperative MDP that minimizes execution delay and energy over UAV trajectories, computation-task allocation, and communication-resource management under workload, capacity, delay, mobility, coverage, and energy constraints. Each UAV executes a local continuous actor while centralized twin critics train on joint state and actions. MATD3 uses clipped double targets, delayed actor updates, target-policy smoothing, and replay to stabilize the high-dimensional policy. Simulations report lower total system cost than the evaluated optimization and multi-agent learning baselines under changing users and resources.
+Zhao et al. [x] studied task offloading in collaborative multi-UAV and multi-edge-cloud mobile edge computing. They formulated weighted energy and delay minimization over UAV positions, task partition ratios between UAVs and edge clouds, and UAV transmit power under partition, power, and UAV movement constraints, then re-modeled it as a multi-agent MDP. Each UAV executes a local continuous actor while centralized twin critics train on joint state and actions. MATD3 uses clipped double targets, delayed actor updates, target-policy smoothing, and replay to stabilize the high-dimensional policy. Simulations report lower total system cost than MADDPG, MATD3 with fixed height or fixed power, edge-cloud-only offloading, and random schemes.
 
 ## Problem framing
 

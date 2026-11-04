@@ -18,7 +18,7 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[lei-guo]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Security-Aware Designs of Multi-UAV Deployment, Task Offloading and Service Placement in Edge Computing Networks
@@ -35,37 +35,33 @@ Studies multi-UAV MEC where devices offload only to UAV servers that have cached
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Wireless devices compute locally or offload to multi-UAV MEC servers that cache a limited set of service programs. One jammer UAV emits artificial noise against uncertain-location eavesdroppers, so deployment, caching, secure rate, computing delay, and energy are coupled.
-
-**Problem & objective**: A robust mixed discrete-continuous problem minimizes total task-completion delay, $\min \sum_k T_k$, over UAV positions, offloading, service placement, jammer power, and device transmit power.
-
+**Scenario**: Devices $m\in\mathcal M$ compute locally or offload to UAV servers $k\in\mathcal K$ that cache a limited set of service programs. A jammer UAV $J$ sends artificial noise against eavesdroppers with uncertain locations, so deployment, caching, secrecy rate, delay, and energy are coupled.
+**Problem & objective**: Problem P (14) minimizes total task-completion delay, $\min_{\{\mathbf q_k\},\{a_{m,k}\},\{y_{n,k}\},\{P_m\},\mathbf q_J,P_J}\sum_m(T_m^{uav}+T_m^{loc})$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV-server deployment | $\mathbf q_m$ | continuous position | Location of MEC UAV $m$ |
-| Offloading decision | $x_{k,m}$ | binary | Device $k$ computes locally or at UAV $m$ |
-| Service placement | $c_{m,s}$ | binary | Service program $s$ cached at UAV $m$ |
-| Jammer position and power | $\mathbf q_J,p_J$ | continuous, bounded | Cooperative-jamming deployment and power |
-| Device transmit power | $p_k$ | continuous, bounded | Secure offloading power from device $k$ |
-
+| UAV-server deployment | $\mathbf q_k$ | continuous position | Location of UAV server $k$ |
+| Offloading | $a_{m,k}$ | binary | Device $m$ offloads to UAV server $k$ |
+| Service placement | $y_{n,k}$ | binary | Service program $n$ cached at UAV server $k$ |
+| Device power | $P_m$ | continuous, $[0,P_m^{\max}]$ | Offloading transmit power of device $m$ |
+| Jammer location and power | $\mathbf q_J,P_J$ | continuous, $P_J\in[0,P_J^{\max}]$ | Cooperative-jamming deployment and power |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | A task offloads only to a UAV that caches its required service |
-| C2 | Service placements respect each UAV's cache capacity |
-| C3 | Worst-case secrecy offloading rate exceeds the required threshold |
-| C4 | UAV computation load and task execution delay remain feasible |
-| C5 | Device energy, UAV movement, collision, and jammer-power limits are satisfied |
-
-**Algorithm**: Derive a worst-case secrecy-rate lower bound and closed-form feasible device power → let MEC-UAV and jammer agents observe local state → use centralized OE-MATD3 critics to learn deployment, offloading, service placement, and jamming → execute agents locally → update from negative delay and feasibility penalties.
+| (14b) | At most one UAV server per device, $\sum_ka_{m,k}\le1$ |
+| (14c) | Cache capacity $\sum_ny_{n,k}c_n\le S_k^{\max}$ |
+| (14d) | Offload only to a server caching the required program, $a_{m,k}\le y_{n,k}\le1$ for $n=\varphi(m)$ |
+| (14e) | Secrecy rate $R_{m,k}^{sec}\ge R_{m,k}^{\min}$ if $a_{m,k}=1$; replaced by a worst-case lower bound (20c) |
+| (14f)-(14g) | Device energy $E_m^{uav}+E_m^{loc}\le E_m^{\max}$ and delay $T_m^{uav}+T_m^{loc}\le T_m^{\max}$ |
+| (14h)-(14i) | Separation among UAV servers and between servers and the jammer, $\ge d_{\min}^2$ |
+| (14j)-(14l) | Binary $a_{m,k},y_{n,k}$; power limits on $P_m$ and $P_J$ |
+**Algorithm**: Replace the secrecy constraint by a worst-case lower bound (P'), solve device power P1' in closed form (Theorem 3), and train OE-MATD3 agents for UAV-server deployment, offloading, service placement, and jammer location and power (P2').
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied security-aware UAV deployment, task offloading, and service placement in multi-UAV edge computing networks. Devices can offload only to UAV servers that cache the required service program, while a jammer UAV protects the links against uncertain-location eavesdroppers. The formulation minimizes total task-completion delay under cache, secrecy-rate, computation, energy, movement, and collision constraints. OE-MATD3 learns UAV-server deployment, offloading, service placement, and jammer power, while a closed-form step selects feasible device transmit power. Simulations report lower delay than the evaluated random-placement, fixed-deployment, fixed-jammer, OE-MADDPG, and OE-MAA2C baselines.
+Wu et al. [x] studied security-aware UAV deployment, task offloading, and service placement in multi-UAV edge computing networks. Devices can offload only to UAV servers that cache the required service program, while a jammer UAV protects the links against uncertain-location eavesdroppers. The formulation minimizes total task-completion delay under cache, secrecy-rate, computation, energy, movement, and collision constraints. OE-MATD3 learns UAV-server deployment, offloading, service placement, and jammer location and power, while a closed-form step selects feasible device transmit power. Simulations report lower delay than OE-MADDPG, OE-MAA2C, random service placement and offloading, fixed jamming power, fixed jammer location, and random UAV-server placement.
 
 ## Problem
 

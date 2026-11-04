@@ -21,7 +21,7 @@ related:
   - "[[fairness-metrics-in-mec]]"
   - "[[qianbin-chen]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Large Language Model-based QoS-aware Resource Allocation for Multi-UAV Cooperative Edge Computing Networks
@@ -38,37 +38,34 @@ Introduces an LLM teacher-student framework for QoS-aware resource allocation in
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: User devices offload tasks to cooperative UAV edge servers connected by air-to-air migration links. A cloud teacher sees a network knowledge graph, while UAV-side students execute distributed policies over dynamic channels, task loads, computing capacity, and bandwidth.
-
-**Problem & objective**: A long-term mixed discrete-continuous control problem minimizes weighted delay and unfairness, $\min \alpha D_{\mathrm{avg}}+(1-\alpha)(1-J_{\mathrm{fair}})$, over access, trajectory, compute, bandwidth, and task migration.
-
+**Scenario**: User devices $k\in\mathcal K$ offload tasks to cooperative UAV edge servers $n\in\mathcal N$, which can migrate task fractions to neighbors over air-to-air links within range $R_{A2A}$. A cloud LLM teacher sees a network knowledge graph, and UAV-side students act on local observations.
+**Problem & objective**: P1 (25) minimizes the weighted delay-fairness objective $\alpha\frac1K\sum_k\frac{T_k(t)}{T_{\max}}+\beta(1-\tilde J(t))$, where $\tilde J$ is a normalized Jain index of average user rates.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| User access | $x_{u,m}(t)$ | binary | UAV initially serving device $u$ |
-| UAV trajectory | $\mathbf q_m(t)$ | continuous position | Position of UAV edge server $m$ |
-| Computing allocation | $f_{u,m}(t)$ | continuous, nonnegative | CPU resource assigned to task $u$ |
-| Bandwidth allocation | $b_{u,m}(t)$ | continuous, nonnegative | Uplink or migration bandwidth share |
-| Migration ratio | $\rho_{u,m,m'}(t)$ | continuous, $[0,1]$ | Task fraction moved between UAVs |
-
+| Association | $\Delta(t)=\{\delta_{k,n}(t)\}$ | binary | Device $k$ served by UAV $n$ |
+| UAV trajectory | $\mathbf D(t)=\{\mathbf d_n(t)\}$ | continuous position | Location of UAV $n$ |
+| Computing allocation | $\mathbf F(t)=\{f_{n,k}(t),f_{n',n}(t)\}$ | continuous | Local CPU for device $k$ and cooperative CPU at neighbor $n'$ |
+| Bandwidth | $\mathbf B(t)=\{B_{k,n}(t)\}$ | continuous | Uplink bandwidth for device $k$ |
+| Migration fraction | $\Gamma(t)=\{\gamma_{n,n'}(t)\}$ | continuous | Task share delegated from UAV $n$ to $n'$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each device has one feasible access association and task fractions are conserved |
-| C2 | Per-UAV CPU allocations do not exceed computing capacity |
-| C3 | Bandwidth shares and transmit resources remain within link budgets |
-| C4 | Migration ratios use available air-to-air links and preserve task workload |
-| C5 | UAV trajectories satisfy mobility, region, and separation constraints |
-
-**Algorithm**: Build the network knowledge graph → encode relations with a relation-aware GAT → generate expert allocations with a LoRA-tuned LLM and Tree-of-Thoughts reasoning → distill teacher policies to UAV-side MAPPO students with policy matching → execute decentralized actions and update from delay-fairness rewards.
+| C1 | At most one UAV per device, $\sum_n\delta_{k,n}(t)\le1$ |
+| C2 | Separation $\lVert\mathbf d_n(t)-\mathbf d_{n'}(t)\rVert\ge d_{\min}$ |
+| C3 | Speed $\lVert\mathbf d_n(t+1)-\mathbf d_n(t)\rVert\le v_{\max}\tau$ |
+| C4 | Bandwidth $\sum_kB_{k,n}(t)\le B_n$ |
+| C5-C6 | Local and cooperative CPU within $f_n^{\max}$ and $f_{n'}^{\max}$ |
+| C7 | Episode energy $\sum_tE_n(t)\le E_{\max}$ |
+| C8 | Deadline $T_k(t)\le T_{\max}$ |
+| C9 | Weights $\alpha,\beta\ge0$, $\alpha+\beta=1$ |
+**Algorithm**: Build the network knowledge graph, encode it with a relation-aware GAT, and let a LoRA-tuned LLM with Tree-of-Thoughts reasoning generate expert allocations. Policy distillation then trains MAPPO students in a POMDP for decentralized UAV execution.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied QoS-aware resource allocation in cooperative multi-UAV edge computing networks using a large-language-model teacher and distributed student policies. They formulated a weighted delay and fairness objective over user access, UAV trajectories, computing resources, bandwidth, and inter-UAV task-migration ratios. A network knowledge graph and relation-aware graph attention network provide structured state information to a LoRA-tuned teacher model. Tree-of-Thoughts reasoning generates expert policies, and policy distillation transfers them to MAPPO students for decentralized UAV execution. Simulations report faster convergence, lower delay, and higher Jain-style fairness than the evaluated learning baselines and ablated teacher components.
+Wang et al. [x] studied QoS-aware resource allocation in cooperative multi-UAV edge computing networks using a large-language-model teacher and distributed student policies. They formulated a weighted delay and fairness objective over user access, UAV trajectories, computing resources, bandwidth, and inter-UAV task-migration fractions under association, separation, speed, bandwidth, computing, energy, and deadline constraints. A network knowledge graph and relation-aware graph attention network provide structured state information to a LoRA-tuned teacher model. Tree-of-Thoughts reasoning generates expert policies, and policy distillation transfers them to MAPPO students for decentralized UAV execution. Simulations report faster convergence, lower delay, and higher Jain-style fairness than the evaluated learning baselines and ablated teacher components.
 
 ## Problem
 

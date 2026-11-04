@@ -21,7 +21,7 @@ related:
   - "[[wang-2024-blockchain-uav-mec-dpos]]"
   - "[[qin-2025-bcuav-masac]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Offloading, Caching, and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks: An Integrated Federated Learning and MAPPO Approach
@@ -38,37 +38,34 @@ Builds a four-layer low-altitude edge-intelligence architecture where UEs send d
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Delay-sensitive UE tasks traverse a four-layer low-altitude network containing task UAVs, service UAVs, and a BS. Service UAVs cache content, execute tasks, train federated local models, maintain blockchain records, and use photovoltaic energy with battery-state-aware throttling under interference and queueing.
-
-**Problem & objective**: A long-term stochastic mixed discrete-continuous control problem minimizes aggregate delay and energy cost, $\min J=J_{\mathrm{trans}}+J_{\mathrm{comp}}+J_{\mathrm{queue}}+J_{\mathrm{fetch}}+\lambda_E E_{\mathrm{tot}}$.
-
+**Scenario**: UE tasks traverse a four-layer low-altitude network of UEs, task UAVs (TUAVs), service UAVs (SUAVs), and a BS. SUAVs cache content, execute tasks, train federated local models, record blockchain transactions, and harvest photovoltaic energy with SOC-aware throttling.
+**Problem & objective**: Problem $\mathcal P$ (45) minimizes the long-term average utility cost of service delay and energy, $\min_{\{\mathbf a^{(1)},\mathbf a^{(2)},\mathbf a^{(3)},\mathbf p,\mathbf f,\mathbf w\}}\frac1T\sum_tUT(t)$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Task offloading | $x_{i,m}(t)$ | binary/discrete | Execution route selected for UE task $i$ |
-| Cache placement | $c_{m,f}(t)$ | binary | Whether service UAV $m$ stores content $f$ |
-| Radio resource | $b_i(t),p_i(t)$ | continuous, bounded | Bandwidth and power allocated to transmissions |
-| Computing resource | $f_{i,m}(t)$ | continuous, nonnegative | CPU frequency allocated to task $i$ |
-| Energy throttle | $\zeta_m(t)$ | continuous, $[0,1]$ | Battery-SOC and PV-aware load multiplier at service UAV $m$ |
-
+| Offloading and association | $\mathbf a^{(1)}=\{a_{u,n}(t)\}$, $a_{n,m}(t)$ | binary | UE-to-TUAV and TUAV-to-SUAV assignment |
+| Resource-block allocation | $\mathbf a^{(2)}=\{a^k(t)\}$ | binary | RB $k$ use on A2G links |
+| Caching strategy | $\mathbf a^{(3)}$ | binary | Content cached at SUAVs |
+| Transmit power | $\mathbf p=\{p_u,p_{n,m},p_m\}$ | continuous | UE, TUAV, and SUAV powers |
+| Computing resources | $\mathbf f=\{f_{u,n},f_{n,m},f_m^H\}$ | continuous | CPU at TUAVs and SUAVs, including $f_m^H$ |
+| FL model | $\mathbf w(t)$ | continuous | Global model whose loss enters the cost |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every task selects a feasible execution and forwarding route |
-| C2 | Cache placements respect each service UAV's storage capacity |
-| C3 | Radio powers, bandwidth shares, and NOMA decoding remain feasible |
-| C4 | CPU allocations and M/M/1 service rates keep queues stable and meet task deadlines |
-| C5 | Communication and computing loads obey PV harvesting, battery SOC, and throttling limits |
-
-**Algorithm**: Observe queues, cache state, channel state, and battery SOC → let CTDE MAPPO agents choose offloading, caching, radio, computing, and throttle actions → train local federated models at service UAVs → verify and record cooperation through blockchain → aggregate the global model at the BS → update policies from the joint cost.
+| (C1)-(C2) | Binary offloading, caching, and RB indicators |
+| (C3) | Local-training and SOC weights $\eta_m(t),\xi_m(t)\in[0,1]$ |
+| (C4)-(C5) | Each UE served by one TUAV, $\sum_na_{u,n}(t)=1$; each TUAV by one SUAV, $\sum_ma_{n,m}(t)=1$ |
+| (C6) | Each RB allocated orthogonally to one A2G link |
+| (C7)-(C9) | UE, SUAV, and TUAV power limits |
+| (C10)-(C11) | TUAV and SUAV computing capacity, including $f_m^H$ at SUAVs |
+| (C12) | Cached file size within SUAV memory $S_m^{\max}$ |
+**Algorithm**: FL-MAPPO-BOCRAOA models the problem as a multi-agent MDP. CTDE MAPPO agents choose association, RB, power, computing-frequency, caching, and FL-training actions; SUAVs train local models that the BS aggregates, and a lightweight blockchain consensus records transactions to support trusted cooperation.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied energy-efficient task offloading, caching, and resource allocation in a blockchain-assisted low-altitude flying network. They modeled a four-layer UE, task-UAV, service-UAV, and base-station architecture with queueing, content caching, federated learning, blockchain overhead, and photovoltaic energy harvesting. The FL-MAPPO-BOCRAOA method jointly controls offloading, cache placement, radio and computing resources, and battery-state-aware throttling through centralized training and decentralized execution. Service UAVs train federated local models and use blockchain records to support trusted cache and processing cooperation. Simulations report lower delay and energy, shorter queues, more stable battery state of charge, and higher cache hit ratio than the evaluated learning baselines.
+Wang et al. [x] studied energy-efficient task offloading, caching, and resource allocation in a blockchain-assisted low-altitude flying network. They modeled a four-layer UE, task-UAV, service-UAV, and base-station architecture with queueing, content caching, federated learning, blockchain overhead, and photovoltaic energy harvesting. The FL-MAPPO-BOCRAOA method jointly controls association and offloading, resource blocks, power, computing frequency, caching, and FL training through centralized training and decentralized execution. Service UAVs train federated local models and use blockchain records to support trusted cache and processing cooperation. Simulations report the highest final reward and lower average delay than A2C, A3C, MATRPO, and MADDQN as TUAVs and UEs increase, higher cache hit ratio with blockchain-assisted cooperation, and SOC-aware throttling under sunny and cloudy irradiance.
 
 ## Problem
 

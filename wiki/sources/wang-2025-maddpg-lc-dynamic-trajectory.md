@@ -35,36 +35,30 @@ Addresses **UAV flight dynamics** constraints in multi-UAV MEC trajectory optimi
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: $K$ mobile users with Gauss-Markov mobility and time-varying tasks offload to $M$ UAV MEC servers that also maintain a blockchain ledger. Air-to-ground rates, blockchain generation and verification overhead, and continuous UAV flight dynamics jointly determine energy and delay.
-
-**Problem & objective**: P1 is a dynamic mixed discrete-continuous control problem that minimizes a weighted energy-delay cost, $\min \omega_E E_{\mathrm{tot}}+\omega_D D_{\mathrm{tot}}$, over trajectories, association, and computing resources.
-
+**Scenario**: $K$ mobile users with Gauss-Markov mobility and time-varying tasks offload to $M$ UAV MEC servers that also run a blockchain ledger. Air-to-ground rates, block generation, broadcast and verification overhead, and discretized UAV flight dynamics determine energy and delay.
+**Problem & objective**: Problem P1 (28) minimizes the weighted energy-delay cost $\min_{Q,f_k,f_b,\lambda}\varpi E+(1-\varpi)D$, $0\le\varpi\le1$, over trajectories, association, and task and blockchain computing frequencies.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Desired UAV trajectory | $\mathbf q_m^{\mathrm d}(t)$ | continuous position | Communication-aware path requested from UAV $m$ |
-| UAV acceleration | $\mathbf a_m(t)$ | continuous bounded control | Flight-dynamics input used to track the desired path |
-| User association | $x_{k,m}(t)$ | binary | Whether user $k$ offloads to UAV $m$ |
-| Computing frequency | $f_{k,m}(t)$ | continuous, nonnegative | CPU frequency assigned to user $k$ at UAV $m$ |
-
+| UAV trajectory | $Q=\{q_m[n],v_m[n],u_m[n]\}$ | continuous | Positions, velocities, and control inputs of UAV $m$ |
+| User association | $\lambda_{k,m}[n]$ | binary | User $k$ offloads to UAV $m$ in slot $n$ |
+| Task computing frequency | $f_{k,m}[n]$ | continuous, $\ge0$ | CPU frequency for user $k$ at UAV $m$ |
+| Blockchain computing frequency | $f_{b,m}[n]$ | continuous, $\ge0$ | CPU frequency UAV $m$ reserves for blockchain work |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV position and velocity follow the discretized flight-dynamics equations |
-| C2 | Acceleration, speed, flight-region, and tracking commands remain feasible |
-| C3 | Each user associates with at most one UAV, $\sum_m x_{k,m}(t)\le 1$ |
-| C4 | Each UAV serves no more than its user limit and CPU allocations stay within capacity |
-| C5 | Communication, computation, propulsion, and blockchain delay and energy terms enter the horizon cost |
-
-**Algorithm**: Use MADDPG to generate desired multi-UAV trajectories → track physically feasible trajectories with LQR → solve association and CPU-frequency allocation in CVXPY for the realized geometry → update the dynamic state and repeat.
+| (28a) | Flight dynamics $p_m[n+1]=G_0p_m[n]+G_{1,n}u_m[n]+G_{2,n}u_m[n-1]$ |
+| (28b) | UAV separation $\lVert q_m[n]-q_{\tilde m}[n]\rVert^2\ge d_{\min}^2$ |
+| (28c) | Per-UAV user limit $\sum_k\lambda_{k,m}[n]\le N_{\max}$ |
+| (28d)-(28e) | Binary association with at most one UAV per user |
+| (28f)-(28g) | CPU capacity $\sum_k\lambda_{k,m}f_{k,m}[n]+f_{b,m}[n]\le F$ and nonnegative frequencies |
+**Algorithm**: MADDPG-LC splits P1 into three subproblems: MADDPG generates desired trajectories under the separation constraint (P2.1), an LQR controller tracks them under the flight dynamics (34), and convex optimization solves association and CPU-frequency allocation (P2.3).
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied dynamic trajectory design in a blockchain-secured multi-UAV mobile edge computing network with mobile users and time-varying tasks. They formulated a joint energy and delay minimization problem subject to UAV flight dynamics, user association, and computing-resource constraints. Their MADDPG-LC method uses MADDPG to generate desired trajectories, an LQR controller to track physically feasible trajectories, and convex optimization to allocate associations and CPU frequencies. The blockchain model accounts for transaction generation, broadcast, consensus verification, and their associated energy and delay. Simulation results show lower weighted energy-delay cost and smaller desired-to-actual trajectory error than the evaluated trajectory baselines.
+Wang et al. [x] studied dynamic trajectory design in a blockchain-secured multi-UAV mobile edge computing network with mobile users and time-varying tasks. They formulated a joint energy and delay minimization problem subject to UAV flight dynamics, user association, and computing-resource constraints. Their MADDPG-LC method uses MADDPG to generate desired trajectories, an LQR controller to track physically feasible trajectories, and convex optimization to allocate associations and CPU frequencies. The blockchain model accounts for transaction generation, broadcast, consensus verification, and their associated energy and delay. Simulations show that the tracked MADDPG-LC trajectory has lower system energy and average delay than the ideal desired trajectory and a circular-flight baseline.
 
 ## Problem framing
 

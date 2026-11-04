@@ -17,7 +17,7 @@ related:
   - "[[sun-2024-asap-uav-swarm]]"
   - "[[niazmand-2025-jopa-dnn-pruning-iiot]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deep Reinforcement Learning-Based Task Offloading With Collaborative Inference in UAV-Assisted Mobile Edge Computing Networks
@@ -34,37 +34,33 @@ A multi-UAV MEC framework for DNN inference tasks where each ground user's DNN c
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple fixed-altitude UAV MEC servers execute the later layers of ground-user DNN inference tasks after users compute earlier layers locally. Partition-dependent feature size couples GU-UAV association, compute sharing, transmit power, trajectory, delay, and energy.
-
-**Problem & objective**: A non-convex mixed control problem minimizes weighted energy and end-to-end inference delay, $\min \omega_E E_{\mathrm{tot}}+\omega_T T_{\mathrm{avg}}$.
-
+**Scenario**: Multiple fixed-altitude UAV MEC servers $j\in\mathcal K$ serve ground users (GUs) $i\in\mathcal M$ that run DNN inference. A GU executes the layers up to a partition point locally and offloads the intermediate features to one UAV, which runs the remaining layers.
+**Problem & objective**: Problem (15) minimizes the weighted cost $e(n)=\sum_j\sum_i(\eta E_{i,j}^{part}(n)+(1-\eta)T_{i,j}^{part}(n))w_i$ (14) over partition points, UAV trajectories, compute allocation, GU power, and offloading. The parse garbles the expression of (15), so check the published paper.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| DNN partition point | $l_m$ | integer layer index | Last locally executed layer for user $m$ |
-| GU-UAV association | $x_{m,k}$ | binary | UAV $k$ serving ground user $m$ |
-| Compute ratio | $f_{m,k}$ | continuous, nonnegative | UAV computation allocated to user $m$ |
-| UAV velocity | $\mathbf v_k(t)$ | continuous bounded vector | Trajectory action of UAV $k$ |
-| GU transmit power | $p_m(t)$ | continuous, bounded | Intermediate-feature uplink power |
-
+| Partition point | $l_i^*(n)$ | integer, up to the DNN depth | Last layer GU $i$ executes locally |
+| UAV trajectory | $\{X_j(n),Y_j(n),V_j(n)\}$ | continuous | Horizontal position and speed of UAV $j$ |
+| Compute allocation | $b_{i,j}(n)$ | continuous ratio | Share of UAV $j$ computing given to GU $i$ |
+| GU transmit power | $P_i^{off}(n)$ | continuous, $\le P_i^{\max}$ | Feature-upload power |
+| Offloading decision | $\alpha_i(n)$ | binary | Local-only processing or partial offloading to a UAV |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user selects one valid DNN partition and at most one UAV |
-| C2 | Associated users lie inside UAV coverage radius |
-| C3 | Per-UAV user count and computation allocation remain within capacity |
-| C4 | Ground-user transmit powers stay within limits |
-| C5 | UAV speed, region, and battery consumption remain feasible |
-
-**Algorithm**: Search feasible DNN partition points with OPPS → rank GU-UAV pairs by weighted delay-energy improvement → match users and allocate UAV compute with fairness weights → let TD3 choose UAV velocities and user transmit powers → evaluate the joint cost and boundary penalties → repeat across slots.
+| C2 | GU within UAV coverage radius $d_{\max}$ |
+| C3-C4 | UAV activity area $D_{\max}$ and speed $V^{\max}$ |
+| C5 | GU transmit power $\le P_i^{\max}$ |
+| C6 | Partition point within the number of DNN layers |
+| C7 | UAV energy within battery capacity $E_{UAV}^{\max}$ over the service period |
+| C8-C9 | Each task fully local or partially offloaded; each UAV serves at most $Z$ GUs |
+| C10-C11 | Bounds on the compute-allocation ratios (C1 is not described in the parse) |
+**Algorithm**: Alternating optimization over three subproblems: OPPS selects each task's optimal partition point, a fairness-factor matching associates GUs with UAVs and allocates compute, and a TD3 agent in an MDP with negative cost as reward chooses UAV trajectories and GU transmit powers.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhai et al. [x] studied task offloading with collaborative DNN inference in multi-UAV mobile edge computing networks. They formulated weighted energy and delay minimization over DNN partition points, GU-UAV association, computing-resource ratios, UAV trajectories, and user transmit powers. DPDTS applies OPPS to select layer partitions and uses fairness-aware matching to associate users and allocate UAV compute. A TD3 controller then selects UAV velocity vectors and user transmit powers under coverage, capacity, power, battery, and movement constraints. Simulations report lower energy and average inference delay than the evaluated DTS, RAT, EE-PPO, and DPRT baselines.
+Zhai et al. [x] studied task offloading with collaborative DNN inference in multi-UAV mobile edge computing networks. They formulated weighted energy and delay minimization over DNN partition points, GU-UAV association, computing-resource ratios, UAV trajectories, user transmit powers, and offloading decisions. DPDTS applies OPPS to select layer partitions and uses fairness-aware matching to associate users and allocate UAV compute. A TD3 controller then selects UAV velocity vectors and user transmit powers under coverage, capacity, power, battery, and movement constraints. Simulations report lower energy and average inference delay than the evaluated DTS, RAT, EE-PPO, and DPRT baselines.
 
 ## Problem
 

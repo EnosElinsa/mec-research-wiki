@@ -17,7 +17,7 @@ related:
   - "[[communication-constrained-marl]]"
   - "[[qin-2023-ris-uav-mec-ee]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory, RIS, and Computation Offloading Optimization via Decentralized Model-Based PPO in Urban Multi-UAV Mobile Edge Computing
@@ -34,36 +34,31 @@ Builds a decentralized [[model-based-marl]] controller for urban RIS-assisted mu
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAV MEC servers and decode-and-forward relays serve urban users through direct and building-mounted RIS paths, forward tasks to a ground AP when needed, and operate under a ground jammer. Each UAV observes local and $k$-hop neighbor state and proposes RIS phases.
-
-**Problem & objective**: A decentralized partially observed mixed-control problem maximizes system energy efficiency, $\max \eta_{\mathrm{EE}}=\frac{R_{\mathrm{sum}}}{E_{\mathrm{comm}}+E_{\mathrm{comp}}+E_{\mathrm{fly}}}$, through trajectory, offloading, relaying, computation, and RIS control.
-
+**Scenario**: Multi-antenna UAVs $u\in\mathcal U$ act as computing nodes and relays for moving single-antenna UEs $k\in\mathcal K$, forwarding tasks to a ground AP with an MEC server. Direct UE-AP and UE-RIS links are blocked, a building-mounted RIS reflects UAV signals to the AP, and a ground jammer interferes with UAV and RIS links.
+**Problem & objective**: Problem (33) maximizes energy efficiency over $N$ slots, $\max_z\frac{\sum_n\sum_k(l_{u,k}^{loc}[n]+l_{u,k}^o[n])}{\sum_nE[n]}$, the processed bits over total UE and UAV energy (32).
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV movement | $\Delta\mathbf q_m(t)$ | continuous bounded action | Trajectory update of UAV $m$ |
-| Task offloading or relay | $x_{u,m}(t)$ | discrete | Local, UAV, relay, or AP execution route |
-| Computation allocation | $f_{u,m}(t)$ | continuous, nonnegative | CPU resource assigned to user task $u$ |
-| RIS phase proposal | $\boldsymbol\theta_m(t)$ | continuous phase vector | UAV $m$'s recommendation to the RIS controller |
-
+| UAV velocity and acceleration | $\mathbf V_u[n],\mathbf A_u[n]$ | continuous | Kinematic controls of UAV $u$ |
+| RIS phases | $\boldsymbol\Theta[n]=\mathrm{diag}(e^{j\theta_1},\ldots,e^{j\theta_M})$ | continuous, $\theta_m\in[0,2\pi)$ | Reflection coefficients |
+| Time allocation | $\tau_{u,k}^o[n],\tau_{u,k}^R[n]$ | continuous, $\ge0$ | Offloading and relaying time for UE $k$ via UAV $u$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Task routing and execution conserve each user's workload |
-| C2 | UAV and AP computing allocations stay within capacity |
-| C3 | Aggregated RIS phases satisfy unit-modulus and phase-range conditions |
-| C4 | Link rates and task delays remain feasible under blockage and jamming |
-| C5 | UAV kinematics, separation, region, and propulsion-energy limits hold |
-
-**Algorithm**: Observe local and $k$-hop state → sample trajectory, offloading, compute, and RIS proposals from decentralized PPO → aggregate RIS proposals → collect real transitions and fit a local dynamics model → generate short-horizon branched rollouts → update local policy and value networks from real and model data.
+| C1, C3 | Kinematics $\mathbf q_u[n+1]=\mathbf q_u[n]+\mathbf V_u[n]\delta_t+\frac12\mathbf A_u[n]\delta_t^2$, $\mathbf V_u[n+1]=\mathbf V_u[n]+\mathbf A_u[n]\delta_t$ |
+| C2a-C2b | Fixed start and end points; 3-D flight region |
+| C4a-C4b, C5 | Per-slot displacement and speed within $V_{\max}$; the end point stays reachable |
+| C6-C7 | RIS phases in $[0,2\pi)$ with diagonal unit-modulus $\boldsymbol\Theta[n]$ |
+| C8-C10 (35)-(36) | Nonnegative times, zero boundary times, and $\sum_u\sum_k(\tau^o+\tau^R)\le\delta_t$ |
+| C11-C12 (37) | Peak and average UAV transmit power |
+| C13-C16 (38) | Relay causality, UAV and AP computing within $F_u^{\max}\delta_t$ and $F_a^{\max}\delta_t$, and each UE's total task $L_k$ completed |
+**Algorithm**: Each UAV agent observes local and $k$-hop neighbor states with LSTM-based fusion, acts with a decentralized PPO policy, submits an RIS phase proposal that a lightweight RIS controller aggregates, learns a local dynamics model, and adds short-horizon branched model rollouts to real data for policy and value updates without a centralized critic.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied decentralized model-based control of trajectory, RIS phases, and computation offloading in urban multi-UAV mobile edge computing. Each UAV observes local and k-hop neighbor state, selects movement and offloading actions, and sends phase recommendations to a lightweight RIS aggregator. Local learned dynamics models generate short-horizon branched rollouts for PPO policy and value updates without a centralized critic. The objective maximizes energy efficiency under task, communication, computation, RIS, mobility, and jamming conditions. Simulations report faster convergence and higher energy efficiency than the evaluated decentralized model-free methods while approaching centralized PPO performance.
+Wu et al. [x] studied decentralized model-based control of trajectory, RIS phases, and computation offloading in urban multi-UAV mobile edge computing. Each UAV observes local and k-hop neighbor state, selects movement and offloading actions, and sends phase recommendations to a lightweight RIS aggregator. Local learned dynamics models generate short-horizon branched rollouts for PPO policy and value updates without a centralized critic. The objective maximizes energy efficiency under task, communication, computation, RIS, mobility, and jamming conditions. Simulations report convergence nearly as fast as centralized PPO and higher throughput and energy efficiency than the decentralized DPPO and I3CNet baselines.
 
 ## Problem
 
