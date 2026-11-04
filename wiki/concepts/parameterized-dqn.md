@@ -9,8 +9,10 @@ related:
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[chen-2026-pddqn-sagin-mec]]"
   - "[[tian-2026-coded-cache-repair]]"
+  - "[[fan-2019-h-ppo-parameterized-action]]"
+  - "[[li-2022-hyar-hybrid-action-representation]]"
 created: 2026-05-29
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Parameterized DQN (P-DQN)
@@ -28,3 +30,6 @@ Compared with [[j-ppo]] (on-policy, stochastic, hybrid head), P-DQN is off-polic
 [[chen-2026-pddqn-sagin-mec]] uses a double-DQN variant, P-DDQN, for SAGIN MEC: the DDQN component selects discrete user/satellite actions and a DDPG-style component outputs the continuous parameters attached to those choices.
 
 [[tian-2026-coded-cache-repair]] uses hierarchical multi-agent P-DQN at two timescales: slow code/cache choices and fast requester/repair matching with continuous UAV movement.
+
+
+Alternatives to P-DQN's parameter network include the parallel-actor H-PPO of [[fan-2019-h-ppo-parameterized-action]] and the latent action space of [[li-2022-hyar-hybrid-action-representation]].

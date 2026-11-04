@@ -11,8 +11,9 @@ related:
   - "[[knowledge-distillation-for-drl]]"
   - "[[huang-2026-uav-friendly-jamming-transsac]]"
   - "[[wang-2026-mat-target-tracking]]"
+  - "[[kool-2019-attention-routing]]"
 created: 2026-07-07
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Transformer Encoder
@@ -26,3 +27,5 @@ In [[guo-2026-aot-uav-inspection-offloading]], the AGI-oriented Transformer uses
 This is related to the broader attention/graph-learning family in the corpus: [[probsparse-self-attention-prediction]] uses sparse attention for traffic prediction, while [[graph-neural-network]] pages capture relational encoders when the natural structure is a graph rather than a sequence.
 
 [[wang-2026-mat-target-tracking]] pairs an encoder over all UAV observations with a masked autoregressive decoder for sequential joint-action generation.
+
+[[kool-2019-attention-routing]] is the foundational attention encoder-decoder for routing problems, trained with REINFORCE and a greedy-rollout baseline.

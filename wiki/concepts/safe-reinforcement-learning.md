@@ -12,8 +12,9 @@ related:
   - "[[hsu-2022-collision-avoidance-trajectory]]"
   - "[[distributed-tabular-q-learning-uav-collision-avoidance]]"
   - "[[uav-trajectory-safety-guarantee-ladder]]"
+  - "[[dalal-2018-safety-layer-continuous-actions]]"
 created: 2026-05-28
-updated: 2026-07-14
+updated: 2026-11-02
 ---
 
 # Safe Reinforcement Learning
@@ -28,6 +29,8 @@ A family of RL formulations that enforce **constraints** (safety, fairness, reso
 | **Constrained MDP (CMDP)** | Optimize reward subject to expected-cost constraint $\le c$ | Requires Lagrangian or primal-dual solver |
 | **Shielding** | External controller intervenes when policy would violate | Hard guarantees but conservative; reduces achievable reward |
 | **Gated intervention agent** | A per-agent Safety Agent overrides the task policy via a learned binary gating policy | Hard safety guarantees during *and* after training; a per-intervention cost keeps overrides selective |
+
+[[dalal-2018-safety-layer-continuous-actions]] is the foundational action-projection approach: a safety layer minimally corrects each action against learned linear constraint models, giving a closed form when at most one constraint is active.
 
 ## Why MEC research uses it
 

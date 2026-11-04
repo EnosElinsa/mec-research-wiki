@@ -47,6 +47,10 @@
 - [[lillicrap-2016-ddpg-continuous-control]] — Lillicrap et al. 2016. Origin paper for **DDPG** — off-policy actor-critic bringing DQN's replay + target networks to deterministic continuous control; soft target updates + OU exploration (ICLR; DOI/venue not in parse).
 - [[van-hasselt-2016-double-dqn]] — van Hasselt et al. 2016. Origin paper for **Double DQN** — decouples action selection from evaluation (reusing the target network) to curb DQN's value over-estimation; SOTA Atari (AAAI; DOI/venue not in parse).
 - [[xiang-sac-mapless-robot-navigation]] — Xiang et al. Mapless mobile-robot navigation via **Soft Actor-Critic** (LSTM value/Q nets); laser+target→velocity continuous control (venue/year not in parse).
+- [[fan-2019-h-ppo-parameterized-action]] - Fan et al. 2019. H-PPO: parallel discrete and continuous actors with a shared critic for parameterized action spaces (IJCAI).
+- [[li-2022-hyar-hybrid-action-representation]] - Li et al. 2022. HyAR: embedding table plus conditional VAE latent space for discrete-continuous hybrid actions (ICLR).
+- [[dalal-2018-safety-layer-continuous-actions]] - Dalal et al. 2018. Safety layer projecting continuous actions onto learned linear constraints for zero-violation exploration (arXiv).
+- [[kool-2019-attention-routing]] - Kool et al. 2019. Attention encoder-decoder trained with REINFORCE and a greedy-rollout baseline for TSP, VRP, OP, and PCTSP (ICLR).
 
 ### Joint trajectory / caching / migration
 

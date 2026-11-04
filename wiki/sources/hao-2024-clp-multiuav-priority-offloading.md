@@ -19,8 +19,9 @@ related:
   - "[[ma-2025-pdqn-vehicular-mec]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[qin-2025-bcuav-masac]]"
+  - "[[li-2022-hyar-hybrid-action-representation]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-02
 authors: [Hao Hao, Changqiao Xu, Wei Zhang, Shujie Yang, Gabriel-Miro Muntean]
 year: 2024
 url: "https://doi.org/10.1109/TMC.2024.3350078"
@@ -92,7 +93,7 @@ The objective is the long-term average **system gain**, a weighted sum of a prio
   - *State*: UE task properties + UAV 3D positions (positions act as a channel-quality proxy to keep state dimension O(N)).
   - *Action*: discrete offloading index per UE + continuous UAV moves, transmit power, and UAV compute allocation.
   - *Reward*: sum of per-UE system gains, with a large penalty (−1000) for constraint violations.
-- **CLP algorithm**: combines a latent [[hybrid-action-representation]] (after HyAR) with [[td3]].
+- **CLP algorithm**: combines a latent [[hybrid-action-representation]] (after HyAR, [[li-2022-hyar-hybrid-action-representation]]) with [[td3]].
   - A shared learnable **embedding table** maps the N+2 discrete offloading actions to continuous vectors.
   - A **conditional VAE** encodes the continuous parameters into a Gaussian latent variable conditioned on state and discrete embedding; decoding uses nearest-neighbor lookup (discrete) + VAE decoder (continuous).
   - A cascaded **dynamics-prediction** head predicts the state residual; the representation is trained with reconstruction + KL + weighted prediction loss.

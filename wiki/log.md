@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-02] Curated foundational hybrid-action, safe-RL, and routing sources
+
+Curated four Raw sources added during the curation run: [[li-2022-hyar-hybrid-action-representation]], [[fan-2019-h-ppo-parameterized-action]], [[dalal-2018-safety-layer-continuous-actions]], and [[kool-2019-attention-routing]]. All four are foundational general-RL or learned-heuristic methods, so each carries `modeling_card: not_applicable`. Venues and arXiv identifiers come from the parse headers; the IJCAI parse has no DOI.
+
+No new concept or entity was needed. Linked the sources from [[hybrid-action-representation]], [[hybrid-action-decision-making]], [[parameterized-dqn]], [[safe-reinforcement-learning]], [[transformer-encoder]], and [[hao-2024-clp-multiuav-priority-offloading]]. All authors are one-off in the corpus and were deferred.
+
+Full reconciliation now reports 701 Raw folders, 701 curated, and zero genuinely new folders. Corpus counts are 697 sources, 665 concepts, 210 entities, 15 findings, 19 synthesis pages, 7 comparisons, 6 methodologies, 5 queries, 3 theses, and 2 reference pages. Link, process-reference, index, frontmatter, source-schema, and entity-roster audits report zero errors.
+
 ## [2026-11-02] Curated trajectory, caching, AoI, contract, and aerial-edge sources
 
 Curated the last six genuinely new Raw sources from the session-start backlog: [[sun-2026-mde-ch-3d-uav-trajectory]], [[shi-2021-dqn-air-assisted-vehicular-caching]], [[zhang-2025-f-dadc-aoi-multiuav]], [[wen-2026-diffusion-dynamic-contract-ai-agent]], [[kang-2025-hdmoea-aerial-edge-computing]], and [[nguyen-2024-heterogeneous-aerial-edge-noma]]. Five carry `modeling_card: required`; the Holt-based dynamic multiobjective EA is `not_applicable` because it is evaluated only on generic benchmark functions.

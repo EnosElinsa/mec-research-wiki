@@ -8,8 +8,9 @@ related:
   - "[[parameterized-dqn]]"
   - "[[j-ppo]]"
   - "[[hao-2024-clp-multiuav-priority-offloading]]"
+  - "[[li-2022-hyar-hybrid-action-representation]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-11-02
 ---
 
 # Hybrid Action Representation (latent space)
@@ -19,3 +20,5 @@ A learned latent-space encoding of a coupled **discrete-continuous** action (e.g
 The point: directly rounding a continuous actor's output to a discrete action (as plain [[ddpg]] would) collapses distinct values onto the same action and degrades performance. Encoding the *whole coupled* action preserves discrete-continuous correlations.
 
 In the wiki, [[hao-2024-clp-multiuav-priority-offloading]]'s CLP combines this representation with [[td3]]. It is one of three ways the corpus handles [[hybrid-action-decision-making]] — alongside [[parameterized-dqn]] (P-DQN) and the dual-head [[j-ppo]].
+
+The original method is [[li-2022-hyar-hybrid-action-representation]], which builds the latent space from a discrete-action embedding table and a conditional VAE trained with dynamics prediction.

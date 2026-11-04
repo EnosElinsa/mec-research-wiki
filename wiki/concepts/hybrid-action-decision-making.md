@@ -14,8 +14,10 @@ related:
   - "[[tian-2026-coded-cache-repair]]"
   - "[[samir-2022-aoi-altitude-scheduling]]"
   - "[[ding-2026-optimization-driven-spectrum-sharing]]"
+  - "[[li-2022-hyar-hybrid-action-representation]]"
+  - "[[fan-2019-h-ppo-parameterized-action]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-11-02
 ---
 
 # Hybrid Continuous–Discrete Action Decision-Making
@@ -41,3 +43,6 @@ The cleanest empirical fix in [[liu-2026-jppo-en-convntm]] is [[j-ppo]]: keep a 
 [[xie-2026-geoagg-hsac]] uses separate SAC heads: Gaussian sampling for UAV velocity and transmit power, and Gumbel-Softmax sampling for user association. Separate entropy temperatures adapt exploration for the continuous and discrete parts.
 
 [[tian-2026-coded-cache-repair]] uses P-DQN to attach continuous speed/heading parameters to discrete matching and coding/cache actions.
+
+
+Foundational general-RL designs include parallel discrete and continuous actors with a shared critic in [[fan-2019-h-ppo-parameterized-action]] and the latent hybrid action space of [[li-2022-hyar-hybrid-action-representation]].
