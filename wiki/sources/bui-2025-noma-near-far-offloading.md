@@ -17,7 +17,7 @@ related:
   - "[[chen-2026-qos-noma-multiuav]]"
   - "[[mohammadi-2026-star-ris-uav-mec-noma]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Task Offloading Optimization for UAV-Aided NOMA Networks With Coexistence of Near-Field and Far-Field Communications
@@ -63,7 +63,7 @@ Studies UAV-aided NOMA MEC when near-field and far-field users coexist around UA
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Bui et al. [x] studied task offloading in a multi-UAV NOMA MEC network where near-field spherical-wave and far-field plane-wave users coexist around large antenna arrays. They formulated a nonlinear mixed-integer latency-minimization problem over UE transmit power, binary UAV association and offloading, and UAV-MEC computing capacity, subject to power, served-user-count, latency, uplink-rate, and compute-capacity constraints. Their iterative block-coordinate method relaxes and convexifies association, power, and computing subproblems, then selects the largest association values within each UAV's capacity and solves the convex stages with CVX. Simulations report the lowest total latency across the tested task sizes and network sizes, with RandomSelection 15.24% to 18.68% higher and EqualPower 5.04% to 7.66% higher over the task-size sweep, while NOMA also outperforms OFDM.
+Bui et al. [x] studied task offloading in a multi-UAV NOMA MEC network where near-field spherical-wave and far-field plane-wave users coexist around large antenna arrays. They formulated a nonlinear mixed-integer latency-minimization problem over UE transmit power, binary UAV association and offloading, and UAV-MEC computing capacity, subject to power, served-user-count, latency, uplink-rate, and compute-capacity constraints. Their iterative block-coordinate method relaxes and convexifies association, power, and computing subproblems, then selects the largest association values within each UAV's capacity and solves the convex stages with CVX. Simulations report the lowest total latency across the tested task sizes and network sizes, with RandomSelection 15.24% to 18.68% higher and EqualPower 5.04% to 7.66% higher over the task-size sweep, while NOMA also outperforms OFDM; the gap to the benchmarks shrinks when UE computing capacity is high, and EqualPower ties the proposed method with 24 UEs.
 
 ## Problem
 

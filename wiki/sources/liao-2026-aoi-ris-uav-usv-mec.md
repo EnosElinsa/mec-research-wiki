@@ -18,7 +18,7 @@ related:
   - "[[whale-optimization-algorithm]]"
   - "[[liao-2025-ris-uav-usv-resource-allocation]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint UAVs Deployment and Resource Allocation for AoI-Aware RIS-Assisted UAV-USV MEC Network
@@ -37,7 +37,7 @@ Builds an AoI-aware RIS-assisted UAV-USV MEC architecture for inland waterways. 
 
 **Scenario**: Inland-waterway USVs generate divisible bidirectional tasks whose local data and Internet-originating data must both reach rotary-wing UAV MEC servers. A tethered UAV carries a RIS between the terrestrial base station and the rotary-wing swarm, while the untethered UAVs move horizontally and share each slot among USVs.
 
-**Problem & objective**: The long-term controller minimizes $\limsup_{T\to\infty}\frac{1}{T}\sum_{t=1}^{T}\mathbb E\left[X_w\sum_i\Delta_i(t)+\sum_mp_m(t)\right]$, a weighted sum of USV average AoI and rotary-wing UAV flight power.
+**Problem & objective**: Problem $\mathcal P1$ minimizes $\limsup_{T\to\infty}\frac{1}{T}\sum_{t=1}^{T}\mathbb E\left[X_w\sum_i\Delta_i(t)+\sum_mp_m(t)\right]$, a weighted sum of USV average AoI and rotary-wing UAV flight power.
 
 **Decision variables**:
 
@@ -52,12 +52,12 @@ Builds an AoI-aware RIS-assisted UAV-USV MEC architecture for inland waterways. 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Service durations satisfy $\alpha_i(t)\geq0$ and $\sum_i\alpha_i(t)\leq\delta$ |
-| C2 | Every RIS phase lies in $[0,2\pi]$ |
-| C3 | Each USV's AoI remains below its prescribed threshold $\Delta_i^{\max}$ |
-| C4 | Tethered-UAV altitude and climb or descent rate remain within their bounds |
-| C5 | Rotary-wing UAV speed and steering angle remain below their maxima |
-| C6 | Each USV satisfies its long-term average transmission-power limit |
+| $\mathcal C1$-$\mathcal C2$ (1)-(2) | Service durations satisfy $\alpha_i(t)\geq0$ and $\sum_i\alpha_i(t)\leq\delta$ |
+| $\mathcal C3$ (5) | Every RIS phase lies in $[0,2\pi]$ |
+| $\mathcal C4$ (15) | Each USV's AoI remains below its threshold $\Delta_i^{\max}$ |
+| $\mathcal C5$-$\mathcal C6$ (16)-(17) | Tethered-UAV altitude stays in $[H_{TUAV}^{\min},H_{TUAV}^{\max}]$ and its climb or descent rate within $\Delta H$ |
+| $\mathcal C7$-$\mathcal C8$ | Rotary-wing UAV speed and steering angle stay below $v_m^{\max}$ and $\Omega_m^{\max}$ |
+| $\mathcal C9$ | Each USV satisfies its long-term average transmission-power limit |
 
 **Algorithm**: An auxiliary queue and mixed linear-quadratic Lyapunov transformation replace the long-term power constraint with per-slot deterministic problems. Each slot then alternates an enhanced whale optimizer for rotary-wing UAV trajectories with an enhanced alternating optimizer for service durations, RIS phases, and tethered-UAV altitude.
 
@@ -65,7 +65,7 @@ Builds an AoI-aware RIS-assisted UAV-USV MEC architecture for inland waterways. 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liao et al. [x] jointly deployed a RIS-carrying tethered UAV and rotary-wing MEC UAVs for age-sensitive bidirectional USV tasks. Their long-term objective balances average AoI against flight energy over service durations, RIS phases, tethered-UAV altitude, and rotary-wing trajectories under freshness, mobility, phase, and average-power constraints. A mixed linear-quadratic Lyapunov transformation produces deterministic slot problems solved by enhanced whale optimization and alternating resource updates. The proposed design reported about $3.3\times10^5$ J of flight energy at 9.6 s average AoI and approximately 50% long-term flight-energy reduction while maintaining satisfactory freshness.
+Liao et al. [x] jointly deployed a RIS-carrying tethered UAV and rotary-wing MEC UAVs for age-sensitive bidirectional USV tasks. Their long-term objective balances average AoI against flight energy over service durations, RIS phases, tethered-UAV altitude, and rotary-wing trajectories under freshness, mobility, phase, and average-power constraints. A mixed linear-quadratic Lyapunov transformation produces deterministic slot problems solved by enhanced whale optimization and alternating resource updates. The proposed design reported about $3.3\times10^5$ J of flight energy at 9.6 s average AoI and approximately 50% long-term flight-energy reduction while maintaining satisfactory freshness; one comparison scheme that flies closer to the USVs used about .6\times10^5$ J at 19.6 s average AoI.
 
 ## Problem
 

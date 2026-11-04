@@ -18,7 +18,7 @@ related:
   - "[[li-2024-irs-secure-wpmec]]"
   - "[[wang-2026-secure-lae-uav-scheduling]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,7 +38,7 @@ Studies a single-UAV MEC cloudlet serving multiple ground users under both **pas
 
 **Scenario**: A fixed-wing UAV provides MEC service to ground users whose uplinks are observed by passive eavesdroppers. Each user divides transmit power between information and artificial noise, and successfully secured data is offloaded while the remainder is computed locally.
 
-**Problem & objective**: Problem P1 maximizes global secure energy efficiency, $\max_{\mathbf q,\boldsymbol\alpha,\boldsymbol\beta}J_{EE}=\theta(\mathbf q,\boldsymbol\alpha,\boldsymbol\beta)/E_{\mathrm{total}}$, where $\theta$ is successfully secured offloaded data and the denominator includes user and UAV computing, communication, and flight energy.
+**Problem & objective**: Problem P1 (34) maximizes global secure energy efficiency, $\max_{\mathbf q,\boldsymbol\alpha,\boldsymbol\beta}J_{EE}=\theta(\mathbf q,\boldsymbol\alpha,\boldsymbol\beta)/E_{\mathrm{total}}$, where $\theta$ is successfully secured offloaded data and the denominator includes user and UAV computing, communication, and flight energy.
 
 **Decision variables**:
 
@@ -55,6 +55,7 @@ Studies a single-UAV MEC cloudlet serving multiple ground users under both **pas
 | C1 | Secrecy outage is bounded, $\Pr\{s_i[k]\geq R_{U,i}[k]-R_{E,i}[k]\}\leq\varepsilon$ |
 | C2 | UAV position, velocity, and acceleration remain in $\mathcal Q$, $\mathcal V$, and $\mathcal A$ |
 | C3 | Both power-allocation fractions lie in $[0,1]$ |
+| C4 | Energy-component weights are nonnegative and sum to one, $\omega_{co}+\omega_{cp}+\omega_{fly}=1$ |
 | C5 | Position follows the velocity update, $\mathbf q_U[k]-\mathbf q_U[k-1]=\mathbf v_U[k]\Delta t$ |
 | C6 | Velocity follows the acceleration update, $\mathbf v_U[k]-\mathbf v_U[k-1]=\mathbf a_U[k]\Delta t$ |
 
@@ -64,7 +65,7 @@ Studies a single-UAV MEC cloudlet serving multiple ground users under both **pas
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] formulated secure UAV-assisted MEC as a joint trajectory and power-allocation problem under passive eavesdropping and transmission uncertainty. They maximized successfully secured offloaded data per unit of computing, communication, and flight energy while bounding secrecy-outage probability and enforcing UAV kinematics. Their solution derives the information and artificial-noise power split, transforms the fractional objective and chance constraint, and applies an augmented-Lagrangian iterative update. The reported algorithm converged in roughly thirty iterations and consistently improved global secure energy efficiency over variants that omitted trajectory optimization or optimized only selected energy components. The results further showed that jointly adapting the flight path and user power fractions changes which data can be securely offloaded instead of processed locally.
+Wang et al. [x] formulated secure UAV-assisted MEC as a joint trajectory and power-allocation problem under passive eavesdropping and transmission uncertainty. They maximized successfully secured offloaded data per unit of computing, communication, and flight energy while bounding secrecy-outage probability and enforcing UAV kinematics. Their solution derives the information and artificial-noise power split, transforms the fractional objective and chance constraint, and applies an augmented-Lagrangian iterative update. The reported algorithm converged in roughly thirty iterations and consistently improved global secure energy efficiency over the EEO-NTO (no trajectory optimization), COMEO-TO, and TxEO-TO variants, with the largest margin when there are few ground users. The results further showed that jointly adapting the flight path and user power fractions changes which data can be securely offloaded instead of processed locally.
 
 ## Problem framing
 

@@ -16,7 +16,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[wu-2026-model-based-ppo-ris-uav-mec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Online Trajectory Planning and Resource Allocation of UAV-Enabled MEC Networks Empowered by RIS
@@ -35,7 +35,7 @@ An online [[intelligent-reflecting-surface]]-assisted UAV-MEC controller for mob
 
 **Scenario**: Mobile ground users generate random tasks for a UAV MEC server that communicates with a powerful AP through a building-mounted RIS, with blocked direct links, finite UAV energy, queue backlogs, and a prescribed final destination.
 
-**Problem & objective**: The online stochastic program minimizes energy per processed bit, $\min \eta_{EE}=\overline E/\overline L$, over offloading, computation, radio, trajectory, and RIS controls.
+**Problem & objective**: Stochastic problem (22) minimizes energy per processed bit, $\min \eta_{EE}=\overline E/\overline L$, over offloading, computation, radio, trajectory, and RIS controls.
 
 **Decision variables**:
 
@@ -52,13 +52,13 @@ An online [[intelligent-reflecting-surface]]-assisted UAV-MEC controller for mob
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Offloaded bits obey data causality: $l_{u,n}^{off}[t]\leq Q_n[t]+A_n[t]$. |
-| C2 | Computed and forwarded bits do not exceed queued data and CPU capacity. |
-| C3 | GU-UAV and UAV-AP offloading obey their rate and time limits. |
-| C4 | User and UAV queues are stable in the long term. |
-| C5 | Average UAV energy respects its budget: $\lim_TT^{-1}\sum_t\mathbb E[e_f[t]]\leq E_u$. |
-| C6 | Trajectory speed and final-destination reachability are bounded. |
-| C7 | Outage probability constraints are enforced through the per-slot robust approximation. |
+| (22b) | GU offloading obeys data causality, $l_{u,n}^{off}[t]\leq Q_n[t]+A_n[t]$ |
+| (22c)-(22d) | UAV computing and forwarding stay within queued data and CPU capacity $\delta_tf_u^{\max}/c_u$, and transmission times fit the slot (the parse shifts these tags; check the published paper) |
+| (22e)-(22f) | GU-UAV and UAV-AP offloaded bits stay within the corresponding achievable rates |
+| (22g)-(22h) | User and UAV queues are mean-rate stable |
+| (22i) | Average UAV energy stays within its budget $E_u$ |
+| (22j)-(22k) | UAV speed is bounded and the final destination remains reachable |
+| Algorithm rule | Outage probability constraints on mobile-user offloading are handled through a Bernstein-type approximation |
 
 **Algorithm**: Apply Lyapunov drift-plus-penalty for online queue-aware decisions, Dinkelbach for the fractional energy-efficiency objective, and block coordinate descent with successive convex approximation and Bernstein-type outage reformulation for the four control blocks.
 
@@ -66,7 +66,7 @@ An online [[intelligent-reflecting-surface]]-assisted UAV-MEC controller for mob
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sheng et al. [x] study online RIS-assisted UAV MEC for mobile users with stochastic task arrivals and blocked direct links. Their fractional objective minimizes energy per processed bit while enforcing data causality, computation and communication capacity, queue stability, energy budget, mobility, destination, and outage constraints. Lyapunov optimization supplies online queue-aware decisions, while Dinkelbach, block coordinate descent, successive convex approximation, and Bernstein approximations solve the coupled resource blocks. The parsed simulations report better energy-efficiency behavior than equal-resource and non-predictive schemes and further gains as the RIS grows.
+Sheng et al. [x] study online RIS-assisted UAV MEC for mobile users with stochastic task arrivals and blocked direct links. Their fractional objective minimizes energy per processed bit while enforcing data causality, computation and communication capacity, queue stability, energy budget, mobility, destination, and outage constraints. Lyapunov optimization supplies online queue-aware decisions, while Dinkelbach, block coordinate descent, successive convex approximation, and Bernstein approximations solve the coupled resource blocks. Simulations report lower energy per bit than equal-bandwidth, computation-bits-maximization, and without-outage (non-predictive) schemes.
 
 ## Problem framing
 

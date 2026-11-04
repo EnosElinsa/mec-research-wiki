@@ -24,7 +24,7 @@ related:
   - "[[li-2024-emssa-uav-swarm-vaa]]"
   - "[[li-2023-secure-marine-iot-jamming]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dual AAV Cluster-Assisted Maritime Physical-Layer Secure Communications via Collaborative Beamforming
@@ -43,7 +43,7 @@ Two clusters of **autonomous aerial vehicles (AAVs)** assist remote maritime com
 
 **Scenario**: A shore-side base station sends data through a relay cluster of autonomous aerial vehicles to a legitimate vessel, while a separate aerial cluster emits collaborative friendly jamming toward a maritime eavesdropper. Each cluster acts as a virtual antenna array whose geometry and excitation weights jointly determine the legitimate and eavesdropping SINRs as well as fleet propulsion energy.
 
-**Problem & objective**: The secure and energy-efficient maritime communication problem minimizes $\mathbf{F}=\{-f_1,f_2,f_3\}$, equivalently maximizing Bob's SINR $f_1$ while minimizing Willie's SINR $f_2$ and the total flight energy $f_3$ of the relay and jammer clusters.
+**Problem & objective**: Problem (14a) minimizes $\mathbf{F}=\{-f_1,f_2,f_3\}$, equivalently maximizing Bob's SINR $f_1$ while minimizing Willie's SINR $f_2$ and the total flight energy $f_3$ of the relay and jammer clusters.
 
 **Decision variables**:
 
@@ -58,9 +58,9 @@ Two clusters of **autonomous aerial vehicles (AAVs)** assist remote maritime com
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Relay and jammer excitation weights remain in $[0,1]$ |
-| C2 | Every AAV remains inside its prescribed 3-D flight region |
-| C3 | Any two AAVs in the same cluster maintain the collision-avoidance distance $D_{\min}$ |
+| (14b)-(14c) | Relay and jammer excitation weights remain in $[0,1]$ |
+| (14d)-(14e) | Every AAV remains inside its prescribed 3-D flight region |
+| (14f)-(14g) | Any two AAVs in the same cluster maintain the collision-avoidance distance $D_{\min}$ |
 
 **Algorithm**: IMOMA initializes a diverse Pareto population with a Tent chaotic map, then applies dimension-specific whale-inspired and arithmetic-optimization updates to the mayfly population. Non-dominated sorting and crowding-based archive management retain tradeoff solutions for legitimate SINR, eavesdropper SINR, and propulsion energy.
 
@@ -68,7 +68,7 @@ Two clusters of **autonomous aerial vehicles (AAVs)** assist remote maritime com
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Huang et al. [x] used separate autonomous-aerial-vehicle clusters as a collaborative relay array and a friendly-jamming array for remote maritime communication. Their three-objective model maximized Bob's SINR, minimized Willie's SINR, and minimized fleet flight energy over both clusters' 3-D positions and excitation weights under flight-region, weight-range, and collision-separation constraints. IMOMA combines Tent-map initialization with dimension-specific whale and arithmetic updates to generate Pareto tradeoffs. In the larger scenario, collaborative beamforming achieved Bob SINR 20.75 and Willie SINR -39.9, versus -2.26 and -4.17 without collaborative beamforming, while IMOMA had the best three reported objectives among the compared optimizers.
+Huang et al. [x] used separate autonomous-aerial-vehicle clusters as a collaborative relay array and a friendly-jamming array for remote maritime communication. Their three-objective model maximized Bob's SINR, minimized Willie's SINR, and minimized fleet flight energy over both clusters' 3-D positions and excitation weights under flight-region, weight-range, and collision-separation constraints. IMOMA combines Tent-map initialization with dimension-specific whale and arithmetic updates to generate Pareto tradeoffs. In the larger scenario, collaborative beamforming achieved Bob SINR 20.75 and Willie SINR -39.9, versus -2.26 and -4.17 without collaborative beamforming, and a single-cluster variant reached 10.18 and 8.31; IMOMA had the best three objectives against MODA, MALO, MOMVO, and MOMA, although in one non-collaborative case it gave a worse eavesdropper SINR.
 
 ## Problem framing
 

@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 17 (UAV-MEC optimization, second half: maritime and secure/RIS/WPT MEC)
+
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch17-uav-mec-opt-b.json`. Grounded total: 407/699.
+- Relabeled invented constraint IDs to the papers' own tags or IDs (for example he-2024 C1–C12 with (21b)–(21m), wang-2018 (9b)–(9e), guo-2023 C1–C8).
+- Rewrote the Modeling Quick-Use Card for miao-2022 (variables $\delta_m,\mu_{n,i},I,T$, constraints C1–C7 and Algorithms 1–2), and earlier in the batch for zeng-2024 and zhang-2024.
+- Related Work paragraphs now name the actual baselines and note results where the method does not win everywhere (for example GAGLPP paths longer than diameter planning beyond seven waypoints, MCCCO using up to 5% more energy than RDOA, EqualPower tying with 24 UEs).
+
 ## [2026-11-03] Grounded batch 16 (UAV-MEC optimization, first half)
 
 - Grounded 24 optimization-based UAV-MEC source pages (SCA, BCD, PDD, Dinkelbach, Lyapunov) against their raw parses; evidence in `wiki/.grounding/source-schema-evidence-batch16-uav-mec-opt-a.json`.

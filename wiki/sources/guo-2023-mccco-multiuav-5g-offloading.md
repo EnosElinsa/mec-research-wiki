@@ -15,7 +15,7 @@ related:
   - "[[hao-2024-clp-multiuav-priority-offloading]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -35,7 +35,7 @@ A **software-defined-networking-enhanced cooperative multiple-UAV-enabled aerial
 
 **Scenario**: Ground devices generate interdependent subtask flows that can be partially offloaded to cooperating UAVs through aerial links and ground D2D relays.
 
-**Problem & objective**: Jointly choose subtask placement and D2D association to minimize total processing delay, $\min_{X,Y}\sum_i t(w(i))$, while balancing manager and computing-UAV energy.
+**Problem & objective**: Problem P1 jointly chooses subtask placement and D2D association to minimize total processing delay, $T=\min_{X,Y}\sum_{i=1}^{n}t(w(i))$; UAV energy enters only through the thresholds in C5 and C6.
 
 **Decision variables**:
 
@@ -50,11 +50,14 @@ A **software-defined-networking-enhanced cooperative multiple-UAV-enabled aerial
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Offloading and D2D association variables are binary |
-| C2 | Every subtask is assigned to exactly one computing UAV |
-| C3 | Each flow uses exactly one covered ground association |
-| C4 | Manager and computing-UAV energy remain below the threshold $e_0$ |
-| C5 | G2A and D2D distances stay within $R_{G2A}$ and $R_{D2D}$ |
+| C1 | Subtask offloading is binary, $x_{w(i),s(j)}^{v}\in\{0,1\}$ |
+| C2 | Ground D2D association is binary, $y_{w(i)}^{k}\in\{0,1\}$, $k\in N_v$ |
+| C3 | Each subtask runs on exactly one computing UAV, $\sum_{v=1}^{\lvert V\rvert}x_{w(i),s(j)}^{v}=1$ |
+| C4 | A device transmits its task to exactly one device covered by the same UAV, $\sum_{k\in A[i]}y_{w(i)}^{k}=1$ |
+| C5 | UAV manager energy, $e^{M}\leq e_0$ |
+| C6 | Computing-UAV energy, $e_v^{\mathcal C}\leq e_0$ for all $v\in V$ |
+| C7 | G2A distance, $d_{k,v}\leq R_{G2A}$ |
+| C8 | D2D distance, $d_{k,k'}\leq R_{D2D}$ |
 
 **Algorithm**: Decompose delay into D2D uplink and aerial offloading terms, solve the association subproblem with a near-optimal convex relaxation, and update task placement with a two-layer game-theoretic approximation until the offloading decisions stabilize.
 
@@ -62,7 +65,7 @@ A **software-defined-networking-enhanced cooperative multiple-UAV-enabled aerial
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Guo et al. [x] studied cooperative multi-UAV execution of interdependent subtask flows with ground D2D relaying and aerial communication. They minimized total processing delay over binary ground-device association and subtask-to-UAV placement under unique-assignment, coverage-range, and UAV energy constraints. MCCCO relaxes the D2D association for CVX and applies a two-layer game to update subtask and flow offloading decisions until a Nash equilibrium is reached. Small-scale experiments show delay close to exhaustive enumeration with much lower runtime and comparable energy, while the full scheme reduces delay and improves energy-load balance relative to cooperation or D2D ablations.
+Guo et al. [x] studied cooperative multi-UAV execution of interdependent subtask flows with ground D2D relaying and aerial communication. They minimized total processing delay over binary ground-device association and subtask-to-UAV placement under unique-assignment, coverage-range, and UAV energy constraints. MCCCO relaxes the D2D association for CVX and applies a two-layer game to update subtask and flow offloading decisions until a Nash equilibrium is reached. In small-scale tests, MCCCO reached near-optimal delay compared with the enumeration method at lower running time, with slightly higher UAV energy from A2A cooperation; it also gave lower delay than RDOA and than MCCCO without multi-UAV cooperation or without ground D2D association, while using less than 5% more energy than RDOA.
 
 ## Problem framing
 

@@ -23,7 +23,7 @@ related:
   - "[[zhan-2020-completion-time-energy-uav-mec]]"
 modeling_card: required
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Resource and Trajectory Optimization for UAV-Relay-Assisted Secure Maritime MEC
@@ -42,7 +42,7 @@ Proposes a **secure communication scheme for UAV-relay-assisted maritime MEC** w
 
 **Scenario**: $K$ maritime devices partially offload to an amplify-and-forward relay UAV, which forwards data to a coastal edge server while a flying eavesdropper listens and a coastal jammer sends friendly interference; the relay flies over $N$ slots on Rician air links.
 
-**Problem & objective**: Max-min secure computing capacity, $\max_{\{\xi_k[n],p_k[n],p_r[n],l_{k,\mathrm{loc}}[n],\mathbf u_r[n]\}}\min_k\overline{\Phi}_{k,\mathrm{sec}}$.
+**Problem & objective**: Problem (P1) (24) maximizes the minimum secure computing capacity, $\max_{\{\xi_k[n],p_k[n],p_r[n],l_{k,\mathrm{loc}}[n],\mathbf u_r[n]\}}\min_k\overline{\Phi}_{k,\mathrm{sec}}$.
 
 **Decision variables**:
 
@@ -58,10 +58,11 @@ Proposes a **secure communication scheme for UAV-relay-assisted maritime MEC** w
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Relay trajectory starts and ends at prescribed points with per-slot displacement and anti-collision limits. |
-| C2 | Slot sharing is bounded, $\sum_k\xi_k[n]\leq 1$, and device and relay powers stay within their maxima. |
-| C3 | Local and CES CPU capacities bound computed bits, including $c_kl_{k,\mathrm{loc}}[n]\leq\varphi_tF_k^{\max}$ and the CES CPU limit. |
-| C4 | Secure task and energy requirements hold: $l_{k,\mathrm{loc}}[n]+\frac{1}{2}W\xi_k[n]\varphi_t\Phi_{k,\mathrm{sec}}[n]\geq Q_k$ and average device energy is bounded. |
+| (1)-(2) | Relay trajectory starts and ends at prescribed points, per-slot displacement stays within $l_r^{\max}$, and the relay keeps distance $d_{\min}$ from the eavesdropper |
+| (5)-(6) | Device and relay powers stay within $P_k^{\max}$ and $P_r^{\max}$, and slot sharing is bounded |
+| (17)-(18) | Local and CES CPU capacities bound computed bits, $c_kl_{k,\mathrm{loc}}[n]\leq\varphi_tF_k^{\max}$ |
+| (19) | Local plus securely offloaded bits meet each task requirement $Q_k$ |
+| (20)-(22) | Device computing and offloading energy definitions with the average power limit $P_k^{\mathrm{ave}}$ |
 
 **Algorithm**: Introduce auxiliary secure-rate bounds, alternate resource variables and relay trajectory in BCD, solve convexified resource blocks and trajectory blocks with SCA, and iterate until the objective stabilizes.
 

@@ -18,7 +18,7 @@ related:
   - "[[guojun-han]]"
   - "[[tony-q-s-quek]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Latency Minimization for Secure RSMA-Assisted Mobile Edge Computing Networks
@@ -62,7 +62,7 @@ An edge user offloads task segments to several helper users with rate-splitting 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yao et al. [x] investigated a rate-splitting multiple access assisted secure mobile edge computing network, in which an edge user employs RSMA to securely offload its computation task to multiple helper users that may act as internal eavesdroppers. To keep each offloaded task segment confidential from the other helpers, each helper is treated both as a legitimate receiver of its own message and as a potential eavesdropper of the others. They minimized the total system latency by jointly optimizing the task offloading ratio, the common-message transmission rate, and the precoder matrix under secure offloading and power constraints. The non-convex problem is solved with an iterative algorithm that integrates block coordinate descent and successive convex approximation. Numerical results show that the design outperforms existing benchmark schemes and that RSMA improves both security and efficiency in MEC networks.
+Yao et al. [x] investigated a rate-splitting multiple access assisted secure mobile edge computing network, in which an edge user employs RSMA to securely offload its computation task to multiple helper users that may act as internal eavesdroppers. To keep each offloaded task segment confidential from the other helpers, each helper is treated both as a legitimate receiver of its own message and as a potential eavesdropper of the others. They minimized the total system latency by jointly optimizing the task offloading ratio, the common-message transmission rate, and the precoder matrix under secure offloading and power constraints. The non-convex problem is solved with an iterative algorithm that integrates block coordinate descent and successive convex approximation. In simulations, the design achieved lower latency than secure full offloading and a benchmark without the common stream, and it approached the latency lower bound given by a benchmark without eavesdropping as the transmit power budget grew.
 
 ## Problem framing
 

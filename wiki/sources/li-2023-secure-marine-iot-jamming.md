@@ -18,7 +18,7 @@ related:
   - "[[high-altitude-platform-station]]"
   - "[[dai-2023-hybrid-marine-mmwl]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Secure Computation Offloading for Marine IoT: An Energy-Efficient Design via Cooperative Jamming
@@ -37,7 +37,7 @@ A secure marine-IoT computation-offloading design where **unmanned surface vehic
 
 **Scenario**: Unmanned surface vehicles first move to scheduled maritime positions, upload workloads to a high-altitude platform through NOMA, and then transmit cooperative jamming while the platform securely offloads part of the aggregate workload to an onshore base station. The remaining workload is computed locally at the platform under an end-to-end latency limit.
 
-**Problem & objective**: Problem TEMP minimizes $E^{\mathrm{tot}}=\sum_i\left(E_{io}+E_{iS}+E_{iE}\right)+E_{S,BS}+E_S$, the system energy for USV movement, uploading, jamming, platform offloading, and platform local computing.
+**Problem & objective**: Problem TEMP (22) minimizes $E^{\mathrm{tot}}=\sum_i\left(E_{io}+E_{iS}+E_{iE}\right)+E_{S,BS}+E_S$, the system energy for USV movement, uploading, jamming, platform offloading, and platform local computing.
 
 **Decision variables**:
 
@@ -53,11 +53,12 @@ A secure marine-IoT computation-offloading design where **unmanned surface vehic
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Scheduled USV positions remain inside platform coverage and preserve the NOMA decoding order |
-| C2 | Upload, platform, and jamming powers remain within their device limits |
-| C3 | Secure platform-to-base-station throughput remains positive and carries the selected workload |
-| C4 | Local and offloaded workloads sum to the aggregate workload |
-| C5 | End-to-end duration satisfies $L_0+t+L_1\le L_d$ |
+| (1)-(2) | Initial and target USV positions lie within the HAP coverage radius $R$ |
+| (4) | USV movement time to the target positions stays within $L_0$ |
+| (15) | Secure offloading to the base station and local HAP computing finish within $L_1$ |
+| (17)-(18) | Upload duration $t>0$ and offloaded workload $0\le S\le S^{\mathrm{tot}}$ |
+| (19)-(21) | USV upload power, HAP transmit power, and USV jamming power stay within their maxima |
+| Latency (untagged) | End-to-end duration satisfies $L_0+t+L_1\le L_d$ |
 
 **Algorithm**: The vertical decomposition treats USV positions as the top problem and upload duration, workload split, platform power, and jamming powers as the bottom problem. PAS combines a closed-form duration, polyblock outer approximation for platform power, and bisection for workload and jamming powers; CASE samples encoded position ratios by cross entropy, evaluates each sample with PAS, and updates the elite distribution.
 
@@ -65,7 +66,7 @@ A secure marine-IoT computation-offloading design where **unmanned surface vehic
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] designed secure marine computation offloading in which scheduled surface vehicles upload through NOMA and later jam an eavesdropper during high-altitude-platform offloading. They minimized total movement, upload, jamming, local-compute, and offloading energy over vehicle positions, upload duration, workload split, platform power, and jamming powers under coverage, secrecy, power, workload, and latency constraints. Their layered solution combines polyblock outer approximation and bisection in PAS with cross-entropy position search in CASE. CASE stayed within 1.723% of enumeration while saving more than 80% computation time, and joint jamming-power optimization reduced total energy by 27.32% on average versus fixed jamming.
+Li et al. [x] designed secure marine computation offloading in which scheduled surface vehicles upload through NOMA and later jam an eavesdropper during high-altitude-platform offloading. They minimized total movement, upload, jamming, local-compute, and offloading energy over vehicle positions, upload duration, workload split, platform power, and jamming powers under coverage, movement-time, power, workload, and latency constraints. Their layered solution combines polyblock outer approximation and bisection in PAS with cross-entropy position search in CASE. CASE stayed within 1.723% of enumeration (random selection: 9.940%) while saving more than 80% computation time, and joint jamming-power optimization reduced total energy by 27.32% on average versus fixed jamming.
 
 ## Problem framing
 

@@ -16,7 +16,7 @@ related:
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -34,37 +34,36 @@ A drone-swarm-assisted MEC offloading scheme for smart-city / Industrial IoT tha
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A drone swarm with onboard MEC computers serves mobile Industrial-IoT users in multiple monitoring areas. A ground station performs global area/cluster scheduling, while each UAV performs local path planning and offloading; channels are air-to-ground and users move within each coverage region.
+**Scenario**: A ground station dispatches $U$ UAVs with onboard computers to $M$ circular monitoring areas of radius $r$, each holding mobile devices (MDs) that move under a Gauss-Markov mobility model. Global path planning at the ground station assigns the closest UAV to each area in order of area priority $\delta_m$ (ranked by user count). Inside an area, the onboard computer plans $I$ waypoints and serves accessed MDs over air-to-ground links with bandwidth $B$ shared equally among accessed devices. A UAV is recalled when its remaining energy cannot cover the return flight $E_u^{Ba}$.
 
-**Problem & objective**: GAGLPP hierarchical path-planning and offloading, a mixed discrete-continuous energy-efficiency problem, maximizes the number of offloading services and minimizes path length/task latency, summarized as $\max\mathrm{EE}=\text{served tasks}/\text{flight+communication+compute energy}$.
+**Problem & objective**: $\mathbf P:\max_{\delta_m,\mu_n,I,T}\eta$ in (16), with the energy-efficiency model $\eta=E_u^{\mathrm{total}}/T_{ta}^{\mathrm{total}}$ as written in the parse, where $E_u^{\mathrm{total}}=E_u^{\mathrm{Gl}}+\sum_{i=1}^{I}E_u^{Ta}+E_u^{\mathrm{Lo}}$ sums global flight, offloading-service and local flight/hover energy and $T_{ta}^{\mathrm{total}}$ is total task completion latency. Check the published paper for the direction of the ratio. P is split into P1 (24), which minimizes total task latency subject to C1–C5 and C7, and P2 (26), which minimizes total UAV energy subject to C1–C4, C6 and C7.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Area/cluster assignment | $x_{u,r}$ | binary | UAV $u$ is assigned to monitoring area $r$ |
-| Local trajectory | $\mathbf q_u(t)$ | continuous path | UAV route within its assigned area |
-| Offloading ratio | $\lambda_{u,i}(t)$ | continuous, $[0,1]$ | Fraction of task $i$ offloaded to UAV $u$ |
-| Coverage radius | $R_u(t)$ | continuous, bounded | Communication service radius selected from user mobility |
-| Scheduling priority | $\pi_r$ | discrete ordering | Global service order based on priority, energy, and distance |
+| Area priority / assignment order | $\delta_m$ | discrete, $\{1,\dots,M\}$ | Priority used by the ground station to assign UAVs to areas |
+| Channel access / offloaded share | $\mu_{n,i}$ | written $[0,1]$; $\mu_n=1$ means access | Whether MD $n$ offloads at waypoint $i$; offloaded data $\mu_{n,i}b_{n,i}$ |
+| Waypoint set | $I$ | discrete | Number and positions $P_{u,i}$ of local-path waypoints |
+| Timing | $T$ | continuous | Time variables listed under the max in (16); not separately defined in the parse |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each monitoring area and user is assigned to a feasible UAV cluster |
-| C2 | UAV paths remain within their coverage and motion limits |
-| C3 | Offloading ratios and local/remote workload satisfy task conservation |
-| C4 | Task completion latency and UAV communication/computation capacity limits hold |
-| C5 | Flight, communication, and computation energy stay within UAV budgets |
+| C1 (17) | $\mu_{n,i}=[0,1]$ |
+| C2 (18) | $\sum_{n=1}^{N}\mu_{n,i}\leq N$ |
+| C3 (19) | Offloading-service time does not exceed the MD's local computing time, $T_{u,n,i}^{Ta}\leq T_{Q^n}^{d}$ |
+| C4 (20) | Service time at a waypoint fits the leg duration, $T_{u,i}^{Ta}\leq T_{u,i+1,i}^{lo}$ |
+| C5 (21) | Total latency lies between the offloading transmission-plus-UAV-computing time and the MD local computing time $C\sum_n b_{n,i}/f_d$ |
+| C6 (22) | $0\leq E_u^{\mathrm{total}}\leq E_u^{\mathrm{In}}-E_{u,i}^{Ba}$, keeping return-flight energy |
+| C7 (23) | Each waypoint stays within the area, $\sqrt{(X_{u,i}-x_m)^2+(Y_{u,i}-y_m)^2}\leq r$ |
 
-**Algorithm**: Ground station ranks areas by priority, residual energy, and distance → assign UAV clusters → onboard double-loop optimization updates local coverage/path/offloading → iterate until served-task count, latency, and energy-efficiency objectives stabilize.
+**Algorithm**: Theorem 1 shows that $\mu_{n,i}=1$ if and only if the UAV–MD distance is at most $D_{u,n,i}^{\max}$ in (30). Algorithm 1 (dynamic waypoint planning based on user mobility) places each waypoint to cover as many predicted MD positions as possible within $D_{u,n,i}^{\max}$ for P1. Algorithm 2 (GAGLPP) repeats over waypoints: global flight energy from (4)–(5), service time and energy from (11)–(12), MD positions from (7), the next waypoint from Algorithm 1 and leg energy from (15), until $i=I$; it then returns $\eta$ if $E_u^{\mathrm{total}}\leq E_u^{\mathrm{In}}-E_{u,i}^{Ba}$.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Miao et al. [x] studied drone-swarm path planning and computation offloading for Industrial IoT mobile edge computing. They formulated a hierarchical global and local design that schedules UAV clusters across monitoring areas and jointly optimizes local paths, coverage, and task offloading to increase served tasks and energy efficiency while reducing latency. The GAGLPP method ranks areas using priority, residual UAV energy, and distance at the ground station, then runs an onboard iterative path/offloading update for each UAV. Local decisions account for user mobility, communication coverage, computation cost, and task-completion latency. Experiments report more offloading services, shorter path length, and higher energy efficiency than the evaluated comparison approaches.
+Miao et al. [x] studied drone-swarm path planning and computation offloading for Industrial IoT mobile edge computing. They formulated a UAV energy-efficiency problem over area priority, device channel access, waypoints, and timing, subject to service-time, leg-duration, latency, return-energy, and area constraints, and split it into latency-minimization and energy-minimization subproblems. In their GAGLPP algorithm, the ground station assigns the closest UAV to areas in order of priority, and each UAV places waypoints from predicted device positions so that as many devices as possible fall within the maximum offloading distance. Device positions follow a Gauss-Markov mobility model, and a device offloads only when offloading is faster than local computing. Against diameter, circle, and RL-based path planning, GAGLPP served more devices, gave lower total task latency, and kept energy efficiency in $[4.5,5.5]$; its path was shorter only up to seven waypoints and became longer than diameter path planning beyond that.
 
 ## Problem framing
 

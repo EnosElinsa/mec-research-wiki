@@ -19,7 +19,7 @@ related:
   - "[[dai-2023-hybrid-noma-fdma-marine]]"
   - "[[qian-2022-uav-maritime-iot-noma]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Coded Caching Enabled D2D Content Delivery in UAV-Assisted Marine Edge Networks
@@ -38,7 +38,7 @@ Introduces OJC3D, an online joint coded-caching and content-delivery algorithm f
 
 **Scenario**: A rotary-wing UAV carries complete content files, surface buoys bridge RF and underwater acoustic links, and mobile autonomous underwater vehicles cache MDS-coded blocks. A requesting underwater vehicle can recover content from connected peers or obtain the complete file through a buoy from the UAV.
 
-**Problem & objective**: The long-term online problem minimizes $\frac{1}{T}\sum_{t=1}^{T}\mathcal D^{\mathrm{Total}}(t)$, the time-average content access delay, over caching, request-source, bandwidth, and UAV-trajectory decisions under an average UAV energy budget.
+**Problem & objective**: Problem $\mathbb G_1$ (22) minimizes $\frac{1}{T}\sum_{t=1}^{T}\mathcal D^{\mathrm{Total}}(t)$, the time-average content access delay, over caching, request-source, bandwidth, and UAV-trajectory decisions under an average UAV energy budget.
 
 **Decision variables**:
 
@@ -53,12 +53,12 @@ Introduces OJC3D, an online joint coded-caching and content-delivery algorithm f
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Time-average UAV energy does not exceed $E_{\max}^{\mathrm{UAV}}$ |
-| C2 | Binary coded-block placement fits every AUV cache: $\sum_c\varphi_u^c(t)s_c\le S_u$ |
-| C3 | A request source must be connected and possess the requested coded block |
-| C4 | The selected sources provide either zero or the $k$ blocks required for MDS decoding |
-| C5 | Acoustic and RF bandwidth fractions do not exceed the available bandwidth |
-| C6 | The UAV returns to its initial position and respects the per-slot movement limit |
+| (22a) | Time-average UAV energy does not exceed $E_{\max}^{\mathrm{UAV}}$ |
+| (22b)-(22c) | Binary coded-block placement fits every AUV cache, $\sum_c\varphi_u^c(t)s_c\le S_u$ |
+| (22d)-(22h) | Binary request sources must be connected peers holding the block, or a buoy linked to the UAV |
+| (22i) | Selected sources provide 0, 1, or the $k$ blocks required for MDS decoding |
+| (22j)-(22l) | Acoustic and RF bandwidth fractions lie in $[0,1]$ and sum to at most one per node |
+| (22m)-(22n) | The UAV returns to its initial position and respects the per-slot movement limit $d_{\max}^{\mathrm{UAV}}$ |
 
 **Algorithm**: OJC3D converts the long-term energy constraint into a virtual queue and minimizes a per-slot drift-plus-penalty objective. Each slot alternates SCA-based UAV trajectory planning, greedy submodular coded-cache placement, and relaxed mixed-integer request and bandwidth optimization with rounding until the objective stabilizes.
 

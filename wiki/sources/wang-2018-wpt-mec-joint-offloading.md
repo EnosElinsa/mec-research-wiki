@@ -15,7 +15,7 @@ related:
   - "[[mao-2016-lodco-eh-mec-offloading]]"
   - "[[jie-xu]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Offloading and Computing Optimization in Wireless Powered Mobile-Edge Computing Systems
@@ -43,17 +43,17 @@ Proposes a unified **MEC + WPT** design where a multi-antenna AP broadcasts wire
 | Energy covariance | $Q$ | Hermitian PSD, $Q\succeq0$ | AP wireless-power transmit covariance |
 | Offloading duration | $t_i$ | continuous, $t_i\ge0$ | TDMA time assigned to user $i$ |
 | Offloaded bits | $\ell_i$ | continuous, $0\le\ell_i\le R_i$ | User $i$ bits sent to MEC |
-| Local CPU frequency | $f_{i,n}$ | continuous, $0<f_{i,n}\le f_i^{\max}$ | Frequency for local CPU cycle index $n$ |
+| Local CPU frequency | $f_{i,n}$ | continuous, $0\le f_{i,n}\le f_i^{\max}$ | Frequency for local CPU cycle index $n$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Local latency: $\sum_{n=1}^{C_i(R_i-\ell_i)}1/f_{i,n}\le T$ |
-| C2 | Harvested-energy budget: local plus offloading energy $\le T\zeta\operatorname{tr}(QH_i)$ |
-| C3 | TDMA time: $\sum_i t_i\le T$ |
-| C4 | Covariance feasibility: $Q\succeq0$ |
-| C5 | Bit and CPU bounds: $0\le\ell_i\le R_i$ and $0<f_{i,n}\le f_i^{\max}$ |
+| (9b) | Local latency: $\sum_{n=1}^{C_i(R_i-\ell_i)}1/f_{i,n}\le T$ |
+| (9c) | Harvested-energy budget: local computing, offloading and circuit energy $\le T\zeta\operatorname{tr}(QH_i)$ |
+| (9d) | TDMA time and bit bounds: $\sum_i t_i\le T$, $t_i\ge0$, $0\le\ell_i\le R_i$ |
+| (9e) | CPU bound: $0\le f_{i,n}\le f_i^{\max}$ |
+| Model rule | $Q\succeq0$ is imposed in the minimization of (9a) |
 
 **Algorithm**: Apply the equal-local-frequency lemma and a convex perspective reformulation, then solve the convex problem through Lagrange duality, KKT conditions, and an ellipsoid search for the dual variables; recover a semi-closed-form primal allocation.
 
@@ -61,7 +61,7 @@ Proposes a unified **MEC + WPT** design where a multi-antenna AP broadcasts wire
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] formulated a wireless-powered MEC system in which a multi-antenna AP jointly supplies energy and computing service to multiple users. They minimized AP radiated plus MEC computing energy by selecting the energy covariance, TDMA durations, offloaded bits, and local CPU frequencies under latency, harvested-energy, and time constraints. A convex perspective reformulation and KKT-based dual solution produced a semi-closed-form allocation, with an ellipsoid search for dual variables. Numerical comparisons showed lower AP energy than local-only, full-offload, isotropic, and separate designs, while every user retained a positive local-computing portion.
+Wang et al. [x] formulated a wireless-powered MEC system in which a multi-antenna AP jointly supplies energy and computing service to multiple users. They minimized AP radiated plus MEC computing energy by selecting the energy covariance, TDMA durations, offloaded bits, and local CPU frequencies under latency, harvested-energy, and time constraints. A convex perspective reformulation and KKT-based dual solution produced a semi-closed-form allocation, with an ellipsoid search for dual variables. The analysis showed that each user always keeps some bits for local computing. In simulations, the joint design had the lowest AP energy against local computing only, computation offloading only, joint design with isotropic WPT, and separate MEC-WPT design, although several benchmarks came close for short blocks and equal offloading-time allocation came close for $K\ge15$ users.
 
 ## Problem framing
 

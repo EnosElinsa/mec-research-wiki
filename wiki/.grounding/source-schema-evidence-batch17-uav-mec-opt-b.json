@@ -1,0 +1,680 @@
+{
+  "entries": [
+    {
+      "slug": "bui-2025-noma-near-far-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications.md",
+          "lines": "203,207,211,215,219,223,227",
+          "note": "problem (23a)-(23g)"
+        },
+        {
+          "path": "raw/sources/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications.md",
+          "lines": "245,249,331,335,339,351,355,425,429,441",
+          "note": "association, power and computing subproblems and stopping rule"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications.md",
+          "lines": "463,465,467,486,488,498,503",
+          "note": "benchmarks and latency results"
+        }
+      ]
+    },
+    {
+      "slug": "dai-2023-hybrid-marine-mmwl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks.md",
+          "lines": "100,106,206",
+          "note": "task split (1), distance limits, latency"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks.md",
+          "lines": "222,225,228,232,236,240,244,248,252,256,260,264",
+          "note": "MMWL and (19)-(29)"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks.md",
+          "lines": "288,294,308,328,342,385,399",
+          "note": "layered subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks.md",
+          "lines": "44,770,866,1003",
+          "note": "within 3% of LINGO, >90% time saving"
+        }
+      ]
+    },
+    {
+      "slug": "dai-2023-hybrid-noma-fdma-marine",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks.md",
+          "lines": "41,121,251,305,323",
+          "note": "NOMA uploading, displacement (1),(20), secrecy (28), latency"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks.md",
+          "lines": "339,342,345,349,353,357,361,365,369",
+          "note": "ECM and (33)-(39)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks.md",
+          "lines": "431,445,479,527",
+          "note": "layered subproblems and Lagrangian"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks.md",
+          "lines": "45,807,815,865,885",
+          "note": "LINGO comparison"
+        }
+      ]
+    },
+    {
+      "slug": "dai-2024-multiuav-marine-welfare",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design.md",
+          "lines": "358,418,421,424,428,432,436,440,444,448,451",
+          "note": "MSR and (22)-(29)"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design.md",
+          "lines": "485,488,495,501,504",
+          "note": "vertical decomposition"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design.md",
+          "lines": "521,557,611,642,674",
+          "note": "double auction and preference"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design.md",
+          "lines": "975,977,978,979,980,1093,1095",
+          "note": "four benchmarks, higher energy"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2023-mccco-multiuav-5g-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.md",
+          "lines": "296,302,319,322,325",
+          "note": "delay model and problem P1 C1-C8"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.md",
+          "lines": "331,338,344,362,366,369,427",
+          "note": "decomposition into P2-P4, relaxation and two-layer game"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.md",
+          "lines": "459,570,652,675",
+          "note": "enumeration, RDOA and ablation comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "he-2024-backscatter-wpmec-cooperation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation.md",
+          "lines": "154,168,182,202,222,236,250,264,270",
+          "note": "computing, BackCom, AC and energy model (3)-(20)"
+        },
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation.md",
+          "lines": "280,284,288,292,296,300,304,308,312,316,320,324,328,331",
+          "note": "problem P1 (21a)-(21m) C1-C12"
+        },
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation.md",
+          "lines": "342,354,401",
+          "note": "Dinkelbach P2/P3 and algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation.md",
+          "lines": "475,520,564,566",
+          "note": "baselines, convergence and EE comparison"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2025-dual-aav-maritime-secure-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming.md",
+          "lines": "245,249,253,257,261,265,269",
+          "note": "problem (14a)-(14g)"
+        },
+        {
+          "path": "raw/sources/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming.md",
+          "lines": "286,292,294,499,505",
+          "note": "MOMA and IMOMA updates"
+        },
+        {
+          "path": "raw/sources/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming.md",
+          "lines": "33,35",
+          "note": "IMOMA contributions, 43.20% claim"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming.md",
+          "lines": "645,647,648,649,705,711,731,733",
+          "note": "CB vs non-CB values and optimizer comparison"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-coded-caching-uav-marine",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks.md",
+          "lines": "239,243,247,251,255,263,267,270,273,277",
+          "note": "G1 (22)-(22h)"
+        },
+        {
+          "path": "raw/sources/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks.md",
+          "lines": "281,285,289,293,297,301,305",
+          "note": "(22i)-(22n)"
+        },
+        {
+          "path": "raw/sources/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks.md",
+          "lines": "5",
+          "note": "abstract claims"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks.md",
+          "lines": "710,716,744",
+          "note": "D2D removal 25%/35%, 9% delay, 29% energy"
+        }
+      ]
+    },
+    {
+      "slug": "li-2023-secure-marine-iot-jamming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming.md",
+          "lines": "191,195,198,202,208,214,296",
+          "note": "coverage (1)-(2), movement (4), latency (15)"
+        },
+        {
+          "path": "raw/sources/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming.md",
+          "lines": "303,306,309,311,313,316,320,324,328,332,335,337,339",
+          "note": "TEMP (16)-(22)"
+        },
+        {
+          "path": "raw/sources/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming.md",
+          "lines": "343,424,506,550,572",
+          "note": "PAS layers, polyblock, bisection"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming.md",
+          "lines": "885,899,941,1031",
+          "note": "1.723% gap, >80% time saving, 27.32% energy reduction"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-irs-secure-wpmec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System.md",
+          "lines": "181,184,188,192,196,200,204,208",
+          "note": "P0 (12a)-(12f)"
+        },
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System.md",
+          "lines": "231,234,268,300,316,334,354,392,430,484",
+          "note": "P1-P5 SDR, Taylor, Lagrange"
+        },
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System.md",
+          "lines": "217",
+          "note": "solution approach"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System.md",
+          "lines": "5,725,729",
+          "note": ">45% improvement, without-IRS scheme"
+        }
+      ]
+    },
+    {
+      "slug": "liao-2025-ris-uav-usv-resource-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network.md",
+          "lines": "149,154,157,163,169,172,177,183,189,195",
+          "note": "flight power (13), C2-C6 (14)-(20)"
+        },
+        {
+          "path": "raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network.md",
+          "lines": "198,201,204,207,210,213,219,224,230,233",
+          "note": "C7-C9 and P1 (25)"
+        },
+        {
+          "path": "raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network.md",
+          "lines": "237,247,345,464,476,570",
+          "note": "three subproblems: GWO routing, ICRAL, MODE"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network.md",
+          "lines": "5,39,655,710,714",
+          "note": "~46% lower cumulative cost vs advanced algorithms"
+        }
+      ]
+    },
+    {
+      "slug": "liao-2026-aoi-ris-uav-usv-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network.md",
+          "lines": "57,63,89,163,171,179,185,191,209",
+          "note": "C1-C9 (1)-(19)"
+        },
+        {
+          "path": "raw/sources/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network.md",
+          "lines": "197,223,226",
+          "note": "flight power and P1"
+        },
+        {
+          "path": "raw/sources/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network.md",
+          "lines": "290,297,303,308",
+          "note": "EWOA trajectory subproblem"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network.md",
+          "lines": "5,604,613",
+          "note": "3.3e5 J at 9.6 s, ~50% reduction"
+        }
+      ]
+    },
+    {
+      "slug": "lu-2023-uav-relay-secure-maritime-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC.md",
+          "lines": "92,98,120,124,214,220,228,234,242,248",
+          "note": "constraints (1)-(22)"
+        },
+        {
+          "path": "raw/sources/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC.md",
+          "lines": "264,268,271,278,282",
+          "note": "P1 (24) and P2"
+        },
+        {
+          "path": "raw/sources/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC.md",
+          "lines": "317,324,336,348,404,438,452,488",
+          "note": "BCD subproblems P3.1-P4.1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC.md",
+          "lines": "5,538,809,835,837,841",
+          "note": "four benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2023-noma-marine-emergency-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things.md",
+          "lines": "249,253,257,261,265,269,273",
+          "note": "P1 C1-C6 (15)"
+        },
+        {
+          "path": "raw/sources/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things.md",
+          "lines": "289,299,307,325,339,367,404,420,436,490,494",
+          "note": "decomposition, bisection power, CPU closed form, coalition"
+        },
+        {
+          "path": "raw/sources/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things.md",
+          "lines": "553",
+          "note": "coalition preference"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things.md",
+          "lines": "631,634,636,655,697,737",
+          "note": "benchmark schemes and lowest overhead"
+        }
+      ]
+    },
+    {
+      "slug": "miao-2022-gaglpp-drone-swarm-iiot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things.md",
+          "lines": "102,270,329,335,347,361,427,431,433",
+          "note": "scenario, priority, mobility, access and recall"
+        },
+        {
+          "path": "raw/sources/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things.md",
+          "lines": "436,439,442,446,450,454,458,462,466,470,474,479,482,485,490,493",
+          "note": "problem P (16)-(23), P1 and P2"
+        },
+        {
+          "path": "raw/sources/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things.md",
+          "lines": "522,525,537,634,638,646,647,648",
+          "note": "Theorem 1, Algorithm 1 and Algorithm 2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things.md",
+          "lines": "872,874,916,918",
+          "note": "comparison with diameter, circle and RL-based path planning"
+        }
+      ]
+    },
+    {
+      "slug": "michailidis-2024-secure-ris-uav-mec-iot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers.md",
+          "lines": "376,379,383,387,391,395,399,403,407,411,415,419,423,426",
+          "note": "P1 (38a)-(38k)"
+        },
+        {
+          "path": "raw/sources/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers.md",
+          "lines": "438,441,451,463,489,504,533,629,637",
+          "note": "Dinkelbach, BCD, dual, phase subproblems"
+        },
+        {
+          "path": "raw/sources/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers.md",
+          "lines": "692,702,708",
+          "note": "Algorithm 1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers.md",
+          "lines": "723",
+          "note": "simulation parameters"
+        }
+      ]
+    },
+    {
+      "slug": "qi-2024-msar-minmax-latency",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue.md",
+          "lines": "188,192,198,202",
+          "note": "surveillance-UAV position and altitude (6)-(9)"
+        },
+        {
+          "path": "raw/sources/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue.md",
+          "lines": "314,318,322,326,330,334,338,342,346,349",
+          "note": "P1 (22)-(22h)"
+        },
+        {
+          "path": "raw/sources/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue.md",
+          "lines": "362,380,404,460,559",
+          "note": "P2, SP1-SP3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue.md",
+          "lines": "637,734",
+          "note": "three benchmarks, latency and delay difference"
+        }
+      ]
+    },
+    {
+      "slug": "sheng-2025-ris-online-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS.md",
+          "lines": "90,136,187",
+          "note": "time split, Bernoulli arrivals, EE (21)"
+        },
+        {
+          "path": "raw/sources/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS.md",
+          "lines": "190,192,194,197,201,205,208,211,215,219,223,227,231,235,238,240",
+          "note": "problem (22a)-(22k)"
+        },
+        {
+          "path": "raw/sources/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS.md",
+          "lines": "291,299,315,389,423,489",
+          "note": "drift-plus-penalty, outage, Bernstein, BCD"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS.md",
+          "lines": "594,596,598,600,602",
+          "note": "EB, CM, WO benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2018-wpt-mec-joint-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "205,209,213,217,221,225,228",
+          "note": "problem (P1) (9a)-(9e)"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "234,242,245,281,299,303,365,405",
+          "note": "Lemma 1, P1.1, dual method, Algorithm 1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems.md",
+          "lines": "431,437,439,440,441,442,456,458,540",
+          "note": "benchmarks and AP energy results"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-maritime-eh-jcora",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting.md",
+          "lines": "124,166,174,196",
+          "note": "arrivals and queues (2)-(11)"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting.md",
+          "lines": "234,237,239,240,241,242,243,244,245,246,247,248,249",
+          "note": "P1 C1-C11 (17)"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting.md",
+          "lines": "258,292,298,364,398,436,454,500",
+          "note": "virtual queue, P2 subproblems, tradeoff (39)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting.md",
+          "lines": "636,638,640,641,645,647,654",
+          "note": "FRA, LRA, PRA, TRA baselines and results"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-secure-reliable-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission.md",
+          "lines": "46,136",
+          "note": "uplink network and reliability motivation"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission.md",
+          "lines": "281,284",
+          "note": "P1 (34) C1-C6"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission.md",
+          "lines": "412,422,445",
+          "note": "augmented-Lagrangian convergence, ~30 iterations"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission.md",
+          "lines": "474,476",
+          "note": "EEO-NTO, COMEO-TO, TxEO-TO comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "yao-not-in-parse-secure-rsma-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_for_Secure_RSMA-Assisted_Mobile_Edge_Computing_Networks/Latency_Minimization_for_Secure_RSMA-Assisted_Mobile_Edge_Computing_Networks.md",
+          "lines": "70,82,112,118,122,137",
+          "note": "system model and secrecy rate"
+        },
+        {
+          "path": "raw/sources/Latency_Minimization_for_Secure_RSMA-Assisted_Mobile_Edge_Computing_Networks/Latency_Minimization_for_Secure_RSMA-Assisted_Mobile_Edge_Computing_Networks.md",
+          "lines": "143,146,150,180,298,350,384",
+          "note": "problem (P1) (12b)-(12e) and BCD-SCA algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Latency_Minimization_for_Secure_RSMA-Assisted_Mobile_Edge_Computing_Networks/Latency_Minimization_for_Secure_RSMA-Assisted_Mobile_Edge_Computing_Networks.md",
+          "lines": "411,412,413,444,460",
+          "note": "benchmarks and latency comparison"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2024-usv-fleet-collaborative-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design.md",
+          "lines": "221,225,235",
+          "note": "link reliability and angle bounds"
+        },
+        {
+          "path": "raw/sources/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design.md",
+          "lines": "316,354,362,396,426",
+          "note": "auction valuation, utility, equilibrium bid"
+        },
+        {
+          "path": "raw/sources/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design.md",
+          "lines": "533,535,538,542,546,550,554,558,561,572,596,682",
+          "note": "P1 (48) C1-C5, P2/P3 ADMM"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design.md",
+          "lines": "849,851,852,853,854",
+          "note": "RBS, GBS, CCPS, HCPS"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2024-dlrl-maritime-usv",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.md",
+          "lines": "35,205,207,210",
+          "note": "ERTM (14)"
+        },
+        {
+          "path": "raw/sources/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.md",
+          "lines": "214,218,222,226,229",
+          "note": "(14a)-(14d)"
+        },
+        {
+          "path": "raw/sources/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.md",
+          "lines": "368,416,452",
+          "note": "Q-learning inner, DDPG outer"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.md",
+          "lines": "458,460,467,491,499,643",
+          "note": "four benchmarks, ~400 episodes"
+        }
+      ]
+    }
+  ]
+}

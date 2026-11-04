@@ -17,7 +17,7 @@ related:
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-UAV Aided Multi-Access Edge Computing in Marine Communication Networks: A Joint System-Welfare and Energy-Efficient Design
@@ -36,7 +36,7 @@ A two-layer marine MEC framework — a cluster of UAVs (aerial layer, with onboa
 
 **Scenario**: A cluster of UAVs collects marine data and has onboard edge computing, while multiple ocean beacon stations provide additional edge capacity. Each UAV processes part of its workload locally and can offload the remaining fraction to one selected station over a multi-access marine link.
 
-**Problem & objective**: The maximum-system-revenue problem jointly chooses station matching and offloading resources to maximize welfare minus weighted energy, $\max_{\boldsymbol\Delta,\boldsymbol\epsilon,\mathbf t} R^{\mathrm{tot}}=U^{\mathrm{tot}}-\varpi E^{\mathrm{tot}}$.
+**Problem & objective**: Problem (MSR) jointly chooses station matching and offloading resources to maximize welfare minus weighted energy, $\max_{\boldsymbol\Delta,\boldsymbol\epsilon,\mathbf t} R^{\mathrm{tot}}=U^{\mathrm{tot}}-\varpi E^{\mathrm{tot}}$.
 
 **Decision variables**:
 
@@ -62,7 +62,7 @@ A two-layer marine MEC framework — a cluster of UAVs (aerial layer, with onboa
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Dai et al. [x] investigated multi-UAV multi-access edge computing in a two-layer marine network where UAVs can compute locally or partially offload workloads to ocean beacon stations. They formulated station selection, offloading ratio, and transmission duration as a nonconvex system-revenue maximization problem that subtracts weighted UAV and station energy from total participant utility. Their vertical decomposition uses a double auction for station matching, bisection for partial offloading, and a bounded search for transmission time. Simulations show higher transaction success and system revenue than distance-based and random station selection, while also exposing the additional energy consumed when more UAV-station transactions succeed.
+Dai et al. [x] investigated multi-UAV multi-access edge computing in a two-layer marine network where UAVs can compute locally or partially offload workloads to ocean beacon stations. They formulated station selection, offloading ratio, and transmission duration as a nonconvex system-revenue maximization problem that subtracts weighted UAV and station energy from total participant utility. Their vertical decomposition uses a double auction for station matching, bisection for partial offloading, and a bounded search for transmission time. Simulations show higher transaction success and system revenue than distance-based and random station selection and than fixed or random offloading ratios, while consuming more energy because more UAV-station transactions succeed.
 
 ## Problem framing
 

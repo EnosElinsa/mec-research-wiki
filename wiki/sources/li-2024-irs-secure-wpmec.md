@@ -22,7 +22,7 @@ related:
   - "[[mao-2025-irs-noma-fl-secrecy]]"
   - "[[yonghui-li]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -42,7 +42,7 @@ Deploys an **intelligent reflecting surface (IRS)** to improve the **secure comp
 
 **Scenario**: An AP with an MEC server wirelessly charges $K$ single-antenna users through an $N$-element IRS; users then partially offload over TDMA while a passive Eve listens. The AP-user, AP-IRS-user, user-IRS-AP, and user-IRS-Eve links use AWGN fading channels with perfect CSI.
 
-**Problem & objective**: Problem (P1), a non-convex continuous optimization, maximizes total secure computation task bits, $\max \sum_k[Bt_k(R_{a,k}-R_{e,k})+Tf_k/c_k]$, subject to energy causality, IRS phase, power, time, and local-computing bounds.
+**Problem & objective**: Problem (P0) (12), a non-convex continuous optimization rewritten as (P1) (13), maximizes total secure computation task bits, $\max \sum_k[Bt_k(R_{a,k}-R_{e,k})+Tf_k/c_k]$, subject to energy causality, IRS phase, power, time, and local-computing bounds.
 
 **Decision variables**:
 
@@ -52,18 +52,18 @@ Deploys an **intelligent reflecting surface (IRS)** to improve the **secure comp
 | WPT IRS phases | $\mathbf v_0$ | complex unit modulus, $\|v_0(n)\|=1$ | IRS reflection during energy harvesting |
 | Offloading IRS phases | $\mathbf v_k$ | complex unit modulus, $\|v_k(n)\|=1$ | IRS reflection for user $k$'s offloading |
 | User transmit power | $p_k$ | continuous, $0\le p_k\le P_k^{\max}$ | Secure offloading power |
-| Harvest/offload time | $t_0,t_k$ | continuous, $\ge0$, $\sum_k t_k\le T$ | WPT and TDMA durations |
+| Harvest/offload time | $t_0,t_k$ | continuous, $\ge0$, $\sum_{k=0}^K t_k\le T$ | WPT and TDMA durations |
 | Local CPU frequency | $f_k$ | continuous, $0\le f_k\le F_k^{\max}$ | Local computing rate |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Energy causality: harvested energy covers local-computing and offloading energy for each user |
-| C2 | Unit-modulus IRS phases, $\|v_k(n)\|=1$ for WPT and offloading stages |
-| C3 | AP energy covariance is PSD and obeys $\mathrm{Tr}(\mathbf W)\le P$ |
-| C4 | TDMA timing obeys $\sum_k t_k\le T$, with $0\le t_0,t_k\le T$ |
-| C5 | User transmit power and CPU frequency obey their per-user caps |
+| (12a) | Energy causality: offloading plus local-computing energy stays within harvested energy, $p_kt_k+T\xi_kf_k^3\leq\eta t_0\mathrm{Tr}(\mathbf G_k\mathbf W)$ |
+| (12b) | Unit-modulus IRS phases in the WPT and offloading stages |
+| (12c) | AP energy covariance is PSD with $\mathrm{Tr}(\mathbf W)\le P$ |
+| (12d) | Harvesting and TDMA offloading times satisfy $\sum_{k=0}^Kt_k\le T$, $0\le t_k\le T$ |
+| (12e)-(12f) | User transmit power and CPU frequency stay within $P_k^{\max}$ and $F_k^{\max}$ |
 
 **Algorithm**: Taylor expansion and SDR for AP beamforming/WPT IRS phases → SDR for offloading IRS phases → Lagrange duality and KKT for power/time → alternate the three blocks until secure computation bits converge.
 

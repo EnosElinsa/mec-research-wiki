@@ -19,7 +19,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[chen-2025-swipt-mec-sac]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Efficiency Maximization of Backscatter-Assisted Wireless-Powered MEC With User Cooperation
@@ -53,12 +53,18 @@ A **wireless-powered MEC (WPMEC)** scheme that combines **backscatter communicat
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Backscatter and active offloaded bits do not exceed their corresponding link capacities. |
-| C2 | All phase durations are nonnegative and fit within the time block $T$. |
-| C3 | Reflection coefficients satisfy $0\leq\beta_s,\beta_h\leq1$. |
-| C4 | Total computed bits satisfy $l_{\mathrm{total}}\geq L_{\min}$. |
-| C5 | Local-computing bits are consistent with CPU frequency and allocated execution time. |
-| C6 | Each user's local, circuit, reflection, and active-transmission energy does not exceed harvested RF energy. |
+| C1 (21b) | Source backscatter bits $l_b^h+l_b^{ap}$ do not exceed the source-to-helper BackCom capacity over $t_b^s$. |
+| C2 (21c) | Helper backscatter bits $l_b^{ap}$ do not exceed the helper-to-HAP BackCom capacity over $t_b^h$. |
+| C3 (21d) | Source active bits $l_a^h+l_a^{ap}$ do not exceed the source-to-helper AC capacity with power $p_s$ over $t_a^s$. |
+| C4 (21e) | Helper active bits $l_a^{ap}$ do not exceed the helper-to-HAP AC capacity with power $p_h$ over $t_a^h$. |
+| C5 (21f) | $0\leq t_0+t_b^s+t_b^h+t_a^s+t_a^h\leq T$. |
+| C6 (21g) | Source local-computing time $0\leq t_s\leq T$. |
+| C7 (21h) | Helper computing times $0\leq t_{h1}\leq t_b^h+t_a^s$ and $0\leq t_{h2}\leq t_a^h$. |
+| C8 (21i) | $\mathbf t\succeq0$. |
+| C9 (21j) | $0\leq\beta_s\leq1$, $0\leq\beta_h\leq1$. |
+| C10 (21k) | $l_{\mathrm{total}}\geq L_{\min}$. |
+| C11 (21l) | Local-computing bits follow CPU frequency and time, (3), (5) and (13). |
+| C12 (21m) | Each user's energy consumption does not exceed its harvested energy, (19) and (20). |
 
 **Algorithm**: Apply Dinkelbach's transform to replace the fractional objective by $l_{\mathrm{total}}-qE_{\mathrm{total}}$, substitute products such as $\tau_b=\beta t_b$ and $\tau_a=pt_a$, and solve the resulting convex perspective-form problem. Update $q=l_{\mathrm{total}}/E_{\mathrm{total}}$ until the residual is below tolerance, then recover reflection coefficients and active powers; the KKT analysis gives semi-closed-form operating rules.
 
@@ -66,7 +72,7 @@ A **wireless-powered MEC (WPMEC)** scheme that combines **backscatter communicat
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-He et al. [x] studied a cooperation-assisted wireless-powered MEC system that combines backscatter and active offloading for a distant source and a helper relay. They maximized user computation bits per joule over phase durations, task allocation, active powers, and reflection coefficients under link-capacity, minimum-computation, timing, local-computing, and harvested-energy constraints. A Dinkelbach transform and product-variable substitutions convert the fractional problem into a convex program with semi-closed-form resource-allocation structure. Simulations showed convergence within five iterations, the highest energy efficiency among five compared schemes, and a shift from active transmission toward backscatter as reflection performance improved.
+He et al. [x] studied a cooperation-assisted wireless-powered MEC system that combines backscatter and active offloading for a distant source and a helper relay. They maximized user computation bits per joule over phase durations, task allocation, active powers, and reflection coefficients under link-capacity, minimum-computation, timing, local-computing, and harvested-energy constraints. A Dinkelbach transform and product-variable substitutions convert the fractional problem into a convex program with semi-closed-form resource-allocation structure. Simulations showed convergence within five iterations and the highest energy efficiency against user cooperation with only active communication, user cooperation with only backscatter, integrated offloading without user cooperation, and throughput maximization; the design moved more time to backscatter as the backscatter performance gap $\zeta$ grew and worked almost only in active mode below $-22$ dB.
 
 ## Problem framing
 

@@ -19,7 +19,7 @@ related:
   - "[[wang-2024-twotier-satellite-marine]]"
 modeling_card: required
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Computing Offloading and Resource Allocation of NOMA-Based UAV Emergency Communication in Marine Internet of Things
@@ -38,7 +38,7 @@ A [[noma|NOMA]]-based UAV emergency-communication framework for marine IoT where
 
 **Scenario**: A hovering UAV carries a MEC server and serves $N$ marine IoT devices over $S$ NOMA subcarriers; each atomic task is either computed locally or uploaded to the UAV over a quasi-static LoS link, with the return result ignored.
 
-**Problem & objective**: Minimize weighted computation overhead, $\min J(A,P,F)=\sum_{n\in\mathcal N}\psi_n(\beta_tT_n+\beta_eE_n)$, over offloading, power, and CPU decisions.
+**Problem & objective**: Problem P1 (15) minimizes weighted computation overhead, $\min J(A,P,F)=\sum_{n\in\mathcal N}\psi_n(\beta_tT_n+\beta_eE_n)$, over offloading, power, and CPU decisions.
 
 **Decision variables**:
 
@@ -53,10 +53,10 @@ A [[noma|NOMA]]-based UAV emergency-communication framework for marine IoT where
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Binary policy and one-subcarrier limit: $a_{n,s},x_n\in\{0,1\}$ and $\sum_s a_{n,s}\leq1$. |
-| C2 | Offload consistency is enforced, $x_n=\sum_s a_{n,s}$. |
-| C3 | Device power is bounded, $0\leq p_n\leq P_n^{\max}$. |
-| C4 | Per-device and aggregate CPU limits hold, $0\leq f_n\leq f^{\max}$ and $\sum_nf_n\leq f^{\max}$. |
+| C1-C2 | Binary policy and one-subcarrier limit: $a_{n,s},x_n\in\{0,1\}$ and $\sum_s a_{n,s}\leq1$ |
+| C3 | Offload consistency, $x_n=\sum_s a_{n,s}$ |
+| C4 | Device power is bounded, $0\leq p_n\leq P_n^{\max}$ |
+| C5-C6 (15) | Per-device and aggregate CPU limits, $0\leq f_n\leq f^{\max}$ and $\sum_nf_n\leq f^{\max}$ |
 
 **Algorithm**: Decompose the MINLP into resource allocation and offloading, solve uplink power with a low-complexity bisection, solve CPU allocation as a convex problem, and let the coalition formation game switch device coalitions until a Nash-stable partition is reached.
 
@@ -64,7 +64,7 @@ A [[noma|NOMA]]-based UAV emergency-communication framework for marine IoT where
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lyu et al. [x] studied NOMA-based UAV edge computing for marine IoT emergency communications. They formulated a mixed-integer nonlinear problem that minimizes the weighted sum of task completion time and device energy by jointly choosing subcarrier assignment, binary offloading, uplink power, and UAV CPU allocation. The proposed decomposition solves power by bisection and CPU allocation by convex optimization, then uses a coalition formation game to switch offloading coalitions until a Nash-stable partition is obtained. Simulations report the lowest computation overhead for the coalition game-based task-offloading scheme across user counts, CPU budgets, task sizes, and heterogeneous tasks.
+Lyu et al. [x] studied NOMA-based UAV edge computing for marine IoT emergency communications. They formulated a mixed-integer nonlinear problem that minimizes the weighted sum of task completion time and device energy by jointly choosing subcarrier assignment, binary offloading, uplink power, and UAV CPU allocation. The proposed decomposition solves power by bisection and CPU allocation by convex optimization, then uses a coalition formation game to switch offloading coalitions until a Nash-stable partition is obtained. Simulations report the lowest computation overhead for the coalition game-based scheme (CGTO) against local computing, heuristic orthogonal offloading, IOJRA, coalition-game-only, and DDPG schemes across user counts, CPU budgets, task sizes, and heterogeneous tasks.
 
 ## Problem framing
 

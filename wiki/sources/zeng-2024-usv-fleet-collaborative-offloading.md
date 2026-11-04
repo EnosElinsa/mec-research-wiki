@@ -20,7 +20,7 @@ related:
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[wang-2024-twotier-satellite-marine]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # USV Fleet-Assisted Collaborative Computation Offloading for Smart Maritime Services: An Energy-Efficient Design
@@ -37,36 +37,34 @@ AI-empowered UAVs doing marine monitoring generate computation-intensive tasks t
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Marine-monitoring UAVs auction computation tasks to mobile USV fleets whose leaders split accepted tasks across connected members. UAV-to-USV and intra-fleet links plus member compute capacity determine delay and transmission or execution energy.
+**Scenario**: Marine-monitoring UAVs auction computation tasks to mobile USV fleets whose leaders split accepted tasks across connected members. UAV-to-USV and intra-fleet multi-hop links plus member compute capacity determine delay and transmission or execution energy.
 
-**Problem & objective**: A two-stage mechanism first selects a fleet by reverse auction, then minimizes winning-fleet energy, $\min E_{\mathrm{tx}}+E_{\mathrm{comp}}$, under task-completion delay.
+**Problem & objective**: A two-stage design. A first-price sealed reverse auction with a UAV reserve price $\hat S$ selects the winning fleet, with a derived symmetric equilibrium bid $\beta(x_i)$. Problem P1 (48) then minimizes the winning fleet's total energy, $\min_{\{R_j^q(t),C_j^q(t)\}}E^{sum}=\sum_q\sum_j\sum_tE_{j,q}^*(t)$, under a per-slot completion-delay threshold.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Fleet bid | $b_i$ | continuous, nonnegative | Price submitted by USV fleet $i$ |
-| Winning fleet | $x_i$ | binary | Fleet selected below the reserve price |
-| Subtask allocation | $d_j$ | continuous, nonnegative | Workload assigned to member USV $j$ |
-| Compute allocation | $f_j$ | continuous, bounded | CPU capacity used by member $j$ |
+| Fleet bid | $b_i$ | continuous, nonnegative | Price submitted by USV fleet $i$ in the reverse auction |
+| Subtask ratio | $R_j^q(t)$ | continuous, $[0,1]$ | Share of task $q$ assigned to member USV $j$ in slot $t$ |
+| Compute allocation | $C_j^q(t)$ | continuous, nonnegative | Computing capacity member $j$ devotes to task $q$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The lowest admissible bid below the reserve price wins |
-| C2 | Subtasks sum to the original UAV workload |
-| C3 | Member CPU allocations stay within available capacity |
-| C4 | Communication plus execution finishes within the delay threshold |
-| C5 | Intra-fleet forwarding follows available multi-hop connectivity |
+| C1-C2 | Subtask ratios lie in $[0,1]$ and sum to one for each task |
+| C3 | Member compute allocations sum to its capacity, $\sum_qC_j^q(t)=C_j(t)$ |
+| C4 | Transmission plus local execution finishes within the slot, $T_{j,q}^{\mathrm{tran}}(t)+T_{j,q}^{\mathrm{loc}}(t)\leq\Delta t$ |
+| C5 | Member transmit power stays in $[P_j^{\min}(t),P_j^{\max}(t)]$ |
 
-**Algorithm**: Compute UAV reserve price and fleet valuations → derive or submit symmetric-equilibrium first-price reverse bids → choose the lowest valid fleet → alternate leader subtask allocation and member CPU allocation by BCD → solve each distributed block with dynamic-penalty ADMM → stop when fleet energy converges.
+**Algorithm**: Compute the UAV reserve price and fleet valuations, derive the symmetric-equilibrium first-price reverse bids, and choose the lowest valid fleet. Then alternate leader subtask allocation (P2) and member CPU allocation (P3) by BCD, solving each block distributively with dynamic-penalty ADMM until fleet energy converges.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zeng et al. [x] studied energy-efficient collaborative computation offloading from marine-monitoring UAVs to unmanned surface vehicle fleets. A first-price sealed reverse auction with a UAV reserve price selects a participating fleet, and the paper derives a symmetric equilibrium bidding strategy. Inside the winning fleet, the leader allocates subtasks and members allocate computing capacity to minimize transmission and execution energy under a delay constraint. Block coordinate descent separates the two allocation blocks, and dynamic-penalty ADMM solves them distributively. Simulations report higher participation and lower fleet energy than the evaluated bidding and single-priority allocation baselines.
+Zeng et al. [x] studied energy-efficient collaborative computation offloading from marine-monitoring UAVs to unmanned surface vehicle fleets. A first-price sealed reverse auction with a UAV reserve price selects a participating fleet, and the paper derives a symmetric equilibrium bidding strategy. Inside the winning fleet, the leader allocates subtasks and members allocate computing capacity to minimize transmission and execution energy under a delay constraint. Block coordinate descent separates the two allocation blocks, and dynamic-penalty ADMM solves them distributively. Simulations report higher participation and lower fleet energy than random and greedy bidding schemes and than computation-capacity-priority and hop-count-priority allocation schemes.
 
 ## Problem framing
 

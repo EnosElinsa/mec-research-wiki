@@ -23,7 +23,7 @@ related:
   - "[[liping-qian]]"
   - "[[bin-lin]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Assisted Multi-Access Computation Offloading via Hybrid NOMA and FDMA in Marine Networks
@@ -62,7 +62,7 @@ A two-segment **marine multi-access computation offloading** scheme that minimiz
 | 36-37 | Each $d_{u,k}^{\mathrm{off}}$ and their sum do not exceed $D_u^{\mathrm{tot}}$ |
 | 38 | Underwater NOMA time satisfies $0\leq t^{\mathrm{Ph-I}}\leq t^{\max}$ |
 | 39 | Overall completion latency satisfies $0\leq t^{\mathrm{ove}}\leq T^{\max}$ |
-| 1, 20, 28 | USV displacement, offloaded-data balance, and secrecy-outage requirements remain feasible |
+| 1, 20, 28 | USV and UAV hovering displacement stay within $\mathcal C_u$ and $\mathcal C_k$, and each USV-to-UAV link meets its secrecy-outage requirement $\varsigma_k$ |
 
 **Algorithm**: Decompose ECM into a top problem for $t^{\mathrm{Ph-I}}$ and a subproblem for workload, RF time, and secrecy provisioning; solve the workload subproblem as a strictly convex program for fixed RF time and secrecy; use two-dimensional line search for $t_{u,k}^{\mathrm{Ph-IV}}$ and $\varsigma_k$; then use one-dimensional line search for $t^{\mathrm{Ph-I}}$.
 

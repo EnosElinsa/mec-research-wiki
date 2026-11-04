@@ -17,7 +17,7 @@ related:
   - "[[li-2026-cdto-inland-waterways]]"
   - "[[zeng-2024-usv-fleet-collaborative-offloading]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy- and Latency-Efficient Resource Allocation for RIS-Assisted UAV-USV Cooperative MEC Network
@@ -36,7 +36,7 @@ Introduces a RIS-assisted [[uav-usv-cooperative-mec|UAV-USV cooperative MEC]] ar
 
 **Scenario**: Rotary-wing UAVs carrying passive RIS elements follow a fly-hover-serve pattern to support inland-waterway USVs whose bidirectional tasks combine locally generated input with remote data from a terrestrial base station. Each task must choose local or MEC execution and finish inside a hard service window.
 
-**Problem & objective**: The controller solves $\min_{\boldsymbol\alpha,\boldsymbol\beta,\boldsymbol\tau,\mathbf s,\boldsymbol\theta}F$, where $F=\sum_{j,i,l}\beta_{l,(j,i)}\left(E_{l,(j,i)}^{\mathrm{flight}}+\lambda t_{l,(j,i)}^{\mathrm{total}}\right)$ balances UAV flight energy and task-execution latency.
+**Problem & objective**: Problem $\mathcal P1$ (25) solves $\min_{\boldsymbol\alpha,\boldsymbol\beta,\boldsymbol\tau,\mathbf s,\boldsymbol\theta}F$, where $F=\sum_{j,i,l}\beta_{l,(j,i)}\left(E_{l,(j,i)}^{\mathrm{flight}}+\lambda t_{l,(j,i)}^{\mathrm{total}}\right)$ balances UAV flight energy and task-execution latency.
 
 **Decision variables**:
 
@@ -52,12 +52,13 @@ Introduces a RIS-assisted [[uav-usv-cooperative-mec|UAV-USV cooperative MEC]] ar
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every task selects exactly one of the two execution modes |
-| C2 | Route indicators are binary and every UAV leaves and returns to the charging platform |
-| C3 | Route-flow conservation holds and each USV is served by exactly one UAV |
-| C4 | A UAV cannot begin service before the task's earliest time $X_i$ |
-| C5 | Flight, waiting, transmission, and execution finish no later than deadline $Y_i$ |
-| C6 | Each RIS element uses a feasible full-reflection phase in $[0,2\pi]$ |
+| $\mathcal C1$ | Each task's execution-mode indicator $\alpha_i$ is binary (local USV or MEC execution) |
+| $\mathcal C2$ (14) | Route indicators $\beta_{l,(j,i)}$ are binary |
+| $\mathcal C3$-$\mathcal C4$ (17)-(18) | Every UAV leaves and returns to the recharging platform (USV 0) |
+| $\mathcal C5$-$\mathcal C6$ (19)-(20) | Route-flow conservation holds and each USV is served by exactly one UAV |
+| $\mathcal C7$ (21) | Waiting covers any early arrival, $\max\{X_i-\tau_{l,i},0\}\le t_{l,i}^w$ |
+| $\mathcal C8$-$\mathcal C9$ | The UAV hovers until the task completes, and flight, waiting, transmission, and execution finish by deadline $Y_i$ |
+| Model rule | RIS reflection phases lie in $[0,2\pi]$ |
 
 **Algorithm**: The heuristic alternates three coupled solvers at the MEC server. Enhanced grey wolf optimization selects multi-UAV routes, ICRAL relaxes and repairs the execution-mode and arrival-time block, and multi-objective differential evolution updates hovering coordinates and RIS phases while retaining nondominated candidates.
 

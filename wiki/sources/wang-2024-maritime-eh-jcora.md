@@ -18,7 +18,7 @@ related:
   - "[[dai-2023-hybrid-marine-mmwl]]"
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Computation Offloading and Resource Allocation for Maritime MEC With Energy Harvesting
@@ -37,7 +37,7 @@ An **MEC-enabled sea lane monitoring network (MSLMN)** with **energy harvesting 
 
 **Scenario**: A two-tier maritime MEC network has a coastal base station and renewable-energy-powered MIS buoys serving sailing terminal units. Tasks arrive over time and may be transmitted to an MIS, processed locally at the MIS, or migrated to the coastal server.
 
-**Problem & objective**: The stochastic program $P_1:\max_{y,z,f,m}\overline{\mathcal H(t)}$ maximizes long-term aggregate uplink throughput while stabilizing task and energy queues.
+**Problem & objective**: Stochastic problem $P_1$ (17), $P_1:\max_{y,z,f,m}\overline{\mathcal H(t)}$ maximizes long-term aggregate uplink throughput while stabilizing task and energy queues.
 
 **Decision variables**:
 
