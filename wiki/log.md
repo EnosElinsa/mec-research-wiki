@@ -1,5 +1,11 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 21 (collaborative beamforming, RIS/STAR-RIS, NOMA relays, movable antennas)
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch21-beamforming-ris.json`. Grounded total: 503/699.
+- Relabeled constraint IDs to the papers' own tags (for example sun-2021 (10b)–(10j), liang-2024 (11b)–(11i), zhao-2026 (13a)–(13g) and (31a), yu-2026 (25b)–(25c), pan-2025 (19b)–(19f), lu-2026 (11a)–(11f), li-2026 relay C1–C5); where the parse shifts or drops tags (meng-2026 (16a)–(16i), wu-2025 (18c) and (18e)), the card says to check the published paper.
+- Rewrote the Modeling Quick-Use Card for meng-2026 (problem (16) over $\Theta,P,t_E,t_M$), krishna-m-2026 (a performance analysis with no optimization problem; static and LTTF grouping), and wan-2026 (problem (13) C1–C7 with precoders $\mathbf F_k$ and positions $\mathbf p_k,\mathbf q_k$).
+- Related Work paragraphs now name the actual baselines and note results where the method does not win everywhere (for example peng-2023 DDPG slightly ahead of SD3 in the multi-user time-domain case, wu-2025 baselines spending less unpenalized energy but missing deadlines, pan-2025 INSGA-II-CDC slowest, zhao-2026 lower spectrum efficiency than hovering above sensors, krishna-m-2026 NOMA limited to small and medium coverage); an unsupported RSMA/NOMA figure was removed from mihertie-2026.
+
 ## [2026-11-03] Grounded batch 20 (MEC offloading, games, Lyapunov control, caching, and migration)
 
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch20-mec-offloading.json`. Grounded total: 479/699.

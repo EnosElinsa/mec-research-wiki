@@ -1,0 +1,540 @@
+{
+  "entries": [
+    {
+      "slug": "huroon-2026-bd-ris-rsma-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Transmission_Strategy_for_UAV-RIS_2_0_Assisted_Communications_Using_Rate_Splitting_Multiple_Access/Energy-Efficient_Transmission_Strategy_for_UAV-RIS_2_0_Assisted_Communications_Using_Rate_Splitting_Multiple_Access.md",
+          "lines": "196,199,213,227,231,239,249,255,265,270,273,276,280,283,287,293,296,298",
+          "note": "power model and problem (28) C1-C9"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Transmission_Strategy_for_UAV-RIS_2_0_Assisted_Communications_Using_Rate_Splitting_Multiple_Access/Energy-Efficient_Transmission_Strategy_for_UAV-RIS_2_0_Assisted_Communications_Using_Rate_Splitting_Multiple_Access.md",
+          "lines": "553,561,569,573,578,595",
+          "note": "RIS architecture and multiple-access comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "huyen-2026-short-packet-aris-noma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Short-Packet_NOMA_Communication_With_Assistance_of_Active_RIS_and_UAV_Analysis_and_Optimization/Short-Packet_NOMA_Communication_With_Assistance_of_Active_RIS_and_UAV_Analysis_and_Optimization.md",
+          "lines": "338,345,349",
+          "note": "power-allocation problem (P1) (38a)-(38b)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Short-Packet_NOMA_Communication_With_Assistance_of_Active_RIS_and_UAV_Analysis_and_Optimization/Short-Packet_NOMA_Communication_With_Assistance_of_Active_RIS_and_UAV_Analysis_and_Optimization.md",
+          "lines": "43,377,386,388,428,450",
+          "note": "Monte Carlo verification and ARIS/PRIS/OMA results"
+        }
+      ]
+    },
+    {
+      "slug": "jeon-2026-ampli-flection-aerial-backhaul",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Ampli-Flection_for_6G_Active-RIS-Aided_Aerial_Backhaul_With_Full_3-D_Coverage/Ampli-Flection_for_6G_Active-RIS-Aided_Aerial_Backhaul_With_Full_3-D_Coverage.md",
+          "lines": "120,126,131,134,140,145,172,202,205,210,213,215,218,221,223,226,229,258,364",
+          "note": "channel, MRT, power budgets (24)-(26) and EE (27)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Ampli-Flection_for_6G_Active-RIS-Aided_Aerial_Backhaul_With_Full_3-D_Coverage/Ampli-Flection_for_6G_Active-RIS-Aided_Aerial_Backhaul_With_Full_3-D_Coverage.md",
+          "lines": "5,472,495",
+          "note": "AF-relay and passive-RIS comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "krishna-m-2026-multiuav-nbiot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Performance_Analysis_of_Multi-UAV-Aided_NB-IoT_Communication_System/Performance_Analysis_of_Multi-UAV-Aided_NB-IoT_Communication_System.md",
+          "lines": "47,141-146,157-199",
+          "note": "scenario; OMA time (5); ZC code-domain NOMA, SIC"
+        },
+        {
+          "path": "raw/sources/Performance_Analysis_of_Multi-UAV-Aided_NB-IoT_Communication_System/Performance_Analysis_of_Multi-UAV-Aided_NB-IoT_Communication_System.md",
+          "lines": "230-299,465",
+          "note": "static (8), dynamic (10),(11), Algorithms 1-2, N_UAV=2, complexity"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Performance_Analysis_of_Multi-UAV-Aided_NB-IoT_Communication_System/Performance_Analysis_of_Multi-UAV-Aided_NB-IoT_Communication_System.md",
+          "lines": "5,33,39,377",
+          "note": "LTTF; closed forms; NOMA lower latency/energy; NOMA only CVA 1-2"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-emssa-uav-swarm-vaa",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays.md",
+          "lines": "154,355,359,363,367,371,375,379,383,386,607,623",
+          "note": "MOP (14a)-(14h) and repair rules"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays.md",
+          "lines": "21,745,747,749,751,752,753,755,757",
+          "note": "RandomLAA and swarm-algorithm comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "li-2025-omrp-cb-iot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Correlated_Data-Driven_Collaborative_Beamforming_Approach_for_Energy-Efficient_IoT_Data_Transmission/A_Correlated_Data-Driven_Collaborative_Beamforming_Approach_for_Energy-Efficient_IoT_Data_Transmission.md",
+          "lines": "519,523,527,531,535,581,587",
+          "note": "problem (22a)-(22e) and SoftPPO objective"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Correlated_Data-Driven_Collaborative_Beamforming_Approach_for_Energy-Efficient_IoT_Data_Transmission/A_Correlated_Data-Driven_Collaborative_Beamforming_Approach_for_Energy-Efficient_IoT_Data_Transmission.md",
+          "lines": "17,818,969,1099",
+          "note": "routing, CB throughput and deployment results"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-full-duplex-noma-uav-relay",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Robust_Position_and_Power_Optimization_for_Full-Duplex_UAV_Relay-Assisted_Cellular_Network_Enhanced_by_NOMA/Robust_Position_and_Power_Optimization_for_Full-Duplex_UAV_Relay-Assisted_Cellular_Network_Enhanced_by_NOMA.md",
+          "lines": "58-159",
+          "note": "FD NOMA DF relay, SIC, MRC, Gaussian position error"
+        },
+        {
+          "path": "raw/sources/Robust_Position_and_Power_Optimization_for_Full-Duplex_UAV_Relay-Assisted_Cellular_Network_Enhanced_by_NOMA/Robust_Position_and_Power_Optimization_for_Full-Duplex_UAV_Relay-Assisted_Cellular_Network_Enhanced_by_NOMA.md",
+          "lines": "202-264,298-386,532-544",
+          "note": "problem (17a)-(17h), (18), Bernstein safe constraints, BCD-SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Robust_Position_and_Power_Optimization_for_Full-Duplex_UAV_Relay-Assisted_Cellular_Network_Enhanced_by_NOMA/Robust_Position_and_Power_Optimization_for_Full-Duplex_UAV_Relay-Assisted_Cellular_Network_Enhanced_by_NOMA.md",
+          "lines": "27,618-646",
+          "note": "non-robust, FD OMA, HD NOMA/OMA, RWPO/RWPA/RIT baselines"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-noma-uav-relay-planning",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_Power_Control_and_Trajectory_Planning_for_NOMA-Based_UAV_Relaying_System/Joint_Beamforming_Power_Control_and_Trajectory_Planning_for_NOMA-Based_UAV_Relaying_System.md",
+          "lines": "47-59,127-130",
+          "note": "mobility (1a)-(1d); P1 (11) with C1-C5 (C2 garbled)"
+        },
+        {
+          "path": "raw/sources/Joint_Beamforming_Power_Control_and_Trajectory_Planning_for_NOMA-Based_UAV_Relaying_System/Joint_Beamforming_Power_Control_and_Trajectory_Planning_for_NOMA-Based_UAV_Relaying_System.md",
+          "lines": "134,215-399",
+          "note": "AO with SDR/SCA; convergence proof"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Beamforming_Power_Control_and_Trajectory_Planning_for_NOMA-Based_UAV_Relaying_System/Joint_Beamforming_Power_Control_and_Trajectory_Planning_for_NOMA-Based_UAV_Relaying_System.md",
+          "lines": "409-432",
+          "note": "BFO/PAO/TO; Schemes 1-4 and Without Rank-1; 40 iterations"
+        }
+      ]
+    },
+    {
+      "slug": "liang-2024-hmecmop-uav-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming.md",
+          "lines": "152,158,200,253,257,261,265,269,273,277,281,285,297,301,427,468",
+          "note": "HMECMOP (11a)-(11i) and IMOMVO rules"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming.md",
+          "lines": "858,860,866,1284,1505,1546",
+          "note": "LAA, RAA and evolutionary comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2024-hatrpo-ucb-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "197,201,205,209,213,217,324,336,348",
+          "note": "UCBMOP (10a)-(10f) and HATRPO update"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning.md",
+          "lines": "667,681,683,689,693,712",
+          "note": "MADDPG, IPPO, MAPPO and HATRPO comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-passive-6dma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Passive_6D_Movable_Antennas_Joint_Deployment_and_Beamforming_Optimization/UAV-Enabled_Passive_6D_Movable_Antennas_Joint_Deployment_and_Beamforming_Optimization.md",
+          "lines": "190,210,222,224,227,231,235,239,243,246,248,250,258,292,298,354,367,369,387,418,424,571,575",
+          "note": "(P1) (30)-(33), single-user orientation and multi-user AO with GS"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Passive_6D_Movable_Antennas_Joint_Deployment_and_Beamforming_Optimization/UAV-Enabled_Passive_6D_Movable_Antennas_Joint_Deployment_and_Beamforming_Optimization.md",
+          "lines": "674,676,678,680,682,687,691,693,695,697,699",
+          "note": "single- and multi-user benchmark comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-spherical-t-ris-bs",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Angle-Insensitive_Spherical_T-RIS-Enabled_Base_Station/Angle-Insensitive_Spherical_T-RIS-Enabled_Base_Station.md",
+          "lines": "262,268,271,275,279,283,286,291,295,299,303,306,308",
+          "note": "problem P1 (30a)-(30h)"
+        },
+        {
+          "path": "raw/sources/Angle-Insensitive_Spherical_T-RIS-Enabled_Base_Station/Angle-Insensitive_Spherical_T-RIS-Enabled_Base_Station.md",
+          "lines": "321,327,331,379,387,401,413,425,437,449,497,667",
+          "note": "BCD subproblems with SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Angle-Insensitive_Spherical_T-RIS-Enabled_Base_Station/Angle-Insensitive_Spherical_T-RIS-Enabled_Base_Station.md",
+          "lines": "754,758,760,762,764,766,768",
+          "note": "PT-RIS, random-phase and no-RIS comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "lu-2026-uav-swarm-two-level-ma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System.md",
+          "lines": "102,125-148",
+          "note": "problem (P1) (11a)-(11f)"
+        },
+        {
+          "path": "raw/sources/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System.md",
+          "lines": "152-303,434,485-535",
+          "note": "M=1 case, SCA (29), IUI-free MA positions (41)-(42), Algorithm 2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System.md",
+          "lines": "537-555,586-631",
+          "note": "IUI-free bound; circular/FPA/USA/distributed MIMO benchmarks; error compensation"
+        }
+      ]
+    },
+    {
+      "slug": "meng-2026-star-ris-uav-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply.md",
+          "lines": "41,63,149-155",
+          "note": "scenario, predetermined UAV path, SIC order"
+        },
+        {
+          "path": "raw/sources/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply.md",
+          "lines": "171-215",
+          "note": "problem (16) and constraints; text numbering (16a)-(16i) differs from parse tags"
+        },
+        {
+          "path": "raw/sources/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply.md",
+          "lines": "5,49,224,334,411,579",
+          "note": "SDR+SCA penalty, Dinkelbach, potential game, BCD"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply/Resource_Allocation_Scheme_in_STAR-RIS-Assisted_NOMA_Systems_Based_on_UAV_Energy_Supply.md",
+          "lines": "561-565,573,587,595-597",
+          "note": "baselines UES, RIS, TDMA, ADMM/SDR+KOA, RTS; 48.47% and 37.83%"
+        }
+      ]
+    },
+    {
+      "slug": "mihertie-2026-aerial-irs-rsma-ee",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_for_Aerial_Intelligent_Reflecting_Surface-Assisted_MISO_Systems/Energy_Efficiency_Maximization_for_Aerial_Intelligent_Reflecting_Surface-Assisted_MISO_Systems.md",
+          "lines": "163-186",
+          "note": "problem (17) and constraints (18a)-(18e)"
+        },
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_for_Aerial_Intelligent_Reflecting_Surface-Assisted_MISO_Systems/Energy_Efficiency_Maximization_for_Aerial_Intelligent_Reflecting_Surface-Assisted_MISO_Systems.md",
+          "lines": "238-286,465-536",
+          "note": "rank-one relaxation for Psi; placement SCA (45),(52)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_Maximization_for_Aerial_Intelligent_Reflecting_Surface-Assisted_MISO_Systems/Energy_Efficiency_Maximization_for_Aerial_Intelligent_Reflecting_Surface-Assisted_MISO_Systems.md",
+          "lines": "5,29,511,549,684-698,709",
+          "note": "NOMA/SDMA baselines; monotonic convergence; EE gains vs K, power, xi, M"
+        }
+      ]
+    },
+    {
+      "slug": "pan-2025-uav-ris-energy-efficient-comm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications.md",
+          "lines": "204,319-361",
+          "note": "problem (19a) with (19b)-(19f)"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications.md",
+          "lines": "415-509",
+          "note": "INSGA-II-CDC operators, boundary repair, MOPSO-style beam update"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications.md",
+          "lines": "545,553,935-969",
+          "note": "MOPSO/MOEA-D/NSGA-II/NSGA-III baselines; runtime longest"
+        }
+      ]
+    },
+    {
+      "slug": "peng-2023-dual-domain-eh-ris",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Harvesting_Reconfigurable_Intelligent_Surface_for_UAV_Based_on_Robust_Deep_Reinforcement_Learning/Energy_Harvesting_Reconfigurable_Intelligent_Surface_for_UAV_Based_on_Robust_Deep_Reinforcement_Learning.md",
+          "lines": "168-181",
+          "note": "problem (P1)/(16) with C1-C8"
+        },
+        {
+          "path": "raw/sources/Energy_Harvesting_Reconfigurable_Intelligent_Surface_for_UAV_Based_on_Robust_Deep_Reinforcement_Learning/Energy_Harvesting_Reconfigurable_Intelligent_Surface_for_UAV_Based_on_Robust_Deep_Reinforcement_Learning.md",
+          "lines": "187-201,273,341",
+          "note": "density-aware K-means and Fermat placements; SD3 softmax; action space"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Harvesting_Reconfigurable_Intelligent_Surface_for_UAV_Based_on_Robust_Deep_Reinforcement_Learning/Energy_Harvesting_Reconfigurable_Intelligent_Surface_for_UAV_Based_on_Robust_Deep_Reinforcement_Learning.md",
+          "lines": "415-447",
+          "note": "dual vs time domain; SD3/TD3/DDPG percentages; DDPG edges SD3 in multi-UT time domain"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2021-temcmop-uav-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method.md",
+          "lines": "121,195,197,200,203,205,208,211,217,220,228,232,236,240,244,248,252,256,260,264",
+          "note": "objectives (7)-(9) and TEMCMOP (10a)-(10j)"
+        },
+        {
+          "path": "raw/sources/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method.md",
+          "lines": "278,282,351,355,359",
+          "note": "order subproblem and R-TEMCMOP C10 (16)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method.md",
+          "lines": "611,901",
+          "note": "comparisons with CB and evolutionary baselines"
+        }
+      ]
+    },
+    {
+      "slug": "wan-2026-movable-antenna-multiuav-mimo",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Movable_Antenna_Empowered_Multi-UAV_MIMO_Communications_Joint_Macro-Micro_Positioning_and_Beamforming/Movable_Antenna_Empowered_Multi-UAV_MIMO_Communications_Joint_Macro-Micro_Positioning_and_Beamforming.md",
+          "lines": "58-141",
+          "note": "positions p_k, q_k; R_k (12); problem (13) C1-C7"
+        },
+        {
+          "path": "raw/sources/Movable_Antenna_Empowered_Multi-UAV_MIMO_Communications_Joint_Macro-Micro_Positioning_and_Beamforming/Movable_Antenna_Empowered_Multi-UAV_MIMO_Communications_Joint_Macro-Micro_Positioning_and_Beamforming.md",
+          "lines": "161-315,363-379",
+          "note": "WMMSE reformulation, (19), (21), RLS-G-GSOMP, GGO-WMMSE"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Movable_Antenna_Empowered_Multi-UAV_MIMO_Communications_Joint_Macro-Micro_Positioning_and_Beamforming/Movable_Antenna_Empowered_Multi-UAV_MIMO_Communications_Joint_Macro-Micro_Positioning_and_Beamforming.md",
+          "lines": "385-419",
+          "note": "FPA-OPU, FPU-MA, WMMSE, MMSE baselines; small gap at low SNR"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2019-irs-joint-beamforming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming.md",
+          "lines": "169,174,178,182,185,187,204,208,215,219,222,226,236,240,246,250,256,260,272",
+          "note": "(P1) (3)-(5), single-user (P2) and SDR"
+        },
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming.md",
+          "lines": "292,312,316,395,399,402,406,409,411,416,445,448,459,461,463,470,474,493",
+          "note": "AO with SOCP (P3) and SDP (P4)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming.md",
+          "lines": "5",
+          "note": "abstract results"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2025-iopo-irs-uav-thz-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems.md",
+          "lines": "249-268",
+          "note": "P1 (18) with (18a),(18b),(18d),(18f); (18c),(18e) absent"
+        },
+        {
+          "path": "raw/sources/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems.md",
+          "lines": "304-457",
+          "note": "P2, OPPO candidates, WOA phases"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems/Two-Stage_Deep_Energy_Optimization_in_IRS-Assisted_UAV-Based_Edge_Computing_Systems.md",
+          "lines": "475-506",
+          "note": "baselines; Tables II-VI; unpenalized energy lower for some baselines"
+        }
+      ]
+    },
+    {
+      "slug": "yu-2026-ris-uav-iab-outage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Outage_Minimization_for_RIS_and_UAV_Collaboration-Enhanced_IAB_Networks/Outage_Minimization_for_RIS_and_UAV_Collaboration-Enhanced_IAB_Networks.md",
+          "lines": "215-239",
+          "note": "problem (25) with (25b),(25c); fixed resources; x_rm=1"
+        },
+        {
+          "path": "raw/sources/Outage_Minimization_for_RIS_and_UAV_Collaboration-Enhanced_IAB_Networks/Outage_Minimization_for_RIS_and_UAV_Collaboration-Enhanced_IAB_Networks.md",
+          "lines": "243,279-301,526-562",
+          "note": "lower bound, SCA heights, SDR (60) with E_m"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Outage_Minimization_for_RIS_and_UAV_Collaboration-Enhanced_IAB_Networks/Outage_Minimization_for_RIS_and_UAV_Collaboration-Enhanced_IAB_Networks.md",
+          "lines": "34,654-691",
+          "note": "baselines 1-3; 44.72% vs baseline 1"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-uav-irs-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Trajectory_and_Number_of_Reflecting_Elements_for_UAV-Mounted_Intelligent_Reflecting_Surface-Assisted_Data_Collection_in_Wireless_Sensor_Networks_Under_Tra/Joint_Optimization_of_UAV_Trajectory_and_Number_of_Reflecting_Elements_for_UAV-Mounted_Intelligent_Reflecting_Surface-Assisted_Data_Collection_in_Wireless_Sensor_Networks_Under_Tra.md",
+          "lines": "133-167",
+          "note": "problem (P1)/(13) with (13a)-(13g)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Trajectory_and_Number_of_Reflecting_Elements_for_UAV-Mounted_Intelligent_Reflecting_Surface-Assisted_Data_Collection_in_Wireless_Sensor_Networks_Under_Tra/Joint_Optimization_of_UAV_Trajectory_and_Number_of_Reflecting_Elements_for_UAV-Mounted_Intelligent_Reflecting_Surface-Assisted_Data_Collection_in_Wireless_Sensor_Networks_Under_Tra.md",
+          "lines": "451-498",
+          "note": "P3 (31), (31a); GA order, CJ-BS element count, SCA hover positions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Trajectory_and_Number_of_Reflecting_Elements_for_UAV-Mounted_Intelligent_Reflecting_Surface-Assisted_Data_Collection_in_Wireless_Sensor_Networks_Under_Tra/Joint_Optimization_of_UAV_Trajectory_and_Number_of_Reflecting_Elements_for_UAV-Mounted_Intelligent_Reflecting_Surface-Assisted_Data_Collection_in_Wireless_Sensor_Networks_Under_Tra.md",
+          "lines": "31,569,585-589",
+          "note": "DDaS baseline; EE 1.07x and 1.43x; SE lower than DDaS"
+        }
+      ]
+    },
+    {
+      "slug": "zheng-2024-recmop-uav-cb",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks.md",
+          "lines": "243,307,311,315,319,323,327,331,335,349,352,355,369,373",
+          "note": "RECMOP (17a)-(17h) and NP-hardness subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks/Reliable_and_Energy-Efficient_Communications_via_Collaborative_Beamforming_for_UAV_Networks.md",
+          "lines": "755,877",
+          "note": "IMOGSA results"
+        }
+      ]
+    }
+  ]
+}

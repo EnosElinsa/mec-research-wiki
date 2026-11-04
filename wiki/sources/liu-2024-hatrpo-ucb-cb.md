@@ -28,7 +28,7 @@ related:
   - "[[qingqing-wu]]"
   - "[[dusit-niyato]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -62,10 +62,10 @@ Multiple UAVs form a **UAV-enabled virtual antenna array (UVAA)** and use [[coll
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Horizontal positions stay in the monitor square, $-L/2\leq x_i,y_i\leq L/2$. |
-| C2 | Flight altitude is bounded, $H_{\min}\leq z_i\leq H_{\max}$. |
-| C3 | Excitation currents satisfy $0\leq I_i\leq1$. |
-| C4 | Any pair of UAVs keeps a collision-avoidance separation, $d_{i,j}\geq d_{\min}$. |
+| C1, C2 (10b), (10c) | Horizontal positions stay in the monitor square, $-L/2\le x_i,y_i\le L/2$ |
+| C3 (10d) | Flight altitude is bounded, $H_{\min}\le z_i\le H_{\max}$ |
+| C4 (10e) | Excitation currents satisfy $0\le I_i\le1$ |
+| C5 (10f) | Any pair of UAVs keeps a collision-avoidance separation, $d_{i,j}\ge d_{\min}$ |
 
 **Algorithm**: Cast UCBMOP as a cooperative Markov game and train HATRPO-UCB with sequential trust-region policy updates, observation enhancement, agent-specific global critics, and bounded Beta policies.
 
@@ -73,7 +73,7 @@ Multiple UAVs form a **UAV-enabled virtual antenna array (UVAA)** and use [[coll
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] formulated UAV-enabled collaborative beamforming as a multi-objective problem that maximizes UVAA transmission rate while minimizing swarm motion energy. The decision variables are the three-dimensional UAV positions and excitation-current weights, constrained by the monitor area, altitude, current bounds, and inter-UAV separation. The authors recast the non-convex dynamic program as a cooperative Markov game and propose HATRPO-UCB with observation enhancement, agent-specific global state, and a Beta policy. Simulations report the fastest convergence at about 750 epochs and the lowest energy among the compared learning methods while retaining competitive rate. Ablation studies show that all three enhancements improve cooperation or policy fitting.
+Liu et al. [x] formulated UAV-enabled collaborative beamforming as a multi-objective problem that maximizes UVAA transmission rate while minimizing swarm motion energy. The decision variables are the three-dimensional UAV positions and excitation-current weights, constrained by the monitor area, altitude, current bounds, and inter-UAV separation. The authors recast the non-convex dynamic program as a cooperative Markov game and propose HATRPO-UCB with observation enhancement, agent-specific global state, and a Beta policy. Simulations report the fastest convergence, at about 750 epochs versus about 1,400 for MAPPO, IPPO, and MADDPG, and lower motion energy than these methods, although plain HATRPO reached a higher reward. Ablation studies show that all three enhancements improve cooperation or policy fitting.
 
 ## Problem framing
 

@@ -18,7 +18,7 @@ related:
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[zhu-2026-fas-uav-fbl]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Short-Packet NOMA Communication With Assistance of Active RIS and UAV: Analysis and Optimization
@@ -50,10 +50,10 @@ Analyzes a two-user downlink [[noma|NOMA]] link carried only through a UAV-mount
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The weak user receives more power, $a_2>a_1$ |
-| C2 | Power coefficients exhaust the budget, $a_1+a_2=1$ |
-| C3 | The weak-user end-to-end BLER satisfies $\bar\epsilon_{D_2}\leq\bar\epsilon_{D_2}^{th}$ |
-| C4 | The search domain for the independent variable is $0\leq a_1\leq0.5$ |
+| Model rule | The weak user receives more power, $a_2>a_1$ |
+| Model rule | Power coefficients exhaust the budget, $a_1+a_2=1$ |
+| (38a) | The weak-user end-to-end BLER satisfies $\bar\epsilon_{D_2}\leq\bar\epsilon_{D_2}^{th}$ |
+| (38b) | The search domain for the independent variable is $0\leq a_1\leq0.5$ |
 
 **Algorithm**: Approximate the coherent cascaded channel by a Gamma distribution, derive finite-blocklength BLER expressions with the piecewise-linear Q-function approximation, establish the power-allocation behavior, and apply golden-section search over $a_1$ until the interval width is below $10^{-3}$.
 

@@ -15,7 +15,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[makespan-minimization]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Performance Analysis of Multi-UAV-Aided NB-IoT Communication System
@@ -32,34 +32,30 @@ Models stationary decode-and-forward UAVs as NB-IoT relays for ground-device clu
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Stationary decode-and-forward UAVs relay NB-IoT traffic from ground-device serving spots to a terrestrial base station. Orthogonal access schedules UAVs sequentially with TDMA, while the non-orthogonal design lets grouped UAVs transmit simultaneously through Zadoff-Chu code-domain NOMA and SIC. User-to-UAV links use TDL-D LoS channels, and UAV-to-BS links use TDL-D, EPA, or ETU LoS/NLoS channel models.
+**Scenario**: $M$ stationary decode-and-forward UAVs collect NB-IoT uplink data from ground UEs and forward it to a terrestrial BS. UE-UAV links use the TDL-D LoS model; UAV-BS links are evaluated over TDL-D, EPA, and ETU. On the UAV-BS link, OMA gives each UAV its own NPUSCH slot ($t_i=N_{a,i}t_{\mathrm{UE}}$), while code-domain NOMA with Zadoff-Chu spreading and imperfect SIC lets $N_{\mathrm{UAV}}$ UAVs transmit together.
 
-**Problem & objective**: Dynamic UAV grouping is a discrete load-balancing scheduling problem that minimizes the maximum pool completion time, $\min \max_p \sum_{i\in p}N_{a,i}t_{UE}$, and thereby minimizes the total NOMA collection makespan.
+**Problem & objective**: This is a performance analysis with no formal optimization problem. It derives the average UAV-BS transmission time for OMA, $\mathbb E[t_{\mathrm{OMA}}]=(\sum_i\mathbb E[N_{a,i}])t_{\mathrm{UE}}$ in (5), for static NOMA grouping from (8), and for dynamic grouping, $T^{\mathrm{Dyn}}_{\mathrm{NOMA}}=\lceil\sum_i\mathbb E[N_{a,i}]/N_{\mathrm{UAV}}\rceil t_{\mathrm{UE}}$ in (11), the lower bound $t_{\min}$ in (10). Closed forms follow for discrete-uniform, Poisson, and beta UE-activity distributions, plus end-to-end UE latency and energy.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV-to-pool assignment | $g_{i,p}$ | binary | Whether UAV $i$ is assigned to NOMA transmission pool $p$ |
-| UAV group | $\mathcal G_k$ | discrete set | UAVs transmitting simultaneously in scheduled group $k$ |
+| UAV groups (pools) | $\mathcal G_k$ / $\mathcal P_n$ | discrete sets of UAVs | UAVs that transmit together under NOMA; fixed in static grouping, formed per realization in dynamic grouping |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every UAV is assigned to exactly one load-balancing pool |
-| C2 | A scheduled NOMA group contains at most $N_{UAV}$ simultaneous UAVs |
-| C3 | Each pool load is the sum of active UE transmissions assigned to it |
-| C4 | Total completion time is determined by the largest pool load times $t_{UE}$ |
-| C5 | NB-IoT timing, physical-resource-block, and SIC feasibility rules are respected |
+| Model rule | Static grouping forms $K=\lceil M/N_{\mathrm{UAV}}\rceil$ predetermined groups; each group lasts $(\max_{i\in\mathcal G_k}N_{a,i})t_{\mathrm{UE}}$ (8) |
+| Model rule | Dynamic grouping uses $N_{\mathrm{UAV}}$ pools; total time is $\max_nL_n\,t_{\mathrm{UE}}$ |
+| Model rule | Group size $N_{\mathrm{UAV}}$ requires $N_{\mathrm{UAV}}-1$ SIC operations; the evaluation uses $N_{\mathrm{UAV}}=2$ |
+| Simulation setting | Link reliability is judged at BLER $10^{-1}$; NOMA supports coverage areas CVA 1 and CVA 2, OMA all three |
 
-**Algorithm**: Compute each UAV's active-UE load, sort UAVs in descending longest-transmission-time-first order, repeatedly assign the next UAV to the pool with the smallest cumulative load, form simultaneous NOMA groups from the pools, and schedule groups until the largest pool completes.
+**Algorithm**: Static grouping (Algorithm 1) groups consecutive UAVs. Dynamic grouping (Algorithm 2, longest transmission time first) sorts UAVs by active-UE load in descending order, assigns each to the pool with the smallest load $L_n$, and returns $\max_nL_n\,t_{\mathrm{UE}}$, with $O(M\log M)$ complexity.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Krishna and Balasubramanya [x] studied NB-IoT communication in which multiple stationary UAVs relay ground-device traffic to a terrestrial base station. They compared sequential OMA scheduling with Zadoff-Chu code-domain NOMA and proposed static and dynamic UAV grouping for the UAV-to-BS link. The dynamic method sorts UAV loads by longest transmission time first and assigns each UAV to the least-loaded pool to reduce the maximum pool completion time. Closed-form average-transmission-time expressions were derived for discrete-uniform, Poisson, and beta user-activity distributions, and 3GPP-compliant physical-layer simulations covered TDL-D, EPA, and ETU channels. The reported results show lower latency and UE energy consumption for NOMA with dynamic grouping than for the evaluated OMA and static-grouping schemes.
+Krishna and Balasubramanya [x] studied NB-IoT communication in which multiple stationary UAVs relay ground-device traffic to a terrestrial base station. They compared sequential OMA scheduling with Zadoff-Chu code-domain NOMA and proposed static and dynamic UAV grouping for the UAV-to-BS link. The dynamic method sorts UAV loads by longest transmission time first and assigns each UAV to the least-loaded pool to reduce the largest pool load and hence the total transmission time. Closed-form average-transmission-time expressions were derived for discrete-uniform, Poisson, and beta user-activity distributions, and 3GPP-compliant physical-layer simulations covered TDL-D, EPA, and ETU channels. NOMA scheduling with either grouping gives lower latency and UE energy than OMA, with dynamic grouping best, but NOMA meets the $10^{-1}$ BLER target only in the small and medium coverage areas, while OMA supports all three.
 
 ## Problem and system model
 

@@ -20,7 +20,7 @@ related:
   - "[[dusit-niyato]]"
   - "[[wang-2026-diffusion-semantic-uav-edge]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Robust Position and Power Optimization for Full-Duplex UAV Relay-Assisted Cellular Network Enhanced by NOMA
@@ -39,7 +39,7 @@ Jointly places a full-duplex decode-and-forward UAV relay and allocates relay po
 
 **Scenario**: A terrestrial BS serves cell-edge users through one full-duplex decode-and-forward UAV relay. The BS uses fixed per-user powers, the UAV applies NOMA, SIC, and maximal-ratio combining, and the realized UAV location equals an optimized expected 3-D position plus isotropic zero-mean Gaussian error.
 
-**Problem & objective**: The chance-constrained problem in Eq. (17) solves $\max_{\bar{\boldsymbol w}_u,\boldsymbol P}\bar R=\frac{1}{K}\sum_{k\in\mathcal K}R_k^{\mathrm{FD}}$ to maximize average user rate through robust joint deployment and relay-power allocation.
+**Problem & objective**: The chance-constrained problem (17) solves $\max_{\bar{\boldsymbol w}_u,\boldsymbol P}\bar R=\frac{1}{K}\sum_{k\in\mathcal K}R_k^{\mathrm{FD}}$ to maximize average user rate through robust joint deployment and relay-power allocation.
 
 **Decision variables**:
 
@@ -54,10 +54,10 @@ Jointly places a full-duplex decode-and-forward UAV relay and allocates relay po
 
 | ID | Meaning and key expression |
 |---|---|
-| 17b | User $k$ meets $R_k^{\mathrm{req}}$ with probability at least $1-\rho_k^{\mathrm{req}}$ |
-| 17c | The BS-to-UAV decoding SINR dominates the UAV-to-user relay SINR with probability at least $1-\rho_k^{\mathrm{rel}}$ |
-| 17d-17e | Individual and total UAV powers obey $0\leq p_{u,k}\leq p_u^{\max}$ and $\sum_k p_{u,k}\leq p_u^{\mathrm{tot}}$ |
-| 17f-17h | The expected coordinates remain inside the prescribed horizontal and altitude ranges |
+| (17b) | User $k$ meets $R_k^{\mathrm{req}}$ with probability at least $1-\rho_k^{\mathrm{req}}$ |
+| (17c) | The BS-to-UAV decoding SINR dominates the UAV-to-user relay SINR with probability at least $1-\rho_k^{\mathrm{rel}}$ |
+| (17d)–(17e) | Individual and total UAV powers obey $0\leq p_{u,k}\leq p_u^{\max}$ and $\sum_k p_{u,k}\leq p_u^{\mathrm{tot}}$ |
+| (17f)–(17h) | The expected coordinates remain inside the prescribed horizontal and altitude ranges |
 
 **Algorithm**: Apply the Bernstein-type inequality to replace each probabilistic constraint by tractable deterministic safe constraints, introduce rate lower bounds, and use block coordinate descent. In each outer iteration, solve an SCA-based convex UAV-position subproblem with power fixed, then solve an SCA-based convex power-allocation subproblem with position fixed until the average-rate improvement is below tolerance.
 
@@ -65,7 +65,7 @@ Jointly places a full-duplex decode-and-forward UAV relay and allocates relay po
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied a full-duplex NOMA cellular network in which a UAV relay has Gaussian deployment error and jointly serves cell-edge users. They formulated chance-constrained average-rate maximization over the expected 3-D UAV position and per-user relay powers under probabilistic rate and relay-decoding requirements, power budgets, and deployment bounds. Their robust solver converts chance constraints with a Bernstein-type inequality and alternates SCA-based position and power subproblems through block coordinate descent. Simulations reported that the robust design met the required outage probabilities, the full-duplex NOMA relay achieved the highest rate among the tested relay modes, and joint position and power optimization outperformed the corresponding single-block baselines.
+Li et al. [x] studied a full-duplex NOMA cellular network in which a UAV relay has Gaussian deployment error and jointly serves cell-edge users. They formulated chance-constrained average-rate maximization over the expected 3-D UAV position and per-user relay powers under probabilistic rate and relay-decoding requirements, power budgets, and deployment bounds. Their robust solver converts chance constraints with a Bernstein-type inequality and alternates SCA-based position and power subproblems through block coordinate descent. Simulations reported that the robust design met the required outage probabilities, the full-duplex NOMA relay achieved the highest rate among the tested relay modes, and joint position and power optimization outperformed the RWPO, RWPA, and RIT baselines; under ideal positioning the robust design has slightly lower throughput than the non-robust design and needs more iterations.
 
 ## Problem and system model
 

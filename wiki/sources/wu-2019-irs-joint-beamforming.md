@@ -16,7 +16,7 @@ related:
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[fixed-point-irs-passive-beamforming]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Intelligent Reflecting Surface Enhanced Wireless Network via Joint Active and Passive Beamforming
@@ -49,10 +49,10 @@ Foundational IRS paper. Studies an IRS-aided single-cell system (multi-antenna A
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user meets its SINR target: $\mathrm{SINR}_k\geq\gamma_k$. |
-| C2 | IRS phases are bounded: $0\leq\theta_n\leq2\pi$. |
-| C3 | IRS coefficients have unit modulus. |
-| C4 | Beamforming and phase variables remain coupled through the direct and reflected channels. |
+| (4) | Each user meets its SINR target: $\mathrm{SINR}_k\geq\gamma_k$. |
+| (5) | IRS phases are bounded: $0\leq\theta_n\leq2\pi$. |
+| Model rule | IRS coefficients have unit modulus. |
+| Model rule | Beamforming and phase variables remain coupled through the direct and reflected channels. |
 
 **Algorithm**: Use SDR for phase optimization and SOCP for fixed-phase AP beamforming, or alternate AP beamforming and IRS phase updates in closed form until transmit power converges; apply Gaussian randomization when SDR is not rank one.
 

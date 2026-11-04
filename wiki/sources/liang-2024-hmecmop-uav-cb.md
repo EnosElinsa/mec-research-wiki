@@ -19,7 +19,7 @@ related:
   - "[[collaborative-beamforming-in-aerial-mec]]"
   - "[[geng-sun]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multiobjective Optimization Approach for Reducing Hovering and Motion Energy Consumptions in UAV-Assisted Collaborative Beamforming
@@ -52,11 +52,11 @@ For UAV-assisted **collaborative beamforming (CB)** — where a swarm of UAVs fo
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every excitation-current weight satisfies $0\leq I_{i,j}\leq1$ |
-| C2 | UAV coordinates remain inside the prescribed horizontal region and altitude interval |
-| C3 | $\mathbb P$ is a valid permutation of all base stations |
-| C4 | Main-lobe and first-null angular restrictions preserve the desired beam pattern |
-| C5 | Adjacent UAVs maintain collision distance $D_{(i_1,i_2)}\geq D_{\min}$ |
+| C1 (11b) | Excitation weights $0\le I_{i,j}\le1$ |
+| C2–C4 (11c)–(11e) | UAV coordinates inside $[X_{\min},X_{\max}]\times[Y_{\min},Y_{\max}]\times[Z_{\min},Z_{\max}]$ |
+| C5 (11f) | The communication order is a valid permutation, $\mathbb P\in\mathcal P$ |
+| C6, C7 (11g), (11h) | Sidelobe directions lie outside the first nulls of the mainlobe |
+| C8 (11i) | Collision distance $D_{(i_1,i_2)}\ge D_{\min}$ |
 
 **Algorithm**: IMOMVO maintains an archive of nondominated solutions and separates continuous VAA variables from the discrete base-station order. Its vertical and horizontal renewal strategy updates positions and excitation weights, while a nearest-neighbor procedure repairs the communication sequence and guides search in the mixed decision space.
 

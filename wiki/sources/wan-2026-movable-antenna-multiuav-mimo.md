@@ -16,7 +16,7 @@ related:
   - "[[chunxiao-jiang]]"
   - "[[yuanwei-liu]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Movable Antenna Empowered Multi-UAV MIMO Communications: Joint Macro-Micro Positioning and Beamforming
@@ -33,36 +33,34 @@ Maximizes uplink multi-UAV MIMO sum rate by jointly selecting whole-UAV position
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs transmit one uplink stream each to a multi-antenna BS, and every UAV carries a two-dimensional movable antenna array. LoS/free-space channels and mutual interference couple whole-UAV positions, local antenna offsets, transmit precoders, and BS receive combiners.
+**Scenario**: $K$ UAVs, each carrying an $N_u$-element movable-antenna (MA) array, send $D$ data streams each in the uplink to an $N_b$-antenna BS. Channels are LoS with free-space path loss, and inter-UAV interference couples the UAV positions $\mathbf p_k$, MA positions $\mathbf q_k$, precoders $\mathbf F_k$, and BS receive matrices $\mathbf W_k$.
 
-**Problem & objective**: A non-convex sum-rate maximization problem solves $\max\sum_k R_k$ over macro UAV positions, micro antenna positions, UAV precoders, and BS combiners under power, box, collision, and spacing constraints.
+**Problem & objective**: Problem (13), a non-convex sum-rate maximization, $\max\sum_kR_k$ with $R_k=\log_2\det(\mathbf I_D+\mathbf F_k^H\mathbf H_k^H\mathbf N^{-1}\mathbf H_k\mathbf F_k)$ in (12), over precoders, UAV positions, and MA positions.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV macro positions | $\mathbf q_k$ | continuous 2-D positions | Whole-UAV locations |
-| Antenna micro positions | $\mathbf r_{k,m}$ | continuous local offsets | Movable-element locations on UAV $k$ |
-| UAV precoders | $\mathbf v_k$ | complex continuous vector | Uplink transmit beamformers |
-| BS combiners | $\mathbf u_k$ | complex continuous vector | Receive beamformers for stream $k$ |
+| UAV position (macro) | $\mathbf p_k=(x_k,y_k,z_k)$ | continuous; horizontal box | Location of UAV $k$ |
+| MA positions (micro) | $\mathbf q_k=\{(x_{n_u,k},y_{n_u,k})\}$ | continuous; local box | Antenna-element positions on UAV $k$ |
+| UAV precoder | $\mathbf F_k$ | complex matrix | Uplink precoder for the $D$ streams of UAV $k$ |
+| BS receive matrix | $\mathbf W_k\in\mathbb C^{N_b\times D}$ | complex matrix (WMMSE block) | Linear receiver for UAV $k$; MMSE-optimal in (19) |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UAV transmit power satisfies its budget |
-| C2 | Macro positions remain in the deployment region and maintain inter-UAV collision distance |
-| C3 | Micro antenna positions stay inside each array box |
-| C4 | Adjacent antenna elements satisfy minimum spacing |
-| C5 | The WMMSE/sum-rate variables remain feasible for all UAV streams |
+| (C1) | UAV power: $\mathrm{Tr}(\mathbf F_k\mathbf F_k^H)\le P_{k,\max}$ |
+| (C2)–(C3) | UAV horizontal ranges: $x^u_{\min}\le x^u_k\le x^u_{\max}$, $y^u_{\min}\le y^u_k\le y^u_{\max}$ |
+| (C4)–(C5) | MA ranges on each UAV, $(x^a_{\min},x^a_{\max})$ and $(y^a_{\min},y^a_{\max})$ per the text (the parse prints $u$ superscripts) |
+| (C6) | UAV collision avoidance: $\lVert\mathbf p_k-\mathbf p_i\rVert\ge d^u_{\min}$ |
+| (C7) | Antenna spacing: inter-antenna distance at least $d^a_{\min}$ |
 
-**Algorithm**: Transform sum rate with WMMSE → alternate closed-form MMSE combiner and weight updates → use hierarchical grouped sparse pursuit to select macro-position dictionary atoms → select grouped micro-position atoms → update precoders and repeat until the transformed value converges.
+**Algorithm**: GGO-WMMSE: rewrite (13) in WMMSE form with weights $\mathbf B_k$; update $\mathbf W_k$ by the MMSE solution (19) and $\mathbf B_k$ by matrix inversion (21); handle (C1) with a Lagrange multiplier found by binary search for $\mathbf F_k$; select UAV- and MA-position atoms from candidate dictionaries that satisfy (C6)–(C7) with the hierarchical grouped sparse pursuit RLS-G-GSOMP (Algorithm 1); repeat until convergence.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wan et al. [x] studied movable-antenna-enhanced multi-UAV MIMO uplink communication. They formulated a sum-rate maximization problem that jointly optimizes whole-UAV positions, local antenna-element positions, UAV precoders, and base-station receive combiners under power, deployment, collision, and antenna-spacing constraints. A WMMSE transformation alternates combiner, weight, and precoder updates, while hierarchical grouped sparse pursuit selects macro and micro position atoms from dictionaries. The transformed objective is monotone and bounded, yielding value convergence without a global-optimality claim for the continuous problem. Simulations report the highest displayed sum rate among the evaluated fixed-position, partially movable, conventional WMMSE, and MMSE baselines across the tested SNR, UAV-count, and array-size sweeps.
+Wan et al. [x] studied movable-antenna-enhanced multi-UAV MIMO uplink communication. They formulated a sum-rate maximization problem that jointly optimizes whole-UAV positions, local antenna-element positions, UAV precoders, and base-station receive combiners under power, deployment, collision, and antenna-spacing constraints. A WMMSE transformation alternates combiner, weight, and precoder updates, while hierarchical grouped sparse pursuit selects macro and micro position atoms from dictionaries. The transformed objective is monotone and bounded, yielding value convergence without a global-optimality claim for the continuous problem. Simulations compare GGO-WMMSE with FPA-OPU (UAV positions only), FPU-MA (MA positions only), WMMSE, and MMSE baselines; the gap is small at low SNR and widens as SNR grows.
 
 ## Problem and system model
 

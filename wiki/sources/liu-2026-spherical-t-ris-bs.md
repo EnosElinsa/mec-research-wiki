@@ -16,7 +16,7 @@ related:
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
   - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,27 +36,29 @@ Proposes a [[spherical-transmissive-ris|spherical transmissive RIS (ST-RIS) enab
 
 **Scenario**: A spherical transmissive-RIS base station serves $K_2$ uplink cellular users while $M$ UAVs collect data from $K_1$ remote IoT sensors. Users and sensors share the low-altitude uplink setting, and UAVs relay stored sensor data to the ST-RIS-BS; the channels are low-altitude air-to-ground links with a spherical transmissive surface.
 
-**Problem & objective**: Joint low-altitude data-collection design, a mixed discrete-continuous non-convex optimization, maximizes collected sensor data, $\max\sum_{m,k}\text{collected\_data}_{m,k}$, subject to cellular-user rate, UAV trajectory, collision, scheduling, power, and ST-RIS phase constraints.
+**Problem & objective**: Joint low-altitude data-collection design, a mixed discrete-continuous non-convex optimization, maximizes collected sensor data, $\max_{\mathbf A,\mathbf B,\mathbf P,\mathbf p,\mathbf Q,\varepsilon}\sum_l\sum_k\sum_m\bar R_{m,k}[l]\delta_t$ in P1, subject to sensor-data, UAV-buffer, cellular-rate, scheduling and trajectory, phase, power, and UAV-energy constraints.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Sensor scheduling | $a_{m,k}(t)$ | binary | UAV $m$ collects sensor $k$ in slot $t$ |
-| UAV relay/sleep mode | $r_m(t)$ | binary | UAV $m$ relays data or sleeps |
-| Cellular-user power | $p_k(t)$ | continuous, bounded | Uplink power of cellular user $k$ |
-| ST-RIS phases | $\boldsymbol\theta(t)$ | unit-modulus phases | Spherical transmissive-RIS configuration |
-| UAV trajectory | $\mathbf q_m(t)$ | continuous 3-D position | UAV data-collection path |
+| Sensor scheduling | $a_{m,k}[l]$ | binary | UAV $m$ collects sensor $k$ in slot $t$ |
+| UAV relay/sleep mode | $b_m[l]$ | binary | UAV $m$ relays data or sleeps |
+| Cellular-user and UAV power | $P_k[l],p_m[l]$ | continuous, bounded | Uplink powers of cellular user $k$ and UAV $m$ |
+| ST-RIS phases | $\varepsilon_n[l]$ | unit-modulus phases | Spherical transmissive-RIS configuration |
+| UAV trajectory | $\mathbf q_m[l]$ | continuous 3-D position | UAV data-collection path |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Cellular users meet their guaranteed uplink-rate requirements |
-| C2 | Each sensor/UAV scheduling indicator is binary and respects per-slot service capacity |
-| C3 | UAV trajectories satisfy start/end, speed, and collision-avoidance constraints |
-| C4 | Cellular-user powers stay within their limits |
-| C5 | ST-RIS transmission phases obey the spherical surface model and unit-modulus limits |
+| (30a) | Data collected from each sensor does not exceed its stored data, $\sum_l\sum_m\bar R_{m,k}[l]\delta_t\le S_k$ |
+| (30b) | UAV buffer, $S_m^D[l]\le S_m^{\max}$ |
+| (30c) | Minimum average rate of each cellular user, $\frac1L\sum_l\hat R_k[l]\ge\gamma_k$ |
+| (30d) | Scheduling and UAV trajectory constraints (1)–(6) |
+| (30e) | ST-RIS phases $\varepsilon_n[l]\in(0,2\pi]$ |
+| (30f), (30g) | Cellular-user and UAV transmit powers within $P_k^{\max}$ and $p_m^{\max}$ |
+| (30h) | UAV energy budget, $E_m\le E_m^{\max}$ |
 
 **Algorithm**: Derive planar versus spherical spatial-average gain → formulate the joint scheduling/power/phase/trajectory blocks → alternate block coordinate descent updates → use successive convex approximation for the trajectory and coupled continuous subproblems → iterate until collected data converges.
 
@@ -64,7 +66,7 @@ Proposes a [[spherical-transmissive-ris|spherical transmissive RIS (ST-RIS) enab
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] studied a spherical transmissive-RIS-enabled base station for low-altitude communication and UAV data collection. They formulated a joint problem that maximizes collected sensor data while guaranteeing cellular-user uplink rates and coordinating sensor scheduling, UAV relay or sleep decisions, cellular-user power, ST-RIS phases, and UAV trajectories. The spherical surface is introduced to reduce the angle sensitivity of planar transmissive RIS base stations, and spatial average gains are derived for the two architectures. A block coordinate descent procedure with successive convex approximation solves the coupled scheduling, beamforming, and trajectory design. Simulations report higher collected data and spatial-average gain for the spherical configuration than the planar configuration in the evaluated scenarios.
+Liu et al. [x] studied a spherical transmissive-RIS-enabled base station for low-altitude communication and UAV data collection. They formulated a joint problem that maximizes collected sensor data while guaranteeing cellular-user uplink rates and coordinating sensor scheduling, UAV relay or sleep decisions, cellular-user power, ST-RIS phases, and UAV trajectories. The spherical surface is introduced to reduce the angle sensitivity of planar transmissive RIS base stations, and spatial average gains are derived for the two architectures. A block coordinate descent procedure with successive convex approximation solves the coupled scheduling, beamforming, and trajectory design. Simulations report more collected data for the spherical T-RIS than a planar T-RIS, random phases, or no RIS, with continuous phases ahead of 1-bit and 2-bit quantization; the spherical gain grows with transmitter distance.
 
 ## Problem
 

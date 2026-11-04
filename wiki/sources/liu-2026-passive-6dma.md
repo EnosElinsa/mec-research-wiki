@@ -17,7 +17,7 @@ related:
   - "[[movable-antenna]]"
   - "[[wang-2026-6dara-cellfree]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -37,26 +37,25 @@ Treats a UAV-mounted passive IRS as a rigid six-degree-of-freedom surface whose 
 
 **Scenario**: A multi-antenna BS sends a common downlink signal to remote users through a UAV-mounted passive IRS. The rigid surface has 3-D translation, 3-D orientation, and unit-modulus reflection phases; direct BS-user links are absent and the LoS channels use angle-dependent effective aperture gains.
 
-**Problem & objective**: Joint passive 6D movable-antenna design, a non-convex max-min-SNR problem, maximizes the weakest user SNR, $\max_{\mathbf q,\boldsymbol\omega,\boldsymbol\theta}\min_l\mathrm{SNR}_l$, subject to half-space, phase, deployment, and orientation constraints.
+**Problem & objective**: Joint passive 6D movable-antenna design, a non-convex max-min-SNR problem, maximizes the weakest user SNR, $\max_{\mathbf q,\boldsymbol\psi,\boldsymbol\theta}\min_l\gamma_l(\mathbf q,\boldsymbol\psi,\boldsymbol\theta)$ in (P1), subject to deployment, half-space, and unit-modulus constraints.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
 | IRS translation | $\mathbf q$ | continuous 3-D position | UAV/IRS location |
-| IRS orientation | $\boldsymbol\omega$ | continuous Euler angles | Three-axis surface orientation |
+| IRS orientation | $\boldsymbol\psi$ | continuous Euler angles | Three-axis surface orientation |
 | Passive phases | $\boldsymbol\theta$ | continuous unit modulus | Reflection phase of each element |
-| BS beamformer | $\mathbf w$ | continuous complex vector | Base-station transmit beamforming |
+| BS beamformer | $\mathbf v$ | unit-norm complex vector, closed-form MRT | Base-station transmit beamforming, not an optimization variable |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Users and the BS lie in the IRS reflecting half-space |
-| C2 | Every passive coefficient has unit modulus |
-| C3 | Location and orientation remain in the allowed deployment ranges |
-| C4 | The BS transmit beamformer obeys its power budget |
-| C5 | The max-min objective uses the common multicast signal and all user SNR constraints |
+| (30) | AIRS location inside the prescribed movement region, $\mathbf q\in\mathcal Q$ |
+| (31), (32) | The BS and every user lie in the AIRS reflecting half-space |
+| (33) | Unit-modulus reflection, $\lvert(\boldsymbol\theta)_n\rvert=1$ |
+| Model rule | The BS uses the closed-form MRT beamformer of unit norm with fixed power $P$ |
 
 **Algorithm**: Prove the restricted single-user 1-D orientation reduction → search horizontal position → for multiple users alternate coarse/fine location and orientation grids with structured phase SDR/SCA → recover phases by SVD → explore neighboring states with Gibbs sampling and retain the best feasible state.
 
@@ -64,7 +63,7 @@ Treats a UAV-mounted passive IRS as a rigid six-degree-of-freedom surface whose 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] studied a UAV-enabled passive six-dimensional movable antenna in which an IRS jointly translates, rotates, and adjusts its reflection phases for downlink multicast. They formulated a max-min-SNR problem for remote users without direct BS-user links, subject to angle-dependent aperture, deployment, unit-modulus phase, and beamforming-power constraints. For a restricted single-user geometry, they proved an equivalent one-axis orientation and derived the optimal angle for each fixed position. For multiple users, an alternating optimization procedure combines coarse and fine location/orientation search, structured penalty-SCA phase design, SVD recovery, and Gibbs exploration. Numerical results report higher minimum SNR than location-only, orientation-only, conventional AO, and other deployment baselines in the tested settings.
+Liu et al. [x] studied a UAV-enabled passive six-dimensional movable antenna in which an IRS jointly translates, rotates, and adjusts its reflection phases for downlink multicast. They formulated a max-min-SNR problem for remote users without direct BS-user links, subject to deployment-region, half-space, and unit-modulus phase constraints with angle-dependent aperture gains. For a restricted single-user geometry, they proved an equivalent one-axis orientation and derived the optimal angle for each fixed position. For multiple users, an alternating optimization procedure combines coarse and fine location/orientation search, structured penalty-SCA phase design, SVD recovery, and Gibbs exploration. Numerical results report higher minimum SNR than AO without Gibbs sampling, individual optimization, and designs without orientation control, but the gain from orientation shrinks as the AIRS altitude grows.
 
 ## Problem framing
 

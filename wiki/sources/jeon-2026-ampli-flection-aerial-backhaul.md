@@ -17,7 +17,7 @@ related:
   - "[[pan-2025-uav-ris-energy-efficient-comm]]"
   - "[[chan-byoung-chae]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -53,11 +53,11 @@ Proposes [[aerial-active-ris-backhaul]], a high-altitude active-RIS platform tha
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Backhaul rate for each UAV-BS is balanced with its fronthaul throughput, $R_m=C_m$ |
-| C2 | Source transmit power satisfies $G_s\sum_mP_m\leq P_{\max}$ |
-| C3 | Active-RIS reflection and hardware power stays below $P_{\max,a}$ |
-| C4 | The platform remains in the permitted 3-D placement region and near the source for full-array operation |
-| C5 | Phase, gain, and array-partition choices remain physically feasible |
+| (25) | Backhaul rate for each UAV-BS is balanced with its fronthaul throughput, $R_m=C_m$ |
+| (26)(1) | Source transmit power satisfies $G_s\sum_mP_m\leq P_{\max}$ |
+| (24), (26)(2) | Active-RIS reflection and hardware power stays below $P_{\max,a}$ |
+| Model rule | The platform remains in the permitted 3-D placement region and near the source for full-array operation |
+| Model rule | Phase, gain, and array-partition choices remain physically feasible |
 
 **Algorithm**: Use MRT at the source, derive each UAV-BS-specific placement in closed form, aggregate placements with a Fermat-Weiszfeld global criterion, optimize phase alignment and active-array partitioning, then obtain a closed-form gain and the rate-supporting source powers.
 

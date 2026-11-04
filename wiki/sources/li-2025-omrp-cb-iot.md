@@ -38,7 +38,7 @@ related:
   - "[[jiacheng-wang]]"
   - "[[dusit-niyato]]"
 created: 2026-06-03
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -71,11 +71,11 @@ For a remotely-deployed static ground IoT network that must upload sensed data t
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Excitation weights remain bounded, $0\leq I_{t,k}\leq1$. |
-| C2 | Each directed link role is discrete, $x_{ji}\in\{0,1,2\}$. |
-| C3 | Fusion factors are bounded, $0\leq\alpha_{i,j}\leq1$. |
-| C4 | Selected routing links satisfy the maximum distance $d_{ij}\leq d_{\max}$. |
-| C5 | The network lifetime threshold proportion is valid, $0<p\leq1$, and the top $N_{\mathrm{CB}}$ scores form the beamforming array. |
+| (22b) | Excitation weights remain bounded, $0\le I_{t,k}\le1$, for rounds $t\le f_1$ |
+| (22c) | Each directed link role is discrete, $x_{ji}\in\{0,1,2\}$ |
+| (22d) | Fusion factors are bounded, $0\le\alpha_{i,j}\le1$ |
+| (22e) | Selected routing links satisfy $d_{ij}\le d_{\max}$ |
+| Algorithm rule | The top $N_{\mathrm{CB}}$ node scores form the beamforming array, with lifetime threshold proportion $0<p\le1$ |
 
 **Algorithm**: Run OMRP for overlap-aware cluster-head election, fusion order, and relay selection, then use SoftPPO-LSTM with softmax scoring and an LSTM feature network to choose beamforming nodes and transmit to the remote BS.
 
@@ -83,7 +83,7 @@ For a remotely-deployed static ground IoT network that must upload sensed data t
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] proposed a data-driven IoT communication framework that combines overlap-based multihop routing with collaborative beamforming. OMRP chooses cluster heads, fusion order, and direct or relay links from sensing-area overlap and residual network structure, while SoftPPO-LSTM scores candidate beamforming nodes to optimize long-term lifetime and throughput. The formulation constrains routing roles, fusion factors, excitation weights, link distance, and the top-node selection process. Simulations report about 17% longer network lifetime than benchmark routing protocols and 8.3% higher CB throughput than PPO, with a Raspberry Pi deployment supporting practical inference.
+Li et al. [x] proposed a data-driven IoT communication framework that combines overlap-based multihop routing with collaborative beamforming. OMRP chooses cluster heads, fusion order, and direct or relay links from sensing-area overlap and residual network structure, while SoftPPO-LSTM scores candidate beamforming nodes to optimize long-term lifetime and throughput. The formulation constrains routing roles, fusion factors, excitation weights, link distance, and the top-node selection process. Simulations report about 17% longer network lifetime than D2CRP and IGHND (19% versus LEACH) and 8.3%, 10.9%, and 19.5% higher CB throughput than PPO, SAC, and DDPG, with a Raspberry Pi 4B deployment for inference.
 
 ## Problem framing
 As IoT networks scale, devices generate massive, spatially/temporally correlated (redundant) data, and energy management becomes hard. When the BS/sink is far outside the monitored region, traditional routing makes the nodes nearest the BS carry the heaviest relay load over the longest last-hop link — the **hot-spot problem** — and long-distance single-node transmission is energy-expensive. Collaborative beamforming (CB) lets multiple nodes form a virtual antenna array (VAA) so that, for an ideal CB of N nodes, received power scales by N² (equivalently, required transmit power drops by 1/N²), decoupling which nodes transmit from their geographic position. The paper argues prior work treats routing, data fusion, and CB separately, and proposes a single data-driven framework that links data-redundancy estimation to all of routing, fusion ordering, and CB node selection over the network's lifetime.

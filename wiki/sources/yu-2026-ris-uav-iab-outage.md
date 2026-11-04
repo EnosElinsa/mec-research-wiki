@@ -17,7 +17,7 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[yonghui-li]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Outage Minimization for RIS and UAV Collaboration-Enhanced IAB Networks
@@ -36,7 +36,7 @@ Jointly places UAV IAB nodes vertically and configures a rooftop RIS so urban ac
 
 **Scenario**: A multi-antenna donor BS backhauls clustered single-antenna UAV IAB nodes through direct and rooftop-RIS paths, while each UAV serves one urban user cluster over elevation-dependent Rician access links. Horizontal positions and time/bandwidth shares are fixed.
 
-**Problem & objective**: The URO problem minimizes average cluster outage, $\min_{\mathbf h,\boldsymbol\theta}\frac{1}{M}\sum_m P_{\mathrm{out},m}$, over UAV heights and unit-modulus RIS phases.
+**Problem & objective**: Problem (25), solved by the URO scheme, minimizes the average outage probability $\min_{\Theta,\mathcal T_m}1-P_{nout}$, where $P_{nout}$ in (24) is the average non-outage probability, over UAV deployment (heights) and RIS phases.
 
 **Decision variables**:
 
@@ -44,17 +44,16 @@ Jointly places UAV IAB nodes vertically and configures a rooftop RIS so urban ac
 |---|---|---|---|
 | UAV height | $h_m$ | continuous, bounded | Vertical position of IAB UAV $m$ |
 | RIS phase | $\theta_n$ | continuous, $[0,2\pi)$ | Phase of RIS element $n$ |
-| SDR matrix | $\mathbf V$ | positive semidefinite relaxation | Lifted RIS phase representation |
+| SDR matrix | $\mathbf E_m$ | PSD, unit diagonal, rank one relaxed | Lifted RIS phase representation in (60) |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV heights satisfy urban deployment and blockage-threshold bounds |
-| C2 | Each RIS coefficient has unit modulus |
-| C3 | Every user in a non-outage cluster meets its required access rate |
-| C4 | Cluster access traffic does not exceed its backhaul rate |
-| C5 | RIS and height variables use the fixed horizontal clustering and resource shares |
+| (25b) | UAV height range: $h_{\min}\le h_m\le h_{\max}$ |
+| (25c) | RIS phase range: $0\le\theta_{n_r}\le2\pi$ |
+| Model rule | Bandwidth allocation, timeslot assignment, user scheduling, and horizontal UAV positions are fixed; the RIS-UAV link is assumed unblocked ($x_{rm}=1$) |
+| Model rule | Outage of user $n$ in cluster $m$ covers both access-rate and backhaul-rate failure, expressed with Marcum-Q terms $Q_1(a_{mn},b_{mn})-Q_1(a_{mn},c_{mn})$ in (24) |
 
 **Algorithm**: Fix RIS phases and lower-bound the Marcum-Q non-outage expression → update UAV heights by SCA → fix heights and maximize summed backhaul rates through SDR → recover feasible phases by Gaussian randomization → alternate URO blocks → optionally evaluate random blockage and jitter by sample-average approximation.
 
@@ -62,7 +61,7 @@ Jointly places UAV IAB nodes vertically and configures a rooftop RIS so urban ac
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Yu et al. [x] studied outage minimization in integrated access and backhaul networks enhanced jointly by UAVs and a rooftop RIS. They formulated average outage minimization over UAV heights and unit-modulus RIS phases under user-rate, backhaul-capacity, blockage, and deployment constraints. Successive convex approximation updates the UAV heights using a lower bound on the Marcum-Q non-outage expression. Semidefinite relaxation and Gaussian randomization update the RIS phases, and URO alternates the two blocks. Simulations report lower outage than the evaluated phase-alignment baseline and quantify the accuracy of the stated non-outage lower bound.
+Yu et al. [x] studied outage minimization in integrated access and backhaul networks enhanced jointly by UAVs and a rooftop RIS. They formulated average outage minimization over UAV heights and unit-modulus RIS phases under height-range and phase constraints, where outage captures both access-rate and backhaul-rate failures under building blockage. Successive convex approximation updates the UAV heights using a lower bound on the Marcum-Q non-outage expression. Semidefinite relaxation and Gaussian randomization update the RIS phases, and URO alternates the two blocks. Simulations compare URO with phase-alignment RIS beamforming (baseline 1), fixed UAV heights (baseline 2), and random RIS phases (baseline 3), reporting a 44.72% outage reduction over baseline 1 across backhaul distances.
 
 ## Problem and system model
 

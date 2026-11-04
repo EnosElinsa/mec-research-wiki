@@ -18,7 +18,7 @@ related:
   - "[[yong-zeng]]"
 modeling_card: required
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Wireless Communication for Low-Altitude Economy With UAV Swarm Enabled Two-Level Movable Antenna System
@@ -37,7 +37,7 @@ Treats the UAV swarm itself as a first-level movable antenna system and each UAV
 
 **Scenario**: $L$ UAVs cooperatively receive uplinks from $K$ single-antenna ground users; each UAV carries an $M$-element linear movable-antenna array, with near-field spherical-wave channels across the swarm and a local uniform-plane-wave approximation.
 
-**Problem & objective**: Max-min achievable rate, $\max_{\mathbf Q,\mathbf B,\mathbf V,\rho}\rho$ subject to $R_k\geq\rho$ for all users, where $\rho=\min_kR_k$.
+**Problem & objective**: Problem (P1) in (11), max-min achievable rate, $\max_{\mathbf Q,\mathbf B,\mathbf V,\rho}\rho$ subject to $R_k\geq\rho$ for all users, where $\rho=\min_kR_k$.
 
 **Decision variables**:
 
@@ -52,10 +52,12 @@ Treats the UAV swarm itself as a first-level movable antenna system and each UAV
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAVs remain in the movable region, $\mathbf q_r+\mathbf q_l\in\mathcal C$. |
-| C2 | UAV collision avoidance requires $\|\mathbf q_l-\mathbf q_{l'}\|^2\geq d_{\min}^2$. |
-| C3 | Local elements remain in their regions and avoid mutual coupling, $\|b_{l,m}-b_{l,m'}\|^2\geq\widetilde d_{\min}^2$. |
-| C4 | Receive combiners are normalized, $\|\mathbf v_k\|=1$, and every user satisfies $R_k\geq\rho$. |
+| (11a) | Every user meets the common rate: $R_k\ge\rho$ |
+| (11b) | UAVs stay in the movable region: $\mathbf q_r+\mathbf q_l\in\mathcal C$ |
+| (11c) | UAV collision avoidance: $\lVert\mathbf q_l-\mathbf q_{l'}\rVert^2\ge d_{\min}^2$ |
+| (11d) | Local MA region: $b_{l,m}\in\widetilde{\mathcal C}$ |
+| (11e) | MA spacing: $\lvert b_{l,m}-b_{l,m'}\rvert^2\ge\widetilde d_{\min}^2$ |
+| (11f) | Unit-norm combiners: $\lVert\mathbf v_k\rVert=1$ |
 
 **Algorithm**: For fixed placement and antenna positions, update receive combiners in closed form; then update UAV placements and local MA offsets by successive convex approximation, alternating these blocks until the max-min rate converges, with closed-form IUI-free structures for special one- and two-user cases.
 
@@ -63,7 +65,7 @@ Treats the UAV swarm itself as a first-level movable antenna system and each UAV
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lu et al. [x] studied a two-level movable-antenna uplink in which a UAV swarm and the local arrays carried by its UAVs jointly serve ground users. They formulated a max-min achievable-rate problem over swarm placement, local antenna offsets, and receive beamforming under UAV separation, array-spacing, movable-region, and unit-norm constraints. For general user counts, alternating optimization updates the receive combiners and uses successive convex approximation for placement and local antenna positions, while special two-user solutions form an interference-free uniform sparse array. Numerical results show rates close to the interference-free bound and gains over circular-array, fixed-position, and distributed-MIMO benchmarks, including with synchronization and position errors.
+Lu et al. [x] studied a two-level movable-antenna uplink in which a UAV swarm and the local arrays carried by its UAVs jointly serve ground users. They formulated a max-min achievable-rate problem over swarm placement, local antenna offsets, and receive beamforming under UAV separation, array-spacing, movable-region, and unit-norm constraints. For general user counts, alternating optimization updates the receive combiners and uses successive convex approximation for placement and local antenna positions, while special two-user solutions form an interference-free uniform sparse array. Numerical results compare the minimum rate with the IUI-free upper bound and report gains over circular-array (with FPA or uniform sparse arrays, MMSE beamforming) and distributed-MIMO benchmarks; a channel-estimation-based scheme compensates synchronization and position errors.
 
 ## Problem
 

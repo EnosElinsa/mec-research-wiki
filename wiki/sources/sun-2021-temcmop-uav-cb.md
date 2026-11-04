@@ -23,7 +23,7 @@ related:
   - "[[shuang-liang]]"
   - "[[hui-kang]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Time and Energy Minimization Communications Based on Collaborative Beamforming for UAV Networks: A Multi-Objective Optimization Method
@@ -48,20 +48,22 @@ Studies a UAV network where a set of UAVs form a **virtual antenna array (VAA)**
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV positions | $\mathbf q_i$ | continuous 3-D positions | VAA formation points for UAV $i$ |
-| Flight speeds | $v_i$ | continuous, speed-bounded | Speed used to reach each formation |
-| Excitation currents | $w_i$ | complex/continuous bounded weights | Per-UAV CB amplitude and phase weights |
-| BS service order | $\pi$ | discrete permutation | Order in which remote BSs are served |
+| UAV positions | $x_{i,j}^U,y_{i,j}^U,z_{i,j}^U$ | continuous 3-D positions | VAA formation points for UAV $i$ |
+| Flight speeds | $v_{i,j}$ | continuous, speed-bounded | Speed used to reach each formation |
+| Excitation current weights | $I_{i,j}$ | continuous, $[0,1]$ | Per-UAV collaborative-beamforming weight for BS $i$ |
+| BS service order | $\mathbb Q$ | discrete permutation | Order in which remote BSs are served |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV positions and inter-UAV distances satisfy formation and collision limits |
-| C2 | Flight speeds obey aircraft speed bounds and energy-optimal speed relations |
-| C3 | Excitation currents satisfy amplitude, phase, and collaborative-beamforming limits |
-| C4 | Each remote BS is served once in the selected order |
-| C5 | Transmission, VAA-formation, and motion times/energies are computed consistently |
+| C1 (10b) | Excitation weights $0\le I_{i,j}\le1$ |
+| C2–C4 (10c)–(10e) | $L_{\min}\le x_{i,j}^U,y_{i,j}^U\le L_{\max}$ and $H_{\min}\le z_{i,j}^U\le H_{\max}$ |
+| C5 (10f) | Flight speed $V_{\min}\le v_{i,j}\le V_{\max}$ |
+| C6 (10g) | The BS service order is a valid permutation, $\mathbb Q\in\mathcal Q$ |
+| C7, C8 (10h), (10i) | Sidelobe directions lie outside the first nulls of the mainlobe |
+| C9 (10j) | UAV separation $D_{(i_1,i_2)}\ge\max\{D_{\min},\lambda/2\}$ |
+| C10 (16) | In R-TEMCMOP, the performing time is bounded, $0\le T_i^{perf}\le\sqrt2(L_{\max}-L_{\min})/V_{\min}$ |
 
 **Algorithm**: Derive the energy-optimal flight-speed strategy and reformulate TEMCMOP as R-TEMCMOP → initialize a mixed continuous/discrete population with chaos and opposition learning → update solutions with the hybrid IMOALO operator → retain the nondominated Pareto set.
 
@@ -69,7 +71,7 @@ Studies a UAV network where a set of UAVs form a **virtual antenna array (VAA)**
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] studied time and energy minimization for UAV networks that form virtual antenna arrays through collaborative beamforming. They formulated an NP-hard multi-objective problem that minimizes transmission time, VAA-formation time, and UAV motion and hovering energy by jointly optimizing UAV positions, flight speeds, excitation currents, and the order of remote base-station service. An energy-optimal speed strategy removes the speed dimension and yields the reformulated R-TEMCMOP. The improved multi-objective ant lion optimizer uses chaos and opposition-based initialization and a mixed continuous/discrete update operator to obtain a Pareto set. Simulations report the best overall three-objective performance among the evaluated collaborative-beamforming and evolutionary baselines.
+Sun et al. [x] studied time and energy minimization for UAV networks that form virtual antenna arrays through collaborative beamforming. They formulated an NP-hard multi-objective problem that minimizes transmission time, VAA-formation time, and UAV motion and hovering energy by jointly optimizing UAV positions, flight speeds, excitation currents, and the order of remote base-station service. An energy-optimal speed strategy removes the speed dimension and yields the reformulated R-TEMCMOP. The improved multi-objective ant lion optimizer uses chaos and opposition-based initialization and a mixed continuous/discrete update operator to obtain a Pareto set. Simulations report the best overall three-objective performance against linear and rectangular arrays (LAA, RAA), MPOECW, MODA, MOPSO, NSGA-II, and conventional MOALO.
 
 ## Problem framing
 

@@ -29,7 +29,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 authors:
   - Jianqiu Wu
   - Zhongyi Yu
@@ -57,7 +57,7 @@ A multi-UAV, multi-user [[mobile-edge-computing]] system running over a [[terahe
 
 **Scenario**: Multiple users either compute locally or offload to one of several fixed-position UAV MEC servers over a blockage-sensitive THz network aided by one IRS. Per-user deadlines couple binary execution choice, shared uplink rate, UAV workload, computation energy, and RIS phases.
 
-**Problem & objective**: P1 is an NP-hard MINLP that minimizes total device and UAV energy, $\min_{\boldsymbol\beta,\boldsymbol\phi}E_{\mathrm{total}}$, over binary offloading and IRS phase shifts.
+**Problem & objective**: Problem $\mathcal P1$ in (18) is an NP-hard MINLP that minimizes total device and UAV energy, $\min_{\boldsymbol\beta(n),\boldsymbol\phi(n)}E^{total}(n)$, over binary offloading and IRS phase shifts.
 
 **Decision variables**:
 
@@ -71,11 +71,11 @@ A multi-UAV, multi-user [[mobile-edge-computing]] system running over a [[terahe
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user selects exactly one mode, $\sum_{m=0}^{M}\beta_{u,m}=1$ |
-| C2 | Offloading assignments are binary |
-| C3 | Every IRS phase satisfies $0\le\phi_k\le2\pi$ |
-| C4 | Local or offloaded execution meets each task deadline $T_u$ |
-| C5 | UAV workload determines feasible compute sharing among its assigned users |
+| (18a) | Offloading assignments are binary: $\beta_{u,m}(n)\in\{0,1\}$ |
+| (18b) | Each user selects exactly one mode: $\sum_{m=1}^{M+1}\beta_{u,m}(n)=1$ |
+| (18d) | IRS phase range: $0\le\phi_k(n)\le2\pi$ |
+| (18f) | No overdue: $t_u^{\mathrm{comp}}+t_u^{\mathrm{tran}}+t_u^{\mathrm{local}}\le T_u(n)$ |
+| Note | The parse omits (18c) and (18e); check the published paper |
 
 **Algorithm**: Predict an offloading-probability matrix with the MLP → apply order-preserving quantization to generate diverse binary candidates → for each candidate solve IRS phases with the whale optimization algorithm → score energy plus overdue penalties → retain the best assignment and update the supervised replay reference.
 
@@ -83,7 +83,7 @@ A multi-UAV, multi-user [[mobile-edge-computing]] system running over a [[terahe
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied energy optimization in an IRS-assisted multi-UAV edge computing system over terahertz links. They formulated an NP-hard mixed-integer nonlinear problem that minimizes user and UAV computation and transmission energy over binary offloading assignments and IRS phase shifts under one-mode, phase-range, and task-deadline constraints. IOPO first predicts assignment probabilities and applies order-preserving quantization to generate feasible binary candidates. For each candidate, a whale optimization algorithm updates the IRS phases, and the lowest-energy deadline-aware pair becomes the training reference. Simulations report lower energy and fewer overdue tasks than the evaluated DDPG, greedy, local-computing, random, and IRS-ablation baselines.
+Wu et al. [x] studied energy optimization in an IRS-assisted multi-UAV edge computing system over terahertz links. They formulated an NP-hard mixed-integer nonlinear problem that minimizes user and UAV computation and transmission energy over binary offloading assignments and IRS phase shifts under one-mode, phase-range, and task-deadline constraints. IOPO first predicts assignment probabilities and applies order-preserving quantization to generate feasible binary candidates. For each candidate, a whale optimization algorithm updates the IRS phases, and the lowest-energy deadline-aware pair becomes the training reference. Against LOCAL, GREEDY, GREEDY (OC), two optimized-random schemes, and DDPG, IOPO has the lowest overdue-penalized energy cost; without the penalty several baselines spend less energy but miss deadlines, and only LOCAL and GREEDY (OC) match its near-zero overdue record.
 
 ## Problem
 UAV-mounted MEC servers provide flexible, well-positioned offloading for mobile devices, and THz bands supply the bandwidth needed for fast-growing data. But THz waves attenuate severely (path loss + molecular absorption) and diffract poorly, so links are blockage-vulnerable. An IRS can reconfigure the propagation channel through per-element phase shifts, restoring coverage and spectral efficiency. Task offloading in an IRS-assisted *multi-UAV* MEC system over THz has been largely unexplored. The paper jointly chooses binary offloading allocations (each user uses one of M UAVs or local compute) and IRS reflector phases to minimize total system energy under per-task latency deadlines, a problem that is NP-hard MINLP. Prior single-stage RL methods that emit decisions and phases at once tend to be suboptimal, motivating a [[two-stage-decomposition]].

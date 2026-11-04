@@ -20,7 +20,7 @@ related:
   - "[[chen-2025-swipt-mec-sac]]"
   - "[[chhea-2025-irs-uav-swipt-drl]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -70,7 +70,7 @@ Extends harvest-transmit-store SWIPT for a UAV-mounted RIS from time splitting a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Peng and Wang [x] study a UAV-mounted RIS that harvests RF energy while serving users through blocked AP-user links. Their problem maximizes dual-domain harvesting efficiency by jointly selecting the time split, user powers, element-level reflection schedule, and RIS phases under throughput and hardware constraints. A robust SD3 controller handles the mixed continuous and discrete action space with clipped softmax targets and replay, while density-aware and Fermat-point rules provide UAV placements. In the reported experiments, dual-domain SD3 achieves substantially higher harvesting efficiency than time-domain SD3, TD3, and DDPG in both single-user and multi-user cases.
+Peng and Wang [x] study a UAV-mounted RIS that harvests RF energy while serving users through blocked AP-user links. Their problem maximizes dual-domain harvesting efficiency by jointly selecting the time split, user powers, element-level reflection schedule, and RIS phases under throughput and hardware constraints. A robust SD3 controller handles the mixed continuous and discrete action space with clipped softmax targets and replay, while density-aware and Fermat-point rules provide UAV placements. In the reported experiments, dual-domain harvesting beats time-domain harvesting for every learner and for exhaustive search, and SD3 approaches exhaustive search and leads TD3 and DDPG in the dual-domain scheme (64.2% vs. 58.5% and 30.4% for one user); in the multi-user time-domain scheme, DDPG (23.6%) slightly exceeds SD3 (23.2%).
 
 ## Problem framing
 

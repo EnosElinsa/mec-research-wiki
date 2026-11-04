@@ -18,7 +18,7 @@ related:
   - "[[ahmed-2026-noma-irs-vehicular]]"
   - "[[xingwang-li]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Efficiency Maximization for Aerial Intelligent Reflecting Surface-Assisted MISO Systems
@@ -52,11 +52,11 @@ A BCD-SCA design jointly optimizes RSMA precoders/common rates, continuous UAV-m
 
 | ID | Meaning and key expression |
 |---|---|
-| 18a | Allocated common rates are decodable within the common-stream rate |
-| 18b | $r_k+R_k^p\ge R_k^{\mathrm{th}}$ for every user |
-| 18c | Each IRS coefficient satisfies $\lvert\varphi_m\rvert=1$ |
-| 18d | Common-rate allocations satisfy $r_k\ge0$ |
-| 18e | BS transmit power satisfies $\operatorname{tr}(\mathbf P^H\mathbf P)\le P_{\max}$ |
+| (18a) | Allocated common rates are decodable within the common-stream rate |
+| (18b) | $r_k+R_k^p\ge R_k^{\mathrm{th}}$ for every user |
+| (18c) | Each IRS coefficient satisfies $\lvert\varphi_m\rvert=1$ |
+| (18d) | Common-rate allocations satisfy $r_k\ge0$ |
+| (18e) | BS transmit power satisfies $\operatorname{tr}(\mathbf P^H\mathbf P)\le P_{\max}$ |
 
 **Algorithm**: Initialize precoders, phases, and placement from channel structure → alternate precoder/common-rate, IRS-phase, and aerial-placement blocks → use SCA and quadratic transforms for fractional and rate terms → lift the IRS phase matrix and apply sequential rank-one relaxation → repeat the BCD loop to a stationary point.
 
@@ -64,7 +64,7 @@ A BCD-SCA design jointly optimizes RSMA precoders/common rates, continuous UAV-m
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mihertie et al. [x] studied communication-centric energy-efficiency maximization for a UAV-mounted IRS-assisted multi-user MISO downlink with rate-splitting multiple access and practical hardware impairments. They formulated a non-convex problem that jointly optimizes RSMA precoders, common-rate allocation, IRS phase shifts, and the aerial-IRS placement point under minimum-rate, transmit-power, and unit-modulus constraints. Their alternating-optimization framework uses block coordinate descent, successive convex approximation, quadratic transformation, and sequential rank-one relaxation. The resulting sequence is designed to converge monotonically to a stationary point. Simulations report higher energy efficiency for the proposed RSMA design than the evaluated NOMA and SDMA baselines, including reported values of 2.20 for RSMA and 1.65 for NOMA in the stated two-user setting.
+Mihertie et al. [x] studied communication-centric energy-efficiency maximization for a UAV-mounted IRS-assisted multi-user MISO downlink with rate-splitting multiple access and practical hardware impairments. They formulated a non-convex problem that jointly optimizes RSMA precoders, common-rate allocation, IRS phase shifts, and the aerial-IRS placement point under minimum-rate, transmit-power, and unit-modulus constraints. Their alternating-optimization framework uses block coordinate descent, successive convex approximation, quadratic transformation, and sequential rank-one relaxation. The resulting sequence is designed to converge monotonically to a stationary point. Simulations report higher energy efficiency for the proposed RSMA design than the evaluated NOMA and SDMA baselines across user counts ($K=2$ to $5$), transmit powers, hardware-impairment levels, and IRS sizes; the gain is largest in the mid-to-high power regime.
 
 ## Problem
 

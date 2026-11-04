@@ -19,7 +19,7 @@ related:
   - "[[qin-2023-ris-uav-mec-ee]]"
   - "[[lin-2025-energy-effective-ris-multiuav-coverage]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Transmission Strategy for UAV-RIS 2.0 Assisted Communications Using Rate Splitting Multiple Access
@@ -67,7 +67,7 @@ Combines group-connected [[beyond-diagonal-ris|BD-RIS]] hardware with intra-grou
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Huroon et al. [x] studied energy-efficient transmission in a multi-UAV downlink that combines group-connected beyond-diagonal RIS hardware with rate-splitting multiple access. They formulated a mixed-integer nonlinear fractional program that maximizes aggregate rate per total transmit, UAV, and RIS power by jointly optimizing RIS-cluster allocation, common rates, precoders, UAV trajectories, and non-diagonal scattering matrices. A quadratic transform handles the fractional objective, and generalized Benders decomposition separates discrete cluster assignment from the continuous primal design. Within the primal loop, block coordinate descent and successive convex approximation update RSMA and trajectory variables, while Riemannian conjugate gradient updates the BD-RIS scattering matrices. Simulations report higher energy efficiency for BD-RIS with RSMA than the evaluated conventional-RIS, NOMA, fixed-UAV, and no-BD-RIS configurations.
+Huroon et al. [x] studied energy-efficient transmission in a multi-UAV downlink that combines group-connected beyond-diagonal RIS hardware with rate-splitting multiple access. They formulated a mixed-integer nonlinear fractional program that maximizes aggregate rate per total transmit, UAV, and RIS power by jointly optimizing RIS-cluster allocation, common rates, precoders, UAV trajectories, and non-diagonal scattering matrices. A quadratic transform handles the fractional objective, and generalized Benders decomposition separates discrete cluster assignment from the continuous primal design. Within the primal loop, block coordinate descent and successive convex approximation update RSMA and trajectory variables, while Riemannian conjugate gradient updates the BD-RIS scattering matrices. Simulations report a higher sum rate for group-connected BD-RIS with RSMA than for conventional RIS with RSMA or NOMA and for RSMA without RIS, and RSMA outperformed SDMA, NOMA, and TIN as the number of UAV antennas grew.
 
 ## Problem
 

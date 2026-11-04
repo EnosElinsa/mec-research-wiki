@@ -20,7 +20,7 @@ related:
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[yuanwei-liu]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -38,36 +38,38 @@ Studies uplink NOMA for users whose direct base-station links are blocked. A fix
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A fixed $K$-element STAR-RIS assists $M$ ground users whose direct BS links are blocked, while a UAV on a predetermined route supplies RF energy. Users transmit simultaneously by uplink power-domain NOMA, and the BS decodes in descending effective-channel-gain order.
+**Scenario**: A $K$-element STAR-RIS connects $M$ ground users (GUs), blocked from the BS, to the BS by uplink NOMA, while a UAV on a predetermined flight path supplies RF energy to the GUs and the STAR-RIS. The horizon $T=N\delta$ has $N$ slots; each slot splits into an energy-harvesting phase $t_E[n]$ and an information-transmission phase $t_M[n]$, and the BS applies SIC with binary decoding-order indicators $\zeta_{a,b}$.
 
-**Problem & objective**: UAV-energy-supplied STAR-RIS NOMA resource allocation, a non-convex continuous optimization, maximizes multi-slot sum-rate, $\max\sum_{m,t}R_m(t)$, subject to user/surface energy causality, time, power, minimum-rate, interference, and STAR-RIS feasibility constraints.
+**Problem & objective**: Problem (16), a non-convex sum-rate maximization, $\max_{\Theta,P,t_E,t_M}\sum_{n=1}^{N}\sum_{m=1}^{M}R_m[n]$.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| STAR-RIS coefficients | $\boldsymbol\alpha_t,\boldsymbol\beta_t$ | continuous amplitudes/phases | Transmission/reflection configuration in slot $t$ |
-| User powers | $p_m(t)$ | continuous, bounded | NOMA uplink transmit powers |
-| Energy/information durations | $\tau_m(t),T_E(t)$ | continuous, nonnegative | User transmission and UAV WET time allocation |
-| Auxiliary transform | $\eta_t$ | continuous | Fractional/sum-rate transform variable |
+| STAR-RIS coefficients | $\Theta$ ($\lambda_k^i[n]$, $\theta_i^k[n]$, $i\in\{t,r\}$) | continuous; $\lambda\in[0,1]$, $\theta\in[0,2\pi)$ | Transmission/reflection amplitudes and phase shifts per element and slot |
+| GU powers | $P_m[n]$ | continuous, $[0,P_m^{\max}[n]]$ | Uplink NOMA transmit power |
+| Time split | $t_E[n],t_M[n]$ | continuous, nonnegative | Energy-harvesting and information-transmission durations |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | User cumulative energy and STAR-RIS circuit energy remain feasible |
-| C2 | NOMA users meet minimum-rate requirements and SIC/interference expressions |
-| C3 | UAV WET and user information durations fit each slot |
-| C4 | User powers obey per-slot limits and the STAR-RIS energy-splitting model |
-| C5 | RIS reflection/transmission coefficients satisfy unit-modulus and surface constraints |
+| (16a) | GU energy causality: $\sum_nP_m[n]t_M[n]\le\sum_nE_{G,m}[n]+E_0$ |
+| (16b) | STAR-RIS energy causality: $K\mu\sum_nt_M[n]\le\sum_nE_S[n]$ |
+| (16c) | Slot time: $t_E[n]+t_M[n]\le\delta$ |
+| (16d) | $t_E[n],t_M[n]\ge0$ |
+| (16e) | STAR-RIS amplitudes: $\lambda_k^t[n]+\lambda_k^r[n]=1$, $\lambda_k^i[n]\in[0,1]$ |
+| (16f) | STAR-RIS phases: $\theta_i^k[n]\in[0,2\pi)$ |
+| (16g) | $0\le P_m[n]\le P_m^{\max}[n]$ |
+| (16h) | Minimum rate: $R_m[n]\ge R_m^{\min}[n]$ |
+| (16i) | Interference overhead: $\eta=\sum I_m[n]/\sum R_m[n]\le\eta_{\max}$ ($\eta_{\max}=10\%$) |
+| Note | The parse misplaces the tags; IDs follow the paper's text, so check the published paper |
 
-**Algorithm**: Lift STAR-RIS coefficients and solve a penalty-SCA SDR → apply the auxiliary/Dinkelbach-labelled power transform and convex power updates → solve energy/information durations with the stated game-theoretic utility → alternate all three BCD blocks until sum-rate improvement is below the stopping tolerance.
+**Algorithm**: BCD over three subproblems: STAR-RIS coefficients by Dinkelbach transform, SDR and SCA with a rank-one penalty; GU powers by Dinkelbach's method; time split by a potential game that reaches a Nash equilibrium. The blocks alternate until the sum-rate converges.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Meng et al. [x] studied resource allocation in a STAR-RIS-assisted uplink NOMA system supplied by a UAV. They formulated a non-convex sum-rate maximization that jointly designs STAR-RIS transmission/reflection coefficients, user powers, and energy/information time allocation under user and surface energy causality, minimum-rate, and interference constraints. The UAV follows a predetermined route and wirelessly powers users and the surface before simultaneous NOMA transmission. Their block-coordinate-descent solver uses penalty-SCA SDR for the RIS block, an auxiliary fractional transform for powers, and a game-theoretic time-allocation update. Simulations report higher average sum-rate than the selected surface, time-splitting, and optimization baselines in the evaluated settings.
+Meng et al. [x] studied resource allocation in a STAR-RIS-assisted uplink NOMA system supplied by a UAV. They formulated a non-convex sum-rate maximization that jointly designs STAR-RIS transmission/reflection coefficients, user powers, and energy/information time allocation under user and surface energy causality, minimum-rate, and interference constraints. The UAV follows a predetermined route and wirelessly powers users and the surface before simultaneous NOMA transmission. Their block-coordinate-descent solver uses SDR with SCA and a rank-one penalty for the STAR-RIS block, Dinkelbach's method for powers, and a potential game for the time split. Against uniform-energy-splitting STAR-RIS, two-RIS, TDMA, and partial-optimization baselines (ADMM or SDR with KOA, game theory, or random time splitting), simulations report a 48.47% average gain over random time splitting and 37.83% over SDR+KOA; NOMA and TDMA perform similarly with one user or 20 elements.
 
 ## Problem
 
