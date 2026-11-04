@@ -20,7 +20,7 @@ related:
   - "[[cunhua-pan]]"
   - "[[nauman-aslam]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deep Reinforcement Learning Based Dynamic Trajectory Control for UAV-Assisted Mobile Edge Computing
@@ -54,12 +54,12 @@ A flying-MEC (F-MEC) platform where UAVs carry computation resource and serve us
 
 | ID | Meaning and key expression |
 |---|---|
-| C1-C2 | $a_{ij}(t)\in\{0,1\}$ and $\sum_{j=0}^{M}a_{ij}(t)=1$ |
-| C3 | UAV load: $\sum_i a_{ij}(t)\le V^{\max}$ |
-| C4-C5 | $0\le\theta_j^h(t)\le2\pi$ and $0\le d_j(t)\le d^{\max}$ |
-| C6-C7 | Area bounds $0\le X_j(t)\le X^{\max}$ and $0\le Y_j(t)\le Y^{\max}$ |
-| C8-C9 | Coverage $a_{ij}(t)R_{ij}(t)\le R^{\max}$ and deadline $T_{ij}(t)\le T^{\max}$ |
-| C10 | UAV CPU capacity: $\sum_i a_{ij}(t)f_{ij}^{C}(t)\le f^{\max}$ |
+| (24b)-(24c) | $a_{ij}(t)\in\{0,1\}$ and $\sum_{j=0}^Ma_{ij}(t)=1$ |
+| (24d) | UAV load $\sum_ia_{ij}(t)\le V^{\max}$ |
+| (24e)-(24f) | $0\le\theta_j^h(t)\le2\pi$ and $0\le d_j(t)\le d^{\max}$ |
+| (24g)-(24h) | Area bounds $0\le X_j(t)\le X^{\max}$ and $0\le Y_j(t)\le Y^{\max}$ |
+| (24i)-(24j) | Coverage $a_{ij}(t)R_{ij}(t)\le R^{\max}$ and deadline $T_{ij}(t)\le T^{\max}$ |
+| (24k) | UAV CPU capacity $\sum_ia_{ij}(t)f_{ij}^C(t)\le f^{\max}$ |
 
 **Algorithm**: CAT alternates a branch-and-bound association/resource subproblem with an SCA-based convex trajectory QCQP. RAT replaces the trajectory block with actor-critic DRL, prioritized replay, and a matching algorithm for association and resource allocation.
 

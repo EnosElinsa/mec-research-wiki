@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[chen-2025-swipt-mec-sac]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # AAV-Assisted Joint Mobile Edge Computing and Data Collection via Matching-Enabled Deep Reinforcement Learning
@@ -33,36 +33,30 @@ Unlike prior work that treats AAV-assisted **MEC** and **data collection (DC)** 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple MEC-AAVs process computation-intensive ground-user tasks while one DC-AAV collects freshness-insensitive data in the same area. The aerial links reuse spectrum, so trajectories, user association, transmit powers, co-channel interference, and AAV energy are coupled over time.
-
-**Problem & objective**: A long-term non-convex mixed-integer multi-objective problem minimizes MEC latency and maximizes collected data, $\min L_{\mathrm{MEC}},\;\max D_{\mathrm{DC}}$, through joint aerial movement, association, and power control.
-
+**Scenario**: Several MEC-AAVs process tasks of ground users (GUs) while one DC-AAV collects data from DC users in the same area. All links reuse spectrum, so AAV positions, GU association, and GU transmit powers jointly set interference, latency, collected data, and AAV energy.
+**Problem & objective**: Problem $\mathcal P$ (15) is a two-objective problem, $\min_{\{V,p,X\}}Q=\{f_1,-f_2\}$: minimize MEC latency $f_1$ and maximize collected data $f_2=\sum_tD(t)$ (14).
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| AAV movement | $\Delta\mathbf q_m(t)$ | continuous bounded action | Slot movement of MEC-AAV or DC-AAV $m$ |
-| User association | $x_{k,m}(t)$ | binary matching | Whether ground user $k$ is served by AAV $m$ |
-| User transmit power | $p_k(t)$ | continuous, bounded | Uplink power of user $k$ |
-| Service role | $m\in\mathcal M_{\mathrm{MEC}}\cup\{m_{\mathrm{DC}}\}$ | discrete fixed role | MEC processing or data collection function of each AAV |
-
+| AAV positions | $V=\{V_u(t)\}$ | continuous 2-D | Trajectories of the MEC-AAVs and the DC-AAV |
+| GU transmit power | $p_g(t)$ | continuous, $\le p_g^{\max}$ | Uplink power of GU $g$ |
+| Association | $X_{u,g}(t)$ | binary | GU $g$ served by AAV $u$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user is associated with at most one eligible AAV in a slot |
-| C2 | MEC-AAV service capacity and user task-latency requirements are respected |
-| C3 | User powers satisfy individual bounds and determine interference-coupled rates |
-| C4 | AAV movement obeys flight-region, speed, and separation limits |
-| C5 | Propulsion, communication, and computing energy remain within AAV budgets |
-
-**Algorithm**: Build a matching game with externalities for user association → run the two-phase matching-based association strategy → let soft actor-critic select AAV movements and user powers in the reduced action space → evaluate latency and collected-data rewards → update and repeat online.
+| (15b) | MEC task latency $T_{i,m}^f(t)\le T_{m,f}^{\max}$ |
+| (15c) | GU power $p_g(t)\le p_g^{\max}$ |
+| (15d) | AAV energy $\sum_tE_u^{total}(t)\le E_u^{\max}$ |
+| (15e)-(15g) | Binary association, each GU served by one AAV, $\sum_uX_{u,g}(t)=1$, and at most $N_u^{\max}$ GUs per AAV |
+| (15h)-(15j) | Area bounds in $x$ and $y$ and per-slot moving distance $0\le m_u(t)\le m_u^{\max}$ |
+| (15k) | Collision avoidance $\lVert V_a(t)-V_b(t)\rVert\ge d_{\min}$ |
+**Algorithm**: SAC-TMA uses a two-phase matching game with externalities to set GU association, which shrinks the action space, and a soft actor-critic agent to choose AAV movements and GU powers; the reward combines latency (17), collected data, and boundary and energy penalties (20)-(21).
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied an aerial network that jointly supports mobile edge computing and data collection with multiple MEC-AAVs and one DC-AAV. They formulated a long-term non-convex mixed-integer problem that minimizes MEC latency and maximizes collected data under association, power, interference, movement, and energy constraints. Their SAC-TMA method combines soft actor-critic control of AAV movement and user transmit power with a two-phase matching-based association strategy. The matching stage reduces the reinforcement-learning action space while accounting for association externalities. Simulation results show improvements in latency, collected data volume, and coverage over the evaluated benchmark algorithms.
+Wang et al. [x] studied an aerial network that jointly supports mobile edge computing and data collection with multiple MEC-AAVs and one DC-AAV. They formulated a long-term non-convex mixed-integer problem that minimizes MEC latency and maximizes collected data under latency, power, energy, association, movement-range, and collision constraints. Their SAC-TMA method combines soft actor-critic control of AAV movement and user transmit power with a two-phase matching-based association strategy. The matching stage reduces the reinforcement-learning action space while accounting for association externalities. Simulation results show improvements in latency, collected data volume, and coverage over the evaluated benchmark algorithms.
 
 ## Problem framing
 

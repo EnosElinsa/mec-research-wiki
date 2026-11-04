@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 13 (UAV-MEC DRL: single-UAV, maritime, and post-disaster)
+
+- Grounded 23 UAV-MEC DRL source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch13-uav-mec.json`. Grounded total: 311/699.
+- Rewrote Modeling Quick-Use Cards whose variables, objectives, or constraints did not match the paper: song-2022-emorl-tcto-uav, sun-2024-ues-video-analytics-disaster (nested lifetime problem (15) with C1-C7), tong-2026-uneven-terrain-uav-mec, wang-2025-sac-tma-mec-dc, wang-2026-diffusion-semantic-uav-edge, wang-2026-noma-marine-data-computation, you-2025-uncertain-maritime-hasac, and zhang-2024-uav-task-offloading-ddpg.
+- Relabeled constraint rows to the papers' equation IDs on 13 pages, including the MOALF, SWIPT-MEC, QoS-NOMA, parallel caching, content delivery, erasure-coded storage, cooperative power-IoT, maritime virtualization, green-IoT, maritime NOMA, CAT/RAT, HFRL, CTMiG, and post-disaster JDL pages. hua-2026-ddrl-content-delivery states no constraints in its problem, so its card now lists the system-model rules instead.
+- Noted parse defects that the cards now flag: shifted tags (chen-2026-qos-noma-multiuav, panahi-2026-uav-green-iot-offloading, tong-2026-uneven-terrain-uav-mec) and objectives printed as min where the text says maximize (wang-2024-hfrl-decentralized-navigation).
+- Corrected Related Work claims: named the actual baselines and numbers on the maritime NOMA, CTMiG, SAC-TMA, diffusion-semantic, HASAC, UTOM, and JDL pages; noted that PH-DRL does not always have the highest propulsion energy efficiency.
+
 ## [2026-11-03] Grounded batch 12 (UAV security, anti-jamming, and RIS-UAV)
 
 - Grounded 25 UAV security, anti-jamming, covert-communication, and RIS-UAV source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch12-uav-security-ris.json`. Grounded total: 288/699.

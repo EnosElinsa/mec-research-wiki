@@ -1,0 +1,556 @@
+{
+  "entries": [
+    {
+      "slug": "albakhrani-2025-moalf-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.md",
+          "lines": "131-289",
+          "note": "velocity (3), energy (10)-(12), objective with terms to (20), constraints (21)-(26); card relabeled"
+        },
+        {
+          "path": "raw/sources/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.md",
+          "lines": "428-602",
+          "note": "MORL Q update, MPC, APSO and Lyapunov steps"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.md",
+          "lines": "5,61,399-405",
+          "note": "94.50% completion, 96% load balancing, 1890 tasks per UAV, 55% gain at high load"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2025-swipt-mec-sac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "221-291,337-373",
+          "note": "harvesting model, energy reserves (10), (14), problem P (19a)-(19j); card relabeled"
+        },
+        {
+          "path": "raw/sources/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "446-596",
+          "note": "MDP reward, SAC-SK with SRU and KAN"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.md",
+          "lines": "30-32,931-950",
+          "note": "47.86% retained energy, 65.15% fairness, 109.252 J lower energy vs SAC; three random-seed scenarios"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-qos-noma-multiuav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems.md",
+          "lines": "73-99,206-210,290-315",
+          "note": "mobility (1)-(4), association (18), problem (29)-(29e) with IDs from text at 315 (parse tags shifted); card relabeled"
+        },
+        {
+          "path": "raw/sources/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems.md",
+          "lines": "372-376",
+          "note": "Lagrange duality transform, improved SAC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems.md",
+          "lines": "713",
+          "note": "SAC, PPO, DDPG comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "fan-2026-parallel-caching-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network.md",
+          "lines": "263-300",
+          "note": "per-UAV problems (27)-(29), system problem P0 (30), decomposition; card relabeled (precedence and task-class rows are model rules)"
+        },
+        {
+          "path": "raw/sources/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network.md",
+          "lines": "300-450",
+          "note": "DQN lower layer and regret-minimization upper layer"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network.md",
+          "lines": "619,635",
+          "note": "12.6% and 21.6% latency reduction; close to exhaustive search"
+        }
+      ]
+    },
+    {
+      "slug": "gao-2024-d3qn-uav-mec-mobile-gt",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design.md",
+          "lines": "212-259",
+          "note": "P1 (15)-(15j); card matches"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design.md",
+          "lines": "261-368",
+          "note": "MDP, multi-step D3QN, P2 (23)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design.md",
+          "lines": "33,62",
+          "note": "3D design improves over 2D; robustness across mobility models"
+        }
+      ]
+    },
+    {
+      "slug": "hua-2026-ddrl-content-delivery",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/DDRL_A_Dual-Phase_Deep_Reinforcement_Learning_Approach_for_UAV-Assisted_Content_Delivery_Across_Multiple_Base_Stations/DDRL_A_Dual-Phase_Deep_Reinforcement_Learning_Approach_for_UAV-Assisted_Content_Delivery_Across_Multiple_Base_Stations.md",
+          "lines": "55-183",
+          "note": "movement (1)-(3), energy (4), cache capacity (13), objective (15)-(16) without listed constraints; card relabeled"
+        },
+        {
+          "path": "raw/sources/DDRL_A_Dual-Phase_Deep_Reinforcement_Learning_Approach_for_UAV-Assisted_Content_Delivery_Across_Multiple_Base_Stations/DDRL_A_Dual-Phase_Deep_Reinforcement_Learning_Approach_for_UAV-Assisted_Content_Delivery_Across_Multiple_Base_Stations.md",
+          "lines": "200-330",
+          "note": "CNN-GRU PPO and PSO cache scoring"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/DDRL_A_Dual-Phase_Deep_Reinforcement_Learning_Approach_for_UAV-Assisted_Content_Delivery_Across_Multiple_Base_Stations/DDRL_A_Dual-Phase_Deep_Reinforcement_Learning_Approach_for_UAV-Assisted_Content_Delivery_Across_Multiple_Base_Stations.md",
+          "lines": "5",
+          "note": "up to 8% latency and 5% cache-hit gains vs best baseline"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-erasure-coded-uav-storage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems.md",
+          "lines": "195-262",
+          "note": "problem (20) with (20a)-(20l); card relabeled from invented C1-C5"
+        },
+        {
+          "path": "raw/sources/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems.md",
+          "lines": "270-420",
+          "note": "CNN-ConvLSTM prediction, DDQN placement, PPO access, action filter"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems.md",
+          "lines": "478-480",
+          "note": "delay reductions 58/48/54/37/24% vs EG-CPS, RVA, JSAC24, BD3QN-CC, HDRL; storage cost up to 20% lower than HDRL"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2020-cooperative-uav-mec-power-iot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System.md",
+          "lines": "188-221",
+          "note": "capacity inequalities (4)-(8), problem (P1) with C1-C2; card relabeled"
+        },
+        {
+          "path": "raw/sources/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System.md",
+          "lines": "239-382",
+          "note": "semi-Markov DRL, two-phase centralized DRL, distributed problem (P2) and Q-transfer DQN"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System.md",
+          "lines": "432,539-545",
+          "note": "centralized coop-UEC highest utility; drop rate falls with more UAVs"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2022-maritime-uav-mec-virtualization",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network.md",
+          "lines": "83-214",
+          "note": "motion (1)-(2), latency (9)-(10), OP1 (11)-(11g); card relabeled"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network.md",
+          "lines": "365-419",
+          "note": "OP2 (20) MDP, DQN and DDPG"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network.md",
+          "lines": "630",
+          "note": "more than 37% (DDPG) and 31% (DQN) latency reduction"
+        }
+      ]
+    },
+    {
+      "slug": "panahi-2026-uav-green-iot-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things.md",
+          "lines": "152-217",
+          "note": "residual time (15), route problem (16), cost (19), problem (P) (20)-(24) with IDs from the text at 193 (parse tags shifted); card relabeled"
+        },
+        {
+          "path": "raw/sources/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things.md",
+          "lines": "163-179,219-221",
+          "note": "Q-learning state, action candidates (17), reward (18), LP solution"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things.md",
+          "lines": "5,31-35",
+          "note": "cost significantly reduced vs baseline procurement without service pricing; dual compensation model"
+        }
+      ]
+    },
+    {
+      "slug": "qian-2022-uav-maritime-iot-noma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks.md",
+          "lines": "115-196",
+          "note": "NOMA rate (4), computation (6), OECM (13a)-(13g); card relabeled"
+        },
+        {
+          "path": "raw/sources/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks.md",
+          "lines": "225-424",
+          "note": "SINR reparameterization (16)-(18), primal-dual subproblem (21), top problem (22), DDPG"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks.md",
+          "lines": "702-727",
+          "note": "13.8% and 37.3% energy reductions vs two baselines; NOMA below FDMA"
+        }
+      ]
+    },
+    {
+      "slug": "song-2022-emorl-tcto-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "146-329",
+          "note": "queue and coverage model (1)-(24), TCTO (25) with C1-C6; card rewritten (invented constraints and preference variables)"
+        },
+        {
+          "path": "raw/sources/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "362-612",
+          "note": "MOMDP, multi-objective PPO surrogate, EMORL-TCTO procedures"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "827-828",
+          "note": "NSGA-II, MOEA/D and other baselines"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2024-ues-video-analytics-disaster",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue.md",
+          "lines": "222-262",
+          "note": "problem (15) with C1-C7 (16)-(22); card rewritten (invented variables and C1-C5)"
+        },
+        {
+          "path": "raw/sources/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue.md",
+          "lines": "268-521",
+          "note": "per-slot subproblem (23)-(28), DDQN reward on remaining battery (38)-(39)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue.md",
+          "lines": "5",
+          "note": "faster, more accurate offloading than four strategies; doubled lifetime"
+        }
+      ]
+    },
+    {
+      "slug": "tong-2026-uneven-terrain-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain.md",
+          "lines": "276-317",
+          "note": "utility (31), problem (32)-(32g) with IDs from text at 317 (parse tags shifted); card rewritten (invented service indicator and C1-C5)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain.md",
+          "lines": "321-338",
+          "note": "MDP state (33), action (34), PH-DRL"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain.md",
+          "lines": "530-548",
+          "note": "PH-DRL serves all UEs at about 2 kJ each; utility above H-DRL, P-TD3, TD3; energy efficiency not always highest"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2022-cat-rat-fmec-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "99-277",
+          "note": "constraints (4)-(23), P1 (24a)-(24k); card relabeled from C1-C10"
+        },
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "287-417,685",
+          "note": "CAT decomposition P2, B&B subproblem (26)-(29), SCA trajectory (30)-(35); RAT extension"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing.md",
+          "lines": "29",
+          "note": "CAT and RAT gains over traditional algorithms; RAT less sensitive to hyperparameters"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-hfrl-decentralized-navigation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "296-331",
+          "note": "problem (17a)-(17i); parse prints min, text at 298 says maximize; card relabeled"
+        },
+        {
+          "path": "raw/sources/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "334-476",
+          "note": "SHDRLN skill policy (21), SAC updates, DFRL sharing"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "568-576",
+          "note": "manual policy, D3QN and SAC baselines"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-ctmig-task-migration-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks.md",
+          "lines": "194-202",
+          "note": "P1 (17) with five constraint rows; card relabeled (deferral rule is a migration rule)"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks.md",
+          "lines": "208-272",
+          "note": "MDP, reward (18), IPPO and GAIL-based ILCTS"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks.md",
+          "lines": "400-410",
+          "note": "IPPO, DDQN, OLSA, GBLM, SR-CL benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-sac-tma-mec-dc",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "255-312",
+          "note": "objectives (13)-(14), problem P (15a)-(15k); card rewritten (invented role variable and C1-C5)"
+        },
+        {
+          "path": "raw/sources/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "415-636",
+          "note": "matching algorithms, rewards (17)-(21), SAC losses"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning.md",
+          "lines": "41,680",
+          "note": "outperforms four benchmark algorithms in latency, collected data and coverage; TMA beats traditional matching and random"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-diffusion-semantic-uav-edge",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing.md",
+          "lines": "234-290",
+          "note": "problem (25a)-(25g), reformulation (26); card rewritten (invented symbols and C1-C5)"
+        },
+        {
+          "path": "raw/sources/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing.md",
+          "lines": "364-486",
+          "note": "per-slot convex blocks (35)-(41), H-DDPG and H-D3PG"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing.md",
+          "lines": "606-638",
+          "note": "H-DDPG, uniform time, random extraction, raw data baselines; 88-206 ms inference vs 1 s slot"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-noma-marine-data-computation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_for_NOMA-Based_Data_Collection_and_Computation_in_UAV-Assisted_Marine_IoT/Energy_Minimization_for_NOMA-Based_Data_Collection_and_Computation_in_UAV-Assisted_Marine_IoT.md",
+          "lines": "138-184",
+          "note": "MTEC-US with constraints (4), (6), (12)-(16), equivalent MTEC-US-E with (17); card rewritten (invented constraints C1-C5)"
+        },
+        {
+          "path": "raw/sources/Energy_Minimization_for_NOMA-Based_Data_Collection_and_Computation_in_UAV-Assisted_Marine_IoT/Energy_Minimization_for_NOMA-Based_Data_Collection_and_Computation_in_UAV-Assisted_Marine_IoT.md",
+          "lines": "186-307",
+          "note": "MDP state (18), action (19), TD3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_for_NOMA-Based_Data_Collection_and_Computation_in_UAV-Assisted_Marine_IoT/Energy_Minimization_for_NOMA-Based_Data_Collection_and_Computation_in_UAV-Assisted_Marine_IoT.md",
+          "lines": "364-452",
+          "note": "DDPG, A2C, DQN, PSO, RUT, FTP, FCR baselines; NOMA 20.21% and 32.34% below FDMA and TDMA"
+        }
+      ]
+    },
+    {
+      "slug": "you-2025-uncertain-maritime-hasac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.md",
+          "lines": "229-345",
+          "note": "offloading and capacity constraints (6)-(15), time cost (17)-(19), P0 (20a)-(20c); card rewritten (invented power, bandwidth, movement variables and C1-C5)"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.md",
+          "lines": "400-641",
+          "note": "per-slot P1, HASAC policy and critic updates"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.md",
+          "lines": "795-922",
+          "note": "five benchmarks; shorter completion and response time and higher edge-computing share"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2024-uav-task-offloading-ddpg",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Edge_Computing/UAV-Assisted_Task_Offloading_in_Edge_Computing.md",
+          "lines": "100-145",
+          "note": "cost (1), P1 with C1-C8 (2); card rewritten (invented bandwidth variable and C1-C5)"
+        },
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Edge_Computing/UAV-Assisted_Task_Offloading_in_Edge_Computing.md",
+          "lines": "242-430",
+          "note": "subproblems P2-P3, Lagrangian and KKT closed forms, IPSO and DDPG"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Task_Offloading_in_Edge_Computing/UAV-Assisted_Task_Offloading_in_Edge_Computing.md",
+          "lines": "833-866",
+          "note": "14.23% and 6% lower cost than DQN and OTDDPG; IPSO vs PSO"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2024-jdl-abs-postdisaster-rescue",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue.md",
+          "lines": "124-280",
+          "note": "ABS mechanics (1a)-(1f), queues (8)-(10), P1 (16a)-(16f); card relabeled"
+        },
+        {
+          "path": "raw/sources/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue.md",
+          "lines": "284-568",
+          "note": "Lyapunov transform P2, actor-critic association P3, subproblems P2-1 and P2-2"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue.md",
+          "lines": "618-645",
+          "note": "JDL below SDQN in queuing delay; DQN fails at J=20; TDLL variants"
+        }
+      ]
+    }
+  ]
+}

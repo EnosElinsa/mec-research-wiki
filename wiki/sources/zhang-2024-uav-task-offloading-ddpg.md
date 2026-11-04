@@ -35,36 +35,31 @@ A UAV-assisted task-offloading mechanism (**UTOM**) that deploys UAVs as mobile 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: IoT devices in infrastructure-poor terrain offload tasks to a UAV mobile edge server. UAV position affects air-to-ground rates, while execution choice and resource allocation determine device and UAV delay and energy.
-
-**Problem & objective**: UTOM solves a non-convex joint problem minimizing weighted latency and energy, $\min \omega_T T_{\mathrm{tot}}+\omega_E E_{\mathrm{tot}}$.
-
+**Scenario**: IoT devices in an infrastructure-poor area offload latency-sensitive tasks to one UAV edge server over $N$ slots. In each slot at most one device offloads, and the UAV position sets the air-to-ground rate.
+**Problem & objective**: Problem P1 minimizes the weighted cost $\mathbb C=(1-\omega)\mathcal T+\omega E$ (1) over resource allocation $\Phi=\{p_u^{up},f_u^{uav}\}$, offloading decisions $X$, and UAV trajectory $\Theta$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Offloading decision | $x_k$ | binary | Local or UAV execution for task $k$ |
-| Computing allocation | $f_k$ | continuous, nonnegative | UAV CPU assigned to task $k$ |
-| Communication resource | $b_k,p_k$ | continuous, bounded | Bandwidth and power for offloading |
-| UAV trajectory | $\mathbf q(t)$ | continuous position | Mobile edge-server path |
-
+| Offloading decision | $X_u^{uav}(n)$ | binary | IoT device $u$ offloads to the UAV in slot $n$ |
+| Device transmit power | $p_u^{up}$ | continuous, $[p_{\min},p_{\max}]$ | Uplink power of device $u$ |
+| UAV CPU frequency | $f_u^{uav}$ | continuous, $[f_{\min},f_{\max}]$ | UAV computing for device $u$ |
+| UAV trajectory | $\Theta$ | continuous | UAV path over the slots |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task selects one execution mode |
-| C2 | Communication and computation allocations remain within capacity |
-| C3 | Task transmission and execution meet latency requirements |
-| C4 | Device and UAV energy budgets are respected |
-| C5 | UAV trajectory satisfies region and mobility limits |
-
-**Algorithm**: Fix offloading and trajectory and solve resource allocation by Lagrange/KKT conditions → update binary offloading with improved particle swarm optimization → update UAV trajectory with DDPG → evaluate the joint delay-energy cost → alternate the three subproblems.
+| C1-C2 | At most one device offloads per slot, $\sum_uX_u^{uav}(n)\le1$, with binary $X_u^{uav}(n)$ |
+| C3 | Offloaded ratio $0\le\lambda_u(n)\le1$ |
+| C4 | Devices and UAV move within the $X\times Y$ area |
+| C5 | UAV speed $v_{\min}\le\lVert v(n)\rVert\le v_{\max}$ |
+| C6-C7 | Power and CPU ranges $[p_{\min},p_{\max}]$ and $[f_{\min},f_{\max}]$ |
+| C8 (2) | Offloaded tasks finish within the slot, $X_u^{uav}(n)(t_u^{trans}(n)+t_u^{uav}(n))\le\delta$ |
+**Algorithm**: UTOM decomposes P1: for fixed offloading and position, resource allocation P2-P3 is solved by Lagrange multipliers and KKT conditions in closed form; improved particle swarm optimization selects offloading decisions; and DDPG controls the UAV trajectory.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied UAV-assisted task offloading in edge computing for infrastructure-poor environments. They formulated weighted latency and energy minimization over resource allocation, task-offloading decisions, and UAV trajectory under execution, resource, delay, energy, and mobility constraints. UTOM solves the resource block through Lagrange multipliers and KKT conditions. Improved particle swarm optimization selects offloading decisions, and DDPG controls the UAV trajectory. Simulations report lower weighted latency-energy cost than the evaluated offloading and trajectory baselines.
+Zhang et al. [x] studied UAV-assisted task offloading in edge computing for infrastructure-poor environments. They formulated weighted latency and energy minimization over resource allocation, task-offloading decisions, and UAV trajectory under single-offload, offloading-ratio, area, speed, power, CPU, and slot-latency constraints. UTOM solves the resource block through Lagrange multipliers and KKT conditions. Improved particle swarm optimization selects offloading decisions, and DDPG controls the UAV trajectory. Simulations report about 14.23% and 6% lower cost than DQN and OTDDPG, better convergence than DQN, AC, and OTDDPG, and gains of IPSO over PSO.
 
 ## Problem framing
 

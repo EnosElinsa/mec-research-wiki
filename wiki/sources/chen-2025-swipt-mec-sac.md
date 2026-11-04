@@ -17,7 +17,7 @@ related:
   - "[[zhu-2025-lycnn-drl-wpt-mec]]"
   - "[[hsu-2025-drl-hues-hap-noma]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Resource Management for Energy-Efficient UAV-Assisted SWIPT-MEC: A Deep Reinforcement Learning Approach
@@ -51,11 +51,12 @@ A directional-antenna-enhanced UAV that acts as both base station and MEC server
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The UAV starts at $p_u^0=(0,0)$, with $0\le v(t)\le v_{\max}$ and $0\le\theta(t)\le2\pi$. |
-| C2 | SWIPT splitting and battery limits require $0<\eta\le1$ and $E_{\min}\le E_i(t)\le E_{\max}$. |
-| C3 | Local or offloaded execution must finish in one slot as specified by (19e). |
-| C4 | Both downlink and uplink rates satisfy $\min\{R_{u\to i},R_{i\to u}\}\ge R_{\min}$. |
-| C5 | Local CPU feasibility requires $C_iD_{i,p}^t\le\tau f_i$, and local or transmit energy cannot reduce a terminal below its protected reserve. |
+| (19b) | UAV starts at $p_u^0=(0,0)$ |
+| (19c)-(19d) | Power-splitting ratio $0<\eta\le1$; battery $E_{\min}\le E_i(t)\le E_{\max}$ |
+| (19e) | Local or offloaded execution finishes within one slot $\tau$ |
+| (19f) | Downlink and uplink rates $\min\{R_{u\to i},R_{i\to u}\}\ge R_{\min}$ |
+| (19g)-(19h) | Speed $0\le v(t)\le v_{\max}$ and direction $0\le\theta(t)\le2\pi$ |
+| (19i)-(19j) | Local CPU $C_iD_{i,p}^t\le\tau f_i$; computing (10) and transmission (14) energy keep the battery above $E_{\min}+\delta_e$ |
 
 **Algorithm**: The model is converted to an MDP whose scalar reward combines normalized energy objectives, boundary penalties, terminal-access bias, and low-battery charging rewards; SAC-SK then applies action simplification, SRU temporal encoding, and a KAN-based function approximator to learn the maximum-entropy hybrid policy.
 

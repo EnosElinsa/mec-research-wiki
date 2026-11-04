@@ -15,7 +15,7 @@ related:
   - "[[wireless-backhaul]]"
   - "[[rotary-wing-propulsion-energy-model]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # DDRL: A Dual-Phase Deep Reinforcement Learning Approach for UAV-Assisted Content Delivery Across Multiple Base Stations
@@ -34,7 +34,7 @@ Coordinates cache-enabled UAV motion, content replacement, and transmission beha
 
 **Scenario**: Cache-enabled fixed-altitude UAVs deliver content to stationary users across a three-base-station service area, with the base stations also supplying content and charging. A cache miss adds a BS-to-UAV wireless-backhaul transfer before downlink delivery. OFDMA removes inter-user interference, and UAV-ground propagation follows a probabilistic LoS/NLoS channel model.
 
-**Problem & objective**: Equation (15) defines a nonconvex joint design that minimizes total content-acquisition delay, $\min \sum_g D_{i,g}$, over UAV trajectory, cache replacement, and transmission power. Cache-hit rate and energy efficiency are incorporated into the learning reward under cache, motion, and battery limits.
+**Problem & objective**: Equation (15) defines a nonconvex joint design that minimizes total content-acquisition delay, $\min \sum_g D_{i,g}$, over UAV trajectory, cache replacement, and transmission power. Cache-hit rate and energy efficiency enter the learning reward, and area, separation, cache, and battery rules come from the system model.
 
 **Decision variables**:
 
@@ -49,11 +49,11 @@ Coordinates cache-enabled UAV motion, content replacement, and transmission beha
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV movement remains inside the service area and respects per-slot mobility limits |
-| C2 | UAV separation and collision-avoidance conditions hold |
-| C3 | Residual battery energy supports movement and content delivery, including return to a base station |
-| C4 | Cached content sizes satisfy the UAV capacity limit, $\sum_q \beta_{u,q}S_q\leq C$ |
-| C5 | Transmission power remains within the permitted action range |
+| Model rule (2) | UAVs stay in the service area, $0\le x_u[n]\le x_{\max}$, $0\le y_u[n]\le y_{\max}$ |
+| Model rule (3) | UAV separation $\lVert\mathbf L_u[n]-\mathbf L_k[n]\rVert\ge d_{\min}$ |
+| Model rule (13) | Cache capacity $\sum_q\beta_{u,q}S_q\le C$ |
+| Model rule | Battery energy (4) covers movement and delivery; UAVs recharge at base stations |
+| Note | Problem (15) lists no constraints; the rules above come from the system model |
 
 **Algorithm**: Encode spatial and temporal state with a CNN-GRU actor-critic, use clipped PPO for offline policy and value updates, deploy the trained policy for online movement and power decisions, and run PSO to tune the cache-replacement score used by the environment.
 

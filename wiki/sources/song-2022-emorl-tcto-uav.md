@@ -17,7 +17,7 @@ related:
   - "[[song-2024-mol-aoi-energy]]"
   - "[[peng-2024-energy-time-uav-its]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Evolutionary Multi-Objective Reinforcement Learning Based Trajectory Control and Task Offloading in UAV-Assisted Mobile Edge Computing
@@ -34,35 +34,28 @@ Studies **trajectory control and task offloading (TCTO)** for a single UAV that 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: One UAV follows a trajectory through smart-device locations, acting either as an MEC server or as a relay to a base station. Online offloading and movement form a multi-objective MDP with task delay, UAV energy, and collected-task throughput objectives.
-
-**Problem & objective**: A three-objective MOMDP seeks a Pareto set for $\min(A_{\mathrm{delay}},E_{\mathrm{UAV}})$ and $\max N_{\mathrm{collected}}$ over trajectory and offloading policies.
-
+**Scenario**: One UAV flies over smart devices (SDs), collects tasks from those within its coverage radius $R_{\max}$, and either computes them onboard or relays them to a base station. Task queues, UAV computation energy, and relay timing determine delay and throughput.
+**Problem & objective**: The TCTO problem (25) is a three-objective problem, $\max_{\vartheta_t,d_t,b_t}(-D_{total},-E_{total},N_{total})$: minimize total task delay and UAV energy and maximize the number of collected tasks (24).
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV movement | $a_t$ | discrete/continuous action | Direction and displacement selected in slot $t$ |
-| Offloading mode | $o_t$ | discrete | Local MEC processing or relay offloading to the BS |
-| Policy parameters | $\pi_\theta$ | continuous neural parameters | Policy producing movement and offloading actions |
-| Preference vector | $\mathbf w$ | continuous simplex | Relative weighting of delay, energy, and throughput objectives |
-
+| Flight direction | $\vartheta_t$ | continuous, $[0,2\pi]$ | UAV heading in slot $t$ |
+| Flight distance | $d_t$ | continuous, $[0,d_{\max}]$ | UAV displacement in slot $t$ |
+| Offloading decision | $b_t$ | continuous, $[0,1]$ | Share of collected tasks relayed to the BS rather than computed onboard |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV movement stays in the service region and obeys speed/energy limits |
-| C2 | Tasks are collected only when the UAV reaches a device and can process or relay them |
-| C3 | Offloading and relay capacity determine feasible task completion latency |
-| C4 | Each policy produces a valid vectorial reward trajectory for the three objectives |
-
-**Algorithm**: Represent the problem as a vector-reward MOMDP → initialize policy individuals for multiple preference vectors → train multi-objective PPO → retain nondominated policies → apply crossover and Gaussian mutation to policy parameters → return a Pareto policy set.
+| C1-C2 | Heading $0\le\vartheta_t\le2\pi$ and distance $0\le d_t\le d_{\max}$ |
+| C3 | Offloading decision $b_t\in[0,1]$ |
+| C4-C5 | Movement area $0\le x_t^U\le x_{\max}$, $0\le y_t^U\le y_{\max}$ |
+| C6 | Tasks are collected only from SDs within coverage, $d_t^k\le R_{\max}$ |
+**Algorithm**: Model TCTO as a multi-objective MDP with vector rewards. EMORL-TCTO runs multi-task multi-objective PPO over a population of preference vectors, keeps nondominated policies, and uses an evolutionary stage to add new learning tasks, returning a Pareto set of policies in one run.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Song et al. [x] studied trajectory control and task offloading for a UAV that acts as an MEC server or relay for smart-device tasks. They formulated a three-objective multi-objective Markov decision process that minimizes task delay and UAV energy while maximizing collected tasks. EMORL-TCTO extends multi-task multi-objective PPO with an evolutionary population that retains new learning tasks and produces multiple nondominated policies in one run. The resulting policy set spans different preference vectors instead of one fixed scalarization. Experiments report better inverted generational distance, hypervolume, and system metrics than NSGA-II, MOEA/D, EDDPG, ETD3, and the original EMORL in the evaluated instances.
+Song et al. [x] studied trajectory control and task offloading for a UAV that acts as an MEC server or relay for smart-device tasks. They formulated a three-objective problem, solved as a multi-objective Markov decision process, that minimizes task delay and UAV energy while maximizing collected tasks under heading, distance, offloading-ratio, area, and coverage constraints. EMORL-TCTO extends multi-task multi-objective PPO with an evolutionary population that retains new learning tasks and produces multiple nondominated policies in one run. The resulting policy set spans different preference vectors instead of one fixed scalarization. Experiments report better inverted generational distance, hypervolume, and system metrics than NSGA-II, MOEA/D, EDDPG, ETD3, and the original EMORL in the evaluated instances.
 
 ## Problem framing
 

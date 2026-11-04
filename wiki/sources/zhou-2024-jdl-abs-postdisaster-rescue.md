@@ -23,7 +23,7 @@ related:
   - "[[peng-2025-drudm-cfg]]"
   - "[[lyapunov-guided-drl]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Delay-Aware UAV Computation Offloading and Communication Assistance for Post-Disaster Rescue
@@ -57,11 +57,12 @@ A UAV-mounted **aerial base station (ABS)** in a post-disaster rescue scenario s
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each GU association is binary and respects ABS service availability |
-| C2 | GU communication rates meet the required minimum service rate |
-| C3 | ABS velocity, acceleration, position, and inter-ABS separation remain feasible |
-| C4 | Long-term ABS propulsion energy stays within the flight-energy budget |
-| C5 | Offloading ratios satisfy $0\leq\gamma_j(t)\leq1$ and queue-service limits |
+| (16b) | Per-slot flight energy $E_j^{fl}(t)\le E_{\max}$ |
+| (16c) | GU rate $R_{\min}\le\sum_jr_{ij}(t)$ |
+| (16d)-(16f) | Mean-rate stability of local, offloading, and MBS queues |
+| (16f) = (1a)-(1f) | ABS mechanics: position and velocity updates, separation $\lVert\boldsymbol l_j(t)-\boldsymbol l_w(t)\rVert^2\ge D_{\min}^2$, $v_{\min}\le\lVert\boldsymbol v_j(t)\rVert\le v_{\max}$, $\lVert\boldsymbol a_j(t)\rVert\le a_{\max}$ |
+| (16f) = (2)-(3) | Binary ABS-GU association rules |
+| Variable domain | Offloading ratio $0\le\gamma_j(t)\le1$ (28b) |
 
 **Algorithm**: Apply Lyapunov drift-plus-penalty to obtain per-slot P2 → let the actor generate candidate binary associations → evaluate each candidate in a model-based critic → alternate offloading-ratio and trajectory subproblems using fractional programming, SCA, and bisection → train the actor from the best evaluated actions.
 
@@ -69,7 +70,7 @@ A UAV-mounted **aerial base station (ABS)** in a post-disaster rescue scenario s
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhou et al. [x] studied delay-aware UAV computation offloading and communication assistance for post-disaster rescue. They formulated joint ABS-GU association, task-offloading-ratio, and ABS-trajectory design as a long-term stochastic MINLP that minimizes task computation queueing delay while guaranteeing ground-user communication rates and respecting flight-energy constraints. Their JDL method applies Lyapunov optimization to transform the long-term model into per-slot deterministic problems. An actor generates candidate association actions, and a model-based critic evaluates them by solving the continuous offloading and trajectory subproblems with fractional programming and successive convex approximation. Simulations report lower queueing delay than the evaluated separated-DQN baseline and robust operation as the number of ground users changes.
+Zhou et al. [x] studied delay-aware UAV computation offloading and communication assistance for post-disaster rescue. They formulated joint ABS-GU association, task-offloading-ratio, and ABS-trajectory design as a long-term stochastic MINLP that minimizes task computation queueing delay while guaranteeing ground-user communication rates and respecting flight-energy constraints. Their JDL method applies Lyapunov optimization to transform the long-term model into per-slot deterministic problems. An actor generates candidate association actions, and a model-based critic evaluates them by solving the continuous offloading and trajectory subproblems with fractional programming and successive convex approximation. Simulations report lower queueing delay than the separated-DQN baseline and other trajectory variants, and DQN-based association becomes intractable at 20 ABSs.
 
 ## Problem framing
 

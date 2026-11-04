@@ -17,7 +17,7 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[xu-2018-uav-wpt-trajectory]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -37,7 +37,7 @@ A single UAV provides computation offloading (COF) service to IoT devices while 
 
 **Scenario**: One UAV edge server visits $K$ ground regions containing $N$ IoT devices. It hovers to receive and compute offloaded tasks, may wirelessly charge devices, procures energy from local laser beam directors, and stores renewable energy in an onboard battery.
 
-**Problem & objective**: First maximize the number of offloaded devices by selecting a region order $V$ under mission time $T^m$; then minimize each region's procurement cost $C_k=\rho_k^l\eta_l e_k^l-(\rho_k^w\eta_w e_k^w+\rho_k^c e_k^c)$ and the aggregate cost over the selected route.
+**Problem & objective**: Problem (16) first maximizes the number of offloaded devices by selecting a region order $V$ under mission time $T^m$; then problem (P) (20) minimizes each region's procurement cost $C_k=\rho_k^l\eta_l e_k^l-(\rho_k^w\eta_w e_k^w+\rho_k^c e_k^c)$ and the aggregate cost over the selected route.
 
 **Decision variables**:
 
@@ -54,11 +54,11 @@ A single UAV provides computation offloading (COF) service to IoT devices while 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Residual mission time is nonnegative for every visited region: $T_k^r=T^m-T_k^e\ge0$ |
-| C2 | UAV energy balance: $e_k^b+e_k^l=e_k^u$ |
-| C3 | Battery bounds after cumulative renewable generation: $B_l\le\sum_{i=1}^ke_i^r-\sum_{i=1}^k(e_i^b+e_i^w+e_i^c)\le B_u$ |
-| C4 | Computation allocation cannot exceed required energy: $0\le e_k^c\le e_k^{c,\mathrm{req}}$ |
-| C5 | Energy allocations are nonnegative: $e_k^b,e_k^w,e_k^l\ge0$ |
+| (16) | Residual mission time is nonnegative for every visited region: $T_k^r=T^m-T_k^e\ge0$ |
+| (21) | UAV energy balance: $e_k^b+e_k^l=e_k^u$ |
+| (22) | Battery bounds after cumulative renewable generation: $B_l\le\sum_{i=1}^ke_i^r-\sum_{i=1}^k(e_i^b+e_i^w+e_i^c)\le B_u$ |
+| (23) | Computation allocation cannot exceed required energy: $0\le e_k^c\le e_k^{c,\mathrm{req}}$ |
+| (24) | Energy allocations are nonnegative: $e_k^b,e_k^w,e_k^l\ge0$ |
 
 **Algorithm**: Use action-candidate Q-learning with a reduced feasible next-region set satisfying coverage and residual-time checks to choose $V$; for each selected route solve the region-level linear EPC program over $e_k^w,e_k^b,e_k^l,e_k^c$.
 

@@ -15,7 +15,7 @@ related:
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[multi-agent-imitation-learning]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Task Offloading and Migration Optimization in UAV-Enabled Dynamic MEC Networks
@@ -34,7 +34,7 @@ Studies a multi-UAV MEC network where mobile users (MUs) offload tasks to UAVs, 
 
 **Scenario**: Mobile users generate hard- or soft-deadline tasks in a dynamic multi-UAV MEC network; an SDN controller chooses an initial serving UAV and may migrate a partially executed task over more stable inter-UAV links.
 
-**Problem & objective**: CTMiG minimizes average realized task latency, $\min_{\{y_{i,j}^t\}}\frac{1}{M}\sum_i\mathcal L_i$, while satisfying task deadlines and UAV capacity.
+**Problem & objective**: CTMiG problem P1 (17) minimizes average realized task latency, $\min_{\{y_{i,j}^t\}}\frac{1}{M}\sum_i\mathcal L_i$, while satisfying task deadlines and UAV capacity.
 
 **Decision variables**:
 
@@ -48,11 +48,11 @@ Studies a multi-UAV MEC network where mobile users (MUs) offload tasks to UAVs, 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Assignment is binary: $y_{i,j}^t\in\{0,1\}$. |
-| C2 | Each MU selects one serving UAV: $\sum_jy_{i,j}^t=1$. |
-| C3 | UAV workload is bounded: $\sum_i y_{i,j}^t\mu_i\leq1/\varpi_j$. |
-| C4 | Hard tasks meet $\mathcal L_i\leq dl_i$; soft tasks meet $\mathcal L_i\leq dl_i+\Delta t_i$. |
-| C5 | Soft-task migration can be deferred when $\Psi_i^t\geq\varsigma$ and estimated latency remains within the relaxed deadline. |
+| P1 (17), row 1 | Assignment is binary: $y_{i,j}^t\in\{0,1\}$. |
+| P1 (17), row 2 | Each MU selects one serving UAV: $\sum_jy_{i,j}^t=1$. |
+| P1 (17), row 3 | UAV workload is bounded: $\sum_i y_{i,j}^t\mu_i\leq1/\varpi_j$. |
+| P1 (17), rows 4-5 | Hard tasks meet $\mathcal L_i\leq dl_i$; soft tasks meet $\mathcal L_i\leq dl_i+\Delta t_i$. |
+| Migration rule | Soft-task migration can be deferred when $\Psi_i^t\geq\varsigma$ and estimated latency remains within the relaxed deadline. |
 
 **Algorithm**: Train an improved PPO policy offline to generate expert trajectories, then refine online with GAIL in the ILCTS generator-discriminator loop; the policy acts on task, UAV-resource, and channel state features.
 
@@ -60,7 +60,7 @@ Studies a multi-UAV MEC network where mobile users (MUs) offload tasks to UAVs, 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] formulate dynamic multi-UAV MEC task serving as joint offloading and migration for large-result tasks. The CTMiG objective minimizes average latency with binary one-UAV assignments, capacity limits, and separate hard and soft deadline constraints. ILCTS first trains an improved PPO expert and then uses GAIL to refine online offloading or migration actions from task, UAV, and channel state. The reported experiments show lower average latency and better training accuracy than PPO alone, DQN, and heuristic policies.
+Wang et al. [x] formulate dynamic multi-UAV MEC task serving as joint offloading and migration for large-result tasks. The CTMiG objective minimizes average latency with binary one-UAV assignments, capacity limits, and separate hard and soft deadline constraints. ILCTS first trains an improved PPO expert and then uses GAIL to refine online offloading or migration actions from task, UAV, and channel state. The reported experiments show lower average latency and better training accuracy than the improved-PPO expert, DDQN, OLSA, the greedy GBLM, and SR-CL benchmarks.
 
 ## Problem framing
 

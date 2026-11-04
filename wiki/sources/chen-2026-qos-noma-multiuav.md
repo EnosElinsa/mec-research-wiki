@@ -15,7 +15,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[qoe-modeling-mec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -50,10 +50,12 @@ Formulates QoS-oriented task offloading for a NOMA-based multi-UAV cooperative M
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Offloading fraction: $0\leq a_k(n)\leq 1$ |
-| C2 | UAV computation capacity: $\sum_{k=1}^{K}f_{kl}(n)\leq F_l$ |
-| C3 | Mobility: $\bar d_l(n)\leq\bar d_{\max}^{h}$, $z_{\min}\leq z_l(n)\leq z_{\max}$, and $\Delta z_l(n)\leq\bar d_{\max}^{v}$ |
-| C4 | Coverage and association: $\alpha_{kl}(n)r_{kl}(n)\leq R_l^{\max}(n)$ and $\alpha_{kl}(n)\in\{0,1\}$ |
+| (29a)-(29b) | UAV horizontal angle $0\le\eta_l(n)\le2\pi$ and velocity $\lVert\mathbf v_l(n)\rVert\le V_{\max}$ |
+| (29c) | The UAV can still reach the MU when the task completes, $R_{kl}(n+t_{kl}^o(n))\le R_l^{\max}(n)$ |
+| (29d) | Offloading ratio $0\le a_k(n)\le1$ |
+| (29e) = (2)-(8) | UAV mobility, including horizontal step and altitude limits |
+| (29e) = (18), (20) | Valid binary association $\alpha_{kl}(n)$ |
+| (29e) = (23) | UAV computation capacity $\sum_kf_{kl}(n)\le F_l$ |
 
 **Algorithm**: Apply Lagrange duality to transform the constrained MDP, use state $s_n=[\mathbf M_k(n),\mathbf q_l(n),\zeta_k(n),\gamma_{kl}(n)]$ and utility reward $r_n=\sum_k U_k(n)$, then train the improved soft actor-critic policy with the perturbed Q-network loss $J_Q(\theta+\varepsilon)+\frac{\varphi}{2}\lVert\theta\rVert_2^2$ and alternating updates of $\varepsilon$ and $\theta$.
 

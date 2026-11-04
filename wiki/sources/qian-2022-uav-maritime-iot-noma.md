@@ -27,7 +27,7 @@ related:
   - "[[bin-lin]]"
   - "[[yuan-wu]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Multi-Domain Resource Allocation and Trajectory Optimization in UAV-Assisted Maritime IoT Networks
@@ -62,11 +62,12 @@ A **NOMA-based UAV-assisted Maritime IoT (M-IoT)** MEC system in which **unmanne
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | $0\le\gamma_n\le1$ and local plus offloaded bits equal each task size |
-| C2 | NOMA rates and powers support the selected offloaded workload under SIC |
-| C3 | $\sum_n C_{an}\le C_{\max}$ limits UAV computation resources |
-| C4 | Each USV's local/offloaded execution satisfies the maximum latency $T_{\max}$ |
-| C5 | UAV displacement and speed are feasible and its trajectory follows the mission horizon |
+| (13b) = (4) | NOMA uplink rates over the slots deliver the offloaded bits $\gamma_nB_n$ |
+| (13b) = (6) | UAV computation $\sum_nC_{an}\le C_{\max}$ |
+| (13c) | Offloading ratio $0\le\gamma_n\le1$ |
+| (13d) | UAV speed $0\le\lVert U_m-U_{m-1}\rVert M/T\le v_{\max}$ |
+| (13e) | USV power $0\le p_{nm}\le P_n^{\max}$ |
+| (13f)-(13g) | Latency $\max\{T_{sn},T+T_{ac}\}\le T_{\max}$; $C_{an}\ge0$ |
 
 **Algorithm**: Reparameterize NOMA rates with SINR variables to expose hidden convexity → fix the trajectory and offloading ratios → solve power and CPU allocation with a primal-dual Lagrangian method → use DDPG at the upper layer to update trajectory and offloading ratios → alternate the two layers.
 
@@ -74,7 +75,7 @@ A **NOMA-based UAV-assisted Maritime IoT (M-IoT)** MEC system in which **unmanne
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Qian et al. [x] studied joint multidomain resource allocation and UAV trajectory optimization in a NOMA-based maritime IoT MEC network. They formulated an NP-hard total-energy minimization problem over USV transmit power, task-offloading ratios, UAV computation allocation, and UAV trajectory under NOMA-rate, latency, power, computing-capacity, and mobility constraints. Their equivalent transformation exposes hidden convexity in the resource-allocation block for fixed trajectory and offloading ratios. A two-layer algorithm solves that block with a primal-dual Lagrangian method and updates the trajectory and offloading ratios with deep deterministic policy gradient. Simulations report lower total energy for the proposed NOMA-enabled offloading method than the evaluated benchmark algorithms.
+Qian et al. [x] studied joint multidomain resource allocation and UAV trajectory optimization in a NOMA-based maritime IoT MEC network. They formulated an NP-hard total-energy minimization problem over USV transmit power, task-offloading ratios, UAV computation allocation, and UAV trajectory under NOMA-rate, latency, power, computing-capacity, and mobility constraints. Their equivalent transformation exposes hidden convexity in the resource-allocation block for fixed trajectory and offloading ratios. A two-layer algorithm solves that block with a primal-dual Lagrangian method and updates the trajectory and offloading ratios with deep deterministic policy gradient. Simulations report 13.8% and 37.3% lower total energy than hovering-UAV and fixed-offloading-ratio baselines, and lower energy for NOMA than FDMA.
 
 ## Problem framing
 

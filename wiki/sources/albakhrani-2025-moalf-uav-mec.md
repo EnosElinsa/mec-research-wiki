@@ -16,7 +16,7 @@ related:
   - "[[song-2022-emorl-tcto-uav]]"
   - "[[multi-verse-optimizer]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # MOALF-UAV-MEC: Adaptive Multiobjective Optimization for UAV-Assisted Mobile Edge Computing in Dynamic IoT Environments
@@ -35,7 +35,7 @@ A **multiobjective adaptive learning framework (MOALF-UAV-MEC)** for UAV-assiste
 
 **Scenario**: Dynamic IoT devices $D$ generate tasks for UAV edge nodes $U$ and ground edge servers $E$ over time slots $T$. Each UAV has position $\mathbf p_j(t)$, computing capacity $C_j$, energy state $E_j(t)$, velocity $\mathbf v_j(t)$, and optional burst-mode operation; tasks may be offloaded, resourced, or migrated among nodes.
 
-**Problem & objective**: The mixed multiobjective problem minimizes $J=w_1J_{\mathrm{task}}+w_2J_{\mathrm{energy}}+w_3J_{\mathrm{completion}}+w_4J_{\mathrm{migration}}+w_5J_{\mathrm{util}}+w_6J_{\mathrm{coverage}}$ over the time horizon.
+**Problem & objective**: Problem (14) minimizes $J=w_1J_{\mathrm{task}}+w_2J_{\mathrm{energy}}+w_3J_{\mathrm{completion}}+w_4J_{\mathrm{migration}}+w_5J_{\mathrm{util}}+w_6J_{\mathrm{coverage}}$ over the time horizon.
 
 **Decision variables**:
 
@@ -50,12 +50,12 @@ A **multiobjective adaptive learning framework (MOALF-UAV-MEC)** for UAV-assiste
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one UAV receives each task: $\sum_jx_{ijk}(t)\le1$ |
-| C2 | Allocated CPU does not exceed UAV capacity: $\sum_{i,k}x_{ijk}(t)f_{ijk}(t)\le C_j$ |
-| C3 | UAV energy stays above its minimum: $E_j(t)\ge E_{\min,j}$ |
-| C4 | UAV speed is bounded: $\|\mathbf v_j(t)\|\le v_{\max,j}$ |
-| C5 | Completion meets each task deadline: $T_{\mathrm{comp},ijk}(t)\le\tau_{i,k}$ |
-| C6 | A task has at most one migration destination: $\sum_l y_{ijkl}(t)\le1$ |
+| (21) | At most one UAV receives each task: $\sum_jx_{ijk}(t)\le1$ |
+| (22) | Allocated CPU does not exceed UAV capacity: $\sum_{i,k}x_{ijk}(t)f_{ijk}(t)\le C_j$ |
+| (23) | UAV energy stays above its minimum: $E_j(t)\ge E_{\min,j}$ |
+| (24) | UAV speed is bounded: $\|\mathbf v_j(t)\|\le v_{\max,j}$ |
+| (25) | Completion meets each task deadline: $T_{\mathrm{comp},ijk}(t)\le\tau_{i,k}$ |
+| (26) | A task has at most one migration destination: $\sum_l y_{ijkl}(t)\le1$ |
 
 **Algorithm**: Initialize MORL, MPC, APSO, and Lyapunov modules; at each slot observe $S_t$, let MORL choose $x_{ijk}(t)$ and initial $f_{ijk}(t)$, let MPC optimize $\mathbf p_j(t)$, let APSO refine $f_{ijk}(t)$, run a Lyapunov stability check and apply adjustments when needed, execute the actions, update the environment, and adapt the component weights.
 

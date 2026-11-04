@@ -16,7 +16,7 @@ related:
   - "[[computational-task-caching]]"
   - "[[zhao-2024-caching-service-placement-uav]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-Task Parallel Execution-Oriented Content Caching, Computation Offloading and Channel Allocation in UAV-Assisted MEC Network
@@ -35,7 +35,7 @@ Introduces a UAV-assisted MEC task model where multiple MD tasks can be processe
 
 **Scenario**: MEC-equipped UAVs serve mobile devices outside terrestrial coverage while a remote GBS stores all content and offers stronger computation. Receive, compute, and result-transmission stages of compatible tasks may overlap, but caching, execution location, and reused A2G channels jointly determine service duration.
 
-**Problem & objective**: Minimize each UAV's parallel service duration, $\min_{\mathbf A,\mathbf B,\mathbf C}T_n$ for every $n\in\mathcal N$, over binary content caching, UAV-versus-GBS computation, and channel allocation.
+**Problem & objective**: Problem P0 (30) minimizes each UAV's parallel service duration, $\min_{\mathbf A,\mathbf B,\mathbf C}T_n$ for every $n\in\mathcal N$, over binary content caching, UAV-versus-GBS computation, and channel allocation.
 
 **Decision variables**:
 
@@ -49,11 +49,10 @@ Introduces a UAV-assisted MEC task model where multiple MD tasks can be processe
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Cached content fits UAV storage: $\sum_k a_{n,k}v_k\leq V_n$. |
-| C2 | Each UAV selects exactly one A2G channel: $\sum_l c_{n,l}=1$. |
-| C3 | Caching, computation-mode, and channel indicators are binary. |
-| C4 | Task-stage start times respect receive, compute, and transmit precedence while allowing conflict-free stages to overlap. |
-| C5 | The task class induced by cached content determines which tasks are locally executable and which require GBS retrieval. |
+| P0 (30), storage | Cached content fits UAV storage, $\sum_ka_{nk}v_k\le V_n$ |
+| P0 (30), channel | Each UAV uses exactly one A2G channel, $\sum_lc_{nl}=1$ |
+| (28) | $a_{nk}$, $b_{nm}$, and $c_{nl}$ are binary indicators |
+| Model rule | Receive, compute, and transmit stages of compatible tasks may overlap; tasks whose content is not cached are fetched from the GBS |
 
 **Algorithm**: Decompose the system problem into per-UAV caching and computation and a coupled inter-UAV channel game. Use a DQN lower layer to minimize the local completion time implied by parallel task-stage scheduling, then use regret-minimization learning in the partially observable upper layer to approach a correlated-equilibrium channel allocation; alternate the two layers in RLTL.
 
@@ -61,7 +60,7 @@ Introduces a UAV-assisted MEC task model where multiple MD tasks can be processe
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Fan et al. [x] investigated parallel execution in UAV-assisted MEC by jointly controlling cached content, UAV-versus-GBS computation, and inter-UAV channel allocation. They minimized each UAV's service duration over binary caching, offloading, and one-hot channel decisions subject to storage capacity and noninterruptible execution precedence and resource conditions. RLTL uses a DQN lower layer for intra-UAV caching and offloading and a regret-minimization upper layer for the partially observable channel-allocation game. Simulations reported 12.6% and 21.6% latency reductions from parallel execution in sparse and dense device cases, and RLTL performed close to exhaustive search.
+Fan et al. [x] investigated parallel execution in UAV-assisted MEC by jointly controlling cached content, UAV-versus-GBS computation, and inter-UAV channel allocation. They minimized each UAV's service duration over binary caching, offloading, and one-hot channel decisions subject to storage-capacity and one-channel constraints. RLTL uses a DQN lower layer for intra-UAV caching and offloading and a regret-minimization upper layer for the partially observable channel-allocation game. Simulations reported 12.6% and 21.6% latency reductions from parallel execution in sparse and dense device cases, and RLTL performed close to exhaustive search.
 
 ## Problem framing
 

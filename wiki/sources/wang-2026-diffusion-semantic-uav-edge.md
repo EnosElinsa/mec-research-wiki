@@ -22,7 +22,7 @@ related:
   - "[[zhu-han]]"
   - "[[zehui-xiong]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Diffusion-Based Trajectory and Semantic Resource Optimization in UAV-Assisted Edge Computing
@@ -39,36 +39,30 @@ A UAV-assisted semantic edge computing network that jointly optimizes UAV trajec
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: One UAV collects task-oriented semantic features from multiple edge devices equipped with compact semantic encoders. Each slot contains semantic extraction, uplink transmission over position-dependent air-to-ground channels, and semantic recovery at the UAV.
-
-**Problem & objective**: A non-convex sequential resource and trajectory problem maximizes semantic processing rate, $\max \sum_{t,m}R_m^{\mathrm{sem}}(t)$, through UAV movement, device data allocation, and semantic extraction control.
-
+**Scenario**: One UAV collects semantic information from $M$ edge devices. In each slot, devices extract semantics from allocated raw data with a common extraction factor, upload over position-dependent air-to-ground links, and the UAV recovers the semantics.
+**Problem & objective**: Problem (25) maximizes the average semantic processing rate, $\max_{L,q,\beta}\frac1N\sum_n\frac{\sum_mL_m[n]}{\max_m\{T_m^{com}[n]\}+T^{tr}[n]+T_U^{com}[n]}$, the processed data per unit of extraction, transmission, and recovery time.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV trajectory | $\mathbf q(t)$ | continuous 2-D position | UAV collection location in slot $t$ |
-| Device data allocation | $d_m(t)$ | continuous, nonnegative | Raw or semantic data assigned to device $m$ in the slot |
-| Semantic extraction factor | $\rho_m(t)$ | continuous, bounded | Compression or retained-semantic fraction for device $m$ |
-| Computation time | $\tau_m^{\mathrm{cmp}}(t)$ | continuous, nonnegative | Time used for semantic extraction and recovery |
-
+| Data allocation | $L_m[n]$ | continuous, $[0,Q_m[n]]$ | Raw data processed by device $m$ in slot $n$ |
+| UAV trajectory | $\boldsymbol q[n]$ | continuous 2-D | UAV position in slot $n$ |
+| Semantic extraction factor | $\beta[n]$ | continuous, $[\beta^{\min},1]$ | Common compression factor in slot $n$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Extraction, transmission, and recovery times fit within every slot |
-| C2 | Each device's computation and communication energy stays within its budget |
-| C3 | Allocated data do not exceed the device buffer and available task data |
-| C4 | Semantic extraction factors satisfy their quality and range limits |
-| C5 | UAV displacement satisfies $\lVert\mathbf q(t+1)-\mathbf q(t)\rVert\le V_{\max}\Delta t$ |
-
-**Algorithm**: Fix the UAV path and solve data allocation, semantic factors, and computation time by convex block optimization → train DDPG for continuous trajectory control in H-DDPG → replace the deterministic actor with a critic-guided reverse-diffusion action generator in H-D3PG → infer the joint decision online.
+| C1 (25b) | Slot time $\max_m\{T_m^{com}[n]\}+T^{tr}[n]+T_U^{com}[n]\le\delta$ |
+| C2 (25c) | Device energy $E_m^{com}[n]+E_m^{tr}[n]\le E_m$ |
+| C3 (25d) | Data allocation $0\le L_m[n]\le Q_m[n]$ |
+| C4 (25e) | Start position $\boldsymbol q[0]=\boldsymbol q^{start}$ |
+| C5 (25f) | Per-slot movement $\lVert\boldsymbol q[n]-\boldsymbol q[n+1]\rVert\le d^{\max}$ |
+| C6 (25g) | Extraction factor $\beta^{\min}\le\beta[n]\le1$ |
+**Algorithm**: For a fixed trajectory, the fractional resource problem (26) is solved per slot by convex blocks (35)-(41). H-DDPG learns the trajectory with DDPG, and H-D3PG replaces the deterministic actor with a critic-guided denoising diffusion policy.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied joint trajectory and semantic-resource optimization in a UAV-assisted edge computing network. They formulated semantic processing-rate maximization over UAV movement, edge-device data allocation, and semantic extraction factors under slot-time, device-energy, buffer, and mobility constraints. H-DDPG combines DDPG trajectory control with convex optimization of the semantic resource block. H-D3PG replaces the deterministic actor with a denoising diffusion policy that generates UAV movement actions through reverse diffusion guided by the critic. Simulations report higher semantic processing rate than the evaluated raw-transmission, DDPG, and hybrid baselines, with online inference remaining below the simulated slot duration.
+Wang et al. [x] studied joint trajectory and semantic-resource optimization in a UAV-assisted edge computing network. They formulated semantic processing-rate maximization over UAV movement, edge-device data allocation, and semantic extraction factors under slot-time, device-energy, buffer, and mobility constraints. H-DDPG combines DDPG trajectory control with convex optimization of the semantic resource block. H-D3PG replaces the deterministic actor with a denoising diffusion policy that generates UAV movement actions through reverse diffusion guided by the critic. Simulations report higher semantic processing rate than H-DDPG, uniform-computation-time, random-extraction, and raw-data-transmission baselines, with online inference of 88-206 ms per decision, below the 1 s slot.
 
 ## Problem
 

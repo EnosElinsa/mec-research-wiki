@@ -23,7 +23,7 @@ related:
   - "[[bin-lin]]"
   - "[[yuan-wu]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Minimization for NOMA-Based Data Collection and Computation in UAV-Assisted Marine IoT
@@ -40,36 +40,30 @@ One fixed-altitude UAV acts as both aerial base station and MEC server for marin
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Fixed marine sensing devices upload mandatory data volumes by uplink power-domain NOMA to one fixed-altitude UAV that also processes the collected data. SIC ordering follows channel gain, and the UAV's motion couples device transmit energy, collection completion, computation, and propulsion energy.
-
-**Problem & objective**: A continuous non-convex mission problem minimizes total device and UAV energy, $\min E_{\mathrm{tx}}+E_{\mathrm{cmp}}+\omega E_{\mathrm{fly}}$, over UAV motion, device powers, and per-device UAV computing allocation.
-
+**Scenario**: Fixed marine sensing devices (SDs) upload required data by uplink power-domain NOMA to one fixed-altitude UAV, which computes each SD's data after its collection finishes. UAV motion couples SD transmit energy, collection progress, computation, and propulsion energy.
+**Problem & objective**: MTEC-US minimizes total system energy $E_{US}^{tot}$ over UAV trajectory $q_n$, SD powers $p_{mn}$, resource ratio $\beta_n$, and UAV computing $f_{U,mn}$; since $\beta_n$ does not affect the objective, it is eliminated in the equivalent MTEC-US-E, $\min E_{US}^{tot}$ over $q_n,f_{U,mn},p_{mn}$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV speed and heading | $v(t),\theta(t)$ | continuous, bounded | Motion action inducing the UAV trajectory |
-| Device transmit power | $p_k(t)$ | continuous, bounded | NOMA uplink power of marine device $k$ |
-| UAV compute allocation | $f_k(t)$ | continuous, nonnegative | CPU resource assigned to device $k$ after collection |
-| UAV trajectory | $\mathbf q(t)$ | continuous horizontal position | Fixed-altitude collection and computation path |
-
+| UAV trajectory | $q_n$ | continuous 2-D | UAV position in slot $n$ (action: speed $v_n\in[0,v_{\max}]$, angle $\theta_n\in[0,2\pi]$) |
+| SD transmit power | $p_{mn}$ | continuous, $[0,p_m^{\max}]$ | NOMA uplink power of SD $m$ |
+| UAV computing | $f_{U,mn}$ | continuous, $[0,f_U]$ | CPU resource for SD $m$'s data in slot $n$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every device uploads its required data volume within the mission |
-| C2 | NOMA rates follow SIC channel ordering and device powers stay within limits |
-| C3 | A device is computed only after its data collection completes |
-| C4 | Per-slot and total UAV computing allocations stay within capacity |
-| C5 | UAV propulsion plus computation energy, speed, region, and mission conditions remain feasible |
-
-**Algorithm**: Eliminate the auxiliary per-slot compute ratio to obtain an equivalent continuous model → min-max normalize state features → let TD3 select UAV speed, heading, device powers, and compute allocations → use twin critics, clipped target values, delayed actor updates, policy smoothing, replay, and soft targets → update from negative slot energy and feasibility penalties.
+| (4), (6) | Data-collection and computation model constraints |
+| (12) | Mission time $\max_m(N_m\tau+t_{U,m}^{cpt})\le T$ |
+| (13) | Speed $0\le\lVert q_n-q_{n-1}\rVert/\tau\le v_{\max}$ |
+| (14), (17) | Computing capacity across slots, $\sum_n\sum_{m\in M_{n-1}}f_{U,mn}\le f_U$ after eliminating $\beta_n$ |
+| (15) | SD power $0\le p_{mn}\le p_m^{\max}$ |
+| (16) | UAV flight plus computing energy $\le E_U^{\max}$ |
+**Algorithm**: Model MTEC-US-E as an MDP with state (18) and action (19) and train a TD3 agent with min-max normalized states, twin critics, delayed actor updates, target-policy smoothing, and replay.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied energy minimization for NOMA-based data collection and computation in UAV-assisted marine IoT. Fixed sensing devices upload required data to one UAV MEC server, which begins processing each data set after collection completes. The formulation jointly optimizes UAV motion, device transmit powers, and UAV computing allocation to minimize device transmission, UAV computation, and weighted propulsion energy. A min-max-normalized TD3 controller uses twin critics, delayed actor updates, target-policy smoothing, replay, and soft target updates. Simulations report lower total energy than the evaluated FDMA, TDMA, PSO, fixed-power, fixed-compute, and random-trajectory baselines.
+Wang et al. [x] studied energy minimization for NOMA-based data collection and computation in UAV-assisted marine IoT. Fixed sensing devices upload required data to one UAV MEC server, which begins processing each data set after collection completes. The formulation jointly optimizes UAV motion, device transmit powers, and UAV computing allocation to minimize device transmission, UAV computation, and weighted propulsion energy. A min-max-normalized TD3 controller uses twin critics, delayed actor updates, target-policy smoothing, replay, and soft target updates. Simulations report lower total energy than DDPG, A2C, DQN, PSO, random-trajectory, fixed-power, and fixed-compute schemes, and 20.21% and 32.34% lower energy for NOMA than FDMA and TDMA at the same data volume.
 
 ## Problem framing
 

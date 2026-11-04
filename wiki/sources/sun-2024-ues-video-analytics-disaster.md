@@ -17,7 +17,7 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[zhou-2024-jdl-abs-postdisaster-rescue]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimal Task Offloading and Trajectory Planning Algorithms for Collaborative Video Analytics With UAV-Assisted Edge in Disaster Rescue
@@ -34,30 +34,26 @@ A **UAV-assisted-edge video-analytics** system for **disaster rescue** that expl
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A UAV-mounted edge server visits disaster-region offloading points and serves heterogeneous battery-powered smart cameras performing video analytics. Each variable-length slot contains a flight phase and a hover phase; binary camera offloading, channel assignment, and UES resource allocation determine local overhead and the camera-network lifetime.
-
-**Problem & objective**: The nested design minimizes per-slot camera computing overhead and maximizes the long-term camera-system lifetime, represented by $\min O_{\mathrm{slot}}$ locally and $\max T_{\mathrm{lifetime}}$ globally under latency and battery constraints.
-
+**Scenario**: A UAV-mounted edge server (UES) visits offloading points in a disaster area to serve battery-powered edge cameras (ECs) running video analytics. Each slot has a flight phase and a hover phase; at each point ECs either compute locally or offload to the UES's virtual machines.
+**Problem & objective**: Problem (15) maximizes system lifetime, $\max_{(E_0,P,P_0)}\sum_tT_t$, with the per-slot minimum-overhead problem as constraint C1 (16): $\min\sum_i[\mathbb I\{\alpha_i^t=0\}C_i^{t,l}+\mathbb I\{\alpha_i^t>0\}C_i^{t,o}]$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Camera offloading | $x_i(t)$ | binary | Local execution or offload of camera $i$'s analytics task |
-| Channel assignment | $c_i(t)$ | discrete | UES channel assigned to camera $i$ |
-| UES compute allocation | $f_i(t)$ | continuous, capacity-bounded | Virtual-machine resource assigned to camera $i$ |
-| UES trajectory | $\mathbf q(t)$ | discrete region/point action | Offloading point selected by the UES |
-
+| Offloading decision | $\alpha_i^t$ | binary or offloading share | Local execution ($\alpha_i^t=0$) or offloading of EC $i$ |
+| Transmit power | $p_{i,t}^{tr}$ | continuous, $[0,p_i^{tr,\max}]$ | EC upload power |
+| UES location | $\mathrm P_t=\{X_t,Y_t,H_t\}$ | discrete, $\in S_M$ | Offloading point chosen in slot $t$ |
+| Slot length | $T_t$ | continuous, $[0,T_{\max}]$ | Duration of slot $t$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one camera uses a UES virtual machine in each slot |
-| C2 | Offloaded and locally processed data satisfy the per-slot latency cap |
-| C3 | Camera battery energy and UES flight/hover energy remain feasible |
-| C4 | Channel interference and UES computing capacity limit simultaneous offloading |
-| C5 | UES trajectory stays within the disaster region and serves reachable cameras |
-
-**Algorithm**: Solve the per-slot binary offloading/channel/resource block with improved differential evolution → use a DDQN MDP for long-term UES movement and lifetime reward → nest the local optimizer inside each trajectory step → update the UES policy from energy, overhead, and camera-battery feedback.
+| C1 (16) | Per-slot minimum system overhead at offloading point $\mathrm P_t$ |
+| C2 (17) | At most $V$ ECs use UES virtual machines, $\sum_i\mathbb I\{\alpha_i^t>0\}\le V$ |
+| C3 (18) | EC residual battery $e_i^{t,res}\ge0$; the system ends when any EC is depleted |
+| C4 (19) | Transmit power $0\le p_{i,t}^{tr}\le p_i^{tr,\max}$ |
+| C5 (20) | Slot length $0\le T_t\le T_{\max}$ |
+| C6 (21) | Latency $l_{i,t}\le L_{\max}$ |
+| C7 (22) | UES energy covers flight, hover, and computing, $E(t)-E_t^{fly}-E_t^{hover}-E_t^{compute}\ge0$ |
+**Algorithm**: A nested two-timescale design: improved differential evolution solves the per-slot offloading and resource problem (23)-(28), and a DDQN agent plans the UES path over offloading points with a reward that grows with the ECs' remaining battery.
 
 ## Related Work Paragraph
 

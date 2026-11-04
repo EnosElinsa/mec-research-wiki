@@ -17,7 +17,7 @@ related:
   - "[[zhang-2020-response-delay-uav-swarm]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -37,7 +37,7 @@ Minimizes communication + computation latency in a **two-layer maritime UAV-MEC 
 
 **Scenario**: Maritime users offload to distributed B-UAVs; when their queues saturate, a centralized T-UAV receives queued tasks and runs them in parallel through multiplexed VMs with I/O interference.
 
-**Problem & objective**: Jointly select the T-UAV trajectory and per-slot VM count to minimize communication plus parallel-computation latency, $\min_{\mathbf Q,\mathbf K}\sum_{n=1}^{N}(T_n^{\mathrm{tran}}+T_n^{\mathrm{comp}})$.
+**Problem & objective**: Problem OP1 (11) jointly selects the T-UAV trajectory and per-slot VM count to minimize communication plus parallel-computation latency, $\min_{\mathbf Q,\mathbf K}\sum_{n=1}^{N}(T_n^{\mathrm{tran}}+T_n^{\mathrm{comp}})$.
 
 **Decision variables**:
 
@@ -52,10 +52,10 @@ Minimizes communication + computation latency in a **two-layer maritime UAV-MEC 
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Flight actions obey $0\leq\theta_n<2\pi$ and $0\leq l_n\leq l_{\max}$. |
-| C2 | T-UAV coordinates stay in the target area under the slot-wise motion recursion. |
-| C3 | Offloading follows the queue threshold, $b_{i,n}=1$ when $L_{i,n}\geq L_{\max}$ and zero otherwise. |
-| C4 | VM multiplexing is bounded by eligible B-UAVs, $0\leq S_n\leq\sum_i b_{i,n}$. |
+| (11a)-(11b) | Flight actions obey $0\leq\theta_n<2\pi$ and $0\leq l_n\leq l_{\max}$. |
+| (11c)-(11d) | T-UAV coordinates stay in the target area under the slot-wise motion recursion. |
+| (11e)-(11f) | Offloading is binary and follows the queue threshold, $b_{i,n}=1$ when $L_{i,n}\geq L_{\max}$ and zero otherwise. |
+| (11g) | VM multiplexing is bounded by eligible B-UAVs, $0\leq S_n\leq\sum_i b_{i,n}$. |
 
 **Algorithm**: Cast the mixed-integer non-convex program as an MDP; use DQN for discrete or small action spaces and DDPG for high-dimensional continuous trajectory and VM-control actions.
 

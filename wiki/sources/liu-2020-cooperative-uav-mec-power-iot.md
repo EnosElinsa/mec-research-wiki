@@ -16,7 +16,7 @@ related:
   - "[[seid-2021-madrl-multiuav-iot-edge]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,7 +36,7 @@ A **cooperative UAV-enabled MEC** network for the power Internet of Things, wher
 
 **Scenario**: A time-slotted cooperative UEC network has ground devices in UAV small-cells, hovering UAV edge servers, and a BS or edge server; a task can be processed locally, by a neighboring UAV, or at the BS.
 
-**Problem & objective**: Choose a collaboration mode and communication/computation allocations to maximize long-term network utility, $\max_{\beta,\mathbf f,\Phi}\lim_{T\to\infty}\frac{1}{T}\sum_{t=1}^{T}\sum_{k=1}^{K}U_k(t)$.
+**Problem & objective**: Problem (P1) chooses a collaboration mode and communication/computation allocations to maximize long-term network utility, $\max_{\beta,\mathbf f,\Phi}\lim_{T\to\infty}\frac{1}{T}\sum_{t=1}^{T}\sum_{k=1}^{K}U_k(t)$.
 
 **Decision variables**:
 
@@ -50,10 +50,9 @@ A **cooperative UAV-enabled MEC** network for the power Internet of Things, wher
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | The communication durations fit one slot, $\sum\tau_{n_k,k}+\sum\tau_{k,j}+\tau_k^{BS}\leq\tau$. |
-| C2 | Every device demand is offloaded within available link rates, as in the communication-capacity inequalities. |
-| C3 | Executed bits fit local and cooperative computing capacities, including $\sum d_{n_k}\leq\sum\tau f$. |
-| C4 | The collaboration decision remains discrete, $\beta_k(t)\in\{0,1\}$. |
+| C1 | Offloading durations fit the slot: $\sum_{n_k}\tau_{n_k,k}(t)+\sum_{j\ne k}\tau_{k,j}(t)+\tau_k^{BS}(t)\le\tau$ |
+| C2 = (4), (5), (7), (8) | Device demands are carried by the link rates and executed within local, cooperative-UAV, and BS computing capacities |
+| Variable domain | Collaboration mode $\beta_k(t)\in\{0,1\}$ |
 
 **Algorithm**: Model stochastic demand and channel states as a semi-Markov process; solve centrally with two-phase DRL and state-representation learning, or distribute Q-value-transfer DQN policies across UAVs.
 

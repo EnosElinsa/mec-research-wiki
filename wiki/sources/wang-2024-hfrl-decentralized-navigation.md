@@ -18,7 +18,7 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Decentralized Navigation With Heterogeneous Federated Reinforcement Learning for UAV-Enabled Mobile Edge Computing
@@ -37,7 +37,7 @@ A **decentralized navigation policy** for UAV-enabled MEC with **heterogeneous**
 
 **Scenario**: A swarm of heterogeneous fixed-altitude UAVs navigates disjoint task areas, serves moving UEs, and offloads queued tasks. Each UAV has distinct flight energy, coverage, CPU, and speed parameters and shares policy knowledge through a cloud server.
 
-**Problem & objective**: The navigation objective maximizes energy efficiency $\eta=\sum_j\Lambda_j^*(T)/\sum_je_j(T)$ while meeting waiting-time and coverage requirements.
+**Problem & objective**: Problem (17) maximizes (the parse prints min in (17a), but the text states maximization) energy efficiency $\eta=\sum_j\Lambda_j^*(T)/\sum_je_j(T)$ while meeting waiting-time and coverage requirements.
 
 **Decision variables**:
 
@@ -52,12 +52,12 @@ A **decentralized navigation policy** for UAV-enabled MEC with **heterogeneous**
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Area boundary: $0\le X_j(t),Y_j(t)\le L$ |
-| C2 | Obstacle avoidance: $[X_j(t),Y_j(t)]\notin\mathbb O_j$ |
-| C3 | Speed: $0\le\|\mathbf V_j(t+1)\|_2\le V_j^{\max}$ |
-| C4 | Motion directions: $0\le\mathcal U_\alpha,\mathcal U\le2\pi$ |
-| C5 | UE queue bounds: $0\le\Lambda_{i_j}(t)\le\Lambda^{\max}$ |
-| C6-C7 | CPU range $f_j^{\min}\le f_t\le f_j^{\max}$, waiting time $W_T\le W_T^{\max}$, and coverage $c_T\ge c_T^{\min}$ |
+| (17b) | Area boundary: $0\le X_j(t),Y_j(t)\le L$ |
+| (17c) | Obstacle avoidance: $[X_j(t),Y_j(t)]\notin\mathbb O_j$ |
+| (17d) | Speed: $0\le\|\mathbf V_j(t+1)\|_2\le V_j^{\max}$ |
+| (17e) | Motion directions: $0\le\mathcal U_\alpha,\mathcal U\le2\pi$ |
+| (17f) | UE queue bounds: $0\le\Lambda_{i_j}(t)\le\Lambda^{\max}$ |
+| (17g)-(17i) | CPU range $f_j^{\min}\le f_t\le f_j^{\max}$, waiting time $W_T\le W_T^{\max}$, and coverage $c_T\ge c_T^{\min}$ |
 
 **Algorithm**: SHDRLN uses a maximum-entropy skill policy network with pretrained deep skill networks and actor-critic updates. DFRL aggregates skill-policy parameters at the cloud, computes policy similarity with KL divergence, and filters transferred knowledge separately at each heterogeneous UAV.
 

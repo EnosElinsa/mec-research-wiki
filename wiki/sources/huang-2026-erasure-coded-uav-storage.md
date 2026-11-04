@@ -17,7 +17,7 @@ related:
   - "[[device-to-device-communication]]"
   - "[[coded-caching]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Erasure Coding-Based Cost-Optimized and Latency-Aware Data Storage in UAV-Enabled Edge Systems
@@ -51,11 +51,12 @@ Introduces **erasure-coded data storage** for UAV-enabled edge systems in disast
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UAV stores at most one coded block: $x_u+b_u\in\{0,1\}$ |
-| C2 | The code uses a feasible recovery threshold: $2\le k\le U$ |
-| C3 | Every request obtains exactly the $k$ blocks needed for decoding |
-| C4 | A selected local or neighboring UAV must be connected and store the required block |
-| C5 | All edge, user, and D2D bandwidth shares are bounded and satisfy aggregate capacity limits |
+| (20a) | Each UAV stores at most one coded block, $x_i+b_i\in\{0,1\}$ |
+| (20b) | Recovery threshold $2\le k\le U$ |
+| (20c)-(20d) | Binary local and D2D access indicators $w_d^u(t)$, $j_d^{u',u}(t)$ |
+| (20e)-(20h) | Edge, user, and inter-UAV bandwidth shares $h_i,\phi_{u,i},e_{u,i}\in[0,1]$ |
+| (20i)-(20j) | Local or D2D access only from a connected UAV that stores a block |
+| (20k)-(20l) | Aggregate bandwidth $\sum_ih_i(t)\le1$ and $\sum_i\phi_{u,i}(t)+\sum_je_{u,j}\le1$ |
 
 **Algorithm**: ME-HDRL predicts future user trajectories with a CNN-ConvLSTM model, then solves the two decomposed decisions hierarchically. UAV DDQN agents choose data-block, parity-block, or no-placement actions; a PPO edge agent chooses block sources and bandwidth; and an action filter removes access actions that target unavailable blocks.
 
