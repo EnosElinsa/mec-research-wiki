@@ -16,7 +16,7 @@ related:
   - "[[llm-assisted-resource-allocation]]"
   - "[[generative-ai-for-mec]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -36,7 +36,7 @@ Proposes a hybrid SAC-LLM trajectory planner for low-altitude data-collection UA
 
 **Scenario**: A fixed-altitude data-collection UAV traverses low-altitude airspace from takeoff to landing while sensing ground equipment around buildings, no-fly zones, residential areas, and other aircraft.
 
-**Problem & objective**: Choose continuous per-slot velocity actions to maximize collected data, $\max \sum_t TD_{\mathrm{GE}_i}(t)$, under safety, compliance, landing, and energy limits.
+**Problem & objective**: Choose continuous per-slot velocity actions to maximize collected data, $\max \sum_t TD_{\mathrm{GE}_i}(t)$, in problem OP (9) under device-selection, kinematic, speed, airspace, separation, landing, and energy constraints (9a)-(9j).
 
 **Decision variables**:
 
@@ -49,11 +49,13 @@ Proposes a hybrid SAC-LLM trajectory planner for low-altitude data-collection UA
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Kinematic and speed limits, including the residential-zone speed cap |
-| C2 | Stay inside the operating area and outside no-fly zones and building regions |
-| C3 | Maintain separation from other UAVs and sensed obstacles |
-| C4 | Start at the takeoff area and finish at the landing area |
-| C5 | Keep cumulative flight energy within the UAV budget |
+| (9a) | Ground-equipment selection: $\mathrm{GE}_i$ is the device with the largest buffer $B_{\mathrm{GE}_i}(t)$ among those with $\mathrm{SNR}_{\mathrm{GE}_i}(t)\geq\tau$ |
+| (9b) | Fixed-altitude kinematics: $L_{\mathrm{DCU},t+1}=(x_{\mathrm{DCU},t}+v_x(t)t_{\mathrm{fly}},\,y_{\mathrm{DCU},t}+v_y(t)t_{\mathrm{fly}},\,H)$ |
+| (9c)-(9d) | Speed cap $v_{\mathrm{DCU}}(t)\leq v_{\max}$, and $v_{\mathrm{DCU}}(t)\leq v_{\mathrm{limit}}$ inside residential zones $\mathbb R_{\mathrm{RZ},m}$ |
+| (9e)-(9g) | Stay inside airspace $\mathbb A$ and outside no-fly zones $\mathbb R_{\mathrm{NFZ},l}$ and building zones $\mathbb R_{\mathrm{BZ},n}$ (the parse shifts these tags; check the published paper) |
+| (9h) | Separation from other UAVs: $\lVert L_{\mathrm{DCU},t}-L_{\mathrm{OU}_j,t}\rVert>0$ |
+| (9i) | Start in the takeoff area $\mathbb{TA}$ and end in the landing area $\mathbb{LA}$ |
+| (9j) | Flight and hover energy: $\sum_t(e_{\mathrm{fly}}(t)+e_{\mathrm{hover}}(t))\leq E_{\mathrm{limit}}$ |
 
 **Algorithm**: Train a soft actor-critic policy for continuous control, invoke an LLM near hazards to return a structured velocity suggestion during training, and remove the LLM from the final online controller.
 
@@ -61,7 +63,7 @@ Proposes a hybrid SAC-LLM trajectory planner for low-altitude data-collection UA
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gong et al. [x] studied compliance-aware trajectory planning for a fixed-altitude data-collection UAV operating among buildings, no-fly zones, residential speed limits, and moving aircraft. They maximized collected data through continuous velocity control under mobility, obstacle, airspace, landing, and energy constraints. Their training pipeline uses soft actor-critic for the base policy and invokes an LLM near hazards to generate structured velocity guidance, then removes the LLM for lightweight online execution. Simulations report a 99.49% data-collection rate, zero collision and regulation-violation rates in the aggregate result, nearly complete landing success, and a 76.95% energy-consumption rate.
+Gong et al. [x] studied compliance-aware trajectory planning for a fixed-altitude data-collection UAV operating among buildings, no-fly zones, residential speed limits, and moving aircraft. They maximized collected data through continuous velocity control under mobility, obstacle, airspace, landing, and energy constraints. Their training pipeline uses soft actor-critic for the base policy and invokes an LLM near hazards to generate structured velocity guidance, then removes the LLM for lightweight online execution. Simulations report a 99.49% data-collection rate, zero collision and regulation-violation rates in the aggregate result, a successful landing rate of nearly 100%, and the lowest energy-consumption rate (76.95%) against SAC, PPO, DDPG, SAC+LLM, CPO, SAC+Heuristic, and two prior trajectory planners.
 
 ## Problem
 

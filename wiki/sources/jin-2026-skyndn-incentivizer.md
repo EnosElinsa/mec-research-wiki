@@ -23,7 +23,7 @@ related:
   - "[[dusit-niyato]]"
 created: 2026-07-14
 modeling_card: required
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # SkyNDN Incentivizer: Enhancing Content Sharing in UAV Named Data Networking
@@ -42,7 +42,7 @@ Builds a broker-mediated content market for [[uav-named-data-networking|UAV Name
 
 **Scenario**: Mobile UAV nodes form a named-data network in which content consumers request cached data from content producers through a virtual broker; three-dimensional Gauss-Markov mobility changes multihop distance, delay, and transmission energy, and producers use orthogonal subchannels.
 
-**Problem & objective**: Problem P1 maximizes market social welfare $\sum_{i=1}^{M}U_i(\boldsymbol\theta_i)-\sum_{j=1}^{N}C_j(\boldsymbol\omega_j)$ by choosing pairwise content demand and supply.
+**Problem & objective**: Problem P1 (13) maximizes market social welfare $\sum_{i=1}^{M}U_i(\boldsymbol\theta_i)-\sum_{j=1}^{N}C_j(\boldsymbol\omega_j)$ by choosing pairwise content demand and supply.
 
 **Decision variables**:
 
@@ -57,9 +57,9 @@ Builds a broker-mediated content market for [[uav-named-data-networking|UAV Name
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each consumer stays within its demand interval: $\theta_i^{\min}\leq\sum_j\theta_{ij}\leq\theta_i^{\max}$ |
-| C2 | Each producer respects its content capacity: $\sum_i\omega_{ji}\leq\omega_j^{\max}$ |
-| C3 | Every pair clears supply and demand: $\theta_{ij}=\omega_{ji}$ |
+| (13a) | Each consumer stays within its demand interval: $\theta_i^{\min}\leq\sum_j\theta_{ij}\leq\theta_i^{\max}$ |
+| (13b) | Each producer respects its content capacity: $\sum_i\omega_{ji}\leq\omega_j^{\max}$ |
+| (13c) | Every pair clears supply and demand: $\theta_{ij}=\omega_{ji}$ |
 
 **Algorithm**: IDAA repeatedly solves the broker's allocation problem, announces allocations and settlement prices, and updates consumer bids and producer asks until changes fall below the stopping tolerance; DiffRL-DA instead denoises a continuous transaction matrix with a diffusion actor and trains it with twin critics, replay, target networks, and constraint-sensitive rewards.
 

@@ -18,7 +18,7 @@ related:
   - "[[memory-augmented-multi-uav-navigation]]"
   - "[[ye-2023-graph-uav-coverage]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -52,10 +52,10 @@ Uses one continuous actor-critic controller per UAV to sustain fair communicatio
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | UAV positions remain inside the target region at every slot. |
-| C2 | Each UAV keeps a peer connection, with inter-UAV distance no larger than the communication range $R$. |
-| C3 | Actions obey $\vartheta_i^t\in[0,2\pi)$ and $0\leq l_i^t\leq l_{\max}$. |
-| C4 | The fixed-altitude coverage radius satisfies $R'\leq R$ while movement energy is accumulated over $T$ slots. |
+| Border (untagged) | UAVs must not fly across the target-region border; violations incur a penalty in the reward. |
+| Connectivity (untagged) | Each UAV stays within communication range $R$ of at least one other UAV; losing all peer links incurs a penalty. |
+| Action range | $\vartheta_i^t\in[0,2\pi)$ and $0\leq l_i^t\leq l_{\max}$. |
+| Model rule | At the fixed altitude, the coverage radius satisfies $R'\leq R$; movement energy accumulates over $T$ slots. |
 
 **Algorithm**: Formulate a multi-agent partially observable control problem with one actor and critic per UAV; train critics from global state and joint actions, then execute local actors with a shared coverage-fairness-per-energy reward and violation penalties.
 
@@ -63,7 +63,7 @@ Uses one continuous actor-critic controller per UAV to sustain fair communicatio
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] developed a distributed deep-reinforcement-learning controller for multiple UAV base stations that must maintain long-term communication coverage. Each UAV selects a continuous direction and flight distance, while the shared reward combines incremental coverage, Jain fairness, and movement energy with penalties for border and connectivity violations. Centralized critics use the global state and joint actions during training, whereas local actors control UAVs independently at execution. Simulations report energy-efficiency gains of 13.6% to 19.1% over DRL-EC3 across coverage radii, with a 13% coverage improvement at a representative movement-energy setting. The work is an early CTDE-style reference for fair, energy-aware multi-UAV navigation.
+Liu et al. [x] developed a distributed deep-reinforcement-learning controller for multiple UAV base stations that must maintain long-term communication coverage. Each UAV selects a continuous direction and flight distance, while the shared reward combines incremental coverage, Jain fairness, and movement energy with penalties for border and connectivity violations. Centralized critics use the global state and joint actions during training, whereas local actors control UAVs independently at execution. Simulations report energy-efficiency gains of 13.6% to 19.1% over DRL-EC3 across coverage radii, with a 13% coverage improvement at a representative movement-energy setting; it beat all four baselines on average coverage but trailed mTSP on fairness when the UAV number varied. The work is an early CTDE-style reference for fair, energy-aware multi-UAV navigation.
 
 ## Problem
 

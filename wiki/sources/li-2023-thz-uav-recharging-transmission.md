@@ -15,7 +15,7 @@ related:
   - "[[device-association]]"
   - "[[uav-charging-scheduling]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # A Cooperative Recharging-Transmission Strategy in Powered UAV-Aided Terahertz Downlink Networks
@@ -58,7 +58,7 @@ Hovering UAVs harvest energy from a central charging base station (CBS) and then
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied a cooperative recharging-transmission strategy for powered UAV-aided terahertz downlink networks, where UAVs with limited energy provide long-term coverage. They proposed a UAV-to-user THz sub-band association scheme to eliminate interference and derived the minimum requirements of the wireless charging window and the THz-transmitting window. A minimization problem of the minimum timeslot requirement was formulated to jointly optimize UAV placement and UAV-to-user THz sub-band association. The nonconvex problem is solved by alternating optimization, where UAV placement combines interior point and gradient descent methods and the association subproblem is solved as a knapsack problem after transforming the association matrix. Simulation results show that the proposed strategy achieves quasi-optimal performance compared with other contrasting strategies.
+Li et al. [x] studied a cooperative recharging-transmission strategy for powered UAV-aided terahertz downlink networks, where UAVs with limited energy provide long-term coverage. They proposed a UAV-to-user THz sub-band association scheme to eliminate interference and derived the minimum requirements of the wireless charging window and the THz-transmitting window. A minimization problem of the minimum timeslot requirement was formulated to jointly optimize UAV placement and UAV-to-user THz sub-band association. The nonconvex problem is solved by alternating optimization, where UAV placement combines interior point and gradient descent methods and the association subproblem is solved as a knapsack-style assignment with the Hungarian algorithm after transforming the association matrix. The authors describe the strategy as quasi-optimal; in the reported two-UAV, eight-user simulations it achieves a lower minimum timeslot requirement than a cellular-frequency variant and a baseline strategy from prior work as the path-loss exponent grows.
 
 ## Problem framing
 

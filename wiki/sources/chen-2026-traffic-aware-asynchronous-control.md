@@ -16,7 +16,7 @@ related:
   - "[[wang-2026-robust-multiuav-jtcra]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -51,11 +51,12 @@ Clusters source devices from spatial position and directional traffic patterns, 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Slot budget: $\tau_{i,f}+\tau_{i,s}+\tau_{i,r}+\tau_{i,d}\leq\delta$ |
-| C2 | Collision avoidance: $\lVert\ell_i(t)-\ell_j(t)\rVert\geq d_{\min}$ |
-| C3 | Mobility: $\lVert\ell_i(t+1)-\ell_i(t)\rVert\leq v_{\max}\tau_{i,f}$ |
-| C4 | Single association or relay: $\sum_i\phi_{m,i}^{k}(t)\leq1$ and $\sum_{j\neq i}\phi_{i,j}(t)\leq1$ |
-| C5 | Uplink, relay, and downlink decoding satisfy $\gamma_{m,i}^{\tau}\geq\gamma_{\mathrm{th}}$, $\gamma_{i,j}^{\tau}\geq\gamma_{\mathrm{th}}$, and the corresponding downlink SINR threshold |
+| (1) | Slot budget: $\tau_{i,f}+\tau_{i,s}+\tau_{i,r}+\tau_{i,d}\leq\delta$ |
+| (2a) | Collision avoidance: $\lVert\ell_i(t)-\ell_j(t)\rVert\geq d_{\min}$ |
+| (2b) | Mobility: $\lVert\ell_i(t+1)-\ell_i(t)\rVert\leq v_{\max}\tau_{i,f}$ |
+| Access rules (untagged) | Single UAV access during relaying, $\sum_{i\in\mathcal N}\phi_{m,i}^{k}(t)\leq1$, and at most one relay peer, $\sum_{j\in\mathcal N\setminus\{i\}}\phi_{i,j}(t)\leq1$ |
+| (4), (7), (9) | Uplink, U2U relay, and downlink SINRs satisfy the SIC decoding threshold $\gamma_{\mathrm{th}}$ |
+| (6), (12) | Device buffers $D_m^k$ and UAV queues $\zeta_i^k$ evolve with caps $D_{\max}$ and $\zeta_{\max}$ |
 
 **Algorithm**: Use STGAN to cluster devices from geographic and directional-flow features, build a dynamic UAV-cluster graph, fuse GCN features and GRU temporal state with the raw observation, and train a PPO actor with hybrid discrete scheduling and continuous trajectory/time heads using a soft-min throughput reward plus trajectory-flow similarity and collision penalties.
 
@@ -63,7 +64,7 @@ Clusters source devices from spatial position and directional traffic patterns, 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] studied max-min traffic-flow throughput in a post-disaster UAV-assisted M2M network with heterogeneous directional demands and no direct ground links. They jointly controlled UAV trajectories, asynchronous flight and transmission times, NOMA device scheduling, and UAV-to-UAV relay formation under mobility, collision, decoding, and buffer constraints. Their Cluster-AC pipeline first used STGAN for spatial-temporal traffic clustering and then applied a dynamic-graph and GRU enhanced PPO controller. Simulations reported convergence for the clustered controllers while both non-clustered variants failed to converge, and Cluster-AC achieved the highest cumulative throughput among the compared schemes with relay use varying between 25% and 50% of slots over a reported 30-slot horizon.
+Chen et al. [x] studied max-min traffic-flow throughput in a post-disaster UAV-assisted M2M network with heterogeneous directional demands and no direct ground links. They jointly controlled UAV trajectories, asynchronous flight and transmission times, NOMA device scheduling, and UAV-to-UAV relay formation under mobility, collision, decoding, and buffer constraints. Their Cluster-AC pipeline first used STGAN for spatial-temporal traffic clustering and then applied a dynamic-graph and GRU enhanced PPO controller. Simulations reported convergence for the clustered controllers while both non-clustered variants failed to converge, and Cluster-AC achieved the highest cumulative throughput against the Static-GNN-AC, Non-U2U, and Random schemes with relay use varying between 25% and 50% of slots over a reported 30-slot horizon.
 
 ## System model
 

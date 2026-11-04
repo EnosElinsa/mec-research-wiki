@@ -12,7 +12,7 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[communication-constrained-marl]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -32,14 +32,13 @@ Builds a **digital-twin-based collaboration architecture** for UAV swarms in sea
 
 **Scenario**: A coordinator maintains a digital twin of each search-and-rescue UAV swarm and couples physical task crowdsourcing with virtual traffic-flow scheduling for sensing data.
 
-**Problem & objective**: Select swarm members and intra-swarm traffic paths to maximize task requirement achievement ratio $A$ while limiting UAV and communication cost, with virtual delay evaluated before physical reconfiguration.
+**Problem & objective**: Integer program P (3) chooses virtual swarm membership and traffic-flow paths to minimize total membership change across crowdsourcing cycles, $\min_{\mathcal U_k^V(m),\delta_{i,j}^V(m)}\sum_{m\in T_k}\sum_{k\in\mathcal K}\lvert\mathcal U_k^V(m)-\mathcal U_k^V(m-1)\rvert$, so that fewer UAVs are committed and more stay idle for unexpected tasks while sensing and delay targets hold. The task requirement achievement ratio is an evaluation metric, not the formal objective.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 | --- | --- | --- | --- |
 | Task membership request | $a_i$ | discrete in $\{0,1,\ldots,K\}$ | UAV $i$ stays idle or requests membership in task $k$ |
-| Physical flow handoff | $\delta_{i,j}$ | binary | Sends sensing data from UAV $i$ to UAV $j$ for co-processing |
 | Virtual flow handoff | $\delta^V_{i,j}$ | binary | Digital-twin traffic path used for pre-assessment |
 | Virtual swarm membership | $\mathcal U_k^V$ | selected subset | UAVs admitted to task $k$ after resource and delay checks |
 
@@ -47,19 +46,21 @@ Builds a **digital-twin-based collaboration architecture** for UAV swarms in sea
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Sensing correctness reaches each task target, $P_k\geq\overline P_k$. |
-| C2 | Every admitted virtual path satisfies its end-to-end delay bound $d^V\leq\tau_k$ for the selected violation probability. |
-| C3 | Traffic is stable only when each selected link and processor service rate exceeds its arrival rate. |
-| C4 | Link bandwidth and UAV CPU capacities are respected during virtual flow allocation. |
-| C5 | Membership is accepted only when the added traffic does not violate existing task QoS or require disruptive route reconfiguration. |
+| C1 | Sensing correctness reaches each task target, $P_k(T_k)\geq\overline P_k(T_k)$ |
+| C2 | Every admitted virtual flow meets the task delay cap, $d^V_{i,j}\leq\tau_k$ for $\delta^V_{i,j}=1$ |
+| C3 | Swarm size is capped, $\lvert\mathcal U_k^V\rvert\leq\overline N_U$ |
+| C4 | One UAV serves at most one task, $\mathcal U_k^V\cap\mathcal U_{k'}^V=\varnothing$ for $k\neq k'$ |
+| C5 | Admitted UAVs must be idle, $I_i=1$ |
+| C6-C7 | Flow variables are binary and each member forwards to exactly one next hop, $\sum_j\delta^V_{i,j}=1$ |
+| C8-C9 | Stability: arrival rates stay below the processing and link service rates on selected paths |
 
-**Algorithm**: Use a distributed task-dynamic-crowdsourcing DQN with imitation-based reward shaping, then apply SNC-based traffic-flow allocation in the digital twin to rank candidates and pre-assess delay before physical admission.
+**Algorithm**: Use a distributed task-dynamic-crowdsourcing DQN with imitation-based reward shaping, then apply SNC-based traffic-flow allocation in the digital twin to pre-assign joining UAVs to resource-rich paths and pre-assess end-to-end delay before physical admission.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] proposed a digital-twin architecture for task-driven resource management in search-and-rescue UAV swarms. The framework jointly selects task membership and virtual intra-swarm flow paths so sensing correctness and stochastic-network-calculus end-to-end delay bounds are met without repeated physical route reconfiguration. A distributed MADRL crowdsourcing policy with imitation-based reward shaping proposes join actions, while an SNC traffic-flow allocator accepts only resource-feasible candidates. Simulations maintain more than 90% task requirement achievement with roughly four to six swarm members and reduce communication cost by over 80% versus greedy selection when enough UAVs are available.
+Li et al. [x] proposed a digital-twin architecture for task-driven resource management in search-and-rescue UAV swarms. The framework jointly selects virtual swarm membership and intra-swarm flow paths to minimize membership changes across crowdsourcing cycles under sensing-correctness, end-to-end delay, swarm-size, single-task, idle-state, and traffic-stability constraints. A distributed MADRL crowdsourcing policy with imitation-based reward shaping proposes join actions, while an SNC traffic-flow allocator accepts only resource-feasible candidates. Simulations maintain more than 90% task requirement achievement with roughly four to six swarm members and reduce communication cost by over 80% versus the greedy scheme when enough UAVs are available, while UAV cost stays comparable to the other algorithms.
 
 ## Problem
 

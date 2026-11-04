@@ -13,7 +13,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[uav-data-collection]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Energy-Aware Multi-UAV Collaboration for Data Collection and Trajectory Planning With MADDPG
@@ -32,7 +32,7 @@ This paper trains cooperating UAVs to collect ground-user data while respecting 
 
 **Scenario**: $K$ UAVs fly at fixed altitude over an $L\times L$ area and collect residual data from $M$ ground users in time slots. Each UAV has finite battery and must return to its base under a reserve threshold.
 
-**Problem & objective**: Maximize collected data; when all user tasks are complete, additionally maximize residual energy through the paper's completion indicator, $\max D_{\mathrm{collected}}+\lambda\sum_k(E_k^{\mathrm{cons}}-\sum_tE_k(t))$.
+**Problem & objective**: Problem (32) maximizes collected data plus, once every user task is complete, residual energy through the completion indicator $\lambda$ of (33): $\max_{T,\theta_k,T_k^{\mathrm{fly}}}\sum_t\sum_k\sum_mC_{k,m}(t)+\lambda\sum_k(E_k^{\mathrm{cons}}-\sum_tE_k(t))$.
 
 **Decision variables**:
 
@@ -46,10 +46,12 @@ This paper trains cooperating UAVs to collect ground-user data while respecting 
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Energy | Each UAV remains within its flight, hover, communication, and reserve energy budget. |
-| Return | $\mathbf u_k(0)=\mathbf u_k(T)$ and reserve-to-base conditions are enforced. |
-| Coverage | User data can be collected only while a UAV is within the modeled communication region. |
-| Safety | UAVs remain inside the area and satisfy collision-separation constraints. |
+| (32), energy | Each UAV's total energy stays within its budget, $\sum_tE_k(t)\leq E_k^{\mathrm{cons}}$ |
+| (32), return | Each UAV returns to its start, $\mathbf u_k(0)=\mathbf u_k(T)$ |
+| (32), area | UAVs stay inside the area, $0\leq x_k(t),y_k(t)\leq L$ |
+| Model rule | RTB energy threshold: before each action, remaining energy must cover the planned flight, hover, and collection plus the return to base; otherwise the UAV returns directly |
+| Model rule | Collision rule: point and edge conflicts within the minimum safe distance $d_{\mathrm{safe}}$ count as collisions and are penalized in the reward |
+| (8), (14) | Collected data per slot is $C_{k,m}(t)=\min(R_{k,m}(t)(\delta-T_k^{\mathrm{fly}}(t)),D_m(t))$, and hover time is set by the slowest served user |
 
 **Algorithm**: Use centralized training with decentralized MADDPG actors, local observations of positions, residual energy, and residual user data, and a global critic with replay and target networks.
 
@@ -57,7 +59,7 @@ This paper trains cooperating UAVs to collect ground-user data while respecting 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mei et al. [x] formulated cooperative multi-UAV data collection as a continuous-action control problem with explicit propulsion, communication, reserve-energy, and collision constraints. Their objective combines collected user data with residual energy when all collection tasks complete. Centralized-training and decentralized-execution MADDPG actors choose each UAV's heading and flight duration from local observations. Simulations report higher completion and residual-energy performance than MATD3, MASAC, MAPPO, MAAC, and clustering baselines in the tested settings. The study assumes fixed altitude and leaves intermittent links, wind, asynchronous training, and heterogeneous UAVs for future work.
+Mei et al. [x] formulated cooperative multi-UAV data collection as a continuous-action control problem with energy-budget, return-to-base, and area constraints, a return-to-base energy threshold, and penalized point and edge collisions. Their objective combines collected user data with residual energy when all collection tasks complete. Centralized-training and decentralized-execution MADDPG actors choose each UAV's heading and flight duration from local observations. Simulations report higher cumulative reward and the highest completion rate (0.73 at 400 m by 400 m with 80 users) against MATD3, MASAC, MAPPO, MAAC, and a Cluster and Greedy heuristic, whose retained energy reflects low task completion. The study assumes fixed altitude and leaves intermittent links, wind, asynchronous training, and heterogeneous UAVs for future work.
 
 ## Problem and system model
 

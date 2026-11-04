@@ -18,7 +18,7 @@ related:
   - "[[kai-kit-wong]]"
 modeling_card: required
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Trajectory Planning and Channel Selection for AoI Minimization in Multi-UAV-Assisted IoT Networks
@@ -37,7 +37,7 @@ Multiple UAV base stations jointly choose 3-D motion and wireless channels while
 
 **Scenario**: $U$ rotary-wing UAV base stations collect uploads from $G$ IoT devices over $C<U$ channels in the presence of $J$ ground jammers; uplink and downlink share each selected channel through TDMA, with probabilistic LoS/NLoS path loss and interference from co-channel UAVs and jammers.
 
-**Problem & objective**: Minimize the paper's upload-duration freshness proxy, $\min_{\{u_{i,j}(t)\},\{c_{i,j}(t)\}}\sum_{i\in U}\sum_{j\in G}\sum_t\mathcal A_{i,j}(t)$, where $\mathcal A_{i,j}(t)=Q_{j,i}(t)/R_{j,i}(t)$ and $Q_{j,i}(t+1)=Q_{j,i}(t)-R_{j,i}(t)\delta_t$.
+**Problem & objective**: Problem (P0) in (18a) minimizes the paper's upload-duration freshness proxy, $\min_{\{u_{i,j}(t)\},\{c_{i,j}(t)\}}\sum_{i\in U}\sum_{j\in G}\sum_t\mathcal A_{i,j}(t)$, where $\mathcal A_{i,j}(t)=Q_{j,i}(t)/R_{j,i}(t)$ and $Q_{j,i}(t+1)=Q_{j,i}(t)-R_{j,i}(t)\delta_t$.
 
 **Decision variables**:
 
@@ -52,10 +52,11 @@ Multiple UAV base stations jointly choose 3-D motion and wireless channels while
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Initial positions are fixed, $u_{i,j}(0)=u_{i,j}^0$. |
-| C2 | Constant-speed motion is enforced, $\|u_{i,j}(t+1)-u_{i,j}(t)\|=V\delta_t$. |
-| C3 | UAV separation is safe, $\|u_{i,j}(t)-u_{n,l}(t)\|\geq\delta_d$. |
-| C4 | Every selected channel is valid and nonzero, $c_{i,j}(t)\neq0$, and successful uploads satisfy the SINR threshold $S_{j,i}(t)\geq\kappa_{g,u}$. |
+| (18b) | Initial positions are fixed, $u_{i,j}(0)=u_{i,j}^0$ (the parse leaves this line untagged and shifts later tags; numbering follows the paper's text). |
+| (18c) | Constant-speed motion, $\lVert u_{i,j}(t+1)-u_{i,j}(t)\rVert=V\delta_t$. |
+| (18d) | UAV separation is safe, $\lVert u_{i,j}(t)-u_{n,l}(t)\rVert\geq\delta_d$. |
+| (18e) | Every selected channel is nonzero, $c_{i,j}(t)\neq0$. |
+| (6) | Uploads succeed only when $S_{j,i}(t)\geq\kappa_{g,u}$ (system-model constraint, not listed in P0). |
 
 **Algorithm**: Model the problem as a multi-agent MDP, let each decentralized actor output velocity and channel actions, train centralized value and Q networks with replay and SAC-style entropy regularization, apply soft target updates, and execute the learned policies independently at each UAV.
 
@@ -63,7 +64,7 @@ Multiple UAV base stations jointly choose 3-D motion and wireless channels while
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lu et al. [x] studied multi-UAV IoT data collection with ground jammers, same-channel UAV interference, and fewer channels than UAVs. They formulated joint 3-D trajectory and channel-selection optimization to minimize an upload-duration freshness proxy based on remaining data divided by instantaneous rate, while penalizing distance, switching, and collision risk. They modeled the problem as a multi-agent MDP and solved it with ITPCS-DC, using decentralized actors, centralized value and Q networks, replay, entropy regularization, and soft target updates. In simulations, ITPCS-DC achieved the lowest reported proxy AoI, trajectory length, and switching cost, and its average reward was up to 13.17% higher than the compared methods.
+Lu et al. [x] studied multi-UAV IoT data collection with ground jammers, same-channel UAV interference, and fewer channels than UAVs. They formulated joint 3-D trajectory and channel-selection optimization to minimize an upload-duration freshness proxy based on remaining data divided by instantaneous rate, while penalizing distance, switching, and collision risk. They modeled the problem as a multi-agent MDP and solved it with ITPCS-DC, using decentralized actors, centralized value and Q networks, replay, entropy regularization, and soft target updates. In simulations, ITPCS-DC achieved the lowest reported proxy AoI, trajectory length, and switching cost, and its average reward was up to 13.17% higher than the DDPG, MAPPO, and MADDPG benchmarks.
 
 ## Problem and system model
 

@@ -23,7 +23,7 @@ related:
   - "[[safe-reinforcement-learning]]"
   - "[[zhan-2018-uav-wsn-data-collection]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Reinforcement Learning-Based Collision Avoidance and Optimal Trajectory Planning in UAV Communication Networks
@@ -57,12 +57,13 @@ Separates multi-UAV mission planning into a planned data-collection route and an
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The return path starts at the delivery point and ends at the distribution center. |
-| C2 | For every assigned device, $d(\tilde\gamma,\mathbf w_k)\leq R_k$. |
-| C3 | UAVs fly at the prescribed fixed altitude and constant speed. |
-| C4 | Pairwise separation satisfies $\lVert\mathbf q_m(t)-\mathbf q_n(t)\rVert_2\geq d_{\min}$. |
-| C5 | Sensing radius satisfies $d_{\mathrm{sen}}\geq2Vt_{\mathrm{sensor}}+d_{\min}$. |
-| C6 | When three or more neighbors make the tabular state unbounded, an identifier-based altitude rule supplies fallback separation. |
+| (6) | The planned return path $\tilde\gamma$ is a horizontal plane curve parameterized over $\tau\in[0,1]$ |
+| Coverage (untagged, after (6)) | For every assigned device, $d(\tilde\gamma,\mathbf w_k)\leq R_k$ |
+| Endpoints (untagged, after (6)) | $(\tilde\gamma_1(0),\tilde\gamma_2(0))=(x_d,y_d)$ and $(\tilde\gamma_1(1),\tilde\gamma_2(1))=(x_s,y_s)$ |
+| Model rule | UAVs fly at a prescribed fixed altitude $h$ and constant speed $V$ |
+| (7) | Pairwise separation, $\lVert q_m(t)-q_n(t)\rVert\geq d_{\min}$ for $m\neq n$ |
+| Sensing condition (untagged) | $d_{sen}\geq2V\cdot t_{sensor}+d_{\min}$ guarantees detection before separation is lost |
+| Algorithm rule | When three or more neighbors are detected, the UAV changes altitude based on its unique identification number |
 
 **Algorithm**: Solve an auxiliary no-return TSP for device order, then solve a convex two-segment problem for a point inside each communication disk and repeatedly refine neighboring bridge points until path improvement is negligible. Train a distributed tabular Q-learning controller offline from goal-relative and obstacle-relative states, and during flight apply its heading action when nearby UAVs are sensed while otherwise following the planned path.
 
@@ -70,7 +71,7 @@ Separates multi-UAV mission planning into a planned data-collection route and an
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hsu and Gau [x] separated multi-UAV goods delivery and IoT collection into planned return trajectories and local collision-avoidance control. They minimized each return-path length over device order and visiting points inside heterogeneous communication disks, while online heading choices enforce fixed-speed, sensing-range, endpoint, data-coverage, and pairwise-separation conditions. Convex-TSP combines a no-return traveling-salesman order with convex visiting-point refinement, and distributed tabular Q-learning deviates from the plan when neighboring UAVs are detected. In 100-device networks with two to ten UAVs, Convex-TSP reduced average return length by at least 25% relative to random disk cover and circumcircle baselines, while learned paths avoided collisions with only modest route-length increase.
+Hsu and Gau [x] separated multi-UAV goods delivery and IoT collection into planned return trajectories and local collision-avoidance control. They minimized each return-path length over device order and visiting points inside heterogeneous communication disks, while online heading choices enforce fixed-speed, sensing-range, endpoint, data-coverage, and pairwise-separation conditions. Convex-TSP combines a no-return traveling-salesman order with convex visiting-point refinement, and distributed tabular Q-learning deviates from the plan when neighboring UAVs are detected. In 100-device networks with two to ten UAVs, Convex-TSP reduced average return length by at least 25% relative to the random GDC and circumcircle-based algorithms, although the circumcircle-based algorithm was slightly better when all devices shared one communication radius; actual collision-avoiding trajectories were slightly longer than the planned ones.
 
 ## Problem and system model
 

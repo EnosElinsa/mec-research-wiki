@@ -13,7 +13,7 @@ related:
   - "[[task-offloading]]"
   - "[[chen-2024-thoas-traffic-aware-sagin]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: not_applicable
 ---
 
@@ -31,7 +31,7 @@ Proposes Reinforced Meta-learning-based Traffic Prediction (RML-TP), in which a 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ma et al. [x] studied cell-level mobile-network traffic characterization and prediction with a reinforced meta-learning framework. They used FFT-derived traffic features to select a cell-specific recurrent or transformer predictor structure instead of retraining a fixed architecture for every cell. The RML-TP meta-learner treats candidate layer structures as states, applies epsilon-greedy value updates, and trades prediction error against base-learner training time. Experiments on Milan traffic traces report lower prediction error and improved transfer to unseen cell types than fixed-layer and random-layer baselines. A numerical UAV-offloading case study then uses the predicted traffic to illustrate delay reduction, but the paper's central contribution is traffic forecasting rather than a reusable wireless application decision model.
+Ma et al. [x] studied cell-level mobile-network traffic characterization and prediction with a reinforced meta-learning framework. They used FFT-derived traffic features to select a cell-specific recurrent or transformer predictor structure instead of retraining a fixed architecture for every cell. The RML-TP meta-learner treats candidate layer structures as states, applies epsilon-greedy value updates, and trades prediction error against base-learner training time. Experiments on Milan traffic traces report lower prediction error than fixed-layer and random-layer baselines and examine whether performance stays stable on previously untrained cells. A numerical UAV-offloading case study then uses the predicted traffic to illustrate delay reduction, but the paper's central contribution is traffic forecasting rather than a reusable wireless application decision model.
 
 ## Problem
 

@@ -18,7 +18,7 @@ related:
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
   - "[[you-2019-rician-uav-data-harvesting]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative UAVs for Remote Data Collection Under Limited Communications: An Asynchronous Multiagent Learning Framework
@@ -37,7 +37,7 @@ Models remote multi-UAV collection with unequal action durations as a decentrali
 
 **Scenario**: Heterogeneous-speed rotary-wing UAVs explore a gridded remote area at fixed altitude and collect initially unknown data from sensor nodes under limited inter-UAV communication. Each hovering UAV uses FDMA for active sensors, and different UAVs occupy orthogonal bands. UAV-sensor links combine probabilistic LoS/NLoS propagation with angle-dependent Rician fading and imperfect CSI.
 
-**Problem & objective**: Problem (P) is a stochastic, nonconvex joint trajectory and bandwidth-allocation design that maximizes overall collection energy efficiency, $\max_{\mathbf w,\mathbf b}\Phi(\mathbf w,\mathbf b)/\psi(\mathbf w,\mathbf b)$, and is represented as a decentralized partially observable semi-Markov decision process for asynchronous control.
+**Problem & objective**: Problem (P) is a stochastic, nonconvex joint trajectory and bandwidth-allocation design that maximizes overall collection energy efficiency under (1), (5), (6), (11), and (15), $\max_{\mathbf w,\mathbf b}\Phi(\mathbf w,\mathbf b)/\psi(\mathbf w,\mathbf b)$, and is represented as a decentralized partially observable semi-Markov decision process for asynchronous control.
 
 **Decision variables**:
 
@@ -51,11 +51,11 @@ Models remote multi-UAV collection with unequal action durations as a decentrali
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every UAV starts and ends at its prescribed locations |
-| C2 | Remaining energy always covers safe return to the final location plus a reserve margin |
-| C3 | Per-UAV FDMA allocations satisfy $\sum_i b^{in}(t)\leq B_{max}/N$ |
-| C4 | A UAV terminates only after mission completion or when the safe-return energy condition triggers |
-| C5 | Actions depend only on local observations and information exchanged within communication range |
+| (1) | Every UAV starts at $\mathbf w_0^n$ and ends at $\mathbf w_{\mathrm F}^n$ |
+| (5)-(6) | After each hover and each flight step, remaining energy covers safe return, $E_{\max}^n-E^n[k]-P_{\mathrm{UAV}}(\cdot)\tau^n[k]\geq\xi^n(\cdot)+\epsilon$ |
+| (11) | Per-UAV FDMA allocations satisfy $\sum_i b^{in}(t)\leq B$ with $B=B_{max}/N$ |
+| (15) | Termination: a UAV ends only after all data $\sum_iD^i$ is collected or its energy reaches the safety level $\epsilon$ |
+| Model rule | Actions depend only on local observations and information exchanged within communication range (Dec-POSMDP) |
 
 **Algorithm**: Formulate trajectory control as a Dec-POSMDP, use AQMIX to advance only the agent whose current action finishes first, train recurrent decentralized utilities with a monotonic mixing network and sum-pooled completion maps, then solve a local convex min-max hovering-time bandwidth problem under imperfect CSI at each visited collection point.
 
@@ -63,7 +63,7 @@ Models remote multi-UAV collection with unequal action durations as a decentrali
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Le et al. [x] studied cooperative UAV data collection with stochastic data availability, unequal action durations, and limited inter-UAV communication. They formulated joint trajectory and bandwidth allocation to maximize collection energy efficiency and represented asynchronous trajectory control as a decentralized partially observable semi-Markov decision process. Their AQMIX method retains monotonic QMIX value factorization while allowing only the earliest-finishing UAV to select a new action and uses pooled completion maps to reduce the global state. After trajectory learning, each hovering UAV solves a convex local bandwidth-allocation problem under imperfect CSI. Simulations report higher energy efficiency and lower completion time than the evaluated synchronous QMIX, independent-learning, and heuristic baselines across the tested grid sizes, UAV counts, communication ranges, energy budgets, and data densities.
+Le et al. [x] studied cooperative UAV data collection with stochastic data availability, unequal action durations, and limited inter-UAV communication. They formulated joint trajectory and bandwidth allocation to maximize collection energy efficiency and represented asynchronous trajectory control as a decentralized partially observable semi-Markov decision process. Their AQMIX method retains monotonic QMIX value factorization while allowing only the earliest-finishing UAV to select a new action and uses pooled completion maps to reduce the global state. After trajectory learning, each hovering UAV solves a convex local bandwidth-allocation problem under imperfect CSI. Simulations report higher energy efficiency and lower completion time than the QMIX (synchronous training, asynchronous deployment), AIQL independent-learning, and HERT sector-heuristic baselines across the tested grid sizes, UAV counts, communication ranges, energy budgets, and data densities.
 
 ## Problem
 

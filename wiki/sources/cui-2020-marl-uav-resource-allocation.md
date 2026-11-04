@@ -15,7 +15,7 @@ related:
   - "[[yuanwei-liu]]"
   - "[[arumugam-nallanathan]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -50,11 +50,12 @@ Models selfish UAV base stations as independent tabular Q-learning agents. Each 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | One subchannel: $\sum_{k\in\mathcal K}c_m^k(t)\leq1$ |
-| C2 | One power level: $\sum_{j\in\mathcal I}p_m^j(t)\leq1$ |
-| C3 | One served user: $\sum_{l\in\mathcal L}a_m^l(t)\leq1$ |
-| C4 | QoS-qualified reward: $R_m(t)=\frac{W}{K}\log_2(1+\gamma_m(t))-\omega_mP_m(t)$ if $\gamma_m(t)\geq\bar\gamma_m$, and $R_m(t)=0$ otherwise |
-| C5 | Local state: $s_m(t)=1$ if $\gamma_m(t)\geq\bar\gamma$ and $s_m(t)=0$ otherwise |
+| (5), (10) | One subchannel: $\sum_{k\in\mathcal K}c_m^k(t)\leq1$ |
+| (8)-(9) | One power level: $\sum_{j\in\mathcal I}p_m^j(t)\leq1$ |
+| (11) | One served user: $\sum_{l\in\mathcal L}a_m^l(t)\leq1$ |
+| (12) | QoS threshold: $\gamma_m(t)\geq\bar\gamma$ |
+| Reward (13) | $R_m(t)=\frac{W}{K}\log_2(1+\gamma_m(t))-\omega_mP_m(t)$ if $\gamma_m(t)\geq\bar\gamma_m$, and $R_m(t)=0$ otherwise |
+| Model rule (18) | Local state: $s_m(t)=1$ if $\gamma_m(t)\geq\bar\gamma$ and $s_m(t)=0$ otherwise |
 
 **Algorithm**: Let every UAV independently maintain a zero-initialized Q-table, choose $\theta_m$ with epsilon-greedy exploration, observe the binary QoS state and local reward, update $Q_m(s_m,\theta_m)$ with the one-step temporal-difference rule, and decrease the learning rate as $\alpha_t=1/((t+c_\alpha)\varphi_\alpha)$.
 

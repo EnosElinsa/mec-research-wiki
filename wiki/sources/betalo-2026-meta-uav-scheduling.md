@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[jains-fairness-index]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Meta-Learning-Enhanced Task Assignment and Resource Scheduling for UAV-Assisted WSNs in 6G-Enabled ITS
@@ -62,7 +62,7 @@ Combines MAML-style adaptation with fairness-aware multi-agent deterministic act
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Betalo et al. [x] studied joint sensor selection, UAV deployment and mobility, and communication scheduling for UAV-assisted wireless sensor networks in 6G-enabled intelligent transportation systems. They formulated a non-convex mixed-integer problem that maximizes a weighted sensor data-rate term minus UAV transmit power under binary selection, communication-range, per-UAV and total-power, minimum-rate, processing-latency, and feasible-airspace constraints. The authors represented the control process as a constrained multi-agent stochastic game whose actions select UAV movement, sensor nodes, and communication resources, and whose reward combines energy-efficient data throughput, energy use, and Jain fairness. Their MW-MAD3PG algorithm embeds model-agnostic meta-learning within deterministic multi-agent actor-critic training to adapt policies across traffic, energy, sensor-distribution, and channel tasks. The reported quantitative table assigns MW-MAD3PG 95.2% system reliability, 92.4% deployment efficiency, and 88.9% offloading capacity, together with 0.98 seconds of training time per episode and 6.5 milliseconds of inference latency per action. The paper also reports improvements of up to 25% in UAV coordination or deployment efficiency and 30% in data offloading capacity over its evaluated baselines.
+Betalo et al. [x] studied joint sensor selection, UAV deployment and mobility, and communication scheduling for UAV-assisted wireless sensor networks in 6G-enabled intelligent transportation systems. They formulated a non-convex mixed-integer problem that maximizes a weighted sensor data-rate term minus UAV transmit power under binary selection, communication-range, per-UAV and total-power, minimum-rate, processing-latency, and feasible-airspace constraints. The authors represented the control process as a constrained multi-agent stochastic game whose actions select UAV movement, sensor nodes, and communication resources, and whose reward combines energy-efficient data throughput, energy use, and Jain fairness. Their MW-MAD3PG algorithm embeds model-agnostic meta-learning within deterministic multi-agent actor-critic training to adapt policies across traffic, energy, sensor-distribution, and channel tasks. The reported quantitative table assigns MW-MAD3PG 95.2% system reliability, 92.4% deployment efficiency, and 88.9% offloading capacity, together with 0.98 seconds of training time per episode and 6.5 milliseconds of inference latency per action. The paper also reports improvements of up to 25% in UAV coordination or deployment efficiency and 30% in data offloading capacity over the MADDPG, Meta-SGD, and Meta-Q-Learning baselines.
 
 ## Problem and system model
 

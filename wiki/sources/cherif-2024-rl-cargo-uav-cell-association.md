@@ -53,15 +53,15 @@ This correspondence extends disconnectivity-aware cargo-UAV path planning by let
 |---|---|
 | P1.a | Battery budget, $\sum_i E(v,d_{i,i+1})\le E_A(v,h)$. |
 | P1.b | Mission endpoints, $\mathbf q_1=\mathbf q_w$ and $\mathbf q_{\lvert\mathcal T\rvert}=\mathbf q_d$. |
-| Disconnectivity | $\mathcal D(d_{i,i+1})=d_{i,i+1}$ when both endpoint RSRPs are below $T_{\mathrm{th}}$, so disconnected flight is penalized. |
+| Model rule | $\mathcal D(d_{i,i+1})=d_{i,i+1}$ when both endpoint RSRPs are below $T_{\mathrm{th}}$, so disconnected flight is penalized. |
 
-**Algorithm**: Model the mission as an MDP with the UAV as agent. The state is $s=\{\mathbf q_s,c_s\}$ (location and serving cell), actions pair one of eight motion directions with a cell among the $N=3$ strongest RSRPs, and the reward $\mathcal W(s,a)=w_{\mathrm{en}}W_{\mathrm{mo}}+w_{\mathrm{sig}}W_{\mathrm{sig}}+w_{\mathrm{ho}}W_{\mathrm{ho}}$ penalizes motion, disconnectivity, and cell changes. Tabular Q-learning with decaying epsilon-greedy exploration learns the policy over $10^4$ episodes.
+**Algorithm**: Model the mission as an MDP with the UAV as agent. The state is $s=\{\mathbf q_s,c_s\}$ (location and serving cell), actions pair one of eight motion directions with a cell among the $N=3$ strongest RSRPs, and the reward $\mathcal W(s,a)=w_{\mathrm{en}}W_{\mathrm{mo}}+w_{\mathrm{sig}}W_{\mathrm{sig}}+w_{\mathrm{ho}}W_{\mathrm{ho}}$ penalizes motion, disconnectivity, and cell changes. Tabular Q-learning with decaying epsilon-greedy exploration learns the policy over training episodes.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Cherif et al. [x] proposed a joint trajectory planning and cell association approach for cargo-UAVs that use cellular networks for command and control. They formulated the cargo-UAV mission as a multi-objective problem that minimizes energy consumption, reduces handoff events, and guarantees cellular reliability along the trajectory under a battery constraint. Reinforcement learning, specifically Q-learning whose actions pair a motion direction with a candidate serving cell, is used to jointly optimize the trajectory and cell association. Simulations in a 3 km by 3 km area of Leuven with 64 cells compare the method with shortest-path and RSRP-aware path planning. The results show fewer handoffs and lower disconnectivity than the benchmarks at the expense of a slight increase in battery consumption.
+Cherif et al. [x] proposed a joint trajectory planning and cell association approach for cargo-UAVs that use cellular networks for command and control. They formulated the cargo-UAV mission as a multi-objective problem that minimizes energy consumption, handoff events, and radio-link disconnectivity distance along the trajectory under battery and mission-endpoint constraints. Reinforcement learning, specifically Q-learning whose actions pair a motion direction with a candidate serving cell, is used to jointly optimize the trajectory and cell association. Simulations in a 3 km by 3 km area of Leuven with 64 cells compare the method with shortest-path and RSRP-aware path planning. The results show fewer handoffs and lower disconnectivity than the benchmarks at the expense of a slight increase in battery consumption.
 
 ## Problem framing
 

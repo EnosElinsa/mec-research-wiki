@@ -9,7 +9,7 @@ modeling_card: required
 tags: [source, mobile-crowd-sensing, uav-data-collection, multi-task-allocation, incentives, maddpg, calibration]
 related: ["[[uav-data-collection]]", "[[maddpg]]", "[[semi-markov-decision-process]]", "[[edge-intelligence]]"]
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A UAV-Assisted Multi-Task Allocation Method for Mobile Crowd Sensing
@@ -43,11 +43,11 @@ Proposes UMA, a UAV-assisted mobile-crowd-sensing framework that assigns sensing
 
 | ID | Meaning and key expression |
 |---|---|
-| 1a | Total participant payments do not exceed the sum of task budgets, $\sum c(\mathcal L_i)\leq\sum_t B^t$ |
-| 1b | Each UAV respects its battery budget, $\sum_{t,k^t}e_j(k^t)\leq E_j$ |
-| Motion | UAV speed and acceleration are bounded by $v_{max}$ and $d_{max}$ |
-| Safety | Obstacle collisions and leaving the sensing region incur penalties and are avoided by the learned policy |
-| Coverage | Each point is collected only up to its task-specific sensing requirement |
+| (1), budget | Total participant payments do not exceed the sum of task budgets, $\sum_t\sum_{k^t}\sum_i c(\mathcal L_i)\leq\sum_t B^t$ |
+| (1), energy | Each UAV respects its battery budget, $\sum_t\sum_{k^t}e_j(k^t)\leq E_j$ |
+| Action range | Speed $\lvert v_j(k^t)\rvert\in[0,\lvert v_{max}\rvert]$; acceleration direction $\theta_j^a\in[0,2\pi)$ and magnitude $d_j^a\in[0,d_{max}]$ |
+| Reward | Obstacle collisions and leaving the sensing region are penalized in the UAV reward |
+| Model rule | Collection at each PoI counts toward its task sensing requirement $\eta_p$, tracked by the completion percentage $\bar f_p^k$ |
 
 **Algorithm**: Compute basic and DRL-based floating rewards, rank scarce points with a Shapley-value mechanism, and recommend tasks using predicted participant quality; formulate UAV position, energy, participant, obstacle, and completion information as an MDP; train separate CNN-assisted MADDPG actor and critic policies for each UAV; then calibrate participant data with the system-level estimator.
 
@@ -55,7 +55,7 @@ Proposes UMA, a UAV-assisted mobile-crowd-sensing framework that assigns sensing
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gao et al. [x] studied UAV-assisted multi-task allocation for mobile crowd sensing in which human participants and UAVs jointly collect data and UAVs also calibrate participant sensors. They formulated a budgeted maximum-coverage objective for high-quality sensing data and a continuous-control UAV scheduling problem whose reward combines data collection, calibration, energy use, and safety penalties. Their UMA method combines an online incentive mechanism, task recommendation and participant-quality prediction, Shapley-based point ranking, and CNN-assisted MADDPG trajectory scheduling. Simulations report a 90.1% covered-collection-ratio gain over participant-only sensing at 200 points of interest and a 13.3% energy-efficiency gain over UAV-only sensing at a 12 m sensing range, together with gains in task fairness and calibration.
+Gao et al. [x] studied UAV-assisted multi-task allocation for mobile crowd sensing in which human participants and UAVs jointly collect data and UAVs also calibrate participant sensors. They formulated a budgeted maximum-coverage objective for high-quality sensing data and a continuous-control UAV scheduling problem whose reward combines data collection, calibration, energy use, and safety penalties. Their UMA method combines an online incentive mechanism, task recommendation and participant-quality prediction, Shapley-based point ranking, and CNN-assisted MADDPG trajectory scheduling. Simulations report a 90.1% covered-collection-ratio gain over participant-only sensing at 200 points of interest and a 13.3% energy-efficiency gain over UAV-only sensing at a 12 m sensing range, and it outperforms the TARP and Reward-M baselines in coverage completed ratio, calibration ratio, and task fairness.
 
 ## Problem
 

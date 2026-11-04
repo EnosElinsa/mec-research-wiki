@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 14 (UAV DRL: data collection, cargo, swarm, first half)
+
+- Grounded 24 UAV DRL source pages (betalo through mei, alphabetical) against their raw parses; evidence in `wiki/.grounding/source-schema-evidence-batch14-uav-drl-a.json`.
+- Card fixes: relabeled invented C-IDs to the papers' equation tags (chen-2026 cargo, cui-2020, gao-2023, gong-2026, he-2026, hsu-2022, jin-2026, le-2026, lu-2026, mei-2026, chen-2026 traffic-aware, li-2026 CLP); rewrote li-2025 DT swarm card, whose formal objective minimizes membership change rather than maximizing achievement ratio; li-2026 semantic card now notes P1 optimizes positions only; removed unsupported constraint rows (li-2026 CLP rate row, cherif episode count); flagged parse tag shifts in gong-2026, huang-2026, li-2026 CLP, and lu-2026.
+- RW fixes: named actual baselines; noted mixed results (hammurabi fairness loss against F-First, hsu-2022 circumcircle advantage at equal radii, liu-2020 mTSP fairness, ebrahimi equal performance with ample energy).
+- Grounded count: 335/699; evidence conflicts: 0.
+
 ## [2026-11-03] Grounded batch 13 (UAV-MEC DRL: single-UAV, maritime, and post-disaster)
 
 - Grounded 23 UAV-MEC DRL source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch13-uav-mec.json`. Grounded total: 311/699.

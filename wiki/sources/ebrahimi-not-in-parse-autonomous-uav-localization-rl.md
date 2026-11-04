@@ -20,7 +20,7 @@ related:
   - "[[sanaa-sharafeddine]]"
   - "[[chadi-assi]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Autonomous UAV Trajectory for Localizing Ground Objects: A Reinforcement Learning Approach
@@ -63,7 +63,7 @@ Uses Q-learning to let one UAV act as an autonomous aerial anchor for RSSI-based
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ebrahimi et al. [x] studied autonomous UAV trajectory control for RSSI-based localization of multiple ground objects in an urban search region. They modeled waypoints as MDP states, neighboring cells as actions, and the reduction in average multilateration error as reward under fixed energy, path-length, waypoint-count, or flight-time budgets. Their two-phase method first performs a controlled scan to discover objects and initialize Q values, then uses tabular Q-learning to choose subsequent RSSI measurement locations. Simulations reported that the learned trajectory outperformed Random, SCAN, LMAT, and MAZE under constrained budgets, with best-case path-length improvements of 47.8, 62.7, 63, and 62.9 percent for the 20-object case.
+Ebrahimi et al. [x] studied autonomous UAV trajectory control for RSSI-based localization of multiple ground objects in an urban search region. They modeled waypoints as MDP states, neighboring cells as actions, and the reduction in average multilateration error as reward under fixed energy, path-length, waypoint-count, or flight-time budgets. Their two-phase method first performs a controlled scan to discover objects and initialize Q values, then uses tabular Q-learning to choose subsequent RSSI measurement locations. Simulations reported that the learned trajectory outperformed Random, SCAN, LMAT, and MAZE when energy was limited, while all methods converged to similar error once the energy sufficed to visit every waypoint; in the path-length sweep for 20 objects, the best-case localization-error gains were 47.8, 62.7, 63, and 62.9 percent over those four methods.
 
 ## Problem
 

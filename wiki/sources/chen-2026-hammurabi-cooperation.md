@@ -17,7 +17,7 @@ related:
   - "[[qi-qi]]"
   - "[[zhu-han]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Hammurabi: Establish Cooperative Order From Pre-Trained Policies in Multi-UAV Networks
@@ -38,7 +38,7 @@ Diagnoses whether rule-pretrained multi-UAV policies behave cooperatively or def
 
 **Scenario**: $N$ UAVs provide communication coverage over $K$ points of interest (PoIs) during $T$ time slots. Each UAV observes nearby PoIs and neighboring UAVs, chooses a flight direction and normalized speed, and spends rotary-wing propulsion energy while covering users.
 
-**Problem & objective**: The area-coverage control seeks to maximize coverage and fairness while improving energy efficiency, summarized by $\max(\bar c_T,f_T,\zeta_T)$ where $\bar c_T$ is average PoI coverage, $f_T$ is the coverage fairness index, and $\zeta_T=f_T\bar c_T/\Delta E_T$.
+**Problem & objective**: The area-coverage control seeks to maximize coverage and fairness while improving energy efficiency, stated verbally rather than as a single formal program and summarized by energy efficiency (20), where $\bar c_T$ is average PoI coverage, $f_T$ is the coverage fairness index, and $\zeta_T=f_T\bar c_T/\Delta E_T$.
 
 **Decision variables**:
 
@@ -53,11 +53,11 @@ Diagnoses whether rule-pretrained multi-UAV policies behave cooperatively or def
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Flight speed is bounded by the platform maximum: $0\le v_{t,i}\le v_{\max}$. |
-| C2 | PoI coverage is binary per slot: $c_{t,k}=1$ only when a UAV covers PoI $k$ and its channel is active. |
-| C3 | Coverage fairness is evaluated over all PoIs: $f_T=\frac{(\sum_k c_k)^2}{K\sum_k c_k^2}$. |
-| C4 | Rotary-wing energy is bounded over the mission: $\int_0^T(P_F(v(t))+P_H+P_C)\,dt\le E_{\mathrm{limit}}$. |
-| C5 | UAVs start from the access point and return after the coverage mission. |
+| Action range | Normalized speed $v_{t,i}\in[0,1]$ (scaled by $v_{max}$) and direction $\omega_{t,i}\in(0,2\pi]$. |
+| Model rule (16) | Per-slot coverage $c_{t,k}=1$ only when a UAV covers PoI $k$ and the channel is active; $c_k$ averages it over $T$. |
+| Model rule (18) | Coverage fairness $f_T=\frac{(\sum_k c_k)^2}{K\sum_k c_k^2}$. |
+| (27) | Rotary-wing mission energy: $\int_0^T(P_F(v(t))+P_H+P_C)\,dt\le E_{\mathrm{limit}}$. |
+| Simulation setting | UAVs start from the access point and return after the coverage mission. |
 
 **Algorithm**: Generate initial policies from ACS-First or F-First expert trajectories, pre-train a shared policy, use a Schelling diagram to diagnose public-goods-game behavior, construct inequality-aversion rewards from accumulated agent returns, and continue DDPG, SAC, TD3, or PPO training toward a cooperative Nash equilibrium.
 
@@ -65,7 +65,7 @@ Diagnoses whether rule-pretrained multi-UAV policies behave cooperatively or def
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] studied multi-UAV area coverage for intelligent transportation, where each UAV selects movement actions to balance PoI coverage, fairness, and propulsion energy. They defined coverage and fairness indices together with an energy-efficiency objective and constrained speed, mission energy, and start-return operation. Hammurabi pre-trains shared policies from expert trajectories, diagnoses social-dilemma behavior with Schelling diagrams, and adds inequality-aversion rewards before continuing standard DRL updates. In the reported six-UAV case, the mechanism improved energy efficiency by 25.89%, average coverage score by 16.16%, and fairness by 16.64% over the stated baselines.
+Chen et al. [x] studied multi-UAV area coverage for intelligent transportation, where each UAV selects movement actions to balance PoI coverage, fairness, and propulsion energy. They defined coverage and fairness indices together with an energy-efficiency objective and constrained speed, mission energy, and start-return operation. Hammurabi pre-trains shared policies from expert trajectories, diagnoses social-dilemma behavior with Schelling diagrams, and adds inequality-aversion rewards before continuing standard DRL updates. In the default six-UAV case, the best inequality-aversion DRL result improved energy efficiency by 25.89%, average coverage score by 16.16%, and fairness by 16.64% over the ACS-First expert baseline; against the F-First baseline it gained 10.48% energy efficiency and 31.99% coverage but lost 9.92% fairness.
 
 ## Problem framing
 

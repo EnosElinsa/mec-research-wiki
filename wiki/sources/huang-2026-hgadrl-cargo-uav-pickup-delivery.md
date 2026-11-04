@@ -53,11 +53,11 @@ A cellular-connected cargo UAV leaves a warehouse with packages to deliver, coll
 | ID | Meaning and key expression |
 |---|---|
 | (11a)-(11b) | Start and end at the warehouse, $\mathbf q(0)=\mathbf q(T)=L_w$. |
-| (11c)-(11d) | Position update, $\mathbf q(t+1)=\mathbf q(t)+V_{max}\vec{\mathbf v}$ with unit direction. |
+| (11c)-(11d) | Position update (the parse leaves the update line untagged; check the published paper), $\mathbf q(t+1)=\mathbf q(t)+V_{max}\vec{\mathbf v}$ with unit direction. |
 | (11e)-(11g) | Stay in the area, $0\le x,y\le L$ and $0\le h\le H$. |
 | (11h) | Every user location $L^i_{user}$ is visited. |
 | (11i) | Outage limit, $P_{out}(t)\le\gamma_d$ along the trajectory. |
-| Payload | Weight updates at each pickup or delivery follow the model's constraints (5)-(9). |
+| (11i), payload | The same tag also imposes the weight-update constraints (5)-(9) at each pickup or delivery. |
 
 **Algorithm**: Phase 1 runs a genetic algorithm on the service sequence under the payload-dependent energy model. Phase 2 trains one dueling DDQN per flight stage (seven networks in the experiments) on the coverage map to minimize stage energy while avoiding positions above the outage threshold.
 
@@ -65,7 +65,7 @@ A cellular-connected cargo UAV leaves a warehouse with packages to deliver, coll
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Huang et al. [x] considered a cellular-connected cargo UAV system for multi-package pickup and delivery, in which the UAV departs from a warehouse with packages, completes deliveries, collects packages, and returns. Their objective is to minimize the UAV's total energy consumption while keeping the probability that its trajectory is covered by ground base stations above specified thresholds. They introduced a two-phase hybrid genetic algorithm and deep reinforcement learning framework, in which a genetic algorithm determines the service order and deep reinforcement learning then optimizes the flight trajectory of each stage. Experiments compare the framework with three benchmark schemes under four communication outage thresholds. The results report average energy savings of about 19.7% relative to an RRT-based scheme and about 33.2% relative to a distance-based D3QN, while maintaining a stable connection with the base stations.
+Huang et al. [x] considered a cellular-connected cargo UAV system for multi-package pickup and delivery, in which the UAV departs from a warehouse with packages, completes deliveries, collects packages, and returns. Their objective is to minimize the UAV's total energy consumption while keeping the probability that its trajectory is covered by ground base stations above specified thresholds. They introduced a two-phase hybrid genetic algorithm and deep reinforcement learning framework, in which a genetic algorithm determines the service order and deep reinforcement learning then optimizes the flight trajectory of each stage. Experiments compare the framework with the RRT-Energy, D3QN-Distance, and RRT-Distance benchmark schemes under four communication outage thresholds. The results report average energy savings of about 19.7% relative to an RRT-based scheme and about 33.2% relative to a distance-based D3QN, while maintaining a stable connection with the base stations.
 
 ## Problem framing
 

@@ -15,7 +15,7 @@ related:
   - "[[jains-fairness-index]]"
   - "[[device-association]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Joint Optimization of Trajectory and User Association via Reinforcement Learning for UAV-Aided Data Collection in Wireless Networks
@@ -59,7 +59,7 @@ Several UAVs collect data from heterogeneous ground users without a central cont
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] investigated multiple UAVs that cooperatively fly over heterogeneous ground users and collect data without a central controller. Considering signal-to-interference-and-noise ratio and fairness among users, they jointly optimized UAV trajectories and ground-user associations to maximize total throughput and energy efficiency. The long-term problem is formulated as a decentralized partially observed Markov decision process and solved by combining a coalition formation game with multi-agent deep reinforcement learning. The discrete association problem is modeled as a non-cooperative game whose decentralized coalition formation algorithm converges to a Nash equilibrium, while a multi-agent reinforcement learning method optimizes trajectories and energy consumption with centralized training and decentralized execution. Simulation results show that the approach outperforms commonly used schemes in fair throughput and energy consumption, for example achieving a 12.5% higher average fairness index than MADDPG at a 120 m communication range.
+Chen et al. [x] investigated multiple UAVs that cooperatively fly over heterogeneous ground users and collect data without a central controller. Considering signal-to-interference-and-noise ratio and fairness among users, they jointly optimized UAV trajectories and ground-user associations to maximize total throughput and energy efficiency. The long-term problem is formulated as a decentralized partially observed Markov decision process and solved by combining a coalition formation game with multi-agent deep reinforcement learning. The discrete association problem is modeled as a non-cooperative game whose decentralized coalition formation algorithm converges to a Nash equilibrium, while a multi-agent reinforcement learning method optimizes trajectories and energy consumption with centralized training and decentralized execution. Simulation results show that the approach outperforms the EETD-Greedy, EETD-BR, MADDPG-CFG, and iterative-algorithm baselines in fair throughput and energy efficiency; at a 120 m communication range it reports a 12.5% higher average fairness index than MADDPG and 8.7% higher average energy efficiency than EETD-Greedy.
 
 ## Problem framing
 

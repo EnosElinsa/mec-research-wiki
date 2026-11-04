@@ -60,14 +60,14 @@ Studies cooperative cargo-pickup route planning for cellular-connected UAVs in t
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Warehouse departure and return: $\mathbf p_{\mathrm{uav}}(0)=\mathbf p_{\mathrm{uav}}(T_c)=\mathbf d_0$. |
-| C2 | Every pickup point is visited: $\mathbf p_q(t)=\mathbf d_k$ for each assigned pickup point. |
-| C3 | Horizontal flight region is bounded: $0\le x_{\mathrm{uav}}(t),y_{\mathrm{uav}}(t)\le I$. |
-| C4 | Altitude is bounded: $0\le H_{\mathrm{uav}}(t)\le H_{\max}$. |
-| C5 | Payload never exceeds capacity: $\sum_{n=1}^{K}w_k\le w_{\max}$. |
-| C6 | Speed is bounded: $0\le V_{\mathrm{uav}}(t)\le V_{\max}$. |
-| C7 | Cellular outage probability remains below threshold: $\widehat P_{\mathrm{out}}(\mathbf p_n,g_{\mathrm{uav}})\le P_{\mathrm{th}}$. |
-| C8 | Flight-energy and inter-UAV collision constraints from (20) and (25)-(26) are satisfied. |
+| (28a) | Warehouse departure and return: $\mathbf p_{uav}(0)=\mathbf p_{uav}(T_c)=d_0$. |
+| (28b) | Every pickup point $d_k\in D$ is visited by some UAV $q$ at some time $t\in[0,T_c]$. |
+| (28c)-(28d) | Horizontal flight region is bounded: $0\le x_{uav}(t),y_{uav}(t)\le I$. |
+| (28e) | Altitude is bounded: $0\le H_{uav}(t)\le H_{\max}$. |
+| (28f) | Payload never exceeds capacity: $\sum_{n=1}^{K}w_k\le w_{\max}$ (index as printed in the parse). |
+| Speed bound (untagged, before (28g)) | $0\le V_{uav}(t)\le V_{\max}$. |
+| (28g) | Max-SIR sector association (4)-(5), pickup-sequence rules (9)-(10), time windows (11), battery energy $0\le E_{total}\le E_{cap}$ (20), and inter-UAV safety distances (25)-(26). |
+| (36) | In the D3QN trajectory subproblem, the communication-quality constraint keeps the estimated outage probability $\widehat P_{out}(\mathbf p_n,g_{uav})\le P_{th}$. |
 
 **Algorithm**: Train an online D3QN for communication-aware point-to-point trajectories, use simulated annealing to search pickup sequences from learned pairwise costs, detect route conflicts, add collision penalties and retrain D3QN, then repeat sequence search until all routes are feasible.
 
@@ -75,7 +75,7 @@ Studies cooperative cargo-pickup route planning for cellular-connected UAVs in t
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Chen et al. [x] studied multi-UAV cargo pickup route planning and task scheduling under cellular communication, battery, time-window, payload, and collision constraints. They formulated a weighted objective that maximizes customer satisfaction while minimizing total completion time over UAV trajectories, pickup order, GBS association, and speed. CACMO combines online D3QN trajectory learning, simulated-annealing pickup-sequence search, and alternating collision detection with penalty-based D3QN retraining. Simulations reported 1719 s task completion time, 0.9969 customer satisfaction, and a 70-75% reduction in total weighted cost against representative baselines.
+Chen et al. [x] studied multi-UAV cargo pickup route planning and task scheduling under cellular communication, battery, time-window, payload, and collision constraints. They formulated a weighted objective that maximizes customer satisfaction while minimizing total completion time over UAV trajectories, pickup order, GBS association, and speed. CACMO combines online D3QN trajectory learning, simulated-annealing pickup-sequence search, and alternating collision detection with penalty-based D3QN retraining. Simulations reported 1719 s task completion time, 0.9969 customer satisfaction, and a 70-75% reduction in total weighted cost against representative baselines, including an HGA method that pairs a radio-map-aware Dijkstra solver with a hybrid genetic algorithm.
 
 ## Problem framing
 

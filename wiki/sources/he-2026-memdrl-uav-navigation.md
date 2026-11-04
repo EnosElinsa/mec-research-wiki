@@ -20,7 +20,7 @@ related:
   - "[[liu-2021-edivert-mobile-crowdsensing]]"
   - "[[liu-2020-distributed-uav-coverage-navigation]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Multi-UAV Navigation for Cooperative Data Sensing and Transmission
@@ -53,12 +53,13 @@ MEMDRL combines a MATD3 backbone, BeBold-style exploration, ConvLSTM state histo
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Heading and travel distance remain within their action bounds. |
-| C2 | Every UAV stays in the target region and outside obstacles and no-fly zones. |
-| C3 | Pairwise separation satisfies $\lVert\mathbf p_t^i-\mathbf p_t^j\rVert_2\geq d_{\mathrm{safe}}$. |
-| C4 | Same-slot upload capacity covers all newly collected data, so UAVs carry no backlog. |
-| C5 | Cumulative movement and hovering energy stays below $E_{\max}$ for every UAV. |
-| C6 | Jain's index rewards balanced cumulative PoI visits rather than data volume alone. |
+| C1 (14a) | Heading range, $0\leq\theta_t^k<2\pi$ |
+| C2 (14b) | Travel distance range, $0\leq d_t^k\leq d_{\max}$ |
+| C3 (14c) | Every UAV stays in the feasible region, $\mathbf p_t^k\in\Omega$ (target region outside obstacles and no-fly zones) |
+| C4 (14d) | Pairwise separation, $\lVert\mathbf p_t^i-\mathbf p_t^j\rVert\geq d_{\mathrm{safe}}$ |
+| C5 (14e) | Same-slot upload covers newly collected data, $R_t^{k,b}\tau_{\mathrm{collect},t}^k\geq D_t^k$ |
+| C6 (14f) | Cumulative energy budget, $\sum_tE_t^k\leq E_{\max}$ |
+| Model rule | Jain's index $F_T$ in P1 (14) rewards balanced cumulative PoI visits rather than data volume alone |
 
 **Algorithm**: Cast local movement control as a multi-agent POMDP with direction-distance actions and fairness-weighted bits-per-joule reward. Train MATD3 with twin centralized critics, delayed actor updates, and smoothed targets; add ConvLSTM histories for partial observations, BeBold intrinsic reward for first visits to underexplored cells, and fleet-level prioritized replay based on summed TD errors.
 
@@ -66,7 +67,7 @@ MEMDRL combines a MATD3 backbone, BeBold-style exploration, ConvLSTM state histo
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-He et al. [x] formulated cooperative multi-UAV sensing and upload as trajectory control that balances collected data, Jain geographical fairness, and propulsion energy under partial observations. UAVs choose continuous headings and travel distances subject to region, obstacle, separation, no-backlog upload, and energy-budget constraints. MEMDRL augments MATD3 with ConvLSTM observation histories, BeBold exploration, and fleet-level prioritized replay to learn decentralized policies with centralized critics. On Shenzhen and Beijing maps, MEMDRL improved the overall objective by 12.42% to 53.65% over four baselines for one Beijing UAV, with gains rising to 24.13% to 67.39% for ten UAVs.
+He et al. [x] formulated cooperative multi-UAV sensing and upload as trajectory control that balances collected data, Jain geographical fairness, and propulsion energy under partial observations. UAVs choose continuous headings and travel distances subject to region, obstacle, separation, no-backlog upload, and energy-budget constraints. MEMDRL augments MATD3 with ConvLSTM observation histories, BeBold exploration, and fleet-level prioritized replay to learn decentralized policies with centralized critics. On Shenzhen and Beijing maps, MEMDRL improved the overall objective by 12.42% to 53.65% over e-Divert, MATD3, MADDPG, and JOFC for one Beijing UAV, with gains rising to 24.13% to 67.39% for ten UAVs.
 
 ## Problem
 
