@@ -15,7 +15,7 @@ related:
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
   - "[[yong-zeng]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Altitude and Beamwidth Optimization for UAV-Enabled Multiuser Communications
@@ -49,8 +49,8 @@ Studies a UAV equipped with a **directional antenna of adjustable beamwidth** fl
 |---|---|
 | Altitude range | $H$ remains within obstacle- and regulation-defined limits $[H_{\min},H_{\max}]$ |
 | Beamwidth range | The antenna supports only $\Theta\in[\Theta_{\min},\Theta_{\max}]$ |
-| Main-lobe coverage | The ground coverage radius and cell size obey $\bar r=H\tan\Theta$ and $A_s=3\sqrt3\,\bar r^2/2$ |
-| Service protocol | Every cluster is visited and its terminals receive the model-specific common or independent data |
+| Model rule | The ground coverage radius and cell size obey $\bar r=H\tan\Theta$ and $A_s=3\sqrt3\,\bar r^2/2$ |
+| Model rule | Every cluster is visited and its terminals receive the model-specific common or independent data |
 
 **Algorithm**: Substitute the directional gain, LoS pathloss, terminal density, and coverage radius into the three rate expressions; use monotonic analysis to set $H_{\mathrm{MC}}^*=H_{\max}$ and $H_{\mathrm{BC}}^*=H_{\min}$ and to show that MAC throughput is altitude-independent; then perform a one-dimensional search over the feasible beamwidth for each communication model.
 

@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 19 (UAV communications fundamentals: placement, relaying, trajectory, data collection)
+
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch19-uav-comms.json`. Grounded total: 455/699.
+- Relabeled constraint IDs to the papers' own tags (for example zeng-2016 (9)–(15), zeng-2017 C1–C6 (24)–(29), zeng-2019 (17)–(21), zeng-2020 (19a)–(19h), lyu-2018 (27)–(31), zhan-2018 (5)–(10), samir-2020 (10a)–(10g), li-2016 (5)–(8)); non-constraints became model or algorithm rules.
+- Corrected card errors: zeng-2016 has only average-power limits, zeng-2019 uses binary TDMA scheduling $\lambda_k(t)$ and mission time $T_t$, zhan-2011 heading is $\delta_t$ in (16).
+- Related Work paragraphs now carry parse-backed results and caveats (for example zeng-2016 flight from destination to source below static relaying, xu-2018 static UAV as good as mobile for close receivers, zhang-2019 delay rising with speed and altitude spread); unsupported numbers were removed from mozaffari-2015, you-2019 and zhang-2019.
+
 ## [2026-11-03] Grounded batch 18 (physical-layer security: secrecy, covert, anti-jamming)
 
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch18-pls.json`. Grounded total: 431/699.

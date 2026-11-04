@@ -17,7 +17,7 @@ related:
   - "[[mohammad-mozaffari]]"
   - "[[walid-saad]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Communications and Control for Wireless Drone-Based Antenna Array
@@ -51,10 +51,10 @@ A framework for using **multiple single-antenna quadrotor drones as one aerial a
 
 | ID | Meaning and key expression |
 | --- | --- |
-| 6 | Adjacent array elements maintain collision clearance: $d_{m+1,i}-d_{m,i}\ge D_{\min}$ |
-| 7 | Every rotor obeys $0\le v_{mw}(t)\le v_{\max}$ |
-| Fly-hover | Transmission occurs only after the array reaches and stabilizes at a serving configuration |
-| 52-53 | The scheduling matrix serves every user once and keeps $a_{ij}$ binary |
+| (6) | Adjacent array elements maintain collision clearance: $d_{m+1,i}-d_{m,i}\ge D_{\min}$ |
+| (7) | Every rotor obeys $0\le v_{mw}(t)\le v_{\max}$ |
+| Model rule | Transmission occurs only after the array reaches and stabilizes at a serving configuration |
+| (52)–(53) | The scheduling matrix serves every user once and keeps $a_{ij}$ binary |
 
 **Algorithm**: Optimize array directivity by successive small perturbations of the drone-spacing vector, then rotate the resulting symmetric configuration toward each user to obtain per-user positions. Given those destinations, use bang-bang control to compute minimum-time rotor-speed profiles under external forces, add collision-safe paths when needed, and solve the user-order assignment problem to reduce aggregate repositioning time.
 

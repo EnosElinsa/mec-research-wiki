@@ -12,7 +12,7 @@ related:
   - "[[drone-cell-3d-placement]]"
   - "[[zhan-2011-uav-relay-heading-optimization]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -46,10 +46,10 @@ Considers a **multi-antenna fixed-wing UAV** acting as an airborne relay collect
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Heading slew is bounded, $\|\delta_n-\delta_{n-1}\|\leq\Delta\delta$ |
-| C2 | Fixed-wing motion maintains the prescribed altitude and forward speed |
-| C3 | The selected heading keeps the UAV within the empirical center-of-gravity distance limit when that safeguard is active |
-| C4 | Beamforming and channel assumptions use the available antenna and channel state for the scheduled users |
+| Slew limit | Heading slew is bounded, $\|\delta_n-\delta_{n-1}\|\leq\Delta\delta$ |
+| Model rule | Fixed-wing motion maintains the prescribed altitude and forward speed |
+| Algorithm rule | The selected heading keeps the UAV within the empirical center-of-gravity distance limit when that safeguard is active |
+| Model rule | Beamforming and channel assumptions use the available antenna and channel state for the scheduled users |
 
 **Algorithm**: Predict mobile-user positions with a Kalman-like filter, evaluate the sum-rate or proportional-fair heading objective, perform a one-dimensional line search with slew and center-of-gravity safeguards, and use low- and high-SNR asymptotic candidates when appropriate.
 

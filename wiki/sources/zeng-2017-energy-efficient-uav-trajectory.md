@@ -18,7 +18,7 @@ related:
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
   - "[[yong-zeng]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient UAV Communication With Trajectory Optimization
@@ -52,11 +52,11 @@ A foundational **energy-efficient UAV communication** paper. For a UAV flying ho
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Position, velocity, and acceleration satisfy the state dynamics |
-| C2 | Speed remains between fixed-wing minimum and maximum bounds |
-| C3 | Acceleration magnitude remains within its limit |
-| C4 | Prescribed initial and final positions and velocities are met |
-| C5 | Propulsion energy follows the derived speed-and-acceleration model |
+| C1, C2 (24), (25) | Initial and final positions $\mathbf q(0)=\mathbf q_0$, $\mathbf q(T)=\mathbf q_F$ |
+| C3 (26) | $V_{\min}\le\lVert\mathbf v(t)\rVert\le V_{\max}$ |
+| C4, C5 (27), (28) | Initial and final velocities $\mathbf v(0)=\mathbf v_0$, $\mathbf v(T)=\mathbf v_F$ |
+| C6 (29) | $\lVert\mathbf a(t)\rVert\le a_{\max}$ |
+| Model rule | Position, velocity, and acceleration follow the state dynamics, and propulsion energy follows the derived speed-and-acceleration model |
 
 **Algorithm**: Derive the fixed-wing propulsion model → show unconstrained rate-only and energy-only extrema have vanishing bits per joule → jointly optimize circular radius and speed for the practical orbit → linearize the state dynamics and non-convex rate-energy terms → solve sequential convex approximations for the generally constrained trajectory.
 

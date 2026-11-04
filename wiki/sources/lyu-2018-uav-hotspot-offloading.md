@@ -15,7 +15,7 @@ related:
   - "[[yong-zeng]]"
 modeling_card: required
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Aided Offloading for Cellular Hotspot
@@ -49,10 +49,10 @@ Proposes using a UAV as a **flying aerial base station** that cycles along the c
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | GBS links satisfy the outage bound, $P_{\mathrm{out}}(\rho,r_I,\bar\nu)\leq\bar P_{\mathrm{out}}$. |
-| C2 | UAV-served users meet the same common throughput, $\bar R_U(\rho,r_I,r_U)\geq\bar\nu$. |
-| C3 | Geometry and bandwidth obey $r_I\leq r_U\leq r_G$, $0\leq r_I\leq r_G$, and $0\leq\rho\leq1$. |
-| C4 | In spectrum reuse, adaptive directional transmissions suppress mutual GBS-UAV interference while the common spectrum is shared. |
+| (27) | GBS links satisfy the outage bound, $P_{\mathrm{out}}(\rho,r_I,\bar\nu)\leq\bar P_{\mathrm{out}}$. |
+| (28) | UAV-served users meet the same common throughput, $\bar R_U(\rho,r_I,r_U)\geq\bar\nu$. |
+| (29)–(31) | Geometry and bandwidth obey $r_I\leq r_U\leq r_G$, $0\leq r_I\leq r_G$, and $0\leq\rho\leq1$. |
+| Model rule | In spectrum reuse, adaptive directional transmissions suppress mutual GBS-UAV interference while the common spectrum is shared. |
 
 **Algorithm**: For a candidate common throughput, optimize the trajectory radius geometrically, reduce the outage subproblem to a monotone search, then use inner bisection over $\rho$ and outer one-dimensional search over $r_I$; solve the reuse variant analogously without $\rho$.
 

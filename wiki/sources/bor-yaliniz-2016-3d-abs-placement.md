@@ -17,7 +17,7 @@ related:
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
   - "[[weighted-kmeans-uav-deployment]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Efficient 3-D Placement of an Aerial Base Station in Next Generation Cellular Networks
@@ -54,11 +54,11 @@ A foundational **drone-cell** (low-altitude UAV-mounted aerial base station, ABS
 
 | ID | Meaning and key expression |
 |---|---|
-| QoS | $h^2+r_i^2\leq10^{[\gamma-(AP(h,r_i)+B)]/10}+M_1(1-u_i)$ |
-| Placement bounds | $x_l\leq x_D\leq x_u$, $y_l\leq y_D\leq y_u$, and $h_l\leq h\leq h_u$ |
-| Coverage indicator | $u_i\in\{0,1\}$ for every $i\in\mathbb{U}$ |
-| Radius linkage | $R\geq r_i-M_2(1-u_i)$ and $\alpha=h/R$ |
-| Equivalent radius limit | $R^2\leq\Gamma(\alpha)+M_1(1-u_i)$, where $\Gamma(\alpha)=10^{[\gamma-(AP(\alpha)+B)]/10}/(1+\alpha^2)$ |
+| (7) QoS | $h^2+r_i^2\leq10^{[\gamma-(AP(h,r_i)+B)]/10}+M_1(1-u_i)$ |
+| (7) bounds | $x_l\leq x_D\leq x_u$, $y_l\leq y_D\leq y_u$, and $h_l\leq h\leq h_u$ |
+| (7) binary | $u_i\in\{0,1\}$ for every $i\in\mathbb{U}$ |
+| (8), (9) | $R\geq r_i-M_2(1-u_i)$ and $\alpha=h/R$ |
+| (10), (11) | $R^2\leq\Gamma(\alpha)+M_1(1-u_i)$, where $\Gamma(\alpha)=10^{[\gamma-(AP(\alpha)+B)]/10}/(1+\alpha^2)$ |
 
 **Algorithm**: A one-dimensional bisection search finds the unique numerical maximizer $\alpha^*$ of $\Gamma(\alpha)$ by locating the root of $d\Gamma(\alpha)/d\alpha$. With $\alpha^*$ fixed, the remaining quadratically constrained MINLP over $x_D$, $y_D$, $R$, and $u_i$ is solved by the MOSEK interior-point optimizer, and the altitude is recovered as $h=\alpha^*R$.
 

@@ -12,7 +12,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[mozaffari-2016-efficient-multi-uav-coverage]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Drone Small Cells in the Clouds: Design, Deployment and Performance Analysis
@@ -46,10 +46,10 @@ Derives the **optimal altitude** for a single drone small cell (DSC) that maximi
 
 | ID | Meaning and key expression |
 | --- | --- |
-| 6 | A ground point is covered when $\gamma(R,h)=P_r/N\ge\gamma_{\mathrm{th}}$ |
-| Altitude | The feasible single-DSC solution is $\hat h_{\mathrm{opt}}=\min\{h_{\max},h_{\mathrm{opt}}\}$ |
-| 11 | In the interference-free two-DSC case, both coverage disks remain inside the target rectangle and are placed to minimize overlap |
-| Interference case | Each covered point must satisfy the DSC downlink SINR threshold while $D$ remains compatible with the target area |
+| (6) | A ground point is covered when $\gamma(R,h)=P_r/N\ge\gamma_{\mathrm{th}}$ |
+| Model rule | The feasible single-DSC solution is $\hat h_{\mathrm{opt}}=\min\{h_{\max},h_{\mathrm{opt}}\}$ |
+| (11) | In the interference-free two-DSC case, both coverage disks remain inside the target rectangle and are placed to minimize overlap |
+| (19) | Each covered point must satisfy the DSC downlink SINR threshold while $D$ remains compatible with the target area |
 
 **Algorithm**: Solve the scalar stationarity equation for $\mu_{\mathrm{opt}}=h_{\mathrm{opt}}/R$, apply the altitude cap, and compute the minimum required power from the coverage-boundary pathloss. For two cells, place both DSCs at their feasible optimum altitudes and use the geometric coverage formulas in the interference-free case; with full interference, evaluate the SINR-based coverage as a function of $D$ and select the maximizing separation.
 
@@ -57,7 +57,7 @@ Derives the **optimal altitude** for a single drone small cell (DSC) that maximi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mozaffari et al. [x] studied altitude and placement optimization for drone small cells providing downlink coverage over a bounded ground region. They derived the single-DSC altitude that maximizes coverage radius at fixed power, or minimizes transmit power for a prescribed radius, under a probabilistic LoS/NLoS air-to-ground model. Their analysis established that the pathloss has only one local minimum with respect to elevation angle, which makes the feasible altitude optimum unique after applying the platform-height limit. For two DSCs, they characterized the coverage-maximizing separation in both interference-free and full-interference settings and showed numerically that the preferred separation scales with the target-area size.
+Mozaffari et al. [x] studied altitude and placement optimization for drone small cells providing downlink coverage over a bounded ground region. They derived the single-DSC altitude that maximizes coverage radius at fixed power, or minimizes transmit power for a prescribed radius, under a probabilistic LoS/NLoS air-to-ground model. Their analysis established that the pathloss has only one local minimum with respect to elevation angle, which makes the feasible altitude optimum unique after applying the platform-height limit. For two DSCs, they characterized the coverage-maximizing separation in both interference-free and full-interference settings and found numerically, for a 2000 m by 700 m target area, an optimal separation of about 1100 m with interference and about 900 m without it.
 
 ## Problem framing
 

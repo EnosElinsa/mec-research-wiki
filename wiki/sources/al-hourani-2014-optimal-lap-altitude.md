@@ -16,7 +16,7 @@ related:
   - "[[al-hourani-2020-urban-los-probability]]"
   - "[[akram-al-hourani]]"
 created: 2026-05-31
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Optimal LAP Altitude for Maximum Coverage
@@ -47,8 +47,8 @@ A foundational analytical letter that derives the **optimal altitude of a low-al
 
 | ID | Meaning and key expression |
 |---|---|
-| 7 | A covered receiver satisfies $\Lambda(h,r)\leq\mathrm{PL}_{\max}$, with $R=r\mid_{\Lambda=\mathrm{PL}_{\max}}$ on the coverage boundary |
-| Practical bound | If the unconstrained optimum is infeasible, impose the platform limit $h\leq h_{\max}$ |
+| (7) | A covered receiver satisfies $\Lambda(h,r)\leq\mathrm{PL}_{\max}$, with $R=r\mid_{\Lambda=\mathrm{PL}_{\max}}$ on the coverage boundary |
+| Model rule | If the unconstrained optimum is infeasible, impose the platform limit $h\leq h_{\max}$ |
 
 **Algorithm**: Substitute the sigmoid LoS probability and LoS/NLoS pathloss terms into the boundary equation to obtain the implicit radius-altitude relation in Eq. (10), solve $\partial R/\partial h=0$ numerically for $h_{\mathrm{OPT}}$, and solve Eq. (13) for the environment-specific optimum elevation angle.
 

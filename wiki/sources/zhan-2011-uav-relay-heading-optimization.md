@@ -36,13 +36,13 @@ Studies a **tactical** hierarchical network where multiple **UAVs act as relays*
 
 **Scenario**: Multiple multi-antenna UAV relays connect distributed multi-antenna ground access points to a remote base station in a tactical single-hop uplink. AP transmissions are orthogonal, and spatially correlated MIMO rates vary with UAV heading.
 
-**Problem & objective**: A heading-control problem maximizes network ENTR, $\max_{\psi_u}\sum_{k\in\mathcal A_u}R_{k,u}(\psi_u)$, subject to minimum AP rates and reachable turning angles.
+**Problem & objective**: A heading-control problem maximizes network ENTR, $\arg\max_{\delta_t}R_T(t)=\sum_{k=1}^{K}R_k(t)$ in (16), subject to minimum AP rates and reachable turning angles.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV heading | $\psi_u$ | continuous angle | Next movement direction of relay $u$ |
+| UAV heading | $\delta_t$ | continuous angle | Next movement direction of relay $u$ |
 | AP-UAV association | $x_{k,u}$ | binary | Relay serving access point $k$ |
 | Handoff decision | $h_{k,u\to v}$ | binary | Reassignment of AP $k$ between relays |
 | New-relay position | $\mathbf q_{mathrm{new}}$ | continuous position | Deployment target when current relays are infeasible |
@@ -51,11 +51,11 @@ Studies a **tactical** hierarchical network where multiple **UAVs act as relays*
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every served AP has ENTR above its QoS threshold |
-| C2 | Heading remains inside the turning-radius reachable region |
-| C3 | Each AP is assigned to one feasible UAV relay |
-| C4 | Handoffs preserve link availability during topology change |
-| C5 | A new relay is deployed when no current heading/association is feasible |
+| (16) QoS | Every served AP keeps $R_k(t)\ge R_{\min}$ |
+| (16) turning | Heading change per step is bounded, $\lvert\delta_t-\delta_{t-1}\rvert\le\Delta\delta$ |
+| (25) | AP subnets partition the AP set: $\bigcup_j\mathcal I_j=\mathcal Q$ and the subnets are disjoint |
+| Algorithm rule | RSS-style handoffs reassign APs between relays as links evolve |
+| Algorithm rule | A new relay is deployed when no heading or association of the current relays meets the QoS |
 
 **Algorithm**: Approximate each link ENTR as a sinusoid plus offset in heading → sum the sinusoids and compute the unconstrained closed-form maximizing angle → intersect link-allowable and reachable heading regions → choose the best feasible heading → trigger RSS-style AP handoffs as links evolve → deploy and steer a new relay if QoS remains infeasible.
 
@@ -63,7 +63,7 @@ Studies a **tactical** hierarchical network where multiple **UAVs act as relays*
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhan et al. [x] studied performance optimization for multi-UAV wireless relays serving distributed ground access points. They derived an ergodic normalized transmission-rate metric for spatially correlated MIMO links and approximated each link's rate as a sinusoid in UAV heading. The resulting heading controller maximizes total uplink rate under per-access-point QoS and turning-radius constraints, with a closed-form unconstrained direction and feasible-region correction. An adaptive handoff algorithm reassigns access points as links evolve, and a deployment step adds a relay when the current fleet cannot meet QoS. Simulations report close agreement of the sinusoidal approximation and higher rate or fewer relay deployments than the evaluated unoptimized-heading and no-handoff cases.
+Zhan et al. [x] studied performance optimization for multi-UAV wireless relays serving distributed ground access points. They derived an ergodic normalized transmission-rate metric for spatially correlated MIMO links and approximated each link's rate as a sinusoid in UAV heading. The resulting heading controller maximizes total uplink rate under per-access-point QoS and turning-radius constraints, with a closed-form unconstrained direction and feasible-region correction. An adaptive handoff algorithm reassigns access points as links evolve, and a deployment step adds a relay when the current fleet cannot meet QoS. Simulations confirm the sinusoidal approximation and show a 20 kbit/s rate gain from a better heading; without handoff some access points saw slightly higher rates, but the network needed more relays.
 
 ## Problem framing
 

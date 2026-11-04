@@ -17,7 +17,7 @@ related:
   - "[[mozaffari-2019-uav-wireless-tutorial]]"
   - "[[weighted-kmeans-uav-deployment]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Mobile Unmanned Aerial Vehicles (UAVs) for Energy-Efficient Internet of Things Communications
@@ -52,11 +52,11 @@ A framework for deploying and **moving multiple UAVs** as aerial base stations t
 
 | ID | Meaning and key expression |
 | --- | --- |
-| 6 | Every active device meets $\mathrm{SINR}_i\ge\gamma$ under co-channel interference |
-| 7 | Device power is bounded: $0<P_i\le P_{\max}$ |
-| 17 | In the interference-free association model, every device is assigned to exactly one UAV: $\sum_j A_{ij}=1$ |
-| 54 | The mobility matrix is a one-to-one assignment between consecutive stop sets |
-| 55 | A move is feasible only when $E_{kl}\le\Gamma_{n,k}$, the UAV's remaining mobility energy |
+| (6) | Every active device meets $\mathrm{SINR}_i\ge\gamma$ under co-channel interference |
+| (7) | Device power is bounded: $0<P_i\le P_{\max}$ |
+| (17) | In the interference-free association model, every device is assigned to exactly one UAV: $\sum_j A_{ij}=1$ |
+| (54) | The mobility matrix is a one-to-one assignment between consecutive stop sets |
+| (55) | A move is feasible only when $E_{kl}\le\Gamma_{n,k}$, the UAV's remaining mobility energy |
 
 **Algorithm**: Assign channels by constrained K-means, then alternate two blocks at every update: solve joint association and uplink power control for fixed UAV locations, and update each UAV's 3D location by sequential quadratic programming for fixed associations. Derive update times from periodic or beta-distributed activation, and solve the energy-minimizing mapping between consecutive stop sets as an assignment problem with the Hungarian method.
 

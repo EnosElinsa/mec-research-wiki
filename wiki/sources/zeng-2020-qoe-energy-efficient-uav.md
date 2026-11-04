@@ -14,7 +14,7 @@ related:
   - "[[3gpp-uav-los-probability-model]]"
   - "[[zhu-xiao]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Resource Allocation and Trajectory Optimization for QoE Provisioning in Energy-Efficient UAV-Enabled Wireless Networks
@@ -48,10 +48,12 @@ A UAV base station serves ground users with uneven QoE requirements under limite
 
 | ID | Meaning and key expression |
 |---|---|
-| (1a) | UAV speed, $\lVert\dot q(t)\rVert\le v_{\max}$. |
-| (1b) | QoE rate, $R_m(t)\ge R^m_{th}$ for scheduled users. |
-| Scheduling | Every user is scheduled at least once, $\int_0^T\lambda_m(t)dt\ge1$. |
-| (5) | Bandwidth and power budgets, $\sum_m\lambda_m(t)b_m(t)\le BW$, $\sum_m\lambda_m(t)p_m(t)\le p_{\max}$. |
+| (19a) | QoE rate, $\lambda_m(t)b_m(t)\log(1+\frac{p_m(t)}{L_m(t)\delta^2})\ge R_{th,m}$ |
+| (19b) | UAV speed, $\lVert\dot q(t)\rVert\le v_{\max}$ |
+| (19c) | Service period $\tau_m=T$ for real-time users and $kT$ otherwise |
+| (19d) | $\lambda_m(t)\in\{0,1\}$ |
+| (19e), (19f) | Bandwidth, $\sum_m\lambda_m(t)b_m(t)\le BW$ and $b_m(t)\ge0$ |
+| (19g), (19h) | Power, $\sum_m\lambda_m(t)p_m(t)\le p_{\max}$ and $p_m(t)\ge0$ |
 
 **Algorithm**: Transform the fractional objective into subtractive form with Dinkelbach's method, then split into four subproblems (scheduling, trajectory, power, bandwidth) optimized alternately by block coordinate descent in a two-loop algorithm.
 

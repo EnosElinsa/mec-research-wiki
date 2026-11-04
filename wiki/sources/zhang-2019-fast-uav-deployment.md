@@ -14,7 +14,7 @@ related:
   - "[[fairness-metrics-in-mec]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -47,10 +47,10 @@ Optimizes where heterogeneous UAV base stations should finish deployment so thei
 
 | ID | Meaning and key expression |
 |---|---|
-| Full coverage | $[0,\beta]\subseteq\bigcup_i[y_i-r_i,y_i+r_i]$ in the line model |
-| Feasibility | Available coverage satisfies $2\sum_i\sqrt{r_i^2-(d/2)^2}\geq\beta$ and $r_i\geq d/2$ |
-| Order preservation | For distinct launch points, $y_i\leq y_{i+1}$ when $x_i\leq x_{i+1}$ |
-| Travel time | Each assigned location incurs $T_i(y_i)=\sqrt{(y_i-x_i)^2+h_i^2}/v_i$ |
+| Coverage | $[0,\beta]\subseteq\bigcup_i[y_i-r_i,y_i+r_i]$ in the line model |
+| Model rule | Available coverage satisfies $2\sum_i\sqrt{r_i^2-(d/2)^2}\geq\beta$ and $r_i\geq d/2$ |
+| Order | For distinct launch points, $y_i\leq y_{i+1}$ when $x_i\leq x_{i+1}$ |
+| Model rule | Each assigned location incurs $T_i(y_i)=\sqrt{(y_i-x_i)^2+h_i^2}/v_i$ |
 
 **Algorithm**: For a shared launch point, greedily assign the UAV with minimum travel time to the farthest uncovered point for the exact min-max solution; for distinct launch points, preserve location order, run a deadline-feasibility scan, and binary-search an FPTAS solution. For min-sum deployment, use a linear-time approximation at a shared launch point and a pseudo-polynomial dynamic program for the ordered general case.
 
@@ -58,7 +58,7 @@ Optimizes where heterogeneous UAV base stations should finish deployment so thei
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang and Duan [x] studied fast deployment of heterogeneous UAV networks for complete wireless coverage of a target area. They formulated a min-max problem that minimizes the largest UAV deployment delay and a min-sum problem that minimizes total deployment delay, and proved both problems NP-complete in general. For UAVs dispatched from the same location, they developed an optimal low-complexity algorithm for the min-max problem and a linear-time approximation for the min-sum problem. For distinct initial locations, they imposed location-order preservation, designed an FPTAS for min-max deployment, and constructed a pseudo-polynomial dynamic program for min-sum deployment. Simulations report that the FPTAS approaches the brute-force optimum and that greater UAV speed, coverage radius, and deployment diversity reduce the resulting delay.
+Zhang and Duan [x] studied fast deployment of heterogeneous UAV networks for complete wireless coverage of a target area. They formulated a min-max problem that minimizes the largest UAV deployment delay and a min-sum problem that minimizes total deployment delay, and proved both problems NP-complete in general. For UAVs dispatched from the same location, they developed an optimal low-complexity algorithm for the min-max problem and a linear-time approximation for the min-sum problem. For distinct initial locations, they imposed location-order preservation, designed an FPTAS for min-max deployment, and constructed a pseudo-polynomial dynamic program for min-sum deployment. Simulations show that higher UAV speed or coverage radius and more UAVs reduce deployment delay, larger spreads in speed or altitude increase it, and minimizing the maximum delay can raise the total delay considerably; the 2D extension stays close to brute force when coverage radii vary little.
 
 ## Problem framing
 

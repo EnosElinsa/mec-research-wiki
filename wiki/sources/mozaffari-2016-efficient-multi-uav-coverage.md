@@ -12,7 +12,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[mozaffari-2015-drone-small-cells]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Efficient Deployment of Multiple Unmanned Aerial Vehicles for Optimal Wireless Coverage
@@ -46,10 +46,10 @@ Extends the single-DSC optimal-altitude framework to M UAVs. Derives the **downl
 
 | ID | Meaning and key expression |
 | --- | --- |
-| 9 | $r_u=\max\{r:P_{\mathrm{cov}}(r,P_t,\theta_B)\ge\varepsilon\}$ |
-| 11 | Coverage disks do not overlap: $\lVert\mathbf r_j-\mathbf r_k\rVert\ge2r_u$ for $j\ne k$ |
-| 12 | Every coverage disk stays inside the service region: $\lVert\mathbf r_j\rVert+r_u\le R_c$ |
-| 13 | The directional footprint is feasible: $r_u\le h\tan(\theta_B/2)$ |
+| (9) | $r_u=\max\{r:P_{\mathrm{cov}}(r,P_t,\theta_B)\ge\varepsilon\}$ |
+| (11) | Coverage disks do not overlap: $\lVert\mathbf r_j-\mathbf r_k\rVert\ge2r_u$ for $j\ne k$ |
+| (12) | Every coverage disk stays inside the service region: $\lVert\mathbf r_j\rVert+r_u\le R_c$ |
+| (13) | The directional footprint is feasible: $r_u\le h\tan(\theta_B/2)$ |
 
 **Algorithm**: Evaluate the analytical coverage probability for candidate $M$, power, altitude, and beamwidth values. Map the placement problem to packing $M$ equal circles inside the service circle, obtain the maximum feasible $r_u$ and centers from the packing construction, set $h=r_u/\tan(\theta_B/2)$, and compute the minimum power meeting $\varepsilon$. Repeat over $M$ and select the smallest fleet that satisfies the required covered-area fraction and lifetime target.
 
@@ -57,7 +57,7 @@ Extends the single-DSC optimal-altitude framework to M UAVs. Derives the **downl
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mozaffari et al. [x] studied the three-dimensional deployment of multiple directional-antenna UAV base stations over a circular service area. They derived downlink coverage probability as a function of altitude, antenna gain, probabilistic LoS/NLoS propagation, and mean nearest-UAV interference. They then mapped coverage maximization to equal-circle packing, selecting non-overlapping ground footprints, common altitude, and minimum transmit power to improve both covered area and coverage lifetime. The resulting framework also determines the minimum fleet size needed for a prescribed area-coverage threshold, and the numerical analysis shows that the preferred altitude decreases as more UAVs are deployed.
+Mozaffari et al. [x] studied the three-dimensional deployment of multiple directional-antenna UAV base stations over a circular service area. They derived downlink coverage probability as a function of altitude, antenna gain, probabilistic LoS/NLoS propagation, and mean nearest-UAV interference. They then mapped coverage maximization to equal-circle packing, selecting non-overlapping ground footprints, common altitude, and minimum transmit power to improve both covered area and coverage lifetime. The resulting framework also determines the minimum fleet size needed for a prescribed area-coverage threshold, and the numerical analysis shows that the optimal altitude falls as more UAVs are deployed, from 2000 m with three UAVs to 1300 m with six.
 
 ## Problem framing
 

@@ -19,7 +19,7 @@ related:
   - "[[lyu-2017-spiral-mbs-placement]]"
   - "[[yong-zeng]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Trajectory Design for Completion Time Minimization in UAV-Enabled Multicasting
@@ -54,11 +54,11 @@ Uses random linear network coding to broadcast one file from a mobile UAV, conse
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV speed along every segment does not exceed $V_{\max}$ |
-| C2 | Each terminal accumulates its required minimum connection duration |
-| C3 | The binomial lower bound meets each file-recovery probability target |
-| C4 | Waypoints lie in their assigned coverage-disk intersections |
-| C5 | Segment times and path geometry produce the total completion time $T$ |
+| (13), (31) | UAV speed along every segment does not exceed $V_{\max}$ |
+| (30) | Each terminal accumulates its required minimum connection duration |
+| (12), (22) | The binomial lower bound meets each file-recovery probability target |
+| Algorithm rule | Waypoints lie in their assigned coverage-disk intersections |
+| Model rule | Segment times and path geometry produce the total completion time $T$ |
 
 **Algorithm**: Choose a connection radius by threshold sweep → cover terminals with virtual-base-station disks using the spiral heuristic → order VBSs by an open TSP → refine entry and exit points in each convex intersection → discretize the route → solve segment traversal times by linear programming under speed and connection-duration constraints.
 
@@ -66,7 +66,7 @@ Uses random linear network coding to broadcast one file from a mobile UAV, conse
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zeng et al. [x] studied trajectory design for completion-time minimization in UAV-enabled multicasting with random linear network coding. They lower-bounded each terminal's recovery probability by a minimum connection-duration condition inside a distance threshold. A geometric disk-cover heuristic constructs virtual base stations, an open TSP orders them, and waypoint refinement selects points inside coverage intersections. For a fixed sampled route, linear programming allocates segment traversal times under speed and per-terminal connection-duration constraints. Simulations report shorter completion time than terminal-by-terminal and strip-based waypoint routes across the tested deployments.
+Zeng et al. [x] studied trajectory design for completion-time minimization in UAV-enabled multicasting with random linear network coding. They lower-bounded each terminal's recovery probability by a minimum connection-duration condition inside a distance threshold. A geometric disk-cover heuristic constructs virtual base stations, an open TSP orders them, and waypoint refinement selects points inside coverage intersections. For a fixed sampled route, linear programming allocates segment traversal times under speed and per-terminal connection-duration constraints. Simulations report shorter completion time than using the terminals themselves as waypoints or strip-based full-coverage waypoints, and large gains over multicasting from a static transmitter.
 
 ## System model
 

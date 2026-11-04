@@ -22,7 +22,7 @@ related:
   - "[[yong-zeng]]"
   - "[[jie-xu]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Enabled Wireless Power Transfer: Trajectory Design and Energy Optimization
@@ -56,10 +56,10 @@ A foundational study of **UAV-enabled wireless power transfer (WPT)**: a UAV-mou
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | UAV speed satisfies $\lVert\dot{\mathbf q}(t)\rVert\le V_{\max}$ |
-| C2 | Hovering and flight times sum to the charging period $T$ |
-| C3 | Every receiver energy is the integral of distance-dependent received power |
-| C4 | For P2, $E_k\ge E_{\min}$ for every receiver $k$ |
+| (1) | UAV speed satisfies $\lVert\dot{\mathbf q}(t)\rVert\le V_{\max}$ |
+| Model rule | Hovering and flight times sum to the charging period $T$ |
+| Model rule | Every receiver energy is the integral of distance-dependent received power |
+| (13) | For the epigraph form (P3.1), $E_k\ge E_{\min}$ for every receiver $k$ |
 
 **Algorithm**: For P1 search the globally optimal single hovering point → for speed-unconstrained P3 solve the Lagrange dual and recover optimal multi-location hover times → connect those points at maximum speed with a shortest successive-hover-and-fly tour → initialize SCP with that tour and iteratively refine the speed-constrained max-min trajectory.
 
@@ -67,7 +67,7 @@ A foundational study of **UAV-enabled wireless power transfer (WPT)**: a UAV-mou
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xu et al. [x] studied UAV-enabled wireless power transfer through joint trajectory and energy optimization. They formulated sum-energy and max-min received-energy problems for one mobile energy transmitter under a maximum-speed constraint. Sum-energy maximization is solved by single-location hovering, while the speed-unconstrained max-min problem yields multiple hovering locations and time allocations through Lagrange duality. For the speed-constrained fair design, they proposed a successive hover-and-fly trajectory and an SCP refinement. Simulations show that UAV mobility improves minimum received energy over fixed hovering as receiver separation, charging duration, or maximum speed increases.
+Xu et al. [x] studied UAV-enabled wireless power transfer through joint trajectory and energy optimization. They formulated sum-energy and max-min received-energy problems for one mobile energy transmitter under a maximum-speed constraint. Sum-energy maximization is solved by single-location hovering, while the speed-unconstrained max-min problem yields multiple hovering locations and time allocations through Lagrange duality. For the speed-constrained fair design, they proposed a successive hover-and-fly trajectory and an SCP refinement. Simulations show that the successive hover-and-fly and SCP trajectories beat single-location hovering, beat hovering over every receiver once the charging time reaches 15 s, and approach the speed-unconstrained upper bound as the charging time grows; for two receivers closer than $2H/\sqrt3$, a static UAV performs as well as a mobile one.
 
 ## Problem framing
 

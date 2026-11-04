@@ -27,7 +27,7 @@ related:
   - "[[chadi-assi]]"
   - "[[ali-ghrayeb]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV Trajectory Planning for Data Collection from Time-Constrained IoT Devices
@@ -62,11 +62,11 @@ A single UAV jointly plans its trajectory and uplink bandwidth allocation to max
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Served devices meet their requirement: $S_i(b_i^n,x^n,y^n)\geq\kappa_iS_i^{min}$. |
-| C2 | Admission is binary: $\kappa_i\in\{0,1\}$. |
-| C3 | Unserved devices receive no share: $0\leq b_i^n\leq\kappa_i$. |
-| C4 | Slot bandwidth shares obey the orthogonal-access bound $\sum_i b_i^n\leq1$. |
-| C5 | The trajectory satisfies bounded displacement and prescribed start and end positions. |
+| (10a) s.t. | Served devices meet their requirement within their windows, $S_i(b_i^n,x^n,y^n)\ge\kappa_iS_i^{min}$ (untagged in the parse) |
+| (10b) | $\kappa_i\in\{0,1\}$ |
+| (10c) | Unserved devices receive no share, $0\le b_i^n\le\kappa_i$ |
+| (10d) | Speed (2), $(x^{n+1}-x^n)^2+(y^{n+1}-y^n)^2\le(v_{\max}\delta_t)^2$, and bandwidth bounds (6), $0\le b_i^n\le1$ |
+| (10e)–(10g) | Prescribed start $[x^0\ y^0]=[x_s\ y_s]$ and end $[x^N\ y^N]=[x_e\ y_e]$ |
 
 **Algorithm**: Use branch-reduce-and-bound for a small-instance global benchmark, then solve the relaxed route and allocation with successive convex approximation for scalable locally optimal trajectories.
 
@@ -74,7 +74,7 @@ A single UAV jointly plans its trajectory and uplink bandwidth allocation to max
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Samir et al. [x] study UAV data collection when each IoT upload has its own generation window and hard deadline. Their mixed-integer nonlinear program maximizes admitted devices through trajectory coordinates, bandwidth fractions, binary admission, service thresholds, speed, and endpoint constraints. Branch-reduce-and-bound provides a global benchmark for small instances, while successive convex approximation scales the route and allocation to larger cases. The resulting comparison separates globally optimized short missions from scalable routes and reports improved service over greedy and other baseline policies.
+Samir et al. [x] study UAV data collection when each IoT upload has its own generation window and hard deadline. Their mixed-integer nonlinear program maximizes admitted devices through trajectory coordinates, bandwidth fractions, binary admission, service thresholds, speed, and endpoint constraints. Branch-reduce-and-bound provides a global benchmark for small instances, while successive convex approximation scales the route and allocation to larger cases. Simulations report a higher share of served devices than distance-based and deadline-based greedy trajectories and a static UAV placement.
 
 ## Problem
 

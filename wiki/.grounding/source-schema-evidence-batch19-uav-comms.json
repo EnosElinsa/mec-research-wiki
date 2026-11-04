@@ -1,0 +1,510 @@
+{
+  "entries": [
+    {
+      "slug": "al-hourani-2014-optimal-lap-altitude",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimal_LAP_Altitude_for_Maximum_Coverage/Optimal_LAP_Altitude_for_Maximum_Coverage.md",
+          "lines": "88,267,289,295,324,330,333,337",
+          "note": "pathloss model, coverage boundary (7), (10)-(13) and altitude limit"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimal_LAP_Altitude_for_Maximum_Coverage/Optimal_LAP_Altitude_for_Maximum_Coverage.md",
+          "lines": "33,333,337",
+          "note": "optimum angle independence and practical limit"
+        }
+      ]
+    },
+    {
+      "slug": "bor-yaliniz-2016-3d-abs-placement",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks.md",
+          "lines": "89,92,95,98,102,106,110,114,117,119,122,125,128,131,134,140,146,152,155,158",
+          "note": "problem (7) and reformulation (8)-(12)"
+        },
+        {
+          "path": "raw/sources/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks.md",
+          "lines": "17,222,224",
+          "note": "bisection and MOSEK"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks.md",
+          "lines": "242,244,473",
+          "note": "Monte Carlo results"
+        }
+      ]
+    },
+    {
+      "slug": "he-2018-uav-altitude-beamwidth",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications.md",
+          "lines": "23,27,47,50,53,58,61,75,81,87,90,98,102,107,113,126,131,137",
+          "note": "protocol, antenna, LoS channel and rate objectives (1)-(10)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications.md",
+          "lines": "210",
+          "note": "MAC analytical vs simulation"
+        }
+      ]
+    },
+    {
+      "slug": "jiang-2012-uav-heading-sdma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink.md",
+          "lines": "5,23,206,216,219,223,226,249,256,261,265,274,278,279,280,283",
+          "note": "heading problem (11)-(14), slew and CoG refinements"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink.md",
+          "lines": "25,541,609,627",
+          "note": "SDMA vs TDMA sum rates"
+        }
+      ]
+    },
+    {
+      "slug": "li-2016-energy-balanced-uav-relaying",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Cooperative_Relaying_for_Unmanned_Aerial_Vehicles/Energy-Efficient_Cooperative_Relaying_for_Unmanned_Aerial_Vehicles.md",
+          "lines": "28,40,90,94,98,102,106,126,146,152",
+          "note": "problem (4)-(8), reformulation (10) and EPLA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Cooperative_Relaying_for_Unmanned_Aerial_Vehicles/Energy-Efficient_Cooperative_Relaying_for_Unmanned_Aerial_Vehicles.md",
+          "lines": "30,209,211,213,215,228,241,249,260,262",
+          "note": "baselines, runtime, lifetime, yield and energy"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2017-spiral-mbs-placement",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations.md",
+          "lines": "13,66,69,74,77,80,84,148,151,153,177,179",
+          "note": "GDC problem (P1)-(P3) and spiral algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations.md",
+          "lines": "175,181,187,191,193",
+          "note": "80-GT example and comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2018-uav-hotspot-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Aided_Offloading_for_Cellular_Hotspot/UAV-Aided_Offloading_for_Cellular_Hotspot.md",
+          "lines": "191,197,205,223,231,253,322,325,332,334,337,341,349,352,357,363,370,379,400,404,484,487,508",
+          "note": "cyclic UAV model, (P1)-(P5) and solution"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Aided_Offloading_for_Cellular_Hotspot/UAV-Aided_Offloading_for_Cellular_Hotspot.md",
+          "lines": "591,614",
+          "note": "common throughput and supported user density"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-2015-drone-small-cells",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis.md",
+          "lines": "25,99,102,108,114,121,153,159,161,169,171,174,177,227,263,269,275,281,289",
+          "note": "single- and two-DSC models and problems (6)-(21)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis.md",
+          "lines": "317,319,321",
+          "note": "power and separation results"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-2016-efficient-multi-uav-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage.md",
+          "lines": "87,92,106,141,144,147,155,159,163,201,203",
+          "note": "coverage probability and placement problem (9)-(13)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage/Efficient_Deployment_of_Multiple_Unmanned_Aerial_Vehicles_for_Optimal_Wireless_Coverage.md",
+          "lines": "175,189,278,280,282",
+          "note": "coverage, altitude and fleet-size results"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-2016-uav-underlaid-d2d",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs.md",
+          "lines": "39,208,220,275,283,289,295,301,308,317",
+          "note": "coverage probabilities and disk-cover stop design (24)-(29)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs.md",
+          "lines": "5,320,339",
+          "note": "altitude, delay and outage tradeoffs"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-2017-uav-iot-energy-efficient",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications.md",
+          "lines": "149,195,200,204,208,260,264,268,346,350,354,368,372,376,386,410,485,535",
+          "note": "placement, association and power problems (6)-(42)"
+        },
+        {
+          "path": "raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications.md",
+          "lines": "561,633,637,641,644",
+          "note": "update times and mobility assignment (53)-(55)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications.md",
+          "lines": "5",
+          "note": "power reduction and reliability results"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-2019-drone-antenna-array",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array.md",
+          "lines": "100,102,104,107,110,113,139,161,165,181,251,381,409,423,590,594",
+          "note": "service-time problem (5)-(7), directivity (12)-(13), bang-bang control, scheduling (52)-(53)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array.md",
+          "lines": "43,647",
+          "note": "spectral efficiency and bandwidth results"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-not-in-parse-3d-drone-cellular-network",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Beyond_5G_With_UAVs_Foundations_of_a_3D_Wireless_Cellular_Network/Beyond_5G_With_UAVs_Foundations_of_a_3D_Wireless_Cellular_Network.md",
+          "lines": "386,390,394,494,499",
+          "note": "association constraints (38)-(40) and optimal transport algorithm"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Beyond_5G_With_UAVs_Foundations_of_a_3D_Wireless_Cellular_Network/Beyond_5G_With_UAVs_Foundations_of_a_3D_Wireless_Cellular_Network.md",
+          "lines": "507,533",
+          "note": "latency reduction and convergence"
+        }
+      ]
+    },
+    {
+      "slug": "samir-2020-time-constrained-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_Data_Collection_from_Time-Constrained_IoT_Devices/UAV_Trajectory_Planning_for_Data_Collection_from_Time-Constrained_IoT_Devices.md",
+          "lines": "47,53,71,81,89,95,103,107,111,115,119,123,129",
+          "note": "channel, service model and (P1) (10)"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_Data_Collection_from_Time-Constrained_IoT_Devices/UAV_Trajectory_Planning_for_Data_Collection_from_Time-Constrained_IoT_Devices.md",
+          "lines": "207,236,240,244,248,274,338,357,360,364",
+          "note": "branch-reduce-and-bound and SCA reformulations"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_Data_Collection_from_Time-Constrained_IoT_Devices/UAV_Trajectory_Planning_for_Data_Collection_from_Time-Constrained_IoT_Devices.md",
+          "lines": "5,422,463,467,482,493,497",
+          "note": "greedy and static comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "xu-2018-uav-wpt-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization.md",
+          "lines": "65,91,109,112,115,134,140,147,155,197,200,224,227,230,232,235,242,245,249",
+          "note": "models, (P1)-(P3.1) and (13)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization.md",
+          "lines": "263,275,279,295,305,333,336,338,346,361,375,379,390,397,401",
+          "note": "dual solution, hover-time LP and hover-and-fly/SCP designs"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization.md",
+          "lines": "545,630,632,633,635",
+          "note": "benchmarks and received-power results"
+        }
+      ]
+    },
+    {
+      "slug": "you-2019-rician-uav-data-harvesting",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/3D_Trajectory_Optimization_in_Rician_Fading_for_UAV-Enabled_Data_Harvesting/3D_Trajectory_Optimization_in_Rician_Fading_for_UAV-Enabled_Data_Harvesting.md",
+          "lines": "27,48,52,137,141,145,149,153,157,161,165,187,218,234",
+          "note": "Rician fading model and (P1) (11a)-(11h)"
+        },
+        {
+          "path": "raw/sources/3D_Trajectory_Optimization_in_Rician_Fading_for_UAV-Enabled_Data_Harvesting/3D_Trajectory_Optimization_in_Rician_Fading_for_UAV-Enabled_Data_Harvesting.md",
+          "lines": "242,254,264,288,346",
+          "note": "BCD scheduling LP and SCA trajectory subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/3D_Trajectory_Optimization_in_Rician_Fading_for_UAV-Enabled_Data_Harvesting/3D_Trajectory_Optimization_in_Rician_Fading_for_UAV-Enabled_Data_Harvesting.md",
+          "lines": "414,432,434,458,474,476,501",
+          "note": "LB, RFLA and RFFSA comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2016-throughput-relaying",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems.md",
+          "lines": "67,132,136,140,144,148,152,156,164,168,173",
+          "note": "relay model and (P1) (9)-(15)"
+        },
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems.md",
+          "lines": "177,180,184,234,265,290,311,320,323,378,382,411,424,456,465,475",
+          "note": "staircase water-filling, SCA trajectory and free-endpoint case"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems.md",
+          "lines": "495,553,577,615,619,658,678",
+          "note": "static relaying, data ferrying and trajectory results"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2017-energy-efficient-uav-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization.md",
+          "lines": "157,170,248,266,282,286,290,294,298,302,305,310,314",
+          "note": "energy model, circular design and (P1) C1-C6"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization.md",
+          "lines": "338,367,370,390,394,398,403,408,412,419,488,520",
+          "note": "discrete (P2) and sequential convex optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization.md",
+          "lines": "594,598,626",
+          "note": "energy-efficiency tables"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2018-uav-multicasting-completion-time",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Trajectory_Design_for_Completion_Time_Minimization_in_UAV-Enabled_Multicasting/Trajectory_Design_for_Completion_Time_Minimization_in_UAV-Enabled_Multicasting.md",
+          "lines": "24,130,133,137,140,144,156,162,168,174,209,212,216,226,232,248,254,261,264,268,274",
+          "note": "problems (P1)-(P3) and connection-time bound"
+        },
+        {
+          "path": "raw/sources/Trajectory_Design_for_Completion_Time_Minimization_in_UAV-Enabled_Multicasting/Trajectory_Design_for_Completion_Time_Minimization_in_UAV-Enabled_Multicasting.md",
+          "lines": "283,287,291,296,298,300,312,324,334,336",
+          "note": "line-segment theorem, waypoint schemes and LP speed design"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Trajectory_Design_for_Completion_Time_Minimization_in_UAV-Enabled_Multicasting/Trajectory_Design_for_Completion_Time_Minimization_in_UAV-Enabled_Multicasting.md",
+          "lines": "28,385,389",
+          "note": "benchmark comparison"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2019-rotary-wing-energy-min",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV.md",
+          "lines": "199,203,207,211,215,219,222,228,263,267,287,294,329,333,336,343,369",
+          "note": "(P1) (17)-(21), fly-hover-communicate (P2)-(P3)"
+        },
+        {
+          "path": "raw/sources/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV.md",
+          "lines": "424,428,433,459,463,484,488,508,511,527,554,591,607,649",
+          "note": "path discretization (P4) and SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV/Energy_Minimization_for_Wireless_Communication_With_Rotary-Wing_UAV.md",
+          "lines": "809,823,840,844",
+          "note": "benchmarks and energy results"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2020-qoe-energy-efficient-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Optimization_for_QoE_Provisioning_in_Energy-Efficient_UAV-Enabled_Wireless_Networks/Resource_Allocation_and_Trajectory_Optimization_for_QoE_Provisioning_in_Energy-Efficient_UAV-Enabled_Wireless_Networks.md",
+          "lines": "47,51,183,189,193,197,201,205,209,213,217,221,224,226",
+          "note": "QoE and trajectory model and problem (19)"
+        },
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Optimization_for_QoE_Provisioning_in_Energy-Efficient_UAV-Enabled_Wireless_Networks/Resource_Allocation_and_Trajectory_Optimization_for_QoE_Provisioning_in_Energy-Efficient_UAV-Enabled_Wireless_Networks.md",
+          "lines": "239,243,251,255,263,267,332,336,409,435,439,497,540,568",
+          "note": "discretized (20) and BCD subproblems with Dinkelbach"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_and_Trajectory_Optimization_for_QoE_Provisioning_in_Energy-Efficient_UAV-Enabled_Wireless_Networks/Resource_Allocation_and_Trajectory_Optimization_for_QoE_Provisioning_in_Energy-Efficient_UAV-Enabled_Wireless_Networks.md",
+          "lines": "5,25,601,639,648,655",
+          "note": "baselines and energy-efficiency results"
+        }
+      ]
+    },
+    {
+      "slug": "zhan-2011-uav-relay-heading-optimization",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization.md",
+          "lines": "15,86,243,249,252,254,298,300,306,312,320,322,326,329,345,348,350,429,433,486,501",
+          "note": "ENTR model, heading problem (16), handoff and partition (25)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization.md",
+          "lines": "222,246,316,516,518,641",
+          "note": "approximation, heading gain and handoff results"
+        }
+      ]
+    },
+    {
+      "slug": "zhan-2018-uav-wsn-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network.md",
+          "lines": "66,69,71,75,79,83,93,97,104,120,124,128,132,133,140,144,151,153,155",
+          "note": "(P1) (5)-(10), LP scheduling and SCA trajectory"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network.md",
+          "lines": "206",
+          "note": "benchmark comparison"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2019-fast-uav-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Fast_Deployment_of_UAV_Networks_for_Optimal_Wireless_Coverage/Fast_Deployment_of_UAV_Networks_for_Optimal_Wireless_Coverage.md",
+          "lines": "21,23,31,59,139,142,154,158",
+          "note": "min-max/min-sum problems and algorithms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Fast_Deployment_of_UAV_Networks_for_Optimal_Wireless_Coverage/Fast_Deployment_of_UAV_Networks_for_Optimal_Wireless_Coverage.md",
+          "lines": "243,449,453,473,485,583",
+          "note": "delay, runtime and brute-force comparisons"
+        }
+      ]
+    }
+  ]
+}

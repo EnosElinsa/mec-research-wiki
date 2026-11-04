@@ -19,7 +19,7 @@ related:
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
 modeling_card: required
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Placement Optimization of UAV-Mounted Mobile Base Stations
@@ -52,9 +52,9 @@ Minimizes the **number of UAV-mounted mobile base stations (MBSs)** needed to pr
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every GT is covered by at least one MBS, $\min_m\|\mathbf w_k-\mathbf u_m\|\leq r$. |
-| C2 | A LocalCover placement keeps every prioritized and newly covered GT within radius $r$, $\|\mathbf u-\mathbf w_k\|\leq r$. |
-| C3 | MBSs use the fixed-altitude, fixed-radius coverage abstraction; channel assignment and power control are deferred after placement. |
+| (P1) | Every GT is covered by at least one MBS, $\min_m\|\mathbf w_k-\mathbf u_m\|\leq r$. |
+| (P3) | A LocalCover placement keeps every prioritized and newly covered GT within radius $r$, $\|\mathbf u-\mathbf w_k\|\leq r$. |
+| Model rule | MBSs use the fixed-altitude, fixed-radius coverage abstraction; channel assignment and power control are deferred after placement. |
 
 **Algorithm**: Repeatedly compute the convex-hull boundary of uncovered GTs, choose the next boundary GT counter-clockwise, refine an MBS center with LocalCover to include prioritized boundary and nearby inner GTs, remove covered GTs, and continue inward until none remain.
 

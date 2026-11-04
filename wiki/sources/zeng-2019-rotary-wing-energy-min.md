@@ -27,7 +27,7 @@ related:
   - "[[yong-zeng]]"
   - "[[jie-xu]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Minimization for Wireless Communication With Rotary-Wing UAV
@@ -53,19 +53,19 @@ A foundational UAV-communications paper that derives the **closed-form propulsio
 |---|---|---|---|
 | UAV trajectory | $\mathbf q(t)$ | continuous 2-D path | Horizontal flight path |
 | UAV speed | $V(t)$ | continuous, $[0,V_{\max}]$ | Rotary-wing flight speed |
-| TDMA allocation | $\tau_k(t)$ | continuous, $[0,1]$ | Service share assigned to ground node $k$ |
-| Mission time | $T$ | continuous, positive | Completion time of the service mission |
-| Hovering point/time | $\mathbf h_j,t_j$ | continuous | Fly-hover-communicate service decision |
+| TDMA scheduling | $\lambda_k(t)$ | binary; relaxed to $\tau_{mk}$ shares in the discretized (P4) | Ground node served at time $t$ |
+| Mission time | $T_t$ | continuous, positive | Completion time of the service mission |
+| Hovering points and order | $\tilde{\mathbf q}_k,\pi(k)$ | continuous points, permutation | Fly-hover-communicate service decision |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each ground node receives at least its required information bits |
-| C2 | TDMA shares satisfy $\sum_k\tau_k(t)\le1$ |
-| C3 | UAV speed and path continuity satisfy mobility limits |
-| C4 | Initial and final trajectory conditions are met when prescribed |
-| C5 | Propulsion power follows the rotary-wing model $P(V)$ |
+| (17) | Each ground node receives at least its required bits, $\bar R_k(T_t,\{\mathbf q(t)\},\{\lambda_k(t)\})\ge\tilde Q_k$ |
+| (18) | $\lVert\dot{\mathbf q}(t)\rVert\le V_{\max}$ |
+| (19) | $\mathbf q(0)=\mathbf q_I$, $\mathbf q(T_t)=\mathbf q_F$, when prescribed |
+| (20), (21) | Binary TDMA scheduling $\lambda_k(t)\in\{0,1\}$ with $\sum_k\lambda_k(t)\le1$ |
+| Model rule | Propulsion power follows the rotary-wing model $P(V)$ |
 
 **Algorithm**: Derive the rotary-wing propulsion-power model → for fly-hover-communicate optimize service points and durations, visit them by a TSPN route, and choose energy-efficient flight speed → for communication while flying discretize the path rather than time → convexify rate and propulsion terms → solve successive convex approximations to a KKT point.
 
@@ -73,7 +73,7 @@ A foundational UAV-communications paper that derives the **closed-form propulsio
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zeng et al. [x] studied total-energy minimization for wireless communication with a rotary-wing UAV. They derived a propulsion-power model with blade-profile, induced, and parasite components and jointly optimized trajectory, TDMA communication allocation, and mission completion time under per-node throughput and mobility constraints. The fly-hover-communicate design combines optimized service points and durations with a TSPN route and convex resource allocation. The general communicate-while-flying design uses path discretization and successive convex approximation. Numerical results report lower total energy than the evaluated geometric-center, ground-node hovering, and restricted communication baselines.
+Zeng et al. [x] studied total-energy minimization for wireless communication with a rotary-wing UAV. They derived a propulsion-power model with blade-profile, induced, and parasite components and jointly optimized trajectory, TDMA communication allocation, and mission completion time under per-node throughput and mobility constraints. The fly-hover-communicate design combines optimized service points and durations with a TSPN route and convex resource allocation. The general communicate-while-flying design uses path discretization and successive convex approximation. Numerical results report lower total energy than hovering at the geometric center, hovering above each ground node, and an optimized path with continuous communication.
 
 ## Problem
 UAV-enabled wireless communication is limited by the UAV's **on-board energy**, which (unlike a terrestrial base station) must also cover **propulsion** to stay airborne and move. Prior energy-efficient UAV work derived a model only for **fixed-wing** UAVs (power convex in speed `V`, infinite at `V = 0`) and considered a single GN. Rotary-wing UAVs have fundamentally different mechanics — they can **hover** (finite power at `V = 0`) — so their power model and trajectory design differ. The paper studies a rotary-wing UAV dispatched as a flying access point to serve **multiple** GNs, each with a target number of information bits, and minimizes total UAV energy (propulsion + communication) subject to each GN's throughput requirement — a non-convex problem with infinitely many time-coupled variables.

@@ -15,7 +15,7 @@ related:
   - "[[mozaffari-2017-uav-iot-energy-efficient]]"
   - "[[zeng-2019-uav-comm-tutorial-5g]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Data Collection in UAV Enabled Wireless Sensor Network
@@ -48,11 +48,11 @@ Considers a UAV dispatched to collect sensed data from K sensor nodes (SNs) in a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one sensor is active per slot, $\sum_kx_k[m]\le1$ |
-| C2 | Every sensor uploads at least its required $S_k$ bits |
-| C3 | Per-link outage probability does not exceed $\epsilon$ |
-| C4 | Each sensor energy satisfies $E_k\le\theta$ |
-| C5 | UAV speed, initial position, and final position remain feasible |
+| (5) | Each sensor's energy, $\sum_mx_k[m]E_k\le\theta$ |
+| (6) | Each sensor uploads its target data, $\sum_mx_k[m]R_k[m]\ge r_k$ |
+| (7), (8) | At most one active sensor per slot, $\sum_kx_k[m]\le1$, with $x_k[m]\in\{0,1\}$ |
+| (9), (10) | UAV speed $\lVert\mathbf q[m]-\mathbf q[m-1]\rVert\le D_{\max}$, start $\mathbf q[1]=\mathbf q_0$, end $\mathbf q[M]=\mathbf q_F$ |
+| Model rule | The per-slot rate $R_k[m]$ is set so that the link outage probability stays within $\epsilon$ |
 
 **Algorithm**: Relax binary wake-up indicators to fractional fading-block shares → fix trajectory and solve the schedule by linear programming → fix the schedule and convexify distance-rate terms → update trajectory by SCA → alternate the BCD blocks until maximum sensor energy converges.
 
@@ -60,7 +60,7 @@ Considers a UAV dispatched to collect sensed data from K sensor nodes (SNs) in a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhan et al. [x] studied energy-efficient data collection in a UAV-enabled wireless sensor network under general fading. They formulated a mixed-integer problem that minimizes the maximum sensor energy over wake-up scheduling and UAV trajectory under one-active-sensor, required-data, outage, energy, and mobility constraints. Binary scheduling is relaxed to fractional use over sufficiently many fading blocks. For a fixed path the schedule is solved by linear programming, while successive convex approximation updates the path for a fixed schedule. Simulations report lower sensor energy than the evaluated static-collector and straight-trajectory baselines.
+Zhan et al. [x] studied energy-efficient data collection in a UAV-enabled wireless sensor network under general fading. They formulated a mixed-integer problem that minimizes the maximum sensor energy over wake-up scheduling and UAV trajectory under one-active-sensor, required-data, outage, energy, and mobility constraints. Binary scheduling is relaxed to fractional use over sufficiently many fading blocks. For a fixed path the schedule is solved by linear programming, while successive convex approximation updates the path for a fixed schedule. Simulations report lower maximum sensor energy than straight flight and a static collector at the sensors' geometric center, with larger gains for bigger data targets.
 
 ## Problem framing
 

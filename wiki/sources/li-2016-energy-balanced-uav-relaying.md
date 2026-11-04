@@ -16,7 +16,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[zhan-2011-uav-relay-heading-optimization]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy-Efficient Cooperative Relaying for Unmanned Aerial Vehicles
@@ -49,11 +49,11 @@ Balances packet-forwarding energy across cooperative UAV relays in a two-hop sen
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Required transmit power does not exceed $P_{\max}$ |
-| C2 | A packet assigned to one UAV uses exactly one modulation level |
-| C3 | Every packet decoded by at least one UAV is forwarded exactly once |
-| C4 | All scheduled transmissions fit the TDMA forwarding duration $T$ |
-| C5 | The rate-dependent power is selected to satisfy the target BER $\epsilon$ |
+| (5) | Required transmit power does not exceed $P_{\max}$ |
+| (6) | A packet assigned to one UAV uses exactly one modulation level |
+| (7) | Every packet decoded by at least one UAV is forwarded exactly once |
+| (8) | All scheduled transmissions fit the TDMA forwarding duration $T$ |
+| Model rule | The rate-dependent power is selected to satisfy the target BER $\epsilon$ |
 
 **Algorithm**: The exact method reformulates the min-max integer program as one minimization problem per candidate maximum-energy UAV and selects the best result. EPLA provides the real-time alternative by repeatedly moving packets from the highest-energy relay to lower-energy relays, then increasing the modulation of the UAV that most reduces transmission time until the TDMA deadline is feasible.
 

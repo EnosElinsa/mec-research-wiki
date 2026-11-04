@@ -22,7 +22,7 @@ related:
   - "[[li-2016-energy-balanced-uav-relaying]]"
   - "[[energy-balanced-cooperative-uav-relaying]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Throughput Maximization for UAV-Enabled Mobile Relaying Systems
@@ -50,17 +50,17 @@ A foundational **UAV mobile-relaying** paper. A relay node mounted on a high-mob
 | Source power | $p_S[n]$ | continuous, nonnegative | Source transmission power in slot $n$ |
 | Relay power | $p_R[n]$ | continuous, nonnegative | UAV forwarding power in slot $n$ |
 | UAV trajectory | $\mathbf q[n]$ | continuous 2-D position | Relay horizontal location |
-| Delivered data | $l[n]$ | continuous, nonnegative | Bits forwarded to the destination |
+| Forwarding rate (subproblems) | $R_r[n]$ | continuous, nonnegative | Auxiliary relay-to-destination rate used in (P1.1)–(P1.3) |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Cumulative forwarded data cannot exceed previously received data |
-| C2 | Source and relay powers satisfy average and peak budgets |
-| C3 | UAV displacement satisfies $\lVert\mathbf q[n+1]-\mathbf q[n]\rVert\le V_{\max}\Delta t$ |
-| C4 | Prescribed initial and final relay locations are met |
-| C5 | Per-slot source and relay rates follow their position-dependent channels |
+| (9) | Information causality: cumulative data forwarded by slot $n$ cannot exceed the data received in slots $1,\dots,n-1$ |
+| (10) | Average powers, $\frac1N\sum_np_s[n]\le\bar P_s$ and $\frac1N\sum_np_r[n]\le\bar P_r$ |
+| (11), (12) | $p_s[n]\ge0$ and $p_r[n]\ge0$ |
+| (13)–(15) | Initial, per-slot, and final relay displacements are bounded by $V$ (distance per slot) |
+| Model rule | Per-slot source and relay rates follow the position-dependent LoS channels |
 
 **Algorithm**: Fix the trajectory and solve source and relay powers by duality to obtain staircase water filling → fix powers and lower-bound non-convex rate terms → update the trajectory by SCA → alternate power and trajectory blocks → use the closed-form free-endpoint solution when endpoint constraints are absent.
 
@@ -68,7 +68,7 @@ A foundational **UAV mobile-relaying** paper. A relay node mounted on a high-mob
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zeng et al. [x] studied throughput maximization for a decode-and-forward UAV mobile relay between a fixed source and destination. They jointly optimized source and relay transmit powers and the UAV trajectory under power budgets, speed, endpoint, and information-causality constraints. For a fixed trajectory, the optimal power allocation has a staircase water-filling structure derived through dual optimization. For fixed powers, successive convex approximation updates the trajectory, and the two blocks are alternated. Numerical results report higher end-to-end throughput than the evaluated static-relay and fixed-trajectory baselines, and the paper also derives a closed-form free-endpoint special case.
+Zeng et al. [x] studied throughput maximization for a decode-and-forward UAV mobile relay between a fixed source and destination. They jointly optimized source and relay transmit powers and the UAV trajectory under average-power, speed, endpoint, and information-causality constraints. For a fixed trajectory, the optimal power allocation has a staircase water-filling structure derived through dual optimization. For fixed powers, successive convex approximation updates the trajectory, and the two blocks are alternated. Numerical results show that joint power and trajectory optimization beats static relaying and data ferrying at all power levels; a unidirectional flight from destination to source can even do worse than static relaying, and data ferrying beats static relaying only at low power. The paper also derives a closed-form free-endpoint special case.
 
 ## Problem framing
 

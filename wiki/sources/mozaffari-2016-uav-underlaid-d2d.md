@@ -22,7 +22,7 @@ related:
   - "[[mohammad-mozaffari]]"
   - "[[walid-saad]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Unmanned Aerial Vehicle With Underlaid Device-to-Device Communications: Performance and Tradeoffs
@@ -56,10 +56,10 @@ Analyzes the **coexistence** of a UAV acting as a downlink flying base station a
 
 | ID | Meaning and key expression |
 | --- | --- |
-| 24 | The feasible footprint is $R_m=\max\{R:P_{\mathrm{cov},du}(\beta,R)\ge\varepsilon\}$ |
-| 25 | Every point in the target disk must be covered and the chosen $M$ is minimal |
-| 26 | The disk-cover radius satisfies $R_{\min,L}\le R_m\le R_{\min,L-1}$ for the minimum $L$ stops |
-| 27 | Power is reduced until the maximum footprint equals the required disk-cover radius $R_{\min,L}$ |
+| (24) | The feasible footprint is $R_m=\max\{R:P_{\mathrm{cov},du}(\beta,R)\ge\varepsilon\}$ |
+| (25) | Every point in the target disk must be covered and the chosen $M$ is minimal |
+| (26) | The disk-cover radius satisfies $R_{\min,L}\le R_m\le R_{\min,L-1}$ for the minimum $L$ stops |
+| (27) | Power is reduced until the maximum footprint equals the required disk-cover radius $R_{\min,L}$ |
 
 **Algorithm**: Derive DU and D2D coverage probabilities and the system sum-rate with stochastic geometry, then perform a one-dimensional altitude search for the desired static objective at the given D2D density. For mobile service, compute the maximum feasible coverage radius at the optimal altitude, use the dual disk-covering table to obtain the minimum stop count and locations, and reduce $P_u$ until that radius matches the required covering radius; finally evaluate retransmission outage and coverage-delay tradeoffs.
 
