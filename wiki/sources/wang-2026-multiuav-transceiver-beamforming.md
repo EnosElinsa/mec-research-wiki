@@ -18,7 +18,7 @@ related:
   - "[[wang-2026-robust-anti-uav-isac]]"
   - "[[zhiyong-feng]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Transmit-Receive Beamforming for ISAC-Enabled Multi-UAVs System
@@ -37,26 +37,25 @@ Coordinates sensing/communication transmit beams, clutter-aware receive filters,
 
 **Scenario**: Multiple UAVs jointly transmit integrated sensing and communication waveforms, receive target echoes in clutter, and serve downlink users. UAV locations, transmit beams, and clutter-aware receive filters jointly determine sensing SCNR and communication SINR.
 
-**Problem & objective**: A non-convex sum-of-ratios problem maximizes aggregate sensing quality, $\max \sum_m\operatorname{SCNR}_m$, under downlink QoS, power, mobility, separation, and flight-region constraints.
+**Problem & objective**: (P1), a non-convex problem, maximizes the total fused sensing SCNR, $\max \sum_{m=1}^{K} \rho_m(t)$, over communication and sensing beamformers $\mathbf w_k^c(t), \mathbf w_k^s(t)$, receive filters $\mathbf v_m(t)$, and UAV trajectories $\mathbf q_k(t)$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Transmit beamformer | $\mathbf w_{m,k}$ | complex continuous vector | Communication or sensing beam sent by UAV $m$ |
-| Receive filter | $\mathbf u_m$ | complex continuous vector | Clutter-aware target-echo combiner |
-| UAV position | $\mathbf q_m$ | continuous horizontal position | Fixed-altitude UAV deployment or trajectory |
-| Fractional/slack variables | $\boldsymbol\xi$ | continuous | Dinkelbach, SDR, and SCA auxiliaries |
+| Communication beamformers | $\mathbf w_k^c = [\mathbf w_{k,1},\dots,\mathbf w_{k,J_k}]$ | complex continuous matrix | Beams from UAV $k$ to its $J_k$ users |
+| Sensing beamformer | $\mathbf w_k^s$ | complex continuous vector | Dedicated sensing beam of UAV $k$ |
+| Receive filter | $\mathbf v_m$ | complex continuous vector | Clutter-aware combiner at receiving UAV $m$ |
+| UAV trajectory | $\mathbf q_k(t) = (x_k(t), y_k(t))$ | continuous horizontal position | Position of UAV $k$ at fixed altitude |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every served user meets its downlink SINR requirement |
-| C2 | Each UAV's transmit beams satisfy its power budget |
-| C3 | UAV positions remain in the allowed flight region |
-| C4 | Per-slot motion and prescribed trajectory conditions remain feasible |
-| C5 | Pairwise UAV separation remains above the collision threshold |
+| (20b) | Each user's SINR meets its threshold, $\gamma_{k,j} \ge \Gamma_{k,j}$. |
+| (20c) | Per-UAV power, $\sum_j \lVert \mathbf w_{k,j} \rVert^2 + \lVert \mathbf w_k^s \rVert^2 \le P_T$. |
+| (20d) | Speed limit, $0 \le \lVert \dot{\mathbf q}_k(t) \rVert \le v_{\max}$, and collision avoidance $\lVert \mathbf q_k(t) - \mathbf q_{k'}(t) \rVert \ge d_{\min}$. |
+| (20e)-(20g) | Flight-region bounds on $x_k(t)$ and $y_k(t)$. |
 
 **Algorithm**: Fix beams and positions and update each receive filter by the generalized-Rayleigh-quotient eigenvector → optimize transmit beams through a Dinkelbach-style fractional reformulation and SDR → update UAV positions with fractional transformation, SCA, slacks, and a trust region → alternate until summed SCNR converges.
 

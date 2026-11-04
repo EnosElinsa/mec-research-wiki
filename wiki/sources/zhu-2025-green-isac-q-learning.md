@@ -19,7 +19,7 @@ related:
   - "[[zhu-2024-sensing-comm-doppler-uav-swarm]]"
 modeling_card: required
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Resource Allocation for UAV Swarm-Assisted Green ISAC Networks via Multi-Agent RL
@@ -55,9 +55,9 @@ Uses low-CRLB UAV-anchor geometry to initialize selected entries of independent 
 |---|---|
 | C1 | Terminal assignments are binary, $a_m^l(t)\in\{0,1\}$ |
 | C2 | Each UAV serves at most one terminal per slot, $\sum_l a_m^l(t)\le1$ |
-| C3 | Power-level choices are binary and at most one level is selected |
-| C4 | Communication QoS satisfies $\gamma_m(t)\ge\gamma_{\mathrm{thr}}$ and power is bounded by $P_K$ |
-| C5 | At least four anchors serve each positioning task, $M_0\ge4$ |
+| C3-C4 | Power-level choices are binary and at most one level is selected |
+| C5-C6 | Communication QoS satisfies $\gamma_m(t)\ge\gamma_{\mathrm{thr}}$ and power is bounded by $P_K$ |
+| C7 | At least four anchors serve each positioning task, $M_0\ge4$ |
 
 **Algorithm**: Improved FBSS plus distributed Q-learning, form rotated azimuth groups, select the minimum-CRLB anchor subset, place inverse-CRLB sensing priors in each Q-table, and let every UAV learn terminal-power actions through epsilon-greedy selection and repeated Q updates.
 

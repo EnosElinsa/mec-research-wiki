@@ -20,7 +20,7 @@ related:
   - "[[christos-masouros]]"
   - "[[lu-2026-icsn-beamforming]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Sensing-Assisted Eavesdropper Estimation: An ISAC Breakthrough in Physical Layer Security
@@ -37,35 +37,33 @@ A **sensing-aided physical-layer-security (PLS)** scheme for ISAC systems. A wel
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A dual-functional base station serves cooperative users while sensing potential eavesdroppers that are also radar targets. An initial omnidirectional waveform and CAML estimation provide uncertain Eve directions; subsequent artificial-noise-aided secure beamforming balances secrecy rate and sensing accuracy through a widened beampattern.
+**Scenario**: An ISAC base station with $N_t$ antennas sends $I$ confidential streams to communication users (CUs) with beamformers $\mathbf w_i$ plus artificial noise $\mathbf N \sim \mathcal{CN}(\mathbf 0, \mathbf R_N)$, so the transmit signal is $\mathbf X = \mathbf W\mathbf S + \mathbf N$. Targets are potential eavesdroppers (Eves). An initial omnidirectional probing stage yields imprecise Eve angles, giving an angular uncertainty interval for each Eve.
 
-**Problem & objective**: A weighted non-convex ISAC/PLS program maximizes secrecy rate while minimizing eavesdropper-estimation CRB, $\max\;R_s-\lambda\operatorname{CRB}$, subject to a wide-main-beam beampattern and transmit-power constraints.
+**Problem & objective**: Problem (32) is a normalized weighted design, $\max_{\tilde{\mathbf W}_i, \mathbf R_N} \rho\frac{|\mathbf J|}{|\mathbf J|_{UB}} + (1-\rho)\frac{\mathrm{SR}}{\mathrm{SR}_{UB}}$, trading the Fisher-information determinant $|\mathbf J|$ for Eve estimation against the worst-case secrecy rate SR, each normalized by its upper bound.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Communication beamformer | $\mathbf W_c$ | complex continuous matrix | Confidential-data precoder |
-| Artificial-noise covariance | $\mathbf W_{AN}$ | positive semidefinite matrix | AN used to reduce Eve's secrecy rate |
-| Sensing beamformer | $\mathbf W_s$ | complex continuous matrix | Radar/sensing waveform design |
-| Main-beam width | $\Delta\theta$ | continuous, accuracy-bounded | Angular coverage chosen from the prior CRB |
+| CU beam covariances | $\tilde{\mathbf W}_i = \mathbf w_i \mathbf w_i^H$ | positive semidefinite | Confidential-data beam for CU $i$ |
+| Artificial-noise covariance | $\mathbf R_N$ | positive semidefinite | AN that degrades the Eves' SINR |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Total transmit covariance satisfies the BS power budget |
-| C2 | The sensing beampattern covers the CRB-derived Eve angular uncertainty region |
-| C3 | Covariance matrices are positive semidefinite and beamforming ranks are feasible |
-| C4 | Confidential-user quality and artificial-noise/secrecy expressions remain valid |
+| (32b) | Main-beam-to-sidelobe gap of at least $\gamma_s$ over each Eve's uncertainty region. |
+| (32c)-(32d) | Main-beam gains stay within a $(1 \pm \alpha)$ band of the gain at the estimated Eve angle. |
+| (29b) | $\mathbf R_N \succeq \mathbf 0$ and $\tilde{\mathbf W}_i \succeq \mathbf 0$. |
+| (29c) | Total power, $\mathrm{tr}(\sum_i \tilde{\mathbf W}_i + \mathbf R_N) = P_0$. |
 
-**Algorithm**: Emit an omnidirectional probe → estimate Eve directions with CAML and compute the CRB → alternate FIM/CRB beamforming and secrecy-rate/AN optimization → solve the weighted fractional block with fractional programming → widen the sensing beam from the updated uncertainty → repeat until convergence.
+**Algorithm**: Estimate Eve angles with combined Capon and approximate maximum likelihood after omnidirectional probing, obtain the upper bounds $|\mathbf J|_{UB}$ and $\mathrm{SR}_{UB}$ from the separate CRB-minimization and secrecy-rate problems, then solve the weighted problem with fractional programming. Algorithm 1 repeats the weighted design, updating the Eve-angle uncertainty from the optimized CRB so the main lobes narrow toward the Eves.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Su et al. [x] studied sensing-assisted physical-layer security in an integrated sensing and communication base-station system. The base station first emits an omnidirectional waveform and uses combined Capon and approximate maximum likelihood estimation to obtain potential eavesdropper directions. It then solves a weighted design that maximizes secrecy rate with artificial noise while minimizing the Cramér-Rao bound of target and Eve estimation under beampattern and transmit-power constraints. An alternating optimization procedure updates Fisher-information and secrecy-rate blocks, with fractional programming used for the weighted problem. Numerical results show that secrecy rate increases as the estimation CRB decreases for both single-Eve and multi-Eve cases.
+Su et al. [x] studied sensing-assisted physical-layer security in an integrated sensing and communication base-station system. The base station first emits an omnidirectional waveform and uses combined Capon and approximate maximum likelihood estimation to obtain potential eavesdropper directions. It then solves a normalized weighted design over the communication beamformers and artificial-noise covariance that trades the secrecy rate against the Fisher-information determinant for Eve estimation, under beampattern and transmit-power constraints. Upper bounds from separate CRB-minimization and secrecy-rate problems normalize the two terms, a fractional programming algorithm solves the weighted problem, and the design is repeated as the optimized CRB narrows the Eve-angle uncertainty. Numerical results show that secrecy rate increases as the estimation CRB decreases for both single-Eve and multi-Eve cases.
 
 ## Problem framing
 

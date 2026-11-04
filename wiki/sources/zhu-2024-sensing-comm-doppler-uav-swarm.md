@@ -19,7 +19,7 @@ related:
   - "[[jiang-2025-isac-lae-overview]]"
 modeling_card: required
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Sensing-Communication Co-Design for UAV Swarm-Assisted Vehicular Network in Perspective of Doppler
@@ -62,7 +62,7 @@ A **sensing-communication co-design** scheme for **UAV-swarm-assisted vehicular 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhu et al. [x] studied Doppler-oriented sensing-communication co-design for UAV-swarm-assisted vehicular networks. They modeled Doppler-induced OFDM SNR loss together with TDOA/FDOA position and velocity estimation and optimized the UAV links selected for each ground vehicle. The resulting non-convex problem minimizes the maximum sum of position and velocity CRLBs under deployment, safety, relative-motion, and SNR-loss constraints. A differential-evolution algorithm encodes the selected UAV subsets as individuals and iteratively applies fitness evaluation, mutation, crossover, and selection. Numerical results report sensing-accuracy improvements above 30% while maintaining communication and communication gains above 20% without reducing sensing capability.
+Zhu et al. [x] studied Doppler-oriented sensing-communication co-design for UAV-swarm-assisted vehicular networks. They modeled Doppler-induced OFDM SNR loss together with TDOA/FDOA position and velocity estimation and optimized the UAV links selected for each ground vehicle. The resulting non-convex problem minimizes the maximum sum of position and velocity CRLBs under deployment, safety, relative-motion, and SNR-loss constraints. A differential-evolution algorithm encodes the selected UAV subsets as individuals and iteratively applies fitness evaluation, mutation, crossover, and selection. Numerical results report sensing-accuracy improvements above 30% over a random approach and communication gains above 20% without reducing sensing accuracy.
 
 ## Problem framing
 

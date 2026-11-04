@@ -19,7 +19,7 @@ related:
   - "[[george-k-karagiannidis]]"
   - "[[chengwen-xing]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Generative-Adversarial-Network-Enhanced DRL for ISAC With Double Active RISs
@@ -38,24 +38,25 @@ Beamforming design for a **double-active-RIS-assisted ISAC** network where direc
 
 **Scenario**: An ISAC BS serves multiple users and senses multiple targets through two active RISs when direct links are blocked. Amplified reflection creates virtual LoS paths, while transmit, reflection, and receive beams interact across slots.
 
-**Problem & objective**: A dynamic non-convex MDP maximizes summed worst-target sensing SINR, $\max\sum_t\min_j\operatorname{SINR}^{\mathrm{sense}}_j(t)$, under communication QoS and power limits.
+**Problem & objective**: Problem (16) maximizes the summed worst-target sensing SINR over $L$ slots, $\max \sum_{\ell=1}^{L} \min_{j\in\mathcal J} \mathrm{SINR}_{t,j,\ell}$, over user beams $\mathbf v_{k,\ell}$, sensing beams $\mathbf w_{j,\ell}$, receive filters $\mathbf u_{m,\ell}$, and active-RIS coefficient vectors $\mathbf v_{1,\ell}, \mathbf v_{2,\ell}$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| BS transmit beam | $\mathbf w_k(t)$ | complex continuous vector | User and sensing transmission beam |
-| Active-RIS coefficients | $\boldsymbol\phi_r(t)$ | complex bounded vector | Amplifying reflection at RIS $r$ |
-| Receive beam | $\mathbf u_j(t)$ | complex continuous vector | Combiner for target $j$ |
+| User beams | $\mathbf v_{k,\ell}$ | complex continuous vector, $\lVert \mathbf v_{k,\ell} \rVert^2 \le P$ | BS beam for user $k$ in slot $\ell$ |
+| Sensing beams | $\mathbf w_{j,\ell}$ | complex continuous vector, $\lVert \mathbf w_{j,\ell} \rVert^2 \le P$ | BS beam toward target $j$ |
+| Receive filters | $\mathbf u_{m,\ell}$ | unit-norm complex vector | Echo combiners |
+| Active-RIS coefficients | $\mathbf v_{1,\ell}, \mathbf v_{2,\ell}$, with $\Phi_{i,\ell} = \mathrm{diag}(\mathbf v_{i,\ell})$ | complex continuous vectors | Amplifying reflection at RIS 1 and RIS 2 |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every user meets the required communication QoS |
-| C2 | BS transmit power remains within its budget |
-| C3 | Each active RIS satisfies amplitude and amplification-power limits |
-| C4 | Receive and reflection coefficients remain in their feasible domains |
+| (16b) | User rate meets its requirement, $R_{u_k,\ell} \ge \Gamma_{k,\ell}$. |
+| (16c)-(16d) | Per-beam power limits on $\mathbf v_{k,\ell}$ and $\mathbf w_{j,\ell}$. |
+| (16e)-(16f) | Amplification-power budgets $P_A$ of the two active RISs, including amplified noise. |
+| (16g) | Receive filters are normalized, $\lVert \mathbf u_m \rVert^2 = 1$. |
 
 **Algorithm**: Cast channel and beam state as an MDP → let TD3 generate continuous transmit, RIS, and receive beam actions → use twin critics and delayed actor updates → train a GAN on action/state experience to enrich policy generalization → combine GAN guidance with TD3 updates → repeat over channel states.
 

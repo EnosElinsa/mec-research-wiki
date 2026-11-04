@@ -17,7 +17,7 @@ related:
   - "[[mmwave-radar-sensing]]"
   - "[[cellular-connected-uav]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deep Learning-Based Predictive Bidirectional Beamforming in ISAC-Enabled UAV Networks
@@ -34,7 +34,7 @@ HECTA-Net predicts the next BS transmit beam and UAV receive beam directly from 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xu et al. [x] studied predictive bidirectional beamforming for an ISAC-enabled BS-UAV link. HECTA-Net maps historical matched-filtered echo tensors to the next transmit and receive beam vectors using convolutional blocks, dilated causal temporal convolutions, and multi-head time attention. The network is trained offline with an MSE loss against simulation-derived beam labels and performs one forward pass online. Simulations report higher achievable rate and lower beam-angle error than the evaluated HCL-Net and EKF predictors, with millisecond-scale inference on the stated test computer. The paper is a pure prediction study and does not provide an application-level operational decision model with a reusable objective and constraint set.
+Xu et al. [x] studied predictive bidirectional beamforming for an ISAC-enabled BS-UAV link. HECTA-Net maps historical matched-filtered echo tensors to the next transmit and receive beam vectors using convolutional blocks, dilated causal temporal convolutions, and multi-head time attention. The network is trained offline with an MSE loss against simulation-derived beam labels and performs one forward pass online. Simulations in circular- and random-motion scenarios report higher achievable rate than the evaluated HCL-Net and EKF predictors, and average inference latencies of 2.073 ms and 2.891 ms on the stated test computer. The paper is a pure prediction study and does not provide an application-level operational decision model with a reusable objective and constraint set.
 
 ## Problem
 

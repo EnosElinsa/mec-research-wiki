@@ -21,7 +21,7 @@ related:
   - "[[wang-2026-multiuav-transceiver-beamforming]]"
   - "[[yuanwei-liu]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative Beamforming Design for Anti-UAV ISAC Systems
@@ -40,25 +40,23 @@ Jointly designs transmit and receive beamformers for a multi-cell anti-UAV ISAC 
 
 **Scenario**: Multiple interconnected BSs serve downlink users and cooperatively sense one point-like UAV. Dual-functional BSs contribute monostatic and bistatic echoes to a receiving BS under clutter, residual self-interference, inter-cell interference, and AWGN.
 
-**Problem & objective**: A fractional transceiver problem maximizes sensing SCNR, $\max_{\{\mathbf w\},\{\mathbf u\}}\operatorname{SCNR}$, under per-user SINR and per-BS power constraints.
+**Problem & objective**: $(\mathcal P0)$ maximizes the cooperative sensing SCNR $\gamma_{\mathrm u}$ of the UAV echo, $\max_{\mathcal V} \gamma_{\mathrm u}$, over the beamformer set $\mathcal V$, subject to per-user downlink SINR and per-BS power constraints.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Transmit beamformer | $\mathbf w_{g,k}$ | complex continuous vector | Communication/sensing beam at BS $g$ |
-| Receive beamformer | $\mathbf u_q$ | complex continuous vector | Echo combiner for sensing BS $q$ |
-| Interference auxiliary | $z_{g,k}$ | continuous, nonnegative | Distributed primal-decomposition coupling variable |
-| Shared multiplier | $\lambda_{g,k}$ | continuous | Price exchanged between BS subproblems |
+| DL transmit beamformers | $\mathbf w_{g,k_g}$ | complex continuous vector | Beam from BS $g$ to its user $k_g$ |
+| Sensing transmit beamformers | $\mathbf w_{g,\mathrm u}$, $g \in \mathcal Q$ | complex continuous vector | Beam for cooperative UAV sensing at each of the $Q$ sensing BSs |
+| Sensing receive beamformer | $\mathbf u_{\mathrm u}$ | complex continuous vector | Echo combiner at the receiving BS |
+| User receive beamformers | $\mathbf v_{k_g}$ | complex continuous vector | Downlink combiner at user $k_g$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every downlink user meets its minimum SINR |
-| C2 | Each BS transmit power stays within its budget |
-| C3 | Receive filters remain normalized for the SCNR quotient |
-| C4 | Distributed interference auxiliaries agree across neighboring BSs |
+| (7b) | Per-user SINR, $\gamma_{g,k_g} \ge \tau_{g,k_g}$. |
+| (7c) | Per-BS power, $\sum_{k_g} \lVert \mathbf w_{g,k_g} \rVert^2 + \lVert \mathbf w_{g,\mathrm u} \rVert^2 \mathbf 1(g \in \mathcal Q) \le P_{\mathrm B}$. |
 
 **Algorithm**: Fix transmit beams and update receive filters in closed form → convert user QoS constraints to SOCP form → lower-bound the sensing numerator by SCA → handle the fractional SCNR with Dinkelbach iterations → alternate centrally, or decompose per BS and update shared variables by projected subgradients and exchanged multipliers.
 

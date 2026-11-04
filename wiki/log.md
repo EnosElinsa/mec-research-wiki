@@ -1,5 +1,14 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 5 (ISAC and sensing, second half)
+
+- Scope: 33 ISAC and sensing source pages (25 required cards, 8 not_applicable). Evidence: `wiki/.grounding/source-schema-evidence-batch05-isac-b.json`. Grounded total: 132/699.
+- Card rewrites to the paper's own problem, symbols, and constraint IDs: [[wu-2026-sensing-error-uav-scheduling]] (P1, 31a-31i), [[su-2024-sensing-aided-isac-pls]] (normalized problem (32), Algorithm 1), [[wang-2026-multiuav-transceiver-beamforming]] ((P1), 20b-20g), [[zhang-2025-cooperative-anti-uav-isac]] ((P0), 7b-7c), [[zhang-2025-gan-td3-isac-active-ris]] (problem (16), 16b-16g).
+- Constraint IDs relabeled to the paper's numbering: [[zhang-2026-air-sea-isac-inspection]] (C_SC, C_M, C_SYS), [[zhou-2026-jrc-multiuav-resource]] (31b-31i), [[zhu-2024-crb-active-ris-isac]] (16b-16e), [[zhu-2025-green-isac-q-learning]] (C1-C7).
+- Card corrections: [[ye-2026-mode-lae-isac]] (preference weight b is a policy input, not a decision variable; constrained action selection enforces 6c and 6f), [[yin-2026-m2llm-trajectory-beamforming]] (link indicators are given, P1 optimizes Q and B; 10g is sensing SINR, kinematics, and energy), [[zhao-2026-uav-fl-inspection-incentives]] (top-N' selection is outside problem (18)).
+- Related Work fixes: MODE gains are against MODE-w, the variant without the MoE architecture; Zhou baselines are balanced-association round-robin, equal-power, spectral-clustering, and uniform placement; Zhu Doppler result sentence; STBC gains are against orthogonal-resource multi-BS sensing; HECTA-Net angle errors are not compared with baselines (latencies 2.073 ms and 2.891 ms); Zhao handover uses SNR-based primary-BS selection.
+- Gates: manifest 699/699 resolved, 0 evidence conflicts; source schema, frontmatter, link, index, process-ref audits clean; 58 tests pass.
+
 ## [2026-11-03] Grounded batch 4 (ISAC and sensing, first half)
 
 The ISAC and sensing track holds 66 ungrounded source pages, so it is split into two batches. Batch 4 covers the first 33 in slug order, from [[bai-2026-aoi-uav-isac]] through [[qin-2025-urllc-noma-uav-iscc]]: 25 with `modeling_card: required` and 8 surveys, corrections, channel or estimation studies, and imaging or array papers with `not_applicable`. Each card symbol, objective, and constraint and each Related Work sentence was checked against the parse; evidence is in `wiki/.grounding/source-schema-evidence-batch04-isac-a.json`. The merged manifest reports 99/699 grounded and 0 evidence conflicts. This is a batch result, not a whole-corpus grounding audit.

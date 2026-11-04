@@ -21,7 +21,7 @@ related:
   - "[[benaya-2025-aerial-isac-haps]]"
 modeling_card: required
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cramér-Rao Bound Optimization for Active RIS-Empowered ISAC Systems
@@ -53,10 +53,10 @@ A **classical/convex** beamforming design for an **active-RIS-empowered ISAC** s
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | BS power budget, $\|\mathbf W\|_F^2\le P_{\mathrm{BS}}$ |
-| C2 | Active-RIS power budget, $\mathcal P(\mathbf W,\boldsymbol\phi)\le P_{\mathrm{RIS}}$ |
-| C3 | Per-user communication QoS, $\mathrm{SINR}_k\ge\gamma_k$ |
-| C4 | Reflection-amplitude limit, $a_m\le a_{\max}$ for every RIS element |
+| 16b | BS power budget, $\|\mathbf W\|_F^2\le P_{\mathrm{BS}}$ |
+| 16c | Active-RIS power budget, $\mathcal P(\mathbf W,\boldsymbol\phi)\le P_{\mathrm{RIS}}$ |
+| 16d | Per-user communication QoS, $\mathrm{SINR}_k\ge\gamma_k$ |
+| 16e | Reflection-amplitude limit, $a_m\le a_{\max}$ for every RIS element |
 
 **Algorithm**: Alternating optimization, initialize the RIS phases by channel-gain maximization, solve the lifted precoder subproblem with SDR, update the active-RIS coefficients with MM surrogates and auxiliary variables, and alternate until convergence.
 

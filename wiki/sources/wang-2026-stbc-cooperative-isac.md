@@ -14,7 +14,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[zhiyong-feng]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: not_applicable
 ---
 
@@ -32,7 +32,7 @@ Proposes a multi-BS cooperative [[integrated-sensing-and-communication]] system 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] proposed a cooperative multi-base-station ISAC architecture for sensing low-altitude UAVs near cell boundaries while reusing time-frequency resources. Robust angular-region nulling suppresses direct line-of-sight interference between neighboring base stations. An Alamouti-style space-time block codec separates their OFDM sensing echoes, after which range-profile estimates are fused according to SINR. The reported nulling pattern reached approximately -80 dB depth and remained more tolerant of direction error than exact-angle nulling. The shared-resource design improved detection and positioning relative to single-base-station sensing while using 66.67% fewer time-frequency resources than the fully orthogonal multi-base-station scheme. SINR-weighted data fusion also produced substantially lower positioning error than the compared single-base-station and soft-fusion methods under the examined synchronization errors.
+Wang et al. [x] proposed a cooperative multi-base-station ISAC architecture for sensing low-altitude UAVs near cell boundaries while reusing time-frequency resources. Robust angular-region nulling suppresses direct line-of-sight interference between neighboring base stations. An Alamouti-style space-time block codec separates their OFDM sensing echoes, after which range-profile estimates are fused according to SINR. The reported nulling pattern reached approximately -80 dB depth and remained more tolerant of direction error than exact-angle nulling. Compared with base stations sensing on orthogonal time-frequency resources, the shared-resource design improved detection probability and AoA estimation, kept range and radial-velocity accuracy comparable, and used 66.67% fewer time-frequency resources. SINR-weighted data fusion also produced substantially lower positioning error than the compared single-base-station and soft-fusion methods under the examined synchronization errors.
 
 ## Problem
 

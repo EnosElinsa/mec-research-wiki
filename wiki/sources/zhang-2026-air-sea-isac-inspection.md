@@ -15,7 +15,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[alternating-optimization-sdr-sca]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # ISAC-Empowered Air–Sea Collaborative System: A UAV–USV Joint Inspection Framework
@@ -52,12 +52,10 @@ Jointly plans one quadrotor UAV and one slower USV for maritime target inspectio
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Flying and hovering communication rates satisfy $R_f[n],R_h[n]\geq\Gamma_c$. |
-| C2 | Every target meets cumulative sensing quality: $\sum_n\gamma_k[n]\geq\Gamma_s^{\mathrm{total}}$. |
-| C3 | USV-obstacle separation and platform speeds satisfy $\lVert\mathbf b[n]-\tilde{\mathbf p}_{k'}\rVert\geq d_{\min}$ and their velocity limits. |
-| C4 | UAV and USV trajectories satisfy prescribed start and end points and their energy budgets. |
-| C5 | Communication and sensing beamforming powers remain no greater than $p_{\max}$. |
-
+| $\mathcal C_{\mathrm{SC}}$ (rate) | Flying and hovering communication rates satisfy $R_f[n],R_h[n]\geq\Gamma_c$ |
+| $\mathcal C_{\mathrm{SC}}$ (sensing) | Every target meets accumulated sensing SNR: $\sum_n\gamma_k[n]\geq\Gamma_s^{\mathrm{total}}$ |
+| $\mathcal C_{\mathrm{M}}$ | USV-obstacle separation $\lVert\mathbf b[n]-\tilde{\mathbf p}_{k'}\rVert\geq d_{\min}$ and UAV and USV speed limits |
+| $\mathcal C_{\mathrm{SYS}}$ | Prescribed start and end points, platform energy budgets, and UAV transmit power at most $p_{\max}$ |
 **Algorithm**: Cluster targets and select rough hover points with VBSC, solve their visiting order as a Bi-TSPN with a hybrid UAV-USV energy cost, refine hover positions and mode durations by SCA, then alternate stagewise USV trajectory and sensing and communication beamforming updates using SDR and SCA.
 
 ## Related Work Paragraph

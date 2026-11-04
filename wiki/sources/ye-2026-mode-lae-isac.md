@@ -15,7 +15,7 @@ related:
   - "[[ye-2026-meta-deepesc-lae-isac]]"
   - "[[ye-2026-deeplsc-lae-isac]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -35,7 +35,7 @@ Extends the LAE ISAC line from a fixed communication- or energy-centric objectiv
 
 **Scenario**: A multi-antenna ground base station communicates with authorized UAVs and senses an unauthorized moving target. Authorized UAVs fly fixed-altitude missions while communication and sensing compete for transmit power and spatial degrees of freedom.
 
-**Problem & objective**: Problem (6) jointly maximizes expected communication sum-rate and target sensing SNR, $\max(\mathbb E[\sum_tR_{\mathrm{total}}(t)],\mathbb E[\sum_t\Gamma_{\mathrm{tar}}(t)])$, with preference $b\in[0,1]$ scalarizing the two returns.
+**Problem & objective**: Problem (6) jointly maximizes expected communication sum-rate and target sensing SNR, $\max(\mathbb E[\sum_tR_{\mathrm{total}}(t)],\mathbb E[\sum_t\Gamma_{\mathrm{tar}}(t)])$, with a given objective-preference weight $b\in[0,1]$ (an input to the policy, not an optimized variable) scalarizing the two returns in (10).
 
 **Decision variables**:
 
@@ -45,7 +45,6 @@ Extends the LAE ISAC line from a fixed communication- or energy-centric objectiv
 | Sensing beamforming | $\mathbf W_s(t)$ | complex continuous | Target probing beams |
 | UAV movement direction | $\mathbf a_u(t)$ | continuous angles | Per-slot headings of authorized UAVs |
 | UAV trajectory | $\mathbf u_k(t)$ | continuous positions | Horizontal trajectory of UAV $k$ |
-| Objective preference | $b$ | continuous, $[0,1]$ | Weight on communication versus sensing return |
 
 **Constraints**:
 
@@ -55,15 +54,15 @@ Extends the LAE ISAC line from a fixed communication- or energy-centric objectiv
 | 6c | Every authorized UAV starts and finishes at prescribed mission locations |
 | 6d-6e | UAV-to-UAV and UAV-to-target distances remain at least $D_{\min}$ |
 | 6f | Communication and sensing beam powers jointly remain below $P_{\max}$ |
-| Preference | The scalar return is $\sum_l[b,1-b]^T\mathbf r(l+1)$ |
+| (10) | Preference-weighted return is $\sum_l[b,1-b]^T\mathbf r(l+1)$ |
 
-**Algorithm**: MODE models each preference weight as a related task and uses DDPG for continuous beamforming and heading actions. A shared mixture-of-experts actor-critic uses learned gating across tasks, constrained action selection enforces motion and power structure, and hybrid replay trains from complete episode sets stored in preference-specific buffers.
+**Algorithm**: MODE models each preference weight as a related task and uses DDPG for continuous beamforming and heading actions. A shared mixture-of-experts actor-critic uses learned gating across tasks, constrained action selection enforces the flight-mission constraint (6c) and power constraint (6f), and hybrid replay trains from complete episode sets stored in preference-specific buffers.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ye et al. [x] formulated LAE ISAC control as a two-objective problem that trades expected communication sum-rate against target sensing SNR. The ground base station jointly selects communication beams, sensing beams, and authorized-UAV trajectories under mission, collision, speed, and transmit-power constraints. MODE combines continuous-control DDPG with a multi-task mixture-of-experts network, constrained action selection, and episode-level hybrid replay. A preference weight conditions one trained controller to produce different communication-sensing tradeoffs without retraining a separate policy for every weight. At preference weight 0.6, MODE began with 18.82% higher sum-rate and 35.52% higher sensing SNR than the no-warm-start variant and required 68.81% fewer time slots to converge. Across the evaluated preference and flight-period sweeps, it produced more Pareto-efficient outcomes and outperformed the listed ablations and actor-critic baseline on both objectives.
+Ye et al. [x] formulated LAE ISAC control as a two-objective problem that trades expected communication sum-rate against target sensing SNR. The ground base station jointly selects communication beams, sensing beams, and authorized-UAV trajectories under mission, collision, speed, and transmit-power constraints. MODE combines continuous-control DDPG with a multi-task mixture-of-experts network, constrained action selection, and episode-level hybrid replay. A preference weight conditions one trained controller to produce different communication-sensing tradeoffs without retraining a separate policy for every weight. At preference weight 0.6, MODE began with 18.82% higher sum-rate and 35.52% higher sensing SNR than MODE-w, the variant without the multi-task MoE architecture, and required 68.81% fewer time slots to converge. Across the evaluated preference and flight-period sweeps, it produced more Pareto-efficient outcomes than MODE-c, MODE-w, MODE-o, and the actor-critic baseline.
 
 ## Problem framing
 

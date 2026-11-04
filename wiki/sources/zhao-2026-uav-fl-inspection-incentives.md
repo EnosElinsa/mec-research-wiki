@@ -17,7 +17,7 @@ related:
   - "[[aircomp-assisted-asynchronous-fl]]"
 modeling_card: required
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # An Incentive Assignment Scheme of UAV Clients for Federated Intelligent Inspection Based on Communication-Sensing-Computing Integration
@@ -56,7 +56,7 @@ Proposes Multi-Dimensional Selection (MDS) for UAV-assisted federated intelligen
 | C3 | Participation latency satisfies $T_n\le T_{\max}$ |
 | C4 | Incentive budget satisfies $\sum_n R_n\le R_{\max}$ |
 | C5 | FL sensing, computation, and communication energy satisfies $E_n^{cmp}+E_n^{com}+E_n^{sen}\le\xi B_n^{res}$, reserving energy for return |
-| C6 | Each round selects the configured number $N'$ of UAVs from the candidate pool |
+| Selection rule | Outside problem (18), MDS selects the $N'$ UAVs with the highest score $\vartheta$ from the candidate pool |
 
 **Algorithm**: Broadcast FL task and contract menu $\rightarrow$ UAVs self-select individually rational and incentive-compatible contracts $\rightarrow$ construct the battery-feasible candidate pool $\rightarrow$ update a Gaussian-process surrogate from observed loss changes $\rightarrow$ rank by contribution and data-quality score $\rightarrow$ select clients, train, aggregate, and repeat.
 
@@ -64,7 +64,7 @@ Proposes Multi-Dimensional Selection (MDS) for UAV-assisted federated intelligen
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] studied incentive assignment and UAV client selection for federated intelligent inspection under communication, sensing, and computing energy costs. They formulated contract incentives to maximize the model owner's latency-sensitive utility subject to individual rationality, incentive compatibility, budget, latency, and residual-battery constraints. Their Multi-Dimensional Selection scheme first constructs a UAV candidate pool through contract theory and battery management. It then uses Bayesian optimization of per-round loss variations and data-quality scores to select high-contribution UAVs for federated training. Experiments on F-MNIST, CIFAR, and UAV-CM data report higher or comparable model accuracy with lower incentive costs than the evaluated selection baselines, while selecting all clients required about 21.7 times the MDS incentive in the balanced F-MNIST experiment.
+Zhao et al. [x] studied incentive assignment and UAV client selection for federated intelligent inspection under communication, sensing, and computing energy costs. They formulated contract incentives to maximize the model owner's latency-sensitive utility subject to individual rationality, incentive compatibility, budget, latency, and residual-battery constraints. Their Multi-Dimensional Selection scheme first constructs a UAV candidate pool through contract theory and battery management. It then uses Bayesian optimization of per-round loss variations and data-quality scores to select high-contribution UAVs for federated training. Experiments on F-MNIST, CIFAR, and UAV-CM data report higher or comparable model accuracy with lower incentive costs than the evaluated selection baselines, while selecting all clients required about 21.7 times the MDS incentive in the relatively balanced data-division experiment.
 
 ## Problem
 

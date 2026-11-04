@@ -17,7 +17,7 @@ related:
   - "[[zhongxiang-wei]]"
   - "[[qingjiang-shi]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Deployment and Resource Allocation Design for JRC-Enabled Multi-UAV Cooperative Systems
@@ -51,11 +51,11 @@ Jointly assigns communication users and FDMA subchannels, allocates communicatio
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every communication user receives exactly one assignment, $\sum_{m,k}a_{imk}=1$ |
-| C2 | Each UAV subchannel serves at most one user, $\sum_i a_{imk}\leq1$ |
-| C3 | Association entries are binary and all powers are nonnegative |
-| C4 | Per-UAV communication plus sensing power satisfies $\sum_jp_{jk}^{s}+\sum_mp_{mk}^{c}\leq p_k^{\max}$ |
-| C5 | Inter-UAV distance lies between $d_{\min}$ and $d_{\max}$ |
+| 31b | Every communication user receives exactly one assignment, $\sum_{m,k}a_{imk}=1$ |
+| 31c | Each UAV subchannel serves at most one user, $\sum_i a_{imk}\leq1$ |
+| 31d-31f | Association entries are binary and all powers are nonnegative |
+| 31g | Per-UAV communication plus sensing power satisfies $\sum_jp_{jk}^{s}+\sum_mp_{mk}^{c}\leq p_k^{\max}$ |
+| 31h-31i | Inter-UAV squared distance lies between $d_{\min}^2$ and $d_{\max}^2$ |
 
 **Algorithm**: Smooth the minimum-rate and maximum-SPEB terms with log-sum-exp → initialize deployment by spectral clustering → update binary association through implicit enumeration → update power through convex approximation and descent search → refine deployment by monotone reduced-space Gibbs sampling → alternate blocks to convergence.
 
@@ -63,7 +63,7 @@ Jointly assigns communication users and FDMA subchannels, allocates communicatio
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhou et al. [x] studied joint deployment and resource allocation in a JRC-enabled cooperative multi-UAV system serving communication users and sensing targets. They formulated an NP-hard MINLP that maximizes a weighted difference between the minimum communication-user rate and the maximum sensing-target squared position error bound. The decisions include binary user and FDMA-subchannel association, communication and sensing power allocation, and fixed-altitude UAV deployment under assignment, power, and inter-UAV-distance constraints. Their alternating method smooths the extrema, updates association and power in separate subproblems, and combines spectral-clustering initialization with monotone Gibbs deployment search. Simulations averaged over 100 trials report gains over the evaluated random-association, equal-power, spectral-clustering-only, and uniform-deployment designs.
+Zhou et al. [x] studied joint deployment and resource allocation in a JRC-enabled cooperative multi-UAV system serving communication users and sensing targets. They formulated an NP-hard MINLP that maximizes a weighted difference between the minimum communication-user rate and the maximum sensing-target squared position error bound. The decisions include binary user and FDMA-subchannel association, communication and sensing power allocation, and fixed-altitude UAV deployment under assignment, power, and inter-UAV-distance constraints. Their alternating method smooths the extrema, updates association and power in separate subproblems, and combines spectral-clustering initialization with monotone Gibbs deployment search. Simulations averaged over 100 trials report gains over the evaluated balanced-association round-robin, equal-power, spectral-clustering placement, and uniform-placement designs.
 
 ## System model
 
