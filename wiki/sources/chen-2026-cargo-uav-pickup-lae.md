@@ -24,8 +24,9 @@ related:
   - "[[weijie-yuan]]"
   - "[[jiangling-cao]]"
   - "[[huang-2026-hgadrl-cargo-uav-pickup-delivery]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-07-06
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Cargo UAVs Pick-Up Systems for Low-Altitude Economy With Communication Quality, Battery Energy, and Time Window Constraints

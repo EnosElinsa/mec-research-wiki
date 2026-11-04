@@ -17,6 +17,7 @@ related:
   - "[[gupta-not-in-parse-uav-replacement]]"
   - "[[shi-2023-two-timescale-migration-rerouting]]"
   - "[[ye-2023-seamless-service-handover-uav-mec]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-11-02
 updated: 2026-11-03
 ---

@@ -17,8 +17,9 @@ related:
   - "[[dingcheng-yang]]"
   - "[[yu-xu]]"
   - "[[lin-xiao]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Energy Minimization for Radio Map-Based UAV Pickup and Delivery Logistics System

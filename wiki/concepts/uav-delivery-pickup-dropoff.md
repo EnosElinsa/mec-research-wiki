@@ -23,8 +23,9 @@ related:
   - "[[huang-2026-hgadrl-cargo-uav-pickup-delivery]]"
   - "[[cherif-2021-disconnectivity-aware-cargo-uav]]"
   - "[[cherif-2024-rl-cargo-uav-cell-association]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-07-07
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # UAV Delivery Pickup/Drop-Off Optimization

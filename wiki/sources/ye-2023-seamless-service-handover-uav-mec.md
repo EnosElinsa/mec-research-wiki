@@ -15,6 +15,7 @@ related:
   - "[[gupta-not-in-parse-uav-replacement]]"
   - "[[li-2026-two-timescale-uav-replacement-hap]]"
   - "[[frejo-martin-2025-uav-stateful-microservice-live-migration]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-11-03
 updated: 2026-11-03
 ---

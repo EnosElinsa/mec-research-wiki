@@ -16,6 +16,7 @@ related:
   - "[[meliani-2026-layer-reuse-microservice-migration]]"
   - "[[rong-2024-video-analytics-live-migration]]"
   - "[[scheuer-not-in-parse-resync]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-08-27
 updated: 2026-11-03
 ---

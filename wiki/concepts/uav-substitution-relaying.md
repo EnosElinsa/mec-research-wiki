@@ -10,8 +10,9 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[liu-2026-usp-nfrp-emergency-communication]]"
   - "[[persistent-emergency-uav-swarm-service]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-11-03
 ---
 
 # UAV Substitution Relaying

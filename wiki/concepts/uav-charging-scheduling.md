@@ -21,6 +21,7 @@ related:
   - "[[li-2023-thz-uav-recharging-transmission]]"
   - "[[zhu-2022-aerial-refueling-uav-charging]]"
   - "[[ye-2023-seamless-service-handover-uav-mec]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-05-28
 updated: 2026-11-03
 ---
@@ -50,3 +51,5 @@ In [[liu-2026-jppo-en-convntm]] this is the discrete-action component handled by
 [[zhang-2022-solar-charging-uav-iot]] chooses between reachable charging stations and serving points while tracking solar harvest, flight/hover energy, residual battery, downlink data, and cumulative service fairness.
 
 Station and infrastructure choices broaden the decision. [[yang-2026-udi-docking-point-charging]] retrofits traffic lights, street lamps, and base stations as docking points and assigns UAVs to them with convex relaxation and rounding under queueing and residual-energy limits; [[ma-2025-adrl-si-uav-charging-coverage]] learns when coverage UAVs return to a station with a survival incentive and MOPSO-assisted DDPG; [[song-2024-k-coverage-uav-recharging]] assigns UAVs to monitoring points or solar platforms to maximize K-coverage lifetime; and [[wang-2023-multi-uav-dynamic-demand-charging]] inserts charging-station visits into deadline-driven swarm routing with approximation guarantees. [[li-2023-thz-uav-recharging-transmission]] instead charges hovering UAVs from a central base station inside each save-then-transmit timeslot. When energy is delivered by another aircraft rather than a station, see [[in-flight-uav-energy-replenishment]].
+
+[[uav-energy-replenishment-and-service-continuity]] compares these station-based schemes with in-flight replenishment, fleet rotation, and replacement with service handover.

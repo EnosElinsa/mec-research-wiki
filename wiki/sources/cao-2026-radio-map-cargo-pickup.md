@@ -24,8 +24,9 @@ related:
   - "[[jiangling-cao]]"
   - "[[peng-2025-cargo-uav-energy-outage-tradeoff]]"
   - "[[deng-2024-radio-map-uav-pickup-delivery]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-07-13
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Energy Minimization in UAV-Enabled Cargo Pickup Systems: A Radio Map-Aided Hierarchical Optimization Framework

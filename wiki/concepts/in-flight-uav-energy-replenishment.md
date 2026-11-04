@@ -10,8 +10,9 @@ related:
   - "[[zhu-2022-aerial-refueling-uav-charging]]"
   - "[[yan-2025-in-flight-uav-charging-distance]]"
   - "[[li-2026-battery-mule-uav-swarm-scheduling]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # In-Flight UAV Energy Replenishment

@@ -12,8 +12,9 @@ related:
   - "[[ant-colony-optimization]]"
   - "[[fixed-wing-propulsion-energy-model]]"
   - "[[xia-2026-ubt-emergency-response]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-07-12
-updated: 2026-07-13
+updated: 2026-11-03
 ---
 
 # Persistent Emergency Service with UAV Swarms

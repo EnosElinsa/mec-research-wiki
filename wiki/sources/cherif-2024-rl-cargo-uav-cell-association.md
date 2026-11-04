@@ -16,8 +16,9 @@ related:
   - "[[nesrine-cherif]]"
   - "[[wael-jaafar]]"
   - "[[halim-yanikomeroglu]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # RL-Based Cargo-UAV Trajectory Planning and Cell Association for Minimum Handoffs, Disconnectivity, and Energy Consumption

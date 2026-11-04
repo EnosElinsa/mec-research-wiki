@@ -21,8 +21,9 @@ related:
   - "[[jiangling-cao]]"
   - "[[dingcheng-yang]]"
   - "[[zhou-su]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Balancing Energy Efficiency and Communication Quality in UAV Cargo Delivery Systems

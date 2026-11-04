@@ -14,8 +14,9 @@ related:
   - "[[generalized-traveling-salesman-problem]]"
   - "[[persistent-emergency-uav-swarm-service]]"
   - "[[zhu-2022-aerial-refueling-uav-charging]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Load-Balanced Recipient Assignment and Time-Constrained Scheduling of Multiple Battery Mules for UAV Swarm Service Prolongation

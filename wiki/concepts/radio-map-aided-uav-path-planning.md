@@ -16,8 +16,9 @@ related:
   - "[[peng-2025-cargo-uav-energy-outage-tradeoff]]"
   - "[[deng-2024-radio-map-uav-pickup-delivery]]"
   - "[[huang-2026-hgadrl-cargo-uav-pickup-delivery]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-07-13
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Radio-Map-Aided UAV Path Planning
@@ -29,3 +30,5 @@ In [[cao-2026-radio-map-cargo-pickup]], a physical-map-derived expected-SNR grid
 [[guo-2026-event-triggered-sinr-navigation]] adds online map maintenance and learned navigation. Its [[uncertainty-triggered-radio-map-update]] refreshes coarse/global and fine/local SINR grids only when MC-dropout variance crosses a threshold, exposing a freshness-versus-downlink-traffic tradeoff.
 
 [[deng-2024-radio-map-uav-pickup-delivery]] uses a Dijkstra variant that adds interruption time to edge weights, so the all-pairs matrix behind its pickup-and-delivery genetic algorithm already favors reliable links. [[peng-2025-cargo-uav-energy-outage-tradeoff]] and [[huang-2026-hgadrl-cargo-uav-pickup-delivery]] instead train dueling DDQN agents on outage-probability maps: the first weights expected outage time in the objective, while the second imposes a per-position outage threshold. When the cost is the number of cell changes rather than map quality, the design becomes [[handoff-aware-uav-trajectory-planning]].
+
+[[connectivity-aware-cargo-uav-path-planning]] compares the cargo-UAV sources above with the handoff-aware ones by link-quality term, map assumption, and order-and-path decomposition.

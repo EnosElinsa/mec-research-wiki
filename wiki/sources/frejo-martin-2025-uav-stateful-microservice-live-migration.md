@@ -16,6 +16,7 @@ related:
   - "[[jaime-galan-jimenez]]"
   - "[[ye-2023-seamless-service-handover-uav-mec]]"
   - "[[zhang-2025-kubespt-stateful-pod-migration]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-11-02
 updated: 2026-11-03
 ---

@@ -17,8 +17,9 @@ related:
   - "[[deng-2024-radio-map-uav-pickup-delivery]]"
   - "[[chen-2026-cargo-uav-pickup-lae]]"
   - "[[jiangling-cao]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Joint Optimization of Energy Efficiency and Stable Communication Quality for Cargo UAV-Enabled Multi-Package Pickup and Delivery

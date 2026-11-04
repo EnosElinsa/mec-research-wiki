@@ -11,8 +11,9 @@ related:
   - "[[battery-swapping-uav-mec]]"
   - "[[continuous-omnidirectional-monitoring]]"
   - "[[wang-2026-robust-multiuav-jtcra]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Optimizing UAV Resupply Scheduling for Heterogeneous and Persistent Aerial Service

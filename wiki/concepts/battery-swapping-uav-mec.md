@@ -13,6 +13,7 @@ related:
   - "[[li-2026-two-timescale-uav-replacement-hap]]"
   - "[[ye-2023-seamless-service-handover-uav-mec]]"
   - "[[arribas-not-in-parse-uav-resupply-scheduling]]"
+  - "[[uav-energy-replenishment-and-service-continuity]]"
 created: 2026-07-07
 updated: 2026-11-03
 ---

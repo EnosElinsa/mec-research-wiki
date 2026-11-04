@@ -10,8 +10,9 @@ related:
   - "[[cherif-2021-disconnectivity-aware-cargo-uav]]"
   - "[[cherif-2024-rl-cargo-uav-cell-association]]"
   - "[[peng-2025-cargo-uav-energy-outage-tradeoff]]"
+  - "[[connectivity-aware-cargo-uav-path-planning]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Handoff-Aware UAV Trajectory Planning

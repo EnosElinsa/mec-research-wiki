@@ -1,5 +1,16 @@
 # Research Log
 
+## [2026-11-03] Synthesized UAV energy replenishment and cargo-UAV connectivity planning
+
+Filled the two coverage gaps routed by the audit entry below.
+
+- **Synthesis:** [[uav-energy-replenishment-and-service-continuity]] maps 22 sources by energy path (station charging, station swapping, docking infrastructure, solar or laser energy, in-flight charging, battery mules, rotation, replacement, and tethers), by how service is handled while a UAV refills (gap priced by a learned scheduler, avoided in the air, covered by fleet rotation, or covered by replacement with handover), and by decision layer and guarantees. Each roster row was checked against the parse abstract and model section; the KubeSPT downtime and migration-time figures are cited as data-center measurements, and the conclusion that UAV links need measured handover margins is marked as inference.
+- **Comparison:** [[connectivity-aware-cargo-uav-path-planning]] compares the seven cargo-UAV sources by link-quality term (outage time, coverage threshold, interruption-weighted distance, SNR feasibility, handoff count), map assumption, order-and-path decomposition, and energy-model features, with a non-comparability section on scenarios, metrics, task structures, and map knowledge.
+- **Connections:** both pages are reciprocally linked from the 7 cargo sources, [[radio-map-aided-uav-path-planning]], [[handoff-aware-uav-trajectory-planning]], [[uav-delivery-pickup-dropoff]], the charging, swapping, in-flight, substitution, persistent-service, and stateful-migration concepts, and 6 replacement and replenishment sources. Rejected [[many-to-one-pickup-and-delivery]] as a comparison link because it covers data-collection routing rather than cargo delivery.
+- **Not created:** no new concept, entity, finding, query, or thesis; the open questions stay on the synthesis page.
+
+Counts: synthesis pages 19 to 20 and comparisons 7 to 8; other counts unchanged. Gates: curation_status reports 0 genuinely new folders; linkcheck, process_refs, index_audit, frontmatter_audit, and source_schema_audit report zero errors; entity_roster_audit reports 0 over-claims; 57 tool tests pass. No independent reviewer agent was run.
+
 ## [2026-11-03] Audited raw paths, rosters, and navigation; curated two masked sources
 
 Whole-wiki audit of navigation and metadata, not a whole-corpus grounding audit: `source_schema_manifest.py` resolves 699 pages to 699 parses with 0 unresolved and 0 ambiguous records, but GROUNDED is 0/699 because no reviewed evidence sidecars exist.

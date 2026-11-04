@@ -1724,6 +1724,7 @@
 - [[game-theoretic-offloading-formulations]] — potential vs Stackelberg vs bargaining vs matching
 - [[ctde-actor-critic-backbones-in-mec]] — CTDE multi-agent backbones: MADDPG vs MATD3 vs MASAC vs MAPPO vs value-based
 - [[uav-trajectory-safety-guarantee-ladder]] — Protected objects, enforcement loci, persistence, and evidence boundaries across UAV trajectory safety and robustness mechanisms.
+- [[connectivity-aware-cargo-uav-path-planning]] — Outage-weighted, coverage-constrained, SNR-feasible, and handoff-counting formulations across the 7 cargo-UAV path-planning sources, with a non-comparability section
 
 ## Synthesis
 
@@ -1746,6 +1747,7 @@
 - [[mobility-asynchrony-and-geometry-in-aerial-coverage]] — Mobility prediction, timing/path-delay asynchrony, cooperation scope, and geometry mapped without conflating coverage metrics.
 - [[constraint-regimes-in-uav-data-collection]] — Energy, deadline, freshness, connectivity, kinematic, and information-quality constraints compared without ranking incompatible metrics.
 - [[hardware-validation-and-sim-to-real-in-mec]] — What "hardware-validated" means across the few non-simulation sources, and the sim-to-real challenges they name.
+- [[uav-energy-replenishment-and-service-continuity]] — Energy path, service handling during refills, and decision layer across 22 charging, swapping, in-flight, rotation, replacement, and tethered sources
 
 ## References
 
