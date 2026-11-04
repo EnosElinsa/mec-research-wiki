@@ -1,5 +1,24 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 1 (UAV energy replenishment and continuity) and applied review fixes
+
+Grounding batch 1 covers the 23 source pages cited by [[uav-energy-replenishment-and-service-continuity]]. For each page, every Modeling Quick-Use Card symbol, expression, and constraint and every Related Work sentence was checked against its parse, and the supporting line ranges were recorded in `.curation-out/source-schema-evidence-batch01-uav-continuity.json`. `source_schema_manifest.py` with that sidecar reports 23/699 grounded and 0 evidence conflicts. This is a batch result, not a whole-corpus grounding audit.
+
+- **Cards rewritten from the parse (high).** Seven cards named symbols, variables, or constraints that the paper does not use:
+  - [[gupta-not-in-parse-uav-replacement]] listed a replacement-time variable and a coverage constraint; the paper optimizes trajectories and bandwidth $b_{k,m}[n]$ for two UAVs under endpoint, speed, separation, residual-energy, minimum-rate, and bandwidth constraints.
+  - [[arribas-not-in-parse-uav-resupply-scheduling]] used invented shift and group symbols; the card now uses $f$, $g_i$, $c$, and the HORR fleet size $M = N + \lceil \frac{c+2g}{f-2g}N \rceil$.
+  - [[liu-2026-usp-nfrp-emergency-communication]] used invented $a_{m,k}$, $e_{i,j}$, and $\Delta_k$; the card now follows Problem (10) with $\alpha_{k,m}(t)$, $\mu_{p,q}(t)$, and constraints (11)-(18).
+  - [[wu-2026-parallel-cooperative-charging]] used invented station, facility, and queue variables; the card now follows PCCSUP (6) with $x_{ij}^k$, arrangement $\phi_j$, the base-fare tariff, and conditions (7) and (10).
+  - [[shi-2025-aoi-energy-replenishment-multiuav]] stated pure AoI minimization with invented action symbols; Problem (18) minimizes AoI plus weighted UAV energy over $U_u(t)$, $\varepsilon_{un}(t)$, and $\iota_u(t)$.
+  - [[liu-2026-jppo-en-convntm]] listed an OFDMA constraint and a visit-history decision variable that Problem (17) does not contain; the card now lists constraints C1-C5 as written.
+  - Narrower corrections: [[zhu-2022-aerial-refueling-uav-charging]] (the parse analyzes RF charging at about 0.5 m and laser charging, not a fixed sub-1 m near-field link, and the objective is the average of $T_i$) and [[wang-2023-multi-uav-dynamic-demand-charging]] (full recharge time $t_c(B_t)$, not a fixed charge or swap time).
+- **Related Work sentences corrected (medium).** Gupta (benchmarks are straight and ellipsoidal trajectories), Liu USP (baselines are GA-VRP and the direct-replacement lower bound; up to 30.9% fewer UAVs), Wu (payment depends on the longest facility charging time), Shi (weighted AoI-plus-energy objective; QMIX handles complex scenarios better than VDN), and j-PPO (charging indicators under flight-distance, ratio, and energy constraints).
+- **Review fixes on the two analytical pages.** An independent read-only review checked every claim against the parses (report in `.agents/tasks/review-energy-cargo-pages.md`). Fixed in [[connectivity-aware-cargo-uav-path-planning]]: [[chen-2026-cargo-uav-pickup-lae]] also has battery-replacement trips, so the "only Cao" gap was false; [[cherif-2024-rl-cargo-uav-cell-association]] plans over a precomputed RSRP heatmap, so six sources assume a prior map; the Huang benchmark description and the handoff sentence were made exact. Fixed in [[uav-energy-replenishment-and-service-continuity]]: [[ma-2025-adrl-si-uav-charging-coverage]] is described as near-station replacement that avoids interruption rather than as accepting the gap; the fleet-size statement now distinguishes fleet minimization under gap-free coverage from downtime reduction; the opening, the KubeSPT framing, the dispatch-rule wording, and one weak see-also link were tightened. Added [[zhu-2026-hab-mappo-target-search]] to [[laser-power-transfer]].
+- **Entity resolution.** [[lei-guo]] on [[yu-2026-ris-uav-iab-outage]] is the same person: the CQUPT biography repeats the 2006 UESTC PhD and wording of the Northeastern University biography, and [[ning-2023-uav-mec-offloading-deployment]] already gave a CQUPT biography. Added the roster entry and updated the affiliation text.
+- **Tooling.** Added a regression test that `referenced_raw_folders` counts only `wiki/` pages and skips `log.md`.
+
+Gates: curation_status reports 0 genuinely new folders; linkcheck, process_refs, index_audit, frontmatter_audit, and source_schema_audit report zero errors; entity_roster_audit reports 0 over-claims; 58 tool tests pass. Counts are unchanged. The evidence sidecar sits in the gitignored `.curation-out/` directory named by the tool README, so it is not part of the commit.
+
 ## [2026-11-03] Synthesized UAV energy replenishment and cargo-UAV connectivity planning
 
 Filled the two coverage gaps routed by the audit entry below.

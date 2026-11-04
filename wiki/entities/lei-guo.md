@@ -11,13 +11,14 @@ related:
   - "[[wang-2026-secure-lae-uav-scheduling]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
   - "[[wu-2025-security-aware-multiuav-service-placement]]"
+  - "[[yu-2026-ris-uav-iab-outage]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-11-03
 ---
 
 # Lei Guo
 
-Full Professor with Northeastern University, Shenyang. The biography in [[ning-2026-uav-isac-secure-beamforming]] lists communication networks, optical communications, and wireless communications as research interests.
+Full Professor whose bylines give either Northeastern University, Shenyang, or Chongqing University of Posts and Telecommunications. The biographies in [[ning-2026-uav-isac-secure-beamforming]], [[ning-2023-uav-mec-offloading-deployment]], and [[yu-2026-ris-uav-iab-outage]] share the same 2006 UESTC PhD and the same wording, which supports one identity. They list communication networks, optical communications, and wireless communications as research interests.
 
 Authored corpus sources:
 
@@ -29,6 +30,7 @@ Authored corpus sources:
 - [[wang-2026-secure-lae-uav-scheduling]] - secure low-altitude scheduling and trajectory optimization.
 - [[wu-2026-secure-split-offloading-ci]] - secure split offloading and collaborative inference.
 - [[wu-2025-security-aware-multiuav-service-placement]] - security-aware multi-UAV service placement.
+- [[yu-2026-ris-uav-iab-outage]] - outage minimization for RIS and UAV collaboration-enhanced IAB networks (CQUPT address).
 
 ## Contributions to this wiki
 

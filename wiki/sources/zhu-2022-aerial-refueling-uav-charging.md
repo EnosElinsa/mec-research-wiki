@@ -17,7 +17,7 @@ related:
   - "[[zehui-xiong]]"
   - "[[wei-yang-bryan-lim]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Aerial Refueling: Scheduling Wireless Energy Charging for UAV Enabled Data Collection
@@ -34,9 +34,9 @@ Inspired by aircraft aerial refueling, charging UAVs (CUAVs) wirelessly recharge
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: MUAVs follow pre-planned paths over a 2-D area with obstacles, hovering at points of interest (PoIs) $P_i$ for collection time $Dt(P_i)$. One or more CUAVs fly with the MUAVs and charge an adjacent MUAV at under 1 m distance with near-field WPT. All UAVs move a constant distance $l$ per slot at speed $v$. Ground charging stations, fixed platforms, and charging vehicles are the alternatives.
+**Scenario**: MUAVs follow pre-planned paths over a 2-D area with obstacles, hovering at points of interest (PoIs) $P_i$ for collection time $Dt(P_i)$. One or more CUAVs fly with the MUAVs and charge an adjacent MUAV wirelessly; the feasibility analysis uses DJI parameters for RF charging at about 0.5 m and for laser charging. All UAVs move a constant distance $l$ per slot at speed $v$. Ground charging stations, fixed platforms, and charging vehicles are the alternatives.
 
-**Problem & objective**: Minimize mission completion time, where each MUAV's time is $T_i=Tm_i+Tc_i+Tw_i$ (moving, charging, and waiting), modeled as an MDP for one CUAV and a Markov game for several.
+**Problem & objective**: Minimize the average mission completion time $\frac1n\sum_{i=1}^n T_i$, where $T_i=Tm_i+Tc_i+Tw_i$ sums moving, data-collection, and waiting-to-be-charged times, modeled as an MDP for one CUAV and a Markov game for several.
 
 **Decision variables**:
 
@@ -52,7 +52,7 @@ Inspired by aircraft aerial refueling, charging UAVs (CUAVs) wirelessly recharge
 |---|---|
 | Obstacles | CUAVs avoid blocks and the area boundary. |
 | Energy safety | An MUAV must be recharged before its energy falls below the safety threshold. |
-| Charging geometry | The CUAV moves with the target MUAV and charges within about 1 m. |
+| Charging geometry | The CUAV moves or hovers together with the target MUAV while charging it. |
 | Mission | The mission ends when all PoI data are collected and MUAVs return to the station. |
 
 **Algorithm**: For one CUAV, DDPG maps a state of MUAV locations, remaining energy, accumulated charged energy, and CUAV status to a continuous direction and a softmax-chosen charging target. For multiple CUAVs, MADDPG with adaptive parameter-space noise learns coordinated charging schedules.

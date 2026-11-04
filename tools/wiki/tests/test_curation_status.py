@@ -181,5 +181,23 @@ class CurationStatusTests(unittest.TestCase):
             self.assertEqual(duplicates["Duplicate"]["kind"], "near")
 
 
+    def test_referenced_raw_folders_counts_only_wiki_pages_outside_log(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = pathlib.Path(tmp)
+            pages = {
+                "wiki/sources/curated-paper.md": "Curated",
+                "wiki/log.md": "LogOnly",
+                "ideas/research-note.md": "IdeaOnly",
+            }
+            for relative, folder in pages.items():
+                path = root / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(
+                    f"- Parse: `raw/sources/{folder}/{folder}.md`\n", encoding="utf-8"
+                )
+
+            self.assertEqual(wikilib.referenced_raw_folders(str(root)), {"Curated"})
+
+
 if __name__ == "__main__":
     unittest.main()

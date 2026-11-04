@@ -2,9 +2,9 @@
 type: concept
 title: "Laser Power Transfer"
 tags: [wireless-power-transfer, laser-charging, uav-energy, optical-link]
-related: ["[[chen-2026-laser-powered-multiuav-qoe]]", "[[wireless-power-transfer]]"]
+related: ["[[chen-2026-laser-powered-multiuav-qoe]]", "[[wireless-power-transfer]]", "[[zhu-2026-hab-mappo-target-search]]"]
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Laser Power Transfer

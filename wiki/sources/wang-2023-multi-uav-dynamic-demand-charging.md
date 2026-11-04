@@ -14,7 +14,7 @@ related:
   - "[[deadline-constrained-uav-data-collection]]"
   - "[[song-2024-k-coverage-uav-recharging]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Multi-UAV Cooperative Trajectory for Servicing Dynamic Demands and Charging Battery
@@ -31,7 +31,7 @@ A UAV swarm visits hotspots where user demands are released over time with waiti
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A set $K$ of UAVs serves a set $J$ of $n$ user demands at locations $S$. Demand $j$ has release time $r_j$ and waiting deadline $d_j$ and needs service time $q$. Travel distance between locations is $a(s,s')$; UAVs communicate over LoS air-to-ground links. With charging, UAVs have battery capacity, hover and fly energy rates, and charging stations with a fixed charge or swap time.
+**Scenario**: A set $K$ of UAVs serves a set $J$ of $n$ user demands at locations $S$. Demand $j$ has release time $r_j$ and waiting deadline $d_j$ and needs service time $q$. Travel distance between locations is $a(s,s')$; UAVs communicate over LoS air-to-ground links. With charging, each UAV has battery capacity $B$, hovering and flying power rates $p_0 \le p_1$, and ground charging stations $C$, where a full recharge from remaining energy $B_t$ takes time $t_c(B_t)$.
 
 **Problem & objective**: Maximize the total number of successfully serviced demands over the horizon by choosing cooperative UAV paths, $\max|J(M(t))|$ over all UAV state sequences.
 
@@ -50,7 +50,7 @@ A UAV swarm visits hotspots where user demands are released over time with waiti
 | Deadline | A demand counts only if a UAV reaches its location within $[r_j,d_j]$ and serves it for $q$. |
 | Travel | Moving between $s$ and $s'$ takes time proportional to $a(s,s')$. |
 | Battery | Remaining energy never falls below zero; hovering and flying consume energy at fixed rates. |
-| Charging | A UAV recharges or swaps at a station, taking a fixed time. |
+| Charging | A UAV fully recharges at a station in time $t_c(B_t)$ and may wait there for new demands. |
 
 **Algorithm**: For one UAV, a simplified dynamic program returns the optimal path with complexity polynomial in locations and demands. For $|K|$ UAVs, iterate single-UAV optimization over residual demands, achieving $1-(1-1/|K|)^{|K|}\ge1-1/e$ in the worst case. With charging, build a directed acyclic graph of UAV-state transitions, solve the ILP optimally, or use an iterative algorithm with constant approximation ratio.
 

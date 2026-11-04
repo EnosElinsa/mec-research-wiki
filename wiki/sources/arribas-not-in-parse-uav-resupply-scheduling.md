@@ -30,29 +30,27 @@ Studies how many homogeneous UAVs are needed to keep one vehicle continuously pr
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A fleet of identical UAVs persistently serves fixed aerial locations, one UAV per location, and each UAV must periodically leave service, fly to a common energy-supply station, resupply, and return or replace another UAV.
+**Scenario**: Identical UAVs with maximum flight time $f$ must keep each of $N$ aerial locations in $\mathcal N$ covered by one UAV at all times. A UAV needs displacement time $g_i$ to fly between the energy supply station (ESS) and location $i$, and resupply at the ESS (battery swap, recharge, or refuel) takes time $c \ge 0$.
 
-**Problem & objective**: Choose cyclic duty shifts and fleet size $N$ to minimize the number of UAVs, $\min N$, while maintaining uninterrupted coverage at every aerial location.
+**Problem & objective**: The UAV persistent service (UPS) problem: find a schedule that tells each UAV when to cover a location and when to resupply, using the fewest UAVs, $\min M$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 | --- | --- | --- | --- |
-| Fleet size | $N$ | positive integer | Number of UAVs assigned to persistent service |
-| Shift start | $s_i$ | continuous time | Start of a UAV service or replacement shift |
-| Location group | $G_k$ | partition | Service locations grouped by similar supply-station distance |
+| Fleet size | $M$ | positive integer | Number of UAVs used for persistent service |
+| Replacement period | $x$ (homogeneous) or $x_{i_j}$ (per location in HERR) | continuous time | Interval between successive UAV replacements at a location |
+| Location partition | subsets $\mathcal I$ of $\mathcal N$ | partition | Groups of locations with similar displacement times, scheduled separately in PHERR |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Coverage | Exactly one UAV continuously serves each required aerial location. |
-| Energy | A servicing UAV leaves early enough to complete its return flight before exhausting energy. |
-| Cycle | Each duty cycle includes outbound flight, service, return flight, and nonzero resupply time. |
-| Homogeneous case | Equal station distances admit the feasible and exact HORR cyclic schedule. |
-| Heterogeneous case | Unequal distances make fleet minimization NP-hard; PHERR partitions locations and applies HERR within groups. |
+| Persistent coverage | Every location in $\mathcal N$ is covered by one UAV at all times. |
+| Reachability | $2g_i < f$, so a UAV can fly to a location and back before its energy runs out. |
+| Resupply cycle | Each UAV cycle includes outbound flight, service, return flight $g_i$, and resupply time $c$. |
 
-**Algorithm**: Apply HORR directly when all locations have equal flight distance. Otherwise, partition locations to reduce within-group distance heterogeneity, run the buffer-aware HERR rotation in each group, and combine the group schedules as PHERR.
+**Algorithm**: In the homogeneous case ($g_i \equiv g$), HORR rotates UAVs every $x$ time units and uses $M = N + \lceil \frac{c+2g}{f-2g} N \rceil$ UAVs, which is proved minimal. In the heterogeneous case, which is NP-hard, PHERR partitions the locations into more homogeneous subsets and runs HERR, a buffer-aware generalization of HORR, on each subset.
 
 ## Related Work Paragraph
 

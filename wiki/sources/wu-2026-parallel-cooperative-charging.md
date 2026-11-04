@@ -14,7 +14,7 @@ related:
   - "[[generalized-assignment-problem]]"
   - "[[trajectory-privacy]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cost-Effective Parallel Cooperative Charging Scheduling for UAVs
@@ -31,36 +31,34 @@ Assigns UAVs to RF charging stations and parallel charging facilities while expl
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Several providers operate charging stations with unequal-power parallel RF facilities. Each UAV must detour from its initial position to a selected station and then reach its target, and all UAVs assigned to a station share a tariff determined by the slowest facility completion time.
+**Scenario**: Charging stations $M=\{s_1,\dots,s_m\}$, run by different providers, each have $q_j$ RF charging facilities with unequal powers $p_j^k$. Each UAV $o_i \in N$ with energy demand $E_i$ and residual energy $E_i^{re}$ detours to one station and then flies to its target $l_i$, so it must be replenished with $E_i(s_j)=E_i+b_i\big(d(o_i,s_j)+d(s_j,l_i)\big)$. The UAVs charged at a station form its charging group $G_j$, and charging starts when the last group member arrives.
 
-**Problem & objective**: PCCSUP is an NP-hard assignment and parallel-machine scheduling problem that minimizes total station payment, $\min \sum_s C_s(T_s)$, over station, facility, group, and queue decisions.
+**Problem & objective**: PCCSUP (6): $\min \sum_{s_j\in M} c(\phi_j)$, where the base-fare tariff is $c(\phi_j)=A_j$ if $T(\phi_j)\le T_j$ and $A_j+a_j\big(T(\phi_j)-T_j\big)$ otherwise, and $T(\phi_j)=\max_k T(\pi_j^k)$ with $T(\pi_j^k)=\sum_{o_i\in\pi_j^k}E_i(s_j)/p_j^k$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Station assignment | $x_{i,s}$ | binary | Whether UAV $i$ charges at station $s$ |
-| Facility assignment | $y_{i,s,j}$ | binary | Parallel facility $j$ used by UAV $i$ |
-| Queue order | $\pi_{s,j}$ | discrete permutation | Charging order on facility $j$ at station $s$ |
-| Station completion time | $T_s$ | continuous, nonnegative | Maximum completion time across station facilities |
+| Facility assignment | $x_{ij}^k$ | binary | UAV $o_i$ is charged by facility $f_j^k$ of station $s_j$ |
+| Charging arrangement | $\phi_j=\{\pi_j^1,\dots,\pi_j^{q_j}\}$ | partition of $G_j$ | Which group members each facility of $s_j$ charges |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every retained UAV is assigned to exactly one station and facility |
-| C2 | A UAV has enough residual energy to reach its candidate station and target |
-| C3 | Facility power and station capacity can replenish each assigned demand |
-| C4 | Parallel queues induce $T_s$ as the station's maximum completion time |
-| C5 | Station tariff follows its base-fare threshold and marginal time cost |
+| (6-1) | Each UAV is assigned to exactly one charging facility, $\sum_{s_j}\sum_k x_{ij}^k = 1$. |
+| (6-2) | $x_{ij}^k \in \{0,1\}$. |
+| (7) | Residual energy reaches any station, $E_i^{re} \ge \max_{s_j} b_i d(o_i,s_j)$. |
+| (10) | Demand fits the battery after the detour to the target, $E_i \le E_i^{MAX}-E_i^{re}-\max_{s_j} b_i d(s_j,l_i)$. |
+| (5) | Tariff parameters satisfy $A_j \ge a_j T_j$. |
 
-**Algorithm**: Preprocess feasible UAV-station candidates → for each station grow a candidate charging group by low replenishment energy → schedule the group with a $\gamma$-approximation for uniform parallel machines → compute average marginal group cost → choose extensions through greedy set cover → repeat until all retained UAVs are assigned.
+**Algorithm**: CSAU repeatedly calls AMCAM to build, for each station, the charging group and arrangement with approximately minimum average marginal cost, using a $\gamma$-approximation for uniform parallel-machine scheduling to arrange each group. It then picks groups in a greedy set-cover manner until every UAV is covered, which gives a $\gamma(\ln n + 1)$ approximation.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wu et al. [x] studied cost-effective parallel cooperative charging scheduling for UAVs across multiple providers and unequal-power facilities. They formulated an NP-hard problem that jointly assigns UAVs to stations and facilities and orders charging queues to minimize shared station-time payments. CSAU uses AMCAM to construct station groups, invokes a gamma-approximation for uniform parallel-machine scheduling, and selects groups through a greedy set-cover procedure. The method has a $\gamma(\ln n+1)$ approximation bound for the base problem. Simulations report lower total cost than the evaluated IAASA, ICSA, and IAASAU heuristics, and a small-instance comparison reports its gap to exhaustive optimum.
+Wu et al. [x] studied cost-effective parallel cooperative charging scheduling for UAVs across multiple providers and unequal-power facilities. They formulated an NP-hard problem that jointly assigns UAVs to stations and charging facilities to minimize the total base-fare charging payment, which depends on each station's longest facility charging time. CSAU uses AMCAM to construct station groups, invokes a gamma-approximation for uniform parallel-machine scheduling, and selects groups through a greedy set-cover procedure. The method has a $\gamma(\ln n+1)$ approximation bound for the base problem. Simulations report lower total cost than the evaluated IAASA, ICSA, and IAASAU heuristics, and a small-instance comparison reports its gap to exhaustive optimum.
 
 ## Problem
 

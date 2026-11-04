@@ -20,7 +20,7 @@ related:
   - "[[song-2024-mol-aoi-energy]]"
   - "[[zhao-2026-adaptive-wdc-wet-lae]]"
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # AoI-Aware Data Collection and Energy Replenishment for Multi-UAV-Enabled IoT Systems
@@ -37,36 +37,36 @@ Studies persistent fresh data collection in a multi-UAV IoT system where UAVs wi
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs persistently collect fresh data from battery-limited sensor nodes, wirelessly transfer energy before collection, offload data to a base station, and periodically leave service to recharge at fixed stations. Each UAV observes only local sensor, UAV, and charging states, forming a cooperative Dec-POMDP.
+**Scenario**: $U$ UAVs serve $N$ sensor nodes (SNs) at positions $S_n$ on a grid of candidate hovering positions $\mathcal W$, with charging stations (CSs) $\mathcal E$ at $L_e$ and a base station at $C$. In working mode a UAV associates with one SN, charges it by wireless power transfer, collects its fresh update, offloads the data to the base station, and flies to its next position. In recharging mode it lands on a CS and recharges.
 
-**Problem & objective**: A multi-agent freshness-control problem minimizes average sensor-node age of information, $\min\limsup_T T^{-1}\sum_t\sum_n A_n(t)$, under UAV battery, charging, service, and movement limits.
+**Problem & objective**: Problem (18) minimizes the weighted sum of average SN age of information and average UAV energy consumption, $\min_{X(t)} \frac{1}{NT}\sum_{t=1}^{T}\sum_{n=1}^{N} A_n(t) + \chi\frac{1}{UT}\sum_{t=1}^{T}\sum_{u=1}^{U} e_u(t)$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV motion | $a_u(t)$ | discrete flight action | Movement selected by UAV $u$ |
-| Sensor association | $c_u(t)$ | discrete association | Sensor node served by UAV $u$ |
-| Wireless energy transfer | $p_u^{\mathrm{WPT}}(t)$ | continuous, power-bounded | Energy sent to the selected sensor |
-| Recharging mode | $r_u(t)$ | binary | Whether UAV $u$ visits a charging station |
+| UAV position | $U_u(t)$ | element of $\mathcal W$ | Hovering position of UAV $u$ in slot $t$ |
+| Association | $\varepsilon_{un}(t)$ | binary, $n \in \mathcal N \cup \mathcal E$ | UAV $u$ serves SN $n$ or flies to CS $n$ |
+| Charging completion | $\iota_u(t)$ | binary | UAV $u$ finishes recharging and returns to working mode |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Sensor data is collected only after sufficient wireless energy transfer |
-| C2 | UAV battery energy remains nonnegative and service time is feasible |
-| C3 | Each working UAV selects a valid sensor or charging station and stays in the grid |
-| C4 | Recharging actions obey station capacity and charging-rate limits |
-| C5 | Data offloading and UAV movement update the AoI state each slot |
+| (18a) | No two UAVs occupy the same position, $U_{u_1}(t) \ne U_{u_2}(t)$. |
+| (18b) | Positions lie in the candidate set, $U_u(t) \in \mathcal W$. |
+| (18c) | In working mode a UAV serves at most one SN or heads to one CS, $\sum_{n\in\mathcal N\cup\mathcal E}\varepsilon_{un}(t) \le 1-\varsigma_u(t)$. |
+| (18d) | Only a recharging UAV can complete charging, $\iota_u(t) \le \varsigma_u(t)$. |
+| (18e) | $\varepsilon_{un}(t), \iota_u(t) \in \{0,1\}$. |
+| (18f) | AoI evolution (7)-(8), UAV energy use (16), and residual-energy evolution (17). |
 
-**Algorithm**: Form a Dec-POMDP with local observations → train VDN and QMIX cooperative value functions with centralized training → execute decentralized UAV motion, association, WPT, collection, offloading, and recharge actions → compare learned policies with traditional baselines.
+**Algorithm**: Reformulate Problem (18) as a Dec-POMDP in which each UAV observes local SN, UAV, and CS states and chooses flight direction, SN association, and recharging actions. Train VDN and QMIX with centralized training and decentralized execution.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Shi et al. [x] studied age-of-information-aware data collection and energy replenishment for a multi-UAV IoT system. UAVs wirelessly charge sensor nodes, collect and offload updates to a base station, and periodically recharge at fixed stations. They formulated average sensor-node AoI minimization under UAV energy, charging, service, and movement constraints as a decentralized partially observable Markov decision process. VDN and QMIX learn cooperative value functions from local observations while centralized training aggregates the agents' information. Simulations report lower AoI for the learned policies than the evaluated traditional baselines, with QMIX favored in complex settings and VDN often using less energy.
+Shi et al. [x] studied age-of-information-aware data collection and energy replenishment for a multi-UAV IoT system. UAVs wirelessly charge sensor nodes, collect and offload updates to a base station, and periodically recharge at fixed stations. They formulated the minimization of a weighted sum of average sensor-node AoI and UAV energy consumption over flight, association, and recharging decisions, and modeled it as a decentralized partially observable Markov decision process. VDN and QMIX learn cooperative value functions from local observations while centralized training aggregates the agents' information. Simulations report lower AoI for the learned policies than the evaluated traditional baselines, with QMIX handling complex scenarios better than VDN.
 
 ## Problem
 

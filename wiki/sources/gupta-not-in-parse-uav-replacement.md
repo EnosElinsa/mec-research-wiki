@@ -30,44 +30,45 @@ Gupta, N., Agarwal, S., Mishra, D., & Kumbhani, B. *Trajectory and Resource Allo
 
 ## TL;DR
 
-When a serving UAV runs low on battery, a charged UAV replaces it from a station. The paper maximizes minimum ground-user throughput by jointly optimizing three-dimensional trajectories and bandwidth/resource allocation with alternating optimization and successive convex approximation.
+When a serving UAV runs low on battery, a charged UAV replaces it from a station. The paper maximizes minimum ground-user throughput by jointly optimizing the three-dimensional trajectories of the two UAVs and the bandwidth allocation with alternating optimization and successive convex approximation.
 
 ## Modeling Quick-Use Card
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs provide temporary base-station coverage to ground users. A replacement UAV flies from a charging station while the depleted UAV returns, so coverage continuity must be preserved.
+**Scenario**: Two rotary-wing UAVs serve $K$ ground users over FDMA downlinks with a probabilistic LoS channel. The energy-depleted UAV $U_1$ flies from the service location $\mathbf X_F$ to the charging station $\mathbf X_I$ within $N_f \le N$ slots, while the charged UAV $U_2$ flies from $\mathbf X_I$ to $\mathbf X_F$ to take over.
 
-**Problem & objective**: Maximize the minimum user throughput, $\max\min_m R_m$, over replacement trajectories and communication-resource allocations.
+**Problem & objective**: Maximize the minimum user throughput over the replacement flight, $\max_{\mathbf B,\mathbf T}\min_k R_k$ with $R_k = \sum_{n=1}^{N_f} r_{k,1}[n] + \sum_{n=1}^{N} r_{k,2}[n]$.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 | --- | --- | --- | --- |
-| UAV position | $\mathbf q_k[n]$ | continuous 3-D | Replacement and serving UAV trajectory |
-| Bandwidth share | $\beta_{k,m}[n]$ | continuous | Resource allocated to user $m$ by UAV $k$ |
-| Replacement timing | $t_k$ | slot/time | Time at which a charged UAV takes over |
+| UAV trajectory | $\mathbf T = \{\mathbf X_m[n]\}$, with horizontal $\mathbf q_m[n]$ and altitude $z_m[n]$ | continuous 3-D | Positions of $U_1$ and $U_2$ in slot $n$ |
+| Bandwidth allocation | $\mathbf B = \{b_{k,m}[n]\}$ | continuous, $\ge 0$ | Bandwidth given to user $k$ by UAV $m$ in slot $n$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Coverage | Users retain a serving UAV throughout replacement. |
-| Mobility | UAV positions, velocity, and replacement flight path are feasible. |
-| Resource | Bandwidth shares remain within each UAV's budget. |
-| Battery | Depleted UAV returns to charging before unsafe energy exhaustion. |
+| Endpoints | $\mathbf X_1[0]=\mathbf X_F$, $\mathbf X_1[N_f]=\mathbf X_I$, $\mathbf X_2[0]=\mathbf X_I$, $\mathbf X_2[N]=\mathbf X_F$ |
+| Speed | $v_m[n] \le V_{\max}$ |
+| Collision avoidance | $\lVert \mathbf X_m[n]-\mathbf X_j[n]\rVert^2 \ge D_{\min}^2$ for $m \ne j$ |
+| Residual energy | $\sum_{n=1}^{N_f} e_1[n] \le E_{\text{left}}$ for the depleted UAV, using the rotary-wing propulsion model |
+| Minimum rate | $r_{k,1}[n] + r_{k,2}[n] \ge R_{th}$ for every user and slot |
+| Bandwidth budget | $\sum_{k}\sum_{m} b_{k,m}[n] = B$ |
 
-**Algorithm**: Alternate closed-form or convex bandwidth updates with trajectory updates solved by successive convex approximation until the max-min objective converges.
+**Algorithm**: Alternating optimization: bandwidth allocation by linear programming for fixed trajectories, then horizontal and vertical trajectory updates by successive convex approximation for fixed bandwidth, repeated until the objective improvement falls below a tolerance.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gupta et al. [x] studied UAV replacement as a coverage-continuity problem for a UAV-assisted wireless system. Their max-min throughput objective jointly optimizes three-dimensional multi-UAV trajectories and user resource allocation when a charged UAV replaces an energy-depleted server. The nonconvex formulation is handled by alternating optimization and successive convex approximation. Numerical studies show higher achievable sum rate and fairer throughput than the benchmark replacement strategies. The paper focuses on communication coverage rather than MEC task execution or service-state migration.
+Gupta et al. [x] studied UAV replacement as a coverage-continuity problem for a UAV-assisted wireless system. Their max-min throughput objective jointly optimizes three-dimensional multi-UAV trajectories and user resource allocation when a charged UAV replaces an energy-depleted server. The nonconvex formulation is handled by alternating optimization and successive convex approximation. Numerical studies show higher achievable sum rate and fairer per-user throughput than straight and ellipsoidal trajectory benchmarks. The paper focuses on communication coverage rather than MEC task execution or service-state migration.
 
 ## Problem and system model
 
-UAVs act as temporary base stations and serve ground users through line-of-sight channels. Replacement flight and communication allocation must be coordinated so the old UAV can return while the new UAV reaches service position.
+UAVs act as temporary base stations and serve ground users through probabilistic LoS/NLoS channels. Replacement flight and communication allocation must be coordinated so the old UAV can return while the new UAV reaches service position.
 
 ## Method
 
