@@ -105,6 +105,6 @@ This source is a DRL counterpart to [[wu-2026-terrain-aware-uav-mec]]. Wu et al.
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain/Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain.md`
-- Origin PDF: `raw/sources/Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain/Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain.pdf`
-- Figures: `raw/sources/Energy-Efficient Joint Task Offloading and 3D Trajectory Optimization for UAV-assisted MEC Systems over Uneven Terrain/images/`
+- Parse: `raw/sources/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain.md`
+- Origin PDF: `raw/sources/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain.pdf`
+- Figures: `raw/sources/Energy-Efficient_Joint_Task_Offloading_and_3D_Trajectory_Optimization_for_UAV-assisted_MEC_Systems_over_Uneven_Terrain/images/`

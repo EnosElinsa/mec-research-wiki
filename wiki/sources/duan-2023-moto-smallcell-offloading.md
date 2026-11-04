@@ -94,5 +94,5 @@ A **non-UAV, terrestrial small-cell** MEC entry — distinct from the corpus's U
 
 ## Raw artifacts
 
-- `raw/sources/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC/full.md`
+- `raw/sources/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC.md`
 - Original PDF (`657f07e6-4a0e-42c1-80a6-7a7ba943dbe4_origin.pdf`) and extracted figures (`images/`) in the same folder.

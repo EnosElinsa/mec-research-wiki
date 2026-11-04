@@ -15,8 +15,9 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[hierarchical-aerial-mec]]"
   - "[[wang-2025-lae-network-survey]]"
+  - "[[haps-uav-isac-resource-allocation]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Aerial ISAC: A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced Coverage and Security
@@ -102,4 +103,4 @@ This inverts the typical "user task → aerial MEC" pipeline that dominates the 
 
 ## Raw artifacts
 
-- `raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/full.md`
+- `raw/sources/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced/Aerial ISAC A HAPS-Assisted Integrated Sensing, Communications and Computing Framework for Enhanced.md`

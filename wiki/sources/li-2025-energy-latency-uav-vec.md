@@ -99,5 +99,5 @@ This is a **vehicular MEC + FL scheduling** source. It is closest to [[li-2024-a
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Latency Tradeoff for Joint Optimization of Vehicle Selection and Resource Allocation in UAV-Assisted Vehicular Edge Computing/Energy-Latency Tradeoff for Joint Optimization of Vehicle Selection and Resource Allocation in UAV-Assisted Vehicular Edge Computing.md`
+- `raw/sources/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing/Energy-Latency_Tradeoff_for_Joint_Optimization_of_Vehicle_Selection_and_Resource_Allocation_in_UAV-Assisted_Vehicular_Edge_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

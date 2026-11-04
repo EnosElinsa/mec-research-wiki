@@ -96,5 +96,5 @@ Connects [[distributional-reinforcement-learning]] with GAI (GAN) for RIS resour
 
 ## Raw artifacts
 
-- `raw/sources/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication/full.md`
+- `raw/sources/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication/GAI-Based_Resource_Management_in_RIS-Aided_Next-Generation_Network_and_Communication.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

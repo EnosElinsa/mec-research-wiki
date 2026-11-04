@@ -95,5 +95,5 @@ This source extends [[low-altitude-intelligent-network]] and [[uav-trajectory-co
 
 ## Raw artifacts
 
-- `raw/sources/Service-Oriented Segmented Trajectory Design for Low-Altitude UAV-Assisted MEC Networks/Service-Oriented Segmented Trajectory Design for Low-Altitude UAV-Assisted MEC Networks.md`
+- `raw/sources/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks/Service-Oriented_Segmented_Trajectory_Design_for_Low-Altitude_UAV-Assisted_MEC_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

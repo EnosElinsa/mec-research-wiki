@@ -96,5 +96,5 @@ A **LEO-satellite networking** entry centered on the HO procedure itself, distin
 
 ## Raw artifacts
 
-- `raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/full.md`
+- `raw/sources/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization/Handover_Protocol_Learning_for_LEO_Satellite_Networks_Access_Delay_and_Collision_Minimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

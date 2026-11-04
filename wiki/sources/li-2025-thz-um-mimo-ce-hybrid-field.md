@@ -61,5 +61,5 @@ A physical-layer THz channel estimation anchor for [[near-field-communications]]
 
 ## Raw artifacts
 
-- `raw/sources/Hybrid_Near-_and_Far-Field_THz_UM-MIMO_Channel_Estimation_A_Sparsifying_Matrix_Learning-Aided_Bayesian_Approach/full.md`
+- `raw/sources/Hybrid_Near-_and_Far-Field_THz_UM-MIMO_Channel_Estimation_A_Sparsifying_Matrix_Learning-Aided_Bayesian_Approach/Hybrid_Near-_and_Far-Field_THz_UM-MIMO_Channel_Estimation_A_Sparsifying_Matrix_Learning-Aided_Bayesian_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

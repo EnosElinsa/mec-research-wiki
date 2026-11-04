@@ -107,5 +107,5 @@ Both simulation and a small **indoor** hardware experiment are shown, but the te
 This is the corpus's anchor for [[anti-jamming-mec]] resource management, complementing — and distinct from — [[physical-layer-security]] and the defensive [[friendly-jamming-uav]] concept (here jamming is the adversary, sensed and avoided rather than used). Methodologically it sits in the multi-agent DRL family alongside [[qin-2025-bcuav-masac]] (MASAC) and shares the actor-critic lineage ([[ddpg]], [[multi-agent-td3]]) with [[bao-2025-ddpg-video-offloading]]. As UAV-assisted MEC resource management it links to [[wu-2026-terrain-aware-uav-mec]], [[zhu-2025-lycnn-drl-wpt-mec]], and [[ma-2025-pdqn-vehicular-mec]], and it shares the [[energy-latency-tradeoff]] objective and [[csi-estimation-error]] modeling common across the MEC corpus.
 
 ## Raw artifacts
-- `raw/sources/Deep_Reinforcement_Learning-Based_Resource_Management_for_UAV-Assisted_Mobile_Edge_Computing_Against_Jamming/full.md`
+- `raw/sources/Deep_Reinforcement_Learning-Based_Resource_Management_for_UAV-Assisted_Mobile_Edge_Computing_Against_Jamming/Deep_Reinforcement_Learning-Based_Resource_Management_for_UAV-Assisted_Mobile_Edge_Computing_Against_Jamming.md`
 - Original PDF (`61d1a406-15d3-42b7-9873-b406053311ee_origin.pdf`) and extracted figures (`images/`) in the same folder.

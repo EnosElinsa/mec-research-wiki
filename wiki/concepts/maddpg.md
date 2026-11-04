@@ -35,8 +35,9 @@ related:
   - "[[routing-vnf-scaling-control-loop]]"
   - "[[betalo-2026-meta-uav-scheduling]]"
   - "[[mw-mad3pg]]"
+  - "[[mei-2026-energy-aware-multiuav-maddpg]]"
 created: 2026-05-31
-updated: 2026-07-13
+updated: 2026-11-03
 ---
 
 # Multi-Agent Deep Deterministic Policy Gradient (MADDPG)

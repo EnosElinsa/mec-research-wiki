@@ -13,15 +13,16 @@ related:
   - "[[wen-2025-iscc-air-feel]]"
   - "[[liu-not-in-parse-wireless-control-association]]"
   - "[[zhang-2025-f-dadc-aoi-multiuav]]"
+  - "[[wang-2018-wpt-mec-joint-offloading]]"
 created: 2026-06-03
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Shuguang Cui
 
 IEEE Fellow. Affiliated with the **School of Science and Engineering, the Shenzhen Future Network of Intelligence Institute, and the Guangdong Provincial Key Laboratory of Future Networks of Intelligence, The Chinese University of Hong Kong, Shenzhen** (Shenzhen, China; email `shuguangcui@cuhk.edu.cn`) across his papers in this wiki.
 
-Co-authored 10 sources in this wiki, spanning graph-based resource management, extremely-large-scale MIMO, generative-AI/ISAC physical-layer work, integrated sensing-computation-communication edge AI, and generative-diffusion network optimization:
+Co-authored 11 sources in this wiki, spanning graph-based resource management, extremely-large-scale MIMO, generative-AI/ISAC physical-layer work, integrated sensing-computation-communication edge AI, and generative-diffusion network optimization:
 
 - [[dai-2024-graph-rm-survey-optimization]] — Part I (optimization approaches) of the two-part graph-based-resource-management survey.
 - [[dai-2024-graph-rm-survey-learning]] — Part II (learning approaches / GNNs) of the same two-part survey.
@@ -33,6 +34,7 @@ Co-authored 10 sources in this wiki, spanning graph-based resource management, e
 - [[wen-2025-iscc-air-feel]] - ISCC for over-the-air federated edge learning.
 - [[liu-not-in-parse-wireless-control-association]] - association and communication-computation co-design for wireless control networks (CUHK Shenzhen address).
 - [[zhang-2025-f-dadc-aoi-multiuav]] - federated DRL for multi-UAV AoI minimization (CUHK Shenzhen address).
+- [[wang-2018-wpt-mec-joint-offloading]] - joint offloading and computing optimization in wireless powered MEC (UC Davis address).
 
 ## Contributions to this wiki
 

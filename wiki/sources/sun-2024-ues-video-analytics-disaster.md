@@ -98,5 +98,5 @@ A **post-disaster + video-analytics** entry that pairs the two workload/scenario
 
 ## Raw artifacts
 
-- `raw/sources/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue/full.md`
+- `raw/sources/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue/Optimal_Task_Offloading_and_Trajectory_Planning_Algorithms_for_Collaborative_Video_Analytics_With_UAV-Assisted_Edge_in_Disaster_Rescue.md`
 - Original PDF (`51a417ff-e883-4afc-9179-ca7f3c146ed3_origin.pdf`) and extracted figures (`images/`) in the same folder.

@@ -101,5 +101,5 @@ A **classical / convex-optimization** WPT-MEC entry that extends the single-UAV 
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization/full.md`
+- `raw/sources/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization/UAV-Assisted_Wireless_Powered_Cooperative_Mobile_Edge_Computing_Joint_Offloading_CPU_Control_and_Trajectory_Optimization.md`
 - Original PDF and extracted figures in the same folder.

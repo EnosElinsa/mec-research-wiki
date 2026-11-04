@@ -15,8 +15,9 @@ related:
   - "[[bao-2025-ddpg-video-offloading]]"
   - "[[zhang-2024-uav-task-offloading-ddpg]]"
   - "[[maddpg]]"
+  - "[[mnih-2015-dqn-atari]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Continuous Control with Deep Reinforcement Learning
@@ -73,5 +74,5 @@ The **method ancestor** of the wiki's large DDPG lineage. The [[ddpg]] concept p
 
 ## Raw artifacts
 
-- `raw/sources/Continuous control with deep reinforcement learning/full.md`
+- `raw/sources/Continuous control with deep reinforcement learning/Continuous control with deep reinforcement learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

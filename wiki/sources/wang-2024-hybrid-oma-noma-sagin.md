@@ -95,5 +95,5 @@ A **NOMA + SAGIN** entry that complements the NOMA-enabled aerial works [[hsu-20
 
 ## Raw artifacts
 
-- `raw/sources/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks/full.md`
+- `raw/sources/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks/Hybrid_OMA_NOMA_Mode_Selection_and_Resource_Allocation_in_Space-Air-Ground_Integrated_Networks.md`
 - Original PDF and extracted figures in the same folder.

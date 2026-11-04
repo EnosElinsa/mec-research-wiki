@@ -11,8 +11,9 @@ related:
   - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
   - "[[li-2026-directional-modulation-irs-uav]]"
   - "[[huang-2026-star-ris-nearfield-isac]]"
+  - "[[li-2025-thz-um-mimo-ce-hybrid-field]]"
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Near-Field Communications

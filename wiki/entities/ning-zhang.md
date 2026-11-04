@@ -7,21 +7,25 @@ related:
   - "[[li-2024-robust-bmappo-multiuav-mec]]"
   - "[[li-2024-airground-vec-offloading]]"
   - "[[li-2023-adaptive-digital-twin-uav-iscc]]"
+  - "[[huang-2024-fed-idcco-iov-caching]]"
+  - "[[liu-2024-sagin-spherical-sg-connectivity]]"
 created: 2026-05-31
-updated: 2026-07-06
+updated: 2026-11-03
 ---
 
 # Ning Zhang
 
 IEEE Senior Member. Affiliated with the **Department of Electrical and Computer Engineering, University of Windsor** (Windsor, ON, Canada); email `ning.zhang@uwindsor.ca` (consistent across all three sources).
 
-Co-authored 4 sources in this wiki:
+Co-authored 6 sources in this wiki:
 
 - [[li-2024-twohop-iort-packet-scheduling]] — two-hop packet scheduling + resource allocation + UAV trajectory (MADDPG-APER) for IoRT.
 - [[li-2024-robust-bmappo-multiuav-mec]] — robust multi-UAV-MEC offloading under joint communication + computation uncertainty (b-MAPPO).
 - [[li-2024-airground-vec-offloading]] — joint computation offloading + multidimensional resource allocation in an air-ground integrated VEC network (HAP + UAVs + RSU; JCESRA).
 
 - [[li-2023-adaptive-digital-twin-uav-iscc]] - adaptive digital twin for UAV-assisted ISCC networks with ATB-MAPPO.
+- [[huang-2024-fed-idcco-iov-caching]] - federated DRL for joint caching and computation offloading in UAV-assisted IoV.
+- [[liu-2024-sagin-spherical-sg-connectivity]] - spherical stochastic-geometry uplink connectivity analysis of SAGIN.
 
 ## Contributions to this wiki
 

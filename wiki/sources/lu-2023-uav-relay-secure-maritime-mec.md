@@ -105,5 +105,5 @@ A **secure maritime MEC** entry combining [[uav-mobile-relaying|UAV mobile relay
 
 ## Raw artifacts
 
-- `raw/sources/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC/full.md`
+- `raw/sources/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC/Resource_and_Trajectory_Optimization_for_UAV-Relay-Assisted_Secure_Maritime_MEC.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

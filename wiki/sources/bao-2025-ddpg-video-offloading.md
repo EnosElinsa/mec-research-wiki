@@ -108,4 +108,4 @@ This is the wiki's first **video-analytics workload** entry. Earlier offloading 
 
 ## Raw artifacts
 
-- `raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/full.md`
+- `raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement.md`

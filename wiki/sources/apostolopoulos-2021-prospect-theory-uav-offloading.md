@@ -97,5 +97,5 @@ A **game-theoretic, behavior-aware** offloading entry that is methodologically d
 
 ## Raw artifacts
 
-- `raw/sources/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty/full.md`
+- `raw/sources/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty/Data_Offloading_in_UAV-Assisted_Multi-Access_Edge_Computing_Systems_Under_Resource_Uncertainty.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

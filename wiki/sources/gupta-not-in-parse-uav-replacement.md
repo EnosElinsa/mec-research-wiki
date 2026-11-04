@@ -16,8 +16,9 @@ related:
   - "[[nishant-gupta]]"
   - "[[deepak-mishra]]"
   - "[[satyam-agarwal]]"
+  - "[[ye-2023-seamless-service-handover-uav-mec]]"
 created: 2026-08-27
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Trajectory and Resource Allocation for UAV Replacement to Provide Uninterrupted Service

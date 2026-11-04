@@ -101,5 +101,5 @@ This source extends [[generative-ai-for-mec]] from AIGC service provisioning and
 
 ## Raw artifacts
 
-- `raw/sources/HybridRAG-Based LLM Agents for Low-Carbon Optimization in Low-Altitude Economy Networks/HybridRAG-Based LLM Agents for Low-Carbon Optimization in Low-Altitude Economy Networks.md`
+- `raw/sources/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks/HybridRAG-Based_LLM_Agents_for_Low-Carbon_Optimization_in_Low-Altitude_Economy_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -98,5 +98,5 @@ This VEC entry makes [[integrated-sensing-and-communication]] central to UAV-ass
 
 ## Raw artifacts
 
-- `raw/sources/Joint Beamforming and UAV Deployment Optimization for ISAC-Enhanced UAV-Assisted VEC/Joint Beamforming and UAV Deployment Optimization for ISAC-Enhanced UAV-Assisted VEC.md`
+- `raw/sources/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC/Joint_Beamforming_and_UAV_Deployment_Optimization_for_ISAC-Enhanced_UAV-Assisted_VEC.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

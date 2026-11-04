@@ -13,8 +13,9 @@ related:
   - "[[cooperative-perception]]"
   - "[[dynamic-constrained-multi-objective-optimization]]"
   - "[[zhang-2025-mcma-task-migration]]"
+  - "[[qiqi-xie]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Enabled Multi-Source Data Fusion in Vehicular Networks: A Joint Optimization Approach for Reliability and Latency
@@ -96,6 +97,6 @@ Xie et al. [x] studied UAV-enabled multi-source data fusion for cooperative perc
 
 ## Raw artifacts
 
-- Parse: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/full.md`
-- Origin PDF: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/3f0640e8-069b-47ea-8844-e0100315d78c_origin.pdf`
+- Parse: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.md`
+- Origin PDF: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency.pdf`
 - Figures: `raw/sources/UAV-Enabled_Multi-Source_Data_Fusion_in_Vehicular_Networks_A_Joint_Optimization_Approach_for_Reliability_and_Latency/images/`

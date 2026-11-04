@@ -104,5 +104,5 @@ A **collaborative-beamforming + physical-layer-security** entry from the Jilin-U
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information/full.md`
+- `raw/sources/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information/UAV-Enabled_Secure_Communications_via_Collaborative_Beamforming_With_Imperfect_Eavesdropper_Information.md`
 - Original PDF (`b0b407e8-9ff7-4831-a73e-9d790e1b975a_origin.pdf`) and extracted figures (`images/`) in the same folder.

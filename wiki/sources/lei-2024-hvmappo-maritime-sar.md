@@ -107,5 +107,5 @@ A **maritime MEC** entry joining the corpus's maritime track, but distinctive fo
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Trajectory_and_Communication_Optimization_for_Heterogeneous_Vehicles_in_Maritime_SAR_Multi-Agent_Reinforcement_Learning/full.md`
+- `raw/sources/Joint_Trajectory_and_Communication_Optimization_for_Heterogeneous_Vehicles_in_Maritime_SAR_Multi-Agent_Reinforcement_Learning/Joint_Trajectory_and_Communication_Optimization_for_Heterogeneous_Vehicles_in_Maritime_SAR_Multi-Agent_Reinforcement_Learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

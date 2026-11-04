@@ -113,5 +113,5 @@ A **collaborative-beamforming / virtual-antenna-array** entry from the Jilin-Uni
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning/UAV-Enabled_Collaborative_Beamforming_via_Multi-Agent_Deep_Reinforcement_Learning.md`
 - Original PDF (`b2e661db-ca7f-4a77-afb9-eb2a0bd0d798_origin.pdf`) and extracted figures in the same folder's `images/`.

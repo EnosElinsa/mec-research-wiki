@@ -97,5 +97,5 @@ This source adds an explicit [[sequential-task-offloading]] anchor to the broade
 
 ## Raw artifacts
 
-- `raw/sources/Graph-Based Spatiotemporal RL Framework for Sequential Task Offloading in Multi-UAV Systems/Graph-Based Spatiotemporal RL Framework for Sequential Task Offloading in Multi-UAV Systems.md`
+- `raw/sources/Graph-Based_Spatiotemporal_RL_Framework_for_Sequential_Task_Offloading_in_Multi-UAV_Systems/Graph-Based_Spatiotemporal_RL_Framework_for_Sequential_Task_Offloading_in_Multi-UAV_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

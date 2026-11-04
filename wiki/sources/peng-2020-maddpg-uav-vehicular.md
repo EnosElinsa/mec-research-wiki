@@ -96,5 +96,5 @@ An early (2020) **vehicular MEC + UAV** MADDPG entry by the Waterloo group (Haix
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/full.md`
+- `raw/sources/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks/Multi-Agent_Reinforcement_Learning_Based_Resource_Management_in_MEC-_and_UAV-Assisted_Vehicular_Networks.md`
 - Original PDF (`e792cab5-4bb8-4122-80c1-05a90eb3a865_origin.pdf`) and extracted figures (`images/`) in the same folder.

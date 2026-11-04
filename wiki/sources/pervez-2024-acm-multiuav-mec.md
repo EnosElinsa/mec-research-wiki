@@ -105,5 +105,5 @@ Simulation-only (numerical results). 2-D horizontal trajectory at fixed altitude
 A **classical/convex multi-UAV-MEC** source whose offloading/server-selection layer is a **[[potential-game]]** — the same equilibrium tool used by [[chen-2024-ulse-game]] (UAV-LEO offloading) and [[he-2019-euagame-user-allocation]] ([[edge-user-allocation]]), here embedded inside an alternating-optimization solver rather than standing alone. Its GWF + SCA + gradient-descent **[[alternating-optimization-sdr-sca]]** pipeline and weighted [[energy-latency-tradeoff]] objective align it with [[liu-2022-miso-uav-mec-trajectory]] and [[bai-2024-delay-aware-cooperative-edge-cloud]]; the multi-UAV cooperative-offloading framing parallels [[guo-2023-mccco-multiuav-5g-offloading]]. Sits in the broader [[multi-uav-assisted-mec]] / [[task-offloading]] landscape.
 
 ## Raw artifacts
-- `raw/sources/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network/full.md`
+- `raw/sources/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network/Energy_and_Latency_Efficient_Joint_Communication_and_Computation_Optimization_in_a_Multi-UAV-Assisted_MEC_Network.md`
 - Original PDF and extracted figures in the same folder.

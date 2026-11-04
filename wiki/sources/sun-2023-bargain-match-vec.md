@@ -94,5 +94,5 @@ A **game-theoretic VEC** entry that complements the DRL-based vehicular work [[m
 
 ## Raw artifacts
 
-- `raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/full.md`
+- `raw/sources/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks/BARGAIN-MATCH_A_Game_Theoretical_Approach_for_Resource_Allocation_and_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md`
 - Original PDF and extracted figures in the same folder.

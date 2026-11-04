@@ -89,5 +89,5 @@ Distinct in coupling DRL trajectory design with an ILP RRM solver; most corpus t
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/full.md`
+- `raw/sources/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks/Joint_Trajectory_Design_and_Radio_Resource_Management_for_UAV-Aided_Vehicular_Networks.md`
 - Original PDF (`8b0db62d-3368-4cba-84e8-60b9224fbb27_origin.pdf`) and extracted figures (`images/`) in the same folder.

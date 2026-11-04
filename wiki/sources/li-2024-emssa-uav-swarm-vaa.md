@@ -100,5 +100,5 @@ A **collaborative-beamforming / virtual-antenna-array** entry from the Jilin-Uni
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays/full.md`
+- `raw/sources/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays/Multi-Objective_Optimization_for_UAV_Swarm-Assisted_IoT_With_Virtual_Antenna_Arrays.md`
 - Original PDF (`12c88c8c-3b81-48e0-803f-406912824221_origin.pdf`) and extracted figures (`images/`) in the same folder.

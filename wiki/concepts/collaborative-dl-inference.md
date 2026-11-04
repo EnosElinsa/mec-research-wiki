@@ -11,8 +11,9 @@ related:
   - "[[zhai-2026-collaborative-inference-uav-mec]]"
   - "[[wu-2026-secure-split-offloading-ci]]"
   - "[[wang-2026-scalable-multiuav-analytics]]"
+  - "[[asap-swarm-inference-speedup]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-11-03
 ---
 
 # Collaborative DL Inference

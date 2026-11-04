@@ -16,8 +16,9 @@ related:
   - "[[high-altitude-platform-station]]"
   - "[[gupta-not-in-parse-uav-replacement]]"
   - "[[shi-2023-two-timescale-migration-rerouting]]"
+  - "[[ye-2023-seamless-service-handover-uav-mec]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # A Two-Timescale Learning-Based Stochastic Game for Energy-Efficient UAV Trajectory Planning and Replacement in Hierarchical Aerial Computing

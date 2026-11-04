@@ -98,5 +98,5 @@ Extends the **blockchain-on-edge trust layer** to UAV-assisted MEC offloading, j
 
 ## Raw artifacts
 
-- `raw/sources/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation/full.md`
+- `raw/sources/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation.md`
 - Original PDF and extracted figures in the same folder.

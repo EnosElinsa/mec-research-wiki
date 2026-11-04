@@ -96,5 +96,5 @@ This source extends the [[semantic-communication]] and caching track with [[sema
 
 ## Raw artifacts
 
-- `raw/sources/Deep Lifelong Learning for Adaptive Semantic-Aware Content Reuse in UAV-Assisted Metaverse/Deep Lifelong Learning for Adaptive Semantic-Aware Content Reuse in UAV-Assisted Metaverse.md`
+- `raw/sources/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse/Deep_Lifelong_Learning_for_Adaptive_Semantic-Aware_Content_Reuse_in_UAV-Assisted_Metaverse.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

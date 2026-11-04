@@ -98,5 +98,5 @@ A canonical **UAV-communications energy-efficiency** anchor from the Zeng/Zhang 
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization/full.md`
+- `raw/sources/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization/Energy-Efficient_UAV_Communication_With_Trajectory_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

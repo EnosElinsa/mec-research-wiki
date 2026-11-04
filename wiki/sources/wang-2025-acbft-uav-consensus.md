@@ -94,5 +94,5 @@ Extends the wiki's **trust / blockchain-on-edge** thread beyond aggregation and 
 
 ## Raw artifacts
 
-- `raw/sources/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks/full.md`
+- `raw/sources/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.md`
 - Original PDF and extracted figures in the same folder.

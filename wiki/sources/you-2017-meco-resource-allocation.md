@@ -98,5 +98,5 @@ An early, widely-cited **MEC fundamentals** anchor that complements the energy-h
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading/full.md`
+- `raw/sources/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

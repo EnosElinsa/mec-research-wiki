@@ -92,5 +92,5 @@ A **cooperative multi-UAV partial-offloading** entry emphasizing task interdepen
 
 ## Raw artifacts
 
-- `raw/sources/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond/full.md`
+- `raw/sources/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond/Multi-UAV_Cooperative_Task_Offloading_and_Resource_Allocation_in_5G_Advanced_and_Beyond.md`
 - Original PDF and extracted figures in the same folder.

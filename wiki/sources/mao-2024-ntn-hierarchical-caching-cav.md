@@ -15,8 +15,10 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[zhao-2024-caching-service-placement-uav]]"
   - "[[zhao-2025-traj-offload-cache-migration]]"
+  - "[[yangbo-liu]]"
+  - "[[yijie-xun]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # On a Hierarchical Content Caching and Asynchronous Updating Scheme for Non-Terrestrial Network-Assisted Connected Automated Vehicles
@@ -92,5 +94,5 @@ A **caching over non-terrestrial networks** entry that complements the UAV cachi
 
 ## Raw artifacts
 
-- `raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/full.md`
+- `raw/sources/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles/On_a_Hierarchical_Content_Caching_and_Asynchronous_Updating_Scheme_for_Non-Terrestrial_Network-Assisted_Connected_Automated_Vehicles.md`
 - Original PDF and extracted figures in the same folder.

@@ -14,8 +14,10 @@ related:
   - "[[garcia-gil-2025-uav-microservice-migration-energy]]"
   - "[[juan-manuel-murillo]]"
   - "[[jaime-galan-jimenez]]"
+  - "[[ye-2023-seamless-service-handover-uav-mec]]"
+  - "[[zhang-2025-kubespt-stateful-pod-migration]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Live Migration of Stateful Microservices in UAV-Assisted Networks for Enhanced Availability

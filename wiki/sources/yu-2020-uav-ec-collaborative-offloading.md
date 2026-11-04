@@ -92,5 +92,5 @@ A foundational **UAV-EC collaborative offloading** entry, methodologically close
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing/full.md`
+- `raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing/Joint_Task_Offloading_and_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

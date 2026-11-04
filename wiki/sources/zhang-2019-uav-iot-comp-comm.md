@@ -97,5 +97,5 @@ An early, **optimization-based single-UAV MEC** entry that anchors the classic "
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT/full.md`
+- `raw/sources/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT/Joint_Computation_and_Communication_Design_for_UAV-Assisted_Mobile_Edge_Computing_in_IoT.md`
 - Original PDF and extracted figures in the same folder.

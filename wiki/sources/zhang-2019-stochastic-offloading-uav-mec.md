@@ -98,5 +98,5 @@ An early **Lyapunov-based stochastic UAV-MEC** entry. It is distinct from the si
 
 ## Raw artifacts
 
-- `raw/sources/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing/Stochastic_Computation_Offloading_and_Trajectory_Scheduling_for_UAV-Assisted_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

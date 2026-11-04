@@ -103,5 +103,5 @@ A widely-cited **MEC + energy-harvesting** anchor and one of the originators of 
 
 ## Raw artifacts
 
-- `raw/sources/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices/full.md`
+- `raw/sources/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

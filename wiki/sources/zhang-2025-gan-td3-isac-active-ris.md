@@ -94,5 +94,5 @@ A **generative-AI-enhanced DRL** entry in the ISAC track. It pairs naturally wit
 
 ## Raw artifacts
 
-- `raw/sources/Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs/full.md`
+- `raw/sources/Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs/Generative-Adversarial-Network-Enhanced_DRL_for_ISAC_With_Double_Active_RISs.md`
 - Original PDF and extracted figures in the same folder.

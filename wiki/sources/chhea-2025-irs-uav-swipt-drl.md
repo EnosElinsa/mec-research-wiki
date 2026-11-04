@@ -94,5 +94,5 @@ Connects [[simultaneous-wireless-information-and-power-transfer]] and IRS-assist
 
 ## Raw artifacts
 
-- `raw/sources/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL/full.md`
+- `raw/sources/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL/Energy_Efficiency_Optimization_in_Intelligent_Reflecting_Surface-Aided_UAV_Wireless_Power_Transfer_Networks_Using_DRL.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

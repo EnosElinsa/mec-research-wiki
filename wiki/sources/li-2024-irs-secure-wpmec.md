@@ -108,5 +108,5 @@ A **WPT-MEC + security** entry that uniquely fuses all four of {MEC, WPT, IRS, P
 
 ## Raw artifacts
 
-- `raw/sources/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System/full.md`
+- `raw/sources/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System/Intelligent_Reflecting_Surface_Assisted_Secure_Computation_of_Wireless_Powered_MEC_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

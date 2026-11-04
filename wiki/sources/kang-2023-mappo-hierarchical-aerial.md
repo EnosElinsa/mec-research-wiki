@@ -97,5 +97,5 @@ A DRL counterpart in the **hierarchical aerial MEC (UAV+HAP)** track alongside [
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/full.md`
+- `raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md`
 - Original PDF and extracted figures in the same folder.

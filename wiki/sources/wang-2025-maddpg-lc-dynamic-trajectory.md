@@ -14,8 +14,11 @@ related:
   - "[[centralized-training-decentralized-execution]]"
   - "[[blockchain-for-fl-aggregation]]"
   - "[[maddpg]]"
+  - "[[lihan-liu]]"
+  - "[[zhidu-li]]"
+  - "[[zhuwei-wang]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dynamic Trajectory Design for Multi-UAV-Assisted Mobile Edge Computing
@@ -97,5 +100,5 @@ Distinguished from most corpus UAV-MEC trajectory papers by explicitly modeling 
 
 ## Raw artifacts
 
-- `raw/sources/Dynamic_Trajectory_Design_for_Multi-UAV-Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/Dynamic_Trajectory_Design_for_Multi-UAV-Assisted_Mobile_Edge_Computing/Dynamic_Trajectory_Design_for_Multi-UAV-Assisted_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

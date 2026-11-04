@@ -99,5 +99,5 @@ This source expands [[device-association]] from heuristic or matching-based asso
 
 ## Raw artifacts
 
-- `raw/sources/Joint UAV 3D Deployment and Ground Device Association Optimizing for Multi-UAV-Aided MEC Heterogeneous Network/Joint UAV 3D Deployment and Ground Device Association Optimizing for Multi-UAV-Aided MEC Heterogeneous Network.md`
+- `raw/sources/Joint_UAV_3D_Deployment_and_Ground_Device_Association_Optimizing_for_Multi-UAV-Aided_MEC_Heterogeneous_Network/Joint_UAV_3D_Deployment_and_Ground_Device_Association_Optimizing_for_Multi-UAV-Aided_MEC_Heterogeneous_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

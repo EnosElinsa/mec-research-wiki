@@ -60,5 +60,5 @@ Extends the wiki's **generative-AI-for-wireless** thread into channel estimation
 
 ## Raw artifacts
 
-- `raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/full.md`
+- `raw/sources/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems/Conditional_Generative_Adversarial_Networks_for_Channel_Estimation_in_RIS-Assisted_ISAC_Systems.md`
 - Original PDF and extracted figures in the same folder.

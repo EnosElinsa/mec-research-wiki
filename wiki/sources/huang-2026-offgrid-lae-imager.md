@@ -69,5 +69,5 @@ This source extends the LAE-ISAC track from beamforming/trajectory control into 
 
 ## Raw artifacts
 
-- `raw/sources/Learned Off-Grid Imager for Low-Altitude Economy With Cooperative ISAC Network/Learned Off-Grid Imager for Low-Altitude Economy With Cooperative ISAC Network.md`
+- `raw/sources/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network/Learned_Off-Grid_Imager_for_Low-Altitude_Economy_With_Cooperative_ISAC_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

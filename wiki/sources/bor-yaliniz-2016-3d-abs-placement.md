@@ -100,5 +100,5 @@ A canonical **aerial-base-station 3-D placement** anchor — it defines the [[dr
 
 ## Raw artifacts
 
-- `raw/sources/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks/full.md`
+- `raw/sources/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks/Efficient_3-D_placement_of_an_aerial_base_station_in_next_generation_cellular_networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

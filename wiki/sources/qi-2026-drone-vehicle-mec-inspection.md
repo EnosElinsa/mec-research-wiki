@@ -109,5 +109,5 @@ This is a vehicle-assisted MEC entry adjacent to [[vehicle-fog-computing]] and [
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative Drone-Vehicle Mobile Edge Computing for Low-Altitude Inspection/Cooperative Drone-Vehicle Mobile Edge Computing for Low-Altitude Inspection.md`
+- `raw/sources/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection/Cooperative_Drone-Vehicle_Mobile_Edge_Computing_for_Low-Altitude_Inspection.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

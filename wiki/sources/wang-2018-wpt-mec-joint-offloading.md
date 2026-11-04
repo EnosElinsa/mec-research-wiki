@@ -92,5 +92,5 @@ Foundational MEC + WPT paper establishing that **local computing is always benef
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems/full.md`
+- `raw/sources/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems/Joint_Offloading_and_Computing_Optimization_in_Wireless_Powered_Mobile-Edge_Computing_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

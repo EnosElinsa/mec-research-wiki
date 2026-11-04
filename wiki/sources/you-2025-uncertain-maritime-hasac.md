@@ -96,5 +96,5 @@ A **DRL** treatment of maritime offloading that contrasts with the optimization-
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels/full.md`
+- `raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels/Joint_Computation_Offloading_and_Resource_Allocation_for_Uncertain_Maritime_MEC_via_Cooperation_of_AAVs_and_Vessels.md`
 - Original PDF and extracted figures in the same folder.

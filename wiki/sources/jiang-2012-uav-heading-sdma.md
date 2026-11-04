@@ -88,5 +88,5 @@ An early (2012) UAV heading/trajectory optimization paper for multi-antenna upli
 
 ## Raw artifacts
 
-- `raw/sources/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink/full.md`
+- `raw/sources/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink/Optimization_of_UAV_Heading_for_the_Ground-to-Air_Uplink.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -64,5 +64,5 @@ Complements [[xu-2024-mobile-aigc-survey]] (which focuses on AIGC service lifecy
 
 ## Raw artifacts
 
-- `raw/sources/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications/full.md`
+- `raw/sources/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

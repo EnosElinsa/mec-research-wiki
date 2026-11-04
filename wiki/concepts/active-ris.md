@@ -14,8 +14,9 @@ related:
   - "[[aerial-active-ris-backhaul]]"
   - "[[jeon-2026-ampli-flection-aerial-backhaul]]"
   - "[[chen-2026-aris-location-privacy]]"
+  - "[[an-2026-intelligent-metasurfaces-overview]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Active RIS

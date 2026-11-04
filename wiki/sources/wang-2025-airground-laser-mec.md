@@ -108,6 +108,6 @@ Grounded in the abstract, contributions, and discussion (figure-derived numbers 
 This sits in the [[air-ground-integrated-network]] UAV-MEC line and is one of the corpus's [[wireless-power-transfer]] entries that powers the *UAV itself* (via laser), in contrast to [[zhou-2018-uav-wireless-powered-mec]] and [[zhu-2025-lycnn-drl-wpt-mec]] where the UAV/HAP wirelessly powers the *ground devices*. Its LP-then-DDPG structure is a clean instance of [[two-stage-decomposition]] — a convex/LP allocation stage feeding a learned trajectory stage — reinforcing [[decomposition-beats-end-to-end-drl-in-mec]] and adding a DDPG data point to [[drl-backbones-across-uav-mec-sources]]. The dual MEC-server/relay role connects it to [[uav-mobile-relaying]], and its full-offload model contrasts with the corpus's [[binary-vs-partial-offloading|partial-offloading]] designs.
 
 ## Raw artifacts
-- Parse: `raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/full.md`
-- Origin PDF: `raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/bb68f660-4524-4a34-927d-aab6cac62a85_origin.pdf`
+- Parse: `raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design.md`
+- Origin PDF: `raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design.pdf`
 - Figures: `raw/sources/AirGround_Coordinated_MEC_Joint_Task_Time_Allocation_and_Trajectory_Design/images/`

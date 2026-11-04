@@ -102,6 +102,6 @@ A foundational **stochastic-geometry** UAV-base-station entry from the Virginia 
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/full.md`
-- Origin PDF: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/8090181e-977c-4e03-95bb-bdc99eb016ee_origin.pdf`
+- Parse: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs.md`
+- Origin PDF: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs.pdf`
 - Figures: `raw/sources/Unmanned_Aerial_Vehicle_With_Underlaid_Device-to-Device_Communications_Performance_and_Tradeoffs/images/`

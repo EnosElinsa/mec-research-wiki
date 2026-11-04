@@ -107,6 +107,6 @@ The first author [[jie-xu]] was then affiliated with the School of Information E
 
 ## Raw artifacts
 
-- Parse: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/full.md`
-- Origin PDF: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/7aaece4b-2696-4b7f-b602-3ee5873bc8b3_origin.pdf`
+- Parse: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization.md`
+- Origin PDF: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization.pdf`
 - Figures: `raw/sources/UAV-Enabled_Wireless_Power_Transfer_Trajectory_Design_and_Energy_Optimization/images/`

@@ -97,5 +97,5 @@ An early (2020) **load-balance-first** multi-UAV-MEC entry that grounds the [[lo
 
 ## Raw artifacts
 
-- `raw/sources/Multi-UAV-Enabled_Load-Balance_Mobile-Edge_Computing_for_IoT_Networks/full.md`
+- `raw/sources/Multi-UAV-Enabled_Load-Balance_Mobile-Edge_Computing_for_IoT_Networks/Multi-UAV-Enabled_Load-Balance_Mobile-Edge_Computing_for_IoT_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

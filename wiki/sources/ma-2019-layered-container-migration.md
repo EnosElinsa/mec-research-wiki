@@ -12,8 +12,10 @@ related:
   - "[[service-migration]]"
   - "[[mobile-edge-computing]]"
   - "[[calagna-2024-robust-stateful-migration]]"
+  - "[[rong-2024-video-analytics-live-migration]]"
+  - "[[scheuer-not-in-parse-resync]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Efficient Live Migration of Edge Services Leveraging Container Layered Storage

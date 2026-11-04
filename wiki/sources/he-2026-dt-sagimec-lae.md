@@ -104,5 +104,5 @@ This page links the low-altitude-economy track to the SAGIN/satellite offloading
 
 ## Raw artifacts
 
-- `raw/sources/Digital Twin-Assisted Space-Air-Ground Integrated Multi-Access Edge Computing for Low-Altitude Economy An Online Decentralized Optimization Approach/Digital Twin-Assisted Space-Air-Ground Integrated Multi-Access Edge Computing for Low-Altitude Economy An Online Decentralized Optimization Approach.md`
+- `raw/sources/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach/Digital_Twin-Assisted_Space-Air-Ground_Integrated_Multi-Access_Edge_Computing_for_Low-Altitude_Economy_An_Online_Decentralized_Optimization_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

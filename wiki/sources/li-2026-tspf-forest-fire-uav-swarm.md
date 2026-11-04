@@ -101,5 +101,5 @@ This source adds robust [[uav-forest-fire-detection]] and [[two-tier-submodel-pa
 
 ## Raw artifacts
 
-- `raw/sources/Two-Tier Submodel Partition Framework for Enhancing UAV Swarm Robustness in Forest Fire Detection/Two-Tier Submodel Partition Framework for Enhancing UAV Swarm Robustness in Forest Fire Detection.md`
+- `raw/sources/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -109,5 +109,5 @@ This source extends [[llm-assisted-resource-allocation]] from LLM-backed runtime
 
 ## Raw artifacts
 
-- `raw/sources/Large Language Model-based QoS-aware Resource Allocation for Multi-UAV Cooperative Edge Computing Networks/Large Language Model-based QoS-aware Resource Allocation for Multi-UAV Cooperative Edge Computing Networks.md`
+- `raw/sources/Large_Language_Model-based_QoS-aware_Resource_Allocation_for_Multi-UAV_Cooperative_Edge_Computing_Networks/Large_Language_Model-based_QoS-aware_Resource_Allocation_for_Multi-UAV_Cooperative_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

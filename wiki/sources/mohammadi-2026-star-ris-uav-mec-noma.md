@@ -107,6 +107,6 @@ This page extends the RIS/NOMA energy-minimization thread from [[ji-2021-uav-mec
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA/Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA.md`
-- Origin PDF: `raw/sources/Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA/Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA.pdf`
-- Figures: `raw/sources/Energy Consumption Minimization in STAR-RIS-Assisted UAV-MEC Networks With NOMA/images/`
+- Parse: `raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA.md`
+- Origin PDF: `raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA.pdf`
+- Figures: `raw/sources/Energy_Consumption_Minimization_in_STAR-RIS-Assisted_UAV-MEC_Networks_With_NOMA/images/`

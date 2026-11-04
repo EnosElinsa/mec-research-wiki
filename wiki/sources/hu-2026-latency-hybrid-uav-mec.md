@@ -108,5 +108,5 @@ This source is a latency-oriented, classical-optimization counterpart to the DRL
 
 ## Raw artifacts
 
-- `raw/sources/Latency-Aware Computation Offloading in Hybrid UAV-Assisted MEC Systems Time Scheduling and 3D Trajectory Design/Latency-Aware Computation Offloading in Hybrid UAV-Assisted MEC Systems Time Scheduling and 3D Trajectory Design.md`
+- `raw/sources/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design/Latency-Aware_Computation_Offloading_in_Hybrid_UAV-Assisted_MEC_Systems_Time_Scheduling_and_3D_Trajectory_Design.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

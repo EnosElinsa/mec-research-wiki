@@ -98,5 +98,5 @@ A **two-hop air-ground DRL** entry that is closely related to — but **distinct
 
 ## Raw artifacts
 
-- `raw/sources/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network/full.md`
+- `raw/sources/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network/Two-Hop_Packet_Scheduling_Resource_Allocation_and_UAV_Trajectory_Design_for_Internet_of_Remote_Things_in_AirGround_Integrated_Network.md`
 - Original PDF and extracted figures in the same folder.

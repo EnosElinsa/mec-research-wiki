@@ -91,5 +91,5 @@ From the Zeng/Zhang group (NUS) — same authors as the UAV-comms tutorial [[zen
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Aided_Offloading_for_Cellular_Hotspot/full.md`
+- `raw/sources/UAV-Aided_Offloading_for_Cellular_Hotspot/UAV-Aided_Offloading_for_Cellular_Hotspot.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

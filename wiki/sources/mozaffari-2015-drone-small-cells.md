@@ -94,6 +94,6 @@ Companion/precursor to [[mozaffari-2016-efficient-multi-uav-coverage]], which ex
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/full.md`
-- Origin PDF: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/b019ad77-4751-4aa5-af30-e76dc961c962_origin.pdf`
+- Parse: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis.md`
+- Origin PDF: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis.pdf`
 - Figures: `raw/sources/Drone_Small_Cells_in_the_Clouds_Design_Deployment_and_Performance_Analysis/images/`

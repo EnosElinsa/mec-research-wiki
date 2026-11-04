@@ -96,5 +96,5 @@ A **secure federated-learning** entry from the NWPU non-terrestrial/security clu
 
 ## Raw artifacts
 
-- `raw/sources/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence/full.md`
+- `raw/sources/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence/Optimizing_Secrecy_Rate_for_Federated_Learning_Model_Aggregation_With_Intelligent_Reflecting_Surface_Toward_6G_Ubiquitous_Intelligence.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

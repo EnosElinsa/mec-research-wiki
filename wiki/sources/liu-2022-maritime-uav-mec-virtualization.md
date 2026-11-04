@@ -98,5 +98,5 @@ A **maritime UAV-MEC + DRL** entry distinctive for its **VM-virtualization / I/O
 
 ## Raw artifacts
 
-- `raw/sources/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network/full.md`
+- `raw/sources/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network/Deep_Reinforcement_Learning_Based_Latency_Minimization_for_Mobile_Edge_Computing_With_Virtualization_in_Maritime_UAV_Communication_Network.md`
 - Original PDF and extracted figures in the same folder.

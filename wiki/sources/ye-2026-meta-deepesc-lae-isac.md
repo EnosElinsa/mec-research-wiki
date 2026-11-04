@@ -100,5 +100,5 @@ This is the energy-efficiency successor to [[ye-2026-deeplsc-lae-isac]], which o
 
 ## Raw artifacts
 
-- `raw/sources/Integrated Sensing and Communication for Energy-Efficient Low-Altitude Economy Based on Meta Deep Reinforcement Learning/Integrated Sensing and Communication for Energy-Efficient Low-Altitude Economy Based on Meta Deep Reinforcement Learning.md`
+- `raw/sources/Integrated_Sensing_and_Communication_for_Energy-Efficient_Low-Altitude_Economy_Based_on_Meta_Deep_Reinforcement_Learning/Integrated_Sensing_and_Communication_for_Energy-Efficient_Low-Altitude_Economy_Based_on_Meta_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

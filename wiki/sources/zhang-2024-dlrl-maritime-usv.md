@@ -92,5 +92,5 @@ A **DRL-based maritime MEC** entry that complements the optimization-based [[zha
 
 ## Raw artifacts
 
-- `raw/sources/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks/full.md`
+- `raw/sources/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks/Mobile_Edge_Deployment_and_Resource_Management_for_Maritime_Wireless_Networks.md`
 - Original PDF and extracted figures in the same folder.

@@ -98,5 +98,5 @@ A physical-layer **anti-jamming + RIS** anchor that complements the MEC-side ant
 
 ## Raw artifacts
 
-- `raw/sources/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing/full.md`
+- `raw/sources/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing/Active-Passive_Cascaded_RIS-Aided_Receiver_Design_for_Jamming_Nulling_and_Signal_Enhancing.md`
 - Original PDF and extracted figures in the same folder.

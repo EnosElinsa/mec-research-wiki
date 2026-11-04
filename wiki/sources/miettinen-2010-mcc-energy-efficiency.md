@@ -66,5 +66,5 @@ The corpus's **earliest** anchor and a conceptual root for the whole offloading 
 
 ## Raw artifacts
 
-- `raw/sources/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing/full.md`
+- `raw/sources/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

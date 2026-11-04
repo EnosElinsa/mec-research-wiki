@@ -99,5 +99,5 @@ A **federated-reinforcement-learning** UAV-MEC entry that, unlike the corpus's o
 
 ## Raw artifacts
 
-- `raw/sources/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing/full.md`
+- `raw/sources/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing/Decentralized_Navigation_With_Heterogeneous_Federated_Reinforcement_Learning_for_UAV-Enabled_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

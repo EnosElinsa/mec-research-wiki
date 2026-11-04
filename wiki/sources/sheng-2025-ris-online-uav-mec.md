@@ -97,5 +97,5 @@ This source links the classical online-control line in [[lyapunov-optimization]]
 
 ## Raw artifacts
 
-- `raw/sources/Online Trajectory Planning and Resource Allocation of UAV-Enabled MEC Networks Empowered by RIS/Online Trajectory Planning and Resource Allocation of UAV-Enabled MEC Networks Empowered by RIS.md`
+- `raw/sources/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS/Online_Trajectory_Planning_and_Resource_Allocation_of_UAV-Enabled_MEC_Networks_Empowered_by_RIS.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

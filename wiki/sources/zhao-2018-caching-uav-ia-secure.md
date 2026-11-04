@@ -102,5 +102,5 @@ An early (2018) **caching-UAV + physical-layer-security** anchor. Its friendly-j
 
 ## Raw artifacts
 
-- `raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/full.md`
+- `raw/sources/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment/Caching_UAV_Assisted_Secure_Transmission_in_Hyper-Dense_Networks_Based_on_Interference_Alignment.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

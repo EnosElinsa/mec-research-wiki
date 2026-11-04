@@ -91,5 +91,5 @@ This paper complements the UAV-swarm MEC and collaborative-inference line by foc
 
 ## Raw artifacts
 
-- `raw/sources/Digital Twin-Based Task-Driven Resource Management in Intelligent UAV Swarms/Digital Twin-Based Task-Driven Resource Management in Intelligent UAV Swarms.md`
+- `raw/sources/Digital_Twin-Based_Task-Driven_Resource_Management_in_Intelligent_UAV_Swarms/Digital_Twin-Based_Task-Driven_Resource_Management_in_Intelligent_UAV_Swarms.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

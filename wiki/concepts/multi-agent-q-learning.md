@@ -12,8 +12,9 @@ related:
   - "[[zhou-2026-multiscale-dt-uav-delivery]]"
   - "[[cui-2020-marl-uav-resource-allocation]]"
   - "[[zhu-2025-green-isac-q-learning]]"
+  - "[[spampinato-2025-uabs-v2x-3dqn-ilp]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Multi-Agent Q-Learning

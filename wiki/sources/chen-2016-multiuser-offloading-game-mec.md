@@ -91,5 +91,5 @@ Direct journal extension of [[chen-2015-decentralized-offloading-game]] to multi
 
 ## Raw artifacts
 
-- `raw/sources/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing/full.md`
+- `raw/sources/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

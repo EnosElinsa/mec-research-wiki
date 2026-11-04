@@ -100,5 +100,5 @@ This source extends [[integrated-sensing-computation-communication]] from single
 
 ## Raw artifacts
 
-- `raw/sources/Trade-Off Between Radar Sensing and Energy Consumption in Integrated Sensing- Computing- and Communication UAV Network/Trade-Off Between Radar Sensing and Energy Consumption in Integrated Sensing- Computing- and Communication UAV Network.md`
+- `raw/sources/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

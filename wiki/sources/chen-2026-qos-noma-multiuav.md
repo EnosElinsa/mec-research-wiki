@@ -93,5 +93,5 @@ This source joins [[task-priority-in-mec]], [[dynamic-qos-constraints]], [[noma]
 
 ## Raw artifacts
 
-- `raw/sources/QoS-Oriented Task Offloading in NOMA-Based Multi-UAV Cooperative MEC Systems/QoS-Oriented Task Offloading in NOMA-Based Multi-UAV Cooperative MEC Systems.md`
+- `raw/sources/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems/QoS-Oriented_Task_Offloading_in_NOMA-Based_Multi-UAV_Cooperative_MEC_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

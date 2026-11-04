@@ -95,5 +95,5 @@ A **MADDPG cooperative multi-UAV MEC** entry that sits with [[zhao-2022-matd3-mu
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Agent_DRL_for_Task_Offloading_and_Resource_Allocation_in_Multi-UAV_Enabled_IoT_Edge_Network/full.md`
+- `raw/sources/Multi-Agent_DRL_for_Task_Offloading_and_Resource_Allocation_in_Multi-UAV_Enabled_IoT_Edge_Network/Multi-Agent_DRL_for_Task_Offloading_and_Resource_Allocation_in_Multi-UAV_Enabled_IoT_Edge_Network.md`
 - Original PDF (`589beaa0-1417-4773-b24d-ced75e7f14e8_origin.pdf`) and extracted figures (`images/`) in the same folder.

@@ -98,5 +98,5 @@ A **security + RIS + semantic** entry that bridges several corpus threads. It ex
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks/full.md`
+- `raw/sources/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks/Multi-Functional_RIS-Assisted_Semantic_Anti-Jamming_Communication_and_Computing_in_Integrated_Aerial-Ground_Networks.md`
 - Original PDF (`0a6fff1e-ad88-455d-b6a7-6b9286e0d7f9_origin.pdf`) and extracted figures (`images/`) in the same folder.

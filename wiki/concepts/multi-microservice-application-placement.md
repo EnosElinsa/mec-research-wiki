@@ -7,8 +7,9 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[dynamic-space-time-graph-with-virtual-edges]]"
   - "[[adeppady-2026-step-composite-edge]]"
+  - "[[meliani-2026-layer-reuse-microservice-migration]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Multi-Microservice Application Placement

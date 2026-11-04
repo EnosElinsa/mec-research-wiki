@@ -96,5 +96,5 @@ A **generative-diffusion-as-policy** entry that joins the GDM thread with [[ye-2
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning/Multi-Objective_Aerial_Collaborative_Secure_Communication_Optimization_via_Generative_Diffusion_Model-Enabled_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures in the same folder.

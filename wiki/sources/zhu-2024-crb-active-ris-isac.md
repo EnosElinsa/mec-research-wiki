@@ -101,5 +101,5 @@ A **physical-layer ISAC** entry that anchors the corpus's [[cramer-rao-bound]] s
 
 ## Raw artifacts
 
-- `raw/sources/Cramr-Rao_Bound_Optimization_for_Active_RIS-Empowered_ISAC_Systems/full.md`
+- `raw/sources/Cramr-Rao_Bound_Optimization_for_Active_RIS-Empowered_ISAC_Systems/Cramr-Rao_Bound_Optimization_for_Active_RIS-Empowered_ISAC_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

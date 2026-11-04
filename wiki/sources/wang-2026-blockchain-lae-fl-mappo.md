@@ -106,6 +106,6 @@ This source links the [[task-offloading]] and [[service-caching-mec]] track to [
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy-Efficient Offloading- Caching- and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks An Integrated Federated Learning and MAPPO Approach/Energy-Efficient Offloading- Caching- and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks An Integrated Federated Learning and MAPPO Approach.md`
-- Origin PDF: `raw/sources/Energy-Efficient Offloading- Caching- and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks An Integrated Federated Learning and MAPPO Approach/Energy-Efficient Offloading- Caching- and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks An Integrated Federated Learning and MAPPO Approach.pdf`
-- Figures: `raw/sources/Energy-Efficient Offloading- Caching- and Resource Allocation for Blockchain-Assisted Low-Altitude Flying Networks An Integrated Federated Learning and MAPPO Approach/images/`
+- Parse: `raw/sources/Energy-Efficient_Offloading_Caching_and_Resource_Allocation_for_Blockchain-Assisted_Low-Altitude_Flying_Networks_An_Integrated_Federated_Learning_and_MAPPO_Approach/Energy-Efficient_Offloading_Caching_and_Resource_Allocation_for_Blockchain-Assisted_Low-Altitude_Flying_Networks_An_Integrated_Federated_Learning_and_MAPPO_Approach.md`
+- Origin PDF: `raw/sources/Energy-Efficient_Offloading_Caching_and_Resource_Allocation_for_Blockchain-Assisted_Low-Altitude_Flying_Networks_An_Integrated_Federated_Learning_and_MAPPO_Approach/Energy-Efficient_Offloading_Caching_and_Resource_Allocation_for_Blockchain-Assisted_Low-Altitude_Flying_Networks_An_Integrated_Federated_Learning_and_MAPPO_Approach.pdf`
+- Figures: `raw/sources/Energy-Efficient_Offloading_Caching_and_Resource_Allocation_for_Blockchain-Assisted_Low-Altitude_Flying_Networks_An_Integrated_Federated_Learning_and_MAPPO_Approach/images/`

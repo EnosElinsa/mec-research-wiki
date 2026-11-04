@@ -128,6 +128,6 @@ A custom prioritized replay variant that scores transitions by a combination of 
 
 ## Raw artifacts
 
-- Parse: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/full.md`
-- Origin PDF: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/328a810b-17dd-4c5e-913a-2dbfe1e0ea85_origin.pdf`
+- Parse: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md`
+- Origin PDF: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.pdf`
 - Figures: `raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/images/`

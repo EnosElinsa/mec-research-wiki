@@ -100,5 +100,5 @@ A close sibling of the wiki's existing evolutionary-multi-objective-RL entry [[s
 
 ## Raw artifacts
 
-- `raw/sources/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Aerial_Reliable_Collaborative_Communications_for_Terrestrial_Mobile_Users_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures in the same folder.

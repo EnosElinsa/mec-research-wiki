@@ -93,5 +93,5 @@ This is an analytical [[stochastic-geometry-network-analysis]] entry rather than
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled Computing Power Networks Design and Performance Analysis Under Energy Constraints/UAV-Enabled Computing Power Networks Design and Performance Analysis Under Energy Constraints.md`
+- `raw/sources/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints/UAV-Enabled_Computing_Power_Networks_Design_and_Performance_Analysis_Under_Energy_Constraints.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

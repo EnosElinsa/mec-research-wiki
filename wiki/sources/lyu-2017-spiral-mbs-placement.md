@@ -94,5 +94,5 @@ A foundational **aerial-base-station deployment** entry. Where [[bor-yaliniz-201
 
 ## Raw artifacts
 
-- `raw/sources/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations/full.md`
+- `raw/sources/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations/Placement_Optimization_of_UAV-Mounted_Mobile_Base_Stations.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

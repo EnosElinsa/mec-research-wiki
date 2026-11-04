@@ -14,8 +14,9 @@ related:
   - "[[contract-theoretic-fl-incentives]]"
   - "[[zhao-2026-uav-fl-inspection-incentives]]"
   - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
+  - "[[roy-not-in-parse-serv-hu]]"
 created: 2026-05-29
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Contract Theory (Principal-Agent Incentive Mechanism)

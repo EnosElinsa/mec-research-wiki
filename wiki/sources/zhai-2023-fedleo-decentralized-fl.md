@@ -91,5 +91,5 @@ Strengthens the **LEO-satellite + federation** thread alongside [[mao-2025-bcsa-
 
 ## Raw artifacts
 
-- `raw/sources/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks/full.md`
+- `raw/sources/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks/FedLEO_An_Offloading-Assisted_Decentralized_Federated_Learning_Framework_for_Low_Earth_Orbit_Satellite_Networks.md`
 - Original PDF and extracted figures in the same folder.

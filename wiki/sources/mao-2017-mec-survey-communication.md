@@ -64,5 +64,5 @@ Provides the MEC vocabulary that every other source builds on, anchoring [[mobil
 
 ## Raw artifacts
 
-- `raw/sources/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective/full.md`
+- `raw/sources/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.md`
 - Original PDF and extracted figures in the same folder.

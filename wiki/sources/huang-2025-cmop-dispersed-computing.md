@@ -113,4 +113,4 @@ This is another entry in the **Peng/Huang CMOP-evolutionary lineage** (see [[pen
 
 ## Raw artifacts
 
-- `raw/sources/Joint Latency and Charge Cost Minimization for Reliable Task Offloading in Dispersed Computing A Mu/full.md`
+- `raw/sources/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_Computing _A_Multi-Objective_Optimization_Approach/Joint_Latency_and_Charge_Cost_Minimization_for_Reliable_Task_Offloading_in_Dispersed_C.md`

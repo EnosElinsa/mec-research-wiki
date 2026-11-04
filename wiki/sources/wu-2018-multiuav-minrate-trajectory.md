@@ -101,5 +101,5 @@ A canonical **multi-UAV-as-base-station** trajectory/scheduling/power paper from
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks/full.md`
+- `raw/sources/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks/Joint_Trajectory_and_Communication_Design_for_Multi-UAV_Enabled_Wireless_Networks.md`
 - Original PDF and extracted figures in the same folder.

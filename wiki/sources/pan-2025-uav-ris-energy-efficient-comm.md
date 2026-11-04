@@ -103,6 +103,6 @@ Grounded in the abstract/contributions (benchmark-relative improvements quoted f
 This is a UAV-RIS communications design whose distinctive angle is **cooperative multiple UAV-RISs** under a genuine three-objective Pareto formulation, captured in the new [[uav-mounted-ris]] concept and solved with an [[non-dominated-sorting-genetic-algorithm|NSGA-II]] variant that places it squarely in the [[constrained-multi-objective-evolutionary-algorithm|CMOEA]] solver family and the [[cmop-evolutionary-uav-mec-lineage]] lineage. It complements the corpus's other IRS/RIS-on-UAV work such as [[wu-2025-iopo-irs-uav-thz-mec]] (THz IRS-UAV-MEC), differing by optimizing **3D RIS placement + discrete phase shifts + BS beamforming** rather than offloading. Its author set ties it to the Jilin-University/NTU aerial cluster — [[geng-sun]], [[yanheng-liu]], [[qingqing-wu]], [[dusit-niyato]].
 
 ## Raw artifacts
-- Parse: `raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/full.md`
-- Origin PDF: `raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/8a131dd8-afe7-4f31-b1fa-e4560e6847ef_origin.pdf`
+- Parse: `raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications.md`
+- Origin PDF: `raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications.pdf`
 - Figures: `raw/sources/Cooperative_UAV-Mounted_RISs-Assisted_Energy-Efficient_Communications/images/`

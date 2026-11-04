@@ -99,5 +99,5 @@ A **maritime MEC** entry whose distinguishing feature is **renewable energy harv
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting/full.md`
+- `raw/sources/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting/Joint_Computation_Offloading_and_Resource_Allocation_for_Maritime_MEC_With_Energy_Harvesting.md`
 - Original PDF and extracted figures in the same folder.

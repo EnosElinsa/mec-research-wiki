@@ -96,5 +96,5 @@ A clean **Lyapunov-based online UAV-MEC** entry whose explicit two-stage-vs-join
 
 ## Raw artifacts
 
-- `raw/sources/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems/full.md`
+- `raw/sources/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems/Online_Trajectory_and_Resource_Optimization_for_Stochastic_UAV-Enabled_MEC_Systems.md`
 - Original PDF and extracted figures in the same folder.

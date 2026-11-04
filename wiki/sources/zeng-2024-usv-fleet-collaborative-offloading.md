@@ -104,5 +104,5 @@ A **maritime MEC** entry distinctive for combining a **reverse-auction incentive
 
 ## Raw artifacts
 
-- `raw/sources/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design/full.md`
+- `raw/sources/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design/USV_Fleet-Assisted_Collaborative_Computation_Offloading_for_Smart_Maritime_Services_An_Energy-Efficient_Design.md`
 - Original PDF (`3dff6c8e-38ab-46fe-9bc5-a9865789b6f2_origin.pdf`) and extracted figures (`images/`) in the same folder.

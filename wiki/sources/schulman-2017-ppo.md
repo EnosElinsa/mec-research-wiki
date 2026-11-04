@@ -69,5 +69,5 @@ The **method ancestor** of the wiki's large PPO lineage. The [[ppo]] concept pag
 
 ## Raw artifacts
 
-- `raw/sources/Proximal Policy Optimization Algorithms/full.md`
+- `raw/sources/Proximal Policy Optimization Algorithms/Proximal Policy Optimization Algorithms.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

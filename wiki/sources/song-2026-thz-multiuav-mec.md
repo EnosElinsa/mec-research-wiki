@@ -103,5 +103,5 @@ This source is a THz relay-side counterpart to [[tun-2025-thz-sag-mec-resource-a
 
 ## Raw artifacts
 
-- `raw/sources/Terahertz Communication Multi-UAV-Assisted Mobile Edge Computing System/Terahertz Communication Multi-UAV-Assisted Mobile Edge Computing System.md`
+- `raw/sources/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System/Terahertz_Communication_Multi-UAV-Assisted_Mobile_Edge_Computing_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -20,8 +20,9 @@ related:
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[qin-2025-bcuav-masac]]"
   - "[[li-2022-hyar-hybrid-action-representation]]"
+  - "[[wei-zhang]]"
 created: 2026-05-29
-updated: 2026-11-02
+updated: 2026-11-03
 authors: [Hao Hao, Changqiao Xu, Wei Zhang, Shujie Yang, Gabriel-Miro Muntean]
 year: 2024
 url: "https://doi.org/10.1109/TMC.2024.3350078"
@@ -117,4 +118,4 @@ Simulation-only (no hardware). UAV-UE cross-interference and result-download cos
 This is a [[multi-uav-assisted-mec]] work centered on [[task-offloading]], [[uav-trajectory-control]], and [[task-priority-in-mec]], distinctive for combining **binary** offloading ([[binary-vs-partial-offloading]]) with a learned [[hybrid-action-representation]] over [[td3]]. It is a natural companion to [[hao-2025-priority-aware-task-driven-co]] (same lead author, priority-aware offloading) and to [[ma-2025-pdqn-vehicular-mec]], which tackles a similar discrete-continuous [[hybrid-action-decision-making]] problem with task priority via parameterized DQN. It also relates to multi-UAV trajectory/collision and DRL offloading work such as [[zhang-2025-ssac-mgi-heterogeneous-uav]], [[qin-2025-bcuav-masac]], and [[wu-2026-terrain-aware-uav-mec]], and to multi-UAV delay/energy trade-off studies like [[huang-2023-mu-aec-task-energy]].
 
 ## Raw artifacts
-- `raw/sources/Joint_Task_Offloading_Resource_Allocation_and_Trajectory_Design_for_Multi-UAV_Cooperative_Edge_Computing_With_Task_Priority/full.md`
+- `raw/sources/Joint_Task_Offloading_Resource_Allocation_and_Trajectory_Design_for_Multi-UAV_Cooperative_Edge_Computing_With_Task_Priority/Joint_Task_Offloading_Resource_Allocation_and_Trajectory_Design_for_Multi-UAV_Cooperative_Edge_Computing_With_Task_Priority.md`

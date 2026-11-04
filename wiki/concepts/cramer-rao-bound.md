@@ -23,8 +23,9 @@ related:
   - "[[spatially-separated-uav-isac-role-scheduling]]"
   - "[[fang-2026-cellfree-uav-predictive-beamforming]]"
   - "[[chen-2026-aris-location-privacy]]"
+  - "[[li-2025-thz-um-mimo-ce-hybrid-field]]"
 created: 2026-05-31
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Cramér-Rao Bound (CRB / CRLB)

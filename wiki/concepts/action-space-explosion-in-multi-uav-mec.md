@@ -2,9 +2,9 @@
 type: concept
 title: "Action-Space Explosion in Multi-UAV MEC"
 created: 2026-05-31
-updated: 2026-05-31
+updated: 2026-11-03
 tags: [drl, action-space, scalability, multi-uav, curse-of-dimensionality]
-related: [end-to-end-vs-decomposition-in-drl-mec, hybrid-action-decision-making, hybrid-action-representation, two-stage-decomposition, centralized-training-decentralized-execution, multi-uav-assisted-mec, parameterized-dqn, hierarchical-reinforcement-learning]
+related: [end-to-end-vs-decomposition-in-drl-mec, hybrid-action-decision-making, hybrid-action-representation, two-stage-decomposition, centralized-training-decentralized-execution, multi-uav-assisted-mec, parameterized-dqn, hierarchical-reinforcement-learning, "[[yao-2026-wamspres-npu]]"]
 ---
 # Action-Space Explosion in Multi-UAV MEC
 

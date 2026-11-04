@@ -91,5 +91,5 @@ This source extends the Peng/Huang [[constrained-multi-objective-evolutionary-al
 
 ## Raw artifacts
 
-- `raw/sources/Demand-Aware Multi-Area Multi-UAV Empowered Mobile Edge Computing A Joint Energy and Delay Optimization/Demand-Aware Multi-Area Multi-UAV Empowered Mobile Edge Computing A Joint Energy and Delay Optimization.md`
+- `raw/sources/Demand-Aware_Multi-Area_Multi-UAV_Empowered_Mobile_Edge_Computing_A_Joint_Energy_and_Delay_Optimization/Demand-Aware_Multi-Area_Multi-UAV_Empowered_Mobile_Edge_Computing_A_Joint_Energy_and_Delay_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

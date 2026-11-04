@@ -96,5 +96,5 @@ The **satellite / ground-space** sibling of the aerial collaborative-beamforming
 
 ## Raw artifacts
 
-- `raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning/Collaborative_Ground-Space_Communications_via_Evolutionary_Multi-Objective_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures in the same folder.

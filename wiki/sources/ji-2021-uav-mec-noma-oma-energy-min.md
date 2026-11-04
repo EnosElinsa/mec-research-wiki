@@ -98,5 +98,5 @@ Dusit Niyato ([[dusit-niyato]]) is a co-author. Complements [[li-2020-energy-eff
 
 ## Raw artifacts
 
-- `raw/sources/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design/full.md`
+- `raw/sources/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design/Energy_Consumption_Minimization_in_UAV-Assisted_Mobile-Edge_Computing_Systems_Joint_Resource_Allocation_and_Trajectory_Design.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

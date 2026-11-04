@@ -98,5 +98,5 @@ A **non-terrestrial-network / LEO satellite** entry from the NWPU cluster led by
 
 ## Raw artifacts
 
-- `raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/full.md`
+- `raw/sources/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks/On_an_Intelligent_Hierarchical_Routing_Strategy_for_Ultra-Dense_Free_Space_Optical_Low_Earth_Orbit_Satellite_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

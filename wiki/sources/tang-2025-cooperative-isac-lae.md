@@ -79,5 +79,5 @@ This is a physical-layer [[integrated-sensing-and-communication]] source for the
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative ISAC-Empowered Low-Altitude Economy/Cooperative ISAC-Empowered Low-Altitude Economy.md`
+- `raw/sources/Cooperative_ISAC-Empowered_Low-Altitude_Economy/Cooperative_ISAC-Empowered_Low-Altitude_Economy.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -124,5 +124,5 @@ Define virtual queues for each long-term constraint, write the drift-plus-penalt
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative_UAV_Trajectory_Design_and_Resource_Allocation_in_Blockchain-Enabled_Secure_Aerial_Edge_Computing_Network/full.md`
+- `raw/sources/Cooperative_UAV_Trajectory_Design_and_Resource_Allocation_in_Blockchain-Enabled_Secure_Aerial_Edge_Computing_Network/Cooperative_UAV_Trajectory_Design_and_Resource_Allocation_in_Blockchain-Enabled_Secure_Aerial_Edge_Computing_Network.md`
 - Original PDF and extracted figures.

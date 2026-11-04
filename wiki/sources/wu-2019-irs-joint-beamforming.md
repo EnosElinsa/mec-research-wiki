@@ -90,5 +90,5 @@ Qingqing Wu ([[qingqing-wu]]) is the first author. This is the foundational IRS 
 
 ## Raw artifacts
 
-- `raw/sources/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming/full.md`
+- `raw/sources/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming/Intelligent_Reflecting_Surface_Enhanced_Wireless_Network_via_Joint_Active_and_Passive_Beamforming.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -93,5 +93,5 @@ This source adds a security-aware offloading entry to the [[vehicular-mec]] trac
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted Security-Aware Vehicular Edge Computing A TD3-Enhanced Scheme/UAV-Assisted Security-Aware Vehicular Edge Computing A TD3-Enhanced Scheme.md`
+- `raw/sources/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme/UAV-Assisted_Security-Aware_Vehicular_Edge_Computing_A_TD3-Enhanced_Scheme.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

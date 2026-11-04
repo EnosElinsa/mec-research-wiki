@@ -99,5 +99,5 @@ This is the corpus's first **erasure-coded UAV edge-storage** entry. It is adjac
 
 ## Raw artifacts
 
-- `raw/sources/Erasure Coding-Based Cost-Optimized and Latency-Aware Data Storage in UAV-Enabled Edge Systems/Erasure Coding-Based Cost-Optimized and Latency-Aware Data Storage in UAV-Enabled Edge Systems.md`
+- `raw/sources/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems/Erasure_Coding-Based_Cost-Optimized_and_Latency-Aware_Data_Storage_in_UAV-Enabled_Edge_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

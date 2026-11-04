@@ -100,5 +100,5 @@ An **early anchor for the classical/convex UAV-MEC track**, predating and concep
 
 ## Raw artifacts
 
-- `raw/sources/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning/full.md`
+- `raw/sources/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning/Mobile_Edge_Computing_via_a_UAV-Mounted_Cloudlet_Optimization_of_Bit_Allocation_and_Path_Planning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

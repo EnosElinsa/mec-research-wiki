@@ -99,5 +99,5 @@ This is a LAE-specific [[integrated-sensing-and-communication]] control source t
 
 ## Raw artifacts
 
-- `raw/sources/Integrated Sensing and Communications for Low-Altitude Economy A Deep Reinforcement Learning Approach/Integrated Sensing and Communications for Low-Altitude Economy A Deep Reinforcement Learning Approach.md`
+- `raw/sources/Integrated_Sensing_and_Communications_for_Low-Altitude_Economy_A_Deep_Reinforcement_Learning_Approach/Integrated_Sensing_and_Communications_for_Low-Altitude_Economy_A_Deep_Reinforcement_Learning_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

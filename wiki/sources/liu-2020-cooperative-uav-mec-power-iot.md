@@ -95,5 +95,5 @@ An early **cooperative multi-UAV MEC + DRL** entry where UAVs help each other co
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System/full.md`
+- `raw/sources/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System/Cooperative_Offloading_and_Resource_Management_for_UAV-Enabled_Mobile_Edge_Computing_in_Power_IoT_System.md`
 - Original PDF and extracted figures in the same folder.

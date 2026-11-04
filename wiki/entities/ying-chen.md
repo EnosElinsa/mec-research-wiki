@@ -8,21 +8,23 @@ related:
   - "[[chen-2022-qoe-game-end-edge-cloud]]"
   - "[[chen-2026-dart-hap-uav-mec]]"
   - "[[guo-2026-aoi-uav-mcs-contract]]"
+  - "[[huang-2024-fed-idcco-iov-caching]]"
 created: 2026-05-30
-updated: 2026-07-11
+updated: 2026-11-03
 ---
 
 # Ying Chen
 
 IEEE Senior Member. Affiliated with **Beijing Information Science and Technology University** (Beijing, China), email `chenying@bistu.edu.cn`, consistent across her curated sources. The name is common, but the shared email/institution and recurring co-authors Yuan Wu and Jiwei Huang disambiguate this entity.
 
-Author of five sources in this wiki:
+Author of six sources in this wiki:
 
 - [[chen-2026-dart-hap-uav-mec]] - DDPG-attention resource allocation and trajectory optimization for HAP-UAV-MEC with NOMA, WPT, fairness, and Lyapunov decomposition.
 - [[chen-2023-dotora-air-ground-online]] - energy-efficient task offloading and resource allocation in air-ground integrated MEC; distributed online approach (DGMS/TPA/DOTORA).
 - [[chen-2024-ulse-game]] - multi-user task offloading in UAV-assisted LEO satellite edge computing as a potential game (LUTO-Game / JULTO).
 - [[chen-2022-qoe-game-end-edge-cloud]] - QoE-aware decentralized task offloading for end-edge-cloud systems as a potential game (MUTO-Game / GDTO; with Price-of-Anarchy analysis).
 - [[guo-2026-aoi-uav-mcs-contract]] - AoI-aware hierarchical contract incentives for UAV-assisted mobile crowdsensing; co-author.
+- [[huang-2024-fed-idcco-iov-caching]] - federated DRL for joint caching and computation offloading in UAV-assisted IoV; co-author.
 
 ## Contributions to this wiki
 

@@ -103,6 +103,6 @@ This source adds a game-theoretic server-deployment counterpart to the UAV-MEC o
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing/Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing.md`
-- Origin PDF: `raw/sources/Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing/Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing.pdf`
-- Figures: `raw/sources/Dynamic Computation Offloading and Server Deployment for UAV-Enabled Multi-Access Edge Computing/images/`
+- Parse: `raw/sources/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing.md`
+- Origin PDF: `raw/sources/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing.pdf`
+- Figures: `raw/sources/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing/images/`

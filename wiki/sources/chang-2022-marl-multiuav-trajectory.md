@@ -93,5 +93,5 @@ A **multi-UAV-as-base-station** trajectory/resource DRL entry — note this is a
 
 ## Raw artifacts
 
-- `raw/sources/Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches/full.md`
+- `raw/sources/Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches/Trajectory_Design_and_Resource_Allocation_for_Multi-UAV_Networks_Deep_Reinforcement_Learning_Approaches.md`
 - Original PDF and extracted figures in the same folder.

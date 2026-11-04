@@ -106,5 +106,5 @@ This page extends the corpus's DAG-aware offloading branch beyond [[huang-2023-m
 
 ## Raw artifacts
 
-- `raw/sources/Joint UAV Placement and Dependent Task Offloading in Multi-UAV MEC Networks A Graph Attention Enhanced DRL Approach/Joint UAV Placement and Dependent Task Offloading in Multi-UAV MEC Networks A Graph Attention Enhanced DRL Approach.md`
+- `raw/sources/Joint_UAV_Placement_and_Dependent_Task_Offloading_in_Multi-UAV_MEC_Networks_A_Graph_Attention_Enhanced_DRL_Approach/Joint_UAV_Placement_and_Dependent_Task_Offloading_in_Multi-UAV_MEC_Networks_A_Graph_Attention_Enhanced_DRL_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

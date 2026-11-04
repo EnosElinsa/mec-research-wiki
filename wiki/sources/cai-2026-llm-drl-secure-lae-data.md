@@ -110,5 +110,5 @@ This source expands [[generative-ai-for-mec]] from problem formulation and LLM-a
 
 ## Raw artifacts
 
-- `raw/sources/Large Language Model-Enhanced Deep Reinforcement Learning for Secure Data Collection in Low-Altitude Economy Networking/Large Language Model-Enhanced Deep Reinforcement Learning for Secure Data Collection in Low-Altitude Economy Networking.md`
+- `raw/sources/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking/Large_Language_Model-Enhanced_Deep_Reinforcement_Learning_for_Secure_Data_Collection_in_Low-Altitude_Economy_Networking.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

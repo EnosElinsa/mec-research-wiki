@@ -106,5 +106,5 @@ A **classical/convex UAV-MEC** entry in the AO + SCA tradition (see [[alternatin
 
 ## Raw artifacts
 
-- `raw/sources/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System/full.md`
+- `raw/sources/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System/Completion_Time_and_Energy_Optimization_in_the_UAV-Enabled_Mobile-Edge_Computing_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

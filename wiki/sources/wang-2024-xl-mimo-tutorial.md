@@ -65,5 +65,5 @@ A **physical-layer 6G anchor** that complements the wiki's other PHY-leaning ref
 
 ## Raw artifacts
 
-- `raw/sources/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications/full.md`
+- `raw/sources/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

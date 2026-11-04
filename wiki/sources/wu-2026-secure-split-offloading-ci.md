@@ -99,5 +99,5 @@ This source extends [[zhai-2026-collaborative-inference-uav-mec]] from ordinary 
 
 ## Raw artifacts
 
-- `raw/sources/Secure Split Offloading and Trajectory Design for UAV-Assisted Multi-Exit Collaborative DNN Inference/Secure Split Offloading and Trajectory Design for UAV-Assisted Multi-Exit Collaborative DNN Inference.md`
+- `raw/sources/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference/Secure_Split_Offloading_and_Trajectory_Design_for_UAV-Assisted_Multi-Exit_Collaborative_DNN_Inference.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

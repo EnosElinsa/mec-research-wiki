@@ -9,8 +9,9 @@ related:
   - "[[huang-2023-mu-aec-task-energy]]"
   - "[[zhan-2026-gatd3qn-dependent-offloading]]"
   - "[[wang-2026-scalable-multiuav-analytics]]"
+  - "[[long-2026-ft-dsac-mec]]"
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-11-03
 ---
 
 # Interdependent Tasks (DAG)

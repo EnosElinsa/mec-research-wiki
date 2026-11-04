@@ -98,5 +98,5 @@ A **Lyapunov-based online optimization** treatment of multi-UAV **edge-cloud** c
 
 ## Raw artifacts
 
-- `raw/sources/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing/full.md`
+- `raw/sources/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

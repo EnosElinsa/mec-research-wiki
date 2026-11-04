@@ -91,6 +91,6 @@ Extends the task-migration literature ([[mou-2025-adm-dt-migration]], [[shi-2023
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/full.md`
-- Origin PDF: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/48fff01b-84b5-45c8-b1cb-1065a9ac9683_origin.pdf`
+- Parse: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks.md`
+- Origin PDF: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks.pdf`
 - Figures: `raw/sources/Joint_Task_Offloading_and_Migration_Optimization_in_UAV-Enabled_Dynamic_MEC_Networks/images/`

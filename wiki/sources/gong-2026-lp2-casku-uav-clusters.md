@@ -69,5 +69,5 @@ This source gives [[dynamic-uav-clustering]] a security layer through [[uav-clus
 
 ## Raw artifacts
 
-- `raw/sources/Towards Reliable Service Provisioning for Dynamic UAV Clusters in Low-Altitude Economy Networks/Towards Reliable Service Provisioning for Dynamic UAV Clusters in Low-Altitude Economy Networks.md`
+- `raw/sources/Towards_Reliable_Service_Provisioning_for_Dynamic_UAV_Clusters_in_Low-Altitude_Economy_Networks/Towards_Reliable_Service_Provisioning_for_Dynamic_UAV_Clusters_in_Low-Altitude_Economy_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

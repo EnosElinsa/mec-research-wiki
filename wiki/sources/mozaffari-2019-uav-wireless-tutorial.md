@@ -70,5 +70,5 @@ A **foundational survey/tutorial anchor** for the UAV side of the wiki, compleme
 
 ## Raw artifacts
 
-- `raw/sources/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems/full.md`
+- `raw/sources/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems.md`
 - Original PDF and extracted figures in the same folder.

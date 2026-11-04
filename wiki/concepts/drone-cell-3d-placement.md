@@ -20,8 +20,9 @@ related:
   - "[[multi-digital-twin-network-optimization]]"
   - "[[becvar-2022-airship-flybs-energy]]"
   - "[[nikooroo-2022-flybs-total-power]]"
+  - "[[jiang-2012-uav-heading-sdma]]"
 created: 2026-06-01
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Drone-Cell 3-D Placement

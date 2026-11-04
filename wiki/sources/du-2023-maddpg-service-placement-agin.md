@@ -95,5 +95,5 @@ A **service-placement + offloading** entry that complements the QoE-driven UAV c
 
 ## Raw artifacts
 
-- `raw/sources/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks/full.md`
+- `raw/sources/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks/MADDPG-Based_Joint_Service_Placement_and_Task_Offloading_in_MEC_Empowered_AirGround_Integrated_Networks.md`
 - Original PDF and extracted figures in the same folder.

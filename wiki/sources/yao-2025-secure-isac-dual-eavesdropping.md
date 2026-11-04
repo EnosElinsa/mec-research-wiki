@@ -94,5 +94,5 @@ A **secure ISAC** entry combining physical-layer security with UAV trajectory + 
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design/full.md`
+- `raw/sources/UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design/UAV-Enabled_Secure_ISAC_Against_Dual_Eavesdropping_Threats_Joint_Beamforming_and_Trajectory_Design.md`
 - Original PDF and extracted figures in the same folder.

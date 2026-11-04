@@ -7,9 +7,9 @@ url: "https://doi.org/10.1109/TMC.2026.3676417"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 modeling_card: required
 tags: [source, hierarchical-aerial-mec, hap, uav-mec, noma, wireless-power-transfer, lyapunov-optimization, ddpg, attention, fairness]
-related: ["[[hierarchical-aerial-mec]]", "[[high-altitude-platform-station]]", "[[noma]]", "[[wireless-power-transfer]]", "[[lyapunov-optimization]]", "[[ddpg]]", "[[fairness-metrics-in-mec]]", "[[uav-trajectory-control]]", "[[chen-2023-dotora-air-ground-online]]", "[[jia-2025-dro-uav-hap-mec]]", "[[hsu-2025-drl-hues-hap-noma]]", "[[kang-2023-mappo-hierarchical-aerial]]"]
+related: ["[[hierarchical-aerial-mec]]", "[[high-altitude-platform-station]]", "[[noma]]", "[[wireless-power-transfer]]", "[[lyapunov-optimization]]", "[[ddpg]]", "[[fairness-metrics-in-mec]]", "[[uav-trajectory-control]]", "[[chen-2023-dotora-air-ground-online]]", "[[jia-2025-dro-uav-hap-mec]]", "[[hsu-2025-drl-hues-hap-noma]]", "[[kang-2023-mappo-hierarchical-aerial]]", "[[ying-chen]]"]
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # DDPG-Attention-based Resource Allocation and Trajectory Optimization in Hierarchical MEC
@@ -94,5 +94,5 @@ This strengthens the [[hierarchical-aerial-mec]] track by combining UAV+HAP offl
 
 ## Raw artifacts
 
-- `raw/sources/DDPG-Attention-based Resource Allocation and Trajectory Optimization in Hierarchical MEC/DDPG-Attention-based Resource Allocation and Trajectory Optimization in Hierarchical MEC.md`
+- `raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

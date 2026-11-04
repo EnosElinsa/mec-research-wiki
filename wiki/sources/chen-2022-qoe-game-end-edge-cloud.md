@@ -20,8 +20,9 @@ related:
   - "[[he-2019-euagame-user-allocation]]"
   - "[[ye-2025-aigc-diffusion-contract]]"
   - "[[game-theoretic-offloading-formulations]]"
+  - "[[ying-chen]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # QoE-Aware Decentralized Task Offloading and Resource Allocation for End-Edge-Cloud Systems: A Game-Theoretical Approach
@@ -102,5 +103,5 @@ A **game-theoretic end-edge-cloud offloading** entry whose local/edge/cloud stru
 
 ## Raw artifacts
 
-- `raw/sources/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach/full.md`
+- `raw/sources/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

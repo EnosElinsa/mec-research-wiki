@@ -65,5 +65,5 @@ Tutorial + case studies, not a controlled experimental study. GDM sampling can r
 The methodological **tutorial anchor** for the wiki's growing **generative-AI MEC** thread, sitting beside the GAI-for-wireless survey [[khoramnejad-2025-gai-wireless-optimization-survey]] and the GAI-for-ISAC overview [[wang-gai-isac-physical-layer]] (same Du/Niyato/Kang/Wang author cluster). It frames the **[[diffusion-model-as-optimizer]]** / GDM-as-decision-generator pattern used by [[ye-2025-aigc-diffusion-contract]] (diffusion + [[contract-theory]]), [[peng-2025-drudm-cfg]] (diffusion + classifier-free guidance), and [[du-2024-d2sac-aigc-asp-selection]] (diffusion-inside-SAC, D2SAC) — the latter two by overlapping authors. Complements the 6G foundation-models overview [[du-2024-distributed-foundation-models-6g]]. Authors with corpus entity pages include [[dusit-niyato]], [[jiawen-kang]], and [[jiacheng-wang]].
 
 ## Raw artifacts
-- `raw/sources/Enhancing_Deep_Reinforcement_Learning_A_Tutorial_on_Generative_Diffusion_Models_in_Network_Optimization/full.md`
+- `raw/sources/Enhancing_Deep_Reinforcement_Learning_A_Tutorial_on_Generative_Diffusion_Models_in_Network_Optimization/Enhancing_Deep_Reinforcement_Learning_A_Tutorial_on_Generative_Diffusion_Models_in_Network_Optimization.md`
 - Original PDF and extracted figures in the same folder.

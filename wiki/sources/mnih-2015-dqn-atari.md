@@ -61,5 +61,5 @@ The foundational DQN paper that anchors the deep-Q-learning lineage in the corpu
 
 ## Raw artifacts
 
-- `raw/sources/Human-Level_Control_through_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Human-Level_Control_through_Deep_Reinforcement_Learning/Human-Level_Control_through_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

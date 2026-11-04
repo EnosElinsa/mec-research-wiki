@@ -100,5 +100,5 @@ A **classical / convex optimization** anchor at the intersection of UAV-MEC and 
 
 ## Raw artifacts
 
-- `raw/sources/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems/full.md`
+- `raw/sources/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems/Computation_Rate_Maximization_in_UAV-Enabled_Wireless-Powered_Mobile-Edge_Computing_Systems.md`
 - Original PDF and extracted figures in the same folder.

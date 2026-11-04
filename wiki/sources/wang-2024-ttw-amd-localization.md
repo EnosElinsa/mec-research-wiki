@@ -64,5 +64,5 @@ A passive indoor sensing paper at the intersection of **CSI-based localization**
 
 ## Raw artifacts
 
-- `raw/sources/Through_the_Wall_Detection_and_Localization_of_Autonomous_Mobile_Device_in_Indoor_Scenario/full.md`
+- `raw/sources/Through_the_Wall_Detection_and_Localization_of_Autonomous_Mobile_Device_in_Indoor_Scenario/Through_the_Wall_Detection_and_Localization_of_Autonomous_Mobile_Device_in_Indoor_Scenario.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

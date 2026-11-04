@@ -98,5 +98,5 @@ A **maritime MEC** entry that joins the corpus's 10-source maritime track. It is
 
 ## Raw artifacts
 
-- `raw/sources/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue/full.md`
+- `raw/sources/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue/Minimizing_Maximum_Latency_of_Task_Offloading_for_Multi-UAV-Assisted_Maritime_Search_and_Rescue.md`
 - Original PDF (`f97dc680-9b1d-4870-9526-c51a056a7c53_origin.pdf`) and extracted figures (`images/`) in the same folder.

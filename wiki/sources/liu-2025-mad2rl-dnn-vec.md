@@ -102,5 +102,5 @@ Extends [[vehicular-mec]] with explicit [[dnn-model-partition]] and [[lyapunov-o
 
 ## Raw artifacts
 
-- `raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/full.md`
+- `raw/sources/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach/DNN_Partitioning_Task_Offloading_and_Resource_Allocation_in_Dynamic_Vehicular_Networks_A_Lyapunov-Guided_Diffusion-Based_Reinforcement_Learning_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

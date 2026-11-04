@@ -100,5 +100,5 @@ This paper is a direct [[ppo]] entry in the [[multi-uav-assisted-mec]] trajector
 
 ## Raw artifacts
 
-- `raw/sources/Joint Positioning and Computation Offloading in Multi-UAV MEC for Low Latency Applications A Proximal Policy Optimization Approach/Joint Positioning and Computation Offloading in Multi-UAV MEC for Low Latency Applications A Proximal Policy Optimization Approach.md`
+- `raw/sources/Joint_Positioning_and_Computation_Offloading_in_Multi-UAV_MEC_for_Low_Latency_Applications_A_Proximal_Policy_Optimization_Approach/Joint_Positioning_and_Computation_Offloading_in_Multi-UAV_MEC_for_Low_Latency_Applications_A_Proximal_Policy_Optimization_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

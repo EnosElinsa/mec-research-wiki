@@ -68,5 +68,5 @@ This is a physical-layer LAE entry rather than MEC offloading. It extends the co
 
 ## Raw artifacts
 
-- `raw/sources/Generative Radio Map-Assisted Channel Estimation in Low-Altitude Economy/Generative Radio Map-Assisted Channel Estimation in Low-Altitude Economy.md`
+- `raw/sources/Generative_Radio_Map-Assisted_Channel_Estimation_in_Low-Altitude_Economy/Generative_Radio_Map-Assisted_Channel_Estimation_in_Low-Altitude_Economy.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

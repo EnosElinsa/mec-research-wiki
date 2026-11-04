@@ -102,4 +102,4 @@ Three observations worth tracking:
 
 ## Raw artifacts
 
-- `raw/sources/HAP-UAV-Assisted Maritime IoT Communication Network/full.md`
+- `raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md`

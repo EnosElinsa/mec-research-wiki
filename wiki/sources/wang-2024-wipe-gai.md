@@ -104,5 +104,5 @@ A **generative-AI MEC** entry that pairs the diffusion-as-optimizer pattern with
 
 ## Raw artifacts
 
-- `raw/sources/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks/full.md`
+- `raw/sources/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks/A_Unified_Framework_for_Guiding_Generative_AI_With_Wireless_Perception_in_Resource_Constrained_Mobile_Edge_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

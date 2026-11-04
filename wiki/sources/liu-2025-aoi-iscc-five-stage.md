@@ -13,8 +13,9 @@ related:
   - "[[alternating-optimization-sdr-sca]]"
   - "[[uav-trajectory-control]]"
   - "[[zhou-2026-radar-energy-iscac]]"
+  - "[[haps-uav-isac-resource-allocation]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 

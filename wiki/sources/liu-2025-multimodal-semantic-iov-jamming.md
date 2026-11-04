@@ -94,5 +94,5 @@ This is the vehicular counterpart to [[sun-2024-mfris-semantic-antijamming]] and
 
 ## Raw artifacts
 
-- `raw/sources/Multi-UAV-Assisted MEC in Internet of Vehicles With Combined Multi-Modal Semantic Communication Under Jamming Attacks/Multi-UAV-Assisted MEC in Internet of Vehicles With Combined Multi-Modal Semantic Communication Under Jamming Attacks.md`
+- `raw/sources/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks/Multi-UAV-Assisted_MEC_in_Internet_of_Vehicles_With_Combined_Multi-Modal_Semantic_Communication_Under_Jamming_Attacks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

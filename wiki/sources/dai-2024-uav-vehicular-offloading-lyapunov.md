@@ -94,5 +94,5 @@ A **Lyapunov + Markov-approximation online VEC** entry. It shares the Lyapunov o
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/full.md`
+- `raw/sources/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks/UAV-Assisted_Task_Offloading_in_Vehicular_Edge_Computing_Networks.md`
 - Original PDF and extracted figures in the same folder.

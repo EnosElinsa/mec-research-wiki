@@ -7,8 +7,9 @@ related:
   - "[[path-aware-3d-visual-coverage]]"
   - "[[geometric-disk-cover]]"
   - "[[uav-trajectory-control]]"
+  - "[[arribas-not-in-parse-uav-resupply-scheduling]]"
 created: 2026-07-12
-updated: 2026-07-12
+updated: 2026-11-03
 ---
 
 # Continuous Omnidirectional Monitoring

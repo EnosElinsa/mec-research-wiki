@@ -102,6 +102,6 @@ This source extends [[semantic-communication]] from aerial-ground or satellite-e
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy-Efficient Probabilistic Semantic Communication Over Space-Air-Ground Integrated Networks/Energy-Efficient Probabilistic Semantic Communication Over Space-Air-Ground Integrated Networks.md`
-- Origin PDF: `raw/sources/Energy-Efficient Probabilistic Semantic Communication Over Space-Air-Ground Integrated Networks/Energy-Efficient Probabilistic Semantic Communication Over Space-Air-Ground Integrated Networks.pdf`
-- Figures: `raw/sources/Energy-Efficient Probabilistic Semantic Communication Over Space-Air-Ground Integrated Networks/images/`
+- Parse: `raw/sources/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks.md`
+- Origin PDF: `raw/sources/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks.pdf`
+- Figures: `raw/sources/Energy-Efficient_Probabilistic_Semantic_Communication_Over_Space-Air-Ground_Integrated_Networks/images/`

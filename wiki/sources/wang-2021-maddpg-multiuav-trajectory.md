@@ -97,5 +97,5 @@ A **MADDPG multi-UAV trajectory** entry by the Northumbria/QMUL/Southeast group 
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning-Based_Trajectory_Planning_for_Multi-UAV_Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning-Based_Trajectory_Planning_for_Multi-UAV_Assisted_Mobile_Edge_Computing/Multi-Agent_Deep_Reinforcement_Learning-Based_Trajectory_Planning_for_Multi-UAV_Assisted_Mobile_Edge_Computing.md`
 - Original PDF (`e5d7b673-bd11-43f2-8872-4ceddac8e9b5_origin.pdf`) and extracted figures (`images/`) in the same folder.

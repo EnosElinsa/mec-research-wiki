@@ -9,8 +9,9 @@ related:
   - "[[liu-2026-jppo-en-convntm]]"
   - "[[ma-pomdp]]"
   - "[[shi-2025-aoi-energy-replenishment-multiuav]]"
+  - "[[hou-not-in-parse-avsi-mempo]]"
 created: 2026-05-28
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # POMDP (Partially Observable Markov Decision Process)

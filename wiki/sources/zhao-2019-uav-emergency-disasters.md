@@ -72,5 +72,5 @@ A **post-disaster / emergency-network** anchor ([[post-disaster-mec]]) that fram
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_Emergency_Networks_in_Disasters/full.md`
+- `raw/sources/UAV-Assisted_Emergency_Networks_in_Disasters/UAV-Assisted_Emergency_Networks_in_Disasters.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

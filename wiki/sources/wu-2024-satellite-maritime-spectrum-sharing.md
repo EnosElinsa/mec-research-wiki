@@ -97,5 +97,5 @@ A **satellite-maritime** entry that, unlike the corpus's maritime-MEC offloading
 
 ## Raw artifacts
 
-- `raw/sources/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks/full.md`
+- `raw/sources/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks/Intelligent_Spectrum_Sharing_Strategy_for_Integrated_Satellite-Maritime_Heterogeneous_Mobile_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -12,8 +12,9 @@ related:
   - "[[task-offloading]]"
   - "[[blockchain-for-fl-aggregation]]"
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
+  - "[[ying-chen]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Data Caching and Computation Offloading in UAV-Assisted Internet of Vehicles via Federated Deep Reinforcement Learning
@@ -87,5 +88,5 @@ Combines UAV-MEC caching (shared with [[mao-2024-ntn-hierarchical-caching-cav]],
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning/Joint_Data_Caching_and_Computation_Offloading_in_UAV-Assisted_Internet_of_Vehicles_via_Federated_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

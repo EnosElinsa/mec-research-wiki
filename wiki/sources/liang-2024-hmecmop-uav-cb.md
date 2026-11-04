@@ -99,5 +99,5 @@ A **collaborative-beamforming / virtual-antenna-array** entry from the Jilin-Uni
 
 ## Raw artifacts
 
-- `raw/sources/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming/full.md`
+- `raw/sources/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming/Multiobjective_Optimization_Approach_for_Reducing_Hovering_and_Motion_Energy_Consumptions_in_UAV-Assisted_Collaborative_Beamforming.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

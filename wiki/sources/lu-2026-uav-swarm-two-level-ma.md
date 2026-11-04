@@ -96,5 +96,5 @@ This source extends [[movable-antenna]] from a UAV-to-UAV channel model in [[zen
 
 ## Raw artifacts
 
-- `raw/sources/Wireless Communication for Low-Altitude Economy With UAV Swarm Enabled Two-Level Movable Antenna System/Wireless Communication for Low-Altitude Economy With UAV Swarm Enabled Two-Level Movable Antenna System.md`
+- `raw/sources/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System/Wireless_Communication_for_Low-Altitude_Economy_With_UAV_Swarm_Enabled_Two-Level_Movable_Antenna_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

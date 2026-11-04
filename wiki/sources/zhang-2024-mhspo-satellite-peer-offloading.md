@@ -102,5 +102,5 @@ A **LEO satellite-edge-computing** entry that introduces the corpus's [[computat
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks/full.md`
+- `raw/sources/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks/Energy-Efficient_Computation_Peer_Offloading_in_Satellite_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

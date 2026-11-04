@@ -106,5 +106,5 @@ A foundational **multi-UAV-MEC resource-allocation** entry whose distinguishing 
 
 ## Raw artifacts
 
-- `raw/sources/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks/full.md`
+- `raw/sources/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Energy_Efficient_Resource_Allocation_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

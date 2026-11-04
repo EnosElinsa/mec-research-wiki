@@ -99,5 +99,5 @@ This source expands [[integrated-sensing-computation-communication]] from single
 
 ## Raw artifacts
 
-- `raw/sources/Learning-Based Over-the-Air Integrated Sensing- Communication and Computation in UAV Swarm-Enabled Intelligent Transportation Systems/Learning-Based Over-the-Air Integrated Sensing- Communication and Computation in UAV Swarm-Enabled Intelligent Transportation Systems.md`
+- `raw/sources/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems/Learning-Based_Over-the-Air_Integrated_Sensing_Communication_and_Computation_in_UAV_Swarm-Enabled_Intelligent_Transportation_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

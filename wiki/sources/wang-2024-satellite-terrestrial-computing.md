@@ -104,5 +104,5 @@ A **satellite-terrestrial / SAGIN computing** entry that, unlike the horizontal 
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks/full.md`
+- `raw/sources/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks/Energy-Efficient_Design_of_Satellite-Terrestrial_Computing_in_6G_Wireless_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

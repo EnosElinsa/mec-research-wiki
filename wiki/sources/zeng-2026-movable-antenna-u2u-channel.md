@@ -96,5 +96,5 @@ This is a physical-layer/channel-modeling LAE entry, not a computation-offloadin
 
 ## Raw artifacts
 
-- `raw/sources/Modeling and Analysis of Movable Antenna Aided MIMO Wideband UAV-to-UAV Channels for Low-Altitude Economy Networks/Modeling and Analysis of Movable Antenna Aided MIMO Wideband UAV-to-UAV Channels for Low-Altitude Economy Networks.md`
+- `raw/sources/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks/Modeling_and_Analysis_of_Movable_Antenna_Aided_MIMO_Wideband_UAV-to-UAV_Channels_for_Low-Altitude_Economy_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

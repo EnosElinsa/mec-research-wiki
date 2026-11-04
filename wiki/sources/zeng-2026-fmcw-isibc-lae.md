@@ -70,5 +70,5 @@ This is a **low-altitude sensing / identification** entry rather than a computat
 
 ## Raw artifacts
 
-- `raw/sources/FMCW-Enabled Integrated Sensing- Identification- and Backscatter Communication for Low-Altitude Economy/FMCW-Enabled Integrated Sensing- Identification- and Backscatter Communication for Low-Altitude Economy.md`
+- `raw/sources/FMCW-Enabled_Integrated_Sensing_Identification_and_Backscatter_Communication_for_Low-Altitude_Economy/FMCW-Enabled_Integrated_Sensing_Identification_and_Backscatter_Communication_for_Low-Altitude_Economy.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

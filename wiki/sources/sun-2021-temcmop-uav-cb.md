@@ -104,5 +104,5 @@ The **earliest** collaborative-beamforming entry in the corpus and the methodolo
 
 ## Raw artifacts
 
-- `raw/sources/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method/full.md`
+- `raw/sources/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method/Time_and_Energy_Minimization_Communications_Based_on_Collaborative_Beamforming_for_UAV_Networks_A_Multi-Objective_Optimization_Method.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

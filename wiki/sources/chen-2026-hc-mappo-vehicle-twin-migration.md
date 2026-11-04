@@ -97,5 +97,5 @@ This source extends [[digital-twin]] and [[task-migration]] into the more specif
 
 ## Raw artifacts
 
-- `raw/sources/Hierarchical Control Multi-Agent DRL for Vehicle Twin Migration with Workload Prediction in UAV-Assisted Vehicular Metaverses/Hierarchical Control Multi-Agent DRL for Vehicle Twin Migration with Workload Prediction in UAV-Assisted Vehicular Metaverses.md`
+- `raw/sources/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses/Hierarchical_Control_Multi-Agent_DRL_for_Vehicle_Twin_Migration_with_Workload_Prediction_in_UAV-Assisted_Vehicular_Metaverses.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

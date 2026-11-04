@@ -110,6 +110,6 @@ This source extends the [[physical-layer-security]] and [[friendly-jamming-uav]]
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy-Efficient Secure Aerial Communications for Low-Altitude Economy Joint UAV Scheduling and Trajectory Optimization/Energy-Efficient Secure Aerial Communications for Low-Altitude Economy Joint UAV Scheduling and Trajectory Optimization.md`
-- Origin PDF: `raw/sources/Energy-Efficient Secure Aerial Communications for Low-Altitude Economy Joint UAV Scheduling and Trajectory Optimization/Energy-Efficient Secure Aerial Communications for Low-Altitude Economy Joint UAV Scheduling and Trajectory Optimization.pdf`
-- Figures: `raw/sources/Energy-Efficient Secure Aerial Communications for Low-Altitude Economy Joint UAV Scheduling and Trajectory Optimization/images/`
+- Parse: `raw/sources/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization.md`
+- Origin PDF: `raw/sources/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization.pdf`
+- Figures: `raw/sources/Energy-Efficient_Secure_Aerial_Communications_for_Low-Altitude_Economy_Joint_UAV_Scheduling_and_Trajectory_Optimization/images/`

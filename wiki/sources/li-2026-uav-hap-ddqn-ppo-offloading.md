@@ -104,5 +104,5 @@ This is a clean [[high-altitude-platform-station]] / [[hierarchical-aerial-mec]]
 
 ## Raw artifacts
 
-- `raw/sources/Joint Optimization of Latency and Energy Consumption for Computing Task Offloading Based on Cooperative Multi-UAV and HAP Networks/Joint Optimization of Latency and Energy Consumption for Computing Task Offloading Based on Cooperative Multi-UAV and HAP Networks.md`
+- `raw/sources/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -15,8 +15,9 @@ related:
   - "[[hu-2019-uav-relay-edge-computing]]"
   - "[[zhao-2019-uav-emergency-disasters]]"
   - "[[lu-2023-uav-relay-secure-maritime-mec]]"
+  - "[[jiang-2012-uav-heading-sdma]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Wireless Relay Communications with Unmanned Aerial Vehicles: Performance and Optimization
@@ -97,5 +98,5 @@ The **earliest** UAV-communications source in the corpus (2011) and an early **U
 
 ## Raw artifacts
 
-- `raw/sources/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization/full.md`
+- `raw/sources/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization/Wireless_Relay_Communications_with_Unmanned_Aerial_Vehicles_Performance_and_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

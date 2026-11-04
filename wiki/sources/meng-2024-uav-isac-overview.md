@@ -61,5 +61,5 @@ The wiki's **UAV-ISAC overview anchor**, complementing the LAE-focused ISAC over
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges/full.md`
+- `raw/sources/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges/UAV-Enabled_Integrated_Sensing_and_Communication_Opportunities_and_Challenges.md`
 - Original PDF and extracted figures in the same folder.

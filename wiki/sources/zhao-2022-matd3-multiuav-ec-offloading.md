@@ -93,5 +93,5 @@ A core **MATD3 cooperative multi-UAV MEC** entry that sits with [[he-2023-fairne
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/Multi-Agent_Deep_Reinforcement_Learning_for_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

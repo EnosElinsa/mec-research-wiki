@@ -91,5 +91,5 @@ A bridge between the wiki's **DRL** and **multi-objective/evolutionary** branche
 
 ## Raw artifacts
 
-- `raw/sources/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing/Evolutionary_Multi-Objective_Reinforcement_Learning_Based_Trajectory_Control_and_Task_Offloading_in_UAV-Assisted_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

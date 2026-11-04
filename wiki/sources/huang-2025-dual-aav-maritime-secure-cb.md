@@ -104,5 +104,5 @@ A **maritime + collaborative-beamforming + physical-layer-security** entry from 
 
 ## Raw artifacts
 
-- `raw/sources/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming/full.md`
+- `raw/sources/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming/Dual_AAV_Cluster-Assisted_Maritime_Physical-Layer_Secure_Communications_via_Collaborative_Beamforming.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

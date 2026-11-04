@@ -9,8 +9,9 @@ related:
   - "[[stochastic-game]]"
   - "[[multi-uav-assisted-mec]]"
   - "[[fairness-metrics-in-mec]]"
+  - "[[roy-not-in-parse-serv-hu]]"
 created: 2026-07-13
-updated: 2026-07-13
+updated: 2026-11-03
 ---
 
 # Differentiated UAV Service Market

@@ -96,5 +96,5 @@ A **hardware-validated** (real DJI UAVs + 5G NR mmWave testbed) UAV-swarm MEC en
 
 ## Raw artifacts
 
-- `raw/sources/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm/full.md`
+- `raw/sources/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

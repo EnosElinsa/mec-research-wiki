@@ -102,5 +102,5 @@ An early **MEC fundamentals** anchor and one of the corpus's clearest treatments
 
 ## Raw artifacts
 
-- `raw/sources/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling/full.md`
+- `raw/sources/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

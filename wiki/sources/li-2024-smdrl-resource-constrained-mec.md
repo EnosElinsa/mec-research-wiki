@@ -105,6 +105,6 @@ Grounded in the abstract and contributions (specific magnitudes are figure-deriv
 This is a multi-agent-DRL offloading entry whose distinctive angle is treating the **inter-agent communication channel itself as a constrained resource** — learned message encoding + TopK scheduling — rather than assuming free coordination, which sets it apart from the corpus's other MADRL offloading work such as [[zhao-2022-matd3-multiuav-ec-offloading]]. Its **QoE** objective (delay + energy) connects it to [[qoe-modeling-mec]] and the potential-game QoE offloading of [[chen-2022-qoe-game-end-edge-cloud]], while its **virtual energy-deficit queue** is the same [[lyapunov-optimization|Lyapunov-style]] long-term-constraint decoupling recurring across the corpus. The learned-communication idea is captured in the new [[communication-constrained-marl]] concept page.
 
 ## Raw artifacts
-- Parse: `raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/full.md`
-- Origin PDF: `raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/4cb00723-7605-4068-82a9-b4f936db0089_origin.pdf`
+- Parse: `raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing.md`
+- Origin PDF: `raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing.pdf`
 - Figures: `raw/sources/Computation_Offloading_in_Resource-Constrained_Multi-Access_Edge_Computing/images/`

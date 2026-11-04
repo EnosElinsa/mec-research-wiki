@@ -20,8 +20,9 @@ related:
   - "[[networked-isac]]"
   - "[[zhu-han]]"
   - "[[zheng-chang]]"
+  - "[[haps-uav-isac-resource-allocation]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Age of Information Minimization in UAV-Enabled Integrated Sensing and Communication Systems

@@ -94,5 +94,5 @@ This source adds an energy-replenishment dimension to the UAV-MEC offloading lin
 
 ## Raw artifacts
 
-- `raw/sources/Optimal Flight Speed Scheduling and Battery Swapping in UAV-Enabled Mobile Edge Computing/Optimal Flight Speed Scheduling and Battery Swapping in UAV-Enabled Mobile Edge Computing.md`
+- `raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -64,5 +64,5 @@ One of the two 2017 MEC survey anchors. Where [[mao-2017-mec-survey-communicatio
 
 ## Raw artifacts
 
-- `raw/sources/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading/full.md`
+- `raw/sources/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

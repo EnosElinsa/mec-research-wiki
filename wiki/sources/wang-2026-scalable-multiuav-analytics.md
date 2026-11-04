@@ -98,5 +98,5 @@ This source extends [[video-analytics-offloading]] from single-stream UAV/HAP an
 
 ## Raw artifacts
 
-- `raw/sources/Toward Inference Latency Optimization for Scalable Collaborative Multi-UAV Analytics/Toward Inference Latency Optimization for Scalable Collaborative Multi-UAV Analytics.md`
+- `raw/sources/Toward_Inference_Latency_Optimization_for_Scalable_Collaborative_Multi-UAV_Analytics/Toward_Inference_Latency_Optimization_for_Scalable_Collaborative_Multi-UAV_Analytics.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

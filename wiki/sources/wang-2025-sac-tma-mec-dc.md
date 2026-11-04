@@ -95,5 +95,5 @@ A **matching + SAC** entry in the Jilin-University / NTU aerial-MEC cluster, sha
 
 ## Raw artifacts
 
-- `raw/sources/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning/AAV-Assisted_Joint_Mobile_Edge_Computing_and_Data_Collection_via_Matching-Enabled_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures in the same folder.

@@ -102,5 +102,5 @@ A **digital-twin + MEC** entry that brings the [[two-timescale-optimization]] + 
 
 ## Raw artifacts
 
-- `raw/sources/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization/full.md`
+- `raw/sources/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

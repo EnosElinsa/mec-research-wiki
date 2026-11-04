@@ -100,5 +100,5 @@ Xuemin Shen ([[xuemin-shen]]) is a co-author. Uses [[alternating-direction-metho
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization/full.md`
+- `raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_Resource_Allocation_and_Trajectory_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

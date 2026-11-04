@@ -96,5 +96,5 @@ A **NOMA + SAGIN + DRL** entry that pairs with [[wang-2024-hybrid-oma-noma-sagin
 
 ## Raw artifacts
 
-- `raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/full.md`
+- `raw/sources/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN/Learning-Based_NOMA-Enabled_Queue-Aware_Task_Offloading_and_AAV_3D_Trajectory_Planning_for_SAGIN.md`
 - Original PDF and extracted figures in the same folder.

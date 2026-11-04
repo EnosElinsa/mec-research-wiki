@@ -7,20 +7,23 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[xie-2026-uav-multisource-fusion]]"
+  - "[[peng-2026-demand-aware-multiuav-mec]]"
+  - "[[qiqi-xie]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-11-03
 ---
 
 # Zexiong Wu
 
 Affiliated with the **College of Mathematics and Informatics, South China Agricultural University** (Guangzhou, China; email `zexiongwu@stu.scau.edu.cn`) — consistent across his papers in this wiki.
 
-Co-authored 4 sources in this wiki, all in the constrained multi-objective evolutionary UAV-MEC line:
+Co-authored 5 sources in this wiki, all in the constrained multi-objective evolutionary UAV-MEC line:
 
 - [[huang-2025-cmop-dispersed-computing]] — CMOP for latency/charge-cost in dispersed computing.
 - [[peng-2024-energy-time-uav-its]] — energy and completion-time-difference minimization for UAV-enabled ITS (CMOP).
 - [[wu-2026-terrain-aware-uav-mec]] — terrain-aware UAV-enabled MEC (lead author; task-adaptive CMOEA).
 - [[xie-2026-uav-multisource-fusion]] — UAV-enabled multi-source data fusion in vehicular networks (DCMOP).
+- [[peng-2026-demand-aware-multiuav-mec]] - demand-aware multi-area multi-UAV MEC with joint energy and delay optimization.
 
 ## Contributions to this wiki
 

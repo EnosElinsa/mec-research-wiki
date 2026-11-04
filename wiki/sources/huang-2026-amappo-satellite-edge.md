@@ -106,5 +106,5 @@ This extends the [[space-air-ground-integrated-network]] / [[leo-satellite-edge-
 
 ## Raw artifacts
 
-- `raw/sources/Cost-Aware Dependent Task Offloading and Resource Allocation for Satellite Edge Computing An Asynchronous Deep Reinforcement Learning Approach/Cost-Aware Dependent Task Offloading and Resource Allocation for Satellite Edge Computing An Asynchronous Deep Reinforcement Learning Approach.md`
+- `raw/sources/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach/Cost-Aware_Dependent_Task_Offloading_and_Resource_Allocation_for_Satellite_Edge_Computing_An_Asynchronous_Deep_Reinforcement_Learning_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

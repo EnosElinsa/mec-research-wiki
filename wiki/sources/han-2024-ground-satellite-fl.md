@@ -96,5 +96,5 @@ A **satellite-FL** entry that frames satellites as edge-computing units + aggreg
 
 ## Raw artifacts
 
-- `raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/full.md`
+- `raw/sources/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading/Cooperative_Federated_Learning_Over_Ground-to-Satellite_Integrated_Networks_Joint_Local_Computation_and_Data_Offloading.md`
 - Original PDF and extracted figures in the same folder.

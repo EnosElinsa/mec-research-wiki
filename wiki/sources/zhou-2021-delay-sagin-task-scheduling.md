@@ -99,5 +99,5 @@ This is a core bridge between [[cheng-2019-sagin-iot-offloading-rl]] and later S
 
 ## Raw artifacts
 
-- `raw/sources/Deep Reinforcement Learning for Delay-Oriented IoT Task Scheduling in SAGIN/Deep Reinforcement Learning for Delay-Oriented IoT Task Scheduling in SAGIN.md`
+- `raw/sources/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN/Deep_Reinforcement_Learning_for_Delay-Oriented_IoT_Task_Scheduling_in_SAGIN.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

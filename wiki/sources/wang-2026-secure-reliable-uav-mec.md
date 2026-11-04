@@ -100,5 +100,5 @@ This is a **secure UAV-MEC energy-efficiency** entry. It extends [[xu-2021-secur
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient UAV-Assisted Mobile Edge Computing With Secure and Reliable Data Transmission/Energy-Efficient UAV-Assisted Mobile Edge Computing With Secure and Reliable Data Transmission.md`
+- `raw/sources/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission/Energy-Efficient_UAV-Assisted_Mobile_Edge_Computing_With_Secure_and_Reliable_Data_Transmission.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -103,5 +103,5 @@ A **vehicular MEC + hierarchical aerial** entry distinguished by spanning **thre
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/full.md`
+- `raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

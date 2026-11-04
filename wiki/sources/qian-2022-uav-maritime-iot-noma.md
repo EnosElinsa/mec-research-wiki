@@ -107,5 +107,5 @@ A **maritime MEC** entry that pairs **uplink power-domain NOMA** offloading with
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks/full.md`
+- `raw/sources/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks/Joint_Multi-Domain_Resource_Allocation_and_Trajectory_Optimization_in_UAV-Assisted_Maritime_IoT_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

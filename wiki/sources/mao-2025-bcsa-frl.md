@@ -19,8 +19,10 @@ related:
   - "[[csra-cold-start-reputation-aggregation]]"
   - "[[fl-poisoning-attacks]]"
   - "[[bcsa-frl-tolerates-up-to-half-malicious-satellites]]"
+  - "[[yangbo-liu]]"
+  - "[[yijie-xun]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Blockchain-Enabled Cold Start Aggregation Scheme for Federated Reinforcement Learning-Based Task Offloading in Zero Trust LEO Satellite Networks
@@ -136,5 +138,5 @@ For each round of FRL:
 
 ## Raw artifacts
 
-- `raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/full.md`
+- `raw/sources/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks/A_Blockchain-Enabled_Cold_Start_Aggregation_Scheme_for_Federated_Reinforcement_Learning-Based_Task_Offloading_in_Zero_Trust_LEO_Satellite_Networks.md`
 - Original PDF and extracted figures in the same folder.

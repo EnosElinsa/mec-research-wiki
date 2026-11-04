@@ -102,5 +102,5 @@ A **vehicular MEC** entry that is distinctive in the corpus for coupling **RAN s
 
 ## Raw artifacts
 
-- `raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/full.md`
+- `raw/sources/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach/Joint_RAN_Slicing_and_Computation_Offloading_for_Autonomous_Vehicular_Networks_A_Learning-Assisted_Hierarchical_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

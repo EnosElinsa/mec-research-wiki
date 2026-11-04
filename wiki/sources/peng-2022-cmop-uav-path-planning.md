@@ -14,8 +14,9 @@ related:
   - "[[infeasible-individual-utilization]]"
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[peng-2024-energy-time-uav-its]]"
+  - "[[miao-2022-gaglpp-drone-swarm-iiot]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -107,6 +108,6 @@ It's worth treating this paper as the **canonical reference** for the wiki's evo
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/full.md`
-- Origin PDF: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/e2cbd4fd-01db-4ad4-a0b5-46084bd1f98c_origin.pdf`
+- Parse: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning.md`
+- Origin PDF: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning.pdf`
 - Figures: `raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/images/`

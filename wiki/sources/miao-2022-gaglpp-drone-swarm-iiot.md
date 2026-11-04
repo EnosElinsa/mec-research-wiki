@@ -97,5 +97,5 @@ A **path-planning-centric, ground-air-controlled** multi-UAV offloading entry th
 
 ## Raw artifacts
 
-- `raw/sources/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things/full.md`
+- `raw/sources/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things/Drone_Swarm_Path_Planning_for_Mobile_Edge_Computing_in_Industrial_Internet_of_Things.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

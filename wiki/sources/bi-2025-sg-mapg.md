@@ -108,4 +108,4 @@ Objectives jointly handled:
 
 ## Raw artifacts
 
-- `raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/full.md`
+- `raw/sources/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems/SG-MAPG_A_Three-Layer_Hierarchical_Model_for_Service_Fairness_and_Cost_Optimization_in_UAV-Assisted_MEC_Systems.md`

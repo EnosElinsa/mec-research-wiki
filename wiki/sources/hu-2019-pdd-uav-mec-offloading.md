@@ -95,5 +95,5 @@ An early (2018/2019) **single-UAV MEC offloading + trajectory** entry that preda
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems/full.md`
+- `raw/sources/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems/Joint_Offloading_and_Trajectory_Design_for_UAV-Enabled_Mobile_Edge_Computing_Systems.md`
 - Original PDF and extracted figures in the same folder.

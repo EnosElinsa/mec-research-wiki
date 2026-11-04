@@ -11,8 +11,9 @@ related:
   - "[[wang-2024-xl-mimo-tutorial]]"
   - "[[selective-near-field-area]]"
   - "[[bai-adaptive-near-field-xl-mimo-multi-uav]]"
+  - "[[li-2025-thz-um-mimo-ce-hybrid-field]]"
 created: 2026-06-02
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Extremely Large-Scale MIMO (XL-MIMO)

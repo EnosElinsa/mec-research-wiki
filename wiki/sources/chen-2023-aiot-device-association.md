@@ -97,5 +97,5 @@ A **multi-UAV-MEC + DRL** entry distinguished by making **device association** a
 
 ## Raw artifacts
 
-- `raw/sources/Enhancing_AIoT_Device_Association_With_Task_Offloading_in_Aerial_MEC_Networks/full.md`
+- `raw/sources/Enhancing_AIoT_Device_Association_With_Task_Offloading_in_Aerial_MEC_Networks/Enhancing_AIoT_Device_Association_With_Task_Offloading_in_Aerial_MEC_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

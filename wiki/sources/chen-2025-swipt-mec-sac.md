@@ -93,5 +93,5 @@ An **energy-efficiency + WPT** entry that complements [[zhu-2025-lycnn-drl-wpt-m
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach/full.md`
+- `raw/sources/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach/Joint_Resource_Management_for_Energy-Efficient_UAV-Assisted_SWIPT-MEC_A_Deep_Reinforcement_Learning_Approach.md`
 - Original PDF and extracted figures in the same folder.

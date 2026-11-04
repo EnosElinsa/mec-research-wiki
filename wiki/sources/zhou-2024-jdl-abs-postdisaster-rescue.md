@@ -105,5 +105,5 @@ A **post-disaster UAV-MEC** entry ([[post-disaster-mec]]) that joins Lyapunov-ba
 
 ## Raw artifacts
 
-- `raw/sources/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue/full.md`
+- `raw/sources/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue/Delay-Aware_UAV_Computation_Offloading_and_Communication_Assistance_for_Post-Disaster_Rescue.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

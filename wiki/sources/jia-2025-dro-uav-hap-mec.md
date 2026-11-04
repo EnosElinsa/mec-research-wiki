@@ -114,4 +114,4 @@ DRO fits a different niche: when you have **historical statistics but not a dist
 
 ## Raw artifacts
 
-- `raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/full.md`
+- `raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md`

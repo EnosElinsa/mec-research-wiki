@@ -7,8 +7,10 @@ related:
   - "[[mao-2025-bcsa-frl]]"
   - "[[mao-2024-fso-leo-hierarchical-routing]]"
   - "[[mao-2025-irs-noma-fl-secrecy]]"
+  - "[[yangbo-liu]]"
+  - "[[yijie-xun]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-11-03
 ---
 
 # Bomin Mao

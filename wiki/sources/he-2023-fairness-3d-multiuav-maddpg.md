@@ -94,5 +94,5 @@ Adds a **fairness-among-UAVs** angle to the multi-UAV trajectory + offloading tr
 
 ## Raw artifacts
 
-- `raw/sources/Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System/full.md`
+- `raw/sources/Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System/Fairness-Based_3-D_Multi-UAV_Trajectory_Optimization_in_Multi-UAV-Assisted_MEC_System.md`
 - Original PDF and extracted figures in the same folder.

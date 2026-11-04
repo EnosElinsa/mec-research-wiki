@@ -92,5 +92,5 @@ From the Zeng/Zhang group (NUS) — same authors as [[zeng-2019-uav-comm-tutoria
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications/full.md`
+- `raw/sources/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications/Joint_Altitude_and_Beamwidth_Optimization_for_UAV-Enabled_Multiuser_Communications.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

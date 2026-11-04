@@ -98,5 +98,5 @@ A **two-timescale aerial-MEC** entry from the Jilin-University / NTU cluster aro
 
 ## Raw artifacts
 
-- `raw/sources/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing/TJCCT_A_Two-Timescale_Approach_for_UAV-Assisted_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

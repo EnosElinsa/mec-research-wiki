@@ -7,20 +7,22 @@ related:
   - "[[mao-2024-ntn-hierarchical-caching-cav]]"
   - "[[mao-2025-bcsa-frl]]"
   - "[[mao-2025-irs-noma-fl-secrecy]]"
+  - "[[wang-2025-ctmig-task-migration-uav]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-11-03
 ---
 
 # Hongzhi Guo
 
 IEEE Member. Affiliated with **Northwestern Polytechnical University (NWPU)** — School of Cybersecurity and the National Engineering Laboratory for Integrated Aero-Space-Ground-Ocean Big Data Application Technology (Xi'an / Shenzhen, China; email `hongzhi.guo@nwpu.edu.cn`) — consistent across his papers in this wiki.
 
-Co-authored 4 sources in this wiki:
+Co-authored 5 sources in this wiki:
 
 - [[guo-2023-mccco-multiuav-5g-offloading]] — multi-UAV cooperative task offloading and resource allocation in 5G-advanced (lead author).
 - [[mao-2024-ntn-hierarchical-caching-cav]] — hierarchical content caching for NTN-assisted connected automated vehicles.
 - [[mao-2025-bcsa-frl]] — blockchain-enabled cold-start aggregation for FRL-based task offloading in zero-trust LEO satellite networks (corresponding author).
 - [[mao-2025-irs-noma-fl-secrecy]] — IRS-assisted secrecy-rate maximization for NOMA-based federated learning toward 6G.
+- [[wang-2025-ctmig-task-migration-uav]] - joint task offloading and migration in UAV-enabled dynamic MEC networks.
 
 ## Contributions to this wiki
 

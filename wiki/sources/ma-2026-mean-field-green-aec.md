@@ -104,6 +104,6 @@ This source adds [[mean-field-game]] to the wiki's game-theoretic offloading voc
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy-Efficient Task Allocation for Green Aerial Edge Computing Based on Metaverse Users A Mean Field Game Approach/Energy-Efficient Task Allocation for Green Aerial Edge Computing Based on Metaverse Users A Mean Field Game Approach.md`
-- Origin PDF: `raw/sources/Energy-Efficient Task Allocation for Green Aerial Edge Computing Based on Metaverse Users A Mean Field Game Approach/Energy-Efficient Task Allocation for Green Aerial Edge Computing Based on Metaverse Users A Mean Field Game Approach.pdf`
-- Figures: `raw/sources/Energy-Efficient Task Allocation for Green Aerial Edge Computing Based on Metaverse Users A Mean Field Game Approach/images/`
+- Parse: `raw/sources/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach.md`
+- Origin PDF: `raw/sources/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach.pdf`
+- Figures: `raw/sources/Energy-Efficient_Task_Allocation_for_Green_Aerial_Edge_Computing_Based_on_Metaverse_Users_A_Mean_Field_Game_Approach/images/`

@@ -99,5 +99,5 @@ A **LEO satellite-edge-computing** offloading entry that anchors the new [[count
 
 ## Raw artifacts
 
-- `raw/sources/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning/Collaborative_Task_Offloading_Optimization_for_Satellite_Mobile_Edge_Computing_Using_Multi-Agent_Deep_Reinforcement_Learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -72,5 +72,5 @@ A **foundational generative-AI survey** that anchors the physical-layer side of 
 
 ## Raw artifacts
 
-- `raw/sources/Generative_AI_for_Physical_Layer_Communications_A_Survey/full.md`
+- `raw/sources/Generative_AI_for_Physical_Layer_Communications_A_Survey/Generative_AI_for_Physical_Layer_Communications_A_Survey.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

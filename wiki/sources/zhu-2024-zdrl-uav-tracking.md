@@ -98,5 +98,5 @@ A **distributional-RL** entry that anchors the new [[distributional-reinforcemen
 
 ## Raw artifacts
 
-- `raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/full.md`
+- `raw/sources/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking/Collaborative_Reinforcement_Learning_Based_Unmanned_Aerial_Vehicle_UAV_Trajectory_Design_for_3D_UAV_Tracking.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

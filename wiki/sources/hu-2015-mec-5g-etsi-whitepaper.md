@@ -70,5 +70,5 @@ This is the corpus's **standardization anchor** for [[mobile-edge-computing]] it
 
 ## Raw artifacts
 
-- `raw/sources/MEC_a_Key_Technology_Towards_5g/full.md`
+- `raw/sources/MEC_a_Key_Technology_Towards_5g/MEC_a_Key_Technology_Towards_5g.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

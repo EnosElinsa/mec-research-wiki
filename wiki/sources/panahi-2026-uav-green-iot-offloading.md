@@ -102,5 +102,5 @@ This source sits in the [[wireless-power-transfer]] and energy-efficiency track,
 
 ## Raw artifacts
 
-- `raw/sources/Cost-Aware UAV-Enabled Computation Offloading for Green Internet of Things/Cost-Aware UAV-Enabled Computation Offloading for Green Internet of Things.md`
+- `raw/sources/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things/Cost-Aware_UAV-Enabled_Computation_Offloading_for_Green_Internet_of_Things.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

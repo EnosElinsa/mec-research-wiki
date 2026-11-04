@@ -107,5 +107,5 @@ Simulation-only (single polar-orbiting LEO satellite; values from numerical expe
 Strengthens the **SAGIN / satellite-offloading** track ([[space-air-ground-integrated-network]]) alongside [[chen-2024-ulse-game]] (UAV-LEO potential game), [[qin-2025-matd3-noma-queue-sagin]] (NOMA queue-aware SAGIN), [[zhai-2023-fedleo-decentralized-fl]] (decentralized FL over LEO), and [[wang-2025-double-edge-samin]] (double-edge UAV+LEO). Methodologically it is a **Lyapunov + convex decomposition** online scheme — the same `[O(1/V), O(V)]` machinery used in [[qin-2025-matd3-noma-queue-sagin]] and [[zhu-2025-lycnn-drl-wpt-mec]], here driven by the distinctive **satellite energy-harvesting / eclipse** dynamic rather than UAV battery limits. Its LEO energy-and-coverage realism complements [[leo-satellite-coverage-time]]. [[tony-q-s-quek]] also co-authors it.
 
 ## Raw artifacts
-- `raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/full.md`
+- `raw/sources/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks/Energy-Constrained_Satellite_Edge_Computing_for_Satellite-Terrestrial_Integrated_Networks.md`
 - Original PDF and extracted figures in the same folder.

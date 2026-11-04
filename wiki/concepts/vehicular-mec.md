@@ -16,8 +16,11 @@ related:
   - "[[ren-2026-security-aware-vec-td3]]"
   - "[[feng-2026-prediction-service-migration]]"
   - "[[cui-2026-aris-v2x-icac]]"
+  - "[[hou-not-in-parse-avsi-mempo]]"
+  - "[[qiu-2025-tom-stateful-vec]]"
+  - "[[spampinato-2025-uabs-v2x-3dqn-ilp]]"
 created: 2026-05-28
-updated: 2026-07-10
+updated: 2026-11-03
 ---
 
 # Vehicular MEC (V-MEC / VEC)

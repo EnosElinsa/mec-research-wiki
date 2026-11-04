@@ -99,6 +99,6 @@ Provides the **secure computing capacity** metric definition for UAV-MEC PLS —
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/full.md`
-- Origin PDF: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/4a0aaa0c-101c-4198-9c6f-efa42d18c909_origin.pdf`
+- Parse: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems.md`
+- Origin PDF: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems.pdf`
 - Figures: `raw/sources/Joint_Resource_and_Trajectory_Optimization_for_Security_in_UAV-Assisted_MEC_Systems/images/`

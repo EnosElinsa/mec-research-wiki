@@ -95,5 +95,5 @@ Joins the **caching/service-placement** offloading thread with [[gao-2024-servic
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks/full.md`
+- `raw/sources/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md`
 - Original PDF and extracted figures in the same folder.

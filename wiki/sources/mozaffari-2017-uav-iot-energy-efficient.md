@@ -99,6 +99,6 @@ A **UAV-deployment + data-collection anchor** from the same Mozaffari/Saad/Benni
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/full.md`
-- Origin PDF: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/b905eb51-494c-4f5b-95c4-b1f8f6ac328f_origin.pdf`
+- Parse: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications.md`
+- Origin PDF: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications.pdf`
 - Figures: `raw/sources/Mobile_Unmanned_Aerial_Vehicles_UAVs_for_Energy-Efficient_Internet_of_Things_Communications/images/`

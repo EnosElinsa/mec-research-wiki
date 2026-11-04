@@ -96,4 +96,4 @@ The objective choice — **BSS** rather than average data rate — is worth noti
 
 ## Raw artifacts
 
-- `raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/full.md`
+- `raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md`

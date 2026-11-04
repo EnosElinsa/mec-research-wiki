@@ -103,5 +103,5 @@ This is a strong bridge between [[semantic-communication]] and [[diffusion-model
 
 ## Raw artifacts
 
-- `raw/sources/Diffusion-Based Trajectory and Semantic Resource Optimization in UAV-Assisted Edge Computing/Diffusion-Based Trajectory and Semantic Resource Optimization in UAV-Assisted Edge Computing.md`
+- `raw/sources/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing/Diffusion-Based_Trajectory_and_Semantic_Resource_Optimization_in_UAV-Assisted_Edge_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

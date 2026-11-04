@@ -26,8 +26,9 @@ related:
   - "[[zhou-2026-a2g-madrl-air-ground-vcs]]"
   - "[[parameter-sharing-marl]]"
   - "[[xianbin-wang]]"
+  - "[[arribas-not-in-parse-uav-resupply-scheduling]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 

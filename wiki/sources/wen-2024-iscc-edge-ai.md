@@ -105,5 +105,5 @@ The corpus's second [[integrated-sensing-computation-communication|ISCC]] entry 
 
 ## Raw artifacts
 
-- `raw/sources/Task-Oriented_Sensing_Computation_and_Communication_Integration_for_Multi-Device_Edge_AI/full.md`
+- `raw/sources/Task-Oriented_Sensing_Computation_and_Communication_Integration_for_Multi-Device_Edge_AI/Task-Oriented_Sensing_Computation_and_Communication_Integration_for_Multi-Device_Edge_AI.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

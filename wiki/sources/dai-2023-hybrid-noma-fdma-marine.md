@@ -103,5 +103,5 @@ A **maritime MEC** entry from the University-of-Macau group around [[minghui-dai
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks/full.md`
+- `raw/sources/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks/UAV-Assisted_Multi-Access_Computation_Offloading_via_Hybrid_NOMA_and_FDMA_in_Marine_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

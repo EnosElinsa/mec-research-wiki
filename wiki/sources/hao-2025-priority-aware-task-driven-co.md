@@ -13,8 +13,9 @@ related:
   - "[[binary-vs-partial-offloading]]"
   - "[[event-driven-vs-slot-driven-offloading]]"
   - "[[task-priority-in-mec]]"
+  - "[[wei-zhang]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Task-Driven Priority-Aware Computation Offloading Using Deep Reinforcement Learning
@@ -97,4 +98,4 @@ $$
 
 ## Raw artifacts
 
-- `raw/sources/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning/Task-Driven_Priority-Aware_Computation_Offloading_Using_Deep_Reinforcement_Learning.md`

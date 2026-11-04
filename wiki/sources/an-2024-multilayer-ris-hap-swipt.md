@@ -103,5 +103,5 @@ A **HAP / RIS / SWIPT physical-layer** anchor (not an MEC offloading paper) that
 
 ## Raw artifacts
 
-- `raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/full.md`
+- `raw/sources/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks/Exploiting_Multi-Layer_Refracting_RIS-Assisted_Receiver_for_HAP-SWIPT_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

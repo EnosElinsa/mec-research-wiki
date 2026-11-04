@@ -96,4 +96,4 @@ Authors note that for an $N$-WD system the natural input, channel + queue states
 
 ## Raw artifacts
 
-- `raw/sources/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning/full.md`
+- `raw/sources/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning/Enhancing_Energy_Efficiency_in_Wireless-Powered_MEC_Systems_Through_Lyapunov-Guided_Deep_Reinforcement_Learning.md`

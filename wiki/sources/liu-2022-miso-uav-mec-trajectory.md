@@ -93,5 +93,5 @@ A **MISO/beamforming** twist on the optimization-based single-UAV MEC formulatio
 
 ## Raw artifacts
 
-- `raw/sources/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks/full.md`
+- `raw/sources/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks/Resource_Allocation_and_Trajectory_Design_for_MISO_UAV-Assisted_MEC_Networks.md`
 - Original PDF and extracted figures in the same folder.

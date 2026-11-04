@@ -9,8 +9,19 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[shi-2023-two-timescale-migration-rerouting]]"
   - "[[feng-2026-prediction-service-migration]]"
+  - "[[zhang-2025-kubespt-stateful-pod-migration]]"
+  - "[[ye-2023-seamless-service-handover-uav-mec]]"
+  - "[[fernando-not-in-parse-vrecover]]"
+  - "[[hou-not-in-parse-avsi-mempo]]"
+  - "[[liang-2021-multicell-jmh]]"
+  - "[[meliani-2026-layer-reuse-microservice-migration]]"
+  - "[[qiu-2025-tom-stateful-vec]]"
+  - "[[rong-2024-video-analytics-live-migration]]"
+  - "[[roy-not-in-parse-serv-hu]]"
+  - "[[scheuer-not-in-parse-resync]]"
+  - "[[sharghivand-not-in-parse-oshn]]"
 created: 2026-06-02
-updated: 2026-07-07
+updated: 2026-11-03
 ---
 
 # Service Migration in MEC

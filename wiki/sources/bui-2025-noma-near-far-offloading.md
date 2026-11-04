@@ -101,5 +101,5 @@ This source bridges [[noma]], [[near-field-communications]], and [[task-offloadi
 
 ## Raw artifacts
 
-- `raw/sources/Task Offloading Optimization for UAV-Aided NOMA Networks With Coexistence of Near-Field and Far-Field Communications/Task Offloading Optimization for UAV-Aided NOMA Networks With Coexistence of Near-Field and Far-Field Communications.md`
+- `raw/sources/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications/Task_Offloading_Optimization_for_UAV-Aided_NOMA_Networks_With_Coexistence_of_Near-Field_and_Far-Field_Communications.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

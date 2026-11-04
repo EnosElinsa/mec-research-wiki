@@ -70,15 +70,16 @@ related:
   - "[[huang-2026-star-ris-nearfield-isac]]"
   - "[[feng-2026-secure-short-packet-noma-relay]]"
   - "[[wen-2026-diffusion-dynamic-contract-ai-agent]]"
+  - "[[wang-2026-context-aigc-migration]]"
 created: 2026-05-29
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Dusit Niyato
 
 IEEE Fellow. Affiliated with the **College of Computing and Data Science**, **Nanyang Technological University**, Singapore. The source biographies in [[chen-2026-hc-mappo-vehicle-twin-migration]] and [[wen-2026-hybridrag-low-carbon-lae]] both list the same NTU professorship, confirming the same researcher identity across these corpus sources.
 
-The most frequently recurring author roster in the wiki currently links 66 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, federated-learning incentives, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, covert communication, content incentives, robotic-network information quality, and surveys:
+The most frequently recurring author roster in the wiki currently links 67 sources spanning generative-AI/diffusion methods, multi-agent DRL, collaborative beamforming, aerial/edge resource allocation, federated-learning incentives, digital twins, freshness-oriented air-ground MEC, semantic edge computing, low-carbon LAE optimization, secure LAE data collection, HAP-UAV IoRT collection, channel modeling, compliance-aware trajectory planning, low-altitude rescue, temporal spectrum cartography, UAV-cluster authentication, directional FANET discovery and link maintenance, aerial RIS control, ISAC security, anti-jamming control, covert communication, content incentives, robotic-network information quality, and surveys:
 
 - [[chen-2025-swipt-mec-sac]] - energy-efficient UAV-assisted SWIPT-MEC via improved SAC.
 - [[du-2023-maddpg-service-placement-agin]] - MADDPG joint service placement and task offloading in air-ground integrated networks.
@@ -149,6 +150,7 @@ The most frequently recurring author roster in the wiki currently links 66 sourc
 - [[wang-2026-fd-covert-isac]] - full-duplex receiver jamming for UAV-aided covert ISAC.
 - [[wang-2026-covert-cognitive-radio]] - primary-signal-assisted covertness in cooperative cognitive radio.
 - [[wen-2026-diffusion-dynamic-contract-ai-agent]] - diffusion-based dynamic contracts for federated AI agent construction in mobile metaverses (NTU College of Computing and Data Science address).
+- [[wang-2026-context-aigc-migration]] - context-aware AIGC service migration via transformer DRL.
 
 ## Contributions to this wiki
 

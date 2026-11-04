@@ -107,5 +107,5 @@ This source extends the existing [[wen-2024-iscc-edge-ai]] task-oriented ISCC en
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted Edge Inference With Integrated Sensing- Communication- and Computation/UAV-Assisted Edge Inference With Integrated Sensing- Communication- and Computation.md`
+- `raw/sources/UAV-Assisted_Edge_Inference_With_Integrated_Sensing_Communication_and_Computation/UAV-Assisted_Edge_Inference_With_Integrated_Sensing_Communication_and_Computation.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

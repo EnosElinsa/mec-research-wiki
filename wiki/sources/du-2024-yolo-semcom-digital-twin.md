@@ -105,5 +105,5 @@ A [[semantic-communication]] entry that, unlike other semantic-communication sou
 
 ## Raw artifacts
 
-- `raw/sources/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/full.md`
+- `raw/sources/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction/YOLO-Based_Semantic_Communication_With_Generative_AI-Aided_Resource_Allocation_for_Digital_Twins_Construction.md`
 - Original PDF (`72143137-933e-46b2-b1e8-aaf9d3713ec3_origin.pdf`) and extracted figures (`images/`) in the same folder.

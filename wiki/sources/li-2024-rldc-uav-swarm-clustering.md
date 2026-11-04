@@ -113,5 +113,5 @@ Simulation-only (no hardware); small scale (3 leaders / 9 followers / 500 device
 It sits in the UAV-swarm collaborative-computing track with [[sun-2024-asap-uav-swarm]] (in-swarm DL inference) and [[qu-ecoei-uav-swarm]] (elastic collaborative inference), and in the game-theoretic-offloading track. Shared building blocks: [[multi-uav-assisted-mec]], [[mobile-edge-computing]], [[task-offloading]], [[uav-trajectory-control]], [[uav-charging-scheduling]], [[service-caching-mec]], [[load-balancing-uav-mec]]. Its rotary-wing propulsion model is the [[zeng-2019-rotary-wing-energy-min]] model.
 
 ## Raw artifacts
-- `raw/sources/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/full.md`
+- `raw/sources/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md`
 - Original PDF and extracted figures in the same folder.

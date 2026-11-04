@@ -62,5 +62,5 @@ The conceptual umbrella for the wiki's growing **generative-AI MEC** thread: it 
 
 ## Raw artifacts
 
-- `raw/sources/Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges/full.md`
+- `raw/sources/Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges/Generative_AI_for_the_Optimization_of_Next-Generation_Wireless_Networks_Basics_State-of-the-Art_and_Open_Challenges.md`
 - Original PDF and extracted figures in the same folder.

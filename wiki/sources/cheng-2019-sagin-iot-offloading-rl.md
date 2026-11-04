@@ -91,5 +91,5 @@ Xuemin Shen ([[xuemin-shen]]) is a co-author. The **earliest SAGIN computing-off
 
 ## Raw artifacts
 
-- `raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/full.md`
+- `raw/sources/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach/Space_Aerial-Assisted_Computing_Offloading_for_IoT_Applications_A_Learning-Based_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

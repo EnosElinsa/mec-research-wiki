@@ -93,5 +93,5 @@ A **multiobjective + multi-technique** UAV-MEC entry that, like [[song-2022-emor
 
 ## Raw artifacts
 
-- `raw/sources/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments/full.md`
+- `raw/sources/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments/MOALF-UAV-MEC_Adaptive_Multiobjective_Optimization_for_UAV-Assisted_Mobile_Edge_Computing_in_Dynamic_IoT_Environments.md`
 - Original PDF and extracted figures in the same folder.

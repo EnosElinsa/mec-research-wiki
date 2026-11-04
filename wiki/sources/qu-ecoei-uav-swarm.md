@@ -74,5 +74,5 @@ Proof-of-concept only (4 UAVs, static selection, single inference flow). The art
 The architecture-level companion to [[sun-2024-asap-uav-swarm]] (ASAP) — same NUAA group ([[chao-dong]], [[qihui-wu]]; ASAP is hardware-validated on 24 Jetson computers + 5 UAVs), same in-swarm [[collaborative-dl-inference]] thread, both using [[dnn-model-partition]] + [[pipeline-parallel-inference]] and [[elastic-task-scheduling]] for fault tolerance; eCoEI is the vision/architecture article, ASAP the full system + benchmarks. It is also a sibling of [[huang-2025-cmop-dispersed-computing]] (dispersed computation across aerial nodes) and contrasts with the game-theoretic [[li-2024-rldc-uav-swarm-clustering]] swarm-MEC formulation. Serves [[post-disaster-mec]] within the broader [[mobile-edge-computing]] / [[multi-uav-assisted-mec]] landscape; [[jiawen-kang]] and Song Guo also co-author ASAP.
 
 ## Raw artifacts
-- `raw/sources/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities/full.md`
+- `raw/sources/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities.md`
 - Original PDF and extracted figures in the same folder.

@@ -101,5 +101,5 @@ A **LEO satellite edge computing** offloading entry distinguished by making **LE
 
 ## Raw artifacts
 
-- `raw/sources/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks/full.md`
+- `raw/sources/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks/Mobility-Aware_Computation_Offloading_in_Satellite_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

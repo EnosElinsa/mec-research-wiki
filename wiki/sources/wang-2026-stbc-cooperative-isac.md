@@ -65,5 +65,5 @@ This source strengthens the [[networked-isac]] branch next to [[zhao-2025-networ
 
 ## Raw artifacts
 
-- `raw/sources/Space-Time Block Codec Based Cooperative Integrated Sensing and Communication System/Space-Time Block Codec Based Cooperative Integrated Sensing and Communication System.md`
+- `raw/sources/Space-Time_Block_Codec_Based_Cooperative_Integrated_Sensing_and_Communication_System/Space-Time_Block_Codec_Based_Cooperative_Integrated_Sensing_and_Communication_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

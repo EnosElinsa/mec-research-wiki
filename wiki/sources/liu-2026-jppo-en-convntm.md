@@ -23,8 +23,13 @@ related:
   - "[[en-convntm-beats-baselines]]"
   - "[[charging-stations-improve-efficiency]]"
   - "[[uav-count-inverted-u-energy]]"
+  - "[[chunhui-qu]]"
+  - "[[hongrui-miao]]"
+  - "[[lihan-liu]]"
+  - "[[zhidu-li]]"
+  - "[[zhuwei-wang]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -128,6 +133,6 @@ The authors note results are simulation-only, and call out hardware constraints 
 
 ## Raw artifacts
 
-- `raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/full.md` — parsed text
-- `raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/9de84584-c0e5-4b27-b085-5256cd556869_origin.pdf` — original PDF
+- `raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md` — parsed text
+- `raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.pdf` — original PDF
 - `raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/images/` — extracted figures

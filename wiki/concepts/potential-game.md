@@ -15,8 +15,9 @@ related:
   - "[[joint-switch-coalition-formation-game]]"
   - "[[ma-2026-game-ibs-deployment]]"
   - "[[qi-2026-ocma-ddqn-data-collection]]"
+  - "[[chen-2016-multiuser-offloading-game-mec]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Potential Game

@@ -62,5 +62,5 @@ Provides foundational background for [[collaborative-beamforming]] as used in se
 
 ## Raw artifacts
 
-- `raw/sources/Distributed_and_Collaborative_Beamforming_in_Wireless_Sensor_Networks_Classifications_Trends_and_Research_Directions/full.md`
+- `raw/sources/Distributed_and_Collaborative_Beamforming_in_Wireless_Sensor_Networks_Classifications_Trends_and_Research_Directions/Distributed_and_Collaborative_Beamforming_in_Wireless_Sensor_Networks_Classifications_Trends_and_Research_Directions.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

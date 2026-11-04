@@ -15,8 +15,12 @@ related:
   - "[[calagna-2026-cormo-ran]]"
   - "[[antonio-calagna]]"
   - "[[yenchia-yu]]"
+  - "[[zhang-2025-kubespt-stateful-pod-migration]]"
+  - "[[fernando-not-in-parse-vrecover]]"
+  - "[[rong-2024-video-analytics-live-migration]]"
+  - "[[scheuer-not-in-parse-resync]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Design, Modeling, and Implementation of Robust Migration of Stateful Edge Microservices

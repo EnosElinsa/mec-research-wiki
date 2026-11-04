@@ -95,5 +95,5 @@ Strengthens the **maritime MEC** track ([[wang-2026-aerial-marine-msar]], [[liu-
 
 ## Raw artifacts
 
-- `raw/sources/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks/full.md`
+- `raw/sources/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks/Double-Edge-Assisted_Computation_Offloading_and_Resource_Allocation_for_Space-Air-Marine_Integrated_Networks.md`
 - Original PDF and extracted figures in the same folder.

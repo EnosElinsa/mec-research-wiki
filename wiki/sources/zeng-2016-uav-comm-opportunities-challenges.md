@@ -59,5 +59,5 @@ A widely-cited **foundational overview** of the corpus's UAV-communications trac
 
 ## Raw artifacts
 
-- `raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/full.md`
+- `raw/sources/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges/Wireless_communications_with_unmanned_aerial_vehicles_opportunities_and_challenges.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

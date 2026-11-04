@@ -7,8 +7,9 @@ related:
   - "[[dnn-model-partition]]"
   - "[[load-balancing-uav-mec]]"
   - "[[sun-2024-asap-uav-swarm]]"
+  - "[[asap-swarm-inference-speedup]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-11-03
 ---
 
 # Data-Partition Parallel Inference

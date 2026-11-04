@@ -96,5 +96,5 @@ A **secure UAV-RIS-MEC** entry notable for jointly handling **both aerial and gr
 
 ## Raw artifacts
 
-- `raw/sources/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers/full.md`
+- `raw/sources/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers/Optimization_of_Secure_Computation_Efficiency_in_UAV-Enabled_RIS-Assisted_MEC-IoT_Networks_With_Aerial_and_Ground_Eavesdroppers.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

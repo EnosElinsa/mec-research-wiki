@@ -62,5 +62,5 @@ Zhu Han ([[zhu-han]]) is a co-author. A concrete system implementation paper wit
 
 ## Raw artifacts
 
-- `raw/sources/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework/full.md`
+- `raw/sources/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

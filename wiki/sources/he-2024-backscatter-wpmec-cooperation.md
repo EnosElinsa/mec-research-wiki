@@ -100,5 +100,5 @@ A **wireless-powered MEC / energy** entry that extends the WPT-MEC anchor [[zhou
 
 ## Raw artifacts
 
-- `raw/sources/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation/full.md`
+- `raw/sources/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation/Energy_Efficiency_Maximization_of_Backscatter-Assisted_Wireless-Powered_MEC_With_User_Cooperation.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

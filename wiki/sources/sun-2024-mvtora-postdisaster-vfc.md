@@ -95,5 +95,5 @@ A **post-disaster MEC** entry alongside [[peng-2025-drudm-cfg]] (fairness-aware 
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/full.md`
+- `raw/sources/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue/Joint_Task_Offloading_and_Resource_Allocation_in_Aerial-Terrestrial_UAV_Networks_With_Edge_and_Fog_Computing_for_Post-Disaster_Rescue.md`
 - Original PDF (`c83b18ed-ed3b-4ee8-98d0-5f04b355c25e_origin.pdf`) and extracted figures (`images/`) in the same folder.

@@ -15,8 +15,9 @@ related:
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
   - "[[peng-2022-cmop-uav-path-planning]]"
   - "[[wang-acve-constraint-violation-cmop]]"
+  - "[[yong-wang]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Deployment and Task Scheduling Optimization for Large-Scale Mobile Users in Multi-UAV-Enabled Mobile Edge Computing
@@ -96,5 +97,5 @@ An **evolutionary-computation** anchor (differential evolution + two-layer decom
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing/full.md`
+- `raw/sources/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

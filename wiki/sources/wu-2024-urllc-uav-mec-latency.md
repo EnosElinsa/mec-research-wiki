@@ -99,5 +99,5 @@ A **URLLC / finite-blocklength** UAV-MEC entry — the first in the corpus to dr
 
 ## Raw artifacts
 
-- `raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/full.md`
+- `raw/sources/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems/Latency_Minimization_for_UAV-Enabled_URLLC-Based_Mobile_Edge_Computing_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

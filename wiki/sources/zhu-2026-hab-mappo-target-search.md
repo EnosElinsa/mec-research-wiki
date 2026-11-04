@@ -106,5 +106,5 @@ This source creates [[attention-based-uav-target-search]] as a target-search cou
 
 ## Raw artifacts
 
-- `raw/sources/Two-Level-Attention-Based Continuous Trajectory Design and Computation Offloading for Multi-UAV Cooperative Target Search/Two-Level-Attention-Based Continuous Trajectory Design and Computation Offloading for Multi-UAV Cooperative Target Search.md`
+- `raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

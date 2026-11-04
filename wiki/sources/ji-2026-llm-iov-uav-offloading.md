@@ -108,5 +108,5 @@ This is a [[vehicular-mec]] / [[uav-enabled-its]] source that extends the vehicu
 
 ## Raw artifacts
 
-- `raw/sources/Joint Optimization of Trajectory Control- Resource Allocation- and Task Offloading for Multi-UAV-Assisted IoV/Joint Optimization of Trajectory Control- Resource Allocation- and Task Offloading for Multi-UAV-Assisted IoV.md`
+- `raw/sources/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV/Joint_Optimization_of_Trajectory_Control_Resource_Allocation_and_Task_Offloading_for_Multi-UAV-Assisted_IoV.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

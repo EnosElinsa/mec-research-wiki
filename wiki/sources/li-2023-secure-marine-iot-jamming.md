@@ -97,5 +97,5 @@ A **maritime + physical-layer-security** entry that uniquely combines **NOMA off
 
 ## Raw artifacts
 
-- `raw/sources/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming/full.md`
+- `raw/sources/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming/Secure_Computation_Offloading_for_Marine_IoT_An_Energy-Efficient_Design_via_Cooperative_Jamming.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -103,5 +103,5 @@ A canonical **UAV mobile-relaying** anchor from the Zeng/Zhang group (grounding 
 
 ## Raw artifacts
 
-- `raw/sources/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems/full.md`
+- `raw/sources/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems/Throughput_Maximization_for_UAV-Enabled_Mobile_Relaying_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

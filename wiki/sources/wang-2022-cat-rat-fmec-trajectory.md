@@ -101,5 +101,5 @@ A foundational **convex-vs-DRL** UAV-MEC trajectory entry that explicitly pairs 
 
 ## Raw artifacts
 
-- `raw/sources/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing/full.md`
+- `raw/sources/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing/Deep_Reinforcement_Learning_Based_Dynamic_Trajectory_Control_for_UAV-Assisted_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -95,5 +95,5 @@ An early, **matching-theoretic** anchor for the **hierarchical aerial MEC (UAV+H
 
 ## Raw artifacts
 
-- `raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/full.md`
+- `raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.md`
 - Original PDF and extracted figures in the same folder.

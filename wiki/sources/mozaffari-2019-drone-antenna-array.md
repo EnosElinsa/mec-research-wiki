@@ -96,5 +96,5 @@ A foundational **aerial-array beamforming** entry from the **Virginia Tech (Wire
 
 ## Raw artifacts
 
-- `raw/sources/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array/full.md`
+- `raw/sources/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array/Communications_and_Control_for_Wireless_Drone-Based_Antenna_Array.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

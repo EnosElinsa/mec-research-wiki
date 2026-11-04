@@ -16,8 +16,9 @@ related:
   - "[[binary-vs-partial-offloading]]"
   - "[[zhang-2019-uav-iot-comp-comm]]"
   - "[[yu-2020-uav-ec-collaborative-offloading]]"
+  - "[[miao-2022-gaglpp-drone-swarm-iiot]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV-Assisted Task Offloading in Edge Computing
@@ -96,5 +97,5 @@ A **hybrid convex + IPSO + DDPG** single-UAV offloading entry that combines clas
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_Task_Offloading_in_Edge_Computing/full.md`
+- `raw/sources/UAV-Assisted_Task_Offloading_in_Edge_Computing/UAV-Assisted_Task_Offloading_in_Edge_Computing.md`
 - Original PDF and extracted figures in the same folder.

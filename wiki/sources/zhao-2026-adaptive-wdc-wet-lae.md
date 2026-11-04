@@ -102,5 +102,5 @@ This source adds [[adaptive-wdc-wet-service-balancing]] to the LAE control vocab
 
 ## Raw artifacts
 
-- `raw/sources/Toward Adaptive IoT Service Balance in Low-Altitude Economy Multi-UAV-Aided Bi-Objective Wireless Data Collection and Wireless Energy Transfer/Toward Adaptive IoT Service Balance in Low-Altitude Economy Multi-UAV-Aided Bi-Objective Wireless Data Collection and Wireless Energy Transfer.md`
+- `raw/sources/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

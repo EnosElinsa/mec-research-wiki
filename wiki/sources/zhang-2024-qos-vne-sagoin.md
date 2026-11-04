@@ -101,5 +101,5 @@ The corpus's **virtual-network-embedding / resource-orchestration** entry for no
 
 ## Raw artifacts
 
-- `raw/sources/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network/full.md`
+- `raw/sources/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network/QoS_Aware_Virtual_Network_Embedding_in_Space-Air-Ground-Ocean_Integrated_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -19,8 +19,9 @@ related:
   - "[[wang-2023-differentiated-uav-services]]"
   - "[[differentiated-uav-service-market]]"
   - "[[cui-2020-marl-uav-resource-allocation]]"
+  - "[[chen-2016-multiuser-offloading-game-mec]]"
 created: 2026-05-29
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Nash Equilibrium

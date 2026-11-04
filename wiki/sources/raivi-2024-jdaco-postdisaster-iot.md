@@ -101,5 +101,5 @@ A **post-disaster MEC** entry that uniquely **fuses data aggregation with offloa
 
 ## Raw artifacts
 
-- `raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/full.md`
+- `raw/sources/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios/JDACO_Joint_Data_Aggregation_and_Computation_Offloading_in_UAV-Enabled_Internet_of_Things_for_Post-Disaster_Scenarios.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

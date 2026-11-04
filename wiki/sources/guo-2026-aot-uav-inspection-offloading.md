@@ -98,5 +98,5 @@ This paper links the rail/ITS branch of the wiki to Transformer-based offloading
 
 ## Raw artifacts
 
-- `raw/sources/Joint Trajectory Planning and Task Offloading in UAV-Assisted Inspection Networks A Transformer-Based Approach/Joint Trajectory Planning and Task Offloading in UAV-Assisted Inspection Networks A Transformer-Based Approach.md`
+- `raw/sources/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach/Joint_Trajectory_Planning_and_Task_Offloading_in_UAV-Assisted_Inspection_Networks_A_Transformer-Based_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

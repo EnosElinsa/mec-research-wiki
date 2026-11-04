@@ -71,5 +71,5 @@ A **foundational survey** anchor for the UAV side of the wiki, complementing the
 
 ## Raw artifacts
 
-- `raw/sources/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond/full.md`
+- `raw/sources/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond.md`
 - Original PDF and extracted figures in the same folder.

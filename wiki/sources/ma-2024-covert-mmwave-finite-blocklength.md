@@ -99,6 +99,6 @@ Grounded in the abstract and contributions (numerical magnitudes are figure-deri
 This is a **covert-communication** anchor — hiding a transmission's existence, beyond content-hiding [[physical-layer-security|PLS]] — newly defined in the [[covert-communication]] concept page. It combines three threads the corpus tracks separately: [[finite-blocklength-urllc|finite blocklength]] (shared with [[wu-2024-urllc-uav-mec-latency]], which uses the same short-packet regime for URLLC latency rather than covertness), [[stochastic-geometry-network-analysis|stochastic geometry]] for spatially random adversaries, and multi-antenna mmWave beamforming. Its warden-uncertainty mechanism is adjacent to the corpus's [[cooperative-jamming]]-based covertness designs but exploits limited warden observations from short blocklength instead of injected noise.
 
 ## Raw artifacts
-- Parse: `raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/full.md`
-- Origin PDF: `raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/1e753f05-0bf1-4936-b674-792e98d1bde2_origin.pdf`
+- Parse: `raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens.md`
+- Origin PDF: `raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens.pdf`
 - Figures: `raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/images/`

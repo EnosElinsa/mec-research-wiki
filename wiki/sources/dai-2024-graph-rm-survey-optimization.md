@@ -79,6 +79,6 @@ This is a survey; its "findings" are organizational claims, grounded in the pars
 This is one of two halves of the corpus's dedicated graph-based-resource-management survey; its companion is [[dai-2024-graph-rm-survey-learning]] (learning approaches). It provides the optimization-theory anchor for the corpus's recurring combinatorial methods — [[matching-theory-for-resource-allocation]] and [[gale-shapley-matching]] (bipartite/stable matching) and the broader [[graph-based-resource-management]] concept. Its edge-caching/computing and NTN scenario chapters connect to the corpus's [[mobile-edge-computing]], [[computational-task-caching]], and [[non-terrestrial-network]] threads. Authors [[shuguang-cui]] and [[xuemin-shen]] also appear elsewhere in the corpus.
 
 ## Raw artifacts
-- Parse: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/full.md`
-- Origin PDF: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/08cb4879-c577-432f-8a9d-4c2bc815bbd8_origin.pdf`
+- Parse: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.md`
+- Origin PDF: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches.pdf`
 - Figures: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_I_Optimization_Approaches/images/`

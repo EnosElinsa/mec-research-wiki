@@ -93,5 +93,5 @@ An **ISAC co-design** entry that, unlike the secrecy-focused [[su-2024-sensing-a
 
 ## Raw artifacts
 
-- `raw/sources/Sensing-Communication_Co-Design_for_UAV_Swarm-Assisted_Vehicular_Network_in_Perspective_of_Doppler/full.md`
+- `raw/sources/Sensing-Communication_Co-Design_for_UAV_Swarm-Assisted_Vehicular_Network_in_Perspective_of_Doppler/Sensing-Communication_Co-Design_for_UAV_Swarm-Assisted_Vehicular_Network_in_Perspective_of_Doppler.md`
 - Original PDF and extracted figures in the same folder.

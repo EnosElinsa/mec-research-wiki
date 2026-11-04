@@ -61,5 +61,5 @@ Provides a foundational analytical tool for SAGIN connectivity that complements 
 
 ## Raw artifacts
 
-- `raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/full.md`
+- `raw/sources/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis/Space-Air-Ground_Integrated_Networks_Spherical_Stochastic_Geometry-Based_Uplink_Connectivity_Analysis.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -109,5 +109,5 @@ The MASS channel model is distinctive: **historical / pre-measured CSI** is assu
 
 ## Raw artifacts
 
-- `raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/full.md`
+- `raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS.md`
 - Original PDF and extracted figures in the same folder.

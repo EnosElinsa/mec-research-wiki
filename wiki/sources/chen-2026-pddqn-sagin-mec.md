@@ -103,5 +103,5 @@ This source strengthens the [[space-air-ground-integrated-network]] / [[leo-sate
 
 ## Raw artifacts
 
-- `raw/sources/Mobile-Edge Computing in SAGINs A Hybrid Action Space P-DDQN Algorithm for Joint Offloading and Resource Allocation/Mobile-Edge Computing in SAGINs A Hybrid Action Space P-DDQN Algorithm for Joint Offloading and Resource Allocation.md`
+- `raw/sources/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation/Mobile-Edge_Computing_in_SAGINs_A_Hybrid_Action_Space_P-DDQN_Algorithm_for_Joint_Offloading_and_Resource_Allocation.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

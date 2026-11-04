@@ -7,8 +7,9 @@ related:
   - "[[energy-balancing-uav]]"
   - "[[matching-theory-for-resource-allocation]]"
   - "[[nabi-2025-jour-hierarchical-aerial]]"
+  - "[[miao-2022-gaglpp-drone-swarm-iiot]]"
 created: 2026-05-29
-updated: 2026-06-01
+updated: 2026-11-03
 ---
 
 # Load Balancing in UAV-MEC

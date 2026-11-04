@@ -6,8 +6,9 @@ related:
   - "[[lyu-2026-pruning-aware-laim-co-inference]]"
   - "[[lyu-2026-laim-deployment-lae]]"
   - "[[jie-xu]]"
+  - "[[lyu-2023-isac-maneuver-beamforming]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Zhonghao Lyu
@@ -16,6 +17,7 @@ Researcher on large AI model deployment at the wireless edge. The JSAC byline li
 
 - [[lyu-2026-pruning-aware-laim-co-inference]] - pruning-aware large-model co-inference with rate-distortion bounds.
 - [[lyu-2026-laim-deployment-lae]] - large AI model deployment architecture for the low-altitude economy.
+- [[lyu-2023-isac-maneuver-beamforming]] - joint UAV maneuver and transmit beamforming for UAV-enabled ISAC (lead author).
 
 ## Contributions to this wiki
 

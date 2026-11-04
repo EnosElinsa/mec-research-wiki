@@ -99,5 +99,5 @@ A **two-hop air-ground DRL offloading** entry that combines MADDPG + IPPO across
 
 ## Raw artifacts
 
-- `raw/sources/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method/full.md`
+- `raw/sources/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.md`
 - Original PDF and extracted figures in the same folder.

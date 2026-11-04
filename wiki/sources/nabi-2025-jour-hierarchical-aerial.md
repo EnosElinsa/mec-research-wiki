@@ -118,6 +118,5 @@ The **load-balancing** angle is a quieter contribution: per-UAV load enters the 
 
 ## Raw artifacts
 
-- `raw/sources/Joint Offloading Decision- User Association- and Resource Allocation in Hierarchical Aerial Computing Collaboration of UAVs and HAP/Joint Offloading Decision- User Association- and Resource Allocation in Hierarchical Aerial Computing Collaboration of UAVs and HAP.md`
-- `raw/sources/Joint Offloading Decision, User Association, and Resource Allocation in Hierarchical Aerial Computin/full.md`
+- `raw/sources/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP.md`
 - Original PDF and extracted figures (`images/`) in the corresponding raw folders.

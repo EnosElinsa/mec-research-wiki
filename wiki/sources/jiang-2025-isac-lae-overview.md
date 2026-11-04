@@ -76,4 +76,4 @@ Together they bracket the wiki's LAE thread:
 
 ## Raw artifacts
 
-- `raw/sources/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges/full.md`
+- `raw/sources/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges/Integrated Sensing and Communication for Low Altitude Economy Opportunities and Challenges.md`

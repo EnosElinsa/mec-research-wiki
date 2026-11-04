@@ -90,5 +90,5 @@ A **foundational channel-model anchor**: this letter is the widely-cited origin 
 
 ## Raw artifacts
 
-- `raw/sources/Optimal_LAP_Altitude_for_Maximum_Coverage/full.md`
+- `raw/sources/Optimal_LAP_Altitude_for_Maximum_Coverage/Optimal_LAP_Altitude_for_Maximum_Coverage.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

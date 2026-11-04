@@ -107,5 +107,5 @@ A **satellite three-tier offloading** entry whose GEO-free GroundUE / LEO-edge /
 
 ## Raw artifacts
 
-- `raw/sources/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks/full.md`
+- `raw/sources/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks/Partial_Computation_Offloading_in_Satellite-Based_Three-Tier_Cloud-Edge_Integration_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

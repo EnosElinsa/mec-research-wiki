@@ -108,6 +108,6 @@ Reported on real-world Cologne, Germany vehicular-mobility traces (small-scale 5
 This is a [[service-migration]] design in the [[vehicular-mec]] setting, distinct from the corpus's task-rerouting and offloading-migration work: it migrates the *[[digital-twin|digital twin]]* rather than a task or a service container, and its cost model is dominated by the three-way DT-communication structure. It complements [[yang-2024-taco-human-digital-twin-edge]] (human-digital-twin edge deployment trading accuracy vs cost) and [[zhao-2025-traj-offload-cache-migration]] (service migration vs task rerouting at the MEC edge). Its expert-warm-started actor-critic adds an [[expert-guided-warm-start-rl|imitation-bootstrapped]] data point to the corpus's [[drl-backbones-across-uav-mec-sources|DRL-backbone]] landscape — a contrast to the from-scratch on-policy and off-policy agents elsewhere. Shared authorship with the corpus via yuan-wu.
 
 ## Raw artifacts
-- Parse: `raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/full.md`
-- Origin PDF: `raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/72cf2610-67b7-4163-96d0-bba1843ff446_origin.pdf`
+- Parse: `raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.md`
+- Origin PDF: `raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks.pdf`
 - Figures: `raw/sources/Adaptive_Digital_Twin_Migration_in_Vehicular_Edge_Computing_and_Networks/images/`

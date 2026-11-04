@@ -17,8 +17,9 @@ related:
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[chen-2024-ulse-game]]"
   - "[[huang-2023-mu-aec-task-energy]]"
+  - "[[ying-chen]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Efficient Task Offloading and Resource Allocation in Air-Ground Integrated MEC Systems: A Distributed Online Approach
@@ -95,5 +96,5 @@ A **HAP+UAV hierarchical aerial MEC** entry that uses stochastic optimization + 
 
 ## Raw artifacts
 
-- `raw/sources/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach/full.md`
+- `raw/sources/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.md`
 - Original PDF and extracted figures in the same folder.

@@ -93,5 +93,5 @@ A **foundational SAC / continuous-control** entry, analogous to how [[fujimoto-2
 
 ## Raw artifacts
 
-- `raw/sources/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation/full.md`
+- `raw/sources/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

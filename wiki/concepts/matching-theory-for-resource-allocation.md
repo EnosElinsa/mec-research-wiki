@@ -8,8 +8,10 @@ related:
   - "[[stackelberg-game]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
   - "[[cui-2020-marl-uav-resource-allocation]]"
+  - "[[liang-2021-multicell-jmh]]"
+  - "[[sharghivand-not-in-parse-oshn]]"
 created: 2026-05-28
-updated: 2026-07-13
+updated: 2026-11-03
 ---
 
 # Matching Theory for Resource Allocation

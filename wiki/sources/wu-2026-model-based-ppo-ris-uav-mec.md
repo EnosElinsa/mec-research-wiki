@@ -101,5 +101,5 @@ This source extends the wiki's RIS-MEC line beyond classical BCD/SCA formulation
 
 ## Raw artifacts
 
-- `raw/sources/Joint Trajectory- RIS- and Computation Offloading Optimization Via Decentralized Model-Based PPO in Urban Multi-UAV Mobile Edge Computing/Joint Trajectory- RIS- and Computation Offloading Optimization Via Decentralized Model-Based PPO in Urban Multi-UAV Mobile Edge Computing.md`
+- `raw/sources/Joint_Trajectory_RIS_and_Computation_Offloading_Optimization_Via_Decentralized_Model-Based_PPO_in_Urban_Multi-UAV_Mobile_Edge_Computing/Joint_Trajectory_RIS_and_Computation_Offloading_Optimization_Via_Decentralized_Model-Based_PPO_in_Urban_Multi-UAV_Mobile_Edge_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

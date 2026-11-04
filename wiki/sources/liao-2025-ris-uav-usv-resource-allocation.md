@@ -106,6 +106,6 @@ This source strengthens the maritime track by adding a RIS-assisted UAV-USV coop
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Energy- and Latency-Efficient Resource Allocation for RIS-Assisted UAV-USV Cooperative MEC Network/Energy- and Latency-Efficient Resource Allocation for RIS-Assisted UAV-USV Cooperative MEC Network.md`
-- Origin PDF: `raw/sources/Energy- and Latency-Efficient Resource Allocation for RIS-Assisted UAV-USV Cooperative MEC Network/Energy- and Latency-Efficient Resource Allocation for RIS-Assisted UAV-USV Cooperative MEC Network.pdf`
-- Figures: `raw/sources/Energy- and Latency-Efficient Resource Allocation for RIS-Assisted UAV-USV Cooperative MEC Network/images/`
+- Parse: `raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network.md`
+- Origin PDF: `raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network.pdf`
+- Figures: `raw/sources/Energy_and_Latency-Efficient_Resource_Allocation_for_RIS-Assisted_UAV-USV_Cooperative_MEC_Network/images/`

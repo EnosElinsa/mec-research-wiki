@@ -100,5 +100,5 @@ A **game-theoretic** (coalition-formation) treatment of maritime/marine offloadi
 
 ## Raw artifacts
 
-- `raw/sources/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things/full.md`
+- `raw/sources/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things/Computing_Offloading_and_Resource_Allocation_of_NOMA-Based_UAV_Emergency_Communication_in_Marine_Internet_of_Things.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

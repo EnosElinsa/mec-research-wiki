@@ -97,5 +97,5 @@ This source connects [[vehicular-mec]], [[service-caching-mec]], and [[privacy-s
 
 ## Raw artifacts
 
-- `raw/sources/Optimizing Energy and Revenue Efficiency in UAV-Assisted Vehicular Networks with Enhanced Reward Twin Actor TD3 and Secure Caching Strategies/Optimizing Energy and Revenue Efficiency in UAV-Assisted Vehicular Networks with Enhanced Reward Twin Actor TD3 and Secure Caching Strategies.md`
+- `raw/sources/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies/Optimizing_Energy_and_Revenue_Efficiency_in_UAV-Assisted_Vehicular_Networks_with_Enhanced_Reward_Twin_Actor_TD3_and_Secure_Caching_Strategies.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

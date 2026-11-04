@@ -105,5 +105,5 @@ The corpus's anchor for **service migration vs task rerouting**, grounding both 
 
 ## Raw artifacts
 
-- `raw/sources/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC/full.md`
+- `raw/sources/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

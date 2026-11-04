@@ -69,5 +69,5 @@ A **non-terrestrial-network / SAGIN** survey anchor ([[non-terrestrial-network]]
 
 ## Raw artifacts
 
-- `raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/full.md`
+- `raw/sources/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G/Revolutionizing_Future_Connectivity_A_Contemporary_Survey_on_AI-Empowered_Satellite-Based_Non-Terrestrial_Networks_in_6G.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

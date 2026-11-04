@@ -12,8 +12,9 @@ related:
   - "[[task-offloading]]"
   - "[[binary-vs-partial-offloading]]"
   - "[[nash-equilibrium]]"
+  - "[[chen-2016-multiuser-offloading-game-mec]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Decentralized Computation Offloading Game for Mobile Cloud Computing
@@ -91,5 +92,5 @@ A foundational early work establishing [[potential-game]] theory for multi-user 
 
 ## Raw artifacts
 
-- `raw/sources/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing/full.md`
+- `raw/sources/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

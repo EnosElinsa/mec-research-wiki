@@ -94,5 +94,5 @@ This paper is a direct neighbor of [[ye-2026-deeplsc-lae-isac]] and [[ye-2026-me
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Objective ISAC for Low-Altitude Economy Based on Multi-Task Deep Reinforcement Learning With Mixture of Experts/Multi-Objective ISAC for Low-Altitude Economy Based on Multi-Task Deep Reinforcement Learning With Mixture of Experts.md`
+- `raw/sources/Multi-Objective_ISAC_for_Low-Altitude_Economy_Based_on_Multi-Task_Deep_Reinforcement_Learning_With_Mixture_of_Experts/Multi-Objective_ISAC_for_Low-Altitude_Economy_Based_on_Multi-Task_Deep_Reinforcement_Learning_With_Mixture_of_Experts.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -6,9 +6,9 @@ year: 2026
 url: "https://doi.org/10.1109/TMC.2025.3604073"
 venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-assisted-mobile-crowd-sensing, age-of-information, contract-theory, incentive-mechanism, mobile-crowdsensing]
-related: ["[[aoi-aware-contract-incentives]]", "[[age-of-information]]", "[[contract-theory]]", "[[stackelberg-game]]", "[[reverse-auction-incentive]]", "[[gao-2023-uav-mcs-uma]]", "ying-chen", "[[yuan-wu]]"]
+related: ["[[aoi-aware-contract-incentives]]", "[[age-of-information]]", "[[contract-theory]]", "[[stackelberg-game]]", "[[reverse-auction-incentive]]", "[[gao-2023-uav-mcs-uma]]", "ying-chen", "[[yuan-wu]]", "[[ying-chen]]"]
 created: 2026-07-11
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 

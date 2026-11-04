@@ -97,5 +97,5 @@ A rare **DNN-pruning-aware** MEC entry that pairs **DNN model compression** with
 
 ## Raw artifacts
 
-- `raw/sources/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT/full.md`
+- `raw/sources/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT/Joint_Task_Offloading_DNN_Pruning_and_Computing_Resource_Allocation_for_Fault_Detection_With_Dynamic_Constraints_in_Industrial_IoT.md`
 - Original PDF and extracted figures in the same folder.

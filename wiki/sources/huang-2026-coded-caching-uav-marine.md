@@ -106,5 +106,5 @@ This is a marine edge-network entry adjacent to [[maritime-mec]]: it is about co
 
 ## Raw artifacts
 
-- `raw/sources/Coded Caching Enabled D2D Content Delivery in UAV-Assisted Marine Edge Networks/Coded Caching Enabled D2D Content Delivery in UAV-Assisted Marine Edge Networks.md`
+- `raw/sources/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks/Coded_Caching_Enabled_D2D_Content_Delivery_in_UAV-Assisted_Marine_Edge_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

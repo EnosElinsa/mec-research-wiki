@@ -6,10 +6,10 @@ year: 2026
 url: "https://doi.org/10.1109/TWC.2025.3608619"
 venue: "IEEE Transactions on Wireless Communications (IEEE TWC), vol. 25, pp. 4098-4112"
 tags: [source, haps, uav, isac, resource-allocation, multi-objective-optimization, nsga-ii]
-related: ["[[high-altitude-platform-station]]", "[[integrated-sensing-and-communication]]", "[[genetic-algorithm]]", "[[non-dominated-sorting-genetic-algorithm]]", "[[halim-yanikomeroglu]]"]
+related: ["[[high-altitude-platform-station]]", "[[integrated-sensing-and-communication]]", "[[genetic-algorithm]]", "[[non-dominated-sorting-genetic-algorithm]]", "[[halim-yanikomeroglu]]", "[[haps-uav-isac-resource-allocation]]"]
 created: 2026-07-14
 modeling_card: required
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimizing Network Performance and Resource Allocation in HAPS-UAV Integrated Sensing and Communication Systems for 6G

@@ -96,5 +96,5 @@ An **early mobile-cloud-computing offloading** anchor that predates and feeds th
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel/full.md`
+- `raw/sources/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

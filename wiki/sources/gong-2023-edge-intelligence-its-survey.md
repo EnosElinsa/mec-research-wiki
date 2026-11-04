@@ -74,6 +74,6 @@ This is the corpus's ITS-side edge-intelligence survey anchor. It complements [[
 
 ## Raw artifacts
 
-- Parse: `raw/sources/Edge Intelligence in Intelligent Transportation Systems A Survey/Edge Intelligence in Intelligent Transportation Systems A Survey.md`
-- Origin PDF: `raw/sources/Edge Intelligence in Intelligent Transportation Systems A Survey/Edge Intelligence in Intelligent Transportation Systems A Survey.pdf`
-- Figures: `raw/sources/Edge Intelligence in Intelligent Transportation Systems A Survey/images/`
+- Parse: `raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey.md`
+- Origin PDF: `raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey.pdf`
+- Figures: `raw/sources/Edge_Intelligence_in_Intelligent_Transportation_Systems_A_Survey/images/`

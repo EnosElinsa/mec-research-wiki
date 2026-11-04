@@ -94,5 +94,5 @@ Combines [[integrated-sensing-computation-communication]], [[finite-blocklength-
 
 ## Raw artifacts
 
-- `raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/full.md`
+- `raw/sources/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks/URLLC-Aware_Trajectory_Plan_and_Beamforming_Design_for_NOMA-Aided_UAV_Integrated_Sensing_Communication_and_Computation_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

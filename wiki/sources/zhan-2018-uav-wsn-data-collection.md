@@ -95,5 +95,5 @@ From the Zeng/Zhang group (NUS), including [[yong-zeng]] — the same authors be
 
 ## Raw artifacts
 
-- `raw/sources/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network/full.md`
+- `raw/sources/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network/Energy-Efficient_Data_Collection_in_UAV_Enabled_Wireless_Sensor_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

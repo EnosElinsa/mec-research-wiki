@@ -105,5 +105,5 @@ The **relay + MEC-server fusion** entry of the UAV-MEC track: it inherits the **
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization/full.md`
+- `raw/sources/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization/UAV-Assisted_Relaying_and_Edge_Computing_Scheduling_and_Trajectory_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -103,5 +103,5 @@ This page is the freshness-oriented companion to [[liao-2025-ris-uav-usv-resourc
 
 ## Raw artifacts
 
-- `raw/sources/Joint UAVs Deployment and Resource Allocation for AoI-Aware RIS-Assisted UAV-USV MEC Network/Joint UAVs Deployment and Resource Allocation for AoI-Aware RIS-Assisted UAV-USV MEC Network.md`
+- `raw/sources/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network/Joint_UAVs_Deployment_and_Resource_Allocation_for_AoI-Aware_RIS-Assisted_UAV-USV_MEC_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

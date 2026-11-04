@@ -101,5 +101,5 @@ A **distributionally-robust** caching counterpart to the corpus's other DRO-for-
 
 ## Raw artifacts
 
-- `raw/sources/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization/full.md`
+- `raw/sources/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

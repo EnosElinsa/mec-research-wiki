@@ -70,5 +70,5 @@ One of two survey anchors for GAI + physical-layer security in the corpus; the o
 
 ## Raw artifacts
 
-- `raw/sources/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey/full.md`
+- `raw/sources/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

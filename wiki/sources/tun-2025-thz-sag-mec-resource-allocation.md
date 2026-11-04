@@ -107,5 +107,5 @@ This is a bridge between the wiki's SAGIN task-offloading track and the THz/MEC 
 
 ## Raw artifacts
 
-- `raw/sources/Joint UAV Deployment and Resource Allocation in THz-Assisted MEC-Enabled Integrated Space-Air-Ground Networks/Joint UAV Deployment and Resource Allocation in THz-Assisted MEC-Enabled Integrated Space-Air-Ground Networks.md`
+- `raw/sources/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks/Joint_UAV_Deployment_and_Resource_Allocation_in_THz-Assisted_MEC-Enabled_Integrated_Space-Air-Ground_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

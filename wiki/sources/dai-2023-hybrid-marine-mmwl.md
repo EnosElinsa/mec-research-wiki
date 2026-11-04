@@ -99,5 +99,5 @@ A **maritime MEC** entry whose defining feature is **hybrid FDMA-offshore + NOMA
 
 ## Raw artifacts
 
-- `raw/sources/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks/full.md`
+- `raw/sources/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks/Latency_Minimization_Oriented_Hybrid_Offshore_and_Aerial-Based_Multi-Access_Computation_Offloading_for_Marine_Communication_Networks.md`
 - Original PDF and extracted figures in the same folder.

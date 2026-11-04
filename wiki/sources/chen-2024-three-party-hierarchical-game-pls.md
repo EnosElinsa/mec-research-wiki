@@ -98,5 +98,5 @@ A **game-theoretic PLS** entry that extends the wiki's [[physical-layer-security
 
 ## Raw artifacts
 
-- `raw/sources/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions/full.md`
+- `raw/sources/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions/A_Three-Party_Hierarchical_Game_for_Physical_Layer_Security_Aware_Wireless_Communications_With_Dynamic_Trilateral_Coalitions.md`
 - Original PDF and extracted figures in the same folder.

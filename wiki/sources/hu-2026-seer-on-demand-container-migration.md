@@ -12,8 +12,9 @@ related:
   - "[[stateful-edge-microservice-migration]]"
   - "[[service-migration]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
+  - "[[zhang-2025-kubespt-stateful-pod-migration]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # On-Demand Snapshot Migration: Accelerating Container Migration in Low-Bandwidth Networks

@@ -90,5 +90,5 @@ A **low-altitude-economy edge-inference** entry that brings the diffusion-as-opt
 
 ## Raw artifacts
 
-- `raw/sources/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design/full.md`
+- `raw/sources/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design/Over-the-Air_Edge_Inference_for_Low-Altitude_Airspace_Generative_AI-Aided_Multi-Task_Batching_and_Beamforming_Design.md`
 - Original PDF and extracted figures in the same folder.

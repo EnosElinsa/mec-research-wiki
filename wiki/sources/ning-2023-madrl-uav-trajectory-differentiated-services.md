@@ -103,5 +103,5 @@ A **multi-UAV-assisted MEC** entry distinctive for combining a **game-theoretic 
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning_Based_UAV_Trajectory_Optimization_for_Differentiated_Services/full.md`
+- `raw/sources/Multi-Agent_Deep_Reinforcement_Learning_Based_UAV_Trajectory_Optimization_for_Differentiated_Services/Multi-Agent_Deep_Reinforcement_Learning_Based_UAV_Trajectory_Optimization_for_Differentiated_Services.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

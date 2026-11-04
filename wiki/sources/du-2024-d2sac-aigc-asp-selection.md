@@ -94,5 +94,5 @@ A flagship **diffusion-model-as-optimizer** entry, closely related to [[ye-2025-
 
 ## Raw artifacts
 
-- `raw/sources/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services/full.md`
+- `raw/sources/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services/Diffusion-Based_Reinforcement_Learning_for_Edge-Enabled_AI-Generated_Content_Services.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

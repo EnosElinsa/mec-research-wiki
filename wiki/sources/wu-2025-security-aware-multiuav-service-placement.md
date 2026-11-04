@@ -98,5 +98,5 @@ This source links [[service-caching-mec]] to secure UAV-MEC, while [[hu-2026-ert
 
 ## Raw artifacts
 
-- `raw/sources/Security-Aware Designs of Multi-UAV Deployment- Task Offloading and Service Placement in Edge Computing Networks/Security-Aware Designs of Multi-UAV Deployment- Task Offloading and Service Placement in Edge Computing Networks.md`
+- `raw/sources/Security-Aware_Designs_of_Multi-UAV_Deployment_Task_Offloading_and_Service_Placement_in_Edge_Computing_Networks/Security-Aware_Designs_of_Multi-UAV_Deployment_Task_Offloading_and_Service_Placement_in_Edge_Computing_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

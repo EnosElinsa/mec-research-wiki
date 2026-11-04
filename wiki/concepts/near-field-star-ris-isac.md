@@ -9,8 +9,9 @@ related:
   - "[[star-ris]]"
   - "[[near-field-communications]]"
   - "[[integrated-sensing-and-communication]]"
+  - "[[an-2026-intelligent-metasurfaces-overview]]"
 created: 2026-07-14
-updated: 2026-07-14
+updated: 2026-11-03
 ---
 
 # Near-Field STAR-RIS ISAC

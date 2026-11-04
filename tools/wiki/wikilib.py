@@ -389,12 +389,21 @@ def referenced_raw_folders(root: str | None = None) -> set[str]:
     """Raw-source folder names referenced by any wiki page (via the
     ``raw/sources/<Folder>`` paths in Raw-artifacts blocks).
 
-    Documentation/tooling files use ``raw/sources/<Folder>`` / ``<slug>`` as
-    placeholders, and the toolkit's own files live under ``tools/``; both are
-    skipped so they don't show up as phantom broken references.
+    Only pages under ``wiki/`` count, and ``wiki/log.md`` is excluded: notes
+    outside the wiki (for example ``ideas/``) and historical log entries can
+    cite a raw folder that no wiki page curates, which would otherwise mask an
+    uncurated paper. Documentation/tooling files use ``raw/sources/<Folder>`` /
+    ``<slug>`` as placeholders, and the toolkit's own files live under
+    ``tools/``; both are skipped so they don't show up as phantom broken
+    references.
     """
+    wiki_root = os.path.normcase(os.path.abspath(os.path.join(root or repo_root(), "wiki"))) + os.sep
+    log_path = os.path.normcase(os.path.join(wiki_root, "log.md"))
     refs: set[str] = set()
     for p in md_files(root):
+        norm = os.path.normcase(os.path.abspath(p))
+        if not norm.startswith(wiki_root) or norm == log_path:
+            continue
         if os.sep + "tools" + os.sep in p:
             continue
         for m in _RAW_REF.findall(read_text(p)):

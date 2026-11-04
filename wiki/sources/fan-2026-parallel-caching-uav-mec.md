@@ -92,5 +92,5 @@ This source broadens the caching track from service/content placement into execu
 
 ## Raw artifacts
 
-- `raw/sources/Multi-Task Parallel Execution-Oriented Content Caching- Computation Offloading and Channel Allocation in UAV-Assisted MEC Network/Multi-Task Parallel Execution-Oriented Content Caching- Computation Offloading and Channel Allocation in UAV-Assisted MEC Network.md`
+- `raw/sources/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network/Multi-Task_Parallel_Execution-Oriented_Content_Caching_Computation_Offloading_and_Channel_Allocation_in_UAV-Assisted_MEC_Network.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

@@ -104,5 +104,5 @@ A **DRL UAV-MEC** entry distinguished by three practical features rarely combine
 
 ## Raw artifacts
 
-- `raw/sources/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design/full.md`
+- `raw/sources/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design/UAV-Assisted_MEC_System_With_Mobile_Ground_Terminals_DRL-Based_Joint_Terminal_Scheduling_and_UAV_3D_Trajectory_Design.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

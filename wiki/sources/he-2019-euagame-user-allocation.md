@@ -14,8 +14,9 @@ related:
   - "[[mobile-edge-computing]]"
   - "[[chen-2024-ulse-game]]"
   - "[[sun-2023-bargain-match-vec]]"
+  - "[[hai-jin]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Game-Theoretical Approach for User Allocation in Edge Computing Environment
@@ -92,5 +93,5 @@ A terrestrial-edge counterpart to the wiki's aerial/space [[potential-game]] off
 
 ## Raw artifacts
 
-- `raw/sources/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/full.md`
+- `raw/sources/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb.md`
 - Original PDF and extracted figures in the same folder.

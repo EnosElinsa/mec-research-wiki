@@ -61,5 +61,5 @@ A **6G + foundation-models** anchor that broadens the wiki's generative-AI / dis
 
 ## Raw artifacts
 
-- `raw/sources/Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks/full.md`
+- `raw/sources/Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks/Distributed_Foundation_Models_for_Multi-Modal_Learning_in_6G_Wireless_Networks.md`
 - Original PDF and extracted figures in the same folder.

@@ -79,5 +79,5 @@ The **anchor survey** for the wiki's generative-AI-for-MEC thread, complementing
 
 ## Raw artifacts
 
-- `raw/sources/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services/full.md`
+- `raw/sources/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services.md`
 - Original PDF (`2daf7688-fbfa-4594-bf8e-78567f6b4e65_origin.pdf`) and extracted figures (`images/`) in the same folder.

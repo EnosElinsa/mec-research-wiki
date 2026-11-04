@@ -96,5 +96,5 @@ A **maritime MEC** entry distinguished by its **double-auction market** for mult
 
 ## Raw artifacts
 
-- `raw/sources/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design/full.md`
+- `raw/sources/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design/Multi-UAV_Aided_Multi-Access_Edge_Computing_in_Marine_Communication_Networks_A_Joint_System-Welfare_and_Energy-Efficient_Design.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

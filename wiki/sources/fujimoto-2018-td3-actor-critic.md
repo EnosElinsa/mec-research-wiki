@@ -15,8 +15,9 @@ related:
   - "[[hao-2024-clp-multiuav-priority-offloading]]"
   - "[[shao-2024-drl-antijamming-mec]]"
   - "[[zhao-2022-matd3-multiuav-ec-offloading]]"
+  - "[[mnih-2015-dqn-atari]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Addressing Function Approximation Error in Actor-Critic Methods
@@ -68,5 +69,5 @@ The **method ancestor** of the wiki's large TD3 lineage. [[td3]] (concept) names
 
 ## Raw artifacts
 
-- `raw/sources/Addressing Function Approximation Error in Actor-Critic Methods/full.md`
+- `raw/sources/Addressing Function Approximation Error in Actor-Critic Methods/Addressing Function Approximation Error in Actor-Critic Methods.md`
 - Original PDF and extracted figures in the same folder.

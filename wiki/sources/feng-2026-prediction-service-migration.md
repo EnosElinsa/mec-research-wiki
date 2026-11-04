@@ -91,5 +91,5 @@ This source extends [[service-migration]] and [[task-migration]] from edge-serve
 
 ## Raw artifacts
 
-- `raw/sources/Prediction-Assisted Multi-UAV Online Service Migration and Trajectory Control for MEC-Empowered Vehicular Networks/Prediction-Assisted Multi-UAV Online Service Migration and Trajectory Control for MEC-Empowered Vehicular Networks.md`
+- `raw/sources/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks/Prediction-Assisted_Multi-UAV_Online_Service_Migration_and_Trajectory_Control_for_MEC-Empowered_Vehicular_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

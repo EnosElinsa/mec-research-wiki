@@ -91,5 +91,5 @@ The Stackelberg + matching pattern also recurs in the corpus — [[liu-2026-jppo
 
 ## Raw artifacts
 
-- `raw/sources/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism/full.md`
+- `raw/sources/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism.md`
 - Original PDF and extracted figures in the same folder.

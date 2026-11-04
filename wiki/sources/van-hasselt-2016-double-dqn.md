@@ -13,8 +13,9 @@ related:
   - "[[td3]]"
   - "[[fujimoto-2018-td3-actor-critic]]"
   - "[[mao-2025-bcsa-frl]]"
+  - "[[mnih-2015-dqn-atari]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Deep Reinforcement Learning with Double Q-learning
@@ -65,5 +66,5 @@ The **method ancestor** of the wiki's Double-Q line. The [[ddqn]] concept page s
 
 ## Raw artifacts
 
-- `raw/sources/Deep_Reinforcement_Learning_with_Double_Q-learning/full.md`
+- `raw/sources/Deep_Reinforcement_Learning_with_Double_Q-learning/Deep_Reinforcement_Learning_with_Double_Q-learning.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

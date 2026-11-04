@@ -104,5 +104,5 @@ This source is an early fixed-RIS UAV-MEC energy-efficiency anchor for [[intelli
 
 ## Raw artifacts
 
-- `raw/sources/Joint Optimization of Resource Allocation- Phase Shift- and UAV Trajectory for Energy-Efficient RIS-Assisted UAV-Enabled MEC Systems/Joint Optimization of Resource Allocation- Phase Shift- and UAV Trajectory for Energy-Efficient RIS-Assisted UAV-Enabled MEC Systems.md`
+- `raw/sources/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems/Joint_Optimization_of_Resource_Allocation_Phase_Shift_and_UAV_Trajectory_for_Energy-Efficient_RIS-Assisted_UAV-Enabled_MEC_Systems.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

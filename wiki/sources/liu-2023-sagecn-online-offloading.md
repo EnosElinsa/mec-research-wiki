@@ -102,5 +102,5 @@ A **SAGIN / satellite offloading** entry distinctive for treating the **LEO sate
 
 ## Raw artifacts
 
-- `raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/full.md`
+- `raw/sources/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System/Online_Computation_Offloading_for_Collaborative_Space_Aerial-Aided_Edge_Computing_Toward_6G_System.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

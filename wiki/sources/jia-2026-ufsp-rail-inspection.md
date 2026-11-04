@@ -102,5 +102,5 @@ This source adds [[fictitious-self-play]] and imperfect-information equilibrium 
 
 ## Raw artifacts
 
-- `raw/sources/Decentralized Learning for Multi-UAV Rail-Line Inspection With Imperfect Information A Fictitious Self-Play Approach/Decentralized Learning for Multi-UAV Rail-Line Inspection With Imperfect Information A Fictitious Self-Play Approach.md`
+- `raw/sources/Decentralized_Learning_for_Multi-UAV_Rail-Line_Inspection_With_Imperfect_Information_A_Fictitious_Self-Play_Approach/Decentralized_Learning_for_Multi-UAV_Rail-Line_Inspection_With_Imperfect_Information_A_Fictitious_Self-Play_Approach.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

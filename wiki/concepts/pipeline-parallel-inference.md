@@ -8,8 +8,9 @@ related:
   - "[[parallel-vs-serial-processing]]"
   - "[[makespan-minimization]]"
   - "[[sun-2024-asap-uav-swarm]]"
+  - "[[asap-swarm-inference-speedup]]"
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-11-03
 ---
 
 # Pipeline-Parallel Inference

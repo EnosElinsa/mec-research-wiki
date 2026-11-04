@@ -11,8 +11,9 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[xie-2026-uav-multisource-fusion]]"
   - "[[constrained-multi-objective-evolutionary-algorithm]]"
+  - "[[qiqi-xie]]"
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-11-03
 ---
 
 # Chaoda Peng

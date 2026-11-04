@@ -108,4 +108,4 @@ This is now the second wiki source that picks **DQN-family** for hybrid actions,
 
 ## Raw artifacts
 
-- `raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/full.md`
+- `raw/sources/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement/Computation Offloading and Resource Allocation in Vehicular MEC A Parameterized Deep Reinforcement.md`

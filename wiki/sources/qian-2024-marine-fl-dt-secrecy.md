@@ -87,5 +87,5 @@ Combines **digital twin** construction, **federated learning**, and **physical l
 
 ## Raw artifacts
 
-- `raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/full.md`
+- `raw/sources/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks/Secrecy-Driven_Energy_Minimization_in_Federated-Learning-Assisted_Marine_Digital_Twin_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

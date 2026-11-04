@@ -98,5 +98,5 @@ A **game-theoretic maritime offloading** entry whose Stackelberg+bargaining hybr
 
 ## Raw artifacts
 
-- `raw/sources/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach/full.md`
+- `raw/sources/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach/Two-Tier_Task_Offloading_for_Satellite-Assisted_Marine_Networks_A_Hybrid_StackelbergBargaining_Game_Approach.md`
 - Original PDF and extracted figures in the same folder.

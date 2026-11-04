@@ -103,5 +103,5 @@ A **communication-layer** maritime entry (coverage and rate, not computation off
 
 ## Raw artifacts
 
-- `raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/full.md`
+- `raw/sources/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks/Maritime_Coverage_Enhancement_Using_UAVs_Coordinated_With_Hybrid_Satellite-Terrestrial_Networks.md`
 - Original PDF and extracted figures (`images/`) in the same folder.

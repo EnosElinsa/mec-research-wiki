@@ -19,8 +19,9 @@ related:
   - "[[bi-2025-sg-mapg]]"
   - "[[li-2025-stochastic-game-uav-swarm]]"
   - "[[huang-2023-mu-aec-task-energy]]"
+  - "[[ying-chen]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 authors: [Ying Chen, Jie Zhao, Yuan Wu, Jiwei Huang, Xuemin Sherman Shen]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3465591
@@ -104,4 +105,4 @@ Simulation-only with no hardware or real traces. UAV mobility, flight, hovering 
 This is a game-theoretic counterpart to learning-based aerial/space offloading work. It contrasts with the Stackelberg formulation in [[wang-2025-uav-swarm-stackelberg]] and the stochastic/multi-agent games in [[bi-2025-sg-mapg]] and [[li-2025-stochastic-game-uav-swarm]] by using a [[potential-game]] with distributed best-response dynamics instead of a leader-follower or RL solver. It shares the multi-user MEC cost framing (and co-author Jiwei Huang) with [[huang-2023-mu-aec-task-energy]], and sits alongside other aerial/space MEC offloading studies such as [[jia-2025-dro-uav-hap-mec]], [[nabi-2025-jour-hierarchical-aerial]], and [[qin-2025-bcuav-masac]] within the [[multi-uav-assisted-mec]] and [[leo-satellite-edge-computing]] threads.
 
 ## Raw artifacts
-- `raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/full.md`
+- `raw/sources/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach/Multi-User_Task_Offloading_in_UAV-Assisted_LEO_Satellite_Edge_Computing_A_Game-Theoretic_Approach.md`

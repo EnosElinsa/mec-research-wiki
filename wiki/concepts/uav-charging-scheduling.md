@@ -20,8 +20,9 @@ related:
   - "[[wang-2023-multi-uav-dynamic-demand-charging]]"
   - "[[li-2023-thz-uav-recharging-transmission]]"
   - "[[zhu-2022-aerial-refueling-uav-charging]]"
+  - "[[ye-2023-seamless-service-handover-uav-mec]]"
 created: 2026-05-28
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # UAV Charging Scheduling

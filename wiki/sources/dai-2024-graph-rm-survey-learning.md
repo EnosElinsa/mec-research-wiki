@@ -72,6 +72,6 @@ Survey-level, grounded claims:
 This is the learning half of the corpus's graph-based-resource-management survey, paired with [[dai-2024-graph-rm-survey-optimization]] (optimization half). It is the corpus's primary anchor for the [[graph-neural-network]] concept and complements [[graph-based-resource-management]]. Its issue-class taxonomy intersects the corpus's [[task-offloading]] and [[collaborative-beamforming|beamforming]] threads and its GNN-plus-[[drl-backbones-across-uav-mec-sources|DRL]] discussion connects to the corpus's heavy DRL-for-MEC literature. Shared authorship with the corpus via [[shuguang-cui]] and [[xuemin-shen]].
 
 ## Raw artifacts
-- Parse: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches/full.md`
-- Origin PDF: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches/e8665d88-3f6b-4b18-b801-2ef12d508743_origin.pdf`
+- Parse: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches.md`
+- Origin PDF: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches.pdf`
 - Figures: `raw/sources/A_Survey_of_Graph-Based_Resource_Management_in_Wireless_NetworksPart_II_Learning_Approaches/images/`
