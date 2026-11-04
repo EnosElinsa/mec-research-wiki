@@ -21,7 +21,7 @@ related:
   - "[[mao-2017-mec-survey-communication]]"
   - "[[khaled-ben-letaief]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dynamic Computation Offloading for Mobile-Edge Computing With Energy Harvesting Devices
@@ -55,11 +55,11 @@ A foundational **green MEC** paper: a single **energy-harvesting (EH)** mobile d
 
 | ID | Meaning and key expression |
 |---|---|
-| 1 | Exactly one mode is selected: $I_m^t+I_s^t+I_d^t=1$ |
-| 12 | Any executed task meets its deadline: $\mathcal D(\boldsymbol I^t,\boldsymbol f^t,p^t)\leq\tau_d$ |
-| 14 | Battery output energy is bounded: $\mathcal E(\boldsymbol I^t,\boldsymbol f^t,p^t)\leq E_{\max}$ |
-| 15-16 | Offloading power and local CPU frequencies are zero when their corresponding mode is inactive and obey their maxima |
-| 17 | Mode indicators are binary: $I_m^t,I_s^t,I_d^t\in\{0,1\}$ |
+| (1) | Exactly one mode is selected: $I_m^t+I_s^t+I_d^t=1$ |
+| (12) | Any executed task meets its deadline: $\mathcal D(\boldsymbol I^t,\boldsymbol f^t,p^t)\leq\tau_d$ |
+| (14) | Battery output energy is bounded: $\mathcal E(\boldsymbol I^t,\boldsymbol f^t,p^t)\leq E_{\max}$ |
+| (15)–(16) | Offloading power and local CPU frequencies are zero when their corresponding mode is inactive and obey their maxima |
+| (17) | Mode indicators are binary: $I_m^t,I_s^t,I_d^t\in\{0,1\}$ |
 
 **Algorithm**: Apply Lyapunov drift-plus-penalty to replace the high-dimensional MDP with a deterministic per-slot problem. Use the current task, channel, battery, and harvested-energy state to choose the mode, CPU frequencies, and transmit power, solving the scalar frequency and power subproblems in closed form or by bisection; tune the control parameters to approach the optimal average cost.
 
@@ -67,7 +67,7 @@ A foundational **green MEC** paper: a single **energy-harvesting (EH)** mobile d
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Mao et al. [x] studied computation offloading for an energy-harvesting mobile device served by an MEC server under causal task, channel, and harvested-energy information. They formulated long-term execution-cost minimization, combining execution delay with a penalty for dropped tasks, over local execution, server offloading, CPU-cycle frequency, and transmit-power decisions. Their LODCO algorithm uses Lyapunov optimization to solve a deterministic per-slot problem from the current system state, with closed-form or bisection updates and no distributional prior knowledge. Simulations reported lower execution cost and near-zero task-drop ratios than greedy baselines, asymptotic convergence to the optimal cost, and more than 40% gain over greedy offloading at a large device-server distance.
+Mao et al. [x] studied computation offloading for an energy-harvesting mobile device served by an MEC server under causal task, channel, and harvested-energy information. They formulated long-term execution-cost minimization, combining execution delay with a penalty for dropped tasks, over local execution, server offloading, CPU-cycle frequency, and transmit-power decisions. Their LODCO algorithm uses Lyapunov optimization to solve a deterministic per-slot problem from the current system state, with closed-form or bisection updates and no distributional prior knowledge. Simulations reported convergence of the cost to the optimum of the tightened problem as $V$ grows, at the price of a battery capacity that grows linearly with $V$, and, with an 18 mJ battery, gains of 74.4%, 51.8% and 46.3% over mobile execution, MEC server execution and dynamic offloading with greedy harvested-energy allocation, at a slightly longer delay than server-only execution.
 
 ## Problem framing
 

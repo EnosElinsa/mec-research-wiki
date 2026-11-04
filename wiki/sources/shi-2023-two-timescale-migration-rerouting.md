@@ -22,7 +22,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[li-2026-two-timescale-uav-replacement-hap]]"
 created: 2026-06-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Service Migration or Task Rerouting: A Two-Timescale Online Resource Optimization for MEC
@@ -57,11 +57,13 @@ Builds a **two-timescale online resource-management framework for MEC** that, wh
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Mobile-device queues remain stable under random task arrivals |
-| C2 | Long-term energy consumption satisfies the energy budget through virtual queues |
-| C3 | Each edge server's service-application cache remains within capacity |
-| C4 | At most one access server serves each mobile device and bandwidth fractions are feasible |
-| C5 | Migration, rerouting, computation, and transmission delays are included in the per-frame cost |
+| (2) | Bandwidth fractions at each server satisfy $\sum_ix_i^m(t)\alpha_i(\tau)\le1$ |
+| (6) | Each device's task queue is mean-rate stable |
+| (20) | Each server's cached service applications stay within $C_m^{\max}$ |
+| (22) | Long-term average device energy, $\lim_{T\to\infty}\frac1T\sum_te_i^{tol}(t)\le e_i^{th}$ |
+| (23) | Computing shares for migrated and rerouted devices at each server sum to at most 1 |
+| (24), (25) | $\vartheta_i(t),\varpi_i(t)\in\{0,1\}$ with $\vartheta_i(t)+\varpi_i(t)=1$, and binary offloading $z_i(\tau)$ |
+| Model rule | Migration, rerouting, computation, and transmission delays enter the per-frame cost |
 
 **Algorithm**: Apply improved Lyapunov drift-plus-penalty to split the two timescales → solve frame-level access/migration/rerouting with randomized rounding and JASTO → solve slot-level offloading, CPU, and bandwidth by Lagrange dual/KKT updates → iterate the inner OASTR routine and update virtual queues online.
 
@@ -69,7 +71,7 @@ Builds a **two-timescale online resource-management framework for MEC** that, wh
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Shi et al. [x] studied online service migration and task rerouting for mobile edge computing under handovers. They formulated a two-timescale mixed-integer problem that minimizes long-term average execution delay while maintaining queue stability, energy budgets, and service-application caching capacity. Large-timescale decisions select the edge server and choose migration or rerouting, while small-timescale decisions allocate offloading, CPU, and bandwidth resources. Improved Lyapunov optimization decomposes the problem, randomized rounding solves the frame-level integer block, and Lagrange-dual updates solve the fine-slot resource block. The paper proves an asymptotic optimality gap and reports the delay, energy-queue, and complexity behavior of the OASTR algorithm in simulation.
+Shi et al. [x] studied online service migration and task rerouting for mobile edge computing under handovers. They formulated a two-timescale mixed-integer problem that minimizes long-term average execution delay while maintaining queue stability, energy budgets, and service-application caching capacity. Large-timescale decisions select the edge server and choose migration or rerouting, while small-timescale decisions allocate offloading, CPU, and bandwidth resources. Improved Lyapunov optimization decomposes the problem, randomized rounding solves the frame-level integer block, and Lagrange-dual updates solve the fine-slot resource block. The paper proves an asymptotic optimality gap, and simulations show lower average delay and energy than single-timescale JMH and the two-timescale O2TL scheme, which ignore task rerouting.
 
 ## Problem framing
 

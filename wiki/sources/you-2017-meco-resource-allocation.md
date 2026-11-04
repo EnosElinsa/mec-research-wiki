@@ -17,7 +17,7 @@ related:
   - "[[zhang-2013-energy-optimal-mcc-stochastic]]"
   - "[[miettinen-2010-mcc-energy-efficiency]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -52,11 +52,11 @@ A foundational **resource-allocation** treatment of **multiuser mobile-edge comp
 
 | ID | Meaning and key expression |
 |---|---|
-| TDMA time | Shared uplink time satisfies $\sum_kt_k\leq T$ |
-| Cloud capacity | Offloaded computation satisfies $\sum_kC_k\ell_k\leq F$ when capacity is finite |
-| Offload bounds | Latency-required minimum and task size give $m_k^+\leq\ell_k\leq R_k$ |
-| OFDMA exclusivity | Each subchannel is assigned to at most one user, $\sum_k\rho_{k,n}\leq1$ |
-| OFDMA domain | Subchannel indicators are binary and each user's total offload stays within its bounds |
+| (P1) time | Shared uplink time satisfies $\sum_kt_k\leq T$ |
+| (P1) cloud | Offloaded computation satisfies $\sum_kC_k\ell_k\leq F$ when capacity is finite |
+| (P1) bounds | Latency-required minimum and task size give $m_k^+\leq\ell_k\leq R_k$ |
+| (P4) | Each subchannel is assigned to at most one user, $\sum_k\rho_{k,n}\leq1$ |
+| (P4) domain | Subchannel indicators are binary and each user's total offload stays within its bounds |
 
 **Algorithm**: KKT analysis yields an offloading-priority function and a threshold policy that gives users complete or minimum offloading in TDMA. Finite-cloud algorithms search the associated multipliers, while the OFDMA heuristic reserves channels for mandatory offloaders, solves an average-gain TDMA counterpart, assigns integer subchannels by priority, and adjusts per-channel offloaded data.
 
@@ -64,7 +64,7 @@ A foundational **resource-allocation** treatment of **multiuser mobile-edge comp
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-You et al. [x] derived structure-revealing resource-allocation policies for multiuser mobile-edge computation offloading. Their TDMA formulation minimizes weighted mobile energy over offloaded data and transmission time under latency and cloud-capacity constraints. KKT analysis produces an offloading-priority function and a threshold that separates complete offloading from the minimum amount required by latency. The finite-cloud method modifies the priority and reduces multiplier search, while the OFDMA method assigns integer subchannels through average channel gains and priority ordering. In the reported TDMA experiments, the suboptimal finite-capacity policy remained close to optimal and consumed less than half the energy of equal allocation in the highlighted time-slot sweep. With 256 OFDMA subchannels, the proposed method used 0.0005 J versus 0.0004 J for relaxation and rounding, while its average runtime was 0.6338 seconds versus 247.4548 seconds.
+You et al. [x] derived structure-revealing resource-allocation policies for multiuser mobile-edge computation offloading. Their TDMA formulation minimizes weighted mobile energy over offloaded data and transmission time under latency and cloud-capacity constraints. KKT analysis produces an offloading-priority function and a threshold that separates complete offloading from the minimum amount required by latency. The finite-cloud method modifies the priority and reduces multiplier search, while the OFDMA method assigns integer subchannels through average channel gains and priority ordering. In the reported TDMA experiments, the suboptimal finite-capacity policy remained close to optimal and consumed less than half the energy of equal allocation in the highlighted time-slot sweep. With 256 OFDMA subchannels, the proposed method used 0.0005 J versus 0.0004 J for relaxation and rounding and saved much energy over a greedy policy, while running much faster than relaxation and rounding.
 
 ## Problem framing
 

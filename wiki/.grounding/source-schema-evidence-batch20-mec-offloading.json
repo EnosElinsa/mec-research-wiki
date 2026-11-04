@@ -1,0 +1,510 @@
+{
+  "entries": [
+    {
+      "slug": "bai-2024-delay-aware-cooperative-edge-cloud",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing.md",
+          "lines": "87,93,99,298,334,338,342,346,350",
+          "note": "delay model and P1 C1-C4 (21)"
+        },
+        {
+          "path": "raw/sources/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing.md",
+          "lines": "364,368,374,392,420",
+          "note": "drift-plus-penalty P2, energy queue (23), log-sum-exp P3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing/Delay-Aware_Cooperative_Task_Offloading_for_Multi-UAV_Enabled_Edge-Cloud_Computing.md",
+          "lines": "631,654",
+          "note": "NcC, CoC, RoC and DLB comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2015-decentralized-offloading-game",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing.md",
+          "lines": "147,161,194,234,313,321,340",
+          "note": "game, equilibrium (10), thresholds and PoA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing/Decentralized_Computation_Offloading_Game_for_Mobile_Cloud_Computing.md",
+          "lines": "306,395,460,462",
+          "note": "centralized, all-local/all-cloud and convergence results"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2016-multiuser-offloading-game-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing.md",
+          "lines": "141,163,169,181,193,207,219,363,383,389,441,449",
+          "note": "overhead model, centralized problems and potential game"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing/Efficient_Multi-User_Computation_Offloading_for_Mobile-Edge_Cloud_Computing.md",
+          "lines": "430,748,750,790",
+          "note": "CE optimum, baselines and convergence"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2022-qoe-game-end-edge-cloud",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach.md",
+          "lines": "32,119,165,211,218,221,225,228,384,386,436,442,534,552",
+          "note": "QoE model, problem (17) with (3) and (10), GDTO and PoA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach/QoE-Aware_Decentralized_Task_Offloading_and_Resource_Allocation_for_End-Edge-Cloud_Systems_A_Game-Theoretical_Approach.md",
+          "lines": "615,617,684,713,755",
+          "note": "iterations and QoE comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2024-dro-video-caching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization.md",
+          "lines": "272,275,277,278,279,281,287,289,290,291,293,300",
+          "note": "problem (18) (a)-(h) and ambiguity set (19)"
+        },
+        {
+          "path": "raw/sources/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization.md",
+          "lines": "344,362,382,394,436,460,477,489",
+          "note": "dual reformulations for zeta-structure metrics"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization/Adaptive_Bitrate_Video_Caching_in_UAV-Assisted_MEC_Networks_Based_on_Distributionally_Robust_Optimization.md",
+          "lines": "630,634,740",
+          "note": "DRC, Uniform-WT and Uniform-POP comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "duan-2023-moto-smallcell-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC.md",
+          "lines": "34,322,326,420,424,438,442,450,454,460,688",
+          "note": "P1 (9), P2 (15)-(18) and MOTO"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC/MOTO_Mobility-Aware_Online_Task_Offloading_With_Adaptive_Load_Balancing_in_Small-Cell_MEC.md",
+          "lines": "792,833",
+          "note": "trace and delay comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "gao-2024-service-experience-cache-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks/Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks.md",
+          "lines": "76,89,267,271,295,299,303",
+          "note": "system model and P1 C1-C15"
+        },
+        {
+          "path": "raw/sources/Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks/Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks.md",
+          "lines": "365,369,377,391,409,413,445,449,561,569,573,577,657,701,705",
+          "note": "Dinkelbach and four-block alternating subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks/Service_Experience_Oriented_Cooperative_Computing_in_Cache-Enabled_UAVs_Assisted_MEC_Networks.md",
+          "lines": "5,833,835,836,837,845,947",
+          "note": "GCR, FRA and NCOA comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "he-2019-euagame-user-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb.md",
+          "lines": "146,154,158,161,164,168,171,173,175,188,273,306,313,321",
+          "note": "EUA problem (7)-(10), game (11) and PoA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb/A_Game-Theoretical_Approach_for_User_Allocation_in_Edge_Computing_Environment.pdf-6a127707-a8c8-4eb3-95db-bd84451c63bb.md",
+          "lines": "368,370,413",
+          "note": "Optimal, Greedy and Random comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2023-mu-aec-task-energy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Interdependent_Task_Scheduling_and_Energy_Balancing_for_Multi-UAV-Enabled_Aerial_Edge_Computing_A_Multiobjective_Optimization_Approach/Joint_Interdependent_Task_Scheduling_and_Energy_Balancing_for_Multi-UAV-Enabled_Aerial_Edge_Computing_A_Multiobjective_Optimization_Approach.md",
+          "lines": "93,146,152,170,190,193,195,197,217,239,274,281,347",
+          "note": "DAG task model, problem (14) C1-C5 and CMOEA/D framework"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Interdependent_Task_Scheduling_and_Energy_Balancing_for_Multi-UAV-Enabled_Aerial_Edge_Computing_A_Multiobjective_Optimization_Approach/Joint_Interdependent_Task_Scheduling_and_Energy_Balancing_for_Multi-UAV-Enabled_Aerial_Edge_Computing_A_Multiobjective_Optimization_Approach.md",
+          "lines": "524,528,530,536",
+          "note": "ToP, PPS and CMOEA/D-CDP comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "liang-2021-multicell-jmh",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-Cell_Mobile_Edge_Computing_Joint_Service_Migration_and_Resource_Allocation/Multi-Cell_Mobile_Edge_Computing_Joint_Service_Migration_and_Resource_Allocation.md",
+          "lines": "85,89,93,97,101,104,114,117,121,136,143,164,171,179,209,222,248,302,308,313,317,330,334,352,370,373,381,417,421,451,460,466",
+          "note": "(P1) (5)-(8), sum-of-ratios, LAP recovery and radio extension"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-Cell_Mobile_Edge_Computing_Joint_Service_Migration_and_Resource_Allocation/Multi-Cell_Mobile_Edge_Computing_Joint_Service_Migration_and_Resource_Allocation.md",
+          "lines": "37,597,604,638,663",
+          "note": "upper bound, radio-oriented and no-migration comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "mao-2016-lodco-eh-mec-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices.md",
+          "lines": "99,136,145,148,169,175,181,192,196,204,208,212",
+          "note": "modes, energy causality and problem P1 (1)-(17)"
+        },
+        {
+          "path": "raw/sources/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices.md",
+          "lines": "252,260,273,278,295,310,322,328,354,364,428,522",
+          "note": "perturbed Lyapunov per-slot problem and LODCO bound (41)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices/Dynamic_Computation_Offloading_for_Mobile-Edge_Computing_With_Energy_Harvesting_Devices.md",
+          "lines": "75,580,610,614,621",
+          "note": "GD baselines, cost and battery results"
+        }
+      ]
+    },
+    {
+      "slug": "ning-2023-uav-mec-offloading-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing.md",
+          "lines": "35,183,191,205,211,349",
+          "note": "UE and UAV games and NE existence"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing/Dynamic_Computation_Offloading_and_Server_Deployment_for_UAV-Enabled_Multi-Access_Edge_Computing.md",
+          "lines": "639,663,672,674,683,685,692,694",
+          "note": "benchmarks, convergence and cost comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "peng-2026-demand-aware-multiuav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Demand-Aware_Multi-Area_Multi-UAV_Empowered_Mobile_Edge_Computing_A_Joint_Energy_and_Delay_Optimization/Demand-Aware_Multi-Area_Multi-UAV_Empowered_Mobile_Edge_Computing_A_Joint_Energy_and_Delay_Optimization.md",
+          "lines": "19,256,258,261,264,267,271,275,279,283,286,288,290,292,294,296,298",
+          "note": "bi-objective problem (29) C1-C14"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Demand-Aware_Multi-Area_Multi-UAV_Empowered_Mobile_Edge_Computing_A_Joint_Energy_and_Delay_Optimization/Demand-Aware_Multi-Area_Multi-UAV_Empowered_Mobile_Edge_Computing_A_Joint_Energy_and_Delay_Optimization.md",
+          "lines": "414,416,421,423,425,427,429,431,461,463,491,493",
+          "note": "compared CMOEAs and Pareto solutions"
+        }
+      ]
+    },
+    {
+      "slug": "shi-2023-two-timescale-migration-rerouting",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC.md",
+          "lines": "84,114,142,166,204,212,218,224,229,232,235,238,242,246,250,254,258,263",
+          "note": "delay, energy, cache models and P1 (2)-(25)"
+        },
+        {
+          "path": "raw/sources/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC.md",
+          "lines": "265,267,271,275,282,290,295,298,301,310,351,514",
+          "note": "two-timescale Lyapunov decomposition and OASTR"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC/Service_Migration_or_Task_Rerouting_A_Two-Timescale_Online_Resource_Optimization_for_MEC.md",
+          "lines": "591,593,595,634,652,656",
+          "note": "JMH and O2TL comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2016-partial-offloading-dvs",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling.md",
+          "lines": "127,141,145,149,153,157,179,195,201,207,211,217,223,231,255,261,265,269",
+          "note": "P1/P2 C1-C5 and feasible-ratio bounds"
+        },
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling.md",
+          "lines": "303,311,347,351,355,398,400,408,417,435,441,447,475,489,525,539",
+          "note": "EPCO, P5, total-offloading theorem, multi-server P6-P8 and P10-P11"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling/Mobile-Edge_Computing_Partial_Computation_Offloading_Using_Dynamic_Voltage_Scaling.md",
+          "lines": "661,702,812",
+          "note": "admission, energy and latency comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2019-todetas-deployment-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "187,205,211,255,258,268,270,272,274,276,473,480,507,510,566",
+          "note": "problem P1 C1-C8 and lower-layer scheduling"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing/Joint_Deployment_and_Task_Scheduling_Optimization_for_Large-Scale_Mobile_Users_in_Multi-UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "784,786,800,802,808,814",
+          "note": "ToDE-VND and ToDeTaS-BB comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-blockchain-uav-mec-dpos",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation.md",
+          "lines": "220,242,266,276,280,284,288,292,297,300,306,314,318,326",
+          "note": "leader P1 (25a)-(25d) and follower P2 (28a)-(28b)"
+        },
+        {
+          "path": "raw/sources/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation.md",
+          "lines": "346,352,366,378,382,386,396,400,440",
+          "note": "KKT follower solution and SCA leader update"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation/Blockchain-Integrated_UAV-Assisted_Mobile_Edge_Computing_Trajectory_Planning_and_Resource_Allocation.md",
+          "lines": "585",
+          "note": "improved versus traditional DPoS delay"
+        }
+      ]
+    },
+    {
+      "slug": "xu-2026-prizty-uav-mec-auction",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC.md",
+          "lines": "57,129,133,135,138,142,146,150,154,158,162,166,169",
+          "note": "NOMA model, social cost problem (9a)-(9g)"
+        },
+        {
+          "path": "raw/sources/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC.md",
+          "lines": "228,234,242,268,288,322,358,370,404",
+          "note": "Laplace perturbation, SSEA and WPA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC/A_Privacy-Preserving_Auction_for_Task_Offloading_and_Resource_Allocation_in_UAV-Assisted_MEC.md",
+          "lines": "482,486,492,494,605,633",
+          "note": "Optimal, Greedy, TOCA and Ptero comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2024-taco-human-digital-twin-edge",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization.md",
+          "lines": "286,290,302,306,311,344,347,350,354,366,370,398,404,416,422,429",
+          "note": "P1 (17a)-(17e), virtual queues and drift-plus-penalty"
+        },
+        {
+          "path": "raw/sources/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization.md",
+          "lines": "440,445,448,463,467,472,506,538,614,634,650,667,677,685,691,703,709,713",
+          "note": "PME large-timescale and BCD small-timescale subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization/Dynamic_Human_Digital_Twin_Deployment_at_the_Edge_for_Task_Execution_A_Two-Timescale_Accuracy-Aware_Online_Optimization.md",
+          "lines": "922,924,973,997,1055",
+          "note": "LOT and CRO comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "you-2017-meco-resource-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading.md",
+          "lines": "55,103,109,147,154,158,162,172,176,180,279,307,370,408,412,482,486,497,499,510,525,541,545,582",
+          "note": "TDMA P1-P3, OFDMA P4 and policies"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading/Energy-Efficient_Resource_Allocation_for_Mobile-Edge_Computation_Offloading.md",
+          "lines": "592,596,598,600,602,606,659,663,679",
+          "note": "equal, greedy and relaxation comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2013-energy-optimal-mcc-stochastic",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel.md",
+          "lines": "112,136,146,190,212,216,343,347,351,818,832",
+          "note": "execution energies, DVS problem (13)-(14), transmission problem (19)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel/Energy-Optimal_Mobile_Cloud_Computing_under_Stochastic_Wireless_Channel.md",
+          "lines": "612",
+          "note": "cloud versus mobile energy"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2020-response-delay-uav-swarm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm.md",
+          "lines": "116,122,128,285,301,307,393,397,401,405,507",
+          "note": "PPP link model, M/M/m queue and problem (38)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm/Response_Delay_Optimization_in_Mobile_Edge_Computing_Enabled_UAV_Swarm.md",
+          "lines": "533,754,807,859",
+          "note": "MEC versus no-MEC delay and testbed"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2024-caching-service-placement-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md",
+          "lines": "27,167,171,174,178,182,186,190,194,198,202,205,207,209",
+          "note": "QoE objective and problem P1 (16a)-(16f)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks/Joint_Content_Caching_Service_Placement_and_Task_Offloading_in_UAV-Enabled_Mobile_Edge_Computing_Networks.md",
+          "lines": "342,344,346,351,353,355",
+          "note": "greedy, NCO, CF and SF comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2025-traj-offload-cache-migration",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC.md",
+          "lines": "171,175,179,183,187,191,195,199,203,211,215,219,223,227",
+          "note": "problem P (9a)-(9n)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC.md",
+          "lines": "338,364,452,496,504,638,642,686,696,758,764,772,790,844,858,943",
+          "note": "Lyapunov slot problem, TSOUD, QCQP-SDR and primal-dual bandwidth"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC/Joint_Optimization_of_Trajectory_Offloading_Caching_and_Migration_for_UAV-Assisted_MEC.md",
+          "lines": "930,932,934,936,974",
+          "note": "K-means++ and random deployment comparisons"
+        }
+      ]
+    }
+  ]
+}

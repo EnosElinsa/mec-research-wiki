@@ -21,7 +21,7 @@ related:
   - "[[mao-2016-lodco-eh-mec-offloading]]"
   - "[[miettinen-2010-mcc-energy-efficiency]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Mobile-Edge Computing: Partial Computation Offloading Using Dynamic Voltage Scaling
@@ -55,11 +55,12 @@ A foundational MEC paper that brings **dynamic voltage scaling (DVS)** into **pa
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | $0\le\lambda\le1$ and local/offloaded bits partition the task |
-| C2 | CPU speed and transmit power satisfy box limits |
-| C3 | P1 satisfies $L(f_l,P_t,\lambda)\le L_{\max}$ |
-| C4 | P2 satisfies $E(f_l,P_t,\lambda)\le E_{\max}$ |
-| C5 | Multi-server associations and computation distributions respect server/backhaul capacities |
+| C1 | P1 latency, $L(f_l,P_t,\lambda)=\max\{t_l,t_c\}\le L_{\max}$ |
+| C2 | $0\le\lambda\le1$ |
+| C3 | $0\le P_t\le P_{t_{\max}}$ |
+| C4 | $0\le f_l\le f_{l_{\max}}$ |
+| C5 | P2 energy, $E(f_l,P_t,\lambda)\le E_{\max}$ |
+| C11–C13 | Multi-server case (P6): $\max\{t_l,t_{cm}\}\le L_{\max}$, $\sum_nw_n=(1-\lambda)I$, $w_n\ge0$ |
 
 **Algorithm**: Recast P1 by variable substitution into a convex problem and solve it with the closed-form EPCO algorithm → solve non-smooth P2 with a univariate search → extend to multiple cloud servers with closed-form computation distribution and association rules.
 
@@ -67,7 +68,7 @@ A foundational MEC paper that brings **dynamic voltage scaling (DVS)** into **pa
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied partial computation offloading with dynamic voltage scaling at a smart mobile device. They formulated energy-minimization and latency-minimization problems over local CPU speed, transmit power, and offloading ratio under latency or energy constraints. The energy problem is transformed into a convex formulation with a closed-form EPCO solution, while the non-smooth latency problem is solved by a univariate search. The multi-cloud extension derives computation distribution and user association rules in closed form. The paper reports lower energy and latency than the evaluated offloading schemes and proves that total offloading is not optimal when dynamic voltage scaling is available.
+Wang et al. [x] studied partial computation offloading with dynamic voltage scaling at a smart mobile device. They formulated energy-minimization and latency-minimization problems over local CPU speed, transmit power, and offloading ratio under latency or energy constraints. The energy problem is transformed into a convex formulation with a closed-form EPCO solution, while the non-smooth latency problem is solved by a univariate search. The multi-cloud extension derives computation distribution and user association rules in closed form. The paper proves that total offloading cannot be optimal when dynamic voltage scaling is available, and simulations show lower energy than partial offloading with fixed CPU speed and full offloading, plus higher application admission probability than full offloading.
 
 ## Problem framing
 

@@ -64,7 +64,7 @@ A multi-UAV MEC system where UAVs act as flying edge clouds for large-scale mobi
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] jointly optimized the number and locations of flying edge clouds together with local or UAV execution choices for a large population of mobile users. Their objective minimizes user execution, UAV MEC, and hovering energy subject to coverage, separation, per-UAV capacity, assignment, resource, and deadline constraints. ToDeTaS encodes deployment in an upper differential-evolution search with an elimination operator and solves the lower binary scheduling layer with a greedy procedure. Across up to 1000 users, the method completed all tasks in the reported instances and reduced runtime relative to its branch-and-bound variant, illustrating the value of the two-layer decomposition.
+Wang et al. [x] jointly optimized the number and locations of flying edge clouds together with local or UAV execution choices for a large population of mobile users. Their objective minimizes user execution, UAV MEC, and hovering energy subject to coverage, separation, per-UAV capacity, assignment, resource, and deadline constraints. ToDeTaS encodes deployment in an upper differential-evolution search with an elimination operator and solves the lower binary scheduling layer with a greedy procedure. Across up to 1000 users, the method completed all tasks, gave lower energy than ToDE-VND, and ran on average 13.22 times faster than its branch-and-bound variant, which reached slightly lower energy.
 
 ## Problem framing
 

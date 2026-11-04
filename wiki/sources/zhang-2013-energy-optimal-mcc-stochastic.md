@@ -15,7 +15,7 @@ related:
   - "[[mao-2016-lodco-eh-mec-offloading]]"
   - "[[mao-2017-mec-survey-communication]]"
 created: 2026-06-01
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -49,11 +49,11 @@ An early **mobile cloud computing (MCC)** offloading paper that builds a theoret
 
 | ID | Meaning and key expression |
 |---|---|
-| 10 | The allocated workload meets the completion probability, $F_W(W_\rho)\geq\rho$ |
-| 14 | Local execution meets the deadline, $\sum_{w=1}^{W_\rho}1/f(w)\leq T$ |
-| 19a | Cloud execution transmits all input bits, $\sum_{t=1}^{T}s_t=L$ |
-| 19b | Every slot allocation is nonnegative, $s_t\geq0$ |
-| 5 | Select mobile execution when $\mathcal E_m^*\leq\mathcal E_c^*$ and cloud execution otherwise |
+| (10) | The allocated workload meets the completion probability, $F_W(W_\rho)\geq\rho$ |
+| (14) | Local execution meets the deadline, $\sum_{w=1}^{W_\rho}1/f(w)\leq T$ |
+| (19) | Cloud execution transmits all input bits, $\sum_{t=1}^{T}s_t=L$ |
+| (19) | Every slot allocation is nonnegative, $s_t\geq0$ |
+| Model rule (5) | Select mobile execution when $\mathcal E_m^*\leq\mathcal E_c^*$ and cloud execution otherwise |
 
 **Algorithm**: Derive the closed-form optimal DVS frequency schedule and its minimum expected local energy; solve the Gilbert-Elliott transmission schedule by dynamic programming in closed form; compare the two minimum energies; for small-output applications, implement the resulting threshold rule on the effective data consumption rate $R_e=L/T$.
 

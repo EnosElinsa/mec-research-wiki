@@ -45,9 +45,9 @@ Multiple mobile device users share a wireless access link to a cloud (e.g., Amaz
 
 | ID | Meaning and key expression |
 |---|---|
-| Action set | Each user selects one feasible action, $a_n\in\mathcal{A}_n=\{0,1\}$ |
-| Best response | Cloud execution is selected when the measured interference satisfies $\sum_{m\neq n:a_m=1}P_mH_{m,s}\leq L_n$ |
-| 10 | At equilibrium no user can reduce its cost unilaterally, $V_n(a_n^*,a_{-n}^*)\leq V_n(a_n,a_{-n}^*)$ |
+| Model rule | Each user selects one feasible action, $a_n\in\mathcal{A}_n=\{0,1\}$ |
+| Algorithm rule | Cloud execution is selected when the measured interference satisfies $\sum_{m\neq n:a_m=1}P_mH_{m,s}\leq L_n$ |
+| (10) | At equilibrium no user can reduce its cost unilaterally, $V_n(a_n^*,a_{-n}^*)\leq V_n(a_n,a_{-n}^*)$ |
 
 **Algorithm**: For homogeneous access, sort user thresholds and construct the beneficial cloud-computing group; for heterogeneous access, measure interference, compute the best-response set, use random-backoff contention so one user updates at a time, and stop when no request-to-update message is broadcast for the prescribed consecutive slots.
 

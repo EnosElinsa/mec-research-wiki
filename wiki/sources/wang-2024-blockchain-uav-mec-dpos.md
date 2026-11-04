@@ -19,7 +19,7 @@ related:
   - "[[wang-2025-acbft-uav-consensus]]"
   - "[[mao-2025-bcsa-frl]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Blockchain-Integrated UAV-Assisted Mobile Edge Computing: Trajectory Planning and Resource Allocation
@@ -53,12 +53,12 @@ Integrates a **consortium blockchain** into a UAV-assisted MEC network to secure
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Block QoS: cumulative transmitted data $\sum_t\Delta R_{n,p}(X_n(t))\ge N_B\bar w$ |
-| C2 | Rate supports node compute: $R_{n,p}(X_n(t))\ge f_s(t)/D_s$ |
-| C3 | UAV speed: $\|v_n(X_n(t))\|_2\le v_{\max}$ |
-| C4 | UAV power: $0.1\le P_t(t)\le1$ |
-| C5 | Follower CPU bound: $0\le f_s(t)\le f_{\max}$ |
-| C6 | Consensus workload: $\sum_t\Delta f_s(t)$ covers verification, execution, and hashing cycles |
+| (25a) | Block QoS: cumulative transmitted data $\sum_t\Delta R_{n,p}(X_n(t))\ge N_B\bar w$ |
+| (25b) | Rate supports node compute: $R_{n,p}(X_n(t))\ge f_s(t)/D_s$ |
+| (25c) | UAV speed: $\|v_n(X_n(t))\|_2\le v_{\max}$ |
+| (25d) | UAV power: $0.1\le P_t(t)\le1$ |
+| (28a) | Follower CPU bound: $0\le f_s(t)\le f_{\max}$ |
+| (28b) | Consensus workload: $\sum_t\Delta f_s(t)$ covers verification, execution, and hashing cycles |
 
 **Algorithm**: Solve the two-stage game backward. Obtain follower CPU strategies from KKT conditions and the consensus Nash equilibrium, then solve the non-convex leader trajectory and power problem with SCA; iterate the resulting policies to the Stackelberg equilibrium.
 

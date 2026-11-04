@@ -9,7 +9,7 @@ venue: "IEEE Transactions on Mobile Computing (IEEE TMC)"
 tags: [source, uav-assisted-mec, multi-uav, smart-city, demand-aware-deployment, constrained-multi-objective-optimization, evolutionary-algorithm, pareto]
 related: ["[[constrained-multi-objective-evolutionary-algorithm]]", "[[multi-uav-assisted-mec]]", "[[load-balancing-uav-mec]]", "[[constraint-violation-evaluation]]", "[[peng-2022-cmop-uav-path-planning]]", "[[peng-2024-energy-time-uav-its]]", "[[huang-2023-mu-aec-task-energy]]", "[[chaoda-peng]]", "[[xumin-huang]]"]
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Demand-Aware Multi-Area Multi-UAV Empowered Mobile Edge Computing: A Joint Energy and Delay Optimization
@@ -28,27 +28,27 @@ A demand-aware smart-city UAV-MEC deployment model where a control center flexib
 
 **Scenario**: A smart-city control center dispatches $M>N$ UAV-MEC servers from one base to $N$ heterogeneous service areas with different radii, user densities, and task demands. Users offload over OFDMA air-to-ground links with probabilistic LoS propagation, while each UAV flies to one area, hovers at a selected position, and allocates radio bandwidth and CPU cycles to associated users.
 
-**Problem & objective**: A constrained bi-objective mixed discrete-continuous deployment problem minimizes normalized fleet energy and average task-completion delay, $\min_{\mathbf x}(F_E(\mathbf x),F_D(\mathbf x))$, producing a feasible Pareto set rather than one weighted operating point.
+**Problem & objective**: A constrained bi-objective mixed discrete-continuous deployment problem minimizes normalized fleet energy and average task-completion delay, $\min_{\mathbf x}\{E(\mathbf x),T(\mathbf x)\}$ in (29), producing a feasible Pareto set rather than one weighted operating point.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV-to-area assignment | $z_{m,n}$ | binary | Whether UAV $m$ is deployed to area $n$ |
-| UAV deployment point | $\mathbf q_m$ | continuous 2-D position | Hovering location inside the assigned area |
-| User association | $a_{u,m}$ | binary | Whether user $u$ offloads to UAV $m$ |
-| Bandwidth allocation | $b_{u,m}$ | continuous, nonnegative | OFDMA bandwidth assigned to user $u$ |
-| CPU allocation | $f_{u,m}$ | continuous, nonnegative | UAV computing frequency assigned to user $u$ |
+| UAV-to-area assignment | $a_{m,n}$ | binary | Whether UAV $m$ is deployed to area $n$ |
+| UAV deployment point | $(x_m,y_m)$ | continuous 2-D position | Hovering location inside the assigned area |
+| User association | $u_{m,n,k}$ | binary | Whether user $k$ of area $n$ offloads to UAV $m$ |
+| Bandwidth allocation | $b_{m,n,k}$ | continuous, nonnegative | OFDMA bandwidth assigned to user $u$ |
+| CPU allocation | $f_{m,n,k}$ | continuous, nonnegative | UAV computing frequency assigned to user $u$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every service area receives at least one UAV and each UAV is assigned consistently to one area |
-| C2 | UAV positions remain inside their assigned service areas and maintain safe separation |
-| C3 | Every user is associated with exactly one deployed UAV in the same area |
-| C4 | Per-UAV bandwidth and CPU allocations do not exceed radio and computing capacities |
-| C5 | UAV energy budgets and user completion-delay limits are satisfied |
+| C1–C4 | Every service area has at least one UAV, each UAV serves at most one area, UAVs keep safe separation, and UAVs stay inside their assigned areas |
+| C5, C6 | Each user associates with exactly one UAV, and only with a UAV deployed in its own area |
+| C7–C9 | Per-UAV bandwidth, computing, and energy budgets |
+| C10 | Every task finishes within the maximum allowable delay |
+| C11–C14 | $a_{m,n},u_{m,n,k}\in\{0,1\}$, $0\le x_m,y_m\le L$, and $b_{m,n,k},f_{m,n,k}\ge0$ |
 
 **Algorithm**: Encode assignment, placement, association, bandwidth, and CPU decisions → evolve feasible and exploratory populations with constraint domination and adaptive epsilon selection → apply constraint-guided solution reconstruction to repair coverage, placement, association, and resource blocks → rank feasible offspring by Pareto dominance → return energy-oriented, balanced, and delay-oriented solutions.
 
@@ -56,7 +56,7 @@ A demand-aware smart-city UAV-MEC deployment model where a control center flexib
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Peng et al. [x] studied demand-aware multi-area deployment and resource allocation for multi-UAV mobile edge computing. They formulated a constrained bi-objective problem that jointly minimizes normalized total energy and average task-completion delay by optimizing UAV-to-area deployment, UAV positions, user association, bandwidth, and computing resources. Their constraint-guided multi-objective evolutionary algorithm maintains two populations and reconstructs infeasible solutions by repairing area coverage, positions, associations, and allocations. The resulting Pareto set provides energy-oriented, balanced, and delay-oriented operating points. Simulations report the lowest inverted generational distance and highest hypervolume among the five evaluated constrained multi-objective evolutionary algorithms on CMOP1, CMOP2, and CMOP3.
+Peng et al. [x] studied demand-aware multi-area deployment and resource allocation for multi-UAV mobile edge computing. They formulated a constrained bi-objective problem that jointly minimizes normalized total energy and average task-completion delay by optimizing UAV-to-area deployment, UAV positions, user association, bandwidth, and computing resources. Their constraint-guided multi-objective evolutionary algorithm maintains two populations and reconstructs infeasible solutions by repairing area coverage, positions, associations, and allocations. The resulting Pareto set provides energy-oriented, balanced, and delay-oriented operating points. Simulations report the lowest inverted generational distance and highest hypervolume than tDEA-CPBI, MTCMO, MSCEA, MOEA/D-CDP, and CMOEA-TS on the CMOP1, CMOP2, and CMOP3 instances.
 
 ## Problem
 

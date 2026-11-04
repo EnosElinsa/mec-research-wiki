@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 20 (MEC offloading, games, Lyapunov control, caching, and migration)
+
+- Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch20-mec-offloading.json`. Grounded total: 479/699.
+- Relabeled constraint IDs to the papers' own tags (for example chen-2022 (3) and (10), he-2019 (9)–(10), liang-2021 (6)–(8), shi-2023 (2)–(25), wang-2024 blockchain (25a)–(28b), zhao-2025 (9b)–(9n), chen-2024 DRO (18)(a)–(h) and (19), peng-2026 C1–C14); non-constraints became model or algorithm rules.
+- Rewrote the Modeling Quick-Use Card for zhao-2024 (variables $x_{u,f},x_{u,k},y_{m,n,u}^k$, constraints (16a)–(16f)) and xu-2026 (bid acceptance $x_{n,s}^t$, social-cost problem (9a)–(9g)); corrected variable symbols for zhao-2025 and peng-2026.
+- Related Work paragraphs now name the actual baselines and carry caveats (for example ning-2023 converging slower than fixed servers, liang-2021 radio-oriented migration competitive at low load, zhang-2020 MEC slower than no MEC with few VMs, xu-2026 behind the optimal allocation); unsupported numbers were removed from mao-2016, ning-2023 and you-2017.
+
 ## [2026-11-03] Grounded batch 19 (UAV communications fundamentals: placement, relaying, trajectory, data collection)
 
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch19-uav-comms.json`. Grounded total: 455/699.

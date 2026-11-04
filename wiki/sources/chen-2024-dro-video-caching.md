@@ -21,7 +21,7 @@ related:
   - "[[zhao-2024-caching-service-placement-uav]]"
   - "[[query-when-does-dro-beat-drl-for-csi-uncertainty]]"
 created: 2026-06-02
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Adaptive Bitrate Video Caching in UAV-Assisted MEC Networks Based on Distributionally Robust Optimization
@@ -55,11 +55,12 @@ A **UAV-assisted MEC video-caching** scheme that is **robust to unknown content-
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Cache capacity requires $\sum_f x_fR_f\le C_u$. |
-| C2 | Direct-hit data is $y_c(\xi_i)=\sum_fx_fR_fe_f(\xi_i)$, and transcoding is allowed only when a higher-bitrate version of the same video is cached. |
-| C3 | Uncached demand is conserved by $y_t(\xi_i)+y_b(\xi_i)=\sum_f(1-x_f)R_fe_f(\xi_i)$ with all delivery amounts nonnegative. |
-| C4 | Total hovering, caching, direct-delivery, transcoding, and backhaul energy must not exceed $E_{\max}$. |
-| C5 | The ambiguity distribution belongs to $\mathcal D=\{\mathbb P:d(\mathbb P,\mathbb P_0)\le\theta\}$. |
+| (18) (a), (b) | $x_f\in\{0,1\}$ and cache capacity $\sum_fx_fR_f\le C_u$ |
+| (18) (c), (d) | Direct-hit data $y_c(\xi_i)=\sum_fx_fR_fe_f(\xi_i)$; transcoding only from a cached higher-bitrate version of the same video |
+| (18) (e), (f) | Uncached demand $y_t(\xi_i)+y_b(\xi_i)=\sum_f(1-x_f)R_fe_f(\xi_i)$, with all delivery amounts nonnegative |
+| (18) (g) | Latency $\Psi=L_c+L_t+L_b$ |
+| (18) (h) | Hovering, caching, delivery, transcoding, and backhaul energy within $E_{\max}$ |
+| (19) | Ambiguity set $\mathcal D=\{\mathbb P:d(\mathbb P,\mathbb P_0)\le\theta\}$ |
 
 **Algorithm**: The method builds an empirical reference distribution and a confidence set with a selected zeta-structure probability metric, dualizes the inner worst-case distribution problem, and solves the resulting convex reformulation for robust caching and delivery schedules.
 

@@ -21,7 +21,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[zhang-2025-mcma-task-migration]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 authors: [Xingxia Gao, Linbo Zhai]
 year: 2024
 url: https://doi.org/10.1109/TMC.2024.3366944
@@ -73,7 +73,7 @@ A multi-UAV plus macro-base-station (MBS) [[mobile-edge-computing]] system where
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gao and Zhai [x] studied service-experience-oriented cooperative computing in a cache-enabled multi-UAV assisted MEC network. They defined the service experience ratio as Jain's fairness index of per-UE service delay divided by average service delay, and formulated its maximization over task offloading, service caching, UAV trajectory, bandwidth, and computing allocation under communication, computing, storage, mobility, energy, and deadline constraints. Their solution applies Dinkelbach's method and alternates satisfaction-based offloading, priority-based caching, SCA trajectory optimization, and convex bandwidth and computing allocation. Simulations report a 19% to 34% higher service experience ratio than the evaluated comparison schemes and convergence in about four iterations.
+Gao and Zhai [x] studied service-experience-oriented cooperative computing in a cache-enabled multi-UAV assisted MEC network. They defined the service experience ratio as Jain's fairness index of per-UE service delay divided by average service delay, and formulated its maximization over task offloading, service caching, UAV trajectory, bandwidth, and computing allocation under communication, computing, storage, mobility, energy, and deadline constraints. Their solution applies Dinkelbach's method and alternates satisfaction-based offloading, priority-based caching, SCA trajectory optimization, and convex bandwidth and computing allocation. Simulations report a 19% to 34% higher service experience ratio than greedy offloading with CVX resource allocation (GCR), fixed resource allocation (FRA), and non-cooperative offloading (NCOA), plus convergence in about four iterations.
 
 ## Problem
 Terrestrial MEC servers can suffer poor NLoS channels or be destroyed/overloaded; UAV-assisted MEC restores coverage but adds tight communication/computing/storage (CCS) and energy limits. Crucially, optimizing only for *overall* low latency can leave some UEs with poor experience. The paper considers a cellular network with one MBS, U rotary-wing UAVs (aerial MEC servers/relays), and M UEs that can reach the MBS only through UAVs (see [[air-ground-integrated-network]]). The objective is to cut service delay **while guaranteeing fairness among UEs**, by jointly choosing where each task runs, which services each UAV caches, how UAVs fly, and how bandwidth/compute are allocated — under per-UAV energy budgets and per-task deadlines.

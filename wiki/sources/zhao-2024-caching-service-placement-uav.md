@@ -17,7 +17,7 @@ related:
   - "[[gao-2024-service-experience-cache-uav]]"
   - "[[zhao-2025-traj-offload-cache-migration]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Content Caching, Service Placement, and Task Offloading in UAV-Enabled Mobile Edge Computing Networks
@@ -34,35 +34,33 @@ Multiple UAVs with caching and computation serve heterogeneous content and servi
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple UAVs with finite storage and computing capacity serve heterogeneous UE content requests and computation-service requests. Cache hits avoid content delivery, while service placement and task offloading reduce execution delay.
+**Scenario**: Multiple UAVs with finite storage, CPU cores and energy serve UEs that each issue either a content request or a service request. Cache hits avoid content delivery, while placed service programs let the tasks of a service request run on a UAV instead of locally.
 
-**Problem & objective**: An NP-hard joint placement and offloading problem maximizes average QoE, $\max \omega_H\bar H+(1-\omega_H)\bar S$, combining cache-hit ratio and service-delay shrinkage.
+**Problem & objective**: Problem P1 in (16) maximizes the average QoE $Q(X_{\mathcal F},X_{\mathcal K},Y)$ in (15), a weighted sum with weight $\alpha\in[0,1]$ of the content cache-hit ratio and the service-delay shrinkage ratio.
 
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Content caching | $c_{m,f}$ | binary | Content item $f$ stored at UAV $m$ |
-| Service placement | $s_{m,r}$ | binary | Service program $r$ deployed at UAV $m$ |
-| Task offloading | $x_{k,m}$ | binary/matching | UAV selected for UE task $k$ |
+| Content caching | $x_{u,f}$ | binary | Content $f$ stored at UAV $u$ |
+| Service placement | $x_{u,k}$ | binary | Service program $k$ deployed at UAV $u$ |
+| Task offloading | $y_{m,n,u}^k$ | binary | Task $n$ of UE $m$'s service request $k$ offloaded to UAV $u$ |
 
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Content and service placements fit UAV storage capacity |
-| C2 | Service execution load stays within UAV computing capacity |
-| C3 | Each UE task offloads to at most one feasible UAV |
-| C4 | A task uses only a UAV carrying its required service |
-| C5 | Content hit and delay-shrinkage terms use the resulting placement/offloading state |
+| (16a), (16b) | Request type $q_m\in\{0,1\}$; each UE issues at most one content request or one service request |
+| (16c) | UAV storage, $\sum_fx_{u,f}c_f+\sum_kx_{u,k}c_k\le\mathrm{St}_u$ |
+| (16d) | Each task runs locally or on at most one UAV, $\sum_uy_{m,n,u}^k\le1$ |
+| (16e) | UAV CPU cores, $\sum_{m,k,n}y_{m,n,u}^k\le\mathrm{Core}_u$ |
+| (16f) | UAV computation energy, $E_u^{\mathrm{pr}}\le E_{\max}$ |
 
-**Algorithm**: Fix offloading and sample content/service placements with a Gibbs distribution over QoE changes → fix placements and build UE-UAV preferences → solve offloading as a matching game → recompute cache-hit and delay-shrinkage QoE → iterate placement and matching until average QoE stabilizes.
+**Algorithm**: For fixed offloading, content caching and service placement are updated by Gibbs sampling over QoE changes. For fixed placement, UE tasks are matched to feasible UAVs through a matching game built from UE–UAV preferences. The two blocks alternate until the average QoE stabilizes.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] studied joint content caching, service placement, and task offloading in UAV-enabled mobile edge computing networks. They defined average QoE as a weighted combination of content cache-hit ratio and service delay shrinkage and maximized it under UAV storage, computing, service-availability, and offloading constraints. Gibbs sampling updates content and service placement for fixed offloading. A matching game associates UE tasks with feasible UAVs for fixed placement, and the two blocks iterate. Numerical results report higher average QoE than the evaluated caching, placement, and offloading baselines, particularly under constrained UAV resources.
+Zhao et al. [x] studied joint content caching, service placement, and task offloading in UAV-enabled mobile edge computing networks. They defined average QoE as a weighted combination of content cache-hit ratio and service delay shrinkage and maximized it under UAV storage, CPU-core, energy, request-type, and offloading constraints. Gibbs sampling updates content and service placement for fixed offloading. A matching game associates UE tasks with feasible UAVs for fixed placement, and the two blocks iterate. Numerical results report about 30% higher average QoE than a non-cooperative scheme with similar cache-hit ratio, and better QoE than content-first, service-first, and greedy offloading schemes.
 
 ## Problem framing
 

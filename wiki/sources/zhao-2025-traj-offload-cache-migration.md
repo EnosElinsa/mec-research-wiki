@@ -23,7 +23,7 @@ related:
   - "[[wu-2026-terrain-aware-uav-mec]]"
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 authors: [Mingxiong Zhao, Rongqian Zhang, Zhenli He, Keqin Li]
 year: 2025
 url: "https://doi.org/10.1109/TMC.2024.3486995"
@@ -45,27 +45,29 @@ This paper studies a multi-UAV, multi-user, multi-slot [[multi-uav-assisted-mec]
 
 **Scenario**: Multiple UAVs serve mobile users over slots and may compute an offloaded task, migrate it to another UAV, or cache it for the next slot. User-UAV FDMA and shared inter-UAV bandwidth couple deployment, queues, compute, migration, delay, and energy.
 
-**Problem & objective**: A dynamic mixed-integer problem maximizes long-term served-task throughput, $\max \liminf_T\frac1T\sum_t N_{\mathrm{served}}(t)$, under scheduling-cost and cache-stability constraints.
+**Problem & objective**: A dynamic mixed-integer problem maximizes long-term served-task throughput, $\max_{Q,S,Z}\lim_{\tau\to\infty}\frac1\tau\sum_t\mathbb E\{Y(z_{i,u}(t))\}$ in (9a), under scheduling-cost and cache-stability constraints.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Association/offloading | $s_{i,u}(t),z_i(t)$ | binary | Serving UAV and upload decision |
-| Compute decision | $a_i(t)$ | binary | Task executed at the associated UAV |
-| Migration decision | $m_{i,u,v}(t)$ | binary | Task forwarded between UAVs |
-| Cache decision | $o_i(t)$ | binary | Task deferred to the next slot |
-| UAV position/bandwidth | $\mathbf q_u(t),b_{u,v}(t)$ | continuous | Deployment and migration bandwidth |
+| Association/offloading | $s_{i,u}(t),z_{i,u}(t)$ | binary | Serving UAV and upload decision |
+| Compute decision | $a_{i,u}(t)$ | binary | Task executed at the associated UAV |
+| Migration decision | $m_{i,uu'}(t)$ | binary | Task forwarded between UAVs |
+| Cache decision | $o_{i,u}(t)$ | binary | Task deferred to the next slot |
+| UAV position/bandwidth | $\mathbf q_u(t),b_{i,uu'}(t)$ | continuous | Deployment and migration bandwidth |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task associates and offloads to at most one UAV |
-| C2 | Compute, migrate, and cache choices are mutually exclusive |
-| C3 | Per-UAV computation and inter-UAV bandwidth stay within capacity |
-| C4 | Cache queues remain stable |
-| C5 | Long-term average scheduling cost remains below its budget |
+| (9b)–(9f) | Association $s_{i,u}$, offloading $z_{i,u}$, computing $a_{i,u}$, migration $m_{i,uu'}$, and caching $o_{i,u}$ are binary |
+| (9g) | Each task offloads to at most one UAV, $\sum_uz_{i,u}(t)\le1$ |
+| (9h) | Each offloaded task is computed, migrated, or cached, $\sum_{u'}m_{i,uu'}(t)+a_{i,u}(t)+o_{i,u}(t)=1$ |
+| (9i) | Offloading only to the associated UAV, $z_{i,u}(t)\le s_{i,u}(t)$ |
+| (9j) | Upload, migration, and computing time fit the slot length $D/\tau$ |
+| (9k), (9l) | Inter-UAV bandwidth shares $\sum_ib_{i,uu'}(t)\le1$ and per-UAV workload $\sum_ia_{i,u}(t)w_{i,u}(t)\le W_u^a(t)$ |
+| (9m), (9n) | Cache queues are stable and the long-term average scheduling cost stays within its budget |
 
 **Algorithm**: Introduce cache and cost virtual queues → derive a Lyapunov drift-plus-penalty slot problem → update UAV deployment/association with TSOUD K-means heuristics → solve offloading → recast binary scheduling as QCQP, relax by SDR, and map probabilistically to feasible actions → solve migration bandwidth by primal-dual updates → iterate BCD each slot.
 
@@ -73,7 +75,7 @@ This paper studies a multi-UAV, multi-user, multi-slot [[multi-uav-assisted-mec]
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhao et al. [x] studied joint UAV trajectory, task offloading, computational caching, and inter-UAV migration in multi-UAV MEC. They formulated long-term served-task throughput maximization over association, offloading, compute, migration, caching, deployment, and bandwidth under exclusivity, resource, cost-budget, and cache-stability constraints. Lyapunov optimization converts the long-term problem into per-slot decisions. TSOUD updates deployment, a QCQP-SDR and probabilistic mapping solve binary scheduling, and primal-dual updates allocate migration bandwidth inside BCD. Simulations report higher throughput and lower scheduling cost and execution time than the evaluated deployment and scheduling baselines.
+Zhao et al. [x] studied joint UAV trajectory, task offloading, computational caching, and inter-UAV migration in multi-UAV MEC. They formulated long-term served-task throughput maximization over association, offloading, compute, migration, caching, deployment, and bandwidth under exclusivity, resource, cost-budget, and cache-stability constraints. Lyapunov optimization converts the long-term problem into per-slot decisions. TSOUD updates deployment, a QCQP-SDR and probabilistic mapping solve binary scheduling, and primal-dual updates allocate migration bandwidth inside BCD. Simulations report 10% to 45% higher throughput and 15% to 30% lower scheduling cost than K-means++ and random UAV deployment.
 
 ## Problem
 UAV-assisted MEC extends [[mobile-edge-computing]] to areas without infrastructure, but UAVs have far less compute than fixed edge servers, limited coverage, and must track mobile users. Prior work studies [[uav-trajectory-control]], [[task-offloading]], [[task-migration]], and caching largely in isolation and misses their **synergy**. Crucially, existing UAV caching work focuses on content/data pre-caching ([[service-caching-mec]]) and neglects **computational task caching** — caching tasks during compute peaks and processing them once capacity frees up, which can cut service-denial and raise throughput. The paper jointly optimizes UAV trajectories together with task association, offloading, computation, migration, caching, and inter-UAV bandwidth, giving a dynamic, long-term, mixed-integer, non-convex problem with five interdependent binary decisions.

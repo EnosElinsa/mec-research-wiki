@@ -13,7 +13,7 @@ related:
   - "[[matching-theory-for-resource-allocation]]"
   - "[[mobile-edge-computing]]"
 created: 2026-08-27
-updated: 2026-08-27
+updated: 2026-11-03
 ---
 
 # Multi-Cell Mobile Edge Computing: Joint Service Migration and Resource Allocation
@@ -46,11 +46,11 @@ Joint migration-and-handover assigns each user's VM and radio link to a base-sta
 
 | ID | Meaning and key expression |
 | --- | --- |
-| Unique association | Each user and its VM select one BS/server. |
-| Server capacity | $\sum_k x_{k,n}\leq M_n$ for server capacity $M_n$. |
-| Integrality | $x_{k,n}\in\{0,1\}$. |
-| Radio budget | Resource shares at a base station remain within its available radio budget. |
-| Migration | Changing the previous VM host incurs the modeled backhaul migration cost. |
+| (6) | Each user and its VM select one BS/server. |
+| (7) | $\sum_k x_{k,n}\leq M_n$ for server capacity $M_n$. |
+| (8) | $x_{k,n}\in\{0,1\}$. |
+| (40) extension | Resource shares at a base station remain within its available radio budget. |
+| Model rule (5) | Changing the previous VM host incurs the modeled backhaul migration cost. |
 
 **Algorithm**: Relax binary association, solve the integer-relaxed sum-of-ratios problem iteratively, round aggregate server loads using derived properties, and recover individual assignments as a linear assignment problem solved by the Hungarian algorithm.
 
@@ -58,7 +58,7 @@ Joint migration-and-handover assigns each user's VM and radio link to a base-sta
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liang et al. [x] coupled cellular handover with VM service migration and computation-radio resource management in multi-cell MEC. Their objective maximizes weighted offloading rate while penalizing migration cost and accounting for server capacity, virtualization, wireless access, and VM I/O interference. The proposed method relaxes binary association, solves the relaxed fractional problem iteratively, and uses matching-based integer recovery. Simulations place the result close to the relaxed upper bound and show a 34% utility gain over the radio-oriented baseline at 90 users in the reported setting. A hotspot extension reveals a user-count threshold beyond which helper-server capacity cannot preserve load balance.
+Liang et al. [x] coupled cellular handover with VM service migration and computation-radio resource management in multi-cell MEC. Their objective maximizes weighted offloading rate while penalizing migration cost and accounting for server capacity, virtualization, wireless access, and VM I/O interference. The proposed method relaxes binary association, solves the relaxed fractional problem iteratively, and uses matching-based integer recovery. Simulations place the result close to the relaxed upper bound and show a 34% utility gain over radio-oriented migration at 90 users, although radio-oriented migration performs well with 30 to 50 users; both beat no migration. A hotspot extension reveals a user-count threshold beyond which helper-server capacity cannot preserve load balance.
 
 ## Problem and system model
 

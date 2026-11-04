@@ -13,7 +13,7 @@ related:
   - "[[nash-equilibrium]]"
   - "[[chen-2015-decentralized-offloading-game]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Efficient Multi-User Computation Offloading for Mobile-Edge Cloud Computing
@@ -44,10 +44,10 @@ Extends the decentralized offloading game from a single-channel setting ([[chen-
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every user selects exactly one action from $\mathcal A_n=\{0,1,\ldots,M\}$. |
-| C2 | A cloud choice is beneficial only if $K_n^c(\mathbf a)\le K_n^m$, equivalently if received co-channel interference does not exceed $T_n$. |
-| C3 | Uplink rate follows the co-channel interference model in (1), coupling every offloading user's time and energy cost to the other users on its channel. |
-| C4 | At equilibrium, $Z_n(a_n^*,a_{-n}^*)\le Z_n(a_n,a_{-n}^*)$ for every unilateral alternative $a_n$. |
+| (9) | Every user selects exactly one action from $\mathcal A_n=\{0,1,\ldots,M\}$. |
+| Model rule | A cloud choice is beneficial only if $K_n^c(\mathbf a)\le K_n^m$, equivalently if received co-channel interference does not exceed $T_n$. |
+| Model rule | Uplink rate follows the co-channel interference model in (1), coupling every offloading user's time and energy cost to the other users on its channel. |
+| Model rule | At equilibrium, $Z_n(a_n^*,a_{-n}^*)\le Z_n(a_n,a_{-n}^*)$ for every unilateral alternative $a_n$. |
 
 **Algorithm**: The distributed algorithm measures interference on all channels, lets users compute improving best responses, grants one requesting user an update opportunity per decision slot, and stops at a Nash equilibrium by the finite improvement property.
 

@@ -16,7 +16,7 @@ related:
   - "[[deep-q-network]]"
   - "[[load-balancing-uav-mec]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # MOTO: Mobility-Aware Online Task Offloading With Adaptive Load Balancing in Small-Cell MEC
@@ -50,10 +50,10 @@ In a **small-cell MEC** system, mobile-device mobility produces uneven spatio-te
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Server stability bounds each offloading probability by $0\leq x_j\leq\min(1,\mu_j/\sum_{i=1}^{v_j}\lambda_i)$ |
-| Group capacity | For group $g$, $0\leq x_g\leq\min(1,\mu_g/\sum_{i=1}^{v_g}\lambda_i)$ |
-| Partition domain | Every MEC server belongs to a server group, and each regrouping action splits or combines only the selected pair |
-| Load-balance trigger | Regroup servers when the load gap $x_{\max}-x_{\min}$ exceeds the threshold $\delta$ |
+| C1 (9) | Server stability bounds each offloading probability by $0\leq x_j\leq\min(1,\mu_j/\sum_{i=1}^{v_j}\lambda_i)$ |
+| C1 (15) | For group $g$, $0\leq x_g\leq\min(1,\mu_g/\sum_{i=1}^{v_g}\lambda_i)$ |
+| Model rule | Every MEC server belongs to a server group, and each regrouping action splits or combines only the selected pair |
+| Algorithm rule | Regroup servers when the load gap $x_{\max}-x_{\min}$ exceeds the threshold $\delta$ |
 
 **Algorithm**: Initialize each MEC server as one group; predict each group's next-slot task-arrival rates with LSTM; solve the convex ToC subproblem for $x_g$ by Newton's method; return the decision when the load gap is within $\delta$; otherwise use the offloading-probability vector as the MDP state, select a split or combine action with D3QN, compute the average local-versus-offloaded cost saving as reward, and update replay-based online and target networks until an adaptive server partition is learned.
 

@@ -50,9 +50,9 @@ This is one of the foundational, frequently-cited game-theoretic treatments of e
 
 | ID | Meaning and key expression |
 |---|---|
-| Coverage | $a_i\in\{0\}\cup\{j\mid u_i\in\operatorname{cov}(s_j)\}$ |
-| Capacity | For every resource $k$, $\sum_{i:a_i=j}(1-f^k(s_j))\omega_i^k\leq c_j^k$ |
-| Single allocation | Every user chooses at most one covered edge server or remains unallocated |
+| (9) | $a_i\in\{0\}\cup\{j\mid u_i\in\operatorname{cov}(s_j)\}$ |
+| (10) | For every resource $k$, $\sum_{i:a_i=j}(1-f^k(s_j))\omega_i^k\leq c_j^k$ |
+| Model rule | Every user chooses at most one covered edge server or remains unallocated |
 
 **Algorithm**: Initialize every user as unallocated; let each user evaluate the total system cost resulting from switching to each covered server with sufficient capacity; allow one improving user to update per iteration while all evaluations run in parallel; repeat best-response updates until no user requests a change; return the resulting pure Nash equilibrium, whose finite termination follows from the potential game's finite improvement property.
 
