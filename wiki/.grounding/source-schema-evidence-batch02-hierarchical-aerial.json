@@ -1,0 +1,734 @@
+{
+  "entries": [
+    {
+      "slug": "bao-2025-ddpg-video-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement.md",
+          "lines": "303-321",
+          "note": "Problem 20 QoE objective and constraints 20b-20g"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement.md",
+          "lines": "9-21",
+          "note": "Transcoding decision in the hierarchical system"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement.md",
+          "lines": "7",
+          "note": "Abstract: post-disaster video analytics, UAVs and HAP, transcoding, DDPG"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement.md",
+          "lines": "352",
+          "note": "Accumulated reward comparison"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement/HAP-UAV-assisted hierarchical aerial computing framework for video offloading a deep reinforcement.md",
+          "lines": "400",
+          "note": "Delay comparison of computing systems"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2023-dotora-air-ground-online",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.md",
+          "lines": "213-261",
+          "note": "P1 long-term energy objective and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.md",
+          "lines": "5",
+          "note": "Abstract: HAP and UAVs, Lyapunov, DOTORA"
+        },
+        {
+          "path": "raw/sources/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach/Energy_Efficient_Task_Offloading_and_Resource_Allocation_in_Air-Ground_Integrated_MEC_Systems_A_Distributed_Online_Approach.md",
+          "lines": "948-950",
+          "note": "15.73%, 15.95%, 19.09% energy and backlog reductions"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-dart-hap-uav-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "262",
+          "note": "Fairness factor f_a(t)"
+        },
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "277",
+          "note": "P1 long-term cost objective"
+        },
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "380",
+          "note": "Drift-plus-penalty transformation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "5",
+          "note": "Abstract: HAP-UAV MEC, NOMA, WPT, fairness, Lyapunov, attention DDPG"
+        },
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "29",
+          "note": "Cost reduced vs DDPG, DQN, Random, GTGO"
+        },
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "746-758",
+          "note": "GTGO and GATO baselines; DART best in energy cost and queues"
+        },
+        {
+          "path": "raw/sources/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC/DDPG-Attention-based_Resource_Allocation_and_Trajectory_Optimization_in_Hierarchical_MEC.md",
+          "lines": "760",
+          "note": "Exhaustive-search comparison on Melbourne CBD dataset"
+        }
+      ]
+    },
+    {
+      "slug": "fan-2026-hap-uav-iort-oee",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "77",
+          "note": "IoRT bandwidth fraction alpha_{l_k}[n]"
+        },
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "101-137",
+          "note": "HAP selection phi and UAV-HAP rate"
+        },
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "195-251",
+          "note": "OEE definition and P1 constraints 23b-23l"
+        },
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "360-372",
+          "note": "ECO with path discretization and Dinkelbach"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "5",
+          "note": "Abstract: two-hop IoRT collection, UAV/HAP trajectories, power, HAP selection, bandwidth, SCA"
+        },
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "876",
+          "note": "Three UAVs, two HAPs simulation setup"
+        },
+        {
+          "path": "raw/sources/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency/Cooperative_HAP-UAV_Optimization_for_IoRT_Data_Collection_A_Green_Transmission_Strategy_for_Maximizing_Energy_Efficiency.md",
+          "lines": "954-961",
+          "note": "Mobile-node test"
+        }
+      ]
+    },
+    {
+      "slug": "hsu-2025-drl-hues-hap-noma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md",
+          "lines": "75",
+          "note": "Transmission time share alpha(i)"
+        },
+        {
+          "path": "raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md",
+          "lines": "136",
+          "note": "HAP power ratio beta(i)"
+        },
+        {
+          "path": "raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md",
+          "lines": "163-171",
+          "note": "BSS indicator and problem Q objective"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md",
+          "lines": "5",
+          "note": "Abstract: HAP uplink and RF harvesting, NOMA SAGIN, DRL-HUES, baselines"
+        },
+        {
+          "path": "raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md",
+          "lines": "63",
+          "note": "PPO policy"
+        },
+        {
+          "path": "raw/sources/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA/A DRL-Based High-Altitude Platform Transmission and Energy Harvesting Scheduling Scheme for 6G NOMA.md",
+          "lines": "489",
+          "note": "Comparison with baselines"
+        }
+      ]
+    },
+    {
+      "slug": "jia-2022-hierarchical-aerial-matching",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.md",
+          "lines": "130",
+          "note": "Objective maximizing computed data"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.md",
+          "lines": "293",
+          "note": "Matching-stage problem"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.md",
+          "lines": "5",
+          "note": "Abstract: hierarchical aerial computing, matching with externality elimination, exhaustive comparison"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.md",
+          "lines": "254-258",
+          "note": "Externality elimination and exhaustive search"
+        },
+        {
+          "path": "raw/sources/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs/Hierarchical_Aerial_Computing_for_Internet_of_Things_via_Cooperation_of_HAPs_and_UAVs.md",
+          "lines": "454-457",
+          "note": "UAV+HAP vs UAV-only and HAP-only modes"
+        }
+      ]
+    },
+    {
+      "slug": "jia-2025-dro-uav-hap-mec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md",
+          "lines": "136-142",
+          "note": "CSI error ambiguity set with known mean and variance"
+        },
+        {
+          "path": "raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md",
+          "lines": "234-300",
+          "note": "P0 energy objective and constraints 24a-24h"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md",
+          "lines": "5",
+          "note": "Abstract: UAV and HAP aerial MEC, DRO and CVaR, WKD deployment, primal decomposition, BWOA"
+        },
+        {
+          "path": "raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md",
+          "lines": "33-38",
+          "note": "DRO and CVaR reformulation, primal decomposition"
+        },
+        {
+          "path": "raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md",
+          "lines": "966",
+          "note": "BWOA vs exhaustive search, greedy, SAA"
+        },
+        {
+          "path": "raw/sources/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs/Distributionally Robust Optimization for Aerial Multi-Access Edge Computing via Cooperation of UAVs.md",
+          "lines": "1036",
+          "note": "Comparison with ideal CSI"
+        }
+      ]
+    },
+    {
+      "slug": "jia-2026-dro-lawn-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md",
+          "lines": "64-67",
+          "note": "Uncertainty set D_i"
+        },
+        {
+          "path": "raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md",
+          "lines": "282-340",
+          "note": "P0 min-max expected delay, constraints 37-48, variables x, y, z, q, p"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md",
+          "lines": "5",
+          "note": "Abstract: L1, Linf, Fortet-Mourier uncertainty sets, DRO, worst expected delay"
+        },
+        {
+          "path": "raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md",
+          "lines": "15",
+          "note": "Benders decomposition and SCA"
+        },
+        {
+          "path": "raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md",
+          "lines": "561",
+          "note": "FM metric results"
+        },
+        {
+          "path": "raw/sources/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks/Distributionally_Robust_Computation_Offloading_and_Trajectory_Optimization_in_Low-Altitude_Wireless_Networks.md",
+          "lines": "586",
+          "note": "Comparison with branch-and-bound"
+        }
+      ]
+    },
+    {
+      "slug": "kang-2023-mappo-hierarchical-aerial",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md",
+          "lines": "25",
+          "note": "Objective summary"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md",
+          "lines": "267-309",
+          "note": "Problem 10a and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md",
+          "lines": "5",
+          "note": "Abstract: UAVs and HAP, POMDP, MAPPO with state normalization and action masking"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md",
+          "lines": "538-545",
+          "note": "UAV+HAP vs single-tier processing"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md",
+          "lines": "564",
+          "note": "Comparison with MADDPG and random"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach/Cooperative_UAV_Resource_Allocation_and_Task_Offloading_in_Hierarchical_Aerial_Computing_Systems_A_MAPPO-Based_Approach.md",
+          "lines": "668",
+          "note": "QoS satisfaction"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-airground-vec-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md",
+          "lines": "144",
+          "note": "UAV trajectory q_k"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md",
+          "lines": "178-194",
+          "note": "Assignment and bandwidth variables"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md",
+          "lines": "312",
+          "note": "JCESRA objective and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md",
+          "lines": "5",
+          "note": "Abstract: RSUs, UAVs, HAP; JCESRA"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md",
+          "lines": "23-35",
+          "note": "Matching, coalition game, knapsack DP"
+        },
+        {
+          "path": "raw/sources/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network/Joint_Computation_Offloading_and_Multidimensional_Resource_Allocation_in_AirGround_Integrated_Vehicular_Edge_Computing_Network.md",
+          "lines": "548",
+          "note": "HAP knapsack stage"
+        }
+      ]
+    },
+    {
+      "slug": "li-2025-twohop-airground-drl-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.md",
+          "lines": "166",
+          "note": "HAP CPU allocation"
+        },
+        {
+          "path": "raw/sources/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.md",
+          "lines": "210-250",
+          "note": "Delay objective and constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.md",
+          "lines": "5",
+          "note": "Abstract: two-hop IoRT-UAV-HAP partial offloading, MADDPG-IPER, IPPO"
+        },
+        {
+          "path": "raw/sources/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method/Two-Hop_Partial_Task_Offloading_and_Resource_Allocation_in_AirGround_Integrated_Mobile_Edge_Computing_Network_A_DRL-Based_Method.md",
+          "lines": "953-974",
+          "note": "JFAM, JIAM, JHAM comparisons"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-uav-hap-ddqn-ppo-offloading",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks.md",
+          "lines": "158-164",
+          "note": "Single-UAV, multi-UAV, and HAP mode indicators"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks.md",
+          "lines": "312-347",
+          "note": "P0 weighted latency-energy objective and weights"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks.md",
+          "lines": "7",
+          "note": "Abstract: UAV-HAP cooperative offloading, MINLP, MDP, DDQN and PPO"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks.md",
+          "lines": "432",
+          "note": "Baselines"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks/Joint_Optimization_of_Latency_and_Energy_Consumption_for_Computing_Task_Offloading_Based_on_Cooperative_Multi-UAV_and_HAP_Networks.md",
+          "lines": "709",
+          "note": "Comparison with DRL baselines"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2025-haps-uav-maritime-iot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md",
+          "lines": "265-271",
+          "note": "Scenario and decision vector L, P, Theta"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md",
+          "lines": "273-321",
+          "note": "Objectives f1-f3 and P1 constraints C1-C6"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md",
+          "lines": "469",
+          "note": "JCCPAPO decomposition: connection, power, PSO placement"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md",
+          "lines": "5",
+          "note": "Abstract: HAP-UAV maritime network, multicast and unicast, backhaul, EMOMVO-CGD"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md",
+          "lines": "23",
+          "note": "JCCPAPO proposed"
+        },
+        {
+          "path": "raw/sources/HAP-UAV-Assisted_Maritime_IoT_Communication_Network/HAP-UAV-Assisted_Maritime_IoT_Communication_Network.md",
+          "lines": "53-54",
+          "note": "Step-wise decomposition and simulation outcome"
+        }
+      ]
+    },
+    {
+      "slug": "nabi-2025-jour-hierarchical-aerial",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP.md",
+          "lines": "111-139",
+          "note": "Offloading and association variables"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP.md",
+          "lines": "261",
+          "note": "Objective 25a with delay, energy, and load"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP.md",
+          "lines": "5",
+          "note": "Abstract: JOUR with GOUA matching and ESAC"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP.md",
+          "lines": "32",
+          "note": "GOUA for discrete GU actions, ESAC for UAV offloading and CPU"
+        },
+        {
+          "path": "raw/sources/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP/Joint_Offloading_Decision_User_Association_and_Resource_Allocation_in_Hierarchical_Aerial_Computing_Collaboration_of_UAVs_and_HAP.md",
+          "lines": "48-54",
+          "note": "Contributions and reported improvements"
+        }
+      ]
+    },
+    {
+      "slug": "nguyen-2024-heterogeneous-aerial-edge-noma",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access.md",
+          "lines": "192",
+          "note": "P1 objective over association, offloading ratio, power, CPU"
+        },
+        {
+          "path": "raw/sources/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access.md",
+          "lines": "223",
+          "note": "P1 is non-convex mixed-integer"
+        },
+        {
+          "path": "raw/sources/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access.md",
+          "lines": "273",
+          "note": "Action pretreatment for constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access.md",
+          "lines": "5",
+          "note": "Abstract: multi-ACP NOMA network, joint offloading and resource allocation, MADDPG"
+        },
+        {
+          "path": "raw/sources/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access/Intelligent_Heterogeneous_Aerial_Edge_Computing_for_Advanced_5G_Access.md",
+          "lines": "646",
+          "note": "About 30% vs DDPG; 2.4 to 3.44 vs FULL, RANDOM, GREEDY"
+        }
+      ]
+    },
+    {
+      "slug": "peng-2025-drudm-cfg",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "152",
+          "note": "HAS bandwidth share sp_u^h"
+        },
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "276",
+          "note": "DRUDM score weights"
+        },
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "311",
+          "note": "Partial offloading rate"
+        },
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "335-373",
+          "note": "Objective 24 and constraints 23a-23g"
+        },
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "397-398",
+          "note": "Action vector"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "5",
+          "note": "Abstract: HAS-UAV AMEC, DRUDM, priority queue, coverage fairness, MASAC, AEP"
+        },
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "335",
+          "note": "Maximize completion while minimizing delay and fairness index"
+        },
+        {
+          "path": "raw/sources/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios/DRUDM-CFG_a_Fairness-Aware_Multi-Agent_DRL_Algorithm_for_AMEC-Assisted_Task_Offloading_in_Post-Disaster_Scenarios.md",
+          "lines": "573-585",
+          "note": "Baselines and results"
+        }
+      ]
+    },
+    {
+      "slug": "ren-2023-haps-handoff-distributed-computing",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks.md",
+          "lines": "41-66",
+          "note": "Task split and resource variables"
+        },
+        {
+          "path": "raw/sources/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks.md",
+          "lines": "135-139",
+          "note": "Parallel completion-delay objective"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks.md",
+          "lines": "5",
+          "note": "Abstract: vehicles, RSUs, HAPS, handoff-aware distributed computing, SCA"
+        },
+        {
+          "path": "raw/sources/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks.md",
+          "lines": "17-23",
+          "note": "Handoff motivation"
+        },
+        {
+          "path": "raw/sources/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks/Handoff-Aware_Distributed_Computing_in_High_Altitude_Platform_Station_HAPSAssisted_Vehicular_Networks.md",
+          "lines": "392",
+          "note": "Comparison against no-HAPS scheme"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-aerial-marine-msar",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS.md",
+          "lines": "247-255",
+          "note": "CO function and decision set Z"
+        },
+        {
+          "path": "raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS.md",
+          "lines": "258-297",
+          "note": "P1 and constraints 20a-20i"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS.md",
+          "lines": "5",
+          "note": "Abstract: HAPS, UAVs, MASSs, JCORA with matching, quasi-convex, projected gradient, convex"
+        },
+        {
+          "path": "raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS.md",
+          "lines": "41",
+          "note": "Solution components"
+        },
+        {
+          "path": "raw/sources/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS/Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS.md",
+          "lines": "129",
+          "note": "Maritime channel model"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-mappo-jscc-aec",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md",
+          "lines": "319-330",
+          "note": "Completion time, decision variables, P0 constraints C1-C7 description"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md",
+          "lines": "334-344",
+          "note": "Lyapunov energy-stability queues"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md",
+          "lines": "361-369",
+          "note": "P1 objective Z2 + kappa Z3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md",
+          "lines": "7",
+          "note": "Abstract: JSCC in HAP-assisted multi-UAV AEC, MAPPO-JSCC, Dinkelbach"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md",
+          "lines": "334",
+          "note": "Lyapunov drift-plus-penalty transformation"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System/Joint_Optimization_of_Sensing_Communication_and_Computing_for_Collaborative_Multi-UAV_Edge_Computing_System.md",
+          "lines": "664-696",
+          "note": "SAPPO comparison; 26% lower energy at 83% of minimum completion time"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2026-radar-energy-iscac",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network.md",
+          "lines": "53-64",
+          "note": "Sensing schedule alpha_{n,k}[z]"
+        },
+        {
+          "path": "raw/sources/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network.md",
+          "lines": "230-254",
+          "note": "Total energy and problem 29 with constraints"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network.md",
+          "lines": "5",
+          "note": "Abstract: multi-UAV ISCAC, offloading to HAP, three-layer iterative algorithm"
+        },
+        {
+          "path": "raw/sources/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network/Trade-Off_Between_Radar_Sensing_and_Energy_Consumption_in_Integrated_Sensing_Computing_and_Communication_UAV_Network.md",
+          "lines": "673-675",
+          "note": "28.7%, 20.3%, 34.7%, 24.6% vs ground-AP and initial-trajectory benchmarks"
+        }
+      ]
+    }
+  ]
+}

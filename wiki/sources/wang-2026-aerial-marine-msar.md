@@ -16,7 +16,7 @@ related:
   - "[[discrete-continuous-two-stage-decomposition]]"
   - "[[peng-2025-drudm-cfg]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Computation-Efficient Aerial-Marine Integrated Networks for Search and Rescue via Cooperative HAPS, UAVs, and MASSs
@@ -42,30 +42,30 @@ The MINLP is decomposed into four subproblems and solved by the **JCORA** algori
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Surveillance UAVs generate maritime search-and-rescue computation tasks and either process them locally or offload them to one HAPS or nearby maritime autonomous surface ships. UAV-to-MASS links use maritime Rician and shadow fading, while UAV-to-HAPS links use elevation-dependent probabilistic LoS channels.
+**Scenario**: Surveillance UAVs $i \in \mathcal I$ generate maritime search-and-rescue computation tasks of $a_i$ units and either process them locally or offload them to a server $m$, which is one HAPS or a nearby maritime autonomous surface ship (MASS). UAV-to-MASS links use maritime Rician and shadow fading, and UAV-to-HAPS links use elevation-dependent probabilistic LoS channels.
 
-**Problem & objective**: A mixed-integer nonlinear joint computation-offloading and resource-allocation problem minimizes weighted completion time and energy, $\min \sum_i\bigl(\omega_T T_i+\omega_E E_i\bigr)$.
+**Problem & objective**: (P1), a mixed-integer nonlinear problem, minimizes the total computation overhead $\mathcal G = \sum_{i\in\mathcal I} \mathcal G_i$ with $\mathcal G_i = \mu_i^t T_i + \mu_i^e E_i$, where $\mu_i^t + \mu_i^e = 1$ reflect each UAV's preference for completion time versus energy.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Execution destination | $x_{i,s}$ | binary | Whether UAV task $i$ executes locally, at the HAPS, or at MASS $s$ |
-| UAV transmit power | $p_i$ | continuous, bounded | Offloading power used by UAV $i$ |
-| Edge CPU allocation | $f_{i,s}$ | continuous, nonnegative | HAPS or MASS computing resource assigned to task $i$ |
-| Local CPU allocation | $f_i^{\mathrm{loc}}$ | continuous, nonnegative | Local UAV computing frequency for task $i$ |
+| Server selection | $s_i^m$ | binary | UAV $i$ offloads to server $m$; local execution when all are zero |
+| UAV transmit power | $p_i$ | continuous, $[0, p_i^{\max}]$ | Offloading power of UAV $i$ |
+| Local CPU frequency | $\rho_i$ | continuous, $[0, \rho_i^{\max}]$ | Local computing frequency of UAV $i$ |
+| Edge resource share | $\beta_i^m$ | continuous, $[0,1]$ | Fraction of server $m$'s computing resource given to UAV $i$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each task selects exactly one local, HAPS, or MASS execution route |
-| C2 | UAV powers satisfy individual transmit-power limits |
-| C3 | HAPS, MASS, and local CPU allocations do not exceed computing capacities |
-| C4 | Task completion times meet their latency requirements |
-| C5 | Many-to-one UAV-to-MASS and UAV-to-HAPS associations satisfy server quotas |
+| (20a) | Task arrivals are bounded, $0 \le a_i \le a^{\max}$. |
+| (20b)-(20c) | $s_i^m \in \{0,1\}$ and each UAV selects at most one server, $\sum_{m} s_i^m \le 1$. |
+| (20d)-(20e) | Power and local CPU limits, $p_i \le p_i^{\max}$ and $\rho_i \le \rho_i^{\max}$. |
+| (20f)-(20g) | Edge shares satisfy $0 \le \beta_i^m \le 1$ and $\sum_{i\in\Lambda_m} \beta_i^m \le 1$. |
+| (20h)-(20i) | Local and edge completion times meet the deadline $T_i^{\mathrm{th}}$. |
 
-**Algorithm**: Match UAV tasks to the HAPS or MASS servers → solve UAV transmit power by quasi-convex optimization → allocate edge computing resources with projected gradient descent → solve local computing allocation as a convex subproblem → iterate the JCORA stages.
+**Algorithm**: JCORA first selects servers by many-to-one matching (P2), then solves UAV transmit power as a quasi-convex problem, allocates edge computing resources by projected gradient descent, and allocates local computing resources as a convex subproblem.
 
 ## Related Work Paragraph
 

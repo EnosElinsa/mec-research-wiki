@@ -1,0 +1,1051 @@
+{
+  "entries": [
+    {
+      "slug": "arribas-not-in-parse-uav-resupply-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "52-60",
+          "note": "ESS resupply time c, flight time f, displacement g_i, 2g_i<f, UPS objective"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "94-96",
+          "note": "Theorem 1 fleet size M for HORR"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "210",
+          "note": "Heterogeneous UPS is NP-hard"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "240-248",
+          "note": "PHERR partition and HERR routine"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "5",
+          "note": "Abstract: fleet minimization for persistent service, HORR exact, NP-hard heterogeneous case, PHERR near-exact"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "23",
+          "note": "HERR buffer time generalization"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "66",
+          "note": "HORR proved to minimize number of UAVs"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "210",
+          "note": "Theorem 3 NP-hardness"
+        },
+        {
+          "path": "raw/sources/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service/Optimizing_UAV_Resupply_Scheduling_for_Heterogeneous_and_Persistent_Aerial_Service.md",
+          "lines": "240-242",
+          "note": "Partition into more homogeneous subsets"
+        }
+      ]
+    },
+    {
+      "slug": "belmekki-2022-networked-tethered-flying-platforms",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications.md",
+          "lines": "13",
+          "note": "Survey abstract; no system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications.md",
+          "lines": "13",
+          "note": "Abstract: NTFP types, wireless role, 6G integration, channel models, economic analysis, challenges"
+        },
+        {
+          "path": "raw/sources/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications.md",
+          "lines": "37",
+          "note": "6G use cases"
+        },
+        {
+          "path": "raw/sources/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications.md",
+          "lines": "377",
+          "note": "250 m platform matches 16 tower masts at 50% cost"
+        },
+        {
+          "path": "raw/sources/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications/Unleashing_the_Potential_of_Networked_Tethered_Flying_Platforms_Prospects_Challenges_and_Applications.md",
+          "lines": "771-777",
+          "note": "FSO and VLC among integrated technologies"
+        }
+      ]
+    },
+    {
+      "slug": "chang-2026-data-offloading-energy-constraints",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "75-99",
+          "note": "Precedence constraint 4, energy bounds 5, hovering and battery reset 8"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "154",
+          "note": "Problem 9 is an NP-hard MILP"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "162",
+          "note": "Stage 1 precedence-aware visiting order"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "5",
+          "note": "Abstract: data collection and offloading, battery replacement, minimize completion time, three-stage TMTP"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "154",
+          "note": "NP-hard MILP"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "287-289",
+          "note": "200 realizations and four baselines"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints/UAV_Trajectory_Planning_for_IoT_Data_Collection_and_Offloading_With_Energy_Constraints.md",
+          "lines": "334",
+          "note": "Ant-colony baselines converge slowly"
+        }
+      ]
+    },
+    {
+      "slug": "frejo-martin-2025-uav-stateful-microservice-live-migration",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability.md",
+          "lines": "9",
+          "note": "Abstract: architecture model with future evaluation; no optimization model"
+        },
+        {
+          "path": "raw/sources/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability.md",
+          "lines": "53-61",
+          "note": "Architecture components and pre-copy procedure"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability.md",
+          "lines": "9",
+          "note": "Abstract: replacements disrupt microservices, pre-copy live migration, DT, SMF, CIS, use cases, future metrics"
+        },
+        {
+          "path": "raw/sources/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability.md",
+          "lines": "53-57",
+          "note": "Digital Twin, Swarm Management Function, Central Image Server"
+        },
+        {
+          "path": "raw/sources/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability/Live_Migration_of_Stateful_Microservices_in_UAV-Assisted_Networks_for_Enhanced_Availability.md",
+          "lines": "61",
+          "note": "Pre-copy technique for stateful services"
+        }
+      ]
+    },
+    {
+      "slug": "gupta-not-in-parse-uav-replacement",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "64-72",
+          "note": "Two-UAV replacement scenario: endpoints, N_f, speed and separation"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "110-131",
+          "note": "FDMA bandwidth variables b_{k,m}[n], rate model, user throughput R_k"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "136-174",
+          "note": "P1 max-min objective over B and T with constraints 10a-10f"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "186",
+          "note": "Alternating optimization: LP bandwidth, SCA trajectory"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "5",
+          "note": "Abstract: replacement for coverage continuity, max-min throughput, 3D multi-UAV trajectory and resources, SCA and AO"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "37",
+          "note": "Replacement process and max-min rate objective"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "186",
+          "note": "LP plus SCA alternating optimization"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "460",
+          "note": "Straight and ellipsoidal trajectory benchmarks"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "478",
+          "note": "Sum-rate gains over benchmarks"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "490-492",
+          "note": "Fairness of per-user rate"
+        },
+        {
+          "path": "raw/sources/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service/Trajectory_and_Resource_Allocation_for_UAV_Replacement_to_Provide_Uninterrupted_Service.md",
+          "lines": "136",
+          "note": "User-centric communication design (scope is communication, not MEC computing)"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-battery-mule-uav-swarm-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "62",
+          "note": "chi_ij recipient indicator"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "130",
+          "note": "Ground station position"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "159-223",
+          "note": "Constraints 5, 8, 9-12: deployment, mule speed, arrival-time limits"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "494-515",
+          "note": "P0 objective with CSR and CSR variance; stage-1 variance problem"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "91-93",
+          "note": "ENS-RA and ITSP-MS algorithms"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "13",
+          "note": "Abstract: battery mules, recipients, 0-1 MIP, two-stage framework"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "25",
+          "note": "At least 30.70% higher average CSR"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "494-497",
+          "note": "Objective maximizes accumulated CSR and reduces CSR variance"
+        },
+        {
+          "path": "raw/sources/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation/Load-Balanced_Recipient_Assignment_and_Time-Constrained_Scheduling_of_Multiple_Battery_Mules_for_UAV_Swarm_Service_Prolongation.md",
+          "lines": "91-93",
+          "note": "Greedy load-balanced assignment and time-constrained TSP heuristic"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-two-timescale-uav-replacement-hap",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "51",
+          "note": "Task tuple (D_c, epsilon_c, iota_c)"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "76-79",
+          "note": "Replacement indicator, replacement speed, replacement energy"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "90",
+          "note": "psi_m: devices wait for substituting UAV or offload to HAP"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "179-232",
+          "note": "[P1] energy-efficiency objective and constraints 17a-17i"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "238-246",
+          "note": "Reformulation as large- and small-timescale stochastic games"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "420",
+          "note": "Critic learning rate set higher than actor"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "5",
+          "note": "Abstract: timescale mismatch, two-timescale framework, coupled stochastic games, NE, UTRTD"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "26",
+          "note": "5% improvement over the best baseline"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "306-308",
+          "note": "Theorem 2 NE of the coupled games"
+        },
+        {
+          "path": "raw/sources/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing/A_Two-Timescale_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Trajectory_Planning_and_Replacement_in_Hierarchical_Aerial_Computing.md",
+          "lines": "464",
+          "note": "Simulation conclusion with 5% improvement"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-jppo-en-convntm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "79",
+          "note": "Gauss-Markov mobility"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "107-125",
+          "note": "UAV position and offloading ratio"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "197",
+          "note": "Charging indicator and energy update"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "243-265",
+          "note": "Problem 17 constraints C1-C5 and equilibrium efficiency"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "312",
+          "note": "Joint continuous and discrete action tuple"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "5",
+          "note": "Abstract: high-density mobility, j-PPO with EN-ConvNTM, STN, 3-D external memory"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "265",
+          "note": "Equilibrium efficiency combining data collection, spatial equity, energy"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices/Multi-UAV_Path_Planning_for_Mobile_Edge_Computing_With_High-Density_Mobile_Devices.md",
+          "lines": "44",
+          "note": "Outperforms baseline algorithms"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-usp-nfrp-emergency-communication",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "61-87",
+          "note": "Sets, access indicator alpha, range indicator z, relay range D"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "95-112",
+          "note": "Fixed-wing propulsion model"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "131-186",
+          "note": "Problem (10) min fleet size with constraints 11-20"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "196-256",
+          "note": "PRP paths, LP for replacement interval, M_r per path"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "5",
+          "note": "Abstract: persistent multi-hop emergency connectivity, minimize UAVs, PRP, DTBL, MMAS-PP, up to 30.9% fewer UAVs"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "131",
+          "note": "Fleet-size minimization with persistent seamless communication"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "184",
+          "note": "Association, link, tree, and energy-return constraints"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "243",
+          "note": "Linear programming for path interval"
+        },
+        {
+          "path": "raw/sources/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication/Cost_Optimization_of_UAV_Swarm_Network_for_Persistent_Emergency_Communication.md",
+          "lines": "513-515",
+          "note": "GA-VRP and TLB-DRM baselines"
+        }
+      ]
+    },
+    {
+      "slug": "ma-2025-adrl-si-uav-charging-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning.md",
+          "lines": "89-100",
+          "note": "Scheduling index, objective F, safety constraint with charge factor"
+        },
+        {
+          "path": "raw/sources/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning.md",
+          "lines": "153",
+          "note": "ADRL adds MOPSO policy and selector modules to DDPG"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning.md",
+          "lines": "5",
+          "note": "Abstract: charging coverage, fairness, replacement consumption, constrained Pareto dominance, ADRL-SI with MOPSO and survival incentive"
+        },
+        {
+          "path": "raw/sources/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning.md",
+          "lines": "356",
+          "note": "11.5% coverage-score gain at xi=1.1"
+        },
+        {
+          "path": "raw/sources/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning/Efficient_Charging_Coverage_Strategy_of_UAV_Based_on_Improved_Deep_Reinforcement_Learning.md",
+          "lines": "430",
+          "note": "33.3% improvement"
+        }
+      ]
+    },
+    {
+      "slug": "shi-2025-aoi-energy-replenishment-multiuav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems.md",
+          "lines": "56-70",
+          "note": "SN, CS, BS positions; working and recharging modes; association variables"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems.md",
+          "lines": "204-236",
+          "note": "Problem 18 objective and constraints a-f"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems.md",
+          "lines": "254-256",
+          "note": "Flight, association, and recharging actions"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems.md",
+          "lines": "5",
+          "note": "Abstract: AoI minimization, WPT to SNs, recharging at stations, POMDP, VDN and QMIX"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems.md",
+          "lines": "204",
+          "note": "Weighted AoI and UAV energy objective"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems/AoI-Aware_Data_Collection_and_Energy_Replenishment_for_Multi-UAV-Enabled_IoT_Systems.md",
+          "lines": "43",
+          "note": "QMIX handles complex scenarios better than VDN"
+        }
+      ]
+    },
+    {
+      "slug": "song-2024-k-coverage-uav-recharging",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks.md",
+          "lines": "75-93",
+          "note": "Constraints 1, 2, 4 on platform, point, and UAV location assignments"
+        },
+        {
+          "path": "raw/sources/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks.md",
+          "lines": "324-342",
+          "note": "K-coverage linking constraints 42-44 and MILP 45"
+        },
+        {
+          "path": "raw/sources/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks.md",
+          "lines": "30",
+          "note": "GMM forecast in MPC"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks/Methods_to_Assign_UAVs_for_K-Coverage_and_Recharging_in_IoT_Networks.md",
+          "lines": "5",
+          "note": "Abstract: solar platforms, UAV assignment, K-coverage lifetime, MILP, MPC, MCTS, 81.04% and 67.07%"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2023-multi-uav-dynamic-demand-charging",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "45-57",
+          "note": "Demands with release time and deadline at locations"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "86-96",
+          "note": "Service feasibility within release-deadline window"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "122-132",
+          "note": "UAV state U(t), history M(t), serviced set J(M(t))"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "378-382",
+          "note": "Charging stations, power rates, recharge time t_c(B_t), routing feasibility"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "5",
+          "note": "Abstract: swarm cooperative path planning, single-UAV DP, approximation ratio, charging stations, DAG ILP, constant ratio"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "36",
+          "note": "Approximation approaching 1-1/e and outperforming partitioning"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery/Multi-UAV_Cooperative_Trajectory_for_Servicing_Dynamic_Demands_and_Charging_Battery.md",
+          "lines": "474-476",
+          "note": "Average performance ratio above 96%"
+        }
+      ]
+    },
+    {
+      "slug": "wu-2026-parallel-cooperative-charging",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "76-115",
+          "note": "Stations, facilities, replenished energy, group arrangement, charging time, base-fare tariff"
+        },
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "122-162",
+          "note": "PCCSUP objective, assignment constraints, feasibility conditions 7-10"
+        },
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "175-187",
+          "note": "NP-hardness via UPMSP"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "5",
+          "note": "Abstract: parallel cooperative charging, PCCSUP, UPMSP approximation, set covering, up to 59.81% cost reduction"
+        },
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "46",
+          "note": "CSAU gamma(ln n + 1) approximation"
+        },
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "295",
+          "note": "AMCAM average marginal cost groups"
+        },
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "412-421",
+          "note": "IAASA, IAASAU, ICSA baselines"
+        },
+        {
+          "path": "raw/sources/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs/Cost-Effective_Parallel_Cooperative_Charging_Scheduling_for_UAVs.md",
+          "lines": "467",
+          "note": "Comparison with exhaustive OPT on a small network"
+        }
+      ]
+    },
+    {
+      "slug": "yan-2025-in-flight-uav-charging-distance",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging.md",
+          "lines": "85-94",
+          "note": "Fresnel-zone and far-field boundaries"
+        },
+        {
+          "path": "raw/sources/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging.md",
+          "lines": "147-156",
+          "note": "D-UAV energy budget, power splitting, received energy"
+        },
+        {
+          "path": "raw/sources/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging.md",
+          "lines": "179-191",
+          "note": "Algorithm 1 distance search for P1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging.md",
+          "lines": "18",
+          "note": "Abstract: two schemes, maximize received energy under minimum rate, Fresnel-zone optimum increasing with frequency"
+        },
+        {
+          "path": "raw/sources/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging.md",
+          "lines": "32",
+          "note": "Energy limit, power splitting rate constraint, alignment tolerance"
+        },
+        {
+          "path": "raw/sources/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging/Optimum_Distance_for_In-Flight_UAV-to-UAV_Wireless_Charging.md",
+          "lines": "438",
+          "note": "Scheme 1 higher energy and rate; Scheme 2 more flexible and less affected by fluctuations"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2026-udi-docking-point-charging",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks.md",
+          "lines": "53-65",
+          "note": "Binary association z_{j,i} and docking load"
+        },
+        {
+          "path": "raw/sources/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks.md",
+          "lines": "164-175",
+          "note": "Energy and load models"
+        },
+        {
+          "path": "raw/sources/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks.md",
+          "lines": "195-201",
+          "note": "Problem with weighted energy and load dispersion, constraints C1-C3"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks.md",
+          "lines": "5",
+          "note": "Abstract: UDI docking points, queues, load, energy, multi-objective formulation, HUDD and CRIR, urban dataset results"
+        },
+        {
+          "path": "raw/sources/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks.md",
+          "lines": "474",
+          "note": "Shanghai Telecom dataset, 12 km area"
+        },
+        {
+          "path": "raw/sources/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks/An_Efficient_Docking-Point_Deployment_and_Charging_Access_Coordination_Method_for_Embodied-Enhanced_UAV_Networks.md",
+          "lines": "502",
+          "note": "20.3%, 19.5%, 6.5% energy reductions"
+        }
+      ]
+    },
+    {
+      "slug": "ye-2023-seamless-service-handover-uav-mec",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "36",
+          "note": "Objective stated qualitatively (minimize downtime or response time)"
+        },
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "66-72",
+          "note": "Greedy three-step dispatch rule and Algorithm 1; no formal optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "7",
+          "note": "Abstract: low-battery handovers, seamless handover system, dispatch algorithm, event-driven simulator"
+        },
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "43",
+          "note": "Plan-ahead dispatch moves users, data, tasks, and task states before battery dies"
+        },
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "49",
+          "note": "Controller with battery monitor, station monitor, and dispatch modules"
+        },
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "66-70",
+          "note": "Sort by remaining battery, closest reachable station with charging spots, launching station, launch time"
+        },
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "100",
+          "note": "City scenario and 12-hour simulation settings"
+        },
+        {
+          "path": "raw/sources/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing/Seamless_Service_Handover_in_UAV-Based_Mobile_Edge_Computing.md",
+          "lines": "105-111",
+          "note": "Trade-offs: more spikes and more UAVs; Table I service time and users served"
+        }
+      ]
+    },
+    {
+      "slug": "ye-2026-flight-speed-battery-swapping",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "52-80",
+          "note": "Route variables X, swap count x^BS, deadline constraint"
+        },
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "125-147",
+          "note": "Discrete speed levels and propulsion energy"
+        },
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "215-246",
+          "note": "Battery state recursion, bandwidth and MEC limits, P1 cost objective"
+        },
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "250",
+          "note": "Extended-graph reformulation to mixed-integer convex"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "5",
+          "note": "Abstract: speed, swapping, offloading jointly optimized; extended graph; ATC heuristic"
+        },
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "243-246",
+          "note": "Cost objective over bandwidth, computation, batteries"
+        },
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "554-562",
+          "note": "Baseline cost gaps 13.8% to 199.5% and infeasible fixed policy"
+        },
+        {
+          "path": "raw/sources/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing/Optimal_Flight_Speed_Scheduling_and_Battery_Swapping_in_UAV-Enabled_Mobile_Edge_Computing.md",
+          "lines": "576",
+          "note": "Deadline and battery-mass sweeps"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2022-solar-charging-uav-iot",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "197",
+          "note": "SNR service threshold"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "235",
+          "note": "Reachability within v_max T"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "282-294",
+          "note": "Problem 31, constraints C1-C8, reward 32"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "5",
+          "note": "Abstract: solar plus charging stations, trajectory optimization with rate, energy, fairness, DRX, on- and off-policy RL"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "427-432",
+          "note": "Convergence after 3e5 episodes; epsilon 0.1 best"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "451",
+          "note": "Five-hour deployment"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks/Energy-Efficient_Trajectory_Optimization_for_UAV-Assisted_IoT_Networks.md",
+          "lines": "462",
+          "note": "Greedy and random searches deplete battery at steps 3 and 5"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2022-uav-relay-substitution",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization.md",
+          "lines": "41",
+          "note": "Altitude bounds"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization.md",
+          "lines": "213-216",
+          "note": "Minimum separation between overlapping relays, LoS free-space links"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization.md",
+          "lines": "290",
+          "note": "Problem (22) solved by block coordinate ascent"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization.md",
+          "lines": "5",
+          "note": "Abstract: HUS and SEUS, joint trajectory and power, throughput maximization, BCA and SCA"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization.md",
+          "lines": "31",
+          "note": "BCA splits trajectory and power subproblems"
+        },
+        {
+          "path": "raw/sources/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization/Cooperative_UAV_Enabled_Relaying_Systems_Joint_Trajectory_and_Transmit_Power_Optimization.md",
+          "lines": "659",
+          "note": "Single UAV better only when T below 360 s"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2025-kubespt-stateful-pod-migration",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "5",
+          "note": "Systems design for pod live migration; no network decision model"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "123",
+          "note": "Architecture: CRD requests, controller, migration daemon modules"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "5",
+          "note": "Abstract: rescheduling triggers, three obstacles, network sync, Hot Data and Lazy-Restore, decoupled operations, 86-93% downtime reduction"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "17",
+          "note": "Three critical challenges"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "25",
+          "note": "Lazy-Restore and decoupled container operations"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "27",
+          "note": "Custom Resource Definition foundation"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "35",
+          "note": "Implemented in Kubernetes 1.18.20"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "212",
+          "note": "Three-node cluster setup"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "226",
+          "note": "Redis and FFmpeg benchmarks"
+        },
+        {
+          "path": "raw/sources/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration/KubeSPT_Stateful_Pod_Teleportation_for_Service_Resilience_With_Live_Migration.md",
+          "lines": "246",
+          "note": "86-93% downtime reduction"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2022-aerial-refueling-uav-charging",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "133-139",
+          "note": "Scenario: pre-planned MUAV paths, PoIs, obstacles, CUAV action of moving or charging"
+        },
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "143-147",
+          "note": "MDP with state and hybrid action (direction and charging target)"
+        },
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "151-160",
+          "note": "Mission time T_i decomposition and min average objective"
+        },
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "100-122",
+          "note": "Feasibility analysis of RF and laser charging with DJI parameters"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "5",
+          "note": "Abstract: CUAV/MUAV aerial refueling, feasibility, data collection, minimize mission time, DRL for single and multiple CUAVs"
+        },
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "25",
+          "note": "Feasibility analyzed with commercial UAV parameters"
+        },
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "135",
+          "note": "Comparison against ground charging nodes"
+        },
+        {
+          "path": "raw/sources/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection/Aerial_Refueling_Scheduling_Wireless_Energy_Charging_for_UAV_Enabled_Data_Collection.md",
+          "lines": "143",
+          "note": "MDP formulation for single CUAV"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2026-hab-mappo-target-search",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md",
+          "lines": "304-342",
+          "note": "Objective 32 and constraints 33-38"
+        },
+        {
+          "path": "raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md",
+          "lines": "353",
+          "note": "Five decision variables jointly optimized"
+        },
+        {
+          "path": "raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md",
+          "lines": "433-437",
+          "note": "HODRA heuristic offloading and resource allocation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md",
+          "lines": "5",
+          "note": "Abstract: 3-D continuous search, charging, offloading, HAB-MAPPO, two-level attention, Beta, safe flight, curriculum learning"
+        },
+        {
+          "path": "raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md",
+          "lines": "29",
+          "note": "27% to 64% improvement"
+        },
+        {
+          "path": "raw/sources/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search/Two-Level-Attention-Based_Continuous_Trajectory_Design_and_Computation_Offloading_for_Multi-UAV_Cooperative_Target_Search.md",
+          "lines": "623",
+          "note": "About 80% task-offloading success rate"
+        }
+      ]
+    }
+  ]
+}

@@ -21,7 +21,7 @@ related:
   - "[[jia-2026-hierarchical-uav-swarms]]"
   - "[[hierarchical-uav-swarm]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -46,9 +46,9 @@ Goal: minimize total energy across UAVs + HAP, subject to the robust latency cha
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Ground users with indivisible tasks are assigned to quasi-stationary UAV MEC servers, with an HAP relaying tasks that exceed UAV capacity or latency feasibility under uncertain G2U CSI.
+**Scenario**: Ground users with indivisible tasks are assigned to quasi-stationary UAV MEC servers, with an HAP relaying tasks that exceed UAV capacity or latency feasibility. The G2U CSI estimation error $\Delta_m$ has known mean $\mu_m$ and variance $\sigma_m^2$ but an unknown distribution $\mathbb P$ in the ambiguity set $\mathcal P$ of (9).
 
-**Problem & objective**: Jointly choose UAV deployment, user association, HAP forwarding, and CPU allocations to minimize aerial-platform energy, $\min_{\mathbf v,\boldsymbol\delta,\boldsymbol\lambda,\mathbf f}\sum_nE_n^{\mathrm{total}}+E_h^{\mathrm{total}}$, subject to robust latency chance constraints.
+**Problem & objective**: Jointly choose UAV deployment, user association, HAP forwarding, and CPU allocations to minimize aerial-platform energy in problem P0, $\min_{\mathbf v,\boldsymbol\delta,\boldsymbol\lambda,\mathbf f}\sum_nE_n^{\mathrm{total}}+E_h^{\mathrm{total}}$, subject to robust latency chance constraints.
 
 **Decision variables**:
 
@@ -58,13 +58,12 @@ Goal: minimize total energy across UAVs + HAP, subject to the robust latency cha
 | GU-UAV association | $\delta_m^n$ | binary | Connect ground user $m$ to UAV $n$ |
 | HAP forwarding | $\lambda_m^n$ | binary | Relay task $m$ from UAV $n$ to the HAP |
 | CPU allocation | $f_m$ | nonnegative continuous | Processing frequency assigned to task $m$ |
-| Task-size distribution | $\mathbb P_m$ | probability distribution in ambiguity set | Uncertain G2U task or CSI state used by the robust constraint |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | The probability of each task meeting its latency target is at least $\alpha_m$ under the distributional ambiguity set |
+| C1 (24a) | Chance constraint $\Pr\{t_m^{\mathrm{total}} \le T_m^{\max}\} \ge \alpha_m$, made robust over $\mathcal P$ |
 | C2 | Forwarding requires association, $\lambda_m^n\leq\delta_m^n$, and each user connects to one UAV |
 | C3 | UAV and HAP energy totals stay below their capacity budgets |
 | C4 | UAV deployment remains inside the horizontal operating area |

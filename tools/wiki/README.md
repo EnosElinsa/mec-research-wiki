@@ -116,7 +116,8 @@ python tools/wiki/source_schema_audit.py --path wiki/sources/<slug>.md
 python tools/wiki/source_schema_manifest.py --json source-modeling-cards-manifest.json
 
 # Before declaring the migration complete: merge all evidence and reject silent skips.
-python tools/wiki/source_schema_manifest.py --evidence ".curation-out/source-schema-evidence-*.json" --require-grounded --json source-modeling-cards-manifest.json
+# Reviewed grounding sidecars are committed under wiki/.grounding/ (one file per audit batch).
+python tools/wiki/source_schema_manifest.py --evidence "wiki/.grounding/source-schema-evidence-*.json" --require-grounded --json source-modeling-cards-manifest.json
 
 # Audit-time consistency gates: index coverage + frontmatter/tag validity.
 python tools/wiki/index_audit.py

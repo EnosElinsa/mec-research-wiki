@@ -56,9 +56,9 @@ Constructs a HAP-assisted multi-UAV aerial edge computing system where sensing d
 | ID | Meaning and key expression |
 |---|---|
 | C1 | Consecutive UAV positions obey the maximum flight-distance limit |
-| C2-C3 | Device and UAV powers satisfy $p_{u,k,i}[t]\le p_i^{\max}$ and $p_u[t]\le p_u^{\max}$ |
+| C2-C3 | Sensing-device and UAV transmit powers stay within their maximum powers $p_i^{\max}$ and $p_u^{\max}$ |
 | C4 | Offloading is fractional: $0\le z_{u,k}[t]\le1$ |
-| C5-C6 | Device and UAV energy use does not exceed $E_{SD}$ and $E_u^{\max}$ |
+| C5-C6 | Sensing-device and UAV energy consumption does not exceed their maximum energy capacities |
 | C7 | Sensing probability/satisfaction hold, each subcarrier serves at most one UAV, and assignment and mobility constraints (5), (6), (27), (28), and (30) hold |
 
 **Algorithm**: Lyapunov transformation $\rightarrow$ numerical optimization of sensing repetitions $\rightarrow$ SCA for D2U NOMA power $\rightarrow$ Dinkelbach optimization for U2H OMA power $\rightarrow$ CTDE MAPPO for trajectories, offloading ratios, and subcarrier assignments.

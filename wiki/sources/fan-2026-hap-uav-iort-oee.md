@@ -19,7 +19,7 @@ related:
   - "[[jia-2025-dro-uav-hap-mec]]"
   - "[[liu-2025-haps-uav-maritime-iot]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative HAP-UAV Optimization for IoRT Data Collection: A Green Transmission Strategy for Maximizing Energy Efficiency
@@ -38,7 +38,7 @@ Defines overall energy efficiency (OEE) for two-hop IoRT-node-to-UAV-to-HAP coll
 
 **Scenario**: Rotary-wing UAVs collect data from geographically separated IoRT nodes and relay it to mobile HAPs over a two-hop link. UAV-HAP propagation includes meteorological fading and range-estimation error, while both aerial tiers consume propulsion energy.
 
-**Problem & objective**: Maximize overall energy efficiency, $\max_{\mathbf Q,\mathbf S,\mathbf P,\boldsymbol\Phi,\boldsymbol\Alpha} \mathrm{OEE}=D_{\mathrm{uploaded}}/E_{\mathrm{UAV+HAP}}$, by jointly controlling both aerial trajectories, UAV relay power, HAP selection, and IoRT bandwidth.
+**Problem & objective**: Maximize overall energy efficiency, problem (P1), $\max \mathrm{OEE} = \min\{R^{\mathrm{total}}_{\mathrm{UAV-HAP}}, R^{\mathrm{total}}_{\mathrm{IoRT-UAV}}\}/P_{\mathrm{sum}}$, the uploaded data divided by total energy consumption,, by jointly controlling both aerial trajectories, UAV relay power, HAP selection, and IoRT bandwidth.
 
 **Decision variables**:
 
@@ -47,8 +47,8 @@ Defines overall energy efficiency (OEE) for two-hop IoRT-node-to-UAV-to-HAP coll
 | UAV trajectory | $\mathbf Q=\{\mathbf q_k[n]\}$ | continuous positions | Per-slot horizontal positions of collection UAVs |
 | HAP trajectory | $\mathbf S=\{\mathbf s_m[n]\}$ | continuous positions | Per-slot horizontal positions of HAPs |
 | UAV transmit power | $\mathbf P=\{p_k[n]\}$ | continuous, nonnegative | Relay power on each UAV-HAP link |
-| HAP selection | $\boldsymbol\Phi=\{\phi_{k,m}[n]\}$ | binary | HAP chosen by UAV $k$ in slot $n$ |
-| IoRT bandwidth fraction | $\boldsymbol\Alpha=\{\alpha_{q,k}[n]\}$ | continuous, $[0,1]$ | FDMA share for an IoRT-UAV link |
+| HAP selection | $\phi_k^m[n]$ | binary, $\sum_m \phi_k^m[n] \le 1$ | UAV $k$ selects HAP $m$ in slot $n$ |
+| IoRT bandwidth fraction | $\alpha_{l_k}[n]$ | continuous, $\sum_{l_k}\alpha_{l_k}[n] \le 1$ | FDMA share of IoRT node $l_k$ on UAV $k$'s link |
 
 **Constraints**:
 
@@ -57,7 +57,7 @@ Defines overall energy efficiency (OEE) for two-hop IoRT-node-to-UAV-to-HAP coll
 | C1 | UAV and HAP displacement per slot respects the corresponding maximum speed. |
 | C2 | A UAV cannot cumulatively forward more data than it has collected from IoRT nodes. |
 | C3 | IoRT bandwidth fractions are nonnegative and fit within the per-slot bandwidth budget. |
-| C4 | Each UAV selects exactly one HAP in every slot: $\sum_m\phi_{k,m}[n]=1$. |
+| C4 (23f) | Each UAV selects at most one HAP in every slot: $\sum_m\phi_k^m[n]\le1$, $\phi_k^m[n]\in\{0,1\}$. |
 | C5 | UAV relay power remains within its per-slot peak-power limit. |
 | C6 | Initial and final positions, inter-UAV safety distance, and minimum uploaded-throughput requirements are satisfied. |
 
