@@ -1751,5 +1751,5 @@
 
 ## References
 
-- [[reference-database]] — master citation-mining database (5054 unique references mined from the corpus parses; centrality ranking by in-corpus `cited_count`).
+- [[reference-database]] — master citation-mining database (21510 unique references mined from 690 corpus parses; centrality ranking by in-corpus `cited_count`).
 - [[recommendations]] — reference-scout recommendations: cited-but-not-yet-curated papers ranked by recency, venue, in-corpus citation frequency, and track coverage.

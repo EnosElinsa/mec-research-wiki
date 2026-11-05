@@ -68,4 +68,4 @@ This wiki indexes papers by model and method instead. Its goal is that a new sys
 
 > As of 2026-11-05: 699 papers curated and grounded (593 with a modeling card, 106 without), 665 concepts, 211 entities, and 57 analytical pages. No raw paper is waiting for curation.
 >
-> Open items: the analytical layer is thin relative to the source layer (15 findings for 699 sources), and the reference database was last mined on 2026-06-02, before most of the corpus was curated.
+> The reference database holds 21,510 unique references mined from 690 parses. The main open item is the analytical layer, which is thin relative to the source layer (15 findings for 699 sources).

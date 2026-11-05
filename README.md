@@ -14,8 +14,8 @@ Counts as of 2026-11-05. `python tools/wiki/corpus_counts.py` prints the live nu
 | Concepts | 665 | Techniques, system-model components, metrics, and architectures |
 | Entities | 211 | 209 recurring authors and 2 tools |
 | Analytical pages | 57 | 20 synthesis, 8 comparison, 15 finding, 6 methodology, 5 query, and 3 thesis pages |
-| References | 2 | Citation database mined from paper reference lists, plus curate-next recommendations |
-| Raw papers | 701 folders | Markdown parse, extracted figures, and PDF (Git LFS) for each paper |
+| References | 2 | Citation database (21,510 unique references mined from 690 parses) plus curate-next recommendations |
+| Raw papers | 699 folders | Markdown parse, extracted figures, and PDF (Git LFS) for each paper |
 
 All 699 source pages are grounded. 647 come from IEEE journals, magazines, and conferences, and 501 were published in 2024-2026; the earliest is from 2010.
 
@@ -43,6 +43,8 @@ README.md            Project introduction (this file)
 purpose.md           Research question, scope, methodology, and status
 schema.md            Page types, frontmatter, naming, and the paper-source contract
 CONTRIBUTING.md      Maintenance workflow, editing conventions, and commit rules
+LICENSE-MIT          License for code and agent configuration
+LICENSE-CC-BY-4.0    License for original wiki text and documentation
 wiki/
   overview.md        Corpus snapshot and emerging tracks
   index.md           Catalogue of every page, grouped by type
@@ -127,11 +129,16 @@ Maintenance is split across four agent roles defined in [`.codex/agents/`](.code
 ## Known limitations
 
 - Most papers in the corpus report simulation results. [Hardware validation and the sim-to-real gap](wiki/synthesis/hardware-validation-and-sim-to-real-in-mec.md) lists the few with physical experiments.
-- The reference database and recommendations were last generated on 2026-06-02, when 214 papers were curated. `tools/wiki/mine_refs.py` reads only `full.md` parses, while current raw folders use title- or citekey-named parses, so a refresh requires extending the tool first.
-- Two raw folders are duplicate ingests (truncated-title copies) of curated papers. Until they are removed, `source_schema_manifest.py --require-grounded` exits 1 and reports them as orphan raw folders; the grounding result itself (699/699, 0 conflicts) is unaffected.
+- Nine foundational machine-learning papers (DQN, DDPG, PPO, TD3, and five others) have no numbered reference list that `tools/wiki/mine_refs.py` can split, so the reference database covers 690 of the 699 parses.
 
 ## Copyright and license
 
-The papers under `raw/sources/` (PDFs, parsed text, and figures) are the work of their authors and publishers and remain under their original copyright and license terms. They are not covered by any license of this repository. To request removal of a paper, open an issue.
+| Material | License |
+|---|---|
+| Code and agent configuration: `tools/`, `.agents/`, `.codex/` | [MIT](LICENSE-MIT) |
+| Original wiki text and documentation: `wiki/`, `ideas/`, and the Markdown files in the repository root | [CC BY 4.0](LICENSE-CC-BY-4.0) |
+| Papers under `raw/sources/` (PDFs, parsed text, figures) | Not licensed by this repository; see below |
 
-No license has been chosen for the original wiki text and tooling yet, so default copyright applies.
+The papers under `raw/sources/` are the work of their authors and publishers and remain under their original copyright and license terms. The same applies to equations, figures, and short quotations from those papers that appear in wiki pages. To request removal of a paper, open an issue.
+
+To reuse wiki text under CC BY 4.0, credit "MEC Research Wiki (EnosElinsa)" and link to this repository.

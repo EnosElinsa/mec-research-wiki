@@ -1,5 +1,13 @@
 # Research Log
 
+## [2026-11-05] Licensed the repository, refreshed the reference database, and removed duplicate raw ingests
+
+- Documentation: rewrote `README.md`, filled `purpose.md`, corrected `schema.md` (full type list, real naming examples, parse naming, grounding sidecar format, log heading format, evergreen rule), and added `CONTRIBUTING.md`. Added `LICENSE-MIT` for code and agent configuration and `LICENSE-CC-BY-4.0` for original wiki text and documentation; papers under `raw/sources/` keep their original terms.
+- Tooling: `mine_refs.py` and `recommend_refs.py` now resolve each raw folder's parse through the new `wikilib.raw_parse_path` (title-named, citekey-named, or legacy `full.md`) instead of reading only `full.md`, which no folder still has. Reference outputs are written with LF endings, and `verify_refdb.py` no longer crashes on a non-UTF-8 console. New tests: `tools/wiki/tests/test_mine_refs.py`.
+- Re-mined [[reference-database]]: 690 of 699 parses mined (nine foundational machine-learning papers have no numbered reference list), 33358 reference strings, 21510 unique references (previously 7470 from 210 parses), 4408 cited by at least two corpus papers. `verify_refdb.py` reports CLEAN; rerunning mine, render, and recommend produced identical files. Regenerated [[recommendations]] and updated the counts in [[overview]] and `wiki/index.md`.
+- Removed two duplicate raw ingests with truncated-title folder names (second copies of the papers behind [[huang-2025-cmop-dispersed-computing]] and [[nabi-2025-jour-hierarchical-aerial]]). `raw/sources/` now holds 699 folders, and `source_schema_manifest.py --require-grounded` reports 0 orphan folders and 699/699 grounded.
+- Gates: linkcheck, frontmatter_audit, index_audit, process_refs, source_schema_audit, source_schema_manifest, curation_status, 61 unit tests, and `git diff --check` pass.
+
 ## [2026-11-03] Propagated grounding corrections to stale copies
 
 - Scanned every non-source page that links a source for numbers removed during grounding (none were still present) and for removed method or baseline terms, then checked the Summary/Method/Findings sections of source pages for copies of claims corrected in their card or Related Work.

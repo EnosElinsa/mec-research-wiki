@@ -58,6 +58,10 @@ The repository is maintained on Windows, which brings a few encoding and line-en
 
 The four agent roles in [`.codex/agents/`](.codex/agents/) each own a fixed write scope (see [README.md](README.md#agent-roles)). When several agents run at once, one coordinator owns `wiki/index.md`, `wiki/overview.md`, `wiki/log.md`, and Git; the others work read-only unless the coordinator assigns them a separate set of files.
 
+## Licensing of contributions
+
+Contributions are accepted under the repository's licenses: [MIT](LICENSE-MIT) for code and agent configuration, and [CC BY 4.0](LICENSE-CC-BY-4.0) for wiki text and documentation. Do not paste third-party text into wiki pages beyond short quotations, equations, and bibliographic data needed to describe a paper.
+
 ## Secrets
 
 The `retrieve-ieee-papers` skill keeps institutional credentials and the MinerU token in an encrypted store under `%LOCALAPPDATA%`, outside the repository. Never put a secret in command arguments, logs, scripts, or committed files.
