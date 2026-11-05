@@ -25,11 +25,11 @@ Wang, Q., Shen, Y., Xu, L., Zhang, H., Zhao, H., & Zhu, H. (2025). *Optimizing S
 
 ## TL;DR
 
-Game-theoretic incentive mechanism for UAV-to-UAV (U2U) spectrum sharing within a swarm where one UAV-to-base-station (U2B) link is the primary user. Multiple U2U links want to use the U2B's spectrum without unduly interfering with it. Two-level approach:
+Game-theoretic incentive mechanism for UAV-to-UAV (U2U) spectrum sharing in a swarm whose UAV-to-base-station (U2B) links are the primary users. Multiple U2U links buy resource blocks (RBs) of a U2B link's reusable sub-band. Three parts:
 
-1. **Hybrid [[overlay-underlay-spectrum-access|overlay-underlay]]** access mode — U2U uses the U2B's idle slots overlay-style and falls back to underlay (low-power coexistence) when U2B is active. Reduces inter-user interference vs pure overlay or pure underlay.
-2. **[[stackelberg-game|Stackelberg game]]** with U2B as leader (sets a price for spectrum access) and U2U links as followers (decide power and access duration to maximize utility minus payment). Equilibrium found via backward induction.
-3. **[[matching-theory-for-resource-allocation|Matching algorithm]]** assigns specific U2U links to specific U2B sub-bands when there are multiple U2U-U2B candidate pairings.
+1. **Hybrid [[overlay-underlay-spectrum-access|overlay-underlay]]** access mode — every U2U link reuses the U2B spectrum as underlay, with transmit power below an interference threshold, while U2U links sharing one U2B link occupy mutually orthogonal RBs (overlay among themselves), so they need no spectrum sensing or mutual negotiation.
+2. **[[stackelberg-game|Stackelberg game]]** with each U2B link as leader (sets the unit RB price, P0) and U2U links as followers (choose how many RBs to buy, P1, weighting urgency-scaled capacity and a QoS-based satisfaction term against the payment). The unique equilibrium is found by backward induction.
+3. **[[matching-theory-for-resource-allocation|Utility-based matching]]** assigns U2U links to U2B sub-bands: U2U links propose to their highest-utility U2B link, and a U2B link without enough RBs keeps its highest-ranked requesters and rejects the rest.
 
 ## Modeling Quick-Use Card
 
@@ -62,13 +62,13 @@ Wang et al. [x] studied spectrum sharing between primary UAV-to-base-station lin
 
 The paper is not strictly MEC, but it sits in the **wireless infrastructure layer** that any UAV-MEC system depends on. If the UAV swarm can't share spectrum efficiently, computation offloading at the upper layer is bandwidth-starved. Future MEC papers that assume "abundant U2U bandwidth" effectively assume a working scheme like this.
 
-The Stackelberg + matching pattern also recurs in the corpus — [[liu-2026-jppo-en-convntm]] mentions Stackelberg-based UAV resource pricing in adjacent work, and the low-altitude-economy survey [[wang-2025-lae-network-survey]] revisits it.
+The Stackelberg + matching pattern also recurs in the corpus; see [[game-theoretic-offloading-formulations]].
 
 ## Findings
 
-- Hybrid overlay-underlay outperforms pure overlay (under-utilizes idle slots) and pure underlay (worst PU interference).
-- The Stackelberg equilibrium gives the U2B an incentive-compatible pricing scheme — U2U honestly reports demand because misreporting hurts their own utility.
-- Matching at scale (many U2U-to-U2B candidate pairings) is solved with a deferred-acceptance variant.
+- With 30 U2U links, system utility is 90.53%, 26.99%, and 276.55% higher than fixed pricing (FP), reverse-auction RAIM, and fairness-oriented Stackelberg DOAF, respectively.
+- The follower problem has a unique optimal RB amount under the stated conditions, so backward induction yields a unique Stackelberg equilibrium.
+- The paper does not compare the hybrid mode against pure overlay or pure underlay; its baselines differ in pricing and allocation, not in access mode.
 
 ## Limitations / future work
 

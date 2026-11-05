@@ -85,7 +85,7 @@ The multipath extension tracks only the deterministic LoS component and treats N
 
 - Across the evaluated frame lengths, the paper reports 90% lower training overhead with 22% better positioning accuracy, 95% lower overhead with 3% worse accuracy, and 98% lower overhead with 56% worse accuracy.
 - At a 20-slot frame, fusion reduces reported position sum-RMSE from 51.5 m to 26.5 m, while effective sum spectral efficiency is 57.2 versus 43.5 for tracking with fixed pilots and equal allocation.
-- Against fused tracking/joint-allocation baselines, the method gives comparable spectral efficiency with 78%-88% less training and 95% less fronthaul overhead.
+- Against fused tracking/joint-allocation baselines, the method gives comparable spectral efficiency with 95% less training overhead, only modest additional fronthaul overhead, and a 3% decrease in positioning accuracy, as the abstract states.
 - At 20 slots, effective sum spectral efficiency is 8% below the ideal-CSI, training-free upper bound (57.2 versus 62.4).
 - Performance degrades as the Rician factor falls from 20 to 5 dB, consistent with the beamformer predicting only the LoS component.
 

@@ -92,7 +92,7 @@ Optimization objective is the multi-objective [[equilibrium-efficiency-metric]] 
 | Submodel | Key assumption | Reference |
 |---|---|---|
 | IoT mobility | [[gauss-markov-mobility-model]] for speed and direction | [31] |
-| Channel | LoS UAV→ground, OFDMA, no inter-device interference | [5], [32] |
+| Channel | LoS UAV→ground, OFDM, no inter-device interference | [5], [32] |
 | Compute | Local + offloaded split, cubic-frequency energy model | standard MEC |
 | Charging | UAV hovers at station, adds $q\xi_{u,n} E_{u,n}^{\max}$ per step | [10] |
 | Flight | Constant cruise speed $v_u$, fixed altitude $h_u$ | [33] |

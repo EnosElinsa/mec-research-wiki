@@ -80,7 +80,7 @@ The outer deployment layer treats total user utility as an exact potential and u
 ## Key findings
 
 - Simulations average **100 independent MATLAB experiments** with 3 UAVs, 20 users, 100 m altitude, 4.5 Mbit/s coverage threshold, and normalized shared-data/forwarding costs.
-- Fig. 7 prints gains over traditional coalition formation of **0.1%, 0.7%, 1.9%, 6.7%, 9.6%, and 10.6%** for 12, 20, 28, 36, 44, and 52 users.
+- Fig. 7 labels the percentage gain over traditional coalition formation for each user count, but the values are not in the parse; the text says the gain grows with the number of users, and the abstract reports about 10% at around fifty users.
 - Fig. 6 visually places the proposed utility near 11 early in training while the traditional coalition method approaches roughly 10.5 only near 3,000 iterations; these are plot-read estimates.
 - The text around Fig. 10 reports that coalition benefits collapse as forwarding overhead rises; at 0.35, the proposed, sequential-coalition, and no-coalition methods coincide because coalitions shrink to one user.
 

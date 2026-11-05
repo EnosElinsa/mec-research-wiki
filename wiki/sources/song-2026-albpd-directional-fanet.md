@@ -76,7 +76,7 @@ Directional antennas and mmWave links can give UAV ad hoc networks high throughp
 
 ALBP-D derives probability distributions for distance and angular link-breakage times. Each node uses neighbor-table positions from ACKs to predict the two breakage times, then adaptively adjusts communication distance and beamwidth up to a maximum adjustment count `L`.
 
-The algorithm stops when the distance-break time exceeds the angular-break time or when the adjustment limit is reached. The selected beamwidth is the widest beam that avoids imminent distance breakage while preserving angular robustness. The parsed complexity is `O(L*K)` per link and `O(m*L*K)` per node, with small constants such as `L <= 9` and `K <= 100`.
+The algorithm stops when the distance-break time exceeds the angular-break time or when the adjustment limit is reached. Each adjustment extends the range by $\Delta R$ and narrows the beam in proportion, and the reported break step is the smaller of the two predicted break times. The parsed complexity is `O(L*K)` per link and `O(m*L*K)` per node, with small constants such as `L <= 9` and `K <= 100`.
 
 ## Key findings
 

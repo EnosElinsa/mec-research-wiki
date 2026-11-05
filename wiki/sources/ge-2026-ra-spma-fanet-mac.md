@@ -32,7 +32,7 @@ Proposes RA-SPMA, a load-aware MAC protocol for multi-priority flying ad hoc net
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ge et al. [x] studied reliable adaptive multiple access for flying ad hoc networks carrying multiple packet-priority queues under changing subnet load. They proposed RA-SPMA, which combines time-weighted channel occupancy statistics, a three-stage feedback controller for access thresholds, and channel-state-dependent adaptive backoff. The protocol gives higher-priority queues shorter waits under stable load and adjusts thresholds and contention windows as measured occupancy and highest-priority delivery change. MATLAB and OPNET simulations report highest-priority packet delivery above 99% with 64 nodes (SPMA keeps 99% only below 32 nodes), a suggested subnet capacity of 32 nodes at 10 Mbps, and lower, more stable delay than SPMA, while lower-priority delivery is reduced.
+Ge et al. [x] studied reliable adaptive multiple access for flying ad hoc networks carrying eight packet-priority queues (P0–P7) under changing subnet load. They proposed RA-SPMA, which combines time-weighted channel occupancy statistics, a three-stage feedback controller for access thresholds, and channel-state-dependent adaptive backoff. The protocol gives higher-priority queues shorter waits under stable load and adjusts thresholds and contention windows as measured occupancy and highest-priority delivery change. MATLAB and OPNET simulations report highest-priority packet delivery above 99% with 64 nodes (SPMA keeps 99% only below 32 nodes), a suggested subnet capacity of 32 nodes at 10 Mbps, and lower, more stable delay than SPMA, while lower-priority delivery is reduced.
 
 ## Problem
 

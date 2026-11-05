@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Propagated grounding corrections to stale copies
+
+- Scanned every non-source page that links a source for numbers removed during grounding (none were still present) and for removed method or baseline terms, then checked the Summary/Method/Findings sections of source pages for copies of claims corrected in their card or Related Work.
+- Non-source fixes: [[overlay-underlay-spectrum-access]] and [[stackelberg-game]] now describe [[wang-2025-uav-swarm-stackelberg]] correctly (underlay toward the U2B link with orthogonal resource blocks among U2U links; U2U followers choose how many blocks to buy, not power and duration); [[enhanced-human-evolutionary-optimization]] now credits the sparrow-search follower operator instead of salp swarm; [[overview]] says 24 airborne computers for [[sun-2024-asap-uav-swarm]].
+- Source-body fixes: wang-2025 Stackelberg TL;DR and Findings rewritten (it has no access-mode comparison or incentive-compatibility claim, and two unsupported cross-links were removed); song-2026 no longer says the widest beam is chosen; liu-2026 Method names sparrow search; du-2026 drops the per-size Fig. 7 gains, which the parse does not contain; fang-2026 reports 95% less training overhead with only modest extra fronthaul; liu-2026 JPPO uses OFDM, not OFDMA.
+- Reversal: ge-2026's "eight priority queues" is supported (P0–P7 in the parse), so the batch 27a removal was undone.
+
 ## [2026-11-03] Grounded batch 27b (remaining non-modeling sources); all 699 source pages grounded
 
 - Grounded the last 29 not-applicable pages (MEC surveys and white papers, RL foundations, migration systems, UAV channel and beam studies, GAI surveys); evidence is in `wiki/.grounding/source-schema-evidence-batch27-na-b.json`. The manifest now reports 699/699 grounded with no evidence conflicts.

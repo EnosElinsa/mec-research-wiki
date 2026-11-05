@@ -66,7 +66,7 @@ Liu et al. [x] studied joint UAV deployment, sensor association, and power alloc
 
 ## Method
 
-The enhanced human evolutionary optimization algorithm adds salp-swarm follower and whale-optimization bubble operators to the base population search, with mixed real/binary encoding and penalty handling. For each deployment/association candidate, the power block is updated by Lagrange duality and gradient descent. The combined ELGHEOA is a heuristic decomposition: the paper reports empirical convergence but no global-optimality guarantee.
+The enhanced human evolutionary optimization algorithm adds the sparrow-search follower operator and the whale-optimization bubble (spiral) operator to the base population search, with Lévy-flight leaders, mixed real/binary encoding, and a penalty term for constraint violations. For each deployment/association candidate, the power block is updated by Lagrange duality and gradient descent. The combined ELGHEOA is a heuristic decomposition: the paper reports empirical convergence but no global-optimality guarantee.
 
 ## Key findings
 
