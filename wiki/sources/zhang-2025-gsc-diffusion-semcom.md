@@ -15,7 +15,7 @@ related:
   - "[[zhu-han]]"
   - "[[zhu-han]]"
 created: 2026-06-04
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Semantic Successive Refinement: A Generative AI-Aided Semantic Communication Framework
@@ -32,7 +32,7 @@ Proposes a **Generative AI Semantic Communication (GSC)** system for image trans
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied generative-AI-aided semantic successive refinement for wireless image transmission. A Swin Transformer joint source-channel encoder extracts compressed semantic features, and a conditional diffusion decoder reconstructs images from received features over AWGN or Rayleigh channels. The multi-user extension uses asynchronous concurrent processing, task-parallel execution, and caching to handle simultaneous requests. Experiments report higher PSNR and perceptual quality than the evaluated CNN-based DeepJSCC system, especially at low SNR. The contribution is a learned transmission and reconstruction framework evaluated through training loss and image metrics, without an application-level operational decision model and constraint set.
+Zhang et al. [x] studied generative-AI-aided semantic successive refinement for wireless image transmission. A Swin Transformer joint source-channel encoder extracts compressed semantic features, and a conditional diffusion decoder reconstructs images from received features over AWGN or Rayleigh channels. The multi-user extension uses asynchronous concurrent processing, task-parallel execution, and caching to handle simultaneous requests. Experiments report PSNR gains of 17.75% over AWGN and 20.84% over Rayleigh channels and better LPIPS perceptual quality than the CNN-based DeepJSCC system, especially at low SNR. The contribution is a learned transmission and reconstruction framework evaluated through training loss and image metrics, without an application-level operational decision model and constraint set.
 
 ## Problem framing
 

@@ -28,7 +28,7 @@ related:
   - "[[zhang-2025-ssac-mgi-heterogeneous-uav]]"
   - "[[hardware-validation-and-sim-to-real-in-mec]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 authors:
   - Hao Sun
   - Yuben Qu
@@ -55,7 +55,7 @@ ASAP (All-Sky Autonomous comPuting) processes UAV sensory data entirely inside t
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] presented All-Sky Autonomous Computing, an autonomous collaborative-computing system for UAV swarms. The system distributes deep neural network inference across airborne devices, uses adaptive task partitioning and scheduling, and continues inference when UAVs or air-to-air links become unavailable. Its prototype uses 24 Jetson computers on five UAVs to evaluate collaborative inference and failure recovery. The reported experiments measure inference throughput, task repartitioning, and resilience under node or link loss. The paper describes the architecture and hardware implementation rather than a standalone reusable constrained optimization model.
+Sun et al. [x] presented All-Sky Autonomous Computing, an autonomous collaborative-computing system for UAV swarms. The system distributes deep neural network inference across airborne devices, uses adaptive task partitioning and scheduling, and continues inference when UAVs or air-to-air links become unavailable. Its prototype uses 24 airborne computers and five real-world UAVs to evaluate collaborative inference and failure recovery. The reported experiments measure inference throughput, task repartitioning, and resilience under node or link loss. The paper describes the architecture and hardware implementation rather than a standalone reusable constrained optimization model.
 
 ## Problem
 Emergency UAVs (earthquake search-and-rescue, forest-fire detection, mine exploration) generate large EO/IR/radar data, but airborne compute is scarce — a 720P frame through ResNet101 needs 14.47 GFLOPs (FP32) and 3.99 GB, while a Jetson Nano offers ~7.6 GFLOPS (FP32) and 4 GB. Onboard model compression can lose >10% accuracy; raw-data offloading is accurate but slow and depends on base stations that are often damaged. Even UAV-relayed backhaul is bandwidth-limited. ASAP's key observation is that relay UAVs are computationally idle during transmission, so the swarm's combined compute should process data in-flight to get both low latency and high accuracy — autonomously, with no central node, and resilient to node failures and changing link rates. This sits within [[mobile-edge-computing]] / [[multi-uav-assisted-mec]] for [[post-disaster-mec]] settings and is positioned against [[task-offloading]].

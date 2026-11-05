@@ -1,5 +1,11 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 27b (remaining non-modeling sources); all 699 source pages grounded
+
+- Grounded the last 29 not-applicable pages (MEC surveys and white papers, RL foundations, migration systems, UAV channel and beam studies, GAI surveys); evidence is in `wiki/.grounding/source-schema-evidence-batch27-na-b.json`. The manifest now reports 699/699 grounded with no evidence conflicts.
+- Each Related Work paragraph was checked against the abstract, conclusion, and result lines, and every number was matched to the parse.
+- Fixes: sun-2024 ASAP now says "24 airborne computers and five real-world UAVs" instead of "24 Jetson computers"; zhang-2025 GSC now reports the abstract's PSNR gains (17.75% AWGN, 20.84% Rayleigh) and LPIPS comparison against DeepJSCC.
+
 ## [2026-11-03] Grounded batch 27a (non-modeling sources: surveys, RL algorithms, protocols, measurement studies)
 
 - Grounded 39 pages whose modeling card is not applicable (surveys, tutorials, RL algorithm papers, routing/MAC/security protocols, channel models, measurement and vision studies); evidence is in `wiki/.grounding/source-schema-evidence-batch27-na-a.json` and `-na-b.json`.

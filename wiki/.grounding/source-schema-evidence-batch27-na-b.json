@@ -75,6 +75,557 @@
           "note": "hierarchical architecture, pipeline, case studies"
         }
       ]
+    },
+    {
+      "slug": "ma-2019-layered-container-migration",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Efficient_Live_Migration_of_Edge_Services_Leveraging_Container_Layered_Storage/Efficient_Live_Migration_of_Edge_Services_Leveraging_Container_Layered_Storage.md",
+          "lines": "7",
+          "note": "Implementation and measurement study; no solved optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Efficient_Live_Migration_of_Edge_Services_Leveraging_Container_Layered_Storage/Efficient_Live_Migration_of_Edge_Services_Leveraging_Container_Layered_Storage.md",
+          "lines": "7,442,491",
+          "note": "layered handoff; 56-80% vs VM handoff"
+        }
+      ]
+    },
+    {
+      "slug": "mach-2017-mec-survey-architecture",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading.md",
+          "lines": "5",
+          "note": "Survey; no system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading/Mobile_Edge_Computing_A_Survey_on_Architecture_and_Computation_Offloading.md",
+          "lines": "5,961",
+          "note": "MEC survey scope and directions"
+        }
+      ]
+    },
+    {
+      "slug": "mahmoud-2021-uav-irs-iot-analysis",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surfaces_Assisted_UAV_Communications_for_IoT_Networks_Performance_Analysis/Intelligent_Reflecting_Surfaces_Assisted_UAV_Communications_for_IoT_Networks_Performance_Analysis.md",
+          "lines": "5",
+          "note": "Performance analysis; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Intelligent_Reflecting_Surfaces_Assisted_UAV_Communications_for_IoT_Networks_Performance_Analysis/Intelligent_Reflecting_Surfaces_Assisted_UAV_Communications_for_IoT_Networks_Performance_Analysis.md",
+          "lines": "5-7,234,508",
+          "note": "SNR bounds; N^2 scaling; five orders SER; tenfold capacity"
+        }
+      ]
+    },
+    {
+      "slug": "mao-2017-mec-survey-communication",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.md",
+          "lines": "5",
+          "note": "Survey; no single system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective/A_Survey_on_Mobile_Edge_Computing_The_Communication_Perspective.md",
+          "lines": "5,946",
+          "note": "MEC communication-perspective survey scope"
+        }
+      ]
+    },
+    {
+      "slug": "miettinen-2010-mcc-energy-efficiency",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing.md",
+          "lines": "27",
+          "note": "Analytical/measurement study; no optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing/Energy_Efficiency_of_Mobile_Clients_in_Cloud_Computing.md",
+          "lines": "27,260",
+          "note": "offloading energy condition; WLAN/3G measurements"
+        }
+      ]
+    },
+    {
+      "slug": "mnih-2015-dqn-atari",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Human-Level_Control_through_Deep_Reinforcement_Learning/Human-Level_Control_through_Deep_Reinforcement_Learning.md",
+          "lines": "7",
+          "note": "RL algorithm paper; no wireless system model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Human-Level_Control_through_Deep_Reinforcement_Learning/Human-Level_Control_through_Deep_Reinforcement_Learning.md",
+          "lines": "5,27,48",
+          "note": "DQN; 49 games; 43 and 29 games"
+        }
+      ]
+    },
+    {
+      "slug": "mozaffari-2019-uav-wireless-tutorial",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems.md",
+          "lines": "5",
+          "note": "Tutorial; no single system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems/A_Tutorial_on_UAVs_for_Wireless_Networks_Applications_Challenges_and_Open_Problems.md",
+          "lines": "5,751",
+          "note": "aerial BS and UAV-UE use cases; tools; open problems"
+        }
+      ]
+    },
+    {
+      "slug": "niu-2026-falcon-semantic",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/FALCON_A_Diffusion_Model-Empowered_Semantic_Communication_Framework_for_Low-Altitude_Wireless_Networks/FALCON_A_Diffusion_Model-Empowered_Semantic_Communication_Framework_for_Low-Altitude_Wireless_Networks.md",
+          "lines": "5",
+          "note": "Semantic communication architecture; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/FALCON_A_Diffusion_Model-Empowered_Semantic_Communication_Framework_for_Low-Altitude_Wireless_Networks/FALCON_A_Diffusion_Model-Empowered_Semantic_Communication_Framework_for_Low-Altitude_Wireless_Networks.md",
+          "lines": "5,38,314,349-353,434",
+          "note": "FALCON modules; datasets; 40.67% complexity reduction"
+        }
+      ]
+    },
+    {
+      "slug": "qu-ecoei-uav-swarm",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities.md",
+          "lines": "9",
+          "note": "Architecture and prototype; no optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities/Elastic_Collaborative_Edge_Intelligence_for_UAV_Swarm_Architecture_Challenges_and_Opportunities.md",
+          "lines": "9,323,338-343",
+          "note": "eCoEI OODA; 0.8-2.9 FPS; ~2 FPS after link loss"
+        }
+      ]
+    },
+    {
+      "slug": "ren-2026-distributed-uav-los",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Performance_Analysis_of_Distributed_UAVs_in_Urban_Environments_Using_a_Practical_Line-of-Sight_Model/Performance_Analysis_of_Distributed_UAVs_in_Urban_Environments_Using_a_Practical_Line-of-Sight_Model.md",
+          "lines": "5",
+          "note": "Stochastic-geometry performance analysis; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Performance_Analysis_of_Distributed_UAVs_in_Urban_Environments_Using_a_Practical_Line-of-Sight_Model/Performance_Analysis_of_Distributed_UAVs_in_Urban_Environments_Using_a_Practical_Line-of-Sight_Model.md",
+          "lines": "5,529-533,555",
+          "note": "BS selection; <=2% deviation up to 25 dBm"
+        }
+      ]
+    },
+    {
+      "slug": "rong-2024-video-analytics-live-migration",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Live_Migration_of_Video_Analytics_Applications_in_Edge_Computing/Live_Migration_of_Video_Analytics_Applications_in_Edge_Computing.md",
+          "lines": "5",
+          "note": "Measurement and systems study; no optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Live_Migration_of_Video_Analytics_Applications_in_Edge_Computing/Live_Migration_of_Video_Analytics_Applications_in_Edge_Computing.md",
+          "lines": "5,25,279,370",
+          "note": "state types; warm-up/sync/replay; <405 ms"
+        }
+      ]
+    },
+    {
+      "slug": "rong-not-in-parse-3dckmdiff",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/3DCKMDiff_3D_CKM_Construction_Based_on_Generative_Diffusion_for_Environment-Aware_Low-Altitude_Communication_and_Sensing/3DCKMDiff_3D_CKM_Construction_Based_on_Generative_Diffusion_for_Environment-Aware_Low-Altitude_Communication_and_Sensing.md",
+          "lines": "15",
+          "note": "CKM construction method; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/3DCKMDiff_3D_CKM_Construction_Based_on_Generative_Diffusion_for_Environment-Aware_Low-Altitude_Communication_and_Sensing/3DCKMDiff_3D_CKM_Construction_Based_on_Generative_Diffusion_for_Environment-Aware_Low-Altitude_Communication_and_Sensing.md",
+          "lines": "15,29,251,267",
+          "note": "3DCKMDiff vs 3D Kriging; unsampled heights"
+        }
+      ]
+    },
+    {
+      "slug": "scheuer-not-in-parse-resync",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/ReSync_Coordinated_Live-Migration_for_Stateful_Containers_in_Mobile_Edge_Computing/ReSync_Coordinated_Live-Migration_for_Stateful_Containers_in_Mobile_Edge_Computing.md",
+          "lines": "5",
+          "note": "Migration system; no optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/ReSync_Coordinated_Live-Migration_for_Stateful_Containers_in_Mobile_Edge_Computing/ReSync_Coordinated_Live-Migration_for_Stateful_Containers_in_Mobile_Edge_Computing.md",
+          "lines": "5,18,326,397",
+          "note": "ReSync; 0.378 s; up to 90% vs Pre-copy"
+        }
+      ]
+    },
+    {
+      "slug": "schulman-2017-ppo",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Proximal Policy Optimization Algorithms/Proximal Policy Optimization Algorithms.md",
+          "lines": "9",
+          "note": "RL algorithm paper; no wireless system model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Proximal Policy Optimization Algorithms/Proximal Policy Optimization Algorithms.md",
+          "lines": "9,243",
+          "note": "PPO clipped surrogate; simpler than TRPO"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2024-asap-uav-swarm",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/All-Sky_Autonomous_Computing_in_UAV_Swarm/All-Sky_Autonomous_Computing_in_UAV_Swarm.md",
+          "lines": "5",
+          "note": "System design and prototype; no standalone optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/All-Sky_Autonomous_Computing_in_UAV_Swarm/All-Sky_Autonomous_Computing_in_UAV_Swarm.md",
+          "lines": "5,155,527,1233",
+          "note": "ASAP; 24 airborne computers, five UAVs; unavailability"
+        }
+      ]
+    },
+    {
+      "slug": "theocharides-2026-uav-traffic-estimation",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Real-Time_Urban_Traffic_State_Estimation_via_UAV-Based_Sensing_A_Gaussian_Process_and_Moving_Horizon_Estimation_Approach/Real-Time_Urban_Traffic_State_Estimation_via_UAV-Based_Sensing_A_Gaussian_Process_and_Moving_Horizon_Estimation_Approach.md",
+          "lines": "5",
+          "note": "Traffic-state estimation framework; no network decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Real-Time_Urban_Traffic_State_Estimation_via_UAV-Based_Sensing_A_Gaussian_Process_and_Moving_Horizon_Estimation_Approach/Real-Time_Urban_Traffic_State_Estimation_via_UAV-Based_Sensing_A_Gaussian_Process_and_Moving_Horizon_Estimation_Approach.md",
+          "lines": "5,559,617",
+          "note": "GP+MHE; successive convexification; 3 s vs 445 s IPOPT"
+        }
+      ]
+    },
+    {
+      "slug": "van-hasselt-2016-double-dqn",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_with_Double_Q-learning/Deep_Reinforcement_Learning_with_Double_Q-learning.md",
+          "lines": "9",
+          "note": "RL algorithm paper; no wireless system model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deep_Reinforcement_Learning_with_Double_Q-learning/Deep_Reinforcement_Learning_with_Double_Q-learning.md",
+          "lines": "9,229,231",
+          "note": "Double DQN; 49 games; median 93.5->114.7%, mean 241.1->330.3%"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2024-xl-mimo-tutorial",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications.md",
+          "lines": "5",
+          "note": "Tutorial and survey; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications/A_Tutorial_on_Extremely_Large-Scale_MIMO_for_6G_Fundamentals_Signal_Processing_and_Applications.md",
+          "lines": "5,937",
+          "note": "XL-MIMO hardware, channel models, estimation, applications"
+        }
+      ]
+    },
+    {
+      "slug": "wang-acve-constraint-violation-cmop",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization/An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization.md",
+          "lines": "5",
+          "note": "Evolutionary-algorithm framework; no wireless system model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization/An_Adaptive_Constraint_Violation_Evaluation_Framework_for_Constrained_Multiobjective_Evolutionary_Optimization.md",
+          "lines": "5,837-839,1008",
+          "note": "ACVE; DDCo HV 0.7068 over 20 runs vs six competitors"
+        }
+      ]
+    },
+    {
+      "slug": "wang-gai-isac-physical-layer",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Generative_AI_for_Integrated_Sensing_and_Communication_Insights_From_the_Physical_Layer_Perspective/Generative_AI_for_Integrated_Sensing_and_Communication_Insights_From_the_Physical_Layer_Perspective.md",
+          "lines": "7",
+          "note": "Overview article with case study; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Generative_AI_for_Integrated_Sensing_and_Communication_Insights_From_the_Physical_Layer_Perspective/Generative_AI_for_Integrated_Sensing_and_Communication_Insights_From_the_Physical_Layer_Perspective.md",
+          "lines": "7,298",
+          "note": "GAI models; ISAC physical-layer uses; DoA case study"
+        }
+      ]
+    },
+    {
+      "slug": "xie-2021-uav-wpt-tutorial",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_A_Tutorial_Overview/UAV-Enabled_Wireless_Power_Transfer_A_Tutorial_Overview.md",
+          "lines": "7",
+          "note": "Tutorial; framework overview rather than one solved model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_A_Tutorial_Overview/UAV-Enabled_Wireless_Power_Transfer_A_Tutorial_Overview.md",
+          "lines": "7,738-806,846",
+          "note": "max-min energy design; hovering/SHF/SCA; open WPCN-MEC problem"
+        }
+      ]
+    },
+    {
+      "slug": "xu-2024-mobile-aigc-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services.md",
+          "lines": "5",
+          "note": "Survey; no system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services/Unleashing_the_Power_of_Edge-Cloud_Generative_AI_in_Mobile_Networks_A_Survey_of_AIGC_Services.md",
+          "lines": "5,1264",
+          "note": "mobile AIGC lifecycle, infrastructure, challenges"
+        }
+      ]
+    },
+    {
+      "slug": "yang-2026-generative-radio-map-lae",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Generative_Radio_Map-Assisted_Channel_Estimation_in_Low-Altitude_Economy/Generative_Radio_Map-Assisted_Channel_Estimation_in_Low-Altitude_Economy.md",
+          "lines": "5",
+          "note": "Channel-estimation method; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Generative_Radio_Map-Assisted_Channel_Estimation_in_Low-Altitude_Economy/Generative_Radio_Map-Assisted_Channel_Estimation_in_Low-Altitude_Economy.md",
+          "lines": "5,388-390,482",
+          "note": "CVCGAN; baselines; order-of-magnitude NMSE gain"
+        }
+      ]
+    },
+    {
+      "slug": "zeng-2019-uav-comm-tutorial-5g",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond.md",
+          "lines": "7",
+          "note": "Tutorial; no single decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond/Accessing_From_the_Sky_A_Tutorial_on_UAV_Communications_for_5G_and_Beyond.md",
+          "lines": "7",
+          "note": "UAV-assisted and cellular-connected UAV paradigms"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2025-gsc-diffusion-semcom",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework.md",
+          "lines": "5",
+          "note": "Learned transmission framework; no operational decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework/Semantic_Successive_Refinement_A_Generative_AI-Aided_Semantic_Communication_Framework.md",
+          "lines": "5,962,1033-1037,1074",
+          "note": "GSC; PSNR +17.75%/+20.84% vs DeepJSCC; LPIPS"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-control-assisted-beam-tracking",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Control-Assisted_Beam_Prediction_and_Tracking_for_UAV_Millimeter_Wave_Communications/Control-Assisted_Beam_Prediction_and_Tracking_for_UAV_Millimeter_Wave_Communications.md",
+          "lines": "5",
+          "note": "Beam prediction/tracking method; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Control-Assisted_Beam_Prediction_and_Tracking_for_UAV_Millimeter_Wave_Communications/Control-Assisted_Beam_Prediction_and_Tracking_for_UAV_Millimeter_Wave_Communications.md",
+          "lines": "5,42,385,408,447",
+          "note": "control-assisted Bayesian learning; SBL/GPR baselines; hardware"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-polarfix-uav-mmwave",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/PolarFix_Fixing_Polarization_Mismatch_for_UAV_mmWave_Communication_Enhancement/PolarFix_Fixing_Polarization_Mismatch_for_UAV_mmWave_Communication_Enhancement.md",
+          "lines": "5",
+          "note": "Metasurface system with measurements; no decision optimization"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/PolarFix_Fixing_Polarization_Mismatch_for_UAV_mmWave_Communication_Enhancement/PolarFix_Fixing_Polarization_Mismatch_for_UAV_mmWave_Communication_Enhancement.md",
+          "lines": "5,447,476,534",
+          "note": "L2C + 1-bit metasurface; +63% static; +23% mobile"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2019-uav-emergency-disasters",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Emergency_Networks_in_Disasters/UAV-Assisted_Emergency_Networks_in_Disasters.md",
+          "lines": "7",
+          "note": "Magazine framework; no single reusable decision model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Assisted_Emergency_Networks_in_Disasters/UAV-Assisted_Emergency_Networks_in_Disasters.md",
+          "lines": "7,248,254,310-316",
+          "note": "three schemes; SOCP; SPR; AF/DF relaying"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2025-gai-pls-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey.md",
+          "lines": "5",
+          "note": "Survey; no system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey/Generative_AI_for_Secure_Physical_Layer_Communications_A_Survey.md",
+          "lines": "5,663",
+          "note": "GAI for PLS: security properties, models, directions"
+        }
+      ]
     }
   ]
 }
