@@ -19,7 +19,7 @@ related:
   - "[[generative-ai-for-mec]]"
   - "[[sun-2024-mvtora-postdisaster-vfc]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Task Assignment and Exploration Optimization for Low Altitude UAV Rescue via Generative AI Enhanced Multi-Agent Reinforcement Learning
@@ -53,11 +53,11 @@ Models low-altitude UAV rescue in unknown post-disaster areas with UAVs, ground 
 
 | ID | Meaning and key expression |
 |---|---|
-| 20a | Long-term average UAV energy stays below budget $\bar E_u$ |
-| 20b-20d | Offloading fractions are bounded and UAV-resource assignments obey one-to-one service limits |
-| 20e-20f | Local and offloaded processing satisfy task deadline $\tau_u$ |
-| 20g-20h | Per-user and aggregate ground computation remain within resource capacity |
-| 20i-20k | UAV speed, route length, and pairwise safety-distance constraints hold |
+| (20a) | Long-term average UAV energy stays below budget $\bar E_u$ |
+| (20b)–(20d) | Offloading fractions are bounded and UAV-resource assignments obey one-to-one service limits |
+| (20e)–(20f) | Local and offloaded processing satisfy task deadline $\tau_u$ |
+| (20g)–(20h) | Per-user and aggregate ground computation remain within resource capacity |
+| (20i)–(20k) | UAV speed, route length, and pairwise safety-distance constraints hold |
 
 **Algorithm**: Lyapunov optimization converts the long-term energy constraint into a stable virtual queue and a per-slot drift-plus-penalty objective. A Hungarian step assigns UAVs to subareas, after which HG-MADDPG uses a diffusion-enhanced actor within centralized-training, decentralized-execution learning to choose offloading ratios, ground resources, and exploration actions.
 
@@ -65,7 +65,7 @@ Models low-altitude UAV rescue in unknown post-disaster areas with UAVs, ground 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Tang et al. [x] studied joint task assignment and exploration for low-altitude UAV rescue when terrestrial communication infrastructure is unavailable. Their model combines mobile UAV object detection, ground embedded computing resources, airship coverage, task deadlines, computation limits, propulsion and processing energy, route bounds, and collision avoidance. They formulate a long-term constrained problem over offloading, computation allocation, and trajectory control and use a Lyapunov virtual queue to expose per-slot decisions. The proposed HG-MADDPG framework applies Hungarian subarea assignment before a diffusion-enhanced multi-agent actor-critic chooses offloading ratios, ground resources, and exploration actions. Simulations report lower task-completion latency than MADDPG and MAPPO and demonstrate stable energy queues and obstacle-aware exploration in the evaluated rescue area.
+Tang et al. [x] studied joint task assignment and exploration for low-altitude UAV rescue when terrestrial communication infrastructure is unavailable. Their model combines mobile UAV object detection, ground embedded computing resources, airship coverage, task deadlines, computation limits, propulsion and processing energy, route bounds, and collision avoidance. They formulate a long-term constrained problem over offloading, computation allocation, and trajectory control and use a Lyapunov virtual queue to expose per-slot decisions. The proposed HG-MADDPG framework applies Hungarian subarea assignment before a diffusion-enhanced multi-agent actor-critic chooses offloading ratios, ground resources, and exploration actions. Simulations report lower task-completion latency than MADDPG and MAPPO, with slower training convergence, and demonstrate stable energy queues and obstacle-aware exploration in the evaluated rescue area.
 
 ## Problem
 

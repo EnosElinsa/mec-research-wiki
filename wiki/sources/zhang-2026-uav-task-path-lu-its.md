@@ -18,7 +18,7 @@ related:
   - "[[peng-2024-energy-time-uav-its]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-07-06
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Cooperative Task Allocation and Path Planning for Multi-UAVs in Low-Altitude Urban Intelligent Transportation Systems
@@ -37,7 +37,7 @@ A distributed multi-UAV mission-planning framework for low-altitude urban intell
 
 **Scenario**: Multiple communicating UAVs cooperatively execute emergency-rescue or last-mile delivery tasks in low-altitude urban airspace with buildings, no-fly zones, and changing threats. A high-level potential game assigns multi-UAV tasks, and a low-level graph search enforces kinematic and collision-avoidance feasibility.
 
-**Problem & objective**: The high-level combinatorial potential-game model maximizes global mission utility, $\max J=\sum_{T_j\in\mathcal T}[B(T_j)-F(T_j)-G(T_j)]=\sum_i\sum_jU_i(T_j,\mathcal A_{T_j})x_{ij}$, before collision-free path construction.
+**Problem & objective**: The high-level combinatorial potential-game model maximizes global mission utility (6), $\max J=\sum_{T_j\in\mathcal T}[B(T_j)-F(T_j)-G(T_j)]=\sum_i\sum_jU_i(T_j,\mathcal A_{T_j})x_{ij}$, before collision-free path construction.
 
 **Decision variables**:
 
@@ -53,12 +53,11 @@ A distributed multi-UAV mission-planning framework for low-altitude urban intell
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UAV is assigned to at most one task, $\sum_jx_{ij}\le1$ |
-| C2 | Assigned UAV payloads collectively satisfy each task's required load vector |
-| C3 | Flight range, speed, altitude, response time, and angular-rate limits follow Eqs. (1) and (7) |
-| C4 | Planned paths avoid buildings, no-fly zones, and bandit threats |
-| C5 | UAV pairs maintain minimum safe separation and feasible turning angles |
-| C6 | Low-level path planning rejects a high-level assignment if no executable kinematic path exists |
+| (7), 1st line | Each UAV executes at most one task: $\sum_jx_{ij}\le1$ |
+| (7), 2nd line | Flight voyage and speed: $f_i\le f_{\max}$, $\nu_{\min}\le\nu_i\le\nu_{\max}$ |
+| (7), 3rd line | Assigned UAV payloads cover the task load: $\sum R^T\le\sum R^{a_i}$ |
+| (7), remaining lines | Angular-rate bounds on $u_{\psi_i},u_{\theta_i},u_{\vartheta_i}$, response time $t_{\mathrm{resp}}\in[0,30]$, altitude $z_i\le200$, and parameter ranges |
+| Model rule | Path planning additionally enforces building, no-fly-zone, and threat avoidance, minimum UAV separation, and turning-angle limits under the kinematics (1) |
 
 **Algorithm**: Define task reward, path cost, load cost, and the potential function → let neighboring UAVs update task strategies with ILLA and a time-varying Boltzmann parameter → converge to the optimal Nash-equilibrium set → run multilayer bidirectional CBMBA A-Star for each assignment → enforce turning, separation, obstacle, and threat constraints → adapt the search step for online replanning.
 
@@ -66,7 +65,7 @@ A distributed multi-UAV mission-planning framework for low-altitude urban intell
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied cooperative task allocation and path planning for multiple UAVs in low-altitude urban intelligent transportation systems. They modeled task allocation as a network evolutionary potential game that maximizes task rewards minus path and payload costs under assignment, payload, flight-range, speed, altitude, and attitude-rate limits. Their Improved Log-linear Learning Algorithm uses derived Boltzmann parameters and converges to the optimal Nash equilibrium with probability one. A Constraint-Based Multilayer Bidirectional Adaptive A-Star algorithm then generates collision-free paths under urban obstacles, no-fly zones, turning constraints, and dynamic threats. Simulations for emergency rescue and last-mile delivery report an 11.67% task-reward increase, a 37.41% task-execution-time reduction, and a 61.02% runtime reduction relative to the stated baseline method.
+Zhang et al. [x] studied cooperative task allocation and path planning for multiple UAVs in low-altitude urban intelligent transportation systems. They modeled task allocation as a network evolutionary potential game that maximizes task rewards minus path and payload costs under assignment, payload, flight-range, speed, altitude, and attitude-rate limits. Their Improved Log-linear Learning Algorithm uses derived Boltzmann parameters and converges to the optimal Nash equilibrium with probability one. A Constraint-Based Multilayer Bidirectional Adaptive A-Star algorithm then generates collision-free paths under urban obstacles, no-fly zones, turning constraints, and dynamic threats. Simulations for emergency rescue and last-mile delivery report an 11.67% task-reward increase, a 37.41% task-execution-time reduction, and a 61.02% runtime reduction relative to the baseline method; task allocation is compared with LLA, BRLA, and CBBA, and path planning with A-Star and DE (or D-Star and MSFDE in the second scenario).
 
 ## Problem
 

@@ -17,7 +17,7 @@ related:
   - "[[huang-2025-cmop-dispersed-computing]]"
   - "[[huang-2023-mu-aec-task-energy]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -44,7 +44,7 @@ Solved with the **CMOEA/D-CDP** framework plus an **improved genetic operator** 
 
 **Scenario**: A control center dispatches $I$ standby UAVs to $J$ monitoring locations with $I\ge J$. Each selected UAV collects data, then either processes locally or offloads to an edge server whose service programs may be cached.
 
-**Problem & objective**: Minimize $G_1(\mathbf x)=\sum_{i,j}y_{i,j}[(1-x_i)E_{i,j}^{L}+x_iE_{i,j}^{O}]$ and the completion-time imbalance $G_2(\mathbf x)=\sum_{i\in\mathcal S}|\tau_i-\hat\tau|/\vartheta$.
+**Problem & objective**: Problem (12) minimizes $G_1(\mathbf x)=\sum_{i,j}y_{i,j}[(1-x_i)E_{i,j}^{L}+x_iE_{i,j}^{O}]$ and the completion-time imbalance $G_2(\mathbf x)=\sum_{i\in\mathcal S}|\tau_i-\hat\tau|/\vartheta$.
 
 **Decision variables**:
 
@@ -59,12 +59,12 @@ Solved with the **CMOEA/D-CDP** framework plus an **improved genetic operator** 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | At most one task per UAV: $\sum_{j=1}^{J}y_{i,j}\le1$ for every $i$ |
-| C2 | Every monitoring task is assigned: $\sum_{i=1}^{I}y_{i,j}=1$ for every $j$ |
-| C3 | Total selected-UAV bandwidth: $\sum_{i,j}y_{i,j}b_i\le B$ |
-| C4 | Edge CPU budget: $\sum_{i,j}y_{i,j}x_if_i^O\le F$ |
-| C5 | Edge storage budget: $\sum_{i,j}y_{i,j}(\beta_j+x_i\alpha_i)\le S$ |
-| C6 | Domain constraints: $x_i,y_{i,j}\in[0,1]$ and $b_i,f_i^O\ge0$ |
+| C1 (12) | At most one task per UAV: $\sum_jy_{i,j}\le1$ (the parse writes the sum over $i$; check the published paper) |
+| C2 (12) | Every monitoring task is assigned: $\sum_iy_{i,j}=1,\ \forall j$ |
+| C3 (12) | Total bandwidth: $\sum_{i,j}y_{i,j}b_i\le B$ |
+| C4 (12) | Edge CPU budget: $\sum_{i,j}y_{i,j}x_if_i^{ES}\le F$ |
+| C5 (12) | Edge storage budget: $\sum_{i,j}y_{i,j}(\beta_j+x_i\alpha_i)\le S$ |
+| C6 (12) | Domain: $x_i,y_{i,j}\in[0,1]$, $b_i\ge0$, $f_i^O\ge0$ |
 
 **Algorithm**: Encode each solution as mixed integer and continuous parts, decompose the CMOP with CMOEA/D-CDP weight vectors, apply data-type-aware differential and mutation operators, repair violated assignment, bandwidth, CPU, and storage constraints, and retain non-dominated feasible solutions.
 
@@ -72,7 +72,7 @@ Solved with the **CMOEA/D-CDP** framework plus an **improved genetic operator** 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Peng et al. [x] formulate a multi-UAV intelligent transportation system problem that balances total energy with completion-time differences important for multi-source fusion. Binary task association and local-versus-edge processing decisions are coupled with UAV bandwidth and edge CPU allocations, while service caching changes the processing delay. The proposed CMOEA/D-CDP uses data-type-aware evolutionary operators and a repairing constraint handler to search the resulting mixed-variable Pareto problem. Experiments on three monitoring-task instances report improved inverted-generational-distance and hypervolume performance over the compared constrained multi-objective algorithms.
+Peng et al. [x] formulate a multi-UAV intelligent transportation system problem that balances total energy with completion-time differences important for multi-source fusion. Binary task association and local-versus-edge processing decisions are coupled with UAV bandwidth and edge CPU allocations, while service caching changes the processing delay. Their algorithm, built on the CMOEA/D-CDP framework, adds a data-type-aware genetic operator and a repairing constraint handler to search the resulting mixed-variable Pareto problem. Experiments on three monitoring-task instances report the best mean IGD and HV among six algorithms (M2M-DW, PPS, CMOEA/D-CDP, ShiP, and CMOPSO as baselines), including about 69% lower IGD and 4% higher HV than ShiP.
 
 ## Why this matters
 

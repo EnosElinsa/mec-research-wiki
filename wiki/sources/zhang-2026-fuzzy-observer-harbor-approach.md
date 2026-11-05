@@ -14,7 +14,7 @@ related:
   - "[[control-parameterized-uav-trajectory]]"
   - "[[maritime-mec]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Adaptive Event-Triggered Fuzzy State Observer Control for Surface-Air Vehicles Subject to the Harbor-Approaching Operation
@@ -33,7 +33,7 @@ Proposes a harbor-approach guidance and control scheme for a heterogeneous USV-U
 
 **Scenario**: A heterogeneous surface-air vehicle system combines a 3-DOF underactuated USV and a 6-DOF UAV for harbor-approach path following under nonlinear dynamics, unmeasured states, and bounded wind and wave disturbances. A logical virtual ship generates a decelerating reference, and a logical virtual aircraft maps the horizontal position and yaw reference to the UAV at constant altitude.
 
-**Problem & objective**: The nonlinear event-triggered control design drives USV and UAV tracking and observation errors to a bounded neighborhood while reducing control transmissions, with SGUUB certified by $\dot V_4\le-\varrho_1V_4+\varrho_2$ for $\varrho_1,\varrho_2>0$.
+**Problem & objective**: The nonlinear event-triggered control design drives USV and UAV tracking and observation errors to a bounded neighborhood while reducing control transmissions, with SGUUB certified by (48), $\dot V_4\le-\varrho_1V_4+\varrho_2$, for $\varrho_1,\varrho_2>0$.
 
 **Decision variables**:
 
@@ -49,11 +49,11 @@ Proposes a harbor-approach guidance and control scheme for a heterogeneous USV-U
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | USV and UAV states obey $\dot{\eta}_i=J_i\nu_i$ and $\dot{\nu}_i=F_i+M_i^{-1}R_i\tau_i+D_i$ |
-| C2 | Environmental disturbances are bounded, $\lVert D_i\rVert_F\le D_{iM}$ |
-| C3 | The underactuated USV has no lateral propulsion input and bounded sway velocity |
-| C4 | Events satisfy $\lvert a_{(\cdot)}(t_\iota)-\tau_{(\cdot)}(t)\rvert>d_{(\cdot)}\lvert\tau_{(\cdot)}(t)\rvert$ with $d_{(\cdot)}\in(0,1)$ |
-| C5 | Positive-definite controller and observer gains make all quadratic Lyapunov coefficients negative and ensure SGUUB |
+| (1) | Vehicle dynamics: $\dot\eta_i=J_i\nu_i$, $\dot\nu_i=F_i+M_i^{-1}R_i\tau_i+D_i$ |
+| Model rule | Bounded disturbances: $\lVert D_i\rVert_F\le D_{iM}$ |
+| Model rule | The underactuated USV has no lateral propulsion input |
+| (8) | Event trigger: refresh when $\lvert a_{(\cdot)}(t_\iota)-\tau_{(\cdot)}(t)\rvert>d_{(\cdot)}\tau_{(\cdot)}(t)$, with $d_{(\cdot)}\in(0,1)$ |
+| (48)–(49) | SGUUB certificate: $\dot V_4\le-\varrho_1V_4+\varrho_2$ with $\varrho_1,\varrho_2>0$ |
 
 **Algorithm**: Generate the LVS exponential velocity reference → map it to LVA reference states → estimate unmeasured states with fuzzy observers → filter virtual controls with dynamic surface control → update fuzzy and trigger gains by adaptive laws → transmit only at threshold events and apply the backstepping control input → verify the composite Lyapunov bound.
 
@@ -61,7 +61,7 @@ Proposes a harbor-approach guidance and control scheme for a heterogeneous USV-U
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied cooperative harbor-approach path following for a heterogeneous USV-UAV system with unmeasured states and external disturbances. They designed an exponential time-varying velocity function for the logical virtual ship to produce a velocity-changing navigation reference. Their adaptive event-triggered fuzzy state observer estimates the hybrid vehicle states and unknown signal-amplitude gain, while backstepping and dynamic surface control generate the vehicle inputs. Lyapunov analysis establishes semi-global uniformly ultimately bounded stability for the closed-loop signals. Numerical results report accurate path following, longer triggering intervals, and approximately 30% to 60% reductions in mean control input and input variation relative to the evaluated controller.
+Zhang et al. [x] studied cooperative harbor-approach path following for a heterogeneous USV-UAV system with unmeasured states and external disturbances. They designed an exponential time-varying velocity function for the logical virtual ship to produce a velocity-changing navigation reference. Their adaptive event-triggered fuzzy state observer estimates the hybrid vehicle states and unknown signal-amplitude gain, while backstepping and dynamic surface control generate the vehicle inputs. Lyapunov analysis establishes semi-global uniformly ultimately bounded stability for the closed-loop signals. Numerical results report accurate path following, longer triggering intervals, and approximately 30% to 60% reductions in mean control input and input variation relative to the compared controller of its reference [41], with a slightly larger attitude error.
 
 ## Problem
 

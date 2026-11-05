@@ -14,7 +14,7 @@ related:
   - "[[low-altitude-intelligent-network]]"
   - "[[multi-uav-assisted-mec]]"
 created: 2026-05-28
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Optimizing Spectrum Sharing in UAV Swarms: A Stackelberg Game-Based Incentive Mechanism
@@ -35,36 +35,28 @@ Game-theoretic incentive mechanism for UAV-to-UAV (U2U) spectrum sharing within 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A UAV swarm contains primary UAV-to-BS links and secondary UAV-to-UAV links. A secondary link can use idle primary slots in overlay mode or transmit at controlled power during active primary slots in underlay mode, with multiple candidate primary sub-bands assigned by matching.
-
-**Problem & objective**: A hierarchical Stackelberg spectrum-trading game lets each primary leader maximize its access revenue and link utility while each secondary follower maximizes net transmission utility, $\max_{\pi}U_{\mathrm{U2B}}(\pi)$ and $\max_{p_i,\tau_i}\bigl(U_i-\mathrm{payment}_i\bigr)$.
-
+**Scenario**: A BS and a UAV swarm form a cellular network with $I$ primary UAV-to-BS (U2B) links and $J$ secondary UAV-to-UAV (U2U) links over Rician channels. Each U2B link divides its reusable sub-band into orthogonal resource blocks (RBs); U2U links buy RBs and access them in the hybrid mode, underlay with respect to the U2B link (transmit power below an interference threshold) and overlay among U2U links (orthogonal RBs, no mutual interference).
+**Problem & objective**: A two-stage Stackelberg game: each U2B leader solves P0 (11), $\max_{p_j^i}U_i=A\,n_j^ib_{RB}/b_j^{QoS}+p_j^in_j^i-C_T$ s.t. $p_j^i\ge0$, and each U2U follower solves P1 (15), $\max_{n_j^i}U_j=\omega_j\gamma C_j^i+S_j^i-p_j^in_j^i$, where $S_j^i$ (12) penalizes deviation from the QoS bandwidth and $\omega_j$ is task urgency; the equilibrium is (16)–(17).
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Spectrum price | $\pi_j$ | continuous, nonnegative | Price announced by primary U2B link $j$ |
-| U2U transmit power | $p_i$ | continuous, bounded | Underlay power selected by secondary U2U link $i$ |
-| Access duration | $\tau_i$ | continuous, slot-bounded | Overlay or underlay access time purchased by U2U link $i$ |
-| Spectrum matching | $x_{i,j}$ | binary | Whether U2U link $i$ uses U2B sub-band $j$ |
-
+| RB unit price | $p_j^i$ | continuous, $\ge0$ | Price set by U2B link $i$ for U2U link $j$ |
+| Traded RBs | $n_j^i$ | nonnegative | RBs bought by U2U link $j$ from U2B link $i$ |
+| Matching | $\rho_{i,j}$ | binary | U2U link $j$ shares the sub-band of U2B link $i$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | U2U powers and access durations satisfy their box and slot limits |
-| C2 | Underlay interference preserves the primary U2B quality-of-service requirement |
-| C3 | Overlay access uses only primary idle time and underlay access uses active time |
-| C4 | Each U2U-U2B assignment satisfies the matching quotas and preference rules |
-| C5 | Leader and follower choices satisfy their Stackelberg best-response conditions |
-
-**Algorithm**: Separate overlay and underlay access opportunities → derive follower power and duration best responses → optimize the primary leader's price by backward induction → compute the Stackelberg equilibrium → assign multiple U2U links to U2B sub-bands with deferred-acceptance matching.
+| (11) | Leader price is nonnegative: $p_j^i\ge0$ |
+| (15), 1st–2nd lines | Follower demand: $n_{i,j}\ge0$ and the matched U2U links fit the sub-band, $\sum_j\rho_{i,j}n_j^ib_{RB}\le B_i$ |
+| (15), 3rd line | Urgency bounds: $\omega_{\min}\le\omega_j\le\omega_{\max}$ |
+| Model rule | Underlay U2U transmit power stays below the U2B interference threshold |
+**Algorithm**: Derive the follower best response $n_j^{i*}$ and the leader price $p_j^{i*}$ by backward induction (16)–(17) → form preference lists from the equilibrium utilities → run the utility-based matching (Algorithm 1), in which U2U links propose to their top U2B link and U2B links with insufficient RBs keep their highest-ranked requesters and reject the rest, until no requests remain.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied spectrum sharing between primary UAV-to-base-station links and secondary UAV-to-UAV links in a UAV swarm. They proposed a hybrid overlay and underlay access mode that uses primary idle periods and controlled concurrent transmission. A Stackelberg game lets each primary link set a spectrum price while secondary links select transmit power and access duration to maximize their net utilities. Backward induction derives the leader and follower equilibrium, and a deferred-acceptance matching procedure assigns secondary links to candidate primary sub-bands. Simulations show higher spectrum utilization and utility than the evaluated pure-overlay, pure-underlay, and allocation baselines.
+Wang et al. [x] studied spectrum sharing between primary UAV-to-base-station links and secondary UAV-to-UAV links in a UAV swarm. They proposed a hybrid access mode in which secondary links access primary resource blocks in underlay mode, below an interference threshold, and share orthogonal blocks with one another in overlay mode. A Stackelberg game lets each primary link set a spectrum price while secondary links choose how many resource blocks to buy, weighting capacity by task urgency against a QoS-based satisfaction term. Backward induction derives the leader and follower equilibrium, and a utility-based propose-and-reject matching procedure assigns secondary links to candidate primary sub-bands. With 30 U2U links, simulations report system utility 90.53%, 26.99%, and 276.55% higher than fixed pricing (FP), reverse-auction RAIM, and fairness-oriented DOAF, respectively.
 
 ## Why this matters for MEC
 

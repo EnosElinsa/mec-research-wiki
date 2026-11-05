@@ -14,7 +14,7 @@ related:
   - "[[terrain-aware-channel-model]]"
   - "[[uav-trajectory-control]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # 3D UAV Trajectory Planning for IoT Data Collection via Matrix-Based Evolutionary Computation
@@ -46,13 +46,13 @@ A UAV collects data from ground nodes over 3-D terrain and must minimize flight 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1-C2 | Endpoints, $\mathbf q(0)=\mathbf q_{\mathrm{str}}$, $\mathbf q(T)=\mathbf q_{\mathrm{end}}$. |
-| C3 | Horizontal position in $\mathcal U$. |
-| C4 | Altitude above terrain, $q_z(t)\in[f_z(q_x,q_y)+\Delta_z,U_z]$. |
-| C5 | Speed, $v(t)\le v_{\max}$. |
-| C6-C8 | Per-axis acceleration limits, $\lvert a_i(t)\rvert\le a_{i,\max}$. |
-| C9 | Data demand, $Q_k\ge Q_k^{\mathrm{th}}$ for every node. |
-| C10 | $0\le T\le T_{\max}$. |
+| C1–C2 (19b) | Endpoints, $\mathbf q(0)=\mathbf q_{\mathrm{str}}$, $\mathbf q(T)=\mathbf q_{\mathrm{end}}$. |
+| C3 (19b) | Horizontal position in $\mathcal U$. |
+| C4 (19b) | Altitude above terrain, $q_z(t)\in[f_z(q_x,q_y)+\Delta_z,U_z]$. |
+| C5 (19b) | Speed, $v(t)\le v_{\max}$. |
+| C6–C8 (19b) | Per-axis acceleration limits, $\lvert a_i(t)\rvert\le a_{i,\max}$. |
+| C9 (19b) | Data demand, $Q_k\ge Q_k^{\mathrm{th}}$ for every node. |
+| C10 (19b) | $0\le T\le T_{\max}$. |
 
 **Algorithm**: Represent the trajectory with Bézier curves to reduce decision variables; MDE-CH runs matrix-form differential evolution with a constraint-handling rule that keeps feasible solutions without penalty parameters.
 
@@ -60,7 +60,7 @@ A UAV collects data from ground nodes over 3-D terrain and must minimize flight 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Sun et al. [x] studied UAV-assisted Internet of Things data collection that minimizes total energy consumption while accounting for the UAV's physical capabilities, the heterogeneous data demands of IoT nodes, and three-dimensional terrain. They formulated a continuous three-dimensional temporal-spatial trajectory problem and used Bézier curves to reduce the number of decision variables. To solve the non-convex problem with several types of constraints, they proposed a matrix-based differential evolution with constraint handling, a computation-efficient evolutionary algorithm that ensures feasible solutions without tuning penalty parameters and supports parallel computation. Numerical evaluations show that the algorithm provides a continuous trajectory that efficiently minimizes energy under practical constraints and outperforms the compared methods, including in scenarios with 3D terrain and varying throughput requirements.
+Sun et al. [x] studied UAV-assisted Internet of Things data collection that minimizes total energy consumption while accounting for the UAV's physical capabilities, the heterogeneous data demands of IoT nodes, and three-dimensional terrain. They formulated a continuous three-dimensional temporal-spatial trajectory problem and used Bézier curves to reduce the number of decision variables. To solve the non-convex problem with several types of constraints, they proposed a matrix-based differential evolution with constraint handling, a computation-efficient evolutionary algorithm that ensures feasible solutions without tuning penalty parameters and supports parallel computation. Numerical evaluations show that the algorithm provides a continuous trajectory that efficiently minimizes energy under practical constraints and finds feasible solutions where MDE, MPSO, DE, EGA, and ES with penalty functions often leave the feasible region; against an A-star-initialized SCA method it gives a smoother trajectory, whereas the SCA acceleration fluctuates and even violates its limit.
 
 ## Problem framing
 

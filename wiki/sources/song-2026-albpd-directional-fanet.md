@@ -20,7 +20,7 @@ related:
   - "[[bujari-2018-stateless-fanet-routing]]"
   - "[[george-k-karagiannidis]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Robust Link Maintenance Algorithm for Directional UAV Networks Based on Breakage Probability Prediction
@@ -37,35 +37,28 @@ Proposes ALBP-D, an adaptive link-breakage-prediction algorithm for directional 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A distributed directional FANET contains homogeneous half-duplex UAVs with directional transmitters and omnidirectional receivers. Gaussian mobility changes both distance and angular alignment, so a link is valid only inside a beam-dependent range and angular offset; neighbor positions are obtained from acknowledgements.
-
-**Problem & objective**: ALBP-D is a robust link-maintenance control problem that maximizes predicted link lifetime, equivalently selecting communication distance and beamwidth so $\max\min(T_{\mathrm{distance}},T_{\mathrm{angle}})$ while limiting maintenance updates.
-
+**Scenario**: A distributed FANET of homogeneous half-duplex UAVs uses directional antennas after neighbor discovery. Relative motion follows a Gaussian velocity model, so a link breaks when the neighbor leaves the range $R$ (29) or its angular offset exceeds $BW/2$ (30)–(31); range scales inversely with beamwidth, $R\propto1/BW$ (2), and neighbor positions come from ACK frames.
+**Problem & objective**: No formal optimization problem is stated. ALBP-D predicts the link break step $n_{\mathrm{break}}=\min\{n\mid P_{\mathrm{break}}(n)>0\}$ (5) from distance- and angle-breakage distributions, and adjusts communication range and beamwidth to lengthen the predicted link lifetime with at most $L$ range adjustments.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Communication distance | $r$ | continuous, bounded | Neighbor separation selected for the maintained link |
-| Beamwidth | $\omega$ | continuous, antenna-bounded | Directional beamwidth used for the link |
-| Maintenance count | $\ell$ | integer, $0\le\ell\le L$ | Number of distance/beamwidth adjustments |
-| Neighbor state | $\hat{\mathbf s}$ | estimated continuous state | Position and motion used to predict breakage |
-
+| Communication range | $R=R_{\mathrm{init}}+i\Delta R$ | continuous, $\le R_{\max}$ | Range used to maintain the link |
+| Beamwidth | $BW=BW_{\mathrm{init}}R_{\mathrm{init}}/R$ | continuous, set by $R$ | Beamwidth implied by the chosen range |
+| Adjustment index | $i$ | integer, $0\le i<L$ | Number of range increments applied |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Link distance remains below the beam-dependent communication range |
-| C2 | Angular offset remains within half the selected beamwidth |
-| C3 | Adjustments stop when distance-break time exceeds angle-break time or $\ell=L$ |
-| C4 | Beamwidth and distance remain within antenna and FANET geometry limits |
-
-**Algorithm**: Estimate distance- and angle-breakage-time distributions → predict both break times from ACK position histories → adjust distance and beamwidth until the larger failure risk is balanced → choose the widest beam that avoids imminent distance breakage → stop at the adjustment limit and maintain the link.
+| (29) | Distance breakage: $X_n^2+Y_n^2+Z_n^2>R^2$ |
+| (30)–(31), (33) | Angular breakage: azimuth or elevation offset exceeds $BW/2$ |
+| (40) | Adjustment limit: $L=\lceil(R_{\max}-R_{\mathrm{init}})/\Delta R\rceil$ |
+| Algorithm rule | Stop when $n_{\mathrm{disBreak}}>n_{\mathrm{angBreak}}$ or $i\ge L$; report $n_{\mathrm{break}}=\min(n_{\mathrm{disBreak}},n_{\mathrm{angBreak}})$ |
+**Algorithm**: Send maintenance frames and update neighbor positions from ACKs → for $i=0,\dots,L-1$, set $R=R_{\mathrm{init}}+i\Delta R$ and $BW=BW_{\mathrm{init}}/(R/R_{\mathrm{init}})$ → compute $n_{\mathrm{disBreak}}$ from the distance distribution (16) and $n_{\mathrm{angBreak}}$ from the angular distribution (23) → stop once distance breakage comes later than angular breakage → schedule the next maintenance at $n_{\mathrm{break}}$.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Song et al. [x] studied robust link maintenance for directional UAV networks under mobility-driven distance and beam-angle breakage. ALBP-D predicts both breakage times from neighbor-table positions and adaptively adjusts communication distance and beamwidth with a bounded number of updates. The method stops when distance and angular risks are balanced or the adjustment limit is reached and selects the widest beam that avoids imminent distance failure. Simulations report roughly tenfold longer link lifetime and network-connectivity duration than the PLM and RPL baselines, together with five- to sevenfold maintenance-overhead efficiency improvements. A small prototype compares predicted and measured break times for a directional and an omnidirectional UAV node.
+Song et al. [x] studied robust link maintenance for directional UAV networks under mobility-driven distance and beam-angle breakage. ALBP-D predicts both breakage times from neighbor-table positions and adaptively adjusts communication distance and beamwidth with a bounded number of updates. Each adjustment extends the range and narrows the beam, and the search stops once predicted distance breakage comes later than angular breakage or the adjustment limit is reached. Simulations report roughly tenfold longer link lifetime and network-connectivity duration than the PLM and RPL baselines, together with five- to sevenfold maintenance-overhead efficiency improvements. A two-node anechoic-chamber prototype driven by real UAV trajectories shows predicted break times close to, but not exactly matching, measured ones because the trajectories are not fully Gaussian.
 
 ## Problem
 

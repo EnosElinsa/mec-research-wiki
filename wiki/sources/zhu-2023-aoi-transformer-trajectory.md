@@ -24,7 +24,7 @@ related:
   - "[[pytorch]]"
 modeling_card: required
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # UAV Trajectory Planning for AoI-Minimal Data Collection in UAV-Aided IoT Networks by Transformer
@@ -43,7 +43,7 @@ Formulates fresh-data collection by one rotary-wing UAV as joint cluster-order a
 
 **Scenario**: One rotary-wing UAV starts and ends above a BS, visits clustered IoT devices, and collects each cluster head's data at one hovering point; ordinary nodes use TDM and one cluster head transmits at a time over a probabilistic LoS/NLoS air-to-ground channel.
 
-**Problem & objective**: Problems $\mathcal P_1$ and $\mathcal P_2$, an NP-hard TSPN converted to a GTSP, minimize $\bar A(\mathbf c,\boldsymbol\pi)$, the total AoI of all collected updates at mission completion.
+**Problem & objective**: Problems $\mathcal P_1$ (18) and $\mathcal P_2$ (19), an NP-hard TSPN converted to a GTSP, minimize $\bar A(\mathbf c,\boldsymbol\pi)$, the total AoI of all collected updates at mission completion.
 
 **Decision variables**:
 
@@ -56,10 +56,10 @@ Formulates fresh-data collection by one rotary-wing UAV as joint cluster-order a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each hovering point satisfies the receive-SNR disk constraint $\mathbf c_m\in O_m$ |
-| C2 | The discretized GTSP selects exactly one candidate, $\mathbf c_m\in G_m\subset O_m$ |
-| C3 | The route visits each selected hovering point exactly once and returns to the BS |
-| C4 | Collection, flight-time, and AoI relations follow (7), (9), (15), and (16) |
+| (5) | Each hovering point meets the receive-SNR threshold $\gamma_{c_m}\ge\gamma_{\mathrm{th}}$, which defines the disk $O_m$ |
+| (19b) | The discretized GTSP picks one candidate per cluster: $c_m\in G_m$, $G_m\in O_m$ |
+| Model rule | The route starts above the BS, visits each selected hovering point exactly once, and returns |
+| (18b) | Collection, flight-time, and AoI relations (5), (7), (9), (15), and (16) |
 
 **Algorithm**: TWA-star, discretize each hovering disk, encode the UAV-IoT instance with a Transformer, decode a cluster permutation, select hovering points with weighted A-star, and train the ordering policy with REINFORCE and a greedy rollout baseline.
 
@@ -67,7 +67,7 @@ Formulates fresh-data collection by one rotary-wing UAV as joint cluster-order a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhu et al. [x] studied AoI-oriented data collection by a rotary-wing UAV in a cluster-based IoT network. They formulated a total-AoI minimization problem that jointly selects one SNR-feasible hovering point per cluster and the order in which those points are visited. Their TWA-star method discretizes each hovering disk, uses a Transformer to generate the cluster order, and applies weighted A-star to choose the hovering points. The Transformer is trained with REINFORCE using a deterministic greedy rollout as its baseline. Simulations show that sampling-decoded TWA-star attains the lowest total AoI among the evaluated decoders and comparison algorithms and generalizes from ten-cluster training instances to larger networks.
+Zhu et al. [x] studied AoI-oriented data collection by a rotary-wing UAV in a cluster-based IoT network. They formulated a total-AoI minimization problem that jointly selects one SNR-feasible hovering point per cluster and the order in which those points are visited. Their TWA-star method discretizes each hovering disk, uses a Transformer to generate the cluster order, and applies weighted A-star to choose the hovering points. The Transformer is trained with REINFORCE using a deterministic greedy rollout as its baseline. Simulations show that sampling-decoded TWA-star attains the lowest total AoI among the greedy, beam-search, and sampling decoders and the genetic-algorithm, simulated-annealing, and Ptr-A* baselines and generalizes from ten-cluster training instances to larger networks.
 
 ## Problem
 

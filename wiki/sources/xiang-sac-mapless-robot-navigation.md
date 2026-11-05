@@ -15,7 +15,7 @@ related:
   - "[[fujimoto-2018-td3-actor-critic]]"
   - "[[chen-2025-swipt-mec-sac]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Continuous Control with Deep Reinforcement Learning for Mobile Robot Navigation
@@ -34,7 +34,7 @@ An end-to-end, **mapless** autonomous-navigation method for a mobile robot train
 
 **Scenario**: A Turtlebot3 navigates a mapless Gazebo/ROS arena from sparse laser scans and relative target information, with the previous action and reward retained in the state. The paper defines no wireless multiple-access scheme or channel model.
 
-**Problem & objective**: An entropy-regularized continuous-control MDP learns a collision-avoiding target-reaching policy, $\max_{\pi}\mathbb E_{\tau\sim\pi}[\sum_t\gamma^t(R(s_t,a_t,s_{t+1})+\alpha H(\pi(\cdot\mid s_t)))]$.
+**Problem & objective**: An entropy-regularized continuous-control MDP (2) learns a collision-avoiding target-reaching policy, $\max_{\pi}\mathbb E_{\tau\sim\pi}[\sum_t\gamma^t(R(s_t,a_t,s_{t+1})+\alpha H(\pi(\cdot\mid s_t)))]$.
 
 **Decision variables**:
 
@@ -48,9 +48,9 @@ An end-to-end, **mapless** autonomous-navigation method for a mobile robot train
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The squashed and clipped policy enforces $v_t\in[0,0.2]$ m/s and $\omega_t\in[-1,1]$ rad/s |
-| C2 | Collision incurs reward $-100$, reaching the target gives $+500$, and every nonterminal step incurs $-3$ plus distance-progress reward |
-| C3 | The policy acts only from the 10-dimensional laser scan, target geometry, previous action, and previous reward collected in $s_t$ |
+| Model rule | Squashing and clipping bound the action: $v_t\in[0,0.2]$ m/s and $\omega_t\in[-1,1]$ (the parse prints the angular unit as m/s) |
+| (9) | Reward: $+500$ on arrival, $-100$ on collision, otherwise $-3+k(d_{t-1}-d_t)$ |
+| (1) | The policy maps the 10-dimensional laser scan $l_t$, target information $p_t$, previous action $a_{t-1}$, and previous reward $r_{t-1}$ to velocity commands |
 
 **Algorithm**: Observe $s_t$ → sample a squashed-Gaussian velocity action from SAC → execute the command and record reward and next state → store the transition in replay → update LSTM value and twin-Q networks and the entropy-regularized actor → deploy the learned mapless policy.
 
@@ -58,7 +58,7 @@ An end-to-end, **mapless** autonomous-navigation method for a mobile robot train
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xiang et al. [x] introduced a mapless mobile-robot navigation policy based on Soft Actor-Critic with sparse laser observations. The state combines laser data, target geometry, the previous action, and the previous reward, while the continuous action controls linear and angular velocity. LSTM value and Q networks provide temporal memory, and a shaped reward encourages progress while penalizing collisions and long episodes. The simulated Turtlebot3 study reports navigation performance comparable to a classical SLAM, A*, and DWA stack, while leaving sim-to-real transfer open.
+Xiang et al. [x] introduced a mapless mobile-robot navigation policy based on Soft Actor-Critic with sparse laser observations. The state combines laser data, target geometry, the previous action, and the previous reward, while the continuous action controls linear and angular velocity. LSTM value and Q networks provide temporal memory, and a shaped reward encourages progress while penalizing collisions and long episodes. The simulated Turtlebot3 study reports that both the learned policy and a classical gmapping, amcl, A*, and DWA (move_base) stack reach all seven targets, with the move_base trajectory better in places, while sim-to-real transfer is left open.
 
 ## Problem framing
 

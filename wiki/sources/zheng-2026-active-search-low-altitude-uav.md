@@ -19,7 +19,7 @@ related:
   - "[[li-2026-radio-map-predictive-routing]]"
 modeling_card: required
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Active Search for Low-altitude UAV Sensing and Communication for Users at Unknown Locations
@@ -53,11 +53,11 @@ Designs an online UAV search and placement method for low-altitude sensing/commu
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Placement lies in the full-LoS feasible region: $\mathbf x\in\tilde{\mathcal D}$ |
-| C2 | Application resources satisfy $H_n(\mathbf g_u(\mathbf x),\mathbf p)\le0$ for $n=1,\ldots,N$ |
-| C3 | In the balancing and sum-rate examples, power satisfies $\mathbf p\ge0$ and $\sum_k p_k\le P_T$ |
-| C4 | Equipotential search maintains $F(\mathbf g(\mathbf x))=0$ while the UAV follows the minimum-altitude and LoS-discovery rules |
-| C5 | The superposed trajectory $\mathbf x(t)=\mathbf x_s(t)+\mathbf x_r(t)$ uses the derived spiral measurement radius and local-model validity range |
+| (5), 1st constraint | Placement lies in the full-LoS region: $\mathbf x\in\tilde{\mathcal D}$ |
+| (5), 2nd constraint | Application resource constraints: $H_n(\mathbf g_u(\mathbf x),\mathbf p)\le0,\ n=1,\dots,N$ |
+| (6)–(7) | Balancing and sum-rate examples: $\mathbf p\ge0$, $\sum_kp_k\le P_T$ |
+| (8)–(9) | Search is restricted to the equipotential surface $\mathcal S=\{\mathbf x:F(\mathbf g(\mathbf x))=0\}$ |
+| Algorithm rule | The trajectory superposes the search path and a spiral measurement path, $\mathbf x(t)=\mathbf x_s(t)+\mathbf x_r(t)$, within the local-model validity range |
 
 **Algorithm**: Find a full-LoS initial point $\rightarrow$ estimate local channel gains and gradients by first-order polynomial regression along a spiral $\rightarrow$ allocate resources and reconstruct the local equipotential surface $\rightarrow$ descend on the surface while LoS holds $\rightarrow$ follow a constant-BS-link curve after an NLoS encounter and repeat.
 
@@ -65,7 +65,7 @@ Designs an online UAV search and placement method for low-altitude sensing/commu
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zheng and Chen [x] studied online UAV placement for sensing and communication users at unknown locations while maintaining a backhaul link to a BS. They formulated a non-convex max-min placement and resource-allocation problem that balances BS-to-UAV and UAV-to-user performance under LoS and application constraints. Their method reconstructs local channel-gain maps from noisy online measurements and searches on an equipotential surface derived through perturbation theory. A superposed spiral trajectory supplies channel measurements while an LoS-discovery trajectory explores feasible service positions. Numerical experiments on two Beijing three-dimensional maps report more than 95% of exhaustive three-dimensional search capacity over 2000 user realizations with an average search trajectory of about 3 kilometers.
+Zheng and Chen [x] studied online UAV placement for sensing and communication users at unknown locations while maintaining a backhaul link to a BS. They formulated a non-convex max-min placement and resource-allocation problem that balances BS-to-UAV and UAV-to-user performance under LoS and application constraints. Their method reconstructs local channel-gain maps from noisy online measurements and searches on an equipotential surface derived through perturbation theory. A superposed spiral trajectory supplies channel measurements while an LoS-discovery trajectory explores feasible service positions. Numerical experiments on two Beijing three-dimensional maps report more than 95% of exhaustive three-dimensional search capacity over 2000 user realizations close to a genius-aided scheme with known user locations, though its spiral measurements need about 3 km of flight versus a few hundred meters for the genius-aided search.
 
 ## Problem
 

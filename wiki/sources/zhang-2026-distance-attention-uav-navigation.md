@@ -15,7 +15,7 @@ related:
   - "[[autonomous-uav-swarms]]"
   - "[[uav-trajectory-control]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Distance-Attention Augmented Reinforcement Learning: A Robust Approach for 3D Cooperative UAV Navigation in Dense Urban Environments
@@ -48,11 +48,12 @@ Extends a MADDPG-style CTDE controller for continuous 3-D cooperative navigation
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The normalized control vector satisfies $\mathbf u_{\mathrm{norm}}^i\in[-1,1]^3$. |
-| C2 | Obstacle proximity is penalized through $r_2^i=\sigma(d^i/D_r-1)$ using the minimum LiDAR range. |
-| C3 | Inter-UAV separation below $d_{\mathrm{nei}}$ activates the collision penalty $r_3^i$. |
-| C4 | Losing all neighbors beyond communication range $r_{\mathrm{com}}$ activates the connectivity penalty $r_4^i$. |
-| C5 | Target deviation beyond $D_0$ and each additional movement step are penalized. |
+| Model rule | Normalized control vector: $\mathbf u_{\mathrm{norm}}^i\in[-1,1]^3$ |
+| (9) | Target reward $r_1^i$: constant $C_1$ when $d_{g,t}^i>D_0$, otherwise a progress term in $d_{g,t-1}^i-d_{g,t}^i$ |
+| (10) | Obstacle penalty from the minimum LiDAR range: $r_2^i=\sigma(d^i/D_r-1)$ |
+| (11) | Inter-UAV collision penalty $C_2$ when $\min(d_{17}^i,d_{18}^i)<d_{\mathrm{nei}}$ |
+| (12) | Connectivity penalty $C_3$ when $\min(d_{17}^i,d_{18}^i)>r_{\mathrm{com}}$ |
+| (13) | Total reward $\mathcal R_i=r_1^i+\dots+r_5^i$, with time-step cost $r_5^i=-1$ |
 
 **Algorithm**: Maintain historical observation queues, weight vertical LiDAR layers in the distance-attention actor, fuse current joint state-action features with global history in the critic, collect replay transitions under CTDE, and update deterministic actors, critics, and target networks off policy.
 
@@ -60,7 +61,7 @@ Extends a MADDPG-style CTDE controller for continuous 3-D cooperative navigation
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhang et al. [x] studied cooperative three-dimensional UAV navigation through dense urban environments as a partially observable multi-agent control problem. They defined continuous horizontal-acceleration, yaw-rate, and vertical-acceleration actions and a non-sparse reward that combines target approach, obstacle avoidance, inter-UAV collision avoidance, connectivity maintenance, and a time-step cost. Their DA2RL method couples a distance-attention actor for layered LiDAR observations with a historical-feature-flow critic and trains the policies with historical queues and centralized action-value information. Across 200 random tests in the training environment, the reported results include a 94.6% success rate, 5.17% collision rate, 0.908 velocity consistency, and 985.3 m average path length, with convergence within about 400 episodes.
+Zhang et al. [x] studied cooperative three-dimensional UAV navigation through dense urban environments as a partially observable multi-agent control problem. They defined continuous horizontal-acceleration, yaw-rate, and vertical-acceleration actions and a non-sparse reward that combines target approach, obstacle avoidance, inter-UAV collision avoidance, connectivity maintenance, and a time-step cost. Their DA2RL method couples a distance-attention actor for layered LiDAR observations with a historical-feature-flow critic and trains the policies with historical queues and centralized action-value information. Across 200 random tests in the training environment, the reported results include a 94.6% success rate, 5.17% collision rate, 0.908 velocity consistency, and 985.3 m average path length, ahead of MADDPG, MARDPG, and RL-CN in success rate, with convergence within about 400 episodes; MARDPG attains higher average training reward, and MADDPG has a lower timeout rate.
 
 ## Problem
 

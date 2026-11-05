@@ -16,7 +16,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[federated-learning]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # PB-PAPP: An Efficient Mechanism for Real-Time Survivor Detection in Disaster Regions
@@ -49,10 +49,10 @@ Combines online logistic-regression prediction of potential survivor locations, 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Per-drone traversal cost is bounded, $\sum_{(u,v)\in\mathcal E}c(u,v)y_{i,u,v}\le C_i$ |
-| C2 | Each route leaves and returns to its launch cell, $\sum_v y_{i,s_i,v}=\sum_u y_{i,u,s_i}=1$ |
-| C3 | A selected cell must be entered through a route edge, $x_{i,v}\le\sum_u y_{i,u,v}$ |
-| C4 | Duplicate scanning is prevented, $\sum_i x_{i,v}\le1$ |
+| (C1) | Per-drone traversal cost is bounded, $\sum_{(u,v)\in\mathcal E}c(u,v)y_{i,u,v}\le C_i$ |
+| (C2) | Each route leaves and returns to its launch cell, $\sum_v y_{i,s_i,v}=\sum_u y_{i,u,s_i}=1$ |
+| (C3) | A selected cell must be entered through a route edge, $x_{i,v}\le\sum_u y_{i,u,v}$ |
+| (C4) | Duplicate scanning is prevented, $\sum_i x_{i,v}\le1$ |
 
 **Algorithm**: Update logistic-regression survivor probabilities → normalize them into cell priority scores → construct and sort $M$ → merge routes in descending priority while enforcing proximity and route feasibility → navigate with PB-PAPP and obstacle bypass → aggregate mother-drone model weights at the ground station → repeat until the battery stopping rule.
 
@@ -60,7 +60,7 @@ Combines online logistic-regression prediction of potential survivor locations, 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-V et al. [x] studied real-time survivor detection in disaster regions with surveillance drones and more capable mother drones. They formulated a directed-grid routing problem that maximizes expected detected survivors through binary cell-visit and edge-traversal decisions under path-budget, launch-return, route-continuity, and nonduplicate-visit constraints. Their PB-PAPP mechanism predicts survivor probabilities with online logistic regression, prioritizes candidate links through a modified Clarke-Wright routing heuristic, and periodically averages classifier weights at a ground station. The surveillance drones scan with onboard cameras, bypass obstacles, and return to their launch cells within the assigned budgets. Simulations report 82.63% survivor identification by step 90 and lower per-iteration elapsed and CPU time than the evaluated routing methods.
+V et al. [x] studied real-time survivor detection in disaster regions with surveillance drones and more capable mother drones. They formulated a directed-grid routing problem that maximizes expected detected survivors through binary cell-visit and edge-traversal decisions under path-budget, launch-return, route-continuity, and nonduplicate-visit constraints. Their PB-PAPP mechanism predicts survivor probabilities with online logistic regression, prioritizes candidate links through a modified Clarke-Wright routing heuristic, and periodically averages classifier weights at a ground station. The surveillance drones scan with onboard cameras, bypass obstacles, and return to their launch cells within the assigned budgets. Simulations report 82.63% survivor identification by step 90 and the lowest per-iteration elapsed and CPU time among the evaluated routing methods, although PB-PAPP has the highest average memory use (137.54 MB).
 
 ## Problem and system model
 

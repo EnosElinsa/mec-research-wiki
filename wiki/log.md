@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 26b (UAV planning, navigation, spectrum games, monitoring)
+
+- Grounded 16 path-planning, navigation, consensus, spectrum-sharing, and monitoring source pages; evidence is in `wiki/.grounding/source-schema-evidence-batch26b-uav-planning.json`. All modeling-card-required pages are now grounded.
+- Relabeled constraint IDs to the papers' tags (e.g. C1–C6 (12), C1–C10 (19b), (13b)–(13g), (20a)–(20k), (16)–(20), (C1)–(C4), (7) by line); added a parse note for peng-2024's C1 summation index.
+- Rewrote cards whose decisions or problem were invented: wang-2025 Stackelberg (RB price and RB amount, not power and access time; propose-and-reject matching), song-2026 ALBP-D (no formal program; the range grows and the beam narrows), and zhao-2026 (paper symbols $Q$, $Z_u[t]$, $D_{u,n}^t[k]$, $\varsigma$ and constraints (16)–(20)).
+- Related Work fixes: peng-2024's CMOEA/D-CDP is the framework and a baseline, not the proposed method; added named baselines and caveats (MARDPG higher training reward, HG-MADDPG slower convergence, ACBFT rechaining briefly drops throughput to zero, PB-PAPP highest memory, a 3 km spiral search versus a few hundred meters for the genius-aided scheme, slightly larger attitude error in zhang-2026).
+
 ## [2026-11-03] Grounded batch 26a (UAV swarms, coalition games, crowdsensing, wireless control)
 
 - Grounded 16 swarm, game-theoretic, crowdsensing, and wireless-control source pages; evidence is in `wiki/.grounding/source-schema-evidence-batch26-uav-swarm.json`.

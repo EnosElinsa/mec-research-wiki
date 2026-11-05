@@ -1,0 +1,388 @@
+{
+  "entries": [
+    {
+      "slug": "peng-2024-energy-time-uav-its",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach.md",
+          "lines": "94-166",
+          "note": "models (1)-(11)"
+        },
+        {
+          "path": "raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach.md",
+          "lines": "172-196",
+          "note": "problem (12) C1-C6"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach/Joint_Energy_and_Completion_Time_Difference_Minimization_for_UAV-Enabled_Intelligent_Transportation_Systems_A_Constrained_Multi-Objective_Optimization_Approach.md",
+          "lines": "29,551,571",
+          "note": "CMOEA/D-CDP framework; 6 algorithms; 69% IGD, 4% HV vs ShiP"
+        }
+      ]
+    },
+    {
+      "slug": "song-2026-albpd-directional-fanet",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Robust_Link_Maintenance_Algorithm_for_Directional_UAV_Networks_Based_on_Breakage_Probability_Prediction/A_Robust_Link_Maintenance_Algorithm_for_Directional_UAV_Networks_Based_on_Breakage_Probability_Prediction.md",
+          "lines": "92-98,176-183",
+          "note": "(1)-(2), (5)"
+        },
+        {
+          "path": "raw/sources/A_Robust_Link_Maintenance_Algorithm_for_Directional_UAV_Networks_Based_on_Breakage_Probability_Prediction/A_Robust_Link_Maintenance_Algorithm_for_Directional_UAV_Networks_Based_on_Breakage_Probability_Prediction.md",
+          "lines": "401-441,470-507",
+          "note": "(29)-(35), (40), Algorithm 1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Robust_Link_Maintenance_Algorithm_for_Directional_UAV_Networks_Based_on_Breakage_Probability_Prediction/A_Robust_Link_Maintenance_Algorithm_for_Directional_UAV_Networks_Based_on_Breakage_Probability_Prediction.md",
+          "lines": "5,519,604-608",
+          "note": "10-fold vs PLM/RPL; 5-7x LMEI; prototype"
+        }
+      ]
+    },
+    {
+      "slug": "sun-2026-mde-ch-3d-uav-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/3D_UAV_Trajectory_Planning_for_IoT_Data_Collection_via_Matrix-Based_Evolutionary_Computation/3D_UAV_Trajectory_Planning_for_IoT_Data_Collection_via_Matrix-Based_Evolutionary_Computation.md",
+          "lines": "195-203",
+          "note": "(19a)-(19b) C1-C10"
+        },
+        {
+          "path": "raw/sources/3D_UAV_Trajectory_Planning_for_IoT_Data_Collection_via_Matrix-Based_Evolutionary_Computation/3D_UAV_Trajectory_Planning_for_IoT_Data_Collection_via_Matrix-Based_Evolutionary_Computation.md",
+          "lines": "318-357,442-444",
+          "note": "Bezier problem (33), constraint handling"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/3D_UAV_Trajectory_Planning_for_IoT_Data_Collection_via_Matrix-Based_Evolutionary_Computation/3D_UAV_Trajectory_Planning_for_IoT_Data_Collection_via_Matrix-Based_Evolutionary_Computation.md",
+          "lines": "734-740,768",
+          "note": "EC baselines; SCA comparison"
+        }
+      ]
+    },
+    {
+      "slug": "tang-2026-hg-maddpg-uav-rescue",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Task_Assignment_and_Exploration_Optimization_for_Low_Altitude_UAV_Rescue_via_Generative_AI_Enhanced_Multi-Agent_Reinforcement_Learning/Task_Assignment_and_Exploration_Optimization_for_Low_Altitude_UAV_Rescue_via_Generative_AI_Enhanced_Multi-Agent_Reinforcement_Learning.md",
+          "lines": "250-294",
+          "note": "(P1) (20a)-(20k)"
+        },
+        {
+          "path": "raw/sources/Task_Assignment_and_Exploration_Optimization_for_Low_Altitude_UAV_Rescue_via_Generative_AI_Enhanced_Multi-Agent_Reinforcement_Learning/Task_Assignment_and_Exploration_Optimization_for_Low_Altitude_UAV_Rescue_via_Generative_AI_Enhanced_Multi-Agent_Reinforcement_Learning.md",
+          "lines": "354-448",
+          "note": "Lyapunov per-slot (26), (28)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Task_Assignment_and_Exploration_Optimization_for_Low_Altitude_UAV_Rescue_via_Generative_AI_Enhanced_Multi-Agent_Reinforcement_Learning/Task_Assignment_and_Exploration_Optimization_for_Low_Altitude_UAV_Rescue_via_Generative_AI_Enhanced_Multi-Agent_Reinforcement_Learning.md",
+          "lines": "644-646,670,698",
+          "note": "MADDPG/MAPPO; slower convergence; latency"
+        }
+      ]
+    },
+    {
+      "slug": "v-2026-pb-papp-survivor-detection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/PB-PAPP_An_Efficient_Mechanism_for_Real-Time_Survivor_Detection_in_Disaster_Regions/PB-PAPP_An_Efficient_Mechanism_for_Real-Time_Survivor_Detection_in_Disaster_Regions.md",
+          "lines": "51-57",
+          "note": "objective"
+        },
+        {
+          "path": "raw/sources/PB-PAPP_An_Efficient_Mechanism_for_Real-Time_Survivor_Detection_in_Disaster_Regions/PB-PAPP_An_Efficient_Mechanism_for_Real-Time_Survivor_Detection_in_Disaster_Regions.md",
+          "lines": "60-83",
+          "note": "(C1)-(C4)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/PB-PAPP_An_Efficient_Mechanism_for_Real-Time_Survivor_Detection_in_Disaster_Regions/PB-PAPP_An_Efficient_Mechanism_for_Real-Time_Survivor_Detection_in_Disaster_Regions.md",
+          "lines": "320,326,370",
+          "note": "82.63%; elapsed/CPU time; memory 137.54 MB"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-acbft-uav-consensus",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.md",
+          "lines": "166,247,266",
+          "note": "hop matrix (1), objective (2), 2f+1 chain"
+        },
+        {
+          "path": "raw/sources/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.md",
+          "lines": "297-303,385,454",
+          "note": "PSO (3)-(4); N=3f+1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks/ACBFT_Adaptive_Chained_Byzantine_Fault-Tolerant_Consensus_Protocol_for_UAV_Ad_Hoc_Networks.md",
+          "lines": "35,488-490,528",
+          "note": "96.2%; PBFT/BChain; rechaining zero throughput"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2025-uav-swarm-stackelberg",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism.md",
+          "lines": "146-149,178-238",
+          "note": "capacity (9), RB model, hybrid mode"
+        },
+        {
+          "path": "raw/sources/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism.md",
+          "lines": "249-305,382-402",
+          "note": "P0 (11), P1 (15), (16)-(17), matching"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism/Optimizing_Spectrum_Sharing_in_UAV_Swarms_A_Stackelberg_Game-Based_Incentive_Mechanism.md",
+          "lines": "578-579,663",
+          "note": "FP, RAIM, DOAF; 90.53/26.99/276.55%"
+        }
+      ]
+    },
+    {
+      "slug": "xiang-sac-mapless-robot-navigation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation.md",
+          "lines": "40-55,168,242",
+          "note": "(1), (2), action bounds"
+        },
+        {
+          "path": "raw/sources/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation.md",
+          "lines": "193-200",
+          "note": "reward (9)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation/Continuous_Control_with_Deep_Reinforcement_Learning_for_Mobile_Robot_Navigation.md",
+          "lines": "321,342,346",
+          "note": "move_base comparison; seven targets; sim only"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-distance-attention-uav-navigation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Distance-Attention_Augmented_Reinforcement_Learning_A_Robust_Approach_for_3D_Cooperative_UAV_Navigation_in_Dense_Urban_Environments/Distance-Attention_Augmented_Reinforcement_Learning_A_Robust_Approach_for_3D_Cooperative_UAV_Navigation_in_Dense_Urban_Environments.md",
+          "lines": "55-75",
+          "note": "action (1), observation (2)"
+        },
+        {
+          "path": "raw/sources/Distance-Attention_Augmented_Reinforcement_Learning_A_Robust_Approach_for_3D_Cooperative_UAV_Navigation_in_Dense_Urban_Environments/Distance-Attention_Augmented_Reinforcement_Learning_A_Robust_Approach_for_3D_Cooperative_UAV_Navigation_in_Dense_Urban_Environments.md",
+          "lines": "155-194",
+          "note": "rewards (9)-(13)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Distance-Attention_Augmented_Reinforcement_Learning_A_Robust_Approach_for_3D_Cooperative_UAV_Navigation_in_Dense_Urban_Environments/Distance-Attention_Augmented_Reinforcement_Learning_A_Robust_Approach_for_3D_Cooperative_UAV_Navigation_in_Dense_Urban_Environments.md",
+          "lines": "342-344,394-413,475",
+          "note": "94.6/5.17/0.908/985.3; MADDPG/MARDPG/RL-CN"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-fuzzy-observer-harbor-approach",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Event-Triggered_Fuzzy_State_Observer_Control_for_Surface-Air_Vehicles_Subject_to_the_Harbor-Approaching_Operation/Adaptive_Event-Triggered_Fuzzy_State_Observer_Control_for_Surface-Air_Vehicles_Subject_to_the_Harbor-Approaching_Operation.md",
+          "lines": "44-72",
+          "note": "dynamics (1)-(4), disturbance bound"
+        },
+        {
+          "path": "raw/sources/Adaptive_Event-Triggered_Fuzzy_State_Observer_Control_for_Surface-Air_Vehicles_Subject_to_the_Harbor-Approaching_Operation/Adaptive_Event-Triggered_Fuzzy_State_Observer_Control_for_Surface-Air_Vehicles_Subject_to_the_Harbor-Approaching_Operation.md",
+          "lines": "115-127,412-423",
+          "note": "trigger (8)-(10), SGUUB (48)-(49)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Adaptive_Event-Triggered_Fuzzy_State_Observer_Control_for_Surface-Air_Vehicles_Subject_to_the_Harbor-Approaching_Operation/Adaptive_Event-Triggered_Fuzzy_State_Observer_Control_for_Surface-Air_Vehicles_Subject_to_the_Harbor-Approaching_Operation.md",
+          "lines": "485,495,505",
+          "note": "30-60% vs [41]; attitude error slightly larger"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-omnidirectional-monitoring-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Deploying_UAVs_and_Surveillance_Cameras_for_Continuous_Omnidirectional_Monitoring/Deploying_UAVs_and_Surveillance_Cameras_for_Continuous_Omnidirectional_Monitoring.md",
+          "lines": "204-239",
+          "note": "JUMP-P1 (13a)-(13g), NP-hard"
+        },
+        {
+          "path": "raw/sources/Deploying_UAVs_and_Surveillance_Cameras_for_Continuous_Omnidirectional_Monitoring/Deploying_UAVs_and_Surveillance_Cameras_for_Continuous_Omnidirectional_Monitoring.md",
+          "lines": "572-616,692",
+          "note": "P2 (20), P3 (21), 1/6 and 1/4 ratios"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Deploying_UAVs_and_Surveillance_Cameras_for_Continuous_Omnidirectional_Monitoring/Deploying_UAVs_and_Surveillance_Cameras_for_Continuous_Omnidirectional_Monitoring.md",
+          "lines": "5,721,735,812,846",
+          "note": "13-1446%; DUET etc.; field 0.73/0.59/0.51/0.20"
+        }
+      ]
+    },
+    {
+      "slug": "zhang-2026-uav-task-path-lu-its",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems.md",
+          "lines": "100-105",
+          "note": "objective (6)"
+        },
+        {
+          "path": "raw/sources/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems.md",
+          "lines": "108-116",
+          "note": "constraints (7); kinematics in path stage"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems/Cooperative_Task_Allocation_and_Path_Planning_for_Multi-UAVs_in_Low-Altitude_Urban_Intelligent_Transportation_Systems.md",
+          "lines": "5,408,446-448",
+          "note": "11.67/37.41/61.02%; LLA/BRLA/CBBA; A-Star/DE"
+        }
+      ]
+    },
+    {
+      "slug": "zhao-2026-adaptive-wdc-wet-lae",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer.md",
+          "lines": "79-176",
+          "note": "(3), (6), (10), (11), (14)"
+        },
+        {
+          "path": "raw/sources/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer.md",
+          "lines": "183-232",
+          "note": "(P1) (15)-(20), (P2) (21)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer/Toward_Adaptive_IoT_Service_Balance_in_Low-Altitude_Economy_Multi-UAV-Aided_Bi-Objective_Wireless_Data_Collection_and_Wireless_Energy_Transfer.md",
+          "lines": "507-519",
+          "note": "NPTS benchmark; fixed preference tradeoff"
+        }
+      ]
+    },
+    {
+      "slug": "zheng-2026-active-search-low-altitude-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Active_Search_for_Low-altitude_UAV_Sensing_and_Communication_for_Users_at_Unknown_Locations/Active_Search_for_Low-altitude_UAV_Sensing_and_Communication_for_Users_at_Unknown_Locations.md",
+          "lines": "60-121",
+          "note": "(1)-(7), problem P (5)"
+        },
+        {
+          "path": "raw/sources/Active_Search_for_Low-altitude_UAV_Sensing_and_Communication_for_Users_at_Unknown_Locations/Active_Search_for_Low-altitude_UAV_Sensing_and_Communication_for_Users_at_Unknown_Locations.md",
+          "lines": "130-150",
+          "note": "equipotential (8)-(9), superposed trajectory"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Active_Search_for_Low-altitude_UAV_Sensing_and_Communication_for_Users_at_Unknown_Locations/Active_Search_for_Low-altitude_UAV_Sensing_and_Communication_for_Users_at_Unknown_Locations.md",
+          "lines": "7,521,555,578",
+          "note": ">95% of exhaustive; 2000 cases; 3 km vs genius-aided"
+        }
+      ]
+    },
+    {
+      "slug": "zhou-2026-gl-ahg-coverage-planning",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/GL-AHG_a_Novel_Game-Learning_Alternating_Hierarchical_Genetic_Algorithm_for_UAV-Enabled_Coverage_Path_Planning/GL-AHG_a_Novel_Game-Learning_Alternating_Hierarchical_Genetic_Algorithm_for_UAV-Enabled_Coverage_Path_Planning.md",
+          "lines": "76,141-163,246-291",
+          "note": "WVC game (13)-(20), overlap"
+        },
+        {
+          "path": "raw/sources/GL-AHG_a_Novel_Game-Learning_Alternating_Hierarchical_Genetic_Algorithm_for_UAV-Enabled_Coverage_Path_Planning/GL-AHG_a_Novel_Game-Learning_Alternating_Hierarchical_Genetic_Algorithm_for_UAV-Enabled_Coverage_Path_Planning.md",
+          "lines": "341-406",
+          "note": "path problems (21)-(28)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/GL-AHG_a_Novel_Game-Learning_Alternating_Hierarchical_Genetic_Algorithm_for_UAV-Enabled_Coverage_Path_Planning/GL-AHG_a_Novel_Game-Learning_Alternating_Hierarchical_Genetic_Algorithm_for_UAV-Enabled_Coverage_Path_Planning.md",
+          "lines": "506,543,573,602",
+          "note": "BF etc.; Wucheng 29.2%/30.6%"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2023-aoi-transformer-trajectory",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_AoI-Minimal_Data_Collection_in_UAV-Aided_IoT_Networks_by_Transformer/UAV_Trajectory_Planning_for_AoI-Minimal_Data_Collection_in_UAV-Aided_IoT_Networks_by_Transformer.md",
+          "lines": "77,182-200",
+          "note": "(5), P1 (18), P2 (19)"
+        },
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_AoI-Minimal_Data_Collection_in_UAV-Aided_IoT_Networks_by_Transformer/UAV_Trajectory_Planning_for_AoI-Minimal_Data_Collection_in_UAV-Aided_IoT_Networks_by_Transformer.md",
+          "lines": "189,309,402",
+          "note": "disk sampling, decoding, REINFORCE baseline"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV_Trajectory_Planning_for_AoI-Minimal_Data_Collection_in_UAV-Aided_IoT_Networks_by_Transformer/UAV_Trajectory_Planning_for_AoI-Minimal_Data_Collection_in_UAV-Aided_IoT_Networks_by_Transformer.md",
+          "lines": "5,416-442",
+          "note": "decoders; GA, SA, Ptr-A*; generalization"
+        }
+      ]
+    }
+  ]
+}
