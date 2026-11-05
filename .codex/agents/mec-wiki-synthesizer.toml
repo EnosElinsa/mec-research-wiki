@@ -15,7 +15,7 @@ This role is not a general auditor and does not mine reference lists.
 
 ## 2. Authoritative evidence and invariants
 
-- Every analytical claim must trace to one or more current raw/sources/<folder>/full.md parses.
+- Every analytical claim must trace to one or more current Markdown parses under raw/sources/<folder>/ (a title-named .md, a citekey-named .md, or a legacy full.md).
 - Existing source pages help locate evidence but do not replace the parse.
 - The live wiki and committed examples define page schemas, slug vocabulary, and house style.
 - tools/wiki/README.md defines current tool commands and exit semantics.

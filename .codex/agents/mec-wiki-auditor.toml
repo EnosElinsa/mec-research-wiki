@@ -13,7 +13,7 @@ Do not create new source or analytical pages. If raw/sources contains a genuinel
 
 ## 2. Authoritative evidence and invariants
 
-- Markdown parses under raw/sources/<folder>/, either full.md or a title-named .md, are authoritative for paper facts; use the companion PDF to resolve parse ambiguity or corruption.
+- Markdown parses under raw/sources/<folder>/ (a title-named .md, a citekey-named .md, or a legacy full.md) are authoritative for paper facts; use the companion PDF to resolve parse ambiguity or corruption.
 - The current source workflow is not .bib-driven. Do not introduce BibTeX citekey naming or source_id, source_type, base_confidence, or lifecycle fields during an audit.
 - Existing committed page schemas and the live wiki vocabulary are authoritative for structure and slugs.
 - tools/wiki/README.md defines current command and exit behavior.
@@ -151,6 +151,7 @@ Use the current commands in tools/wiki/README.md. At minimum require:
 - source_schema_audit reports zero errors for the audited scope and, before staging a whole-corpus audit, for the full paper-source corpus.
 - For a whole-corpus source-schema audit, source_schema_manifest merges the reviewed evidence sidecars with --require-grounded and reports zero unresolved, ambiguous, orphaned, conflicting, or ungrounded records.
 - Every Modeling Quick-Use Card claim and Related Work sentence has raw-parse or PDF evidence; the structural audit does not replace grounding review.
+- A correction that changes a card or Related Work claim updates that page's grounding sidecar entry in wiki/.grounding/, so the recorded evidence still supports the page.
 - For a whole-corpus audit, required_count + not_applicable_count equals paper_source_count, and no not_applicable page contains a card.
 - entity_roster_audit reports zero overclaims.
 - Relevant tools/wiki tests pass.

@@ -15,7 +15,7 @@ This role does not perform broad corpus synthesis, full-library auditing, or ref
 
 ## 2. Authoritative evidence and invariants
 
-- The paper Markdown parse under raw/sources/<folder>/, either full.md or the title-named .md, is the primary source for metadata and paper claims. Use the companion PDF only to resolve parse omissions or corruption.
+- The paper Markdown parse under raw/sources/<folder>/ (a title-named .md, a citekey-named .md, or a legacy full.md) is the primary source for metadata and paper claims. Use the companion PDF only to resolve parse omissions or corruption.
 - Curation remains raw-parse driven. Do not add .bib lookup, BibTeX citekey naming, source_id, source_type, base_confidence, or lifecycle fields.
 - The live wiki directories are the authoritative vocabulary and schema. Read two or three committed examples of every page type you will write.
 - tools/wiki/README.md is the current command and exit-code contract for maintained tooling.
@@ -133,6 +133,7 @@ Run the current commands documented in tools/wiki/README.md. At minimum, complet
 - source_schema_audit reports zero errors for the completed scope and, before staging, for the full paper-source corpus.
 - For a whole-corpus source-schema migration, source_schema_manifest merges the reviewed evidence sidecars with --require-grounded and reports zero unresolved, ambiguous, orphaned, conflicting, or ungrounded records.
 - Every Modeling Quick-Use Card claim and Related Work sentence has raw-parse or PDF evidence; the structural audit does not replace this grounding review.
+- Every new source page has a grounding sidecar entry under wiki/.grounding/ (format in schema.md), and source_schema_manifest with --require-grounded reports it grounded with zero evidence conflicts.
 - modeling_card required plus not_applicable equals the paper-source count in scope, with no card on a not_applicable page.
 - entity_roster_audit reports zero claimed-but-absent sources; advisory namesakes remain advisory.
 - Relevant tools/wiki unit tests pass.

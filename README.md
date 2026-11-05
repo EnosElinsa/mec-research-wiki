@@ -1,54 +1,137 @@
 # MEC Research Wiki
 
-A long-running research deep-dive on **mobile edge computing (MEC)** in all its variants — task offloading, resource allocation, trajectory and infrastructure design, decision-making algorithms (RL, DRL, multi-agent, game-theoretic, optimization-based), and adjacent topics (UAVs, LEO satellites, vehicular networks, low-altitude economy, federated learning, blockchain / zero-trust, wireless power, etc.).
+A curated, evidence-grounded knowledge base on **mobile edge computing (MEC)**. It covers task offloading, resource allocation, trajectory and deployment design, and the optimization and learning methods that solve them, across UAV, high-altitude platform (HAP), satellite, vehicular, maritime, and terrestrial networks. Adjacent work that MEC system models build on (UAV communications, channel models, ISAC, RIS, physical-layer security, federated learning) is included.
 
-This wiki has no fixed sub-scope. Anything inside the MEC umbrella is fair game; sources accumulate over time and the graph grows with them. The structure is generic enough that the same page-type vocabulary works whether the next paper is about UAV trajectories, LEO offloading, vehicular caching, or something else under the MEC tent.
+Every paper page is written from the paper's full-text parse. A paper with a reusable decision model carries a **Modeling Quick-Use Card** (scenario, objective, decision variables, constraints, algorithm), and every paper carries a citation-ready **Related Work paragraph**. Every card symbol and number and every Related Work sentence is checked against the parse, and the supporting line ranges are recorded in [`wiki/.grounding/`](wiki/.grounding/).
 
-Built and indexed with [LLM Wiki](https://github.com/llm-wiki). Wikilinks (`[[page-slug]]`) form the graph; YAML frontmatter typing is enforced by `schema.md`.
+## Corpus at a glance
 
-## Layout
+Counts as of 2026-11-05. `python tools/wiki/corpus_counts.py` prints the live numbers.
 
+| Layer | Pages | Content |
+|---|---:|---|
+| Sources | 699 | One page per paper: 593 with a modeling card, 106 without (surveys, foundational algorithms, measurement and protocol papers) |
+| Concepts | 665 | Techniques, system-model components, metrics, and architectures |
+| Entities | 211 | 209 recurring authors and 2 tools |
+| Analytical pages | 57 | 20 synthesis, 8 comparison, 15 finding, 6 methodology, 5 query, and 3 thesis pages |
+| References | 2 | Citation database mined from paper reference lists, plus curate-next recommendations |
+| Raw papers | 701 folders | Markdown parse, extracted figures, and PDF (Git LFS) for each paper |
+
+All 699 source pages are grounded. 647 come from IEEE journals, magazines, and conferences, and 501 were published in 2024-2026; the earliest is from 2010.
+
+## Where to start
+
+- [`wiki/overview.md`](wiki/overview.md): corpus snapshot and the research tracks that have emerged.
+- [`wiki/index.md`](wiki/index.md): every page, grouped by type and topic.
+- Cross-paper analysis, for example the [DRL vs evolutionary vs classical solvers](wiki/synthesis/drl-vs-evolutionary-vs-classical-solvers.md) synthesis, the [game-theoretic offloading formulations](wiki/comparisons/game-theoretic-offloading-formulations.md) comparison, [UAV energy replenishment and service continuity](wiki/synthesis/uav-energy-replenishment-and-service-continuity.md), and the [SAGIN and satellite offloading landscape](wiki/synthesis/sagin-satellite-offloading-landscape.md).
+- Working theses with supporting evidence and refutation criteria: [decomposition beats end-to-end DRL](wiki/thesis/decomposition-beats-end-to-end-drl-in-mec.md) and [explicit constraints beat reward shaping](wiki/thesis/explicit-constraints-beat-reward-shaping-in-mec-drl.md).
+- A typical source page: [Zeng et al. 2019, energy minimization for rotary-wing UAV communication](wiki/sources/zeng-2019-rotary-wing-energy-min.md).
+- [`purpose.md`](purpose.md): the research question, scope, and current status.
+
+## Reading the wiki
+
+Pages link to each other with `[[page-slug]]` wikilinks, which GitHub displays as plain text. To follow links and view the graph, use one of:
+
+- **Obsidian.** Open the repository root as a vault. `.obsidian/` holds the shared settings (wikilinks, shortest-path link format).
+- **LLM Wiki.** The [LLM Wiki](https://github.com/nashsu/llm_wiki) desktop app indexes `purpose.md`, `schema.md`, `wiki/**`, and `raw/sources/**`, and provides search, a graph view, and a local HTTP API on `127.0.0.1:19828`. Its index lives in the ignored `.llm-wiki/` folder. The app is optional; no maintenance step depends on it.
+- **Plain files.** Every page is Markdown with YAML frontmatter, so `rg` or `grep` over `wiki/` works for search.
+
+## Repository layout
+
+```text
+README.md            Project introduction (this file)
+purpose.md           Research question, scope, methodology, and status
+schema.md            Page types, frontmatter, naming, and the paper-source contract
+CONTRIBUTING.md      Maintenance workflow, editing conventions, and commit rules
+wiki/
+  overview.md        Corpus snapshot and emerging tracks
+  index.md           Catalogue of every page, grouped by type
+  log.md             Reverse-chronological maintenance log
+  sources/           One page per paper
+  concepts/          Techniques, system-model components, metrics, architectures
+  entities/          Recurring authors and tools
+  findings/          Single-source results worth tracking separately
+  synthesis/         Cross-paper maps of a track or design space
+  comparisons/       Side-by-side analysis of comparable methods or formulations
+  methodology/       Solution protocols shared by several papers
+  queries/           Open questions raised by the corpus
+  thesis/            Working positions with confidence, status, and refutation criteria
+  references/        Mined citation database and curate-next recommendations
+  .grounding/        Evidence sidecars: parse line ranges behind each card and Related Work paragraph
+raw/sources/         One folder per paper: Markdown parse, figures, PDF (Git LFS)
+ideas/               Research-idea drafts built on the wiki (Chinese) and the prompt that produces them
+tools/               PowerShell ingest scripts: MinerU conversion, MEC relevance filter, folder naming
+  wiki/              Python audit and maintenance toolkit (see tools/wiki/README.md)
+.codex/agents/       Role definitions for the curator, auditor, synthesizer, and reference-scout agents
+.agents/skills/      Agent skills; retrieve-ieee-papers fetches selected papers through authorized access
+.obsidian/           Shared Obsidian vault settings
 ```
-purpose.md          Research question, hypothesis, scope, methodology
-schema.md           Page-type / frontmatter / cross-link conventions
-wiki/               Curated knowledge graph (markdown + wikilinks)
-  overview.md       Project state at a glance
-  index.md          Type-grouped page directory
-  log.md            Reverse-chronological activity log
-  entities/        Named things (people, models, tools, datasets)
-  concepts/        Ideas, techniques, frameworks
-  sources/         Papers, articles, talks (curated)
-  methodology/     Research methods and protocols
-  findings/        Individual empirical results
-  thesis/          Working hypotheses and their evolution
-  queries/         Open questions
-  comparisons/     Side-by-side analyses
-  synthesis/       Cross-cutting summaries
-raw/sources/       Untouched primary documents (PDFs, parsed markdown, images)
-                   — files here are queued for ingestion; see "Source pipeline" below
+
+These local paths are ignored by Git: `.curation-out/` (scratch reports), `.llm-wiki/` (LLM Wiki index), `raw/tmp/` (staged downloads), and `docs/` (planning notes).
+
+## How a paper enters the wiki
+
+1. **Retrieve.** PDFs come from the maintainer's library or from the [`retrieve-ieee-papers`](.agents/skills/retrieve-ieee-papers/SKILL.md) skill, which downloads one selected paper through authorized institutional access, parses it with MinerU, and stages it under the ignored `raw/tmp/`. Batch imports use `tools/convert_with_mineru.ps1`, which applies the keyword filter in `tools/mec_relevance.ps1`.
+2. **Raw.** The maintainer moves the paper folder into `raw/sources/<Folder>/`. The Markdown parse is the evidence of record; the PDF resolves parse errors such as garbled formulas.
+3. **Curated.** A `wiki/sources/<author-year-slug>.md` page is written from the parse according to [`schema.md`](schema.md), then linked to concept and entity pages and added to `wiki/index.md` and `wiki/log.md`.
+4. **Grounded.** Every card symbol and number and every Related Work sentence is checked against the parse, and the evidence lines are recorded in a `wiki/.grounding/` sidecar.
+5. **Synthesized.** Finding, comparison, synthesis, methodology, query, and thesis pages cite the source when the evidence supports a cross-paper claim.
+
+`python tools/wiki/curation_status.py --dupes` lists raw folders that have no source page and flags duplicate ingests.
+
+## Quality gates
+
+Run from the repository root before every commit. The scripts use only the Python standard library.
+
+| Command | Checks | Passes when |
+|---|---|---|
+| `python tools/wiki/linkcheck.py` | Every wikilink resolves under Obsidian rules | No dangling links |
+| `python tools/wiki/frontmatter_audit.py` | Required keys, type matches directory, type-specific tags | 0 errors |
+| `python tools/wiki/index_audit.py` | Every page is catalogued exactly once in `wiki/index.md` | No gaps or duplicates |
+| `python tools/wiki/process_refs.py` | No batch or run narration outside `wiki/log.md` | 0 hits |
+| `python tools/wiki/source_schema_audit.py` | Source-page section order, card, and Related Work structure | 0 errors |
+| `python tools/wiki/source_schema_manifest.py --evidence "wiki/.grounding/source-schema-evidence-*.json" --require-grounded` | Each source page maps to one parse and has grounding evidence | All pages grounded, 0 conflicts |
+| `python tools/wiki/curation_status.py --dupes` | Raw folders without a source page | No new papers |
+| `python -m unittest discover -s tools/wiki/tests` | Toolkit unit tests | All pass |
+
+The structural audits cannot verify facts. Factual accuracy rests on the grounding review and its recorded evidence. [`tools/wiki/README.md`](tools/wiki/README.md) documents every script, flag, and exit code.
+
+## Setup
+
+```sh
+git lfs install
+git clone https://github.com/EnosElinsa/mec-research-wiki.git
 ```
 
-See `schema.md` for naming and frontmatter rules. See `purpose.md` for the higher-level research framing.
+The PDFs take about 1.7 GB. To clone only the text, set `GIT_LFS_SKIP_SMUDGE=1` before cloning (PowerShell: `$env:GIT_LFS_SKIP_SMUDGE = "1"`), then fetch individual PDFs later with `git lfs pull --include "<path>"`.
 
-## Source pipeline
+Requirements:
 
-A source has three states:
+- Python 3 for `tools/wiki/` (standard library only; tested with Python 3.14).
+- Windows PowerShell 5.1 or later, Node.js, the `mineru-open-api` CLI (`npm install -g mineru-open-api`), and a `MINERU_TOKEN` environment variable for `tools/convert_with_mineru.ps1`.
+- Chrome, Node.js, a MinerU token, and institutional credentials for `retrieve-ieee-papers`; its [SKILL.md](.agents/skills/retrieve-ieee-papers/SKILL.md) covers the one-time encrypted secret setup.
 
-1. **Raw** — present under `raw/sources/<slug>/` (parsed markdown, original PDF, extracted images), but not yet reviewed or linked into the graph.
-2. **Curated** — has a corresponding `wiki/sources/<author-year-slug>.md` with frontmatter, a TL;DR, and outbound wikilinks to the entities / concepts / findings it introduces.
-3. **Synthesized** — its findings have been cross-linked from at least one synthesis page or thesis page.
+## Agent roles
 
-The `raw/sources/` directory grows over time. Curation is intentionally lazy: papers stay raw until something asks them to be linked into the graph. Singleton concept pages aren't created for a single mention — wait for the second source.
+Maintenance is split across four agent roles defined in [`.codex/agents/`](.codex/agents/). Each role has a fixed write scope, and only one writer at a time owns `wiki/index.md`, `wiki/overview.md`, `wiki/log.md`, and Git.
 
-## Working with the wiki
+| Agent | Writes | Hands off |
+|---|---|---|
+| `mec-wiki-curator` | New source pages plus the concept, entity, index, overview, and log updates they need | Synthesis, audits, and the reference database |
+| `mec-wiki-auditor` | Verified corrections to existing pages: metadata, claims, links, counts, grounding | New papers to the curator, coverage gaps to the synthesizer |
+| `mec-wiki-synthesizer` | Finding, synthesis, comparison, methodology, query, and thesis pages and their cross-links | New papers to the curator |
+| `mec-reference-scout` | `wiki/references/` and the reference tools | Curation and analytical pages |
 
-The local LLM Wiki desktop app indexes `wiki/**/*.md` and `raw/sources/**` and serves a JSON API on `http://127.0.0.1:19828`. Wikilinks (`[[page-slug]]`) are graph edges; frontmatter `related:` lists are explicit cross-references.
+[`CONTRIBUTING.md`](CONTRIBUTING.md) summarizes the shared rules for both human and agent maintainers.
 
-To curate a raw source:
+## Known limitations
 
-1. Confirm the parsed markdown lives at `raw/sources/<slug>/full.md`.
-2. Skim it and decide whether it's in scope for `purpose.md`. If marginal, leave it raw and note why in `wiki/log.md`.
-3. Write `wiki/sources/<author-year-slug>.md` following `schema.md`. TL;DR, problem framing, method, findings, limitations, plus outbound wikilinks to the entities / concepts / findings it introduces.
-4. Add or extend `wiki/concepts/`, `wiki/entities/`, and `wiki/findings/` pages as needed.
-5. Update `wiki/index.md` and `wiki/log.md`.
-6. Trigger a rescan via the LLM Wiki API or the desktop UI so the local index picks up the new files.
+- Most papers in the corpus report simulation results. [Hardware validation and the sim-to-real gap](wiki/synthesis/hardware-validation-and-sim-to-real-in-mec.md) lists the few with physical experiments.
+- The reference database and recommendations were last generated on 2026-06-02, when 214 papers were curated. `tools/wiki/mine_refs.py` reads only `full.md` parses, while current raw folders use title- or citekey-named parses, so a refresh requires extending the tool first.
+- Two raw folders are duplicate ingests (truncated-title copies) of curated papers. Until they are removed, `source_schema_manifest.py --require-grounded` exits 1 and reports them as orphan raw folders; the grounding result itself (699/699, 0 conflicts) is unaffected.
+
+## Copyright and license
+
+The papers under `raw/sources/` (PDFs, parsed text, and figures) are the work of their authors and publishers and remain under their original copyright and license terms. They are not covered by any license of this repository. To request removal of a paper, open an issue.
+
+No license has been chosen for the original wiki text and tooling yet, so default copyright applies.

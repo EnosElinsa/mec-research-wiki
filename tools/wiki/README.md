@@ -21,9 +21,21 @@ session.
   itself. Run the scripts from the repo root: `python tools/wiki/<script>.py`.
 
 Paper-source curation remains grounded in the Markdown parse under
-`raw/sources/<folder>/`, including both `full.md` and title-named parses. The
-current toolkit does not define a `.bib` companion ingest path, BibTeX-derived
-page naming, or BibTeX-derived metadata fields.
+`raw/sources/<folder>/`: a title-named `.md`, a citekey-named `.md` from newer
+ingests, or a legacy `full.md`. The toolkit does not read `.bib` companions,
+name pages by citekey, or derive metadata fields from BibTeX.
+
+## Requirements and tests
+
+- Python 3, standard library only (tested with Python 3.14). Run every script
+  from the repository root.
+- Unit tests: `python -m unittest discover -s tools/wiki/tests`.
+- The PowerShell ingest helpers in `tools/` have their own tests; run each with
+  `powershell -NoProfile -ExecutionPolicy Bypass -File tools/<test>.ps1` for
+  `test_source_naming.ps1`, `test_mec_relevance.ps1`, and
+  `test_convert_manifest_rerun.ps1`.
+- Add or update a test with every behavior change, and run the suite before
+  committing tool changes.
 
 ## Scripts
 
@@ -41,7 +53,7 @@ page naming, or BibTeX-derived metadata fields.
 | `source_schema_audit.py` | Structural lint for paper source pages: validates the `modeling_card` enum, conditional Modeling Quick-Use Card presence and placement, required labels and populated tables, early-section order, and Related Work presence, one-paragraph/4-8-sentence length, `[x]`, English-only prose, dash and wikilink restrictions. It does not decide modeling applicability or fact-check prose; those remain raw-evidence review gates. Exit 1 on structural errors. | `--path` (repeatable), `--json` |
 | `source_schema_manifest.py` | Build the scratch source-to-raw migration manifest without silent skips. Retains every Raw-artifacts reference, resolves stale `full.md` and folder paths conservatively, and fails if any source page, raw Markdown parse, or raw folder is unresolved, ambiguous, or orphaned. It records current `modeling_card` status, merges reviewer evidence sidecars, verifies that evidence paths are the page's resolved parses and that cited line ranges are in bounds, and can require every page to be grounded. It does not decide applicability or generate prose. | `--evidence` (repeatable), `--require-grounded`, `--json` |
 | `entity_roster_audit.py` | Cross-check author-entity rosters against source-page `authors:` lists, both directions: **claimed-but-absent** (entity links a source whose author list lacks a matching name — roster over-claim) and **present-but-unlisted** (a source lists a matching author the entity does not link — possible omission *or* namesake). Roster claims are read from the **roster region only** (frontmatter `related:` + intro + bulleted source list, i.e. everything before the first `## Contributions` heading), so editorial contrast-mentions in the Contributions commentary are not mis-counted as claims. Name matching is reported as `strict` (full-name), `respaced` (identical once interior spaces are removed, e.g. "Li Ping Qian" == "Liping Qian" — a Chinese given-name spacing variant), or `loose` (first+last token only); both YAML author styles (inline flow + block list) are handled. Advisory only (always exit 0) — it never decides identity; confirm namesakes against the parses before editing. | `--input`, `--json` |
-| `mine_refs.py` | Mine the `# REFERENCES` of every `raw/sources/*/full.md` into deduplicated reference records; idempotently MERGE into `wiki/references/reference-database.json` (preserves enrichment + curated tags, refreshes `cited_by`/`cited_count`, re-derives venue tiers). Used by `mec-reference-scout`. | `--json`, `--merge DB.json` |
+| `mine_refs.py` | Mine the `# REFERENCES` of every `raw/sources/*/full.md` into deduplicated reference records (it reads only `full.md`, so the current title- and citekey-named parses are skipped until the tool is extended); idempotently MERGE into `wiki/references/reference-database.json` (preserves enrichment + curated tags, refreshes `cited_by`/`cited_count`, re-derives venue tiers). Used by `mec-reference-scout`. | `--json`, `--merge DB.json` |
 | `verify_refdb.py` | Integrity gate for the mined `reference-database.json`: scans every record's string fields for residual MinerU contamination markers (the `strip_ref_contamination` regression guard), checks all parsed years are in `[--min-year, --max-year]`, and lists future-year records (>= `--flag-year`) split into curated (expected in-press) vs uncurated (review for mis-parse). Exit 1 on any contamination marker or out-of-range year; year warnings alone do not fail. | `--db`, `--min-year`, `--max-year`, `--flag-year`, `--json` |
 | `render_refdb.py` | Render the human-readable `wiki/references/reference-database.md` (summary + most-cited centrality table) from the JSON DB so the two never drift. | `--db`, `--out`, `--min` |
 | `recommend_refs.py` | Rank not-yet-curated references as curate-next candidates (recency + venue tier + in-corpus citation frequency + scope), tag breadth/depth and ready-in-raw, and refresh the dated `wiki/references/recommendations.md`. | `--top`, `--db`, `--out`, `--json` |
