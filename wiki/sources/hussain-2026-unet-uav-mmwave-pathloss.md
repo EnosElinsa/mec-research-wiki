@@ -16,7 +16,7 @@ related:
   - "[[yang-2026-generative-radio-map-lae]]"
   - "[[bai-2026-multimodal-uav-vehicle-channel]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Multi-Scale Feature Extraction and Fusion U-Net for Pathloss Prediction in UAV-Assisted mmWave Radio Networks
@@ -33,7 +33,7 @@ Introduces a U-Net pathloss predictor for UAV-assisted mmWave networks that uses
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hussain [x] studied pathloss prediction for UAV-assisted millimeter-wave radio networks across multiple urban environments and UAV altitudes. The proposed U-Net takes log-distance, line-of-sight mask, and building-occupancy mask inputs and combines multi-scale convolution branches, feature fusion, and an atrous spatial pyramid pooling bottleneck. A vectorized geometric line-of-sight algorithm accelerates mask generation for dense receiver grids. The model was evaluated on an in-house 28 GHz ray-tracing dataset and the RadioMapSeer benchmark, including cross-city, altitude, and noisy-input tests. The reported in-house results include a 3.15 dB RMSE, a 2.37 dB MAE, and a 0.00049 NMSE for the complete model.
+Hussain [x] studied pathloss prediction for UAV-assisted millimeter-wave radio networks across multiple urban environments and UAV altitudes. The proposed U-Net takes log-distance, line-of-sight mask, and building-occupancy mask inputs and combines multi-scale convolution branches, feature fusion, and an atrous spatial pyramid pooling bottleneck. A vectorized geometric line-of-sight algorithm accelerates mask generation for dense receiver grids. The model was evaluated on an in-house 28 GHz ray-tracing dataset and the RadioMapSeer benchmark, including cross-city, altitude, and noisy-input tests. The reported in-house results include a 3.15 dB RMSE, a 2.37 dB MAE, and a 0.00049 NMSE for the complete model, although the parallel convolutional design lowers throughput slightly relative to lighter baselines.
 
 ## Problem
 

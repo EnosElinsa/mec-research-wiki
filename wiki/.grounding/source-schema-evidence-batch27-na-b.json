@@ -1,0 +1,80 @@
+{
+  "entries": [
+    {
+      "slug": "liang-2025-gai-semcom-survey",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications.md",
+          "lines": "5",
+          "note": "Survey; no system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications/Generative_AI-Driven_Semantic_Communication_Networks_Architecture_Technologies_and_Applications.md",
+          "lines": "5,344-357,503",
+          "note": "planes, case study 5/28/42 s and 2/2/20 Mbit"
+        }
+      ]
+    },
+    {
+      "slug": "lillicrap-2016-ddpg-continuous-control",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Continuous control with deep reinforcement learning/Continuous control with deep reinforcement learning.md",
+          "lines": "13",
+          "note": "RL algorithm paper; no wireless system model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Continuous control with deep reinforcement learning/Continuous control with deep reinforcement learning.md",
+          "lines": "13,185",
+          "note": "DDPG; >20 tasks; pixels"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-uav-hsr-jitter",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Evaluating_the_Impact_of_Jitter_on_Collaborative_High-Speed_Aerial_and_Railway_Networks/Evaluating_the_Impact_of_Jitter_on_Collaborative_High-Speed_Aerial_and_Railway_Networks.md",
+          "lines": "7,421",
+          "note": "Performance analysis and codebook design; no central resource-allocation model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Evaluating_the_Impact_of_Jitter_on_Collaborative_High-Speed_Aerial_and_Railway_Networks/Evaluating_the_Impact_of_Jitter_on_Collaborative_High-Speed_Aerial_and_Railway_Networks.md",
+          "lines": "7,421",
+          "note": "jitter model, outage/ergodic, CA vs DA"
+        }
+      ]
+    },
+    {
+      "slug": "lyu-2026-laim-deployment-lae",
+      "modeling_card": "not_applicable",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Empowering_Intelligent_Low-Altitude_Economy_With_Large_AI_Model_Deployment/Empowering_Intelligent_Low-Altitude_Economy_With_Large_AI_Model_Deployment.md",
+          "lines": "7",
+          "note": "Magazine article; no system optimization model"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Empowering_Intelligent_Low-Altitude_Economy_With_Large_AI_Model_Deployment/Empowering_Intelligent_Low-Altitude_Economy_With_Large_AI_Model_Deployment.md",
+          "lines": "7,356",
+          "note": "hierarchical architecture, pipeline, case studies"
+        }
+      ]
+    }
+  ]
+}

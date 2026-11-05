@@ -17,7 +17,7 @@ related:
   - "[[dusit-niyato]]"
 created: 2026-07-13
 modeling_card: not_applicable
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-UAV CoMP Transmission Based on UAV Jitter Characteristics: Analysis and Optimization
@@ -34,7 +34,7 @@ Derives channel correlation and approximate CoMP capacity under pitch/yaw jitter
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Jin et al. [x] analyzed multi-UAV coordinated multipoint transmission when platform pitch and yaw jitter make channel state information time-varying. They derived a jitter-aware channel model, channel autocorrelation, and approximate system capacity for distributed UAV base stations serving ground users. To compensate stale precoding information, they proposed an autoregressive predictor and a jitter-characteristics-based LSTM that uses attitude and channel sequences to predict the next-symbol channel. Numerical results report that J-LSTM improved channel-estimation accuracy by up to 3.8% relative to the AR scheme at a 10-degree jitter angle. The reported capacity benefit grew with jitter severity and exceeded 8 bps/Hz in one high-SNR setting with a 10-degree jitter angle.
+Jin et al. [x] analyzed multi-UAV coordinated multipoint transmission when platform pitch and yaw jitter make channel state information time-varying. They derived a jitter-aware channel model, channel autocorrelation, and approximate system capacity for distributed UAV base stations serving ground users. To compensate stale precoding information, they proposed an autoregressive predictor and a jitter-characteristics-based LSTM that uses attitude and channel sequences to predict the next-symbol channel. Numerical results report that J-LSTM improved compensation accuracy by more than 3.8% relative to the delayed AR scheme at a 10-degree jitter angle and by nearly 7% at 14 degrees. The reported capacity benefit grew with jitter severity and exceeded 8 bps/Hz in one high-SNR setting with a 10-degree jitter angle.
 
 ## Problem and system model
 

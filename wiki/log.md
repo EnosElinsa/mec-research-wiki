@@ -1,5 +1,11 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 27a (non-modeling sources: surveys, RL algorithms, protocols, measurement studies)
+
+- Grounded 39 pages whose modeling card is not applicable (surveys, tutorials, RL algorithm papers, routing/MAC/security protocols, channel models, measurement and vision studies); evidence is in `wiki/.grounding/source-schema-evidence-batch27-na-a.json` and `-na-b.json`.
+- Each page's Related Work paragraph was checked against the abstract, conclusion, and result lines, and every number was matched to the parse.
+- Fixes: jin-2026 now reports a gain of more than 3.8% over delayed AR at 10° and nearly 7% at 14° (it previously said "up to 3.8%"); ge-2026 drops an unsupported "eight priority classes" and reports that SPMA holds 99% only below 32 nodes; hu-2026 SEER notes the marginal gain over Voyager; hussain-2026 notes the throughput cost of the parallel design.
+
 ## [2026-11-03] Grounded batch 26b (UAV planning, navigation, spectrum games, monitoring)
 
 - Grounded 16 path-planning, navigation, consensus, spectrum-sharing, and monitoring source pages; evidence is in `wiki/.grounding/source-schema-evidence-batch26b-uav-planning.json`. All modeling-card-required pages are now grounded.
