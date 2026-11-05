@@ -24,7 +24,7 @@ related:
   - "[[aerial-observation-control-covertness-surveillance-and-monitoring]]"
   - "[[derrick-wing-kwan-ng]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -44,7 +44,7 @@ A UAV-borne fully connected RIS creates the legitimate monitor's otherwise block
 
 **Scenario**: A suspicious source transmits to a suspicious destination while a legitimate monitor with multiple antennas listens through a UAV-borne fully connected RIS. The direct source-monitor path is blocked; one monitor antenna is selected per slot, and channels combine distance-dependent loss, LoS probability, and Nakagami fading.
 
-**Problem & objective**: FC-RIS wireless-information-surveillance design, a two-timescale probabilistic optimization, maximizes monitoring success probability (MSP), $\max \Pr\{R_{\mathrm{LM}}>R_{\mathrm{SD}}\}$, while selecting an antenna, configuring the FC-RIS, and placing the UAV under a monitoring non-outage constraint.
+**Problem & objective**: A two-stage design: short-term antenna selection and FC-RIS configuration maximize the monitoring rate, and long-term placement solves (26), $\max_{\mathbf R}\mathrm E(R_{\mathrm Sn}^{\Omega})$ subject to effective monitoring, reformulated as (33) and (36); performance is reported as monitoring success probability (MSP).
 
 **Decision variables**:
 
@@ -59,11 +59,11 @@ A UAV-borne fully connected RIS creates the legitimate monitor's otherwise block
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Exactly one monitor antenna is selected in each slot |
-| C2 | FC-RIS scattering matrix is symmetric, unitary, and lossless |
-| C3 | The selected monitor rate satisfies the monitoring event against the suspicious-destination rate |
-| C4 | UAV placement remains in the allowed flight region and obeys the average monitoring non-outage constraint |
-| C5 | TAS accepts the first antenna above $\gamma_{th}$ and falls back to the maximum-gain antenna otherwise |
+| (26) | Placement keeps monitoring effective: $\mathrm E(R_{\mathrm Sn}^{\Omega})\ge\mathrm E(R_{\mathrm{SD},n})$ |
+| (33)–(34) | Horizontal placement problem: maximize cascaded path-loss gain $\Delta$ subject to $Ld_{\mathrm{RM}}^{-\alpha_{\mathrm{RM}}}\ge d_{\mathrm{RD}}^{-\alpha_{\mathrm{RD}}}$ (closed form in Proposition 1) |
+| (36) | Altitude problem: maximize $\Delta$ over $H$ subject to $\Lambda\ge1$ |
+| Model rule | One monitor antenna per slot (RAS, ASC, or TAS selection); TAS takes the first antenna above the threshold and otherwise the strongest |
+| Model rule | The FC-RIS scattering matrix is symmetric and unitary |
 
 **Algorithm**: Select an antenna by round-robin, full-search, or threshold-based TAS → configure FC-RIS with matrix decomposition and Cauchy-Schwarz alignment → derive MSP/order-statistic expressions → optimize long-term placement with statistical CSI and short-term selection/configuration with instantaneous CSI.
 
@@ -71,7 +71,7 @@ A UAV-borne fully connected RIS creates the legitimate monitor's otherwise block
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lin et al. [x] studied wireless information surveillance using a UAV-borne fully connected RIS and a multi-antenna legitimate monitor. They formulated a monitoring-success-probability design that selects one monitor antenna and configures the symmetric-unitary FC-RIS while placing the UAV under a monitoring non-outage condition. The AS-FRRC framework uses reflecting-channel CSI to select an antenna, then obtains the FC-RIS configuration through matrix decomposition and Cauchy-Schwarz phase alignment. Round-robin, full-search, and threshold-based selection trade monitoring probability against CSI and examination overhead, while statistical or large-scale CSI supports the long-term UAV placement. Numerical analysis reports higher MSP for UAV-borne FC-RIS schemes than corresponding diagonal-RIS and terrestrial-RIS surveillance schemes in the evaluated settings.
+Lin et al. [x] studied wireless information surveillance using a UAV-borne fully connected RIS and a multi-antenna legitimate monitor. They formulated a monitoring-success-probability design that selects one monitor antenna and configures the symmetric-unitary FC-RIS while placing the UAV under a monitoring non-outage condition. The AS-FRRC framework uses reflecting-channel CSI to select an antenna, then obtains the FC-RIS configuration through matrix decomposition and Cauchy-Schwarz phase alignment. Round-robin, full-search, and threshold-based selection trade monitoring probability against CSI and examination overhead, while statistical or large-scale CSI supports the long-term UAV placement. Numerical analysis reports higher MSP for UAV-borne FC-RIS schemes than corresponding diagonal-RIS and terrestrial-RIS surveillance schemes in the evaluated settings; the FlexMAS-FRRC benchmark attains higher MSP than the TAS/ASC schemes but at prohibitive complexity.
 
 ## Problem
 

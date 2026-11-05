@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 25 (UAV communications: RIS privacy, cell-free beamforming, relays, WPT, short-packet)
+
+- Grounded 24 UAV-communications source pages against their parses; evidence is in `wiki/.grounding/source-schema-evidence-batch25-uav-comms-b.json`.
+- Relabeled invented constraint IDs to the papers' own tags (e.g. (15a)–(15e), (19b)–(19g), (36a)–(36g), (59b)–(59f), C1–C3 (9)); added parse notes where tags are blank or shifted (lu-2026 ICSN, lin-2026 WPUCN, zhu-2026 wind, yan-2020).
+- Rewrote cards whose objective or variables did not match the paper: lin-2026 WPUCN ((P2)/(P3) energy minimization), shi-2026 VHetNet (kernel objective (21)), su-2026 three-tier ((43) and relay P1/P2), wang-2018 D2D (τ(t) formulation (9)), and wang-2026 multimodal coverage (no formal problem; LSE potential control).
+- Related Work fixes: named baselines (Max-SR/Min-CRB, Random/MLP/RGAT, ETA, OBP/OPP, GCO, fixed position/rotation), corrected shah-2026's 16.4% to an ablation gain over GA association alone, and noted where the method does not win everywhere (FlexMAS-FRRC higher MSP at prohibitive cost, PSO better with few 6DARAs, hybrid WET lead only up to 32 antennas, connectivity loss above 30% failures).
+
 ## [2026-11-03] Grounded batch 24 (UAV deployment, radio maps, cellular-connected UAVs, and delivery logistics)
 - Grounded 24 source pages against their raw parses; evidence is in `wiki/.grounding/source-schema-evidence-batch24-deployment-logistics.json`. Grounded total: 575/699.
 - Relabeled constraint IDs to the papers' own tags (for example cao-2026 (4)–(29e), gao-2026 (22)–(33), jiang-2026 C1–C6 (6)–(12), ren-2026 (8b)–(8h), xia-2026 (31)–(45), dong-2026 D2D (13)–(22), guo-2026 navigation (7), chakareski-2019 (5)–(7)); where the parse misplaces or drops tags (heo (1)–(10), lee-2026 (4)–(14), li-2026 radio-map routing (8)–(9), zhang cellular U2X (24)), the card says to check the published paper.

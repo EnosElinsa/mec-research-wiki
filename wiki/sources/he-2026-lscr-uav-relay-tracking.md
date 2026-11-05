@@ -15,7 +15,7 @@ related:
   - "[[zhu-2026-hab-mappo-target-search]]"
   - "[[zhao-2025-networked-isac-uav-handover]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Collaborative Relay Tracking Method Incorporating Larger-Scale Spatial Context for UAVs
@@ -47,10 +47,10 @@ Converts multi-UAV target handover into graph similarity matching. LSCR builds D
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | A candidate enters $\mathcal C$ only if $P_j>\delta$, with $\delta=0.5$ in the paper. |
-| C2 | Exactly one candidate with the largest admissible probability is selected. |
-| C3 | Direct handover requires sufficient overlapping depth: $\Delta R>v t_h$. |
-| C4 | Graph comparison uses time-aligned cross-view observations of the designated target and detected candidates. |
+| (1) | A candidate enters $\mathcal C$ only if $P_j>\delta$, with $\delta=0.5$ in the paper. |
+| (2) | Exactly one candidate with the largest admissible probability is selected. |
+| (3) | Direct handover requires sufficient overlapping depth: $\Delta R>v t_h$. |
+| (4)–(5) | Graph comparison uses time-aligned cross-view observations of the designated target and detected candidates. |
 
 **Algorithm**: Construct a Delaunay graph around each target from pixel coordinates, encode node and edge spatial context with the lightweight GRCN, and score cross-view graph pairs with Twin-GRCN. Filter probabilities at $\delta$, choose the maximum-scoring candidate, and accept direct handover only when the overlap depth supports the required handover time.
 

@@ -21,7 +21,7 @@ related:
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
   - "[[yongming-huang]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Predictive Beamforming and Resource Allocation for High-Mobility Cell-Free UAV Networks
@@ -40,7 +40,7 @@ Uses distributed EKF tracking and covariance-intersection fusion to predict high
 
 **Scenario**: Distributed ground APs serve high-mobility UAVs in a cell-free downlink. Only the first slot of each frame carries orthogonal uplink pilots; local EKFs and covariance-intersection fusion predict later LoS channels, while NLoS components are handled statistically.
 
-**Problem & objective**: Maximize training-adjusted effective sum spectral efficiency, $\max_{\mathbf U,\mathbf P,L}R(\mathbf U,\mathbf P,L)$, over pilot length, sparse AP-UAV association, and downlink power while enforcing a posterior tracking-accuracy bound.
+**Problem & objective**: Problem (P0) in (50) maximizes training-adjusted effective sum spectral efficiency, $\max_{\mathbf U,\mathbf P,L}R(\mathbf U,\mathbf P,L)$, over pilot length, sparse AP-UAV association, and downlink power while enforcing a posterior tracking-accuracy bound.
 
 **Decision variables**:
 
@@ -54,11 +54,12 @@ Uses distributed EKF tracking and covariance-intersection fusion to predict high
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Position-tracking bound meets the target: $\Omega(L)\leq\zeta$. |
-| C2 | Pilot length is integer and satisfies $K\leq L\leq N_s$. |
-| C3 | AP association is binary and each AP serves at most $U_{\max}$ UAVs. |
-| C4 | Every AP respects its downlink budget: $\sum_k p_{m,k}\leq P_{\max}$. |
-| C5 | Unassociated links receive zero power through the association-power coupling. |
+| (50b) | Position-tracking bound: $\Omega(L)\le\zeta$ |
+| (50c) | Pilot length: $K\le L\le N_s$, $L\in\mathbb N^+$ |
+| (50d)–(50e) | Binary association; each AP serves at most $U_{\max}$ UAVs |
+| (50f) | Per-AP power: $\sum_kp_{m,k}\le P_{\max}$ |
+| Algorithm rule | Unassociated links get zero power through the reweighted $\ell_1$ association-power surrogate |
+| Note | The parse shifts tag (50a) onto the PCRB constraint; the text names (50b)–(50c) as the pilot-length constraints, so check the published paper |
 
 **Algorithm**: Run local EKFs from delay, Doppler, azimuth, and elevation estimates and fuse their states by covariance intersection. Select the shortest feasible pilot length by integer bisection on the PCRB, replace binary association with a reweighted L1 sparse-power surrogate, and alternate fractional or quadratic-transform power updates with dual-variable bisection until effective sum spectral efficiency stabilizes.
 
@@ -66,7 +67,7 @@ Uses distributed EKF tracking and covariance-intersection fusion to predict high
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Fang et al. [x] developed predictive beamforming for high-mobility cell-free UAV networks using distributed EKF tracking and covariance-intersection fusion. They maximized effective sum spectral efficiency over integer pilot length, binary AP-UAV association, and downlink power under PCRB accuracy, pilot-length, AP-user capacity, and per-AP power constraints. Their solution chooses the shortest feasible pilot by bisection, approximates sparse association with reweighted L1 power variables, and alternates fractional-programming and dual updates. At frame length 20, the reported design achieved effective sum SE 57.2, 31% above the training-every-slot equal-allocation baseline, while using 95% less fronthaul overhead.
+Fang et al. [x] developed predictive beamforming for high-mobility cell-free UAV networks using distributed EKF tracking and covariance-intersection fusion. They maximized effective sum spectral efficiency over integer pilot length, binary AP-UAV association, and downlink power under PCRB accuracy, pilot-length, AP-user capacity, and per-AP power constraints. Their solution chooses the shortest feasible pilot by bisection, approximates sparse association with reweighted L1 power variables, and alternates fractional-programming and dual updates. The reported design improves effective sum SE by 31% over traditional schemes and cuts training overhead by 95% with a 3% loss in positioning accuracy, at a modest increase in fronthaul overhead; longer frames trade more overhead savings for larger accuracy loss.
 
 ## Problem and system model
 

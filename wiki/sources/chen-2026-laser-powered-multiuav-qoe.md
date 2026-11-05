@@ -16,7 +16,7 @@ related:
   - "[[device-association]]"
   - "[[wireless-backhaul]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # QoE Maximization for Laser-Powered Multi-UAV Communication Networks
@@ -35,7 +35,7 @@ Places laser-charged UAV access points in a post-disaster downlink, rematches us
 
 **Scenario**: A surviving macro base station and multiple laser-powered UAV access points serve ground users, while laser-power-transfer stations charge the UAVs. Users associate with the base station or one UAV, laser stations associate with UAVs, and UAV downlinks share interference while BS-UAV backhaul and optical charging operate in parallel.
 
-**Problem & objective**: The first problem maximizes aggregate average data rate, $P_1:\max_{\mathbf U,\mathbf I,\mathbf L}\sum_{k=1}^{K}r_k^{\mathrm d}(\mathbf U,\mathbf I,\mathbf L,\mathbf P^{[0]})$, and the second problem maximizes the number of QoE-qualified users, $P_2:\max_{\mathbf c^{\mathrm b},\mathbf P}\sum_k\Pr(r_k^{\mathrm d}\ge\mathcal Q_k)$, by reallocating redundant power and backhaul.
+**Problem & objective**: Problem P1 in (19) maximizes aggregate average data rate, $\max_{\mathbf U,\mathbf I,\mathbf L}\sum_{k=1}^{K}r_k^{\mathrm d}(\mathbf U,\mathbf I,\mathbf L,\mathbf P^{[0]})$, and problem P2 in (20) maximizes the number of QoE-qualified users, $\max_{\mathbf c^{\mathrm b},\mathbf P}\sum_k\Pr(r_k^{\mathrm d}\ge\mathcal Q_k)$, by reallocating redundant power and backhaul.
 
 **Decision variables**:
 
@@ -51,8 +51,8 @@ Places laser-charged UAV access points in a post-disaster downlink, rematches us
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each user is associated with at most one BS or UAV. |
-| C2 | Each BS or UAV serves no more than its maximum associated-user count. |
+| C1 | Each BS or UAV serves no more than $K_m^{\max}$ users. |
+| C2 | Each user is associated with one BS or UAV. |
 | C3 | Each UAV is associated with at most one laser-power-transfer station. |
 | C4 | Each laser station is assigned to one UAV under the matching rule. |
 | C5 | UAV positions stay inside the service region of radius $R_C$. |

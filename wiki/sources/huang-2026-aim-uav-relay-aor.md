@@ -15,7 +15,7 @@ related:
   - "[[zeng-2016-throughput-relaying]]"
   - "[[zhan-2011-uav-relay-heading-optimization]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # AIM: Angle-of-Radiation-Based Deployment of UAV Relays for Connectivity in 3D Environments
@@ -34,7 +34,7 @@ Formulates UAV relay-chain deployment with non-isotropic antenna radiation as a 
 
 **Scenario**: A three-dimensional operational area is discretized into obstacle-free grid positions, and every UAV can select one of several headings. Each position-heading pair is an operational state, and a directed link exists only when the transmitter and receiver antenna radiation angles yield received signal strength above a required threshold.
 
-**Problem & objective**: Given fixed source and destination operational states, the deployment problem selects a relay chain $R=\arg\min_{\widetilde R}\lvert\widetilde R\rvert$, minimizing the number of operational states and therefore the number of UAVs in the chain.
+**Problem & objective**: Given fixed source and destination operational states, problem (5) selects a relay chain $R=\arg\min_{\widetilde R}\lvert\widetilde R\rvert$, minimizing the number of operational states and therefore the number of UAVs in the chain.
 
 **Decision variables**:
 
@@ -48,10 +48,10 @@ Formulates UAV relay-chain deployment with non-isotropic antenna radiation as a 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Distinct relays cannot occupy the same grid position: $\widetilde q_i\ne\widetilde q_j$ |
-| C2 | Every consecutive relay link meets the RSS threshold: $e(\widetilde v_i,\widetilde v_{i+1})\ge\gamma$ |
-| C3 | The source-to-first-relay and last-relay-to-destination links also meet $\gamma$ |
-| C4 | Every selected position is obstacle-free and every heading belongs to the allowed set $\mathcal H$ |
+| (5a) | Distinct relay positions: $\widetilde q_i\ne\widetilde q_j$ |
+| (5b) | Every consecutive relay link meets the RSS threshold: $e(\widetilde v_i,\widetilde v_{i+1})\ge\gamma$ |
+| (5c)–(5d) | Source-to-first-relay and last-relay-to-destination links meet $\gamma$ |
+| Model rule | Vertices are obstacle-free grid positions paired with headings in $\mathcal H$; (7) restates the problem on the operational-state graph |
 
 **Algorithm**: AIM sorts operational states by position, builds an angle-of-radiation-aware reachability table from the source, and records for every state the minimum relay count, predecessor, and bottleneck RSS. It then backtracks predecessors from the destination to recover the chain, breaking equal-hop ties in favor of stronger minimum RSS.
 

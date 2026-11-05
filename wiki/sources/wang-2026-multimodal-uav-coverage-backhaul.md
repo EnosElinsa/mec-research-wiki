@@ -14,7 +14,7 @@ related:
   - "[[air-to-ground-channel-model]]"
   - "[[autonomous-uav-swarms]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dynamic Multi-Modal UAV Control for Optimized Coverage and Backhaul Connectivity in Spatially Unstructured and Dispersed User Environments
@@ -31,36 +31,29 @@ Uses local flocking, potential fields, and distributed tree formation to switch 
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: UAV mobile access points serve users in irregular, dispersed clusters while maintaining a connected air-to-air backhaul. Each UAV observes nearby users and communication neighbors, exchanges local state, and switches among exploration, service, and inter-cluster bridge roles under failures.
-
-**Problem & objective**: A distributed non-convex formation-control problem maximizes a smooth joint coverage-connectivity utility, $\max_{\mathbf q}\operatorname{softmin}\{C(\mathbf q),\lambda_2(L(\mathbf q))\}$, subject to service, separation, and communication-range conditions.
-
+**Scenario**: Mobile access points (MAPs) on UAVs serve mobile smart devices (MSDs) that form irregular, dispersed clusters, with no fixed infrastructure for backhaul. Each MSD joins the in-range MAP with the best SINR (6); MAPs share positions, velocities, and served-user counts with neighbors and switch among Dynamic ($M_0$), Connectivity ($M_1$), and Static ($M_2$) modes.
+**Problem & objective**: No formal optimization problem is stated. Performance is the coverage ratio $R_c=\frac1M\sum_iN_u^i$ (7) and backhaul connectivity via the Fiedler value of the Laplacian $L=D-A$ built from the range-$r$ adjacency (8); each MAP descends the log-sum-exp soft minimum $E_{LSE}$ (15) of its potentials, which is non-increasing along trajectories (18) and converges to a local, initialization-dependent equilibrium.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV position | $\mathbf q_i(t)$ | continuous 2-D position | Mobile access-point location |
-| UAV velocity | $\mathbf v_i(t)$ | continuous control | Potential-field movement command |
-| Operating role | $z_i(t)$ | categorical | Exploration, user service, or backhaul bridge |
-| Bridge-tree edge | $e_{ij}(t)$ | binary/graph relation | Air-to-air link retained in the distributed tree |
-
+| MAP position | $q_i$ | continuous, $\mathbb R^3$ | Location of MAP $i$ |
+| MAP velocity / control | $v_i$, $u_i$ | continuous, $\dot q_i=v_i$, $\dot v_i=u_i$ (19) | Double-integrator motion command |
+| Operating mode | $M_i(t)$ | categorical, $\{M_0,M_1,M_2\}$ | Exploration, MST bridge, or static service |
+| Local MST set | $\mathbb T_i$ | graph edges | Bridge links kept by the distributed MST (Algorithm 3) |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Pairwise UAV distance stays above the collision-separation threshold |
-| C2 | Backhaul neighbors remain within the air-to-air communication range |
-| C3 | Each service UAV handles no more than its user capacity |
-| C4 | Covered users meet the required access SINR threshold |
-| C5 | Role switching follows coverage, served-user, and connectivity thresholds |
-
-**Algorithm**: Detect uncovered user clusters from local observations → send exploration UAVs toward cluster centers → estimate served-user centroids and switch qualified UAVs to service mode → build minimum-spanning-tree bridge goals between clusters → combine attraction, repulsion, consensus, load, and role potentials → repeat after movement or failures.
+| Model rule | Inter-MAP term $f_i$ (22)–(23) avoids collisions and prevents disconnections, shaped by the distance $d$ and range $r$ |
+| Model rule | An MSD connects only to a MAP within range $r$; each MAP serves at most $N_{\max}$ MSDs (80 in the simulations) |
+| Model rule | Mode switching uses coverage and serving-load thresholds; MAPs with load $N_u^i(t)<n_0$ may return to $M_0$ |
+| Model rule | Control input $u_i=f_i+g_i+h_i$ (20): inter-MAP, velocity-consensus, and mode-dependent potential terms |
+**Algorithm**: Start all MAPs in $M_0$ toward the nearest uncovered cluster center → estimate served-user centroids (9)–(10) and switch qualified MAPs to $M_2$ → build bridge goals between explored clusters with the distributed MST (Algorithm 3) and switch bridge MAPs to $M_1$ → combine the potentials with the LSE soft minimum and apply (20) → recompute modes and the MST after movement or failures.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied distributed multi-modal UAV control for user coverage and wireless backhaul connectivity in spatially dispersed environments. Each UAV switches among exploration, static service, and inter-cluster bridge roles according to local coverage and connectivity state. The controller combines flocking, user and goal attraction, collision repulsion, velocity consensus, load balancing, and distributed tree formation in a smooth potential-field framework. Its continuous-time aggregate potential is non-increasing and converges to an initialization-dependent local equilibrium. Simulations report high coverage, positive backhaul connectivity, and network reconfiguration after the evaluated random UAV failures.
+Wang et al. [x] studied distributed multi-modal UAV control for user coverage and wireless backhaul connectivity in spatially dispersed environments. Each UAV switches among exploration, static service, and inter-cluster bridge roles according to local coverage and connectivity state. The controller combines flocking, user and goal attraction, collision repulsion, velocity consensus, load balancing, and distributed tree formation in a smooth potential-field framework. Its continuous-time aggregate potential is non-increasing and converges to an initialization-dependent local equilibrium. Simulations report coverage peaking near 98% without failures and about 85% after 30% random MAP failures, but cluster-to-cluster connectivity weakens above 30% failures, and with 50 MAPs failure rates above 40% prevent full recovery.
 
 ## Problem
 

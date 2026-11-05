@@ -13,7 +13,7 @@ related:
   - "[[uav-trajectory-control]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-12
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Data Collection Maximization in IoT-Sensor Networks via an Energy-Constrained UAV
@@ -47,11 +47,11 @@ Models battery-limited UAV collection as a depot-returning orienteering problem 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | The route starts and ends at the UAV depot |
-| C2 | Travel and hover energy satisfy $T_h\eta_h+T_t\eta_t\le\mathcal E$ |
-| C3 | A sensor contributes data only when it lies within the selected hover coverage radius |
-| C4 | Full collection uses the complete required sojourn; partial collection selects one feasible virtual level |
-| C5 | Tour-flow, visit, and subtour-elimination conditions form one closed route |
+| ILP: depot return | The route starts and ends at the UAV depot |
+| ILP: energy | Travel and hover energy satisfy $T_h\eta_h+T_t\eta_t\le\mathcal E$ |
+| Model rule | A sensor contributes data only when it lies within the selected hover coverage radius |
+| Model rule | Full collection uses the complete required sojourn; partial collection selects one feasible virtual level |
+| ILP: flow and subtours | Tour-flow, visit, and subtour-elimination conditions form one closed route (the parse leaves these ILP constraints untagged) |
 
 **Algorithm**: Small and moderate instances use an ILP. Without overlapping hover coverage, the method maps full collection to a metric orienteering instance and maps partial collection to virtual hover nodes with discretized sojourns; with overlap, marginal-data-per-added-energy heuristics iteratively add and refine hover locations and collection levels.
 

@@ -28,7 +28,7 @@ related:
   - "[[yongming-huang]]"
   - "[[dongming-wang]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Two-Timescale Optimization for Aerial Rotatable Antenna Array in Cell-Free Networks With Dynamic Users
@@ -62,11 +62,12 @@ Combines whole-UAV 3D movement with three-axis rigid-array rotation in user-cent
 
 | ID | Meaning and key expression |
 |---|---|
-| 19b | Clustering is binary, $\eta_{m,k}[\tau]\in\{0,1\}$ |
-| 19c | Each array serves at most $\eta_{\max}$ users |
-| 19d | Every user is served by at least one aerial array |
-| 19e | Served users remain in the array's forward radiation hemisphere |
-| 19f, 3-5 | Rotation, position, speed, and collision-avoidance limits are satisfied |
+| (19b) | Clustering is binary: $\eta_{m,k}[\tau]\in\{0,1\}$ |
+| (19c) | Each 6DARA serves at most $\eta_{\max}$ users: $\sum_k\eta_{m,k}[\tau]\le\eta_{\max}$ |
+| (19d) | Every user is served by at least one 6DARA: $\sum_m\eta_{m,k}[\tau]\ge1$ |
+| (19e) | Users lie in the array's forward hemisphere: $\varphi_{m,k}^e[\tau,n]\in[0,\pi/2)$ |
+| (19f) | Rotation angles: $\phi_m^x,\phi_m^y,\phi_m^z\in[0,2\pi)$ |
+| (19g) | Position, speed, and collision limits (3)–(5): $\mathbf q_m[\tau]\in\mathcal Q$, per-axis frame displacement $\le N\delta v_{\max}$, inter-UAV distance $\ge d_{\min}$ |
 
 **Algorithm**: Compute slot-level team-MMSE combiners from local instantaneous and statistical CSI → update user clustering with the M-CSAP exact-potential game → control UAV velocity and three rotation angles with attention-based Beta-policy MAPPO → feed frame-averaged rates back to the next large-timescale update.
 
@@ -74,7 +75,7 @@ Combines whole-UAV 3D movement with three-axis rigid-array rotation in user-cent
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied aerial rotatable antenna arrays in user-centric cell-free uplink networks with dynamic users. They formulated a two-timescale MINLP that maximizes average uplink sum rate by jointly optimizing user clustering, UAV positions, three-axis array rotations, and receive combiners. The small-timescale block uses team-MMSE combining based on local instantaneous and statistical CSI. At the large timescale, M-CSAP solves an exact-potential clustering game and AB-MAPPO controls three-dimensional UAV velocities and array rotations. Simulations report higher sum rate than the evaluated fixed-geometry, centralized-combining, clustering, and policy variants under the tested user-density and mobility settings.
+Wang et al. [x] studied aerial rotatable antenna arrays in user-centric cell-free uplink networks with dynamic users. They formulated a two-timescale MINLP that maximizes average uplink sum rate by jointly optimizing user clustering, UAV positions, three-axis array rotations, and receive combiners. The small-timescale block uses team-MMSE combining based on local instantaneous and statistical CSI. At the large timescale, M-CSAP solves an exact-potential clustering game and AB-MAPPO controls three-dimensional UAV velocities and array rotations. Simulations report higher sum rate than fixed-rotation, fixed-position, and fixed position-and-rotation baselines, up to 4.88 times with 8 users at 4 m/s, and than LMMSE-combining, LLSFD-clustering, and standard-MAPPO variants; conventional PSO slightly beats AB-MAPPO with few 6DARAs but scales worse.
 
 ## Method and guarantee scope
 

@@ -20,7 +20,7 @@ related:
   - "[[khaled-ben-letaief]]"
 modeling_card: required
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Multi-UAV Collaborative ISCPT: Joint 3D Deployment and Power Control of UAVs
@@ -39,7 +39,7 @@ Uses a cascading residual graph-attention network to generate static 3-D multi-U
 
 **Scenario**: $K$ single-antenna UAVs jointly serve information users, sensing targets, and energy users from a ground control station; users associate with their highest-SINR UAV, sensing echoes are combined centrally, and nonlinear harvested energy aggregates across UAVs.
 
-**Problem & objective**: Multi-objective max-min deployment and power control, $\max_{L^{\mathrm{UAV}},p^{\mathrm{UAV}}}\{\gamma_{\min},S_{\min},E_{\min}\}$, where the three terms are worst information-user SINR, sensing received-signal power, and harvested energy.
+**Problem & objective**: Multi-objective max-min deployment and power control (P0, (16)), $\max_{L^{\mathrm{UAV}},p^{\mathrm{UAV}}}\{\gamma_{\min},S_{\min},E_{\min}\}$, where the three terms are worst information-user SINR, sensing received-signal power, and harvested energy.
 
 **Decision variables**:
 
@@ -52,9 +52,9 @@ Uses a cascading residual graph-attention network to generate static 3-D multi-U
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each UAV remains in the 3-D mission region, $\mathcal D_{\min}\leq l_k^{\mathrm{UAV}}\leq\mathcal D_{\max}$. |
-| C2 | Each UAV respects its transmit-power limit, $0\leq p_k\leq P_k^{\max}$. |
-| C3 | User association, TDMA scheduling, channel gains, sensing RSP, and nonlinear EH definitions determine $\gamma_{\min}$, $S_{\min}$, and $E_{\min}$. |
+| (17) | Each UAV remains in the 3-D mission region: $\mathcal D_{\min}\leq l_k^{\mathrm{UAV}}\leq\mathcal D_{\max},\forall k$ |
+| (18) | Transmit-power limit: $0\leq p_k\leq P_k^{\max},\forall k$ |
+| Model rule | Each information user associates with its highest-SINR UAV (7); sensing RSP (10) and nonlinear harvested energy (11)–(12) define $\gamma_{\min}$, $S_{\min}$, $E_{\min}$ in (13)–(15) |
 
 **Algorithm**: Encode typed user coordinates and pairwise distances as a fully connected graph, use a residual graph-attention block to predict 3-D placements, inject the placement embedding into a second block that predicts powers, train end to end with a normalized weighted scalar loss, and deploy the trained model in one forward pass.
 
@@ -62,7 +62,7 @@ Uses a cascading residual graph-attention network to generate static 3-D multi-U
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lu et al. [x] studied collaborative multi-UAV integrated sensing, communication, and power transfer for information users, sensing targets, and energy users. They formulated a multi-objective max-min problem that jointly chooses every UAV's 3-D placement and transmit power to improve the worst SINR, sensing received-signal power, and harvested energy. Their CRGAT solver first predicts deployment from a typed user graph and then predicts power after injecting the deployment embedding, with a normalized weighted loss trained end to end. The reported simulations show over 39.6% improvement over baseline methods, balanced tradeoffs across objective weights, and a continuous approximate Pareto front.
+Lu et al. [x] studied collaborative multi-UAV integrated sensing, communication, and power transfer for information users, sensing targets, and energy users. They formulated a multi-objective max-min problem that jointly chooses every UAV's 3-D placement and transmit power to improve the worst SINR, sensing received-signal power, and harvested energy. Their CRGAT solver first predicts deployment from a typed user graph and then predicts power after injecting the deployment embedding, with a normalized weighted loss trained end to end. The reported simulations show over 39.6% overall improvement over Random, MLP-based, and RGAT baselines (the MLP baseline performs worse than Random), balanced tradeoffs across objective weights, and a continuous approximate Pareto front.
 
 ## Problem and system model
 

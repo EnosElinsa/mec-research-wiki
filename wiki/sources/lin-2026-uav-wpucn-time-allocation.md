@@ -21,7 +21,7 @@ related:
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
   - "[[mohamed-slim-alouini]]"
 created: 2026-07-14
-updated: 2026-11-02
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,37 +39,33 @@ A terrestrial hybrid access point (HAP) and a rotary-wing UAV jointly power unde
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: One terrestrial HAP and one rotary-wing UAV wirelessly power and collect data from $N$ single-antenna underground devices. The four phases are HAP-to-UAV charging, HAP/UAV WET to devices, TDMA device uploads, and UAV-to-HAP forwarding; channels include air attenuation, refraction, and soil loss.
-
-**Problem & objective**: UAV-enabled wireless-powered underground communication time allocation, a convex duration-allocation problem after fixing flight geometry and WET design, minimizes UAV energy, $\min E_{\mathrm{UAV}}(T_{p1},T_{p2},T_{p3},T_{p4},\{\tau_n\})$, while meeting every device's throughput threshold.
-
+**Scenario**: One terrestrial HAP and one rotary-wing UAV wirelessly power and collect data from $N$ single-antenna underground devices (UDs). The UAV is charged by the HAP, flies to the monitoring area, charges the UDs (Phase 2), collects their data by TDMA, and returns to offload to the HAP; channels include air attenuation, refraction, and soil loss.
+**Problem & objective**: (P2) minimizes the UAV's total energy $E_s$ in (24) over $T_{p2},T_{p3},T_{p4}$, subject to (28b)–(28f); because $T_{p4}$ is fixed by the offloading condition, it is reformulated as the convex problem (P3), $\min_{T_{p2},\tau_1,\dots,\tau_N} T_{p2}+\sum_n\tau_n$ s.t. (29a)–(29d). For full-CSI WET, (P1) maximizes the worst-UD received energy $\xi_{csi}$ over $\mathbf V$ by SDP.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| HAP-to-UAV charging time | $T_{p1}$ | continuous, positive | Duration that charges the UAV |
-| Device WET time | $T_{p2}$ | continuous, positive | Duration for HAP/UAV energy transfer |
-| TDMA collection durations | $T_{p3},\tau_n$ | continuous, positive | Device uplink collection phase and per-device slots |
-| UAV forwarding time | $T_{p4}$ | continuous, positive | UAV-to-HAP data offloading duration |
-| WET scheme | $\mathcal A$ | discrete choice | Full-CSI or CSI-free antenna configuration |
-
+| Device WET time | $T_{p2}$ | continuous, positive | Phase-2 energy-transfer duration |
+| Per-UD TDMA slots | $\tau_n$ | continuous, positive | Upload time of UD $n$ (Phase 3 is $T_{p3}=\sum_n\tau_n$) |
+| UAV offloading time | $T_{p4}$ | continuous, positive | Fixed in closed form by $R_{hap}=R_{uav}$ |
+| Full-CSI WET covariance | $\mathbf V$ | PSD, unit trace | Energy beamforming matrix in (P1) |
+| WET approach / scheme | (no symbol in the paper) | discrete choice | Traditional PS, UAV-enabled, or hybrid; full-CSI or CSI-free (SA, AAIS, AASS-I/II, RAB) |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | All phase durations are positive and fit the modeled operation timeline |
-| C2 | Each underground device meets its throughput threshold during its TDMA slot |
-| C3 | Harvested energy covers device circuitry and information-transmission energy |
-| C4 | WET transmit covariance/antenna configuration obeys its power and RF-chain budget |
-| C5 | UAV forwarding and propulsion energy is included in the HAP charging requirement |
-
-**Algorithm**: Optimize full-CSI WET by semidefinite programming or select a CSI-free antenna scheme → fix flight geometry and rewrite throughput constraints as convex duration inequalities → solve $T_{p2},T_{p3},\tau_n$ with CVX → derive the supporting HAP charging duration $T_{p1}$.
+| (16b) | Full-CSI WET: every UD receives at least $\xi_{csi}$: $\frac{p}{\delta_n}\mathrm{Tr}(\mathbf V\mathbf H_n)\ge\xi_{csi},\forall n$ |
+| (16c)–(16d) | $\mathrm{Tr}(\mathbf V)=1$, $\mathbf V\succeq0$ |
+| (28b)–(28d) | Time constraints: $T_{p2}>0$, $\tau_n>0\ \forall n$, $T_{p4}>0$ |
+| (28e) | Throughput requirement of each UD: $R_n\ge\gamma_n,\forall n$ |
+| (28f) | Complete offloading: $R_{hap}=R_{uav}$ |
+| (29a)–(29d) | (P3) constraints after fixing $T_{p4}$: $T_{p2}>0$, $\tau_n>0$, $R_n\ge\gamma_n$; (29b) is blank in the parse, so check the published paper |
+| Model rule | Hybrid approach: a UD's harvested energy is the non-coherent sum $E_n^{hybrid}=E_n^{ps}+E_n^{uav}$ (27) |
+**Algorithm**: Solve (P1) by SDP for full-CSI WET or pick a CSI-free scheme (HAP uses AASS-II, UAV uses RAB in the hybrid CSI-free case) → fix $T_{p4}$ from the offloading condition → prove (P3) convex via a positive-semidefinite Hessian of (29d) and solve $T_{p2},\tau_n$ with CVX → compute $T_{p1}$ and $E_s$.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lin et al. [x] studied a UAV-enabled wireless-powered underground communication network with a terrestrial HAP, a rotary-wing UAV, and underground devices. They formulated a time-allocation problem that minimizes modeled UAV energy while meeting every device's throughput threshold across HAP charging, device WET, TDMA uploads, and UAV-to-HAP forwarding phases. The paper compares full-CSI and CSI-free multi-antenna WET schemes, including switching, independent, same-signal, and rotary antenna beamforming under RF-chain costs. With WET design and flight geometry fixed, the remaining duration problem is rewritten as convex inequalities and solved with a positive-semidefinite Hessian argument and CVX. Simulations report that the hybrid HAP-UAV WET approach provides the strongest worst-device harvested energy in the tested underground scenarios.
+Lin et al. [x] studied a UAV-enabled wireless-powered underground communication network with a terrestrial HAP, a rotary-wing UAV, and underground devices. They formulated a time-allocation problem that minimizes modeled UAV energy while meeting every device's throughput threshold across HAP charging, device WET, TDMA uploads, and UAV-to-HAP forwarding phases. The paper compares full-CSI and CSI-free multi-antenna WET schemes, including switching, independent, same-signal, and rotary antenna beamforming under RF-chain costs. With WET design and flight geometry fixed, the remaining duration problem is rewritten as convex inequalities and solved with a positive-semidefinite Hessian argument and CVX. In a farming scenario, the hybrid approach gives the lowest UAV energy across all tested throughput thresholds, with the CSI-free hybrid scheme lowest overall; its worst-case RF-energy lead with CSI-free schemes holds for up to 32 antennas, beyond which UAV power and circuit costs erode it.
 
 ## Problem
 

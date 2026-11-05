@@ -21,7 +21,7 @@ related:
   - "[[zhou-2018-uav-wireless-powered-mec]]"
   - "[[xie-2023-wireless-powered-short-packet-uav]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Resource Allocation for Energy Harvesting-Powered D2D Communication Underlaying UAV-Assisted Networks
@@ -38,36 +38,28 @@ Optimizes multiple mutually interfering D2D pairs with no persistent energy sour
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple mutually interfering D2D transmitter-receiver pairs harvest RF energy from a fixed UAV and later transmit over a shared band. A finite-horizon harvest-transmit-store schedule enforces cumulative energy causality, while distance-based fading and probabilistic LoS/NLoS UAV links determine harvested energy and D2D SINR.
-
-**Problem & objective**: A mixed-integer nonlinear throughput problem maximizes average aggregate D2D throughput, $\max T^{-1}\sum_t R_{\mathrm{sum}}(t)$, over per-slot harvest/transmit mode, D2D powers, and the harvest-to-transmit switch.
-
+**Scenario**: $N$ mutually interfering D2D pairs share one band underlaying a UAV-assisted network. A fixed UAV at height $H$ radiates RF power $p_0$; in each of $T$ slots the D2D transmitters harvest $E_n(t)=(1-\tau(t))\eta p_0g_n$ and transmit for fraction $\tau(t)$, with probabilistic LoS/NLoS UAV links.
+**Problem & objective**: Problem (9) maximizes the average sum throughput $\frac1T\sum_t\tau(t)\sum_n\log_2(1+\gamma_n(t))$ over $\{\tau(t)\},\{p_n(t)\}$ s.t. C1–C3; after Theorem 1 it becomes the mixed-integer problem (19) over $\{p_n(t)\}$ and the harvest/transmit switch slot $k$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Slot mode | $s_t$ | binary | Whether slot $t$ harvests or transmits |
-| Switch time | $k$ | integer, $1\le k\le T$ | Last harvesting slot in the single-switch schedule |
-| D2D transmit power | $p_i(t)$ | continuous, nonnegative | Power of D2D transmitter $i$ in a transmit slot |
-| Harvested energy | $e_i(t)$ | continuous, nonnegative | RF energy stored by D2D transmitter $i$ |
-
+| Transmission time fraction | $\tau(t)$ | continuous, $[0,1]$ (binary at the optimum) | Share of slot $t$ used for D2D transmission |
+| Switch slot | $k$ | integer, $\{1,\dots,T-1\}$ | Last harvesting slot in (19) |
+| D2D transmit power | $p_n(t)$ | continuous, nonnegative | Power of D2D transmitter $n$ in slot $t$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each slot exclusively harvests or transmits, $s_t\in\{0,1\}$ |
-| C2 | Cumulative consumed energy through slot $t$ does not exceed cumulative harvested energy |
-| C3 | D2D transmit powers remain nonnegative and within peak limits |
-| C4 | Shared-band SINR and interference determine each pair's feasible rate |
-| C5 | The single switch orders harvesting slots before transmission slots |
-
-**Algorithm**: Dualize cumulative energy constraints → prove binary per-slot modes and a single harvest-then-transmit switch → fix the integer switch time → linearize the interference term and solve successive convex power updates → search switch time with a floor-adjusted golden-section procedure.
+| C1 (9) | Energy causality: $\sum_{k=1}^t\tau(k)p_n(k)\le\sum_{k=1}^tE_n(k),\ \forall t,n$ |
+| C2 (9) | Time: $0\le\tau(t)\le1,\ \forall t$ |
+| C3 (9) | Power: $p_n(t)\ge0,\ \forall t,n$ |
+| (19) | After Theorem 1: $\sum_{t=k+1}^Tp_n(t)\le\sum_{t=1}^k\eta p_0g_n$, $p_n(t)\ge0$, $k\in\{1,\dots,T-1\}$ |
+**Algorithm**: Lagrangian relaxation of (9) shows each slot is exclusively harvest or transmit and (Theorem 1) all harvesting slots precede transmission → for fixed $k$, solve the power subproblem (20) by D.C. programming with linearized interference (Algorithm 2) → search $k$ with a floor-adjusted golden-section method (27).
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Wang et al. [x] studied resource allocation for RF-energy-harvesting D2D pairs under a fixed UAV power source. They formulated a finite-horizon throughput-maximization problem with mutually interfering D2D links and cumulative energy-causality constraints. Lagrangian analysis proves an exclusive harvest-or-transmit mode in each slot and a single switch from harvesting to transmission. For a fixed switch time, successive difference-of-convex power updates optimize the throughput, and a discrete golden-section search selects the switch. Simulations report higher throughput than equal harvest/transmit allocation across the evaluated UAV-height, power, and D2D-count settings.
+Wang et al. [x] studied resource allocation for RF-energy-harvesting D2D pairs under a fixed UAV power source. They formulated a finite-horizon throughput-maximization problem with mutually interfering D2D links and cumulative energy-causality constraints. Lagrangian analysis proves an exclusive harvest-or-transmit mode in each slot and a single switch from harvesting to transmission. For a fixed switch time, successive difference-of-convex power updates optimize the throughput, and a discrete golden-section search selects the switch. Simulations report higher throughput than an equal-time-allocation (ETA) benchmark across UAV heights and UAV transmit powers, and an average throughput that is almost insensitive to the horizon length $T$.
 
 ## Problem
 

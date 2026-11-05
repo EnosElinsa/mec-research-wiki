@@ -21,7 +21,7 @@ related:
   - "[[cooperative-jamming]]"
   - "[[wu-2024-urllc-uav-mec-latency]]"
 created: 2026-06-03
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -39,7 +39,7 @@ This paper studies **covert millimeter-wave (mmWave) communication with finite b
 
 **Scenario**: A multi-antenna mmWave Alice transmits to Bob while spatially random non-colluding Willies form a Poisson point process. Beamforming uses a phase array or linear frequency diverse array, and finite-blocklength coding determines covert throughput over a quasi-static dominant-path channel.
 
-**Problem & objective**: Finite-blocklength covert-throughput optimization, a stochastic-geometry constrained continuous problem, maximizes average effective covert throughput, $\max_{P_a,N}\mathrm{AECT}(P_a,N)$, subject to a maximum blocklength and the Willies' covertness constraint $\min_w\xi_w^*\ge1-\epsilon$.
+**Problem & objective**: Finite-blocklength covert-throughput optimization, a stochastic-geometry constrained continuous problem, maximizes average effective covert throughput, $\max_{N,P_a}\bar\eta_P$ in (30) for PA and $\max_{N,P_a}\bar\eta_L$ in (39) for LFDA, subject to the covertness condition and $N\le N_{\max}$.
 
 **Decision variables**:
 
@@ -47,17 +47,17 @@ This paper studies **covert millimeter-wave (mmWave) communication with finite b
 |---|---|---|---|
 | Transmit power | $P_a$ | continuous, nonnegative | Alice's beamforming transmit power |
 | Blocklength | $N$ | integer, $N\le N_{\max}$ | Number of channel uses for the finite-blocklength code |
-| Beamforming scheme | $s$ | discrete, PA or LFDA | Phase-array or frequency-diverse beam selection |
+| Beamforming scheme | $s$ | discrete, PA or LFDA (compared) | Phase-array or frequency-diverse beam selection |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Covertness holds for the spatially random Willies, $\xi_w^*\ge1-\epsilon$ |
-| C2 | Blocklength satisfies $1\le N\le N_{\max}$ |
-| C3 | Transmit power is nonnegative and follows the finite-blocklength coding model |
-| C4 | Bob's decoding-error probability and effective-throughput expression use the normal approximation |
-| C5 | PA/LFDA beam gain follows the line-of-propagation and array geometry assumptions |
+| (12) | Covertness against every PPP warden: $\min_{w_l\in\Phi_w}\xi_{w_l}^*\ge1-\varepsilon$ |
+| (21) / (35) | Tractable covertness condition used in (30) for PA and in (39) for LFDA: an upper bound proportional to $P_a\sqrt N\,\Omega_P$ (or $\Omega_L$) over $2\sigma^2$ is at most $\varepsilon$ |
+| (30) / (39), 2nd–3rd constraints | Blocklength limit: $N\le N_{\max}$, $N\in\mathbb N^+$ |
+| Model rule | AECT is $\bar\eta=NR(1-\mathbb E(\delta))$ ((25), (38)), with Bob's decoding error from the finite-blocklength normal approximation |
+| Model rule | PA and LFDA beam gains follow the ULA geometry; the scheme is compared, not optimized |
 
 **Algorithm**: Derive PPP covertness and AECT expressions for PA and LFDA → optimize power and blocklength jointly under the covertness bound → compare the two beamforming schemes over warden density, antenna number, and receiver direction.
 
@@ -65,7 +65,7 @@ This paper studies **covert millimeter-wave (mmWave) communication with finite b
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Ma et al. [x] studied covert mmWave communication with finite blocklength against spatially random wardens modeled by a Poisson point process. They formulated an average effective covert throughput maximization problem that jointly selects transmit power and blocklength under a covertness constraint and a maximum-blocklength limit. The analysis compares conventional phase-array and linear frequency-diverse-array beamforming using finite-blocklength decoding error and stochastic-geometry expressions. Optimal power and blocklength are derived for both schemes, exposing a trade-off between extra coding symbols and covert power. Numerical evaluations report higher AECT for optimized blocklength than fixed-blocklength baselines and show that the preferred beamforming scheme depends on receiver direction.
+Ma et al. [x] studied covert mmWave communication with finite blocklength against spatially random wardens modeled by a Poisson point process. They formulated an average effective covert throughput maximization problem that jointly selects transmit power and blocklength under a covertness constraint and a maximum-blocklength limit. The analysis compares conventional phase-array and linear frequency-diverse-array beamforming using finite-blocklength decoding error and stochastic-geometry expressions. Optimal power and blocklength are derived for both schemes, exposing a trade-off between extra coding symbols and covert power. Numerical evaluations report higher AECT for the optimized blocklength than the fixed $N=N_{\max}$ benchmark, with the gain growing as warden density increases; a larger $N_{\max}$ does not always raise the maximum AECT, and whether PA or LFDA is better depends on Bob's direction.
 
 ## Problem framing
 Beyond hiding message **content** (encryption, classic [[physical-layer-security|PLS]]), some settings need to hide the **existence** of a transmission — covert / low-probability-of-detection communication (e.g. Internet of Battlefield Things, where even detecting a link leaks military activity). mmWave is attractive (directional beams, compact multi-antenna arrays), but prior covert-mmWave work mostly assumed a **single** warden and **infinite** blocklength. With multiple randomly located wardens, a warden may fall inside the beam and obtain high antenna gain, degrading covertness; and IoT/vehicular latency-power limits make **finite blocklength** realistic — which also limits a warden's observations. The paper redesigns covert-mmWave transmission against **spatially random** wardens in the finite-blocklength regime.

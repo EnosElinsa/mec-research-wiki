@@ -24,7 +24,7 @@ related:
   - "[[bor-yaliniz-2016-3d-abs-placement]]"
   - "[[mobility-asynchrony-and-geometry-in-aerial-coverage]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Vertical Heterogeneous Networks Beyond 5G: CoMP Coverage Enhancement and Optimization
@@ -43,35 +43,26 @@ Analyzes aerial-user downlink coverage in a vertical heterogeneous network of UA
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A vertical heterogeneous network contains fixed-altitude UAV-mounted aerial base stations and terrestrial base stations serving aerial users. Same-tier three-site CoMP forms serving triads, ABS/TBS association depends on aggregate received power, and Nakagami fading, LoS/NLoS propagation, and BPP/PPP site geometry determine coverage.
-
-**Problem & objective**: The deployment subproblem minimizes a coverage-deficit surrogate, $\min_{\{\mathbf c_n\}}\sum_s w_s\lVert\mathbf x_s-\mathbf c_{\ell(s)}\rVert^2$, where weights $w_s$ reflect terrestrial SIR deficits, while the analytical model evaluates tier association and CoMP coverage probability.
-
+**Scenario**: A vertical heterogeneous network contains UAV-mounted aerial base stations (ABSs) at altitude $H$ and terrestrial base stations (TBSs) serving aerial users at altitude $h$. Each user joins the ABS or TBS tier and is served by same-tier three-site CoMP; Nakagami fading, LoS/NLoS G2A propagation, and BPP/PPP site geometry determine association and coverage.
+**Problem & objective**: For intentional deployment, (21) places $K$ ABSs to maximize the weighted average success probability, $\max_{\{C_k\},\{\mu_k\}}\sum_k\sum_{x_i\in C_k}w_i(1+\frac1m\lVert x_i-\mu_k\rVert^\alpha)^{-m}$, with $w_i=\max(0,\gamma_{\mathrm{TBS}}-\gamma_i)$ the terrestrial SIR gap at sample $x_i$; (22)–(24) are its Rayleigh, deterministic, and free-space special cases, and (25) is the classical weighted K-means analogue.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| ABS horizontal center | $\mathbf c_n$ | continuous 2-D position | Placement of aerial base station $n$ |
-| Sample cluster label | $\ell(s)$ | discrete | ABS center assigned to coverage-deficit sample $s$ |
-| Serving tier/triad | $\tau_s$ | discrete | ABS or TBS three-site CoMP serving tier for aerial user $s$ |
-| Association probability | $P_{\mathrm{ABS}}(h)$ | analytical function | Tier-selection probability induced by altitude and geometry |
-
+| ABS horizontal position | $\mu_k$ | continuous 2-D position | Placement of ABS $k$ |
+| Sample clusters | $C_k$ | discrete partition | Sample locations assigned to ABS $k$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | ABS centers remain in the deployment region and at the fixed altitude |
-| C2 | Each sample is assigned to one centroid and each CoMP cluster contains three same-tier sites |
-| C3 | Coverage is evaluated under the SIR threshold and the BPP/PPP site-separation models |
-| C4 | Nakagami, LoS/NLoS, equal-power, and interference assumptions define the feasible analytical domain |
-
-**Algorithm**: Derive same-tier CoMP distance and coverage distributions with BPP/PPP stochastic geometry → moment-match aggregate fading and compute association-weighted coverage → identify altitude regimes → weight terrestrial coverage-deficit samples → alternate kernel assignment and weighted-centroid updates → validate against Monte Carlo simulation.
+| Model rule | (21) is unconstrained apart from the partition: each sample $x_i$ belongs to exactly one cluster $C_k$ |
+| Model rule | Tier association follows the larger aggregate received power of the three nearest same-tier sites; $\mathcal A_{\mathrm{TBS}}=1-\mathcal A_{\mathrm{ABS}}$ (16) |
+| Model rule | Coverage is the probability that the CoMP SIR exceeds the threshold, evaluated with moment-matched aggregate fading over BPP (ABS) and PPP (TBS) geometry |
+**Algorithm**: Derive CoMP distance and coverage distributions with BPP/PPP stochastic geometry → compute association-weighted coverage and identify the two altitude regimes → for deployment, run Algorithm 1: assign each $x_i$ to the ABS maximizing its fading-aware kernel, update $\mu_k$ as the kernel-weighted centroid, and stop when centers move less than $\epsilon$ → validate against Monte Carlo simulation.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Shi et al. [x] studied aerial-user coverage in a vertical heterogeneous network with UAV-mounted aerial base stations, terrestrial base stations, and same-tier three-site CoMP. They derived association and coverage expressions using finite binomial and Poisson point processes, altitude-dependent LoS/NLoS propagation, Nakagami fading, and moment-matched aggregate interference. For deployment, they weighted sample locations by terrestrial SIR deficits and alternated kernel-based assignment with weighted-centroid updates to place fixed-altitude aerial base stations. Monte Carlo results validate the analytical trends and report approximately 0.9 CoMP coverage versus 0.1 single-site coverage at the stated threshold, with 81.42% coverage for the proposed placement in the reported configuration. The paper also reports a two-regime altitude association behavior and parameter-dependent non-monotonic coverage as the ABS count changes.
+Shi et al. [x] studied aerial-user coverage in a vertical heterogeneous network with UAV-mounted aerial base stations, terrestrial base stations, and same-tier three-site CoMP. They derived association and coverage expressions using finite binomial and Poisson point processes, altitude-dependent LoS/NLoS propagation, Nakagami fading, and moment-matched aggregate interference. For deployment, they weighted sample locations by terrestrial SIR deficits and alternated kernel-based assignment with weighted-centroid updates to place fixed-altitude aerial base stations. Monte Carlo results validate the analytical trends and report CoMP coverage near 0.9 versus about 0.1 for single-link association at $\gamma=-4$ dB with $\alpha=3$, roughly matching a strongest-three heuristic; the proposed placement reaches 81.42% coverage against 79.85% for classical weighted K-means, 72.93% for random ABSs, and 61.99% for TBSs only. The paper also reports a two-regime altitude association behavior and parameter-dependent non-monotonic coverage as the ABS count changes.
 
 ## Problem framing
 

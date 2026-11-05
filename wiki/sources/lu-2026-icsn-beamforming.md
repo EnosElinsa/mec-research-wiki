@@ -17,7 +17,7 @@ related:
   - "[[su-2024-sensing-aided-isac-pls]]"
 modeling_card: required
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Integrated Communication, Sensing and Navigation Beamforming Design for Low-altitude Scenarios
@@ -38,7 +38,7 @@ Uses a two-stage base-station beam design for airborne-user communication, angul
 
 **Scenario**: A ULA-equipped base station serves $K$ single-antenna airborne users and senses $L$ angular targets; Stage 1 probes coarse directions, and Stage 2 sends communication and navigation assistance while reserving radar power, with uncertain target CSI.
 
-**Problem & objective**: For Stage 2, maximize the normalized communication and sensing tradeoff, $\max_{\mathbf W_k,\mathbf R_r}\frac{\rho}{\mathcal R_{\mathrm{sum}}}\sum_kR_k^{\mathrm{Com}}+\frac{1-\rho}{\log_2\mathcal D_{\max}}\log_2\det(\mathbf{FIM}_2)$.
+**Problem & objective**: For Stage 2, problem (39) maximizes the normalized communication and sensing tradeoff, $\max_{\mathbf W_k,\mathbf R_r}\frac{\rho}{\mathcal R_{\mathrm{sum}}}\sum_kR_k^{\mathrm{Com}}+\frac{1-\rho}{\log_2\mathcal D_{\max}}\log_2\det(\mathbf{FIM}_2)$.
 
 **Decision variables**:
 
@@ -53,11 +53,12 @@ Uses a two-stage base-station beam design for airborne-user communication, angul
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Communication reliability requires $\mathrm{SINR}_k^{\mathrm{Com}}\geq\gamma_{\mathrm{com}}$. |
-| C2 | Mainlobe and sidelobe powers obey $P(\theta_t)-P(\theta_s)\geq\gamma_s$ for sidelobe angles. |
-| C3 | Mainlobe stability bounds use $(1-\alpha)P(\theta_t)\leq P(\theta_m)\leq(1+\alpha)P(\theta_t)$. |
-| C4 | Covariances are positive semidefinite and satisfy $\mathrm{tr}(\sum_k\mathbf W_k+\mathbf R_r)=P_0$. |
-| C5 | Stage 1 focuses the acquisition beam with $\mathrm{ISMR}\leq\mathrm{ISMR}_{\max}$ and $\mathrm{tr}(\mathbf R_{\mathrm{rad}})\leq P_0$. |
+| (36a) | Communication reliability: $\mathrm{SINR}_k^{\mathrm{Com}}\geq\gamma_{\mathrm{com}},\forall k$ (rewritten as $G_k\ge\gamma_{\mathrm{com}}F_k$ in (37b)) |
+| (36b)–(36c) | Mainlobe–sidelobe gap: $\mathbf a^H(\theta_t)\mathbf R_x\mathbf a(\theta_t)-\mathbf a^H(\theta_s)\mathbf R_x\mathbf a(\theta_s)\geq\gamma_s,\ \forall\theta_s\in\Theta_S,\forall t$ |
+| (36d) | Mainlobe stability: $(1-\alpha)P(\theta_t)\leq P(\theta_m)\leq(1+\alpha)P(\theta_t),\ \forall\theta_m\in\Theta_M$ |
+| (36e), (36g) | $\mathbf W_k\succeq0$, $\mathbf R_r\succeq0$, and $\mathrm{tr}(\sum_k\mathbf W_k+\mathbf R_r)=P_0$ |
+| (32b)–(32d) | Stage 1: $\mathrm{ISMR}\leq\mathrm{ISMR}_{\max}$, $\mathbf R_{\mathrm{rad}}\succeq0$, $\mathrm{tr}(\mathbf R_{\mathrm{rad}})\leq P_0$ |
+| Note | The parse splits the two-sided mainlobe bound across (36d) and an untagged line and leaves (36f) blank; check the published paper for the exact tag mapping |
 
 **Algorithm**: Solve the Stage-1 max-det FIM problem under ISMR and power constraints, estimate directions with Capon spectra and CRB confidence intervals, then alternate Stage-2 covariance updates using quadratic fractional programming and log-det FIM optimization until the angular estimates and beamformers converge.
 
@@ -65,7 +66,7 @@ Uses a two-stage base-station beam design for airborne-user communication, angul
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Lu et al. [x] studied integrated communication, sensing, and navigation beamforming for a ULA base station serving airborne users and angular targets. They formulated a weighted sum-rate and FIM-determinant problem with SINR, mainlobe-sidelobe, positive-semidefinite, and total-power constraints. A wide ISMR-constrained acquisition beam and Capon angle estimation initialize CRB confidence regions, after which fractional programming and alternating optimization refine the communication and radar covariances. Simulations show faster convergence from directional initialization and report communication and sensing performance close to the corresponding single-objective benchmarks while outperforming omnidirectional transmission.
+Lu et al. [x] studied integrated communication, sensing, and navigation beamforming for a ULA base station serving airborne users and angular targets. They formulated a weighted sum-rate and FIM-determinant problem with SINR, mainlobe-sidelobe, positive-semidefinite, and total-power constraints. A wide ISMR-constrained acquisition beam and Capon angle estimation initialize CRB confidence regions, after which fractional programming and alternating optimization refine the communication and radar covariances. Simulations show faster convergence from directional initialization and report sum rate approaching the Max-SR benchmark and log-det FIM close to the Min-CRB benchmark, with both clearly above omnidirectional transmission; each single-objective benchmark remains best on its own metric.
 
 ## Problem framing
 

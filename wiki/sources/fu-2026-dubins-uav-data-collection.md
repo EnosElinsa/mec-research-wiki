@@ -15,7 +15,7 @@ related:
   - "[[ant-colony-optimization]]"
   - "[[constraint-regimes-in-uav-data-collection]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Dubins Path Planning of Heterogeneous UAV Collaborative Data Collection for IoT Network
@@ -50,12 +50,12 @@ Builds an offline release-collect-recover mission for one fast transport UAV car
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | T-UAV and C-UAV paths respect their minimum turning radii and coupled Dubins headings. |
-| C2 | Collection paths avoid mapped terrain obstacles and cover every assigned terminal. |
-| C3 | A terminal transmits only within effective range and until $\int_0^t\mathcal R_i(t)\,dt>\iota$. |
-| C4 | A communication UAV cannot hover, serves terminals sequentially, and receives at most one retry after failure. |
-| C5 | Recovery requires horizontal alignment and altitude difference below 1 m. |
-| C6 | Carrier and communication-UAV arrival times and relative headings satisfy the rendezvous synchronization rule. |
+| Model rule | T-UAV and C-UAV paths respect their minimum turning radii and coupled Dubins headings. |
+| Model rule | Collection paths avoid mapped terrain obstacles and cover every assigned terminal. |
+| Model rule | A terminal transmits only within effective range and until $\int_0^t\mathcal R_i(t)\,dt>\iota$. |
+| Model rule | A communication UAV cannot hover, serves terminals sequentially, and receives at most one retry after failure. |
+| Model rule | Recovery requires horizontal alignment and altitude difference below 1 m. |
+| Model rule | Carrier and communication-UAV arrival times and relative headings satisfy the rendezvous synchronization rule. |
 
 **Algorithm**: Use multi-height hierarchical target clustering to assign terminals, altitudes, and candidate fleet size, then solve a Dubins release tour. Build each open collection chain with bundled ant-colony search and dynamic-window probabilistic roadmaps, convert it to coupled Dubins curves, order recovery requests, and elongate the carrier path by homotopy or multi-circle segments until rendezvous times align; compare candidate values of $K$ offline.
 

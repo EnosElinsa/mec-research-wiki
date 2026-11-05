@@ -24,7 +24,7 @@ related:
   - "[[dongming-wang]]"
   - "[[xiaohu-you]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # User-Centric Beam-Delay Alignment Transmission for Low-Altitude Coverage via Wideband Cell-Free Massive MIMO
@@ -59,12 +59,12 @@ A wideband ground-AP cell-free downlink aligns selected UAV paths in both beam a
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Precoding zero-forces selected intra-user and inter-user asynchronous terms outside the tolerated delay window. |
-| C2 | Paths in each SSP-Set form a clique with pairwise mismatch $\lvert\nu\rvert\leq T_{\mathrm{CP}}/2$. |
-| C3 | Per-AP selected streams do not exceed available RF chains and data-stream capacity. |
-| C4 | Per-AP path powers satisfy $\sum_{k,p}\alpha_{l,k,p}\eta_{l,k,p}\leq P_{\mathrm{AP}}$. |
-| C5 | Digital or analog delay settings remain implementable by the available delay modules and branch counts. |
-| C6 | Path selection uses statistical path gain and delay information rather than unavailable instantaneous small-scale CSI. |
+| (11-a)–(14-a) | Precoding zero-forces selected intra-user and inter-user asynchronous terms outside the tolerated delay window. |
+| Model rule (SSP-Set) | Paths in each SSP-Set form a clique with pairwise mismatch $\lvert\nu\rvert\leq T_{\mathrm{CP}}/2$. |
+| Model rule (hardware) | Per-AP selected streams do not exceed available RF chains and data-stream capacity. |
+| (18-a) | Per-AP path powers satisfy $\sum_{k,p}\alpha_{l,k,p}\eta_{l,k,p}\leq P_{\mathrm{AP}}$. |
+| Model rule (delay hardware) | Digital or analog delay settings remain implementable by the available delay modules and branch counts. |
+| Model rule (CSI) | Path selection uses statistical path gain and delay information rather than unavailable instantaneous small-scale CSI. |
 
 **Algorithm**: Build a path-compatibility graph at each AP, use a geometric-scattering GCN to rank maximal-clique candidates, and retain strong paths subject to RF-chain and delay-branch limits. Configure beam and delay alignment locally, derive zero-space precoders, upload aggregate gains to the CPU, and solve the fixed-structure max-min power allocation by feasibility bisection and a convex linear or fractional subproblem.
 
@@ -72,7 +72,7 @@ A wideband ground-AP cell-free downlink aligns selected UAV paths in both beam a
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Hong et al. [x] designed beam-delay alignment transmission for asynchronous wideband cell-free coverage of low-altitude UAV users. They maximized worst-user received SNR or SINR over delay-compatible path selection, hybrid precoding, time-delay compensation, and per-path power under zero-forcing, RF-chain, data-stream, delay-hardware, and per-AP power constraints. A geometric-scattering GCN ranks maximal-clique SSP candidates, distributed AP processing configures beams and delays, and centralized feasibility bisection allocates power. With 20 UAVs, max-min power allocation improved spectral efficiency by more than threefold over uniform power, and the gain remained about twofold in denser cases.
+Hong et al. [x] designed beam-delay alignment transmission for asynchronous wideband cell-free coverage of low-altitude UAV users. They maximized worst-user received SNR or SINR over delay-compatible path selection, hybrid precoding, time-delay compensation, and per-path power under zero-forcing, RF-chain, data-stream, delay-hardware, and per-AP power constraints. A geometric-scattering GCN ranks maximal-clique SSP candidates, distributed AP processing configures beams and delays, and centralized feasibility bisection allocates power. With 20 UAVs, max-min power allocation improved spectral efficiency by more than threefold over uniform power, and the gain remained about twofold in ultra-dense cases, narrowing as the number of UAVs grows.
 
 ## Problem
 

@@ -18,7 +18,7 @@ related:
   - "[[wu-2024-urllc-uav-mec-latency]]"
   - "[[wang-2026-glint-aoi-wireless-powered-edge]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Energy Efficient Resource Allocation for Wireless Powered UAV Wireless Communication System With Short Packet
@@ -52,11 +52,11 @@ A fixed-altitude UAV hybrid access point first powers IoT devices and then recei
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Horizontal placement satisfies the per-axis bounds in (11b) and (11c) |
-| C2 | The total frame length is bounded, $\sum_{k=0}^{K}n_k\leq N$ |
-| C3 | Symbol allocations are integral and nonnegative, $n_k\in\mathbb N$ |
-| C4 | Total WPT power is bounded, $\sum_{k=1}^{K}p_k\leq P_m$ |
-| C5 | Each charging power is positive, $p_k>0$ |
+| (11b)–(11c) | Horizontal placement bounds: $x_{\min,k}\le x\le x_{\max,k}$, $y_{\min,k}\le y\le y_{\max,k}$ |
+| (11d) | Total frame length: $\sum_{k=0}^{K}n_k\leq N$ |
+| (11e) | Integral blocklengths: $n_k\in\mathbb N$ |
+| (11f) | Total WPT power: $\sum_{k=1}^{K}p_k\leq P_m$ |
+| (11g) | Positive charging power: $p_k>0$ |
 
 **Algorithm**: After relaxing blocklength integrality, the method alternates an SCA placement update, a fractional-programming blocklength update, and a Lagrangian power update until energy efficiency converges, then applies largest-remainder rounding and recomputes placement and power.
 
@@ -64,7 +64,7 @@ A fixed-altitude UAV hybrid access point first powers IoT devices and then recei
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Xie et al. [x] considered energy-efficient resource allocation for a wireless-powered UAV hybrid access point with finite-blocklength uplink communication. Their mixed-integer fractional model jointly optimizes static UAV placement, downlink charging powers, and the WPT and uplink symbol allocations under placement, frame-length, integrality, and power constraints. The proposed solver alternates successive convex approximation and fractional or dual updates before using heuristic integer conversion for the symbol counts. Simulations show that joint optimization outperforms equal allocation and partial-optimization baselines, while energy efficiency decreases as more devices share the finite frame.
+Xie et al. [x] considered energy-efficient resource allocation for a wireless-powered UAV hybrid access point with finite-blocklength uplink communication. Their mixed-integer fractional model jointly optimizes static UAV placement, downlink charging powers, and the WPT and uplink symbol allocations under placement, frame-length, integrality, and power constraints. The proposed solver alternates successive convex approximation and fractional or dual updates before using heuristic integer conversion for the symbol counts. Simulations show EE close to an exhaustive search and above equal block-length allocation and the partial OBP (fixed power) and OPP (fixed blocklength) schemes, while EE decreases as more devices share the finite frame.
 
 ## Problem
 

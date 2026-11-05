@@ -17,7 +17,7 @@ related:
   - "[[tony-q-s-quek]]"
   - "[[zhu-han]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # RIS-Based Communication Enhancement and Location Privacy Protection in UAV Networks
@@ -36,7 +36,7 @@ Adds an artificial-noise generator to an active RIS and virtually partitions its
 
 **Scenario**: A multi-antenna source UAV communicates with legitimate single-antenna receiver UAVs through an active RIS, while colluding malicious UAVs estimate the source location from RSS. The RIS partitions elements and power between communication enhancement (ARIS-CE) and localization interference (ARIS-LI), with artificial-noise generation.
 
-**Problem & objective**: Problem $P_0$ maximizes $Q_1=\sum_{k=1}^{K}\log_2(1+\gamma_k)+\omega\sum_{e=1}^{E}\kappa_e$ over source beamforming, ARIS-CE and ARIS-LI precoders, artificial-noise vectors, partition ratios, and power ratios subject to legitimate-user SINR, malicious-user localization-interference or CRLB, source/RIS power, and partition constraints.
+**Problem & objective**: Problem $P_0$ in (39) maximizes $Q_1=\sum_{k=1}^{K}\log_2(1+\gamma_k)+\omega\sum_{e=1}^{E}\kappa_e$ over source beamforming, ARIS-CE and ARIS-LI precoders, artificial-noise vectors, partition ratios, and power ratios subject to legitimate-user SINR, malicious-user localization-interference or CRLB, source/RIS power, and partition constraints.
 
 **Decision variables**:
 
@@ -53,14 +53,15 @@ Adds an artificial-noise generator to an active RIS and virtually partitions its
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each malicious UAV meets the localization-interference requirement derived from the RSS Fisher information and CRLB. |
-| C2 | Each legitimate receiver meets the SINR target: $\operatorname{SINR}_k\ge\gamma_{st}$. |
-| C3 | Each malicious-UAV localization error metric satisfies $\varrho_e\ge\varrho_{st}$. |
-| C4 | Source power is bounded: $\sum_k\lVert\mathbf w_k\rVert^2\le P_S^{\max}$. |
-| C5 | ARIS-CE power is bounded by $P_0=\eta_0P_R^{\max}$. |
-| C6 | ARIS-LI power for branch $e$ is bounded by $P_e=\eta_eP_R^{\max}$. |
-| C7 | Element partitions sum to one: $\rho_0+\sum_e\rho_e=1$. |
-| C8 | Power partitions sum to one: $\eta_0+\sum_e\eta_e=1$. |
+| (39b) | Interference-to-signal ratio at each malicious UAV at least $\kappa_{st}$ (with the ARIS-LI precoder) |
+| (39c) | Legitimate-receiver SINR at least $\gamma_{st}$ |
+| (39d) | Localization-error metric $\varrho_e\ge\varrho_{st}$ |
+| (39e) | Source power: $\sum_k\lVert\mathbf w_k\rVert^2\le P_S^{\max}$ |
+| (39f) | ARIS-CE power: $\sum_k\lVert\boldsymbol\Theta\mathbf H\mathbf w_k\rVert^2+\lVert\boldsymbol\Theta\rVert_F^2\sigma_v^2\le\eta_0P_R^{\max}$ |
+| (39g) | ARIS-LI power of branch $e$ at most $\eta_eP_R^{\max}$ |
+| (39h) | Element partitions: $\rho_0+\sum_e\rho_e=1$ |
+| (39i) | Power partitions: $\eta_0+\sum_e\eta_e=1$ |
+| Note | The parse misplaces tags (39b)–(39e); IDs follow the equation order, so check the published paper |
 
 **Algorithm**: Derive the RSS localization CRLB, initialize partition and power ratios from average-channel formulas, then alternate fractional-programming updates for auxiliary variables, source beamforming, and ARIS-CE reflection with FP and semidefinite-programming updates for each ARIS-LI branch until the objective change is small.
 

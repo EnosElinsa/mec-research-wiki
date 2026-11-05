@@ -16,7 +16,7 @@ related:
   - "[[chan-byoung-chae]]"
 modeling_card: required
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Fluid Antenna System-Enabled UAV Communications in the Finite Blocklength Regime
@@ -35,7 +35,7 @@ Analyzes short-packet decode-and-forward UAV relaying to a user equipped with a 
 
 **Scenario**: A BS communicates with one UE through a half-duplex decode-and-forward UAV relay, and the UE selects among correlated fluid-antenna ports; short packets traverse Nakagami-m rural or probabilistic LoS/NLoS urban channels under finite-blocklength decoding.
 
-**Problem & objective**: Problem P1, a non-convex mixed-integer program, maximizes $\mathrm{EE}=B(1-\bar\epsilon_O)/E_{\mathrm{total}}$ in successfully delivered bits per joule.
+**Problem & objective**: Problem (P1) (59), a non-convex mixed-integer program, maximizes $\mathrm{EE}=B(1-\bar\epsilon_O)/E_{\mathrm{total}}$ in successfully delivered bits per joule.
 
 **Decision variables**:
 
@@ -50,9 +50,10 @@ Analyzes short-packet decode-and-forward UAV relaying to a user equipped with a 
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | End-to-end reliability satisfies $\bar\epsilon_O(L,Z_U,P_2,N)\le\epsilon_{\mathrm{th}}$ |
-| C2 | Power, altitude, blocklength, and port count remain in their operational ranges |
-| C3 | Port probing leaves positive data time, $N\tau_p<L/W_{\mathrm{band}}$ |
+| (59b) | End-to-end reliability: $\hat\epsilon_O(L,Z_U,P_2,N)\le\epsilon_{\mathrm{th}}$ |
+| (59b), 2nd line | UAV power: $0<P_2\le P_{\max}$ (untagged in the parse) |
+| (59c)–(59e) | Altitude, blocklength, and port ranges: $Z_{\min}\le Z_U\le Z_{\max}$, $L_{\min}\le L\le L_{\max}$, $N_{\min}\le N\le N_{\max}$ |
+| (59f) | Port probing leaves data time: $N\tau_p<L/W_{\mathrm{band}}$ |
 
 **Algorithm**: Hierarchical search, use bisection to find the minimum reliability-feasible $P_2$ for fixed $(L,Z_U,N)$, exhaust integer ports, grid-search altitude, grid-search blocklength, and keep the tuple with maximum EE.
 
@@ -60,7 +61,7 @@ Analyzes short-packet decode-and-forward UAV relaying to a user equipped with a 
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Zhu et al. [x] studied fluid-antenna-enabled UAV relaying in the finite-blocklength regime for rural and urban propagation. They derived end-to-end BLER expressions using an eigenvalue-based approximation of correlated ports and formulated an energy-efficiency maximization problem that accounts for port-probing time and switching energy. The mixed-integer design jointly selects blocklength, UAV altitude, UAV transmit power, and the number of fluid-antenna ports under BLER and causality constraints. Their hierarchical algorithm combines bisection for the minimum reliability-feasible power with exhaustive port search and one-dimensional searches over altitude and blocklength. Numerical results report more than 15 dB UAV-power savings over a fixed-position antenna in the urban case and a finite energy-efficiency-optimal port count because probing overhead eventually dominates diversity gain.
+Zhu et al. [x] studied fluid-antenna-enabled UAV relaying in the finite-blocklength regime for rural and urban propagation. They derived end-to-end BLER expressions using an eigenvalue-based approximation of correlated ports and formulated an energy-efficiency maximization problem that accounts for port-probing time and switching energy. The mixed-integer design jointly selects blocklength, UAV altitude, UAV transmit power, and the number of fluid-antenna ports under BLER and causality constraints. Their hierarchical algorithm combines bisection for the minimum reliability-feasible power with exhaustive port search and one-dimensional searches over altitude and blocklength. Numerical results report more than 15 dB UAV-power savings over a fixed-position antenna ($N=1$) in the urban case, a scenario-dependent optimal altitude (lowest in rural, interior in urban), and a finite energy-efficiency-optimal port count because probing overhead eventually dominates diversity gain.
 
 ## Problem framing
 

@@ -1,0 +1,580 @@
+{
+  "entries": [
+    {
+      "slug": "chen-2026-aris-location-privacy",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/RIS-Based_Communication_Enhancement_and_Location_Privacy_Protection_in_UAV_Networks/RIS-Based_Communication_Enhancement_and_Location_Privacy_Protection_in_UAV_Networks.md",
+          "lines": "79-159,365-404",
+          "note": "signals, SINR/ISR; P0 (39a)-(39i)"
+        },
+        {
+          "path": "raw/sources/RIS-Based_Communication_Enhancement_and_Location_Privacy_Protection_in_UAV_Networks/RIS-Based_Communication_Enhancement_and_Location_Privacy_Protection_in_UAV_Networks.md",
+          "lines": "283-333,413-701",
+          "note": "ML localization, CRLB, partition (35), FP/SDP subproblems P2-P8"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/RIS-Based_Communication_Enhancement_and_Location_Privacy_Protection_in_UAV_Networks/RIS-Based_Communication_Enhancement_and_Location_Privacy_Protection_in_UAV_Networks.md",
+          "lines": "5,816,824",
+          "note": "37.65% RMSE gain, 3.69% sum-rate loss beyond 400 m vs fixed partition"
+        }
+      ]
+    },
+    {
+      "slug": "chen-2026-laser-powered-multiuav-qoe",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/QoE_Maximization_for_Laser-Powered_Multi-UAV_Communication_Networks/QoE_Maximization_for_Laser-Powered_Multi-UAV_Communication_Networks.md",
+          "lines": "210-235",
+          "note": "P1 (19) C1-C6; P2 (20) C7-C8"
+        },
+        {
+          "path": "raw/sources/QoE_Maximization_for_Laser-Powered_Multi-UAV_Communication_Networks/QoE_Maximization_for_Laser-Powered_Multi-UAV_Communication_Networks.md",
+          "lines": "446-580",
+          "note": "matching, position SCA, redundant-resource reallocation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/QoE_Maximization_for_Laser-Powered_Multi-UAV_Communication_Networks/QoE_Maximization_for_Laser-Powered_Multi-UAV_Communication_Networks.md",
+          "lines": "705-730",
+          "note": "GSM, MWEP, LGD-UPS benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "fang-2026-cellfree-uav-predictive-beamforming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Predictive_Beamforming_and_Resource_Allocation_for_High-Mobility_Cell-Free_UAV_Networks/Predictive_Beamforming_and_Resource_Allocation_for_High-Mobility_Cell-Free_UAV_Networks.md",
+          "lines": "448-482",
+          "note": "P0 (50a)-(50f) (parse shifts (50a))"
+        },
+        {
+          "path": "raw/sources/Predictive_Beamforming_and_Resource_Allocation_for_High-Mobility_Cell-Free_UAV_Networks/Predictive_Beamforming_and_Resource_Allocation_for_High-Mobility_Cell-Free_UAV_Networks.md",
+          "lines": "490-697",
+          "note": "P1-P4, reweighted l1, quadratic transform, bisection"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Predictive_Beamforming_and_Resource_Allocation_for_High-Mobility_Cell-Free_UAV_Networks/Predictive_Beamforming_and_Resource_Allocation_for_High-Mobility_Cell-Free_UAV_Networks.md",
+          "lines": "7,45",
+          "note": "31% SE, 95% training overhead with 3% accuracy loss"
+        }
+      ]
+    },
+    {
+      "slug": "fu-2026-dubins-uav-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dubins_Path_Planning_of_Heterogeneous_UAV_Collaborative_Data_Collection_for_IoT_Network/Dubins_Path_Planning_of_Heterogeneous_UAV_Collaborative_Data_Collection_for_IoT_Network.md",
+          "lines": "38-107",
+          "note": "carrier tour, recovery rules, throughput (3), recovery index"
+        },
+        {
+          "path": "raw/sources/Dubins_Path_Planning_of_Heterogeneous_UAV_Collaborative_Data_Collection_for_IoT_Network/Dubins_Path_Planning_of_Heterogeneous_UAV_Collaborative_Data_Collection_for_IoT_Network.md",
+          "lines": "185-199",
+          "note": "BACS with DAWPRM distances"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dubins_Path_Planning_of_Heterogeneous_UAV_Collaborative_Data_Collection_for_IoT_Network/Dubins_Path_Planning_of_Heterogeneous_UAV_Collaborative_Data_Collection_for_IoT_Network.md",
+          "lines": "365",
+          "note": "30 Monte Carlo runs; K=5; waiting-time differences"
+        }
+      ]
+    },
+    {
+      "slug": "he-2026-lscr-uav-relay-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Collaborative_Relay_Tracking_Method_Incorporating_Larger-Scale_Spatial_Context_for_UAVs/A_Collaborative_Relay_Tracking_Method_Incorporating_Larger-Scale_Spatial_Context_for_UAVs.md",
+          "lines": "51-102",
+          "note": "candidate set (1), selection (2), overlap (3), time alignment (4)-(5)"
+        },
+        {
+          "path": "raw/sources/A_Collaborative_Relay_Tracking_Method_Incorporating_Larger-Scale_Spatial_Context_for_UAVs/A_Collaborative_Relay_Tracking_Method_Incorporating_Larger-Scale_Spatial_Context_for_UAVs.md",
+          "lines": "306-329",
+          "note": "8448 graph pairs; GRCN results"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Collaborative_Relay_Tracking_Method_Incorporating_Larger-Scale_Spatial_Context_for_UAVs/A_Collaborative_Relay_Tracking_Method_Incorporating_Larger-Scale_Spatial_Context_for_UAVs.md",
+          "lines": "400-410",
+          "note": "Table V: LSCR 92.1% vs Siam-ResNet50 92.6%, transfer and model size"
+        }
+      ]
+    },
+    {
+      "slug": "hong-2026-beam-delay-alignment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/User-Centric_Beam-Delay_Alignment_Transmission_for_Low-Altitude_Coverage_via_Wideband_Cell-Free_Massive_MIMO/User-Centric_Beam-Delay_Alignment_Transmission_for_Low-Altitude_Coverage_via_Wideband_Cell-Free_Massive_MIMO.md",
+          "lines": "168-290",
+          "note": "zero-forcing problems (11)-(14), power problem (18) with (18-a)"
+        },
+        {
+          "path": "raw/sources/User-Centric_Beam-Delay_Alignment_Transmission_for_Low-Altitude_Coverage_via_Wideband_Cell-Free_Massive_MIMO/User-Centric_Beam-Delay_Alignment_Transmission_for_Low-Altitude_Coverage_via_Wideband_Cell-Free_Massive_MIMO.md",
+          "lines": "332-507",
+          "note": "SSP-set problems, analog delay (30), bisection"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/User-Centric_Beam-Delay_Alignment_Transmission_for_Low-Altitude_Coverage_via_Wideband_Cell-Free_Massive_MIMO/User-Centric_Beam-Delay_Alignment_Transmission_for_Low-Altitude_Coverage_via_Wideband_Cell-Free_Massive_MIMO.md",
+          "lines": "578",
+          "note": "threefold at K=20, twofold ultra-dense; convergence with uniform power"
+        }
+      ]
+    },
+    {
+      "slug": "huang-2026-aim-uav-relay-aor",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AIM_Angle-of-Radiation-Based_Deployment_of_UAV_Relays_for_Connectivity_in_3D_Environments/AIM_Angle-of-Radiation-Based_Deployment_of_UAV_Relays_for_Connectivity_in_3D_Environments.md",
+          "lines": "85-108",
+          "note": "problem (5a)-(5d)"
+        },
+        {
+          "path": "raw/sources/AIM_Angle-of-Radiation-Based_Deployment_of_UAV_Relays_for_Connectivity_in_3D_Environments/AIM_Angle-of-Radiation-Based_Deployment_of_UAV_Relays_for_Connectivity_in_3D_Environments.md",
+          "lines": "123-138",
+          "note": "state-graph problem (7a)-(7d); AIM table"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AIM_Angle-of-Radiation-Based_Deployment_of_UAV_Relays_for_Connectivity_in_3D_Environments/AIM_Angle-of-Radiation-Based_Deployment_of_UAV_Relays_for_Connectivity_in_3D_Environments.md",
+          "lines": "5,321",
+          "note": "52.1/61.2/14.6% fewer UAVs vs two-stage, greedy, MADRL"
+        }
+      ]
+    },
+    {
+      "slug": "li-2023-energy-constrained-uav-data-collection",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Data_Collection_Maximization_in_IoT-Sensor_Networks_via_an_Energy-Constrained_UAV/Data_Collection_Maximization_in_IoT-Sensor_Networks_via_an_Energy-Constrained_UAV.md",
+          "lines": "91-174",
+          "note": "Definitions 1-2; ILP with flow, energy, depot, subtour constraints"
+        },
+        {
+          "path": "raw/sources/Data_Collection_Maximization_in_IoT-Sensor_Networks_via_an_Energy-Constrained_UAV/Data_Collection_Maximization_in_IoT-Sensor_Networks_via_an_Energy-Constrained_UAV.md",
+          "lines": "223-431",
+          "note": "orienteering mapping; approximation and heuristics"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Data_Collection_Maximization_in_IoT-Sensor_Networks_via_an_Energy-Constrained_UAV/Data_Collection_Maximization_in_IoT-Sensor_Networks_via_an_Energy-Constrained_UAV.md",
+          "lines": "494-503",
+          "note": "at least 80% of optimum, about twice benchmark; 79.1% and 99% (K=2)"
+        }
+      ]
+    },
+    {
+      "slug": "lin-2026-fc-ris-surveillance",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Borne_FC-RIS_Empowered_Wireless_Information_Surveillance_With_Threshold-Based_Antenna_Selection/UAV-Borne_FC-RIS_Empowered_Wireless_Information_Surveillance_With_Threshold-Based_Antenna_Selection.md",
+          "lines": "314-398",
+          "note": "placement problem (26), (33)-(34), (36)"
+        },
+        {
+          "path": "raw/sources/UAV-Borne_FC-RIS_Empowered_Wireless_Information_Surveillance_With_Threshold-Based_Antenna_Selection/UAV-Borne_FC-RIS_Empowered_Wireless_Information_Surveillance_With_Threshold-Based_Antenna_Selection.md",
+          "lines": "413-446",
+          "note": "TAS/ASC/RAS selection, symmetric unitary FC-RIS"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Borne_FC-RIS_Empowered_Wireless_Information_Surveillance_With_Threshold-Based_Antenna_Selection/UAV-Borne_FC-RIS_Empowered_Wireless_Information_Surveillance_With_Threshold-Based_Antenna_Selection.md",
+          "lines": "7,446-456",
+          "note": "FC-RIS beats D-RIS and T-RIS; FlexMAS-FRRC higher MSP, prohibitive complexity"
+        }
+      ]
+    },
+    {
+      "slug": "lin-2026-uav-wpucn-time-allocation",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless-Powered_Underground_Communication_Networks_A_Novel_Time_Allocation_Approach/UAV-Enabled_Wireless-Powered_Underground_Communication_Networks_A_Novel_Time_Allocation_Approach.md",
+          "lines": "171-183",
+          "note": "(P1) full-CSI SDP (16a)-(16d)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless-Powered_Underground_Communication_Networks_A_Novel_Time_Allocation_Approach/UAV-Enabled_Wireless-Powered_Underground_Communication_Networks_A_Novel_Time_Allocation_Approach.md",
+          "lines": "273,305-366",
+          "note": "E_s (24), hybrid (27), (P2) (28b)-(28f), (P3) (29a)-(29d); 29b blank"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless-Powered_Underground_Communication_Networks_A_Novel_Time_Allocation_Approach/UAV-Enabled_Wireless-Powered_Underground_Communication_Networks_A_Novel_Time_Allocation_Approach.md",
+          "lines": "5,15,456,482,491",
+          "note": "CSI-free schemes; hybrid lowest energy; Q<=32 caveat"
+        }
+      ]
+    },
+    {
+      "slug": "lu-2026-icsn-beamforming",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Integrated_Communication_Sensing_and_Navigation_Beamforming_Design_for_Low-altitude_Scenarios/Integrated_Communication_Sensing_and_Navigation_Beamforming_Design_for_Low-altitude_Scenarios.md",
+          "lines": "313-325",
+          "note": "Stage-1 (32a)-(32d)"
+        },
+        {
+          "path": "raw/sources/Integrated_Communication_Sensing_and_Navigation_Beamforming_Design_for_Low-altitude_Scenarios/Integrated_Communication_Sensing_and_Navigation_Beamforming_Design_for_Low-altitude_Scenarios.md",
+          "lines": "367-445",
+          "note": "(36a)-(36g), (37), (39); 36f blank"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Integrated_Communication_Sensing_and_Navigation_Beamforming_Design_for_Low-altitude_Scenarios/Integrated_Communication_Sensing_and_Navigation_Beamforming_Design_for_Low-altitude_Scenarios.md",
+          "lines": "505-507,547-551",
+          "note": "faster convergence; Max-SR/Min-CRB benchmarks; omni baseline"
+        }
+      ]
+    },
+    {
+      "slug": "lu-2026-multiuav-iscpt",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Collaborative_ISCPT_Joint_3D_Deployment_and_Power_Control_of_UAVs/Multi-UAV_Collaborative_ISCPT_Joint_3D_Deployment_and_Power_Control_of_UAVs.md",
+          "lines": "176-187",
+          "note": "P0 (16), (17), (18)"
+        },
+        {
+          "path": "raw/sources/Multi-UAV_Collaborative_ISCPT_Joint_3D_Deployment_and_Power_Control_of_UAVs/Multi-UAV_Collaborative_ISCPT_Joint_3D_Deployment_and_Power_Control_of_UAVs.md",
+          "lines": "109-173",
+          "note": "association (7), RSP (10), EH (11)-(12), min terms (13)-(15)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Multi-UAV_Collaborative_ISCPT_Joint_3D_Deployment_and_Power_Control_of_UAVs/Multi-UAV_Collaborative_ISCPT_Joint_3D_Deployment_and_Power_Control_of_UAVs.md",
+          "lines": "7,395,517",
+          "note": "39.6% vs baselines; Pareto front"
+        }
+      ]
+    },
+    {
+      "slug": "ma-2024-covert-mmwave-finite-blocklength",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens.md",
+          "lines": "186,254,286,328",
+          "note": "(12), (21), (25), (30)"
+        },
+        {
+          "path": "raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens.md",
+          "lines": "399,417-429",
+          "note": "(35), (38), (39)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens/Covert_mmWave_Communications_With_Finite_Blocklength_Against_Spatially_Random_Wardens.md",
+          "lines": "5,47,410,513,577,581",
+          "note": "fixed-N benchmark; Nmax tradeoff; direction-dependent PA/LFDA"
+        }
+      ]
+    },
+    {
+      "slug": "shah-2026-cellfree-mimo-fap-control",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Trajectory_Transmit_Power_and_User_Association_in_Aerial-Terrestrial_Cell-Free_Massive_MIMO_Network/Joint_Optimization_of_UAV_Trajectory_Transmit_Power_and_User_Association_in_Aerial-Terrestrial_Cell-Free_Massive_MIMO_Network.md",
+          "lines": "141-164",
+          "note": "(15), (15a)-(15e)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Trajectory_Transmit_Power_and_User_Association_in_Aerial-Terrestrial_Cell-Free_Massive_MIMO_Network/Joint_Optimization_of_UAV_Trajectory_Transmit_Power_and_User_Association_in_Aerial-Terrestrial_Cell-Free_Massive_MIMO_Network.md",
+          "lines": "316-332",
+          "note": "APG subproblems (36)-(38a)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Trajectory_Transmit_Power_and_User_Association_in_Aerial-Terrestrial_Cell-Free_Massive_MIMO_Network/Joint_Optimization_of_UAV_Trajectory_Transmit_Power_and_User_Association_in_Aerial-Terrestrial_Cell-Free_Massive_MIMO_Network.md",
+          "lines": "564,584,593-597",
+          "note": "GA fewer FAPs; ablation 16.4% vs GA only"
+        }
+      ]
+    },
+    {
+      "slug": "shi-2026-vhetnet-comp-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Vertical_Heterogeneous_Networks_Beyond_5G_CoMP_Coverage_Enhancement_and_Optimization/Vertical_Heterogeneous_Networks_Beyond_5G_CoMP_Coverage_Enhancement_and_Optimization.md",
+          "lines": "184,257,277-291",
+          "note": "three-site CoMP, association (13)-(16)"
+        },
+        {
+          "path": "raw/sources/Vertical_Heterogeneous_Networks_Beyond_5G_CoMP_Coverage_Enhancement_and_Optimization/Vertical_Heterogeneous_Networks_Beyond_5G_CoMP_Coverage_Enhancement_and_Optimization.md",
+          "lines": "427-492",
+          "note": "deployment (21)-(25), Algorithm 1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Vertical_Heterogeneous_Networks_Beyond_5G_CoMP_Coverage_Enhancement_and_Optimization/Vertical_Heterogeneous_Networks_Beyond_5G_CoMP_Coverage_Enhancement_and_Optimization.md",
+          "lines": "299-305,561-563,587",
+          "note": "two-regime; CoMP 0.9 vs 0.1; 81.42 vs 79.85/72.93/61.99"
+        }
+      ]
+    },
+    {
+      "slug": "su-2026-three-tier-uav-capacity",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Modeling_and_Capacity_Analysis_of_UAV-Assisted_Three-Tier_Heterogeneous_Wireless_Networks/Modeling_and_Capacity_Analysis_of_UAV-Assisted_Three-Tier_Heterogeneous_Wireless_Networks.md",
+          "lines": "196-263",
+          "note": "relay P1/P2 (24)-(30), LP"
+        },
+        {
+          "path": "raw/sources/Modeling_and_Capacity_Analysis_of_UAV-Assisted_Three-Tier_Heterogeneous_Wireless_Networks/Modeling_and_Capacity_Analysis_of_UAV-Assisted_Three-Tier_Heterogeneous_Wireless_Networks.md",
+          "lines": "340-356",
+          "note": "max-min bandwidth (43)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Modeling_and_Capacity_Analysis_of_UAV-Assisted_Three-Tier_Heterogeneous_Wireless_Networks/Modeling_and_Capacity_Analysis_of_UAV-Assisted_Three-Tier_Heterogeneous_Wireless_Networks.md",
+          "lines": "5,397,420",
+          "note": "THM vs SFM Jain; ~20% vs two-tier; backhaul bottleneck"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2018-uav-powered-d2d",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_for_Energy_Harvesting-Powered_D2D_Communication_Underlaying_UAV-Assisted_Networks/Resource_Allocation_for_Energy_Harvesting-Powered_D2D_Communication_Underlaying_UAV-Assisted_Networks.md",
+          "lines": "42,90-96",
+          "note": "harvest model (1), problem (9) C1-C3"
+        },
+        {
+          "path": "raw/sources/Resource_Allocation_for_Energy_Harvesting-Powered_D2D_Communication_Underlaying_UAV-Assisted_Networks/Resource_Allocation_for_Energy_Harvesting-Powered_D2D_Communication_Underlaying_UAV-Assisted_Networks.md",
+          "lines": "186-203,292",
+          "note": "Theorem 1, (19), (20), golden section (27)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Resource_Allocation_for_Energy_Harvesting-Powered_D2D_Communication_Underlaying_UAV-Assisted_Networks/Resource_Allocation_for_Energy_Harvesting-Powered_D2D_Communication_Underlaying_UAV-Assisted_Networks.md",
+          "lines": "31,313,323,325",
+          "note": "ETA benchmark; height/p0; T-insensitive"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-6dara-cellfree",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Timescale_Optimization_for_Aerial_Rotatable_Antenna_Array_in_Cell-Free_Networks_With_Dynamic_Users/Two-Timescale_Optimization_for_Aerial_Rotatable_Antenna_Array_in_Cell-Free_Networks_With_Dynamic_Users.md",
+          "lines": "93-108",
+          "note": "mobility (3)-(5)"
+        },
+        {
+          "path": "raw/sources/Two-Timescale_Optimization_for_Aerial_Rotatable_Antenna_Array_in_Cell-Free_Networks_With_Dynamic_Users/Two-Timescale_Optimization_for_Aerial_Rotatable_Antenna_Array_in_Cell-Free_Networks_With_Dynamic_Users.md",
+          "lines": "223-247,345-349",
+          "note": "(19a)-(19g), (32)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Timescale_Optimization_for_Aerial_Rotatable_Antenna_Array_in_Cell-Free_Networks_With_Dynamic_Users/Two-Timescale_Optimization_for_Aerial_Rotatable_Antenna_Array_in_Cell-Free_Networks_With_Dynamic_Users.md",
+          "lines": "51,608,621,637,645",
+          "note": "fixed P/R baselines 4.88x; LMMSE/LLSFD/MAPPO; PSO caveat"
+        }
+      ]
+    },
+    {
+      "slug": "wang-2026-multimodal-uav-coverage-backhaul",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Multi-Modal_UAV_Control_for_Optimized_Coverage_and_Backhaul_Connectivity_in_Spatially_Unstructured_and_Dispersed_User_Environments/Dynamic_Multi-Modal_UAV_Control_for_Optimized_Coverage_and_Backhaul_Connectivity_in_Spatially_Unstructured_and_Dispersed_User_Environments.md",
+          "lines": "105-147",
+          "note": "SINR (6), Rc (7), Fiedler (8), modes M0-M2"
+        },
+        {
+          "path": "raw/sources/Dynamic_Multi-Modal_UAV_Control_for_Optimized_Coverage_and_Backhaul_Connectivity_in_Spatially_Unstructured_and_Dispersed_User_Environments/Dynamic_Multi-Modal_UAV_Control_for_Optimized_Coverage_and_Backhaul_Connectivity_in_Spatially_Unstructured_and_Dispersed_User_Environments.md",
+          "lines": "270-330",
+          "note": "LSE (15)-(18), dynamics (19)-(23)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Multi-Modal_UAV_Control_for_Optimized_Coverage_and_Backhaul_Connectivity_in_Spatially_Unstructured_and_Dispersed_User_Environments/Dynamic_Multi-Modal_UAV_Control_for_Optimized_Coverage_and_Backhaul_Connectivity_in_Spatially_Unstructured_and_Dispersed_User_Environments.md",
+          "lines": "394",
+          "note": "98% peak, 85% at 30% failure, 50 MAPs >40% breakdown"
+        }
+      ]
+    },
+    {
+      "slug": "xie-2023-wireless-powered-short-packet-uav",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_for_Wireless_Powered_UAV_Wireless_Communication_System_With_Short_Packet/Energy_Efficient_Resource_Allocation_for_Wireless_Powered_UAV_Wireless_Communication_System_With_Short_Packet.md",
+          "lines": "124-148",
+          "note": "(P1) (11a)-(11g)"
+        },
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_for_Wireless_Powered_UAV_Wireless_Communication_System_With_Short_Packet/Energy_Efficient_Resource_Allocation_for_Wireless_Powered_UAV_Wireless_Communication_System_With_Short_Packet.md",
+          "lines": "164-199",
+          "note": "relaxation (12)-(13), P2 subproblems"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy_Efficient_Resource_Allocation_for_Wireless_Powered_UAV_Wireless_Communication_System_With_Short_Packet/Energy_Efficient_Resource_Allocation_for_Wireless_Powered_UAV_Wireless_Communication_System_With_Short_Packet.md",
+          "lines": "542,560-562,572",
+          "note": "exhaustive, equal blocklength, OBP/OPP; EE falls with UDs"
+        }
+      ]
+    },
+    {
+      "slug": "yan-2020-uav-wpt-bs-charging",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_With_Base_Station_Charging_and_UAV_Power_Consumption/UAV-Enabled_Wireless_Power_Transfer_With_Base_Station_Charging_and_UAV_Power_Consumption.md",
+          "lines": "166-167,212-237",
+          "note": "loading feasibility, (20), (21)-(22)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_With_Base_Station_Charging_and_UAV_Power_Consumption/UAV-Enabled_Wireless_Power_Transfer_With_Base_Station_Charging_and_UAV_Power_Consumption.md",
+          "lines": "385-389,459,505-509,708-712",
+          "note": "(41), (56), (76)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Wireless_Power_Transfer_With_Base_Station_Charging_and_UAV_Power_Consumption/UAV-Enabled_Wireless_Power_Transfer_With_Base_Station_Charging_and_UAV_Power_Consumption.md",
+          "lines": "5,17,729,776",
+          "note": "closer to BS than [14]; Scheme 2 better"
+        }
+      ]
+    },
+    {
+      "slug": "zhan-2026-star-ris-aerial-monitoring",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Aerial_Monitoring_Aided_by_STAR-RIS_A_Stochastic_Optimization_Framework/UAV-Enabled_Aerial_Monitoring_Aided_by_STAR-RIS_A_Stochastic_Optimization_Framework.md",
+          "lines": "124-158",
+          "note": "(P1), (10)-(15)"
+        },
+        {
+          "path": "raw/sources/UAV-Enabled_Aerial_Monitoring_Aided_by_STAR-RIS_A_Stochastic_Optimization_Framework/UAV-Enabled_Aerial_Monitoring_Aided_by_STAR-RIS_A_Stochastic_Optimization_Framework.md",
+          "lines": "231-281,543-558",
+          "note": "Lyapunov (P2), AO Algorithm 4"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/UAV-Enabled_Aerial_Monitoring_Aided_by_STAR-RIS_A_Stochastic_Optimization_Framework/UAV-Enabled_Aerial_Monitoring_Aided_by_STAR-RIS_A_Stochastic_Optimization_Framework.md",
+          "lines": "582,603",
+          "note": "~10 iterations N=5; 18.98%/23.77% vs GCO"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2026-fas-uav-fbl",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Fluid_Antenna_System-Enabled_UAV_Communications_in_the_Finite_Blocklength_Regime/Fluid_Antenna_System-Enabled_UAV_Communications_in_the_Finite_Blocklength_Regime.md",
+          "lines": "493-517",
+          "note": "(P1) (59a)-(59f)"
+        },
+        {
+          "path": "raw/sources/Fluid_Antenna_System-Enabled_UAV_Communications_in_the_Finite_Blocklength_Regime/Fluid_Antenna_System-Enabled_UAV_Communications_in_the_Finite_Blocklength_Regime.md",
+          "lines": "531-572",
+          "note": "(P1.1)-(P1.3), grid search over L"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Fluid_Antenna_System-Enabled_UAV_Communications_in_the_Finite_Blocklength_Regime/Fluid_Antenna_System-Enabled_UAV_Communications_in_the_Finite_Blocklength_Regime.md",
+          "lines": "687",
+          "note": ">15 dB vs FPA urban; altitude scenario-dependent"
+        }
+      ]
+    },
+    {
+      "slug": "zhu-2026-fixed-wing-fd-af-wind",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Fixed-Wing_UAV_Aided_Full-Duplex_Amplify-and-Forward_Relaying_With_Constant_Ambient_Wind/Fixed-Wing_UAV_Aided_Full-Duplex_Amplify-and-Forward_Relaying_With_Constant_Ambient_Wind.md",
+          "lines": "133-150",
+          "note": "(8a)-(8d); 8c blank"
+        },
+        {
+          "path": "raw/sources/Fixed-Wing_UAV_Aided_Full-Duplex_Amplify-and-Forward_Relaying_With_Constant_Ambient_Wind/Fixed-Wing_UAV_Aided_Full-Duplex_Amplify-and-Forward_Relaying_With_Constant_Ambient_Wind.md",
+          "lines": "159-245",
+          "note": "case problems (9)-(12)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Fixed-Wing_UAV_Aided_Full-Duplex_Amplify-and-Forward_Relaying_With_Constant_Ambient_Wind/Fixed-Wing_UAV_Aided_Full-Duplex_Amplify-and-Forward_Relaying_With_Constant_Ambient_Wind.md",
+          "lines": "391,403",
+          "note": "Umin/Umax/median benchmarks, same T; ~3% vs Umin"
+        }
+      ]
+    }
+  ]
+}

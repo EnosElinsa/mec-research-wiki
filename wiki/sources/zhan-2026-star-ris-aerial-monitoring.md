@@ -26,7 +26,7 @@ related:
   - "[[rongfei-fan]]"
   - "[[han-hu]]"
 created: 2026-07-14
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -61,12 +61,12 @@ Controls a monitoring UAV's trajectory, active beamforming, and a building-mount
 
 | ID | Meaning and key expression |
 |---|---|
-| 10 | UAV transmit power is bounded, $\operatorname{Tr}(\mathbf{W}[l]\mathbf{W}^{\mathrm H}[l])\leq p^{\max}$ |
-| 11 | Per-slot displacement obeys $\|\mathbf{q}_v[l+1]-\mathbf{q}_v[l]\|\leq v_{\mathrm{uav}}^{\max}\delta$ |
-| 12 | The UAV remains within the monitoring radius, $\|\mathbf{q}_v[l]-\bar{\mathbf{q}}_u[l]\|\leq d^{\max}$ |
-| 13 | Long-term average propulsion energy satisfies $\bar E^{\mathrm{fl}}\leq\bar E_{\max}^{\mathrm{fl}}$ |
-| 14 | Element amplitudes satisfy $\beta_{t,n}^2[l]+\beta_{r,n}^2[l]=1$ |
-| 15 | Coupled phases satisfy $\cos(\phi_{t,n}[l]-\phi_{r,n}[l])=0$ |
+| (10) | UAV transmit power is bounded, $\operatorname{Tr}(\mathbf{W}[l]\mathbf{W}^{\mathrm H}[l])\leq p^{\max}$ |
+| (11) | Per-slot displacement obeys $\|\mathbf{q}_v[l+1]-\mathbf{q}_v[l]\|\leq v_{\mathrm{uav}}^{\max}\delta$ |
+| (12) | The UAV remains within the monitoring radius, $\|\mathbf{q}_v[l]-\bar{\mathbf{q}}_u[l]\|\leq d^{\max}$ |
+| (13) | Long-term average propulsion energy satisfies $\bar E^{\mathrm{fl}}\leq\bar E_{\max}^{\mathrm{fl}}$ |
+| (14) | Element amplitudes satisfy $\beta_{t,n}^2[l]+\beta_{r,n}^2[l]=1$ |
+| (15) | Coupled phases satisfy $\cos(\phi_{t,n}[l]-\phi_{r,n}[l])=0$ |
 
 **Algorithm**: Lyapunov optimization creates a virtual propulsion-energy queue and converts (P1) into per-slot problem (P2); WMMSE and penalty dual decomposition update active beamforming and STAR-RIS coefficients; sequential parametric convex approximation updates the UAV trajectory; alternating optimization completes the slot before the virtual queue is advanced.
 
