@@ -29,7 +29,7 @@ related:
   - "[[qu-ecoei-uav-swarm]]"
   - "[[wang-2025-uav-swarm-stackelberg]]"
 created: 2026-05-31
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -50,16 +50,16 @@ The conference seed of the [[li-2025-stochastic-game-uav-swarm|RLDC]] line of wo
 
 **Scenario**: A depot serves $M$ leader UAVs, $N$ follower UAVs, and $K$ ground IoT devices; each leader/follower swarm provides MEC service and shares a band with intra-swarm interference. Follower-to-IoT and leader-to-follower links use probabilistic path-loss channel models, and rotary-wing propulsion energy is included.
 
-**Problem & objective**: Problem [P1], a long-term mixed discrete stochastic optimization, maximizes UAV-swarm energy efficiency, $\max E^{\mathrm{effi}}=\max(\text{processed tasks}/\text{total UAV energy})$, over replenishment, application, clustering, trajectory, and delegation decisions.
+**Problem & objective**: Problem [P1], a long-term mixed discrete stochastic optimization, maximizes UAV-swarm energy efficiency, $\max\lim_{T\to\infty}\frac1T\sum_tE^{\mathrm{effi}}(t)$ with $E^{\mathrm{effi}}$ = processed tasks / total UAV energy, s.t. (9)–(17), over replenishment, application, clustering, trajectory, and delegation decisions.
 
 **Decision variables**:
 
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Depot return | $\epsilon_m(t)$ | binary | Leader $m$ returns for energy replenishment and application update |
+| Depot return | $\varepsilon_m(t)$ | binary | Leader $m$ returns for energy replenishment and application update |
 | Application placement | $\omega_m^L(t),\omega_n^F(t)$ | binary | Applications installed on leaders and followers |
-| Dynamic clustering | $\delta_{n,m}(t)$ | binary | Follower $n$ follows leader $m$ |
-| Task delegation | $\phi_n(t)$ | binary/discrete | Follower delegates selected tasks to its leader |
+| Dynamic clustering | $\delta_{m,n}(t)$ | binary | Follower $n$ follows leader $m$ |
+| Task delegation | $\phi_{m,n,c}(t)$ | binary | Follower delegates selected tasks to its leader |
 | Leader trajectory | $\mathbf L_m(t)$ | grid-valued discrete position | Next service region of leader $m$ |
 | Follower trajectory | $\mathbf F_n(t)$ | grid-valued discrete position | Follower movement within its swarm |
 
@@ -67,11 +67,12 @@ The conference seed of the [[li-2025-stochastic-game-uav-swarm|RLDC]] line of wo
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every follower follows exactly one leader, $\sum_m\delta_{n,m}(t)=1$ |
-| C2 | Each swarm has a valid leader/follower composition and every application type is installed in at least one leader |
-| C3 | Leaders and followers move only to permitted large-grid and small-grid centers |
-| C4 | At most one UAV covers each grid to avoid collisions |
-| C5 | Each follower remains inside its associated swarm and delegates only processable tasks |
+| (9) | Every follower follows exactly one leader: $\sum_m\delta_{m,n}=1,\ \forall n$ |
+| (10) | Every leader has at least one follower: $\sum_n\delta_{m,n}\ge1,\ \forall m$ |
+| (11) | Every application type is installed on at least one active leader: $\sum_m\omega_{m,c}^L(t)\varepsilon_m(t)\ge1,\ \forall c$ |
+| (12)–(13) | Grid moves: followers step $q$ and non-returning leaders step $l$ per slot |
+| (14)–(15) | Collision avoidance: followers at least $q$ apart, leaders at least $l$ apart |
+| (16)–(17) | Each follower stays within $(l-q)/2$ of its leader in $x$ and $y$ |
 
 **Algorithm**: Decompose [P1] into ERSG → APSG → LTSG → DCSG → FTSG → TDSG → model each as an MDP → apply decentralized $\epsilon$-greedy multi-agent Q-learning → update six role-specific learners until the coupled games reach equilibriums.
 

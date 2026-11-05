@@ -14,7 +14,7 @@ related:
   - "[[energy-balancing-uav]]"
   - "[[heterogeneous-uav-fleet]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -34,7 +34,7 @@ HISWTA dynamically clusters heterogeneous sensing UAVs, routes information among
 
 **Scenario**: A heterogeneous UAV swarm repeatedly performs mobile crowdsensing while forming energy-aware clusters, sharing information through cluster heads, and allocating sensing work.
 
-**Problem & objective**: Allocate sensing work and the information hierarchy to maximize completed task volume, $\max \sum_{k\in K}\sum_i T_{i,k}^{c}$, while limiting execution, communication, and connectivity costs.
+**Problem & objective**: P1 (4) maximizes completed task volume, $\max\sum_{k\in K}\sum_{i=1}^{M_k}T_{i,k}^c$, under allocation and per-UAV energy limits; inter-head sharing is the routing problem P2 (14) minimizing $\sum_{i,j}d_{ij}x_{ij}$, and task allocation is the cooperative game P3 (24).
 
 **Decision variables**:
 
@@ -43,16 +43,17 @@ HISWTA dynamically clusters heterogeneous sensing UAVs, routes information among
 | Completed task volume | $T_{i,k}^{c}$ | nonnegative continuous | Work completed by UAV $i$ in cycle or task class $k$ |
 | Allocated task volume | $T_{i,k}^{a}$ | nonnegative continuous | Work assigned to UAV $i$ before execution |
 | Cluster partition | $\mathcal{C}$ | discrete partition | Membership of UAVs and selected cluster heads |
-| Inter-head route | $\pi$ | permutation | Order for information sharing among cluster heads |
+| Inter-head route | $x_{ij}$ | binary, $\{0,1\}$ | Order for information sharing among cluster heads |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Completed work cannot exceed allocated work, $T_{i,k}^{c}\leq T_{i,k}^{a}$ |
-| C2 | Task execution energy for each UAV stays within its residual budget |
-| C3 | Intra-cluster and inter-head links satisfy communication-range and connectivity conditions |
-| C4 | Cluster formation and route choices remain feasible for the available heterogeneous UAVs |
+| (4b) | Completed work cannot exceed allocated work: $T_{i,k}^c\le T_{i,k}^a$ |
+| (4c) | Task-execution energy within residual energy: $0\le T_{i,k}^c E_c\le E_i$ |
+| (4d) | Communication energy within residual energy: $0\le E_{com,i}\le E_i$ |
+| (14b)–(14g) | Inter-head sharing route P2: each head entered and left once, time windows $t_i^{\min}\le t_i\le t_i^{\max}$, MTZ subtour elimination $u_i-u_j+nx_{ij}\le n-1$, $x_{ij}\in\{0,1\}$ |
+| (24b)–(24d) | Task allocation game P3: weights $\eta+\mu=1$, cluster workload $\sum_iT_{i,k}^c\le T_k$, $E_{i,k}\ge0$ |
 
 **Algorithm**: Estimate an energy-aware cluster count, select heads with multiplicative energy, distance, and connectivity criteria, solve inter-head sharing with greedy initialization plus Tabu Search and simulated-annealing amnesty, replace weak heads with fuzzy logic, and allocate tasks with Monte Carlo Shapley values.
 
@@ -60,7 +61,7 @@ HISWTA dynamically clusters heterogeneous sensing UAVs, routes information among
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Guang et al. [x] developed HISWTA for repeated mobile-crowdsensing missions performed by heterogeneous UAV swarms. Their formulation maximizes completed task volume under per-UAV execution and communication energy limits, while dynamic clustering, inter-head routing, and task allocation balance depletion across cycles. The method combines energy-aware cluster-head selection, improved tabu search for inter-cluster sharing, fuzzy head replacement, and Monte Carlo Shapley-value allocation. At critical task loads, simulations report task-completion-ratio improvements of 12%, 26%, and 10% for swarms of 5, 10, and 15 UAVs, with 100% completion and energy-consumption disparities of 0.89% and 0.64% in the reported 10- and 15-UAV ablations.
+Guang et al. [x] developed HISWTA for repeated mobile-crowdsensing missions performed by heterogeneous UAV swarms. Their formulation maximizes completed task volume under per-UAV execution and communication energy limits, while dynamic clustering, inter-head routing, and task allocation balance depletion across cycles. The method combines energy-aware cluster-head selection, improved tabu search for inter-cluster sharing, fuzzy head replacement, and Monte Carlo Shapley-value allocation. At critical task loads, simulations report task-completion-ratio improvements of 12%, 26%, and 10% for swarms of 5, 10, and 15 UAVs, and in ablations against two-by-two sharing (TBT+TA) and PSO allocation (HIS+PSOTA) the full method reaches 100% completion with energy-consumption-ratio differences of 0.89% and 0.64% for 10 and 15 UAVs.
 
 ## Problem framing
 

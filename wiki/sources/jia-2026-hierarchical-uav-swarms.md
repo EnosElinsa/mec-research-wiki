@@ -21,7 +21,7 @@ related:
   - "[[zhu-han]]"
   - "[[jia-2025-dro-uav-hap-mec]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -41,7 +41,7 @@ A fixed fleet is divided into [[hierarchical-uav-swarm|hierarchical UAV swarms]]
 
 **Scenario**: A fixed fleet forms hierarchical swarms with stationary head UAVs and route-planning tail UAVs that collect ground-user data and relay it to the heads.
 
-**Problem & objective**: Jointly deploy swarms, choose tail-UAV counts, routes, transmit powers, and GU connections to minimize total swarm energy, average GU energy, and average GU delay, $\min [f_1(\mathbb A),f_2(\mathbb A),f_3(\mathbb A)]$.
+**Problem & objective**: Jointly deploy swarms, choose tail-UAV counts, routes, transmit powers, and GU connections to minimize total swarm energy, average GU energy, and average GU delay, problem P0 (32), $\min_{\mathbb A}[f_1(\mathbb A),f_2(\mathbb A),f_3(\mathbb A)]$.
 
 **Decision variables**:
 
@@ -57,11 +57,13 @@ A fixed fleet is divided into [[hierarchical-uav-swarm|hierarchical UAV swarms]]
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Tail-UAV counts satisfy $M_s\leq M_{\max}$ and $\sum_sM_s=M$ |
-| C2 | Each GU connects to exactly one feasible tail-UAV hover point and each point serves at most $U_{\max}$ GUs |
-| C3 | GU delay does not exceed its maximum tolerated value |
-| C4 | Deployment points lie in the 3-D operating region and routes belong to their visiting-sequence sets |
-| C5 | GU and tail-UAV powers remain within their minimum and maximum bounds |
+| (1)–(2) | Tail-UAV allocation: $\sum_sM_s=M$ (2); (1), the per-swarm bound, is blank in the parse, so check the published paper |
+| (12), (14) | Minimum rates on the GU-to-tail and tail-to-head links: $R^{tr}\ge R^{tr}_{\min}$, $R^{tr}\ge R^{tr}_{s,\min}$ |
+| (32a) | Each GU connects to exactly one tail-UAV hover point: $\sum_s\sum_m\sum_n\gamma_{u,m,s}^n=1$ |
+| (32b) | Each hover point serves at most $U_{\max}$ GUs |
+| (32c) | GU delay: $T_u\le T_u^{\max}$ |
+| (32d)–(32f) | Binary connections $\gamma_{u,m,s}^n\in\{0,1\}$, deployment $q_s\in\Theta$, routes $\phi_m^s\in\Psi_m^s$ ((32e) is blank in the parse) |
+| (32g)–(32h) | Power bounds: $p_u\in[P_u^{\min},P_u^{\max}]$, $p_m^s\in[P_m^{\min},P_m^{\max}]$ |
 
 **Algorithm**: Pre-deploy with K-means, Voronoi intersections, and Fermat points, then use non-dominated sorting, whale optimization, and greedy next-hover selection to produce a Pareto set for the three objectives.
 
@@ -69,7 +71,7 @@ A fixed fleet is divided into [[hierarchical-uav-swarm|hierarchical UAV swarms]]
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Jia et al. [x] optimized hierarchical UAV swarms in which stationary heads coordinate route-planning tail UAVs for two-hop ground-user data collection. Their multi-objective model minimizes total swarm energy, average ground-user energy, and average transmission delay over deployment, tail-UAV counts, visiting sequences, GU connections, and transmit powers under capacity, delay, region, route, and power constraints. A K-means, Voronoi, and Fermat pre-deployment stage is followed by INS-WOA with non-dominated sorting and greedy hover-point selection. With 60 ground users, the method keeps average GU energy near 0.02 J, reports about 30% lower GU energy than MOGWO and NSGA-II, and has lower time complexity that grows nearly linearly with user scale.
+Jia et al. [x] optimized hierarchical UAV swarms in which stationary heads coordinate route-planning tail UAVs for two-hop ground-user data collection. Their multi-objective model minimizes total swarm energy, average ground-user energy, and average transmission delay over deployment, tail-UAV counts, visiting sequences, GU connections, and transmit powers under capacity, delay, region, route, and power constraints. A K-means, Voronoi, and Fermat pre-deployment stage is followed by INS-WOA with non-dominated sorting and greedy hover-point selection. With 60 ground users, the method keeps average GU energy near 0.02 J, reports about 30% lower GU energy than MOGWO and NSGA-II, and has lower time complexity than NSGA-II, MOGWO, and MOAHA that grows nearly linearly with user scale.
 
 ## Problem
 

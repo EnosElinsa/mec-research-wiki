@@ -18,7 +18,7 @@ related:
   - "[[zhu-2024-zdrl-uav-tracking]]"
   - "[[fuhui-zhou]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # A Novel Expert-Assisted Anomaly-Aware Embodied Learning Framework for UAV Active Target Tracking
@@ -37,7 +37,7 @@ Introduces LA4H, a "learning to ask for help" framework for UAV active target tr
 
 **Scenario**: One UAV actively tracks a moving visual target under partial observability, prolonged occlusion, and intense distractor interference. Onboard visual and localization observations form a short-history state, while a learned policy can either issue a flight action or request temporary corrective control from a human or algorithmic expert.
 
-**Problem & objective**: The task is a POMDP in which the policy maximizes $J(\pi)=\mathbb E_{\pi}[\sum_{t=0}^{\infty}\gamma^t r_t]$ and a categorical objective switches between normal tracking reward $J_n$ and anomaly-recovery utility $J_a=-\eta_a C+\gamma_a R$.
+**Problem & objective**: The task is a POMDP with a categorical objective (8) that uses the discounted tracking return $J_n=\mathbb E_\pi[\sum_{t=0}^T\gamma^tr_t]$ (2) in normal states and the anomaly-recovery utility $J_a=-\eta_aC+\gamma_aR$ (3), specialized to $J_{int}$ and $J_{ocl}$, in anomalous states.
 
 **Decision variables**:
 
@@ -53,10 +53,11 @@ Introduces LA4H, a "learning to ask for help" framework for UAV active target tr
 
 | ID | Meaning and key expression |
 |---|---|
-| State | $s_t=[s_t^o,s_t^h,p_t,p^h,m_t,m^h]$ uses current and ten-step historical visual, pose, and semantic-map information |
-| Action | $a_t$ is restricted to the 12-dimensional discrete movement and rotation set $\mathcal A$ |
-| Assistance | $h_t\in\{0,1\}$ and the expert action replaces the autonomous action only when assistance is requested |
-| Recovery objective | Anomaly recovery balances resource, delay, and estimation costs against rapid and stable reacquisition rewards |
+| (1) | State: $s_t=[s_t^o,s_t^h,p_t,p^h,m_t,m^h]$ with ten-step visual, pose, and semantic-map history |
+| Model rule | $a_t$ is drawn from the 12-dimensional discrete movement and rotation set $\mathcal A$ |
+| Model rule | $h_t\in\{0,1\}$; the expert recovery sequence $A_r$ replaces autonomous actions only when $h_t=1$ |
+| (3)–(5) | Anomaly recovery: $J_a=-\eta_aC+\gamma_aR$, with cost $C_{int}$ weighting resource use, delay, and estimation error and reward $R_{int}$ for reacquisition |
+| (6)–(7) | $\eta_a,\gamma_a$ adapt by gradient steps only when anomaly confidence $p^A>0.8$ |
 
 **Algorithm**: Encode visual history, align temporal visual features with anomaly text prompts, and classify the current anomaly; combine this cognition output with the sequence state to train the assistance policy from balanced autonomous and expert replay. In parallel, distill a temporal-semantic teacher tracker into a lightweight student policy, and execute expert recovery actions only when the learned request policy selects assistance.
 

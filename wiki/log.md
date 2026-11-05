@@ -1,5 +1,12 @@
 # Research Log
 
+## [2026-11-03] Grounded batch 26a (UAV swarms, coalition games, crowdsensing, wireless control)
+
+- Grounded 16 swarm, game-theoretic, crowdsensing, and wireless-control source pages; evidence is in `wiki/.grounding/source-schema-evidence-batch26-uav-swarm.json`.
+- Relabeled invented constraint IDs to the papers' tags (e.g. (4b)–(4d), (9)–(17), (13b)–(13f), (16a)–(16i), (21b)–(21j), (32a)–(32h), C1–C7 (12)); added parse notes for blank tags in jia-2026 ((1), (32e)) and gong-2026 ((18a)–(18d)).
+- Rewrote cards whose problem was invented or mislabeled: li-2026 TSPF (three objectives (3), no solved program), liu-2026 sensor satisfaction (sensor/UAV indices swapped; Sparrow Search, not salp swarm), and gong-2026 (decomposed (P1.1)/(P1.2)).
+- Related Work fixes: du-2026 now reports the abstract's ~10% gain at ~50 users instead of unsupported per-size figures; fan-2026 notes the measured gain is smaller than predicted; added named baselines (MOGWO/NSGA-II/MOAHA, TBT+TA/HIS+PSOTA, PGG-TS, ToP/PPS, FL/HFL/SFL/HSFL/PFL) and caveats (discriminatory pricing beats the contract for the platform; centralized learning matches TSPF accuracy; ELGHEOA 2.8% below exhaustive search at 10 sensors).
+
 ## [2026-11-03] Grounded batch 25 (UAV communications: RIS privacy, cell-free beamforming, relays, WPT, short-packet)
 
 - Grounded 24 UAV-communications source pages against their parses; evidence is in `wiki/.grounding/source-schema-evidence-batch25-uav-comms-b.json`.

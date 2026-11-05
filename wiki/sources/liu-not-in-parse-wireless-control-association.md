@@ -16,7 +16,7 @@ related:
   - "[[jie-xu]]"
   - "[[shuguang-cui]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # User Association and Communication-Computation Co-Design for Wireless Control Networks
@@ -49,11 +49,12 @@ Several massive-MIMO base stations jointly close the control loops of many plant
 
 | ID | Meaning and key expression |
 |---|---|
-| (16a)-(16b) | Reliability, $\overline\varepsilon_k,\underline\varepsilon_k\le\varepsilon_{\mathrm{th}}$. |
-| (16c) | Stability, $\boldsymbol\Phi_kT^2+\boldsymbol\Upsilon_kT+(\eta_k-1)\mathbf Q_k\succeq\mathbf0$. |
-| (16d) | Computation at BS $m$ finishes within its available time, $F_m(\cdot)\ge\sum_k\alpha_{m,k}S_k\hat\lambda_k$. |
-| (16e) | Period, $\sum_m\overline t_m+\hat t+\sum_m\underline t_m=T$. |
-| (16f) | Binary association. |
+| (16a)–(16b) | Reliability: $\overline\varepsilon_k,\underline\varepsilon_k\le\varepsilon_{\mathrm{th}}$ |
+| (16c) | Stability: $\boldsymbol\Phi_kT^2+\boldsymbol\Upsilon_kT+(\eta_k-1)\mathbf Q_k\succeq\mathbf0$ |
+| (16d) | Computation at BS $m$ finishes in its available window: $F_m(\sum_{i>m}\overline t_i+\hat t+\sum_{i<m}\underline t_i)\ge\sum_k\alpha_{m,k}S_k\hat\lambda_k$ |
+| (16e) | Period: $\sum_m\overline t_m+\hat t+\sum_m\underline t_m=T$ |
+| (16f)–(16g) | Binary association, each subsystem to exactly one BS: $\sum_m\alpha_{m,k}=1$ |
+| (16h)–(16i) | Power limits: $\alpha_{m,k}\overline p_{m,k}\le\overline P_k$; per-BS downlink power $\sum_k\alpha_{m,k}\underline p_{m,k}\le\underline P_m$ |
 
 **Algorithm**: Alternating optimization over association, powers, and times, with SCA for the nonconvex reliability and stability terms.
 
@@ -61,7 +62,7 @@ Several massive-MIMO base stations jointly close the control loops of many plant
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] studied a wireless networked control system in which multiple base stations cooperatively coordinate the wireless control of subsystems, each consisting of a plant, a sensor, and an actuator. Each sensor offloads its sensing data to an associated base station, which employs mobile edge computing to process the data and sends command signals back to the actuator. Using a time-division multiple access protocol among base stations and massive MIMO within each base station, they jointly designed base station-sensor/actuator association and communication and computation resource allocation to minimize the closed-loop control latency while ensuring control stability. The design accounts for transmission uncertainty from hyper-reliable and low-latency communications, inter-user interference, and resource constraints, and is solved with alternating optimization and successive convex approximation. Numerical results show that the joint association and resource allocation design significantly outperforms benchmark schemes.
+Liu et al. [x] studied a wireless networked control system in which multiple base stations cooperatively coordinate the wireless control of subsystems, each consisting of a plant, a sensor, and an actuator. Each sensor offloads its sensing data to an associated base station, which employs mobile edge computing to process the data and sends command signals back to the actuator. Using a time-division multiple access protocol among base stations and massive MIMO within each base station, they jointly designed base station-sensor/actuator association and communication and computation resource allocation to minimize the closed-loop control latency while ensuring control stability. The design accounts for transmission uncertainty from hyper-reliable and low-latency communications, inter-user interference, and resource constraints, and is solved with alternating optimization and successive convex approximation. Numerical results show that the joint association and resource allocation design achieves lower control latency than association-only, resource-allocation-only, and FDMA benchmark designs.
 
 ## Problem framing
 

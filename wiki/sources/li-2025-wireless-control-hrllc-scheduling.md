@@ -16,7 +16,7 @@ related:
   - "[[jie-xu]]"
   - "[[zhiyong-feng]]"
 created: 2026-11-02
-updated: 2026-11-02
+updated: 2026-11-03
 ---
 
 # Joint Task Scheduling and Communication-Computation Optimization for Wireless Networked Control With HRLLC
@@ -50,10 +50,13 @@ A base station closes the control loops of several plants: it collects sensor st
 
 | ID | Meaning and key expression |
 |---|---|
-| (21b)-(21c) | Power limits, $0\le\overline p,\underline p\le P_{\max}$. |
-| (21d)-(21e) | Reliability, $\overline\varepsilon_{\pi_j},\underline\varepsilon_{\pi_j}\le\varepsilon_{\mathrm{th}}$. |
-| (21f) | Control stability, $\mathbf P_{\pi_j}T^2+\mathbf M_{\pi_j}T+(\eta_{\pi_j}-1)\mathbf Q_{\pi_j}\succeq\mathbf0$. |
-| (21g) | Computation completion, allocated CPU cycles over the available time cover each task. |
+| (21b)–(21c) | Power limits: $0\le\overline p_{\pi_j},\underline p_{\pi_j}\le P_{\max}$ |
+| (21d)–(21e) | Reliability: $\overline\varepsilon_{\pi_j},\underline\varepsilon_{\pi_j}\le\varepsilon_{\mathrm{th}}$ |
+| (21f) | Control stability: $\mathbf P_{\pi_j}T^2+\mathbf M_{\pi_j}T+(\eta_{\pi_j}-1)\mathbf Q_{\pi_j}\succeq\mathbf0$ |
+| (21g) | Computation completion: allocated CPU cycles over the available time cover each task |
+| (21h) | Edge CPU capacity per stage: $\sum_jf_{\pi_j,i-j}\le F_{\max},\ \forall i\in\{2,\dots,2J\}$ |
+| (21i) | Period definition: $T=\sum_j\bar t_{\pi_j}+\hat t+\sum_j\underline t_{\pi_j}$ |
+| (21j) | $\boldsymbol\pi$ is a permutation: $\pi_j\in\mathcal J$, $\pi_j\ne\pi_i$ for $j\ne i$ |
 
 **Algorithm**: For a given schedule, optimize powers, times, and CPU frequencies by alternating optimization and SCA. Choose the schedule by exhaustive search or by a low-complexity flow-shop scheduling heuristic.
 
@@ -61,7 +64,7 @@ A base station closes the control loops of several plants: it collects sensor st
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied a wireless control system at the network edge in which a base station coordinates the closed-loop control of multiple subsystems, each consisting of a plant, a sensor, and an actuator. The base station collects state information from the sensors, processes it via edge computing, and sends command signals back to the actuators, using hyper-reliable and low-latency communications based on short-packet rate formulas. Under a time-division multiple access protocol for coordinating sensing, communication, and computation, they jointly optimized task scheduling and communication and computation resource allocation to minimize the closed-loop control latency while ensuring the stability of all control subsystems. The resulting non-convex combinatorial problem is handled by optimizing resource allocation for given scheduling through alternating optimization and successive convex approximation, and then designing the schedule by exhaustive search or low-complexity flow-shop scheduling. Numerical results show that the joint design with exhaustive search scheduling significantly outperforms benchmark schemes without joint optimization.
+Li et al. [x] studied a wireless control system at the network edge in which a base station coordinates the closed-loop control of multiple subsystems, each consisting of a plant, a sensor, and an actuator. The base station collects state information from the sensors, processes it via edge computing, and sends command signals back to the actuators, using hyper-reliable and low-latency communications based on short-packet rate formulas. Under a time-division multiple access protocol for coordinating sensing, communication, and computation, they jointly optimized task scheduling and communication and computation resource allocation to minimize the closed-loop control latency while ensuring the stability of all control subsystems. The resulting non-convex combinatorial problem is handled by optimizing resource allocation for given scheduling through alternating optimization and successive convex approximation, and then designing the schedule by exhaustive search or low-complexity flow-shop scheduling. Numerical results show that the joint design with exhaustive search scheduling achieves lower closed-loop latency than communication-only, computation-only, equal-allocation, and fixed-schedule benchmarks, and the flow-shop design comes close to exhaustive search.
 
 ## Problem framing
 

@@ -28,7 +28,7 @@ Designs a hierarchical [[aoi-aware-contract-incentives|AoI-aware contract incent
 
 **Scenario**: A mobile-crowdsensing platform recruits temporary UAV base stations and sensing users when regional age of information becomes too high.
 
-**Problem & objective**: Choose service-slot and update-frequency contracts to maximize platform utility in the two layers, including $\max_{T_i,R_i}\sum_i q_i^{uav}[\kappa\log(T_i+1)-R_i]$ and $\max_{p_i,R_i}\sum_i q_i^{user}[\eta(cp_i-dp_i^2)-R_i]$.
+**Problem & objective**: Choose service-slot and update-frequency contracts to maximize platform utility in the two layers: (34) $\max_{(T_i,R_i)}\sum_i q_i^{uav}[\kappa\log(T_i+1)-R_i]$ s.t. (32)–(33), and (58) $\max\sum_u q_u^{user}[\eta(cp_u-dp_u^2)-R_u]$ s.t. (56)–(57).
 
 **Decision variables**:
 
@@ -37,16 +37,18 @@ Designs a hierarchical [[aoi-aware-contract-incentives|AoI-aware contract incent
 | UAV service slots | $T_i$ | nonnegative integer or continuous slot count | Service duration selected for UAV type $i$ |
 | UAV reward | $R_i$ | nonnegative continuous | Payment offered to UAV type $i$ |
 | User update frequency | $p_i$ | nonnegative continuous, ordered by type | Sensing updates supplied by user type $i$ |
-| User reward | $R_i$ | nonnegative continuous | Payment offered for the selected update frequency |
+| User reward | $R_u$ | nonnegative continuous | Payment offered for the selected update frequency |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Every UAV and user type satisfies individual rationality |
-| C2 | Incentive compatibility makes truthful type selection optimal |
-| C3 | Contract rewards and service or update choices obey monotonicity across ordered types |
-| C4 | UAV deployment is triggered when regional AoI exceeds its threshold |
+| (32) | UAV incentive compatibility: $E_i^{uav}(\Psi_i)\ge E_i^{uav}(\Psi_j),\ i\ne j$ |
+| (33) | UAV individual rationality: $E_i^{uav}(\delta_i,T_i,R_i)\ge0$ |
+| (56) | User incentive compatibility: $E_{mn}^{user}(\Pi_{u,m,n})\ge E_{mn}^{user}(\Pi_{u,m',n'})$ |
+| (57) | User individual rationality: $E_{mn}^{user}(\Pi_{u,m,n})\ge0$ |
+| Model rule | Monotonicity from the necessary conditions: higher-type UAVs get more service slots, and the reduced user problem requires $p_1\ge p_2\ge\dots\ge p_{MN}$ |
+| Model rule | The platform leases UAVs only when the regional average AoI exceeds the threshold $\varepsilon$ |
 
 **Algorithm**: Reduce pairwise IR and IC constraints, derive closed-form rewards and service or update choices, and apply type clustering and smoothing when unconstrained items violate monotonicity.
 
@@ -54,7 +56,7 @@ Designs a hierarchical [[aoi-aware-contract-incentives|AoI-aware contract incent
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Guo et al. [x] designed an AoI-aware hierarchical contract for mobile crowdsensing platforms that recruit temporary UAV base stations and sensing users under information asymmetry. The platform chooses UAV service-slot rewards and user update-frequency rewards to maximize expected utility subject to individual rationality, incentive compatibility, and monotonicity. The method reduces pairwise contract constraints, derives optimal rewards and frequencies, and applies clustering and smoothing when unconstrained items violate monotonicity. Numerical results confirm type self-selection and nonnegative participant utility, and the proposed mechanism yields higher reported platform utility and worker rewards than Stackelberg and reverse-auction baselines under incomplete information.
+Guo et al. [x] designed an AoI-aware hierarchical contract for mobile crowdsensing platforms that recruit temporary UAV base stations and sensing users under information asymmetry. The platform chooses UAV service-slot rewards and user update-frequency rewards to maximize expected utility subject to individual rationality, incentive compatibility, and monotonicity. The method reduces pairwise contract constraints, derives optimal rewards and frequencies, and applies clustering and smoothing when unconstrained items violate monotonicity. Numerical results confirm type self-selection and nonnegative participant utility, and the contract yields higher platform utility and worker rewards than Stackelberg and reverse-auction baselines under incomplete information, while complete-information discriminatory pricing still gives the platform more benefit.
 
 ## Problem
 

@@ -29,7 +29,7 @@ related:
   - "[[zhang-2025-mcma-task-migration]]"
   - "[[li-2024-rldc-uav-swarm-clustering]]"
 created: 2026-05-29
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 authors:
   - Jialiuyuan Li
@@ -60,7 +60,7 @@ A [[multi-uav-assisted-mec]] system organizes UAVs into swarms (one leader + sev
 
 **Scenario**: Depot-supported leader and follower UAV swarms provide MEC to ground IoT devices; leaders move and recharge, while followers can change leaders and delegate tasks.
 
-**Problem & objective**: Jointly schedule replenishment, application placement, leader trajectory, follower clustering, and task delegation to maximize long-run task-per-energy efficiency, $\max\lim_{T\to\infty}\frac1T\sum_tE^{\mathrm{effi}}(t)$.
+**Problem & objective**: Jointly schedule replenishment, application placement, leader trajectory, follower clustering, and task delegation to maximize long-run task-per-energy efficiency, [P1] (13a), $\max\lim_{T\to\infty}\frac1T\sum_tE^{\mathrm{effi}}(t)$ s.t. (10), (11), (13b)–(13f).
 
 **Decision variables**:
 
@@ -76,12 +76,12 @@ A [[multi-uav-assisted-mec]] system organizes UAVs into swarms (one leader + sev
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Each leader retains enough energy to return to the depot, $E_m^{\mathrm{resi}}(t)\geq E_m^{\mathrm{return}}(t)$. |
-| C2 | Every follower chooses exactly one leader, $\sum_m\delta_{m,n}(t)=1$. |
-| C3 | Each swarm has between one and $N^{\mathrm{clus}}$ followers. |
-| C4 | Every application type remains available on at least one airborne leader, $\sum_m\omega^L_{m,c}(t)\varepsilon_m(t)\geq1$. |
-| C5 | Leader positions stay inside the target-region bounds when airborne. |
-| C6 | Leader application placement respects storage, $\sum_c\omega^L_{m,c}(t)\leq S^L$. |
+| (13b) | Each leader keeps enough energy to return: $E_m^{\mathrm{resi}}(t)\ge E_m^{\mathrm{return}}(t)$ |
+| (13c) | Every follower chooses exactly one leader: $\sum_m\delta_{m,n}(t)=1$ |
+| (13d) | Swarm size: $1\le\sum_n\delta_{m,n}(t)\le N^{\mathrm{clus}}$ |
+| (10) | Every application type is on at least one airborne leader: $\sum_m\omega_{m,c}^L(t)\varepsilon_m(t)\ge1$ |
+| (13e)–(13f) | Airborne leaders stay in the region: $X^{low}\le(1-\varepsilon_m(t))x_m^L(t)\le X^{up}$, same for $y$ |
+| (11) | Leader storage: $\sum_c\omega_{m,c}^L(t)\le S^L$ |
 
 **Algorithm**: Decompose the coupled problem into ERSG, APSG, TPSG, DCSG, and TDSG stochastic games, then use decentralized epsilon-greedy multi-agent Q-learning with exchanged Q-values to approach the Nash equilibrium.
 
@@ -89,7 +89,7 @@ A [[multi-uav-assisted-mec]] system organizes UAVs into swarms (one leader + sev
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] formulated energy-efficient UAV-swarm MEC with dynamic follower clustering and joint replenishment, application placement, trajectory, and task-delegation decisions. They maximize long-term processed-task energy efficiency subject to leader return reserves, one-leader assignment, swarm size, application coverage and storage, and airborne position bounds. The solution decomposes into five interconnected stochastic games and uses decentralized Q-value exchange in the RLDC algorithm to obtain a Nash equilibrium. In simulations RLDC consistently beats fixed-swarm and no-swarm baselines, reaching an energy-efficiency value of about 680 at 1900 IoT devices and adapting to leader switches.
+Li et al. [x] formulated energy-efficient UAV-swarm MEC with dynamic follower clustering and joint replenishment, application placement, trajectory, and task-delegation decisions. They maximize long-term processed-task energy efficiency subject to leader return reserves, one-leader assignment, swarm size, application coverage and storage, and airborne position bounds. The solution decomposes into five interconnected stochastic games and uses decentralized Q-value exchange in the RLDC algorithm to obtain a Nash equilibrium. In simulations RLDC consistently beats fixed-swarm and no-swarm baselines, reaching an energy-efficiency value of about 680 at 1900 IoT devices versus about 550 and 470 for the baselines and adapting to leader switches.
 
 ## Problem
 UAV-swarm-assisted MEC is attractive for terrain-limited and emergency scenarios, but faces three coupled bottlenecks: with **fixed** clustering the computing workload across swarms becomes badly unbalanced as IoT demand shifts in space/time; battery-limited UAVs (especially leaders) must periodically return to a depot to recharge, interrupting service; and storage-limited UAVs cannot host every application type, forcing application-placement and within-swarm delegation choices. The paper asks how follower UAVs should dynamically choose which leader to follow, jointly with energy replenishment, application placement, leader trajectory planning, and task delegation, to maximize the **long-term energy efficiency** of all UAVs (total tasks processed / total energy consumed). The challenge is that autonomous UAVs both cooperate and compete (selfish leaders may delay charging or hoard popular apps; followers may crowd the busiest leader), and they have no knowledge of future task requests.

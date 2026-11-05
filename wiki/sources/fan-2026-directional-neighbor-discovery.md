@@ -21,7 +21,7 @@ related:
   - "[[gaofeng-pan]]"
   - "[[dusit-niyato]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Optimization of Delay and Power Efficiency of Neighbor Discovery in UAV Networks
@@ -42,7 +42,7 @@ Optimizes directional sector selection and transmit/listen behavior for synchron
 
 **Scenario**: Heterogeneous UAVs know their potential neighbors but not necessarily their active directions. Each half-duplex node activates one directional sector at a time, and discovery uses either synchronous slotted scanning or asynchronous Poisson-like request transmissions under a collision model without capture.
 
-**Problem & objective**: Minimize average or worst-node power-delay product by choosing sector-selection and transmit/listen behavior. A reusable synchronous surrogate is $\min_{\mathcal R,\mathcal S} N^{-1}\sum_i H_{N_i}\bar P_i/\min_{j\in\mathcal N_i}p_{ij}$, with the asynchronous model replacing pairwise discovery probability by its successful-arrival rate.
+**Problem & objective**: Minimize average or worst-node power-delay product by choosing sector-selection and transmit/listen behavior. For synchronous scanning, (33) minimizes $\frac1N\sum_i\max_{j\in\Omega_i}H_{N_i}\bar P_i/p_{i,j}$ (avgPDP) and (34) minimizes the worst-node version (maxPDP) over $\mathcal R,\mathcal S$; (35)–(36) are the asynchronous analogues over $\mathcal L,\mathcal S$ with $p_{i,j}$ replaced by the successful-arrival rate $\lambda_{j,i}^*$.
 
 **Decision variables**:
 
@@ -51,18 +51,17 @@ Optimizes directional sector selection and transmit/listen behavior for synchron
 | Sector-selection probability | $s_{i,\theta}$ | continuous, $[0,1]$ | Probability that node $i$ activates sector $\theta$ |
 | Synchronous listen probability | $r_{i,\theta}$ | continuous, $[0,1]$ | Conditional probability of listening in the selected sector |
 | Synchronous transmit probability | $\bar r_{i,\theta}$ | continuous, $[0,1]$ | Conditional probability of transmitting a discovery request |
-| Asynchronous request rate | $\lambda_i$ | continuous, $(0,1]$ | Normalized Poisson request rate for node $i$ |
+| Asynchronous request rate | $\lambda_i$ | continuous, positive | Normalized Poisson request rate for node $i$ |
 
 **Constraints**:
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each node selects one sector distribution: $\sum_\theta s_{i,\theta}=1$. |
-| C2 | Synchronous actions are complementary: $r_{i,\theta}+\bar r_{i,\theta}=1$; the GP uses the tight relaxation $\leq 1$. |
-| C3 | All sector and action probabilities lie in $[0,1]$, and asynchronous rates satisfy $0<\lambda_i\leq1$. |
-| C4 | Pairwise success requires directional alignment, one transmitter and one listener, and no collision from other active neighbors. |
-| C5 | Every known potential-neighbor link must have positive discovery probability or successful-arrival rate. |
-| C6 | Average and worst-node delay use harmonic-number bounds controlled by each node's weakest neighbor link. |
+| Model rule | Each node picks one sector per slot: $\sum_{\theta\in\Theta_i}s_{i,\theta}=1$ |
+| (5) | Synchronous transmit and listen are complementary: $\bar r_{i,\theta}:=1-r_{i,\theta}$; the GP form relaxes this to $r_{i,\theta}+\bar r_{i,\theta}\le1$, $r_{i,\theta},\bar r_{i,\theta}\in[0,1]$ |
+| Model rule | The asynchronous rate $\lambda_i$ is normalized by the discovery-request duration |
+| Model rule | Pairwise discovery needs aligned sectors, one transmitter and one listener, and no collision from other active neighbors (no capture) |
+| Model rule | Completion delay is upper-bounded with harmonic numbers $H_{N_i}$ over each node's weakest neighbor link |
 
 **Algorithm**: Derive average radio power from discrete- or continuous-time Markov chains and bound completion delay with order statistics and harmonic numbers. Substitute the worst-link bounds into the PDP objective, solve the synchronous design as a geometric program, and solve the asynchronous log-domain difference-of-convex formulation with a convex-concave procedure initialized by the delay-oriented solution.
 
@@ -70,7 +69,7 @@ Optimizes directional sector selection and transmit/listen behavior for synchron
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Fan et al. [x] optimized directional neighbor discovery for heterogeneous UAV networks under synchronous slotted scanning and asynchronous random access. They minimized average or worst-node power-delay product over sector-selection probabilities, transmit/listen behavior, and asynchronous request rates under probability-normalization, half-duplex, alignment, and collision constraints. Markov-chain power models and order-statistic delay bounds yield a geometric program for synchronous scanning and a log-domain convex-concave procedure for asynchronous scanning. A four-node anechoic-chamber experiment reported maxPDP of 101.31 versus 113.81 for the uninformed baseline, an 11% reduction.
+Fan et al. [x] optimized directional neighbor discovery for heterogeneous UAV networks under synchronous slotted scanning and asynchronous random access. They minimized average or worst-node power-delay product over sector-selection probabilities, transmit/listen behavior, and asynchronous request rates under probability-normalization, half-duplex, alignment, and collision constraints. Markov-chain power models and order-statistic delay bounds yield a geometric program for synchronous scanning and a log-domain convex-concave procedure for asynchronous scanning. A four-node anechoic-chamber experiment reported a measured PDP of 101.31 for maxPDP versus 113.81 for the uninformed baseline at Node 0, about an 11% reduction, smaller than predicted analytically because of the two-sector hardware and network sparsity.
 
 ## System model
 

@@ -17,7 +17,7 @@ related:
   - "[[xu-2018-uav-wpt-trajectory]]"
   - "[[zhan-2018-uav-wsn-data-collection]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 ---
 
 # Joint Optimization on Trajectory and Velocity for Minimum Completion Time in UAV-Enabled Wireless-Powered WSN
@@ -36,7 +36,7 @@ For one energy-limited rotary-wing UAV serving batteryless sensors, this paper c
 
 **Scenario**: One energy-limited rotary-wing UAV flies at fixed altitude, broadcasts RF energy to static batteryless sensor nodes, receives their data through TDMA, and returns to its departure point. The air-to-ground gain follows an inverse-square distance model and the sensors use linear RF energy harvesting while the UAV communicates during flight.
 
-**Problem & objective**: Discretized problem P0 jointly designs clustering and visit order, a B-spline path, and segment velocities to solve $\min_{\{\theta\},\{q_m[k]\},\{\nu_m[k]\}}T^f+T^s$, the sum of fly-only and fly-while-communication time.
+**Problem & objective**: Discretized problem P0 jointly designs clustering and visit order, a B-spline path, and segment velocities to solve $\min_{\{\theta\},\{q_m[k]\},\{\nu_m[k]\}}T^f+T^s$ s.t. (12), (13), (15)–(19), (22), the sum of fly-only and fly-while-communication time.
 
 **Decision variables**:
 
@@ -51,10 +51,14 @@ For one energy-limited rotary-wing UAV serving batteryless sensors, this paper c
 
 | ID | Meaning and key expression |
 |---|---|
-| Mobility | $\lVert q_m[k+1]-q_m[k]\rVert/\delta_k\leq V_{\max}$ and $q_m[k_T]=q_m[0]$ |
-| Service range | $\varphi_{n,k}=1$ only when $\lVert q_m^{\mathrm{tr}}[k]-O_n\rVert\leq D_{\mathrm{tr}}$ |
-| Data demand | Every sensor satisfies $\sum_k\varphi_{n,k}R_{n,m}[k]\geq S_n$ |
-| Energy budget | UAV propulsion plus RF-transfer energy satisfies $E_m^u+E_{pt}\leq\varepsilon$ |
+| (12) | Speed limit: $\lVert\nu_m[k]\rVert=\lVert q_m[k+1]-q_m[k]\rVert/\delta_k\le V_{\max}$ |
+| (13) | Return to the departure point: $q_m[k_T]=q_m[0]$ |
+| (15) | Each sensor's communication time is below the completion time: $\sum_k\varphi_{n,k}<T$ |
+| (16) | At most $N$ sensors communicate at any instant: $\sum_n\varphi_{n,k}\le N$ |
+| (17) | Service range: $\varphi_{n,k}=1$ only if $\lVert q_m^{\mathrm{tr}}[k]-O_n\rVert\le D_{\mathrm{tr}}$ |
+| (18) | Trajectory split into fly-only points $\lvert G_m\rvert$ ($\varphi_{n,k}=0$) and communication points $\lvert G_n\rvert$ ($\varphi_{n,k}=1$) |
+| (19) | Data demand: $\sum_k\varphi_{n,k}R_{n,m}[k]\ge S_k,\ \forall n$ |
+| (22) | Onboard energy: $E_m^u(\{\nu_m[k]\})+E_{pt}(\varphi_{n,k})\le\varepsilon$ |
 
 **Algorithm**: Compute the RF activation radius and cluster adjacent sensors; use a genetic algorithm to order cluster heads as a traveling-salesman tour; initialize a B-spline with those heads and use a second genetic search over affine deformation and spline order with distance, smoothness, and energy fitness; segment the resulting path into fly-only and communication portions; then solve the convex P3 velocity block under throughput and onboard-energy limits.
 

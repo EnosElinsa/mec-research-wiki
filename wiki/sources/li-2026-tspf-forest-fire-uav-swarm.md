@@ -15,7 +15,7 @@ related:
   - "[[multi-uav-assisted-mec]]"
   - "[[edge-intelligence]]"
 created: 2026-07-07
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -33,37 +33,28 @@ Proposes [[two-tier-submodel-partition|TSPF]] for robust UAV-swarm [[uav-forest-
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: A UAV swarm performs forest-fire detection and trains an online object-detection model. Graph coloring spreads UAVs across groups, group servers and a swarm server aggregate model updates, and intragroup wireless exchanges carry selected layers and backups. Multiple access uses scheduled point-to-server parameter exchanges; the paper does not specify a NOMA/OMA waveform, and the channel is represented through its communication-overhead model.
-
-**Problem & objective**: A mixed discrete robustness and federated-learning design, represented as a multi-criterion objective $\max_X[A_{\mathrm{FFD}}(X),R_{\mathrm{robust}}(X),-C_{\mathrm{comm}}(X)]$, improving fire-detection accuracy and survivability while reducing model-upload overhead after UAV destruction.
-
+**Scenario**: A swarm $U=\{v_1,\dots,v_N\}$ of trusted UAVs performs forest-fire detection (FFD) and trains a detector online; $N_d$ UAVs may be destroyed during the mission. The swarm is split into $\chi$ groups by graph coloring, UAVs communicate directly (range about 400 m), each group server builds a group dataset (2) from the local datasets (1), and a swarm server updates the global model; the channel is represented only through the size of uploaded parameters.
+**Problem & objective**: (3) states three objectives without a single solved program: maximize the accuracy ratio $Acc'/Acc$ under UAV destruction, maximize the restored data $\sum_k\lvert D_{res}(G_k,V_d(G_k))\rvert$, and minimize the communication overhead $OH(U,\chi)$.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| Group color | $c_u$ | integer color label | Group assigned to UAV $u$ |
-| Backup assignment | $b_{u,v}$ | binary | Whether surviving UAV $v$ stores UAV $u$'s local data |
-| Group/swarm servers | $s_g,s_0$ | discrete selection | Servers for group $g$ and the whole swarm |
-| Selected model layers | $\mathcal L_g$ | discrete subset | Submodel layers uploaded in lower-tier aggregation |
-| Partition count | $\tau$ | positive integer | Number of disjoint submodels in the two-tier update |
-
+| Group partition | $G_k$, $k=1,\dots,\chi$ | graph-coloring groups | UAV membership of each group |
+| Group/swarm servers | $g_k$ and the swarm server | discrete, chosen by score $SC$ | Servers reselected every $t^*$ slots |
+| Submodels | $S(1),\dots,S(\tau)$, $\tau\le\chi$ | disjoint layer subsets | Layers trained and uploaded by each group |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Every UAV receives one graph-color group and groups satisfy the balanced/dispersed coloring rule |
-| C2 | Backup assignments remain within intragroup storage and contact limits |
-| C3 | Each group and the swarm select an available server using the DSS score |
-| C4 | Selected submodel layers form disjoint partitions that can be concatenated into the global model |
-| C5 | Model updates and recovery use only surviving UAVs and available communication links |
-
-**Algorithm**: Balanced graph coloring → intragroup data backup → dynamic server selection → lower-tier selected-layer aggregation → upper-tier submodel concatenation and swarm aggregation → distribute the global model and repeat online updates.
+| (6) | Submodels partition the layers: $\bigcup_kS(k)=L$, $S(j)\cap S(k)=\emptyset$ for $j\ne k$ |
+| (4) | Server selection score: $SC(v_i)=SOC(v_i)+1-UD(v_i)$ |
+| Model rule | Intragroup backup: each local dataset (1) includes the other group members' model parameters and business data, so destroyed UAVs' data can be restored |
+| Model rule | Lower-tier aggregation (7) averages submodel gradients within a group; upper-tier aggregation (8) concatenates the submodels, averaging groups that trained the same one when $\tau<\chi$ |
+**Algorithm**: Balanced graph coloring → intragroup data backup → dynamic server selection (DSS) by (4) → lower-tier submodel aggregation (7) → upper-tier concatenation (8) → distribute the global model and repeat online updates.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Li et al. [x] studied robust forest-fire detection with a UAV swarm that performs online federated model updates under possible UAV destruction. They designed the Two-tier Submodel Partition Framework, which combines balanced graph coloring, intragroup data backup, Dynamic Server Selection, and lower- and upper-tier aggregation of selected model layers. The framework partitions the global detector into submodels, aggregates selected layers within UAV groups, and concatenates the submodels at a swarm server to reduce parameter uploads. These mechanisms preserve local data and server availability when UAVs fail while maintaining online model updates. Experiments report improved fire-detection accuracy and robustness with lower communication overhead than the evaluated centralized, federated, and distributed baselines.
+Li et al. [x] studied robust forest-fire detection with a UAV swarm that performs online federated model updates under possible UAV destruction. They designed the Two-tier Submodel Partition Framework, which combines balanced graph coloring, intragroup data backup, Dynamic Server Selection, and lower- and upper-tier aggregation of selected model layers. The framework partitions the global detector into submodels, aggregates selected layers within UAV groups, and concatenates the submodels at a swarm server to reduce parameter uploads. These mechanisms preserve local data and server availability when UAVs fail while maintaining online model updates. Experiments report detection accuracy above distributed learning, FL, and PFL and comparable to centralized learning, which is impractical because of its overhead and single point of failure; TSPF and PFL upload less than FL, HFL, SFL, and HSFL.
 
 ## Problem
 

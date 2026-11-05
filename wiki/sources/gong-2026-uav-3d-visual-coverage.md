@@ -13,7 +13,7 @@ related:
   - "[[rotary-wing-propulsion-energy-model]]"
   - "[[energy-latency-tradeoff]]"
 created: 2026-07-10
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -33,7 +33,7 @@ Jointly optimizes viewpoint selection and flight trajectory for a single camera-
 
 **Scenario**: A camera-equipped rotary-wing UAV observes a three-dimensional object from selected viewpoints while flying a smooth, energy-aware route.
 
-**Problem & objective**: Select viewpoints and a feasible trajectory to maximize coverage quality and then minimize propulsion energy, $\max \sum_i J_i$ and $\min E_{\mathrm{prop}}$, subject to coverage, safety, and vehicle limits.
+**Problem & objective**: Problem (P1) (18) is decomposed into (P1.1), which picks viewpoint positions and attitudes to maximize the summed coverage-distance quality $\sum_iJ(\mathbf p_o^{i-1},\mathbf p_o^i,\theta^i,\varphi^i)$ s.t. (6)–(8), and (P1.2), which minimizes the segment energy $\sum_iE_{i,i+1}$ over B-spline controls $\mathbb C$ and timing $\mathbb T$ s.t. (13)–(14) and (18a)–(18d).
 
 **Decision variables**:
 
@@ -49,11 +49,12 @@ Jointly optimizes viewpoint selection and flight trajectory for a single camera-
 
 | ID | Meaning and key expression |
 | --- | --- |
-| C1 | Every object facet is covered by at least one selected viewpoint |
-| C2 | Observation distance stays near the desired range and adjacent views satisfy FOV overlap |
-| C3 | The UAV maintains the prescribed safe distance from the object and obstacles |
-| C4 | Total propulsion energy does not exceed the available budget |
-| C5 | Speed, acceleration, attitude, endpoint, and SE(3) kinematic limits are satisfied |
+| (6) | Full coverage: the deduplicated union of facets seen by all viewpoints equals all $q$ object facets |
+| (7) | Uniform observation distance: $\lvert\lVert\mathbf p_o^i-\mathbf c_o^i\rVert-d_o\rvert\le\beth$ |
+| (8) | Adjacent-view FOV overlap: $O_{i,i+1}^c\ge O_{\min}^c$ |
+| (13) | Safe distance from the object along each segment: $\widetilde{Dist}(\mathbf S_{i,i+1}(t),\mathcal F)\ge d_s$ |
+| (14) | Energy budget: $E_O\le E_{\max}$ |
+| (18a)–(18d) | Speed $\le v_{\max}$, acceleration $\le a_{\max}$, and pitch/yaw continuity at viewpoints (constraints of (P1.2); garbled in the parse, so check the published paper) |
 
 **Algorithm**: Generate a path-aware viewpoint set with informed RRT*-SA, smooth the ordered poses with an SE(3) B-spline, and refine timing and control points by sequential quadratic programming for energy minimization.
 
@@ -61,7 +62,7 @@ Jointly optimizes viewpoint selection and flight trajectory for a single camera-
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Gong et al. [x] coupled viewpoint generation with propulsion-aware trajectory design for a camera-equipped UAV covering a three-dimensional object. They optimized viewpoint positions and attitudes, B-spline control points, timing, and viewpoint count under full-facet coverage, adjacent-view overlap, observation-distance, safety, energy, and kinematic constraints. Their hierarchical solver combines path-aware informed RRT*-SA viewpoint generation with SE(3) B-spline smoothing and SQP energy refinement. Across four simulated objects, energy optimization reduced both energy and flight time relative to distance optimization, including 98.19 kJ versus 887.45 kJ for Big Ben and 89.69 kJ versus 882.72 kJ for Christ.
+Gong et al. [x] coupled viewpoint generation with propulsion-aware trajectory design for a camera-equipped UAV covering a three-dimensional object. They optimized viewpoint positions and attitudes, B-spline control points, timing, and viewpoint count under full-facet coverage, adjacent-view overlap, observation-distance, safety, energy, and kinematic constraints. Their hierarchical solver combines path-aware informed RRT*-SA viewpoint generation with SE(3) B-spline smoothing and SQP energy refinement. Across four simulated objects, energy-based optimization reduced both energy and flight time relative to distance-based and energy-line-based optimization, including 98.19 kJ versus 887.45 kJ for Big Ben and 89.69 kJ versus 882.72 kJ for Christ.
 
 ## Problem
 

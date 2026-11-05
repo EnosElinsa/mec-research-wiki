@@ -41,7 +41,7 @@ These are two genuinely conflicting objectives, framed as a **CMOP**. The author
 
 **Scenario**: One computing UAV visits $I$ device hovering locations, serves each device, and then flies to a destination. A B-spline path is defined by $\lambda$ 3-D control points and sampled into path points around modeled terrain obstacles.
 
-**Problem & objective**: Minimize the safe-path penalty $G_1(\mathbf x)=D_s=\sum_{j,k}(d_s/d_{j,k})^2$ and total UAV energy $G_2(\mathbf x)=\sum_{i=1}^{I}E_i$ subject to the offloading deadline and flight-safety constraints.
+**Problem & objective**: Problem (9) minimizes the safe-path penalty $G_1(\mathbf x)=D_s=\sum_{j,k}(d_s/d_{j,k})^2$ and total UAV energy $G_2(\mathbf x)=\sum_{i=1}^{I}E_i$ subject to the offloading deadline and flight-safety constraints.
 
 **Decision variables**:
 
@@ -56,11 +56,11 @@ These are two genuinely conflicting objectives, framed as a **CMOP**. The author
 
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Per-device deadline: $T_i-\tau_i^H-\tau_i^F\ge0$ |
-| C2 | Minimum altitude: $h_2=\sum_j[d_j^{\min}]^- =0$ |
-| C3 | Maximum altitude: $h_3=\sum_j[d_j^{\max}]^- =0$ |
-| C4 | Turning-angle limit: $h_4=\sum_j[\Delta\theta_j]^-=0$ with $\theta\le\theta_{\max}$ |
-| C5 | Decision domain: $\mathbf x\in\mathcal D$, with $3\lambda+3I$ components |
+| C1 (2) | Per-device deadline: $h_1=T_i-\tau_i^H-\tau_i^F\ge0$ |
+| C2 (5) | Minimum altitude: $h_2=\sum_j[d_j^{\min}]^-=0$ |
+| C3 (6) | Maximum altitude: $h_3=\sum_j[d_j^{\max}]^-=0$ |
+| C4 (7) | Turning-angle limit: $h_4=\sum_j[\Delta\theta_j]^-=0$, with the angle from (8) |
+| (9) | Decision domain: $\mathbf x\in\mathcal D$ |
 
 **Algorithm**: Decompose the CMOP with weight vectors, evolve mixed continuous individuals, and use dynamic infeasibility allocation to retain useful infeasible candidates early before progressively selecting lower-violation feasible Pareto solutions.
 
@@ -68,7 +68,7 @@ These are two genuinely conflicting objectives, framed as a **CMOP**. The author
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Peng et al. [x] formulate a constrained multi-objective UAV-MEC problem that couples energy-efficient offloading with safe 3-D path planning. The decision vector contains B-spline control points, device transmit powers, UAV CPU allocations, and segment speeds, while the objectives are obstacle-clearance penalty and total UAV energy. Feasibility requires task deadlines, minimum and maximum altitude, and bounded turning angles. Their decomposition-based evolutionary method dynamically retains informative infeasible individuals and achieves better feasible Pareto convergence and diversity than ToP and PPS in the reported experiments.
+Peng et al. [x] formulate a constrained multi-objective UAV-MEC problem that couples energy-efficient offloading with safe 3-D path planning. The decision vector contains B-spline control points, device transmit powers, UAV CPU allocations, and segment speeds, while the objectives are obstacle-clearance penalty and total UAV energy. Feasibility requires task deadlines, minimum and maximum altitude, and bounded turning angles. Their decomposition-based evolutionary method dynamically retains informative infeasible individuals and achieves better feasible Pareto convergence and diversity than ToP and PPS in the reported experiments (lower IGD and higher HV) and lower UAV energy.
 
 ## Why this matters
 

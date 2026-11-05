@@ -1,0 +1,388 @@
+{
+  "entries": [
+    {
+      "slug": "du-2026-hierarchical-coalition-deployment",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Deployment_and_Ground_Users_Clustering_in_Air-Ground_Networks_A_Hierarchical_Coalition-Formation_Game_Approach/Joint_Optimization_of_UAV_Deployment_and_Ground_Users_Clustering_in_Air-Ground_Networks_A_Hierarchical_Coalition-Formation_Game_Approach.md",
+          "lines": "171-189",
+          "note": "utility (15)-(16), problem (17) C1-C3"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Deployment_and_Ground_Users_Clustering_in_Air-Ground_Networks_A_Hierarchical_Coalition-Formation_Game_Approach/Joint_Optimization_of_UAV_Deployment_and_Ground_Users_Clustering_in_Air-Ground_Networks_A_Hierarchical_Coalition-Formation_Game_Approach.md",
+          "lines": "227-264",
+          "note": "(20), Pareto orders, stable partition (24)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_UAV_Deployment_and_Ground_Users_Clustering_in_Air-Ground_Networks_A_Hierarchical_Coalition-Formation_Game_Approach/Joint_Optimization_of_UAV_Deployment_and_Ground_Users_Clustering_in_Air-Ground_Networks_A_Hierarchical_Coalition-Formation_Game_Approach.md",
+          "lines": "5,554,592,601-609",
+          "note": "~10% at ~50 GUs; 100 runs; baselines"
+        }
+      ]
+    },
+    {
+      "slug": "fan-2026-directional-neighbor-discovery",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Delay_and_Power_Efficiency_of_Neighbor_Discovery_in_UAV_Networks/Joint_Optimization_of_Delay_and_Power_Efficiency_of_Neighbor_Discovery_in_UAV_Networks.md",
+          "lines": "105,117,130",
+          "note": "(5), sector normalization, lambda definition"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_of_Delay_and_Power_Efficiency_of_Neighbor_Discovery_in_UAV_Networks/Joint_Optimization_of_Delay_and_Power_Efficiency_of_Neighbor_Discovery_in_UAV_Networks.md",
+          "lines": "328-372",
+          "note": "(33)-(36), GP reformulation"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_of_Delay_and_Power_Efficiency_of_Neighbor_Discovery_in_UAV_Networks/Joint_Optimization_of_Delay_and_Power_Efficiency_of_Neighbor_Discovery_in_UAV_Networks.md",
+          "lines": "5,569-585",
+          "note": "four-node chamber; 101.31 vs 113.81; 11%"
+        }
+      ]
+    },
+    {
+      "slug": "gong-2026-uav-3d-visual-coverage",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Achieving_Optimal_3-D_Object_Visual_Coverage_With_a_Single_UAV/Achieving_Optimal_3-D_Object_Visual_Coverage_With_a_Single_UAV.md",
+          "lines": "96-116,160-173",
+          "note": "(6)-(8), (13), (14)"
+        },
+        {
+          "path": "raw/sources/Achieving_Optimal_3-D_Object_Visual_Coverage_With_a_Single_UAV/Achieving_Optimal_3-D_Object_Visual_Coverage_With_a_Single_UAV.md",
+          "lines": "200-232,461-487",
+          "note": "(P1), (P1.1), (P1.2), SQP (28)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Achieving_Optimal_3-D_Object_Visual_Coverage_With_a_Single_UAV/Achieving_Optimal_3-D_Object_Visual_Coverage_With_a_Single_UAV.md",
+          "lines": "764-772",
+          "note": "Table III energy/time; EOP >50%"
+        }
+      ]
+    },
+    {
+      "slug": "guang-2026-hiswta-mcs",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Game-Based_Multi-UAV_Dynamic_Collaborative_With_Energy-Efficient_Hierarchical_Information_Sharing_for_Mobile_Crowdsensing/Game-Based_Multi-UAV_Dynamic_Collaborative_With_Energy-Efficient_Hierarchical_Information_Sharing_for_Mobile_Crowdsensing.md",
+          "lines": "83-95",
+          "note": "P1 (4a)-(4d)"
+        },
+        {
+          "path": "raw/sources/Game-Based_Multi-UAV_Dynamic_Collaborative_With_Energy-Efficient_Hierarchical_Information_Sharing_for_Mobile_Crowdsensing/Game-Based_Multi-UAV_Dynamic_Collaborative_With_Energy-Efficient_Hierarchical_Information_Sharing_for_Mobile_Crowdsensing.md",
+          "lines": "195-219,379-391",
+          "note": "P2 (14), P3 (24)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Game-Based_Multi-UAV_Dynamic_Collaborative_With_Energy-Efficient_Hierarchical_Information_Sharing_for_Mobile_Crowdsensing/Game-Based_Multi-UAV_Dynamic_Collaborative_With_Energy-Efficient_Hierarchical_Information_Sharing_for_Mobile_Crowdsensing.md",
+          "lines": "5,526-532,556",
+          "note": "12/26/10%; ablation Table II"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-aoi-uav-mcs-contract",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/AoI-Aware_Incentive_Mechanism_for_UAV-Assisted_Mobile_Crowdsensing_A_Contract-Theoretic_Approach/AoI-Aware_Incentive_Mechanism_for_UAV-Assisted_Mobile_Crowdsensing_A_Contract-Theoretic_Approach.md",
+          "lines": "288-306,483-495",
+          "note": "IC/IR (32)-(34), (56)-(58)"
+        },
+        {
+          "path": "raw/sources/AoI-Aware_Incentive_Mechanism_for_UAV-Assisted_Mobile_Crowdsensing_A_Contract-Theoretic_Approach/AoI-Aware_Incentive_Mechanism_for_UAV-Assisted_Mobile_Crowdsensing_A_Contract-Theoretic_Approach.md",
+          "lines": "62,188,262,470,575-578",
+          "note": "AoI trigger; monotonicity; reduced problem"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/AoI-Aware_Incentive_Mechanism_for_UAV-Assisted_Mobile_Crowdsensing_A_Contract-Theoretic_Approach/AoI-Aware_Incentive_Mechanism_for_UAV-Assisted_Mobile_Crowdsensing_A_Contract-Theoretic_Approach.md",
+          "lines": "693-697,763-771",
+          "note": "discriminatory/uniform pricing; Stackelberg, reverse auction"
+        }
+      ]
+    },
+    {
+      "slug": "guo-2026-uav-wsn-completion-time",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_on_Trajectory_and_Velocity_for_Minimum_Completion_Time_in_UAV-Enabled_Wireless-Powered_WSN/Joint_Optimization_on_Trajectory_and_Velocity_for_Minimum_Completion_Time_in_UAV-Enabled_Wireless-Powered_WSN.md",
+          "lines": "119-172",
+          "note": "(11)-(19)"
+        },
+        {
+          "path": "raw/sources/Joint_Optimization_on_Trajectory_and_Velocity_for_Minimum_Completion_Time_in_UAV-Enabled_Wireless-Powered_WSN/Joint_Optimization_on_Trajectory_and_Velocity_for_Minimum_Completion_Time_in_UAV-Enabled_Wireless-Powered_WSN.md",
+          "lines": "184-204,369-375",
+          "note": "(21)-(22), (P0), (P3)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Optimization_on_Trajectory_and_Velocity_for_Minimum_Completion_Time_in_UAV-Enabled_Wireless-Powered_WSN/Joint_Optimization_on_Trajectory_and_Velocity_for_Minimum_Completion_Time_in_UAV-Enabled_Wireless-Powered_WSN.md",
+          "lines": "5,29,404,429",
+          "note": "43% vs fly-hover; 15% vs Bezier"
+        }
+      ]
+    },
+    {
+      "slug": "jia-2026-hierarchical-uav-swarms",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Trajectory_Optimization_and_Power_Control_for_Hierarchical_UAV_Swarms_in_6G_Aerial_Access_Network/Dynamic_Trajectory_Optimization_and_Power_Control_for_Hierarchical_UAV_Swarms_in_6G_Aerial_Access_Network.md",
+          "lines": "72-77,155,169",
+          "note": "(1)-(2), (12), (14)"
+        },
+        {
+          "path": "raw/sources/Dynamic_Trajectory_Optimization_and_Power_Control_for_Hierarchical_UAV_Swarms_in_6G_Aerial_Access_Network/Dynamic_Trajectory_Optimization_and_Power_Control_for_Hierarchical_UAV_Swarms_in_6G_Aerial_Access_Network.md",
+          "lines": "294-332,380",
+          "note": "P0 (32a)-(32h), P1"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Trajectory_Optimization_and_Power_Control_for_Hierarchical_UAV_Swarms_in_6G_Aerial_Access_Network/Dynamic_Trajectory_Optimization_and_Power_Control_for_Hierarchical_UAV_Swarms_in_6G_Aerial_Access_Network.md",
+          "lines": "529-544,579",
+          "note": "0.02 J; 30% vs MOGWO/NSGA-II; complexity"
+        }
+      ]
+    },
+    {
+      "slug": "li-2024-rldc-uav-swarm-clustering",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md",
+          "lines": "125-131",
+          "note": "E_effi, [P1] (9)"
+        },
+        {
+          "path": "raw/sources/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md",
+          "lines": "135-166",
+          "note": "(10)-(17)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/Energy-Efficient_UAV_Swarm_Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md",
+          "lines": "324,396",
+          "note": "fixed-swarm and no-swarm benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "li-2025-stochastic-game-uav-swarm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md",
+          "lines": "199-205",
+          "note": "(10), (11)"
+        },
+        {
+          "path": "raw/sources/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md",
+          "lines": "221-246",
+          "note": "[P1] (13a)-(13f)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling/A_Reinforcement_Learning-Based_Stochastic_Game_for_Energy-Efficient_UAV_Swarm-Assisted_MEC_With_Dynamic_Clustering_and_Scheduling.md",
+          "lines": "538-548",
+          "note": "EE vs IoT count: 680/550/470 at 1900"
+        }
+      ]
+    },
+    {
+      "slug": "li-2025-wireless-control-hrllc-scheduling",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Scheduling_and_Communication-Computation_Optimization_for_Wireless_Networked_Control_With_HRLLC/Joint_Task_Scheduling_and_Communication-Computation_Optimization_for_Wireless_Networked_Control_With_HRLLC.md",
+          "lines": "242-286",
+          "note": "(P1) (21a)-(21j)"
+        },
+        {
+          "path": "raw/sources/Joint_Task_Scheduling_and_Communication-Computation_Optimization_for_Wireless_Networked_Control_With_HRLLC/Joint_Task_Scheduling_and_Communication-Computation_Optimization_for_Wireless_Networked_Control_With_HRLLC.md",
+          "lines": "292-305,404-436,488-526",
+          "note": "(P2)-(P8), Algorithms 1-4"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Task_Scheduling_and_Communication-Computation_Optimization_for_Wireless_Networked_Control_With_HRLLC/Joint_Task_Scheduling_and_Communication-Computation_Optimization_for_Wireless_Networked_Control_With_HRLLC.md",
+          "lines": "5,31,576-581",
+          "note": "benchmarks; flow-shop close to exhaustive"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-jscfg-uav-grouping",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Grouping_of_Heterogeneous_UAVs_under_Complex_Sequential_Tasks_A_Joint_Switch_Coalition_Formation_Game_Approach/Dynamic_Grouping_of_Heterogeneous_UAVs_under_Complex_Sequential_Tasks_A_Joint_Switch_Coalition_Formation_Game_Approach.md",
+          "lines": "163-176",
+          "note": "(12), (13)"
+        },
+        {
+          "path": "raw/sources/Dynamic_Grouping_of_Heterogeneous_UAVs_under_Complex_Sequential_Tasks_A_Joint_Switch_Coalition_Formation_Game_Approach/Dynamic_Grouping_of_Heterogeneous_UAVs_under_Complex_Sequential_Tasks_A_Joint_Switch_Coalition_Formation_Game_Approach.md",
+          "lines": "373-375,426-428",
+          "note": "trigger rules; convergence"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Dynamic_Grouping_of_Heterogeneous_UAVs_under_Complex_Sequential_Tasks_A_Joint_Switch_Coalition_Formation_Game_Approach/Dynamic_Grouping_of_Heterogeneous_UAVs_under_Complex_Sequential_Tasks_A_Joint_Switch_Coalition_Formation_Game_Approach.md",
+          "lines": "485,498",
+          "note": "finite convergence; PGG-TS, split-merge, orders; narrowing gap"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-la4h-uav-active-tracking",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/A_Novel_Expert-Assisted_Anomaly-Aware_Embodied_Learning_Framework_for_UAV_Active_Target_Tracking/A_Novel_Expert-Assisted_Anomaly-Aware_Embodied_Learning_Framework_for_UAV_Active_Target_Tracking.md",
+          "lines": "56-74",
+          "note": "state (1), 12 actions"
+        },
+        {
+          "path": "raw/sources/A_Novel_Expert-Assisted_Anomaly-Aware_Embodied_Learning_Framework_for_UAV_Active_Target_Tracking/A_Novel_Expert-Assisted_Anomaly-Aware_Embodied_Learning_Framework_for_UAV_Active_Target_Tracking.md",
+          "lines": "82-132",
+          "note": "COF (2)-(8), assistance policy"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/A_Novel_Expert-Assisted_Anomaly-Aware_Embodied_Learning_Framework_for_UAV_Active_Target_Tracking/A_Novel_Expert-Assisted_Anomaly-Aware_Embodied_Learning_Framework_for_UAV_Active_Target_Tracking.md",
+          "lines": "24,415,507",
+          "note": "361.4/54.4/40.3%; 32.7 FPS"
+        }
+      ]
+    },
+    {
+      "slug": "li-2026-tspf-forest-fire-uav-swarm",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection.md",
+          "lines": "80-104",
+          "note": "(1)-(3) objectives"
+        },
+        {
+          "path": "raw/sources/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection.md",
+          "lines": "177-231",
+          "note": "DSS (4), partition (6), aggregation (7)-(8)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection/Two-Tier_Submodel_Partition_Framework_for_Enhancing_UAV_Swarm_Robustness_in_Forest_Fire_Detection.md",
+          "lines": "414-442",
+          "note": "accuracy vs centralized/distributed/FL/PFL; Table V overhead"
+        }
+      ]
+    },
+    {
+      "slug": "liu-2026-heterogeneous-sensor-satisfaction",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Joint_Deployment_User_Association_and_Power_Allocation_for_Data_Collection_in_UAV-Assisted_Wireless_Sensor_Networks/Joint_Deployment_User_Association_and_Power_Allocation_for_Data_Collection_in_UAV-Assisted_Wireless_Sensor_Networks.md",
+          "lines": "129-139",
+          "note": "P1 (12) C1-C7"
+        },
+        {
+          "path": "raw/sources/Joint_Deployment_User_Association_and_Power_Allocation_for_Data_Collection_in_UAV-Assisted_Wireless_Sensor_Networks/Joint_Deployment_User_Association_and_Power_Allocation_for_Data_Collection_in_UAV-Assisted_Wireless_Sensor_Networks.md",
+          "lines": "165-248,330",
+          "note": "EHEOA operators; P2 (29)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Joint_Deployment_User_Association_and_Power_Allocation_for_Data_Collection_in_UAV-Assisted_Wireless_Sensor_Networks/Joint_Deployment_User_Association_and_Power_Allocation_for_Data_Collection_in_UAV-Assisted_Wireless_Sensor_Networks.md",
+          "lines": "467,533,571-573",
+          "note": "13.83% vs fixed power; 2.8% below ESS"
+        }
+      ]
+    },
+    {
+      "slug": "liu-not-in-parse-wireless-control-association",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/User_Association_and_Communication-Computation_Co-Design_for_Wireless_Control_Networks/User_Association_and_Communication-Computation_Co-Design_for_Wireless_Control_Networks.md",
+          "lines": "207-246",
+          "note": "(P1) (16a)-(16i)"
+        },
+        {
+          "path": "raw/sources/User_Association_and_Communication-Computation_Co-Design_for_Wireless_Control_Networks/User_Association_and_Communication-Computation_Co-Design_for_Wireless_Control_Networks.md",
+          "lines": "264-332,412-424",
+          "note": "(P2)-(P7), AO with SCA"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/User_Association_and_Communication-Computation_Co-Design_for_Wireless_Control_Networks/User_Association_and_Communication-Computation_Co-Design_for_Wireless_Control_Networks.md",
+          "lines": "475-481",
+          "note": "association-only, resource-only, FDMA benchmarks"
+        }
+      ]
+    },
+    {
+      "slug": "peng-2022-cmop-uav-path-planning",
+      "modeling_card": "required",
+      "review_status": "grounded",
+      "classification_evidence": [
+        {
+          "path": "raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning.md",
+          "lines": "69-121",
+          "note": "(1)-(8) C1-C4"
+        },
+        {
+          "path": "raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning.md",
+          "lines": "127-141",
+          "note": "problem (9), violation (10)"
+        }
+      ],
+      "related_work_evidence": [
+        {
+          "path": "raw/sources/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning/Constrained_Multi-Objective_Optimization_for_UAV-Enabled_Mobile_Edge_Computing_Offloading_Optimization_and_Path_Planning.md",
+          "lines": "214-248,294",
+          "note": "ToP, PPS; IGD/HV; energy"
+        }
+      ]
+    }
+  ]
+}

@@ -14,7 +14,7 @@ related:
   - "[[xuming-fang]]"
   - "[[fuhong-song]]"
 created: 2026-07-13
-updated: 2026-07-16
+updated: 2026-11-03
 modeling_card: required
 ---
 
@@ -32,36 +32,31 @@ Models delay-sensitive, energy-sensitive, and dual-sensitive sensors with separa
 
 > Reuse in a system model or problem formulation section: scenario, model, decisions, constraints, and algorithm.
 
-**Scenario**: Multiple statically deployed UAVs collect uplink data from heterogeneous ground sensors. Delay-sensitive, energy-sensitive, and dual-sensitive sensors use class-specific sigmoid satisfaction functions over probabilistic-LoS/NLoS air-to-ground links with mutual interference.
-
-**Problem & objective**: Joint deployment, association, and power-control optimization, a mixed discrete-continuous non-convex problem, maximizes aggregate sensor satisfaction, $\max_{\mathbf q,\mathbf x,\mathbf p}\sum_n U_n(\mathrm{delay}_n,\mathrm{energy}_n)$, subject to association, capacity, power, QoS, deployment, and separation constraints.
-
+**Scenario**: $M$ statically deployed UAVs collect uplink data from heterogeneous ground sensors $u\in\mathcal U$. Delay-sensitive, energy-sensitive, and dual-sensitive sensors have class-specific sigmoid satisfaction $S_u\in(0,1)$ over probabilistic LoS/NLoS air-to-ground links with mutual interference.
+**Problem & objective**: P1 (12) maximizes total sensor satisfaction, $\max_{\{x_m,y_m,h_m,a_{u,m},p_u\}}\sum_{u\in\mathcal U}S_u$ s.t. C1–C7, a mixed-integer nonlinear program; the power subproblem P2 (29) maximizes $\sum_uS_u$ over $\{p_u\}$ s.t. power and rate limits.
 **Decision variables**:
-
 | Variable | Symbol | Type / range | Meaning |
 |---|---|---|---|
-| UAV placement | $\mathbf q_u$ | continuous 3-D position | Static location of UAV $u$ |
-| Sensor association | $x_{u,n}$ | binary | Sensor $n$ is collected by UAV $u$ |
-| Sensor transmit power | $p_n$ | continuous, bounded | Uplink power of sensor $n$ |
-| Satisfaction utility | $U_n$ | continuous sigmoid value | Class-specific delay/energy satisfaction |
-
+| UAV placement | $(x_m,y_m,h_m)$ | continuous 3-D position | Static location of UAV $m$ |
+| Sensor association | $a_{u,m}$ | binary | Sensor $u$ is served by UAV $m$ |
+| Sensor transmit power | $p_u$ | continuous, $\le p_u^{th}$ | Uplink power of sensor $u$ |
 **Constraints**:
-
 | ID | Meaning and key expression |
 |---|---|
-| C1 | Each sensor associates with at most one UAV and each UAV respects its service capacity |
-| C2 | Sensor powers satisfy per-device bounds and link QoS requirements |
-| C3 | UAV placements lie in the permitted 3-D region |
-| C4 | Inter-UAV separation and mutual-interference constraints hold |
-| C5 | Class-specific delay and energy satisfaction inputs use the modeled sigmoid thresholds |
-
-**Algorithm**: Encode placement and association in ELGHEOA with mixed real/binary individuals → apply salp-swarm and whale-optimization operators with penalty handling → update the power block by Lagrange duality and gradient descent → iterate until aggregate satisfaction stabilizes.
+| C1 (12) | Binary association: $a_{u,m}\in\{0,1\}$ |
+| C2 (12) | Each UAV serves at most $M^{th}$ sensors |
+| C3 (12) | Each sensor associates with exactly one UAV: $\sum_ma_{u,m}=1$ |
+| C4 (12) | Sensor power limit: $p_u\le p_u^{th}$ |
+| C5 (12) | Minimum rate: $r_u\ge r_u^{th}$ |
+| C6 (12) | UAV altitude limit: $h_m\le h_m^{th}$ |
+| C7 (12) | Inter-UAV safety distance: $d^m_{m_1,m_2}\ge d^{th}$ |
+**Algorithm**: ELGHEOA decomposes P1: EHEOA (human evolutionary optimization with Lévy-flight leaders, a WOA-inspired spiral step, and Sparrow-Search-style explorers, handling real and binary variables) searches deployment and association, and a Lagrangian/gradient-descent method solves P2; the two blocks alternate until satisfaction stabilizes.
 
 ## Related Work Paragraph
 
 > Ready to reuse in a literature review. Replace `[x]` with the formal citation number.
 
-Liu et al. [x] studied joint UAV deployment, sensor association, and power allocation for data collection from heterogeneous wireless sensors. They formulated a mixed discrete-continuous optimization that maximizes the sum of class-specific sigmoid satisfaction utilities for delay-sensitive, energy-sensitive, and dual-sensitive sensors. The decision variables include static 3-D UAV positions, sensor-UAV associations, and sensor transmit powers under capacity, QoS, deployment, and separation constraints. They proposed ELGHEOA, an enhanced human evolutionary optimizer with salp-swarm and whale-optimization operators, and solved the power block with Lagrange duality and gradient descent. Simulations report improved aggregate satisfaction and close agreement with exhaustive association for the tested small cases.
+Liu et al. [x] studied joint UAV deployment, sensor association, and power allocation for data collection from heterogeneous wireless sensors. They formulated a mixed discrete-continuous optimization that maximizes the sum of class-specific sigmoid satisfaction utilities for delay-sensitive, energy-sensitive, and dual-sensitive sensors. The decision variables include static 3-D UAV positions, sensor-UAV associations, and sensor transmit powers under capacity, QoS, deployment, and separation constraints. They proposed ELGHEOA, an enhanced human evolutionary optimizer that borrows Sparrow-Search followers and a whale-optimization spiral step, and solved the power block with Lagrange duality and gradient descent. Simulations report higher aggregate satisfaction than the compared metaheuristics, a 13.83% gain over the best fixed-power EHEOA result, and, with 2 UAVs, the optimum for 4 or 6 sensors but 2.8% below exhaustive association at 10 sensors.
 
 ## System and objective
 
