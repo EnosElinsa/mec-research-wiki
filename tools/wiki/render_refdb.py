@@ -82,7 +82,7 @@ def render(db, min_cited):
     out.append("")
     out.append("## Summary")
     out.append("")
-    out.append(f"- **Parses mined:** {db.get('parses_mined')} `full.md` files → {distinct} distinct curated/raw papers.")
+    out.append(f"- **Parses mined:** {db.get('parses_mined')} Markdown parses → {distinct} distinct curated/raw papers.")
     out.append(f"- **Reference strings parsed:** {db.get('reference_strings')}.")
     out.append(f"- **Unique references after dedup:** {db.get('unique_references')}.")
     out.append(f"- **Cited by >= 2 corpus papers:** {ge2} (foundational / depth signal).")
@@ -125,7 +125,7 @@ def main(argv=None):
     out_path = args.out or os.path.join(refs_dir, "reference-database.md")
     db = json.load(open(db_path, encoding="utf-8"))
     text = render(db, args.min)
-    open(out_path, "w", encoding="utf-8").write(text)
+    open(out_path, "w", encoding="utf-8", newline="\n").write(text)
     print(f"rendered {len([r for r in db['records'] if r['cited_count'] >= args.min])} most-cited rows -> {out_path}")
     return 0
 

@@ -164,6 +164,23 @@ def raw_folders() -> list[str]:
     return sorted(d for d in os.listdir(raw) if os.path.isdir(os.path.join(raw, d)))
 
 
+def raw_parse_path(folder: str) -> str | None:
+    """Return the Markdown parse of ``raw/sources/<folder>/``, or ``None``.
+
+    Prefers a legacy ``full.md``, then the title-named ``<folder>.md``, then the
+    folder's only ``*.md`` (e.g. a citekey-named parse such as
+    ``kool2019iclr.md``). Returns ``None`` when the folder has no Markdown or
+    several candidates, so callers report the folder instead of guessing.
+    """
+    folder_path = os.path.join(raw_sources_dir(), folder)
+    for name in ("full.md", f"{folder}.md"):
+        candidate = os.path.join(folder_path, name)
+        if os.path.isfile(candidate):
+            return candidate
+    markdown = sorted(glob.glob(os.path.join(glob.escape(folder_path), "*.md")))
+    return markdown[0] if len(markdown) == 1 else None
+
+
 # --- wikilink parsing (Obsidian-faithful) ----------------------------------
 
 _LINK = re.compile(r"\[\[([^\]]+)\]\]")
@@ -417,7 +434,7 @@ def referenced_raw_folders(root: str | None = None) -> set[str]:
 
 # --- IEEE reference-string mining (shared by mec-reference-scout) -----------
 #
-# These helpers parse the ``# REFERENCES`` section of a raw/sources ``full.md``
+# These helpers parse the ``# REFERENCES`` section of a raw/sources parse
 # (MinerU markdown) into structured records. They are deliberately conservative:
 # a field that is not clearly present is left as ``None`` rather than guessed,
 # mirroring the correctness-first stance of the scout agent.
@@ -665,7 +682,7 @@ def ref_key(authors: str | None, year: str | None, title: str | None) -> str:
 def folder_to_slug_map(root: str | None = None) -> dict:
     """Map each ``raw/sources/<Folder>`` name to its curated wiki slug.
 
-    Built from the ``raw/sources/<Folder>/full.md`` path that each curated
+    Built from the ``raw/sources/<Folder>/...`` parse path that each curated
     ``wiki/sources/<slug>.md`` page records in its Raw-artifacts block.
     """
     wiki_sources = os.path.join(wiki_dir(), "sources")

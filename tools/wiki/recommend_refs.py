@@ -154,9 +154,9 @@ def parse_uncurated_header(folder):
     Used only to surface a parsed-but-not-yet-curated paper as a 'ready now'
     candidate. Faithful to the parse; unknown fields stay None.
     """
-    fp = os.path.join(wikilib.raw_sources_dir(), folder, "full.md")
+    fp = wikilib.raw_parse_path(folder)
     info = {"folder": folder, "title": None, "authors": None, "year": None, "venue": None}
-    if not os.path.exists(fp):
+    if fp is None:
         return info
     head = wikilib.read_text(fp)[:1500]
     m = re.search(r"(?m)^#\s+(.+)$", head)
@@ -320,7 +320,7 @@ def main(argv=None):
     lines.append(f"- **Readiness.** {len(ready)} candidate(s) already have a parse in `raw/sources/` and can be curated immediately; the rest need fetching + parsing first.")
     lines.append("")
 
-    open(out_path, "w", encoding="utf-8").write("\n".join(lines))
+    open(out_path, "w", encoding="utf-8", newline="\n").write("\n".join(lines))
     print(f"candidates: {len(cands)} | ready-in-raw: {len(ready)} | recent: {len(recent)} -> {out_path}")
 
     if args.json:

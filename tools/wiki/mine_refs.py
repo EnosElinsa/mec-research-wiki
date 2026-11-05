@@ -3,7 +3,8 @@
 This is the maintained home of the reference-scout's mining logic (it used to be
 a throwaway ``.curation-out/parse_refs.py``). It:
 
-  * enumerates ``raw/sources/*/full.md`` (via wikilib),
+  * enumerates each ``raw/sources/<Folder>/`` Markdown parse (legacy
+    ``full.md``, title-named, or citekey-named; see wikilib.raw_parse_path),
   * extracts + parses each references block into structured records
     (wikilib.extract_references_block / split_ref_entries / parse_ref_entry),
   * deduplicates across the whole corpus by normalized-title (+ surname/year),
@@ -35,14 +36,13 @@ import wikilib
 
 def mine_all():
     """Parse every parse's references. Returns (per_folder, skipped)."""
-    raw = wikilib.raw_sources_dir()
     folders = wikilib.raw_folders()
     per_folder = {}
     skipped = []
     for folder in folders:
-        fp = os.path.join(raw, folder, "full.md")
-        if not os.path.exists(fp):
-            skipped.append((folder, "no full.md"))
+        fp = wikilib.raw_parse_path(folder)
+        if fp is None:
+            skipped.append((folder, "no single Markdown parse"))
             continue
         text = wikilib.read_text(fp)
         block = wikilib.extract_references_block(text)
@@ -216,7 +216,7 @@ def main(argv=None):
         meta["distinct_papers"] = len(set(slug_map.get(f, f) for f in per_folder))
         meta["reference_strings"] = total_strings
         meta["unique_references"] = len(merged)
-        json.dump(meta, open(args.merge, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+        json.dump(meta, open(args.merge, "w", encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
         print(f"merged DB ({len(merged)} records) -> {args.merge}")
 
     return 0

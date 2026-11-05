@@ -86,6 +86,9 @@ def main(argv=None):
     ap.add_argument("--flag-year", type=int, default=2026, help="list records at/after this year for provenance review")
     ap.add_argument("--json", metavar="PATH", help="write the machine-readable report (relative → .curation-out/)")
     args = ap.parse_args(argv)
+    if hasattr(sys.stdout, "reconfigure"):
+        # Titles can hold characters a non-UTF-8 console cannot encode.
+        sys.stdout.reconfigure(errors="replace")
 
     db_path = args.db or os.path.join(wikilib.wiki_dir(), "references", "reference-database.json")
     db = json.load(open(db_path, encoding="utf-8"))
